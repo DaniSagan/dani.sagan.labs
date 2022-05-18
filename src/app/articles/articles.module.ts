@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { TestArticleComponent } from './test-article/test-article.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { TestArticleComponent } from './test-article/test-article.component';
   ],
   imports: [
     CommonModule,
-    ArticlesRoutingModule
+    ArticlesRoutingModule,
+    MathjaxModule.forChild()
   ]
 })
 export class ArticlesModule { }

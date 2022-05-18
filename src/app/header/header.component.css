@@ -2,3 +2,19 @@ header {
   border-bottom-width: 1px;
   border-bottom-color: black;
 }
+
+.header {
+  padding: 100px;
+  text-align: center;
+  background: #333;;
+  color: white;
+  font-size: 30px;
+  background-image: url(/assets/img/westerlund_2.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  text-shadow: 4px 4px black;
+}
+
+.header h1 {
+  font-weight: lighter;
+}
