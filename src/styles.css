@@ -4,3 +4,13 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.article-with-sidebar {
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-gap: 20px;
+}
+
+.sidebar {
+  border-right: 1px solid #aaa;
+}

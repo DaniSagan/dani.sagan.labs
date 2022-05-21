@@ -40,7 +40,7 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
     this.equations.set('test', this.equationBuilder.new().int(3).int(17).do('+').int(5).do('/').do('()').do('square').build().toLatex());
     this.equations.set('pythagoras', this.equationBuilder.new().sqr(b => b.var('a')).sqr(b => b.var('b')).do('+').sqr(b => b.var('c')).do('=').build().toLatex());
     this.equations.set('pythagoras2', this.equationBuilder.new()
-      .eq(
+      .equals(
         b => b.sum(
             b => b.sqr(b => b.var('a')),
             b => b.sqr(b => b.var('b'))

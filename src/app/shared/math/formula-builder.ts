@@ -46,7 +46,7 @@ export class FormulaBuilder {
     return this;
   }
 
-  eq(lhs: (fb1: FormulaBuilder) => FormulaBuilder, rhs: (fb2: FormulaBuilder) => FormulaBuilder): FormulaBuilder {
+  equals(lhs: (fb1: FormulaBuilder) => FormulaBuilder, rhs: (fb2: FormulaBuilder) => FormulaBuilder): FormulaBuilder {
     let lhsItem = lhs(this).pop()!;
     let rhsItem = rhs(this).pop()!;
     this._stack.push(new EqualsItem(this._numberDispenser, lhsItem, rhsItem));

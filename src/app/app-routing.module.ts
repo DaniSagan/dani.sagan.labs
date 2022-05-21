@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ArticlesModule } from './articles/articles.module';
 
 const routes: Routes = [
-  { path: 'articles', loadChildren: () => ArticlesModule }
+  { path: 'articles', loadChildren: () => ArticlesModule },
+  { path: '', redirectTo: '/articles/home', pathMatch: 'full' },
 ];
 
 @NgModule({

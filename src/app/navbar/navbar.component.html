@@ -1,4 +1,15 @@
 <div class="topnav">
-  <a class="active" [routerLink]="['/']">Home</a>
-  <a [routerLink]="['/articles/test-article']">Articles</a>
+  <div class="nav-items">
+    <ul>
+      <li>
+        <a [routerLink]="['/articles/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/articles/test-article']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Artículos</a>
+      </li>
+      <li>
+        <a [routerLink]="['/articles/prime-decomposition']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Herramientas</a>
+      </li>
+    </ul>
+  </div>
 </div>
