@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormulaComponent } from 'src/app/mathematics/formula/formula.component';
 import { CmdEquals } from 'src/app/shared/math/commands/cmd-equals';
 import { CmdExponent } from 'src/app/shared/math/commands/cmd-exponent';
 import { CmdFactory } from 'src/app/shared/math/commands/cmd-factory';
@@ -8,6 +9,8 @@ import { CmdSquare } from 'src/app/shared/math/commands/cmd-square';
 import { CmdSubtraction } from 'src/app/shared/math/commands/cmd-subtraction';
 import { CmdSum } from 'src/app/shared/math/commands/cmd-sum';
 import { FormulaBuilder } from 'src/app/shared/math/formula-builder';
+import { FormulaItem } from 'src/app/shared/math/items/formula-item';
+import { SumItem } from 'src/app/shared/math/items/sum-item';
 
 @Component({
   selector: 'app-test-article',
@@ -24,6 +27,8 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
   private commandFactory: CmdFactory;
   private equationBuilder: FormulaBuilder;
 
+  public formula1: FormulaItem;
+
   constructor() {
     this.commandFactory = new CmdFactory();
     this.commandFactory.register('+', CmdSum);
@@ -34,6 +39,7 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
     this.commandFactory.register('()', CmdParentheses);
     this.commandFactory.register('=', CmdEquals);
     this.equationBuilder = new FormulaBuilder(this.commandFactory);
+    this.formula1 = this.equationBuilder.new().int(2).int(3).do('+').build();
   }
 
   ngOnInit(): void {
@@ -54,7 +60,6 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
     this.context = this.canvas.getContext("2d");
-    console.log(this.context);
     if(this.context != null) {
       this.draw(this.context);
     }

@@ -8,7 +8,6 @@ export class CmdFactory {
   }
 
   register(name: string, type: any) {
-    console.log(type);
     this._storage.set(name, type);
   }
 
