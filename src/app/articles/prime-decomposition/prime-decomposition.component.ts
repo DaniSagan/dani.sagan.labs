@@ -20,6 +20,7 @@ export class PrimeDecompositionComponent implements OnInit {
   // @Input() value: number;
   public value: string;
   public formula: FormulaItem | null;
+  public working: boolean = false;
 
   private _formulaBuilder: FormulaBuilder;
 
@@ -39,8 +40,14 @@ export class PrimeDecompositionComponent implements OnInit {
   }
 
   onInputTextChange(event: Event) {
-    let decomposition: Factor[] = this.getFactors(parseInt(this.value));
-    this.formula = this.getFormulaFromFactors(decomposition);
+    // let decomposition: Factor[] = this.getFactors(parseInt(this.value));
+    // this.formula = this.getFormulaFromFactors(decomposition);
+    this.working = true;
+    this.getFactorsAsync(parseInt(this.value)).then((decomposition: Factor[]) => {
+      this.formula = this.getFormulaFromFactors(decomposition);
+      this.working = false;
+    });
+
   }
 
   getFormulaFromFactors(factors: Factor[]) {
@@ -58,6 +65,12 @@ export class PrimeDecompositionComponent implements OnInit {
       }
     }
     return this._formulaBuilder.build();
+  }
+
+  getFactorsAsync(value: number): Promise<Factor[]> {
+    return new Promise<Factor[]>((resolve, reject) => {
+      resolve(this.getFactors(value));
+    });
   }
 
   getFactors(value: number): Factor[] {

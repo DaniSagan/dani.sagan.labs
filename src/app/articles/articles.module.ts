@@ -9,6 +9,7 @@ import { PrimeDecompositionArticleComponent } from './prime-decomposition-articl
 import { MathematicsModule } from '../mathematics/mathematics.module';
 import { PrimeDecompositionComponent } from './prime-decomposition/prime-decomposition.component';
 import { FormsModule } from '@angular/forms';
+import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     TestArticleComponent,
     HomeArticleComponent,
     PrimeDecompositionArticleComponent,
-    PrimeDecompositionComponent
+    PrimeDecompositionComponent,
+    ArticlesNavbarComponent
   ],
   imports: [
     CommonModule,
