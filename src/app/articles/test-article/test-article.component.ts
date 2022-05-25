@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormulaComponent } from 'src/app/mathematics/formula/formula.component';
 import { CmdEquals } from 'src/app/shared/math/commands/cmd-equals';
 import { CmdExponent } from 'src/app/shared/math/commands/cmd-exponent';
 import { CmdFactory } from 'src/app/shared/math/commands/cmd-factory';
@@ -10,7 +9,6 @@ import { CmdSubtraction } from 'src/app/shared/math/commands/cmd-subtraction';
 import { CmdSum } from 'src/app/shared/math/commands/cmd-sum';
 import { FormulaBuilder } from 'src/app/shared/math/formula-builder';
 import { FormulaItem } from 'src/app/shared/math/items/formula-item';
-import { SumItem } from 'src/app/shared/math/items/sum-item';
 
 @Component({
   selector: 'app-test-article',

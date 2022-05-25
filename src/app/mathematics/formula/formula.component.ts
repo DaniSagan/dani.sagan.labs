@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormulaItem } from 'src/app/shared/math/items/formula-item';
+import { FormulaItem } from './items/formula-item';
 
 @Component({
   selector: 'app-formula',
@@ -15,7 +15,7 @@ export class FormulaComponent implements OnInit, OnChanges {
   @Input() set formula(value: FormulaItem | null) {
     this._formula = value;
     if(value !== null) {
-      this.content = value.toLatex();
+      this.content = `$ ${value.toLatex()} $`;
     } else {
       this.content = "";
     }

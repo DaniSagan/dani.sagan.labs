@@ -4,6 +4,7 @@ import { EqualsItem } from "./items/equals-item";
 import { ExponentItem } from "./items/exponent-item";
 import { FormulaItem } from "./items/formula-item";
 import { FractionItem } from "./items/fraction-item";
+import { FunctionItem } from "./items/function-item";
 import { IntegerItem } from "./items/integer-item";
 import { RootItem } from "./items/root-item";
 import { SumItem } from "./items/sum-item";
@@ -67,6 +68,14 @@ export class FormulaBuilder {
     this._stack.push(new FractionItem(this._numberDispenser, n, d));
     return this;
   }
+
+  // func(name: string, parameters: (fb: FormulaBuilder) => FormulaBuilder[]): FormulaBuilder {
+  //   let pp: FormulaItem[];
+  //   let x = parameters(this);
+  //   for(let k = 0; k < x.length; k++)
+  //   this._stack.push(new FunctionItem(this._numberDispenser, name, pp));
+  //   return this;
+  // }
 
   exec<T extends CommandBase>(type: (new () => T)): FormulaBuilder {
     let cmdInstance: CommandBase = new type();

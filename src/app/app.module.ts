@@ -8,6 +8,8 @@ import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
+import { MathematicsModule } from './mathematics/mathematics.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ContentComponent } from './content/content.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MathjaxModule.forRoot()
+    MathjaxModule.forRoot(),
+    MathematicsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
