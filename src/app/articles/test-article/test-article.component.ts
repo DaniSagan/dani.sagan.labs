@@ -9,6 +9,9 @@ import { CmdSubtraction } from 'src/app/shared/math/commands/cmd-subtraction';
 import { CmdSum } from 'src/app/shared/math/commands/cmd-sum';
 import { FormulaBuilder } from 'src/app/shared/math/formula-builder';
 import { FormulaItem } from 'src/app/shared/math/items/formula-item';
+import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { CanvasComponent } from 'src/app/widgets/canvas/canvas.component';
+import { LineItem } from 'src/app/widgets/canvas/items/line-item';
 
 @Component({
   selector: 'app-test-article',
@@ -19,6 +22,9 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
 
   content: string = "$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$"
   equations: Map<string, string> = new Map<string, string>();
+  canvasSize = new Vector2(490, 490);
+
+  @ViewChild('myCanvas') myCanvas!: CanvasComponent;
 
   private canvas?: HTMLCanvasElement;
   private context?: CanvasRenderingContext2D | null;
@@ -61,6 +67,9 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
     if(this.context != null) {
       this.draw(this.context);
     }
+
+    let line = new LineItem(new Vector2(10, 10), new Vector2(200, 150));
+    this.myCanvas.draw(line);
   }
 
   draw(context: CanvasRenderingContext2D) {

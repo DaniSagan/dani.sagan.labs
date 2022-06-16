@@ -10,6 +10,7 @@ import { MathematicsModule } from '../mathematics/mathematics.module';
 import { PrimeDecompositionComponent } from './prime-decomposition/prime-decomposition.component';
 import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
+import { WidgetsModule } from '../widgets/widgets.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.compo
     ArticlesRoutingModule,
     MathjaxModule.forChild(),
     MathematicsModule,
+    WidgetsModule,
     FormsModule
   ]
 })
