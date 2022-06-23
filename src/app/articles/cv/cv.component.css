@@ -1,0 +1,49 @@
+.cv-section {
+  margin: 40px 0px;
+}
+
+.cv-section-title {
+  font-size: larger;
+}
+
+.cv-item {
+  padding: 5px 25px;
+  border-left: 5px solid #ccc;
+  text-align: justify;
+  text-justify: auto;
+  line-height: 1.5;
+  margin-left: 20px;
+}
+
+.cv-item:hover {
+  border-left: 5px solid #999;
+}
+
+.cv-company {
+  color: chocolate;
+  font-weight: bold;
+  font-variant: small-caps;
+  font-size: large;
+  font-style: italic;
+}
+
+.cv-position {
+  font-weight: bold;
+  font-size: large;
+}
+
+.cv-date {
+  font-style: italic;
+}
+
+.cv-job-details p {
+  text-indent: 20px;
+}
+
+.cv-job-details li {
+  margin-bottom: 5px;
+}
+
+.cv-job-details ul {
+  list-style-type: circle;
+}

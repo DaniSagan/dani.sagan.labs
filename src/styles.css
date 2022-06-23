@@ -11,6 +11,10 @@ body {
   grid-gap: 20px;
 }
 
+.article-title {
+  text-align: center;
+}
+
 .sidebar {
   border-right: 1px solid #aaa;
 }

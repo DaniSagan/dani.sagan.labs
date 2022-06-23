@@ -11,6 +11,7 @@ import { PrimeDecompositionComponent } from './prime-decomposition/prime-decompo
 import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
+import { CvComponent } from './cv/cv.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { WidgetsModule } from '../widgets/widgets.module';
     HomeArticleComponent,
     PrimeDecompositionArticleComponent,
     PrimeDecompositionComponent,
-    ArticlesNavbarComponent
+    ArticlesNavbarComponent,
+    CvComponent
   ],
   imports: [
     CommonModule,
