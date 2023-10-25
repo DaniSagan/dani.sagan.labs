@@ -9,7 +9,7 @@ import { CmdSubtraction } from 'src/app/shared/math/commands/cmd-subtraction';
 import { CmdSum } from 'src/app/shared/math/commands/cmd-sum';
 import { FormulaBuilder } from 'src/app/shared/math/formula-builder';
 import { FormulaItem } from 'src/app/shared/math/items/formula-item';
-import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { diff, sum, Vector2 } from 'src/app/mathematics/geometry/vector2';
 import { CanvasComponent } from 'src/app/widgets/canvas/canvas.component';
 import { LineItem } from 'src/app/widgets/canvas/items/line-item';
 
@@ -68,8 +68,10 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
       this.draw(this.context);
     }
 
-    let line = new LineItem(new Vector2(10, 10), new Vector2(200, 150));
-    this.myCanvas.draw(line);
+    // this.myCanvas.size = new Vector2(600, 600);
+    let kochSnowflake: LineItem[] = this.koch(new Vector2(10, 200), new Vector2(480, 200), 7);
+    this.myCanvas.scene.addItems(kochSnowflake);
+    this.myCanvas.draw();
   }
 
   draw(context: CanvasRenderingContext2D) {
@@ -78,6 +80,23 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
     context.lineTo(300, 150);
     context.stroke();
     context.closePath();
+  }
+
+  koch(p1: Vector2, p2: Vector2, level: number): LineItem[] {
+    let result: LineItem[] = [];
+    if(level <= 0) {
+      result.push(new LineItem(p1, p2));
+    } else {
+      let v12: Vector2 = diff(p2, p1);
+      let pp1: Vector2 = p1.sum(v12.mult(1/3));
+      let pp3: Vector2 = p1.sum(v12.mult(2/3));
+      let pp2: Vector2 = p1.sum(v12.mult(1/3)).sum(v12.rotate(-Math.PI/3).mult(1/3));
+      result.push(...this.koch(p1, pp1, level-1));
+      result.push(...this.koch(pp1, pp2, level-1));
+      result.push(...this.koch(pp2, pp3, level-1));
+      result.push(...this.koch(pp3, p2, level-1));
+    }
+    return result;
   }
 
 }

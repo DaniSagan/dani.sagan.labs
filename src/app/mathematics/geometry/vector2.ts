@@ -20,7 +20,15 @@ export class Vector2 {
   rotate(angle: number) {
     let c = Math.cos(angle);
     let s = Math.sin(angle);
-    return new Vector2(c*this.x - s*this.y, c*this.x + s*this.y);
+    return new Vector2(c*this.x - s*this.y, s*this.x + c*this.y);
+  }
+
+  sum(v: Vector2): Vector2 {
+    return new Vector2(this.x + v.x, this.y + v.y);
+  }
+
+  mult(scale: number): Vector2 {
+    return new Vector2(this.x * scale, this.y * scale);
   }
 }
 
