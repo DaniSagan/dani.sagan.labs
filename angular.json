@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "danisagan-labs:build:production"
+              "buildTarget": "danisagan-labs:build:production"
             },
             "development": {
-              "browserTarget": "danisagan-labs:build:development"
+              "buildTarget": "danisagan-labs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "danisagan-labs:build"
+            "buildTarget": "danisagan-labs:build"
           }
         },
         "test": {
