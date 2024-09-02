@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CvComponent } from './cv/cv.component';
+import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CvComponent } from './cv/cv.component';
     PrimeDecompositionArticleComponent,
     PrimeDecompositionComponent,
     ArticlesNavbarComponent,
-    CvComponent
+    CvComponent,
+    SierpinskiTriangleComponent
   ],
   imports: [
     CommonModule,
