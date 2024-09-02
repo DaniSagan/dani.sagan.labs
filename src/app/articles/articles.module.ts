@@ -13,6 +13,7 @@ import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.compo
 import { WidgetsModule } from '../widgets/widgets.module';
 import { CvComponent } from './cv/cv.component';
 import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
+import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-tr
     PrimeDecompositionComponent,
     ArticlesNavbarComponent,
     CvComponent,
-    SierpinskiTriangleComponent
+    SierpinskiTriangleComponent,
+    MengerSpongeComponent
   ],
   imports: [
     CommonModule,

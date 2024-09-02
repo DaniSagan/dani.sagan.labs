@@ -5,11 +5,13 @@ import { HomeArticleComponent } from './home-article/home-article.component';
 import { PrimeDecompositionArticleComponent } from './prime-decomposition-article/prime-decomposition-article.component';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
+import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
   {path: 'prime-decomposition', component: PrimeDecompositionArticleComponent},
   {path: 'sierpinski-triangle', component: SierpinskiTriangleComponent},
+  {path: 'menger-sponge', component: MengerSpongeComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];
