@@ -8,6 +8,7 @@ import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-tr
 import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
+import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'menger-sponge', component: MengerSpongeComponent},
   {path: 'barnsley-fern', component: BarnsleyFernComponent},
   {path: 'dragon-curve', component: DragonCurveComponent},
+  {path: 'lorenz-attractor', component: LorenzAttractorComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];

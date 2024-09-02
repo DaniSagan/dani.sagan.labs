@@ -16,6 +16,7 @@ import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-tr
 import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
+import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
     SierpinskiTriangleComponent,
     MengerSpongeComponent,
     BarnsleyFernComponent,
-    DragonCurveComponent
+    DragonCurveComponent,
+    LorenzAttractorComponent
   ],
   imports: [
     CommonModule,
