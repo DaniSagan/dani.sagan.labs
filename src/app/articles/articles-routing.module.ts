@@ -6,12 +6,14 @@ import { PrimeDecompositionArticleComponent } from './prime-decomposition-articl
 import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
 import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
+import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
   {path: 'prime-decomposition', component: PrimeDecompositionArticleComponent},
   {path: 'sierpinski-triangle', component: SierpinskiTriangleComponent},
   {path: 'menger-sponge', component: MengerSpongeComponent},
+  {path: 'barnsley-fern', component: BarnsleyFernComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];

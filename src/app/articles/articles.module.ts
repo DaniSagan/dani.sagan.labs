@@ -14,6 +14,7 @@ import { WidgetsModule } from '../widgets/widgets.module';
 import { CvComponent } from './cv/cv.component';
 import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
 import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
+import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
     ArticlesNavbarComponent,
     CvComponent,
     SierpinskiTriangleComponent,
-    MengerSpongeComponent
+    MengerSpongeComponent,
+    BarnsleyFernComponent
   ],
   imports: [
     CommonModule,
