@@ -7,6 +7,7 @@ import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './sierpinski-triangle/sierpinski-triangle.component';
 import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
+import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'sierpinski-triangle', component: SierpinskiTriangleComponent},
   {path: 'menger-sponge', component: MengerSpongeComponent},
   {path: 'barnsley-fern', component: BarnsleyFernComponent},
+  {path: 'dragon-curve', component: DragonCurveComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];
