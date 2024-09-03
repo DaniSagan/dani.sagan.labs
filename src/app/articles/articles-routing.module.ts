@@ -9,6 +9,7 @@ import { MengerSpongeComponent } from './menger-sponge/menger-sponge.component';
 import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
+import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'barnsley-fern', component: BarnsleyFernComponent},
   {path: 'dragon-curve', component: DragonCurveComponent},
   {path: 'lorenz-attractor', component: LorenzAttractorComponent},
+  {path: 'tic-tac-toe', component: TicTacToeComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];
