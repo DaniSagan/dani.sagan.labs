@@ -18,6 +18,7 @@ import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
+import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
     BarnsleyFernComponent,
     DragonCurveComponent,
     LorenzAttractorComponent,
-    TicTacToeComponent
+    TicTacToeComponent,
+    GraphPlotterComponent
   ],
   imports: [
     CommonModule,

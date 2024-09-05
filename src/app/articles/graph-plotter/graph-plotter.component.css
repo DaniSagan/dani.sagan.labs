@@ -1,0 +1,24 @@
+canvas {
+  border: 1px solid #00FFFF;
+  background-color: #000000; /* Fondo negro para resaltar el efecto de neón */
+  display: block;
+  margin-top: 20px;
+}
+
+input[type="text"], input[type="number"], input[type="color"] {
+  margin: 5px;
+  padding: 5px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #666;
+}

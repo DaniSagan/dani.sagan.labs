@@ -10,6 +10,7 @@ import { BarnsleyFernComponent } from './barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
+import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'dragon-curve', component: DragonCurveComponent},
   {path: 'lorenz-attractor', component: LorenzAttractorComponent},
   {path: 'tic-tac-toe', component: TicTacToeComponent},
+  {path: 'graph-plotter', component: GraphPlotterComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];
