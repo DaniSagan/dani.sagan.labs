@@ -8,7 +8,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 export class LorenzAttractorComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
-  iterations: number = 10000; // Número de puntos a dibujar
+  iterations: number = 1000; // Número de puntos a dibujar
   isDrawing: boolean = false;
 
   // Parámetros del Atractor de Lorenz
