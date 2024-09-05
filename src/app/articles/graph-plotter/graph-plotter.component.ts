@@ -124,10 +124,14 @@ export class GraphPlotterComponent implements OnInit {
     try {
       // Reemplaza `^` por `**` para manejar potencias en la ecuación
       const parsedEquation = equation.replace(/\^/g, '**')
-                                     .replace(/sqrt/g, 'Math.sqrt')
-                                     .replace(/cos/g, 'Math.cos')
-                                     .replace(/sin/g, 'Math.sin')
-                                     .replace(/tan/g, 'Math.tan')
+                                     .replace(/(?<=\W|^)sqrt(?=\W)/g, 'Math.sqrt')
+                                     .replace(/(?<=\W|^)cos(?=\W)/g, 'Math.cos')
+                                     .replace(/(?<=\W|^)sin(?=\W)/g, 'Math.sin')
+                                     .replace(/(?<=\W|^)tan(?=\W)/g, 'Math.tan')
+                                     .replace(/(?<=\W|^)ln(?=\W)/g, 'Math.log')
+                                     .replace(/(?<=\W|^)abs(?=\W)/g, 'Math.abs')
+                                     .replace(/(?<=\W|^)e(?=\W|$)/g, '(Math.E)')
+                                     .replace(/(?<=\W|^)pi(?=\W|$)/g, '(Math.PI)')
                                      .replace(/x/g, `(${x})`);
       const result = Function(`"use strict"; return (${parsedEquation})`)();
       return result;
