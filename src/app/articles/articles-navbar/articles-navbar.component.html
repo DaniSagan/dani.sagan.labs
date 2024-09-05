@@ -2,34 +2,49 @@
 <div class="nav-items">
   <ul>
     <li>
-      <a [routerLink]="['/articles/test-article']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Test</a>
+      <div class="subsection">Fractales</div>
+      <ul>
+        <li>
+          <a [routerLink]="['/articles/sierpinski-triangle']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Triángulo de Sierpinski</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/menger-sponge']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Esponja de Menger</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/barnsley-fern']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Helecho de Barnsley</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/dragon-curve']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Curva de Dragón</a>
+        </li>
+      </ul>
     </li>
     <li>
-      <a [routerLink]="['/articles/prime-decomposition']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Factorización</a>
+      <div class="subsection">Sólidos Platónicos</div>
+      <ul>
+        <li>
+          <a [routerLink]="['/articles/dodecahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Dodecahedro</a>
+        </li>
+      </ul>
     </li>
     <li>
-      <a [routerLink]="['/articles/sierpinski-triangle']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Triángulo de Sierpinski</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/menger-sponge']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Esponja de Menger</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/barnsley-fern']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Helecho de Barnsley</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/dragon-curve']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Curva de Dragón</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/lorenz-attractor']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Atractor de Lorenz</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/tic-tac-toe']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Tres en Raya</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/graph-plotter']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Graficas de Funciones</a>
-    </li>
-    <li>
-      <a [routerLink]="['/articles/dodecahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Dodecahedro</a>
+      <div class="subsection">Otros</div>
+      <ul>
+        <li>
+          <a [routerLink]="['/articles/test-article']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Test</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/prime-decomposition']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Factorización</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/lorenz-attractor']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Atractor de Lorenz</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/tic-tac-toe']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Tres en Raya</a>
+        </li>
+        <li>
+          <a [routerLink]="['/articles/graph-plotter']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Graficas de Funciones</a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>

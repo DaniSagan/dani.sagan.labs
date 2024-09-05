@@ -1,12 +1,18 @@
-.nav-items > ul {
+.nav-items ul {
   list-style-type: none;
-  display: table;
   margin: 0 auto;
   padding: 0;
 }
 
-.nav-items > ul > li {
-  height: 30px;
+.nav-items li {
+  min-height: 30px;
+}
+
+.nav-items .subsection {
+  padding: 5px 0px;
+  margin: 5px 0px;
+  color: black;
+  font-weight: bold;
 }
 
 .nav-items a {
@@ -15,6 +21,7 @@
   text-decoration: none;
   min-width: 100px;
   color: black;
+  font-weight: normal;
 }
 
 .nav-items a:hover {
