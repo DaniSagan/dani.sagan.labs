@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-lorenz-attractor',
   templateUrl: './lorenz-attractor.component.html',
   styleUrls: ['./lorenz-attractor.component.css']
 })
-export class LorenzAttractorComponent implements OnInit {
+export class LorenzAttractorComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 10000; // Número de puntos a dibujar
@@ -19,6 +19,10 @@ export class LorenzAttractorComponent implements OnInit {
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.drawLorenzAttractor();
+  }
+
+  ngOnDestroy(): void {
+    this.isDrawing = false;
   }
 
   async drawLorenzAttractor(): Promise<void> {

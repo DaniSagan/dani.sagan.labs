@@ -19,6 +19,7 @@ import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
+import { DodecahedronViewerComponent } from './dodecahedron-viewer/dodecahedron-viewer.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
     DragonCurveComponent,
     LorenzAttractorComponent,
     TicTacToeComponent,
-    GraphPlotterComponent
+    GraphPlotterComponent,
+    DodecahedronViewerComponent
   ],
   imports: [
     CommonModule,

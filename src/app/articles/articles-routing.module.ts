@@ -11,6 +11,7 @@ import { DragonCurveComponent } from './dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
+import { DodecahedronViewerComponent } from './dodecahedron-viewer/dodecahedron-viewer.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'lorenz-attractor', component: LorenzAttractorComponent},
   {path: 'tic-tac-toe', component: TicTacToeComponent},
   {path: 'graph-plotter', component: GraphPlotterComponent},
+  {path: 'dodecahedron-viewer', component: DodecahedronViewerComponent},
   {path: 'test-article', component: TestArticleComponent},
   {path: 'cv', component: CvComponent}
 ];
