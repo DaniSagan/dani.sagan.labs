@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Vector2 } from 'src/app/shared/geometry/vector2';
 
 @Component({
   selector: 'app-dragon-curve',
@@ -34,6 +35,7 @@ export class DragonCurveComponent implements OnInit {
     let y = canvasHeight / 2;
     let length = 5; // Longitud de cada segmento de línea
     let angle = 0;
+    let direction = new Vector2(length, 0);
 
     this.isDrawing = true;
 
@@ -43,18 +45,19 @@ export class DragonCurveComponent implements OnInit {
     this.ctx.beginPath();
     this.ctx.moveTo(x, y);
 
+    let n: number = 0;
     for (let turn of sequence) {
       if (!this.isDrawing) break;
-
-      angle += turn === 'L' ? Math.PI / 2 : -Math.PI / 2;
-      x += length * Math.cos(angle);
-      y += length * Math.sin(angle);
+      direction = turn === 'L' ? this.rotateLeft(direction) : this.rotateRight(direction);
+      x += direction.x;
+      y += direction.y;
 
       this.ctx.lineTo(x, y);
       this.ctx.stroke();
 
       // Espera asincrónica para mantener la interfaz responsiva
-      await this.sleep(1);
+      if(n % 100 == 0) await this.sleep(1);
+      n++;
     }
 
     this.isDrawing = false;
@@ -93,5 +96,13 @@ export class DragonCurveComponent implements OnInit {
 
   private sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  private rotateLeft(direction: Vector2){
+    return new Vector2(-direction.y, direction.x);
+  }
+
+  private rotateRight(direction: Vector2){
+    return new Vector2(direction.y, -direction.x);
   }
 }
