@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild, HostListener, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import * as THREE from 'three';
 import { GeometryViewer } from '../geometry-viewer';
 
@@ -11,11 +10,13 @@ import { GeometryViewer } from '../geometry-viewer';
 export class DodecahedronViewerComponent extends GeometryViewer implements OnInit {
   @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
 
+  title: string = 'Dodecahedro regular';
+
   ngOnInit(): void {
     this.initThreeJS(this.rendererContainer);
   }
 
-  getPolyhedron(): THREE.PolyhedronGeometry {
+  getPolyhedron(): THREE.BufferGeometry {
     return new THREE.DodecahedronGeometry();
   }
 

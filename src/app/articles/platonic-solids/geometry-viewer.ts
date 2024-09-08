@@ -77,7 +77,7 @@ export abstract class GeometryViewer {
     this.renderer.render(this.scene, this.camera);
   }
 
-  abstract getPolyhedron(): THREE.PolyhedronGeometry;
+  abstract getPolyhedron(): THREE.BufferGeometry;
 
   resizeWindow(rendererContainer: ElementRef): void {
     const width = rendererContainer.nativeElement.clientWidth;

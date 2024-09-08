@@ -20,6 +20,10 @@ import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.co
 import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
 import { DodecahedronViewerComponent } from './platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
+import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/hexahedron-viewer.component';
+import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
+import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
+import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import { DodecahedronViewerComponent } from './platonic-solids/dodecahedron-view
     LorenzAttractorComponent,
     TicTacToeComponent,
     GraphPlotterComponent,
-    DodecahedronViewerComponent
+    DodecahedronViewerComponent,
+    HexahedronViewerComponent,
+    IcosahedronViewerComponent,
+    OctahedronViewerComponent,
+    TetrahedronViewerComponent
   ],
   imports: [
     CommonModule,
