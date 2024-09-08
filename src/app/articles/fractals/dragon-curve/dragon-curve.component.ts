@@ -56,7 +56,7 @@ export class DragonCurveComponent implements OnInit {
       this.ctx.stroke();
 
       // Espera asincrónica para mantener la interfaz responsiva
-      if(n % 100 == 0) await this.sleep(1);
+      if(n % 10 == 0) await this.sleep(1);
       n++;
     }
 
