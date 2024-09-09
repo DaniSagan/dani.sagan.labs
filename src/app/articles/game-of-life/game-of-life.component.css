@@ -1,0 +1,27 @@
+.controls {
+  margin-bottom: 10px;
+}
+
+.board {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+td.alive {
+  background-color: black;
+}
+
+button {
+  margin-left: 10px;
+}

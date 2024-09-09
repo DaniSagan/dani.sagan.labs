@@ -25,6 +25,7 @@ import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer
 import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
 import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
+import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
     LorenzAttractorComponent,
     TicTacToeComponent,
     FourInARowComponent,
+    GameOfLifeComponent,
     GraphPlotterComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,
