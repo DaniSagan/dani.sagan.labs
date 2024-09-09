@@ -16,6 +16,7 @@ import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/h
 import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
 import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
+import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeArticleComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'dragon-curve', component: DragonCurveComponent},
   {path: 'lorenz-attractor', component: LorenzAttractorComponent},
   {path: 'tic-tac-toe', component: TicTacToeComponent},
+  {path: 'four-in-a-row', component: FourInARowComponent},
   {path: 'graph-plotter', component: GraphPlotterComponent},
   {path: 'dodecahedron-viewer', component: DodecahedronViewerComponent},
   {path: 'hexahedron-viewer', component: HexahedronViewerComponent},

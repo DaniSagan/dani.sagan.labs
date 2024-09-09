@@ -24,6 +24,7 @@ import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/h
 import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
 import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
+import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer
     DragonCurveComponent,
     LorenzAttractorComponent,
     TicTacToeComponent,
+    FourInARowComponent,
     GraphPlotterComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,
