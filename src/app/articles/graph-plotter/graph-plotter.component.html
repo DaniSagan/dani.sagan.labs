@@ -1,38 +1,31 @@
-<div class="article-with-sidebar">
-  <div class="sidebar">
-    <app-articles-navbar></app-articles-navbar>
-  </div>
-  <div class="body-text">
-    <h2>Gráficas de Funciones</h2>
-    <div>
-      <label for="xMin">X Mín:</label>
-      <input id="xMin" type="number" [(ngModel)]="xMin" (change)="updateLimits()" />
-      <label for="xMax">X Máx:</label>
-      <input id="xMax" type="number" [(ngModel)]="xMax" (change)="updateLimits()" />
-      <label for="yMin">Y Mín:</label>
-      <input id="yMin" type="number" [(ngModel)]="yMin" (change)="updateLimits()" />
-      <label for="yMax">Y Máx:</label>
-      <input id="yMax" type="number" [(ngModel)]="yMax" (change)="updateLimits()" />
-    </div>
-    <div *ngFor="let equation of equations; let i = index; trackBy: trackByIndex">
-      <label for="equation{{ i }}">Ecuación {{ i + 1 }}:</label>
-      <input
-        id="equation{{ i }}"
-        type="text"
-        [value]="equation"
-        (input)="updateEquations($event, i)"
-      />
-      <label for="color{{ i }}">Color:</label>
-      <input
-        id="color{{ i }}"
-        type="color"
-        [(ngModel)]="colors[i]"
-        (change)="updateEquations($event, i)"
-      />
-      <button (click)="removeEquation(i)">Eliminar</button>
-    </div>
-    <button (click)="addEquation()">Agregar Ecuación</button>
-    <button (click)="resetGraph()">Reiniciar Gráfica</button>
-    <canvas #canvas width="800" height="600" (wheel)="handleWheel($event)"></canvas>
-  </div>
+<h2>Gráficas de Funciones</h2>
+<div>
+  <label for="xMin">X Mín:</label>
+  <input id="xMin" type="number" [(ngModel)]="xMin" (change)="updateLimits()" />
+  <label for="xMax">X Máx:</label>
+  <input id="xMax" type="number" [(ngModel)]="xMax" (change)="updateLimits()" />
+  <label for="yMin">Y Mín:</label>
+  <input id="yMin" type="number" [(ngModel)]="yMin" (change)="updateLimits()" />
+  <label for="yMax">Y Máx:</label>
+  <input id="yMax" type="number" [(ngModel)]="yMax" (change)="updateLimits()" />
 </div>
+<div *ngFor="let equation of equations; let i = index; trackBy: trackByIndex">
+  <label for="equation{{ i }}">Ecuación {{ i + 1 }}:</label>
+  <input
+    id="equation{{ i }}"
+    type="text"
+    [value]="equation"
+    (input)="updateEquations($event, i)"
+  />
+  <label for="color{{ i }}">Color:</label>
+  <input
+    id="color{{ i }}"
+    type="color"
+    [(ngModel)]="colors[i]"
+    (change)="updateEquations($event, i)"
+  />
+  <button (click)="removeEquation(i)">Eliminar</button>
+</div>
+<button (click)="addEquation()">Agregar Ecuación</button>
+<button (click)="resetGraph()">Reiniciar Gráfica</button>
+<canvas #canvas width="800" height="600" (wheel)="handleWheel($event)"></canvas>

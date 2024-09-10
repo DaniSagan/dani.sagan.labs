@@ -1,0 +1,16 @@
+<h2>Cuatro en Raya</h2>
+<div class="game-board">
+  <div *ngFor="let row of board; let rowIndex = index" class="row">
+    <div
+      *ngFor="let cell of row; let colIndex = index"
+      class="cell"
+      [ngClass]="{
+        'red': cell === 'R',
+        'yellow': cell === 'Y'
+      }"
+      (click)="placePiece(colIndex)"
+    ></div>
+  </div>
+</div>
+<p>{{ message }}</p>
+<button (click)="resetGame()">Reiniciar juego</button>

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ArticlesRoutingModule } from './articles-routing.module';
+//import { ArticlesRoutingModule } from './articles-routing.module';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { MathjaxModule } from 'mathjax-angular';
 import { HomeArticleComponent } from './home-article/home-article.component';
@@ -17,19 +17,19 @@ import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.co
 import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './fractals/dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
-import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
 import { DodecahedronViewerComponent } from './platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
 import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/hexahedron-viewer.component';
 import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
 import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
-import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
-import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
+import { RouterModule } from '@angular/router';
+import { ArticlesContentComponent } from './articles-content/articles-content.component';
 
 
 @NgModule({
   declarations: [
+    ArticlesContentComponent,
     TestArticleComponent,
     HomeArticleComponent,
     PrimeDecompositionArticleComponent,
@@ -41,9 +41,6 @@ import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
     BarnsleyFernComponent,
     DragonCurveComponent,
     LorenzAttractorComponent,
-    TicTacToeComponent,
-    FourInARowComponent,
-    GameOfLifeComponent,
     GraphPlotterComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,
@@ -53,11 +50,12 @@ import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
   ],
   imports: [
     CommonModule,
-    ArticlesRoutingModule,
+    // ArticlesRoutingModule,
     MathjaxModule.forChild(),
     MathematicsModule,
     WidgetsModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class ArticlesModule { }
