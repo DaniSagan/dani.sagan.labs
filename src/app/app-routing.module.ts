@@ -1,8 +1,5 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { ArticlesModule } from './articles/articles.module';
-import { GamesModule } from './games/games.module';
-import { ToolsModule } from './tools/tools.module';
 
 const routes: Routes = [
   { path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule) },
