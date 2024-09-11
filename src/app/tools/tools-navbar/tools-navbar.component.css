@@ -1,0 +1,35 @@
+.nav-items ul {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.nav-items li {
+  min-height: 30px;
+}
+
+.nav-items .subsection {
+  padding: 5px 0px;
+  margin: 5px 0px;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-items a {
+  padding: 5px 5px;
+  margin: 5px 5px;
+  text-decoration: none;
+  min-width: 100px;
+  color: black;
+  font-weight: normal;
+}
+
+.nav-items a:hover {
+  background-color: #333;
+  color: white;
+}
+
+.nav-items a.active {
+  background-color: #04AA6D;
+  color: white;
+}

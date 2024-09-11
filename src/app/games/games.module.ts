@@ -11,6 +11,7 @@ import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
 import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
 import { RouterModule } from '@angular/router';
 import { GamesContentComponent } from './games-content/games-content.component';
+import { GamesRoutingModule } from './games-routing.module';
 // import { GamesRoutingModule } from './games-routing.module';
 
 
@@ -29,7 +30,8 @@ import { GamesContentComponent } from './games-content/games-content.component';
     MathematicsModule,
     WidgetsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    GamesRoutingModule
   ]
 })
 export class GamesModule { }

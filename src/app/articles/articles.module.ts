@@ -5,9 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { MathjaxModule } from 'mathjax-angular';
 import { HomeArticleComponent } from './home-article/home-article.component';
-import { PrimeDecompositionArticleComponent } from './prime-decomposition-article/prime-decomposition-article.component';
 import { MathematicsModule } from '../mathematics/mathematics.module';
-import { PrimeDecompositionComponent } from './prime-decomposition/prime-decomposition.component';
 import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
@@ -17,7 +15,6 @@ import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.co
 import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './fractals/dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
-import { GraphPlotterComponent } from './graph-plotter/graph-plotter.component';
 import { DodecahedronViewerComponent } from './platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
 import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/hexahedron-viewer.component';
 import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
@@ -25,6 +22,7 @@ import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/o
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
 import { RouterModule } from '@angular/router';
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
+import { ArticlesRoutingModule } from './articles-routing.module';
 
 
 @NgModule({
@@ -32,8 +30,6 @@ import { ArticlesContentComponent } from './articles-content/articles-content.co
     ArticlesContentComponent,
     TestArticleComponent,
     HomeArticleComponent,
-    PrimeDecompositionArticleComponent,
-    PrimeDecompositionComponent,
     ArticlesNavbarComponent,
     CvComponent,
     SierpinskiTriangleComponent,
@@ -41,7 +37,6 @@ import { ArticlesContentComponent } from './articles-content/articles-content.co
     BarnsleyFernComponent,
     DragonCurveComponent,
     LorenzAttractorComponent,
-    GraphPlotterComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,
     IcosahedronViewerComponent,
@@ -55,7 +50,8 @@ import { ArticlesContentComponent } from './articles-content/articles-content.co
     MathematicsModule,
     WidgetsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ArticlesRoutingModule
   ]
 })
 export class ArticlesModule { }
