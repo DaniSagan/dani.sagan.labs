@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule) },
   { path: 'games', loadChildren: () => import('./games/games.module').then(m => m.GamesModule) },
   { path: 'tools', loadChildren: () => import('./tools/tools.module').then(m => m.ToolsModule) },
-  { path: '', redirectTo: '/articles/home', pathMatch: 'full' }
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 const routerOptions: ExtraOptions = {

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { CvComponent } from './cv/cv.component';
-import { HomeArticleComponent } from './home-article/home-article.component';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
 import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.component';
@@ -21,7 +19,6 @@ const routes: Routes = [
     component: ArticlesContentComponent,
     children:
     [
-      {path: 'home', component: HomeArticleComponent},
       {path: 'sierpinski-triangle', component: SierpinskiTriangleComponent},
       {path: 'menger-sponge', component: MengerSpongeComponent},
       {path: 'barnsley-fern', component: BarnsleyFernComponent},
@@ -33,7 +30,6 @@ const routes: Routes = [
       {path: 'octahedron-viewer', component: OctahedronViewerComponent},
       {path: 'tetrahedron-viewer', component: TetrahedronViewerComponent},
       {path: 'test-article', component: TestArticleComponent},
-      {path: 'cv', component: CvComponent}
     ]
   }
 ];

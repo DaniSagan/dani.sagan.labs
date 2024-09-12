@@ -4,12 +4,10 @@ import { CommonModule } from '@angular/common';
 //import { ArticlesRoutingModule } from './articles-routing.module';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { MathjaxModule } from 'mathjax-angular';
-import { HomeArticleComponent } from './home-article/home-article.component';
 import { MathematicsModule } from '../mathematics/mathematics.module';
 import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
-import { CvComponent } from './cv/cv.component';
 import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
 import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.component';
 import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
@@ -29,9 +27,7 @@ import { ArticlesRoutingModule } from './articles-routing.module';
   declarations: [
     ArticlesContentComponent,
     TestArticleComponent,
-    HomeArticleComponent,
     ArticlesNavbarComponent,
-    CvComponent,
     SierpinskiTriangleComponent,
     MengerSpongeComponent,
     BarnsleyFernComponent,
