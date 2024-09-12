@@ -1,9 +1,9 @@
 import { ElementRef } from '@angular/core';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { SSAOPass } from 'three/examples/jsm/postprocessing/SSAOPass.js';
 
 export abstract class GeometryViewer {
   protected renderer!: THREE.WebGLRenderer;
