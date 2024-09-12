@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
@@ -12,6 +12,7 @@ import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer
 import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
+import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 
 const routes: Routes = [
   {
@@ -19,17 +20,18 @@ const routes: Routes = [
     component: ArticlesContentComponent,
     children:
     [
-      {path: 'sierpinski-triangle', component: SierpinskiTriangleComponent},
-      {path: 'menger-sponge', component: MengerSpongeComponent},
-      {path: 'barnsley-fern', component: BarnsleyFernComponent},
-      {path: 'dragon-curve', component: DragonCurveComponent},
-      {path: 'lorenz-attractor', component: LorenzAttractorComponent},
-      {path: 'dodecahedron-viewer', component: DodecahedronViewerComponent},
-      {path: 'hexahedron-viewer', component: HexahedronViewerComponent},
-      {path: 'icosahedron-viewer', component: IcosahedronViewerComponent},
-      {path: 'octahedron-viewer', component: OctahedronViewerComponent},
-      {path: 'tetrahedron-viewer', component: TetrahedronViewerComponent},
-      {path: 'test-article', component: TestArticleComponent},
+      { path: 'sierpinski-triangle', component: SierpinskiTriangleComponent },
+      { path: 'menger-sponge', component: MengerSpongeComponent },
+      { path: 'barnsley-fern', component: BarnsleyFernComponent },
+      { path: 'dragon-curve', component: DragonCurveComponent },
+      { path: 'lorenz-attractor', component: LorenzAttractorComponent },
+      { path: 'dodecahedron-viewer', component: DodecahedronViewerComponent },
+      { path: 'hexahedron-viewer', component: HexahedronViewerComponent },
+      { path: 'icosahedron-viewer', component: IcosahedronViewerComponent },
+      { path: 'octahedron-viewer', component: OctahedronViewerComponent },
+      { path: 'tetrahedron-viewer', component: TetrahedronViewerComponent },
+      { path: 'test-article', component: TestArticleComponent },
+      { path: 'arithmetic-derivative', component: ArithmeticDerivativeArticleComponent }
     ]
   }
 ];

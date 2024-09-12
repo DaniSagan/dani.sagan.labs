@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EqualsItem } from '../formula/items/equals-item';
-import { FormulaItem } from '../formula/items/formula-item';
-import { FunctionItem } from '../formula/items/function-item';
-import { IntegerItem } from '../formula/items/integer-item';
-import { Factor, getFactors, isPrime } from '../mathematics';
+import { EqualsItem } from '../../mathematics/formula/items/equals-item';
+import { FormulaItem } from '../../mathematics/formula/items/formula-item';
+import { FunctionItem } from '../../mathematics/formula/items/function-item';
+import { IntegerItem } from '../../mathematics/formula/items/integer-item';
+import { Factor, getFactors, isPrime } from '../../mathematics/mathematics';
 
 @Component({
   selector: 'app-arithmetic-derivative',

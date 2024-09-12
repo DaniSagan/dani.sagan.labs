@@ -5,11 +5,13 @@ import { PrimeDecompositionComponent } from './prime-decomposition/prime-decompo
 import { MathjaxModule } from 'mathjax-angular';
 import { MathematicsModule } from '../mathematics/mathematics.module';
 import { FormsModule } from '@angular/forms';
+import { ArithmeticDerivativeComponent } from './arithmetic-derivative/arithmetic-derivative.component';
 
 @NgModule({
   declarations: [
     CanvasComponent,
-    PrimeDecompositionComponent
+    PrimeDecompositionComponent,
+    ArithmeticDerivativeComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     CanvasComponent,
-    PrimeDecompositionComponent
+    PrimeDecompositionComponent,
+    ArithmeticDerivativeComponent
   ]
 })
 export class WidgetsModule { }
