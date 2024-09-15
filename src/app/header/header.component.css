@@ -10,7 +10,7 @@ header {
   color: white;
   font-size: 30px;
   text-shadow: 4px 4px black;
-  background-image: url(/assets/img/westerlund_2.jpg);
+  background-image: url(../../assets/img/westerlund_2.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
