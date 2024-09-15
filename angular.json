@@ -21,7 +21,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": {
-              "base": "dist/danisagan-labs"
+              "base": "dist/dani.sagan.labs"
             },
             "index": "src/index.html",
             "polyfills": [
