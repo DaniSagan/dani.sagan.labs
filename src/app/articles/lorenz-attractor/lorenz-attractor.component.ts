@@ -11,6 +11,9 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
   iterations: number = 1000; // Número de puntos a dibujar
   isDrawing: boolean = false;
 
+  static title: string = 'Atractor de Lorenz';
+  static route: string = 'lorenz-attractor';
+
   // Parámetros del Atractor de Lorenz
   sigma: number = 10;
   rho: number = 28;

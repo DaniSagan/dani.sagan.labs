@@ -11,6 +11,9 @@ export class BarnsleyFernComponent implements OnInit {
   iterations: number = 5000;
   isDrawing: boolean = false;
 
+  static title: string = 'Helecho de Barnsley';
+  static route: string = 'barnsley-fern';
+
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.drawBarnsleyFern();

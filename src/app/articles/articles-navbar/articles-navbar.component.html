@@ -1,61 +1,17 @@
-<h2>Artículos</h2>
+<h2>{{navbar.name}}</h2>
 <div class="nav-items">
   <ul>
-    <li>
-      <div class="subsection">Fractales</div>
-      <ul>
-        <li>
-          <a [routerLink]="['/articles/sierpinski-triangle']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Triángulo de Sierpinski</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/menger-sponge']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Esponja de Menger</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/barnsley-fern']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Helecho de Barnsley</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/dragon-curve']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Curva de Dragón</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <div class="subsection">Sólidos Platónicos</div>
-      <ul>
-        <li>
-          <a [routerLink]="['/articles/tetrahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Tetrahedro Regular</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/hexahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Hexahedro Regular</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/octahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Octahedro Regular</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/dodecahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Dodecahedro Regular</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/icosahedron-viewer']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Icosahedro Regular</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <div class="subsection">Teoría de números</div>
-      <ul>
-        <li>
-          <a [routerLink]="['/articles/arithmetic-derivative']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Derivada Aritmética</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <div class="subsection">Otros</div>
-      <ul>
-        <li>
-          <a [routerLink]="['/articles/test-article']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Test</a>
-        </li>
-        <li>
-          <a [routerLink]="['/articles/lorenz-attractor']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Atractor de Lorenz</a>
-        </li>
-      </ul>
-    </li>
+    @for(subsection of navbar.subsections; track subsection.name){
+      <li>
+        <div class="subsection">{{subsection.name}}</div>
+        <ul>
+          @for(item of subsection.items; track item.name){
+            <li>
+              <a [routerLink]="['/articles', item.route]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">{{item.name}}</a>
+            </li>
+          }
+        </ul>
+      </li>
+    }
   </ul>
 </div>

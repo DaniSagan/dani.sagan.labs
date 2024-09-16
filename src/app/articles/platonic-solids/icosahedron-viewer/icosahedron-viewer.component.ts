@@ -10,7 +10,8 @@ import * as THREE from 'three';
 export class IcosahedronViewerComponent extends GeometryViewer implements OnInit {
   @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
 
-  title: string = 'Icosahedro regular';
+  static title: string = 'Icosahedro regular';
+  static route: string = 'icosahedron-viewer';
 
   ngOnInit(): void {
     this.initThreeJS(this.rendererContainer);

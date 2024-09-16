@@ -10,6 +10,9 @@ export class SierpinskiTriangleComponent implements OnInit {
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 0;
 
+  static title: string = 'Triángulo de Sierpinski';
+  static route: string = 'sierpinski-triangle';
+
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.drawSierpinski();

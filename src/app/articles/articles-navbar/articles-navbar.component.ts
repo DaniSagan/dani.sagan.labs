@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticlesProviderServiceService } from 'src/app/shared/content/articles-provider-service.service';
+import { Navbar } from 'src/app/shared/content/navbar';
+import { NavbarSubsection } from 'src/app/shared/content/navbar-subsection';
 
 @Component({
   selector: 'app-articles-navbar',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesNavbarComponent implements OnInit {
 
-  constructor() { }
+  navbar!: Navbar;
+
+  constructor(private articlesProviderService: ArticlesProviderServiceService) {
+    this.navbar = this.articlesProviderService.getNavbar();
+  }
 
   ngOnInit(): void {
   }

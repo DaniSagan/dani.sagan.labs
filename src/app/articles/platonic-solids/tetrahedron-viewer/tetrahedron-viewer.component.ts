@@ -10,7 +10,8 @@ import * as THREE from 'three';
 export class TetrahedronViewerComponent extends GeometryViewer {
   @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
 
-  title: string = 'Tetrahedro regular';
+  static title: string = 'Tetrahedro regular';
+  static route: string = 'tetrahedron-viewer';
 
   ngOnInit(): void {
     this.initThreeJS(this.rendererContainer);

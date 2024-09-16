@@ -10,6 +10,9 @@ export class MengerSpongeComponent implements OnInit {
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 0;
 
+  static title: string = 'Esponja de Menger';
+  static route: string = 'menger-sponge';
+
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.drawMengerSponge();

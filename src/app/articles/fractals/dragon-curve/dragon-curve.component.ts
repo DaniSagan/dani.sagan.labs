@@ -12,6 +12,9 @@ export class DragonCurveComponent implements OnInit {
   iterations: number = 10;
   isDrawing: boolean = false;
 
+  static title: string = 'Curva del Dragón';
+  static route: string = 'dragon-curve';
+
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.drawDragonCurve();

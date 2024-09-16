@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './arithmetic-derivative-article.component.css'
 })
 export class ArithmeticDerivativeArticleComponent {
-
+  static title: string = 'Derivada Aritmética';
+  static route: string = 'arithmetic-derivative';
 }

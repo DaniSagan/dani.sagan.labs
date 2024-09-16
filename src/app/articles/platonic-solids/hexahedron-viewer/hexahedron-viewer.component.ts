@@ -10,7 +10,8 @@ import * as THREE from 'three';
 export class HexahedronViewerComponent extends GeometryViewer implements OnInit {
   @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
 
-  title: string = 'Hexahedro regular';
+  static title: string = 'Hexahedro regular';
+  static route: string = 'hexahedron-viewer';
 
   ngOnInit(): void {
     this.initThreeJS(this.rendererContainer);

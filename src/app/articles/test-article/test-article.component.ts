@@ -20,6 +20,9 @@ import { LineItem } from 'src/app/widgets/canvas/items/line-item';
 })
 export class TestArticleComponent implements OnInit, AfterViewInit {
 
+  static title: string = 'Artículo Test';
+  static route: string = 'test-article';
+
   content: string = "$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$"
   equations: Map<string, string> = new Map<string, string>();
   canvasSize = new Vector2(490, 490);

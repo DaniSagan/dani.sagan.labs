@@ -20,18 +20,18 @@ const routes: Routes = [
     component: ArticlesContentComponent,
     children:
     [
-      { path: 'sierpinski-triangle', component: SierpinskiTriangleComponent },
-      { path: 'menger-sponge', component: MengerSpongeComponent },
-      { path: 'barnsley-fern', component: BarnsleyFernComponent },
-      { path: 'dragon-curve', component: DragonCurveComponent },
-      { path: 'lorenz-attractor', component: LorenzAttractorComponent },
-      { path: 'dodecahedron-viewer', component: DodecahedronViewerComponent },
-      { path: 'hexahedron-viewer', component: HexahedronViewerComponent },
-      { path: 'icosahedron-viewer', component: IcosahedronViewerComponent },
-      { path: 'octahedron-viewer', component: OctahedronViewerComponent },
-      { path: 'tetrahedron-viewer', component: TetrahedronViewerComponent },
-      { path: 'test-article', component: TestArticleComponent },
-      { path: 'arithmetic-derivative', component: ArithmeticDerivativeArticleComponent }
+      { path: SierpinskiTriangleComponent.route, component: SierpinskiTriangleComponent },
+      { path: MengerSpongeComponent.route, component: MengerSpongeComponent },
+      { path: BarnsleyFernComponent.route, component: BarnsleyFernComponent },
+      { path: DragonCurveComponent.route, component: DragonCurveComponent },
+      { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
+      { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },
+      { path: HexahedronViewerComponent.route, component: HexahedronViewerComponent },
+      { path: IcosahedronViewerComponent.route, component: IcosahedronViewerComponent },
+      { path: OctahedronViewerComponent.route, component: OctahedronViewerComponent },
+      { path: TetrahedronViewerComponent.route, component: TetrahedronViewerComponent },
+      { path: TestArticleComponent.route, component: TestArticleComponent },
+      { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent }
     ]
   }
 ];

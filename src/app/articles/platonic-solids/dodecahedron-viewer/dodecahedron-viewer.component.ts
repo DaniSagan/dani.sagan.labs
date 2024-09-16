@@ -10,7 +10,8 @@ import { GeometryViewer } from '../geometry-viewer';
 export class DodecahedronViewerComponent extends GeometryViewer implements OnInit {
   @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
 
-  title: string = 'Dodecahedro regular';
+  static title: string = 'Dodecahedro Regular';
+  static route: string = 'dodecahedron-viewer';
 
   ngOnInit(): void {
     this.initThreeJS(this.rendererContainer);
