@@ -1,6 +1,14 @@
 <h2>Triángulo de Sierpinski</h2>
-<div>
-  <button (click)="decrementIterations()">Decrementar Iteraciones</button>
-  <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+<p>El Triángulo de Sierpinski es uno de los fractales más conocidos y representa un ejemplo clásico de autosemejanza. Fue descrito por el matemático polaco Wacław Sierpiński en 1915, y se genera dividiendo un triángulo equilátero en cuatro partes más pequeñas, eliminando el triángulo central, y repitiendo este proceso de manera recursiva en los triángulos restantes. El resultado es una figura geométrica con un patrón repetitivo que se extiende indefinidamente en cada nivel de iteración.</p>
+<p>Cada iteración sucesiva revela una mayor complejidad en la estructura del triángulo, exponiendo patrones más detallados y reduciendo el área total de la figura, lo que convierte al Triángulo de Sierpinski en un fractal con dimensión no entera, más específicamente, de dimensión fractal cercana a 1.585. Esto significa que, aunque el triángulo parece una figura bidimensional, su área disminuye con cada iteración mientras su perímetro sigue creciendo.</p>
+<p>Este fractal se utiliza con frecuencia para enseñar conceptos de geometría fractal, recursión y patrones matemáticos, y es visualmente fascinante debido a su estructura simétrica y repetitiva.</p>
+<p>Debajo, puedes visualizar el Triángulo de Sierpinski con un componente interactivo, donde podrás controlar el número de iteraciones, incrementándolo o disminuyéndolo para observar cómo se genera el fractal a distintos niveles de detalle.</p>
+<div class="widget-container">
+  <div class="widget-title">Triángulo de Sierpinski</div>
+  <div>
+    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+    <div class="widget-label">{{iterations}} iteraciones.</div>
+    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+  </div>
+  <canvas #canvas width="600" height="600"></canvas>
 </div>
-<canvas #canvas width="600" height="600"></canvas>

@@ -29,12 +29,40 @@ body {
   min-height: 65px;
 }
 
+.widget-container button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.widget-container button:hover {
+  background-color: #666;
+}
+
+.widget-container input {
+  margin: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid black;
+}
+
 .widget-title {
   font-variant: small-caps;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.widget-label {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 p {
   text-indent: 30px;
+  line-height: 1.6;
 }
