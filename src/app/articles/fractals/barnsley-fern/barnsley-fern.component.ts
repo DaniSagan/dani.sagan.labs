@@ -84,15 +84,15 @@ export class BarnsleyFernComponent implements OnInit {
   }
 
   incrementIterations(): void {
-    this.iterations += 1000;
+    this.iterations += 5000;
     if (!this.isDrawing) {
       this.drawBarnsleyFern();
     }
   }
 
   decrementIterations(): void {
-    if (this.iterations > 1000) {
-      this.iterations -= 1000;
+    if (this.iterations > 5000) {
+      this.iterations -= 5000;
       if (!this.isDrawing) {
         this.drawBarnsleyFern();
       }

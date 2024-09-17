@@ -1,7 +1,15 @@
 <h2>Helecho de Barnsley</h2>
-<div>
-  <button (click)="decrementIterations()">Decrementar Iteraciones</button>
-  <button (click)="incrementIterations()">Incrementar Iteraciones</button>
-  <button (click)="stopDrawing()">Detener Dibujo</button>
+<p>El Helecho de Barnsley es un fractal generado mediante un conjunto de funciones iteradas que simulan la estructura natural de un helecho. Fue ideado por el matemático británico Michael Barnsley en la década de 1980 y es famoso por su capacidad para representar formas orgánicas con gran precisión utilizando reglas matemáticas simples. A través de transformaciones geométricas aplicadas repetidamente, el fractal genera una estructura autosemejante, lo que significa que pequeñas partes del helecho se parecen a la forma completa.</p>
+<p>El proceso de construcción del Helecho de Barnsley involucra cuatro transformaciones afines, cada una de las cuales se aplica probabilísticamente. Una de las transformaciones define el tallo, mientras que las otras tres crean las hojas del helecho. El resultado es una representación geométrica sorprendentemente realista de un helecho natural, demostrando cómo las matemáticas pueden capturar patrones complejos encontrados en la naturaleza.</p>
+<p>Este fractal es un excelente ejemplo de cómo las matemáticas pueden modelar estructuras orgánicas y caóticas. Además, su creación mediante iteración lo convierte en un caso fascinante para explorar los conceptos de geometría fractal, caos y sistemas dinámicos.</p>
+<p>Debajo de este artículo, puedes visualizar el Helecho de Barnsley utilizando un componente interactivo. Los controles te permitirán ajustar el número de iteraciones, explorando cómo el fractal se forma a través de cada nivel de detalle.</p>
+<div class="widget-container">
+  <div class="widget-title">Helecho de Barnsley</div>
+  <div>
+    <div class="widget-label">{{iterations}} iteraciones</div>
+    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+    <button (click)="stopDrawing()">Detener Dibujo</button>
+  </div>
+  <canvas #canvas width="600" height="800"></canvas>
 </div>
-<canvas #canvas width="600" height="800"></canvas>
