@@ -1,0 +1,14 @@
+<h2>Alfombra de Sierpinski</h2>
+<p>La Alfombra de Sierpinski es un fractal que extiende el concepto del Triángulo de Sierpinski a dos dimensiones, generando una estructura más compleja y rica en simetría. Fue descrita por el matemático polaco Wacław Sierpiński en 1916 y se obtiene dividiendo un cuadrado en nueve subcuadrados de igual tamaño, eliminando el cuadrado central y repitiendo este proceso de manera recursiva en los subcuadrados restantes.</p>
+<p>Con cada iteración, se generan más huecos en la estructura, formando patrones geométricos que presentan autosemejanza: cualquier parte de la alfombra es una versión reducida de la totalidad de la figura. Al igual que otros fractales, la Alfombra de Sierpinski tiene una dimensión fractal, que en este caso es aproximadamente 1,8928, lo que significa que aunque la figura ocupa dos dimensiones, su área total disminuye con cada iteración, mientras que su perímetro crece indefinidamente.</p>
+<p>Este fractal es un ejemplo ideal para estudiar conceptos de recursión, geometría fractal y la idea de infinito en matemáticas. Su apariencia visual, con patrones repetitivos y simetría, lo hace fascinante tanto desde el punto de vista matemático como estético.</p>
+<p>Debajo de este artículo, puedes visualizar la Alfombra de Sierpinski mediante un componente interactivo. Los controles permiten aumentar o disminuir el número de iteraciones para explorar los distintos niveles de detalle del fractal.</p>
+<div class="widget-container">
+  <div class="widget-title">Alfombra de Sierpinski</div>
+  <div>
+    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+    <div class="widget-label">{{iterations}} iteraciones</div>
+    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+  </div>
+  <canvas #canvas width="600" height="600"></canvas>
+</div>

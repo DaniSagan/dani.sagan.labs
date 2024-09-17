@@ -2,7 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
-import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.component';
+import { SierpinskiCarpetComponent } from './fractals/sierpinski-carpet/sierpinski-carpet.component';
 import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './fractals/dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
     children:
     [
       { path: SierpinskiTriangleComponent.route, component: SierpinskiTriangleComponent },
-      { path: MengerSpongeComponent.route, component: MengerSpongeComponent },
+      { path: SierpinskiCarpetComponent.route, component: SierpinskiCarpetComponent },
       { path: BarnsleyFernComponent.route, component: BarnsleyFernComponent },
       { path: DragonCurveComponent.route, component: DragonCurveComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },

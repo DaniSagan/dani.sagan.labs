@@ -3,7 +3,7 @@ import { NavbarItem } from './navbar-item';
 import { NavbarProvider } from './navbar-provider';
 import { Navbar } from './navbar';
 import { SierpinskiTriangleComponent } from 'src/app/articles/fractals/sierpinski-triangle/sierpinski-triangle.component';
-import { MengerSpongeComponent } from 'src/app/articles/fractals/menger-sponge/menger-sponge.component';
+import { SierpinskiCarpetComponent } from 'src/app/articles/fractals/sierpinski-carpet/sierpinski-carpet.component';
 import { BarnsleyFernComponent } from 'src/app/articles/fractals/barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from 'src/app/articles/fractals/dragon-curve/dragon-curve.component';
 import { TetrahedronViewerComponent } from 'src/app/articles/platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
@@ -20,10 +20,12 @@ import { TestArticleComponent } from 'src/app/articles/test-article/test-article
 })
 export class ArticlesProviderServiceService extends NavbarProvider {
 
+  map: NavbarItem[] = [];
+
   fractals: NavbarItem[] =
   [
     { name: SierpinskiTriangleComponent.title, route: SierpinskiTriangleComponent.route },
-    { name: MengerSpongeComponent.title, route: MengerSpongeComponent.route },
+    { name: SierpinskiCarpetComponent.title, route: SierpinskiCarpetComponent.route },
     { name: BarnsleyFernComponent.title, route: BarnsleyFernComponent.route },
     { name: DragonCurveComponent.title, route: DragonCurveComponent.route }
   ];
@@ -52,6 +54,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     let result: Navbar = new Navbar();
     result.name = 'Artículos';
     result.subsections = [
+      { name: 'Mapa', items: this.map },
       { name: 'Fractales', items: this.fractals },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },

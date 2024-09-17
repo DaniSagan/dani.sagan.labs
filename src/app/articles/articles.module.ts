@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
 import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
-import { MengerSpongeComponent } from './fractals/menger-sponge/menger-sponge.component';
+import { SierpinskiCarpetComponent } from './fractals/sierpinski-carpet/sierpinski-carpet.component';
 import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
 import { DragonCurveComponent } from './fractals/dragon-curve/dragon-curve.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
@@ -30,7 +30,7 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
     TestArticleComponent,
     ArticlesNavbarComponent,
     SierpinskiTriangleComponent,
-    MengerSpongeComponent,
+    SierpinskiCarpetComponent,
     BarnsleyFernComponent,
     DragonCurveComponent,
     LorenzAttractorComponent,

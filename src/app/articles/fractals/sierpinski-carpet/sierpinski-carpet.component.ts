@@ -1,24 +1,24 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-menger-sponge',
-  templateUrl: './menger-sponge.component.html',
-  styleUrls: ['./menger-sponge.component.css']
+  selector: 'app-sierpinski-carpet',
+  templateUrl: './sierpinski-carpet.component.html',
+  styleUrls: ['./sierpinski-carpet.component.css']
 })
-export class MengerSpongeComponent implements OnInit {
+export class SierpinskiCarpetComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 0;
 
-  static title: string = 'Esponja de Menger';
-  static route: string = 'menger-sponge';
+  static title: string = 'Alfombra de Sierpinski';
+  static route: string = 'sierpinski-carpet';
 
   ngOnInit(): void {
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
-    this.drawMengerSponge();
+    this.drawSierpinskiCarpet();
   }
 
-  drawMengerSponge(): void {
+  drawSierpinskiCarpet(): void {
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;
 
@@ -31,11 +31,11 @@ export class MengerSpongeComponent implements OnInit {
     this.ctx.shadowColor = '#00FFFF';
     this.ctx.shadowBlur = 5;
 
-    // Dibujar la Esponja de Menger
-    this.drawCube(0, 0, canvasWidth, this.iterations);
+    // Dibujar la Alfombra de Sierpinski
+    this.drawSquare(0, 0, canvasWidth, this.iterations);
   }
 
-  drawCube(x: number, y: number, size: number, depth: number): void {
+  drawSquare(x: number, y: number, size: number, depth: number): void {
     if (depth === 0) {
       // Dibujar un cuadrado lleno con bordes de neón
       this.ctx.beginPath();
@@ -50,7 +50,7 @@ export class MengerSpongeComponent implements OnInit {
             // No dibujar el centro (hueco de la esponja)
             continue;
           }
-          this.drawCube(x + i * newSize, y + j * newSize, newSize, depth - 1);
+          this.drawSquare(x + i * newSize, y + j * newSize, newSize, depth - 1);
         }
       }
     }
@@ -58,13 +58,13 @@ export class MengerSpongeComponent implements OnInit {
 
   incrementIterations(): void {
     this.iterations++;
-    this.drawMengerSponge();
+    this.drawSierpinskiCarpet();
   }
 
   decrementIterations(): void {
     if (this.iterations > 0) {
       this.iterations--;
-      this.drawMengerSponge();
+      this.drawSierpinskiCarpet();
     }
   }
 }
