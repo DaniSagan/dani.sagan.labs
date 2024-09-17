@@ -1,7 +1,20 @@
 <h2>Curva de Dragón</h2>
-<div>
-  <button (click)="decrementIterations()">Decrementar Iteraciones</button>
-  <button (click)="incrementIterations()">Incrementar Iteraciones</button>
-  <button (click)="stopDrawing()">Detener Dibujo</button>
+<p>La Curva del Dragón es un fractal que se genera mediante un proceso iterativo de plegado de una línea. Descubierta por John Heighway y popularizada por la famosa obra de Martin Gardner en la revista Scientific American, esta curva tiene la propiedad de ser autosemejante, lo que significa que cualquier parte de la curva es una versión reducida de la totalidad de la misma.</p>
+<p>El proceso para generar la Curva del Dragón comienza con una simple línea recta. En cada iteración, se pliega la curva sobre sí misma siguiendo una secuencia específica de giros de 90 grados. A medida que se repiten las iteraciones, la curva se vuelve cada vez más compleja, adquiriendo su característica apariencia de dragón. Lo interesante de este fractal es que, aunque sigue reglas simples, produce una figura sorprendentemente compleja y estética, que además tiene aplicaciones en la compresión de datos y la generación de gráficos computacionales.</p>
+<p>La Curva del Dragón es también conocida por su forma autosimilar y por tener una dimensión fractal superior a 1, lo que significa que aunque parece una curva unidimensional, su complejidad la acerca a un objeto bidimensional.</p>
+<p>Debajo, puedes visualizar la Curva del Dragón con un componente interactivo, donde puedes controlar el número de iteraciones para observar cómo evoluciona este fascinante fractal en cada nivel.</p>
+<div class="widget-container">
+  <div class="widget-title">Curva del Dragón</div>
+  <div>
+    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+    <div class="widget-label">{{iterations}} iteraciones</div>
+    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+    <button (click)="stopDrawing()">Detener Dibujo</button>
+  </div>
+  <div>
+    <button (click)="decrementLineLength()">Disminuir longitud de línea</button>
+    <div class="widget-label">longitud de línea: {{lineLength}}</div>
+    <button (click)="incrementLineLength()">Incrementar longitud de línea</button>
+  </div>
+  <canvas #canvas width="800" height="600"></canvas>
 </div>
-<canvas #canvas width="800" height="600"></canvas>
