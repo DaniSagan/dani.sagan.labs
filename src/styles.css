@@ -66,3 +66,12 @@ p {
   text-indent: 30px;
   line-height: 1.6;
 }
+
+span.formula {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: larger;
+  border: #333 solid 1px;
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 5px;
+}

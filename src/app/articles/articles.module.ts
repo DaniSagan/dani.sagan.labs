@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
+import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
     SierpinskiCarpetComponent,
     BarnsleyFernComponent,
     DragonCurveComponent,
+    MandelbrotComponent,
     LorenzAttractorComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,

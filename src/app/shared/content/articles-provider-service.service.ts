@@ -14,6 +14,7 @@ import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/ico
 import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
+import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: SierpinskiTriangleComponent.title, route: SierpinskiTriangleComponent.route },
     { name: SierpinskiCarpetComponent.title, route: SierpinskiCarpetComponent.route },
     { name: BarnsleyFernComponent.title, route: BarnsleyFernComponent.route },
-    { name: DragonCurveComponent.title, route: DragonCurveComponent.route }
+    { name: DragonCurveComponent.title, route: DragonCurveComponent.route },
+    { name: MandelbrotComponent.title, route: MandelbrotComponent.route }
   ];
 
   platonicSolids: NavbarItem[] =

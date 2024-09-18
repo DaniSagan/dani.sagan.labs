@@ -1,0 +1,54 @@
+<h2>Conjunto de Mandelbrot</h2>
+<p>El conjunto de Mandelbrot es uno de los fractales más famosos y estudiados en matemáticas debido a su complejidad y belleza visual. Fue nombrado en honor al matemático Benoît Mandelbrot, quien lo descubrió en 1980 mientras estudiaba geometría fractal. Este conjunto es generado mediante una sencilla iteración de la fórmula matemática <span class="formula">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</span>, donde <span class="formula">z</span> y <span class="formula">c</span> son números complejos. La idea básica es aplicar repetidamente esta fórmula a cada punto del plano complejo para ver si el valor resultante tiende al infinito o permanece acotado. Los puntos que no divergen (permanecen acotados) forman el conjunto de Mandelbrot, mientras que los que divergen dan lugar a las coloridas y complejas estructuras que se observan en sus bordes.</p>
+<p>Visualmente, el conjunto de Mandelbrot tiene una estructura autosemejante: al hacer zoom en sus bordes, se pueden ver réplicas de la figura principal y patrones extremadamente intrincados. Este comportamiento fractal refleja la riqueza matemática de este conjunto.</p>
+<p>Debajo de este artículo, encontrarás un componente interactivo donde puedes visualizar el conjunto de Mandelbrot. El componente te permite desplazarte por el plano complejo, hacer zoom para observar sus detalles y ajustar el número máximo de iteraciones, lo que afectará la precisión y profundidad de la imagen generada.</p>
+<div class="widget-container">
+  <div class="widget-title">Conjunto de Mandelbrot</div>
+  <div class="controls">
+    <!-- <label>Min X:
+      <input type="number" [(ngModel)]="minX" (input)="updateValues()">
+    </label>
+    <label>Max X:
+      <input type="number" [(ngModel)]="maxX" (input)="updateValues()">
+    </label>
+    <label>Min Y:
+      <input type="number" [(ngModel)]="minY" (input)="updateValues()">
+    </label>
+    <label>Max Y:
+      <input type="number" [(ngModel)]="maxY" (input)="updateValues()">
+    </label> -->
+
+    <table>
+      <tr>
+        <td></td>
+        <td><button (click)="moveUp()">🡩</button></td>
+        <td></td>
+        <td><button (click)="zoomIn()">➕</button></td>
+      </tr>
+      <tr>
+        <td><button (click)="moveLeft()">🡠</button></td>
+        <td></td>
+        <td><button (click)="moveRight()">🡢</button></td>
+        <td>zoom</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button (click)="moveDown()">🡣</button></td>
+        <td></td>
+        <td><button (click)="zoomOut()">➖</button></td>
+      </tr>
+    </table>
+    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
+    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
+  </div>
+  <canvas #canvas [width]="width" [height]="height"></canvas>
+  <div>
+    <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
+  </div>
+  <div>
+    <div class="widget-label">Escala: 2<sup>{{scale}}</sup> px/unidad</div>
+  </div>
+  <div>
+    <div class="widget-label">Max. iteraciones: {{maxIterations}}</div>
+  </div>
+</div>
