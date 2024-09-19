@@ -8,10 +8,10 @@ describe('MandelbrotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MandelbrotComponent]
+      declarations: [MandelbrotComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(MandelbrotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

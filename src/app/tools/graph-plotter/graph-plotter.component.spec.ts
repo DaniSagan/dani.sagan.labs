@@ -8,7 +8,7 @@ describe('GraphPlotterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [GraphPlotterComponent]
+      declarations: [GraphPlotterComponent]
     })
     .compileComponents();
 

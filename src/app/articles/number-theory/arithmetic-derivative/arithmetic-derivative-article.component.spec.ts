@@ -8,7 +8,7 @@ describe('ArithmeticDerivativeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArithmeticDerivativeArticleComponent]
+      declarations: [ArithmeticDerivativeArticleComponent]
     })
     .compileComponents();
 

@@ -8,7 +8,7 @@ describe('ToolsNavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ToolsNavbarComponent]
+      declarations: [ToolsNavbarComponent]
     })
     .compileComponents();
 

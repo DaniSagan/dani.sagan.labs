@@ -8,7 +8,7 @@ describe('SierpinskiTriangleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SierpinskiTriangleComponent]
+      declarations: [SierpinskiTriangleComponent]
     })
     .compileComponents();
 

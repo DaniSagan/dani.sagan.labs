@@ -8,7 +8,7 @@ describe('TetrahedronViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TetrahedronViewerComponent]
+      declarations: [TetrahedronViewerComponent]
     })
     .compileComponents();
 

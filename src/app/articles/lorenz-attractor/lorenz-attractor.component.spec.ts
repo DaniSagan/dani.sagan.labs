@@ -8,7 +8,7 @@ describe('LorenzAttractorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LorenzAttractorComponent]
+      declarations: [LorenzAttractorComponent]
     })
     .compileComponents();
 

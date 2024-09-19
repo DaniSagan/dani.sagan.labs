@@ -8,7 +8,7 @@ describe('ArticlesContentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArticlesContentComponent]
+      declarations: [ArticlesContentComponent]
     })
     .compileComponents();
 

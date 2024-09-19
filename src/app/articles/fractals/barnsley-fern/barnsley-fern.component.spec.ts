@@ -8,7 +8,7 @@ describe('BarnsleyFernComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BarnsleyFernComponent]
+      declarations: [BarnsleyFernComponent]
     })
     .compileComponents();
 

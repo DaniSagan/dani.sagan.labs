@@ -8,7 +8,7 @@ describe('ForInARowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FourInARowComponent]
+      declarations: [FourInARowComponent]
     })
     .compileComponents();
 

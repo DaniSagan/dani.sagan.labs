@@ -8,7 +8,7 @@ describe('SierpinskiCarpetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SierpinskiCarpetComponent]
+      declarations: [SierpinskiCarpetComponent]
     })
     .compileComponents();
 

@@ -8,7 +8,7 @@ describe('DodecahedronViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DodecahedronViewerComponent]
+      declarations: [DodecahedronViewerComponent]
     })
     .compileComponents();
 

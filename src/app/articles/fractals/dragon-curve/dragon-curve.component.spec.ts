@@ -8,7 +8,7 @@ describe('DragonCurveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DragonCurveComponent]
+      declarations: [DragonCurveComponent]
     })
     .compileComponents();
 
