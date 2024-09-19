@@ -1,0 +1,29 @@
+<h2>Tamíz de Apolonio</h2>
+<div class="widget-container">
+  <div class="widget-title">Helecho de Barnsley</div>
+  <div>
+    <div>
+      <label for="depth">Profundidad Recursiva:</label>
+      <input id="depth" type="number" [(ngModel)]="maxDepth" (input)="update()">
+    </div>
+    <div>
+      <label for="radius1">Radio Círculo 1:</label>
+      <input id="radius1" type="number" [(ngModel)]="radius1" (input)="update()">
+    </div>
+    <div>
+      <label for="radius2">Radio Círculo 2:</label>
+      <input id="radius2" type="number" [(ngModel)]="radius2" (input)="update()">
+    </div>
+    <div>
+      <label for="radius3">Radio Círculo 3:</label>
+      <input id="radius3" type="number" [(ngModel)]="radius3" (input)="update()">
+    </div>
+    <div>
+      <label for="maxDepth">Profundidad Recursiva:</label>
+      <input id="maxDepth" type="number" [(ngModel)]="maxDepth" (input)="update()">
+    </div>
+  </div>
+
+  <canvas #canvas [width]="width" [height]="height"></canvas>
+
+</div>

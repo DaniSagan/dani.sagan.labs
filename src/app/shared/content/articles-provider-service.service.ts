@@ -15,6 +15,7 @@ import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-th
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
+import { ApollonianSieveComponent } from 'src/app/articles/fractals/apollonian-sieve/apollonian-sieve.component';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: SierpinskiCarpetComponent.title, route: SierpinskiCarpetComponent.route },
     { name: BarnsleyFernComponent.title, route: BarnsleyFernComponent.route },
     { name: DragonCurveComponent.title, route: DragonCurveComponent.route },
-    { name: MandelbrotComponent.title, route: MandelbrotComponent.route }
+    { name: MandelbrotComponent.title, route: MandelbrotComponent.route },
+    // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 
   platonicSolids: NavbarItem[] =

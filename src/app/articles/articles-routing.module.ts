@@ -14,6 +14,7 @@ import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
+import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: BarnsleyFernComponent.route, component: BarnsleyFernComponent },
       { path: DragonCurveComponent.route, component: DragonCurveComponent },
       { path: MandelbrotComponent.route, component: MandelbrotComponent },
+      { path: ApollonianSieveComponent.route, component: ApollonianSieveComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
       { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },
       { path: HexahedronViewerComponent.route, component: HexahedronViewerComponent },

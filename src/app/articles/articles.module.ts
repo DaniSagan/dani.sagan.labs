@@ -23,6 +23,7 @@ import { ArticlesContentComponent } from './articles-content/articles-content.co
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
+import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component'
     BarnsleyFernComponent,
     DragonCurveComponent,
     MandelbrotComponent,
+    ApollonianSieveComponent,
     LorenzAttractorComponent,
     DodecahedronViewerComponent,
     HexahedronViewerComponent,

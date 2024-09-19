@@ -33,3 +33,19 @@
   background-color: #04AA6D;
   color: white;
 }
+
+@media only screen and (max-width: 600px) {
+  .nav-items .subsection {
+    padding: 0px 0px;
+    margin: 0px 0px;
+    color: black;
+    font-weight: bold;
+    font-size: x-small;
+  }
+
+  .nav-items a {
+    font-size: x-small;
+    padding: 0;
+    margin: 0;
+  }
+}
