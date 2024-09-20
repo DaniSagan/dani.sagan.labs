@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PrimeDecompositionComponent } from './prime-decomposition.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 describe('PrimeDecompositionComponent', () => {
   let component: PrimeDecompositionComponent;
@@ -8,7 +9,7 @@ describe('PrimeDecompositionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PrimeDecompositionComponent],
+      imports: [PrimeDecompositionComponent, MathjaxModule.forRoot()],
     }).compileComponents();
   });
 

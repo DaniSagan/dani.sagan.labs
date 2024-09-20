@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArithmeticDerivativeComponent } from './arithmetic-derivative.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 describe('ArithmeticDerivativeComponent', () => {
   let component: ArithmeticDerivativeComponent;
@@ -8,7 +9,7 @@ describe('ArithmeticDerivativeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArithmeticDerivativeComponent],
+      imports: [ArithmeticDerivativeComponent, MathjaxModule.forRoot()],
     }).compileComponents();
   });
 

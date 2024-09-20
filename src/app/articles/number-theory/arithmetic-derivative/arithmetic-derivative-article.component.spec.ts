@@ -1,14 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArithmeticDerivativeArticleComponent } from './arithmetic-derivative-article.component';
+import { MathjaxModule } from 'mathjax-angular';
 
-describe('ArithmeticDerivativeComponent', () => {
+describe('ArithmeticDerivativeArticleComponent', () => {
   let component: ArithmeticDerivativeArticleComponent;
   let fixture: ComponentFixture<ArithmeticDerivativeArticleComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArithmeticDerivativeArticleComponent],
+      imports: [ArithmeticDerivativeArticleComponent, MathjaxModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ArithmeticDerivativeArticleComponent);
