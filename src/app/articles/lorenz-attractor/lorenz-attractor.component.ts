@@ -1,9 +1,16 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-lorenz-attractor',
   templateUrl: './lorenz-attractor.component.html',
-  styleUrls: ['./lorenz-attractor.component.css']
+  styleUrls: ['./lorenz-attractor.component.css'],
+  standalone: true,
 })
 export class LorenzAttractorComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -64,7 +71,7 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
 
       // Escalar y desplazar para ajustarse al canvas
       const drawX = canvasWidth / 2 + x * 10;
-      const drawY = (canvasHeight - 50) - z * 10;
+      const drawY = canvasHeight - 50 - z * 10;
 
       this.ctx.lineTo(drawX, drawY);
       this.ctx.stroke();
@@ -97,6 +104,6 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

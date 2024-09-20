@@ -3,7 +3,8 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-mandelbrot',
   templateUrl: './mandelbrot.component.html',
-  styleUrls: ['./mandelbrot.component.css']
+  styleUrls: ['./mandelbrot.component.css'],
+  standalone: true,
 })
 export class MandelbrotComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -43,7 +44,7 @@ export class MandelbrotComponent implements AfterViewInit {
     //const dx = (this.maxX - this.minX) / this.width;
     //const dy = (this.maxY - this.minY) / this.height;
 
-    const scale = 2**this.scale;
+    const scale = 2 ** this.scale;
     const dx = 1.0 / scale;
     const dy = 1.0 / scale;
     const minX = this.centerX - this.width / (2 * scale);
@@ -54,7 +55,7 @@ export class MandelbrotComponent implements AfterViewInit {
     this.isDrawing = true;
 
     for (let x = 0; x < this.width; x++) {
-      if (!this.isDrawing) break;  // Stop drawing if a new request is initiated.
+      if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
 
       for (let y = 0; y < this.height; y++) {
         const real = minX + x * dx;
@@ -83,7 +84,7 @@ export class MandelbrotComponent implements AfterViewInit {
 
       // Dibujar cada línea y esperar al siguiente ciclo del event loop para no bloquear la interfaz.
       if (x % 10 === 0) {
-        await this.sleep(0);  // Pausar brevemente la ejecución
+        await this.sleep(0); // Pausar brevemente la ejecución
         ctx.putImageData(imgData, 0, 0);
       }
     }
@@ -119,9 +120,11 @@ export class MandelbrotComponent implements AfterViewInit {
    */
   hslToRgb(h: number, s: number, l: number): [number, number, number] {
     const c = (1 - Math.abs(2 * l - 1)) * s;
-    const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
     const m = l - c / 2;
-    let r = 0, g = 0, b = 0;
+    let r = 0,
+      g = 0,
+      b = 0;
 
     if (h < 60) {
       r = c;
@@ -146,7 +149,7 @@ export class MandelbrotComponent implements AfterViewInit {
     return [
       Math.round((r + m) * 255),
       Math.round((g + m) * 255),
-      Math.round((b + m) * 255)
+      Math.round((b + m) * 255),
     ];
   }
 
@@ -154,28 +157,28 @@ export class MandelbrotComponent implements AfterViewInit {
     if (!this.isDrawing) {
       this.drawMandelbrot();
     } else {
-      this.isDrawing = false;  // Stop current rendering if new values are set.
-      setTimeout(() => this.drawMandelbrot(), 100);  // Restart after a slight delay.
+      this.isDrawing = false; // Stop current rendering if new values are set.
+      setTimeout(() => this.drawMandelbrot(), 100); // Restart after a slight delay.
     }
   }
 
   moveLeft(): void {
-    this.centerX -= 200.0 / (2**this.scale);
+    this.centerX -= 200.0 / 2 ** this.scale;
     this.updateValues();
   }
 
   moveRight(): void {
-    this.centerX += 200.0 / (2**this.scale);
+    this.centerX += 200.0 / 2 ** this.scale;
     this.updateValues();
   }
 
   moveUp(): void {
-    this.centerY -= 200.0 / (2**this.scale);
+    this.centerY -= 200.0 / 2 ** this.scale;
     this.updateValues();
   }
 
   moveDown(): void {
-    this.centerY += 200.0 / (2**this.scale);
+    this.centerY += 200.0 / 2 ** this.scale;
     this.updateValues();
   }
 
@@ -200,6 +203,6 @@ export class MandelbrotComponent implements AfterViewInit {
   }
 
   sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormulaComponent } from './formula.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 describe('FormulaComponent', () => {
   let component: FormulaComponent;
@@ -8,9 +9,8 @@ describe('FormulaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FormulaComponent ]
-    })
-    .compileComponents();
+      imports: [FormulaComponent, MathjaxModule.forRoot()],
+    }).compileComponents();
   });
 
   beforeEach(() => {

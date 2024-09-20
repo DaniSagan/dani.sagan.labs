@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-game-of-life',
   templateUrl: './game-of-life.component.html',
-  styleUrls: ['./game-of-life.component.css']
+  styleUrls: ['./game-of-life.component.css'],
+  standalone: true,
+  imports: [FormsModule, NgFor],
 })
 export class GameOfLifeComponent implements OnInit {
   rows: number = 20;

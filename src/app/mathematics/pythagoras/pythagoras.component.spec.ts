@@ -8,9 +8,8 @@ describe('PythagorasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PythagorasComponent ]
-    })
-    .compileComponents();
+      imports: [PythagorasComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

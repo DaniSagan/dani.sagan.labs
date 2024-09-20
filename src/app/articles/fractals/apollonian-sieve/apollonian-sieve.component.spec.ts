@@ -9,10 +9,8 @@ describe('ApollonianSieveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormsModule],
-      declarations: [ApollonianSieveComponent]
-    })
-    .compileComponents();
+      imports: [FormsModule, ApollonianSieveComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ApollonianSieveComponent);
     component = fixture.componentInstance;

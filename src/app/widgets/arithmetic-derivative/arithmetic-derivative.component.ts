@@ -4,24 +4,26 @@ import { FormulaItem } from '../../mathematics/formula/items/formula-item';
 import { FunctionItem } from '../../mathematics/formula/items/function-item';
 import { IntegerItem } from '../../mathematics/formula/items/integer-item';
 import { Factor, getFactors, isPrime } from '../../mathematics/mathematics';
+import { FormulaComponent } from '../../mathematics/formula/formula.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-arithmetic-derivative',
   templateUrl: './arithmetic-derivative.component.html',
-  styleUrls: ['./arithmetic-derivative.component.css']
+  styleUrls: ['./arithmetic-derivative.component.css'],
+  standalone: true,
+  imports: [FormsModule, FormulaComponent],
 })
 export class ArithmeticDerivativeComponent implements OnInit {
-
   public formula: FormulaItem | null;
   public value: string;
 
   constructor() {
     this.formula = null;
-    this.value = "";
+    this.value = '';
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onInputTextChange(event: Event) {
     let valueInt = parseInt(this.value);
@@ -42,13 +44,13 @@ export class ArithmeticDerivativeComponent implements OnInit {
   }
 
   getArithmeticDerivative(value: number) {
-    if(value <= 1 ) return 0;
-    else if(isPrime(value)) return 1;
+    if (value <= 1) return 0;
+    else if (isPrime(value)) return 1;
     else {
       let factors: Factor[] = getFactors(value);
       let result: number = 0;
-      for(let factor of factors) {
-        result += value * factor.exponent / factor.base;
+      for (let factor of factors) {
+        result += (value * factor.exponent) / factor.base;
       }
       return result;
     }

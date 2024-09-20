@@ -1,14 +1,25 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { GeometryViewer } from '../geometry-viewer';
 import * as THREE from 'three';
 
 @Component({
   selector: 'app-hexahedron-viewer',
   templateUrl: './hexahedron-viewer.component.html',
-  styleUrl: './hexahedron-viewer.component.css'
+  styleUrl: './hexahedron-viewer.component.css',
+  standalone: true,
 })
-export class HexahedronViewerComponent extends GeometryViewer implements OnInit {
-  @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
+export class HexahedronViewerComponent
+  extends GeometryViewer
+  implements OnInit
+{
+  @ViewChild('rendererContainer', { static: true })
+  rendererContainer!: ElementRef;
 
   static title: string = 'Hexahedro regular';
   static route: string = 'hexahedron-viewer';

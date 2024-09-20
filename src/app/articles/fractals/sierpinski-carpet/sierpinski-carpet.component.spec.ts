@@ -8,9 +8,8 @@ describe('SierpinskiCarpetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SierpinskiCarpetComponent]
-    })
-    .compileComponents();
+      imports: [SierpinskiCarpetComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SierpinskiCarpetComponent);
     component = fixture.componentInstance;

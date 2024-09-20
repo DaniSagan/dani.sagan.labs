@@ -9,9 +9,8 @@ describe('TestArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestArticleComponent, CanvasComponent ]
-    })
-    .compileComponents();
+      imports: [TestArticleComponent, CanvasComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

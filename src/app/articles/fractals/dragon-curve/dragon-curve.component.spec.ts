@@ -8,9 +8,8 @@ describe('DragonCurveComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DragonCurveComponent]
-    })
-    .compileComponents();
+      imports: [DragonCurveComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DragonCurveComponent);
     component = fixture.componentInstance;

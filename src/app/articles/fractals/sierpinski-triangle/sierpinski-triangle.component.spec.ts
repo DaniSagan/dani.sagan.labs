@@ -8,9 +8,8 @@ describe('SierpinskiTriangleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SierpinskiTriangleComponent]
-    })
-    .compileComponents();
+      imports: [SierpinskiTriangleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SierpinskiTriangleComponent);
     component = fixture.componentInstance;

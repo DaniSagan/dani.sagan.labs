@@ -8,9 +8,8 @@ describe('MandelbrotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MandelbrotComponent]
-    })
-    .compileComponents();
+      imports: [MandelbrotComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MandelbrotComponent);
     component = fixture.componentInstance;

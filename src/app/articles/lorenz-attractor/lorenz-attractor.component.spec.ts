@@ -8,9 +8,8 @@ describe('LorenzAttractorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LorenzAttractorComponent]
-    })
-    .compileComponents();
+      imports: [LorenzAttractorComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LorenzAttractorComponent);
     component = fixture.componentInstance;

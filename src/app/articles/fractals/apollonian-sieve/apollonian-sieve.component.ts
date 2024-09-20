@@ -1,11 +1,14 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Circle } from 'src/app/shared/math/circle';
 import { Vec2 } from 'src/app/shared/math/vec2';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-apollonian-sieve',
   templateUrl: './apollonian-sieve.component.html',
-  styleUrls: ['./apollonian-sieve.component.css']
+  styleUrls: ['./apollonian-sieve.component.css'],
+  standalone: true,
+  imports: [FormsModule],
 })
 export class ApollonianSieveComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -37,9 +40,21 @@ export class ApollonianSieveComponent implements AfterViewInit {
     ctx.clearRect(0, 0, this.width, this.height);
 
     // Coordenadas de los tres círculos generadores (con radios ajustables)
-    const circle1 = { x: this.width / 2, y: this.height / 2 - 150, r: this.radius1 };
-    const circle2 = { x: this.width / 2 - 200, y: this.height / 2 + 100, r: this.radius2 };
-    const circle3 = { x: this.width / 2 + 200, y: this.height / 2 + 100, r: this.radius3 };
+    const circle1 = {
+      x: this.width / 2,
+      y: this.height / 2 - 150,
+      r: this.radius1,
+    };
+    const circle2 = {
+      x: this.width / 2 - 200,
+      y: this.height / 2 + 100,
+      r: this.radius2,
+    };
+    const circle3 = {
+      x: this.width / 2 + 200,
+      y: this.height / 2 + 100,
+      r: this.radius3,
+    };
 
     // Dibujar los círculos generadores
     this.drawCircle(ctx, circle1.x, circle1.y, circle1.r);
@@ -59,7 +74,13 @@ export class ApollonianSieveComponent implements AfterViewInit {
   }
 
   // Función recursiva para generar círculos internos
-  generateApollonian(ctx: CanvasRenderingContext2D, c1: any, c2: any, c3: any, depth: number) {
+  generateApollonian(
+    ctx: CanvasRenderingContext2D,
+    c1: any,
+    c2: any,
+    c3: any,
+    depth: number
+  ) {
     if (depth <= 0) return;
 
     // Calcular el nuevo círculo interno

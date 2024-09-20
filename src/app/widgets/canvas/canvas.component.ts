@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { Vector2 } from 'src/app/mathematics/geometry/vector2';
 import { CanvasItem } from './items/canvas-item';
 import { SceneItem } from './items/scene-item';
@@ -6,10 +15,10 @@ import { SceneItem } from './items/scene-item';
 @Component({
   selector: 'app-canvas',
   templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.css']
+  styleUrls: ['./canvas.component.css'],
+  standalone: true,
 })
 export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
-
   @ViewChild('myCanvas') myCanvas!: ElementRef<HTMLCanvasElement>;
   @Input() size: Vector2;
 
@@ -30,11 +39,15 @@ export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
     this.draw();
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   refresh() {
-    this.context.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
+    this.context.clearRect(
+      0,
+      0,
+      this.myCanvas.nativeElement.width,
+      this.myCanvas.nativeElement.height
+    );
   }
 
   // draw(item: CanvasItem) {

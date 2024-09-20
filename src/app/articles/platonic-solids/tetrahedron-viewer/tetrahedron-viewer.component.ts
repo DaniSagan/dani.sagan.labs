@@ -5,10 +5,12 @@ import * as THREE from 'three';
 @Component({
   selector: 'app-tetrahedron-viewer',
   templateUrl: './tetrahedron-viewer.component.html',
-  styleUrl: './tetrahedron-viewer.component.css'
+  styleUrl: './tetrahedron-viewer.component.css',
+  standalone: true,
 })
 export class TetrahedronViewerComponent extends GeometryViewer {
-  @ViewChild('rendererContainer', { static: true }) rendererContainer!: ElementRef;
+  @ViewChild('rendererContainer', { static: true })
+  rendererContainer!: ElementRef;
 
   static title: string = 'Tetrahedro regular';
   static route: string = 'tetrahedron-viewer';

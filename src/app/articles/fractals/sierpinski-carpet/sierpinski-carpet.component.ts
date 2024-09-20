@@ -3,7 +3,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-sierpinski-carpet',
   templateUrl: './sierpinski-carpet.component.html',
-  styleUrls: ['./sierpinski-carpet.component.css']
+  styleUrls: ['./sierpinski-carpet.component.css'],
+  standalone: true,
 })
 export class SierpinskiCarpetComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

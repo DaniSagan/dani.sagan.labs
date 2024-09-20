@@ -1,11 +1,15 @@
 // graph-plotter.component.ts
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-graph-plotter',
   templateUrl: './graph-plotter.component.html',
-  styleUrls: ['./graph-plotter.component.css']
+  styleUrls: ['./graph-plotter.component.css'],
+  standalone: true,
+  imports: [FormsModule, NgFor],
 })
 export class GraphPlotterComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -96,43 +100,44 @@ export class GraphPlotterComponent implements OnInit {
     const canvasWidth = this.canvas.nativeElement.width;
     const rangeX = this.xMax - this.xMin;
     //return (pixelX / canvasWidth) * rangeX * this.scaleFactor + this.centerX - (rangeX * this.scaleFactor) / 2;
-    return this.xMin + pixelX * rangeX / canvasWidth;
+    return this.xMin + (pixelX * rangeX) / canvasWidth;
   }
 
   pixelToY(pixelY: number): number {
     const canvasHeight = this.canvas.nativeElement.height;
     const rangeY = this.yMax - this.yMin;
     //return (pixelX / canvasWidth) * rangeX * this.scaleFactor + this.centerX - (rangeX * this.scaleFactor) / 2;
-    return this.yMin + pixelY * rangeY / canvasHeight;
+    return this.yMin + (pixelY * rangeY) / canvasHeight;
   }
 
   yToPixel(y: number): number {
     const canvasHeight = this.canvas.nativeElement.height;
     const rangeY = this.yMax - this.yMin;
     //return canvasHeight / 2 - ((y - this.centerY) / rangeY) * (canvasHeight / this.scaleFactor);
-    return canvasHeight - (y - this.yMin)*(canvasHeight / rangeY);
+    return canvasHeight - (y - this.yMin) * (canvasHeight / rangeY);
   }
 
   xToPixel(x: number): number {
     const canvasWidth = this.canvas.nativeElement.width;
     const rangeX = this.xMax - this.xMin;
     //return ((x - this.centerX) / rangeX) * (canvasWidth / this.scaleFactor) + canvasWidth / 2;
-    return (x - this.xMin)*(canvasWidth / rangeX);
+    return (x - this.xMin) * (canvasWidth / rangeX);
   }
 
   evaluateEquation(equation: string, x: number): number | undefined {
     try {
       // Reemplaza `^` por `**` para manejar potencias en la ecuación
-      const parsedEquation = equation.replace(/\^/g, '**')
-                                     .replace(/(?<=\W|^)sqrt(?=\W)/g, 'Math.sqrt')
-                                     .replace(/(?<=\W|^)cos(?=\W)/g, 'Math.cos')
-                                     .replace(/(?<=\W|^)sin(?=\W)/g, 'Math.sin')
-                                     .replace(/(?<=\W|^)tan(?=\W)/g, 'Math.tan')
-                                     .replace(/(?<=\W|^)ln(?=\W)/g, 'Math.log')
-                                     .replace(/(?<=\W|^)abs(?=\W)/g, 'Math.abs')
-                                     .replace(/(?<=\W|^)e(?=\W|$)/g, '(Math.E)')
-                                     .replace(/(?<=\W|^)pi(?=\W|$)/g, '(Math.PI)')
-                                     .replace(/x/g, `(${x})`);
+      const parsedEquation = equation
+        .replace(/\^/g, '**')
+        .replace(/(?<=\W|^)sqrt(?=\W)/g, 'Math.sqrt')
+        .replace(/(?<=\W|^)cos(?=\W)/g, 'Math.cos')
+        .replace(/(?<=\W|^)sin(?=\W)/g, 'Math.sin')
+        .replace(/(?<=\W|^)tan(?=\W)/g, 'Math.tan')
+        .replace(/(?<=\W|^)ln(?=\W)/g, 'Math.log')
+        .replace(/(?<=\W|^)abs(?=\W)/g, 'Math.abs')
+        .replace(/(?<=\W|^)e(?=\W|$)/g, '(Math.E)')
+        .replace(/(?<=\W|^)pi(?=\W|$)/g, '(Math.PI)')
+        .replace(/x/g, `(${x})`);
       const result = Function(`"use strict"; return (${parsedEquation})`)();
       return result;
     } catch (e) {

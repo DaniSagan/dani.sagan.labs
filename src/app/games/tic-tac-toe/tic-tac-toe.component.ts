@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-tic-tac-toe',
-  templateUrl: './tic-tac-toe.component.html',
-  styleUrls: ['./tic-tac-toe.component.css']
+    selector: 'app-tic-tac-toe',
+    templateUrl: './tic-tac-toe.component.html',
+    styleUrls: ['./tic-tac-toe.component.css'],
+    standalone: true
 })
 export class TicTacToeComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

@@ -8,9 +8,8 @@ describe('BarnsleyFernComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BarnsleyFernComponent]
-    })
-    .compileComponents();
+      imports: [BarnsleyFernComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BarnsleyFernComponent);
     component = fixture.componentInstance;

@@ -8,9 +8,8 @@ describe('ArithmeticDerivativeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArithmeticDerivativeComponent ]
-    })
-    .compileComponents();
+      imports: [ArithmeticDerivativeComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

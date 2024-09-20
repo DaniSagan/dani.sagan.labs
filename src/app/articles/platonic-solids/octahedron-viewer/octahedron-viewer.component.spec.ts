@@ -8,9 +8,8 @@ describe('OctahedronViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OctahedronViewerComponent]
-    })
-    .compileComponents();
+      imports: [OctahedronViewerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OctahedronViewerComponent);
     component = fixture.componentInstance;

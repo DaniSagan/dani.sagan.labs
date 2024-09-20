@@ -8,9 +8,8 @@ describe('ArithmeticDerivativeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ArithmeticDerivativeArticleComponent]
-    })
-    .compileComponents();
+      imports: [ArithmeticDerivativeArticleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ArithmeticDerivativeArticleComponent);
     component = fixture.componentInstance;

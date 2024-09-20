@@ -8,9 +8,8 @@ describe('PrimeDecompositionArticleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrimeDecompositionArticleComponent ]
-    })
-    .compileComponents();
+      imports: [PrimeDecompositionArticleComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

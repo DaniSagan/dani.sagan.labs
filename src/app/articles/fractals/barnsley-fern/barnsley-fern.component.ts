@@ -3,7 +3,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-barnsley-fern',
   templateUrl: './barnsley-fern.component.html',
-  styleUrls: ['./barnsley-fern.component.css']
+  styleUrls: ['./barnsley-fern.component.css'],
+  standalone: true,
 })
 export class BarnsleyFernComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -47,8 +48,8 @@ export class BarnsleyFernComponent implements OnInit {
       y = nextPoint[1];
 
       // Transformar coordenadas para el canvas
-      const px = Math.round(canvasWidth / 2 + x * canvasWidth / 10);
-      const py = Math.round(canvasHeight - y * canvasHeight / 12);
+      const px = Math.round(canvasWidth / 2 + (x * canvasWidth) / 10);
+      const py = Math.round(canvasHeight - (y * canvasHeight) / 12);
 
       // Dibujar el punto
       this.ctx.fillRect(px, py, 1, 1);
@@ -104,6 +105,6 @@ export class BarnsleyFernComponent implements OnInit {
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }

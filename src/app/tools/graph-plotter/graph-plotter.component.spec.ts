@@ -8,9 +8,8 @@ describe('GraphPlotterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GraphPlotterComponent]
-    })
-    .compileComponents();
+      imports: [GraphPlotterComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GraphPlotterComponent);
     component = fixture.componentInstance;

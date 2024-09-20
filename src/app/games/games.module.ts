@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MathjaxModule } from 'mathjax-angular';
-import { MathematicsModule } from '../mathematics/mathematics.module';
+
 import { FormsModule } from '@angular/forms';
 import { GamesNavbarComponent } from './games-navbar/games-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
@@ -16,22 +16,19 @@ import { GamesRoutingModule } from './games-routing.module';
 
 
 @NgModule({
-  declarations: [
+    imports: [
+    CommonModule,
+    // GamesRoutingModule,
+    MathjaxModule.forChild(),
+    WidgetsModule,
+    FormsModule,
+    RouterModule,
+    GamesRoutingModule,
     GamesNavbarComponent,
     GamesContentComponent,
     TicTacToeComponent,
     FourInARowComponent,
-    GameOfLifeComponent,
-  ],
-  imports: [
-    CommonModule,
-    // GamesRoutingModule,
-    MathjaxModule.forChild(),
-    MathematicsModule,
-    WidgetsModule,
-    FormsModule,
-    RouterModule,
-    GamesRoutingModule
-  ]
+    GameOfLifeComponent
+]
 })
 export class GamesModule { }

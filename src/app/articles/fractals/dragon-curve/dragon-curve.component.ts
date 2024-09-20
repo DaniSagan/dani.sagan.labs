@@ -4,7 +4,8 @@ import { Vector2 } from 'src/app/shared/geometry/vector2';
 @Component({
   selector: 'app-dragon-curve',
   templateUrl: './dragon-curve.component.html',
-  styleUrls: ['./dragon-curve.component.css']
+  styleUrls: ['./dragon-curve.component.css'],
+  standalone: true,
 })
 export class DragonCurveComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -51,20 +52,21 @@ export class DragonCurveComponent implements OnInit {
     let sequenceLength = sequence.length;
     for (let turn of sequence) {
       if (!this.isDrawing) break;
-      direction = turn === 'L' ? this.rotateLeft(direction) : this.rotateRight(direction);
+      direction =
+        turn === 'L' ? this.rotateLeft(direction) : this.rotateRight(direction);
 
       this.ctx.beginPath();
       this.ctx.moveTo(x, y);
       x += direction.x;
       y += direction.y;
-      let color = this.decimalToRainbowColor(n/sequenceLength);
+      let color = this.decimalToRainbowColor(n / sequenceLength);
       this.ctx.strokeStyle = color;
       this.ctx.shadowColor = color;
       this.ctx.lineTo(x, y);
       this.ctx.stroke();
 
       // Espera asincrónica para mantener la interfaz responsiva
-      if(n % 100 == 0) await this.sleep(1);
+      if (n % 100 == 0) await this.sleep(1);
       n++;
     }
 
@@ -75,7 +77,9 @@ export class DragonCurveComponent implements OnInit {
     let sequence: string[] = ['L']; // Comenzar con un giro a la izquierda
 
     for (let i = 1; i < iterations; i++) {
-      const copy = [...sequence].reverse().map(turn => (turn === 'L' ? 'R' : 'L'));
+      const copy = [...sequence]
+        .reverse()
+        .map((turn) => (turn === 'L' ? 'R' : 'L'));
       sequence.push('L', ...copy);
     }
 
@@ -100,7 +104,7 @@ export class DragonCurveComponent implements OnInit {
 
   incrementLineLength(): void {
     this.lineLength++;
-    if(!this.isDrawing) {
+    if (!this.isDrawing) {
       this.drawDragonCurve();
     }
   }
@@ -119,14 +123,14 @@ export class DragonCurveComponent implements OnInit {
   }
 
   private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  private rotateLeft(direction: Vector2){
+  private rotateLeft(direction: Vector2) {
     return new Vector2(-direction.y, direction.x);
   }
 
-  private rotateRight(direction: Vector2){
+  private rotateRight(direction: Vector2) {
     return new Vector2(direction.y, -direction.x);
   }
 
@@ -153,8 +157,12 @@ export class DragonCurveComponent implements OnInit {
     const k = (n: number) => (n + h / 30) % 12;
     const a = s * Math.min(l, 1 - l);
     const f = (n: number) =>
-      Math.round(255 * (l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)))));
+      Math.round(
+        255 * (l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1))))
+      );
 
-    return `#${f(0).toString(16).padStart(2, '0')}${f(8).toString(16).padStart(2, '0')}${f(4).toString(16).padStart(2, '0')}`;
+    return `#${f(0).toString(16).padStart(2, '0')}${f(8)
+      .toString(16)
+      .padStart(2, '0')}${f(4).toString(16).padStart(2, '0')}`;
   }
 }

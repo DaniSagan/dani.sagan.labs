@@ -12,18 +12,30 @@ import { FormulaItem } from 'src/app/shared/math/items/formula-item';
 import { diff, sum, Vector2 } from 'src/app/mathematics/geometry/vector2';
 import { CanvasComponent } from 'src/app/widgets/canvas/canvas.component';
 import { LineItem } from 'src/app/widgets/canvas/items/line-item';
+import { CanvasComponent as CanvasComponent_1 } from '../../widgets/canvas/canvas.component';
+import { ArithmeticDerivativeComponent } from '../../widgets/arithmetic-derivative/arithmetic-derivative.component';
+import { PrimeDecompositionComponent } from '../../widgets/prime-decomposition/prime-decomposition.component';
+import { FormulaComponent } from '../../mathematics/formula/formula.component';
+import { MathjaxModule } from 'mathjax-angular';
 
 @Component({
   selector: 'app-test-article',
   templateUrl: './test-article.component.html',
-  styleUrls: ['./test-article.component.css']
+  styleUrls: ['./test-article.component.css'],
+  standalone: true,
+  imports: [
+    MathjaxModule,
+    FormulaComponent,
+    PrimeDecompositionComponent,
+    ArithmeticDerivativeComponent,
+    CanvasComponent_1,
+  ],
 })
 export class TestArticleComponent implements OnInit, AfterViewInit {
-
   static title: string = 'Artículo Test';
   static route: string = 'test-article';
 
-  content: string = "$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$"
+  content: string = '$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$';
   equations: Map<string, string> = new Map<string, string>();
   canvasSize = new Vector2(490, 490);
 
@@ -50,29 +62,73 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.equations.set('test', this.equationBuilder.new().int(3).int(17).do('+').int(5).do('/').do('()').do('square').build().toLatex());
-    this.equations.set('pythagoras', this.equationBuilder.new().sqr(b => b.var('a')).sqr(b => b.var('b')).do('+').sqr(b => b.var('c')).do('=').build().toLatex());
-    this.equations.set('pythagoras2', this.equationBuilder.new()
-      .equals(
-        b => b.sum(
-            b => b.sqr(b => b.var('a')),
-            b => b.sqr(b => b.var('b'))
-        ),
-        b => b.sqr(b => b.var('c'))
-      ).build().toLatex()
+    this.equations.set(
+      'test',
+      this.equationBuilder
+        .new()
+        .int(3)
+        .int(17)
+        .do('+')
+        .int(5)
+        .do('/')
+        .do('()')
+        .do('square')
+        .build()
+        .toLatex()
     );
-    this.equations.set('testfrac', this.equationBuilder.new().frac(b => b.int(5), b => b.int(3)).build().toLatex());
+    this.equations.set(
+      'pythagoras',
+      this.equationBuilder
+        .new()
+        .sqr((b) => b.var('a'))
+        .sqr((b) => b.var('b'))
+        .do('+')
+        .sqr((b) => b.var('c'))
+        .do('=')
+        .build()
+        .toLatex()
+    );
+    this.equations.set(
+      'pythagoras2',
+      this.equationBuilder
+        .new()
+        .equals(
+          (b) =>
+            b.sum(
+              (b) => b.sqr((b) => b.var('a')),
+              (b) => b.sqr((b) => b.var('b'))
+            ),
+          (b) => b.sqr((b) => b.var('c'))
+        )
+        .build()
+        .toLatex()
+    );
+    this.equations.set(
+      'testfrac',
+      this.equationBuilder
+        .new()
+        .frac(
+          (b) => b.int(5),
+          (b) => b.int(3)
+        )
+        .build()
+        .toLatex()
+    );
   }
 
   ngAfterViewInit() {
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    this.context = this.canvas.getContext("2d");
-    if(this.context != null) {
+    this.context = this.canvas.getContext('2d');
+    if (this.context != null) {
       this.draw(this.context);
     }
 
     // this.myCanvas.size = new Vector2(600, 600);
-    let kochSnowflake: LineItem[] = this.koch(new Vector2(10, 200), new Vector2(480, 200), 7);
+    let kochSnowflake: LineItem[] = this.koch(
+      new Vector2(10, 200),
+      new Vector2(480, 200),
+      7
+    );
     this.myCanvas.scene.addItems(kochSnowflake);
     this.myCanvas.draw();
   }
@@ -87,19 +143,20 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
 
   koch(p1: Vector2, p2: Vector2, level: number): LineItem[] {
     let result: LineItem[] = [];
-    if(level <= 0) {
+    if (level <= 0) {
       result.push(new LineItem(p1, p2));
     } else {
       let v12: Vector2 = diff(p2, p1);
-      let pp1: Vector2 = p1.sum(v12.mult(1/3));
-      let pp3: Vector2 = p1.sum(v12.mult(2/3));
-      let pp2: Vector2 = p1.sum(v12.mult(1/3)).sum(v12.rotate(-Math.PI/3).mult(1/3));
-      result.push(...this.koch(p1, pp1, level-1));
-      result.push(...this.koch(pp1, pp2, level-1));
-      result.push(...this.koch(pp2, pp3, level-1));
-      result.push(...this.koch(pp3, p2, level-1));
+      let pp1: Vector2 = p1.sum(v12.mult(1 / 3));
+      let pp3: Vector2 = p1.sum(v12.mult(2 / 3));
+      let pp2: Vector2 = p1
+        .sum(v12.mult(1 / 3))
+        .sum(v12.rotate(-Math.PI / 3).mult(1 / 3));
+      result.push(...this.koch(p1, pp1, level - 1));
+      result.push(...this.koch(pp1, pp2, level - 1));
+      result.push(...this.koch(pp2, pp3, level - 1));
+      result.push(...this.koch(pp3, p2, level - 1));
     }
     return result;
   }
-
 }

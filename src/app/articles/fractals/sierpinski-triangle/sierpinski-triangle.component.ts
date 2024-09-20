@@ -3,7 +3,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'app-sierpinski-triangle',
   templateUrl: './sierpinski-triangle.component.html',
-  styleUrls: ['./sierpinski-triangle.component.css']
+  styleUrls: ['./sierpinski-triangle.component.css'],
+  standalone: true,
 })
 export class SierpinskiTriangleComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
@@ -42,7 +43,12 @@ export class SierpinskiTriangleComponent implements OnInit {
     this.sierpinski(p1, p2, p3, this.iterations);
   }
 
-  sierpinski(p1: {x: number, y: number}, p2: {x: number, y: number}, p3: {x: number, y: number}, depth: number): void {
+  sierpinski(
+    p1: { x: number; y: number },
+    p2: { x: number; y: number },
+    p3: { x: number; y: number },
+    depth: number
+  ): void {
     if (depth === 0) {
       // Dibujar el triángulo con líneas de neón
       this.ctx.beginPath();

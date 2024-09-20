@@ -8,9 +8,8 @@ describe('ForInARowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FourInARowComponent]
-    })
-    .compileComponents();
+      imports: [FourInARowComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FourInARowComponent);
     component = fixture.componentInstance;

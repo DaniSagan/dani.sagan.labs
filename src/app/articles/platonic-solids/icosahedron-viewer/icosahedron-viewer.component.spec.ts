@@ -8,9 +8,8 @@ describe('IcosahedronViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IcosahedronViewerComponent]
-    })
-    .compileComponents();
+      imports: [IcosahedronViewerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(IcosahedronViewerComponent);
     component = fixture.componentInstance;

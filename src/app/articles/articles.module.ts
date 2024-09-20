@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 //import { ArticlesRoutingModule } from './articles-routing.module';
 import { TestArticleComponent } from './test-article/test-article.component';
 import { MathjaxModule } from 'mathjax-angular';
-import { MathematicsModule } from '../mathematics/mathematics.module';
+
 import { FormsModule } from '@angular/forms';
 import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
@@ -25,9 +25,15 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 
-
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    // ArticlesRoutingModule,
+    MathjaxModule.forChild(),
+    WidgetsModule,
+    FormsModule,
+    RouterModule,
+    ArticlesRoutingModule,
     ArticlesContentComponent,
     TestArticleComponent,
     ArticlesNavbarComponent,
@@ -43,17 +49,7 @@ import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian
     IcosahedronViewerComponent,
     OctahedronViewerComponent,
     TetrahedronViewerComponent,
-    ArithmeticDerivativeArticleComponent
+    ArithmeticDerivativeArticleComponent,
   ],
-  imports: [
-    CommonModule,
-    // ArticlesRoutingModule,
-    MathjaxModule.forChild(),
-    MathematicsModule,
-    WidgetsModule,
-    FormsModule,
-    RouterModule,
-    ArticlesRoutingModule
-  ]
 })
-export class ArticlesModule { }
+export class ArticlesModule {}

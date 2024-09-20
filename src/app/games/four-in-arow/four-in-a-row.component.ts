@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgFor, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-four-in-a-row',
   templateUrl: './four-in-a-row.component.html',
-  styleUrls: ['./four-in-a-row.component.css']
+  styleUrls: ['./four-in-a-row.component.css'],
+  standalone: true,
+  imports: [NgFor, NgClass],
 })
 export class FourInARowComponent implements OnInit {
   rows = 6;
@@ -46,7 +49,8 @@ export class FourInARowComponent implements OnInit {
     }
 
     if (this.checkWin(this.currentPlayer)) {
-      this.message = this.currentPlayer === 'R' ? '¡Ganaste!' : 'El ordenador ganó';
+      this.message =
+        this.currentPlayer === 'R' ? '¡Ganaste!' : 'El ordenador ganó';
       this.gameOver = true;
       return;
     }
@@ -174,7 +178,12 @@ export class FourInARowComponent implements OnInit {
     let score = 0;
     for (let col = 0; col < this.cols; col++) {
       for (let row = 0; row < this.rows - 3; row++) {
-        const window = [board[row][col], board[row + 1][col], board[row + 2][col], board[row + 3][col]];
+        const window = [
+          board[row][col],
+          board[row + 1][col],
+          board[row + 2][col],
+          board[row + 3][col],
+        ];
         score += this.evaluateWindow(window, player);
       }
     }
@@ -191,7 +200,7 @@ export class FourInARowComponent implements OnInit {
           board[row][col],
           board[row + 1][col + 1],
           board[row + 2][col + 2],
-          board[row + 3][col + 3]
+          board[row + 3][col + 3],
         ];
         score += this.evaluateWindow(window, player);
       }
@@ -204,7 +213,7 @@ export class FourInARowComponent implements OnInit {
           board[row][col],
           board[row + 1][col - 1],
           board[row + 2][col - 2],
-          board[row + 3][col - 3]
+          board[row + 3][col - 3],
         ];
         score += this.evaluateWindow(window, player);
       }
@@ -217,9 +226,9 @@ export class FourInARowComponent implements OnInit {
     let score = 0;
     const opponent = player === 'Y' ? 'R' : 'Y';
 
-    const playerCount = window.filter(cell => cell === player).length;
-    const emptyCount = window.filter(cell => cell === '').length;
-    const opponentCount = window.filter(cell => cell === opponent).length;
+    const playerCount = window.filter((cell) => cell === player).length;
+    const emptyCount = window.filter((cell) => cell === '').length;
+    const opponentCount = window.filter((cell) => cell === opponent).length;
 
     if (playerCount === 4) {
       score += 100;

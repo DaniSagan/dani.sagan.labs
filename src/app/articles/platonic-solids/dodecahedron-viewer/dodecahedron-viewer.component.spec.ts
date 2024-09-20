@@ -8,9 +8,8 @@ describe('DodecahedronViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DodecahedronViewerComponent]
-    })
-    .compileComponents();
+      imports: [DodecahedronViewerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DodecahedronViewerComponent);
     component = fixture.componentInstance;
