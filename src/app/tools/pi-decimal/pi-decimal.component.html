@@ -1,0 +1,16 @@
+<h2>Calculadora de decimales de π</h2>
+<div class="widget-container">
+  <div class="widget-title">Calculadora decimales de π</div>
+  <div>
+    <label for="decimals">Número de decimales: </label>
+    <input id="decimals" type="number" [(ngModel)]="n" min="1" max="1000">
+
+    <button (click)="onCalculate()">Calcular</button>
+    <div class="loader" *ngIf="calculating"></div>
+    <div *ngIf="piDecimals">
+      <div><strong>π ({{n}} decimales):</strong></div>
+      <div class="decimal-result">3,</div>
+      <div class="decimal-result">{{piDecimals}}</div>
+    </div>
+  </div>
+</div>

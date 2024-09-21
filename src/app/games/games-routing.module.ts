@@ -4,6 +4,7 @@ import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
 import { FourInARowComponent } from './four-in-arow/four-in-a-row.component';
 import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
 import { GamesContentComponent } from './games-content/games-content.component';
+import { RubikCubeComponent } from './rubik-cube/rubik-cube.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
     children: [
       {path: 'tic-tac-toe', component: TicTacToeComponent},
       {path: 'four-in-a-row', component: FourInARowComponent},
-      {path: 'game-of-life', component: GameOfLifeComponent}
+      {path: 'game-of-life', component: GameOfLifeComponent},
+      {path: 'rubik-cube', component: RubikCubeComponent}
     ]
   }
 ];
