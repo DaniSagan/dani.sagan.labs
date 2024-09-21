@@ -7,6 +7,8 @@
 
     <button (click)="onCalculate()">Calcular</button>
     <div class="loader" *ngIf="calculating"></div>
+    <div>{{calculatingArctanMessage}}</div>
+    <div>{{calculatingTermMessage}}</div>
     <div *ngIf="piDecimals">
       <div><strong>π ({{n}} decimales):</strong></div>
       <div class="decimal-result">3,</div>
