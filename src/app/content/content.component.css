@@ -14,4 +14,8 @@
     min-height: 500px;
     max-width: 100%;
   }
+
+  p {
+    font-size: small;
+  }
 }
