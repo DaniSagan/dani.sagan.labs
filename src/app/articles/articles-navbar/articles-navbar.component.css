@@ -5,7 +5,12 @@
 }
 
 .nav-items li {
-  min-height: 30px;
+  margin: 10px 0px;
+}
+
+.nav-items li.subsection-item {
+  border-left: 3px solid #333;
+  padding-left: 2px;
 }
 
 .nav-items .subsection {
@@ -16,8 +21,6 @@
 }
 
 .nav-items a {
-  padding: 5px 5px;
-  margin: 5px 5px;
   text-decoration: none;
   min-width: 100px;
   color: black;
@@ -40,7 +43,16 @@
     margin: 0px 0px;
     color: black;
     font-weight: bold;
-    font-size: x-small;
+    font-size: smaller;
+  }
+
+  .nav-items li {
+    line-height: 0.8;
+    margin: 7px 0px;
+  }
+
+  .nav-items li.subsection-item {
+    border-left: 2px solid #333;
   }
 
   .nav-items a {
