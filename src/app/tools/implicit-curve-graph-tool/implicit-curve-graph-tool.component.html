@@ -1,2 +1,23 @@
 <h2>Graficador de Curvas Implicitas</h2>
-<app-implicit-curve-graph></app-implicit-curve-graph>
+<div class="widget-container">
+  <div>
+    <label for="formula">Ecuación (f(x, y) = 0): </label>
+    <input id="formula" [(ngModel)]="formula" placeholder="Ingresa la fórmula (ej. x*x + y*y - 1)" />
+    <div>
+      <label for="xMin">x Min: </label>
+      <input id="xMin" type="number" [(ngModel)]="xMin" />
+
+      <label for="xMax">x Max: </label>
+      <input id="xMax" type="number" [(ngModel)]="xMax" />
+    </div>
+    <div>
+      <label for="yMin">y Min: </label>
+      <input id="yMin" type="number" [(ngModel)]="yMin" />
+
+      <label for="yMax">y Max: </label>
+      <input id="yMax" type="number" [(ngModel)]="yMax" />
+    </div>
+    <button (click)="onRedraw()">Redibujar</button>
+  </div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
