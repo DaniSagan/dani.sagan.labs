@@ -24,6 +24,7 @@ import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
+import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian
     OctahedronViewerComponent,
     TetrahedronViewerComponent,
     ArithmeticDerivativeArticleComponent,
+    ParabolaArticleComponent
   ],
 })
 export class ArticlesModule {}

@@ -1,0 +1,18 @@
+<h2>Parabola</h2>
+<div class="widget-container">
+  <div class="widget-title">Parábola ax^2+bx+c = 0</div>
+  <div>
+    <label for="a">a: </label>
+    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" />
+  </div>
+  <div>
+    <label for="b">b: </label>
+    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" />
+  </div>
+  <div>
+    <label for="c">c: </label>
+    <input id="c" type="number" [ngModel]="c" (ngModelChange)="onCChanged($event)" placeholder="c" />
+  </div>
+  <div id="equation" class="formula" [mathjax]="equation"></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>

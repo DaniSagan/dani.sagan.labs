@@ -15,6 +15,7 @@ import { ArticlesContentComponent } from './articles-content/articles-content.co
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
+import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: IcosahedronViewerComponent.route, component: IcosahedronViewerComponent },
       { path: OctahedronViewerComponent.route, component: OctahedronViewerComponent },
       { path: TetrahedronViewerComponent.route, component: TetrahedronViewerComponent },
+      { path: ParabolaArticleComponent.route, component: ParabolaArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent }
     ]

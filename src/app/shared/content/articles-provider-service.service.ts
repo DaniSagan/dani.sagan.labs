@@ -16,6 +16,7 @@ import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lore
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from 'src/app/articles/fractals/apollonian-sieve/apollonian-sieve.component';
+import { ParabolaArticleComponent } from 'src/app/articles/curves/parabola-article/parabola-article.component';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,11 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: ArithmeticDerivativeArticleComponent.title, route: ArithmeticDerivativeArticleComponent.route }
   ];
 
+  curves: NavbarItem[] =
+  [
+    { name: ParabolaArticleComponent.title, route: ParabolaArticleComponent.route }
+  ]
+
   others: NavbarItem[] =
   [
     { name: TestArticleComponent.title, route: TestArticleComponent.route },
@@ -62,6 +68,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Fractales', items: this.fractals },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
+      { name: 'Curvas', items: this.curves },
       { name: 'Otros', items: this.others }
     ];
     return result;

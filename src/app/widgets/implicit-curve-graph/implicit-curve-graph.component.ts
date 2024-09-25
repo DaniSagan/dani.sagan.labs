@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Vec2 } from 'src/app/shared/math/vec2';
 
 @Component({
   selector: 'app-implicit-curve-graph',
@@ -96,6 +97,10 @@ export class ImplicitCurveGraphComponent {
     this.context.stroke();
   }
 
+  draw(drawFn: (ctx: CanvasRenderingContext2D) => void ) {
+    drawFn(this.context);
+  }
+
   setBounds(xMin: number, xMax: number, yMin: number, yMax: number): void {
     this.xMin = xMin;
     this.xMax = xMax;
@@ -115,6 +120,10 @@ export class ImplicitCurveGraphComponent {
     return this.yMin + ((canvasHeight - pixelY) * rangeY) / canvasHeight;
   }
 
+  pixelToXY(pixelXY: Vec2): Vec2 {
+    return { x: this.pixelToX(pixelXY.x), y: this.pixelToY(pixelXY.y) };
+  }
+
   yToPixel(y: number): number {
     const canvasHeight = this.canvas.nativeElement.height;
     const rangeY = this.yMax - this.yMin;
@@ -125,6 +134,10 @@ export class ImplicitCurveGraphComponent {
     const canvasWidth = this.canvas.nativeElement.width;
     const rangeX = this.xMax - this.xMin;
     return (x - this.xMin) * (canvasWidth / rangeX);
+  }
+
+  xyToPixel(xy: Vec2): Vec2 {
+    return { x: this.xToPixel(xy.x), y: this.yToPixel(xy.y) };
   }
 }
 
