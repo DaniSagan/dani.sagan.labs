@@ -35,12 +35,23 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   onDraw() {
     this.curveGraph.functions = [new GraphableFunction((x: number, y: number) => { return this.a*x**2 + this.b*x + this.c - y; }, 'red')];
     this.curveGraph.drawGraph();
+    // Draw focus.
     this.curveGraph.draw((ctx: CanvasRenderingContext2D) => {
       let focus: Vec2 = this.getFocus();
       let focusPixel: Vec2 = this.curveGraph.xyToPixel(focus);
       ctx.beginPath();
       ctx.strokeStyle = 'blue';
       ctx.arc(focusPixel.x, focusPixel.y, 2, 0, 2 * Math.PI);
+      ctx.stroke();
+    });
+    // Draw directrix.
+    this.curveGraph.draw((ctx: CanvasRenderingContext2D) => {
+      let directrixY: number = this.getDirectrixY();
+      let directrixPixelY: number = this.curveGraph.yToPixel(directrixY);
+      ctx.beginPath();
+      ctx.strokeStyle = 'green';
+      ctx.moveTo(0, directrixPixelY);
+      ctx.lineTo(ctx.canvas.width, directrixPixelY);
       ctx.stroke();
     });
   }
@@ -88,6 +99,10 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
 
   getFocus(): Vec2 {
     return {x: -this.b / (2 * this.a), y: (4*this.a*this.c - this.b**2 + 1) / (4* this.a)};
+  }
+
+  getDirectrixY(): number {
+    return (4*this.a*this.c - this.b**2 - 1) / (4* this.a);
   }
 
 }
