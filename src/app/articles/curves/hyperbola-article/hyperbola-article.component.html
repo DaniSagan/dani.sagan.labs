@@ -1,0 +1,24 @@
+<h2>Hipérbola</h2>
+<p>La <span class="highlight">hipérbola</span> es una curva geométrica que pertenece a la familia de las <span class="highlight">cónicas</span>, formada por la intersección de un cono circular recto con un plano que corta ambas hojas del cono. A diferencia de la parábola y la elipse, la hipérbola tiene dos ramas abiertas que se extienden infinitamente. Esta curva aparece en muchas aplicaciones prácticas, incluyendo la física, la astronomía y las telecomunicaciones.</p>
+<p>La ecuación estándar de una hipérbola en el plano cartesiano es <span class="highlight">x^2/a^2 - y^2/b^2 = 1</span>, para una hipérbola horizontal, o <span class="highlight">y^2/b^2 - x^2/a^2 = 1</span>, para una hipérbola vertical. Aquí, a y b son constantes que determinan la forma de la hipérbola.</p>
+
+<h3>Elementos clave de la hipérbola</h3>
+<p><strong>Focos:</strong> Una hipérbola tiene dos focos, situados en el eje mayor. Los puntos en la hipérbola tienen la propiedad de que la diferencia de sus distancias a los dos focos es siempre constante. Los focos son fundamentales en la definición de la curva y en muchas de sus aplicaciones.</p>
+<p><strong>Vértices:</strong> Los vértices de la hipérbola son los puntos en los que la curva corta su eje principal. La distancia entre los dos vértices es 2a.</p>
+<p><strong>Ejes:</strong> La hipérbola tiene un <em>eje transversal</em>, que pasa por los vértices y los focos, y un <em>eje conjugado</em>, que es perpendicular al eje transversal.</p>
+<p><strong>Asíntotas:</strong> Las asíntotas son dos líneas que pasan por el centro de la curva y se extienden indefinidamente. A medida que la curva se aleja de los vértices, se aproxima a las asíntotas sin tocarlas.</p>
+<h3>Propiedades importantes</h3>
+<p>En física, la hipérbola se utiliza para describir trayectorias en mecánica celeste, como el movimiento de cometas o asteroides. Además, las antenas de radio y sistemas de navegación GPS utilizan propiedades de la hipérbola para determinar posiciones.</p>
+<div class="widget-container">
+  <div class="widget-title">Hipérbola x^2/a^2 + x^2/b^2 = 1</div>
+  <div>
+    <label for="a">a: </label>
+    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" min="1" />
+  </div>
+  <div>
+    <label for="b">b: </label>
+    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" min="1" />
+  </div>
+  <div id="equation" class="formula" [mathjax]="equation"></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
