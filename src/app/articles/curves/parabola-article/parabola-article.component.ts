@@ -21,7 +21,7 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   b: number = 0;
   c: number = 0;
   eq2: string = '$x^2$';
-  equation!: string;
+  equation: string = '$x$';
 
   ngOnInit() {
     this.equation = this.getEquation();
