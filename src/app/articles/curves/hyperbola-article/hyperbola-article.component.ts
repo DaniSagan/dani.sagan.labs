@@ -52,7 +52,7 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
     if(Math.abs(this.a) !== 1) terms += `\\frac{x^2}{${Math.abs(this.a)}^2}`;
     else terms += 'x^2';
     terms += ' - ';
-    if(Math.abs(this.b) !== 1) terms += `\\frac{x^2}{${Math.abs(this.b)}^2}`;
+    if(Math.abs(this.b) !== 1) terms += `\\frac{y^2}{${Math.abs(this.b)}^2}`;
     else terms += 'y^2';
     return `$$ ${terms} = 1 $$`
   }
