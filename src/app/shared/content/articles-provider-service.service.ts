@@ -18,6 +18,7 @@ import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandel
 import { ApollonianSieveComponent } from 'src/app/articles/fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from 'src/app/articles/curves/parabola-article/parabola-article.component';
 import { HyperbolaArticleComponent } from 'src/app/articles/curves/hyperbola-article/hyperbola-article.component';
+import { EllipseArticleComponent } from 'src/app/articles/curves/ellipse-article/ellipse-article.component';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   curves: NavbarItem[] =
   [
     { name: ParabolaArticleComponent.title, route: ParabolaArticleComponent.route },
-    { name: HyperbolaArticleComponent.title, route: HyperbolaArticleComponent.route }
+    { name: HyperbolaArticleComponent.title, route: HyperbolaArticleComponent.route },
+    { name: EllipseArticleComponent.title, route: EllipseArticleComponent.route }
   ]
 
   others: NavbarItem[] =

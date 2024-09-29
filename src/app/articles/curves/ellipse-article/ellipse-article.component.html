@@ -1,0 +1,14 @@
+<h2>Elipse</h2>
+<div class="widget-container">
+  <div class="widget-title">Elipse x^2/a^2 + y^2/b^2 = 1</div>
+  <div>
+    <label for="a">a: </label>
+    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" min="1" />
+  </div>
+  <div>
+    <label for="b">b: </label>
+    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" min="1" />
+  </div>
+  <div id="equation" class="formula" [mathjax]="equation"></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>

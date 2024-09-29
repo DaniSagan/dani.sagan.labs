@@ -17,6 +17,7 @@ import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component'
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 import { HyperbolaArticleComponent } from './curves/hyperbola-article/hyperbola-article.component';
+import { EllipseArticleComponent } from './curves/ellipse-article/ellipse-article.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: TetrahedronViewerComponent.route, component: TetrahedronViewerComponent },
       { path: ParabolaArticleComponent.route, component: ParabolaArticleComponent },
       { path: HyperbolaArticleComponent.route, component: HyperbolaArticleComponent },
+      { path: EllipseArticleComponent.route, component: EllipseArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent }
     ]
