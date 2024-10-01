@@ -19,6 +19,7 @@ import { ApollonianSieveComponent } from 'src/app/articles/fractals/apollonian-s
 import { ParabolaArticleComponent } from 'src/app/articles/curves/parabola-article/parabola-article.component';
 import { HyperbolaArticleComponent } from 'src/app/articles/curves/hyperbola-article/hyperbola-article.component';
 import { EllipseArticleComponent } from 'src/app/articles/curves/ellipse-article/ellipse-article.component';
+import { AgnesiWitchArticleComponent } from 'src/app/articles/curves/agnesi-witch-article/agnesi-witch-article.component';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   [
     { name: ParabolaArticleComponent.title, route: ParabolaArticleComponent.route },
     { name: HyperbolaArticleComponent.title, route: HyperbolaArticleComponent.route },
-    { name: EllipseArticleComponent.title, route: EllipseArticleComponent.route }
+    { name: EllipseArticleComponent.title, route: EllipseArticleComponent.route },
+    { name: AgnesiWitchArticleComponent.title, route: AgnesiWitchArticleComponent.route }
   ]
 
   others: NavbarItem[] =

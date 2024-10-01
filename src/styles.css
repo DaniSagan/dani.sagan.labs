@@ -22,6 +22,7 @@ p {
 
 .sidebar {
   border-right: 1px solid #aaa;
+  box-shadow: 6px 0 20px -20px #000;
 }
 
 .widget-container {

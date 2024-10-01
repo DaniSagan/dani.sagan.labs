@@ -18,6 +18,7 @@ import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 import { HyperbolaArticleComponent } from './curves/hyperbola-article/hyperbola-article.component';
 import { EllipseArticleComponent } from './curves/ellipse-article/ellipse-article.component';
+import { AgnesiWitchArticleComponent } from './curves/agnesi-witch-article/agnesi-witch-article.component';
 
 const routes: Routes = [
   {
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: ParabolaArticleComponent.route, component: ParabolaArticleComponent },
       { path: HyperbolaArticleComponent.route, component: HyperbolaArticleComponent },
       { path: EllipseArticleComponent.route, component: EllipseArticleComponent },
+      { path: AgnesiWitchArticleComponent.route, component: AgnesiWitchArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent }
     ]

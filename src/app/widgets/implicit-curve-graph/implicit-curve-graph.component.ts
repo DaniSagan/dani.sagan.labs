@@ -55,6 +55,44 @@ export class ImplicitCurveGraphComponent {
     this.context.lineTo(x0, this.canvas.nativeElement.height);
 
     this.context.stroke();
+
+    // WIP
+    // this.drawNumberDivisions();
+  }
+
+  private drawNumberDivisions() {
+    let xRange = this.xMax - this.xMin;
+    let yRange = this.yMax - this.yMin;
+    let minDivisionPixels = 100;
+    let minDivisionX = this.pixelToX(minDivisionPixels) - this.pixelToX(0);
+    console.log('minDivisionX', minDivisionX);
+    let minDivisionY = this.pixelToY(minDivisionPixels) - this.pixelToY(0);
+    let minDivision10X = 10**Math.ceil(Math.log10(minDivisionX));
+    console.log('minDivision10X', minDivision10X);
+    let minDivision10Y = 10**Math.ceil(Math.log10(minDivisionY));
+    let lowerDivision10X = 10**Math.ceil(Math.log10(this.xMin));
+    let lowerDivision10Y = 10**Math.ceil(Math.log10(this.yMin));
+    for(let x: number = 0; x < 10; x++) {
+      let divisionPixel = this.xToPixel(lowerDivision10X + x * minDivision10X);
+      console.log(divisionPixel);
+      this.drawHorizontalLine(divisionPixel, 'gray');
+    }
+  }
+
+  private drawHorizontalLine(yPixel: number, style: string | CanvasGradient | CanvasPattern) {
+    this.context.beginPath();
+    this.context.strokeStyle = style;
+    this.context.moveTo(0, yPixel);
+    this.context.lineTo(this.canvas.nativeElement.width, yPixel);
+    this.context.stroke();
+  }
+
+  private drawVerticalLine(xPixel: number, style: string | CanvasGradient | CanvasPattern) {
+    this.context.beginPath();
+    this.context.strokeStyle = style;
+    this.context.moveTo(xPixel, 0);
+    this.context.lineTo(xPixel, this.canvas.nativeElement.height);
+    this.context.stroke();
   }
 
   drawFunction(fn: GraphableFunction): void {
