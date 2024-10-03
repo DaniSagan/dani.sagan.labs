@@ -1,0 +1,58 @@
+<h2>Sudoku</h2>
+<div class="sudoku-container">
+  <div class="controls">
+    <label for="difficulty">Dificultad:</label>
+    <select id="difficulty" [(ngModel)]="difficulty" (change)="changeDifficulty(difficulty)">
+      <option value="Easy">Fácil</option>
+      <option value="Medium">Medio</option>
+      <option value="Hard">Difícil</option>
+    </select>
+
+    <button (click)="checkSolution()">Comprobar Solución</button>
+    <button (click)="resetBoard()">Reiniciar</button>
+    <button (click)="generatePuzzle()">Nuevo Puzzle</button>
+  </div>
+
+  <table>
+    <tr *ngFor="let row of sudokuBoard; let i = index">
+      <td *ngFor="let cell of row; let j = index" class="row-{{i}} col-{{j}}">
+        <div class="cell" [class.invalid]="solutionChecked && !isSafeSolution(i, j, cell.value!)" [class.disabled]="cell.isFixed">
+          <input
+            type="number"
+            [value]="cell.value === null ? '' : cell.value"
+            (input)="updateBoard(i, j, $any($event).target.value)"
+            [disabled]="cell.isFixed"
+            min="1"
+            max="9"
+            [class.invalid]="solutionChecked && !isSafeSolution(i, j, cell.value!)"
+          />
+          <div class="possible-values-top" *ngIf="!cell.isFixed">
+            <span
+              *ngFor="let val of [1,2,3,4,5]"
+              (click)="togglePossibleValue(i, j, val)"
+              [class.active]="cell.possibleValues.includes(val)"
+            >
+              {{ val }}
+            </span>
+          </div>
+          <div class="possible-values-bottom" *ngIf="!cell.isFixed">
+            <span
+              *ngFor="let val of [6,7,8,9]"
+              (click)="togglePossibleValue(i, j, val)"
+              [class.active]="cell.possibleValues.includes(val)"
+            >
+              {{ val }}
+            </span>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <p *ngIf="solutionChecked"
+     [class.success]="solutionMessage.includes('correcta')"
+     [class.error]="!solutionMessage.includes('correcta')">
+    {{ solutionMessage }}
+  </p>
+</div>
+
