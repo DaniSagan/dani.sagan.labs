@@ -26,7 +26,7 @@
             max="9"
             [class.invalid]="solutionChecked && !isSafeSolution(i, j, cell.value!)"
           />
-          <div class="possible-values-top" *ngIf="!cell.isFixed">
+          <div class="possible-values possible-values-top" *ngIf="!cell.isFixed">
             <span
               *ngFor="let val of [1,2,3,4,5]"
               (click)="togglePossibleValue(i, j, val)"
@@ -35,7 +35,7 @@
               {{ val }}
             </span>
           </div>
-          <div class="possible-values-bottom" *ngIf="!cell.isFixed">
+          <div class="possible-values possible-values-bottom" *ngIf="!cell.isFixed">
             <span
               *ngFor="let val of [6,7,8,9]"
               (click)="togglePossibleValue(i, j, val)"
