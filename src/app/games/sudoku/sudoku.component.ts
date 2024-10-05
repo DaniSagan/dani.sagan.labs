@@ -130,7 +130,7 @@ export class SudokuComponent implements OnInit {
 
   // Resuelve el tablero de Sudoku y cuenta las soluciones
   solveBoard(board: SudokuCell[][], onSolution: () => void): boolean {
-    console.log(SudokuComponent.printBoard(board));
+    // console.log(SudokuComponent.printBoard(board));
     for (let i = 0; i < 9; i++) {
       for (let j = 0; j < 9; j++) {
         if (board[i][j].value === null) {
@@ -278,5 +278,22 @@ export class SudokuComponent implements OnInit {
       res += '\n';
     }
     return res;
+  }
+
+  saveBoard(): void {
+    let state = {
+      board: this.sudokuBoard,
+      difficulty: this.difficulty
+    };
+    localStorage.setItem('sudoku', JSON.stringify(state));
+  }
+
+  loadBoard(): void {
+    let savedState = localStorage.getItem('sudoku');
+    if(!savedState) return;
+    let parsedState = JSON.parse(savedState);
+    console.log(parsedState);
+    this.sudokuBoard = parsedState['board'];
+    this.difficulty = parsedState['difficulty'];
   }
 }
