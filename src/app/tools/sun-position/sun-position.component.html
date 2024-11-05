@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Posición del Sol</h2>
+  <form (ngSubmit)="calculateSunPosition()">
+    <label>Latitud:
+      <input type="number" [(ngModel)]="latitude" name="latitude" required>
+    </label>
+    <br>
+    <label>Longitud:
+      <input type="number" [(ngModel)]="longitude" name="longitude" required>
+    </label>
+    <br>
+    <label>Fecha:
+      <input type="date" [(ngModel)]="date" name="date" required>
+    </label>
+    <br>
+    <label>Hora (HH:MM):
+      <input type="time" [(ngModel)]="time" name="time" required>
+    </label>
+    <br>
+    <button type="submit">Calcular Posición</button>
+  </form>
+
+  <div *ngIf="elevation !== null && azimuth !== null">
+    <h3>Resultado:</h3>
+    <p>Elevación: {{ elevation | number: '1.2-2' }}°</p>
+    <p>Azimut: {{ azimuth | number: '1.2-2' }}°</p>
+  </div>
+</div>
