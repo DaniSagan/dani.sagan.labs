@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { GeolocationService } from 'src/app/shared/physics/geolocation.service';
+import { CelestialCoords, GeographicCoords, SunPositionCalculatorService } from 'src/app/shared/physics/sun-position-calculator-service.service';
 
 @Component({
   selector: 'app-sun-position',
@@ -9,83 +12,120 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule, CommonModule]
 })
-export class SunPositionComponent {
+export class SunPositionComponent implements OnInit {
+  @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+
   latitude: number = 0;
   longitude: number = 0;
   date: string = new Date().toISOString().substring(0, 10);
   time: string = "12:00";
   elevation: number | null = null;
   azimuth: number | null = null;
+  orientation: number | null = null;
+  year: number | null = null;
+
+  dayHeight: number = 2;
+  minuteWidth: number = 1;
+  width: number = 24*60*this.minuteWidth;
+  height: number = 365*this.dayHeight;
+
+  constructor(
+    private sunPositionCalculatorService: SunPositionCalculatorService,
+    private geolocationService: GeolocationService) {
+  }
+
+  ngOnInit() {
+    const date = new Date();
+    this.year = date.getFullYear();
+  }
 
   calculateSunPosition(): void {
-    const date = new Date(`${this.date}T${this.time}:00`);
-    const jd = this.getJulianDate(date);
-    const T = (jd - 2451545.0) / 36525.0;
-
-    const solarDeclination = this.getSolarDeclination(T);
-    const eqTime = this.getEquationOfTime(T);
-
-    const solarTime = this.getSolarTime(date, this.longitude, eqTime);
-    const hourAngle = (solarTime - 12) * 15 * (Math.PI / 180);
-
-    const latRad = this.latitude * (Math.PI / 180);
-
-    const elevation = Math.asin(Math.sin(latRad) * Math.sin(solarDeclination) + Math.cos(latRad) * Math.cos(solarDeclination) * Math.cos(hourAngle));
-    const azimuth = Math.atan2(-Math.sin(hourAngle), Math.tan(solarDeclination) * Math.cos(latRad) - Math.sin(latRad) * Math.cos(hourAngle));
-
-    this.elevation = elevation * (180 / Math.PI); // Convertir a grados
-    this.azimuth = this.normalizeAngleDegrees(azimuth * (180 / Math.PI)); // Convertir a grados
+    if(this.year === null || this.orientation === null) return;
+    const coords = new GeographicCoords(this.latitude, this.longitude);
+    this.draw(coords, this.year, this.orientation);
   }
 
-  getJulianDate(date: Date): number {
-    const Y = date.getUTCFullYear();
-    const M = date.getUTCMonth() + 1;
-    const D = date.getUTCDate();
-    const A = Math.floor(Y / 100);
-    const B = 2 - A + Math.floor(A / 4);
-    const JD = Math.floor(365.25 * (Y + 4716)) + Math.floor(30.6001 * (M + 1)) + D + B - 1524.5;
-    const dayFraction = (date.getUTCHours() + date.getUTCMinutes() / 60) / 24;
-    return JD + dayFraction;
+  getGeolocation() {
+    this.geolocationService.getCurrentPosition().subscribe({
+      next: (position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+      },
+      error: (error) => {
+        console.error('Error getting geolocation:', error);
+      },
+    });
   }
 
-  getSolarDeclination(T: number): number {
-    const epsilon = 23.439292 * (Math.PI / 180);
-    const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
-    const M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
-    const C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * Math.sin(M * Math.PI / 180)
-            + (0.019993 - 0.000101 * T) * Math.sin(2 * M * Math.PI / 180)
-            + 0.000289 * Math.sin(3 * M * Math.PI / 180);
-    const theta = L0 + C;
-    const lambda = theta * Math.PI / 180;
-    return Math.asin(Math.sin(epsilon) * Math.sin(lambda));
-  }
-
-  getEquationOfTime(T: number): number {
-    const epsilon = 23.439292 * (Math.PI / 180);
-    const L0 = 280.46646 + 36000.76983 * T + 0.0003032 * T * T;
-    const M = 357.52911 + 35999.05029 * T - 0.0001537 * T * T;
-    const C = (1.914602 - 0.004817 * T - 0.000014 * T * T) * Math.sin(M * Math.PI / 180)
-            + (0.019993 - 0.000101 * T) * Math.sin(2 * M * Math.PI / 180)
-            + 0.000289 * Math.sin(3 * M * Math.PI / 180);
-    const theta = L0 + C;
-    const lambda = theta * Math.PI / 180;
-    const Etime = 4 * ((L0 - 0.0057183 - Math.atan2(Math.cos(epsilon) * Math.sin(lambda), Math.cos(lambda)) * (180 / Math.PI)) % 360);
-    return Etime / 60;
-  }
-
-  getSolarTime(date: Date, longitude: number, eqTime: number): number {
-    const utcHours = date.getUTCHours() + date.getUTCMinutes() / 60;
-    return utcHours + longitude / 15 + eqTime;
-  }
-
-  normalizeAngleDegrees(angle: number) {
-    let res: number = angle;
-    while(res < 0) {
-      res += 360;
-    }
-    while(res > 360) {
-      res -= 360;
+  getSunPositionsForDay(coord: GeographicCoords, date: Date): GeolocatedSunPosition[] {
+    let res: GeolocatedSunPosition[] = [];
+    for(let h: number = 0; h < 24; h++) {
+      for(let m: number = 0; m < 60; m++){
+        let dateTime: Date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), h, m, 0);
+        let sunPosition: CelestialCoords = this.sunPositionCalculatorService.getSunPosition(coord, dateTime);
+        res.push({coords: coord, date: dateTime, sunPosition: sunPosition});
+      }
     }
     return res;
   }
+
+  draw(coords: GeographicCoords, year: number, azimuthNormal: number) {
+    const canvas = this.canvas.nativeElement;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let date = new Date(year, 0, 1);
+    let day = 0;
+    while(date.getFullYear() == year) {
+      for(let hour: number = 0; hour < 24; hour++)
+      {
+        for(let minute: number = 0; minute < 60; minute++)
+        {
+          let dateTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
+          let sunPosition: CelestialCoords = this.sunPositionCalculatorService.getSunPosition(coords, dateTime);
+
+          ctx.fillStyle = this.getColor(sunPosition, azimuthNormal);
+          ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, this.minuteWidth, this.dayHeight);
+
+          if(minute === 0) {
+            ctx.fillStyle = 'red';
+            ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, 1, this.dayHeight);
+          }
+
+          if(date.getDate() === 1) {
+            ctx.fillStyle = 'red';
+            ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, this.minuteWidth, 1);
+          }
+        }
+      }
+
+      let newDate = new Date(date.valueOf());
+      date.setDate(newDate.getDate() + 1);
+      day++;
+    }
+  }
+
+  getColor(celestialCoords: CelestialCoords, azimuthHeading: number): string | CanvasGradient | CanvasPattern {
+    if (celestialCoords.elevation < 0) {
+      return 'black';
+    }
+
+    let normal = new Vector2(Math.cos(azimuthHeading * Math.PI / 180), Math.sin(azimuthHeading * Math.PI / 180));
+    let sunNormal = new Vector2(Math.cos(celestialCoords.azimuth * Math.PI / 180), Math.sin(celestialCoords.azimuth * Math.PI / 180));
+
+    let p = normal.x * sunNormal.x + normal.y * sunNormal.y;
+
+    if(p < 0) {
+      return 'lightblue';
+    }
+
+    if(celestialCoords.elevation < 10) return 'orange';
+    return 'yellow';
+  }
+}
+
+export class GeolocatedSunPosition {
+  coords?: GeographicCoords;
+  date?: Date;
+  sunPosition?: CelestialCoords;
 }
