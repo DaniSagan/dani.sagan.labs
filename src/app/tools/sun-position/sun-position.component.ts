@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Vector2 } from 'src/app/mathematics/geometry/vector2';
 import { GeolocationService } from 'src/app/shared/physics/geolocation.service';
 import { CelestialCoords, GeographicCoords, SunPositionCalculatorService } from 'src/app/shared/physics/sun-position-calculator-service.service';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-sun-position',
@@ -12,8 +13,9 @@ import { CelestialCoords, GeographicCoords, SunPositionCalculatorService } from 
   standalone: true,
   imports: [FormsModule, CommonModule]
 })
-export class SunPositionComponent implements OnInit {
+export class SunPositionComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+  //@ViewChild('map', { static: true }) map!: ElementRef<HTMLCanvasElement>;
 
   latitude: number = 0;
   longitude: number = 0;
@@ -29,14 +31,24 @@ export class SunPositionComponent implements OnInit {
   width: number = 24*60*this.minuteWidth;
   height: number = 365*this.dayHeight;
 
+  private map!: L.Map;
+  private markers: L.Marker[] = [];
+  private line: L.Polyline | null = null;
+  angle: number | null = null;
+
   constructor(
     private sunPositionCalculatorService: SunPositionCalculatorService,
-    private geolocationService: GeolocationService) {
+    private geolocationService: GeolocationService,
+    private elementRef: ElementRef) {
   }
 
   ngOnInit() {
     const date = new Date();
     this.year = date.getFullYear();
+  }
+
+  ngAfterViewInit(): void {
+    this.initMap();
   }
 
   calculateSunPosition(): void {
@@ -50,6 +62,7 @@ export class SunPositionComponent implements OnInit {
       next: (position) => {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+        this.map.flyTo([this.latitude, this.longitude], 19);
       },
       error: (error) => {
         console.error('Error getting geolocation:', error);
@@ -87,13 +100,14 @@ export class SunPositionComponent implements OnInit {
           ctx.fillStyle = this.getColor(sunPosition, azimuthNormal);
           ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, this.minuteWidth, this.dayHeight);
 
-          if(minute === 0) {
-            ctx.fillStyle = 'red';
+          let hourFillStyle = this.getHourFillStyle(hour, minute);
+          if(hourFillStyle !== null) {
+            ctx.fillStyle = hourFillStyle;
             ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, 1, this.dayHeight);
           }
 
           if(date.getDate() === 1) {
-            ctx.fillStyle = 'red';
+            ctx.fillStyle = '#ffffff';
             ctx.fillRect((hour * 60 + minute) * this.minuteWidth, day * this.dayHeight, this.minuteWidth, 1);
           }
         }
@@ -103,6 +117,8 @@ export class SunPositionComponent implements OnInit {
       date.setDate(newDate.getDate() + 1);
       day++;
     }
+
+
   }
 
   getColor(celestialCoords: CelestialCoords, azimuthHeading: number): string | CanvasGradient | CanvasPattern {
@@ -121,6 +137,75 @@ export class SunPositionComponent implements OnInit {
 
     if(celestialCoords.elevation < 10) return 'orange';
     return 'yellow';
+  }
+
+  getHourFillStyle(hour: number, minute: number): string | CanvasGradient | CanvasPattern | null {
+    if(minute !== 0) return null;
+    if(hour % 6 === 0) return '#ff0000';
+    if(hour % 3 === 0) return '#555555';
+    return '#111111';
+  }
+
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: [ 39.8282, -98.5795 ],
+      zoom: 3
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(this.map);
+
+    this.map.on('click', this.onMapClick.bind(this));
+  }
+
+  private onMapClick(e: L.LeafletMouseEvent): void {
+    if (this.markers.length >= 2) {
+      // Eliminar marcadores y línea previos si ya hay dos puntos
+      this.clearMarkersAndLine();
+    }
+
+    const marker = L.marker(e.latlng).addTo(this.map);
+    this.markers.push(marker);
+
+    if (this.markers.length === 2) {
+      // Calcular el ángulo entre los dos puntos cuando haya dos marcadores
+      this.calculateAngle();
+      // Dibujar línea entre los dos puntos
+      this.line = L.polyline([this.markers[0].getLatLng(), this.markers[1].getLatLng()], { color: 'blue' }).addTo(this.map);
+    }
+  }
+
+  private calculateAngle(): void {
+    const [pointA, pointB] = this.markers.map(marker => marker.getLatLng());
+
+    // Convertir latitudes y longitudes a radianes
+    const lat1 = pointA.lat * (Math.PI / 180);
+    const lat2 = pointB.lat * (Math.PI / 180);
+    const deltaLon = (pointB.lng - pointA.lng) * (Math.PI / 180);
+
+    // Cálculo del ángulo usando fórmula de navegación
+    const y = Math.sin(deltaLon) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(deltaLon);
+    const bearing = Math.atan2(y, x);
+
+    // Convertir de radianes a grados y ajustar el ángulo al rango 0-360
+    this.angle = (bearing * (180 / Math.PI) + 360) % 360;
+
+    this.latitude = pointA.lat;
+    this.longitude = pointA.lng;
+    this.orientation = this.angle + 90;
+  }
+
+  private clearMarkersAndLine(): void {
+    this.markers.forEach(marker => this.map.removeLayer(marker));
+    this.markers = [];
+    this.angle = null;
+    if(this.line !== null)
+    {
+      this.map.removeLayer(this.line);
+    }
   }
 }
 

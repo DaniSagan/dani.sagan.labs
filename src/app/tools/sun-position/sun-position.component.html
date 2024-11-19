@@ -11,25 +11,15 @@
     <label>Orientación (º):
       <input type="number" [(ngModel)]="orientation" name="orientation" required>
     </label>
-    <!-- <label>Fecha:
-      <input type="date" [(ngModel)]="date" name="date" required>
-    </label>
-    <br>
-    <label>Hora (HH:MM):
-      <input type="time" [(ngModel)]="time" name="time" required>
-    </label> -->
     <label>Año:
       <input type="number" [(ngModel)]="year" name="year" required>
     </label>
     <br>
     <button type="submit">Calcular Posición</button>
   </form>
-
-  <!-- <div *ngIf="elevation !== null && azimuth !== null">
-    <h3>Resultado:</h3>
-    <p>Elevación: {{ elevation | number: '1.2-2' }}°</p>
-    <p>Azimut: {{ azimuth | number: '1.2-2' }}°</p>
-  </div> -->
-
+  <div id="map"></div>
+  <div *ngIf="angle !== null">
+    <p>Ángulo con respecto al norte: {{ angle | number: '1.2-2' }}°</p>
+  </div>
   <canvas #canvas [width]="width" [height]="height"></canvas>
 </div>
