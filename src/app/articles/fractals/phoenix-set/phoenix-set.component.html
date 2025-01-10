@@ -1,0 +1,65 @@
+<h2>Conjunto de Phoenix</h2>
+<p>
+  El conjunto de Phoenix es un fractal matemático fascinante que se considera
+  una generalización del conjunto de Mandelbrot. Su fórmula introduce un
+  término de retroalimentación que depende de valores anteriores en la
+  secuencia iterativa. Esto genera patrones altamente intrincados y variados,
+  que a menudo se asemejan a plumas, filamentos o estructuras orgánicas.
+  Aunque menos conocido que el conjunto de Mandelbrot o Julia, el conjunto de
+  Phoenix se ha convertido en una herramienta popular para explorar los
+  sistemas dinámicos complejos.
+</p>
+<p>
+  En términos técnicos, el fractal se define mediante la ecuación:
+  <span class="formula">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c + kz<sub>n-1</sub></span>, donde <span class="formula">c</span>
+  es una constante compleja y <span class="formula">k</span> es un término de
+  retroalimentación. Este último parámetro tiene un impacto significativo en
+  la forma del fractal, permitiendo una amplia variedad de formas y
+  patrones.
+</p>
+<p>
+  En la visualización de abajo, puedes explorar el conjunto de Phoenix
+  ajustando los parámetros de retroalimentación y el número máximo de
+  iteraciones. Observa cómo pequeños cambios en estos valores pueden alterar
+  drásticamente el aspecto del fractal, lo que demuestra la sensibilidad de
+  los sistemas dinámicos a sus condiciones iniciales. Esta sensibilidad es
+  precisamente lo que hace que el conjunto de Phoenix sea un tema
+  cautivador para matemáticos y artistas visuales.
+</p>
+<div class="widget-container">
+  <div class="widget-title">Fractal del conjunto de Phoenix</div>
+  <div class="controls">
+    <table>
+      <tr>
+        <td></td>
+        <td><button (click)="moveUp()">🡩</button></td>
+        <td></td>
+        <td><button (click)="zoomIn()">➕</button></td>
+      </tr>
+      <tr>
+        <td><button (click)="moveLeft()">🡠</button></td>
+        <td></td>
+        <td><button (click)="moveRight()">🡢</button></td>
+        <td>zoom</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button (click)="moveDown()">🡣</button></td>
+        <td></td>
+        <td><button (click)="zoomOut()">➖</button></td>
+      </tr>
+    </table>
+    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
+    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
+  </div>
+  <canvas #canvas [width]="width" [height]="height"></canvas>
+  <div>
+    <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
+  </div>
+  <div>
+    <div class="widget-label">Escala: 2<sup>{{zoom}}</sup> px/unidad</div>
+  </div>
+  <div>
+    <div class="widget-label">Max. iteraciones: {{maxIterations}}</div>
+  </div>
+</div>

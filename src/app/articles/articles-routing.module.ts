@@ -20,6 +20,7 @@ import { HyperbolaArticleComponent } from './curves/hyperbola-article/hyperbola-
 import { EllipseArticleComponent } from './curves/ellipse-article/ellipse-article.component';
 import { AgnesiWitchArticleComponent } from './curves/agnesi-witch-article/agnesi-witch-article.component';
 import { BurningShipComponent } from './fractals/burning-ship/burning-ship.component';
+import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
       { path: DragonCurveComponent.route, component: DragonCurveComponent },
       { path: MandelbrotComponent.route, component: MandelbrotComponent },
       { path: BurningShipComponent.route, component: BurningShipComponent },
+      { path: PhoenixSetComponent.route, component: PhoenixSetComponent },
       { path: ApollonianSieveComponent.route, component: ApollonianSieveComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
       { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },
