@@ -1,0 +1,49 @@
+<h2>Fractal del barco en llamas</h2>
+<p>El fractal del Barco en Llamas, conocido en inglés como <em>Burning Ship Fractal</em>, es un fascinante conjunto fractal descubierto en 1988 por Michael Michelitsch y Otto E. Rössler. Este fractal es una variante del conjunto de Mandelbrot, pero su fórmula matemática introduce una transformación única que lo distingue visualmente. Su nombre proviene de su apariencia, que recuerda a un barco envuelto en llamas, especialmente cuando se colorea adecuadamente.</p>
+<h3>Definición Matemática</h3>
+<p>Al igual que el conjunto de Mandelbrot, el Barco en Llamas se genera iterando la fórmula:</p>
+<p><span class="formula">Z<sub>n+1</sub> = (|Re(Z<sub>n</sub>)| + i|Im(Z<sub>n</sub>)|)<sup>2</sup> + C</span></p>
+<p>Aquí, <span class="formula">Z</span> y <span class="formula">C</span> son números complejos. Lo que distingue al Barco en Llamas es la aplicación de valores absolutos a las partes real (<span class="formula">Re</span>) e imaginaria (<span class="formula">Im</span>) del número complejo antes de elevarlo al cuadrado. Esto provoca que el fractal tenga una simetría distinta y patrones que parecen ondular y chispear, simulando visualmente el fuego.</p>
+<h3>Características Visuales</h3>
+<p>El fractal del Barco en Llamas tiene una estructura rica y compleja. Su zona central tiene formas puntiagudas que recuerdan a las proas y mástiles de un barco, mientras que las áreas periféricas contienen patrones ondulados y texturizados que refuerzan la apariencia de llamas. Al aumentar el nivel de zoom, se descubren detalles intrincados que continúan replicándose en una escala más pequeña, como en otros fractales.</p>
+<h3>Importancia y Exploración</h3>
+<p>Este fractal es particularmente interesante en el campo de la matemática y la visualización computacional. Es menos conocido que otros fractales como el conjunto de Mandelbrot o el conjunto de Julia, pero ha ganado popularidad entre los entusiastas debido a su belleza y singularidad. Generar el Barco en Llamas requiere algoritmos eficientes para manejar la gran cantidad de iteraciones necesarias, especialmente en áreas de alto detalle.</p>
+<h3>Interactividad</h3>
+<p>Para comprender mejor este fractal, es ideal explorarlo a través de herramientas interactivas. A continuación, puedes experimentar con un componente que permite visualizar el Barco en Llamas, ajustando el número de iteraciones, el nivel de zoom y los límites de las coordenadas:</p>
+<div class="widget-container">
+  <div class="widget-title">Fractal del barco en llamas</div>
+  <div class="controls">
+    <table>
+      <tr>
+        <td></td>
+        <td><button (click)="moveUp()">🡩</button></td>
+        <td></td>
+        <td><button (click)="zoomIn()">➕</button></td>
+      </tr>
+      <tr>
+        <td><button (click)="moveLeft()">🡠</button></td>
+        <td></td>
+        <td><button (click)="moveRight()">🡢</button></td>
+        <td>zoom</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><button (click)="moveDown()">🡣</button></td>
+        <td></td>
+        <td><button (click)="zoomOut()">➖</button></td>
+      </tr>
+    </table>
+    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
+    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
+  </div>
+  <canvas #canvas [width]="width" [height]="height"></canvas>
+  <div>
+    <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
+  </div>
+  <div>
+    <div class="widget-label">Escala: 2<sup>{{scale}}</sup> px/unidad</div>
+  </div>
+  <div>
+    <div class="widget-label">Max. iteraciones: {{maxIterations}}</div>
+  </div>
+</div>

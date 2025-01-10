@@ -20,6 +20,7 @@ import { ParabolaArticleComponent } from 'src/app/articles/curves/parabola-artic
 import { HyperbolaArticleComponent } from 'src/app/articles/curves/hyperbola-article/hyperbola-article.component';
 import { EllipseArticleComponent } from 'src/app/articles/curves/ellipse-article/ellipse-article.component';
 import { AgnesiWitchArticleComponent } from 'src/app/articles/curves/agnesi-witch-article/agnesi-witch-article.component';
+import { BurningShipComponent } from 'src/app/articles/fractals/burning-ship/burning-ship.component';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: BarnsleyFernComponent.title, route: BarnsleyFernComponent.route },
     { name: DragonCurveComponent.title, route: DragonCurveComponent.route },
     { name: MandelbrotComponent.title, route: MandelbrotComponent.route },
+    { name: BurningShipComponent.title, route: BurningShipComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 
