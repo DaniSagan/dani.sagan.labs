@@ -31,28 +31,14 @@
   <div class="controls">
     <table>
       <tr>
-        <td></td>
-        <td><button (click)="moveUp()">🡩</button></td>
-        <td></td>
-        <td><button (click)="zoomIn()">➕</button></td>
-      </tr>
-      <tr>
-        <td><button (click)="moveLeft()">🡠</button></td>
-        <td></td>
-        <td><button (click)="moveRight()">🡢</button></td>
-        <td>zoom</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><button (click)="moveDown()">🡣</button></td>
-        <td></td>
-        <td><button (click)="zoomOut()">➖</button></td>
+        <td><app-move2d (movement)="onMovement($event)"/></td>
+        <td><app-zoom (zoom)="onZoom($event)"/></td>
       </tr>
     </table>
     <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
     <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
   </div>
-  <canvas #canvas [width]="width" [height]="height"></canvas>
+  <canvas #canvas [width]="width" [height]="height" (mousedown)="onCanvasMouseDown($event)"></canvas>
   <div>
     <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
   </div>

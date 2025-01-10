@@ -1,11 +1,16 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Complex } from 'src/app/shared/math/complex';
 import { Vec2 } from 'src/app/shared/math/vec2';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
+import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 
 @Component({
   selector: 'app-phoenix-set',
   standalone: true,
-  imports: [],
+  imports: [MatButtonModule, MatDividerModule, MatIconModule, Move2DComponent, ZoomComponent],
   templateUrl: './phoenix-set.component.html',
   styleUrl: './phoenix-set.component.css'
 })
@@ -150,6 +155,18 @@ export class PhoenixSetComponent {
     }
   }
 
+  onMovement(value: Vec2) {
+    if(value.x === 1) this.moveRight();
+    if(value.x === -1) this.moveLeft();
+    if(value.y === 1) this.moveUp();
+    if(value.y === -1) this.moveDown();
+  }
+
+  onZoom(value: number) {
+    if(value === 1) this.zoomIn();
+    if(value === -1) this.zoomOut();
+  }
+
   moveLeft(): void {
     this.centerX -= 200.0 / 2 ** this.zoom;
     this.updateValues();
@@ -192,5 +209,24 @@ export class PhoenixSetComponent {
 
   sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  onCanvasMouseDown(event: MouseEvent) {
+    const rect = this.canvas.nativeElement.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const scale = 2 ** this.zoom;
+    const dx = 1.0 / scale;
+    const dy = 1.0 / scale;
+    const center = {x: this.centerX, y: this.centerY};
+    const minX = center.x - this.width / (2 * scale);
+    const minY = center.y - this.height / (2 * scale);
+    let position: Vec2 = {x: minX + x * dx, y: minY + y * dy};
+    this.centerX = position.x;
+    this.centerY = position.y;
+    this.drawFractal({x: this.centerX, y: this.centerY},
+      2 ** this.zoom,
+      new Complex(this.cReal, this.cImag),
+      this.k);
   }
 }
