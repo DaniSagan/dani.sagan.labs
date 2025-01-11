@@ -1,0 +1,60 @@
+<h2>Fractal del conjunto de Newton</h2>
+<p>
+  El conjunto de Newton es un fractal generado a partir de la aplicación repetida del método de Newton para encontrar raíces de una función polinómica compleja. Este fractal se obtiene al iterar el método de Newton para cada punto en el plano complejo, determinando a qué raíz converge cada punto y cuántas iteraciones se necesitan para llegar a dicha raíz.
+</p>
+<p>
+  Este fractal es conocido no solo por su belleza visual, sino también por la forma en que revela la dinámica de la convergencia de Newton. Las regiones del plano complejo están coloreadas según la raíz a la que convergen, y la intensidad del color está determinada por el número de iteraciones necesarias para alcanzar dicha raíz.
+</p>
+<p>
+  El método de Newton es una herramienta matemática fundamental utilizada para resolver ecuaciones no lineales. Sin embargo, su implementación en el plano complejo da lugar a patrones fractales que destacan por su intrincada estructura. Estos patrones muestran claramente las regiones de rápida convergencia, así como áreas donde el método se comporta de manera más caótica.
+</p>
+<p>
+  En la visualización de abajo, puedes explorar el conjunto de Newton para una función cúbica típica, con raíces distribuidas uniformemente en el plano complejo. Observa cómo los patrones varían con diferentes parámetros y cómo incluso pequeños cambios en las condiciones iniciales pueden conducir a resultados completamente diferentes.
+</p>
+<div class="widget-container">
+  <div class="widget-title">Fractal del conjunto de Newton</div>
+  <div class="controls">
+    <table>
+      <tr>
+        <td><app-move2d (movement)="onMovement($event)"/></td>
+        <td><app-zoom (zoom)="onZoom($event)"/></td>
+        <!-- <td>
+          <div class="widget-control-group">
+            <form (ngSubmit)="update()">
+              <div>
+                <label>k:
+                  <input type="number" [(ngModel)]="k" name="k" required>
+                </label>
+              </div>
+              <div>
+                <label>c (real):
+                  <input type="number" [(ngModel)]="cReal" name="cReal" required>
+                </label>
+              </div>
+              <div>
+                <label>c (imag):
+                  <input type="number" [(ngModel)]="cImag" name="cImag" required>
+                </label>
+              </div>
+              <div>
+                <button type="submit">Actualizar</button>
+              </div>
+            </form>
+          </div>
+        </td> -->
+      </tr>
+    </table>
+    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
+    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
+  </div>
+  <canvas #canvas [width]="width" [height]="height" (mousedown)="onCanvasMouseDown($event)"></canvas>
+  <div>
+    <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
+  </div>
+  <div>
+    <div class="widget-label">Escala: 2<sup>{{zoom}}</sup> px/unidad</div>
+  </div>
+  <div>
+    <div class="widget-label">Max. iteraciones: {{maxIterations}}</div>
+  </div>
+</div>

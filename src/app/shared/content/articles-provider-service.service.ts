@@ -22,6 +22,7 @@ import { EllipseArticleComponent } from 'src/app/articles/curves/ellipse-article
 import { AgnesiWitchArticleComponent } from 'src/app/articles/curves/agnesi-witch-article/agnesi-witch-article.component';
 import { BurningShipComponent } from 'src/app/articles/fractals/burning-ship/burning-ship.component';
 import { PhoenixSetComponent } from 'src/app/articles/fractals/phoenix-set/phoenix-set.component';
+import { NewtonComponent } from 'src/app/articles/fractals/newton/newton.component';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: MandelbrotComponent.title, route: MandelbrotComponent.route },
     { name: BurningShipComponent.title, route: BurningShipComponent.route },
     { name: PhoenixSetComponent.title, route: PhoenixSetComponent.route },
+    { name: NewtonComponent.title, route: NewtonComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 

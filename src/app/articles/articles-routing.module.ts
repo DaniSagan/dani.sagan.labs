@@ -21,6 +21,7 @@ import { EllipseArticleComponent } from './curves/ellipse-article/ellipse-articl
 import { AgnesiWitchArticleComponent } from './curves/agnesi-witch-article/agnesi-witch-article.component';
 import { BurningShipComponent } from './fractals/burning-ship/burning-ship.component';
 import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.component';
+import { NewtonComponent } from './fractals/newton/newton.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: MandelbrotComponent.route, component: MandelbrotComponent },
       { path: BurningShipComponent.route, component: BurningShipComponent },
       { path: PhoenixSetComponent.route, component: PhoenixSetComponent },
+      { path: NewtonComponent.route, component: NewtonComponent },
       { path: ApollonianSieveComponent.route, component: ApollonianSieveComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
       { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },
