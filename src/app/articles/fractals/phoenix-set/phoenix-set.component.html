@@ -34,26 +34,28 @@
         <td><app-move2d (movement)="onMovement($event)"/></td>
         <td><app-zoom (zoom)="onZoom($event)"/></td>
         <td>
-          <form (ngSubmit)="update()">
-            <div>
-              <label>k:
-                <input type="number" [(ngModel)]="k" name="k" required>
-              </label>
-            </div>
-            <div>
-              <label>c (real):
-                <input type="number" [(ngModel)]="cReal" name="cReal" required>
-              </label>
-            </div>
-            <div>
-              <label>c (imag):
-                <input type="number" [(ngModel)]="cImag" name="cImag" required>
-              </label>
-            </div>
-            <div>
-              <button type="submit">Actualizar</button>
-            </div>
-          </form>
+          <div class="widget-control-group">
+            <form (ngSubmit)="update()">
+              <div>
+                <label>k:
+                  <input type="number" [(ngModel)]="k" name="k" required>
+                </label>
+              </div>
+              <div>
+                <label>c (real):
+                  <input type="number" [(ngModel)]="cReal" name="cReal" required>
+                </label>
+              </div>
+              <div>
+                <label>c (imag):
+                  <input type="number" [(ngModel)]="cImag" name="cImag" required>
+                </label>
+              </div>
+              <div>
+                <button type="submit">Actualizar</button>
+              </div>
+            </form>
+          </div>
         </td>
       </tr>
     </table>

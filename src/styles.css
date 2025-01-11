@@ -68,6 +68,11 @@ p {
   margin-right: 5px;
 }
 
+.widget-control-group {
+  border: 1px solid black;
+  padding: 10px;
+}
+
 span.formula {
   font-family: 'Times New Roman', Times, serif;
   font-size: larger;
