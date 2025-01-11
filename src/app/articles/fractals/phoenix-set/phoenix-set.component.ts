@@ -4,13 +4,16 @@ import { Vec2 } from 'src/app/shared/math/vec2';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
 import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 
 @Component({
   selector: 'app-phoenix-set',
   standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule, Move2DComponent, ZoomComponent],
+  imports: [MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, Move2DComponent, ZoomComponent],
   templateUrl: './phoenix-set.component.html',
   styleUrl: './phoenix-set.component.css'
 })
@@ -92,9 +95,9 @@ export class PhoenixSetComponent {
   }
 
   getColor(iteration: number): [number, number, number] {
-    if (iteration === this.maxIterations) return [0, 0, 0];
+    if (iteration === this.maxIterations) return [255, 255, 255];
     const t = iteration / this.maxIterations;
-    return [Math.floor(255 * t), Math.floor(255 * (1 - t)), Math.floor(255 * Math.sin(t * Math.PI))];
+    return [Math.floor(255 * t), Math.floor(255 * (1 - t)), Math.floor(255 * Math.sin(2 * t * Math.PI))];
   }
 
   /**
@@ -224,6 +227,13 @@ export class PhoenixSetComponent {
     let position: Vec2 = {x: minX + x * dx, y: minY + y * dy};
     this.centerX = position.x;
     this.centerY = position.y;
+    this.drawFractal({x: this.centerX, y: this.centerY},
+      2 ** this.zoom,
+      new Complex(this.cReal, this.cImag),
+      this.k);
+  }
+
+  update() {
     this.drawFractal({x: this.centerX, y: this.centerY},
       2 ** this.zoom,
       new Complex(this.cReal, this.cImag),
