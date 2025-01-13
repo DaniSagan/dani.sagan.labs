@@ -15,8 +15,10 @@ export class Complex {
     return Math.sqrt(this.absSquared());
   }
 
-  static sum(c1: Complex, c2: Complex): Complex {
-    return new Complex(c1.real + c2.real, c1.imaginary + c2.imaginary);
+  static sum(c1: Complex, c2: Complex, ...args: Complex[]): Complex {
+    return new Complex(
+      c1.real + c2.real + args.reduce((sum, current) => sum + current.real, 0),
+      c1.imaginary + c2.imaginary + args.reduce((sum, current) => sum + current.imaginary, 0));
   }
 
   static diff(c1: Complex, c2: Complex): Complex {
@@ -27,8 +29,11 @@ export class Complex {
     return new Complex(c.real * c.real - c.imaginary * c.imaginary, 2 * c.real * c.imaginary);
   }
 
-  static multiply(c1: Complex, c2: Complex): Complex {
-    return new Complex(c1.real*c2.real - c1.imaginary*c2.imaginary, c1.real*c2.imaginary + c1.imaginary*c2.real);
+  static multiply(lhs: Complex | number, rhs: Complex): Complex {
+    if(typeof lhs === "number") {
+      return new Complex(lhs * rhs.real, lhs * rhs.imaginary);
+    }
+    return new Complex(lhs.real*rhs.real - lhs.imaginary*rhs.imaginary, lhs.real*rhs.imaginary + lhs.imaginary*rhs.real);
   }
 
   static div(c1: Complex, c2: Complex): Complex {
@@ -42,5 +47,13 @@ export class Complex {
       res = Complex.multiply(res, c);
     }
     return res;
+  }
+
+  static fromReal(value: number) {
+    return new Complex(value, 0);
+  }
+
+  static fromImaginary(value: number) {
+    return new Complex(0, value);
   }
 }

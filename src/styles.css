@@ -55,6 +55,13 @@ p {
   border: 1px solid black;
 }
 
+.widget-container select {
+  margin: 5px;
+  padding: 5px;
+  background-color: #ffffff;
+  border: 1px solid black;
+}
+
 .widget-title {
   font-variant: small-caps;
   font-weight: bold;

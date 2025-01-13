@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class ZoomComponent {
   @Output() zoom = new EventEmitter<number>();
+  @Output() reset = new EventEmitter();
 
   zoomIn() {
     this.zoom.emit(1);
@@ -19,5 +20,9 @@ export class ZoomComponent {
 
   zoomOut() {
     this.zoom.emit(-1);
+  }
+
+  zoomReset() {
+    this.reset.emit();
   }
 }

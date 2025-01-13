@@ -1,17 +1,21 @@
 <table>
   <tr>
     <td>
-      <button mat-icon-button (click)="zoomIn()">
+      <button mat-icon-button title="Acercar" (click)="zoomIn()">
         <mat-icon>zoom_in</mat-icon>
       </button>
     </td>
   </tr>
   <tr>
-    <td>zoom</td>
+    <td>
+      <button mat-icon-button title="Restablecer vista" (click)="zoomReset()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </td>
   </tr>
   <tr>
     <td>
-      <button mat-icon-button (click)="zoomOut()">
+      <button mat-icon-button title="Alejar" (click)="zoomOut()">
         <mat-icon>zoom_out</mat-icon>
       </button>
     </td>

@@ -17,31 +17,18 @@
     <table>
       <tr>
         <td><app-move2d (movement)="onMovement($event)"/></td>
-        <td><app-zoom (zoom)="onZoom($event)"/></td>
-        <!-- <td>
-          <div class="widget-control-group">
-            <form (ngSubmit)="update()">
-              <div>
-                <label>k:
-                  <input type="number" [(ngModel)]="k" name="k" required>
-                </label>
-              </div>
-              <div>
-                <label>c (real):
-                  <input type="number" [(ngModel)]="cReal" name="cReal" required>
-                </label>
-              </div>
-              <div>
-                <label>c (imag):
-                  <input type="number" [(ngModel)]="cImag" name="cImag" required>
-                </label>
-              </div>
-              <div>
-                <button type="submit">Actualizar</button>
-              </div>
-            </form>
-          </div>
-        </td> -->
+        <td><app-zoom (zoom)="onZoom($event)" (reset)="onZoomReset()"/></td>
+        <td>
+          <label>Función:
+            <select (change)="onFunctionChanged($event)">
+              <option value="z^3 - 1">z^3 - 1</option>
+              <option value="z^4 - 1">z^4 - 1</option>
+              <option value="z^5 - 1">z^5 - 1</option>
+              <option value="z^4 - 3z^2 - 4">z^4 - 3z^2 - 4</option>
+              <option value="z^4 + z^3 - 5z^2 + z - 6">z^4 + z^3 - 5z^2 + z - 6</option>
+            </select>
+          </label>
+        </td>
       </tr>
     </table>
     <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>

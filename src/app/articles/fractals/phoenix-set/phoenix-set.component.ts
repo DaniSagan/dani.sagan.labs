@@ -170,6 +170,13 @@ export class PhoenixSetComponent {
     if(value === -1) this.zoomOut();
   }
 
+  onZoomReset(): void {
+    this.zoom = 8;
+    this.centerX = 0;
+    this.centerY = 0;
+    this.updateValues();
+  }
+
   moveLeft(): void {
     this.centerX -= 200.0 / 2 ** this.zoom;
     this.updateValues();

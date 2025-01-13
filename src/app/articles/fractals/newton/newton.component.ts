@@ -3,6 +3,7 @@ import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
 import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 import { Vec2 } from 'src/app/shared/math/vec2';
 import { Complex } from 'src/app/shared/math/complex';
+import { ComplexFunction } from './complex-function';
 
 @Component({
   selector: 'app-newton',
@@ -27,23 +28,57 @@ export class NewtonComponent {
 
   isDrawing = false;
 
-  roots = [
-    new Complex(1, 0),
-    new Complex(-0.5, Math.sqrt(3) / 2),
-    new Complex(-0.5, -Math.sqrt(3) / 2)
-  ];
-
   colors: [number, number, number][] = [
     [255, 0, 0],
     [0, 255, 0],
-    [0, 0, 255]
+    [0, 0, 255],
+    [255, 255, 0],
+    [255, 0, 255],
+    [0, 255, 255]
   ];
 
-  ngAfterViewInit() {
-    this.drawFractal({x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+  functions: Record<string, ComplexFunction> = {};
+  selectedFunction = "z^3 - 1";
+
+  constructor() {
+    this.functions["z^3 - 1"] = new ComplexFunction(
+      (z: Complex) => { return Complex.diff(Complex.pow(z, 3), Complex.fromReal(1)); },
+      (z: Complex) => { return Complex.multiply(3, Complex.pow(z, 2)); },
+      [ new Complex(1, 0), new Complex(-0.5, Math.sqrt(3) / 2), new Complex(-0.5, -Math.sqrt(3) / 2) ]
+    );
+    this.functions["z^4 - 1"] = new ComplexFunction(
+      (z: Complex) => { return Complex.diff(Complex.pow(z, 4), Complex.fromReal(1)); },
+      (z: Complex) => { return Complex.multiply(4, Complex.pow(z, 3)); },
+      [ new Complex(1, 0), new Complex(0, 1), new Complex(-1, 0), new Complex(0, -1) ]
+    );
+    this.functions["z^5 - 1"] = new ComplexFunction(
+      (z: Complex) => { return Complex.diff(Complex.pow(z, 5), Complex.fromReal(1)); },
+      (z: Complex) => { return Complex.multiply(5, Complex.pow(z, 4)); },
+      [
+        new Complex(1, 0),
+        new Complex(Math.cos(2*Math.PI/5), Math.sin(2*Math.PI/5)),
+        new Complex(Math.cos(4*Math.PI/5), Math.sin(4*Math.PI/5)),
+        new Complex(Math.cos(6*Math.PI/5), Math.sin(6*Math.PI/5)),
+        new Complex(Math.cos(8*Math.PI/5), Math.sin(8*Math.PI/5))
+      ]
+    );
+    this.functions["z^4 - 3z^2 - 4"] = new ComplexFunction(
+      (z: Complex) => { return Complex.sum(Complex.pow(z, 4), Complex.multiply(-3, Complex.pow(z, 2)), Complex.fromReal(-4)); },
+      (z: Complex) => { return Complex.sum(Complex.multiply(4, Complex.pow(z, 3)), Complex.multiply(-6, z)); },
+      [ Complex.fromReal(-2), Complex.fromReal(2), Complex.fromImaginary(-1), Complex.fromImaginary(1) ]
+    );
+    this.functions["z^4 + z^3 - 5z^2 + z - 6"] = new ComplexFunction(
+      (z: Complex) => { return Complex.sum(Complex.pow(z, 4), Complex.pow(z, 3), Complex.multiply(-5, Complex.pow(z, 2)), z, Complex.fromReal(-6)); },
+      (z: Complex) => { return Complex.sum(Complex.multiply(4, Complex.pow(z, 3)), Complex.multiply(3, Complex.pow(z, 2)), Complex.multiply(-10, z), Complex.fromReal(1)); },
+      [ Complex.fromReal(2), Complex.fromReal(-3), Complex.fromImaginary(-1), Complex.fromImaginary(1) ]
+    );
   }
 
-  async drawFractal(center: Vec2, scale: number) {
+  ngAfterViewInit() {
+    this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+  }
+
+  async drawFractal(fn: ComplexFunction, center: Vec2, scale: number) {
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -64,7 +99,7 @@ export class NewtonComponent {
       if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
       for (let pixelY = 0; pixelY < height; pixelY++) {
         let z = new Complex(minX + pixelX * dx, minY + pixelY * dy);
-        const solution: NewtonSolution = this.newtonMethod(z);
+        const solution: NewtonSolution = this.newtonMethod(this.functions[this.selectedFunction], z);
         const color = this.getColor(solution);
         const index = (pixelX + pixelY * width) * 4;
         data[index] = color[0];
@@ -94,6 +129,10 @@ export class NewtonComponent {
   onZoom(value: number) {
     if(value === 1) this.zoomIn();
     if(value === -1) this.zoomOut();
+  }
+
+  onZoomReset() {
+    this.zoomReset();
   }
 
   moveLeft(): void {
@@ -126,6 +165,13 @@ export class NewtonComponent {
     this.updateValues();
   }
 
+  zoomReset(): void {
+    this.zoom = 8;
+    this.centerX = 0;
+    this.centerY = 0;
+    this.updateValues();
+  }
+
   incrementMaxIterations(): void {
     this.maxIterations *= 2;
     this.updateValues();
@@ -142,10 +188,10 @@ export class NewtonComponent {
 
   updateValues() {
     if (!this.isDrawing) {
-      this.drawFractal({x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+      this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
     } else {
       this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal({x: this.centerX, y: this.centerY}, 2 ** this.zoom), 100); // Restart after a slight delay.
+      setTimeout(() => this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom), 100); // Restart after a slight delay.
     }
   }
 
@@ -162,18 +208,16 @@ export class NewtonComponent {
     let position: Vec2 = {x: minX + x * dx, y: minY + y * dy};
     this.centerX = position.x;
     this.centerY = position.y;
-    this.drawFractal({x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+    this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
   }
 
-  fn(z: Complex) {
-    return Complex.sum(Complex.pow(z, 3), new Complex(-1, 0));
+  onFunctionChanged(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    this.selectedFunction = select.value;
+    this.updateValues();
   }
 
-  derivative(z: Complex) {
-    return Complex.multiply(Complex.pow(z, 2), new Complex(3, 0));
-  }
-
-  private newtonMethod(z: Complex): NewtonSolution {
+  private newtonMethod(fn: ComplexFunction, z: Complex): NewtonSolution {
     let iteration = 0;
     let zz = new Complex(z.real, z.imaginary);
     while (iteration < this.maxIterations) {
@@ -181,13 +225,13 @@ export class NewtonComponent {
       if (denom === 0) break;
 
       // Newton's method: z = z - f(z) / f'(z)
-      zz = Complex.diff(zz, Complex.div(this.fn(zz), this.derivative(zz)));
+      zz = Complex.diff(zz, Complex.div(fn.fn(zz), fn.derivative(zz)));
 
       const tolerance = 0.000001;
 
-      for (let i = 0; i < this.roots.length; i++)
+      for (let i = 0; i < fn.roots.length; i++)
       {
-        let difference = Complex.diff(zz, this.roots[i]);
+        let difference = Complex.diff(zz, fn.roots[i]);
 
         //If the current iteration is close enough to a root, color the pixel.
         if (difference.absSquared() < tolerance) {
@@ -200,22 +244,6 @@ export class NewtonComponent {
 
     return {iterations: iteration, color: [0, 0, 0]};
   }
-
-  // private findClosestRoot(x: number, y: number) {
-  //   let minDist = Infinity;
-  //   let index = 0;
-
-  //   for (let i = 0; i < this.roots.length; i++) {
-  //     const root = this.roots[i];
-  //     const dist = Math.sqrt((x - root.real) ** 2 + (y - root.imaginary) ** 2);
-  //     if (dist < minDist) {
-  //       minDist = dist;
-  //       index = i;
-  //     }
-  //   }
-
-  //   return index;
-  // }
 
   private getColor(solution: NewtonSolution) {
     const t = solution.iterations / this.maxIterations;
