@@ -1,0 +1,111 @@
+<h2>Aplicación Logística</h2>
+<p>
+  La aplicación logística es un modelo matemático utilizado ampliamente en
+  estudios de dinámica poblacional, teoría del caos y sistemas no lineales.
+  Fue popularizada por el matemático Robert May en los años 70 y se representa
+  mediante la siguiente ecuación iterativa:
+</p>
+<pre>
+  x<sub>n+1</sub> = r * x<sub>n</sub> * (1 - x<sub>n</sub>)
+</pre>
+<p>
+  En esta ecuación, <em>x<sub>n</sub></em> representa la población normalizada (es decir,
+  un valor entre 0 y 1) en la n-ésima iteración, y <em>r</em> es un parámetro de control
+  que determina la dinámica del sistema. La aplicación logística es especialmente
+  interesante porque exhibe un espectro completo de comportamientos, desde
+  estabilidad hasta caos, dependiendo del valor de <em>r</em>.
+</p>
+<h2>Comportamiento del Modelo</h2>
+<p>
+  A medida que el valor de <em>r</em> aumenta, la aplicación logística muestra diferentes
+  tipos de dinámica:
+</p>
+<ul>
+  <li>
+    Para valores de <em>r</em> entre 0 y 1, la población eventualmente desaparece
+    (es decir, <em>x<sub>n</sub> = 0</em> para <em>n</em> suficientemente grande).
+  </li>
+  <li>
+    Entre <em>r = 1</em> y <em>r = 3</em>, el sistema converge a un valor fijo no
+    nulo, lo que representa una población estable.
+  </li>
+  <li>
+    Para valores entre <em>r = 3</em> y aproximadamente <em>r = 3.57</em>, el sistema
+    experimenta bifurcaciones, pasando de un punto fijo a un ciclo de dos,
+    luego cuatro, luego ocho y así sucesivamente.
+  </li>
+  <li>
+    Más allá de <em>r = 3.57</em>, el sistema entra en una región caótica donde los
+    valores de <em>x<sub>n</sub></em> parecen impredecibles y altamente sensibles a las
+    condiciones iniciales.
+  </li>
+</ul>
+<h3>El Diagrama de Bifurcación</h3>
+<p>
+  Una de las formas más visuales de entender este comportamiento es a través del
+  diagrama de bifurcación. Este gráfico muestra los valores asintóticos de
+  <em>x<sub>n</sub></em> en función del parámetro <em>r</em>. A medida que <em>r</em>
+  aumenta, se pueden observar claramente las bifurcaciones y el paso al caos.
+</p>
+<p>
+  Este diagrama es una herramienta poderosa para estudiar la transición del orden
+  al caos en sistemas dinámicos y sirve como base para muchas otras aplicaciones
+  en matemáticas, física y biología.
+</p>
+<h3>Experimenta con el Modelo</h3>
+<p>
+  A continuación, puedes visualizar el diagrama de bifurcación de la aplicación
+  logística. Usa los controles para modificar los límites del parámetro <em>r</em> y
+  observa cómo cambia el comportamiento del sistema.
+</p>
+
+<!-- <canvas #canvas width="800" height="600" style="border: 1px solid black;"></canvas> -->
+
+
+<div class="widget-container">
+  <div class="widget-title">Fractal del conjunto de Phoenix</div>
+  <div class="controls">
+    <table>
+      <tr>
+        <td><app-move2d (movement)="onMovement($event)"/></td>
+        <td><app-zoom (zoom)="onZoom($event)" (reset)="onZoomReset()"/></td>
+        <td>
+          <div class="widget-control-group">
+            <form (ngSubmit)="update()">
+              <div>
+                <label>r min:
+                  <input type="number" [(ngModel)]="rMin" name="rMin" required>
+                </label>
+              </div>
+              <div>
+                <label>r max:
+                  <input type="number" [(ngModel)]="rMax" name="cRrMaxeal" required>
+                </label>
+              </div>
+              <div>
+                <label>yMin:
+                  <input type="number" [(ngModel)]="yMin" name="yMin" required>
+                </label>
+              </div>
+              <div>
+                <label>yMax:
+                  <input type="number" [(ngModel)]="yMax" name="yMax" required>
+                </label>
+              </div>
+              <div>
+                <label>yMax:
+                  <input type="number" [(ngModel)]="maxIterations" name="maxIterations" required>
+                </label>
+              </div>
+              <div>
+                <button type="submit">Actualizar</button>
+              </div>
+            </form>
+          </div>
+        </td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+  <canvas #canvas [width]="width" [height]="height"></canvas>
+</div>

@@ -22,6 +22,7 @@ import { AgnesiWitchArticleComponent } from './curves/agnesi-witch-article/agnes
 import { BurningShipComponent } from './fractals/burning-ship/burning-ship.component';
 import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.component';
 import { NewtonComponent } from './fractals/newton/newton.component';
+import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifurcation-diagram.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
       { path: BurningShipComponent.route, component: BurningShipComponent },
       { path: PhoenixSetComponent.route, component: PhoenixSetComponent },
       { path: NewtonComponent.route, component: NewtonComponent },
+      { path: BifurcationDiagramComponent.route, component: BifurcationDiagramComponent },
       { path: ApollonianSieveComponent.route, component: ApollonianSieveComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
       { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },

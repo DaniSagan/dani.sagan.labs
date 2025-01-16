@@ -23,6 +23,7 @@ import { AgnesiWitchArticleComponent } from 'src/app/articles/curves/agnesi-witc
 import { BurningShipComponent } from 'src/app/articles/fractals/burning-ship/burning-ship.component';
 import { PhoenixSetComponent } from 'src/app/articles/fractals/phoenix-set/phoenix-set.component';
 import { NewtonComponent } from 'src/app/articles/fractals/newton/newton.component';
+import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: BurningShipComponent.title, route: BurningShipComponent.route },
     { name: PhoenixSetComponent.title, route: PhoenixSetComponent.route },
     { name: NewtonComponent.title, route: NewtonComponent.route },
+    { name: BifurcationDiagramComponent.title, route: BifurcationDiagramComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 
