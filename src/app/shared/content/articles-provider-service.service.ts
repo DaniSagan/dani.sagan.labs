@@ -24,6 +24,7 @@ import { BurningShipComponent } from 'src/app/articles/fractals/burning-ship/bur
 import { PhoenixSetComponent } from 'src/app/articles/fractals/phoenix-set/phoenix-set.component';
 import { NewtonComponent } from 'src/app/articles/fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component';
+import { PercolationDiagramComponent } from 'src/app/articles/probability/percolation-diagram/percolation-diagram.component';
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +67,11 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: HyperbolaArticleComponent.title, route: HyperbolaArticleComponent.route },
     { name: EllipseArticleComponent.title, route: EllipseArticleComponent.route },
     { name: AgnesiWitchArticleComponent.title, route: AgnesiWitchArticleComponent.route }
-  ]
+  ];
+
+  probability: NavbarItem[] = [
+    { name: PercolationDiagramComponent.title, route: PercolationDiagramComponent.route }
+  ];
 
   others: NavbarItem[] =
   [
@@ -83,6 +88,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Curvas', items: this.curves },
+      { name: 'Probabilidad', items: this.probability },
       { name: 'Otros', items: this.others }
     ];
     return result;

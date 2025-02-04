@@ -1,0 +1,5 @@
+<div class="controls">
+  <label>Probabilidad de Percolación: {{ probability().toFixed(2) }}</label>
+  <input type="range" min="0" max="1" step="0.01" [value]="probability()" (input)="updateProbability($event)">
+</div>
+<canvas #canvas width="500" height="500"></canvas>

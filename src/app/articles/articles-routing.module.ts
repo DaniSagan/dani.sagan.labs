@@ -23,6 +23,7 @@ import { BurningShipComponent } from './fractals/burning-ship/burning-ship.compo
 import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.component';
 import { NewtonComponent } from './fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifurcation-diagram.component';
+import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 
 const routes: Routes = [
   {
@@ -51,7 +52,8 @@ const routes: Routes = [
       { path: EllipseArticleComponent.route, component: EllipseArticleComponent },
       { path: AgnesiWitchArticleComponent.route, component: AgnesiWitchArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
-      { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent }
+      { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
+      { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent }
     ]
   }
 ];

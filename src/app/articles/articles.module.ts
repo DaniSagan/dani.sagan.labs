@@ -25,6 +25,7 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
+import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 
 @NgModule({
   imports: [
@@ -51,7 +52,8 @@ import { ParabolaArticleComponent } from './curves/parabola-article/parabola-art
     OctahedronViewerComponent,
     TetrahedronViewerComponent,
     ArithmeticDerivativeArticleComponent,
-    ParabolaArticleComponent
+    ParabolaArticleComponent,
+    PercolationDiagramComponent
   ],
 })
 export class ArticlesModule {}
