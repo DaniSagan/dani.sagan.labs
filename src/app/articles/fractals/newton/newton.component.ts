@@ -26,7 +26,7 @@ export class NewtonComponent {
   centerX: number = 0;
   centerY: number = 0;
 
-  isDrawing = false;
+  isDrawing: boolean = false;
 
   colors: [number, number, number][] = [
     [255, 0, 0],

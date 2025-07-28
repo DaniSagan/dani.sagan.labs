@@ -1,5 +1,37 @@
-<div class="controls">
-  <label>Probabilidad de Percolación: {{ probability().toFixed(2) }}</label>
-  <input type="range" min="0" max="1" step="0.01" [value]="probability()" (input)="updateProbability($event)">
+<h2>Diagrama de Percolación y sus Matemáticas</h2>
+
+<p>El diagrama de percolación es una representación visual del fenómeno de percolación, un concepto clave en la física estadística, la teoría de redes y la ciencia de materiales. Se utiliza para describir cómo los elementos de un sistema se conectan y forman estructuras extendidas a medida que se incrementa una probabilidad de conexión.</p>
+
+<h3>Concepto de Percolación</h3>
+<p>La percolación es el proceso en el cual una sustancia fluye a través de una estructura porosa o una red. Matemáticamente, se estudia en modelos probabilísticos en los que cada enlace o nodo de una red tiene una probabilidad <em>p</em> de estar activo. Dependiendo del valor de <em>p</em>, los elementos conectados pueden formar componentes pequeños aislados o una gran estructura conectada que abarca todo el sistema.</p>
+
+<h3>Modelo de Percolación</h3>
+<p>Existen dos modelos principales de percolación:</p>
+<ul>
+    <li><strong>Percolación de enlaces:</strong> Se parte de una red de nodos en la que cada conexión entre ellos está activa con una probabilidad <em>p</em>.</li>
+    <li><strong>Percolación de sitios:</strong> Cada nodo de la red está ocupado con probabilidad <em>p</em> y vacío con probabilidad <em>1 - p</em>, y solo los nodos ocupados pueden formar parte de una estructura conectada.</li>
+</ul>
+
+<h3>Transición de Percolación</h3>
+<p>A medida que se incrementa la probabilidad <em>p</em>, el sistema pasa de estar compuesto por pequeños grupos desconectados a formar una estructura globalmente conectada. Existe un umbral crítico <em>p<sub>c</sub></em> por encima del cual emerge una componente gigante que conecta una parte significativa del sistema. Este fenómeno es una transición de fase, análoga a transiciones en sistemas físicos como la condensación o la magnetización.</p>
+
+<h3>Aplicaciones</h3>
+<p>La teoría de percolación tiene aplicaciones en diversas áreas, incluyendo:</p>
+<ul>
+    <li>Modelado de propagación de epidemias en poblaciones.</li>
+    <li>Conductividad en materiales porosos.</li>
+    <li>Formación de redes sociales y comunicación en Internet.</li>
+    <li>Distribución de incendios en bosques.</li>
+</ul>
+
+<h3>Visualización y Simulación</h3>
+<p>Para ilustrar el comportamiento de la percolación, en el siguiente componente interactivo puedes ajustar la probabilidad <em>p</em> y ver cómo se forman diferentes estructuras conectadas en un diagrama de percolación de enlaces.</p>
+
+<div class="widget-container">
+  <div class="widget-title">Diagrama de percolación</div>
+  <div class="controls">
+    <label>Probabilidad de Percolación: {{ probability | number:'1.2-2' }}</label>
+    <input type="range" min="0" max="1" step="0.01" [(ngModel)]="probability" (input)="updateClusters()">
+  </div>
+  <canvas #canvas width="800" height="800"></canvas>
 </div>
-<canvas #canvas width="500" height="500"></canvas>
