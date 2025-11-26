@@ -55,7 +55,8 @@ const routes: Routes = [
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
-      { path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent }
+      //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
+      { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) }
     ]
   }
 ];

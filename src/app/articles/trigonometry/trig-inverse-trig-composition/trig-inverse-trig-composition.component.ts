@@ -12,9 +12,9 @@ export class TrigInverseTrigCompositionComponent {
   static title: string = 'Composición de funciones trigonométricas y sus inversas';
   static route: string = 'trig-inverse-trig-composition';
 
-  sinArcsin: string = '$$ \\sin{\\left(\\arcsin{x}\\right)} = 1 $$';
-  cosArccos: string = '$$ \\cos{\\left(\\arccos{x}\\right)} = 1 $$';
-  tgArctg: string = '$$ \\tan{\\left(\\arctan{x}\\right)} = 1 $$';
+  sinArcsin: string = '$$ \\sin{\\left(\\arcsin{x}\\right)} = x $$';
+  cosArccos: string = '$$ \\cos{\\left(\\arccos{x}\\right)} = x $$';
+  tgArctg: string = '$$ \\tan{\\left(\\arctan{x}\\right)} = x $$';
 
   sinArccos: string = '$$ \\sin{\\left(\\arccos{x}\\right)} = \\sqrt{1 - x^2} $$';
   cosArcsin: string = '$$ \\cos{\\left(\\arcsin{x}\\right)} = \\sqrt{1 - x^2} $$';
