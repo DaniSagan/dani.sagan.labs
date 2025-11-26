@@ -1,0 +1,32 @@
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: center;
+    position: relative;
+}
+
+.diagonal-cell {
+    width: 120px;
+    height: 60px;
+    padding: 0;
+    background:
+        linear-gradient(to top right, transparent 49%, #444 50%, transparent 51%);
+}
+
+.diagonal-top {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 12px;
+}
+
+.diagonal-bottom {
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    font-size: 12px;
+}

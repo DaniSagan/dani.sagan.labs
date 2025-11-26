@@ -24,6 +24,7 @@ import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.componen
 import { NewtonComponent } from './fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifurcation-diagram.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
+import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,8 @@ const routes: Routes = [
       { path: AgnesiWitchArticleComponent.route, component: AgnesiWitchArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
-      { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent }
+      { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
+      { path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent }
     ]
   }
 ];

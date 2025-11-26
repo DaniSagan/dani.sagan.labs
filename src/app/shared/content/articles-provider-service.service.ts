@@ -25,6 +25,7 @@ import { PhoenixSetComponent } from 'src/app/articles/fractals/phoenix-set/phoen
 import { NewtonComponent } from 'src/app/articles/fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component';
 import { PercolationDiagramComponent } from 'src/app/articles/probability/percolation-diagram/percolation-diagram.component';
+import { TrigInverseTrigCompositionComponent } from 'src/app/articles/trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,10 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: PercolationDiagramComponent.title, route: PercolationDiagramComponent.route }
   ];
 
+  trigonometry: NavbarItem[] = [
+    { name: TrigInverseTrigCompositionComponent.title, route: TrigInverseTrigCompositionComponent.route }
+  ];
+
   others: NavbarItem[] =
   [
     { name: TestArticleComponent.title, route: TestArticleComponent.route },
@@ -89,6 +94,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Curvas', items: this.curves },
       { name: 'Probabilidad', items: this.probability },
+      { name: 'Trigonometría', items: this.trigonometry },
       { name: 'Otros', items: this.others }
     ];
     return result;

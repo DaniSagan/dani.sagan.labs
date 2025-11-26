@@ -26,6 +26,7 @@ import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component'
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
+import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 
 @NgModule({
   imports: [
@@ -53,7 +54,8 @@ import { PercolationDiagramComponent } from './probability/percolation-diagram/p
     TetrahedronViewerComponent,
     ArithmeticDerivativeArticleComponent,
     ParabolaArticleComponent,
-    PercolationDiagramComponent
+    PercolationDiagramComponent,
+    TrigInverseTrigCompositionComponent
   ],
 })
 export class ArticlesModule {}
