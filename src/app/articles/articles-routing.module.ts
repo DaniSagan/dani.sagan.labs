@@ -25,6 +25,7 @@ import { NewtonComponent } from './fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifurcation-diagram.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
+import { TrigNFunctionsComponent } from './trigonometry/trig-nfunctions/trig-nfunctions.component';
 
 const routes: Routes = [
   {
@@ -56,7 +57,8 @@ const routes: Routes = [
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
-      { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) }
+      { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) },
+      { path: TrigNFunctionsComponent.route, loadComponent: () => import('./trigonometry/trig-nfunctions/trig-nfunctions.component').then(mod => mod.TrigNFunctionsComponent) }
     ]
   }
 ];

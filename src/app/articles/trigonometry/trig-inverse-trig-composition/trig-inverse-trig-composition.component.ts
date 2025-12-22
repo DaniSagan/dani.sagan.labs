@@ -15,6 +15,7 @@ export class TrigInverseTrigCompositionComponent {
   sinArcsin: string = '$$ \\sin{\\left(\\arcsin{x}\\right)} = x $$';
   cosArccos: string = '$$ \\cos{\\left(\\arccos{x}\\right)} = x $$';
   tgArctg: string = '$$ \\tan{\\left(\\arctan{x}\\right)} = x $$';
+  domain: string = '$ x \\in \\left[-1, 1\\right] $'
 
   sinArccos: string = '$$ \\sin{\\left(\\arccos{x}\\right)} = \\sqrt{1 - x^2} $$';
   cosArcsin: string = '$$ \\cos{\\left(\\arcsin{x}\\right)} = \\sqrt{1 - x^2} $$';

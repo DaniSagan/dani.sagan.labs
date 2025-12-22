@@ -26,6 +26,7 @@ import { NewtonComponent } from 'src/app/articles/fractals/newton/newton.compone
 import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component';
 import { PercolationDiagramComponent } from 'src/app/articles/probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from 'src/app/articles/trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
+import { TrigNFunctionsComponent } from 'src/app/articles/trigonometry/trig-nfunctions/trig-nfunctions.component';
 
 @Injectable({
   providedIn: 'root'
@@ -75,7 +76,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   trigonometry: NavbarItem[] = [
-    { name: TrigInverseTrigCompositionComponent.title, route: TrigInverseTrigCompositionComponent.route }
+    { name: TrigInverseTrigCompositionComponent.title, route: TrigInverseTrigCompositionComponent.route },
+    { name: TrigNFunctionsComponent.title, route: TrigNFunctionsComponent.route }
   ];
 
   others: NavbarItem[] =
