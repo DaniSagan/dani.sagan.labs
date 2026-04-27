@@ -26,6 +26,13 @@ import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifu
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { TrigNFunctionsComponent } from './trigonometry/trig-nfunctions/trig-nfunctions.component';
+import { HeptagonArticleComponent } from './regular-polygons/heptagon-article/heptagon-article.component';
+import { PentagonArticleComponent } from './regular-polygons/pentagon-article/pentagon-article.component';
+import { NonagonArticleComponent } from './regular-polygons/nonagon-article/nonagon-article.component';
+import { TriangleArticleComponent } from './regular-polygons/triangle-article/triangle-article.component';
+import { SquareArticleComponent } from './regular-polygons/square-article/square-article.component';
+import { HexagonArticleComponent } from './regular-polygons/hexagon-article/hexagon-article.component';
+import { OctagonArticleComponent } from './regular-polygons/octagon-article/octagon-article.component';
 
 const routes: Routes = [
   {
@@ -35,6 +42,13 @@ const routes: Routes = [
     [
       { path: SierpinskiTriangleComponent.route, component: SierpinskiTriangleComponent },
       { path: SierpinskiCarpetComponent.route, component: SierpinskiCarpetComponent },
+      { path: TriangleArticleComponent.route, component: TriangleArticleComponent },
+      { path: SquareArticleComponent.route, component: SquareArticleComponent },
+      { path: PentagonArticleComponent.route, component: PentagonArticleComponent },
+      { path: HexagonArticleComponent.route, component: HexagonArticleComponent },
+      { path: HeptagonArticleComponent.route, component: HeptagonArticleComponent },
+      { path: OctagonArticleComponent.route, component: OctagonArticleComponent },
+      { path: NonagonArticleComponent.route, component: NonagonArticleComponent },
       { path: BarnsleyFernComponent.route, component: BarnsleyFernComponent },
       { path: DragonCurveComponent.route, component: DragonCurveComponent },
       { path: MandelbrotComponent.route, component: MandelbrotComponent },

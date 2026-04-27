@@ -27,6 +27,14 @@ import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcati
 import { PercolationDiagramComponent } from 'src/app/articles/probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from 'src/app/articles/trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { TrigNFunctionsComponent } from 'src/app/articles/trigonometry/trig-nfunctions/trig-nfunctions.component';
+import { HeptagonArticleComponent } from 'src/app/articles/regular-polygons/heptagon-article/heptagon-article.component';
+import { PentagonArticleComponent } from 'src/app/articles/regular-polygons/pentagon-article/pentagon-article.component';
+import { NonagonArticleComponent } from 'src/app/articles/regular-polygons/nonagon-article/nonagon-article.component';
+import { Triangle } from 'three';
+import { TriangleArticleComponent } from 'src/app/articles/regular-polygons/triangle-article/triangle-article.component';
+import { SquareArticleComponent } from 'src/app/articles/regular-polygons/square-article/square-article.component';
+import { HexagonArticleComponent } from 'src/app/articles/regular-polygons/hexagon-article/hexagon-article.component';
+import { OctagonArticleComponent } from 'src/app/articles/regular-polygons/octagon-article/octagon-article.component';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +55,17 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: NewtonComponent.title, route: NewtonComponent.route },
     { name: BifurcationDiagramComponent.title, route: BifurcationDiagramComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
+  ];
+
+  regularPolygons: NavbarItem[] =
+  [
+    {name: TriangleArticleComponent.title, route: TriangleArticleComponent.route },
+    {name: SquareArticleComponent.title, route: SquareArticleComponent.route },
+    {name: PentagonArticleComponent.title, route: PentagonArticleComponent.route },
+    {name: HexagonArticleComponent.title, route: HexagonArticleComponent.route },
+    {name: HeptagonArticleComponent.title, route: HeptagonArticleComponent.route },
+    {name: OctagonArticleComponent.title, route: OctagonArticleComponent.route },
+    {name: NonagonArticleComponent.title, route: NonagonArticleComponent.route }
   ];
 
   platonicSolids: NavbarItem[] =
@@ -92,6 +111,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     result.subsections = [
       { name: 'Mapa', items: this.map },
       { name: 'Fractales', items: this.fractals },
+      { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Curvas', items: this.curves },
