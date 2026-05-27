@@ -87,6 +87,8 @@ export class SunPositionComponent implements OnInit, AfterViewInit {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    //let sunPositions = this.sunPositionCalculatorService.getYearSunPositions(coords, year);
+
     let date = new Date(year, 0, 1);
     let day = 0;
     while(date.getFullYear() == year) {

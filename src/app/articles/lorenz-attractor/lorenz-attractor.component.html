@@ -1,7 +1,10 @@
 <h2>Atractor de Lorenz</h2>
-<div>
-  <button (click)="decrementIterations()">Decrementar Iteraciones</button>
-  <button (click)="incrementIterations()">Incrementar Iteraciones</button>
-  <button (click)="stopDrawing()">Detener Dibujo</button>
+<div class="widget-container">
+  <div class="widget-title">Atractor de Lorenz</div>
+  <div>
+    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+    <button (click)="stopDrawing()">Detener Dibujo</button>
+  </div>
+  <canvas #canvas width="800" height="600"></canvas>
 </div>
-<canvas #canvas width="800" height="600"></canvas>

@@ -1,3 +1,4 @@
+import { CommaExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,6 +7,28 @@ import { Injectable } from '@angular/core';
 export class SunPositionCalculatorService {
 
   constructor() { }
+
+  getYearSunPositions(coords: GeographicCoords, year: number): SunPosition[] {
+    let res: SunPosition[] = [];
+    let date = new Date(year, 0, 1);
+    let day = 0;
+    while(date.getFullYear() == year) {
+      for(let hour: number = 0; hour < 24; hour++)
+      {
+        for(let minute: number = 0; minute < 60; minute++)
+        {
+          let dateTime = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hour, minute, 0);
+          let sunPosition: CelestialCoords = this.getSunPosition(coords, dateTime);
+          res.push(new SunPosition(sunPosition, dateTime));
+        }
+      }
+
+      let newDate = new Date(date.valueOf());
+      date.setDate(newDate.getDate() + 1);
+      day++;
+    }
+    return res;
+  }
 
   getSunPosition(coords: GeographicCoords, date: Date): CelestialCoords {
     const jd = this.getJulianDate(date);
@@ -78,6 +101,16 @@ export class SunPositionCalculatorService {
       res -= 360;
     }
     return res;
+  }
+}
+
+export class SunPosition {
+  celestialCoords: CelestialCoords;
+  date: Date;
+
+  constructor(celestialCoords: CelestialCoords, date: Date) {
+    this.celestialCoords = celestialCoords;
+    this.date = date;
   }
 }
 

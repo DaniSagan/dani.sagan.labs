@@ -39,24 +39,18 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;
 
-    // Limpiar el canvas
     this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-    // Configurar el estilo de neón
-    this.ctx.strokeStyle = '#00FFFF'; // Color cian brillante
-    this.ctx.shadowColor = '#00FFFF';
-    this.ctx.shadowBlur = 0.5;
     this.ctx.lineWidth = 0.5;
 
     let x = 0.01;
     let y = 0;
     let z = 0;
-    let dt = 0.01; // Paso de tiempo
+    const dt = 0.01;
 
     this.isDrawing = true;
 
-    this.ctx.beginPath();
-    this.ctx.moveTo(canvasWidth / 2, canvasHeight - 50);
+    let prevDrawX = canvasWidth / 2;
+    let prevDrawY = canvasHeight - 50;
 
     for (let i = 0; i < this.iterations; i++) {
       if (!this.isDrawing) break;
@@ -69,14 +63,26 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
       y += dy;
       z += dz;
 
-      // Escalar y desplazar para ajustarse al canvas
       const drawX = canvasWidth / 2 + x * 10;
       const drawY = canvasHeight - 50 - z * 10;
 
+      // Hue de 0 a 360 según el progreso, dando una vuelta completa al arco iris
+      const hue = (i / this.iterations) * 360;
+      const color = `hsl(${hue}, 100%, 60%)`;
+
+      this.ctx.strokeStyle = color;
+      this.ctx.shadowColor = color;
+      this.ctx.shadowBlur = 0.5;
+
+      // Dibujar segmento individual con su propio color
+      this.ctx.beginPath();
+      this.ctx.moveTo(prevDrawX, prevDrawY);
       this.ctx.lineTo(drawX, drawY);
       this.ctx.stroke();
 
-      // Espera asincrónica para mantener la interfaz responsiva
+      prevDrawX = drawX;
+      prevDrawY = drawY;
+
       if (i % 100 === 0) await this.sleep(1);
     }
 
@@ -84,7 +90,7 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
   }
 
   incrementIterations(): void {
-    this.iterations += 1000;
+    this.iterations *= 2;
     if (!this.isDrawing) {
       this.drawLorenzAttractor();
     }
@@ -92,7 +98,7 @@ export class LorenzAttractorComponent implements OnInit, OnDestroy {
 
   decrementIterations(): void {
     if (this.iterations > 1000) {
-      this.iterations -= 1000;
+      this.iterations /= 2;
       if (!this.isDrawing) {
         this.drawLorenzAttractor();
       }
