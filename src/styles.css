@@ -1,18 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+@import './styles/variables.css';
+@import './styles/navbar.css';
+@import './styles/widgets.css';
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.75;
+  overflow-x: hidden;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+}
+
+/* ── SECTIONS ── */
+section {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+section:last-child { border-bottom: none; }
+
+.section-number {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin: 2.5rem 0 1rem;
 }
 
 p {
-  text-indent: 30px;
-  line-height: 1.6;
+  margin-bottom: 1.4rem;
+  color: var(--ink);
 }
+
+p:last-child { margin-bottom: 0; }
+
+em { color: var(--ink); font-style: italic; }
+
+strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ── DROPCAP ── */
+.dropcap::first-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.5rem;
+  line-height: 0.75;
+  float: left;
+  margin-right: 0.12em;
+  margin-top: 0.08em;
+  color: var(--accent);
+}
+
 
 .article-with-sidebar {
   display: grid;
@@ -30,13 +95,19 @@ p {
 }
 
 .widget-container {
-  padding: 10px;
+  /* padding: 10px;
   border-top: 1px solid #333;
   border-bottom: 1px solid #333;
   border-left: 5px solid #333;
   border-right: 1px solid #333;
   background-color: #f5e0d0;
-  min-height: 65px;
+  min-height: 65px; */
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 2rem 0;
+  padding: 1rem;
 }
 
 .widget-container button {
@@ -67,10 +138,11 @@ p {
 }
 
 .widget-title {
-  font-variant: small-caps;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 5px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
 }
 
 .widget-label {
@@ -89,9 +161,34 @@ span.formula {
   font-size: larger;
   border: #333 solid 1px;
   border-radius: 5px;
-  background-color: #eee;
+  background-color: #0f0f18;
   padding: 5px;
 }
 /*
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+/* ── FOOTNOTES ── */
+.footnotes {
+  border-top: 2px solid var(--rule);
+  padding-top: 2rem;
+  margin-top: 3rem;
+}
+
+.footnotes h4 {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.footnotes ol { padding-left: 1.5rem; }
+
+.footnotes li {
+  font-size: 0.85rem;
+  color: var(--ink-dim);
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}

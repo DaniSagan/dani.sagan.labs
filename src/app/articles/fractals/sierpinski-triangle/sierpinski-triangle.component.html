@@ -1,7 +1,18 @@
 <h2>Triángulo de Sierpinski</h2>
-<p>El Triángulo de Sierpinski es uno de los fractales más conocidos y representa un ejemplo clásico de autosemejanza. Fue descrito por el matemático polaco Wacław Sierpiński en 1915, y se genera dividiendo un triángulo equilátero en cuatro partes más pequeñas, eliminando el triángulo central, y repitiendo este proceso de manera recursiva en los triángulos restantes. El resultado es una figura geométrica con un patrón repetitivo que se extiende indefinidamente en cada nivel de iteración.</p>
-<p>Cada iteración sucesiva revela una mayor complejidad en la estructura del triángulo, exponiendo patrones más detallados y reduciendo el área total de la figura, lo que convierte al Triángulo de Sierpinski en un fractal con dimensión no entera, más específicamente, de dimensión fractal cercana a 1,585. Esto significa que, aunque el triángulo parece una figura bidimensional, su área disminuye con cada iteración mientras su perímetro sigue creciendo.</p>
-<p>Este fractal se utiliza con frecuencia para enseñar conceptos de geometría fractal, recursión y patrones matemáticos, y es visualmente fascinante debido a su estructura simétrica y repetitiva.</p>
+<p class="dropcap">El Triángulo de Sierpinski es uno de los fractales más famosos y el ejemplo perfecto para entender qué significa "autosemejanza": una figura que, al hacer zoom sobre cualquiera de sus partes, revela una copia exacta de sí misma. Fue descrito por el matemático polaco Wacław Sierpiński en 1915, aunque patrones muy parecidos ya aparecían siglos antes en mosaicos italianos del arte cosmatesco. Se construye de forma muy sencilla: se toma un triángulo equilátero, se divide en cuatro triángulos iguales, se elimina el del centro, y se repite el proceso indefinidamente en los tres triángulos que quedan.</p>
+
+<p>Cada iteración multiplica el número de "agujeros" y reduce el área de la figura. De hecho, si se repite el proceso infinitas veces, el área final es exactamente cero, aunque la figura sigue teniendo infinitos puntos y un perímetro que crece sin límite. Esta paradoja —una figura con área nula pero infinitamente detallada— es lo que convierte al triángulo en un fractal: no tiene una dimensión "1" (como una línea) ni "2" (como una superficie), sino una dimensión intermedia de aproximadamente <strong>1,585</strong> (matemáticamente, log(3)/log(2)). Esto expresa lo "rugosa" o "llena" que está la figura sin llegar a ocupar una superficie completa.</p>
+
+<p>Lo que pocos esperan es que este mismo patrón aparece escondido en lugares aparentemente sin relación con la geometría:</p>
+
+<ul>
+<li><strong>En el Triángulo de Pascal:</strong> si coloreas solo los números impares del Triángulo de Pascal, obtienes exactamente el patrón del Triángulo de Sierpinski. Es decir, este fractal geométrico está oculto dentro de la simple suma de números combinatorios.</li>
+<li><strong>En el juego de las Torres de Hanói:</strong> el "mapa" de todos los movimientos posibles para resolver el rompecabezas con <em>n</em> discos —es decir, el grafo que conecta cada estado del juego con el siguiente— tiene, literalmente, la forma de un Triángulo de Sierpinski.</li>
+<li><strong>En el "juego del caos":</strong> si eliges un punto al azar dentro de un triángulo y saltas repetidamente a mitad de camino hacia uno de sus tres vértices (elegido también al azar), los puntos que vas marcando dibujan el Triángulo de Sierpinski, aunque el proceso es completamente aleatorio. El orden emerge del azar.</li>
+</ul>
+
+<p>Este fractal se utiliza con frecuencia para enseñar geometría fractal, recursión y autosemejanza, pero como muestran estas conexiones, es también una puerta de entrada a la combinatoria, la teoría de grafos y los sistemas dinámicos: la misma forma reaparece una y otra vez en rincones muy distintos de las matemáticas.</p>
+
 <p>Debajo, puedes visualizar el Triángulo de Sierpinski con un componente interactivo, donde podrás controlar el número de iteraciones, incrementándolo o disminuyéndolo para observar cómo se genera el fractal a distintos niveles de detalle.</p>
 <div class="widget-container">
   <div class="widget-title">Triángulo de Sierpinski</div>
@@ -11,4 +22,14 @@
     <button (click)="incrementIterations()">Incrementar Iteraciones</button>
   </div>
   <canvas #canvas width="600" height="600"></canvas>
+</div>
+
+<div class="footnotes">
+  <h4>Más información</h4>
+  <ol>
+    <li>Wikipedia <em>Artículo sobre el Triángulo de Sierpinski</em> <a href="https://es.wikipedia.org/wiki/Triángulo_de_Sierpinski" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>A 1.58-Dimensional Object - Numberphile </em> <a href="https://www.youtube.com/watch?v=FnRhnZbDprE" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>Binary, Hanoi and Sierpinski, part 1  </em> <a href="https://www.youtube.com/watch?v=2SUvWfNJSsM" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>Chaos Game - Numberphile  </em> <a href="https://www.youtube.com/watch?v=kbKtFN71Lfs" target="_blank">🔗</a>.</li>
+  </ol>
 </div>
