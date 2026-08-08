@@ -1,0 +1,21 @@
+:host { display: block; }
+.travel-planner { max-width: 1180px; margin: 0 auto; color: #172033; }
+.planner-header { display: flex; justify-content: space-between; gap: 2rem; align-items: flex-start; margin-bottom: 1.5rem; }
+.planner-header h2 { margin: .2rem 0 .5rem; }.planner-header p { margin: 0; color: #566175; }
+.eyebrow { color: #0284c7 !important; font-weight: 700; font-size: .8rem; letter-spacing: .09em; text-transform: uppercase; }
+.file-actions, .form-actions, .card-actions { display: flex; align-items: center; gap: .5rem; }.file-actions { flex-wrap: wrap; }
+button, .file-input { border: 0; border-radius: .5rem; cursor: pointer; font: inherit; font-weight: 600; padding: .7rem 1rem; }
+.primary-button { background: #0284c7; color: white; }.secondary-button { background: #e0f2fe; color: #075985; display: inline-block; }.file-input input { display: none; }
+.trip-name { margin-bottom: 1.25rem; max-width: 520px; }label { display: block; font-weight: 650; font-size: .9rem; margin-bottom: .35rem; }
+input { box-sizing: border-box; width: 100%; border: 1px solid #cbd5e1; border-radius: .45rem; font: inherit; padding: .65rem .7rem; }
+.planner-grid { display: grid; grid-template-columns: minmax(300px, .85fr) minmax(360px, 1.15fr); gap: 1.25rem; }
+.activity-form, .map-panel { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1.25rem; }.activity-form h3 { margin: 0 0 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: .9rem; }.map-hint { color: #64748b; font-size: .83rem; margin: 1rem 0 0; }
+.date-time-fields { display: grid; gap: .9rem; margin-top: .9rem; }
+#travel-planner-map { height: 320px; border-radius: .45rem; overflow: hidden; }.map-panel small { display: block; margin-top: .5rem; color: #64748b; }
+.day-tabs { display: flex; align-items: center; gap: .5rem; overflow-x: auto; padding: 1.5rem 0 .8rem; border-bottom: 1px solid #e2e8f0; }.day-tabs button { color: #475569; background: #f1f5f9; white-space: nowrap; padding: .5rem .75rem; }.day-tabs button.active { background: #0284c7; color: white; }.day-tabs span, .empty-state { color: #64748b; }
+.calendar-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin: 1.3rem 0 .8rem; }.calendar-heading h3 { margin: 0; text-transform: capitalize; }.calendar-heading span { color: #64748b; font-size: .9rem; }
+.calendar-scroll { max-height: 680px; overflow: auto; border: 1px solid #dbe3ee; border-radius: .7rem; }.day-calendar { display: grid; grid-template-columns: 64px minmax(360px, 1fr); min-height: 1440px; }.time-column { background: #f8fafc; border-right: 1px solid #dbe3ee; display: grid; grid-template-rows: repeat(24, 60px); }.time-column span { color: #64748b; font-size: .76rem; padding: .25rem .55rem 0 0; text-align: right; transform: translateY(-.55rem); }
+.calendar-grid { background: white; min-height: 1440px; position: relative; }.hour-line { border-top: 1px solid #e2e8f0; left: 0; position: absolute; right: 0; }.calendar-event { background: #dff2fe; border-left: 4px solid #0284c7; border-radius: .3rem; box-sizing: border-box; left: .5rem; overflow: hidden; padding: .35rem .55rem; position: absolute; right: .5rem; z-index: 1; }.calendar-event h4, .calendar-event p { margin: 0; }.calendar-event h4 { color: #075985; font-size: .88rem; line-height: 1.25; }.calendar-event p { color: #475569; font-size: .76rem; line-height: 1.25; margin-top: .12rem; }
+.delete-button { background: transparent; color: #dc2626; font-size: .82rem; margin-left: auto; padding: .3rem; }.edit-button, .cancel-button { background: #e2e8f0; color: #334155; }.edit-button { font-size: .82rem; padding: .3rem .55rem; }.form-actions { margin-top: 1.25rem; }.form-error, .error { color: #b91c1c; }.form-error { font-size: .88rem; margin: -.4rem 0 1rem; }.empty-state { padding: 1.5rem 0; }
+@media (max-width: 760px) { .planner-header, .calendar-heading { align-items: flex-start; flex-direction: column; gap: .75rem; }.planner-grid, .form-row { grid-template-columns: 1fr; }.day-calendar { grid-template-columns: 52px minmax(260px, 1fr); }.time-column span { font-size: .7rem; padding-right: .3rem; } }

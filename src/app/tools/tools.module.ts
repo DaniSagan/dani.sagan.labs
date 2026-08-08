@@ -11,6 +11,7 @@ import { PrimeDecompositionArticleComponent } from './prime-decomposition-articl
 import { ToolsNavbarComponent } from './tools-navbar/tools-navbar.component';
 import { ToolsContentComponent } from './tools-content/tools-content.component';
 import { ToolsRoutingModule } from './tools-routing.module';
+import { TravelPlannerComponent } from './travel-planner/travel-planner.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ToolsRoutingModule } from './tools-routing.module';
     PrimeDecompositionArticleComponent,
     ToolsNavbarComponent,
     ToolsContentComponent,
+    TravelPlannerComponent,
   ],
 })
 export class ToolsModule {}

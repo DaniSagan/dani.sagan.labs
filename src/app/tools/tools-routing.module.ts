@@ -6,6 +6,7 @@ import { ToolsContentComponent } from './tools-content/tools-content.component';
 import { PiDecimalComponent } from './pi-decimal/pi-decimal.component';
 import { ImplicitCurveGraphToolComponent } from './implicit-curve-graph-tool/implicit-curve-graph-tool.component';
 import { SunPositionComponent } from './sun-position/sun-position.component';
+import { TravelPlannerComponent } from './travel-planner/travel-planner.component';
 
 const routes: Routes = [
   { path: '', component: ToolsContentComponent, children: [
@@ -13,7 +14,8 @@ const routes: Routes = [
       { path: 'prime-decomposition', component: PrimeDecompositionArticleComponent },
       { path: 'pi-decimals', component: PiDecimalComponent },
       { path: 'implicit-curve-graph', component: ImplicitCurveGraphToolComponent },
-      { path: 'sun-position', component: SunPositionComponent }
+      { path: 'sun-position', component: SunPositionComponent },
+      { path: 'travel-planner', component: TravelPlannerComponent }
     ]
   }
 ];
