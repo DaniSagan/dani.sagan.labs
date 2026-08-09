@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import * as L from 'leaflet';
@@ -68,7 +68,14 @@ export class TravelPlannerComponent
   private markers: L.Layer[] = [];
   private bagMap?: L.Map;
   private bagMapMarker?: L.Layer;
+  private activityEditMap?: L.Map;
+  private activityEditMapMarker?: L.Layer;
   private readonly draftCookieName = 'travel_planner_draft';
+
+  @ViewChild('activityEditMapElement')
+  set activityEditMapElement(element: ElementRef<HTMLElement> | undefined) {
+    if (element) this.initializeActivityEditMap(element.nativeElement);
+  }
 
   ngOnInit(): void {
     this.restoreDraft();
@@ -83,17 +90,15 @@ export class TravelPlannerComponent
       maxZoom: 19,
       attribution: '&copy; OpenStreetMap contributors',
     }).addTo(this.map);
-    this.map.on('click', (event: L.LeafletMouseEvent) => {
-      this.draft.latitude = this.roundCoordinate(event.latlng.lat);
-      this.draft.longitude = this.roundCoordinate(event.latlng.lng);
-      this.saveDraft();
-    });
     this.renderMap();
+    if (this.editingActivityId)
+      window.setTimeout(() => this.initializeActivityEditMap(), 0);
   }
 
   ngOnDestroy(): void {
     this.map?.remove();
     this.destroyBagMap();
+    this.destroyActivityEditMap();
   }
 
   get dates(): string[] {
@@ -150,6 +155,7 @@ export class TravelPlannerComponent
     this.activityError = '';
     this.draft = { ...activity };
     this.saveDraft();
+    this.updateActivityEditMap();
   }
 
   cancelEditing(): void {
@@ -157,6 +163,7 @@ export class TravelPlannerComponent
     this.scheduledBagActivityId = null;
     this.activityError = '';
     this.draft = this.createDraft();
+    this.renderActivityEditMapMarker();
     this.saveDraft();
   }
 
@@ -201,6 +208,7 @@ export class TravelPlannerComponent
       latitude: activity.latitude,
       longitude: activity.longitude,
     };
+    this.updateActivityEditMap();
     this.saveDraft();
   }
 
@@ -367,6 +375,7 @@ export class TravelPlannerComponent
     this.activityError = '';
     this.importError = '';
     this.draft = this.createDraft();
+    this.renderActivityEditMapMarker();
     this.showNewTripDialog = false;
     this.renderMap();
     this.saveDraft();
@@ -442,6 +451,56 @@ export class TravelPlannerComponent
       [this.bagDraft.latitude!, this.bagDraft.longitude!],
       { radius: 9, color: '#075985', fillColor: '#0ea5e9', fillOpacity: 1, weight: 3 },
     ).addTo(this.bagMap);
+  }
+
+  private initializeActivityEditMap(mapElement?: HTMLElement): void {
+    if (this.activityEditMap) return;
+    const container = mapElement ?? document.getElementById('activity-edit-map');
+    if (!container) return;
+    const hasCoordinates = this.hasCoordinates(this.draft);
+    this.activityEditMap = L.map(container, {
+      center: hasCoordinates
+        ? [this.draft.latitude!, this.draft.longitude!]
+        : [41.0082, 28.9784],
+      zoom: hasCoordinates ? 14 : 12,
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(this.activityEditMap);
+    this.activityEditMap.on('click', (event: L.LeafletMouseEvent) => {
+      this.draft.latitude = this.roundCoordinate(event.latlng.lat);
+      this.draft.longitude = this.roundCoordinate(event.latlng.lng);
+      this.renderActivityEditMapMarker();
+      this.saveDraft();
+    });
+    this.renderActivityEditMapMarker();
+  }
+
+  private updateActivityEditMap(): void {
+    if (!this.activityEditMap) return;
+    this.renderActivityEditMapMarker();
+    if (this.hasCoordinates(this.draft))
+      this.activityEditMap.setView(
+        [this.draft.latitude!, this.draft.longitude!],
+        14,
+      );
+  }
+
+  private destroyActivityEditMap(): void {
+    this.activityEditMap?.remove();
+    this.activityEditMap = undefined;
+    this.activityEditMapMarker = undefined;
+  }
+
+  private renderActivityEditMapMarker(): void {
+    this.activityEditMapMarker?.remove();
+    this.activityEditMapMarker = undefined;
+    if (!this.activityEditMap || !this.hasCoordinates(this.draft)) return;
+    this.activityEditMapMarker = L.circleMarker(
+      [this.draft.latitude!, this.draft.longitude!],
+      { radius: 9, color: '#075985', fillColor: '#0ea5e9', fillOpacity: 1, weight: 3 },
+    ).addTo(this.activityEditMap);
   }
 
   private restoreDraft(): void {

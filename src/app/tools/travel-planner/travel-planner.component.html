@@ -13,8 +13,7 @@
   <div class="trip-name"><label for="trip-name">Nombre del viaje</label><input id="trip-name" type="text"
       [(ngModel)]="tripName" (ngModelChange)="saveDraft()" placeholder="Ej. Escapada a Estambul"></div>
   <p class="error" *ngIf="importError">{{ importError }}</p>
-  <div class="planner-grid">
-    <form class="activity-form" novalidate (ngSubmit)="addActivity()">
+  <form class="activity-form" novalidate (ngSubmit)="addActivity()">
       <h3>{{ editingActivityId ? 'Editar actividad' : 'Añadir una actividad' }}</h3>
       <p class="form-error" *ngIf="activityError">{{ activityError }}</p>
       <label for="activity-title">Actividad</label><input id="activity-title" name="activity-title" type="text"
@@ -35,18 +34,17 @@
         <div><label for="longitude">Longitud</label><input id="longitude" name="longitude" type="number" step="any"
             [(ngModel)]="draft.longitude" (ngModelChange)="saveDraft()" placeholder="28.9802"></div>
       </div>
+      <div class="activity-edit-map-panel">
+        <p class="map-hint">Haz clic en el mapa para asignar una ubicación.</p>
+        <div #activityEditMapElement id="activity-edit-map" aria-label="Mapa para elegir la ubicación de la actividad"></div>
+      </div>
       <div class="form-actions"><button type="submit" class="primary-button">{{ editingActivityId ? 'Guardar cambios' :
           'Añadir al calendario' }}</button><button *ngIf="editingActivityId" type="button" class="cancel-button"
           (click)="cancelEditing()">Cancelar</button><button *ngIf="!editingActivityId && !scheduledBagActivityId"
           type="button" class="secondary-button" (click)="addToBag()">Añadir a la bolsa</button><button
           *ngIf="scheduledBagActivityId" type="button" class="cancel-button" (click)="cancelEditing()">Cancelar</button>
       </div>
-    </form>
-    <div class="map-panel">
-      <div id="travel-planner-map" aria-label="Mapa de OpenStreetMap para elegir ubicaciones"></div><small>Datos del
-        mapa © colaboradores de OpenStreetMap.</small>
-    </div>
-  </div>
+  </form>
   <section class="activity-bag" aria-labelledby="activity-bag-title">
     <div>
       <h3 id="activity-bag-title">Bolsa de actividades</h3>
@@ -95,6 +93,10 @@
   <nav class="day-tabs" aria-label="Días del viaje"><button type="button" *ngFor="let date of dates"
       [class.active]="date === selectedDate" (click)="selectDate(date)">{{ date | date:'EEEE d MMMM' }}</button><span
       *ngIf="!dates.length">Añade la primera actividad para crear un día.</span></nav>
+  <section class="calendar-map-panel" aria-label="Mapa de las actividades del día">
+    <div id="travel-planner-map" aria-label="Mapa de OpenStreetMap con las actividades del día"></div>
+    <small>Datos del mapa © colaboradores de OpenStreetMap.</small>
+  </section>
   <section class="calendar-section" *ngIf="selectedActivities.length; else emptyDay">
     <div class="calendar-heading">
       <h3>{{ selectedDate | date:'EEEE d MMMM, y' }}</h3><span>{{ selectedActivities.length }} actividades · {{

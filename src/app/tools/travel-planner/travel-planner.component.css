@@ -84,13 +84,7 @@ textarea {
 .notes-label {
   margin-top: 0.9rem;
 }
-.planner-grid {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.85fr) minmax(360px, 1.15fr);
-  gap: 1.25rem;
-}
-.activity-form,
-.map-panel {
+.activity-form {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 0.75rem;
@@ -120,10 +114,25 @@ textarea {
   border-radius: 0.45rem;
   overflow: hidden;
 }
-.map-panel small {
+.calendar-map-panel {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+}
+.calendar-map-panel small {
   display: block;
   margin-top: 0.5rem;
   color: #64748b;
+}
+.activity-edit-map-panel {
+  margin-top: 0.9rem;
+}
+#activity-edit-map {
+  border-radius: 0.45rem;
+  height: 260px;
+  overflow: hidden;
 }
 .day-tabs {
   display: flex;
@@ -349,7 +358,6 @@ textarea {
     flex-direction: column;
     gap: 0.75rem;
   }
-  .planner-grid,
   .form-row {
     grid-template-columns: 1fr;
   }
