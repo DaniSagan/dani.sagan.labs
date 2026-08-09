@@ -5,31 +5,34 @@
       <h2>Planificador de itinerarios</h2>
       <p>Organiza cada día, sitúa las visitas en el mapa y guarda el viaje para continuarlo más tarde.</p>
     </div>
-    <div class="file-actions"><button type="button" class="secondary-button" (click)="download()">Descargar
+    <div class="file-actions"><button type="button" class="secondary-button" (click)="openNewTripDialog()">Nuevo
+        viaje</button><button type="button" class="secondary-button" (click)="download()">Descargar
         JSON</button><label class="secondary-button file-input">Abrir JSON<input type="file"
           accept="application/json,.json" (change)="importPlan($event)"></label></div>
   </header>
   <div class="trip-name"><label for="trip-name">Nombre del viaje</label><input id="trip-name" type="text"
-      [(ngModel)]="tripName" placeholder="Ej. Escapada a Estambul"></div>
+      [(ngModel)]="tripName" (ngModelChange)="saveDraft()" placeholder="Ej. Escapada a Estambul"></div>
   <p class="error" *ngIf="importError">{{ importError }}</p>
   <div class="planner-grid">
     <form class="activity-form" novalidate (ngSubmit)="addActivity()">
       <h3>{{ editingActivityId ? 'Editar actividad' : 'Añadir una actividad' }}</h3>
       <p class="form-error" *ngIf="activityError">{{ activityError }}</p>
       <label for="activity-title">Actividad</label><input id="activity-title" name="activity-title" type="text"
-        [(ngModel)]="draft.title" placeholder="Visita Santa Sofía">
+        [(ngModel)]="draft.title" (ngModelChange)="saveDraft()" placeholder="Visita Santa Sofía">
+      <label for="activity-notes" class="notes-label">Notas</label><textarea id="activity-notes" name="activity-notes"
+        [(ngModel)]="draft.notes" (ngModelChange)="saveDraft()" placeholder="Detalles, enlaces, recordatorios, etc."></textarea>
       <div class="date-time-fields">
         <div><label for="activity-start">Inicio</label><input id="activity-start" name="activity-start"
-            type="datetime-local" [(ngModel)]="draft.start"></div>
+            type="datetime-local" [(ngModel)]="draft.start" (ngModelChange)="saveDraft()"></div>
         <div><label for="activity-end">Fin</label><input id="activity-end" name="activity-end" type="datetime-local"
-            [(ngModel)]="draft.end"></div>
+            [(ngModel)]="draft.end" (ngModelChange)="saveDraft()"></div>
       </div>
       <p class="map-hint">Haz clic en el mapa para asignar una ubicación, o introduce las coordenadas.</p>
       <div class="form-row">
         <div><label for="latitude">Latitud</label><input id="latitude" name="latitude" type="number" step="any"
-            [(ngModel)]="draft.latitude" placeholder="41.0086"></div>
+            [(ngModel)]="draft.latitude" (ngModelChange)="saveDraft()" placeholder="41.0086"></div>
         <div><label for="longitude">Longitud</label><input id="longitude" name="longitude" type="number" step="any"
-            [(ngModel)]="draft.longitude" placeholder="28.9802"></div>
+            [(ngModel)]="draft.longitude" (ngModelChange)="saveDraft()" placeholder="28.9802"></div>
       </div>
       <div class="form-actions"><button type="submit" class="primary-button">{{ editingActivityId ? 'Guardar cambios' :
           'Añadir al calendario' }}</button><button *ngIf="editingActivityId" type="button" class="cancel-button"
@@ -57,6 +60,7 @@
             [ngStyle]="calendarActivityStyle(activity)">
             <h4>{{ activity.title }}</h4>
             <p>{{ formatRange(activity) }}</p>
+            <p class="event-notes" *ngIf="activity.notes">{{ activity.notes }}</p>
             <p *ngIf="activity.latitude !== null && activity.longitude !== null">{{ activity.latitude }}, {{
               activity.longitude }}</p>
             <div class="card-actions"><button type="button" class="edit-button"
@@ -71,4 +75,15 @@
   <ng-template #emptyDay>
     <p class="empty-state">No hay actividades para este día.</p>
   </ng-template>
+  <div class="dialog-backdrop" *ngIf="showNewTripDialog" role="presentation">
+    <section class="new-trip-dialog" role="dialog" aria-modal="true" aria-labelledby="new-trip-title">
+      <h3 id="new-trip-title">¿Iniciar un viaje nuevo?</h3>
+      <p>El borrador actual se guarda automáticamente en el navegador, pero al iniciar un viaje nuevo será sustituido. Puedes descargarlo antes para conservar una copia.</p>
+      <div class="dialog-actions">
+        <button type="button" class="cancel-button" (click)="cancelNewTrip()">Cancelar</button>
+        <button type="button" class="secondary-button" (click)="saveAndStartNewTrip()">Guardar y crear nuevo</button>
+        <button type="button" class="primary-button" (click)="startNewTrip()">Crear nuevo sin guardar</button>
+      </div>
+    </section>
+  </div>
 </section>
