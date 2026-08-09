@@ -20,7 +20,8 @@
       <label for="activity-title">Actividad</label><input id="activity-title" name="activity-title" type="text"
         [(ngModel)]="draft.title" (ngModelChange)="saveDraft()" placeholder="Visita Santa Sofía">
       <label for="activity-notes" class="notes-label">Notas</label><textarea id="activity-notes" name="activity-notes"
-        [(ngModel)]="draft.notes" (ngModelChange)="saveDraft()" placeholder="Detalles, enlaces, recordatorios, etc."></textarea>
+        [(ngModel)]="draft.notes" (ngModelChange)="saveDraft()"
+        placeholder="Detalles, enlaces, recordatorios, etc."></textarea>
       <div class="date-time-fields">
         <div><label for="activity-start">Inicio</label><input id="activity-start" name="activity-start"
             type="datetime-local" [(ngModel)]="draft.start" (ngModelChange)="saveDraft()"></div>
@@ -36,13 +37,61 @@
       </div>
       <div class="form-actions"><button type="submit" class="primary-button">{{ editingActivityId ? 'Guardar cambios' :
           'Añadir al calendario' }}</button><button *ngIf="editingActivityId" type="button" class="cancel-button"
-          (click)="cancelEditing()">Cancelar</button></div>
+          (click)="cancelEditing()">Cancelar</button><button *ngIf="!editingActivityId && !scheduledBagActivityId"
+          type="button" class="secondary-button" (click)="addToBag()">Añadir a la bolsa</button><button
+          *ngIf="scheduledBagActivityId" type="button" class="cancel-button" (click)="cancelEditing()">Cancelar</button>
+      </div>
     </form>
     <div class="map-panel">
       <div id="travel-planner-map" aria-label="Mapa de OpenStreetMap para elegir ubicaciones"></div><small>Datos del
         mapa © colaboradores de OpenStreetMap.</small>
     </div>
   </div>
+  <section class="activity-bag" aria-labelledby="activity-bag-title">
+    <div>
+      <h3 id="activity-bag-title">Bolsa de actividades</h3>
+      <p>Guarda ideas sin fecha ni hora y planifícalas cuando quieras.</p>
+    </div>
+    <form *ngIf="editingBagActivityId" class="bag-edit-form" novalidate (ngSubmit)="saveBagActivity()">
+      <h4>Editar actividad de la bolsa</h4>
+      <p class="form-error" *ngIf="bagError">{{ bagError }}</p>
+      <label for="bag-activity-title">Actividad</label>
+      <input id="bag-activity-title" name="bag-activity-title" type="text" [(ngModel)]="bagDraft.title"
+        (ngModelChange)="saveDraft()">
+      <label for="bag-activity-notes" class="notes-label">Notas</label>
+      <textarea id="bag-activity-notes" name="bag-activity-notes" [(ngModel)]="bagDraft.notes"
+        (ngModelChange)="saveDraft()"></textarea>
+      <div class="form-row">
+        <div><label for="bag-latitude">Latitud</label><input id="bag-latitude" name="bag-latitude" type="number"
+            step="any" [(ngModel)]="bagDraft.latitude" (ngModelChange)="saveDraft()"></div>
+        <div><label for="bag-longitude">Longitud</label><input id="bag-longitude" name="bag-longitude" type="number"
+            step="any" [(ngModel)]="bagDraft.longitude" (ngModelChange)="saveDraft()"></div>
+      </div>
+      <p class="map-hint">Haz clic en el mapa para asignar una ubicación.</p>
+      <div id="bag-activity-map" aria-label="Mapa para elegir la ubicación de la actividad"></div>
+      <div class="form-actions"><button type="submit" class="primary-button">Guardar cambios</button><button
+          type="button" class="cancel-button" (click)="cancelBagEditing()">Cancelar</button></div>
+    </form>
+    <ul *ngIf="bagActivities.length; else emptyBag" class="bag-list">
+      <li *ngFor="let activity of bagActivities">
+        <div>
+          <h4>{{ activity.title }}</h4>
+          <p *ngIf="activity.notes">{{ activity.notes }}</p>
+          <p *ngIf="activity.latitude !== null && activity.longitude !== null">{{ activity.latitude }}, {{
+            activity.longitude }}</p>
+        </div>
+        <div class="card-actions">
+          <button type="button" class="edit-button" (click)="startEditingBag(activity)">Editar</button>
+          <button type="button" class="edit-button" (click)="scheduleBagActivity(activity)">Planificar</button>
+          <button type="button" class="delete-button" (click)="removeBagActivity(activity.id)"
+            [attr.aria-label]="'Eliminar ' + activity.title">Eliminar</button>
+        </div>
+      </li>
+    </ul>
+    <ng-template #emptyBag>
+      <p class="empty-state">La bolsa está vacía.</p>
+    </ng-template>
+  </section>
   <nav class="day-tabs" aria-label="Días del viaje"><button type="button" *ngFor="let date of dates"
       [class.active]="date === selectedDate" (click)="selectDate(date)">{{ date | date:'EEEE d MMMM' }}</button><span
       *ngIf="!dates.length">Añade la primera actividad para crear un día.</span></nav>
@@ -78,7 +127,8 @@
   <div class="dialog-backdrop" *ngIf="showNewTripDialog" role="presentation">
     <section class="new-trip-dialog" role="dialog" aria-modal="true" aria-labelledby="new-trip-title">
       <h3 id="new-trip-title">¿Iniciar un viaje nuevo?</h3>
-      <p>El borrador actual se guarda automáticamente en el navegador, pero al iniciar un viaje nuevo será sustituido. Puedes descargarlo antes para conservar una copia.</p>
+      <p>El borrador actual se guarda automáticamente en el navegador, pero al iniciar un viaje nuevo será sustituido.
+        Puedes descargarlo antes para conservar una copia.</p>
       <div class="dialog-actions">
         <button type="button" class="cancel-button" (click)="cancelNewTrip()">Cancelar</button>
         <button type="button" class="secondary-button" (click)="saveAndStartNewTrip()">Guardar y crear nuevo</button>

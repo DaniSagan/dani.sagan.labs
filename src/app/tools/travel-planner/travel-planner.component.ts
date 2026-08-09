@@ -13,10 +13,19 @@ interface TravelActivity {
   longitude: number | null;
 }
 
+interface BagActivity {
+  id: string;
+  title: string;
+  notes: string;
+  latitude: number | null;
+  longitude: number | null;
+}
+
 interface TravelPlan {
   version: 2;
   name: string;
   activities: TravelActivity[];
+  bagActivities?: BagActivity[];
 }
 
 interface SavedTravelDraft {
@@ -26,6 +35,9 @@ interface SavedTravelDraft {
   selectedDate: string;
   activityDraft: TravelActivity;
   editingActivityId: string | null;
+  bagActivities?: BagActivity[];
+  bagDraft?: BagActivity;
+  editingBagActivityId?: string | null;
 }
 
 @Component({
@@ -40,15 +52,22 @@ export class TravelPlannerComponent
 {
   tripName = 'Mi viaje';
   activities: TravelActivity[] = [];
+  bagActivities: BagActivity[] = [];
+  bagDraft: BagActivity = this.createBagDraft();
   selectedDate = this.toDateInput(new Date());
   draft: TravelActivity = this.createDraft();
   importError = '';
   activityError = '';
   editingActivityId: string | null = null;
+  scheduledBagActivityId: string | null = null;
+  editingBagActivityId: string | null = null;
+  bagError = '';
   showNewTripDialog = false;
   readonly calendarHours = Array.from({ length: 24 }, (_, hour) => hour);
   private map?: L.Map;
   private markers: L.Layer[] = [];
+  private bagMap?: L.Map;
+  private bagMapMarker?: L.Layer;
   private readonly draftCookieName = 'travel_planner_draft';
 
   ngOnInit(): void {
@@ -74,6 +93,7 @@ export class TravelPlannerComponent
 
   ngOnDestroy(): void {
     this.map?.remove();
+    this.destroyBagMap();
   }
 
   get dates(): string[] {
@@ -113,6 +133,12 @@ export class TravelPlannerComponent
           current.id === this.editingActivityId ? activity : current,
         )
       : [...this.activities, activity];
+    if (this.scheduledBagActivityId) {
+      this.bagActivities = this.bagActivities.filter(
+        (bagActivity) => bagActivity.id !== this.scheduledBagActivityId,
+      );
+      this.scheduledBagActivityId = null;
+    }
     this.selectedDate = activity.start.substring(0, 10);
     this.cancelEditing();
     this.renderMap();
@@ -128,6 +154,7 @@ export class TravelPlannerComponent
 
   cancelEditing(): void {
     this.editingActivityId = null;
+    this.scheduledBagActivityId = null;
     this.activityError = '';
     this.draft = this.createDraft();
     this.saveDraft();
@@ -138,6 +165,80 @@ export class TravelPlannerComponent
     if (this.editingActivityId === id) this.cancelEditing();
     this.renderMap();
     this.saveDraft();
+  }
+
+  addToBag(): void {
+    this.activityError = '';
+    if (!this.draft.title.trim()) {
+      this.activityError = 'Introduce una actividad para añadirla a la bolsa.';
+      return;
+    }
+    this.bagActivities = [
+      ...this.bagActivities,
+      {
+        id: this.newId(),
+        title: this.draft.title.trim(),
+        notes: this.draft.notes,
+        latitude: this.draft.latitude,
+        longitude: this.draft.longitude,
+      },
+    ];
+    this.scheduledBagActivityId = null;
+    this.activityError = '';
+    this.draft = this.createDraft();
+    this.saveDraft();
+  }
+
+  scheduleBagActivity(activity: BagActivity): void {
+    this.editingActivityId = null;
+    this.scheduledBagActivityId = activity.id;
+    this.activityError = '';
+    this.draft = {
+      ...this.createDraft(),
+      id: activity.id,
+      title: activity.title,
+      notes: activity.notes,
+      latitude: activity.latitude,
+      longitude: activity.longitude,
+    };
+    this.saveDraft();
+  }
+
+  removeBagActivity(id: string): void {
+    this.bagActivities = this.bagActivities.filter((activity) => activity.id !== id);
+    if (this.scheduledBagActivityId === id) this.cancelEditing();
+    if (this.editingBagActivityId === id) this.cancelBagEditing();
+    this.saveDraft();
+  }
+
+  startEditingBag(activity: BagActivity): void {
+    this.destroyBagMap();
+    this.editingBagActivityId = activity.id;
+    this.bagError = '';
+    this.bagDraft = { ...activity };
+    this.saveDraft();
+    window.setTimeout(() => this.initializeBagMap(), 0);
+  }
+
+  cancelBagEditing(): void {
+    this.destroyBagMap();
+    this.editingBagActivityId = null;
+    this.bagError = '';
+    this.bagDraft = this.createBagDraft();
+    this.saveDraft();
+  }
+
+  saveBagActivity(): void {
+    if (!this.editingBagActivityId) return;
+    if (!this.bagDraft.title.trim()) {
+      this.bagError = 'Introduce un nombre para la actividad.';
+      return;
+    }
+    const activity = { ...this.bagDraft, title: this.bagDraft.title.trim() };
+    this.bagActivities = this.bagActivities.map((current) =>
+      current.id === this.editingBagActivityId ? activity : current,
+    );
+    this.cancelBagEditing();
   }
 
   selectDate(date: string): void {
@@ -153,6 +254,7 @@ export class TravelPlannerComponent
       version: 2,
       name: this.tripName.trim() || 'Mi viaje',
       activities: this.activities,
+      bagActivities: this.bagActivities,
     };
     const url = URL.createObjectURL(
       new Blob([JSON.stringify(plan, null, 2)], { type: 'application/json' }),
@@ -175,16 +277,26 @@ export class TravelPlannerComponent
         const plan = JSON.parse(String(reader.result)) as {
           name?: unknown;
           activities?: unknown[];
+          bagActivities?: unknown[];
         };
         if (!Array.isArray(plan.activities))
           throw new Error('Formato no valido');
         const activities = plan.activities.map((activity) =>
           this.normalizeActivity(activity),
         );
+        const bagActivities = Array.isArray(plan.bagActivities)
+          ? plan.bagActivities.map((activity) => this.normalizeBagActivity(activity))
+          : [];
         if (activities.some((activity) => activity === null))
+          throw new Error('Formato no valido');
+        if (bagActivities.some((activity) => activity === null))
           throw new Error('Formato no valido');
         this.tripName = typeof plan.name === 'string' ? plan.name : 'Mi viaje';
         this.activities = activities as TravelActivity[];
+        this.bagActivities = bagActivities as BagActivity[];
+        this.editingBagActivityId = null;
+        this.bagDraft = this.createBagDraft();
+        this.bagError = '';
         this.selectedDate = this.dates[0] ?? this.toDateInput(new Date());
         this.cancelEditing();
         this.renderMap();
@@ -219,6 +331,9 @@ export class TravelPlannerComponent
       selectedDate: this.selectedDate,
       activityDraft: this.draft,
       editingActivityId: this.editingActivityId,
+      bagActivities: this.bagActivities,
+      bagDraft: this.bagDraft,
+      editingBagActivityId: this.editingBagActivityId,
     };
     try {
       document.cookie = `${this.draftCookieName}=${encodeURIComponent(JSON.stringify(draft))}; max-age=31536000; path=/; samesite=lax`;
@@ -242,8 +357,13 @@ export class TravelPlannerComponent
   startNewTrip(): void {
     this.tripName = 'Mi viaje';
     this.activities = [];
+    this.bagActivities = [];
     this.selectedDate = this.toDateInput(new Date());
     this.editingActivityId = null;
+    this.scheduledBagActivityId = null;
+    this.editingBagActivityId = null;
+    this.bagDraft = this.createBagDraft();
+    this.bagError = '';
     this.activityError = '';
     this.importError = '';
     this.draft = this.createDraft();
@@ -276,6 +396,54 @@ export class TravelPlannerComponent
     };
   }
 
+  private createBagDraft(): BagActivity {
+    return {
+      id: this.newId(),
+      title: '',
+      notes: '',
+      latitude: null,
+      longitude: null,
+    };
+  }
+
+  private initializeBagMap(): void {
+    if (!this.editingBagActivityId || this.bagMap) return;
+    const hasCoordinates = this.hasBagCoordinates(this.bagDraft);
+    this.bagMap = L.map('bag-activity-map', {
+      center: hasCoordinates
+        ? [this.bagDraft.latitude!, this.bagDraft.longitude!]
+        : [41.0082, 28.9784],
+      zoom: hasCoordinates ? 14 : 12,
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(this.bagMap);
+    this.bagMap.on('click', (event: L.LeafletMouseEvent) => {
+      this.bagDraft.latitude = this.roundCoordinate(event.latlng.lat);
+      this.bagDraft.longitude = this.roundCoordinate(event.latlng.lng);
+      this.renderBagMapMarker();
+      this.saveDraft();
+    });
+    this.renderBagMapMarker();
+  }
+
+  private destroyBagMap(): void {
+    this.bagMap?.remove();
+    this.bagMap = undefined;
+    this.bagMapMarker = undefined;
+  }
+
+  private renderBagMapMarker(): void {
+    this.bagMapMarker?.remove();
+    this.bagMapMarker = undefined;
+    if (!this.bagMap || !this.hasBagCoordinates(this.bagDraft)) return;
+    this.bagMapMarker = L.circleMarker(
+      [this.bagDraft.latitude!, this.bagDraft.longitude!],
+      { radius: 9, color: '#075985', fillColor: '#0ea5e9', fillOpacity: 1, weight: 3 },
+    ).addTo(this.bagMap);
+  }
+
   private restoreDraft(): void {
     const value = document.cookie
       .split('; ')
@@ -304,6 +472,25 @@ export class TravelPlannerComponent
           ? saved.selectedDate
           : (this.dates[0] ?? this.toDateInput(new Date()));
       this.draft = activityDraft;
+      const bagActivities = Array.isArray(saved.bagActivities)
+        ? saved.bagActivities.map((activity) => this.normalizeBagActivity(activity))
+        : [];
+      this.bagActivities = bagActivities.filter(
+        (activity): activity is BagActivity => activity !== null,
+      );
+      const savedBagDraft = this.normalizeBagActivity(saved.bagDraft);
+      this.editingBagActivityId =
+        typeof saved.editingBagActivityId === 'string' &&
+        this.bagActivities.some(
+          (activity) => activity.id === saved.editingBagActivityId,
+        ) &&
+        savedBagDraft
+          ? saved.editingBagActivityId
+          : null;
+      this.bagDraft =
+        this.editingBagActivityId && savedBagDraft
+          ? savedBagDraft
+          : this.createBagDraft();
       this.editingActivityId =
         typeof saved.editingActivityId === 'string' &&
         this.activities.some(
@@ -363,6 +550,15 @@ export class TravelPlannerComponent
     );
   }
 
+  private hasBagCoordinates(activity: BagActivity): boolean {
+    return (
+      activity.latitude !== null &&
+      activity.longitude !== null &&
+      Number.isFinite(activity.latitude) &&
+      Number.isFinite(activity.longitude)
+    );
+  }
+
   private normalizeActivity(value: unknown): TravelActivity | null {
     if (!value || typeof value !== 'object') return null;
     const activity = value as Partial<TravelActivity> & {
@@ -382,8 +578,12 @@ export class TravelPlannerComponent
       typeof activity.start !== 'string' ||
       !end ||
       new Date(end).getTime() <= new Date(activity.start).getTime() ||
-      (activity.latitude !== null && typeof activity.latitude !== 'number') ||
-      (activity.longitude !== null && typeof activity.longitude !== 'number')
+      (activity.latitude !== null &&
+        activity.latitude !== undefined &&
+        typeof activity.latitude !== 'number') ||
+      (activity.longitude !== null &&
+        activity.longitude !== undefined &&
+        typeof activity.longitude !== 'number')
     )
       return null;
     return {
@@ -392,6 +592,29 @@ export class TravelPlannerComponent
       notes: typeof activity.notes === 'string' ? activity.notes : '',
       start: activity.start,
       end,
+      latitude: activity.latitude ?? null,
+      longitude: activity.longitude ?? null,
+    };
+  }
+
+  private normalizeBagActivity(value: unknown): BagActivity | null {
+    if (!value || typeof value !== 'object') return null;
+    const activity = value as Partial<BagActivity>;
+    if (
+      typeof activity.id !== 'string' ||
+      typeof activity.title !== 'string' ||
+      (activity.latitude !== null &&
+        activity.latitude !== undefined &&
+        typeof activity.latitude !== 'number') ||
+      (activity.longitude !== null &&
+        activity.longitude !== undefined &&
+        typeof activity.longitude !== 'number')
+    )
+      return null;
+    return {
+      id: activity.id,
+      title: activity.title,
+      notes: typeof activity.notes === 'string' ? activity.notes : '',
       latitude: activity.latitude ?? null,
       longitude: activity.longitude ?? null,
     };
