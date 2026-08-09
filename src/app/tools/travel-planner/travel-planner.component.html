@@ -27,7 +27,6 @@
         <div><label for="activity-end">Fin</label><input id="activity-end" name="activity-end" type="datetime-local"
             [(ngModel)]="draft.end" (ngModelChange)="saveDraft()"></div>
       </div>
-      <p class="map-hint">Haz clic en el mapa para asignar una ubicación, o introduce las coordenadas.</p>
       <div class="form-row">
         <div><label for="latitude">Latitud</label><input id="latitude" name="latitude" type="number" step="any"
             [(ngModel)]="draft.latitude" (ngModelChange)="saveDraft()" placeholder="41.0086"></div>
