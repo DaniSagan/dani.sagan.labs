@@ -1,10 +1,7 @@
 <div class="article-with-sidebar">
-  <input id="sidebar-toggle-problems" type="checkbox" class="sidebar-toggle-input" />
-  <label class="sidebar-toggle" for="sidebar-toggle-problems" aria-label="Abrir o cerrar menú">☰ Menú</label>
-  <div class="sidebar">
-    <label class="sidebar-close" for="sidebar-toggle-problems" aria-label="Cerrar menú">✕</label>
+  <app-mobile-sidebar toggleId="sidebar-toggle-problems">
     <app-problems-navbar></app-problems-navbar>
-  </div>
+  </app-mobile-sidebar>
   <div class="body-text">
     <router-outlet></router-outlet>
   </div>
