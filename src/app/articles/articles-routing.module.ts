@@ -33,6 +33,7 @@ import { TriangleArticleComponent } from './regular-polygons/triangle-article/tr
 import { SquareArticleComponent } from './regular-polygons/square-article/square-article.component';
 import { HexagonArticleComponent } from './regular-polygons/hexagon-article/hexagon-article.component';
 import { OctagonArticleComponent } from './regular-polygons/octagon-article/octagon-article.component';
+import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,7 @@ const routes: Routes = [
       { path: AgnesiWitchArticleComponent.route, component: AgnesiWitchArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
+      { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
       { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) },

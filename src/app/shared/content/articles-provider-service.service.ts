@@ -35,6 +35,7 @@ import { TriangleArticleComponent } from 'src/app/articles/regular-polygons/tria
 import { SquareArticleComponent } from 'src/app/articles/regular-polygons/square-article/square-article.component';
 import { HexagonArticleComponent } from 'src/app/articles/regular-polygons/hexagon-article/hexagon-article.component';
 import { OctagonArticleComponent } from 'src/app/articles/regular-polygons/octagon-article/octagon-article.component';
+import { PtolemyTheoremArticleComponent } from 'src/app/articles/geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +91,10 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: AgnesiWitchArticleComponent.title, route: AgnesiWitchArticleComponent.route }
   ];
 
+  geometry: NavbarItem[] = [
+    { name: PtolemyTheoremArticleComponent.title, route: PtolemyTheoremArticleComponent.route }
+  ];
+
   probability: NavbarItem[] = [
     { name: PercolationDiagramComponent.title, route: PercolationDiagramComponent.route }
   ];
@@ -114,6 +119,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
+      { name: 'Geometría', items: this.geometry },
       { name: 'Curvas', items: this.curves },
       { name: 'Probabilidad', items: this.probability },
       { name: 'Trigonometría', items: this.trigonometry },

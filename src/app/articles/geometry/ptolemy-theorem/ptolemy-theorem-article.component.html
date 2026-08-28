@@ -1,0 +1,57 @@
+<h2>Teorema de Ptolomeo</h2>
+
+<p class="dropcap">Si un cuadrilátero está inscrito en una circunferencia, entonces el producto de sus diagonales es igual a la suma de los productos de los pares de lados opuestos. En otras palabras, para un cuadrilátero cíclico ABCD, se cumple:</p>
+
+<app-formula expression="AC \cdot BD = AB \cdot CD + BC \cdot DA" displayMode="block"/>
+
+<p>Este resultado, conocido como teorema de Ptolomeo, conecta la geometría euclídea con una relación muy útil para calcular longitudes, resolver triángulos y estudiar polígonos inscritos en una circunferencia.</p>
+
+<h3>Idea geométrica</h3>
+<p>Un cuadrilátero cíclico es aquel cuyos cuatro vértices están sobre una misma circunferencia. En ese caso, sus ángulos opuestos son suplementarios, y la longitud de cada lado puede expresarse en términos de ángulos inscritos. El teorema de Ptolomeo convierte esa estructura circular en una identidad algebraica entre segmentos.</p>
+
+<h3>Demostración</h3>
+<p>Una forma clásica de demostrarlo es utilizar la ley de los senos en los triángulos que comparten una diagonal. En una circunferencia de radio <app-formula expression="R" displayMode="inline"/>, cada cuerda se puede escribir como <app-formula expression="2R\sin(\theta)" displayMode="inline"/>, donde <app-formula expression="\theta" displayMode="inline"/> es el ángulo inscrito que subtiende esa cuerda.</p>
+<p>Por tanto, para un cuadrilátero cíclico ABCD se tiene:</p>
+<ul>
+  <li><app-formula expression="AB = 2R \sin{\angle ACB}" displayMode="inline"/></li>
+  <li><app-formula expression="BC = 2R \sin{\angle BAC}" displayMode="inline"/></li>
+  <li><app-formula expression="CD = 2R \sin{\angle CAD}" displayMode="inline"/></li>
+  <li><app-formula expression="DA = 2R \sin{\angle DCA}" displayMode="inline"/></li>
+  <li><app-formula expression="AC = 2R \sin{\angle ABC}" displayMode="inline"/></li>
+  <li><app-formula expression="BD = 2R \sin{\angle BCD}" displayMode="inline"/></li>
+</ul>
+<p>La demostración se basa en que los ángulos adecuados se emparejan por ser ángulos subtendidos por la misma cuerda, y al sustituir estas expresiones se obtiene una identidad trigonométrica equivalente a la del teorema. En esencia, la igualdad se reduce a una relación entre senos de ángulos suplementarios y la suma de productos de cuerdas.</p>
+<p>Es decir, la estructura circular impone la relación de Ptolomeo, y esta misma relación puede usarse a la inversa para probar que un cuadrilátero es cíclico cuando se cumple la igualdad correspondiente.</p>
+
+<h3>Aplicaciones</h3>
+<p>El teorema de Ptolomeo es especialmente útil cuando aparecen polígonos inscritos en una circunferencia, como rectángulos, cuadrados, pentágonos regulares e incluso algunos problemas de geometría sintética.</p>
+
+<ol>
+  <li><strong>Cuadrado o rectángulo:</strong> Si un rectángulo está inscrito en una circunferencia, entonces las diagonales son iguales. Ptolomeo da directamente que <app-formula expression="d^2 = a^2 + b^2" displayMode="inline"/>, que es el teorema de Pitágoras en forma de cuadrilátero.</li>
+  <li><strong>Polígonos regulares:</strong> En un pentágono regular inscrito, las relaciones entre lados y diagonales pueden obtenerse aplicando el teorema repetidamente.</li>
+  <li><strong>Problemas de cálculo de distancias:</strong> A menudo sirve para hallar una diagonal desconocida a partir de lados conocidos, cuando los cuatro puntos pertenecen a una misma circunferencia.</li>
+</ol>
+
+<h3>Ejemplo</h3>
+<p>Si un cuadrilátero cíclico tiene lados <app-formula expression="AB = 3" displayMode="inline"/>, <app-formula expression="BC = 4" displayMode="inline"/>, <app-formula expression="CD = 5" displayMode="inline"/> y <app-formula expression="DA = 6" displayMode="inline"/>, entonces:</p>
+<app-formula expression="AC \cdot BD = 3 \cdot 5 + 4 \cdot 6 = 39" displayMode="inline"/>
+<p>Así, el producto de las diagonales debe ser <app-formula expression="39" displayMode="inline"/>. Si se conoce una de las diagonales, la otra queda determinada de inmediato.</p>
+
+<div class="widget-container">
+  <div class="widget-title">Cuadrilátero cíclico interactivo</div>
+  <p>Arrastra cualquiera de los cuatro puntos sobre la circunferencia para cambiar el cuadrilátero. Los valores se actualizan en tiempo real.</p>
+  <canvas #canvas width="480" height="440" (pointerdown)="onPointerDown($event)" (pointermove)="onPointerMove($event)" (pointerup)="onPointerUp()" (pointerleave)="onPointerUp()"></canvas>
+  <div class="metrics-grid">
+    <div><strong>AB</strong> = {{ ab | number:'1.2-2' }}</div>
+    <div><strong>BC</strong> = {{ bc | number:'1.2-2' }}</div>
+    <div><strong>CD</strong> = {{ cd | number:'1.2-2' }}</div>
+    <div><strong>DA</strong> = {{ da | number:'1.2-2' }}</div>
+    <div><strong>AC</strong> = {{ ac | number:'1.2-2' }}</div>
+    <div><strong>BD</strong> = {{ bd | number:'1.2-2' }}</div>
+  </div>
+  <div class="metric-box">
+    <div><strong>AB·CD + BC·DA</strong> = {{ leftSide | number:'1.2-2' }}</div>
+    <div><strong>AC·BD</strong> = {{ rightSide | number:'1.2-2' }}</div>
+    <div><strong>Diferencia</strong> = {{ difference | number:'1.2-4' }}</div>
+  </div>
+</div>

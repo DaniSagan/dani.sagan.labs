@@ -1,4 +1,4 @@
-<div>
+<div class="formula-container" [ngClass]="{ 'formula-inline': displayMode === 'inline', 'formula-block': displayMode === 'block' }">
   <div [mathjax]="codeExpression"></div>
-  <div class="expression-code">{{expression}}</div>
+  <div *ngIf="showCode" class="expression-code">{{ expression }}</div>
 </div>

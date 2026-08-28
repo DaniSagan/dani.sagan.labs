@@ -27,6 +27,7 @@ import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
+import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse
     TetrahedronViewerComponent,
     ArithmeticDerivativeArticleComponent,
     ParabolaArticleComponent,
+    PtolemyTheoremArticleComponent,
     PercolationDiagramComponent,
     TrigInverseTrigCompositionComponent
   ],
