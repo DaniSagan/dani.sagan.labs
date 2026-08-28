@@ -5,7 +5,7 @@
       <div class="subsection">Otros</div>
       <ul>
         <li class="subsection-item">
-          <a [routerLink]="['/problems/test-problem']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Problema 1</a>
+          <a [routerLink]="['/problems/test-problem']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" (click)="closeSidebar()">Problema 1</a>
         </li>
       </ul>
     </li>

@@ -8,4 +8,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
 })
-export class GamesNavbarComponent {}
+export class GamesNavbarComponent {
+  readonly sidebarId = 'sidebar-toggle-games';
+
+  closeSidebar(): void {
+    const checkbox = document.getElementById(this.sidebarId) as HTMLInputElement | null;
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  }
+}

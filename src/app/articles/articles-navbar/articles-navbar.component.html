@@ -7,7 +7,7 @@
         <ul>
           @for(item of subsection.items; track item.name){
             <li class="subsection-item">
-              <a [routerLink]="['/articles', item.route]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">{{item.name}}</a>
+              <a [routerLink]="['/articles', item.route]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" (click)="closeSidebar()">{{item.name}}</a>
             </li>
           }
         </ul>

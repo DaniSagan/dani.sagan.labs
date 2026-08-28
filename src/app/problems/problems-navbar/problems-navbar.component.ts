@@ -9,5 +9,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './problems-navbar.component.css'
 })
 export class ProblemsNavbarComponent {
+  readonly sidebarId = 'sidebar-toggle-problems';
 
+  closeSidebar(): void {
+    const checkbox = document.getElementById(this.sidebarId) as HTMLInputElement | null;
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  }
 }

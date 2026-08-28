@@ -8,4 +8,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
 })
-export class ToolsNavbarComponent {}
+export class ToolsNavbarComponent {
+  readonly sidebarId = 'sidebar-toggle-tools';
+
+  closeSidebar(): void {
+    const checkbox = document.getElementById(this.sidebarId) as HTMLInputElement | null;
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+  }
+}

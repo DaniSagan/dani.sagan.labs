@@ -13,9 +13,17 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class ArticlesNavbarComponent implements OnInit {
   navbar!: Navbar;
+  readonly sidebarId = 'sidebar-toggle-articles';
 
   constructor(private articlesProviderService: ArticlesProviderServiceService) {
     this.navbar = this.articlesProviderService.getNavbar();
+  }
+
+  closeSidebar(): void {
+    const checkbox = document.getElementById(this.sidebarId) as HTMLInputElement | null;
+    if (checkbox) {
+      checkbox.checked = false;
+    }
   }
 
   ngOnInit(): void {}
