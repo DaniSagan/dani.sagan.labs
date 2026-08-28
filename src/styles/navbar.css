@@ -20,19 +20,19 @@ h2.navbar-title {
 .nav-items .subsection {
   padding: 5px 0px;
   margin: 5px 0px;
-  /* color: black; */
+  color: #eaf6ff;
   font-weight: bold;
 }
 
 .nav-items a {
   text-decoration: none;
   min-width: 100px;
-  color: var(--ink);
+  color: #eaf6ff;
   font-weight: normal;
 }
 
 .nav-items a:hover {
-  background-color: #333;
+  background-color: rgba(255, 255, 255, 0.12);
   color: white;
 }
 
