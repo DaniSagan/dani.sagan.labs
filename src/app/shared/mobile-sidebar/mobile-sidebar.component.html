@@ -1,0 +1,6 @@
+<input [id]="toggleId" type="checkbox" class="sidebar-toggle-input" />
+<label class="sidebar-toggle" [for]="toggleId" aria-label="Abrir o cerrar menú">☰ Menú</label>
+<div class="sidebar">
+  <label class="sidebar-close" [for]="toggleId" aria-label="Cerrar menú">✕</label>
+  <ng-content></ng-content>
+</div>
