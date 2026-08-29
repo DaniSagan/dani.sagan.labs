@@ -9,6 +9,10 @@
 <h3>Idea geométrica</h3>
 <p>Un cuadrilátero cíclico es aquel cuyos cuatro vértices están sobre una misma circunferencia. En ese caso, sus ángulos opuestos son suplementarios, y la longitud de cada lado puede expresarse en términos de ángulos inscritos. El teorema de Ptolomeo convierte esa estructura circular en una identidad algebraica entre segmentos.</p>
 
+<div class="diagram-panel">
+  <canvas #explanationCanvas width="600" height="600"></canvas>
+</div>
+
 <h3>Demostración</h3>
 <p>Una forma clásica de demostrarlo es utilizar la ley de los senos en los triángulos que comparten una diagonal. En una circunferencia de radio <app-formula expression="R" displayMode="inline"/>, cada cuerda se puede escribir como <app-formula expression="2R\sin(\theta)" displayMode="inline"/>, donde <app-formula expression="\theta" displayMode="inline"/> es el ángulo inscrito que subtiende esa cuerda.</p>
 <p>Por tanto, para un cuadrilátero cíclico ABCD se tiene:</p>
@@ -34,7 +38,7 @@
 
 <h3>Ejemplo</h3>
 <p>Si un cuadrilátero cíclico tiene lados <app-formula expression="AB = 3" displayMode="inline"/>, <app-formula expression="BC = 4" displayMode="inline"/>, <app-formula expression="CD = 5" displayMode="inline"/> y <app-formula expression="DA = 6" displayMode="inline"/>, entonces:</p>
-<app-formula expression="AC \cdot BD = 3 \cdot 5 + 4 \cdot 6 = 39" displayMode="inline"/>
+<app-formula expression="AC \cdot BD = 3 \cdot 5 + 4 \cdot 6 = 39" displayMode="block"/>
 <p>Así, el producto de las diagonales debe ser <app-formula expression="39" displayMode="inline"/>. Si se conoce una de las diagonales, la otra queda determinada de inmediato.</p>
 
 <div class="widget-container">

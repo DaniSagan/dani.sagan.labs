@@ -40,7 +40,7 @@ export class PhoenixSetComponent {
 
   ngAfterViewInit() {
     this.drawFractal(
-      {x: this.centerX, y: this.centerY},
+      new Vec2(this.centerX, this.centerY),
       2 ** this.zoom,
       new Complex(this.cReal, this.cImag),
       this.k);
@@ -145,13 +145,13 @@ export class PhoenixSetComponent {
 
   updateValues() {
     if (!this.isDrawing) {
-      this.drawFractal({x: this.centerX, y: this.centerY},
+      this.drawFractal(new Vec2(this.centerX, this.centerY),
         2 ** this.zoom,
         new Complex(this.cReal, this.cImag),
         this.k);
     } else {
       this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal({x: this.centerX, y: this.centerY},
+      setTimeout(() => this.drawFractal(new Vec2(this.centerX, this.centerY),
         2 ** this.zoom,
         new Complex(this.cReal, this.cImag),
         this.k), 100); // Restart after a slight delay.
@@ -228,20 +228,20 @@ export class PhoenixSetComponent {
     const scale = 2 ** this.zoom;
     const dx = 1.0 / scale;
     const dy = 1.0 / scale;
-    const center = {x: this.centerX, y: this.centerY};
+    const center = new Vec2(this.centerX, this.centerY);
     const minX = center.x - this.width / (2 * scale);
     const minY = center.y - this.height / (2 * scale);
-    let position: Vec2 = {x: minX + x * dx, y: minY + y * dy};
+    const position = new Vec2(minX + x * dx, minY + y * dy);
     this.centerX = position.x;
     this.centerY = position.y;
-    this.drawFractal({x: this.centerX, y: this.centerY},
+    this.drawFractal(new Vec2(this.centerX, this.centerY),
       2 ** this.zoom,
       new Complex(this.cReal, this.cImag),
       this.k);
   }
 
   update() {
-    this.drawFractal({x: this.centerX, y: this.centerY},
+    this.drawFractal(new Vec2(this.centerX, this.centerY),
       2 ** this.zoom,
       new Complex(this.cReal, this.cImag),
       this.k);

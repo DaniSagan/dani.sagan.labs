@@ -16,6 +16,7 @@ interface PtolemyPoint {
 })
 export class PtolemyTheoremArticleComponent {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('explanationCanvas', { static: true }) explanationCanvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   private draggingIndex: number | null = null;
 
@@ -51,6 +52,7 @@ export class PtolemyTheoremArticleComponent {
 
   ngAfterViewInit(): void {
     this.draw();
+    this.drawExplanation();
   }
 
   private getPoint(index: number): { x: number; y: number } {
@@ -135,6 +137,110 @@ export class PtolemyTheoremArticleComponent {
       this.ctx.fillText(point.label, point.x, point.y);
       this.ctx.fill();
     });
+  }
+
+  private drawExplanation(): void {
+    const canvas = this.explanationCanvas.nativeElement;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
+    const radius = 200;
+    const angles = [2.2, 0.3, 5.0, 3.8];
+    const labels = ['A', 'B', 'C', 'D'];
+    const points = angles.map((angle, index) => ({
+      x: cx + radius * Math.cos(angle),
+      y: cy + radius * Math.sin(angle),
+      label: labels[index],
+      angle,
+    }));
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.strokeStyle = '#5fb3ff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    ctx.lineTo(points[1].x, points[1].y);
+    ctx.lineTo(points[2].x, points[2].y);
+    ctx.lineTo(points[3].x, points[3].y);
+    ctx.closePath();
+    ctx.strokeStyle = '#f5d76e';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    ctx.lineTo(points[2].x, points[2].y);
+    ctx.moveTo(points[1].x, points[1].y);
+    ctx.lineTo(points[3].x, points[3].y);
+    ctx.strokeStyle = '#9bd4ff';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([8, 6]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    const arcStyle = '#ffcf70';
+    const angleMarkers = [
+      { start: 0.7, end: 2.2, cx, cy, r: 28, label: '∠ABC' },
+      { start: 2.2, end: 3.8, cx, cy, r: 36, label: '∠BCD' },
+      { start: 3.8, end: 5.4, cx, cy, r: 32, label: '∠CDA' },
+      { start: 5.4, end: 6.28, cx, cy, r: 26, label: '∠DAB' }
+    ];
+
+    angleMarkers.forEach(({ start, end, cx, cy, r, label }) => {
+      ctx.beginPath();
+      ctx.strokeStyle = arcStyle;
+      ctx.lineWidth = 2;
+      ctx.arc(cx, cy, r, start, end);
+      ctx.stroke();
+
+      const mid = (start + end) / 2;
+      const lx = cx + (r + 10) * Math.cos(mid);
+      const ly = cy + (r + 10) * Math.sin(mid);
+      ctx.fillStyle = '#d8ecff';
+      ctx.font = '11px sans-serif';
+      ctx.fillText(label, lx, ly);
+    });
+
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + radius, cy);
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('R', cx + radius / 2, cy - 8);
+
+    points.forEach((point) => {
+      ctx.beginPath();
+      ctx.fillStyle = '#ffffff';
+      ctx.arc(point.x, point.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.fillStyle = '#0b1020';
+      ctx.font = 'bold 14px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(point.label, point.x, point.y);
+    });
+
+    ctx.fillStyle = '#d8ecff';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('AB', (points[0].x + points[1].x) / 2, (points[0].y + points[1].y) / 2 - 10);
+    ctx.fillText('BC', (points[1].x + points[2].x) / 2 + 12, (points[1].y + points[2].y) / 2 + 12);
+    ctx.fillText('CD', (points[2].x + points[3].x) / 2, (points[2].y + points[3].y) / 2 + 18);
+    ctx.fillText('DA', (points[3].x + points[0].x) / 2 - 12, (points[3].y + points[0].y) / 2 - 12);
+    ctx.fillText('AC', (points[0].x + points[2].x) / 2, (points[0].y + points[2].y) / 2 - 12);
+    ctx.fillText('BD', (points[1].x + points[3].x) / 2, (points[1].y + points[3].y) / 2 + 12);
   }
 
   onPointerDown(event: PointerEvent): void {

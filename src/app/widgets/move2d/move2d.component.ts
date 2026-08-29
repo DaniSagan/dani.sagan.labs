@@ -15,18 +15,18 @@ export class Move2DComponent {
   @Output() movement = new EventEmitter<Vec2>();
 
   moveUp() {
-    this.movement.emit({x: 0, y: 1});
+    this.movement.emit(new Vec2(0, 1));
   }
 
   moveDown() {
-    this.movement.emit({x: 0, y: -1});
+    this.movement.emit(new Vec2(0, -1));
   }
 
   moveLeft() {
-    this.movement.emit({x: -1, y: 0});
+    this.movement.emit(new Vec2(-1, 0));
   }
 
   moveRight() {
-    this.movement.emit({x: 1, y: 0});
+    this.movement.emit(new Vec2(1, 0));
   }
 }

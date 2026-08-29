@@ -98,7 +98,7 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   }
 
   getFocus(): Vec2 {
-    return {x: -this.b / (2 * this.a), y: (4*this.a*this.c - this.b**2 + 1) / (4* this.a)};
+    return new Vec2(-this.b / (2 * this.a), (4*this.a*this.c - this.b**2 + 1) / (4* this.a));
   }
 
   getDirectrixY(): number {

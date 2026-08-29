@@ -1,6 +1,4 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { Circle } from 'src/app/shared/math/circle';
-import { Vec2 } from 'src/app/shared/math/vec2';
 import { FormsModule } from '@angular/forms';
 
 @Component({

@@ -39,6 +39,19 @@ canvas {
   margin-top: 2rem;
 }
 
+.diagram-panel {
+  margin: 0 0;
+  text-align: center;
+}
+
+.diagram-panel canvas {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .widget-title {
   margin-bottom: 0.75rem;
   font-weight: 700;

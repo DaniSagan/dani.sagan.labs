@@ -159,7 +159,7 @@ export class ImplicitCurveGraphComponent {
   }
 
   pixelToXY(pixelXY: Vec2): Vec2 {
-    return { x: this.pixelToX(pixelXY.x), y: this.pixelToY(pixelXY.y) };
+    return new Vec2(this.pixelToX(pixelXY.x), this.pixelToY(pixelXY.y));
   }
 
   yToPixel(y: number): number {
@@ -175,7 +175,7 @@ export class ImplicitCurveGraphComponent {
   }
 
   xyToPixel(xy: Vec2): Vec2 {
-    return { x: this.xToPixel(xy.x), y: this.yToPixel(xy.y) };
+    return new Vec2(this.xToPixel(xy.x), this.yToPixel(xy.y));
   }
 }
 

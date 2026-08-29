@@ -75,7 +75,7 @@ export class NewtonComponent {
   }
 
   ngAfterViewInit() {
-    this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+    this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom);
   }
 
   async drawFractal(fn: ComplexFunction, center: Vec2, scale: number) {
@@ -188,10 +188,10 @@ export class NewtonComponent {
 
   updateValues() {
     if (!this.isDrawing) {
-      this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+      this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom);
     } else {
       this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom), 100); // Restart after a slight delay.
+      setTimeout(() => this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom), 100); // Restart after a slight delay.
     }
   }
 
@@ -202,13 +202,13 @@ export class NewtonComponent {
     const scale = 2 ** this.zoom;
     const dx = 1.0 / scale;
     const dy = 1.0 / scale;
-    const center = {x: this.centerX, y: this.centerY};
+    const center = new Vec2(this.centerX, this.centerY);
     const minX = center.x - this.width / (2 * scale);
     const minY = center.y - this.height / (2 * scale);
-    let position: Vec2 = {x: minX + x * dx, y: minY + y * dy};
+    const position = new Vec2(minX + x * dx, minY + y * dy);
     this.centerX = position.x;
     this.centerY = position.y;
-    this.drawFractal(this.functions[this.selectedFunction], {x: this.centerX, y: this.centerY}, 2 ** this.zoom);
+    this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom);
   }
 
   onFunctionChanged(event: Event) {
