@@ -1,0 +1,28 @@
+.widget-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--bg2);
+  color: var(--text);
+}
+
+.widget-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.widget-container label {
+  display: inline-block;
+  width: 32px;
+  margin-right: 0.5rem;
+}
+
+.widget-container input {
+  margin: 0.25rem 0 0.75rem;
+}
+
+.widget-container .formula,
+.widget-container .formula * {
+  color: var(--text);
+}

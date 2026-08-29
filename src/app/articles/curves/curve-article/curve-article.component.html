@@ -1,0 +1,19 @@
+<h2>{{ curve.title }}</h2>
+<p class="dropcap">{{ curve.description }}</p>
+<div class="widget-container">
+  <div class="widget-title">Parámetros</div>
+  <div *ngFor="let param of curve.params">
+    <label [for]="param.key">{{ param.label }}: </label>
+    <input
+      [id]="param.key"
+      type="number"
+      [ngModel]="params[param.key]"
+      (ngModelChange)="onParamChanged(param.key, $event)"
+      [min]="param.min"
+      [max]="param.max"
+      [step]="param.step"
+    />
+  </div>
+  <div id="equation" class="formula" [mathjax]="equation"></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>

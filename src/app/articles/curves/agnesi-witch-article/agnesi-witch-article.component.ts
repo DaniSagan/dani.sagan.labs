@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MathjaxModule } from 'mathjax-angular';
 import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
@@ -6,15 +7,20 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/
 @Component({
   selector: 'app-agnesi-witch-article',
   standalone: true,
-  imports: [ ImplicitCurveGraphComponent, FormsModule, MathjaxModule ],
+  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
   templateUrl: './agnesi-witch-article.component.html',
-  styleUrl: './agnesi-witch-article.component.css'
+  styleUrls: ['./agnesi-witch-article.component.css']
 })
 export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
-  @ViewChild('curveGraph', {static: true}) curveGraph!: ImplicitCurveGraphComponent;
+  @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
 
   static title: string = 'Bruja de Agnesi';
   static route: string = 'agnesi-witch';
+
+  title = AgnesiWitchArticleComponent.title;
+  description = 'La bruja de Agnesi es una curva con una forma de campana muy característica, famosa por su belleza visual y por su papel en la historia del cálculo.';
+  history = 'Debe su nombre a Maria Gaetana Agnesi, matemática italiana del siglo XVIII, quien la estudió y la describió con claridad. La curva se convirtió en un clásico de las obras de geometría analítica y análisis matemático por la riqueza de sus propiedades.';
+  practicalUses = 'Se usa como ejemplo de curva con una cola asintótica y una distribución de densidad muy conocida en análisis, probabilidades y modelado físico. También sirve para ilustrar cómo una forma aparentemente sencilla puede esconder relaciones profundas con límites, integrales y simetrías.';
 
   a: number = 1;
   b: number = 1;
@@ -30,7 +36,7 @@ export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
   }
 
   onDraw() {
-    this.curveGraph.functions = [new GraphableFunction((x: number, y: number) => { return (x/this.a)**3 + (y/this.b)**3 - 1; }, 'red')];
+    this.curveGraph.functions = [new GraphableFunction((x: number, y: number) => (x / this.a) ** 3 + (y / this.b) ** 3 - 1, 'red')];
     this.curveGraph.drawGraph();
   }
 
@@ -48,11 +54,12 @@ export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
 
   getEquation(): string {
     let terms = '';
-    if(Math.abs(this.a) !== 1) terms += `\\left(\\frac{x}{${Math.abs(this.a)}}\\right)^3`;
+    if (Math.abs(this.a) !== 1) terms += `\\left(\\frac{x}{${Math.abs(this.a)}}\\right)^3`;
     else terms += 'x^3';
     terms += ' + ';
-    if(Math.abs(this.b) !== 1) terms += `\\left(\\frac{y}{${Math.abs(this.b)}}\\right)^3`;
+    if (Math.abs(this.b) !== 1) terms += `\\left(\\frac{y}{${Math.abs(this.b)}}\\right)^3`;
     else terms += 'y^3';
-    return `$$ ${terms} = 1 $$`
+    return `$$ ${terms} = 1 $$`;
   }
 }
+

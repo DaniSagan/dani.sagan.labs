@@ -88,7 +88,23 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: ParabolaArticleComponent.title, route: ParabolaArticleComponent.route },
     { name: HyperbolaArticleComponent.title, route: HyperbolaArticleComponent.route },
     { name: EllipseArticleComponent.title, route: EllipseArticleComponent.route },
-    { name: AgnesiWitchArticleComponent.title, route: AgnesiWitchArticleComponent.route }
+    { name: AgnesiWitchArticleComponent.title, route: AgnesiWitchArticleComponent.route },
+    { name: 'Cardioide', route: 'cardioid' },
+    { name: 'Rosa polar', route: 'rose' },
+    { name: 'Lemniscata', route: 'lemniscate' },
+    { name: 'Óvalos de Cassini', route: 'cassini' },
+    { name: 'Espiral de Arquímedes', route: 'archimedean-spiral' },
+    { name: 'Espiral logarítmica', route: 'logarithmic-spiral' },
+    { name: 'Astroide', route: 'astroid' },
+    { name: 'Deltoide', route: 'deltoid' },
+    { name: 'Trifolio', route: 'trifolium' },
+    { name: 'Epicicloide', route: 'epicycloid' },
+    { name: 'Hipocicloide', route: 'hypocycloid' },
+    { name: 'Cicloide', route: 'cycloid' },
+    { name: 'Curva de Lissajous', route: 'lissajous' },
+    { name: 'Concoide de Nicomedes', route: 'conchoid' },
+    { name: 'Cisoide de Diocles', route: 'cissoid' },
+    { name: 'Curva parabólica general', route: 'parabola-like' }
   ];
 
   geometry: NavbarItem[] = [

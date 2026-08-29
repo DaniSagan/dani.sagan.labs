@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MathjaxModule } from 'mathjax-angular';
 import { Vec2 } from 'src/app/shared/math/vec2';
@@ -7,20 +8,24 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/
 @Component({
   selector: 'app-parabola-article',
   standalone: true,
-  imports: [ ImplicitCurveGraphComponent, FormsModule, MathjaxModule ],
+  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
   templateUrl: './parabola-article.component.html',
-  styleUrl: './parabola-article.component.css'
+  styleUrls: ['./parabola-article.component.css']
 })
 export class ParabolaArticleComponent implements AfterViewInit, OnInit {
-  @ViewChild('curveGraph', {static: true}) curveGraph!: ImplicitCurveGraphComponent;
+  @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
 
   static title: string = 'Parábola';
   static route: string = 'parabola';
 
+  title = ParabolaArticleComponent.title;
+  description = 'La parábola es una de las cónicas más importantes y aparece como la trayectoria de un proyectil ideal o como la superficie reflectante de una antena parabólica.';
+  history = 'La parábola fue estudiada ya por los griegos y su propiedad reflectante fue clave en la geometría clásica. En la Edad Moderna se convirtió en una pieza central del análisis matemático y de la física, especialmente con el estudio del movimiento bajo gravedad.';
+  practicalUses = 'La parábola se usa en antenas parabólicas, faros, telescopios y espejos concentradores, porque refleja rayos paralelos hacia un foco. También modela la trayectoria de proyectiles y muchos fenómenos de optimización en ingeniería.';
+
   a: number = 1;
   b: number = 0;
   c: number = 0;
-  eq2: string = '$x^2$';
   equation: string = '$x$';
 
   ngOnInit() {
@@ -33,21 +38,21 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   }
 
   onDraw() {
-    this.curveGraph.functions = [new GraphableFunction((x: number, y: number) => { return this.a*x**2 + this.b*x + this.c - y; }, 'red')];
+    this.curveGraph.functions = [new GraphableFunction((x: number, y: number) => this.a * x ** 2 + this.b * x + this.c - y, 'red')];
     this.curveGraph.drawGraph();
-    // Draw focus.
+
     this.curveGraph.draw((ctx: CanvasRenderingContext2D) => {
-      let focus: Vec2 = this.getFocus();
-      let focusPixel: Vec2 = this.curveGraph.xyToPixel(focus);
+      const focus: Vec2 = this.getFocus();
+      const focusPixel: Vec2 = this.curveGraph.xyToPixel(focus);
       ctx.beginPath();
       ctx.strokeStyle = 'blue';
       ctx.arc(focusPixel.x, focusPixel.y, 2, 0, 2 * Math.PI);
       ctx.stroke();
     });
-    // Draw directrix.
+
     this.curveGraph.draw((ctx: CanvasRenderingContext2D) => {
-      let directrixY: number = this.getDirectrixY();
-      let directrixPixelY: number = this.curveGraph.yToPixel(directrixY);
+      const directrixY: number = this.getDirectrixY();
+      const directrixPixelY: number = this.curveGraph.yToPixel(directrixY);
       ctx.beginPath();
       ctx.strokeStyle = 'green';
       ctx.moveTo(0, directrixPixelY);
@@ -76,33 +81,32 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
 
   getEquation(): string {
     let terms = '';
-    if(this.a != 0) {
-      if(this.a < 0) terms += ' - ';
-      if(Math.abs(this.a) !== 1) terms += `${Math.abs(this.a)}`;
+    if (this.a !== 0) {
+      if (this.a < 0) terms += ' - ';
+      if (Math.abs(this.a) !== 1) terms += `${Math.abs(this.a)}`;
       terms += 'x^2';
     }
-    if(this.b != 0) {
-      if(this.b < 0) terms += ' - ';
-      else if(terms !== '') terms += ' + ';
-      if(Math.abs(this.b) !== 1) terms += `${Math.abs(this.b)}`;
+    if (this.b !== 0) {
+      if (this.b < 0) terms += ' - ';
+      else if (terms !== '') terms += ' + ';
+      if (Math.abs(this.b) !== 1) terms += `${Math.abs(this.b)}`;
       terms += 'x';
     }
-    if(this.c != 0) {
-      if(this.c < 0) terms += ' - ';
-      else if(terms !== '') terms += ' + ';
+    if (this.c !== 0) {
+      if (this.c < 0) terms += ' - ';
+      else if (terms !== '') terms += ' + ';
       terms += `${Math.abs(this.c)}`;
     }
-    if(terms === '') terms = '0';
-    return `$$ ${terms} = 0 $$`
-    //return `$ x = 0 $`
+    if (terms === '') terms = '0';
+    return `$$ ${terms} = 0 $$`;
   }
 
   getFocus(): Vec2 {
-    return new Vec2(-this.b / (2 * this.a), (4*this.a*this.c - this.b**2 + 1) / (4* this.a));
+    return new Vec2(-this.b / (2 * this.a), (4 * this.a * this.c - this.b ** 2 + 1) / (4 * this.a));
   }
 
   getDirectrixY(): number {
-    return (4*this.a*this.c - this.b**2 - 1) / (4* this.a);
+    return (4 * this.a * this.c - this.b ** 2 - 1) / (4 * this.a);
   }
-
 }
+

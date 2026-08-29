@@ -34,6 +34,22 @@ import { SquareArticleComponent } from './regular-polygons/square-article/square
 import { HexagonArticleComponent } from './regular-polygons/hexagon-article/hexagon-article.component';
 import { OctagonArticleComponent } from './regular-polygons/octagon-article/octagon-article.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
+import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
+import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
+import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
+import { CassiniArticleComponent } from './curves/cassini-article/cassini-article.component';
+import { ArchimedeanSpiralArticleComponent } from './curves/archimedean-spiral-article/archimedean-spiral-article.component';
+import { LogarithmicSpiralArticleComponent } from './curves/logarithmic-spiral-article/logarithmic-spiral-article.component';
+import { AstroidArticleComponent } from './curves/astroid-article/astroid-article.component';
+import { DeltoidArticleComponent } from './curves/deltoid-article/deltoid-article.component';
+import { TrifoliumArticleComponent } from './curves/trifolium-article/trifolium-article.component';
+import { EpicycloidArticleComponent } from './curves/epicycloid-article/epicycloid-article.component';
+import { HypocycloidArticleComponent } from './curves/hypocycloid-article/hypocycloid-article.component';
+import { CycloidArticleComponent } from './curves/cycloid-article/cycloid-article.component';
+import { LissajousArticleComponent } from './curves/lissajous-article/lissajous-article.component';
+import { ConchoidArticleComponent } from './curves/conchoid-article/conchoid-article.component';
+import { CissoidArticleComponent } from './curves/cissoid-article/cissoid-article.component';
+import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/parabola-like-article.component';
 
 const routes: Routes = [
   {
@@ -68,6 +84,22 @@ const routes: Routes = [
       { path: HyperbolaArticleComponent.route, component: HyperbolaArticleComponent },
       { path: EllipseArticleComponent.route, component: EllipseArticleComponent },
       { path: AgnesiWitchArticleComponent.route, component: AgnesiWitchArticleComponent },
+      { path: CardioidArticleComponent.route, component: CardioidArticleComponent },
+      { path: RoseArticleComponent.route, component: RoseArticleComponent },
+      { path: LemniscateArticleComponent.route, component: LemniscateArticleComponent },
+      { path: CassiniArticleComponent.route, component: CassiniArticleComponent },
+      { path: ArchimedeanSpiralArticleComponent.route, component: ArchimedeanSpiralArticleComponent },
+      { path: LogarithmicSpiralArticleComponent.route, component: LogarithmicSpiralArticleComponent },
+      { path: AstroidArticleComponent.route, component: AstroidArticleComponent },
+      { path: DeltoidArticleComponent.route, component: DeltoidArticleComponent },
+      { path: TrifoliumArticleComponent.route, component: TrifoliumArticleComponent },
+      { path: EpicycloidArticleComponent.route, component: EpicycloidArticleComponent },
+      { path: HypocycloidArticleComponent.route, component: HypocycloidArticleComponent },
+      { path: CycloidArticleComponent.route, component: CycloidArticleComponent },
+      { path: LissajousArticleComponent.route, component: LissajousArticleComponent },
+      { path: ConchoidArticleComponent.route, component: ConchoidArticleComponent },
+      { path: CissoidArticleComponent.route, component: CissoidArticleComponent },
+      { path: ParabolaLikeArticleComponent.route, component: ParabolaLikeArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
       { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },

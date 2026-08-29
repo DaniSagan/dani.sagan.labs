@@ -28,6 +28,22 @@ import { ParabolaArticleComponent } from './curves/parabola-article/parabola-art
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
+import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
+import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
+import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
+import { CassiniArticleComponent } from './curves/cassini-article/cassini-article.component';
+import { ArchimedeanSpiralArticleComponent } from './curves/archimedean-spiral-article/archimedean-spiral-article.component';
+import { LogarithmicSpiralArticleComponent } from './curves/logarithmic-spiral-article/logarithmic-spiral-article.component';
+import { AstroidArticleComponent } from './curves/astroid-article/astroid-article.component';
+import { DeltoidArticleComponent } from './curves/deltoid-article/deltoid-article.component';
+import { TrifoliumArticleComponent } from './curves/trifolium-article/trifolium-article.component';
+import { EpicycloidArticleComponent } from './curves/epicycloid-article/epicycloid-article.component';
+import { HypocycloidArticleComponent } from './curves/hypocycloid-article/hypocycloid-article.component';
+import { CycloidArticleComponent } from './curves/cycloid-article/cycloid-article.component';
+import { LissajousArticleComponent } from './curves/lissajous-article/lissajous-article.component';
+import { ConchoidArticleComponent } from './curves/conchoid-article/conchoid-article.component';
+import { CissoidArticleComponent } from './curves/cissoid-article/cissoid-article.component';
+import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/parabola-like-article.component';
 
 @NgModule({
   imports: [
@@ -57,7 +73,23 @@ import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptole
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
     PercolationDiagramComponent,
-    TrigInverseTrigCompositionComponent
+    TrigInverseTrigCompositionComponent,
+    CardioidArticleComponent,
+    RoseArticleComponent,
+    LemniscateArticleComponent,
+    CassiniArticleComponent,
+    ArchimedeanSpiralArticleComponent,
+    LogarithmicSpiralArticleComponent,
+    AstroidArticleComponent,
+    DeltoidArticleComponent,
+    TrifoliumArticleComponent,
+    EpicycloidArticleComponent,
+    HypocycloidArticleComponent,
+    CycloidArticleComponent,
+    LissajousArticleComponent,
+    ConchoidArticleComponent,
+    CissoidArticleComponent,
+    ParabolaLikeArticleComponent
   ],
 })
 export class ArticlesModule {}
