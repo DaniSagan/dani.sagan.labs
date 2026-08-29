@@ -1,5 +1,5 @@
 import { Line } from "src/app/mathematics/geometry/line";
-import { Vector2 } from "src/app/mathematics/geometry/vector2";
+import { Vec2 } from 'src/app/shared/math/vec2';
 import { CanvasItem } from "./canvas-item";
 
 export class LineItem extends CanvasItem {
@@ -7,7 +7,7 @@ export class LineItem extends CanvasItem {
   public width: number = 1;
   public strokeStyle: string | null = null;
 
-  constructor(p1: Vector2, p2: Vector2) {
+  constructor(p1: Vec2, p2: Vec2) {
     super();
     this.line = new Line(p1, p2);
   }

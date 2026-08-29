@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PolygonGenerator } from 'src/app/mathematics/geometry/polygon-generator';
-import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { Vec2 } from 'src/app/shared/math/vec2';
 
 @Component({
   selector: 'app-hexagon-article',
@@ -24,7 +24,7 @@ export class HexagonArticleComponent {
   draw(): void {
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;
-    const center = new Vector2(canvasWidth / 2, canvasHeight / 2);
+    const center = new Vec2(canvasWidth / 2, canvasHeight / 2);
 
     let sides = 6;
     let vertices = PolygonGenerator.getVertices(sides, canvasWidth / 2 - 50);

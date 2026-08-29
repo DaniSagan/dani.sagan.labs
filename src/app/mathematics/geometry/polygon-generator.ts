@@ -1,13 +1,13 @@
-import { Vector2 } from "./vector2";
+import { Vec2 } from 'src/app/shared/math/vec2';
 
 export class PolygonGenerator {
-  static getVertices(sides: number, radius: number) : Vector2[] {
+  static getVertices(sides: number, radius: number): Vec2[] {
     const angle = 2 * Math.PI / sides;
     const initialAngle = angle / 2;
-    let vertices = [];
-    for(let k: number = 0; k < sides; k++) {
+    const vertices: Vec2[] = [];
+    for (let k = 0; k < sides; k++) {
       const angleK = initialAngle + angle * k;
-      vertices.push(new Vector2(radius * Math.sin(angleK), radius * Math.cos(angleK)));
+      vertices.push(new Vec2(radius * Math.sin(angleK), radius * Math.cos(angleK)));
     }
     return vertices;
   }

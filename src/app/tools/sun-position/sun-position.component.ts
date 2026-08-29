@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { Vec2 } from 'src/app/shared/math/vec2';
 import { GeolocationService } from 'src/app/shared/physics/geolocation.service';
 import { CelestialCoords, GeographicCoords, SunPositionCalculatorService } from 'src/app/shared/physics/sun-position-calculator-service.service';
 import * as L from 'leaflet';
@@ -128,8 +128,8 @@ export class SunPositionComponent implements OnInit, AfterViewInit {
       return 'black';
     }
 
-    let normal = new Vector2(Math.cos(azimuthHeading * Math.PI / 180), Math.sin(azimuthHeading * Math.PI / 180));
-    let sunNormal = new Vector2(Math.cos(celestialCoords.azimuth * Math.PI / 180), Math.sin(celestialCoords.azimuth * Math.PI / 180));
+    let normal = new Vec2(Math.cos(azimuthHeading * Math.PI / 180), Math.sin(azimuthHeading * Math.PI / 180));
+    let sunNormal = new Vec2(Math.cos(celestialCoords.azimuth * Math.PI / 180), Math.sin(celestialCoords.azimuth * Math.PI / 180));
 
     let p = normal.x * sunNormal.x + normal.y * sunNormal.y;
 

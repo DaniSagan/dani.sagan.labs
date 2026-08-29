@@ -9,7 +9,7 @@ import { CmdSubtraction } from 'src/app/shared/math/commands/cmd-subtraction';
 import { CmdSum } from 'src/app/shared/math/commands/cmd-sum';
 import { FormulaBuilder } from 'src/app/shared/math/formula-builder';
 import { FormulaItem } from 'src/app/shared/math/items/formula-item';
-import { diff, sum, Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { Vec2 } from 'src/app/shared/math/vec2';
 import { CanvasComponent } from 'src/app/widgets/canvas/canvas.component';
 import { LineItem } from 'src/app/widgets/canvas/items/line-item';
 import { CanvasComponent as CanvasComponent_1 } from '../../widgets/canvas/canvas.component';
@@ -37,7 +37,7 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
 
   content: string = '$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$';
   equations: Map<string, string> = new Map<string, string>();
-  canvasSize = new Vector2(490, 490);
+  canvasSize = new Vec2(490, 490);
 
   @ViewChild('myCanvas') myCanvas!: CanvasComponent;
 
@@ -123,10 +123,10 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
       this.draw(this.context);
     }
 
-    // this.myCanvas.size = new Vector2(600, 600);
+    // this.myCanvas.size = new Vec2(600, 600);
     let kochSnowflake: LineItem[] = this.koch(
-      new Vector2(10, 200),
-      new Vector2(480, 200),
+      new Vec2(10, 200),
+      new Vec2(480, 200),
       7
     );
     this.myCanvas.scene.addItems(kochSnowflake);
@@ -141,17 +141,17 @@ export class TestArticleComponent implements OnInit, AfterViewInit {
     context.closePath();
   }
 
-  koch(p1: Vector2, p2: Vector2, level: number): LineItem[] {
+  koch(p1: Vec2, p2: Vec2, level: number): LineItem[] {
     let result: LineItem[] = [];
     if (level <= 0) {
       result.push(new LineItem(p1, p2));
     } else {
-      let v12: Vector2 = diff(p2, p1);
-      let pp1: Vector2 = p1.sum(v12.mult(1 / 3));
-      let pp3: Vector2 = p1.sum(v12.mult(2 / 3));
-      let pp2: Vector2 = p1
-        .sum(v12.mult(1 / 3))
-        .sum(v12.rotate(-Math.PI / 3).mult(1 / 3));
+      const v12: Vec2 = p2.subtract(p1);
+      const pp1: Vec2 = p1.add(v12.scale(1 / 3));
+      const pp3: Vec2 = p1.add(v12.scale(2 / 3));
+      const pp2: Vec2 = p1
+        .add(v12.scale(1 / 3))
+        .add(v12.rotate(-Math.PI / 3).scale(1 / 3));
       result.push(...this.koch(p1, pp1, level - 1));
       result.push(...this.koch(pp1, pp2, level - 1));
       result.push(...this.koch(pp2, pp3, level - 1));

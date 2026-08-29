@@ -8,7 +8,7 @@ import {
   SimpleChanges,
   ViewChild,
 } from '@angular/core';
-import { Vector2 } from 'src/app/mathematics/geometry/vector2';
+import { Vec2 } from 'src/app/shared/math/vec2';
 import { CanvasItem } from './items/canvas-item';
 import { SceneItem } from './items/scene-item';
 
@@ -20,14 +20,14 @@ import { SceneItem } from './items/scene-item';
 })
 export class CanvasComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild('myCanvas') myCanvas!: ElementRef<HTMLCanvasElement>;
-  @Input() size: Vector2;
+  @Input() size: Vec2;
 
   private context!: CanvasRenderingContext2D;
 
   public scene: SceneItem;
 
   constructor() {
-    this.size = new Vector2(100, 100);
+    this.size = new Vec2(100, 100);
     this.scene = new SceneItem();
   }
 

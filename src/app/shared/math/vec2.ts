@@ -58,6 +58,24 @@ export class Vec2 {
    *
    * @returns The Euclidean norm of the vector.
    */
+  get length(): number {
+    return this.getLength();
+  }
+
+  /**
+   * Returns the normalized version of the vector.
+   *
+   * @returns The unit vector in the same direction.
+   */
+  get unit(): Vec2 {
+    return this.getUnit();
+  }
+
+  /**
+   * Computes the vector length or magnitude.
+   *
+   * @returns The Euclidean norm of the vector.
+   */
   getLength(): number {
     return Math.hypot(this.x, this.y);
   }
@@ -103,6 +121,28 @@ export class Vec2 {
    */
   scale(scalar: number): Vec2 {
     return new Vec2(this.x * scalar, this.y * scalar);
+  }
+
+  /**
+   * Alias for scale.
+   *
+   * @param scale The scalar multiplier.
+   * @returns The scaled vector.
+   */
+  mult(scale: number): Vec2 {
+    return this.scale(scale);
+  }
+
+  /**
+   * Rotates the vector by a given angle in radians.
+   *
+   * @param angle The rotation angle in radians.
+   * @returns The rotated vector.
+   */
+  rotate(angle: number): Vec2 {
+    const c = Math.cos(angle);
+    const s = Math.sin(angle);
+    return new Vec2(c * this.x - s * this.y, s * this.x + c * this.y);
   }
 
   /**

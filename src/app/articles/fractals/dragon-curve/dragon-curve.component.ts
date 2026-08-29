@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Vector2 } from 'src/app/shared/geometry/vector2';
+import { Vec2 } from 'src/app/shared/math/vec2';
 
 @Component({
   selector: 'app-dragon-curve',
@@ -41,7 +41,7 @@ export class DragonCurveComponent implements OnInit {
     // Configurar las coordenadas iniciales
     let x = canvasWidth / 2;
     let y = canvasHeight / 2;
-    let direction = new Vector2(this.lineLength, 0);
+    let direction = new Vec2(this.lineLength, 0);
 
     this.isDrawing = true;
 
@@ -126,12 +126,12 @@ export class DragonCurveComponent implements OnInit {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  private rotateLeft(direction: Vector2) {
-    return new Vector2(-direction.y, direction.x);
+  private rotateLeft(direction: Vec2) {
+    return new Vec2(-direction.y, direction.x);
   }
 
-  private rotateRight(direction: Vector2) {
-    return new Vector2(direction.y, -direction.x);
+  private rotateRight(direction: Vec2) {
+    return new Vec2(direction.y, -direction.x);
   }
 
   private decimalToRainbowColor(value: number): string {
