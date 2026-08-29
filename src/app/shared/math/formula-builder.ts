@@ -4,7 +4,6 @@ import { EqualsItem } from "./items/equals-item";
 import { ExponentItem } from "./items/exponent-item";
 import { FormulaItem } from "./items/formula-item";
 import { FractionItem } from "./items/fraction-item";
-import { FunctionItem } from "./items/function-item";
 import { IntegerItem } from "./items/integer-item";
 import { RootItem } from "./items/root-item";
 import { SumItem } from "./items/sum-item";

@@ -7,6 +7,16 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+(window as any).MathJax = {
+  isReady: true,
+  promise: Promise.resolve(),
+  startup: {
+    promise: Promise.resolve(),
+    defaultReady: () => undefined
+  },
+  typesetPromise: () => Promise.resolve()
+};
+
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,

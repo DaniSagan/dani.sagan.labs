@@ -8,10 +8,10 @@ describe('RubikCubeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RubikCubeComponent]
+      declarations: [RubikCubeComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(RubikCubeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
