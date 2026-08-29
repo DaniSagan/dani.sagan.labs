@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La concoide es una curva construida a partir de una recta fija y un punto externo, y se caracteriza por una “boca” o proyección que se aparta de la línea de referencia.</p>
-<h3>Historia</h3>
-<p>Fue estudiada por Nicomedes en la geometría antigua como un ejemplo de lugar geométrico que permite resolver problemas clásicos con regla y compás. Su construcción refleja la idea de combinar una recta con un punto fijo para generar una curva útil.</p>
-<h3>Usos prácticos</h3>
-<p>Sirve como ejemplo clásico de curva construida por un lugar geométrico y aparece en contextos de diseño geométrico, trazados auxiliares y formación matemática de conceptos de sección cónica y resolución de problemas.</p>
+<h2>Concoide de Nicomedes</h2>
+<p class="dropcap">Concoide de Nicomedes se construye a partir de una recta, un punto y una distancia fija: sobre cada recta que pasa por el punto se marcan puntos separados esa distancia de la recta inicial. Su construcción geométrica ayuda a interpretar por qué aparecen ramas distintas o un lazo interior cuando cambian las distancias de referencia.</p>
+
+<h3>Definición y propiedades</h3>
+<p>Dependiendo de los parámetros, puede presentar dos ramas, un lazo interior o una forma con asíntota. La definición geométrica permite interpretar estos cambios antes de escribir la ecuación. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Nicomedes la estudió para abordar la trisección del ángulo y la duplicación del cubo, problemas que no se resuelven en general solo con regla y compás. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Se utiliza como ejemplo de lugar geométrico, construcción mecánica y análisis de curvas con ramas. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

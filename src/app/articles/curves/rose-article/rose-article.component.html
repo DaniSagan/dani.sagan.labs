@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La rosa polar es una familia de curvas con pétalos simétricos cuya forma depende del factor angular k, y aparece como un modelo visual muy útil en geometría polar.</p>
-<h3>Historia</h3>
-<p>Aunque la curva se conoce por tradición matemática moderna, ya aparece en la tradición geométrica del siglo XVIII y se asocia con los estudios sistemáticos de curvas polares. Su apariencia floral la hizo especialmente atractiva para la educación y la investigación visual.</p>
-<h3>Usos prácticos</h3>
-<p>La rosa polar sirve para modelar simetrías, patrones de resonancia y formas periódicas en dibujo técnico, diseño y visualización de fenómenos con simetría angular. También ayuda a entender la relación entre ecuaciones polares y rotaciones.</p>
+<h2>Rosa polar</h2>
+<p class="dropcap">Rosa polar es una familia de curvas polares de la forma r = a cos(kθ) o r = a sin(kθ). La lectura en coordenadas polares hace visible la relación entre el factor angular y el número de pétalos.</p>
+
+<h3>Definición y propiedades</h3>
+<p>El parámetro a fija la escala y k controla el número de pétalos. Si k es impar, la rosa tiene k pétalos; si es par, tiene 2k. Esta regla se comprueba directamente al recorrer un periodo angular. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Las rosas polares se consolidaron con el desarrollo de las coordenadas polares en los siglos XVII y XVIII. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Se usan para enseñar periodicidad, simetría angular, diseño ornamental y visualización de resonancias. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

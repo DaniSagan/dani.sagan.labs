@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La espiral logarítmica crece de manera geométrica con el ángulo, conservando su forma aunque se amplíe o reduzca su escala.</p>
-<h3>Historia</h3>
-<p>La espiral logarítmica fue estudiada por Descartes y posteriormente por Jacob Bernoulli, quien quedó fascinado por su invarianza bajo escalado. La curva aparece en la naturaleza y en la historia del análisis matemático.</p>
-<h3>Usos prácticos</h3>
-<p>Se observa en conchas marinas, galaxias espirales y patrones de crecimiento; además, en ingeniería y diseño sirve para modelar progresiones geométricas y trayectorias con expansión constante.</p>
+<h2>Espiral logarítmica</h2>
+<p class="dropcap">Espiral logarítmica es una espiral polar cuya ecuación tiene crecimiento exponencial, por ejemplo r = ae^(bθ). El parámetro de crecimiento permite cuantificar cómo aumenta el radio cuando el ángulo avanza una cantidad fija.</p>
+
+<h3>Definición y propiedades</h3>
+<p>Al aumentar el ángulo en una cantidad fija, el radio se multiplica por el mismo factor. Además, el ángulo entre la tangente y el radio es constante; esta es su propiedad característica. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Descartes y Jacob Bernoulli la estudiaron de forma sistemática. Bernoulli la denominó spira mirabilis por su invariancia de escala. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Se usa en modelos de crecimiento, antenas, diseño y análisis de patrones autosimilares. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La deltoide es una curva con tres puntas y simetría triangular, muy elegante y con una estructura claramente relacionada con la geometría de las hipocicloides.</p>
-<h3>Historia</h3>
-<p>La deltoide forma parte de la familia de las hipocicloides y fue estudiada en geometría clásica como ejemplo de curva generada por rodadura de circunferencias. Su nombre alude a la forma de un triángulo alargado, “deltoide” en referencia a la letra griega delta.</p>
-<h3>Usos prácticos</h3>
-<p>Los trazados de la deltoide aparecen en diseño ornamental, mecanismos de transmisión y análisis de envolventes. También resulta útil para comprender cómo trayectorias generadas por rotación producen formas con simetría discreta.</p>
+<h2>Deltoide</h2>
+<p class="dropcap">Deltoide es una hipocicloide de tres cúspides, obtenida cuando un círculo rueda dentro de otro cuyo radio es tres veces mayor. La curva se entiende bien al relacionar cada cúspide con una posición del círculo que rueda en el interior de la circunferencia fija.</p>
+
+<h3>Definición y propiedades</h3>
+<p>Tiene simetría rotacional de orden tres. Puede parametrizarse mediante combinaciones de senos y cosenos de t y 2t; las tres cúspides corresponden a posiciones periódicas del círculo móvil. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Forma parte de las curvas de rodadura estudiadas desde la geometría clásica y recibe su nombre por su contorno triangular. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Aparece en mecanismos, engranajes, envolventes y diseños basados en simetría triangular. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

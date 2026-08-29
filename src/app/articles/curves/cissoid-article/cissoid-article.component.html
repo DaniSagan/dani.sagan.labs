@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La cisoide es una curva histórica con una forma asimétrica que aparece en la resolución de antiguos problemas geométricos sobre proporcionalidad y tangencia.</p>
-<h3>Historia</h3>
-<p>La cisoide fue introducida por Diocles en la geometría clásica como una herramienta para resolver problemas de duplicación del cubo y otras construcciones antiguas. Su nombre alude a la forma de “cisoide”, en relación con las curvas producidas por una compuesta de segmentos.</p>
-<h3>Usos prácticos</h3>
-<p>Sirve como ejemplo histórico de construcción geométrica con propiedades de semejanza y tangencia, y sigue siendo útil para ilustrar la relación entre ecuaciones algebraicas y curvas con singularidades.</p>
+<h2>Cisoide de Diocles</h2>
+<p class="dropcap">Cisoide de Diocles es una curva algebraica con una rama que se aproxima a una asíntota vertical. Una forma habitual de su ecuación es y² = x³/(2a − x). La ecuación implícita permite seguir la rama desde el origen hasta su aproximación a la asíntota vertical.</p>
+
+<h3>Definición y propiedades</h3>
+<p>La curva pasa por el origen y tiene una asíntota en x = 2a. Su comportamiento ilustra de forma clara cómo una expresión racional puede producir valores sin cota cerca de una recta. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Diocles la introdujo para resolver geométricamente el problema de la duplicación del cubo. Es uno de los ejemplos clásicos de curva auxiliar en la geometría griega. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Es útil en historia de las construcciones geométricas, análisis de asíntotas y representación de curvas implícitas. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

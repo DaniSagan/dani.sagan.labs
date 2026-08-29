@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La cardioide es una curva polar con forma de corazón que aparece como caso límite de familias de curvas en óptica, mecánica y geometría clásica.</p>
-<h3>Historia</h3>
-<p>La cardioide fue estudiada por matemáticos del siglo XVII, y su nombre procede del griego kardioeidēs, que significa “parecido a un corazón”. Se convirtió en un ejemplo clásico de curva polar por su belleza geométrica y su fácil construcción con un punto fijo sobre una circunferencia.</p>
-<h3>Usos prácticos</h3>
-<p>En óptica y acústica aparece en la reflexión de rayos y en la modelización de señales con simetría circular; además, se usa como ejemplo de envolvente y curva de diseño en geometría aplicada y arte.</p>
+<h2>Cardioide</h2>
+<p class="dropcap">Cardioide es una curva polar que puede expresarse como r = a(1 + cos θ) o mediante variantes equivalentes con seno. Conviene leerla en coordenadas polares: el ángulo determina la dirección y el radio fija la distancia exacta al polo.</p>
+
+<h3>Definición y propiedades</h3>
+<p>Presenta una cúspide en el polo y simetría respecto del eje polar. También se genera como epicicloide cuando dos circunferencias del mismo radio intervienen en un movimiento de rodadura. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Fue estudiada en el desarrollo de la geometría polar durante los siglos XVII y XVIII. Su nombre describe su semejanza visual con un corazón. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Es relevante en óptica, acústica y diagramas de radiación de micrófonos y antenas direccionales. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

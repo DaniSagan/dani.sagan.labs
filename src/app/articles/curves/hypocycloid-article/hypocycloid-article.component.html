@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">La hipocicloide se obtiene al rodar una circunferencia dentro de otra, y produce curvas con múltiples puntas que dependen de la razón entre radios.</p>
-<h3>Historia</h3>
-<p>Esta familia de curvas se estudió en geometría clásica como ejemplo de trayectorias producidas por movimiento de rodadura. Su interés reside en la conexión entre una construcción mecánica simple y una forma geométrica muy rica.</p>
-<h3>Usos prácticos</h3>
-<p>Ejemplifica mecanismos de transmisión, diseño ornamental y construcción de perfiles con simetría radial. A menudo se usa para mostrar cómo una pequeña modifica el número de puntas de la curva.</p>
+<h2>Hipocicloide</h2>
+<p class="dropcap">Hipocicloide es la trayectoria de un punto de un círculo que rueda por el interior de otro círculo fijo. El gráfico muestra de qué manera la razón entre radios controla el número de cúspides del recorrido.</p>
+
+<h3>Definición y propiedades</h3>
+<p>Si la razón de los radios es un entero n, la curva tiene n cúspides. La posición del punto se expresa de forma natural con funciones trigonométricas, lo que permite relacionar el movimiento físico con una parametrización. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Estas curvas se estudiaron como parte de la geometría de rodadura y de la teoría de envolventes. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Son importantes en engranajes, mecanismos y ejemplos de simetría radial. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

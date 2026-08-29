@@ -1,11 +1,23 @@
-<h2>{{ title }}</h2>
-<p class="dropcap">Las curvas de Lissajous resultan de combinar dos oscilaciones perpendiculares y son una forma clásica de representar la relación entre dos movimientos armónicos.</p>
-<h3>Historia</h3>
-<p>Reciben su nombre de Jules Antoine Lissajous, quien en el siglo XIX las usó para estudiar vibraciones y ondas. Son un ejemplo muy claro de la conexión entre música, análisis de señales y geometría.</p>
-<h3>Usos prácticos</h3>
-<p>Se usan en osciloscopios, análisis de vibraciones, electrónica, acústica y visualización de fases. También sirven para representar patrones de resonancia y relaciones de frecuencia en sistemas físicos.</p>
+<h2>Curvas de Lissajous</h2>
+<p class="dropcap">Curvas de Lissajous se obtienen al combinar dos movimientos armónicos perpendiculares, por ejemplo x = A sin(at + δ), y = B sin(bt). Aquí interesa comparar la razón entre frecuencias y el desfase, porque ambos datos quedan codificados en la forma final.</p>
+
+<h3>Definición y propiedades</h3>
+<p>La forma depende de la razón entre las frecuencias a y b y del desfase δ. Si la razón es racional, la trayectoria se cierra; si no lo es, el punto llena progresivamente una región. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+
+<h3>Contexto histórico</h3>
+<p>Jules Antoine Lissajous las utilizó en el siglo XIX para estudiar vibraciones mediante dispositivos ópticos. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+
+<h3>Interpretación del modelo</h3>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+
+<h3>Aplicaciones y relaciones</h3>
+<p>Son una herramienta habitual en osciloscopios, electrónica, acústica y análisis de fase. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+
 <h3>Ecuación</h3>
 <div class="formula" [mathjax]="buildEquation(params)"></div>
+
+<h3>Comprobaciones útiles</h3>
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">
