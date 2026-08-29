@@ -17,9 +17,6 @@ export class AstroidArticleComponent extends CurveArticleBaseComponent {
   static route = 'astroid';
 
   override title = AstroidArticleComponent.title;
-  override description = 'El astroide es una curva con cuatro cúspides muy marcadas y un aspecto estéticamente muy regular, parecido a un cuadrado redondeado con puntas.';
-  override history = 'La curva fue analizada en el estudio clásico de las cónicas y curvas algebraicas, y forma parte de la tradición de las curvas con simetría euclidiana. Su nombre se deriva del griego aster, “estrella”, por su forma estrellada y su presencia en la geometría ornamental.';
-  override practicalUses = 'Sirve como modelo de transición entre curvas suaves y formas con cúspides, útil en diseño industrial, trazados mecánicos y estudios de envolventes. También se usa para ilustrar sistemas parametrizados y ecuaciones algebraicas con exponentes fraccionarios.';
   override bounds: [number, number, number, number] = [-3, 3, -3, 3];
   override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.8 }];
   override kind: 'implicit' | 'parametric' = 'implicit';

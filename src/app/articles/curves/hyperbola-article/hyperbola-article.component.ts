@@ -18,16 +18,11 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'hyperbola';
 
   title = HyperbolaArticleComponent.title;
-  description = 'La hipérbola es una cónica abierta formada por dos ramas simétricas y aparece en astronomía, navegación y en el análisis de trayectorias con diferencia constante de distancias.';
-  history = 'Las cónicas fueron estudiadas por los geómetras griegos, pero la hipérbola ganó renombre en la astronomía moderna por su relación con las órbitas y con las propiedades de los focos. La definición como lugar geométrico de puntos con diferencia constante fue un avance decisivo en la geometría analítica.';
-  practicalUses = 'En navegación, telecomunicaciones y radioastronomía se usa para localizar posiciones a partir de señales emitidas desde dos puntos distintos. También aparece en la modelización de trayectorias cósmicas y en el estudio de sistemas con dos focos.';
 
   a: number = 1;
   b: number = 1;
-  equation: string = '$x$';
 
   ngOnInit() {
-    this.equation = this.getEquation();
     this.curveGraph.setBounds(-10, 10, -10, 10);
   }
 
@@ -42,13 +37,11 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
 
   onAChanged(value: number) {
     this.a = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
   onBChanged(value: number) {
     this.b = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
@@ -62,4 +55,3 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
     return `$$ ${terms} = 1 $$`;
   }
 }
-

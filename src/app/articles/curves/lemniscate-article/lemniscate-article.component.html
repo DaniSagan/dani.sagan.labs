@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La lemniscata es la curva en forma de ocho que se obtiene como lugar geométrico con propiedades de simetría y equilibrio muy marcadas.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La lemniscata es famosa por su relación con Bernoulli, quien la estudió en profundidad como una curva con dos lóbulos simétricos. Su nombre procede del latín lemniscus, que significa “lazo” o “cinta”, y refleja la forma que se asemeja a un lazo infinito.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se usa en geometría algebraica como ejemplo paradigmático de curva con simetría bilateral, y aparece en visualizaciones de familias de curvas, teoremas de cónicas y análisis de flujo de energía.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

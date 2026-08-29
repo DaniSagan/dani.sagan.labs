@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La hipocicloide se obtiene al rodar una circunferencia dentro de otra, y produce curvas con múltiples puntas que dependen de la razón entre radios.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Esta familia de curvas se estudió en geometría clásica como ejemplo de trayectorias producidas por movimiento de rodadura. Su interés reside en la conexión entre una construcción mecánica simple y una forma geométrica muy rica.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Ejemplifica mecanismos de transmisión, diseño ornamental y construcción de perfiles con simetría radial. A menudo se usa para mostrar cómo una pequeña modifica el número de puntas de la curva.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

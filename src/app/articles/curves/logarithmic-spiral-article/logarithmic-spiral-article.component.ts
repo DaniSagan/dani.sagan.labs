@@ -17,9 +17,6 @@ export class LogarithmicSpiralArticleComponent extends CurveArticleBaseComponent
   static route = 'logarithmic-spiral';
 
   override title = LogarithmicSpiralArticleComponent.title;
-  override description = 'La espiral logarítmica crece de manera geométrica con el ángulo, conservando su forma aunque se amplíe o reduzca su escala.';
-  override history = 'La espiral logarítmica fue estudiada por Descartes y posteriormente por Jacob Bernoulli, quien quedó fascinado por su invarianza bajo escalado. La curva aparece en la naturaleza y en la historia del análisis matemático.';
-  override practicalUses = 'Se observa en conchas marinas, galaxias espirales y patrones de crecimiento; además, en ingeniería y diseño sirve para modelar progresiones geométricas y trayectorias con expansión constante.';
   override bounds: [number, number, number, number] = [-12, 12, -12, 12];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.2, max: 2, step: 0.1, value: 0.8 },

@@ -17,9 +17,6 @@ export class HypocycloidArticleComponent extends CurveArticleBaseComponent {
   static route = 'hypocycloid';
 
   override title = HypocycloidArticleComponent.title;
-  override description = 'La hipocicloide se obtiene al rodar una circunferencia dentro de otra, y produce curvas con múltiples puntas que dependen de la razón entre radios.';
-  override history = 'Esta familia de curvas se estudió en geometría clásica como ejemplo de trayectorias producidas por movimiento de rodadura. Su interés reside en la conexión entre una construcción mecánica simple y una forma geométrica muy rica.';
-  override practicalUses = 'Ejemplifica mecanismos de transmisión, diseño ornamental y construcción de perfiles con simetría radial. A menudo se usa para mostrar cómo una pequeña modifica el número de puntas de la curva.';
   override bounds: [number, number, number, number] = [-8, 8, -8, 8];
   override paramDefinitions = [
     { key: 'R', label: 'R', min: 2, max: 8, step: 0.5, value: 5 },

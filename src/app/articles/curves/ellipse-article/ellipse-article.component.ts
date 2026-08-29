@@ -18,16 +18,11 @@ export class EllipseArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'ellipse';
 
   title = EllipseArticleComponent.title;
-  description = 'La elipse es la curva cerrada que aparece cuando la suma de las distancias a dos focos es constante; es un caso fundamental de las cónicas.';
-  history = 'La elipse se estudió desde la geometría clásica y se hizo especialmente relevante con los trabajos de astronomía sobre los planetas, cuya órbita alrededor del Sol es aproximadamente elíptica. Kepler la convirtió en un concepto clave de la física celeste.';
-  practicalUses = 'Las órbitas planetarias, los satélites artificiales, los sistemas de reflexión y muchos mecanismos de ingeniería se modelan con elipses. Además, en diseño y arquitectura se usa para crear formas equilibradas y estéticamente agradables.';
 
   a: number = 1;
   b: number = 1;
-  equation: string = '$x$';
 
   ngOnInit() {
-    this.equation = this.getEquation();
     this.curveGraph.setBounds(-10, 10, -10, 10);
   }
 
@@ -42,13 +37,11 @@ export class EllipseArticleComponent implements AfterViewInit, OnInit {
 
   onAChanged(value: number) {
     this.a = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
   onBChanged(value: number) {
     this.b = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
@@ -62,4 +55,3 @@ export class EllipseArticleComponent implements AfterViewInit, OnInit {
     return `$$ ${terms} = 1 $$`;
   }
 }
-

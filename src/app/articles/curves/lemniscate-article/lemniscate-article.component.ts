@@ -17,9 +17,6 @@ export class LemniscateArticleComponent extends CurveArticleBaseComponent {
   static route = 'lemniscate';
 
   override title = LemniscateArticleComponent.title;
-  override description = 'La lemniscata es la curva en forma de ocho que se obtiene como lugar geométrico con propiedades de simetría y equilibrio muy marcadas.';
-  override history = 'La lemniscata es famosa por su relación con Bernoulli, quien la estudió en profundidad como una curva con dos lóbulos simétricos. Su nombre procede del latín lemniscus, que significa “lazo” o “cinta”, y refleja la forma que se asemeja a un lazo infinito.';
-  override practicalUses = 'Se usa en geometría algebraica como ejemplo paradigmático de curva con simetría bilateral, y aparece en visualizaciones de familias de curvas, teoremas de cónicas y análisis de flujo de energía.';
   override bounds: [number, number, number, number] = [-4, 4, -3, 3];
   override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }];
   override kind: 'implicit' | 'parametric' = 'implicit';

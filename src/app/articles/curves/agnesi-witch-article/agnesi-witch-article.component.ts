@@ -18,16 +18,11 @@ export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'agnesi-witch';
 
   title = AgnesiWitchArticleComponent.title;
-  description = 'La bruja de Agnesi es una curva con una forma de campana muy característica, famosa por su belleza visual y por su papel en la historia del cálculo.';
-  history = 'Debe su nombre a Maria Gaetana Agnesi, matemática italiana del siglo XVIII, quien la estudió y la describió con claridad. La curva se convirtió en un clásico de las obras de geometría analítica y análisis matemático por la riqueza de sus propiedades.';
-  practicalUses = 'Se usa como ejemplo de curva con una cola asintótica y una distribución de densidad muy conocida en análisis, probabilidades y modelado físico. También sirve para ilustrar cómo una forma aparentemente sencilla puede esconder relaciones profundas con límites, integrales y simetrías.';
 
   a: number = 1;
   b: number = 1;
-  equation: string = '$x$';
 
   ngOnInit() {
-    this.equation = this.getEquation();
     this.curveGraph.setBounds(-10, 10, -10, 10);
   }
 
@@ -42,13 +37,11 @@ export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
 
   onAChanged(value: number) {
     this.a = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
   onBChanged(value: number) {
     this.b = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
@@ -62,4 +55,3 @@ export class AgnesiWitchArticleComponent implements AfterViewInit, OnInit {
     return `$$ ${terms} = 1 $$`;
   }
 }
-

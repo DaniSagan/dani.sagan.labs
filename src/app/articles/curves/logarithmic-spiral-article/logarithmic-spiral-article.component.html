@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La espiral logarítmica crece de manera geométrica con el ángulo, conservando su forma aunque se amplíe o reduzca su escala.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La espiral logarítmica fue estudiada por Descartes y posteriormente por Jacob Bernoulli, quien quedó fascinado por su invarianza bajo escalado. La curva aparece en la naturaleza y en la historia del análisis matemático.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se observa en conchas marinas, galaxias espirales y patrones de crecimiento; además, en ingeniería y diseño sirve para modelar progresiones geométricas y trayectorias con expansión constante.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

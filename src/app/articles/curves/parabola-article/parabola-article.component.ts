@@ -19,17 +19,12 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'parabola';
 
   title = ParabolaArticleComponent.title;
-  description = 'La parábola es una de las cónicas más importantes y aparece como la trayectoria de un proyectil ideal o como la superficie reflectante de una antena parabólica.';
-  history = 'La parábola fue estudiada ya por los griegos y su propiedad reflectante fue clave en la geometría clásica. En la Edad Moderna se convirtió en una pieza central del análisis matemático y de la física, especialmente con el estudio del movimiento bajo gravedad.';
-  practicalUses = 'La parábola se usa en antenas parabólicas, faros, telescopios y espejos concentradores, porque refleja rayos paralelos hacia un foco. También modela la trayectoria de proyectiles y muchos fenómenos de optimización en ingeniería.';
 
   a: number = 1;
   b: number = 0;
   c: number = 0;
-  equation: string = '$x$';
 
   ngOnInit() {
-    this.equation = this.getEquation();
     this.curveGraph.setBounds(-2, 2, -2, 2);
   }
 
@@ -63,19 +58,16 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
 
   onAChanged(value: number) {
     this.a = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
   onBChanged(value: number) {
     this.b = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
   onCChanged(value: number) {
     this.c = value;
-    this.equation = this.getEquation();
     this.onDraw();
   }
 
@@ -109,4 +101,3 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
     return (4 * this.a * this.c - this.b ** 2 - 1) / (4 * this.a);
   }
 }
-

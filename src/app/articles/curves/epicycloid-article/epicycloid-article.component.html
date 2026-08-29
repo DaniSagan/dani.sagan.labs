@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La epicicloide se genera por la rodadura de una circunferencia alrededor de otra y produce una curva con dientes o puntas periódicas.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La epicicloide se estudió como parte del análisis de movimientos de rodadura y envolventes en la geometría clásica. Tiene una conexión directa con los mecanismos de engranajes, donde el movimiento circular se transforma en trayectoria compleja.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Es muy útil en el diseño de mecanismos, engranajes, trenes de transmisión y simulaciones de movimiento circular. También ayuda a ilustrar cómo las pequeñas variaciones de radios alteran drásticamente la forma final de la curva.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

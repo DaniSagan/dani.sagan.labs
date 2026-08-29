@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">El trifolio es una curva de tres pétalos con simetría triangular y una visualización muy clara en coordenadas polares.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Su estudio se encuadra dentro de las curvas polares clásicas, donde la relación entre radio y ángulo genera patrones con divisiones angularmente regulares. Tiene un atractivo visual muy notable y aparece con frecuencia en geometría visual y en la ilustración de simetrías discretas.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se usa de manera didáctica para explicar la influencia del factor angular en la simetría polar y aparece en diseño gráfico, ornamentación matemática y exploración de familias de curvas con varios lóbulos.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

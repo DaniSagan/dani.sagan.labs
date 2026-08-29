@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La espiral de Arquímedes es una curva polar en la que la distancia al origen crece linealmente con el ángulo, produciendo un giro regular y uniforme.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Debe su nombre a Arquímedes, quien la estudió en la antigüedad y la usó como ejemplo de un crecimiento continuo con el ángulo. Fue una de las primeras curvas de la geometría polar en ser analizadas de forma sistemática.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se emplea en engranajes, sistemas de diseño de espiras, antenas, mecanismos de escaneo y modelos de crecimiento radial. En física y meteorología también sirve como primera aproximación a patrones de expansión con simetría angular.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

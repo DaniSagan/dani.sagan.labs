@@ -17,9 +17,6 @@ export class CycloidArticleComponent extends CurveArticleBaseComponent {
   static route = 'cycloid';
 
   override title = CycloidArticleComponent.title;
-  override description = 'La cicloide es la trayectoria de un punto de una rueda en giro; su forma ondulada es uno de los ejemplos clásicos de curva de rodadura.';
-  override history = 'La cicloide fue estudiada por Galileo y por varios matemáticos del siglo XVII. Se volvió famosa por su relación con problemas de optimización y por su papel en la historia del cálculo.';
-  override practicalUses = 'Es un modelo clásico en ingeniería mecánica, especialmente en mecanismos de rotación y en la construcción de perfiles de ruedas. También aparece en problemas de óptica y dinámica por sus propiedades de rapidez y aceleración.';
   override bounds: [number, number, number, number] = [-8, 8, -3, 5];
   override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }];
   override kind: 'implicit' | 'parametric' = 'parametric';

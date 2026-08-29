@@ -25,6 +25,6 @@
     <label for="c">c: </label>
     <input id="c" type="number" [ngModel]="c" (ngModelChange)="onCChanged($event)" placeholder="c" />
   </div>
-  <div id="equation" class="formula" [mathjax]="equation"></div>
+  <div id="equation" class="formula" [mathjax]="getEquation()"></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

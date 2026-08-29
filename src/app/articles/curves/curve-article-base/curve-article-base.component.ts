@@ -16,14 +16,10 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
 
   title = '';
-  description = '';
-  history = '';
-  practicalUses = '';
   bounds: [number, number, number, number] = [-4, 4, -4, 4];
   kind: 'implicit' | 'parametric' = 'implicit';
   paramDefinitions: CurveParamDefinition[] = [];
   params: Record<string, number> = {};
-  equation = '$$ x = y $$';
 
   protected abstract buildEquation(params: Record<string, number>): string;
   protected abstract evaluateImplicit(x: number, y: number, params: Record<string, number>): number;
@@ -32,7 +28,6 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
 
   ngOnInit(): void {
     this.params = Object.fromEntries(this.paramDefinitions.map((param) => [param.key, param.value]));
-    this.equation = this.buildEquation(this.params);
     if (this.curveGraph) {
       this.curveGraph.setBounds(...this.bounds);
     }
@@ -44,7 +39,6 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
 
   onParamChanged(key: string, value: number): void {
     this.params[key] = value;
-    this.equation = this.buildEquation(this.params);
     this.onDraw();
   }
 

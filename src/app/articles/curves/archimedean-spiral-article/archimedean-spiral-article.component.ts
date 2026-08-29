@@ -17,9 +17,6 @@ export class ArchimedeanSpiralArticleComponent extends CurveArticleBaseComponent
   static route = 'archimedean-spiral';
 
   override title = ArchimedeanSpiralArticleComponent.title;
-  override description = 'La espiral de Arquímedes es una curva polar en la que la distancia al origen crece linealmente con el ángulo, produciendo un giro regular y uniforme.';
-  override history = 'Debe su nombre a Arquímedes, quien la estudió en la antigüedad y la usó como ejemplo de un crecimiento continuo con el ángulo. Fue una de las primeras curvas de la geometría polar en ser analizadas de forma sistemática.';
-  override practicalUses = 'Se emplea en engranajes, sistemas de diseño de espiras, antenas, mecanismos de escaneo y modelos de crecimiento radial. En física y meteorología también sirve como primera aproximación a patrones de expansión con simetría angular.';
   override bounds: [number, number, number, number] = [-8, 8, -8, 8];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.2, max: 3, step: 0.1, value: 0.6 },

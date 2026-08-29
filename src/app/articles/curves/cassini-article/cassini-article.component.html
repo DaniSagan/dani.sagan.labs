@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">Los óvalos de Cassini son una familia de curvas cuya propiedad fundamental es que el producto de las distancias a dos focos se mantiene constante.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Su estudio se atribuye a Giovanni Domenico Cassini, astrónomo y matemático del siglo XVII, quien las investigó en relación con la órbita de los planetas y la geometría del espacio.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Estas curvas aparecen en problemas de distancia focal, en óptica geométrica y en la modelización de órbitas y trayectorias con simetría bifocal. También sirven como ilustración de cómo una condición de producto constante genera formas muy distintas según los parámetros.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La deltoide es una curva con tres puntas y simetría triangular, muy elegante y con una estructura claramente relacionada con la geometría de las hipocicloides.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La deltoide forma parte de la familia de las hipocicloides y fue estudiada en geometría clásica como ejemplo de curva generada por rodadura de circunferencias. Su nombre alude a la forma de un triángulo alargado, “deltoide” en referencia a la letra griega delta.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Los trazados de la deltoide aparecen en diseño ornamental, mecanismos de transmisión y análisis de envolventes. También resulta útil para comprender cómo trayectorias generadas por rotación producen formas con simetría discreta.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

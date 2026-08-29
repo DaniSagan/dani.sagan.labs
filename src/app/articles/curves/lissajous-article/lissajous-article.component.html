@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">Las curvas de Lissajous resultan de combinar dos oscilaciones perpendiculares y son una forma clásica de representar la relación entre dos movimientos armónicos.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Reciben su nombre de Jules Antoine Lissajous, quien en el siglo XIX las usó para estudiar vibraciones y ondas. Son un ejemplo muy claro de la conexión entre música, análisis de señales y geometría.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se usan en osciloscopios, análisis de vibraciones, electrónica, acústica y visualización de fases. También sirven para representar patrones de resonancia y relaciones de frecuencia en sistemas físicos.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

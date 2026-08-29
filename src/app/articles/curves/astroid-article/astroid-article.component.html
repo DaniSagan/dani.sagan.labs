@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">El astroide es una curva con cuatro cúspides muy marcadas y un aspecto estéticamente muy regular, parecido a un cuadrado redondeado con puntas.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La curva fue analizada en el estudio clásico de las cónicas y curvas algebraicas, y forma parte de la tradición de las curvas con simetría euclidiana. Su nombre se deriva del griego aster, “estrella”, por su forma estrellada y su presencia en la geometría ornamental.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Sirve como modelo de transición entre curvas suaves y formas con cúspides, útil en diseño industrial, trazados mecánicos y estudios de envolventes. También se usa para ilustrar sistemas parametrizados y ecuaciones algebraicas con exponentes fraccionarios.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

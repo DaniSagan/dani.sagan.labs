@@ -17,9 +17,6 @@ export class ParabolaLikeArticleComponent extends CurveArticleBaseComponent {
   static route = 'parabola-like';
 
   override title = ParabolaLikeArticleComponent.title;
-  override description = 'Este trazado combina la estructura de la parábola con una familia de curvas cerradas y suaves para estudiar cómo pequeñas variaciones en los parámetros cambian la forma total.';
-  override history = 'La idea de perturbar una parábola con términos adicionales es una extensión básica del estudio clásico de las cónicas, y refleja la evolución natural del análisis algebraico hacia familias de curvas más generales.';
-  override practicalUses = 'Se usa como herramienta pedagógica para explorar aproximaciones y deformaciones de curvas básicas, y es muy útil en modelado matemático donde una forma inicial se convierte en una familia paramétrica.';
   override bounds: [number, number, number, number] = [-4, 4, -3, 3];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 },

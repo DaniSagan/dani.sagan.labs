@@ -17,9 +17,6 @@ export class RoseArticleComponent extends CurveArticleBaseComponent {
   static route = 'rose';
 
   override title = RoseArticleComponent.title;
-  override description = 'La rosa polar es una familia de curvas con pétalos simétricos cuya forma depende del factor angular k, y aparece como un modelo visual muy útil en geometría polar.';
-  override history = 'Aunque la curva se conoce por tradición matemática moderna, ya aparece en la tradición geométrica del siglo XVIII y se asocia con los estudios sistemáticos de curvas polares. Su apariencia floral la hizo especialmente atractiva para la educación y la investigación visual.';
-  override practicalUses = 'La rosa polar sirve para modelar simetrías, patrones de resonancia y formas periódicas en dibujo técnico, diseño y visualización de fenómenos con simetría angular. También ayuda a entender la relación entre ecuaciones polares y rotaciones.';
   override bounds: [number, number, number, number] = [-4, 4, -4, 4];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.5, max: 4, step: 0.1, value: 2 },

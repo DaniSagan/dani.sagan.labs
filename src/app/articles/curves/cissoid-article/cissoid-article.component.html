@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La cisoide es una curva histórica con una forma asimétrica que aparece en la resolución de antiguos problemas geométricos sobre proporcionalidad y tangencia.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La cisoide fue introducida por Diocles en la geometría clásica como una herramienta para resolver problemas de duplicación del cubo y otras construcciones antiguas. Su nombre alude a la forma de “cisoide”, en relación con las curvas producidas por una compuesta de segmentos.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Sirve como ejemplo histórico de construcción geométrica con propiedades de semejanza y tangencia, y sigue siendo útil para ilustrar la relación entre ecuaciones algebraicas y curvas con singularidades.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

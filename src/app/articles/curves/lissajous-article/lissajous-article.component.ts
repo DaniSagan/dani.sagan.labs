@@ -17,9 +17,6 @@ export class LissajousArticleComponent extends CurveArticleBaseComponent {
   static route = 'lissajous';
 
   override title = LissajousArticleComponent.title;
-  override description = 'Las curvas de Lissajous resultan de combinar dos oscilaciones perpendiculares y son una forma clásica de representar la relación entre dos movimientos armónicos.';
-  override history = 'Reciben su nombre de Jules Antoine Lissajous, quien en el siglo XIX las usó para estudiar vibraciones y ondas. Son un ejemplo muy claro de la conexión entre música, análisis de señales y geometría.';
-  override practicalUses = 'Se usan en osciloscopios, análisis de vibraciones, electrónica, acústica y visualización de fases. También sirven para representar patrones de resonancia y relaciones de frecuencia en sistemas físicos.';
   override bounds: [number, number, number, number] = [-3, 3, -3, 3];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 1, max: 3, step: 0.2, value: 2 },

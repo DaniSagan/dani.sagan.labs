@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">Este trazado combina la estructura de la parábola con una familia de curvas cerradas y suaves para estudiar cómo pequeñas variaciones en los parámetros cambian la forma total.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La idea de perturbar una parábola con términos adicionales es una extensión básica del estudio clásico de las cónicas, y refleja la evolución natural del análisis algebraico hacia familias de curvas más generales.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Se usa como herramienta pedagógica para explorar aproximaciones y deformaciones de curvas básicas, y es muy útil en modelado matemático donde una forma inicial se convierte en una familia paramétrica.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

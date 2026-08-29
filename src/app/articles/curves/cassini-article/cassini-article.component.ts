@@ -17,9 +17,6 @@ export class CassiniArticleComponent extends CurveArticleBaseComponent {
   static route = 'cassini';
 
   override title = CassiniArticleComponent.title;
-  override description = 'Los óvalos de Cassini son una familia de curvas cuya propiedad fundamental es que el producto de las distancias a dos focos se mantiene constante.';
-  override history = 'Su estudio se atribuye a Giovanni Domenico Cassini, astrónomo y matemático del siglo XVII, quien las investigó en relación con la órbita de los planetas y la geometría del espacio.';
-  override practicalUses = 'Estas curvas aparecen en problemas de distancia focal, en óptica geométrica y en la modelización de órbitas y trayectorias con simetría bifocal. También sirven como ilustración de cómo una condición de producto constante genera formas muy distintas según los parámetros.';
   override bounds: [number, number, number, number] = [-5, 5, -5, 5];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.7 },

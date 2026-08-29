@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La rosa polar es una familia de curvas con pétalos simétricos cuya forma depende del factor angular k, y aparece como un modelo visual muy útil en geometría polar.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Aunque la curva se conoce por tradición matemática moderna, ya aparece en la tradición geométrica del siglo XVIII y se asocia con los estudios sistemáticos de curvas polares. Su apariencia floral la hizo especialmente atractiva para la educación y la investigación visual.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>La rosa polar sirve para modelar simetrías, patrones de resonancia y formas periódicas en dibujo técnico, diseño y visualización de fenómenos con simetría angular. También ayuda a entender la relación entre ecuaciones polares y rotaciones.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

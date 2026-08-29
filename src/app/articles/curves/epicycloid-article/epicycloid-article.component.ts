@@ -17,9 +17,6 @@ export class EpicycloidArticleComponent extends CurveArticleBaseComponent {
   static route = 'epicycloid';
 
   override title = EpicycloidArticleComponent.title;
-  override description = 'La epicicloide se genera por la rodadura de una circunferencia alrededor de otra y produce una curva con dientes o puntas periódicas.';
-  override history = 'La epicicloide se estudió como parte del análisis de movimientos de rodadura y envolventes en la geometría clásica. Tiene una conexión directa con los mecanismos de engranajes, donde el movimiento circular se transforma en trayectoria compleja.';
-  override practicalUses = 'Es muy útil en el diseño de mecanismos, engranajes, trenes de transmisión y simulaciones de movimiento circular. También ayuda a ilustrar cómo las pequeñas variaciones de radios alteran drásticamente la forma final de la curva.';
   override bounds: [number, number, number, number] = [-8, 8, -8, 8];
   override paramDefinitions = [
     { key: 'R', label: 'R', min: 1, max: 6, step: 0.5, value: 3 },

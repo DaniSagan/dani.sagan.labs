@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La concoide es una curva construida a partir de una recta fija y un punto externo, y se caracteriza por una “boca” o proyección que se aparta de la línea de referencia.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>Fue estudiada por Nicomedes en la geometría antigua como un ejemplo de lugar geométrico que permite resolver problemas clásicos con regla y compás. Su construcción refleja la idea de combinar una recta con un punto fijo para generar una curva útil.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Sirve como ejemplo clásico de curva construida por un lugar geométrico y aparece en contextos de diseño geométrico, trazados auxiliares y formación matemática de conceptos de sección cónica y resolución de problemas.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

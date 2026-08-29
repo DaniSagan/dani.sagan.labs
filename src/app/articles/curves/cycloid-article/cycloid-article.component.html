@@ -1,11 +1,11 @@
 <h2>{{ title }}</h2>
-<p class="dropcap">{{ description }}</p>
+<p class="dropcap">La cicloide es la trayectoria de un punto de una rueda en giro; su forma ondulada es uno de los ejemplos clásicos de curva de rodadura.</p>
 <h3>Historia</h3>
-<p>{{ history }}</p>
+<p>La cicloide fue estudiada por Galileo y por varios matemáticos del siglo XVII. Se volvió famosa por su relación con problemas de optimización y por su papel en la historia del cálculo.</p>
 <h3>Usos prácticos</h3>
-<p>{{ practicalUses }}</p>
+<p>Es un modelo clásico en ingeniería mecánica, especialmente en mecanismos de rotación y en la construcción de perfiles de ruedas. También aparece en problemas de óptica y dinámica por sus propiedades de rapidez y aceleración.</p>
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="equation"></div>
+<div class="formula" [mathjax]="buildEquation(params)"></div>
 <div class="widget-container">
   <div class="widget-title">{{ title }}</div>
   <div *ngFor="let param of paramDefinitions">

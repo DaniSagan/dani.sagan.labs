@@ -17,9 +17,6 @@ export class DeltoidArticleComponent extends CurveArticleBaseComponent {
   static route = 'deltoid';
 
   override title = DeltoidArticleComponent.title;
-  override description = 'La deltoide es una curva con tres puntas y simetría triangular, muy elegante y con una estructura claramente relacionada con la geometría de las hipocicloides.';
-  override history = 'La deltoide forma parte de la familia de las hipocicloides y fue estudiada en geometría clásica como ejemplo de curva generada por rodadura de circunferencias. Su nombre alude a la forma de un triángulo alargado, “deltoide” en referencia a la letra griega delta.';
-  override practicalUses = 'Los trazados de la deltoide aparecen en diseño ornamental, mecanismos de transmisión y análisis de envolventes. También resulta útil para comprender cómo trayectorias generadas por rotación producen formas con simetría discreta.';
   override bounds: [number, number, number, number] = [-4, 4, -4, 4];
   override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.4 }];
   override kind: 'implicit' | 'parametric' = 'parametric';
