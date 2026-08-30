@@ -1,1 +1,20 @@
-<article class="fractal-article"><h2>Polvo de Cantor</h2><p class="dropcap">El polvo de Cantor traslada al plano la eliminación de tercios ideada por Georg Cantor. Puede obtenerse como el producto cartesiano del conjunto de Cantor consigo mismo: se conservan los puntos cuyas coordenadas x e y pertenecen al conjunto original. El resultado parece una constelación de cuadrados, pero es un objeto matemático exacto con infinitos puntos y área nula.</p><p>Se parte de un cuadrado y se lo divide en una cuadrícula de 3 por 3. Solo sobreviven las cuatro esquinas. Cada una se divide de nuevo y vuelve a conservar sus esquinas. Tras n iteraciones hay 4<sup>n</sup> cuadrados de lado 3<sup>−n</sup>; su área total es (4/9)<sup>n</sup>, que tiende a cero. La dimensión fractal es log(4)/log(3), aproximadamente 1,262, el doble de la dimensión del conjunto de Cantor lineal.</p><p>La implementación recursiva recibe una esquina, un lado y una profundidad. Si esta llega a cero pinta el cuadrado; en caso contrario calcula un tercio del lado y se llama para las cuatro combinaciones de desplazamientos 0 y 2/3. No necesita comprobar puntos individualmente, de modo que expresa directamente la definición geométrica y evita píxeles superfluos.</p><p>Este fractal aclara la diferencia entre «muchos puntos» y «mucho área». En niveles altos el lienzo parece lleno a distancia, pero los huecos existen a cualquier escala. Usa el control para pasar de cuatro esquinas visibles a una nube cuya estructura sigue siendo completamente determinista.</p><app-fractal-explorer [draw]="draw" title="Polvo de Cantor" formula="Se conservan las cuatro esquinas de cada cuadrícula 3 × 3"></app-fractal-explorer></article>
+<article class="fractal-article">
+  <h2>Polvo de Cantor</h2>
+  <p class="dropcap">El polvo de Cantor traslada al plano la eliminación de tercios ideada por Georg Cantor. Puede
+    obtenerse como el producto cartesiano del conjunto de Cantor consigo mismo: se conservan los puntos cuyas
+    coordenadas x e y pertenecen al conjunto original. El resultado parece una constelación de cuadrados, pero es un
+    objeto matemático exacto con infinitos puntos y área nula.</p>
+  <p>Se parte de un cuadrado y se lo divide en una cuadrícula de 3 por 3. Solo sobreviven las cuatro esquinas. Cada una
+    se divide de nuevo y vuelve a conservar sus esquinas. Tras n iteraciones hay 4<sup>n</sup> cuadrados de lado
+    3<sup>−n</sup>; su área total es (4/9)<sup>n</sup>, que tiende a cero. La dimensión fractal es log(4)/log(3),
+    aproximadamente 1,262, el doble de la dimensión del conjunto de Cantor lineal.</p>
+  <p>La implementación recursiva recibe una esquina, un lado y una profundidad. Si esta llega a cero pinta el cuadrado;
+    en caso contrario calcula un tercio del lado y se llama para las cuatro combinaciones de desplazamientos 0 y 2/3. No
+    necesita comprobar puntos individualmente, de modo que expresa directamente la definición geométrica y evita píxeles
+    superfluos.</p>
+  <p>Este fractal aclara la diferencia entre «muchos puntos» y «mucho área». En niveles altos el lienzo parece lleno a
+    distancia, pero los huecos existen a cualquier escala. Usa el control para pasar de cuatro esquinas visibles a una
+    nube cuya estructura sigue siendo completamente determinista.</p>
+  <app-fractal-explorer [draw]="draw"
+    title="Polvo de Cantor" formula="Se conservan las cuatro esquinas de cada cuadrícula 3 × 3"></app-fractal-explorer>
+</article>
