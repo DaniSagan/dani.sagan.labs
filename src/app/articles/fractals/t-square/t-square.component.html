@@ -1,1 +1,19 @@
-<article class="fractal-article"><h2>Fractal T-square</h2><p class="dropcap">El T-square pertenece a las construcciones de cuadrados recursivos que hicieron populares los primeros gráficos por ordenador. No depende de números complejos ni de azar: cada generación coloca cuatro copias más pequeñas alrededor de los vértices de un cuadrado. Esa transparencia hace que sea una buena forma de estudiar recursión visual y el límite entre superposición y detalle.</p><p>Se dibuja un cuadrado inicial de lado <em>s</em>. En sus cuatro esquinas se centran cuadrados de lado s/2; en las esquinas de cada uno se colocan otros de lado s/4, y así sucesivamente. El número de cuadrados del nivel n es 4<sup>n</sup> y su escala disminuye a la mitad en cada paso. La dimensión de semejanza es por tanto log(4)/log(2)=2: su estructura límite tiene escala de región plana, aunque en pantalla veamos contornos.</p><p>La función del widget recibe centro, lado y profundidad. Traza el cuadrado y, si aún queda profundidad, calcula la mitad de su lado y se invoca en los cuatro centros desplazados. Los contornos se superponen a propósito; forman la característica malla de T. Para que la imagen no se vuelva ilegible o lenta, se impone un máximo de niveles razonable.</p><p>Este fractal recuerda que la autosimilitud no exige huecos como los de Sierpinski. También puede nacer de copias que se tocan y se solapan. Cambia la iteración y busca cómo se propaga la simetría de cuatro direcciones desde el primer cuadrado.</p><app-fractal-explorer [draw]="draw" title="Fractal T-square" formula="Cada cuadrado genera cuatro copias de lado s/2"></app-fractal-explorer></article>
+<article class="fractal-article">
+  <h2>Fractal T-square</h2>
+  <p class="dropcap">El T-square pertenece a las construcciones de cuadrados recursivos que hicieron populares los
+    primeros gráficos por ordenador. No depende de números complejos ni de azar: cada generación coloca cuatro copias
+    más pequeñas alrededor de los vértices de un cuadrado. Esa transparencia hace que sea una buena forma de estudiar
+    recursión visual y el límite entre superposición y detalle.</p>
+  <p>Se dibuja un cuadrado inicial de lado <em>s</em>. En sus cuatro esquinas se centran cuadrados de lado s/2; en las
+    esquinas de cada uno se colocan otros de lado s/4, y así sucesivamente. El número de cuadrados del nivel n es
+    4<sup>n</sup> y su escala disminuye a la mitad en cada paso. La dimensión de semejanza es por tanto log(4)/log(2)=2:
+    su estructura límite tiene escala de región plana, aunque en pantalla veamos contornos.</p>
+  <p>La función del widget recibe centro, lado y profundidad. Traza el cuadrado y, si aún queda profundidad, calcula la
+    mitad de su lado y se invoca en los cuatro centros desplazados. Los contornos se superponen a propósito; forman la
+    característica malla de T. Para que la imagen no se vuelva ilegible o lenta, se impone un máximo de niveles
+    razonable.</p>
+  <p>Este fractal recuerda que la autosimilitud no exige huecos como los de Sierpinski. También puede nacer de copias
+    que se tocan y se solapan. Cambia la iteración y busca cómo se propaga la simetría de cuatro direcciones desde el
+    primer cuadrado.</p><app-fractal-explorer [draw]="draw" title="Fractal T-square"
+    formula="Cada cuadrado genera cuatro copias de lado s/2"></app-fractal-explorer>
+</article>

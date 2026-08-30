@@ -1,1 +1,21 @@
-<article class="fractal-article"><h2>Árbol H</h2><p class="dropcap">El árbol H es una estructura fractal especialmente ligada a la informática. Su nombre procede de la letra H que forma el primer nivel: dos barras verticales unidas por una horizontal. Repetir H en sus cuatro extremos produce un árbol simétrico que parece orgánico, aunque se obtiene con segmentos rectos. Fue usado como esquema de distribución en circuitos integrados porque puede llevar una señal desde un centro a muchos puntos con trayectos de igual longitud.</p><p>Se comienza con una H de tamaño s. En cada uno de sus cuatro extremos se dibuja otra H de tamaño s/2 y se repite el proceso. El nivel n tiene 4<sup>n</sup> copias de escala 2<sup>−n</sup>. Como hay cuatro copias a mitad de tamaño, la dimensión de semejanza es dos. Sin embargo, el dibujo está formado solo por líneas; la dimensión describe la manera en que se distribuyen a todas las escalas.</p><p>La rutina recursiva recibe el centro y el tamaño. Calcula los dos extremos de las barras, traza tres segmentos y llama a sí misma en sus cuatro esquinas. No necesita almacenar un árbol explícito: la pila de llamadas conserva temporalmente el camino. En aplicaciones físicas se añade grosor y una regla eléctrica, pero la geometría básica es exactamente la misma.</p><p>En el widget, cada incremento cuadruplica las H pequeñas. Observa que todos los extremos de un mismo nivel están a la misma distancia del centro; esa igualdad es la propiedad que convierte al árbol H en una alternativa ordenada a una red de cableado convencional.</p><app-fractal-explorer [draw]="draw" title="Árbol H" formula="H(s) → cuatro H(s/2) en sus extremos"></app-fractal-explorer></article>
+<article class="fractal-article">
+  <h2>Árbol H</h2>
+  <p class="dropcap">El árbol H es una estructura fractal especialmente ligada a la informática. Su nombre procede de la
+    letra H que forma el primer nivel: dos barras verticales unidas por una horizontal. Repetir H en sus cuatro extremos
+    produce un árbol simétrico que parece orgánico, aunque se obtiene con segmentos rectos. Fue usado como esquema de
+    distribución en circuitos integrados porque puede llevar una señal desde un centro a muchos puntos con trayectos de
+    igual longitud.</p>
+  <p>Se comienza con una H de tamaño s. En cada uno de sus cuatro extremos se dibuja otra H de tamaño s/2 y se repite el
+    proceso. El nivel n tiene 4<sup>n</sup> copias de escala 2<sup>−n</sup>. Como hay cuatro copias a mitad de tamaño,
+    la dimensión de semejanza es dos. Sin embargo, el dibujo está formado solo por líneas; la dimensión describe la
+    manera en que se distribuyen a todas las escalas.</p>
+  <p>La rutina recursiva recibe el centro y el tamaño. Calcula los dos extremos de las barras, traza tres segmentos y
+    llama a sí misma en sus cuatro esquinas. No necesita almacenar un árbol explícito: la pila de llamadas conserva
+    temporalmente el camino. En aplicaciones físicas se añade grosor y una regla eléctrica, pero la geometría básica es
+    exactamente la misma.</p>
+  <p>En el widget, cada incremento cuadruplica las H pequeñas. Observa que todos los extremos de un mismo nivel están a
+    la misma distancia del centro; esa igualdad es la propiedad que convierte al árbol H en una alternativa ordenada a
+    una red de cableado convencional.</p>
+  <app-fractal-explorer [draw]="draw" title="Árbol H"
+    formula="H(s) → cuatro H(s/2) en sus extremos"></app-fractal-explorer>
+</article>
