@@ -1,6 +1,21 @@
-<article class="fractal-article"><h2>Curva C de Lévy</h2>
-<p class="dropcap">Paul Lévy, uno de los grandes investigadores franceses de la probabilidad, estudió curvas irregulares que hoy asociamos al azar y al movimiento browniano. La curva C lleva su nombre por la silueta que forma en sus primeras generaciones. Es una demostración elegante de que no hacen falta bifurcaciones complicadas: basta sustituir un segmento por dos segmentos perpendiculares para que surja una curva autosimilar de dimensión dos.</p>
-<p>Dados los extremos A y B de un segmento, se calcula su punto medio M. Después se desplaza M una distancia igual a la mitad del segmento en la dirección perpendicular; ese punto P forma un triángulo rectángulo isósceles con A y B. El tramo A–B se reemplaza por A–P y P–B. Aplicar la misma operación a ambos tramos produce 2<sup>n</sup> segmentos, cuya longitud se reduce por un factor 1/√2 en cada generación.</p>
-<p>La dimensión vale log(2)/log(√2)=2. La curva no rellena un cuadrado de forma uniforme en un nivel finito, pero su límite tiene la escala propia de una figura plana. Computacionalmente se evita guardar una lista enorme de puntos: la función recursiva recibe los cuatro números de A y B, halla P mediante una rotación de 90 grados del vector mitad y continúa hasta alcanzar la profundidad elegida; allí traza el segmento final.</p>
-<p>El control de iteraciones permite ver el paso de una V quebrada a una textura compacta. La misma estrategia de sustitución, con otras rotaciones, está detrás de muchas curvas de espacio y de algoritmos para recorrer regiones sin grandes saltos.</p>
-<app-fractal-explorer [draw]="draw" title="Curva C de Lévy" formula="A–B → A–P–B, con AP ⟂ PB y |AP|=|PB|"></app-fractal-explorer></article>
+<article class="fractal-article">
+  <h2>Curva C de Lévy</h2>
+  <p class="dropcap">Paul Lévy, uno de los grandes investigadores franceses de la probabilidad, estudió curvas
+    irregulares que hoy asociamos al azar y al movimiento browniano. La curva C lleva su nombre por la silueta que forma
+    en sus primeras generaciones. Es una demostración elegante de que no hacen falta bifurcaciones complicadas: basta
+    sustituir un segmento por dos segmentos perpendiculares para que surja una curva autosimilar de dimensión dos.</p>
+  <p>Dados los extremos A y B de un segmento, se calcula su punto medio M. Después se desplaza M una distancia igual a
+    la mitad del segmento en la dirección perpendicular; ese punto P forma un triángulo rectángulo isósceles con A y B.
+    El tramo A–B se reemplaza por A–P y P–B. Aplicar la misma operación a ambos tramos produce 2<sup>n</sup> segmentos,
+    cuya longitud se reduce por un factor 1/√2 en cada generación.</p>
+  <p>La dimensión vale log(2)/log(√2)=2. La curva no rellena un cuadrado de forma uniforme en un nivel finito, pero su
+    límite tiene la escala propia de una figura plana. Computacionalmente se evita guardar una lista enorme de puntos:
+    la función recursiva recibe los cuatro números de A y B, halla P mediante una rotación de 90 grados del vector mitad
+    y continúa hasta alcanzar la profundidad elegida; allí traza el segmento final.</p>
+  <p>El control de iteraciones permite ver el paso de una V quebrada a una textura compacta. La misma estrategia de
+    sustitución, con otras rotaciones, está detrás de muchas curvas de espacio y de algoritmos para recorrer regiones
+    sin grandes saltos.</p>
+  <app-fractal-explorer [draw]="draw" title="Curva C de Lévy"
+    formula="A–B → A–P–B, con AP ⟂ PB y |AP|=|PB|"
+    [maxIterations]="12"></app-fractal-explorer>
+</article>

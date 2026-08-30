@@ -22,6 +22,7 @@ export class FractalExplorerComponent implements AfterViewInit {
   @Input({ required: true }) draw!: FractalRenderer;
   @Input() formula = '';
   @Input() initialIterations = 4;
+  @Input() minIterations = 0;
   @Input() maxIterations = 7;
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 

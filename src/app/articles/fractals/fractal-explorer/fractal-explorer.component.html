@@ -3,7 +3,7 @@
   <p class="explorer-formula" *ngIf="formula">{{ formula }}</p>
   <div class="explorer-controls">
     <label for="iterations">Iteraciones</label>
-    <input id="iterations" type="range" min="0" [max]="maxIterations" [(ngModel)]="iterations" (input)="update()">
+    <input id="iterations" type="range" [min]="minIterations" [max]="maxIterations" [(ngModel)]="iterations" (input)="update()">
     <span class="widget-label">{{ iterations }}</span>
   </div>
   <canvas #canvas [width]="size" [height]="size" aria-label="Visualización interactiva del fractal"></canvas>

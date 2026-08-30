@@ -1,1 +1,21 @@
-<article class="fractal-article"><h2>Curva de Peano</h2><p class="dropcap">Giuseppe Peano presentó en 1890 una curva capaz de cubrir un cuadrado y provocó una pequeña crisis de intuición. No era una línea dibujada de manera usual, sino el límite de aproximaciones cada vez más densas. Su ejemplo abrió el camino a la topología moderna y mostró que «continuo» no significa necesariamente «suave» ni «simple».</p><p>La aproximación elemental divide el cuadrado en una rejilla de 3 por 3 y conecta sus nueve celdas con un recorrido en serpiente. Cada tramo se reemplaza por una copia reducida del mismo recorrido, alternando la orientación para que el lápiz no salte entre celdas. Al nivel <em>n</em> la rejilla tiene 3<sup>n</sup> filas y columnas y la poligonal visita 9<sup>n</sup> posiciones. La escala disminuye por tres mientras el número de piezas se multiplica por nueve, de modo que la dimensión de semejanza es dos.</p><p>El explorador genera esas visitas sin una imagen prefijada: calcula el tamaño de la cuadrícula, recorre cada fila y cambia el sentido en las filas pares e impares. Esa es una aproximación pedagógica de la familia de curvas de Peano; la regla de sustitución exacta añade las rotaciones que garantizan continuidad en el límite. El coste crece como el número de celdas, por eso el nivel máximo se mantiene moderado.</p><p>Las curvas de llenado del plano interesan en compresión, impresión y exploración de datos: convierten una región bidimensional en un orden lineal con saltos relativamente cortos. Aumenta las iteraciones y observa cómo una ruta aparentemente ordenada acaba cubriendo toda la ventana.</p><app-fractal-explorer [draw]="draw" title="Curva de Peano" formula="Rejilla 3ⁿ × 3ⁿ recorrida con copias orientadas"></app-fractal-explorer></article>
+<article class="fractal-article">
+  <h2>Curva de Peano</h2>
+  <p class="dropcap">Giuseppe Peano presentó en 1890 una curva capaz de cubrir un cuadrado y provocó una pequeña crisis
+    de intuición. No era una línea dibujada de manera usual, sino el límite de aproximaciones cada vez más densas. Su
+    ejemplo abrió el camino a la topología moderna y mostró que «continuo» no significa necesariamente «suave» ni
+    «simple».</p>
+  <p>La aproximación elemental divide el cuadrado en una rejilla de 3 por 3 y conecta sus nueve celdas con un recorrido
+    en serpiente. Cada tramo se reemplaza por una copia reducida del mismo recorrido, alternando la orientación para que
+    el lápiz no salte entre celdas. Al nivel <em>n</em> la rejilla tiene 3<sup>n</sup> filas y columnas y la poligonal
+    visita 9<sup>n</sup> posiciones. La escala disminuye por tres mientras el número de piezas se multiplica por nueve,
+    de modo que la dimensión de semejanza es dos.</p>
+  <p>El explorador genera esas visitas sin una imagen prefijada: calcula el tamaño de la cuadrícula, recorre cada fila y
+    cambia el sentido en las filas pares e impares. Esa es una aproximación pedagógica de la familia de curvas de Peano;
+    la regla de sustitución exacta añade las rotaciones que garantizan continuidad en el límite. El coste crece como el
+    número de celdas, por eso el nivel máximo se mantiene moderado.</p>
+  <p>Las curvas de llenado del plano interesan en compresión, impresión y exploración de datos: convierten una región
+    bidimensional en un orden lineal con saltos relativamente cortos. Aumenta las iteraciones y observa cómo una ruta
+    aparentemente ordenada acaba cubriendo toda la ventana.</p>
+  <app-fractal-explorer [draw]="draw"
+    title="Curva de Peano" formula="Rejilla 3ⁿ × 3ⁿ recorrida con copias orientadas" [minIterations]="1"></app-fractal-explorer>
+</article>
