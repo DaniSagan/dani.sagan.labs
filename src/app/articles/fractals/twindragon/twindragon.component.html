@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Twindragon</h2>
+  <p class="dropcap">El twindragon, o dragón gemelo, nace al unir dos curvas dragón de Heighway por un extremo y orientarlas de forma complementaria. El dragón original se popularizó gracias a John Heighway, William Harter y Bruce Banks en la década de 1960, y alcanzó a un público amplio cuando Martin Gardner escribió sobre él en <em>Scientific American</em>. La versión doble revela algo que una sola curva apenas insinúa: estos recorridos no solo forman fronteras llamativas, también pueden encajar y cubrir regiones del plano.</p>
+  <p>El dibujo usa dos variables auxiliares, <code>X</code> e <code>Y</code>, que se transforman mutuamente. Solo <code>F</code> avanza; las variables conservan la memoria de futuros giros. Partimos de dos semillas enlazadas, <code>FX+FX+</code>, y aplicamos reglas especulares con ángulos de 90 grados. La cadena resultante codifica dos dragones que crecen juntos sin necesidad de calcularlos por separado.</p>
+  <h3>Azulejos, números y bases complejas</h3>
+  <p>La familia del dragón posee conexiones sorprendentes con la aritmética compleja. Sus puntos pueden describirse mediante sumas de potencias de 1+i y secuencias de giros relacionadas con el plegado de papel. La región límite del twindragon puede teselar el plano por traslaciones, por lo que aparece en estudios de mosaicos autosimilares. Una línea generada por decisiones binarias termina delimitando una pieza bidimensional.</p>
+  <p>En cada iteración se duplica aproximadamente la cantidad de pasos visibles. Los niveles bajos permiten identificar los dos recorridos; en niveles altos, el borde se llena de entrantes y protuberancias mientras el interior parece compacto. Como siempre, el grosor de pantalla es una ayuda visual: la definición matemática habla de una curva ideal, no de una cinta.</p>
+  <p>El renderizador transforma cada avance en la suma de un vector dirección a una posición <code>Vec2</code>. Después adapta todos los puntos al lienzo a partir de sus extremos mínimos y máximos. Esta normalización es importante en curvas dragón, cuya caja envolvente crece de manera poco intuitiva y no mantiene la orientación aparente de un nivel al siguiente.</p>
+  <p>Busca el punto donde se encuentran los gemelos. A medida que aumenta el nivel, ese origen estructural queda oculto por la complejidad global, pero sigue dividiendo el recorrido en dos mitades con historias simbólicas paralelas.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Twindragon"
+    formula="Dos dragones de Heighway unidos por un extremo"
+    [maxIterations]="14"
+  ></app-fractal-explorer>
+</article>

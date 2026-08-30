@@ -1,0 +1,17 @@
+<article class="fractal-article">
+  <h2>Fractal de Cesàro</h2>
+  <p class="dropcap">Ernesto Cesàro fue un matemático italiano de finales del siglo XIX, recordado sobre todo por el método de sumación que lleva su apellido. En geometría fractal, su nombre se asocia a una familia de curvas construidas como la de Koch, aunque con libertad para elegir el ángulo del “pico”. Esa pequeña modificación convierte una figura escolarmente familiar en un laboratorio: al abrir o cerrar el ángulo aparecen curvas suaves a la vista, perfiles dentados o trayectorias tan plegadas que casi rellenan una región.</p>
+  <p>Imagina un segmento sustituido por cuatro tramos de igual longitud relativa. El primero avanza, el segundo gira un ángulo θ, los dos centrales compensan la desviación y el último recupera la dirección inicial. La notación simbólica es la misma que en Koch, <code>F+F--F+F</code>, pero θ ya no tiene por qué ser 60°. El explorador emplea aproximadamente 79,2°, un valor que genera una silueta apretada y permite distinguirla claramente de su pariente más célebre.</p>
+  <aside>
+    <strong>Una familia, no un objeto único.</strong> Al hablar de curva de Cesàro conviene indicar el ángulo. Cambiarlo altera la escala necesaria para que los extremos de la figura coincidan con los del segmento sustituido y, por tanto, también cambia su dimensión fractal.
+  </aside>
+  <p>La historia de estas curvas está ligada al estudio de objetos continuos pero irregulares. Antes de que existiera la palabra “fractal”, matemáticos como Cesàro, Peano, Hilbert y Koch exploraban los límites de ideas aparentemente evidentes: longitud, área, continuidad o tangencia. Sus ejemplos fueron llamados a veces “monstruos matemáticos”. Hoy se consideran herramientas normales para entender fenómenos dependientes de la escala.</p>
+  <p>Computacionalmente, el dibujo resulta especialmente limpio. Cada nivel reemplaza símbolos, no píxeles. Después una tortuga virtual mantiene una posición <code>Vec2</code> y una orientación; avanzar suma un vector dirección y girar modifica el ángulo. El lienzo se ajusta a los límites calculados en una primera pasada, así que la curva permanece centrada aunque sus repliegues cambien mucho entre niveles.</p>
+  <p>Observa cómo el primer paso todavía revela los cuatro generadores y cómo, a partir del tercero, el conjunto parece desarrollar cavidades. No hay aleatoriedad: esa apariencia orgánica nace de una sustitución completamente determinista.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Fractal de Cesàro"
+    formula="F → F+F−−F+F; θ ≈ 79,2°"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

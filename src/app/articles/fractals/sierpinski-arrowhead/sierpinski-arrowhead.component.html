@@ -1,0 +1,19 @@
+<article class="fractal-article">
+  <h2>Punta de flecha de Sierpiński</h2>
+  <p class="dropcap">La punta de flecha de Sierpiński es una curva que visita, mediante un único trazo, la estructura del célebre triángulo de Sierpiński. Su nombre describe la silueta de las primeras aproximaciones: una punta triangular quebrada que se repliega sobre sí misma. Aunque Wacław Sierpiński estudió su triángulo en 1915, esta formulación como recorrido se volvió especialmente popular con los sistemas-L y los gráficos de tortuga, porque muestra que una región fractal puede entenderse tanto como conjunto de piezas como camino ordenado.</p>
+  <p>A diferencia de la eliminación de triángulos, aquí se usan dos tipos simbólicos de segmento, <code>A</code> y <code>B</code>. Se reescriben con reglas especulares: <code>A → B−A−B</code> y <code>B → A+B+A</code>. Los signos giran 60 grados. Alternar las dos reglas conserva la orientación correcta en cada escala y hace que la curva serpentee entre las celdas triangulares sin recurrir a una tabla de coordenadas preparada de antemano.</p>
+  <ol>
+    <li>En el primer nivel se reconoce una flecha sencilla.</li>
+    <li>En los niveles pares cambia la orientación global del recorrido.</li>
+    <li>En el límite, el camino es continuo y cubre densamente el triángulo de Sierpiński.</li>
+  </ol>
+  <p>La curva tiene dimensión log(3)/log(2), la misma que el triángulo al que aproxima, alrededor de 1,585. No rellena un triángulo sólido como las curvas de Peano o Hilbert rellenan un cuadrado; recorre un conjunto con huecos a todas las escalas. Esa diferencia la convierte en un ejemplo excelente para hablar de localidad: dos puntos cercanos en el recorrido suelen quedar próximos en el plano, una propiedad útil al ordenar datos espaciales, aunque no perfecta.</p>
+  <p>El renderizador expande las reglas, interpreta cada símbolo dibujable como un paso y guarda cada nueva posición en un <code>Vec2</code>. Los límites se calculan a partir del propio recorrido; por eso la alternancia entre niveles no obliga a introducir desplazamientos manuales. El número de segmentos crece como 3<sup>n</sup>, de modo que un incremento aparentemente pequeño en el control triplica aproximadamente el trabajo.</p>
+  <p>Sigue con la vista el trazo en niveles bajos antes de aumentarlos. La imagen deja de parecer una flecha y empieza a parecer un tejido triangular, pero nunca pierde la continuidad de su única línea.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Punta de flecha de Sierpiński"
+    formula="A → B−A−B; B → A+B+A"
+    [maxIterations]="8"
+  ></app-fractal-explorer>
+</article>

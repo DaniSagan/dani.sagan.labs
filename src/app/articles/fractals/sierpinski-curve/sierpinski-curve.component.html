@@ -1,0 +1,15 @@
+<article class="fractal-article">
+  <h2>Curva de Sierpiński</h2>
+  <p class="dropcap">Bajo el nombre “curva de Sierpiński” aparecen varias construcciones emparentadas. La de este artículo es un recorrido ortogonal que desarrolla una frontera laberíntica mediante dos símbolos, <code>F</code> y <code>G</code>. Comparte con el triángulo y la alfombra de Wacław Sierpiński la idea de que una regla elemental, repetida a escalas decrecientes, produce huecos organizados. Sin embargo, aquí el protagonista no es lo que se elimina, sino el camino continuo que queda.</p>
+  <p>El axioma dibuja un circuito inicial y las reglas cumplen tareas distintas. <code>G → GG</code> alarga una dirección sin cambiar su carácter; <code>F → F+G−F−G+F</code> introduce desvíos de 90 grados y copias orientadas. Al iterar, los tramos rectos funcionan como puentes entre motivos cada vez más complejos. El resultado recuerda a un circuito impreso o a una ciudad vista desde arriba, una apariencia que ayuda a entender por qué las curvas recursivas interesan en diseño algorítmico.</p>
+  <h3>Recorrer en lugar de rellenar</h3>
+  <p>Las curvas que “llenan el espacio” surgieron a finales del siglo XIX como respuesta a preguntas sobre dimensión y continuidad. Peano sorprendió al construir una aplicación continua de un intervalo sobre un cuadrado; Hilbert ofreció después una versión geométricamente clara. Las variantes de Sierpiński participan de esa historia, pero conservan una identidad más perforada. En una aproximación finita siempre vemos una polilínea; el objeto límite es el que posee las propiedades extraordinarias.</p>
+  <p>El programa no guarda un mapa de todos los giros. Genera una cadena a partir de las reglas y mueve una tortuga virtual. La posición se representa con <code>Vec2</code>, mientras que la orientación es un ángulo. Cada avance suma un vector unitario; cada signo suma o resta π/2 al ángulo. Después se normaliza la caja envolvente para aprovechar el lienzo completo. Esta separación entre gramática y geometría permite experimentar: una regla distinta crea otra curva sin reescribir el motor de dibujo.</p>
+  <p>Como ejercicio, busca pasillos que en un nivel parecen separados y en el siguiente quedan vinculados por una vuelta nueva. La curva enseña que conectividad y proximidad visual no son sinónimos: dos tramos pueden casi tocarse y estar muy alejados a lo largo del recorrido.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva de Sierpiński"
+    formula="F → F+G−F−G+F; G → GG"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

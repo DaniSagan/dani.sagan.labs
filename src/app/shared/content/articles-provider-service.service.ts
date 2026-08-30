@@ -51,6 +51,28 @@ import { JuliaSetComponent } from 'src/app/articles/fractals/julia-set/julia-set
 import { TricornComponent } from 'src/app/articles/fractals/tricorn/tricorn.component';
 import { MultibrotComponent } from 'src/app/articles/fractals/multibrot/multibrot.component';
 import { CantorDustComponent } from 'src/app/articles/fractals/cantor-dust/cantor-dust.component';
+import {
+  BinaryFractalTreeComponent,
+  BoxFractalComponent,
+  CesaroFractalComponent,
+  CrossFractalComponent,
+  DurerPentagonComponent,
+  FractalCanopyComponent,
+  FractalPlantComponent,
+  HexaflakeComponent,
+  JerusalemCrossComponent,
+  KochAntisnowflakeComponent,
+  KochCurveComponent,
+  MengerSpongeComponent,
+  MooreCurveComponent,
+  PaperfoldingCurveComponent,
+  PentaflakeComponent,
+  QuadraticKochIslandComponent,
+  SierpinskiArrowheadComponent,
+  SierpinskiCurveComponent,
+  TerdragonComponent,
+  TwindragonComponent,
+} from 'src/app/articles/fractals/additional-fractals';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +107,26 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: TricornComponent.title, route: TricornComponent.route },
     { name: MultibrotComponent.title, route: MultibrotComponent.route },
     { name: CantorDustComponent.title, route: CantorDustComponent.route },
+    { name: KochCurveComponent.title, route: KochCurveComponent.route },
+    { name: CesaroFractalComponent.title, route: CesaroFractalComponent.route },
+    { name: QuadraticKochIslandComponent.title, route: QuadraticKochIslandComponent.route },
+    { name: SierpinskiArrowheadComponent.title, route: SierpinskiArrowheadComponent.route },
+    { name: SierpinskiCurveComponent.title, route: SierpinskiCurveComponent.route },
+    { name: MooreCurveComponent.title, route: MooreCurveComponent.route },
+    { name: FractalCanopyComponent.title, route: FractalCanopyComponent.route },
+    { name: BinaryFractalTreeComponent.title, route: BinaryFractalTreeComponent.route },
+    { name: FractalPlantComponent.title, route: FractalPlantComponent.route },
+    { name: TerdragonComponent.title, route: TerdragonComponent.route },
+    { name: TwindragonComponent.title, route: TwindragonComponent.route },
+    { name: PaperfoldingCurveComponent.title, route: PaperfoldingCurveComponent.route },
+    { name: BoxFractalComponent.title, route: BoxFractalComponent.route },
+    { name: CrossFractalComponent.title, route: CrossFractalComponent.route },
+    { name: KochAntisnowflakeComponent.title, route: KochAntisnowflakeComponent.route },
+    { name: PentaflakeComponent.title, route: PentaflakeComponent.route },
+    { name: HexaflakeComponent.title, route: HexaflakeComponent.route },
+    { name: DurerPentagonComponent.title, route: DurerPentagonComponent.route },
+    { name: MengerSpongeComponent.title, route: MengerSpongeComponent.route },
+    { name: JerusalemCrossComponent.title, route: JerusalemCrossComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 

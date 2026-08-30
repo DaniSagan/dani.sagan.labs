@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Fractal de la cruz de Jerusalén</h2>
+  <p class="dropcap">La cruz de Jerusalén tradicional combina una cruz central potente con cuatro cruces menores en sus cuadrantes. Su uso heráldico se remonta a la Edad Media y ha recibido interpretaciones religiosas diversas. El fractal de este artículo abstrae el motivo histórico: dibuja una cruz y coloca cuatro versiones reducidas en los extremos de sus brazos. La repetición convierte un emblema finito en una red jerárquica sin pretender reproducir una pieza histórica concreta.</p>
+  <p>Esta construcción muestra cómo un símbolo puede convertirse en regla. Cada cruz tiene un centro, una longitud de brazo y cuatro extremos. En la etapa siguiente, esos extremos son los centros de nuevas cruces con un tercio del tamaño. La figura crece como un árbol de cuatro ramas, pero sus direcciones permanecen alineadas con los ejes. Los descendientes se encuentran y organizan una cuadrícula cuya densidad aumenta hacia el interior.</p>
+  <p>Con cuatro copias reducidas por 1/3, la dimensión de semejanza del esqueleto recursivo es log(4)/log(3), aproximadamente 1,262, bajo las hipótesis habituales de separación. Curiosamente coincide con la dimensión de la curva de Koch, aunque las imágenes y reglas son muy distintas. La dimensión resume una tasa de crecimiento; no es una huella digital capaz de identificar por sí sola una forma.</p>
+  <h3>Del motivo cultural al objeto matemático</h3>
+  <p>Es importante distinguir procedencia y reinterpretación. La cruz medieval no fue diseñada como fractal matemático, y sus pequeñas cruces no continúan infinitamente. La versión recursiva es una creación geométrica posterior inspirada por la disposición de cinco cruces. Este tipo de diálogo aparece con frecuencia: mosaicos, tejidos y símbolos antiguos contienen repeticiones que hoy podemos extender mediante algoritmos, sin atribuir a sus autores conceptos anacrónicos.</p>
+  <p>El método <code>draw</code> representa centros y extremos con <code>Vec2</code>. Para cada cruz crea cuatro vectores de brazo, traza dos segmentos y llama recursivamente desde sus extremos. No necesita mantener componentes <code>x</code> e <code>y</code> como parámetros independientes, y los nombres describen el papel geométrico de cada dato.</p>
+  <p>Observa cómo cambia la lectura según el nivel. Primero domina una cruz; después aparece una constelación; finalmente los encuentros forman cuadrados y corredores. La misma imagen alterna entre símbolo, árbol y retícula dependiendo de la escala a la que se mire.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Fractal de la cruz de Jerusalén"
+    formula="Cada cruz genera cuatro cruces de escala 1/3"
+    [maxIterations]="7"
+  ></app-fractal-explorer>
+</article>

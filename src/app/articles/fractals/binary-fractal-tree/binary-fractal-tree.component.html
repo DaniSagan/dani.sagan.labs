@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Árbol fractal binario</h2>
+  <p class="dropcap">El árbol fractal binario es probablemente el primer fractal que muchas personas programan. Se dibuja un tronco y, desde su extremo, nacen dos ramas más cortas inclinadas en sentidos opuestos. Cada una repite el proceso. En pocas líneas aparecen copa, simetría y una sensación de crecimiento. Su sencillez lo convierte en una introducción excelente a la recursión: cada llamada resuelve el mismo problema, pero con una escala menor y una profundidad restante.</p>
+  <p>La idea tiene vínculos con los diagramas de Cayley, utilizados desde el siglo XIX para representar la estructura de grupos y árboles combinatorios. Un árbol binario abstracto solo habla de nodos y conexiones; al asignarle longitudes y ángulos se transforma en geometría. Si la razón de reducción es demasiado grande, las ramas se solapan. Si es pequeña, la copa queda dispersa. El valor 0,72 empleado aquí mantiene una figura compacta y deja visible el patrón de bifurcación.</p>
+  <p>Técnicamente, una rama se define por su punto inicial, longitud y orientación. El punto final se obtiene sumando al inicio un vector unitario en la dirección del ángulo, escalado por la longitud. Tanto inicio como final son objetos <code>Vec2</code>; no hay coordenadas independientes circulando por la recursión. Si quedan niveles, el final se convierte en el inicio compartido de las dos ramas hijas, inclinadas ±36 grados.</p>
+  <h3>Contar el crecimiento</h3>
+  <p>En profundidad <em>n</em>, el árbol contiene aproximadamente 2<sup>n+1</sup>−1 ramas. Por eso el control no aumenta el trabajo de manera lineal: un paso adicional casi duplica el dibujo. Esa progresión ofrece una lección práctica sobre complejidad algorítmica y explica por qué los límites interactivos son importantes incluso en una figura de apariencia inocente.</p>
+  <p>Los árboles fractales aparecen en arte generativo, simulación de rayos, compresión procedural y enseñanza de estructuras de datos. No son modelos botánicos completos; una planta real responde al entorno y no bifurca con exactitud mecánica. Aun así, capturan la jerarquía de escalas que reconocemos en raíces, vasos sanguíneos, cuencas fluviales y descargas eléctricas.</p>
+  <p>Compara la figura con el dosel basado en sistema-L. Aquí no se genera una cadena intermedia: la geometría se construye directamente mediante llamadas recursivas. Dos estrategias distintas llegan a familias visualmente relacionadas.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Árbol fractal binario"
+    formula="Cada rama genera dos ramas de longitud 0,72·L"
+    [maxIterations]="12"
+  ></app-fractal-explorer>
+</article>

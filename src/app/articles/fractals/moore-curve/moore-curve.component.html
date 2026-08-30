@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Curva de Moore</h2>
+  <p class="dropcap">Eliakim Hastings Moore fue una figura central de las matemáticas estadounidenses y uno de los impulsores de la escuela de Chicago a comienzos del siglo XX. La curva que lleva su nombre es una variante cerrada de la curva de Hilbert: en vez de comenzar en un lado del cuadrado y terminar en otro, enlaza copias orientadas de Hilbert para regresar al punto de partida. Ese detalle topológico produce un lazo continuo capaz de aproximarse a todos los puntos de una región cuadrada.</p>
+  <p>La construcción puede imaginarse como cuatro curvas de Hilbert de orden inferior, rotadas y conectadas por segmentos cortos. Cada nivel cuadruplica el número de celdas visitadas. En el límite ideal, una línea unidimensional se convierte en una aplicación continua y sobreyectiva sobre el cuadrado. No significa que una línea corriente tenga área: la sorpresa reside en que el objeto límite deja atrás muchas intuiciones basadas en aproximaciones suaves.</p>
+  <blockquote>Una curva de llenado no salta de celda en celda: conserva continuidad mientras reorganiza el orden en el que el plano es visitado.</blockquote>
+  <p>La curva de Moore resulta interesante en informática porque su recorrido es cíclico. Al no tener extremos privilegiados, sirve para estudiar ordenaciones periódicas, distribución de trabajo sobre mallas y recorridos de imágenes donde conviene mantener vecinos espaciales relativamente próximos en la secuencia. Las curvas de Hilbert suelen ofrecer una localidad excelente, y el cierre de Moore añade simetría cuando el problema también es circular.</p>
+  <p>El sistema-L utiliza dos símbolos auxiliares, <code>L</code> y <code>R</code>, que representan versiones especulares de la misma operación. No dibujan directamente: organizan los futuros avances <code>F</code> y los giros de 90 grados. Durante la interpretación, cada posición es un <code>Vec2</code>. Esta elección simplifica la transformación final que centra y escala la curva, además de evitar variables independientes que podrían desincronizarse.</p>
+  <p>En los niveles bajos, busca las cuatro grandes regiones que componen el recorrido. Después aumenta el control y observa cómo cada región conserva su orientación local mientras gana un laberinto interno. La curva parece una imagen cada vez más densa, pero sigue siendo una única polilínea cerrada calculada símbolo a símbolo.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva de Moore"
+    formula="Cuatro curvas de Hilbert orientadas y enlazadas"
+    [minIterations]="1"
+    [maxIterations]="7"
+  ></app-fractal-explorer>
+</article>

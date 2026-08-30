@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Pentágono de Durero</h2>
+  <p class="dropcap">Albrecht Dürer no fue solo uno de los grandes artistas del Renacimiento alemán. En 1525 publicó <em>Underweysung der Messung</em>, un tratado sobre medida, perspectiva y construcciones geométricas pensado también para artesanos. Allí estudió polígonos y aproximaciones prácticas. El fractal moderno llamado pentágono de Durero toma esa tradición constructiva y repite cinco pentágonos reducidos alrededor de una disposición pentagonal.</p>
+  <p>No debe confundirse una ilustración renacentista concreta con la definición contemporánea del fractal. El nombre funciona como homenaje a la fascinación de Durero por la geometría y al papel del pentágono en su obra teórica. La recursión infinita y la dimensión fractal pertenecen a un lenguaje desarrollado siglos después. Esta distancia histórica es una curiosidad valiosa: muchas figuras actuales combinan motivos antiguos con conceptos modernos.</p>
+  <p>La construcción usa dos proporciones íntimamente ligadas a la razón áurea: aproximadamente 0,382 y 0,618. Son 1/φ² y 1/φ. Cada pentágono padre coloca cinco hijos hacia sus vértices; al repetirlo aparecen estrellas y vacíos pentagonales. Si las cinco copias tienen factor r≈0,382, la dimensión de semejanza formal satisface 5·r<sup>d</sup>=1, aunque el análisis completo debe comprobar contactos y solapamientos.</p>
+  <h3>Geometría en el algoritmo</h3>
+  <p>El centro de cada figura es un <code>Vec2</code>. Un bucle recorre cinco ángulos separados por 72 grados, construye el vector radial y calcula el centro descendiente. Al llegar al último nivel, otro bucle genera los cinco vértices y cierra el contorno. La recursión refleja literalmente la frase “cinco pentágonos alrededor de uno mayor”, algo que vuelve el código apropiado para estudiar la construcción.</p>
+  <p>La figura también permite hablar de precisión numérica. Los ordenadores representan cosenos y la razón áurea con aproximaciones binarias; tras muchas escalas se acumulan errores diminutos. En los niveles interactivos son imperceptibles, pero en fabricación o demostración formal convendría usar construcciones algebraicas exactas o tolerancias explícitas.</p>
+  <p>Mira primero las cinco piezas externas y luego el hueco central. En niveles sucesivos, cada pieza hereda su propia corona, mientras la silueta general conserva la simetría de orden cinco que tanto interesó a artistas y geómetras.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Pentágono de Durero"
+    formula="Cinco copias pentagonales relacionadas por la razón áurea"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

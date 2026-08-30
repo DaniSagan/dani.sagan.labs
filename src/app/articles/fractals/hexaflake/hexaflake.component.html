@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Hexaflake</h2>
+  <p class="dropcap">El hexaflake reúne siete hexágonos: uno central y seis alrededor. Cada hexágono se sustituye después por una versión reducida del mismo conjunto. Su simetría recuerda panales, moléculas planas y copos de nieve, aunque la regla es puramente geométrica. Al contrario que el pentaflake, la estructura se apoya en ángulos de 60 grados y en una retícula triangular, una de las formas más eficientes de organizar vecinos en el plano.</p>
+  <p>El hexágono regular puede dividirse en seis triángulos equiláteros. Esa identidad explica por qué aparece en mosaicos y por qué las seis copias exteriores encajan alrededor del centro. Cada hijo tiene un tercio del radio del padre y sus centros se sitúan a dos tercios del radio. Como hay siete copias, la dimensión de semejanza ideal es log(7)/log(3), aproximadamente 1,771. El conjunto ocupa más que una curva, pero conserva huecos que le impiden cubrir una superficie completa.</p>
+  <h3>Un pariente del panal que no es un panal</h3>
+  <p>Las abejas construyen celdas hexagonales contiguas de tamaño comparable; el hexaflake anida escalas y elimina regiones. Compartir una forma no implica compartir un mecanismo. En ciencia es importante evitar la explicación retrospectiva de que “la naturaleza usa fractales” para todo: algunas estructuras son periódicas, otras jerárquicas y muchas combinan ambos comportamientos.</p>
+  <p>El renderizado recursivo trabaja con un centro <code>Vec2</code>. Para cada uno de los seis ángulos crea un vector radial, obtiene el centro hijo y vuelve a llamar a la misma función. La séptima llamada permanece en el centro. Solo al alcanzar la profundidad final se traza el hexágono, lo que mantiene legibles las unidades de menor escala y evita rellenar repetidamente áreas superpuestas.</p>
+  <p>El crecimiento es rápido: 7<sup>5</sup> supera dieciséis mil polígonos. Por eso el explorador limita el nivel. Esa cifra es también una buena intuición sobre algoritmos exponenciales: añadir una sola iteración no añade siete formas, sino que multiplica por siete todo el trabajo terminal.</p>
+  <p>Observa los huecos triangulares entre grupos. Forman redes a varias escalas y dan al borde una textura distinta de la del centro. Si desenfocas ligeramente la vista, los hexágonos pequeños se funden y reaparece la forma global de seis brazos.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Hexaflake"
+    formula="Siete copias de escala 1/3 en simetría hexagonal"
+    [maxIterations]="5"
+  ></app-fractal-explorer>
+</article>

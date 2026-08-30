@@ -1,0 +1,15 @@
+<article class="fractal-article">
+  <h2>Curva de Koch</h2>
+  <p class="dropcap">En 1904, el matemático sueco Helge von Koch publicó una curva destinada a incomodar a la geometría clásica. Era continua, podía recorrerse sin levantar el lápiz y, sin embargo, no admitía una tangente bien definida en ninguno de sus puntos. Décadas antes, Weierstrass ya había mostrado funciones continuas no derivables, pero la construcción de Koch convirtió aquella rareza analítica en una imagen que podía explicarse con regla y compás. Su conocido copo de nieve se obtiene cerrando tres copias; aquí observamos la pieza esencial, una sola curva abierta.</p>
+  <p>La receta comienza con un segmento. Se divide en tres partes iguales, se sustituye el tercio central por los dos lados de un triángulo equilátero y se repite la operación sobre cada segmento nuevo. Cada etapa cambia una pieza por cuatro, todas con un tercio de la longitud anterior. Por eso, tras <em>n</em> pasos existen 4<sup>n</sup> segmentos y la longitud total es (4/3)<sup>n</sup> veces la inicial. En el límite, la curva cabe en una región finita pero su longitud es infinita.</p>
+  <p>Su dimensión de semejanza es log(4)/log(3), aproximadamente 1,262. Ese número intermedio expresa que la curva ocupa el plano con más intensidad que una línea ordinaria sin llegar a ser una superficie. También explica por qué medir costas con reglas cada vez más pequeñas puede producir longitudes crecientes, una conexión que Benoît Mandelbrot popularizó al hablar de la costa británica. La curva de Koch no modela literalmente una costa, pero cristaliza el mismo problema de escala.</p>
+  <h3>Del segmento al programa</h3>
+  <p>La visualización usa un sistema-L: la letra <code>F</code> significa avanzar y los signos indican giros de 60 grados. La regla <code>F → F+F--F+F</code> contiene toda la construcción. Antes de dibujar, el programa expande la cadena, recorre sus instrucciones con una “tortuga” y ajusta el resultado al lienzo. Cada posición se almacena como <code>Vec2</code>, de modo que una coordenada es una entidad geométrica y no una pareja de números sin relación.</p>
+  <p>Prueba los primeros niveles con calma. En el cero hay una recta; en el uno aparece una tienda triangular; después, cada borde adquiere la misma protuberancia. El detalle no se añade como decoración: es la consecuencia inevitable de repetir una regla local.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva de Koch"
+    formula="F → F+F−−F+F; giros de 60°"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

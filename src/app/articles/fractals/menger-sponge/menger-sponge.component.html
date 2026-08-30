@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Esponja de Menger</h2>
+  <p class="dropcap">Karl Menger describió en 1926 una generalización tridimensional de la alfombra de Sierpiński. Se divide un cubo en 27 cubos iguales y se retiran el central y los seis situados en el centro de cada cara; quedan veinte. El procedimiento se repite indefinidamente en cada cubo conservado. El resultado, la esponja de Menger, parece una arquitectura imposible de túneles anidados y se convirtió en uno de los iconos de la topología y la geometría fractal.</p>
+  <p>Después de <em>n</em> etapas hay 20<sup>n</sup> cubos de lado 3<sup>−n</sup>. Su volumen es (20/27)<sup>n</sup> y tiende a cero, mientras el área superficial crece sin límite. La dimensión fractal es log(20)/log(3), aproximadamente 2,727: mayor que la de una superficie y menor que la de un sólido. Es una combinación desconcertante de volumen nulo, conectividad y una cantidad ilimitada de frontera.</p>
+  <p>La esponja tiene relevancia más allá de su aspecto. Es una curva universal en cierto sentido topológico: todo espacio métrico compacto de dimensión topológica uno puede incrustarse en ella. Versiones físicas se han construido con impresión 3D, bloques y tarjetas, aunque cualquier modelo material se detiene tras pocas iteraciones. También inspira metamateriales y estructuras porosas, donde la jerarquía puede afectar rigidez, absorción o transporte.</p>
+  <h3>Una sombra interactiva</h3>
+  <p>Representar veinte cubos recursivos con iluminación y cámara requeriría un visor tridimensional distinto. Este artículo muestra una proyección frontal estructural: la alfombra de Sierpiński que aparece en cada cara de la esponja. Se divide un cuadrado en nueve y se omite el centro. Por eso la imagen no pretende ser el sólido completo, sino una ventana directa a la regla visible sobre sus caras.</p>
+  <p>El algoritmo agrupa cada esquina superior en un <code>Vec2</code>. El desplazamiento hijo también es un vector de columna y fila escalado por el tercio del lado. Los nombres <code>position</code>, <code>childSize</code> y <code>remainingIterations</code> hacen explícita la operación, y el caso terminal rellena solamente los cuadrados que sobrevivieron.</p>
+  <p>Al aumentar el nivel, piensa que cada cuadrado brillante sería la cara de un cubo superviviente. Detrás de esa fachada continuarían túneles en las tres direcciones. La visualización plana es sencilla, pero señala una estructura espacial mucho más rica.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Proyección de la esponja de Menger"
+    formula="20 de 27 cubos sobreviven; la cara conserva 8 de 9 cuadrados"
+    [maxIterations]="5"
+  ></app-fractal-explorer>
+</article>

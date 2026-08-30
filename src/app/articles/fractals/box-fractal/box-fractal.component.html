@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Fractal de caja</h2>
+  <p class="dropcap">El fractal de caja pertenece a la extensa familia de curvas de Koch cuadráticas. Su generador sustituye una línea por una excursión ortogonal que avanza, rodea una pequeña caja y recupera la dirección original. Al aplicar la misma maniobra sobre los cuatro lados de un cuadrado, la frontera empieza a producir habitaciones y pasillos a todas las escalas. No está asociado a un único descubridor: surgió de la exploración sistemática de reglas de sustitución y sistemas-L.</p>
+  <p>Su aspecto conecta con una tradición más antigua de ornamentos recursivos. Grecas, meandros y cenefas convierten desplazamientos rectos en ritmos visuales; el fractal añade la exigencia de que cada segmento vuelva a contener el motivo completo. La diferencia entre repetición periódica y autosimilitud es crucial: una cenefa copia una unidad del mismo tamaño, mientras una curva fractal anida unidades cada vez menores.</p>
+  <p>En esta versión, la orden <code>F</code> se transforma en <code>F+F−F−F+F</code>. Los giros son de 90 grados. El contorno inicial contiene cuatro órdenes separadas por giros, de modo que queda cerrado. Tras expandir la gramática, una tortuga recorre la cadena. Su posición es un <code>Vec2</code> y la dirección actual produce el vector que se suma en cada paso.</p>
+  <h3>¿Dónde está la dimensión?</h3>
+  <p>Contar piezas y escala permite estimar una dimensión de semejanza cuando el generador no se solapa. Sin embargo, algunas reglas de caja crean coincidencias o contactos que complican el cálculo directo. La imagen invita a no aplicar mecánicamente una fórmula: antes hay que identificar qué copias son realmente independientes y cuál es la contracción geométrica que hace coincidir los extremos.</p>
+  <p>Estas curvas son útiles como bancos de pruebas para renderizado vectorial. Contienen muchísimos ángulos, tramos cercanos y cambios bruscos; una unión de línea mal configurada produce picos o huecos visibles. También inspiran antenas compactas y trazados de circuitos, aunque un diseño de ingeniería real requiere analizar frecuencias, pérdidas y fabricación, no solo copiar la silueta.</p>
+  <p>Aumenta el control y observa la frontera, no el interior oscuro. Cada tramo que parecía recto en el nivel anterior revela una caja nueva: el perímetro funciona como un archivo comprimido que despliega geometría al cambiar de escala.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Fractal de caja"
+    formula="F → F+F−F−F+F; giros de 90°"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

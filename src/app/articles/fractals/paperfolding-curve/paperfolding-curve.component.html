@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Curva de plegado de papel</h2>
+  <p class="dropcap">Toma una tira de papel, dóblala siempre por la mitad en el mismo sentido y, tras varios pliegues, vuelve a abrirla dejando ángulos rectos. La sucesión de valles y montañas forma la curva de plegado de papel. Este experimento doméstico conduce a una secuencia matemática estudiada por John Heighway y popularizada en los años sesenta y setenta junto a la curva dragón. Es un magnífico ejemplo de cómo una operación física repetida puede convertirse en una regla discreta.</p>
+  <p>Al registrar cada pliegue como giro izquierdo o derecho aparece la sucesión regular de plegado. No es periódica, pero está completamente determinada. Una forma de obtener la etapa siguiente consiste en tomar la secuencia anterior, insertar un giro y añadir una copia invertida y reflejada. El sistema-L del explorador realiza la misma contabilidad con dos símbolos auxiliares: <code>X → X+YF+</code> y <code>Y → −FX−Y</code>.</p>
+  <p>La secuencia tiene muchas vidas fuera del papel. Se relaciona con morfismos de palabras, secuencias automáticas, la curva dragón y propiedades de teselación. También aparece en la <em>On-Line Encyclopedia of Integer Sequences</em>, donde los giros pueden codificarse con ceros y unos. Un objeto visual pasa así a ser una cadena binaria susceptible de analizarse con herramientas de teoría de números y combinatoria.</p>
+  <h3>Leer el pliegue en pantalla</h3>
+  <p>Cada <code>F</code> avanza una unidad y cada signo gira un cuarto de vuelta. Los puntos se representan mediante <code>Vec2</code>, apropiado para un recorrido en la cuadrícula: sumar dirección y posición expresa directamente el movimiento. Las letras <code>X</code> e <code>Y</code> nunca se dibujan; funcionan como instrucciones pendientes que generan la estructura en iteraciones posteriores.</p>
+  <p>La curva no se cruza transversalmente en sus aproximaciones habituales, aunque puede aproximarse mucho a sí misma. Su dimensión fractal se vincula con la del dragón, y el límite revela regiones compactas a partir de una tira conceptual de anchura cero. El ajuste automático del lienzo permite observar cómo rota y cambia su proporción sin perder partes fuera del marco.</p>
+  <p>Para explorarla, no mires primero el conjunto completo. Elige una esquina y anota izquierda/derecha mientras recorres unos segmentos; en el nivel siguiente podrás encontrar esa misma secuencia acompañada por su versión transformada. La autosimilitud aquí está tanto en la palabra como en la figura.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva de plegado de papel"
+    formula="X → X+YF+; Y → −FX−Y"
+    [maxIterations]="16"
+  ></app-fractal-explorer>
+</article>

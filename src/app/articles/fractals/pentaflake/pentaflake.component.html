@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Pentaflake</h2>
+  <p class="dropcap">El pentaflake es una agrupación autosimilar de pentágonos regulares. Una copia ocupa el centro y cinco copias menores se distribuyen alrededor, alineadas con los vértices de una simetría pentagonal. A diferencia de una curva generada por sustitución, aquí la unidad básica no es un segmento sino una figura completa. El ojo puede saltar con facilidad entre escalas: ve primero una flor, después seis pentágonos y finalmente flores diminutas dentro de cada pétalo.</p>
+  <p>La geometría del pentágono está gobernada por la razón áurea φ=(1+√5)/2. Diagonales y lados forman triángulos semejantes, y el pentagrama interior reproduce nuevas proporciones áureas. La escala usada para encajar las copias depende de cos(π/5); no se elige solo por estética. Esta relación conecta el pentaflake con una larga historia que va desde los pitagóricos y los sólidos regulares hasta las teselaciones no periódicas de Penrose.</p>
+  <p>En cada nivel, una pieza genera seis descendientes: la central y cinco periféricas. Por tanto, el número de pentágonos terminales crece como 6<sup>n</sup>. La dimensión de semejanza depende del factor exacto de contracción y puede analizarse resolviendo 6·r<sup>d</sup>=1 cuando las condiciones de separación son adecuadas. En pantalla, los contornos se superponen a veces por el grosor del trazo, algo que no debe confundirse con la geometría ideal.</p>
+  <h3>Cómo se construye</h3>
+  <p>El algoritmo recibe un centro <code>Vec2</code>, un radio y la profundidad restante. Para colocar cada hijo crea un vector unitario con el ángulo del vértice, lo escala hasta la órbita correspondiente y lo suma al centro. Cuando termina la recursión, calcula cinco vértices y cierra el polígono. Los nombres <code>childCenter</code>, <code>childRadius</code> y <code>remainingIterations</code> reflejan la estructura del problema sin esconderla en abreviaturas.</p>
+  <p>Los flakes poligonales son populares en arte generativo porque producen simetrías fuertes sin usar una retícula rectangular. También ilustran una dificultad clásica: no todos los polígonos regulares teselan el plano. El pentágono deja huecos, y la recursión convierte esos huecos en parte esencial del diseño.</p>
+  <p>Comienza con nivel cero para ver la semilla. En el nivel uno identifica el centro y la corona; después el patrón se replica en cada posición. La simetría global permanece estable aunque el número de contornos aumente exponencialmente.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Pentaflake"
+    formula="Cada pentágono genera una copia central y cinco periféricas"
+    [maxIterations]="5"
+  ></app-fractal-explorer>
+</article>

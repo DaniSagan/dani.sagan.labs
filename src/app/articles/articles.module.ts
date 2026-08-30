@@ -59,6 +59,28 @@ import { JuliaSetComponent } from './fractals/julia-set/julia-set.component';
 import { TricornComponent } from './fractals/tricorn/tricorn.component';
 import { MultibrotComponent } from './fractals/multibrot/multibrot.component';
 import { CantorDustComponent } from './fractals/cantor-dust/cantor-dust.component';
+import {
+  BinaryFractalTreeComponent,
+  BoxFractalComponent,
+  CesaroFractalComponent,
+  CrossFractalComponent,
+  DurerPentagonComponent,
+  FractalCanopyComponent,
+  FractalPlantComponent,
+  HexaflakeComponent,
+  JerusalemCrossComponent,
+  KochAntisnowflakeComponent,
+  KochCurveComponent,
+  MengerSpongeComponent,
+  MooreCurveComponent,
+  PaperfoldingCurveComponent,
+  PentaflakeComponent,
+  QuadraticKochIslandComponent,
+  SierpinskiArrowheadComponent,
+  SierpinskiCurveComponent,
+  TerdragonComponent,
+  TwindragonComponent,
+} from './fractals/additional-fractals';
 
 @NgModule({
   imports: [
@@ -108,7 +130,14 @@ import { CantorDustComponent } from './fractals/cantor-dust/cantor-dust.componen
     , KochSnowflakeComponent, CantorSetComponent, VicsekFractalComponent, LevyCCurveComponent,
     HilbertCurveComponent, PeanoCurveComponent, GosperCurveComponent, MinkowskiSausageComponent,
     TSquareComponent, HTreeComponent, PythagorasTreeComponent, JuliaSetComponent,
-    TricornComponent, MultibrotComponent, CantorDustComponent
+    TricornComponent, MultibrotComponent, CantorDustComponent,
+    KochCurveComponent, CesaroFractalComponent, QuadraticKochIslandComponent,
+    SierpinskiArrowheadComponent, SierpinskiCurveComponent, MooreCurveComponent,
+    FractalCanopyComponent, BinaryFractalTreeComponent, FractalPlantComponent,
+    TerdragonComponent, TwindragonComponent, PaperfoldingCurveComponent,
+    BoxFractalComponent, CrossFractalComponent, KochAntisnowflakeComponent,
+    PentaflakeComponent, HexaflakeComponent, DurerPentagonComponent,
+    MengerSpongeComponent, JerusalemCrossComponent
   ],
 })
 export class ArticlesModule {}

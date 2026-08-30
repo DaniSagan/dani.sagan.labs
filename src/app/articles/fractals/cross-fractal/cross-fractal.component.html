@@ -1,0 +1,16 @@
+<article class="fractal-article">
+  <h2>Curva fractal de cruz</h2>
+  <p class="dropcap">Las cruces fractales no designan una sola figura, sino una familia de construcciones donde brazos perpendiculares reaparecen a escalas menores. La variante de este artículo es una curva de sustitución cerrada. Su contorno inicial es cuadrado, pero cada avance genera una combinación asimétrica de uno y dos pasos con dos giros consecutivos. El resultado abandona pronto la silueta original y crea grupos de cruces que parecen engranajes ortogonales.</p>
+  <p>La cruz es un motivo geométrico antiquísimo, presente en tejidos, mosaicos y arquitectura mucho antes de la teoría fractal. Su simetría de cuarto de vuelta la convierte en un bloque natural para teselaciones. Al introducir recursión, los brazos dejan de ser simples ejes: cada uno se vuelve una ruta completa y el espacio negativo desarrolla cruces complementarias. Esta dualidad entre figura y hueco es una de las razones por las que estas curvas resultan visualmente tan densas.</p>
+  <p>La regla utilizada es <code>F → F+FF++F+F</code>. Dos signos seguidos equivalen a media vuelta; uno solo, a un cuarto. La cadena inicial recorre cuatro lados. El sistema-L describe el orden, mientras el motor geométrico transforma cada avance en un vector. La posición de la tortuga se conserva en un <code>Vec2</code>, de modo que rotar y trasladar el dibujo no exige manipular pares de variables desconectadas.</p>
+  <h3>Un pequeño experimento mental</h3>
+  <p>Antes de mover el deslizador, intenta predecir cuántos segmentos habrá en la etapa siguiente. Cada <code>F</code> produce cinco símbolos dibujables, por lo que el crecimiento sigue una potencia de cinco. Sin embargo, el tamaño aparente no crece cinco veces: muchos segmentos cambian de dirección y se empaquetan en la misma región. Esa diferencia entre longitud recorrida y desplazamiento neto es el motor de numerosas curvas fractales.</p>
+  <p>En gráficos generativos, reglas de este tipo sirven para fabricar bordes, mapas de mazmorras y patrones textiles. La utilidad no consiste en que la curva sea una copia de un objeto natural, sino en que una gramática breve proporciona detalle coherente a cualquier resolución.</p>
+  <p>Fíjate en las intersecciones aparentes. Algunas son encuentros reales del recorrido; otras son segmentos muy próximos que el grosor del trazo hace parecer unidos. Aumentar el nivel muestra también los límites de representar geometría infinita con píxeles finitos.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva fractal de cruz"
+    formula="F → F+FF++F+F; giros de 90°"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

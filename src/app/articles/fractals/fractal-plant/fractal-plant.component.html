@@ -1,0 +1,17 @@
+<article class="fractal-article">
+  <h2>Planta fractal</h2>
+  <p class="dropcap">La llamada planta fractal es uno de los ejemplos más reconocibles de sistema-L. Una cadena de letras y signos, sin imágenes almacenadas ni azar, termina pareciendo un tallo con hojas inclinadas. El resultado está asociado al trabajo de Aristid Lindenmayer, biólogo teórico húngaro que en 1968 propuso gramáticas para estudiar el desarrollo de algas y organismos simples. Más tarde, Przemysław Prusinkiewicz mostró hasta dónde podían llegar esas ideas en visualización botánica.</p>
+  <p>El axioma es <code>X</code>. La regla de <code>X</code> crea varios brotes entre corchetes, mientras <code>F → FF</code> alarga los tallos existentes. Los símbolos <code>X</code> organizan el crecimiento pero no trazan líneas; <code>F</code> sí avanza. Los signos giran 25 grados y los corchetes guardan o restauran el estado de la tortuga. Esta distinción entre símbolos visibles y variables de control permite describir una arquitectura compleja sin confundir estructura con apariencia.</p>
+  <p>Hay algo profundamente distinto entre este método y dibujar ramas al azar. En un sistema-L clásico, todas las letras se reescriben simultáneamente, como si cada célula del organismo recibiera la misma señal de desarrollo en cada etapa. La metáfora biológica es limitada, pero explica por qué estas gramáticas sirven para modelar crecimiento: el estado siguiente surge de reglas locales aplicadas en paralelo.</p>
+  <h3>Lo que la fórmula no cuenta</h3>
+  <p>Las plantas reales exhiben filotaxis, competencia por la luz, gravedad, elasticidad y variaciones genéticas. Para acercarse a ellas, los modelos avanzados añaden parámetros, ruido y comunicación con el entorno. Esta versión conserva la simetría determinista para que la regla pueda reconocerse a simple vista. Su valor no reside en engañar al ojo, sino en mostrar cuánto orden morfológico puede comprimir una gramática.</p>
+  <p>El intérprete mantiene posiciones <code>Vec2</code> dentro de una pila. Cuando abre una rama guarda el punto y el ángulo actuales; cuando la cierra vuelve exactamente a ellos. Una primera pasada descubre los límites de la planta y una segunda la dibuja centrada. Esto evita constantes mágicas relacionadas con el tamaño del lienzo.</p>
+  <p>Sube el nivel uno a uno y busca qué partes de la etapa anterior se duplican y cuáles solo cambian de escala. La planta parece crecer, pero cada imagen se recalcula desde el axioma: no modifica el dibujo anterior.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Planta fractal"
+    formula="X → F+[[X]−X]−F[−FX]+X; F → FF"
+    [minIterations]="1"
+    [maxIterations]="6"
+  ></app-fractal-explorer>
+</article>

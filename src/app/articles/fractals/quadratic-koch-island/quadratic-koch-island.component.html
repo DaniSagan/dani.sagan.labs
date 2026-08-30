@@ -1,0 +1,15 @@
+<article class="fractal-article">
+  <h2>Isla cuadrática de Koch</h2>
+  <p class="dropcap">Si la curva de Koch clásica pertenece al mundo de los triángulos equiláteros, su variante cuadrática vive en una cuadrícula. Parte del contorno de un cuadrado y sustituye cada lado por una sucesión de pasos horizontales y verticales. El resultado suele llamarse isla de Koch, isla cuadrática o curva de Minkowski cuadrática, según la regla concreta utilizada. Desde lejos parece el mapa de una fortaleza; de cerca, cada almena contiene fortalezas menores.</p>
+  <p>La regla de este ejemplo reemplaza un avance por ocho avances más cortos combinados con giros de 90 grados. El desplazamiento neto sigue apuntando en la dirección original, condición necesaria para poder sustituir todos los lados sin romper el contorno. Al repetir el proceso sobre las cuatro aristas iniciales, entrantes y salientes se multiplican de forma simétrica. La cuadrícula facilita seguir la construcción: no hay ángulos oblicuos y todos los vértices caen sobre coordenadas racionales en cada aproximación.</p>
+  <h3>Una costa hecha de píxeles ideales</h3>
+  <p>Esta variante ayuda a separar dos conceptos que a menudo se confunden. Un fractal no necesita curvas suaves ni detalles “naturales”; basta una ley que reproduzca estructura a varias escalas y una complejidad que no se describa bien con la dimensión euclídea habitual. Aquí todo son ángulos rectos, pero el perímetro aumenta en cada iteración y la frontera se vuelve progresivamente intrincada. Su estética ha influido en diseños de antenas, laberintos y gráficos procedimentales, donde una trayectoria larga debe empaquetarse en un área limitada.</p>
+  <p>En el código, <code>F</code> representa un segmento y <code>+</code>/<code>-</code> cambian la orientación un cuarto de vuelta. La cadena se expande primero y después se interpreta. Usar <code>Vec2</code> para los puntos permite sumar el vector unitario de la dirección actual sin mantener por separado estados <code>x</code> e <code>y</code>. Una pasada previa calcula la caja envolvente y escala la isla para que ninguna de sus almenas quede fuera del lienzo.</p>
+  <p>Una curiosidad visual: compara dos niveles consecutivos fijándote únicamente en una esquina exterior. El patrón que allí aparece no es un adorno agregado al cuadrado completo; es exactamente la misma regla que opera en cada segmento, independientemente de su orientación. Ese carácter local es lo que hace tan natural programarla y tan difícil anticipar su aspecto global.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Isla cuadrática de Koch"
+    formula="F → F+F−F−FF+F+F−F; giros de 90°"
+    [maxIterations]="4"
+  ></app-fractal-explorer>
+</article>

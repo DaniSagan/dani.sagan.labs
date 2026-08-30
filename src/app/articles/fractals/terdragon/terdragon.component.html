@@ -1,0 +1,20 @@
+<article class="fractal-article">
+  <h2>Curva terdragón</h2>
+  <p class="dropcap">El terdragón —del inglés <em>terdragon</em>, “dragón triple”— es una curva autosimilar formada por tres copias de sí misma. Fue estudiada en el contexto de curvas dragón y teselaciones durante la expansión de la geometría fractal en el siglo XX. Frente al dragón de Heighway, construido con giros rectos, el terdragón utiliza giros de 120 grados y desarrolla una simetría triangular. Sus primeras etapas parecen un zigzag; las siguientes adquieren lóbulos que recuerdan una criatura enrollada.</p>
+  <p>Su sistema-L cabe en una regla: <code>F → F+F−F</code>. Cada segmento se reemplaza por tres y cada copia reduce su escala por un factor relacionado con √3. El desplazamiento conjunto coincide con el segmento original, aunque el camino intermedio se aparte de él. Después de <em>n</em> iteraciones existen 3<sup>n</sup> tramos. La dimensión de Hausdorff es log(3)/log(√3)=2, señal de que la curva límite posee comportamiento de llenado de área.</p>
+  <dl>
+    <dt>¿Por qué “ter”?</dt>
+    <dd>Porque el generador contiene tres copias, en contraste con las dos mitades del dragón clásico.</dd>
+    <dt>¿Puede teselar?</dt>
+    <dd>Copias adecuadamente rotadas del terdragón producen teselaciones y regiones conocidas como terdragones rellenados.</dd>
+  </dl>
+  <p>La dimensión dos no significa que cada aproximación finita sea una superficie. En pantalla siempre dibujamos segmentos de grosor convencional. La propiedad pertenece al límite matemático: al aumentar indefinidamente el detalle, la curva visita una región con densidad extraordinaria. Este contraste entre polilíneas finitas y objetos límite es esencial para interpretar visualizaciones fractales sin atribuirles propiedades que la resolución todavía no contiene.</p>
+  <p>El código expande la letra <code>F</code> y recorre las órdenes con una posición <code>Vec2</code>. El motor calcula la caja envolvente porque la curva cambia de orientación y proporción aparente entre niveles. Así puede emplear todo el lienzo sin que el componente conozca coordenadas de ajuste específicas.</p>
+  <p>Fíjate en grupos de tres: el dibujo completo puede descomponerse mentalmente en tres grandes tramos, y cada uno vuelve a contener otros tres. Esa lectura jerárquica resulta más informativa que intentar seguir los miles de segmentos del último nivel.</p>
+  <app-fractal-explorer
+    [draw]="draw"
+    title="Curva terdragón"
+    formula="F → F+F−F; giros de 120°"
+    [maxIterations]="9"
+  ></app-fractal-explorer>
+</article>
