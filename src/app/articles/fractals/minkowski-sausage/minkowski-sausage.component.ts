@@ -17,11 +17,11 @@ export class MinkowskiSausageComponent {
   static route = 'minkowski-sausage';
   readonly draw: FractalRenderer = (ctx, iterations) => {
     let s = 'F';
-    for (let i = 0; i < Math.min(iterations, 5); i++)
+    for (let i = 0; i < iterations; i++)
       s = [...s].map((x) => (x === 'F' ? 'F+F-F-FF+F+F-F' : x)).join('');
-    const scale = Math.min(8, 520 / Math.sqrt(s.length));
+    const scale = 440 / (4 ** iterations);
     let a = 0,
-      p = new Vec2(170, 470);
+      p = new Vec2(20, 240);
     paint(ctx, 260);
     ctx.beginPath();
     ctx.moveTo(p.x, p.y);
