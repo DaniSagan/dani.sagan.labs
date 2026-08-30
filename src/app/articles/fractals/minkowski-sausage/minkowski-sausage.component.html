@@ -1,0 +1,20 @@
+<article class="fractal-article">
+  <h2>Salchicha de Minkowski</h2>
+  <p class="dropcap">Hermann Minkowski dio nombre a una versión particularmente angulosa de las curvas de sustitución.
+    En inglés se conoce como <em>Minkowski sausage</em> por el perfil dentado de sus aproximaciones. Más que una
+    curiosidad visual, pertenece a la familia de fronteras irregulares que ayudaron a formular medidas y dimensiones
+    adecuadas para formas que la geometría elemental no describe bien.</p>
+  <p>Su receta cambia cada segmento F por la secuencia F+F−F−FF+F+F−F. Los signos indican giros de 90 grados. Es decir,
+    en lugar de avanzar recto se dibuja una escalera de ocho segmentos; al repetir la sustitución, cada peldaño recibe
+    su propia escalera. La cadena se evalúa como un programa de tortuga: posición, ángulo y longitud de paso son el
+    estado mínimo necesario.</p>
+  <p>El factor de escala lineal de la construcción es cuatro, mientras que cada segmento produce ocho. Por ello su
+    dimensión es log(8)/log(4)=3/2. La longitud total aumenta sin límite si se mantiene fija la escala inicial, pero el
+    contorno permanece dentro de una región acotada al reducir cada generación. Esta combinación es la firma de una
+    frontera fractal.</p>
+  <p>En el explorador el nivel decide cuántas sustituciones se hacen y el lienzo ajusta la longitud de los pasos según
+    la cantidad de símbolos resultante. Examina primero la regla y luego sube el control: los ángulos rectos que parecen
+    mecánicos terminan produciendo un borde sorprendentemente rico, útil como modelo estilizado de superficies rugosas.
+  </p><app-fractal-explorer [draw]="draw" title="Salchicha de Minkowski"
+    formula="F → F+F−F−FF+F+F−F; +/− giran 90°"></app-fractal-explorer>
+</article>

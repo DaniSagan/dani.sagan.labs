@@ -50,6 +50,21 @@ import { LissajousArticleComponent } from './curves/lissajous-article/lissajous-
 import { ConchoidArticleComponent } from './curves/conchoid-article/conchoid-article.component';
 import { CissoidArticleComponent } from './curves/cissoid-article/cissoid-article.component';
 import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/parabola-like-article.component';
+import { KochSnowflakeComponent } from './fractals/koch-snowflake/koch-snowflake.component';
+import { CantorSetComponent } from './fractals/cantor-set/cantor-set.component';
+import { VicsekFractalComponent } from './fractals/vicsek-fractal/vicsek-fractal.component';
+import { LevyCCurveComponent } from './fractals/levy-c-curve/levy-c-curve.component';
+import { HilbertCurveComponent } from './fractals/hilbert-curve/hilbert-curve.component';
+import { PeanoCurveComponent } from './fractals/peano-curve/peano-curve.component';
+import { GosperCurveComponent } from './fractals/gosper-curve/gosper-curve.component';
+import { MinkowskiSausageComponent } from './fractals/minkowski-sausage/minkowski-sausage.component';
+import { TSquareComponent } from './fractals/t-square/t-square.component';
+import { HTreeComponent } from './fractals/h-tree/h-tree.component';
+import { PythagorasTreeComponent } from './fractals/pythagoras-tree/pythagoras-tree.component';
+import { JuliaSetComponent } from './fractals/julia-set/julia-set.component';
+import { TricornComponent } from './fractals/tricorn/tricorn.component';
+import { MultibrotComponent } from './fractals/multibrot/multibrot.component';
+import { CantorDustComponent } from './fractals/cantor-dust/cantor-dust.component';
 
 const routes: Routes = [
   {
@@ -74,6 +89,21 @@ const routes: Routes = [
       { path: NewtonComponent.route, component: NewtonComponent },
       { path: BifurcationDiagramComponent.route, component: BifurcationDiagramComponent },
       { path: ApollonianSieveComponent.route, component: ApollonianSieveComponent },
+      { path: KochSnowflakeComponent.route, component: KochSnowflakeComponent },
+      { path: CantorSetComponent.route, component: CantorSetComponent },
+      { path: VicsekFractalComponent.route, component: VicsekFractalComponent },
+      { path: LevyCCurveComponent.route, component: LevyCCurveComponent },
+      { path: HilbertCurveComponent.route, component: HilbertCurveComponent },
+      { path: PeanoCurveComponent.route, component: PeanoCurveComponent },
+      { path: GosperCurveComponent.route, component: GosperCurveComponent },
+      { path: MinkowskiSausageComponent.route, component: MinkowskiSausageComponent },
+      { path: TSquareComponent.route, component: TSquareComponent },
+      { path: HTreeComponent.route, component: HTreeComponent },
+      { path: PythagorasTreeComponent.route, component: PythagorasTreeComponent },
+      { path: JuliaSetComponent.route, component: JuliaSetComponent },
+      { path: TricornComponent.route, component: TricornComponent },
+      { path: MultibrotComponent.route, component: MultibrotComponent },
+      { path: CantorDustComponent.route, component: CantorDustComponent },
       { path: LorenzAttractorComponent.route, component: LorenzAttractorComponent },
       { path: DodecahedronViewerComponent.route, component: DodecahedronViewerComponent },
       { path: HexahedronViewerComponent.route, component: HexahedronViewerComponent },

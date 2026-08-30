@@ -36,6 +36,21 @@ import { SquareArticleComponent } from 'src/app/articles/regular-polygons/square
 import { HexagonArticleComponent } from 'src/app/articles/regular-polygons/hexagon-article/hexagon-article.component';
 import { OctagonArticleComponent } from 'src/app/articles/regular-polygons/octagon-article/octagon-article.component';
 import { PtolemyTheoremArticleComponent } from 'src/app/articles/geometry/ptolemy-theorem/ptolemy-theorem-article.component';
+import { KochSnowflakeComponent } from 'src/app/articles/fractals/koch-snowflake/koch-snowflake.component';
+import { CantorSetComponent } from 'src/app/articles/fractals/cantor-set/cantor-set.component';
+import { VicsekFractalComponent } from 'src/app/articles/fractals/vicsek-fractal/vicsek-fractal.component';
+import { LevyCCurveComponent } from 'src/app/articles/fractals/levy-c-curve/levy-c-curve.component';
+import { HilbertCurveComponent } from 'src/app/articles/fractals/hilbert-curve/hilbert-curve.component';
+import { PeanoCurveComponent } from 'src/app/articles/fractals/peano-curve/peano-curve.component';
+import { GosperCurveComponent } from 'src/app/articles/fractals/gosper-curve/gosper-curve.component';
+import { MinkowskiSausageComponent } from 'src/app/articles/fractals/minkowski-sausage/minkowski-sausage.component';
+import { TSquareComponent } from 'src/app/articles/fractals/t-square/t-square.component';
+import { HTreeComponent } from 'src/app/articles/fractals/h-tree/h-tree.component';
+import { PythagorasTreeComponent } from 'src/app/articles/fractals/pythagoras-tree/pythagoras-tree.component';
+import { JuliaSetComponent } from 'src/app/articles/fractals/julia-set/julia-set.component';
+import { TricornComponent } from 'src/app/articles/fractals/tricorn/tricorn.component';
+import { MultibrotComponent } from 'src/app/articles/fractals/multibrot/multibrot.component';
+import { CantorDustComponent } from 'src/app/articles/fractals/cantor-dust/cantor-dust.component';
 
 @Injectable({
   providedIn: 'root'
@@ -55,6 +70,21 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: PhoenixSetComponent.title, route: PhoenixSetComponent.route },
     { name: NewtonComponent.title, route: NewtonComponent.route },
     { name: BifurcationDiagramComponent.title, route: BifurcationDiagramComponent.route },
+    { name: KochSnowflakeComponent.title, route: KochSnowflakeComponent.route },
+    { name: CantorSetComponent.title, route: CantorSetComponent.route },
+    { name: VicsekFractalComponent.title, route: VicsekFractalComponent.route },
+    { name: LevyCCurveComponent.title, route: LevyCCurveComponent.route },
+    { name: HilbertCurveComponent.title, route: HilbertCurveComponent.route },
+    { name: PeanoCurveComponent.title, route: PeanoCurveComponent.route },
+    { name: GosperCurveComponent.title, route: GosperCurveComponent.route },
+    { name: MinkowskiSausageComponent.title, route: MinkowskiSausageComponent.route },
+    { name: TSquareComponent.title, route: TSquareComponent.route },
+    { name: HTreeComponent.title, route: HTreeComponent.route },
+    { name: PythagorasTreeComponent.title, route: PythagorasTreeComponent.route },
+    { name: JuliaSetComponent.title, route: JuliaSetComponent.route },
+    { name: TricornComponent.title, route: TricornComponent.route },
+    { name: MultibrotComponent.title, route: MultibrotComponent.route },
+    { name: CantorDustComponent.title, route: CantorDustComponent.route },
     // { name: ApollonianSieveComponent.title, route: ApollonianSieveComponent.route }
   ];
 

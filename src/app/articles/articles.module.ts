@@ -44,6 +44,21 @@ import { LissajousArticleComponent } from './curves/lissajous-article/lissajous-
 import { ConchoidArticleComponent } from './curves/conchoid-article/conchoid-article.component';
 import { CissoidArticleComponent } from './curves/cissoid-article/cissoid-article.component';
 import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/parabola-like-article.component';
+import { KochSnowflakeComponent } from './fractals/koch-snowflake/koch-snowflake.component';
+import { CantorSetComponent } from './fractals/cantor-set/cantor-set.component';
+import { VicsekFractalComponent } from './fractals/vicsek-fractal/vicsek-fractal.component';
+import { LevyCCurveComponent } from './fractals/levy-c-curve/levy-c-curve.component';
+import { HilbertCurveComponent } from './fractals/hilbert-curve/hilbert-curve.component';
+import { PeanoCurveComponent } from './fractals/peano-curve/peano-curve.component';
+import { GosperCurveComponent } from './fractals/gosper-curve/gosper-curve.component';
+import { MinkowskiSausageComponent } from './fractals/minkowski-sausage/minkowski-sausage.component';
+import { TSquareComponent } from './fractals/t-square/t-square.component';
+import { HTreeComponent } from './fractals/h-tree/h-tree.component';
+import { PythagorasTreeComponent } from './fractals/pythagoras-tree/pythagoras-tree.component';
+import { JuliaSetComponent } from './fractals/julia-set/julia-set.component';
+import { TricornComponent } from './fractals/tricorn/tricorn.component';
+import { MultibrotComponent } from './fractals/multibrot/multibrot.component';
+import { CantorDustComponent } from './fractals/cantor-dust/cantor-dust.component';
 
 @NgModule({
   imports: [
@@ -90,6 +105,10 @@ import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/par
     ConchoidArticleComponent,
     CissoidArticleComponent,
     ParabolaLikeArticleComponent
+    , KochSnowflakeComponent, CantorSetComponent, VicsekFractalComponent, LevyCCurveComponent,
+    HilbertCurveComponent, PeanoCurveComponent, GosperCurveComponent, MinkowskiSausageComponent,
+    TSquareComponent, HTreeComponent, PythagorasTreeComponent, JuliaSetComponent,
+    TricornComponent, MultibrotComponent, CantorDustComponent
   ],
 })
 export class ArticlesModule {}

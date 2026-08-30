@@ -1,0 +1,12 @@
+<div class="widget-container">
+  <div class="widget-title">Explorador: {{ title }}</div>
+  <p class="explorer-formula" *ngIf="formula">{{ formula }}</p>
+  <div class="explorer-controls">
+    <label for="iterations">Iteraciones</label>
+    <input id="iterations" type="range" min="0" [max]="maxIterations" [(ngModel)]="iterations" (input)="update()">
+    <span class="widget-label">{{ iterations }}</span>
+  </div>
+  <canvas #canvas [width]="size" [height]="size" aria-label="Visualización interactiva del fractal"></canvas>
+  <p class="explorer-note">Este lienzo no es una imagen almacenada: se vuelve a calcular al cambiar el nivel. Las primeras iteraciones muestran la regla generadora y las siguientes hacen visibles sus consecuencias a escalas menores. El límite elegido evita que el número de operaciones crezca demasiado, pero basta para apreciar la autosimilitud. En los fractales de escape, el control aumenta el número máximo de pasos de la órbita; en los geométricos, aumenta la profundidad de la recursión o de la sustitución.</p>
+  <p class="explorer-note">Conviene comparar dos niveles consecutivos en lugar de mirar solo el último. Pregúntate qué parte se ha sustituido, cuántas copias aparecen y cuál es su factor de escala. Esa observación permite deducir el crecimiento del número de elementos y, en muchos casos, su dimensión de semejanza. El color y el grosor se han elegido únicamente para facilitar la lectura; la información matemática está en la posición de los puntos y en el orden de las iteraciones. Puedes volver a un nivel pequeño siempre que quieras para reconstruir mentalmente el algoritmo.</p>
+</div>
