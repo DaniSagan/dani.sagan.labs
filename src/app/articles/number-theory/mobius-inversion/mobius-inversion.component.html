@@ -1,0 +1,13 @@
+<h2>Inversión de Möbius</h2>
+<p class="dropcap">Muchas funciones aritméticas se presentan como una suma sobre todos los divisores de n. La inversión de Möbius permite deshacer esa suma y recuperar la función original. Desempeña, en el mundo de la divisibilidad, el mismo papel que la inclusión-exclusión en combinatoria.</p>
+<p>August Ferdinand Möbius introdujo en 1832 la función μ. Se define por μ(1)=1; vale cero cuando n contiene el cuadrado de algún primo, y vale (−1)<sup>k</sup> cuando n es producto de k primos distintos. Por ejemplo, μ(6)=1, μ(30)=−1 y μ(12)=0.</p>
+<p>La fórmula afirma que las dos relaciones siguientes son equivalentes:</p>
+<app-formula expression="F(n)=\sum_{d\mid n}f(d)\quad\Longleftrightarrow\quad f(n)=\sum_{d\mid n}\mu(d)F(n/d)"></app-formula>
+<h3>El mecanismo de cancelación</h3>
+<p>Sustituimos F(n/d) por la suma de f(e) para e|n/d y cambiamos el orden. El coeficiente que acompaña a f(e) es Σ<sub>d|n/e</sub>μ(d). Esta suma vale 1 cuando n/e=1 y cero en cualquier otro caso. En efecto, para m&gt;1 se convierte en el desarrollo del producto ∏<sub>p|m</sub>(1−1). Todos los términos se cancelan excepto el correspondiente a e=n.</p>
+<p>Un ejemplo clásico parte de n=Σ<sub>d|n</sub>φ(d). Invirtiendo se obtiene</p>
+<app-formula expression="\varphi(n)=\sum_{d\mid n}\mu(d)\frac nd"></app-formula>
+<p>Esta igualdad recupera inmediatamente el producto de Euler para φ. La inversión también cuenta palabras primitivas, collares aperiódicos, puntos de periodo exacto y fracciones reducidas. En lenguaje de convolución de Dirichlet, la función constante 1 y μ son inversas.</p>
+<p>La función μ conecta también con la distribución de los primos. Su serie de Dirichlet es el inverso de la función zeta, y la cancelación de sus sumas parciales está ligada a cuestiones tan profundas como la hipótesis de Riemann. Una definición elemental basada en cuadrados primos llega así hasta la frontera actual de la teoría analítica.</p>
+<p>Conviene distinguir inversión de división ordinaria: no despejamos un único sumando, sino que cancelamos simultáneamente todas las contribuciones procedentes de divisores propios. Esta perspectiva reaparece en cualquier conjunto parcialmente ordenado, donde la función de Möbius del orden generaliza exactamente el mecanismo aritmético.</p>
+<p><strong>Para trabajar.</strong> Construye una tabla de μ(n) para 1≤n≤20. Luego, si 2<sup>n</sup>=Σ<sub>d|n</sub>P(d), expresa P(n) mediante μ e interpreta el resultado como el número de palabras binarias cuyo periodo mínimo es n.</p>

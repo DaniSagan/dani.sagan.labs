@@ -1,0 +1,11 @@
+<h2>Teorema de la división euclídea</h2>
+<p class="dropcap">Dividir dos enteros no significa necesariamente obtener un decimal. En aritmética interesa separar cuántas veces cabe exactamente un número en otro y qué cantidad queda sin repartir. Esta idea sencilla produce el cociente y el resto, dos objetos que sostienen el algoritmo de Euclides, las congruencias y la escritura de los números en cualquier base.</p>
+<p>El procedimiento era conocido por culturas antiguas, pero aparece organizado matemáticamente en los <em>Elementos</em> de Euclides, hacia el 300 a. C. Su fuerza está en que no es una receta aproximada: garantiza existencia y unicidad. Dados un entero <em>a</em> y un entero positivo <em>b</em>, existen unos únicos enteros <em>q</em> y <em>r</em> tales que</p>
+<app-formula expression="a=bq+r \qquad 0 \le r &lt; b" displaymode="block"></app-formula>
+<h3>¿Por qué siempre existe el resto?</h3>
+<p>Consideremos todos los enteros no negativos de la forma <em>a−bk</em>, con <em>k</em> entero. El conjunto no está vacío: basta escoger un valor de <em>k</em> suficientemente negativo. Por el principio del buen orden posee un elemento mínimo, al que llamamos <em>r</em>. Escribiendo <em>r=a−bq</em> obtenemos la igualdad buscada. Además, <em>r</em> no puede ser mayor o igual que <em>b</em>, porque entonces <em>r−b=a−b(q+1)</em> sería otro elemento no negativo todavía menor.</p>
+<p>La unicidad es igual de reveladora. Si hubiera dos expresiones <em>a=bq+r=bQ+R</em>, restarlas daría <em>b(q−Q)=R−r</em>. El lado derecho tiene valor absoluto menor que <em>b</em>, pero es múltiplo de <em>b</em>; necesariamente vale cero. Así, los dos cocientes y los dos restos coinciden.</p>
+<h3>Un signo que suele causar errores</h3>
+<p>Al dividir −47 entre 6 no se acepta el resto −5, aunque la igualdad −47=6(−7)−5 sea cierta, porque el resto debe estar entre 0 y 5. La elección correcta es</p>
+<app-formula expression="-47=6(-8)+1"></app-formula>
+<p>Como práctica, calcula cociente y resto de 2025 entre 37. Después demuestra que todo cuadrado deja resto 0 o 1 al dividirlo entre 4: solo necesitas estudiar los cuatro restos posibles de un entero.</p>

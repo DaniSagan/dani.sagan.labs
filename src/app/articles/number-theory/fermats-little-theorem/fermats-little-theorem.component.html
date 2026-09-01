@@ -1,0 +1,14 @@
+<h2>Pequeño teorema de Fermat</h2>
+<p class="dropcap">Calcular 3<sup>100</sup> parece exigir un número enorme. Si solo interesa su resto al dividir entre 7, bastan unas pocas operaciones. El pequeño teorema de Fermat revela un periodo universal para las potencias cuando el módulo es primo.</p>
+<p>Fermat comunicó el resultado a Frénicle de Bessy en 1640, como era habitual en él, sin adjuntar una demostración. Leibniz dejó una prueba en manuscritos y Euler publicó otra en 1736. No debe confundirse con el “último teorema” de Fermat: este es elemental y fue probado hace siglos.</p>
+<p>Si p es primo y p no divide a, entonces</p>
+<app-formula expression="a^{p-1}\equiv1\pmod p"></app-formula>
+<p>Una forma equivalente, válida para todo entero a, es a<sup>p</sup>≡a (mod p).</p>
+<h3>La prueba como permutación</h3>
+<p>Multipliquemos por a los residuos 1,2,…,p−1. Los nuevos residuos a,2a,…,(p−1)a son todos no nulos y no hay repeticiones: de ia≡ja se puede cancelar a porque es coprimo con p. Por tanto, son los mismos residuos en otro orden. Al multiplicarlos todos resulta</p>
+<app-formula expression="a^{p-1}(p-1)!\equiv(p-1)!\pmod p"></app-formula>
+<p>Ningún factor del factorial es múltiplo de p, así que puede cancelarse y queda el teorema.</p>
+<p>Volvamos a 3<sup>100</sup>. Como 100=16·6+4, el teorema permite reducir el exponente módulo 6: 3<sup>100</sup>≡3<sup>4</sup>≡4 (mod 7). El mismo principio está detrás de tests de primalidad y de la criptografía RSA, aunque su recíproco es falso: algunos números compuestos, llamados números de Carmichael, imitan este comportamiento.</p>
+<p>El teorema también permite construir inversos: a<sup>p−2</sup> es inverso de a módulo p. En un cuerpo finito esta fórmula resulta cómoda para programar divisiones usando exponenciación rápida. Para números pequeños, el algoritmo extendido de Euclides suele ser más económico y funciona asimismo con módulos compuestos cuando existe coprimalidad.</p>
+<p>Como test de primalidad, comprobar a<sup>n−1</sup>≡1 puede demostrar que n es compuesto cuando falla, pero no demostrar siempre que sea primo cuando se cumple. Los pseudoprimos y los números de Carmichael explican la cautela. Tests modernos como Miller–Rabin refinan precisamente esta misma intuición.</p>
+<p><strong>Ejercicios.</strong> Calcula 2<sup>1000</sup> módulo 13. Demuestra después que 30 divide n<sup>5</sup>−n para todo entero n, comprobando por separado la divisibilidad por 2, 3 y 5.</p>

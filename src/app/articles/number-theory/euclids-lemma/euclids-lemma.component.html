@@ -1,0 +1,14 @@
+<h2>Lema de Euclides</h2>
+<p class="dropcap">Los números primos poseen una rigidez que los compuestos no comparten. Si un primo aparece como divisor de un producto, no puede quedar “repartido” entre sus factores: tiene que dividir por completo a uno de ellos.</p>
+<app-formula expression="p\mid ab\quad\Longrightarrow\quad p\mid a\ \text{o}\ p\mid b"></app-formula>
+<p>Esta proposición figura en el libro VII de los <em>Elementos</em>. Puede parecer una observación menor, pero es la bisagra de la factorización única. Conviene no olvidar la hipótesis: 6 divide 2·3 y, sin embargo, no divide ni 2 ni 3. La conclusión funciona porque <em>p</em> es primo.</p>
+<h3>La demostración cabe en una identidad</h3>
+<p>Supongamos que <em>p</em> divide <em>ab</em> pero no divide <em>a</em>. Como los únicos divisores positivos de <em>p</em> son 1 y <em>p</em>, se tiene gcd(p,a)=1. Bézout proporciona enteros <em>x</em> e <em>y</em> con px+ay=1. Multiplicando por <em>b</em> obtenemos</p>
+<app-formula expression="pbx+aby=b"></app-formula>
+<p>Ambos sumandos del lado izquierdo son divisibles por <em>p</em>: el primero lo contiene explícitamente y el segundo lo es porque p|ab. Su suma también es divisible por <em>p</em>, de manera que p|b. Si p ya dividía a, la otra alternativa del lema era inmediata.</p>
+<p>El argumento se extiende por inducción: si un primo divide un producto con cualquier número finito de factores, divide al menos uno. Aplicado a una potencia, dice que p|a<sup>n</sup> implica p|a. Esta consecuencia permite comparar, uno por uno, los factores primos de dos descomposiciones.</p>
+<h3>Una deducción rápida</h3>
+<p>Si 7|15n, el primo 7 no divide 15; por tanto debe dividir n. En cambio, de 6|15n no podríamos cancelar de esa manera sin estudiar antes los máximos comunes divisores.</p>
+<p>El lema permite justificar la cancelación de potencias primas. Si p<sup>k</sup> divide un producto, podemos aplicar repetidamente la afirmación para distribuir esas k apariciones entre los factores. Este conteo conduce a las valuaciones p-ádicas y a reglas precisas para máximos comunes divisores.</p>
+<p>Fuera de los enteros, un elemento irreducible no siempre es primo. Que ambas nociones coincidan aquí es una propiedad estructural especial y explica por qué la factorización única no se traslada automáticamente a cualquier anillo. El pequeño lema señala exactamente el paso que podría fallar.</p>
+<p><strong>Ejercicios.</strong> Demuestra formalmente que p|a² implica p|a. Después prueba que, si p|a y p|a+1, se llega a una contradicción. Finalmente busca otro contraejemplo del lema cuando el supuesto divisor no es primo.</p>

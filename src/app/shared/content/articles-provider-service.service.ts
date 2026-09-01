@@ -12,6 +12,7 @@ import { OctahedronViewerComponent } from 'src/app/articles/platonic-solids/octa
 import { DodecahedronViewerComponent } from 'src/app/articles/platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
 import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
 import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
+import { NUMBER_THEORY_NAV_ITEMS } from 'src/app/articles/number-theory/number-theory-articles';
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
@@ -152,6 +153,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
 
   numericTheory: NavbarItem[] =
   [
+    ...NUMBER_THEORY_NAV_ITEMS,
     { name: ArithmeticDerivativeArticleComponent.title, route: ArithmeticDerivativeArticleComponent.route }
   ];
 

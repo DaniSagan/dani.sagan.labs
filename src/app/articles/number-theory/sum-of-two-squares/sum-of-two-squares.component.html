@@ -1,0 +1,15 @@
+<h2>Primos que son suma de dos cuadrados</h2>
+<p class="dropcap">El primo 29 puede dibujarse como 2²+5², mientras que 31 se resiste a cualquier intento. La diferencia ya es visible al dividirlos entre cuatro: 29 deja resto 1 y 31 deja resto 3.</p>
+<p>Fermat anunció en 1640 que todo primo congruente con 1 módulo 4 es suma de dos cuadrados y afirmó disponer de una prueba por descenso infinito. Euler, fascinado por el desafío, necesitó décadas para completar una demostración que publicó en 1749.</p>
+<app-formula expression="p=x^2+y^2\quad\Longleftrightarrow\quad p\equiv1\pmod4"></app-formula>
+<p>La afirmación se refiere a primos impares; el primo 2=1²+1² constituye el caso excepcional.</p>
+<h3>La mitad fácil</h3>
+<p>Todo cuadrado es 0 o 1 módulo 4. Si un primo impar p=x²+y², los cuadrados no pueden ser ambos pares ni ambos impares; por tanto, uno es 0 y el otro 1 módulo 4. Así p≡1.</p>
+<h3>La construcción de la representación</h3>
+<p>El sentido contrario es más profundo. Para p≡1 (mod 4), el criterio de Euler muestra que −1 posee una raíz t módulo p, es decir, p divide t²+1. En los enteros gaussianos Z[i], esto se escribe p|(t+i)(t−i). Calculando un máximo común divisor de p y t+i se obtiene un número x+iy cuya norma es p. Como la norma es x²+y², aparece la representación buscada. Esta prueba muestra por qué ampliar los enteros puede simplificar una cuestión puramente entera.</p>
+<p>Para 29, basta observar:</p>
+<app-formula expression="29=2^2+5^2"></app-formula>
+<p>El resultado general para enteros dice que n es suma de dos cuadrados exactamente cuando todo primo congruente con 3 módulo 4 aparece con exponente par en su factorización.</p>
+<p>La representación de un primo 1 módulo 4 es única salvo intercambiar x e y y cambiar sus signos. Para compuestos puede haber varias. La identidad de Brahmagupta–Fibonacci muestra que multiplicar dos sumas de dos cuadrados vuelve a producir una, reflejando la multiplicatividad de la norma gaussiana.</p>
+<p>Este resultado tiene una interpretación geométrica: cuenta cuándo la circunferencia x²+y²=n contiene puntos de coordenadas enteras. La aritmética de los factores primos decide, por tanto, una cuestión sobre puntos de una curva. Este puente entre geometría y factorización reaparece constantemente en las ecuaciones diofánticas.</p>
+<p><strong>Explora.</strong> Representa 41 y 73. Demuestra después que ningún primo 3 módulo 4 puede ser suma de dos cuadrados. Finalmente decide, usando la factorización y no una búsqueda, si 2025 admite una representación.</p>

@@ -1,0 +1,14 @@
+<h2>Contar y sumar divisores sin enumerarlos</h2>
+<p class="dropcap">La factorización prima convierte la lista de divisores en un problema de elecciones independientes. Para dividir a 72=2³·3², un número puede escoger cuatro exponentes para 2 y tres para 3. De ahí salen doce divisores sin haber escrito ninguno.</p>
+<p>El interés por las sumas de divisores se remonta a los pitagóricos, que clasificaban números perfectos, abundantes y deficientes. Euler situó estas preguntas dentro de la teoría de funciones aritméticas multiplicativas.</p>
+<p>Si n=∏pᵢ<sup>αᵢ</sup>, las funciones τ(n), número de divisores positivos, y σ(n), suma de esos divisores, satisfacen</p>
+<app-formula expression="\tau(n)=\prod_i(\alpha_i+1),\qquad\sigma(n)=\prod_i\frac{p_i^{\alpha_i+1}-1}{p_i-1}"></app-formula>
+<h3>La prueba está en la distributividad</h3>
+<p>Cada divisor tiene la forma ∏pᵢ<sup>βᵢ</sup>, con 0≤βᵢ≤αᵢ. Elegir βᵢ ofrece αᵢ+1 posibilidades y el principio multiplicativo da la fórmula de τ.</p>
+<p>Para sumar, distribuimos el producto (1+p₁+···+p₁<sup>α₁</sup>)···(1+pₖ+···+pₖ<sup>αₖ</sup>). Cada término obtenido es exactamente un divisor, una sola vez. Evaluar cada serie geométrica produce la fórmula de σ.</p>
+<p>En el caso de 72:</p>
+<app-formula expression="\tau(72)=4\cdot3=12,\qquad\sigma(72)=15\cdot13=195"></app-formula>
+<p>Ambas funciones son multiplicativas: si gcd(m,n)=1, su valor en mn es el producto de sus valores. No son completamente multiplicativas cuando los argumentos comparten primos. Un entero es perfecto cuando σ(n)=2n, pues la suma incluye al propio n.</p>
+<p>Las fórmulas se generalizan: la suma de las potencias k-ésimas de los divisores se denota σ<sub>k</sub>(n). El caso k=0 es τ y el caso k=1 es σ. Esta familia aparece en series de Dirichlet y en identidades de formas modulares. También permite comparar el crecimiento medio de los divisores con el comportamiento excepcional de números que poseen muchos factores pequeños.</p>
+<p>Hay otra lectura útil de τ: cada divisor d se empareja con n/d. Normalmente las parejas tienen dos miembros distintos; solo cuando n es un cuadrado aparece el divisor √n emparejado consigo mismo. Este dibujo explica de inmediato la paridad de τ(n), sin necesidad de recurrir a exponentes.</p>
+<p><strong>Problemas.</strong> Calcula τ(360) y σ(360). Demuestra después que un entero tiene un número impar de divisores exactamente cuando es un cuadrado, emparejando cada divisor d con n/d. ¿Qué números satisfacen τ(n)=2?</p>

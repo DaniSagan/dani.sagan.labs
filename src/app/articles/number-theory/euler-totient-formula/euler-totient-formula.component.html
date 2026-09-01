@@ -1,0 +1,14 @@
+<h2>Contar los números coprimos: el totiente de Euler</h2>
+<p class="dropcap">Entre 1 y 12, los números 1, 5, 7 y 11 son los únicos coprimos con 12. Por eso φ(12)=4. Enumerar funciona con módulos pequeños, pero la factorización prima ofrece una fórmula mucho más poderosa.</p>
+<p>Euler introdujo el totiente en el siglo XVIII mientras generalizaba el pequeño teorema de Fermat. La notación φ se consolidó más tarde. Si los primos que dividen n son p₁,…,pₖ, entonces</p>
+<app-formula expression="\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right)"></app-formula>
+<h3>Quitar múltiplos sin contarlos dos veces</h3>
+<p>Para una potencia p<sup>a</sup>, no ser coprimo equivale a ser múltiplo de p. Entre los p<sup>a</sup> residuos hay p<sup>a−1</sup> múltiplos, de donde φ(p<sup>a</sup>)=p<sup>a</sup>−p<sup>a−1</sup>. Si m y n son coprimos, el teorema chino del resto identifica cada unidad módulo mn con una pareja formada por una unidad módulo m y otra módulo n. Así, φ(mn)=φ(m)φ(n). Aplicando esta multiplicatividad a la factorización prima aparece la fórmula.</p>
+<p>También puede verse mediante inclusión-exclusión: partimos de n enteros, eliminamos la fracción 1/p de múltiplos de cada primo y corregimos automáticamente las intersecciones al multiplicar los factores.</p>
+<h3>Ejemplo</h3>
+<p>Como 360=2³·3²·5, solo usamos una vez cada primo distinto:</p>
+<app-formula expression="\varphi(360)=360\left(1-\frac12\right)\left(1-\frac13\right)\left(1-\frac15\right)=96"></app-formula>
+<p>El totiente cuenta los elementos invertibles módulo n y aparece por eso en el teorema de Euler, RSA y el estudio de grupos cíclicos. Una propiedad agradable es que φ(n) es par para n&gt;2: cada unidad a puede emparejarse con n−a, y ambas son distintas salvo en los módulos más pequeños.</p>
+<p>La razón φ(n)/n es la proporción exacta de residuos coprimos con n. Depende únicamente de los primos distintos que dividen n, no de sus exponentes. Añadir otra potencia de un primo presente escala n y φ en la misma proporción; introducir un primo nuevo reduce la densidad mediante 1−1/p.</p>
+<p>La identidad Σ<sub>d|n</sub>φ(d)=n posee una interpretación elegante: se agrupan los enteros 1,…,n según el máximo común divisor que comparten con n. Al dividir cada grupo por ese divisor aparecen exactamente φ(n/d) clases reducidas. Esta relación, invertida mediante Möbius, devuelve la fórmula del producto.</p>
+<p><strong>Ejercicios.</strong> Calcula φ(840) a partir de su factorización. Comprueba después la identidad Σ<sub>d|n</sub>φ(d)=n para n=12 y trata de interpretarla agrupando fracciones según su denominador reducido.</p>

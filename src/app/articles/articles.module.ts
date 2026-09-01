@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
 import { ArticlesRoutingModule } from './articles-routing.module';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
+import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
@@ -107,6 +108,7 @@ import {
     OctahedronViewerComponent,
     TetrahedronViewerComponent,
     ArithmeticDerivativeArticleComponent,
+    ...NUMBER_THEORY_ARTICLES,
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
     PercolationDiagramComponent,

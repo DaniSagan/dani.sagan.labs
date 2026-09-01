@@ -1,0 +1,35 @@
+<h2>Ley de reciprocidad cuadrática</h2>
+<p class="dropcap">¿Existe un número cuyo cuadrado deje resto 3 al dividir por 13? En lugar de probar doce valores, la
+  reciprocidad cuadrática transforma la pregunta en otra con un módulo mucho menor. Esta capacidad hace del teorema el
+  centro de la teoría elemental de residuos cuadráticos.</p>
+<p>Euler y Legendre encontraron patrones parciales. Gauss obtuvo la primera demostración completa en 1796, a los
+  diecinueve años, y llamó al resultado su “teorema áureo”. Volvió a él muchas veces y produjo varias pruebas
+  diferentes.</p>
+<p>Para primos impares distintos p y q, el símbolo de Legendre (p/q) vale 1 si p es un cuadrado no nulo módulo q y −1 en
+  caso contrario. La ley dice</p>
+<app-formula expression="\left(\frac pq\right)\left(\frac qp\right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}"></app-formula>
+<p>Por tanto, se pueden intercambiar p y q sin cambiar el signo, salvo cuando ambos son congruentes con 3 módulo 4.</p>
+<h3>Una prueba contando puntos</h3>
+<p>El lema de Gauss expresa (a/p) como (−1)<sup>m</sup>, donde m cuenta cuántos de los residuos de a,2a,…,((p−1)/2)a
+  caen en la mitad superior módulo p. Aplicándolo dos veces, los conteos se interpretan como puntos enteros a ambos
+  lados de la diagonal de un rectángulo. Su suma tiene la misma paridad que ((p−1)/2)((q−1)/2), que produce exactamente
+  el signo anterior.</p>
+<p>Para saber si 3 es cuadrado módulo 13 intercambiamos los primos sin signo negativo:</p>
+<app-formula expression="\left(\frac3{13}\right)=\left(\frac{13}3\right)=\left(\frac13\right)=1"></app-formula>
+<p>En efecto, 4²≡3 (mod 13). Las leyes suplementarias deciden también los casos −1 y 2. Juntas forman un algoritmo
+  parecido al de Euclides.</p>
+<p>Las dos leyes suplementarias completan el algoritmo: −1 es residuo exactamente para primos 1 módulo 4, mientras que 2
+  lo es para primos congruentes con ±1 módulo 8. Tras factorizar el numerador, multiplicar símbolos e intercambiar
+  numerador y denominador, el cálculo desciende como el algoritmo de Euclides.</p>
+<p>El teorema es además el primer miembro de una familia. Preguntar por cubos o potencias superiores exige ampliar los
+  cuerpos numéricos y conduce a las leyes de reciprocidad de Artin. Una pregunta elemental sobre cuadrados contiene así
+  el germen de buena parte de la teoría algebraica de números.</p>
+<p><strong>Ejercicios.</strong> Decide si 5 es residuo módulo 29 y si 7 lo es módulo 19. Calcula además (−1/19) y (2/17)
+  usando las leyes suplementarias.</p>
+<div class="footnotes">
+  <h4>Más información</h4>
+  <ol>
+    <li>Wikipedia <em>Ley de reciprocidad cuadrática</em> <a href="https://es.wikipedia.org/wiki/Ley_de_reciprocidad_cuadr%C3%A1tica" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>Why did they prove this amazing theorem in 200 different ways? Quadratic Reciprocity MASTERCLASS</em> <a href="https://www.youtube.com/watch?v=X63MWZIN3gM" target="_blank">🔗</a>.</li>
+  </ol>
+</div>

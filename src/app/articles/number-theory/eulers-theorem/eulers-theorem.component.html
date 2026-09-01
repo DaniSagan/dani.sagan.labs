@@ -1,0 +1,15 @@
+<h2>Del teorema de Fermat al teorema de Euler</h2>
+<p class="dropcap">El módulo 10 no es primo, pero las potencias de 3 también acaban repitiéndose: 3,9,7,1. Euler descubrió la regla que gobierna este fenómeno para cualquier módulo, siempre que la base sea coprima con él.</p>
+<p>La función φ(n), llamada totiente, cuenta las clases entre 1 y n que son coprimas con n. Euler desarrolló estas ideas durante el siglo XVIII y publicó en 1763 el resultado que generaliza a Fermat:</p>
+<app-formula expression="\gcd(a,n)=1\quad\Longrightarrow\quad a^{\varphi(n)}\equiv1\pmod n"></app-formula>
+<h3>Un mazo de residuos que solo cambia de orden</h3>
+<p>Tomemos un sistema reducido de residuos r₁,…,rφ(n): contiene exactamente una vez cada clase invertible módulo n. Al multiplicar todos por a obtenemos otra lista de unidades. No puede haber repeticiones, porque a tiene inverso, y tampoco puede faltar ninguna; es la misma lista permutada.</p>
+<p>Multiplicando sus elementos se obtiene a<sup>φ(n)</sup>∏rᵢ≡∏rᵢ. El producto de los rᵢ también es invertible, de modo que se cancela. Esta prueba es casi idéntica a la de Fermat, pero sustituye todos los residuos no nulos por las unidades del módulo.</p>
+<h3>La última cifra de una potencia</h3>
+<p>Como φ(10)=4 y gcd(3,10)=1, podemos reducir 2025 módulo 4:</p>
+<app-formula expression="3^{2025}\equiv3^1\equiv3\pmod{10}"></app-formula>
+<p>La hipótesis de coprimalidad es imprescindible: φ(8)=4, pero 2<sup>4</sup> no es congruente con 1 módulo 8. Cuando n=p es primo, todas las clases no nulas son unidades y φ(p)=p−1, por lo que recuperamos exactamente el pequeño teorema de Fermat.</p>
+<p>Euler da un exponente seguro, aunque no siempre el menor. El orden multiplicativo y la función de Carmichael permiten encontrar periodos más cortos.</p>
+<p>En RSA se trabaja módulo el producto de dos primos. Los exponentes público y privado se escogen de modo que su producto sea 1 módulo un totiente relacionado. El teorema explica por qué aplicar sucesivamente ambas potencias recupera el mensaje. La seguridad no reside en ocultar este resultado, sino en la dificultad de factorizar el módulo.</p>
+<p>Para cálculos manuales conviene combinar Euler con el teorema chino del resto. En vez de usar directamente φ(n), se calcula la potencia módulo cada factor primo y se reconstruye la respuesta. Además de reducir exponentes, este método suele mantener mucho más pequeños todos los números intermedios.</p>
+<p><strong>Para explorar.</strong> Calcula 7<sup>222</sup> módulo 20. Después halla φ(15), escribe sus residuos invertibles y verifica directamente que multiplicarlos por 2 solo cambia su orden.</p>

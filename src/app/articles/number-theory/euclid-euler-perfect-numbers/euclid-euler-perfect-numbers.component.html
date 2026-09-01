@@ -1,0 +1,16 @@
+<h2>Euclides, Euler y los números perfectos</h2>
+<p class="dropcap">El 6 es igual a 1+2+3, la suma de sus divisores propios. También lo es 28=1+2+4+7+14. Los antiguos llamaron perfectos a estos números; el teorema de Euclides–Euler explica exactamente de dónde proceden todos los perfectos pares.</p>
+<p>Euclides probó en los <em>Elementos</em> que ciertos primos producen números perfectos. Dos mil años más tarde, Euler demostró el recíproco: no existe ningún perfecto par fuera de esa construcción.</p>
+<app-formula expression="N=2^{p-1}(2^p-1),\qquad 2^p-1\text{ primo}"></app-formula>
+<p>Los primos de la forma 2<sup>p</sup>−1 reciben el nombre de primos de Mersenne.</p>
+<h3>Por qué la fórmula funciona</h3>
+<p>Sea M=2<sup>p</sup>−1 primo. Como M es impar, la función suma de divisores es multiplicativa:</p>
+<app-formula expression="\sigma(2^{p-1}M)=(2^p-1)(M+1)=M\cdot2^p=2N"></app-formula>
+<p>Por tanto, la suma de los divisores propios de N es N.</p>
+<h3>Por qué no hay otros perfectos pares</h3>
+<p>Escribamos un perfecto par como N=2<sup>p−1</sup>m, con m impar. La condición σ(N)=2N se transforma en (2<sup>p</sup>−1)σ(m)=2<sup>p</sup>m. Como los dos factores de la izquierda son coprimos con 2<sup>p</sup>, un análisis de divisibilidad obliga a que 2<sup>p</sup>−1 divida m. Comparando el factor restante se obtiene m=2<sup>p</sup>−1 y se concluye además que este número es primo.</p>
+<p>Para p=5, M=31 produce N=16·31=496. Los primeros casos p=2,3,5,7 dan 6, 28, 496 y 8128.</p>
+<p>La clasificación deja abierta una pregunta célebre: nadie sabe si existe algún número perfecto impar. Sí sabemos que, de existir, tendría que ser enorme y cumplir restricciones muy severas.</p>
+<p>No se conoce si hay infinitos primos de Mersenne ni, por tanto, infinitos perfectos pares. Las búsquedas modernas utilizan el test de Lucas–Lehmer, especialmente adaptado a estos candidatos. Una clasificación iniciada en la Grecia antigua continúa produciendo récords mediante computación distribuida.</p>
+<p>La situación impar es aún más misteriosa. Ningún perfecto impar ha sido encontrado, y se sabe que, si existe, debe poseer una forma prima muy restringida, numerosos factores y un tamaño enorme. El teorema resuelve por completo la mitad par del problema y deja visible una frontera genuina del conocimiento.</p>
+<p><strong>Ejercicios.</strong> Verifica directamente que 496 es perfecto. Demuestra que si 2<sup>p</sup>−1 es primo, entonces p debe ser primo, usando la factorización de x<sup>ab</sup>−1 cuando p=ab.</p>

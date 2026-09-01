@@ -13,6 +13,7 @@ import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/o
 import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
 import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
+import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
@@ -174,6 +175,10 @@ const routes: Routes = [
       { path: ParabolaLikeArticleComponent.route, component: ParabolaLikeArticleComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
       { path: ArithmeticDerivativeArticleComponent.route, component: ArithmeticDerivativeArticleComponent },
+      ...NUMBER_THEORY_ARTICLES.map(article => ({
+        path: article.route,
+        component: article
+      })),
       { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },

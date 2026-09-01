@@ -1,0 +1,13 @@
+<h2>Raíces primitivas y generadores</h2>
+<p class="dropcap">Las potencias de 3 módulo 7 recorren 3,2,6,4,5,1: han visitado todas las clases no nulas antes de repetirse. Decimos que 3 es una raíz primitiva módulo 7. No todos los módulos admiten un generador tan eficiente.</p>
+<p>Gauss organizó la teoría en sus <em>Disquisitiones Arithmeticae</em> de 1801 y obtuvo la clasificación completa:</p>
+<app-formula expression="(\mathbb Z/n\mathbb Z)^\times\text{ es cíclico}\Longleftrightarrow n=1,2,4,p^k,2p^k"></app-formula>
+<p>Aquí p es un primo impar. Dicho sin lenguaje de grupos: existe un entero g cuyas potencias producen todos los residuos coprimos con n exactamente para esos módulos.</p>
+<h3>La idea de la demostración</h3>
+<p>Para un primo impar p, se factoriza p−1 y se usa que un polinomio de grado d tiene como máximo d raíces módulo p. Esto permite encontrar elementos cuyos órdenes contienen cada potencia prima de p−1; combinándolos se construye uno de orden total p−1. Después se demuestra que una raíz puede elevarse desde p hasta p<sup>k</sup>, quizá sustituyéndola por g+p, y de ahí a 2p<sup>k</sup>.</p>
+<p>Para descartar otros módulos se utiliza el teorema chino del resto. Si el módulo contiene demasiados factores independientes, la congruencia x²≡1 posee más de dos soluciones. Un grupo cíclico de orden par solo puede tener dos, así que tal grupo de unidades no puede ser cíclico. Módulo 8, por ejemplo, cada unidad 1,3,5,7 tiene cuadrado 1.</p>
+<app-formula expression="3^1,3^2,\ldots,3^6\equiv3,2,6,4,5,1\pmod7"></app-formula>
+<p>Cuando existe una raíz primitiva, los productos se convierten en sumas de exponentes; esta es la base de los índices y logaritmos discretos.</p>
+<p>Si g es raíz primitiva, g<sup>k</sup> también lo es exactamente cuando gcd(k,φ(n))=1. Por tanto, un módulo que admite raíces primitivas tiene φ(φ(n)) generadores. Esto se deduce de que el orden de g<sup>k</sup> es φ(n)/gcd(k,φ(n)), enlazando la clasificación con el teorema del orden.</p>
+<p>En criptografía, escoger una raíz primitiva permite representar cada unidad mediante un exponente. Multiplicar unidades equivale entonces a sumar índices. La operación inversa, recuperar el exponente a partir del residuo, es el logaritmo discreto: fácil en módulos pequeños, pero deliberadamente difícil en los tamaños usados para seguridad.</p>
+<p><strong>Explora.</strong> Comprueba que 2 genera las unidades módulo 5 pero no módulo 7. Encuentra una raíz primitiva módulo 11 y demuestra que ninguna puede existir módulo 8.</p>

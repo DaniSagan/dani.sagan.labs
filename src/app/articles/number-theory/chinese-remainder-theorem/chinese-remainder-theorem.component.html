@@ -1,0 +1,13 @@
+<h2>Teorema chino del resto</h2>
+<p class="dropcap">Un antiguo problema pregunta por un número que deja resto 2 al agruparlo de tres en tres, resto 3 al agruparlo de cinco en cinco y resto 2 al agruparlo de siete en siete. La respuesta menor es 23. El teorema chino del resto explica por qué la respuesta existe y en qué sentido es única.</p>
+<p>El problema figura en el <em>Sunzi Suanjing</em>, escrito entre los siglos III y V. En el siglo XIII, Qin Jiushao desarrolló procedimientos generales para sistemas mucho mayores. Esta tradición convierte al teorema en un bello ejemplo de ideas matemáticas que maduraron fuera de Europa.</p>
+<h3>Reconstruir a partir de piezas</h3>
+<p>Sean n₁,…,nₖ módulos coprimos dos a dos. Para cualesquiera restos a₁,…,aₖ, el sistema</p>
+<app-formula expression="x\equiv a_i\pmod{n_i}\qquad(1\le i\le k)"></app-formula>
+<p>tiene una única solución módulo N=n₁···nₖ. Para construirla, definimos Nᵢ=N/nᵢ. Como Nᵢ y nᵢ son coprimos, Bézout proporciona un inverso Mᵢ de Nᵢ módulo nᵢ. Entonces</p>
+<app-formula expression="x=\sum_{i=1}^k a_iN_iM_i"></app-formula>
+<p>satisface todas las condiciones: cada sumando salvo el i-ésimo se anula módulo nᵢ, mientras que ese término vale aᵢ. Si x e y fueran dos soluciones, cada nᵢ dividiría x−y; por coprimalidad, su producto N también lo dividiría. Así se prueba la unicidad módulo N.</p>
+<p>En el ejemplo inicial, N=105. Una construcción da x=233, que al reducir módulo 105 se convierte en 23. Todas las respuestas son 23+105t.</p>
+<h3>Por qué importa hoy</h3>
+<p>El teorema permite sustituir cálculos con enteros grandes por cálculos paralelos con módulos pequeños. Se utiliza en aritmética computacional y para acelerar operaciones criptográficas. Algebraicamente afirma que trabajar módulo un producto de coprimos equivale a trabajar por separado módulo cada factor.</p>
+<p>Resuelve ahora x≡1 (mod 4), x≡2 (mod 5), x≡3 (mod 7). Después explica por qué x≡0 (mod 2) y x≡1 (mod 4) es incompatible: aquí los módulos no son coprimos y los restos se contradicen.</p>

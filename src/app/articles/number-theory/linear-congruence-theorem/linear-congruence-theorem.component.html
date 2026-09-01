@@ -1,0 +1,14 @@
+<h2>Congruencias lineales: cuándo se puede dividir</h2>
+<p class="dropcap">En una congruencia no siempre es lícito cancelar un coeficiente. De 6x≡6 (mod 15), por ejemplo, no se obtiene una única clase al “dividir por 6”. El máximo común divisor entre el coeficiente y el módulo determina tanto la existencia como el número de soluciones.</p>
+<p>Gauss introdujo la notación de congruencia en 1801 y reunió bajo un mismo lenguaje numerosos cálculos tradicionales con restos. La ecuación básica es</p>
+<app-formula expression="ax\equiv b\pmod n"></app-formula>
+<p>Sea d=gcd(a,n). El teorema afirma que hay solución si y solo si d divide b. Cuando existe, aparecen exactamente d soluciones distintas módulo n.</p>
+<h3>De una congruencia a una ecuación diofántica</h3>
+<p>Decir ax≡b (mod n) significa que n divide ax−b, es decir, que existe un entero y con ax−ny=b. Bézout nos dice que esta ecuación lineal tiene solución exactamente cuando gcd(a,n)|b. Si la condición se cumple, dividimos todo por d y obtenemos una congruencia con coeficiente coprimo y módulo n/d. Allí el coeficiente sí tiene inverso y la solución es única módulo n/d; al volver al módulo n genera d clases.</p>
+<h3>Ejemplo completo</h3>
+<p>Resolvamos 6x≡9 (mod 15). Como gcd(6,15)=3 y 3 divide 9, hay tres soluciones. Dividir entre 3 conduce a 2x≡3 (mod 5). El inverso de 2 módulo 5 es 3, de modo que x≡9≡4 (mod 5). Dentro de un sistema completo módulo 15 obtenemos</p>
+<app-formula expression="x\equiv4,9,14\pmod{15}"></app-formula>
+<p>Observa que la división redujo también el módulo. Mantener módulo 15 después de dividir habría perdido o inventado información.</p>
+<p>Las soluciones forman una progresión aritmética. Si x₀ resuelve la congruencia reducida módulo n/d, entonces x=x₀+k(n/d), con k=0,…,d−1, produce exactamente las d clases dentro de un sistema completo módulo n. Esta descripción evita encontrarlas por tanteo.</p>
+<p>El caso b=1 merece atención: la congruencia ax≡1 pregunta por el inverso de a. El teorema asegura que existe exactamente cuando a y n son coprimos, y el algoritmo extendido de Euclides lo calcula. Así quedan unidas ecuaciones diofánticas, inversos y división modular.</p>
+<p><strong>Práctica.</strong> Resuelve 14x≡8 (mod 30) y comprueba cada solución. Decide después, sin probar valores, si 12x≡5 (mod 18) es resoluble. Como extensión, demuestra que ax≡b tiene una única solución módulo n precisamente cuando gcd(a,n)=1.</p>

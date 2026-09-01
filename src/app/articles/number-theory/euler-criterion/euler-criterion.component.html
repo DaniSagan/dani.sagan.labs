@@ -1,0 +1,13 @@
+<h2>Criterio de Euler</h2>
+<p class="dropcap">Resolver x²≡a (mod p) por tanteo puede ser incómodo. Euler convirtió la existencia de soluciones en una exponenciación: elevar a a la mitad de p−1 produce 1 si a es cuadrado y −1 si no lo es.</p>
+<p>El criterio apareció en los trabajos de Euler de 1748 sobre formas cuadráticas. Más tarde, Legendre introdujo el símbolo que permite escribirlo de manera compacta. Si p es un primo impar y p no divide a, entonces</p>
+<app-formula expression="a^{(p-1)/2}\equiv\left(\frac ap\right)\pmod p"></app-formula>
+<h3>Los cuadrados ocupan exactamente la mitad</h3>
+<p>Los valores 1²,2²,…,((p−1)/2)² son distintos módulo p. Además, todo cuadrado no nulo aparece en esa lista, porque x y −x tienen el mismo cuadrado. Hay por tanto (p−1)/2 residuos cuadráticos.</p>
+<p>Si a≡x², el pequeño teorema de Fermat da a<sup>(p−1)/2</sup>≡x<sup>p−1</sup>≡1. El polinomio X<sup>(p−1)/2</sup>−1 no puede tener más de (p−1)/2 raíces en el cuerpo módulo p, de modo que esas son todas. Para cualquier otro a, Fermat asegura que el cuadrado de a<sup>(p−1)/2</sup> es 1; como no puede ser 1, debe ser −1.</p>
+<p>Por ejemplo, 3 no es residuo cuadrático módulo 7:</p>
+<app-formula expression="3^3=27\equiv-1\pmod7"></app-formula>
+<p>El criterio proporciona una prueba rápida de residuacidad, interviene en la ley de reciprocidad y aparece en algoritmos criptográficos. No construye directamente una raíz cuando el resultado es 1; para eso hacen falta métodos adicionales como Tonelli–Shanks.</p>
+<p>Computacionalmente, la potencia se obtiene por cuadrados sucesivos y requiere pocas multiplicaciones incluso para primos grandes. Por ello el criterio funciona como prueba eficiente de residuacidad. La respuesta ha de ser 1 o −1: cualquier otro valor indica que el supuesto módulo no era primo o que se produjo un error.</p>
+<p>El criterio decide existencia, pero no encuentra una raíz. Cuando el resultado es 1 todavía hay que resolver x²≡a. Para primos congruentes con 3 módulo 4 existe una fórmula directa; en el caso general se utiliza el algoritmo de Tonelli–Shanks, que combina órdenes multiplicativos y descomposición de p−1.</p>
+<p><strong>Comprueba.</strong> Decide si 10 es cuadrado módulo 13 calculando 10⁶. Después lista los cuadrados no nulos módulo 11 y verifica que coinciden con las raíces del polinomio X⁵−1.</p>

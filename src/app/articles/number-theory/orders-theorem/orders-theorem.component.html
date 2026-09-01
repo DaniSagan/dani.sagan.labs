@@ -1,0 +1,12 @@
+<h2>El orden multiplicativo: el periodo verdadero</h2>
+<p class="dropcap">El teorema de Euler proporciona un exponente que devuelve 1, pero con frecuencia no es el primero. Módulo 7, 2³ ya es 1 aunque φ(7)=6. El menor exponente positivo con esa propiedad se llama orden multiplicativo.</p>
+<app-formula expression="\operatorname{ord}_n(a)=\min\{d>0:a^d\equiv1\pmod n\}"></app-formula>
+<p>La definición requiere gcd(a,n)=1. Las potencias pertenecen entonces al grupo finito de unidades módulo n. La teoría de grupos del siglo XIX dio el lenguaje actual, aunque Gauss ya utilizaba implícitamente estos periodos en sus estudios de restos.</p>
+<h3>Dos afirmaciones fundamentales</h3>
+<p>El orden d divide φ(n), porque el subgrupo generado por a tiene d elementos y el teorema de Lagrange afirma que el tamaño de un subgrupo divide al del grupo. Además, a<sup>k</sup>≡1 si y solo si d|k.</p>
+<p>Para probar esta última equivalencia, dividimos k entre d: k=qd+r, con 0≤r&lt;d. Entonces a<sup>k</sup>≡(a<sup>d</sup>)<sup>q</sup>a<sup>r</sup>≡a<sup>r</sup>. Si el resultado es 1, la minimalidad de d obliga a r=0.</p>
+<app-formula expression="\operatorname{ord}_n(a)\mid\varphi(n),\qquad a^k\equiv1\Longleftrightarrow\operatorname{ord}_n(a)\mid k"></app-formula>
+<p>Esta noción explica periodos decimales. La longitud del periodo de 1/7 en base 10 es ord₇(10)=6. También caracteriza las raíces primitivas —son los elementos de orden φ(n)— y aparece en la seguridad de los sistemas basados en logaritmos discretos.</p>
+<p>Hay una fórmula útil para potencias: si a tiene orden d, entonces el orden de a<sup>k</sup> es d/gcd(d,k). En efecto, buscamos el menor m para el que d divide km. Esta relación permite fabricar elementos de órdenes prescritos y analizar qué parte del ciclo se conserva al elevar.</p>
+<p>Para estudiar una fracción 1/n en base diez se observan los restos de 10,10²,10³,… módulo n. Cuando n es coprimo con 10, el primer retorno a 1 cierra exactamente el bloque periódico. Si n comparte factores 2 o 5 con la base, esos factores explican la parte decimal no periódica anterior al ciclo.</p>
+<p><strong>Ejemplo.</strong> Las potencias de 2 módulo 7 son 2,4,1; por eso el orden es 3. Para practicar, calcula ord₁₁(2) y ord₁₁(3), probando únicamente divisores de 10. Determina después la longitud del periodo decimal de 1/13.</p>

@@ -1,0 +1,11 @@
+<h2>Siempre queda otro primo</h2>
+<p class="dropcap">Imagina una lista que pretendiera contener todos los números primos. Euclides enseñó a escapar de cualquier lista finita con una sola operación: multiplicar sus elementos y sumar uno. El razonamiento, escrito hace más de dos milenios, sigue siendo uno de los modelos más limpios de prueba por contradicción.</p>
+<p>En el libro IX de los <em>Elementos</em> no aparece exactamente la frase moderna “hay infinitos primos”, pero sí la afirmación equivalente de que, dada cualquier colección finita de primos, existe otro que no pertenece a ella.</p>
+<h3>La construcción imposible de encerrar</h3>
+<p>Supongamos que p₁,p₂,…,pₖ fueran todos los primos. Formemos el entero</p>
+<app-formula expression="N=p_1p_2\cdots p_k+1"></app-formula>
+<p>Al dividir N por cualquiera de los pᵢ queda resto 1. Por tanto, ninguno de los primos de la supuesta lista divide N. Sin embargo, N&gt;1: o bien es primo, o bien el teorema fundamental de la aritmética asegura que posee algún divisor primo. En ambos casos surge un primo fuera de la lista, contradicción.</p>
+<p>Es importante leer con cuidado lo que se ha probado. El número N no tiene por qué ser primo. Si partimos de 2,3,5,7,11 y 13, su producto más uno es 30031=59·509. Lo decisivo es que sus divisores primos son nuevos respecto de la lista inicial.</p>
+<h3>Una idea que siguió creciendo</h3>
+<p>La demostración garantiza infinitud, pero no indica con qué frecuencia aparecen los primos. Siglos después, Euler probó que la suma de sus inversos diverge y el teorema de los números primos cuantificó su distribución aproximada. También existen variantes de la idea euclídea para demostrar que hay infinitos primos en ciertas progresiones.</p>
+<p>Como ejemplo mínimo, 2·3·5+1=31 produce inmediatamente un primo nuevo. Intenta ahora la construcción con 2,3,5,7 y factoriza el resultado. Después responde: ¿por qué sería circular usar la factorización única en la prueba si todavía no hubiéramos demostrado antes el teorema fundamental de la aritmética?</p>
