@@ -1,4 +1,15 @@
 <div class="formula-container" [ngClass]="{ 'formula-inline': displayMode === 'inline', 'formula-block': displayMode === 'block' }">
-  <div [mathjax]="codeExpression"></div>
-  <div *ngIf="showCode" class="expression-code">{{ expression }}</div>
+  <div class="formula-expression" [mathjax]="codeExpression"></div>
+  <div class="code-row">
+    <button
+      type="button"
+      class="code-toggle"
+      [attr.aria-pressed]="showCode"
+      [attr.aria-label]="showCode ? 'Ocultar código de la fórmula' : 'Mostrar código de la fórmula'"
+      [title]="showCode ? 'Ocultar código' : 'Mostrar código'"
+      (click)="showCode = !showCode">
+      LaTeX
+    </button>
+    <div *ngIf="showCode" class="expression-code">{{ expression }}</div>
+  </div>
 </div>

@@ -11,6 +11,29 @@ div.formula-container {
   padding: 5px;
 }
 
+.code-toggle {
+  flex: 0 0 auto;
+  min-width: 24px;
+  height: 20px;
+  padding: 0 4px;
+  border: 1px solid #555;
+  border-radius: 3px;
+  background-color: #242430;
+  color: #ddd;
+  font: 9px/18px monospace;
+  cursor: pointer;
+}
+
+.code-toggle:hover,
+.code-toggle[aria-pressed='true'] {
+  background-color: #3a3a4a;
+}
+
+.code-toggle:focus-visible {
+  outline: 2px solid #8ab4f8;
+  outline-offset: 1px;
+}
+
 div.formula-container.formula-inline {
   display: inline-block;
   vertical-align: middle;
@@ -20,9 +43,18 @@ div.formula-container.formula-block {
   display: block;
   width: fit-content;
   margin: 0 auto;
+  padding: 0 20px;
   text-align: center;
 }
 
-div.formula-container.formula-block > div {
+div.formula-container.formula-block > .formula-expression {
   display: inline-block;
+}
+
+.code-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 4px;
 }
