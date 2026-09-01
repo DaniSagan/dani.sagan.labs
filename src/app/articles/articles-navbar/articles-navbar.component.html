@@ -1,17 +1,6 @@
-<h2 class="navbar-title">{{navbar.name}}</h2>
-<div class="nav-items">
-  <ul>
-    @for(subsection of navbar.subsections; track subsection.name){
-      <li>
-        <div class="subsection">{{subsection.name}}</div>
-        <ul>
-          @for(item of subsection.items; track item.name){
-            <li class="subsection-item">
-              <a [routerLink]="['/articles', item.route]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" (click)="closeSidebar()">{{item.name}}</a>
-            </li>
-          }
-        </ul>
-      </li>
-    }
-  </ul>
-</div>
+<app-section-navbar
+  [title]="navbar.name ?? 'Artículos'"
+  basePath="/articles"
+  [sections]="navbar.subsections ?? []"
+  [sidebarId]="sidebarId"
+/>

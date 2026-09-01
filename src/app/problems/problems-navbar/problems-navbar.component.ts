@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NavbarSubsection } from 'src/app/shared/content/navbar-subsection';
+import { SectionNavbarComponent } from 'src/app/shared/section-navbar/section-navbar.component';
 
 @Component({
   selector: 'app-problems-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [SectionNavbarComponent],
   templateUrl: './problems-navbar.component.html',
   styleUrl: './problems-navbar.component.css'
 })
 export class ProblemsNavbarComponent {
   readonly sidebarId = 'sidebar-toggle-problems';
-
-  closeSidebar(): void {
-    const checkbox = document.getElementById(this.sidebarId) as HTMLInputElement | null;
-    if (checkbox) {
-      checkbox.checked = false;
-    }
-  }
+  readonly sections: NavbarSubsection[] = [{
+    name: 'Otros',
+    items: [{ name: 'Problema 1', route: 'test-problem' }]
+  }];
 }

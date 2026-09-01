@@ -1,0 +1,65 @@
+<nav class="section-navigation" [attr.aria-label]="'Navegación de ' + title">
+  <div class="navigation-header">
+    <h2 class="navbar-title">{{ title }}</h2>
+    <label class="search-label" [for]="sidebarId + '-search'">Buscar una página</label>
+    <div class="search-control">
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input
+        #searchInput
+        [id]="sidebarId + '-search'"
+        type="search"
+        [(ngModel)]="searchTerm"
+        placeholder="Buscar..."
+        autocomplete="off"
+      />
+      @if (searchTerm) {
+        <button type="button" class="clear-search" aria-label="Borrar búsqueda" (click)="clearSearch(searchInput)">×</button>
+      }
+    </div>
+    @if (searchTerm) {
+      <div class="result-count" aria-live="polite">
+        {{ resultCount }} {{ resultCount === 1 ? 'resultado' : 'resultados' }}
+      </div>
+    }
+  </div>
+
+  <div class="navigation-groups">
+    @for (section of filteredSections; track section.name) {
+      <section class="navigation-group">
+        <button
+          type="button"
+          class="subsection"
+          [attr.aria-expanded]="isExpanded(section.name)"
+          (click)="toggleSection(section.name)"
+        >
+          <span>{{ section.name }}</span>
+          <span class="section-meta">
+            <span class="item-count">{{ section.items.length }}</span>
+            <span class="chevron" aria-hidden="true">⌄</span>
+          </span>
+        </button>
+
+        @if (isExpanded(section.name)) {
+          <ul>
+            @for (item of section.items; track item.route) {
+              <li class="subsection-item">
+                <a
+                  [routerLink]="[basePath, item.route]"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="closeSidebar()"
+                >{{ item.name }}</a>
+              </li>
+            }
+          </ul>
+        }
+      </section>
+    } @empty {
+      <div class="empty-results">
+        <span aria-hidden="true">∅</span>
+        <p>No hay páginas que coincidan con «{{ searchTerm }}».</p>
+        <button type="button" (click)="clearSearch(searchInput)">Limpiar búsqueda</button>
+      </div>
+    }
+  </div>
+</nav>
