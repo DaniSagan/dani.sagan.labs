@@ -1,11 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 import { PolygonGenerator } from 'src/app/mathematics/geometry/polygon-generator';
 import { Vec2 } from 'src/app/shared/math/vec2';
 
 @Component({
   selector: 'app-nonagon-article',
   standalone: true,
-  imports: [],
+  imports: [FormulaComponent],
   templateUrl: './nonagon-article.component.html',
   styleUrl: './nonagon-article.component.css'
 })

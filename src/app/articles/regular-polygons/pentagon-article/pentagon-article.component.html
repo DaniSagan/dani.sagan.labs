@@ -1,3 +1,28 @@
-<h2>Pentágono Regular</h2>
+<h2>Pentágono regular</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El pentágono regular tiene cinco lados iguales y cinco ángulos interiores de ciento ocho grados. Presenta cinco ejes de simetría, cada uno entre un vértice y el punto medio del lado opuesto. Su simetría de rotación permite superponerlo consigo mismo mediante giros de setenta y dos grados alrededor del centro.</p>
+<p>Sus cinco diagonales dibujan un pentagrama y delimitan otro pentágono regular en el interior. La razón entre una diagonal y un lado es el número áureo, de modo que un lado unitario produce diagonales de longitud áurea. También aparece como cara del dodecaedro regular, que reúne doce pentágonos. Por sí solo no recubre el plano sin huecos: su ángulo interior no divide una vuelta completa.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Pentágono regular y sus segmentos">Representación del pentágono regular.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<h4>1. Obtener la diagonal con el teorema de Ptolomeo</h4>
+<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un cuadrilátero inscrito en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El teorema de Ptolomeo afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
+<app-formula expression="d^2=1\cdot1+1\cdot d,\qquad d^2-d-1=0,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
+<p>Elegimos la raíz positiva porque d es una longitud. Así obtenemos el número áureo mediante una ecuación cuadrática. Las cinco diagonales tienen esta misma longitud por la simetría del pentágono.</p>
+<h4>2. Hallar el radio mediante un triángulo rectángulo</h4>
+<p>El triángulo V₀V₁V₂ tiene lados uno, uno y d. Su altura desde V₁ biseca la base d; Pitágoras da h. Para relacionar h con el radio, trazamos el diámetro desde V₁ hasta su extremo opuesto B. El triángulo V₁V₂B es rectángulo por el teorema de Tales y semejante a uno de los medios triángulos anteriores: sus ángulos agudos coinciden por el teorema del ángulo inscrito. La correspondencia de lados da h/1 = 1/(2R).</p>
+<app-formula expression="h=\sqrt{1-\frac{d^2}{4}},\qquad R=\frac{1}{2h}=\sqrt{\frac{5+\sqrt5}{10}}" displayMode="block"/>
+<h4>3. Coordenadas exactas a partir de las distancias</h4>
+<p>Situamos O en el origen y V₀ en (R, 0). Para un vértice (x, y) a distancia s de V₀, aplicamos Pitágoras tanto al radio como a esa distancia. Restando las ecuaciones desaparece y:</p>
+<app-formula expression="x^2+y^2=R^2,\qquad (x-R)^2+y^2=s^2,\qquad x=R-\frac{s^2}{2R}" displayMode="block"/>
+<p>V₁ y V₄ están a distancia uno de V₀; V₂ y V₃ están a distancia d. Recuperamos la ordenada con la raíz cuadrada de R² − x² y elegimos el signo según el semiplano. Al simplificar se obtiene:</p>
+<app-formula expression="V_0=(R,0),\quad V_1=\left(\frac{R(\sqrt5-1)}4,\frac{1+\sqrt5}{4}\right)" displayMode="block"/>
+<app-formula expression="V_2=\left(-\frac{R(1+\sqrt5)}4,\frac12\right),\quad V_3=\left(-\frac{R(1+\sqrt5)}4,-\frac12\right)" displayMode="block"/>
+<app-formula expression="V_4=\left(\frac{R(\sqrt5-1)}4,-\frac{1+\sqrt5}{4}\right)" displayMode="block"/>
+<p>R es la raíz cuadrada indicada arriba, de modo que estas coordenadas solo contienen operaciones aritméticas y raíces cuadradas. Unimos los puntos en orden y cerramos desde V₄ hasta V₀. La orientación puede diferir de la ilustración sin alterar las longitudes.</p>
+<h4>4. Diagonales, apotema y área</h4>
+<p>Cada vértice tiene dos diagonales, pero cada segmento se cuenta desde sus dos extremos: hay cinco, todas de longitud d. La perpendicular del centro a un lado lo divide en dos mitades. Otro uso de Pitágoras da la apotema y permite sumar las áreas de los cinco triángulos centrales.</p>
+<app-formula expression="N_d=\frac{5\cdot2}{2}=5,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
+<app-formula expression="a=\sqrt{R^2-\frac14}=\sqrt{\frac{5+2\sqrt5}{20}},\qquad P=5,\qquad A=\frac{5a}{2}=\frac{\sqrt{25+10\sqrt5}}4" displayMode="block"/>
+<p>Para un lado de longitud L, multiplicamos las coordenadas y todas las longitudes por L; las áreas se multiplican por su cuadrado.</p>

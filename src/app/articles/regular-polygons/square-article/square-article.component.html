@@ -1,3 +1,23 @@
 <h2>Cuadrado</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El cuadrado es el polígono regular de cuatro lados. Sus cuatro ángulos interiores son rectos y sus lados opuestos son paralelos. Tiene cuatro ejes de simetría: dos pasan por vértices opuestos y dos por los puntos medios de lados opuestos. Un giro de noventa grados alrededor del centro lo transforma en sí mismo.</p>
+<p>Sus dos diagonales son iguales, perpendiculares y se cortan por la mitad. Cada diagonal divide el cuadrado en dos triángulos rectángulos isósceles y, cuando el lado mide una unidad, su longitud es la raíz cuadrada de dos. Cuatro cuadrados se reúnen alrededor de un vértice sin dejar huecos; esta propiedad explica la estructura geométrica de una cuadrícula.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Cuadrado y sus segmentos">Representación del cuadrado.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<p>Tomamos el centro como origen, el eje vertical positivo hacia arriba y numeramos los vértices en sentido antihorario. La orientación puede diferir de la ilustración: un giro conserva todas las longitudes. Las coordenadas siguientes son exactas.</p>
+<h4>1. Obtener la diagonal y el radio</h4>
+<p>Una diagonal divide el cuadrado en dos triángulos rectángulos cuyos catetos son dos lados de una unidad. Por Pitágoras, su cuadrado vale dos. Las diagonales se bisecan en el centro, así que el radio es media diagonal.</p>
+<app-formula expression="d^2=1^2+1^2=2,\qquad d=\sqrt2,\qquad R=\frac{\sqrt2}{2}" displayMode="block"/>
+<h4>2. Colocar las diagonales sobre los ejes</h4>
+<p>Como las diagonales son perpendiculares, podemos situarlas sobre los ejes de coordenadas. Sus cuatro extremos están a la misma distancia R del origen:</p>
+<app-formula expression="V_0=\left(\frac{\sqrt2}{2},0\right),\quad V_1=\left(0,\frac{\sqrt2}{2}\right)" displayMode="block"/>
+<app-formula expression="V_2=\left(-\frac{\sqrt2}{2},0\right),\quad V_3=\left(0,-\frac{\sqrt2}{2}\right)" displayMode="block"/>
+<p>Al unirlos en este orden obtenemos el cuadrado. Cada lado es la hipotenusa de un triángulo rectángulo con ambos catetos iguales a R:</p>
+<app-formula expression="|V_0V_1|=\sqrt{R^2+R^2}=1" displayMode="block"/>
+<h4>3. Diagonales y área</h4>
+<p>Las dos diagonales unen los vértices opuestos: V₀ con V₂ y V₁ con V₃. Cada una mide dos radios, es decir, raíz de dos. No hay otras clases de diagonales. La distancia entre lados opuestos es uno y el centro está a mitad de camino; de ahí la apotema.</p>
+<app-formula expression="N_d=\frac{4(4-3)}2=2,\qquad d=2R=\sqrt2" displayMode="block"/>
+<app-formula expression="a=\frac12,\qquad P=4,\qquad A=\frac{Pa}{2}=1" displayMode="block"/>
+<p>Para un lado de longitud L, multiplicamos todas las coordenadas, radios, apotemas y diagonales por L; el área se multiplica por su cuadrado.</p>

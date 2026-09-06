@@ -1,3 +1,57 @@
-<h2>Eneágono Regular</h2>
+<h2>Eneágono regular</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El eneágono regular, también denominado nonágono, tiene nueve lados iguales y nueve ángulos interiores de ciento cuarenta grados. Cuenta con nueve ejes de simetría, cada uno trazado desde un vértice hasta el punto medio del lado opuesto. Su giro mínimo de simetría es de cuarenta grados, una novena parte de vuelta.</p>
+<p>Sus veintisiete diagonales se reparten en tres longitudes. Una curiosidad aparece al conectar vértices mediante saltos constantes: saltando de dos en dos se recorren los nueve vértices y se dibuja una estrella. Saltando de tres en tres se vuelve al inicio tras visitar solo tres vértices. Repitiendo este recorrido desde los vértices restantes aparecen tres triángulos equiláteros, todos con el mismo centro.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Eneágono regular y sus segmentos">Representación del eneágono regular.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<h4>1. El límite de la construcción con regla y compás</h4>
+<p>El eneágono regular no puede construirse exactamente con regla sin marcas y compás a partir de un segmento unidad. Por eso sus coordenadas no pueden expresarse usando únicamente números racionales, operaciones aritméticas y raíces cuadradas, ni siquiera anidadas. Sí podemos dar una expresión por radicales si admitimos raíces cúbicas de números complejos, como veremos a continuación; el resultado final es real. Esta descripción algebraica no es una construcción clásica con regla y compás.</p>
+<h4>2. Calcular las diagonales con Ptolomeo</h4>
+<p>Llamamos sₖ a la longitud de la cuerda que abarca k lados y t a s₂, la diagonal más corta. En el cuadrilátero cíclico V₀V₁V₂Vₖ₊₁, el producto de las diagonales es t·sₖ. Los productos de lados opuestos son sₖ₋₁ y sₖ₊₁, pues los otros factores son lados unidad. Ptolomeo permite obtener las cuerdas sucesivamente, para k desde 2:</p>
+<app-formula expression="s_1=1,\quad s_2=t,\quad t s_k=s_{k-1}+s_{k+1}" displayMode="block"/>
+<app-formula expression="s_3=t^2-1,\qquad s_4=t^3-2t" displayMode="block"/>
+<p>En nueve vértices, las cuerdas de cinco y cuatro pasos tienen la misma longitud. La recurrencia da s₅ = t⁴ − 3t² + 1. Igualando s₅ y s₄ y factorizando:</p>
+<app-formula expression="t^4-t^3-3t^2+2t+1=(t-1)(t^3-3t-1)=0" displayMode="block"/>
+<p>La diagonal es mayor que el lado, de modo que descartamos t = 1. Definimos t como la mayor raíz real de la cúbica siguiente, la única entre 3/2 y 2:</p>
+<app-formula expression="t^3-3t-1=0" displayMode="block"/>
+<app-formula expression="d_2=t,\qquad d_3=t^2-1,\qquad d_4=t^3-2t=t+1" displayMode="block"/>
+<p>Cada longitud aparece en nueve diagonales: veintisiete en total. Los recorridos complementarios proporcionan los mismos segmentos, sin nuevas longitudes.</p>
+<p>La cúbica tiene coeficientes enteros y ninguna raíz racional: los únicos candidatos son 1 y −1, y ninguno la satisface. Es, por tanto, irreducible sobre los racionales y t tiene grado tres. Las operaciones y raíces cuadradas solo generan extensiones de grado potencia de dos; esto demuestra por qué aquí no podemos dar una expresión de ese tipo.</p>
+<h4>3. Resolver la cúbica mediante radicales</h4>
+<p>Bastan raíces cuadradas y cúbicas, pero hay que permitir números complejos en los pasos intermedios. Escribimos i para la unidad imaginaria, cuyo cuadrado es −1. Usaremos el método de Cardano: para una ecuación z³ + pz + q = 0, ponemos z = u + v y elegimos uv = −p/3. Al desarrollar el cubo, el término que multiplica a u + v desaparece:</p>
+<app-formula expression="(u+v)^3+p(u+v)+q=u^3+v^3+(3uv+p)(u+v)+q" displayMode="block"/>
+<p>Por tanto, u³ y v³ tienen suma −q y producto −p³/27. Son las soluciones de una ecuación de segundo grado, que resolvemos con una raíz cuadrada:</p>
+<app-formula expression="u^3,v^3=-\frac q2\pm\sqrt{\left(\frac q2\right)^2+\left(\frac p3\right)^3}" displayMode="block"/>
+<p>Nuestra ecuación ya carece de término cuadrático: z = t, p = −3 y q = −1. Sustituyendo esos coeficientes:</p>
+<app-formula expression="\left(\frac q2\right)^2+\left(\frac p3\right)^3=\frac14-1=-\frac34" displayMode="block"/>
+<app-formula expression="u=\sqrt[3]{\frac{1+i\sqrt3}{2}},\qquad v=\sqrt[3]{\frac{1-i\sqrt3}{2}}" displayMode="block"/>
+<app-formula expression="\boxed{t=\sqrt[3]{\frac{1+i\sqrt3}{2}}+\sqrt[3]{\frac{1-i\sqrt3}{2}}}" displayMode="block"/>
+<p>Una raíz cúbica compleja tiene tres valores posibles. En estas fórmulas elegimos para cada radical la raíz con mayor parte real: es la raíz cúbica principal de los números indicados. Las dos raíces elegidas son conjugadas, es decir, tienen igual parte real y partes imaginarias opuestas. Su suma es real y esta elección proporciona la mayor raíz de la cúbica, el valor t situado entre 3/2 y 2. No se pueden elegir las dos ramas de manera independiente: deben conservar el producto exigido por Cardano.</p>
+<app-formula expression="uv=1,\qquad u^3+v^3=1" displayMode="block"/>
+<p>Estas dos identidades permiten verificar la solución desarrollando (u + v)³. No hacen falta valores decimales ni funciones trigonométricas.</p>
+<p>La aparición de números complejos no es un defecto de la fórmula. Esta cúbica irreducible tiene tres raíces reales distintas y pertenece al <a href="https://mathworld.wolfram.com/CasusIrreducibilis.html">casus irreducibilis</a>: sus raíces no pueden expresarse a partir de números racionales usando únicamente operaciones aritméticas y radicales reales, aunque se permitan índices mayores. Si admitimos radicales complejos, la expresión anterior sí resuelve el problema. Este procedimiento algebraico va más allá de las construcciones de la Grecia clásica.</p>
+<h4>4. Radio y coordenadas sin funciones trigonométricas</h4>
+<p>En el triángulo V₀V₁V₂, de lados uno, uno y t, la altura desde V₁ mide h por Pitágoras. Trazando el diámetro desde V₁ se obtiene un triángulo rectángulo inscrito. Su semejanza con la mitad del triángulo isósceles da h/1 = 1/(2R). Por tanto:</p>
+<app-formula expression="h=\sqrt{1-\frac{t^2}{4}},\qquad R=\frac{1}{2h}=\frac{1}{\sqrt{4-t^2}}" displayMode="block"/>
+<p>Ponemos O = (0, 0) y V₀ = (R, 0). Si un vértice está a distancia s de V₀, restamos las ecuaciones de sus distancias al origen y a V₀. Así obtenemos su abscisa X(s); Pitágoras da la ordenada positiva Y(s):</p>
+<app-formula expression="x^2+y^2=R^2,\qquad (x-R)^2+y^2=s^2" displayMode="block"/>
+<app-formula expression="X(s)=R-\frac{s^2}{2R},\qquad Y(s)=\sqrt{R^2-X(s)^2}" displayMode="block"/>
+<p>Estas abreviaturas definen valores exactos, sin redondeo. Los vértices de la mitad superior, en sentido antihorario, son:</p>
+<app-formula expression="V_0=(R,0)" displayMode="block"/>
+<app-formula expression="V_1=\bigl(X(1),Y(1)\bigr)" displayMode="block"/>
+<app-formula expression="V_2=\bigl(X(t),Y(t)\bigr)" displayMode="block"/>
+<app-formula expression="V_3=\bigl(X(t^2-1),Y(t^2-1)\bigr)" displayMode="block"/>
+<app-formula expression="V_4=\bigl(X(t^3-2t),Y(t^3-2t)\bigr)" displayMode="block"/>
+<p>La reflexión en el eje horizontal completa la lista; conserva la abscisa y cambia el signo de la ordenada:</p>
+<app-formula expression="V_5=\bigl(X(t^3-2t),-Y(t^3-2t)\bigr)" displayMode="block"/>
+<app-formula expression="V_6=\bigl(X(t^2-1),-Y(t^2-1)\bigr)" displayMode="block"/>
+<app-formula expression="V_7=\bigl(X(t),-Y(t)\bigr)" displayMode="block"/>
+<app-formula expression="V_8=\bigl(X(1),-Y(1)\bigr)" displayMode="block"/>
+<p>Para obtener las coordenadas mediante radicales, sustituimos primero la expresión encuadrada de t en R, después en las longitudes s y finalmente en X(s) e Y(s). Las raíces cuadradas de R e Y(s) se toman no negativas. Así, las fórmulas de todos los vértices contienen únicamente operaciones aritméticas, raíces cuadradas y raíces cúbicas, con números complejos solo en el cálculo intermedio de t. Unimos los puntos en orden y cerramos con V₀; un giro permite adaptar esta orientación a la ilustración.</p>
+<h4>5. Apotema, perímetro y área</h4>
+<p>La perpendicular desde el centro biseca un lado unidad. La apotema es el otro cateto de un triángulo rectángulo con hipotenusa R. Sumamos las áreas de los triángulos centrales:</p>
+<app-formula expression="a=\sqrt{R^2-\frac14},\qquad P=9,\qquad A=\frac{9a}{2}" displayMode="block"/>
+<p>Puede consultarse la imposibilidad de la construcción clásica en <a href="https://mathworld.wolfram.com/RegularNonagon.html">MathWorld: eneágono regular</a>.</p>
+<p>Para un lado de longitud L, multiplicamos las coordenadas y todas las longitudes por L; las áreas se multiplican por su cuadrado.</p>

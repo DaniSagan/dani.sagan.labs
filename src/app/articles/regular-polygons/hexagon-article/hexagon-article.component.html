@@ -1,3 +1,26 @@
-<h2>Hexágono Regular</h2>
+<h2>Hexágono regular</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El hexágono regular tiene seis lados iguales, seis ángulos interiores de ciento veinte grados y seis ejes de simetría. Tres ejes unen vértices opuestos y los otros tres conectan puntos medios de lados opuestos. Al girarlo sesenta grados alrededor del centro, sus vértices vuelven a ocupar las posiciones iniciales.</p>
+<p>Una característica especialmente útil es que su radio circunscrito coincide con el lado. Al unir el centro con los vértices aparecen seis triángulos equiláteros. Tres hexágonos encajan alrededor de un punto y recubren el plano sin huecos, formando la conocida retícula de los panales. Sus nueve diagonales tienen dos longitudes distintas: las que saltan un vértice y las que unen vértices opuestos.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Hexágono regular y sus segmentos">Representación del hexágono regular.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<p>Tomamos el centro como origen, el eje vertical positivo hacia arriba y numeramos los vértices en sentido antihorario. La orientación puede diferir de la ilustración: un giro conserva todas las longitudes. Las coordenadas siguientes son exactas.</p>
+<h4>1. Seis triángulos equiláteros</h4>
+<p>Al unir el centro con los seis vértices se forman seis triángulos isósceles iguales. Sus ángulos centrales son de sesenta grados, por lo que los otros dos ángulos también lo son: son equiláteros y el radio mide uno. Al dividir cualquiera de ellos por su altura, Pitágoras proporciona la apotema.</p>
+<app-formula expression="R=1,\qquad a^2=1-\left(\frac12\right)^2=\frac34,\qquad a=\frac{\sqrt3}{2}" displayMode="block"/>
+<h4>2. Obtener las coordenadas</h4>
+<p>Situamos el primer radio sobre el semieje horizontal positivo. El vértice siguiente se proyecta en el punto medio de ese radio, porque pertenece a un triángulo equilátero. Su abscisa es medio lado y su ordenada es la altura recién calculada. Las reflexiones en los ejes dan los demás vértices.</p>
+<app-formula expression="V_0=(1,0),\quad V_1=\left(\frac12,\frac{\sqrt3}{2}\right),\quad V_2=\left(-\frac12,\frac{\sqrt3}{2}\right)" displayMode="block"/>
+<app-formula expression="V_3=(-1,0),\quad V_4=\left(-\frac12,-\frac{\sqrt3}{2}\right),\quad V_5=\left(\frac12,-\frac{\sqrt3}{2}\right)" displayMode="block"/>
+<app-formula expression="|V_0V_1|^2=\left(\frac12\right)^2+\left(\frac{\sqrt3}{2}\right)^2=1" displayMode="block"/>
+<h4>3. Las dos longitudes de las diagonales</h4>
+<p>Las seis diagonales cortas unen vértices separados por dos lados. Por ejemplo, entre V₀ y V₂ las diferencias horizontal y vertical son tres medios y raíz de tres sobre dos. Aplicando Pitágoras:</p>
+<app-formula expression="d_2=\sqrt{\left(\frac32\right)^2+\left(\frac{\sqrt3}{2}\right)^2}=\sqrt3" displayMode="block"/>
+<p>Las tres diagonales largas unen vértices opuestos y pasan por el centro; cada una es un diámetro. Así contamos las nueve diagonales sin duplicar ningún segmento.</p>
+<app-formula expression="d_3=2R=2,\qquad N_d=6+3=9" displayMode="block"/>
+<h4>4. Perímetro y área</h4>
+<p>Sumamos las áreas de los seis triángulos centrales, cada uno con base uno y altura igual a la apotema.</p>
+<app-formula expression="P=6,\qquad A=\frac{6a}{2}=\frac{3\sqrt3}{2}" displayMode="block"/>
+<p>Para un lado de longitud L, multiplicamos todas las coordenadas, radios, apotemas y diagonales por L; el área se multiplica por su cuadrado.</p>

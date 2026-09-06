@@ -1,3 +1,27 @@
-<h2>Octógono Regular</h2>
+<h2>Octógono regular</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El octógono regular tiene ocho lados iguales y ocho ángulos interiores de ciento treinta y cinco grados. Posee ocho ejes de simetría: cuatro atraviesan vértices opuestos y cuatro unen puntos medios de lados opuestos. Un giro de cuarenta y cinco grados alrededor de su centro deja la figura en la misma posición.</p>
+<p>Sus veinte diagonales se agrupan en tres longitudes distintas. Puede obtenerse recortando las cuatro esquinas de un cuadrado con cortes iguales elegidos para igualar los ocho lados resultantes. También forma un mosaico con cuadrados: en cada vértice coinciden dos octógonos y un cuadrado, cuyos ángulos suman una vuelta completa. En cambio, los octógonos regulares solos dejan huecos al intentar cubrir el plano.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Octógono regular y sus segmentos">Representación del octógono regular.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<p>Tomamos el centro como origen, el eje vertical positivo hacia arriba y numeramos los vértices en sentido antihorario. La orientación puede diferir de la ilustración: un giro conserva todas las longitudes. Las coordenadas siguientes son exactas.</p>
+<h4>1. Recortar un cuadrado con Pitágoras</h4>
+<p>Partimos de un cuadrado de lado 1 + 2t y cortamos cada esquina mediante un triángulo rectángulo isósceles de catetos t. Cada tramo horizontal o vertical que queda mide uno. Para que los cuatro cortes también midan uno, su hipotenusa debe cumplir:</p>
+<app-formula expression="t^2+t^2=1,\qquad t=\frac{\sqrt2}{2},\qquad b=\frac{1+2t}{2}=\frac{1+\sqrt2}{2}" displayMode="block"/>
+<p>Los ocho lados son iguales y cada ángulo interior mide ciento treinta y cinco grados. El resultado es, por tanto, un octógono regular. Centramos el cuadrado original en el origen; b es su semilado y también la apotema del octógono.</p>
+<h4>2. Coordenadas exactas de los ocho vértices</h4>
+<p>Los extremos de los lados horizontales tienen abscisas de más o menos medio lado. Intercambiando las coordenadas obtenemos los extremos de los lados verticales:</p>
+<app-formula expression="V_0=(b,\tfrac12),\quad V_1=(\tfrac12,b),\quad V_2=(-\tfrac12,b),\quad V_3=(-b,\tfrac12)" displayMode="block"/>
+<app-formula expression="V_4=(-b,-\tfrac12),\quad V_5=(-\tfrac12,-b),\quad V_6=(\tfrac12,-b),\quad V_7=(b,-\tfrac12)" displayMode="block"/>
+<p>Aquí b representa exactamente la expresión con raíz cuadrada anterior. Un lado oblicuo tiene diferencias de coordenadas iguales a b menos un medio; Pitágoras verifica su longitud. El radio se obtiene del triángulo formado por el origen y cualquier vértice.</p>
+<app-formula expression="|V_0V_1|^2=2\left(b-\frac12\right)^2=1,\qquad R=\sqrt{b^2+\frac14}=\sqrt{\frac{2+\sqrt2}{2}}" displayMode="block"/>
+<h4>3. Calcular las tres clases de diagonales</h4>
+<p>El subíndice indica cuántos lados recorremos entre los extremos. Para V₀V₂ las diferencias de coordenadas son b más un medio y b menos un medio. Para V₀V₃ solo cambia la abscisa. Para V₀V₄ los extremos son opuestos:</p>
+<app-formula expression="d_2=\sqrt{(b+\tfrac12)^2+(b-\tfrac12)^2}=\sqrt{2+\sqrt2}" displayMode="block"/>
+<app-formula expression="d_3=2b=1+\sqrt2,\qquad d_4=2R=\sqrt{4+2\sqrt2}" displayMode="block"/>
+<p>Hay ocho diagonales de dos pasos, ocho de tres pasos y cuatro diámetros: veinte en total. Los diámetros se cuentan una sola vez por cada pareja de extremos opuestos.</p>
+<h4>4. Perímetro y área</h4>
+<app-formula expression="a=b=\frac{1+\sqrt2}{2},\qquad P=8,\qquad A=\frac{8b}{2}=2(1+\sqrt2)" displayMode="block"/>
+<p>Para un lado de longitud L, multiplicamos todas las coordenadas, radios, apotemas y diagonales por L; el área se multiplica por su cuadrado.</p>

@@ -1,11 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 import { PolygonGenerator } from 'src/app/mathematics/geometry/polygon-generator';
 import { Vec2 } from 'src/app/shared/math/vec2';
 
 @Component({
   selector: 'app-triangle-article',
   standalone: true,
-  imports: [],
+  imports: [FormulaComponent],
   templateUrl: './triangle-article.component.html',
   styleUrl: './triangle-article.component.css'
 })

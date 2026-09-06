@@ -18,6 +18,31 @@ body {
   padding: 0;
 }
 
+/* Links on the application's dark surfaces. Navigation keeps its own colors. */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.07em;
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+}
+
+a:visited {
+  color: var(--link-visited);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
+  text-decoration-thickness: 0.12em;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* ── SECTIONS ── */
 section {
   padding: 5rem 0;

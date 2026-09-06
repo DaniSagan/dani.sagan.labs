@@ -1,3 +1,23 @@
-<h2>Triángulo Regular</h2>
+<h2>Triángulo regular</h2>
 
-<canvas #canvas width="600" height="600"></canvas>
+<p class="dropcap">El triángulo regular, también llamado equilátero, tiene tres lados iguales y tres ángulos interiores de sesenta grados. Posee tres ejes de simetría y permanece invariable al girarlo ciento veinte grados alrededor de su centro. Sus alturas, medianas, mediatrices y bisectrices coinciden; por eso el baricentro, el incentro, el circuncentro y el ortocentro ocupan el mismo punto.</p>
+<p>Una curiosidad es que seis triángulos equiláteros encajan alrededor de un punto y permiten recubrir el plano sin huecos. Además, cualquier punto interior tiene una suma constante de distancias a los tres lados: esa suma coincide con la altura. No tiene diagonales, pues cualquier pareja de vértices ya está conectada por un lado.</p>
+
+<canvas #canvas width="600" height="600" aria-label="Triángulo regular y sus segmentos">Representación del triángulo regular.</canvas>
+
+<h3>Obtención geométrica con lado de una unidad</h3>
+<p>Tomamos el centro como origen, el eje vertical positivo hacia arriba y numeramos los vértices en sentido antihorario. La orientación puede diferir de la ilustración: un giro conserva todas las longitudes. Las coordenadas siguientes son exactas.</p>
+<h4>1. La altura mediante Pitágoras</h4>
+<p>La altura divide el triángulo equilátero en dos triángulos rectángulos de hipotenusa uno y cateto menor igual a medio lado. El otro cateto es la altura h:</p>
+<app-formula expression="h^2+\left(\frac12\right)^2=1,\qquad h=\frac{\sqrt3}{2}" displayMode="block"/>
+<p>El centro coincide con el baricentro, que divide cada mediana en razón dos a uno desde el vértice. Por tanto, el radio es dos tercios de la altura y la apotema es el tercio restante.</p>
+<app-formula expression="R=\frac{2h}{3}=\frac{\sqrt3}{3},\qquad a=\frac h3=\frac{\sqrt3}{6}" displayMode="block"/>
+<h4>2. Situar los vértices por simetría</h4>
+<p>Colocamos un vértice a la derecha del centro. El lado opuesto es vertical, está a una apotema a la izquierda del origen y su punto medio queda sobre el eje horizontal. Sus extremos se separan de ese punto medio en medio lado hacia arriba y hacia abajo.</p>
+<app-formula expression="V_0=\left(\frac{\sqrt3}{3},0\right),\quad V_1=\left(-\frac{\sqrt3}{6},\frac12\right),\quad V_2=\left(-\frac{\sqrt3}{6},-\frac12\right)" displayMode="block"/>
+<p>El lado vertical mide uno. Para cualquiera de los otros dos, Pitágoras confirma la misma longitud:</p>
+<app-formula expression="|V_0V_1|^2=\left(\frac{\sqrt3}{2}\right)^2+\left(\frac12\right)^2=1" displayMode="block"/>
+<h4>3. Diagonales, perímetro y área</h4>
+<p>Una diagonal une vértices no consecutivos. En un triángulo todas las parejas de vértices forman lados: no existen diagonales cuya longitud calcular. El área es la mitad del producto de la base por la altura.</p>
+<app-formula expression="N_d=\frac{3(3-3)}2=0,\qquad P=3,\qquad A=\frac h2=\frac{\sqrt3}{4}" displayMode="block"/>
+<p>Para un lado de longitud L, multiplicamos todas las coordenadas, radios, apotemas y diagonales por L; el área se multiplica por su cuadrado.</p>
