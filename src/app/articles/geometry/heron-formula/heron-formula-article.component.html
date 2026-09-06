@@ -1,0 +1,43 @@
+<h2>Fórmula de Herón</h2>
+
+<p class="dropcap">La fórmula de Herón permite calcular el área de un triángulo conociendo únicamente las longitudes de sus tres lados. No necesitamos medir ángulos ni conocer previamente una altura. La deduciremos mediante el teorema de Pitágoras y dos factorizaciones, hasta obtener una expresión simétrica que trata por igual a los tres lados.</p>
+
+<h3>1. Trazar una altura</h3>
+<p>Consideremos un triángulo ABC y llamemos <app-formula expression="a=BC,\ b=CA,\ c=AB" displayMode="inline"/>. Elegimos como base un lado de longitud máxima, que denominamos c. Así, el pie H de la perpendicular desde C queda en el segmento AB, también cuando el triángulo es obtusángulo. Escribimos <app-formula expression="AH=x,\ HB=c-x,\ CH=h" displayMode="inline"/>. La altura divide la figura en dos triángulos rectángulos.</p>
+
+<figure>
+  <canvas #triangleCanvas width="1200" height="680" role="img" aria-label="Triángulo ABC dividido por la altura CH: los lados son BC igual a a, CA igual a b y AB igual a c; AH mide x y HB mide c menos x.">La altura h divide la base c en los segmentos x y c − x.</canvas>
+  <figcaption>La misma altura pertenece a los dos triángulos rectángulos.</figcaption>
+</figure>
+
+<h3>2. Eliminar la proyección desconocida</h3>
+<p>Aplicamos Pitágoras a cada mitad. Como ambas comparten la altura, restar sus ecuaciones elimina su cuadrado:</p>
+<app-formula expression="b^2=x^2+h^2,\qquad a^2=(c-x)^2+h^2" displayMode="block"/>
+<app-formula expression="a^2-b^2=c^2-2cx,\qquad x=\frac{b^2+c^2-a^2}{2c}" displayMode="block"/>
+<p>Ya hemos expresado la proyección horizontal exclusivamente mediante los lados. Sustituimos este resultado en la primera ecuación para recuperar la altura:</p>
+<app-formula expression="h^2=b^2-\left(\frac{b^2+c^2-a^2}{2c}\right)^2" displayMode="block"/>
+
+<h3>3. Introducir el área y factorizar</h3>
+<p>Si K representa el área, la fórmula de base por altura proporciona <app-formula expression="K=ch/2" displayMode="inline"/>. Elevamos al cuadrado y multiplicamos por dieciséis para eliminar los denominadores:</p>
+<app-formula expression="16K^2=4b^2c^2-(b^2+c^2-a^2)^2" displayMode="block"/>
+<p>El miembro derecho es una diferencia de cuadrados. Usamos <app-formula expression="u^2-v^2=(u-v)(u+v)" displayMode="inline"/> y agrupamos los términos:</p>
+<app-formula expression="16K^2=\bigl[a^2-(b-c)^2\bigr]\bigl[(b+c)^2-a^2\bigr]" displayMode="block"/>
+<p>Cada corchete vuelve a ser una diferencia de cuadrados. Al factorizar ambos aparecen cuatro factores lineales:</p>
+<app-formula expression="16K^2=(a+b-c)(a+c-b)(b+c-a)(a+b+c)" displayMode="block"/>
+
+<h3>4. Reconocer el semiperímetro</h3>
+<p>Definimos el semiperímetro como la mitad de la suma de los lados. Los cuatro factores anteriores se convierten en el doble del semiperímetro y de sus diferencias con cada lado:</p>
+<app-formula expression="s=\frac{a+b+c}{2}" displayMode="block"/>
+<app-formula expression="a+b+c=2s,\quad b+c-a=2(s-a)" displayMode="block"/>
+<app-formula expression="a+c-b=2(s-b),\quad a+b-c=2(s-c)" displayMode="block"/>
+<p>Los cuatro doses producen dieciséis. Cancelamos ese factor y tomamos la raíz positiva, porque el área es positiva:</p>
+<app-formula expression="\boxed{K=\sqrt{s(s-a)(s-b)(s-c)}}" displayMode="block"/>
+
+<h3>5. Comprobar con un ejemplo</h3>
+<p>Para lados de longitudes cinco, cinco y seis, el semiperímetro es ocho. El segundo dibujo permite comprobar el resultado mediante una altura de cuatro unidades:</p>
+<app-formula expression="K=\sqrt{8(8-5)(8-5)(8-6)}=\sqrt{144}=12" displayMode="block"/>
+<figure>
+  <canvas #exampleCanvas width="1200" height="680" role="img" aria-label="Triángulo isósceles de lados 5, 5 y base 6. La altura 4 divide la base en dos segmentos de 3; el área es 6 por 4 dividido entre 2, igual a 12.">Dos triángulos rectángulos de catetos 3 y 4 e hipotenusa 5 forman un triángulo de área 12.</canvas>
+  <figcaption>Pitágoras da h² = 5² − 3² = 16; el área es 6 · 4 / 2 = 12.</figcaption>
+</figure>
+<p>Los lados deben ser positivos y satisfacer las desigualdades triangulares: cada uno es menor que la suma de los otros dos. Si hay igualdad, el triángulo es degenerado y su área es cero. El resultado se expresa en unidades cuadradas.</p>

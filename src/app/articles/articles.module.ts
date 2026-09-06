@@ -29,6 +29,7 @@ import { ParabolaArticleComponent } from './curves/parabola-article/parabola-art
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
+import { HeronFormulaArticleComponent } from './geometry/heron-formula/heron-formula-article.component';
 import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
 import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
 import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
@@ -111,6 +112,7 @@ import {
     ...NUMBER_THEORY_ARTICLES,
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
+    HeronFormulaArticleComponent,
     PercolationDiagramComponent,
     TrigInverseTrigCompositionComponent,
     CardioidArticleComponent,

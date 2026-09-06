@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+figure {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+
+figcaption {
+  margin-top: 0.65rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
