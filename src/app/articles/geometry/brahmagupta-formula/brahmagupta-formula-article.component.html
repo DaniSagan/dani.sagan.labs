@@ -1,0 +1,24 @@
+<h2>Fórmula de Brahmagupta</h2>
+<p class="dropcap">La fórmula de Brahmagupta calcula el área de un cuadrilátero cíclico a partir de sus cuatro lados. Es la hermana de Herón: aparece la raíz de un producto de diferencias con el semiperímetro. Pero hay una condición esencial que no puede omitirse: los cuatro vértices deben pertenecer a una misma circunferencia. Sin esa hipótesis, las longitudes de los lados no determinan por sí solas el área.</p>
+<h3>1. Dividir por una diagonal</h3>
+<p>Sea ABCD un cuadrilátero convexo inscrito, con lados consecutivos a=AB, b=BC, c=CD y d=DA. Trazamos AC. Los ángulos opuestos B y D son suplementarios, de modo que sus senos coinciden y sus cosenos tienen signos opuestos. Las áreas de los dos triángulos se suman:</p>
+<app-formula expression="D=180^\circ-B,\qquad K=\frac{ab\sin B+cd\sin D}{2}=\frac{ab+cd}{2}\sin B" displayMode="block"/>
+<app-geometry-diagram diagram="brahmagupta-formula" description="La diagonal AC divide el cuadrilátero cíclico en dos triángulos. Los ángulos opuestos B y D suman 180 grados."/>
+<h3>2. Eliminar el ángulo desconocido</h3>
+<p>La diagonal AC es común a ambos triángulos. Aplicamos la ley de los cosenos desde los ángulos B y D, igualamos los resultados y aprovechamos que cos D=−cos B. Así obtenemos el coseno solo en función de los lados:</p>
+<app-formula expression="AC^2=a^2+b^2-2ab\cos B=c^2+d^2+2cd\cos B" displayMode="block"/>
+<app-formula expression="\cos B=\frac{a^2+b^2-c^2-d^2}{2(ab+cd)}" displayMode="block"/>
+<p>El denominador es positivo porque todos los lados lo son. Por tanto, no hemos dividido por una cantidad que pudiera anularse en un cuadrilátero ordinario.</p>
+<h3>3. Sustituir y factorizar</h3>
+<p>Elevamos la fórmula del área al cuadrado y usamos sin²B=1−cos²B. Después multiplicamos por dieciséis para eliminar fracciones. El resultado es una diferencia de cuadrados que se puede factorizar dos veces:</p>
+<app-formula expression="16K^2=4(ab+cd)^2-(a^2+b^2-c^2-d^2)^2" displayMode="block"/>
+<app-formula expression="16K^2=(-a+b+c+d)(a-b+c+d)(a+b-c+d)(a+b+c-d)" displayMode="block"/>
+<p>Una forma de comprobar la factorización consiste en agrupar primero los factores que contienen a+b y luego los que contienen a−b. No estamos introduciendo una nueva hipótesis: solo reorganizamos el polinomio anterior.</p>
+<h3>4. Introducir el semiperímetro</h3>
+<p>Definimos s=(a+b+c+d)/2. Cada factor lineal vale dos veces una diferencia s−lado. Los cuatro doses se cancelan con el dieciséis de la izquierda. Tomamos la raíz positiva porque el cuadrilátero tiene área positiva:</p>
+<app-formula expression="\boxed{K=\sqrt{(s-a)(s-b)(s-c)(s-d)}}" displayMode="block"/>
+<p>Para un rectángulo de lados u y v, el semiperímetro es u+v y la expresión se reduce a √(vuvu)=uv. Si un lado tiende a cero y dos vértices se reúnen, recuperamos la fórmula de Herón para el triángulo restante.</p>
+<h3>Historia y curiosidades</h3>
+<p>Brahmagupta presentó esta relación en la matemática india del siglo VII. Su nombre también aparece en identidades aritméticas y problemas de cuadriláteros; véase <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Brahmagupta/">MacTutor</a>. Entre los cuadriláteros convexos con cuatro lados fijos que admiten una realización cíclica, esa realización alcanza el área máxima. La fórmula de Bretschneider explica el motivo: para un cuadrilátero no cíclico aparece un término corrector no negativo que se resta del producto de Brahmagupta.</p>
+
+<p>En todas las sustituciones conviene conservar las raíces y fracciones exactas hasta terminar. El producto bajo la raíz tiene unidades de longitud a la cuarta potencia; al extraer la raíz quedan unidades cuadradas, como corresponde a un área. Este control dimensional ayuda a detectar errores de transcripción.</p>

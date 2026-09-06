@@ -1,0 +1,20 @@
+<h2>Teorema de Pascal: el hexagrama místico</h2>
+<p class="dropcap">Seis puntos de una cónica determinan un hexágono, aunque sus lados puedan cruzarse. El teorema de Pascal afirma que las intersecciones de sus tres parejas de lados opuestos están alineadas. Es un resultado proyectivo: habla de incidencia entre puntos y rectas, sin medir ángulos ni longitudes. Una circunferencia sirve para visualizarlo, pero la afirmación también vale para elipses, parábolas e hipérbolas no degeneradas.</p>
+<h3>1. Precisar las tres intersecciones</h3>
+<p>Sean A, B, C, D, E y F seis puntos distintos de la cónica. Consideramos las rectas completas que contienen los lados, de modo que las intersecciones pueden quedar lejos del hexágono. Nombramos los tres puntos que debemos comparar:</p>
+<app-formula expression="X=AB\cap DE,\qquad Y=BC\cap EF,\qquad Z=CD\cap FA" displayMode="block"/>
+<app-geometry-diagram diagram="pascal-theorem" description="Los lados opuestos del hexágono inscrito se prolongan hasta X, Y y Z. Los tres puntos pertenecen a la recta de Pascal resaltada."/>
+<h3>2. Elegir una cónica fácil de parametrizar</h3>
+<p>Una transformación proyectiva adecuada lleva una cónica real no degenerada con puntos reales a una parábola, conservando rectas e intersecciones. Podemos comprobar el resultado en y=x². Escribimos sus seis puntos mediante parámetros a, b, c, d, e y f. La recta entre dos parámetros u y v tiene una ecuación especialmente sencilla, comprobable sustituyendo ambos extremos:</p>
+<app-formula expression="P(t)=(t,t^2),\qquad L(u,v):\ y=(u+v)x-uv" displayMode="block"/>
+<p>Aquí las letras minúsculas son parámetros, no longitudes. Esta elección convierte un problema de geometría en identidades polinómicas, sin perder ninguna propiedad de alineación.</p>
+<h3>3. Calcular las intersecciones sin dividir</h3>
+<p>Usamos coordenadas homogéneas (x:y:z), donde un punto ordinario representa (x/z,y/z). Los puntos con z=0 describen direcciones del infinito. Al resolver dos ecuaciones de rectas obtenemos el siguiente representante de su intersección:</p>
+<app-formula expression="J(u,v,w,t)=\bigl(uv-wt:\ uv(w+t)-wt(u+v):\ u+v-w-t\bigr)" displayMode="block"/>
+<p>De este modo X=J(a,b,d,e), Y=J(b,c,e,f) y Z=J(c,d,f,a). La expresión sigue funcionando cuando los lados son paralelos, porque no hemos dividido por la tercera coordenada.</p>
+<h3>4. Verificar la alineación</h3>
+<p>Tres puntos homogéneos están alineados cuando el determinante de sus tres filas es cero. En el determinante siguiente, cada J representa una fila de tres coordenadas, no un único número. Sustituimos los representantes anteriores y expandimos por la primera fila. Los productos se cancelan por parejas, dando la identidad:</p>
+<app-formula expression="\det\begin{pmatrix}J(a,b,d,e)\\J(b,c,e,f)\\J(c,d,f,a)\end{pmatrix}=0" displayMode="block"/>
+<p>Esta igualdad es una identidad en los seis parámetros: se puede verificar multiplicando sus componentes, no depende de valores escogidos para el dibujo. El determinante nulo prueba Pascal en la parábola y la transformación proyectiva inversa lo devuelve a la cónica original. Configuraciones con lados coincidentes requieren formular el límite mediante tangentes y no sustituir un vector homogéneo nulo como si fuese un punto.</p>
+<h3>Historia y curiosidades</h3>
+<p>Blaise Pascal publicó su trabajo sobre cónicas en 1640, siendo adolescente, dentro del desarrollo de la geometría proyectiva impulsado por Desargues. Véanse <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/">MacTutor</a> y <a href="https://mathworld.wolfram.com/PascalsTheorem.html">MathWorld</a>. El nombre de hexagrama místico alude a la riqueza de esta configuración. Cambiar el orden de los mismos seis puntos produce distintas rectas de Pascal. Su resultado dual es el teorema de Brianchon, donde los puntos sobre la cónica se sustituyen por rectas tangentes a ella.</p>

@@ -1,0 +1,23 @@
+<h2>El punto de Fermat o Torricelli</h2>
+<p class="dropcap">Dados tres puntos no alineados A, B y C, buscamos un punto P que minimice la suma de sus distancias a ellos. Es el problema de Fermat–Torricelli, un modelo sencillo para colocar una conexión central con la menor longitud total de cables. La solución depende de los ángulos del triángulo: puede estar dentro o coincidir con un vértice.</p>
+<h3>1. Formular la cantidad que se minimiza</h3>
+<p>Escribimos F(P) para la suma de distancias. Una distancia es una función convexa; su suma también lo es. Esto significa que cualquier punto estacionario interior es un mínimo global. Además, la falta de alineación de A, B y C impide que dos puntos distintos alcancen simultáneamente el mínimo, pues la igualdad exigiría direcciones incompatibles.</p>
+<app-formula expression="F(P)=|P-A|+|P-B|+|P-C|" displayMode="block"/>
+<app-geometry-diagram diagram="fermat-point" description="El punto interior P se conecta con los tres vértices. En el mínimo, los tres segmentos forman ángulos de 120 grados entre sí."/>
+<h3>2. Encontrar el equilibrio interior</h3>
+<p>Supongamos que P no coincide con ningún vértice. La derivada vectorial de una distancia es el vector unitario que apunta desde el vértice hacia P. En un mínimo interior la suma de estas tres direcciones debe anularse. Cambiando simultáneamente sus signos, también se anulan los vectores unitarios que apuntan desde P a los vértices:</p>
+<app-formula expression="\mathbf u_A=\frac{A-P}{|A-P|},\quad \mathbf u_B=\frac{B-P}{|B-P|},\quad \mathbf u_C=\frac{C-P}{|C-P|}" displayMode="block"/>
+<app-formula expression="\mathbf u_A+\mathbf u_B+\mathbf u_C=\mathbf0" displayMode="block"/>
+<p>De la igualdad uA+uB=−uC tomamos módulos al cuadrado. Como los tres módulos valen uno, el producto escalar entre dos de ellos debe ser menos un medio. Repetimos el cálculo con las otras parejas:</p>
+<app-formula expression="2+2\mathbf u_A\cdot\mathbf u_B=1,\qquad \cos\angle APB=-\frac12" displayMode="block"/>
+<app-formula expression="\angle APB=\angle BPC=\angle CPA=120^\circ" displayMode="block"/>
+<h3>3. Justificar que es realmente un mínimo</h3>
+<p>Para cualquier otro punto Q, la proyección de QA sobre la dirección PA no supera su longitud. Aplicando esa desigualdad a los tres vértices y sumando, los términos que contienen Q−P desaparecen por el equilibrio anterior. Obtenemos F(Q)≥F(P), una verificación geométrica de la condición suficiente, además del argumento de convexidad.</p>
+<h3>4. Tratar los ángulos grandes</h3>
+<p>En A, la distancia PA no es derivable, pero su variación direccional es el módulo del desplazamiento. Si eAB y eAC son los unitarios desde A hacia B y C, A minimiza la suma exactamente cuando su suma tiene módulo no mayor que uno. Al elevar al cuadrado aparece el umbral buscado:</p>
+<app-formula expression="|\mathbf e_{AB}+\mathbf e_{AC}|^2=2+2\cos A\leq1\quad\Longleftrightarrow\quad A\geq120^\circ" displayMode="block"/>
+<p>Si todos los ángulos son menores, el mínimo es el punto interior de los tres ángulos de ciento veinte grados. Puede construirse levantando equiláteros exteriores y uniendo sus nuevos vértices con los vértices opuestos originales.</p>
+<h3>Historia y curiosidades</h3>
+<p>Fermat propuso el problema y Torricelli desarrolló una solución geométrica en el siglo XVII, como explica <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Torricelli/">MacTutor</a>. El equilibrio admite una interpretación física mediante tres tensiones iguales. No debe confundirse este punto con el baricentro, que minimiza la suma de las distancias <em>al cuadrado</em>; solo en casos muy simétricos ambos centros coinciden.</p>
+
+<p>El criterio de los ciento veinte grados también permite reconocer rápidamente cuándo no debemos buscar una solución interior. Si un vértice ya alcanza ese ángulo, desplazar la conexión desde él aumenta o mantiene inicialmente la suma en cualquier dirección, y la convexidad impide encontrar una mejora más lejos.</p>

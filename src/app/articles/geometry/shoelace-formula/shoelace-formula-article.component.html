@@ -1,0 +1,21 @@
+<h2>Fórmula del área de Gauss</h2>
+<p class="dropcap">Si conocemos las coordenadas de los vértices de un polígono, podemos calcular su área sin medir alturas ni dividirlo manualmente en piezas. La fórmula del área de Gauss, conocida también como regla del cordón o <em>shoelace</em>, suma productos cruzados de coordenadas consecutivas. La condición fundamental es introducir los vértices en el orden en que se recorre el borde del polígono.</p>
+<h3>1. Recordar el área de un triángulo orientado</h3>
+<p>Para dos vectores u=(x1,y1) y v=(x2,y2), el determinante mide el área orientada del paralelogramo que forman. La mitad corresponde al triángulo con tercer vértice en el origen. El signo es positivo al girar de u a v en sentido antihorario y negativo en el contrario:</p>
+<app-formula expression="\det(u,v)=x_1y_2-y_1x_2,\qquad K_{\mathrm{or}}(O,P_1,P_2)=\frac12\det(P_1,P_2)" displayMode="block"/>
+<app-geometry-diagram diagram="shoelace-formula" description="Los vértices se recorren en orden. Los triángulos orientados desde O muestran qué términos de área se suman y cuáles se cancelan."/>
+<h3>2. Sumar alrededor del borde</h3>
+<p>Consideremos un polígono simple con vértices P1,…,Pn. Formamos los triángulos orientados O Pi Pi+1 y cerramos el recorrido haciendo Pn+1=P1. Si el origen está dentro de un polígono convexo, se ve directamente que sus áreas suman la del polígono. Si está fuera o el polígono es cóncavo, las regiones recorridas con signos contrarios se cancelan.</p>
+<app-formula expression="K_{\mathrm{or}}=\frac12\sum_{i=1}^{n}(x_i y_{i+1}-y_i x_{i+1}),\qquad P_{n+1}=P_1" displayMode="block"/>
+<p>Una justificación alternativa consiste en triangular el polígono: cada diagonal interior aparece dos veces en sentidos opuestos y desaparece de la suma de determinantes. Solo quedan los lados del borde. Esta cancelación explica por qué no se necesita una triangulación concreta para efectuar el cálculo final.</p>
+<h3>3. Convertir el resultado en área ordinaria</h3>
+<p>La suma anterior cambia de signo si invertimos el orden de los vértices. El área geométrica no debe cambiar, por lo que tomamos un único valor absoluto después de sumar todos los términos:</p>
+<app-formula expression="\boxed{K=\frac12\left|\sum_{i=1}^{n}x_i y_{i+1}-\sum_{i=1}^{n}y_i x_{i+1}\right|}" displayMode="block"/>
+<p>Tomar valores absolutos por separado antes de sumar sería incorrecto en general. También es imprescindible repetir el primer vértice al final de la tabla: sin el último producto faltaría la contribución del lado que cierra la figura.</p>
+<h3>4. Resolver un ejemplo exacto</h3>
+<p>Para el rectángulo con vértices (0,0), (4,0), (4,3), (0,3), los productos positivos suman veinticuatro y los negativos cero. Dividimos entre dos y recuperamos el área doce. Una traslación del origen no modifica el resultado: los términos añadidos se cancelan porque el recorrido es cerrado.</p>
+<app-formula expression="K=\frac12|0+12+12+0|=12" displayMode="block"/>
+<h3>Historia y curiosidades</h3>
+<p>La denominación de Gauss convive con la de fórmula del agrimensor; el dibujo de los productos en dos columnas explica el nombre de cordón entrecruzado. <a href="https://mathworld.wolfram.com/ShoelaceFormula.html">MathWorld</a> presenta esta regla. Es especialmente útil en cartografía y gráficos por ordenador. Para un polígono autointersecante la suma entrega un área algebraica con multiplicidades, no necesariamente el área de la región visible. La simplicidad del borde es, por ello, una hipótesis geométrica relevante y no una mera formalidad de notación.</p>
+
+<p>Para evitar errores de recorrido, puede anotarse una flecha sobre cada lado antes de organizar la tabla de coordenadas. En un polígono simple todas esas flechas deben formar un único circuito cerrado, sin saltar de un vértice a otro que no sea su vecino en el borde.</p>

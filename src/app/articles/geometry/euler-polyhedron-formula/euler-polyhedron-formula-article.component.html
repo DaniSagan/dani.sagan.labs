@@ -1,0 +1,20 @@
+<h2>Fórmula de Euler para poliedros</h2>
+<p class="dropcap">En un poliedro convexo, el número de vértices menos el número de aristas más el número de caras siempre vale dos. La fórmula de Euler no depende del tamaño ni de los ángulos del sólido. Expresa una propiedad de su superficie: si la deformamos sin romperla ni pegar partes distintas, el balance permanece constante. Usaremos V, A y C para esos tres recuentos.</p>
+<app-formula expression="V-A+C=2" displayMode="block"/>
+<h3>1. Convertir la superficie en un dibujo plano</h3>
+<p>Podemos proyectar las aristas de un poliedro convexo sobre una esfera que lo rodea y después sobre un plano. El resultado es un grafo conectado sin cruces: los vértices y aristas se conservan, y una de las caras se convierte en la región exterior ilimitada. Esa región también cuenta como cara; olvidarla cambiaría indebidamente el resultado de dos a uno.</p>
+<app-geometry-diagram diagram="euler-polyhedron-formula" description="Un cubo y su grafo plano tienen los mismos ocho vértices, doce aristas y seis caras, contando la región exterior del grafo."/>
+<h3>2. Eliminar una arista de un ciclo</h3>
+<p>Si el grafo contiene un ciclo, elegimos una arista de ese ciclo. Al borrarla no desconectamos el grafo, porque sus extremos siguen unidos por el resto del ciclo. Las dos caras que separaba se fusionan en una sola. El número de vértices permanece fijo, mientras aristas y caras disminuyen simultáneamente en una unidad:</p>
+<app-formula expression="V'=V,\qquad A'=A-1,\qquad C'=C-1" displayMode="block"/>
+<app-formula expression="V'-A'+C'=V-A+C" displayMode="block"/>
+<p>Podemos repetir este proceso mientras queden ciclos. La cantidad de Euler es invariante en cada paso, aunque la forma y el número de caras del dibujo cambien progresivamente.</p>
+<h3>3. Llegar a un árbol</h3>
+<p>Al terminar queda un grafo conectado sin ciclos, es decir, un árbol. Un árbol con V vértices tiene V−1 aristas. Esto se demuestra eliminando sucesivamente una hoja: cada eliminación quita un vértice y una arista, hasta llegar a un único vértice sin aristas. El árbol plano tiene una sola cara, la región exterior:</p>
+<app-formula expression="A_{\mathrm{árbol}}=V-1,\qquad C_{\mathrm{árbol}}=1" displayMode="block"/>
+<app-formula expression="V-(V-1)+1=2" displayMode="block"/>
+<p>Como todas las operaciones anteriores conservaban V−A+C, el grafo inicial y, por tanto, el poliedro también tienen valor dos. La prueba explica el resultado mediante una reducción que puede seguirse paso a paso sobre un dibujo.</p>
+<h3>4. Comprobar ejemplos y límites</h3>
+<p>En un tetraedro hay cuatro vértices, seis aristas y cuatro caras: 4−6+4=2. En un cubo, 8−12+6=2. La convexidad es una condición suficiente para asegurar una superficie sin agujeros. No debe suponerse que cualquier objeto llamado poliedro tiene el mismo balance: una superficie cerrada orientable con g asas tiene característica 2−2g, bajo una descomposición válida en caras topológicas de disco.</p>
+<h3>Historia y curiosidades</h3>
+<p>Euler formuló esta relación en el siglo XVIII, mucho antes del lenguaje moderno de la topología. <a href="https://mathworld.wolfram.com/EulerCharacteristic.html">MathWorld</a> explica la característica que generaliza su fórmula. Una triangulación que añade una diagonal en una cara incrementa A y C en uno y deja V fijo: el balance vuelve a conservarse. Esto permite comparar mallas de distinta resolución y detectar errores de conectividad, aunque acertar el balance por sí solo no garantiza que una malla sea geométricamente correcta.</p>

@@ -30,6 +30,7 @@ import { PercolationDiagramComponent } from './probability/percolation-diagram/p
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 import { HeronFormulaArticleComponent } from './geometry/heron-formula/heron-formula-article.component';
+import { GEOMETRY_ARTICLES } from './geometry/geometry-articles';
 import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
 import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
 import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
@@ -113,6 +114,7 @@ import {
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
     HeronFormulaArticleComponent,
+    ...GEOMETRY_ARTICLES,
     PercolationDiagramComponent,
     TrigInverseTrigCompositionComponent,
     CardioidArticleComponent,

@@ -1,0 +1,22 @@
+<h2>Ley de los cosenos</h2>
+<p class="dropcap">El teorema de Pitágoras relaciona los lados de un triángulo rectángulo. La ley de los cosenos amplía esa relación a cualquier triángulo, añadiendo un término que registra el ángulo entre dos lados. Es útil cuando conocemos dos lados y el ángulo comprendido, o cuando queremos recuperar un ángulo a partir de las tres longitudes. Su deducción combina una proyección y Pitágoras.</p>
+<h3>1. Elegir coordenadas adaptadas</h3>
+<p>Sea ABC un triángulo con a=BC, b=CA y c=AB. Colocamos A en el origen y B=(c,0), de modo que AB sea horizontal. Si el ángulo en A es α, las coordenadas de C son sus proyecciones horizontal y vertical. La figura puede elegirse en el semiplano superior sin perder generalidad:</p>
+<app-formula expression="A=(0,0),\qquad B=(c,0),\qquad C=(b\cos\alpha,b\sin\alpha)" displayMode="block"/>
+<app-geometry-diagram diagram="law-of-cosines" description="La altura desde C separa el desplazamiento BC en una componente horizontal c menos b cos α y otra vertical b sin α."/>
+<h3>2. Aplicar Pitágoras a la distancia restante</h3>
+<p>El lado a es la distancia entre B y C. Sus diferencias de coordenadas son b cos α−c en horizontal y b sin α en vertical. Elevamos al cuadrado y sumamos ambas contribuciones, como exige la fórmula de distancia del plano:</p>
+<app-formula expression="a^2=(b\cos\alpha-c)^2+(b\sin\alpha)^2" displayMode="block"/>
+<p>Desarrollamos el primer cuadrado. Los términos con b² se agrupan mediante la identidad cos²α+sin²α=1. Queda exactamente la generalización buscada:</p>
+<app-formula expression="a^2=b^2\cos^2\alpha-2bc\cos\alpha+c^2+b^2\sin^2\alpha" displayMode="block"/>
+<app-formula expression="\boxed{a^2=b^2+c^2-2bc\cos\alpha}" displayMode="block"/>
+<h3>3. Interpretar los tres tipos de ángulo</h3>
+<p>Si α es recto, su coseno vale cero y desaparece la corrección: recuperamos Pitágoras. Si es agudo, el coseno es positivo y a² es menor que b²+c². Si es obtuso, la proyección horizontal de C es negativa y la corrección aumenta la suma. Las coordenadas hacen que los tres casos utilicen la misma ecuación, sin tener que cambiar artificialmente el signo de una longitud.</p>
+<h3>4. Despejar un ángulo y comprobar un ejemplo</h3>
+<p>Como b y c son positivos, podemos dividir por 2bc para obtener el coseno del ángulo. Para lados b=c=1 y ángulo α=60°, la fórmula da a²=1+1−1=1, como corresponde a un triángulo equilátero:</p>
+<app-formula expression="\cos\alpha=\frac{b^2+c^2-a^2}{2bc}" displayMode="block"/>
+<p>El cociente debe pertenecer al intervalo de menos uno a uno. Si no lo hace, los datos no representan un triángulo real, salvo pequeños errores de redondeo en una medición. Los extremos del intervalo corresponden a figuras degeneradas con los tres puntos alineados, no a triángulos con área positiva.</p>
+<h3>Historia y curiosidades</h3>
+<p>Las proposiciones 12 y 13 del libro II de Euclides contienen versiones geométricas del resultado para ángulos obtusos y agudos. La formulación trigonométrica se asocia también a al-Kashi; véanse <a href="https://mathcs.clarku.edu/~djoyce/elements/bookII/bookII.html">Euclides</a> y <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Al-Kashi/">MacTutor</a>. En lenguaje vectorial, la corrección es dos veces un producto escalar. Por eso la misma identidad se utiliza para calcular distancias entre vectores en espacios de dimensión mayor, sin que sea necesario dibujar explícitamente un triángulo sobre el papel.</p>
+
+<p>Para aplicar la fórmula de manera segura, conviene identificar primero el ángulo conocido y marcar el lado que queda frente a él. Ese lado será el que aparezca aislado al cuadrado. Los otros dos deben ser precisamente los que forman el ángulo, no una pareja elegida por su tamaño.</p>

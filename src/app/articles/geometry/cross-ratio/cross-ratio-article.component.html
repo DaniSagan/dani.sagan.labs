@@ -1,0 +1,22 @@
+<h2>La razón cruzada</h2>
+<p class="dropcap">Una proyección puede cambiar longitudes, ángulos y cocientes ordinarios de segmentos. Sin embargo, cuatro puntos alineados conservan una combinación especial de distancias dirigidas: la razón cruzada, también llamada razón doble. Es uno de los invariantes básicos de la geometría proyectiva y permite comparar configuraciones aunque una cámara o una perspectiva las haya deformado notablemente.</p>
+<h3>1. Definir la convención</h3>
+<p>Sean A, B, C y D cuatro puntos distintos sobre una recta, con coordenadas a, b, c y d. Fijamos explícitamente el orden porque diferentes permutaciones cambian el valor. Nuestra convención compara las razones en que C y D dividen la pareja A, B:</p>
+<app-formula expression="(A,B;C,D)=\frac{(c-a)/(c-b)}{(d-a)/(d-b)}=\frac{(c-a)(d-b)}{(c-b)(d-a)}" displayMode="block"/>
+<p>Las diferencias son dirigidas, por lo que el resultado puede ser negativo. Al usar valores absolutos perderíamos información sobre el orden y la separación de los puntos. Un cambio de origen o de unidad no altera la expresión: todos los factores de escala se cancelan.</p>
+<app-geometry-diagram diagram="cross-ratio" description="Cuatro puntos A, B, C y D de una recta se proyectan desde O sobre otra recta. Las separaciones cambian, pero su razón cruzada se conserva."/>
+<h3>2. Escribir una transformación proyectiva</h3>
+<p>Sobre una recta, una proyectividad se expresa mediante una función fraccionaria lineal. Su determinante debe ser distinto de cero para que no colapse todos los puntos en uno. Escribimos φ(t) para la nueva coordenada:</p>
+<app-formula expression="\phi(t)=\frac{\alpha t+\beta}{\gamma t+\delta},\qquad \alpha\delta-\beta\gamma\neq0" displayMode="block"/>
+<p>Esta fórmula incluye proyecciones entre rectas cuando se eligen coordenadas adecuadas. Si el denominador se anula, la imagen es el punto del infinito; primero demostraremos el resultado cuando las cuatro imágenes sean finitas.</p>
+<h3>3. Restar dos imágenes</h3>
+<p>Ponemos las dos fracciones sobre un denominador común. Los términos cuadráticos del numerador desaparecen y queda el determinante multiplicado por la diferencia de las coordenadas originales:</p>
+<app-formula expression="\phi(u)-\phi(v)=\frac{(\alpha\delta-\beta\gamma)(u-v)}{(\gamma u+\delta)(\gamma v+\delta)}" displayMode="block"/>
+<p>Sustituimos esta identidad en las cuatro diferencias que forman la razón cruzada. Hay dos factores del determinante arriba y dos abajo. Cada denominador asociado a un punto también aparece una vez en cada posición. Todos ellos se cancelan:</p>
+<app-formula expression="(\phi(A),\phi(B);\phi(C),\phi(D))=(A,B;C,D)" displayMode="block"/>
+<h3>4. Comprender el punto del infinito</h3>
+<p>Si D se aleja indefinidamente, el cociente (d−b)/(d−a) tiende a uno. La definición se prolonga así de forma coherente al infinito. Para A=0, B=1 y C=1/2 obtenemos una razón cruzada igual a menos uno cuando D es el infinito:</p>
+<app-formula expression="(A,B;C,\infty)=\frac{c-a}{c-b},\qquad (0,1;\tfrac12,\infty)=-1" displayMode="block"/>
+<p>Se llama cuaterna armónica a una configuración con valor −1. La proyección conserva esa propiedad, aunque la imagen de C ya no sea visualmente un punto medio y la de D sea finita.</p>
+<h3>Historia y curiosidades</h3>
+<p>La razón doble tiene antecedentes en la geometría antigua y se convirtió en una herramienta central de la geometría proyectiva del siglo XIX. <a href="https://mathworld.wolfram.com/CrossRatio.html">MathWorld</a> recoge definiciones y convenciones. Permutar cuatro puntos puede producir seis valores relacionados: λ, 1/λ, 1−λ y sus transformaciones. En visión artificial, esta invariancia ayuda a comprobar posiciones de marcas alineadas bajo perspectiva. Siempre hay que declarar el orden de los puntos antes de comparar valores publicados con convenciones diferentes.</p>

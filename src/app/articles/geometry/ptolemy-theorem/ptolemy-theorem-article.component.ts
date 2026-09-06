@@ -187,39 +187,6 @@ export class PtolemyTheoremArticleComponent {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    const arcStyle = '#ffcf70';
-    const angleMarkers = [
-      { start: 0.7, end: 2.2, cx, cy, r: 28, label: '∠ABC' },
-      { start: 2.2, end: 3.8, cx, cy, r: 36, label: '∠BCD' },
-      { start: 3.8, end: 5.4, cx, cy, r: 32, label: '∠CDA' },
-      { start: 5.4, end: 6.28, cx, cy, r: 26, label: '∠DAB' }
-    ];
-
-    angleMarkers.forEach(({ start, end, cx, cy, r, label }) => {
-      ctx.beginPath();
-      ctx.strokeStyle = arcStyle;
-      ctx.lineWidth = 2;
-      ctx.arc(cx, cy, r, start, end);
-      ctx.stroke();
-
-      const mid = (start + end) / 2;
-      const lx = cx + (r + 10) * Math.cos(mid);
-      const ly = cy + (r + 10) * Math.sin(mid);
-      ctx.fillStyle = '#d8ecff';
-      ctx.font = '11px sans-serif';
-      ctx.fillText(label, lx, ly);
-    });
-
-    ctx.beginPath();
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + radius, cy);
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.fillStyle = '#ffffff';
-    ctx.font = '12px sans-serif';
-    ctx.fillText('R', cx + radius / 2, cy - 8);
-
     points.forEach((point) => {
       ctx.beginPath();
       ctx.fillStyle = '#ffffff';

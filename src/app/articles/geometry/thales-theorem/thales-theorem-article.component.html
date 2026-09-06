@@ -1,0 +1,20 @@
+<h2>Teorema de Tales: el ángulo inscrito</h2>
+<p class="dropcap">Si A y B son extremos de un diámetro y C es otro punto de su circunferencia, el ángulo ACB es recto. Esta es la formulación clásica del teorema de Tales sobre el ángulo inscrito en una semicircunferencia. No debe confundirse con el resultado de segmentos proporcionales entre paralelas, que también recibe su nombre en muchos libros escolares.</p>
+<h3>1. Trazar el radio auxiliar</h3>
+<p>Llamamos O al centro de la circunferencia y unimos O con C. Los segmentos OA, OB y OC tienen la misma longitud R. Por ello, los triángulos AOC y BOC son isósceles. Denotamos por α los ángulos de base del primero y por β los del segundo; podemos suponer C en la semicircunferencia superior, pues la otra se obtiene por reflexión.</p>
+<app-formula expression="OA=OB=OC=R,\qquad \angle OAC=\angle ACO=\alpha" displayMode="block"/>
+<app-formula expression="\angle OBC=\angle BCO=\beta" displayMode="block"/>
+<app-geometry-diagram diagram="thales-theorem" description="AB es un diámetro. El radio OC crea dos triángulos isósceles cuyos ángulos de base suman el ángulo recto ACB."/>
+<h3>2. Sumar los ángulos del triángulo</h3>
+<p>Como O está entre A y B, el ángulo en A del triángulo grande vale α y el de B vale β. El radio CO divide su ángulo en C en dos partes de medidas α y β. La suma de los tres ángulos interiores proporciona entonces una ecuación elemental:</p>
+<app-formula expression="\alpha+\beta+(\alpha+\beta)=180^\circ" displayMode="block"/>
+<app-formula expression="\angle ACB=\alpha+\beta=90^\circ" displayMode="block"/>
+<p>Solo hemos utilizado igualdad de radios, propiedades del triángulo isósceles y suma de ángulos. No es necesario medir distancias ni introducir funciones trigonométricas. El argumento también explica por qué C puede moverse libremente por la semicircunferencia sin cambiar el ángulo recto.</p>
+<h3>3. Demostrar el recíproco</h3>
+<p>Supongamos ahora que ACB es recto y que O es el punto medio de AB. Situamos C en el origen, A=(u,0) y B=(0,v), con los catetos sobre ejes perpendiculares. Las coordenadas del punto medio permiten calcular las tres distancias al cuadrado:</p>
+<app-formula expression="O=\left(\frac u2,\frac v2\right),\qquad OA^2=OB^2=OC^2=\frac{u^2+v^2}{4}" displayMode="block"/>
+<p>Luego O es equidistante de A, B y C: es su circuncentro. Además, A y B están alineados con O y a lados opuestos, por lo que AB es un diámetro. Queda demostrado que el ángulo es recto si y solo si su lado opuesto es un diámetro de la circunferencia circunscrita.</p>
+<h3>4. Una construcción útil</h3>
+<p>Para levantar una perpendicular desde un punto de una circunferencia, podemos unirlo con los extremos de un diámetro. También podemos reconocer el lugar geométrico de todos los puntos que ven un segmento fijo bajo un ángulo recto: es la circunferencia de ese diámetro, excluidos sus extremos. En un triángulo rectángulo obtenemos además R=AB/2.</p>
+<h3>Historia y curiosidades</h3>
+<p>La tradición atribuye el resultado a Tales de Mileto, uno de los primeros nombres de la geometría griega; las atribuciones antiguas se conocen a través de fuentes posteriores. <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Thales/">MacTutor</a> contextualiza esa tradición. El teorema es un caso particular de la relación entre ángulo inscrito y ángulo central: un arco de semicircunferencia mide ciento ochenta grados y el ángulo inscrito correspondiente mide la mitad. La prueba anterior evita presuponer esa relación más general.</p>

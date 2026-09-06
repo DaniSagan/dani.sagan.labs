@@ -1,0 +1,22 @@
+<h2>La recta de Euler</h2>
+<p class="dropcap">El circuncentro O, el baricentro G y el ortocentro H responden a construcciones distintas: mediatrices, medianas y alturas. Sin embargo, en cualquier triángulo no equilátero están alineados y el baricentro divide el segmento que une los otros dos en una razón fija. Una demostración vectorial revela que esta coincidencia no depende de la forma del dibujo.</p>
+<h3>1. Tomar el circuncentro como origen</h3>
+<p>Sean a, b y c los vectores de posición de A, B y C respecto de O. Como los tres vértices pertenecen a la circunferencia circunscrita de radio R, sus módulos son iguales. Las letras en negrita siguientes representan vectores, no longitudes de lados:</p>
+<app-formula expression="O=\mathbf0,\qquad |\mathbf a|^2=|\mathbf b|^2=|\mathbf c|^2=R^2" displayMode="block"/>
+<app-geometry-diagram diagram="euler-line" description="O es el circuncentro, G el baricentro y H el ortocentro. Las alturas y una mediana permiten reconocer los centros sobre la recta resaltada."/>
+<h3>2. Encontrar el ortocentro</h3>
+<p>Proponemos el vector h=a+b+c como posición de H. Para comprobarlo, restamos el vector a y calculamos su producto escalar con la dirección del lado BC. Si el resultado es cero, AH será perpendicular a BC y pertenecerá a una altura:</p>
+<app-formula expression="\mathbf h=\mathbf a+\mathbf b+\mathbf c" displayMode="block"/>
+<app-formula expression="(\mathbf h-\mathbf a)\cdot(\mathbf c-\mathbf b)=(\mathbf b+\mathbf c)\cdot(\mathbf c-\mathbf b)=|\mathbf c|^2-|\mathbf b|^2=0" displayMode="block"/>
+<p>Al intercambiar cíclicamente los vértices obtenemos las otras dos perpendicularidades. Por tanto, el punto propuesto está simultáneamente en las tres alturas y es el ortocentro. El argumento también funciona si H queda fuera del triángulo, como sucede en el caso obtusángulo.</p>
+<h3>3. Encontrar el baricentro</h3>
+<p>El punto medio M de BC tiene vector (b+c)/2. La posición g=(a+b+c)/3 puede escribirse como a más dos tercios del desplazamiento desde A hasta M. Esto sitúa G en la mediana AM; al repetirlo con los otros vértices, queda probado que es la intersección de las medianas:</p>
+<app-formula expression="\mathbf m=\frac{\mathbf b+\mathbf c}{2},\qquad \mathbf g=\mathbf a+\frac23(\mathbf m-\mathbf a)=\frac{\mathbf a+\mathbf b+\mathbf c}{3}" displayMode="block"/>
+<h3>4. Comparar ambos resultados</h3>
+<p>Las dos expresiones anteriores tienen el mismo numerador. En consecuencia, h es el triple de g. Como O es el origen, los vectores OG y OH tienen la misma dirección. Además, G está entre O y H, a un tercio de la distancia total:</p>
+<app-formula expression="\overrightarrow{OH}=3\overrightarrow{OG},\qquad GH=2OG" displayMode="block"/>
+<p>Si O y H coinciden, también coincide G. Este caso corresponde al triángulo equilátero: los tres centros siguen cumpliendo la identidad, pero un único punto no determina una recta distinguida. En un triángulo isósceles no equilátero, la recta de Euler coincide con el eje de simetría.</p>
+<h3>Historia y conexiones</h3>
+<p>El resultado lleva el nombre de Leonhard Euler, quien lo estudió en el siglo XVIII; puede ampliarse en <a href="https://mathworld.wolfram.com/EulerLine.html">MathWorld: recta de Euler</a>. Una curiosidad es que el incentro generalmente no pertenece a esta recta. Sí pertenece a ella el centro N de la circunferencia de los nueve puntos, situado a mitad de OH. Así, una demostración breve organiza varias de las construcciones más importantes de la geometría del triángulo.</p>
+
+<p>La proporción es una relación entre distancias sobre la recta, no entre sus coordenadas en cualquier origen. Si cambiamos el origen, debemos seguir escribiendo los vectores OG y OH, en lugar de multiplicar directamente las nuevas coordenadas de los puntos.</p>

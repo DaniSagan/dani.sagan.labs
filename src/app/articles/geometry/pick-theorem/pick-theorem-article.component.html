@@ -1,0 +1,20 @@
+<h2>Teorema de Pick</h2>
+<p class="dropcap">Un polígono reticular tiene todos sus vértices en puntos de coordenadas enteras. Si su borde es simple y no tiene agujeros, su área queda determinada contando puntos, sin medir ángulos ni longitudes: los puntos interiores cuentan una unidad y los del borde, media unidad, con una corrección final de menos uno. Esta relación es el teorema de Pick.</p>
+<app-formula expression="K=I+\frac B2-1" displayMode="block"/>
+<h3>1. Precisar qué se cuenta</h3>
+<p>I es el número de puntos reticulares estrictamente interiores. B cuenta todos los puntos reticulares del borde, no únicamente los vértices: un lado largo puede contener puntos intermedios. Cada punto del borde se cuenta una sola vez, aunque pertenezca a dos lados. Las unidades de área corresponden al cuadrado fundamental de la cuadrícula.</p>
+<app-geometry-diagram diagram="pick-theorem" description="Los puntos verdes están estrictamente dentro del polígono reticular; los dorados están en su borde. Los puntos intermedios de cada lado también se cuentan en B."/>
+<h3>2. Triangular hasta obtener piezas elementales</h3>
+<p>Dividimos el polígono en triángulos con vértices reticulares. Si un triángulo contiene otro punto reticular en su interior o sobre un lado, lo subdividimos utilizando ese punto. El proceso termina porque solo hay un número finito de puntos de la cuadrícula dentro del polígono acotado. Al final, cada triángulo tiene tres puntos reticulares en el borde y ninguno adicional.</p>
+<p>Un triángulo de este tipo tiene área un medio. Para justificarlo, una transformación entera invertible lleva uno de sus lados primitivos al segmento de (0,0) a (1,0), conservando áreas. Su tercer vértice queda en (p,q), con q positivo; mediante una cizalla podemos tomar 0≤p&lt;q. Si q fuera mayor que uno, la sección a altura y=1 contendría (0,1) cuando p=0 o (1,1) cuando p≥1, contradiciendo que no hay otros puntos. Luego q=1.</p>
+<app-formula expression="K_{\mathrm{elemental}}=\frac12|\det((1,0),(p,1))|=\frac12" displayMode="block"/>
+<h3>3. Contar aristas de la triangulación</h3>
+<p>Sean T el número de triángulos y Eint el número de aristas interiores. El borde se ha dividido en B segmentos primitivos. Cada triángulo tiene tres aristas; las interiores se cuentan dos veces y las del borde una:</p>
+<app-formula expression="3T=2E_{\mathrm{int}}+B" displayMode="block"/>
+<p>La fórmula de Euler para una triangulación de un disco, sin contar una cara exterior, relaciona vértices, aristas y triángulos. Aquí hay I+B vértices y Eint+B aristas:</p>
+<app-formula expression="(I+B)-(E_{\mathrm{int}}+B)+T=1" displayMode="block"/>
+<h3>4. Eliminar las cantidades auxiliares</h3>
+<p>La segunda igualdad da Eint=I+T−1. La sustituimos en la primera y despejamos T. Como cada triángulo tiene área un medio, dividimos entre dos y aparece la fórmula buscada:</p>
+<app-formula expression="T=2I+B-2,\qquad K=\frac T2=I+\frac B2-1" displayMode="block"/>
+<h3>Historia y curiosidades</h3>
+<p>Georg Alexander Pick publicó el teorema en 1899; véase <a href="https://mathworld.wolfram.com/PicksTheorem.html">MathWorld</a>. Una consecuencia inmediata es que el área siempre es entera o semientera. Para un rectángulo de lados cuatro y tres hay seis puntos interiores y catorce en el borde: 6+7−1=12. Si existen h agujeros, la corrección topológica cambia y el resultado pasa a ser I+B/2−1+h. No debemos aplicar la versión sin agujeros a una región perforada ni trasladarla sin cambios al volumen tridimensional.</p>

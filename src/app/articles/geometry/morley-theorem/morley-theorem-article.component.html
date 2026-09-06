@@ -1,0 +1,24 @@
+<h2>Teorema de Morley</h2>
+<p class="dropcap">Si dividimos cada ángulo interior de un triángulo en tres partes iguales, las intersecciones de las trisectrices adyacentes a cada lado forman un triángulo equilátero. Este es el teorema de Morley. Debemos elegir las trisectrices interiores que quedan junto al mismo lado; otras elecciones producen configuraciones distintas. La demostración siguiente calcula una longitud y muestra que es simétrica en los tres ángulos.</p>
+<h3>1. Nombrar los ángulos y las intersecciones</h3>
+<p>Escribimos A=3α, B=3β y C=3γ; por tanto α+β+γ=60°. Llamamos P a la intersección junto a AB, Q a la que está junto a AC y T a la que está junto a BC. En el triángulo APQ, el ángulo en A es α. Usaremos R para el circunradio de ABC.</p>
+<app-formula expression="\alpha+\beta+\gamma=60^\circ,\qquad \angle PAQ=\alpha" displayMode="block"/>
+<app-geometry-diagram diagram="morley-theorem" description="P, Q y T son las intersecciones de las trisectrices interiores adyacentes a los lados. El triángulo verde es equilátero."/>
+<h3>2. Calcular AP y AQ</h3>
+<p>En ABP los ángulos en A y B son α y β. La ley de los senos da AP=AB·sinβ/sin(α+β). Como AB=2R sin3γ y α+β=60°−γ, sustituimos y aplicamos la identidad del ángulo triple, escrita en forma de producto:</p>
+<app-formula expression="AP=\frac{2R\sin3\gamma\sin\beta}{\sin(60^\circ-\gamma)}" displayMode="block"/>
+<app-formula expression="\sin3\gamma=4\sin\gamma\sin(60^\circ+\gamma)\sin(60^\circ-\gamma)" displayMode="block"/>
+<p>Los ángulos son positivos y menores de sesenta grados, así que el denominador no se anula. Cancelamos y repetimos la cuenta en ACQ. Para abreviar, llamamos k al factor común:</p>
+<app-formula expression="k=8R\sin\beta\sin\gamma,\qquad AP=k\sin(60^\circ+\gamma),\quad AQ=k\sin(60^\circ+\beta)" displayMode="block"/>
+<h3>3. Aplicar la ley de los cosenos</h3>
+<p>Ponemos u=60°+β y v=60°+γ. Su suma es 180°−α. La ley de los cosenos en APQ expresa PQ² mediante AP, AQ y el coseno de α. Usamos después cosα=−cos(u+v):</p>
+<app-formula expression="\frac{PQ^2}{k^2}=\sin^2u+\sin^2v-2\sin u\sin v\cos\alpha" displayMode="block"/>
+<app-formula expression="\sin^2u+\sin^2v+2\sin u\sin v\cos(u+v)=\sin^2(u+v)=\sin^2\alpha" displayMode="block"/>
+<p>La identidad intermedia se comprueba desarrollando el seno y el coseno de una suma. Al tomar la raíz positiva llegamos a una expresión donde α, β y γ aparecen en igualdad de condiciones:</p>
+<app-formula expression="PQ=8R\sin\alpha\sin\beta\sin\gamma" displayMode="block"/>
+<h3>4. Concluir la regularidad</h3>
+<p>Repetimos la cuenta desde B y C. La permutación de los tres ángulos no cambia su producto, de modo que PT y QT tienen exactamente la misma longitud que PQ. El triángulo interior es equilátero, aunque ABC sea escaleno. Esta conclusión depende de una igualdad exacta, no de la precisión con que se dibujen las trisectrices.</p>
+<h3>Historia y una limitación curiosa</h3>
+<p>Frank Morley descubrió esta configuración a finales del siglo XIX; posteriormente se estudiaron numerosas variantes con trisectrices exteriores. <a href="https://mathworld.wolfram.com/MorleysTheorem.html">MathWorld</a> recoge esas extensiones. El teorema no proporciona un procedimiento universal para trisecar ángulos con regla y compás: tal construcción es imposible en general. Demostrar una propiedad de trisectrices que existen geométricamente es distinto de poder construirlas con esas herramientas clásicas. Aquí la trigonometría permite una deducción directa y verificable de su sorprendente regularidad.</p>
+
+<p>Como comprobación adicional, en un triángulo equilátero las tres terceras partes de los ángulos valen veinte grados. La expresión del lado interior se reduce a ocho veces el circunradio por el cubo del seno de veinte grados, y da el mismo resultado desde cualquiera de los tres vértices.</p>

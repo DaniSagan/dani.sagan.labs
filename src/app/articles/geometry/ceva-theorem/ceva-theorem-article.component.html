@@ -1,0 +1,22 @@
+<h2>Teorema de Ceva</h2>
+<p class="dropcap">Tres rectas trazadas desde los vértices de un triángulo pueden parecer destinadas a encontrarse, pero el dibujo no demuestra su concurrencia. El teorema de Ceva proporciona un criterio exacto mediante tres cocientes de segmentos. Trabajaremos primero con puntos interiores a los lados; así todas las longitudes son positivas y no hay ambigüedad de signos.</p>
+<h3>1. Identificar las cevianas</h3>
+<p>En el triángulo ABC elegimos D sobre BC, E sobre CA y F sobre AB, sin coincidir con los extremos. Las rectas AD, BE y CF se llaman cevianas. Ceva afirma que pasan por un mismo punto si y solo si se cumple la siguiente igualdad, cuyos cocientes siguen siempre el recorrido B, C, A, B:</p>
+<app-formula expression="\frac{BD}{DC}\frac{CE}{EA}\frac{AF}{FB}=1" displayMode="block"/>
+<app-geometry-diagram diagram="ceva-theorem" description="Las cevianas AD, BE y CF se encuentran en P. Los tres triángulos alrededor de P permiten cancelar sus áreas."/>
+<h3>2. Convertir longitudes en áreas</h3>
+<p>Supongamos que las tres cevianas concurren en un punto interior P. Denotamos por [XYZ] el área del triángulo XYZ. Los triángulos PBD y PCD comparten la altura desde P hasta BC; por tanto, su cociente de áreas es BD/DC. Lo mismo sucede con ABD y ACD, utilizando ahora la altura desde A. Al restar respectivamente las áreas pequeñas de las grandes, se mantiene esa razón:</p>
+<app-formula expression="\frac{[ABD]}{[ACD]}=\frac{[PBD]}{[PCD]}=\frac{BD}{DC}" displayMode="block"/>
+<app-formula expression="\frac{[ABP]}{[ACP]}=\frac{BD}{DC}" displayMode="block"/>
+<p>La resta es válida porque ambos pares tienen la misma proporción y las áreas restantes son positivas. Este paso evita introducir ángulos o calcular las alturas: solo importa que sean comunes dentro de cada pareja.</p>
+<h3>3. Multiplicar las tres relaciones</h3>
+<p>Repetimos el razonamiento desde B y desde C. Las áreas obtenidas son las de los tres triángulos que rodean P. Al multiplicar, cada una aparece exactamente una vez en el numerador y otra en el denominador:</p>
+<app-formula expression="\frac{BD}{DC}=\frac{[ABP]}{[ACP]},\quad \frac{CE}{EA}=\frac{[BCP]}{[ABP]},\quad \frac{AF}{FB}=\frac{[ACP]}{[BCP]}" displayMode="block"/>
+<app-formula expression="\frac{[ABP]}{[ACP]}\frac{[BCP]}{[ABP]}\frac{[ACP]}{[BCP]}=1" displayMode="block"/>
+<p>Así queda demostrada la condición necesaria. La cancelación explica por qué el criterio tiene una forma tan sencilla aunque el triángulo sea completamente irregular.</p>
+<h3>4. Demostrar el recíproco</h3>
+<p>Ahora suponemos que el producto vale uno. AD y BE se cortan en P; prolongamos CP hasta encontrar AB en F′. La parte ya demostrada obliga a que AF′/F′B sea igual a AF/FB. En un segmento, una razón positiva fija determina un único punto interior. Luego F′ coincide con F y las tres cevianas concurren.</p>
+<h3>Historia y una aplicación</h3>
+<p>Giovanni Ceva publicó este criterio en 1678 en su estudio de las rectas concurrentes; de su apellido procede la palabra ceviana. Puede consultarse su contexto en <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Ceva_Giovanni/">MacTutor: Giovanni Ceva</a>. Una aplicación inmediata son las medianas: cada cociente vale uno, de modo que su concurrencia se deduce sin localizar previamente el baricentro. Para puntos en prolongaciones existen versiones con segmentos dirigidos, pero no debemos trasladar sus signos a esta formulación de longitudes interiores.</p>
+
+<p>Si una ceviana es una mediana y las otras dos dividen sus lados en razones recíprocas, el producto también vale uno. Esta observación permite diseñar ejemplos de concurrencia sin calcular previamente ninguna intersección y proporciona una comprobación numérica sencilla de la condición.</p>

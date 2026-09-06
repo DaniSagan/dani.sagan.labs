@@ -1,0 +1,20 @@
+<h2>La potencia de un punto</h2>
+<p class="dropcap">Una recta que pasa por un punto P puede cortar una circunferencia en diferentes parejas de puntos. Aunque las intersecciones cambien al girar la recta, el producto de sus distancias dirigidas desde P permanece constante. Esa cantidad es la potencia de P respecto de la circunferencia, y permite reunir muchas propiedades de cuerdas, secantes y tangentes en una sola identidad.</p>
+<h3>1. Definir la potencia</h3>
+<p>Sean O el centro y R el radio. Definimos la potencia como la diferencia entre el cuadrado de la distancia al centro y el cuadrado del radio. Puede ser positiva, cero o negativa según P esté fuera, sobre la circunferencia o dentro de ella. Su unidad física es una longitud al cuadrado.</p>
+<app-formula expression="\operatorname{Pot}(P)=PO^2-R^2" displayMode="block"/>
+<app-geometry-diagram diagram="power-of-point" description="Dos secantes desde P cortan la misma circunferencia. El producto de las distancias dirigidas a cada pareja de intersecciones es constante."/>
+<h3>2. Parametrizar una secante</h3>
+<p>Elegimos un vector unitario u en la dirección de la recta. Cada punto X de ella se escribe como P+tu. El parámetro t es una distancia dirigida: los puntos de una semirrecta tienen signo positivo y los de la contraria, negativo. Para que X pertenezca a la circunferencia, imponemos que su distancia a O sea R:</p>
+<app-formula expression="X=P+t\mathbf u,\quad |\mathbf u|=1,\qquad |P-O+t\mathbf u|^2=R^2" displayMode="block"/>
+<p>Al desarrollar el producto escalar aparece una ecuación cuadrática. Sus dos raíces son precisamente los parámetros de los puntos de intersección A y B:</p>
+<app-formula expression="t^2+2\mathbf u\cdot(P-O)t+PO^2-R^2=0" displayMode="block"/>
+<h3>3. Aplicar las relaciones de Viète</h3>
+<p>En una ecuación mónica, el producto de las raíces coincide con el término independiente. Este término no contiene la dirección u, y esa ausencia explica la invariancia geométrica que buscábamos:</p>
+<app-formula expression="t_A t_B=PO^2-R^2=\operatorname{Pot}(P)" displayMode="block"/>
+<p>Si P es interior, A y B quedan en semirrectas opuestas y el producto dirigido es negativo. El producto de las longitudes ordinarias es entonces R²−PO². Si P es exterior y la secante encuentra dos puntos, ambos parámetros tienen el mismo signo; su producto es positivo.</p>
+<h3>4. Recuperar la tangencia</h3>
+<p>Cuando la recta es tangente, las dos intersecciones coinciden en T: la cuadrática tiene una raíz doble. Por tanto, PT² es la potencia. El mismo resultado se obtiene aplicando Pitágoras al triángulo rectángulo POT, ya que el radio al punto de tangencia es perpendicular a la tangente:</p>
+<app-formula expression="PT^2=PO^2-R^2" displayMode="block"/>
+<h3>Historia y una consecuencia</h3>
+<p>Los productos de segmentos aparecen en el libro III de los <em>Elementos</em> de Euclides; la noción moderna de potencia los organiza en lenguaje algebraico. Véase <a href="https://mathworld.wolfram.com/CirclePower.html">MathWorld: potencia de una circunferencia</a>. Si igualamos las potencias respecto de dos circunferencias, los términos x²+y² se cancelan. El lugar resultante es una recta, llamada eje radical, cuando los centros son distintos. Si las circunferencias se cortan, esa recta pasa por ambas intersecciones. Así, una identidad cuadrática produce inesperadamente una construcción lineal que resulta muy útil en problemas con varias circunferencias.</p>

@@ -1,0 +1,24 @@
+<h2>La desigualdad de Erdős–Mordell</h2>
+<p class="dropcap">Sea P un punto interior de un triángulo ABC. Sus distancias a los vértices son RA, RB y RC; sus distancias perpendiculares a las rectas de los lados opuestos son ra, rb y rc. Erdős–Mordell afirma que la suma de las primeras es al menos el doble de la suma de las segundas. Los pies pueden caer en prolongaciones: siempre medimos la distancia a la recta.</p>
+<app-formula expression="R_A+R_B+R_C\geq2(r_a+r_b+r_c)" displayMode="block"/>
+<h3>1. Preparar una desigualdad desde un vértice</h3>
+<p>Usamos a=BC, b=CA y c=AB. Llamamos θ al ángulo BAP; como P está dentro, θ está entre cero y A. Las distancias a AB y AC se obtienen proyectando AP perpendicularmente. Esto proporciona dos expresiones trigonométricas sencillas, que conservan signo positivo:</p>
+<app-formula expression="r_c=R_A\sin\theta,\qquad r_b=R_A\sin(A-\theta)" displayMode="block"/>
+<app-geometry-diagram diagram="erdos-mordell" description="P está dentro de ABC. Los segmentos dorados llegan a los vértices y los azules son las distancias perpendiculares a las rectas de los lados."/>
+<h3>2. Acotar una combinación de distancias</h3>
+<p>Multiplicamos rb por c y rc por b. Desarrollamos el seno de una diferencia y agrupamos los coeficientes del seno y coseno de θ. La desigualdad de Cauchy para dos componentes permite acotar el resultado por el módulo del vector de coeficientes:</p>
+<app-formula expression="cr_b+br_c=R_A\bigl[c\sin A\cos\theta+(b-c\cos A)\sin\theta\bigr]" displayMode="block"/>
+<app-formula expression="cr_b+br_c\leq R_A\sqrt{c^2\sin^2A+(b-c\cos A)^2}" displayMode="block"/>
+<p>El cuadrado dentro de la raíz se simplifica a b²+c²−2bc cos A. La ley de los cosenos identifica esta cantidad con a². Como a es positivo, acabamos de demostrar una desigualdad local que relaciona un vértice con los dos lados que pasan por él:</p>
+<app-formula expression="R_A\geq\frac ca r_b+\frac ba r_c" displayMode="block"/>
+<h3>3. Repetir y sumar</h3>
+<p>Aplicamos exactamente el mismo razonamiento desde B y C, permutando las letras de forma cíclica. Cuando sumamos las tres desigualdades, cada distancia perpendicular aparece dos veces, con coeficientes recíprocos:</p>
+<app-formula expression="R_A+R_B+R_C\geq\left(\frac bc+\frac cb\right)r_a+\left(\frac ca+\frac ac\right)r_b+\left(\frac ab+\frac ba\right)r_c" displayMode="block"/>
+<p>Para cualquier número positivo t, la expresión t+1/t es al menos dos, porque (t−1)² es no negativa. Sustituimos esta cota en cada paréntesis y obtenemos el teorema completo.</p>
+<app-formula expression="t+\frac1t-2=\frac{(t-1)^2}{t}\geq0" displayMode="block"/>
+<h3>4. Examinar la igualdad</h3>
+<p>Como las tres distancias perpendiculares son positivas, la igualdad final exige a=b=c. Además deben ser igualdades las tres aplicaciones de Cauchy; en el equilátero eso sitúa P sobre las tres bisectrices, es decir, en su centro. Allí cada distancia a un vértice duplica el inradio. El factor dos es, por tanto, óptimo: aumentarlo haría falsa la afirmación en ese ejemplo.</p>
+<h3>Historia y alcance</h3>
+<p>Paul Erdős propuso la desigualdad en 1935; Louis Mordell y David Barrow publicaron soluciones en 1937. <a href="https://mathworld.wolfram.com/Erdos-MordellTheorem.html">MathWorld</a> recoge también demostraciones posteriores. Es notable que una comparación tan elemental entre seis segmentos necesitase una prueba ingeniosa. La hipótesis de interioridad asegura los signos empleados; para puntos exteriores no podemos reutilizar estas fórmulas sin revisar la región y las distancias orientadas.</p>
+
+<p>Conviene distinguir RA de ra: la primera llega a un vértice, mientras la segunda termina perpendicularmente en una recta. Ni sus extremos ni sus unidades cambian durante la prueba. El uso de letras mayúsculas y minúsculas separa dos familias de distancias que se comparan, pero que nunca deben identificarse individualmente.</p>

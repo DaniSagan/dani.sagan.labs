@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { MathjaxModule } from "mathjax-angular";
 
 @Component({
@@ -9,9 +9,11 @@ import { MathjaxModule } from "mathjax-angular";
   templateUrl: './formula.component.html',
   styleUrl: './formula.component.css'
 })
-export class FormulaComponent implements OnInit {
+export class FormulaComponent implements OnInit, OnDestroy {
   private _expression = '';
   private _displayMode: 'block' | 'inline' = 'block';
+  private readinessTimer?: ReturnType<typeof setTimeout>;
+  isMathJaxReady = false;
 
   @Input() showCode = false;
 
@@ -40,6 +42,10 @@ export class FormulaComponent implements OnInit {
     this.ensureMathJaxReady();
   }
 
+  ngOnDestroy(): void {
+    clearTimeout(this.readinessTimer);
+  }
+
   private updateCodeExpression(): void {
     const math = this._expression.trim();
     this.codeExpression = this._displayMode === 'inline'
@@ -49,13 +55,11 @@ export class FormulaComponent implements OnInit {
 
   private ensureMathJaxReady(): void {
     const mathJax = (window as any).MathJax;
-
-    if (!mathJax || !mathJax.startup || !mathJax.startup.promise) {
-      return;
+    // The directive can leave its element empty when instantiated during startup.
+    // Create it only once the loader exposes the ready typesetting API.
+    this.isMathJaxReady = !!mathJax?.isReady && typeof mathJax.typesetPromise === 'function';
+    if (!this.isMathJaxReady) {
+      this.readinessTimer = setTimeout(() => this.ensureMathJaxReady(), 50);
     }
-
-    mathJax.startup.promise.then(() => {
-      this.updateCodeExpression();
-    });
   }
 }

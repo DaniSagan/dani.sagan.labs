@@ -36,6 +36,7 @@ import { HexagonArticleComponent } from './regular-polygons/hexagon-article/hexa
 import { OctagonArticleComponent } from './regular-polygons/octagon-article/octagon-article.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 import { HeronFormulaArticleComponent } from './geometry/heron-formula/heron-formula-article.component';
+import { GEOMETRY_ARTICLES } from './geometry/geometry-articles';
 import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
 import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
 import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
@@ -182,6 +183,7 @@ const routes: Routes = [
       })),
       { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },
       { path: HeronFormulaArticleComponent.route, component: HeronFormulaArticleComponent },
+      ...GEOMETRY_ARTICLES.map(article => ({ path: article.route, component: article })),
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
       { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) },

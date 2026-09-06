@@ -1,0 +1,19 @@
+<h2>El problema de Apolonio</h2>
+<p class="dropcap">El problema de Apolonio consiste en construir una circunferencia tangente a tres circunferencias dadas. A diferencia del problema de hallar una circunferencia por tres puntos, la solución puede no ser única y los contactos pueden ser interiores o exteriores. Presentaremos una reducción algebraica que explica por qué aparecen ecuaciones cuadráticas y cómo comprobar que una solución calculada representa realmente la tangencia solicitada.</p>
+<h3>1. Traducir cada contacto a una distancia</h3>
+<p>Sean Ci=(xi,yi) los centros conocidos y ri sus radios positivos. Buscamos un centro X=(x,y) y un radio ρ positivo. Para contacto exterior, la distancia entre centros es ρ+ri; para contacto interior, es el valor absoluto de ρ−ri. Un signo εi permite escribir ambas posibilidades al cuadrado:</p>
+<app-formula expression="|X-C_i|^2=(\rho+\varepsilon_i r_i)^2,\qquad \varepsilon_i\in\{1,-1\}" displayMode="block"/>
+<p>El signo positivo selecciona contacto exterior. El negativo incluye las dos posibles inclusiones de circunferencias, que deberán distinguirse al revisar las distancias finales. Circunferencias coincidentes no cuentan como una tangencia ordinaria.</p>
+<app-geometry-diagram diagram="apollonius-problem" description="Tres circunferencias dadas rodean una solución central, tangente exteriormente a las tres. Los segmentos de centros permiten comprobar que cada distancia es la suma de los radios."/>
+<h3>2. Restar ecuaciones para reducir el grado</h3>
+<p>Desarrollamos la ecuación de cada circunferencia. Todas contienen x²+y²−ρ². Restar la primera de la segunda y de la tercera elimina esos términos y deja dos relaciones lineales entre las tres incógnitas:</p>
+<app-formula expression="-2(C_i-C_1)\cdot X+|C_i|^2-|C_1|^2=2\rho(\varepsilon_i r_i-\varepsilon_1 r_1)+r_i^2-r_1^2" displayMode="block"/>
+<p>Para centros conocidos no alineados, el sistema de dos ecuaciones permite expresar x e y como funciones afines de ρ. Escribimos esa solución en forma vectorial X=U+ρV, donde U y V dependen únicamente de los datos y de los signos elegidos.</p>
+<h3>3. Resolver una sola cuadrática</h3>
+<p>Sustituimos X=U+ρV en la primera condición de tangencia y agrupamos por potencias del radio. Obtenemos una ecuación de grado a lo sumo dos:</p>
+<app-formula expression="(|V|^2-1)\rho^2+2\bigl[V\cdot(U-C_1)-\varepsilon_1r_1\bigr]\rho+|U-C_1|^2-r_1^2=0" displayMode="block"/>
+<p>Si el coeficiente cuadrático se anula, resolvemos la ecuación lineal restante. Si el discriminante es negativo, esa elección de contactos no produce una circunferencia real. Para cada raíz positiva calculamos el centro y comprobamos las tres ecuaciones de distancia originales.</p>
+<h3>4. Distinguir soluciones y degeneraciones</h3>
+<p>Repetimos el procedimiento para las combinaciones de signos necesarias, eliminamos duplicados y descartamos radios nulos, negativos o coincidencias. En posición general el problema tiene como máximo ocho soluciones geométricas; las elecciones algebraicas de signos pueden representar una misma solución de más de una manera. Si los centros están alineados, la reducción lineal necesita tratar su rango y no debemos dividir por un determinante nulo.</p>
+<h3>Historia y curiosidades</h3>
+<p>Apolonio de Perge estudió problemas de tangencia en la Antigüedad. La reconstrucción de sus métodos y las soluciones posteriores forman una parte importante de la geometría clásica; véase <a href="https://mathworld.wolfram.com/ApolloniusProblem.html">MathWorld</a>. La reducción a operaciones racionales y raíces cuadradas concuerda con la constructibilidad mediante regla y compás en los casos ordinarios. Una curiosidad es que puntos y rectas pueden tratarse como variantes límite, dando una familia de problemas que incluye circunferencias inscritas y circunscritas.</p>

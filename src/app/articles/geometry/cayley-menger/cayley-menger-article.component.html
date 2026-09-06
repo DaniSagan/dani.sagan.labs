@@ -1,0 +1,22 @@
+<h2>Volumen del tetraedro: Tartaglia y Cayley–Menger</h2>
+<p class="dropcap">La fórmula de Herón obtiene el área de un triángulo a partir de tres distancias. En tres dimensiones existe un análogo: el volumen de un tetraedro se determina mediante las longitudes de sus seis aristas. La forma de Cayley–Menger organiza esas distancias en un determinante. Su deducción resulta más clara si primero construimos una matriz de productos escalares y después eliminamos las coordenadas.</p>
+<h3>1. Elegir un vértice como origen</h3>
+<p>Sean P0, P1, P2 y P3 los vértices. Escribimos ui=Pi−P0 para i=1,2,3 y dij para la distancia entre Pi y Pj. Los módulos de los tres vectores son d01, d02 y d03. Al desarrollar el cuadrado de ui−uj podemos recuperar sus productos escalares exclusivamente con las aristas:</p>
+<app-formula expression="u_i\cdot u_j=\frac{d_{0i}^2+d_{0j}^2-d_{ij}^2}{2}" displayMode="block"/>
+<app-geometry-diagram diagram="cayley-menger" description="Desde P0 parten tres vectores que generan el tetraedro. Las otras tres aristas permiten recuperar sus productos escalares sin medir ángulos."/>
+<h3>2. Formar la matriz de Gram</h3>
+<p>Llamamos G a la matriz de tres por tres cuyo elemento gij es ui·uj. Si U tiene esos vectores como columnas, G=UᵀU. Por las propiedades del determinante, det G=(det U)². El valor absoluto de det U es el volumen del paralelepípedo generado por los tres vectores.</p>
+<app-formula expression="G=U^{\mathsf T}U,\qquad \det G=(\det U)^2" displayMode="block"/>
+<p>Un tetraedro ocupa un sexto de ese volumen: su base triangular es la mitad del paralelogramo de base y la fórmula piramidal añade el factor un tercio. Por tanto:</p>
+<app-formula expression="V=\frac{|\det U|}{6},\qquad V^2=\frac{\det G}{36}" displayMode="block"/>
+<h3>3. Escribir una fórmula simétrica</h3>
+<p>La matriz de Gram distingue el vértice P0. Para tratar los cuatro vértices por igual, construimos una matriz ampliada con unos en la primera fila y columna, ceros en la diagonal y cuadrados de distancias en las demás posiciones:</p>
+<app-formula expression="M=\begin{pmatrix}0&1&1&1&1\\1&0&d_{01}^2&d_{02}^2&d_{03}^2\\1&d_{01}^2&0&d_{12}^2&d_{13}^2\\1&d_{02}^2&d_{12}^2&0&d_{23}^2\\1&d_{03}^2&d_{13}^2&d_{23}^2&0\end{pmatrix}" displayMode="block"/>
+<p>Restamos la fila correspondiente a P0 de las de P1, P2 y P3, y hacemos la misma operación con las columnas. El bloque inferior contiene −2G. Al expandir por la primera fila y columna se obtiene det M=8 det G. Combinando ambas expresiones:</p>
+<app-formula expression="\boxed{288V^2=\det M},\qquad V=\sqrt{\frac{\det M}{288}}" displayMode="block"/>
+<h3>4. Comprobar y validar los datos</h3>
+<p>Para un tetraedro regular de arista L, G tiene diagonal L² y elementos restantes L²/2. Su determinante es L⁶/2, de donde V=L³/(6√2). Si los cuatro puntos son coplanarios, el determinante se anula. Seis números positivos arbitrarios no bastan: sus caras deben satisfacer las desigualdades triangulares y su matriz de Gram debe ser positiva definida para obtener un tetraedro no degenerado.</p>
+<h3>Historia y curiosidades</h3>
+<p>Las expresiones del volumen mediante aristas tienen antecedentes asociados a Tartaglia en el Renacimiento; Cayley y Menger desarrollaron el enfoque determinantal en la geometría de distancias. <a href="https://mathworld.wolfram.com/Cayley-MengerDeterminant.html">MathWorld</a> presenta su generalización a dimensiones mayores. Esta fórmula permite reconstruir medidas espaciales sin conocer orientaciones absolutas y aparece en problemas de localización. El determinante proporciona volumen al cuadrado: por sí solo no distingue dos tetraedros especulares.</p>
+
+<p>El factor de escala ofrece otra comprobación: si multiplicamos las seis aristas por una misma longitud L, el volumen debe multiplicarse por L al cubo. En la matriz de Gram, cada entrada se multiplica por L al cuadrado, su determinante por L a la sexta y la raíz final por L al cubo.</p>

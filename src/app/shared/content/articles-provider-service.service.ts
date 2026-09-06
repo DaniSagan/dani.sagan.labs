@@ -38,6 +38,7 @@ import { HexagonArticleComponent } from 'src/app/articles/regular-polygons/hexag
 import { OctagonArticleComponent } from 'src/app/articles/regular-polygons/octagon-article/octagon-article.component';
 import { PtolemyTheoremArticleComponent } from 'src/app/articles/geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 import { HeronFormulaArticleComponent } from 'src/app/articles/geometry/heron-formula/heron-formula-article.component';
+import { GEOMETRY_ARTICLES } from 'src/app/articles/geometry/geometry-articles';
 import { KochSnowflakeComponent } from 'src/app/articles/fractals/koch-snowflake/koch-snowflake.component';
 import { CantorSetComponent } from 'src/app/articles/fractals/cantor-set/cantor-set.component';
 import { VicsekFractalComponent } from 'src/app/articles/fractals/vicsek-fractal/vicsek-fractal.component';
@@ -184,7 +185,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
 
   geometry: NavbarItem[] = [
     { name: PtolemyTheoremArticleComponent.title, route: PtolemyTheoremArticleComponent.route },
-    { name: HeronFormulaArticleComponent.title, route: HeronFormulaArticleComponent.route }
+    { name: HeronFormulaArticleComponent.title, route: HeronFormulaArticleComponent.route },
+    ...GEOMETRY_ARTICLES.map(article => ({ name: article.title, route: article.route }))
   ];
 
   probability: NavbarItem[] = [

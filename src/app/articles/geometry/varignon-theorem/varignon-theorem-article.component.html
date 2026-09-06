@@ -1,0 +1,21 @@
+<h2>Teorema de Varignon</h2>
+<p class="dropcap">Al unir consecutivamente los puntos medios de los lados de cualquier cuadrilátero obtenemos un paralelogramo. No hace falta que el cuadrilátero original sea regular, tenga lados paralelos o esté inscrito en una circunferencia. El teorema de Varignon descubre una estructura estable dentro de una figura arbitraria. Su demostración se apoya en el segmento medio de un triángulo y puede expresarse también con vectores.</p>
+<h3>1. Nombrar los puntos medios</h3>
+<p>Sean A, B, C y D los vértices ordenados del cuadrilátero. Llamamos E, F, G y H a los puntos medios de AB, BC, CD y DA, respectivamente. Trazamos las dos diagonales AC y BD, que servirán como direcciones de referencia. Para la interpretación usual de áreas comenzaremos suponiendo que ABCD es convexo.</p>
+<app-formula expression="E=\frac{A+B}{2},\quad F=\frac{B+C}{2},\quad G=\frac{C+D}{2},\quad H=\frac{D+A}{2}" displayMode="block"/>
+<app-geometry-diagram diagram="varignon-theorem" description="E, F, G y H son los puntos medios consecutivos. El paralelogramo verde tiene lados paralelos a las diagonales AC y BD del cuadrilátero exterior."/>
+<h3>2. Comparar cada lado con una diagonal</h3>
+<p>En el triángulo ABC, EF une dos puntos medios, por lo que es paralelo a AC y mide la mitad. En ADC, HG tiene la misma propiedad. Para ver simultáneamente la igualdad de longitud y de dirección, restamos las coordenadas vectoriales:</p>
+<app-formula expression="\overrightarrow{EF}=\frac{C-A}{2}=\overrightarrow{HG}" displayMode="block"/>
+<p>El mismo razonamiento aplicado a BCD y BAD compara los otros dos lados del cuadrilátero interior con la diagonal BD:</p>
+<app-formula expression="\overrightarrow{FG}=\frac{D-B}{2}=\overrightarrow{EH}" displayMode="block"/>
+<p>Tenemos dos pares de lados opuestos iguales y paralelos. Esta es precisamente la caracterización de un paralelogramo y demuestra la afirmación, sin tener que calcular ninguno de sus ángulos.</p>
+<h3>3. Deducir su área</h3>
+<p>El área de un paralelogramo es el valor absoluto del determinante de dos lados adyacentes. Sustituimos las mitades de las diagonales encontradas anteriormente. El área de un cuadrilátero convexo puede expresarse como la mitad del valor absoluto del determinante de sus diagonales:</p>
+<app-formula expression="[EFGH]=\frac14|\det(C-A,D-B)|" displayMode="block"/>
+<app-formula expression="[ABCD]=\frac12|\det(C-A,D-B)|,\qquad [EFGH]=\frac12[ABCD]" displayMode="block"/>
+<p>La segunda identidad se verifica descomponiendo en los dos triángulos de una diagonal o expandiendo el área orientada por coordenadas. Así, el paralelogramo ocupa exactamente la mitad del área original, aunque visualmente parezca muy desplazado hacia un extremo.</p>
+<h3>4. Reconocer casos especiales</h3>
+<p>Los lados del paralelogramo miden AC/2 y BD/2. Si las diagonales originales tienen igual longitud, el paralelogramo es un rombo. Si son perpendiculares, es un rectángulo. Si se cumplen ambas condiciones, es un cuadrado. Estas conclusiones dependen de las diagonales del cuadrilátero exterior, no directamente de sus lados.</p>
+<h3>Historia y curiosidades</h3>
+<p>Pierre Varignon fue un matemático francés asociado también a la estática y la composición de fuerzas; <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Varignon/">MacTutor</a> describe su trayectoria. El argumento vectorial muestra que la propiedad de paralelismo sigue siendo válida para cuadriláteros cóncavos e incluso cruzados, aunque en estos últimos debemos hablar con cuidado de áreas orientadas. Además, las diagonales del paralelogramo se cortan en el promedio (A+B+C+D)/4, una forma sencilla de localizar el centro de los cuatro vértices con pesos iguales.</p>

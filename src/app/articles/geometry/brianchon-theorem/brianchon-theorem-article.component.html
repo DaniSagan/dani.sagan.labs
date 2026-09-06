@@ -1,0 +1,19 @@
+<h2>Teorema de Brianchon</h2>
+<p class="dropcap">Si los seis lados de un hexágono son tangentes a una misma cónica, las tres rectas que unen vértices opuestos pasan por un punto común. Este es el teorema de Brianchon, dual del teorema de Pascal. La dualidad intercambia puntos y rectas, pero no es solamente una analogía verbal: puede describirse mediante ecuaciones que transforman alineación en concurrencia.</p>
+<h3>1. Describir el hexágono circunscrito</h3>
+<p>Llamamos U1,…,U6 a los puntos de contacto de seis tangentes consecutivas l1,…,l6. El vértice Vi es la intersección de li y li+1, cerrando los índices después del seis. Lo que debemos demostrar es que V1V4, V2V5 y V3V6 concurren. Suponemos una configuración no degenerada, con vértices y rectas bien definidos.</p>
+<app-formula expression="V_i=l_i\cap l_{i+1},\qquad l_7=l_1" displayMode="block"/>
+<app-geometry-diagram diagram="brianchon-theorem" description="Los seis lados son tangentes a la circunferencia. Las rectas V1V4, V2V5 y V3V6 concurren en T, el punto de Brianchon."/>
+<h3>2. Introducir polos y polares</h3>
+<p>Para una circunferencia unidad, la tangente en un punto U de ella tiene ecuación U·X=1. Más generalmente, asociamos a un punto P la recta P·X=1, llamada su polar. La condición es simétrica: si Q pertenece a la polar de P, entonces P pertenece a la polar de Q.</p>
+<app-formula expression="|U|=1:\quad l_U:\ U\cdot X=1" displayMode="block"/>
+<app-formula expression="P\cdot Q=1\quad\Longleftrightarrow\quad Q\cdot P=1" displayMode="block"/>
+<p>En coordenadas homogéneas, la cónica se escribe XᵀQX=0 con Q una matriz simétrica invertible, y la polar de P tiene ecuación PᵀQX=0. Esta forma incluye puntos y rectas del infinito y evita las excepciones de la descripción afín.</p>
+<h3>3. Aplicar Pascal a los contactos</h3>
+<p>Como Vi está en las tangentes de Ui y Ui+1, la simetría anterior implica que la polar de Vi es la cuerda UiUi+1. Pascal aplicado a los seis contactos asegura que están alineadas las intersecciones de tres parejas de esas cuerdas opuestas:</p>
+<app-formula expression="X_1=U_1U_2\cap U_4U_5,\quad X_2=U_2U_3\cap U_5U_6,\quad X_3=U_3U_4\cap U_6U_1" displayMode="block"/>
+<p>La polar de X1 es la recta V1V4, pues ambos vértices pertenecen a ella por la misma simetría. Análogamente, las polares de X2 y X3 son las otras dos diagonales principales.</p>
+<h3>4. Convertir alineación en concurrencia</h3>
+<p>Sea l la recta que contiene X1, X2 y X3. Su polo T es el punto cuya polar es l. Como cada Xi pertenece a la polar de T, la reciprocidad implica que T pertenece a la polar de cada Xi. Las tres diagonales pasan, por tanto, por T. Así queda probada la concurrencia a partir de Pascal y de una transformación algebraica explícita.</p>
+<h3>Historia y curiosidades</h3>
+<p>Charles Julien Brianchon publicó el resultado a comienzos del siglo XIX. Su relación con Pascal es una de las ilustraciones clásicas del principio de dualidad; véase <a href="https://mathworld.wolfram.com/BrianchonsTheorem.html">MathWorld</a>. En un hexágono regular circunscrito, T es el centro, pero en un hexágono general no debemos suponer que sea un centro métrico. El punto de concurrencia puede incluso estar en el infinito, caso que se interpreta como tres rectas paralelas. La formulación proyectiva reúne esas posibilidades sin cambiar el teorema.</p>

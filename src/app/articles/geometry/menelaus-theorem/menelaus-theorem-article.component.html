@@ -1,0 +1,24 @@
+<h2>Teorema de Menelao</h2>
+<p class="dropcap">El teorema de Menelao permite decidir cuándo tres puntos situados en las rectas que contienen los lados de un triángulo están alineados. Es un compañero natural de Ceva: allí buscamos tres rectas concurrentes; aquí buscamos tres puntos sobre una misma transversal. Para incluir las prolongaciones sin separar numerosos dibujos, utilizaremos coordenadas y cocientes con signo.</p>
+<h3>1. Fijar los puntos y los signos</h3>
+<p>Tomamos D en la recta BC, E en CA y F en AB, distintos de los vértices. Escribimos sus posiciones mediante parámetros reales. Un parámetro entre cero y uno representa un punto interior; fuera de ese intervalo representa una prolongación. Las expresiones siguientes son combinaciones afines, por lo que sus coeficientes suman uno:</p>
+<app-formula expression="D=(1-d)B+dC,\quad E=(1-e)C+eA,\quad F=(1-f)A+fB" displayMode="block"/>
+<p>Con esta convención, BD/DC significa d/(1−d), y análogamente para los otros lados. Es positivo en el interior y negativo en el exterior. Menelao afirma que la alineación equivale a que el producto sea menos uno.</p>
+<app-formula expression="\frac{d}{1-d}\frac{e}{1-e}\frac{f}{1-f}=-1" displayMode="block"/>
+<app-geometry-diagram diagram="menelaus-theorem" description="D y E están en dos lados del triángulo; F se encuentra en la prolongación de AB. La transversal DEF produce un cociente negativo."/>
+<h3>2. Elegir coordenadas sencillas</h3>
+<p>Una transformación afín conserva rectas y razones de segmentos sobre una misma recta. Podemos trabajar, por tanto, con A=(0,0), B=(1,0) y C=(0,1), aunque el triángulo original tenga otra forma. Sustituimos estas coordenadas en las definiciones anteriores:</p>
+<app-formula expression="D=(1-d,d),\quad E=(0,1-e),\quad F=(f,0)" displayMode="block"/>
+<p>Tres puntos están alineados exactamente cuando su determinante de coordenadas ampliadas es cero. Geométricamente, ese determinante es el doble del área orientada del triángulo DEF; un área nula expresa la colinealidad que queremos demostrar.</p>
+<h3>3. Desarrollar el determinante</h3>
+<p>Escribimos una fila por cada punto y añadimos una tercera coordenada igual a uno. La expansión por la primera fila permite comprobar cada término sin invocar ningún resultado métrico:</p>
+<app-formula expression="\begin{vmatrix}1-d&d&1\\0&1-e&1\\f&0&1\end{vmatrix}=(1-d)(1-e)+df-f(1-e)=0" displayMode="block"/>
+<p>Agrupando de otra manera, la misma igualdad adopta la forma adecuada para recuperar los cocientes:</p>
+<app-formula expression="(1-d)(1-e)(1-f)+def=0" displayMode="block"/>
+<p>Como ninguno de los puntos coincide con un vértice, los denominadores son distintos de cero. Dividimos entre su producto y obtenemos exactamente la identidad de Menelao. Todos los pasos son reversibles, por lo que también hemos demostrado el recíproco.</p>
+<h3>4. Leer un caso concreto</h3>
+<p>Si D y E son los puntos medios de BC y CA, tenemos d=e=1/2. La transversal DE es paralela a AB y no existe un punto F finito: la ecuación exigiría f/(1−f)=−1, imposible para un número real. Este ejemplo muestra por qué hay que distinguir intersecciones finitas y direcciones paralelas.</p>
+<h3>Historia y curiosidades</h3>
+<p>Menelao de Alejandría trabajó en geometría esférica y astronomía. Su obra <em>Sphaerica</em> contiene una versión esférica del resultado; la relación plana era conocida anteriormente. <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Menelaus/">MacTutor</a> explica esta distinción histórica. Con longitudes absolutas el producto es uno, pero además hay que especificar qué puntos están en prolongaciones; los signos condensan precisamente esa información geométrica.</p>
+
+<p>En una transversal ordinaria que corta dos lados interiores, el tercer corte pertenece a una prolongación. Por eso exactamente uno de los tres cocientes es negativo. Ese signo explica el menos uno del producto y permite revisar la convención directamente sobre el dibujo.</p>

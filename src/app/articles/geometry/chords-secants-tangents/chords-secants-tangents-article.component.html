@@ -1,0 +1,20 @@
+<h2>Teoremas de cuerdas, secantes y tangentes</h2>
+<p class="dropcap">Tres reglas muy utilizadas en problemas de circunferencias son manifestaciones de una misma idea: los triángulos que comparten determinados ángulos inscritos son semejantes. Distinguiremos las cuerdas que se cruzan dentro, las secantes desde un punto exterior y una tangente junto a una secante. En cada caso precisaremos qué segmentos se multiplican, para evitar uno de los errores más frecuentes de aplicación.</p>
+<h3>1. Dos cuerdas que se cortan</h3>
+<p>Sean AB y CD dos cuerdas que se cortan en un punto interior P. Los triángulos APC y DPB tienen iguales los ángulos en P, por ser opuestos por el vértice. Además, el ángulo ACP coincide con DBP: ambos son ángulos inscritos que abarcan el arco AD. Por semejanza, los lados correspondientes cumplen:</p>
+<app-formula expression="\frac{PA}{PD}=\frac{PC}{PB}\quad\Longrightarrow\quad PA\cdot PB=PC\cdot PD" displayMode="block"/>
+<p>El producto utiliza las dos partes de una misma cuerda, no una parte de cada cuerda elegida arbitrariamente. Todas las longitudes de esta expresión son positivas, porque no estamos usando segmentos dirigidos.</p>
+<app-geometry-diagram diagram="chords-secants-tangents" description="Las cuerdas AB y CD se cortan en P. Los colores distinguen los pares de segmentos que se multiplican en cada cuerda."/>
+<h3>2. Dos secantes exteriores</h3>
+<p>Ahora P está fuera de la circunferencia. Una semirrecta la corta primero en A y después en B; otra encuentra primero C y después D. Los triángulos PAD y PCB comparten el ángulo en P. Sus otros ángulos se relacionan por los arcos inscritos y sus suplementarios, dando la semejanza adecuada:</p>
+<app-formula expression="\frac{PA}{PC}=\frac{PD}{PB}\quad\Longrightarrow\quad PA\cdot PB=PC\cdot PD" displayMode="block"/>
+<p>Aquí PA es el tramo exterior y PB es la distancia completa desde P hasta la segunda intersección. Sustituir PB por AB sería incorrecto. Si el tramo exterior mide dos y el interior seis, el producto es dos por ocho, no dos por seis.</p>
+<h3>3. Una tangente y una secante</h3>
+<p>Mantenemos la secante PAB y giramos la otra recta hasta que sus dos intersecciones se reúnan en un único punto T. En ese límite PC y PD tienden ambos a PT; la igualdad anterior se transforma en:</p>
+<app-formula expression="PT^2=PA\cdot PB" displayMode="block"/>
+<p>También podemos justificarla mediante Pitágoras: el radio OT es perpendicular a PT, de modo que PT²=PO²−R². Al resolver la intersección de cualquier secante con la circunferencia, el producto PA·PB da esa misma diferencia. Esto conecta las tres reglas con la potencia de un punto.</p>
+<h3>4. Resolver y comprobar un ejemplo</h3>
+<p>Si PA=2 y AB=6, primero sumamos para obtener PB=8. La longitud tangente es la raíz cuadrada del producto, es decir, cuatro. Para una segunda secante con PC=1, su longitud total PD debe ser dieciséis. Estas cuentas muestran por qué conviene dibujar y nombrar siempre el punto cercano y el lejano antes de sustituir números.</p>
+<app-formula expression="PB=2+6=8,\qquad PT=\sqrt{2\cdot8}=4" displayMode="block"/>
+<h3>Historia y curiosidades</h3>
+<p>Estas relaciones pertenecen a la geometría clásica del círculo y aparecen en las proposiciones 35, 36 y 37 del libro III de Euclides; pueden consultarse en <a href="https://mathcs.clarku.edu/~djoyce/elements/bookIII/bookIII.html">los Elementos</a>. Una curiosidad útil es que dos tangentes trazadas desde el mismo punto exterior tienen igual longitud: sus cuadrados son la misma potencia positiva. Para un punto interior no existen tangentes reales y el producto de cuerdas es el opuesto de la potencia dirigida.</p>

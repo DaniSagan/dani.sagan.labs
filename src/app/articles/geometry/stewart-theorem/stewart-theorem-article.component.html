@@ -1,0 +1,26 @@
+<h2>Teorema de Stewart</h2>
+<p class="dropcap">Una ceviana une un vértice de un triángulo con un punto del lado opuesto. El teorema de Stewart permite calcular su longitud a partir de los tres lados y de las dos partes en que divide la base. Es una herramienta general: las fórmulas de la mediana y de la bisectriz aparecen como casos particulares, sin necesitar una demostración completamente nueva para cada construcción.</p>
+<h3>1. Fijar cuidadosamente las letras</h3>
+<p>En el triángulo ABC tomamos D en el interior de BC. Escribimos a=BC, b=CA, c=AB, m=BD, n=DC y d=AD. Por tanto a=m+n. La notación importa porque b se combina con m y c con n, los segmentos que quedan frente a esos lados en los dos triángulos menores.</p>
+<app-formula expression="a=m+n,\qquad b^2m+c^2n=a(d^2+mn)" displayMode="block"/>
+<app-geometry-diagram diagram="stewart-theorem" description="La ceviana AD tiene longitud d y divide BC en BD igual a m y DC igual a n. La altura h, distinta de d, permite eliminar la proyección x."/>
+<h3>2. Colocar el origen en el pie de la ceviana</h3>
+<p>Situamos D=(0,0), B=(−m,0), C=(n,0) y A=(x,h). Aquí h es la altura sobre la recta BC, mientras d es la longitud de la ceviana; en general no son iguales. Aplicamos Pitágoras a las distancias desde A a D, B y C:</p>
+<app-formula expression="d^2=x^2+h^2" displayMode="block"/>
+<app-formula expression="c^2=(x+m)^2+h^2=d^2+2mx+m^2" displayMode="block"/>
+<app-formula expression="b^2=(x-n)^2+h^2=d^2-2nx+n^2" displayMode="block"/>
+<p>Estas identidades funcionan aunque la proyección perpendicular de A quede fuera del segmento BC. La coordenada x puede tener cualquier signo, y el cálculo registra automáticamente esa posición.</p>
+<h3>3. Eliminar la proyección desconocida</h3>
+<p>Multiplicamos la ecuación de b² por m y la de c² por n. Los términos lineales en x quedan iguales y opuestos. Al sumar desaparecen; los términos restantes contienen el factor m+n:</p>
+<app-formula expression="mb^2+nc^2=(m+n)d^2+mn^2+nm^2" displayMode="block"/>
+<app-formula expression="mb^2+nc^2=(m+n)(d^2+mn)=a(d^2+mn)" displayMode="block"/>
+<p>Esto demuestra Stewart mediante una cancelación concreta. Despejar d² proporciona una fórmula directamente utilizable, y la longitud se obtiene tomando su raíz positiva:</p>
+<app-formula expression="d^2=\frac{mb^2+nc^2}{a}-mn" displayMode="block"/>
+<h3>4. Recuperar la mediana y la bisectriz</h3>
+<p>Si D es el punto medio, m=n=a/2. Sustituimos, simplificamos y encontramos la conocida expresión de la mediana. Si AD es una bisectriz, el teorema de la bisectriz da m/n=c/b y permite obtener la segunda fórmula:</p>
+<app-formula expression="d_{\mathrm{mediana}}^2=\frac{b^2+c^2}{2}-\frac{a^2}{4}" displayMode="block"/>
+<app-formula expression="m=\frac{ac}{b+c},\quad n=\frac{ab}{b+c},\quad d_{\mathrm{bisectriz}}^2=bc\left(1-\frac{a^2}{(b+c)^2}\right)" displayMode="block"/>
+<h3>Historia y curiosidades</h3>
+<p>Matthew Stewart publicó resultados geométricos de este tipo en el siglo XVIII; <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Stewart/">MacTutor</a> describe su trabajo. La identidad es homogénea de grado tres: cada término tiene unidades de longitud al cubo. Esta observación sirve para detectar errores al copiar la fórmula, por ejemplo olvidar un factor a. Para cevianas exteriores existen versiones con segmentos dirigidos; la demostración por coordenadas permite adaptarlas, pero la expresión con m y n positivos de este artículo supone que D está dentro de BC.</p>
+
+<p>Como comprobación, en un triángulo equilátero de lado dos la mediana divide la base en dos unidades iguales. La fórmula da d² = cuatro menos uno, es decir, tres. Obtenemos la altura raíz de tres, exactamente el resultado de aplicar Pitágoras a cualquiera de las dos mitades rectangulares. Esta coincidencia también verifica que hemos asociado correctamente cada lado con su segmento de base.</p>

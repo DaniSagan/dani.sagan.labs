@@ -1,0 +1,20 @@
+<h2>Principio de Cavalieri</h2>
+<p class="dropcap">Dos sólidos pueden tener siluetas muy distintas y, sin embargo, el mismo volumen. El principio de Cavalieri afirma que esto sucede si tienen la misma altura y sus secciones por cada plano paralelo a las bases tienen áreas iguales a la misma cota. No basta comparar una sección central o varias muestras: la igualdad debe cumplirse en todos los niveles relevantes.</p>
+<h3>1. Describir las secciones</h3>
+<p>Fijamos un eje vertical z y dos planos z=0 y z=h que contienen ambos sólidos entre ellos. Llamamos A1(z) y A2(z) a las áreas de sus secciones horizontales. Para sólidos ordinarios, con fronteras suficientemente regulares y funciones de sección integrables, el volumen se obtiene acumulando esas áreas a lo largo de la altura:</p>
+<app-formula expression="V_1=\int_0^h A_1(z)\,dz,\qquad V_2=\int_0^h A_2(z)\,dz" displayMode="block"/>
+<app-geometry-diagram diagram="cavalieri-principle" description="Un prisma recto y otro oblicuo tienen igual altura y secciones horizontales congruentes. La capa azul muestra la comparación a una misma cota."/>
+<h3>2. Justificar la acumulación</h3>
+<p>Dividimos la altura en capas de espesor Δz. En una capa muy delgada, el volumen se aproxima por el área de una sección representativa multiplicada por ese espesor. Sumamos todas las capas y hacemos que su grosor tienda a cero. La integral representa precisamente ese límite, no una suma de superficies de espesor nulo tomadas individualmente:</p>
+<app-formula expression="V=\lim_{n\to\infty}\sum_{j=1}^{n}A(\xi_j)\Delta z,\qquad \Delta z=\frac hn" displayMode="block"/>
+<p>Si A1(z)=A2(z), las sumas correspondientes tienen los mismos términos cuando elegimos las mismas cotas. Sus límites coinciden y queda demostrado el principio. Más generalmente, si A1(z)≤A2(z) en todas las cotas, obtenemos V1≤V2.</p>
+<h3>3. Aplicarlo a un prisma oblicuo</h3>
+<p>Un prisma recto de base B y altura h tiene sección constante B. En un prisma oblicuo, las secciones paralelas a la base son traslaciones de ella y conservan su área. Aunque el sólido se incline y sus aristas laterales sean más largas, el volumen permanece igual:</p>
+<app-formula expression="A(z)=B,\qquad V=\int_0^h B\,dz=Bh" displayMode="block"/>
+<p>La altura utilizada es la distancia perpendicular entre los planos de las bases, no la longitud de una arista inclinada. Esta distinción explica por qué inclinar un mazo de cartas sin comprimirlo no cambia su volumen idealizado.</p>
+<h3>4. Comparar una esfera con cilindro y cono</h3>
+<p>Consideremos una semiesfera de radio R, con z medido desde su plano ecuatorial. Su sección tiene área π(R²−z²). Un cilindro de radio R y altura R al que quitamos un cono de radio de sección z posee exactamente esa misma área horizontal:</p>
+<app-formula expression="A(z)=\pi R^2-\pi z^2,\qquad 0\leq z\leq R" displayMode="block"/>
+<p>Por Cavalieri, el volumen de la semiesfera es πR³−πR³/3=2πR³/3. Duplicándolo obtenemos el volumen de la esfera, 4πR³/3.</p>
+<h3>Historia y curiosidades</h3>
+<p>Bonaventura Cavalieri desarrolló su método de los indivisibles en el siglo XVII, en una etapa anterior a la formulación moderna del cálculo integral. <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Cavalieri/">MacTutor</a> describe su contexto. Las comparaciones de secciones tienen también antecedentes en Arquímedes. El principio no dice que dos sólidos de igual volumen tengan necesariamente iguales secciones: la condición es suficiente, pero no necesaria. Por eso conviene distinguir siempre la dirección de la implicación al utilizarlo.</p>

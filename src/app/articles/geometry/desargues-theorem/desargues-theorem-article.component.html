@@ -1,0 +1,20 @@
+<h2>Teorema de Desargues</h2>
+<p class="dropcap">Dos triángulos son perspectivos desde un punto cuando las rectas que unen sus vértices correspondientes concurren. El teorema de Desargues afirma que, en ese caso, las intersecciones de sus lados correspondientes están alineadas. En el plano proyectivo real también vale el recíproco. Esta relación entre un centro y un eje de perspectiva es fundamental para comprender cómo se comportan las figuras bajo proyecciones.</p>
+<h3>1. Nombrar centro e intersecciones</h3>
+<p>Consideramos los triángulos A1A2A3 y B1B2B3. Las rectas AiBi pasan por O, el centro de perspectiva. Para cada pareja de índices definimos Xij como la intersección entre los lados AiAj y BiBj. Buscamos una recta que contenga X12, X13 y X23. Suponemos que los puntos correspondientes son distintos y que las intersecciones están bien definidas.</p>
+<app-formula expression="X_{ij}=A_iA_j\cap B_iB_j" displayMode="block"/>
+<app-geometry-diagram diagram="desargues-theorem" description="Los vértices correspondientes de los dos triángulos están alineados con O. Las intersecciones X12, X13 y X23 de sus lados correspondientes forman el eje de perspectiva."/>
+<h3>2. Representar los puntos homogéneamente</h3>
+<p>Un punto del plano proyectivo se representa mediante un vector de tres componentes no nulo, considerado salvo multiplicación por un escalar no nulo. Dos puntos generan la recta de sus combinaciones lineales. Como Ai, Bi y O están alineados, podemos elegir representantes de manera que:</p>
+<app-formula expression="\mathbf b_i=\mathbf a_i+\lambda_i\mathbf o" displayMode="block"/>
+<p>Esta normalización se obtiene reescalando cada bi; excluimos que Bi coincida con O. Los parámetros λi no tienen que ser iguales. Precisamente su libertad permite describir triángulos perspectivos que no son simples copias por homotecia.</p>
+<h3>3. Construir cada intersección</h3>
+<p>Buscamos una combinación de bi y bj en la que desaparezca el término que contiene o. Multiplicar bi por λj y bj por λi y restar logra esa cancelación. El vector resultante es a la vez combinación de los ai y de los bi, por lo que representa el punto de intersección buscado:</p>
+<app-formula expression="\mathbf x_{ij}=\lambda_j\mathbf a_i-\lambda_i\mathbf a_j=\lambda_j\mathbf b_i-\lambda_i\mathbf b_j" displayMode="block"/>
+<p>No hemos usado pendientes, de modo que los lados verticales o paralelos no introducen divisiones especiales. Un vector con última coordenada cero representa sencillamente un punto del infinito.</p>
+<h3>4. Exhibir una dependencia lineal</h3>
+<p>Escribimos las tres expresiones anteriores. Al combinarlas con los coeficientes indicados, cada vector ai aparece dos veces con signos opuestos y desaparece:</p>
+<app-formula expression="\lambda_3\mathbf x_{12}-\lambda_2\mathbf x_{13}+\lambda_1\mathbf x_{23}=\mathbf0" displayMode="block"/>
+<p>Los tres representantes son linealmente dependientes y, por tanto, los tres puntos están alineados. El recíproco se obtiene aplicando el mismo razonamiento dual a las rectas: intercambiamos generar una recta por intersectar dos rectas. En coordenadas, esa dualidad usa la misma dependencia lineal en el espacio de coeficientes de las ecuaciones.</p>
+<h3>Historia y curiosidades</h3>
+<p>Girard Desargues desarrolló en el siglo XVII una geometría vinculada a la perspectiva y las secciones cónicas. <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Desargues/">MacTutor</a> describe la recepción de sus ideas. La configuración completa contiene diez puntos y diez rectas, con tres incidencias en cada elemento. Aunque el teorema es válido en el plano proyectivo real, existen planos proyectivos abstractos no desarguesianos. Eso muestra que la incidencia puede estudiarse con axiomas más generales que las coordenadas ordinarias usadas en esta demostración.</p>

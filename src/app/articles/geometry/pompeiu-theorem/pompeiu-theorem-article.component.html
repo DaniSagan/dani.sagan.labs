@@ -1,0 +1,20 @@
+<h2>Teorema de Pompeiu</h2>
+<p class="dropcap">Sea ABC un triángulo equilátero y P cualquier punto del plano. Las tres distancias PA, PB y PC pueden ser las longitudes de los lados de un triángulo, admitiendo que este sea degenerado. El teorema de Pompeiu es sorprendente porque P puede estar fuera del equilátero e incluso muy lejos. Una rotación de sesenta grados construye directamente el triángulo de distancias que necesitamos.</p>
+<h3>1. Elegir la rotación adecuada</h3>
+<p>Recorremos ABC en sentido antihorario. Giramos el plano sesenta grados alrededor de A, en el sentido que lleva B a C. Llamamos Q a la imagen de P. Toda rotación conserva distancias, de modo que AQ=AP y CQ=BP. Además, el ángulo PAQ es de sesenta grados, salvo cuando P=A, caso que podemos tratar directamente por continuidad.</p>
+<app-formula expression="AQ=AP,\qquad CQ=BP,\qquad \angle PAQ=60^\circ" displayMode="block"/>
+<app-geometry-diagram diagram="pompeiu-theorem" description="La rotación de 60 grados alrededor de A lleva B a C y P a Q. El triángulo PQC tiene lados iguales a PA, PB y PC."/>
+<h3>2. Reconocer otro equilátero</h3>
+<p>El triángulo APQ tiene dos lados iguales y el ángulo comprendido de sesenta grados. Por la ley de los cosenos, su tercer lado también mide AP. Hemos convertido así una de las distancias originales en el segmento que une P con su imagen rotada:</p>
+<app-formula expression="PQ^2=AP^2+AQ^2-2AP\cdot AQ\cos60^\circ=AP^2" displayMode="block"/>
+<app-formula expression="PQ=PA" displayMode="block"/>
+<h3>3. Construir el triángulo de distancias</h3>
+<p>Consideramos ahora los tres puntos P, Q y C. Sus distancias son PQ=PA, QC=PB y CP=PC. Es decir, sus tres lados son exactamente los tres números del enunciado. Las desigualdades triangulares se deducen inmediatamente de que un camino quebrado no puede ser más corto que el segmento directo:</p>
+<app-formula expression="PA\leq PB+PC,\quad PB\leq PC+PA,\quad PC\leq PA+PB" displayMode="block"/>
+<p>La demostración no necesita suponer que P está dentro de ABC. Las rotaciones y la desigualdad triangular son válidas en todo el plano, y esa es la razón de que el resultado tenga un alcance tan amplio.</p>
+<h3>4. Localizar la degeneración</h3>
+<p>El triángulo construido es degenerado exactamente cuando P, Q y C están alineados. Podemos describir esa condición con coordenadas. Por semejanza tomamos A=0, B=1 y C=ω=(1+i√3)/2 en el plano complejo, y P=z=x+iy. Entonces Q=ωz. La condición de colinealidad es que el producto entre un vector y el conjugado del otro tenga parte imaginaria nula:</p>
+<app-formula expression="\operatorname{Im}\bigl[(\omega z-z)\overline{(\omega-z)}\bigr]=0" displayMode="block"/>
+<p>Al desarrollar y simplificar obtenemos x²+y²−x−y/√3=0. Es la ecuación de la circunferencia que pasa por 0, 1 y ω, es decir, la circunscrita del equilátero. Por tanto, para P sobre esa circunferencia una de las tres distancias es la suma de las otras dos; fuera de ella las desigualdades son estrictas.</p>
+<h3>Historia y curiosidades</h3>
+<p>Dimitrie Pompeiu publicó el resultado en 1936. <a href="https://mathworld.wolfram.com/PompeiusTheorem.html">MathWorld</a> recoge también su conexión con la desigualdad de Ptolomeo: al aplicarla a P y los tres vértices, los lados iguales del equilátero se cancelan. La rotación utilizada aquí da además una construcción visual del triángulo auxiliar. El área de ese triángulo puede variar con P, aunque sus lados siempre conserven la interpretación de distancias a los tres vértices fijos.</p>

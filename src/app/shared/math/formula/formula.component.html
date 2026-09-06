@@ -1,5 +1,6 @@
 <div class="formula-container" [ngClass]="{ 'formula-inline': displayMode === 'inline', 'formula-block': displayMode === 'block' }">
-  <div class="formula-expression" [mathjax]="codeExpression"></div>
+  <div *ngIf="isMathJaxReady; else pendingFormula" class="formula-expression" [mathjax]="codeExpression"></div>
+  <ng-template #pendingFormula><div class="formula-expression">{{ codeExpression }}</div></ng-template>
   <div class="code-row">
     <button
       type="button"

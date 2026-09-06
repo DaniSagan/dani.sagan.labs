@@ -10,22 +10,27 @@
 <p>Un cuadrilátero cíclico es aquel cuyos cuatro vértices están sobre una misma circunferencia. En ese caso, sus ángulos opuestos son suplementarios, y la longitud de cada lado puede expresarse en términos de ángulos inscritos. El teorema de Ptolomeo convierte esa estructura circular en una identidad algebraica entre segmentos.</p>
 
 <div class="diagram-panel">
-  <canvas #explanationCanvas width="600" height="600"></canvas>
+  <canvas #explanationCanvas width="600" height="600" role="img" aria-label="Cuadrilátero ABCD inscrito en una circunferencia con diagonales AC y BD.">Las diagonales conectan los vértices opuestos del cuadrilátero cíclico.</canvas>
 </div>
 
-<h3>Demostración</h3>
-<p>Una forma clásica de demostrarlo es utilizar la ley de los senos en los triángulos que comparten una diagonal. En una circunferencia de radio <app-formula expression="R" displayMode="inline"/>, cada cuerda se puede escribir como <app-formula expression="2R\sin(\theta)" displayMode="inline"/>, donde <app-formula expression="\theta" displayMode="inline"/> es el ángulo inscrito que subtiende esa cuerda.</p>
-<p>Por tanto, para un cuadrilátero cíclico ABCD se tiene:</p>
-<ul>
-  <li><app-formula expression="AB = 2R \sin{\angle ACB}" displayMode="inline"/></li>
-  <li><app-formula expression="BC = 2R \sin{\angle BAC}" displayMode="inline"/></li>
-  <li><app-formula expression="CD = 2R \sin{\angle CAD}" displayMode="inline"/></li>
-  <li><app-formula expression="DA = 2R \sin{\angle DCA}" displayMode="inline"/></li>
-  <li><app-formula expression="AC = 2R \sin{\angle ABC}" displayMode="inline"/></li>
-  <li><app-formula expression="BD = 2R \sin{\angle BCD}" displayMode="inline"/></li>
-</ul>
-<p>La demostración se basa en que los ángulos adecuados se emparejan por ser ángulos subtendidos por la misma cuerda, y al sustituir estas expresiones se obtiene una identidad trigonométrica equivalente a la del teorema. En esencia, la igualdad se reduce a una relación entre senos de ángulos suplementarios y la suma de productos de cuerdas.</p>
-<p>Es decir, la estructura circular impone la relación de Ptolomeo, y esta misma relación puede usarse a la inversa para probar que un cuadrilátero es cíclico cuando se cumple la igualdad correspondiente.</p>
+<h3>1. Invertir la figura desde un vértice</h3>
+<p>Una inversión de centro A y radio unidad transforma cada punto X distinto de A en X′, situado sobre la misma semirrecta y cumpliendo AX · AX′ = 1. Si tomamos A como origen, su fórmula vectorial es la siguiente. Al desarrollar el cuadrado de una diferencia se obtiene también la relación entre distancias:</p>
+<app-formula expression="X'=\frac{X}{|X|^2},\qquad |X'-Y'|^2=\frac{|X-Y|^2}{|X|^2|Y|^2}" displayMode="block"/>
+<p>La raíz positiva da B′D′ = BD/(AB · AD), y relaciones análogas para B′C′ y C′D′. Así convertimos productos de longitudes de la figura original en sumas de distancias de una figura transformada.</p>
+<h3>2. Obtener la desigualdad general</h3>
+<p>Para cuatro puntos distintos cualesquiera, aplicamos la desigualdad triangular a las imágenes B′, C′ y D′. Después sustituimos la expresión de sus distancias y multiplicamos por el producto positivo AB · AC · AD:</p>
+<app-formula expression="B'D'\leq B'C'+C'D'" displayMode="block"/>
+<app-formula expression="\frac{BD}{AB\cdot AD}\leq\frac{BC}{AB\cdot AC}+\frac{CD}{AC\cdot AD}" displayMode="block"/>
+<app-formula expression="AC\cdot BD\leq AD\cdot BC+AB\cdot CD" displayMode="block"/>
+<p>Esta es la desigualdad de Ptolomeo. No exige que los cuatro puntos sean cíclicos. La igualdad se produce exactamente cuando C′ pertenece al segmento B′D′, porque esa es la condición de igualdad en la desigualdad triangular.</p>
+<h3>3. Recuperar el teorema para un cuadrilátero cíclico</h3>
+<p>Una circunferencia que pasa por el origen A tiene ecuación |X|² − 2O · X = 0, donde O es su centro. Sustituir X = X′/|X′|² transforma esa ecuación en una recta:</p>
+<app-formula expression="1-2O\cdot X'=0" displayMode="block"/>
+<p>Por tanto B′, C′ y D′ están alineados. Si A, B, C y D aparecen en ese orden alrededor de la circunferencia, C está en el arco BD que no contiene A; la inversión lo transforma en el segmento B′D′. La desigualdad anterior se convierte en igualdad y obtenemos el teorema clásico, sin recurrir a una identidad trigonométrica sin desarrollar.</p>
+<h3>4. Demostrar el recíproco</h3>
+<p>Supongamos ahora que ABCD es un cuadrilátero convexo no degenerado y satisface la igualdad de Ptolomeo. La igualdad triangular obliga a que las tres imágenes estén alineadas. Su recta no pasa por A: de lo contrario, los puntos originales también serían colineales. La inversión de una recta que no pasa por su centro es una circunferencia que sí pasa por él, como se comprueba invirtiendo la ecuación anterior. Así A, B, C y D pertenecen a una misma circunferencia. La hipótesis de no degeneración evita confundir este recíproco con los casos de igualdad de cuatro puntos alineados.</p>
+<h3>Historia y generalizaciones</h3>
+<p>Claudio Ptolomeo utilizó relaciones entre cuerdas en su astronomía matemática de la Antigüedad. El teorema permite calcular longitudes en polígonos inscritos y se generaliza mediante la desigualdad que acabamos de demostrar. El teorema de Casey sustituye los puntos por circunferencias tangentes y las cuerdas por segmentos de tangentes comunes. Pueden consultarse <a href="https://mathworld.wolfram.com/PtolemysTheorem.html">el teorema clásico</a> y <a href="https://mathworld.wolfram.com/PtolemyInequality.html">su desigualdad general</a>.</p>
 
 <h3>Aplicaciones</h3>
 <p>El teorema de Ptolomeo es especialmente útil cuando aparecen polígonos inscritos en una circunferencia, como rectángulos, cuadrados, pentágonos regulares e incluso algunos problemas de geometría sintética.</p>

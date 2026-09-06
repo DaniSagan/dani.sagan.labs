@@ -59,3 +59,10 @@ canvas {
   letter-spacing: 0.08em;
   font-size: 0.72rem;
 }
+
+app-formula[displayMode="block"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}

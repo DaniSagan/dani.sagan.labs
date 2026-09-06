@@ -1,0 +1,24 @@
+<h2>Fórmula de Euler para el triángulo</h2>
+<p class="dropcap">El circunradio R y el inradio r describen dos circunferencias fundamentales de un triángulo. Sus centros O e I no coinciden normalmente, pero la distancia entre ellos está determinada por esos dos radios. La fórmula de Euler expresa esa relación y, al mismo tiempo, demuestra que ninguna circunferencia inscrita puede tener radio mayor que la mitad del circunradio.</p>
+<app-formula expression="OI^2=R(R-2r)" displayMode="block"/>
+<h3>1. Expresar el incentro como promedio ponderado</h3>
+<p>Sean a=BC, b=CA, c=AB y s=(a+b+c)/2. Los triángulos IBC, ICA e IAB tienen altura común r respecto de sus respectivas bases; sus áreas están en proporción a:b:c. Las coordenadas baricéntricas por áreas permiten escribir I como promedio ponderado de los vértices:</p>
+<app-formula expression="I=\frac{aA+bB+cC}{2s},\qquad K=rs" displayMode="block"/>
+<p>Esta fórmula también puede obtenerse usando el teorema de la bisectriz. Los pesos son las longitudes de los lados opuestos, no las distancias desde I a los vértices. Confundir ambas cantidades impediría la cancelación que utilizaremos después.</p>
+<app-geometry-diagram diagram="euler-triangle-formula" description="La circunferencia circunscrita tiene centro O y radio R; la inscrita tiene centro I y radio r. El segmento OI es la distancia de la fórmula."/>
+<h3>2. Situar el origen en el circuncentro</h3>
+<p>Escribimos los vectores de los vértices como u, v y w. Al estar sobre la circunferencia circunscrita, sus módulos valen R. Expresamos los productos escalares a partir de los cuadrados de las distancias entre vértices, desarrollando, por ejemplo, el cuadrado de u−v:</p>
+<app-formula expression="|\mathbf u|^2=|\mathbf v|^2=|\mathbf w|^2=R^2,\qquad \mathbf u\cdot\mathbf v=R^2-\frac{c^2}{2}" displayMode="block"/>
+<p>Análogamente, los otros productos son R²−a²/2 y R²−b²/2. Ahora elevamos al cuadrado el vector ponderado del incentro y sustituimos estas tres identidades. Los términos que contienen R² suman el cuadrado de a+b+c:</p>
+<app-formula expression="OI^2=\frac{(a+b+c)^2R^2-ab c^2-bc a^2-ca b^2}{(2s)^2}" displayMode="block"/>
+<h3>3. Reconocer el producto de los lados</h3>
+<p>Los tres términos restantes tienen factor común abc. Su suma es abc(a+b+c)=2sabc. Dividimos por cuatro veces s² y obtenemos una expresión mucho más breve:</p>
+<app-formula expression="OI^2=R^2-\frac{abc}{2s}" displayMode="block"/>
+<p>La fórmula del área mediante el circunradio se deduce de K=bc sin A/2 y a=2R sin A. Por tanto abc=4RK. Como K=rs, reemplazamos el producto y desaparece el semiperímetro:</p>
+<app-formula expression="abc=4RK=4Rrs,\qquad OI^2=R^2-2Rr" displayMode="block"/>
+<h3>4. Extraer una desigualdad</h3>
+<p>Una distancia al cuadrado nunca es negativa. Dividiendo por R, que es positivo en un triángulo no degenerado, concluimos R≥2r. La igualdad exige O=I; un centro común situado a igual distancia de las tres cuerdas implica que los tres lados son iguales. Así, la igualdad caracteriza al triángulo equilátero.</p>
+<h3>Historia y comprobación</h3>
+<p>El resultado recibe el nombre de Euler y es una de las relaciones métricas clásicas entre centros; véase <a href="https://mathworld.wolfram.com/EulerTriangleFormula.html">MathWorld</a>. En un triángulo rectángulo de lados 3, 4 y 5, tenemos R=5/2 y r=1. La fórmula da OI²=5/4, que puede verificarse colocando los catetos sobre los ejes. Es una manera de comprobar la identidad sin utilizar una figura especialmente simétrica.</p>
+
+<p>La fórmula determina una distancia, pero no la dirección del segmento OI respecto de los lados. Dos triángulos pueden compartir ciertos radios sin que todas sus posiciones métricas queden fijadas. Por eso el resultado es una relación entre centros y no una construcción completa del triángulo.</p>

@@ -1,0 +1,23 @@
+<h2>Fórmula de Brahmagupta–Bretschneider</h2>
+<p class="dropcap">Cuatro lados no determinan por sí solos el área de un cuadrilátero: un marco articulado puede deformarse manteniendo sus longitudes. La fórmula de Bretschneider completa la de Brahmagupta incorporando la suma de dos ángulos opuestos. Trabajaremos con un cuadrilátero convexo ABCD, lados consecutivos a, b, c, d y ángulos opuestos B y D. Llamamos s al semiperímetro.</p>
+<h3>1. Sumar las áreas de dos triángulos</h3>
+<p>Trazamos la diagonal AC. Los triángulos ABC y ADC tienen áreas ab sin B/2 y cd sin D/2. Por convexidad, sus interiores no se superponen y sus áreas se suman. La ley de los cosenos expresa además la diagonal de dos maneras:</p>
+<app-formula expression="2K=ab\sin B+cd\sin D" displayMode="block"/>
+<app-formula expression="a^2+b^2-2ab\cos B=c^2+d^2-2cd\cos D" displayMode="block"/>
+<app-geometry-diagram diagram="bretschneider-formula" description="La diagonal AC divide un cuadrilátero no cíclico en dos triángulos. Sus ángulos opuestos B y D determinan la corrección a la fórmula de Brahmagupta."/>
+<h3>2. Agrupar las dos identidades</h3>
+<p>Definimos δ=a²+b²−c²−d². La segunda ecuación indica que δ=2ab cos B−2cd cos D. Elevamos al cuadrado esta expresión y la de 4K. Al sumarlas, usamos sin²+cos²=1 para los términos individuales, mientras los términos mixtos se reúnen en un coseno de suma:</p>
+<app-formula expression="16K^2+\delta^2=4a^2b^2+4c^2d^2-8abcd\cos(B+D)" displayMode="block"/>
+<p>El signo negativo del coseno procede de restar los términos con cos B cos D y sumar los de sin B sin D. Este es el paso que distingue el cuadrilátero general del caso cíclico, donde B+D sería directamente ciento ochenta grados.</p>
+<h3>3. Separar la parte de Brahmagupta</h3>
+<p>Añadimos y restamos 8abcd. Así completamos el cuadrado 4(ab+cd)². La identidad 1+cos t=2cos²(t/2) convierte la corrección angular en un cuadrado no negativo:</p>
+<app-formula expression="16K^2=4(ab+cd)^2-\delta^2-16abcd\cos^2\frac{B+D}{2}" displayMode="block"/>
+<p>La diferencia de cuadrados inicial se factoriza exactamente como en la deducción de Brahmagupta. Sus cuatro factores son dos veces s−a, s−b, s−c y s−d. Dividiendo toda la igualdad entre dieciséis obtenemos:</p>
+<app-formula expression="\boxed{K^2=(s-a)(s-b)(s-c)(s-d)-abcd\cos^2\frac{B+D}{2}}" displayMode="block"/>
+<p>El área se obtiene tomando la raíz no negativa del miembro derecho. Los datos deben pertenecer a un cuadrilátero real; no cualquier elección independiente de lados y ángulos es geométricamente compatible.</p>
+<h3>4. Interpretar el término corrector</h3>
+<p>Si el cuadrilátero es cíclico, B+D=180° y el coseno se anula. Recuperamos Brahmagupta. Para lados fijos, el término que se resta nunca es negativo: una realización cíclica alcanza el área máxima. Como comprobación, un rombo de lado L y ángulo B tiene D=B, y la fórmula da K²=L⁴(1−cos²B), es decir, K=L² sin B.</p>
+<h3>Historia y curiosidades</h3>
+<p>La fórmula general está asociada al trabajo de Carl Anton Bretschneider en el siglo XIX, mientras el caso cíclico remite a Brahmagupta en el siglo VII. <a href="https://mathworld.wolfram.com/BretschneidersFormula.html">MathWorld</a> presenta la relación. La diferencia de épocas ilustra cómo una identidad clásica puede ampliarse añadiendo un único parámetro. No debe llamarse fórmula de Brahmagupta a la versión sin corrección cuando el cuadrilátero no es cíclico: el error sería geométrico, no una simple aproximación numérica.</p>
+
+<p>La dependencia angular explica físicamente el movimiento de un marco de cuatro barras articuladas: las longitudes permanecen fijas, pero las diagonales y los ángulos cambian. La fórmula cuantifica la pérdida de área al abandonar la posición cíclica, sin atribuir esa pérdida a una modificación de los lados.</p>

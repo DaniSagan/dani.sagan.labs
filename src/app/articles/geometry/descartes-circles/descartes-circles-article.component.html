@@ -1,0 +1,23 @@
+<h2>Teorema de Descartes: circunferencias tangentes</h2>
+<p class="dropcap">Cuatro circunferencias distintas y mutuamente tangentes, sin contactos triples, forman una configuración de Descartes. Sus radios parecen relacionados de manera complicada, pero sus inversos satisfacen una ecuación cuadrática simétrica. A esos inversos se les llama curvaturas: una circunferencia pequeña tiene gran curvatura, mientras una muy grande tiene curvatura pequeña. Una recta aparece como el caso límite de curvatura cero.</p>
+<h3>1. Introducir curvaturas con signo</h3>
+<p>Para una circunferencia que no contiene a las demás tomamos k=1/r. Si una de ellas encierra a las otras tres y las toca interiormente, le asignamos curvatura negativa. Con esta orientación coherente, el teorema adopta una única forma:</p>
+<app-formula expression="(k_1+k_2+k_3+k_4)^2=2(k_1^2+k_2^2+k_3^2+k_4^2)" displayMode="block"/>
+<app-geometry-diagram diagram="descartes-circles" description="Tres circunferencias iguales son tangentes entre sí. El pequeño círculo central y el envolvente representan las dos soluciones para la cuarta curvatura."/>
+<h3>2. Expresar la tangencia mediante distancias</h3>
+<p>Veamos primero el caso de cuatro circunferencias con todos sus contactos exteriores y radios positivos r1, r2, r3, r4. Las distancias entre sus centros son ri+rj. Fijamos el cuarto centro como origen y escribimos vi=Oi−O4 para i=1,2,3. Los módulos y productos escalares se calculan a partir de esas distancias:</p>
+<app-formula expression="|v_i|^2=(r_i+r_4)^2" displayMode="block"/>
+<app-formula expression="v_i\cdot v_j=\frac{(r_i+r_4)^2+(r_j+r_4)^2-(r_i+r_j)^2}{2}" displayMode="block"/>
+<h3>3. Utilizar que los centros están en un plano</h3>
+<p>Tres vectores del plano son linealmente dependientes. Por ello, el determinante de su matriz de productos escalares, llamada matriz de Gram, es cero. Construimos esa matriz con las expresiones anteriores y desarrollamos su determinante. Agrupar los términos por los inversos de los radios da:</p>
+<app-formula expression="G=(v_i\cdot v_j)_{i,j=1}^{3},\qquad \det G=0" displayMode="block"/>
+<app-formula expression="\det G=-4(r_1r_2r_3r_4)^2\left[2\sum_{i=1}^{4}\frac1{r_i^2}-\left(\sum_{i=1}^{4}\frac1{r_i}\right)^2\right]" displayMode="block"/>
+<p>Como los radios son distintos de cero, cancelamos el factor exterior. Sustituir ki=1/ri proporciona la fórmula anunciada. Para la circunferencia envolvente, las distancias son diferencias de radios; el mismo cálculo con su radio orientado negativo conduce a la misma identidad.</p>
+<h3>4. Encontrar la cuarta curvatura</h3>
+<p>Consideramos conocidas las tres primeras curvaturas y resolvemos la ecuación como cuadrática en k4. Las dos raíces corresponden a las dos circunferencias que completan la configuración en los casos ordinarios:</p>
+<app-formula expression="k_4=k_1+k_2+k_3\pm2\sqrt{k_1k_2+k_2k_3+k_3k_1}" displayMode="block"/>
+<p>Por ejemplo, tres circunferencias de radio uno mutuamente tangentes producen las curvaturas 3+2√3 y 3−2√3. La primera corresponde al pequeño hueco central; la segunda es negativa y describe la circunferencia que envuelve a las tres. El radio geométrico se obtiene como 1/|k4|.</p>
+<h3>Historia y curiosidades</h3>
+<p>René Descartes comunicó la relación en el siglo XVII; Frederick Soddy la popularizó posteriormente en su poema sobre círculos que se besan. <a href="https://mathworld.wolfram.com/DescartesCircleTheorem.html">MathWorld</a> recoge el contexto y las fórmulas. Si una solución se sustituye por la otra, la nueva curvatura es dos veces la suma de las tres fijas menos la antigua. Esta operación conserva curvaturas enteras y genera los empaquetamientos apolonianos, donde geometría y teoría de números se encuentran de manera inesperada.</p>
+
+<p>El signo de la curvatura no representa un radio físico negativo: codifica qué región delimita la circunferencia. Para dibujarla usamos siempre un radio positivo. Mantener esta distinción permite interpretar correctamente la segunda raíz y evita descartar por error la solución envolvente como si no fuese geométrica.</p>
