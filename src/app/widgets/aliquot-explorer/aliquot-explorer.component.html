@@ -2,8 +2,10 @@
   <h3 id="aliquot-title">Explorar una sucesión alícuota</h3>
   <form (ngSubmit)="calculate()"><div class="controls">
     <label>Inicio (1–100000000)<input name="start" type="number" min="1" max="100000000" step="1" required [(ngModel)]="input"></label>
-    <label>Máximo de pasos (1–200)<input name="steps" type="number" min="1" max="200" step="1" required [(ngModel)]="steps"></label>
-    <button type="submit">Calcular recorrido</button></div></form>
+    <label>Máximo de pasos<input name="steps" type="number" min="1" step="1" [required]="!unlimited" [disabled]="unlimited" [(ngModel)]="steps"></label>
+    <label><input name="unlimited" type="checkbox" [(ngModel)]="unlimited"> Sin límite de pasos</label>
+    <button type="submit">{{ running ? 'Reiniciar recorrido' : 'Calcular recorrido' }}</button>
+    <button type="button" *ngIf="running" (click)="stop()">Detener</button></div></form>
   <div class="controls"><button type="button" *ngFor="let n of [12, 6, 220, 25, 12496, 1]" (click)="example(n)">{{ n }}</button></div>
   <p class="error" role="alert" *ngIf="error">{{ error }}</p>
   <ng-container *ngIf="result as r">
@@ -31,6 +33,8 @@
     <p *ngIf="selected === r.values.length - 1">Último término mostrado. {{ message }}</p>
     <details><summary>Ver todos los términos</summary><div class="terms"><button type="button" *ngFor="let value of r.values; let i = index" [attr.aria-pressed]="selected === i" (click)="select(i)">a{{ i }} = {{ value }}</button></div></details>
   </ng-container>
-  <p class="note">Cálculo exacto dentro de los límites indicados. Al repetirse un término se muestra una vuelta completa del ciclo y se detiene.
+  <p class="note">Se calcula y dibuja un nuevo término cada 180 ms. Los cambios de inicio o límite se aplican al iniciar otro recorrido.
+    «Sin límite» elimina el máximo de pasos; puedes detener el cálculo en cualquier momento.
+    Al llegar a cero o repetirse un término, el recorrido se detiene automáticamente.
     Si el nuevo término supera 100000000, se muestra pero no se calculan sus divisores.</p>
 </section>
