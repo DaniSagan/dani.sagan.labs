@@ -1,0 +1,47 @@
+<h2>Números de Bernoulli: los coeficientes de las sumas de potencias</h2>
+<p class="dropcap">La suma 1 + 2 + ⋯ + N tiene una fórmula sencilla. También la tienen las sumas de cuadrados,
+  cubos y potencias mayores. Los números de Bernoulli reúnen en una única sucesión los coeficientes que permiten
+  construir esas fórmulas. Son números racionales y encajan en Teoría de Números por sus conexiones con estas sumas y con la función zeta.</p>
+
+<h3>Definición y primeros valores</h3>
+<p>Una función generadora guarda toda la sucesión en los coeficientes de una serie:</p>
+<app-formula expression="\frac{t}{e^t-1}=\sum_{n=0}^{\infty}B_n\frac{t^n}{n!},\qquad |t|<2\pi"></app-formula>
+<p>En t = 0 se toma el límite, que vale 1. Con esta definición, B₀ = 1 y B₁ = −½.
+  Algunas fuentes usan B₁ = +½; aquí mantenemos siempre la convención negativa.</p>
+<app-formula expression="B_0=1,\quad B_1=-\frac12,\quad B_2=\frac16,\quad B_3=0,\quad B_4=-\frac1{30},\quad B_5=0,\quad B_6=\frac1{42}"></app-formula>
+<p>Todos los índices impares mayores que 1 dan cero. Los valores de índice par, desde B₂,
+  alternan de signo. Estas propiedades se recogen en la <a href="https://dlmf.nist.gov/24.2">definición de DLMF (NIST)</a>.</p>
+
+<h3>Una regla para calcularlos exactamente</h3>
+<p>Multiplicando la serie generadora por eᵗ − 1 e igualando coeficientes obtenemos una recurrencia:
+  cada término depende solo de los anteriores.</p>
+<app-formula expression="B_0=1,\qquad B_n=-\frac1{n+1}\sum_{k=0}^{n-1}\binom{n+1}{k}B_k\quad(n\ge1)"></app-formula>
+<p>Por ejemplo, B₂ = −(B₀ + 3B₁)/3 = −(1 − 3/2)/3 = 1/6.
+  Al operar con fracciones y simplificarlas, no necesitamos introducir errores de redondeo.</p>
+<app-bernoulli-calculator></app-bernoulli-calculator>
+
+<h3>Sumar potencias sin sumar término a término</h3>
+<p>Para un entero p ≥ 1, la fórmula de Faulhaber expresa la suma de las potencias desde 0 hasta N − 1.
+  Estos extremos permiten usar directamente nuestra convención B₁ = −½:</p>
+<app-formula expression="\sum_{r=0}^{N-1}r^p=\frac1{p+1}\sum_{k=0}^{p}\binom{p+1}{k}B_kN^{p+1-k}"></app-formula>
+<p>Con p = 2 solo hacen falta B₀, B₁ y B₂:</p>
+<app-formula expression="\sum_{r=0}^{N-1}r^2=\frac{N^3}{3}-\frac{N^2}{2}+\frac{N}{6}=\frac{N(N-1)(2N-1)}6"></app-formula>
+<p>Para sumar 1² + ⋯ + 10² usamos N = 11 y obtenemos 385. La potencia de esta idea se aprecia al aumentar p:
+  no necesitamos descubrir una fórmula nueva desde cero.
+  <a href="https://dlmf.nist.gov/24.4#iii">Sumas de potencias y propiedades en DLMF</a>.</p>
+
+<h3>Por qué desaparecen los impares</h3>
+<p>Si añadimos t/2 a la función generadora, obtenemos una función par:</p>
+<app-formula expression="\frac{t}{e^t-1}+\frac t2=\frac t2\frac{e^t+1}{e^t-1}"></app-formula>
+<p>Sustituir t por −t deja igual el miembro derecho. Por tanto, su desarrollo no contiene potencias impares.
+  El término t/2 cancela precisamente B₁t; los demás coeficientes impares ya tienen que ser cero.</p>
+
+<h3>Un puente hacia la función zeta</h3>
+<p>Los números de Bernoulli también aparecen al evaluar la <a routerLink="/articles/riemann-zeta">función zeta de Riemann</a>
+  en enteros positivos pares:</p>
+<app-formula expression="\zeta(2m)=(-1)^{m+1}\frac{B_{2m}(2\pi)^{2m}}{2(2m)!},\qquad m\ge1"></app-formula>
+<p>Con B₂ = 1/6 recuperamos ζ(2) = π²/6; con B₄ = −1/30 obtenemos ζ(4) = π⁴/90.
+  <a href="https://dlmf.nist.gov/25.6">Valores especiales de zeta en DLMF</a>.</p>
+<p><strong>Para explorar.</strong> Calcula B₁₂ y observa el numerador 691. Compara después B₂₀ y B₁₀₀:
+  aunque muchos términos son cero, los valores pares no permanecen pequeños. Usa B₀, B₁ y B₂
+  en la fórmula de Faulhaber con p = 3 y comprueba que la suma de cubos es el cuadrado de la suma de enteros.</p>

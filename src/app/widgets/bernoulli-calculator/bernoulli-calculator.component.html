@@ -1,0 +1,33 @@
+<section aria-labelledby="bernoulli-title" class="widget">
+  <h3 id="bernoulli-title">Calculadora de números de Bernoulli</h3>
+  <p>Calcula B<sub>n</sub> como fracción irreducible exacta. Usamos la convención B₁ = −½.</p>
+  <form (ngSubmit)="calculate()">
+    <label for="bernoulli-index">Índice n (0–{{ maximum }})</label>
+    <div class="controls">
+      <input id="bernoulli-index" name="index" type="number" min="0" [max]="maximum" step="1" required [(ngModel)]="index">
+      <button type="submit">Calcular Bₙ</button>
+    </div>
+  </form>
+  <div class="controls examples" aria-label="Ejemplos">
+    <button type="button" (click)="example(1)">B₁</button>
+    <button type="button" (click)="example(12)">B₁₂</button>
+    <button type="button" (click)="example(20)">B₂₀</button>
+    <button type="button" (click)="example(100)">B₁₀₀</button>
+  </div>
+  <div aria-live="polite">
+    <p class="error" *ngIf="error">{{ error }}</p>
+    <p class="result" *ngIf="result">B<sub>{{ evaluatedIndex }}</sub> = <strong>{{ result }}</strong></p>
+  </div>
+  <p class="note">El cálculo usa enteros de precisión arbitraria, sin redondear las fracciones.
+    El límite de {{ maximum }} mantiene ágil el cálculo en el navegador.</p>
+  <details *ngIf="rows.length">
+    <summary>Ver la sucesión desde B₀ hasta B<sub>{{ evaluatedIndex }}</sub></summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Sucesión de números de Bernoulli">
+      <table>
+        <caption>Valores exactos · B₁ = −½</caption>
+        <thead><tr><th scope="col">n</th><th scope="col">Bₙ</th></tr></thead>
+        <tbody><tr *ngFor="let row of rows"><th scope="row">{{ row.index }}</th><td>{{ row.value }}</td></tr></tbody>
+      </table>
+    </div>
+  </details>
+</section>
