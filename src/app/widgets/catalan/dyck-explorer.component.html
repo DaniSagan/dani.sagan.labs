@@ -1,0 +1,24 @@
+<section class="widget" aria-labelledby="dyck-title">
+  <h3 id="dyck-title">De paréntesis a caminos de Dyck</h3>
+  <label for="dyck-size">Número de pares n</label>
+  <select id="dyck-size" [(ngModel)]="n" (ngModelChange)="generate()"><option *ngFor="let size of sizes" [ngValue]="size">{{ size }}</option></select>
+  <p>Una apertura «(» sube un nivel; un cierre «)» baja uno. Un camino válido termina en cero y nunca pasa por debajo del eje.</p>
+  <div class="controls"><button type="button" (click)="move(-1)" [disabled]="index === 0">Anterior</button>
+    <label for="dyck-word">Configuración</label><select id="dyck-word" [(ngModel)]="index" (ngModelChange)="select()">
+      <option *ngFor="let word of words; let i = index" [ngValue]="i">{{ i + 1 }}: {{ word || 'vacía' }}</option></select>
+    <button type="button" (click)="move(1)" [disabled]="index === words.length - 1">Siguiente</button></div>
+  <p aria-live="polite">Configuración {{ index + 1 }} de {{ words.length }} = C<sub>{{ n }}</sub>.</p>
+  <p class="word">{{ word || '∅ (secuencia vacía)' }}</p>
+  <svg viewBox="0 0 690 310" role="img" [attr.aria-label]="'Camino de Dyck para ' + (word || 'la secuencia vacía') + '. Paso ' + step + ', altura ' + height">
+    <g *ngFor="let tick of ticks"><line x1="45" [attr.y1]="270 - tick * 30" x2="635" [attr.y2]="270 - tick * 30" class="grid"/>
+      <text x="20" [attr.y]="275 - tick * 30">{{ tick }}</text></g>
+    <line x1="45" y1="270" x2="645" y2="270" class="axis"/>
+    <text x="45" y="295">0</text><text x="630" y="295">{{ 2 * n }}</text><text x="90" y="295">pasos</text>
+    <polyline [attr.points]="points" class="whole-path"/><polyline [attr.points]="prefixPoints" class="prefix-path"/>
+    <circle [attr.cx]="x" [attr.cy]="y" r="5" class="marker"/>
+  </svg>
+  <label for="dyck-step">Recorrer el camino: paso {{ step }} de {{ 2 * n }}</label>
+  <input id="dyck-step" type="range" min="0" [max]="2 * n" step="1" [disabled]="n === 0" [(ngModel)]="step" (ngModelChange)="draw()">
+  <p>Prefijo: <code>{{ prefix || 'vacío' }}</code>. Aperturas pendientes: {{ height }}.</p>
+  <p class="note">Se enumeran todas las configuraciones para n ≤ 7 (hasta 429 caminos). Para n = 0 hay una configuración: no dar ningún paso.</p>
+</section>

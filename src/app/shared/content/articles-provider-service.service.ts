@@ -13,6 +13,7 @@ import { DodecahedronViewerComponent } from 'src/app/articles/platonic-solids/do
 import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
 import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { NUMBER_THEORY_NAV_ITEMS } from 'src/app/articles/number-theory/number-theory-articles';
+import { COMBINATORICS_NAV_ITEMS } from 'src/app/articles/combinatorics/combinatorics-articles';
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
@@ -213,6 +214,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
+      { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
       { name: 'Geometría', items: this.geometry },
       { name: 'Curvas', items: this.curves },
       { name: 'Probabilidad', items: this.probability },

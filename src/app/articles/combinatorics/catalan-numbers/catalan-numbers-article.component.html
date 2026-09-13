@@ -1,0 +1,47 @@
+<h2>Números de Catalan: contar estructuras que encajan</h2>
+<p class="dropcap">Con tres pares de paréntesis hay cinco expresiones equilibradas:
+  ((())), (()()), (())(), ()(()) y ()()(). El número 5 es C₃, el tercer número de Catalan si contamos desde C₀.
+  La misma sucesión aparece al contar caminos que no bajan de un eje y formas de dividir polígonos en triángulos.</p>
+
+<h3>La sucesión y una fórmula exacta</h3>
+<app-formula expression="C_n=\frac{1}{n+1}\binom{2n}{n}=\frac{(2n)!}{n!(n+1)!},\qquad n\ge0"></app-formula>
+<p>Sus primeros términos son 1, 1, 2, 5, 14, 42, 132 y 429. El valor C₀ = 1 cuenta una estructura vacía:
+  hay una sola forma de no colocar ningún paréntesis.</p>
+<p>Para calcular términos sucesivos sin construir factoriales enormes podemos usar:</p>
+<app-formula expression="C_0=1,\qquad C_{n+1}=\frac{2(2n+1)}{n+2}C_n"></app-formula>
+<p>La división es exacta en cada paso. Por ejemplo, C₄ = 2 · 7 · 5 / 5 = 14.</p>
+<app-catalan-calculator></app-catalan-calculator>
+
+<h3>Paréntesis que nunca se cierran antes de abrirse</h3>
+<p>No basta con tener tantas aperturas como cierres. La expresión «)(» tiene una de cada, pero empieza cerrando
+  un paréntesis que todavía no se ha abierto. En una expresión equilibrada, cada prefijo tiene al menos tantas aperturas como cierres.</p>
+<p>Transforma cada «(» en un paso (1, 1) y cada «)» en un paso (1, −1). El resultado parte de (0, 0),
+  llega a (2n, 0) y nunca baja de altura cero. Es un camino de Dyck; el proceso se puede invertir sin perder información.</p>
+<app-dyck-explorer></app-dyck-explorer>
+
+<h3>Dividir en el primer regreso</h3>
+<p>Toda expresión equilibrada no vacía se puede escribir de manera única como (A)B:
+  el paréntesis que cierra la primera apertura delimita A, y el resto es B.
+  Si hay n + 1 pares y A contiene k, entonces B contiene n − k.</p>
+<app-formula expression="C_{n+1}=\sum_{k=0}^{n}C_kC_{n-k},\qquad C_0=1"></app-formula>
+<p>Para cada k elegimos A y B de forma independiente, de ahí el producto. Después sumamos todos los tamaños posibles.
+  Así, C₃ = C₀C₂ + C₁C₁ + C₂C₀ = 2 + 1 + 2 = 5.</p>
+
+<h3>Por qué aparece el factor 1/(n + 1)</h3>
+<p>Sin imponer la condición de altura, hay tantas rutas con n subidas y n bajadas como formas de elegir las posiciones
+  de las subidas: el coeficiente binomial central. Para contar las rutas inválidas, refleja sus pasos hasta la primera llegada a altura −1.</p>
+<p>La reflexión cambia una bajada por una subida en el balance total: produce una ruta con n + 1 subidas y n − 1 bajadas.
+  Se puede deshacer reflejando hasta la primera llegada a altura +1. Por eso las rutas inválidas se cuentan con otro coeficiente binomial:</p>
+<app-formula expression="C_n=\binom{2n}{n}-\binom{2n}{n-1}=\frac{1}{n+1}\binom{2n}{n}\qquad(n\ge1)"></app-formula>
+<p>Esta interpretación explica también por qué la fórmula siempre da un entero.
+  <a href="https://dlmf.nist.gov/26.5">Caminos y números de Catalan en DLMF (NIST)</a>.</p>
+
+<h3>Triángulos dentro de un polígono</h3>
+<p>Un polígono convexo de n + 2 vértices tiene Cₙ triangulaciones por diagonales que no se cruzan, para n ≥ 1.
+  Contamos las distintas elecciones de diagonales sobre vértices fijos, sin identificar configuraciones por rotación.
+  Un cuadrilátero tiene dos triangulaciones y un pentágono tiene cinco.</p>
+<p>Fijando un lado, cada triangulación tiene un único triángulo apoyado en él. Elegir su tercer vértice deja dos regiones
+  independientes: reaparece la misma suma de productos que en (A)B.</p>
+<p><strong>Para explorar.</strong> Recorre las cinco configuraciones de tres pares. En cada una, localiza el primer
+  regreso del camino a altura cero y reconoce las partes A y B. Después calcula C₄ y comprueba que el explorador
+  enumera exactamente catorce caminos.</p>
