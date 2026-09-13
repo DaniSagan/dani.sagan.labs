@@ -1,0 +1,34 @@
+<section class="widget" aria-labelledby="fibonacci-explorer-title">
+  <h3 id="fibonacci-explorer-title">Explorar la sucesión</h3>
+  <form (ngSubmit)="calculate()">
+    <label for="fibonacci-index">Índice n (0–{{ maximum }})</label>
+    <div class="controls"><input id="fibonacci-index" name="index" type="number" min="0" [max]="maximum" step="1" required [(ngModel)]="input">
+      <button type="submit">Calcular Fₙ</button></div>
+  </form>
+  <div class="controls"><button type="button" *ngFor="let value of [0, 2, 10, 50, 1000]" (click)="example(value)">n = {{ value }}</button></div>
+  <div aria-live="polite"><p class="error" *ngIf="error">{{ error }}</p>
+    <div class="result" *ngIf="result"><p>F<sub>{{ n }}</sub> = <strong>{{ result }}</strong></p>
+      <p *ngIf="n >= 2">{{ beforePrevious }} + {{ previous }} = {{ result }}</p>
+      <p *ngIf="n < 2">Valor inicial de la sucesión.</p></div></div>
+  <p class="note">Los términos se calculan como enteros exactos, sin redondeo. El límite es F₁₀₀₀.</p>
+  <ng-container *ngIf="points.length">
+    <h4>El cociente entre vecinos</h4>
+    <p>Fₖ / Fₖ₋₁ se acerca a φ ≈ {{ phi | number:'1.10-10' }}. Los cocientes del gráfico son aproximados.</p>
+    <svg viewBox="0 0 700 300" role="img" aria-label="Cocientes de Fibonacci frente al índice k; línea discontinua en el número áureo">
+      <line x1="55" y1="40" x2="55" y2="250" class="axis"/><line x1="55" y1="250" x2="650" y2="250" class="axis"/>
+      <text x="15" y="55">2</text><text x="15" y="255">1</text>
+      <line x1="55" [attr.y1]="250 - (phi - 1) * 200" x2="650" [attr.y2]="250 - (phi - 1) * 200" class="phi"/>
+      <text x="660" [attr.y]="255 - (phi - 1) * 200">φ</text>
+      <path [attr.d]="path" class="curve"/>
+      <g *ngFor="let point of points"><circle [attr.cx]="point.x" [attr.cy]="point.y" r="3" class="point"><title>k = {{ point.index }}; cociente = {{ point.ratio }}</title></circle>
+        <text *ngIf="point.index === 2 || point.index % 5 === 0 || point.index === n" [attr.x]="point.x" y="275" text-anchor="middle">{{ point.index }}</text></g>
+      <text x="670" y="275">k</text>
+    </svg>
+    <p class="note">Se muestran los cocientes desde k = 2 hasta k = {{ points[points.length - 1].index }} (máximo 30), para apreciar la convergencia inicial.</p>
+  </ng-container>
+  <p *ngIf="result && !points.length">El gráfico empieza en n = 2: F₁ / F₀ no está definido.</p>
+  <details *ngIf="rows.length"><summary>Ver los términos de F₀ a F<sub>{{ n }}</sub></summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Términos exactos de Fibonacci"><table><caption>Sucesión calculada</caption>
+      <thead><tr><th scope="col">n</th><th scope="col">Fₙ</th></tr></thead><tbody><tr *ngFor="let row of rows"><th scope="row">{{ row.index }}</th><td>{{ row.value }}</td></tr></tbody></table></div>
+  </details>
+</section>

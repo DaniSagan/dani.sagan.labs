@@ -1,0 +1,46 @@
+<h2>Números de Fibonacci: sumar dos términos para construir el siguiente</h2>
+<p class="dropcap">Empieza con 0 y 1. Suma los dos últimos números para obtener uno nuevo y repite:
+  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, … Esta regla produce la sucesión de Fibonacci,
+  una conexión entre problemas de recuento, proporciones y geometría.</p>
+
+<h3>La regla y los índices</h3>
+<app-formula expression="F_0=0,\qquad F_1=1,\qquad F_n=F_{n-1}+F_{n-2}\quad(n\ge2)"></app-formula>
+<p>El subíndice indica la posición, no una potencia. Así, F₆ = 8 porque F₅ + F₄ = 5 + 3.
+  Aquí contamos desde F₀; esto evita confusiones con las listas que empiezan directamente en 1, 1.</p>
+
+<h3>Una escalera que se puede contar</h3>
+<p>Imagina una escalera de n peldaños que puedes subir con pasos de uno o dos. Para llegar arriba,
+  el último paso viene del peldaño n − 1 o del n − 2. Son posibilidades distintas, de modo que sus cantidades se suman.</p>
+<p>Hay una forma de subir cero peldaños —no dar ningún paso— y una de subir uno. Por tanto, el número de formas
+  de subir n peldaños es Fₙ₊₁. Para cuatro peldaños hay cinco: 1+1+1+1, 1+1+2, 1+2+1, 2+1+1 y 2+2.</p>
+<app-fibonacci-explorer></app-fibonacci-explorer>
+
+<h3>El número áureo entre términos vecinos</h3>
+<p>Los cocientes 2/1, 3/2, 5/3, 8/5, … oscilan alrededor de una proporción límite.
+  La recurrencia explica qué valor puede tener: si el cociente converge a L positivo, entonces L = 1 + 1/L.</p>
+<app-formula expression="\varphi=\frac{1+\sqrt5}{2},\qquad \lim_{n\to\infty}\frac{F_{n+1}}{F_n}=\varphi"></app-formula>
+<p>La ecuación del límite identifica el candidato; para justificar la convergencia podemos usar la fórmula de Binet:</p>
+<app-formula expression="F_n=\frac{\varphi^n-\psi^n}{\sqrt5},\qquad \psi=\frac{1-\sqrt5}{2}"></app-formula>
+<p>Como el valor absoluto de ψ es menor que 1, su potencia tiende a cero mientras φⁿ crece.
+  La fórmula es exacta, aunque evaluarla con decimales puede introducir errores: por eso la calculadora usa sumas de enteros exactos.
+  <a href="https://mathworld.wolfram.com/FibonacciNumber.html">Fórmulas y propiedades en MathWorld</a>.</p>
+
+<h3>Cuadrados que encajan</h3>
+<p>Coloca dos cuadrados de lado 1 juntos. El rectángulo resultante admite un cuadrado de lado 2;
+  después cabe uno de lado 3, luego uno de lado 5. Cada nueva pieza ocupa un lado completo del rectángulo anterior.</p>
+<app-fibonacci-squares></app-fibonacci-squares>
+<p>Tras colocar los cuadrados de lados F₁ hasta Fₙ, el rectángulo tiene lados Fₙ y Fₙ₊₁.
+  Comparar el área de las piezas con el área total da una identidad:</p>
+<app-formula expression="\sum_{k=1}^{n}F_k^2=F_nF_{n+1}\qquad(n\ge1)"></app-formula>
+<p>Por ejemplo, 1² + 1² + 2² + 3² + 5² = 40 = 5 · 8. El mosaico permite ver por qué una suma de cuadrados
+  termina siendo el producto de dos términos consecutivos.</p>
+<p>A veces se dibujan cuartos de circunferencia dentro de estas piezas y se habla de una «espiral de Fibonacci».
+  Esa curva hecha de arcos no es exactamente una espiral logarítmica ni demuestra que todas las formas naturales sigan esta sucesión.</p>
+
+<h3>Otra suma que se simplifica</h3>
+<p>De Fₖ = Fₖ₊₂ − Fₖ₊₁ se obtiene una suma telescópica: al sumar, los términos intermedios se cancelan.</p>
+<app-formula expression="\sum_{k=0}^{n}F_k=F_{n+2}-1\qquad(n\ge0)"></app-formula>
+<p>Así, 0 + 1 + 1 + 2 + 3 + 5 + 8 = 20 = F₈ − 1.</p>
+<p><strong>Para explorar.</strong> Calcula F₅₀ y comprueba su recurrencia con los dos términos anteriores.
+  En el mosaico, pasa de cinco a seis cuadrados y verifica las áreas.
+  Finalmente, explica por qué el cociente F₁/F₀ no aparece en el gráfico.</p>
