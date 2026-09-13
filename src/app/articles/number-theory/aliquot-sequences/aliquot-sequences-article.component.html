@@ -1,0 +1,39 @@
+<h2>Sucesiones alícuotas: seguir la suma de los divisores</h2>
+<p class="dropcap">Elige un entero positivo, suma sus divisores positivos menores que él y repite con el resultado.
+  Esta regla tan sencilla puede producir descensos, aumentos y ciclos. Una sucesión alícuota registra todo ese recorrido.</p>
+<h3>La regla de iteración</h3>
+<p>Si s(n) denota la suma de divisores propios, la sucesión que comienza en a₀ se define mediante:</p>
+<app-formula expression="s(n)=\sum_{d\mid n,\;1\le d\lt n}d=\sigma(n)-n,\qquad a_{k+1}=s(a_k)"></app-formula>
+<p>La función σ incluye todos los divisores positivos, mientras que s excluye el propio n.
+  Aplicamos la regla mientras el término sea positivo. Al llegar a 0 detenemos el recorrido; no intentamos sumar divisores de 0.</p>
+<h3>Un ejemplo completo: empezar en 12</h3>
+<p>Los divisores propios de 12 son 1, 2, 3, 4 y 6, cuya suma es 16. Los de 16 suman 15.
+  Continuando obtenemos:</p>
+<app-formula expression="12\longrightarrow16\longrightarrow15\longrightarrow9\longrightarrow4\longrightarrow3\longrightarrow1\longrightarrow0"></app-formula>
+<p>El primer paso crece, pero eso no impide que la sucesión termine. En sentido contrario, un descenso aislado tampoco
+  demuestra que todos los pasos siguientes vayan a bajar.</p>
+<app-aliquot-explorer></app-aliquot-explorer>
+<h3>Tres comportamientos que podemos reconocer</h3>
+<p><strong>Llegar a cero.</strong> Todo primo tiene como único divisor propio al 1, y el 1 no tiene divisores propios positivos.
+  Por eso, al encontrar un primo, los siguientes términos son 1 y 0. Para a₀ = 1 solo queda el último paso.</p>
+<p><strong>Quedarse fijo.</strong> Un <a routerLink="/articles/perfect-numbers">número perfecto</a> cumple s(n) = n.
+  El ejemplo 6 → 6 es un ciclo de período 1. Una sucesión también puede llegar a él desde fuera: 25 → 6 → 6.</p>
+<p><strong>Entrar en un ciclo de varios términos.</strong> Los <a routerLink="/articles/amicable-numbers">números amigos</a>
+  forman ciclos de período 2, como 220 → 284 → 220. Los ciclos de período mayor que 2 se llaman ciclos de números sociables.</p>
+<p>El explorador incluye un ejemplo de período 5 que puedes comprobar paso a paso sumando los divisores:</p>
+<app-formula expression="12496\to14288\to15472\to14536\to14264\to12496"></app-formula>
+<h3>Por qué una repetición demuestra un ciclo</h3>
+<p>La regla es determinista: un mismo número siempre tiene la misma suma de divisores.
+  Si aᵢ = aⱼ con i menor que j, también serán iguales sus sucesores, los siguientes y así sucesivamente.
+  El bloque entre la primera aparición y la repetición se repetirá indefinidamente.</p>
+<p>El programa recuerda el índice de la primera aparición de cada término. Al encontrar uno repetido, obtiene
+  el período restando ambos índices. Los términos anteriores al ciclo forman un tramo inicial que no tiene por qué repetirse.</p>
+<h3>Leer la gráfica con cuidado</h3>
+<p>El eje horizontal indica el número de pasos, no el valor inicial. El eje vertical muestra cada término.
+  La escala logarítmica opcional usa log₁₀(1 + aₖ), de modo que también puede representar el cero.
+  Ayuda a comparar términos de tamaños muy diferentes, pero cambia la interpretación de las distancias verticales.</p>
+<p>Al alcanzar un límite de pasos o de tamaño, solo sabemos que el cálculo se ha detenido.
+  Eso no demuestra que la sucesión diverja, que llegue a cero o que tenga un ciclo. El explorador distingue estos límites
+  de los finales y ciclos que sí ha comprobado.</p>
+<p><strong>Para explorar.</strong> Compara 12, 6, 220 y 12496. Después inicia en 25 y observa el tramo que precede al ciclo.
+  Reduce el límite a un paso para la sucesión de 12: explica por qué el resultado parcial no contradice que finalmente llegue a cero.</p>

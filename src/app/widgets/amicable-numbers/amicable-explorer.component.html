@@ -1,0 +1,28 @@
+<section class="widget" aria-labelledby="amicable-title">
+  <h3 id="amicable-title">Un viaje de ida y vuelta</h3>
+  <form (ngSubmit)="calculate()"><label for="amicable-input">Número inicial (1–1000000)</label>
+    <div class="controls"><input id="amicable-input" name="n" type="number" min="1" max="1000000" step="1" required [(ngModel)]="input">
+      <button type="submit">Explorar</button></div></form>
+  <div class="controls"><button type="button" *ngFor="let n of [220, 284, 1184, 6, 12, 1]" (click)="example(n)">{{ n }}</button></div>
+  <p class="error" role="alert" *ngIf="error">{{ error }}</p>
+  <ng-container *ngIf="result as r">
+    <div aria-live="polite">
+      <p *ngIf="r.kind === 'amicable'"><strong>{{ r.n }} y {{ r.partner }} son amigos:</strong> son distintos y el segundo paso vuelve al inicio.</p>
+      <p *ngIf="r.kind === 'perfect'"><strong>{{ r.n }} es perfecto.</strong> Vuelve a sí mismo en un paso; no forma una pareja de amigos distintos.</p>
+      <p *ngIf="r.kind === 'other'"><strong>No hay una pareja de amigos:</strong> el segundo paso no vuelve a {{ r.n }}.</p>
+      <p *ngIf="r.kind === 'zero'">La suma de divisores propios de 1 es 0. El recorrido termina: no calculamos divisores de 0.</p>
+    </div>
+    <div class="journey" role="img" [attr.aria-label]="r.n + ' pasa a ' + r.partner + (r.returned === null ? ', fin' : ' y después a ' + r.returned)">
+      <div class="node">{{ r.n }}<small>Inicio</small></div><div class="arrow">→<small>s(n)</small></div>
+      <div class="node middle">{{ r.partner }}<small>Suma de divisores</small></div><div class="arrow">→<small>{{ r.returned === null ? 'fin' : 's(s(n))' }}</small></div>
+      <div class="node" [class.match]="r.kind === 'amicable'">{{ r.returned === null ? 'Fin' : r.returned }}<small>{{ r.kind === 'amicable' ? 'Vuelta al inicio' : 'Resultado' }}</small></div>
+    </div>
+    <div class="divisor-columns"><div><h4>Divisores propios de {{ r.n }}</h4>
+      <div class="chips"><span *ngFor="let d of r.firstDivisors">{{ d }}</span></div>
+      <p *ngIf="!r.firstDivisors.length">Ninguno.</p><p>Suma = <strong>{{ r.partner }}</strong></p></div>
+      <div *ngIf="r.partner > 0"><h4>Divisores propios de {{ r.partner }}</h4>
+        <div class="chips"><span *ngFor="let d of r.secondDivisors">{{ d }}</span></div>
+        <p *ngIf="!r.secondDivisors.length">Ninguno.</p><p>Suma = <strong>{{ r.returned }}</strong></p></div></div>
+  </ng-container>
+  <p class="note">Se usan todos los divisores positivos menores que el número, sin incluirlo a él mismo. Las sumas mostradas son exactas.</p>
+</section>

@@ -1,4 +1,6 @@
 import { Type } from '@angular/core';
+import { AliquotSequencesArticleComponent } from './aliquot-sequences/aliquot-sequences-article.component';
+import { AmicableNumbersArticleComponent } from './amicable-numbers/amicable-numbers-article.component';
 import { FibonacciNumbersArticleComponent } from './fibonacci-numbers/fibonacci-numbers-article.component';
 import { PerfectNumbersArticleComponent } from './perfect-numbers/perfect-numbers-article.component';
 import { BernoulliNumbersArticleComponent } from './bernoulli-numbers/bernoulli-numbers-article.component';
@@ -35,7 +37,8 @@ export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   FermatFourSquareTheoremComponent, QuadraticReciprocityComponent,
   EulerCriterionComponent, PrimitiveRootTheoremComponent, OrdersTheoremComponent,
   DivisorSumTheoremComponent, EuclidEulerPerfectNumbersComponent, RiemannZetaArticleComponent,
-  BernoulliNumbersArticleComponent, PerfectNumbersArticleComponent, FibonacciNumbersArticleComponent
+  BernoulliNumbersArticleComponent, PerfectNumbersArticleComponent, FibonacciNumbersArticleComponent,
+  AmicableNumbersArticleComponent, AliquotSequencesArticleComponent
 ];
 
 export const NUMBER_THEORY_NAV_ITEMS = NUMBER_THEORY_ARTICLES.map(article => ({

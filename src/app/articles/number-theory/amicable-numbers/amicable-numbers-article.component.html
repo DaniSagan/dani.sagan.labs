@@ -1,0 +1,38 @@
+<h2>Números amigos: dos sumas que se devuelven el resultado</h2>
+<p class="dropcap">Los divisores propios de 220 suman 284. Si hacemos lo mismo con 284, recuperamos 220.
+  Ninguno de los dos se reconstruye a sí mismo: cada uno reconstruye al otro. Esa relación define una pareja de números amigos.</p>
+<h3>Una definición de ida y vuelta</h3>
+<p>Llamamos s(n) a la suma de los divisores positivos de n menores que él. Dos enteros positivos distintos a y b son amigos cuando:</p>
+<app-formula expression="s(n)=\sum_{d\mid n,\;1\le d\lt n}d,\qquad s(a)=b,\quad s(b)=a,\quad a\ne b"></app-formula>
+<p>Hay que verificar las dos sumas. Encontrar b = s(a) solo produce un candidato: falta comprobar que s(b) vuelve a a.</p>
+<h3>El ejemplo 220 y 284</h3>
+<p>Los divisores propios de 220 son 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 y 110:</p>
+<app-formula expression="s(220)=1+2+4+5+10+11+20+22+44+55+110=284"></app-formula>
+<p>Los de 284 son 1, 2, 4, 71 y 142:</p>
+<app-formula expression="s(284)=1+2+4+71+142=220"></app-formula>
+<p>Ambas comprobaciones son necesarias y suficientes.
+  <a href="https://mathworld.wolfram.com/AmicablePair.html">Definición y ejemplos en MathWorld</a>.</p>
+<app-amicable-explorer></app-amicable-explorer>
+<h3>Una comprobación mediante factorización</h3>
+<p>La función σ(n) incluye también el divisor n, de modo que s(n) = σ(n) − n. Para una pareja amiga:</p>
+<app-formula expression="\sigma(a)=\sigma(b)=a+b"></app-formula>
+<p>Como 220 = 2² · 5 · 11 y 284 = 2² · 71, sus divisores se generan eligiendo independientemente las potencias de cada primo:</p>
+<app-formula expression="\sigma(220)=(1+2+4)(1+5)(1+11)=504"></app-formula>
+<app-formula expression="\sigma(284)=(1+2+4)(1+71)=504"></app-formula>
+<p>Restamos cada número: 504 − 220 = 284 y 504 − 284 = 220. La igualdad de las dos sumas σ por sí sola
+  no basta; su valor común debe ser exactamente a + b.</p>
+<h3>Amigos y perfectos: ciclos diferentes</h3>
+<p>Un <a routerLink="/articles/perfect-numbers">número perfecto</a> cumple s(n) = n: es un punto fijo.
+  Una pareja amiga forma un ciclo de longitud dos. La exigencia de que sus miembros sean distintos evita contar, por ejemplo, 6 y 6 como pareja.</p>
+<p>Si a es el menor miembro de una pareja, s(a) = b supera a a: es abundante. El mayor es deficiente,
+  porque s(b) = a es menor que b. En el ejemplo, 220 es abundante y 284 es deficiente.</p>
+<p>No todos los recorridos regresan al inicio. Por ejemplo, 12 pasa a 16 y luego a 15.
+  Un primo pasa a 1 y el 1 pasa a 0; ahí detenemos el recorrido, pues estamos trabajando con divisores de enteros positivos.</p>
+<h3>Buscar parejas sin repetirlas</h3>
+<p>Para buscar en un intervalo, sumamos cada divisor d a sus múltiplos 2d, 3d, 4d, … Así obtenemos las sumas de divisores propios
+  de todos los números del intervalo. Después buscamos a y b tales que s(a) = b y s(b) = a, conservando solo a menor que b.</p>
+<app-amicable-search></app-amicable-search>
+<p>El límite de búsqueda se aplica a ambos miembros. Esto importa al interpretar un resultado vacío:
+  entre 1 y 250 no hay parejas completas, aunque 220 tenga un amigo fuera de ese intervalo.</p>
+<p><strong>Para explorar.</strong> Empieza el recorrido en 284 y comprueba que invierte el de 220.
+  Compara después 6, 12 y 1. Finalmente, busca hasta 10000 y verifica una de las parejas encontradas en el explorador de divisores.</p>
