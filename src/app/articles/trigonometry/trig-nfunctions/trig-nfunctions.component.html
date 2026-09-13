@@ -1,5 +1,84 @@
-<h2>Funciones trigonométricas de multiplos de ángulo</h2>
-
-<p>Partamos de la expresión del seno de la suma de dos ángulos:</p>
-
-<app-formula expression="\sin{\alpha + \beta} = \sin{\alpha}\cos{\beta} + \cos{\alpha}\sin{\beta}"/>
+<h2>Ángulos múltiples y mitad: cómo obtener sus fórmulas</h2>
+<p class="dropcap">Las identidades de ángulo doble, triple o cuádruple se construyen a partir de una misma idea: sumar ángulos.
+  Para las mitades recorreremos el camino inverso, prestando atención a los signos y a los denominadores.</p>
+<h3>El punto de partida</h3>
+<p>Vamos a deducir las fórmulas de suma usando la definición de seno y coseno como coordenadas de un vector unitario.
+  Así no necesitamos suponer de antemano las identidades que queremos demostrar.</p>
+<h4>1. Girar los ejes</h4>
+<p>Sea u el vector unitario que forma un ángulo α con el eje horizontal. Por definición, sus coordenadas son
+  (cos α, sin α). Girarlo 90° en sentido antihorario intercambia sus coordenadas y cambia el signo de la primera:
+  geométricamente, (x, y) pasa a (−y, x). Obtenemos un vector v perpendicular a u.</p>
+<app-formula expression="u=(\cos\alpha,\sin\alpha),\qquad v=(-\sin\alpha,\cos\alpha)"></app-formula>
+<p>Los vectores u y v tienen longitud 1 y forman unos nuevos ejes perpendiculares, girados α respecto a los originales.</p>
+<h4>2. Descomponer el vector que forma el ángulo suma</h4>
+<p>Tomemos un vector unitario OP que forma un ángulo β con u. Su ángulo respecto al eje horizontal es α + β.
+  En los ejes girados, sus componentes son cos β y sin β, de nuevo por la definición de estas funciones.</p>
+<app-angle-sum-proof></app-angle-sum-proof>
+<p>La suma de los desplazamientos OA y AP reconstruye OP. En lenguaje de vectores:</p>
+<app-formula expression="\overrightarrow{OP}=\cos\beta\,u+\sin\beta\,v"></app-formula>
+<h4>3. Leer las coordenadas horizontales y verticales</h4>
+<p>Multiplicamos cada vector por su componente y sumamos coordenada a coordenada:</p>
+<app-formula expression="\overrightarrow{OP}=(\cos\beta\cos\alpha-\sin\beta\sin\alpha,\;\cos\beta\sin\alpha+\sin\beta\cos\alpha)"></app-formula>
+<p>Pero OP tiene longitud 1 y dirección α + β. Su primera coordenada es cos(α + β) y su segunda es sin(α + β).
+  Igualando ambas descripciones obtenemos las dos identidades:</p>
+<app-formula expression="\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta"></app-formula>
+<app-formula expression="\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta"></app-formula>
+<p>El signo menos del coseno procede de la componente horizontal de v, que es −sin α. En el dibujo,
+  el desplazamiento naranja sube y retrocede hacia la izquierda.</p>
+<p>Aunque el ejemplo dibujado usa ángulos agudos, la demostración no depende de ello: las proyecciones son
+  componentes con signo. Una componente negativa indica un desplazamiento opuesto al eje correspondiente.
+  Por eso el argumento sirve también para ángulos negativos, obtusos o con varias vueltas.</p>
+<h4>4. Obtener la tangente de la suma</h4>
+<p>Dividiendo ambas identidades, y después numerador y denominador por cos α cos β, obtenemos:</p>
+<app-formula expression="\tan(\alpha+\beta)=\frac{\tan\alpha+\tan\beta}{1-\tan\alpha\tan\beta}"></app-formula>
+<p>Esta forma exige que ambas tangentes existan y que el denominador no sea cero. Las identidades de seno y coseno valen para todos los ángulos reales.</p>
+<h3>Ángulo doble</h3>
+<p>Ponemos α = β = θ. Usaremos s = sin θ, c = cos θ y, cuando exista, t = tan θ.</p>
+<app-formula expression="\sin(2\theta)=2sc"></app-formula>
+<app-formula expression="\cos(2\theta)=c^2-s^2=2c^2-1=1-2s^2"></app-formula>
+<p>Las dos últimas formas resultan de s² + c² = 1. Al dividir seno entre coseno:</p>
+<app-formula expression="\tan(2\theta)=\frac{2t}{1-t^2}"></app-formula>
+<p>Se requiere t finito y t² distinto de 1. Para θ = 45°, el doble es 90° y su tangente no existe.</p>
+<h3>Ángulo triple</h3>
+<p>Escribimos 3θ = 2θ + θ. La fórmula de suma da sin(3θ) = (2sc)c + (c² − s²)s = 3sc² − s³.
+  Sustituir c² = 1 − s² produce:</p>
+<app-formula expression="\sin(3\theta)=3s-4s^3"></app-formula>
+<p>De modo análogo, cos(3θ) = (c² − s²)c − (2sc)s = c³ − 3cs². Sustituyendo s² = 1 − c²:</p>
+<app-formula expression="\cos(3\theta)=4c^3-3c,\qquad \tan(3\theta)=\frac{3t-t^3}{1-3t^2}"></app-formula>
+<p>La forma en t requiere t finito y 1 − 3t² distinto de cero.</p>
+<h3>Ángulo cuádruple</h3>
+<p>En vez de sumar 3θ + θ podemos duplicar 2θ:</p>
+<app-formula expression="\sin(4\theta)=2\sin(2\theta)\cos(2\theta)=4sc(c^2-s^2)"></app-formula>
+<app-formula expression="\cos(4\theta)=2\cos^2(2\theta)-1=8c^4-8c^2+1"></app-formula>
+<app-formula expression="\tan(4\theta)=\frac{4t-4t^3}{1-6t^2+t^4}"></app-formula>
+<p>La última expresión exige t finito y denominador no nulo. Puede funcionar aunque tan(2θ) no exista:
+  para θ = 45°, tan(4θ) = 0. Para justificar ese caso basta dividir directamente seno y coseno de 4θ.</p>
+<h3>Quinto, sexto y cualquier múltiplo</h3>
+<p>Definimos Sₙ = sin(nθ) y Cₙ = cos(nθ). Sumar una copia más de θ da un algoritmo para cualquier entero n ≥ 0:</p>
+<app-formula expression="S_{n+1}=S_nc+C_ns,\qquad C_{n+1}=C_nc-S_ns,\qquad S_0=0,\quad C_0=1"></app-formula>
+<p>También podemos usar la fórmula de De Moivre y desarrollar el binomio:</p>
+<app-formula expression="(c+is)^n=\cos(n\theta)+i\sin(n\theta)"></app-formula>
+<p>Las potencias pares de i contribuyen al coseno y las impares al seno; los signos alternan porque i² = −1.
+  El generador del widget hace esa expansión para órdenes de 2 a 8. Por ejemplo, simplificando para n = 5:</p>
+<app-formula expression="\sin(5\theta)=5s-20s^3+16s^5,\qquad \cos(5\theta)=16c^5-20c^3+5c"></app-formula>
+<app-angle-identities></app-angle-identities>
+<h3>Ángulo mitad: despejar un cuadrado</h3>
+<p>Aplicamos el ángulo doble a θ/2 y despejamos:</p>
+<app-formula expression="\sin^2(\theta/2)=\frac{1-\cos\theta}{2},\qquad \cos^2(\theta/2)=\frac{1+\cos\theta}{2}"></app-formula>
+<app-formula expression="\sin(\theta/2)=\pm\sqrt{\frac{1-\cos\theta}{2}},\qquad \cos(\theta/2)=\pm\sqrt{\frac{1+\cos\theta}{2}}"></app-formula>
+<p>Elegimos cada signo por separado según el cuadrante de θ/2. El seno es positivo en I y II; el coseno, en I y IV.
+  En los ejes, alguno puede ser cero. No hay que tomar siempre la raíz positiva.</p>
+<p>Para θ = 540°, la mitad es 270° y su seno vale −1. Reducir primero θ a 180° perdería información:
+  la mitad de ese representante es 90°, cuyo seno es +1.</p>
+<h3>Tangente de la mitad</h3>
+<p>Dividiendo las expresiones anteriores obtenemos la raíz, cuyo signo depende del cuadrante de θ/2:</p>
+<app-formula expression="\tan(\theta/2)=\pm\sqrt{\frac{1-\cos\theta}{1+\cos\theta}}"></app-formula>
+<p>Para evitar raíces usamos sin θ = 2 sin(θ/2) cos(θ/2) junto con las identidades de los cuadrados:</p>
+<app-formula expression="\tan(\theta/2)=\frac{\sin\theta}{1+\cos\theta}\qquad(\cos\theta\ne-1)"></app-formula>
+<app-formula expression="\tan(\theta/2)=\frac{1-\cos\theta}{\sin\theta}\qquad(\sin\theta\ne0)"></app-formula>
+<p>Estas fracciones incorporan el signo, pero sus dominios difieren: para θ = 0°, la primera da 0 y la segunda es 0/0.
+  Para θ = 180°, la tangente de la mitad no está definida.</p>
+<p>Como 15° está en el primer cuadrante, al dividir 30° por dos tomamos raíces positivas y obtenemos:</p>
+<app-formula expression="\sin15^\circ=\frac{\sqrt6-\sqrt2}{4},\qquad \cos15^\circ=\frac{\sqrt6+\sqrt2}{4},\qquad \tan15^\circ=2-\sqrt3"></app-formula>
+<p><strong>Para explorar.</strong> Compara los múltiplos de 30°. Después selecciona «Ángulo mitad» y compara θ = 180°
+  con θ = 540°. Genera también el sexto múltiplo y comprueba que coincide con duplicar 3θ.</p>

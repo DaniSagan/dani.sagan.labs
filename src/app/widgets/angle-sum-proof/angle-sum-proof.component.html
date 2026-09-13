@@ -1,0 +1,35 @@
+<figure>
+  <svg viewBox="0 0 760 450" role="img" aria-labelledby="sum-proof-title sum-proof-description">
+    <title id="sum-proof-title">Descomposición de un vector en una base girada</title>
+    <desc id="sum-proof-description">Ejemplo con alfa de 25 grados y beta de 40 grados. El vector OP forma alfa más beta con el eje horizontal.
+      Su proyección sobre el eje u es OA, de longitud coseno de beta. El segmento AP, perpendicular a u,
+      tiene longitud seno de beta. OA avanza a la derecha y arriba; AP retrocede a la izquierda y sube.</desc>
+    <defs><marker id="sum-proof-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 Z" fill="context-stroke"/></marker></defs>
+    <!-- O=(210,350), unit length=270; alpha=25 degrees, beta=40 degrees. -->
+    <line x1="60" y1="350" x2="650" y2="350" class="axis"/>
+    <line x1="210" y1="410" x2="210" y2="35" class="axis"/>
+    <text x="655" y="356">x</text><text x="218" y="35">y</text><text x="190" y="375">O</text>
+    <line x1="210" y1="350" x2="498" y2="216" class="basis"/>
+    <line x1="210" y1="350" x2="87" y2="87" class="basis"/>
+    <text x="505" y="215">u = (cos α, sin α)</text><text x="25" y="65">v = (−sin α, cos α)</text>
+    <path d="M265,350 A55,55 0 0 0 259.85,326.76" class="angle"/>
+    <text x="271" y="337">α</text>
+    <path d="M282.5,316.2 A80,80 0 0 0 243.8,277.5" class="angle"/>
+    <text x="270" y="288">β</text>
+    <line x1="210" y1="350" x2="397.45" y2="262.59" class="u-vector" marker-end="url(#sum-proof-arrow)"/>
+    <line x1="397.45" y1="262.59" x2="324.11" y2="105.54" class="v-vector" marker-end="url(#sum-proof-arrow)"/>
+    <line x1="210" y1="350" x2="324.11" y2="105.54" class="result-vector" marker-end="url(#sum-proof-arrow)"/>
+    <path d="M383.86,268.93 L377.52,255.34 L391.11,249" class="right-angle"/>
+    <text x="401" y="283">A</text><text x="329" y="94">P</text>
+    <text x="280" y="328" class="u-label">cos β · u</text><text x="375" y="177" class="v-label">sin β · v</text>
+    <text x="220" y="178" class="result-label">OP = 1</text>
+    <line x1="324.11" y1="105.54" x2="324.11" y2="350" class="projection"/>
+    <line x1="324.11" y1="105.54" x2="210" y2="105.54" class="projection"/>
+    <circle cx="324.11" cy="350" r="3" class="point"/><circle cx="210" cy="105.54" r="3" class="point"/>
+    <text x="327" y="376">x(P) = cos(α + β)</text>
+    <text x="445" y="110">y(P) = sin(α + β)</text>
+    <text x="70" y="433">OP = OA + AP = cos β · u + sin β · v</text>
+  </svg>
+  <figcaption>Azul continuo: componente sobre u. Naranja discontinuo: componente sobre v.
+    Verde: vector resultante. El dibujo ilustra α = 25° y β = 40°; la demostración usa componentes con signo y vale para cualquier ángulo real.</figcaption>
+</figure>

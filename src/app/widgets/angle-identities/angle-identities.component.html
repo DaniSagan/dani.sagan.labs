@@ -1,0 +1,40 @@
+<section class="widget" aria-labelledby="angle-widget-title">
+  <h3 id="angle-widget-title">Explorar múltiplos y mitades</h3>
+  <div class="controls"><label for="angle-mode">Transformación</label>
+    <select id="angle-mode" [(ngModel)]="mode"><option value="multiple">Ángulo múltiplo</option><option value="half">Ángulo mitad</option></select>
+    <ng-container *ngIf="mode === 'multiple'"><label for="angle-order">Orden n</label><select id="angle-order" [(ngModel)]="order">
+      <option *ngFor="let n of orders" [ngValue]="n">{{ n }}</option></select></ng-container>
+  </div>
+  <label for="angle-theta">θ = {{ degrees }}°</label>
+  <input id="angle-theta" type="range" min="-360" max="720" step="1" [(ngModel)]="degrees">
+  <div class="controls"><button type="button" *ngFor="let angle of [0, 30, 45, 90, 180, 270, 360, 540]" (click)="degrees = angle">{{ angle }}°</button></div>
+  <div class="visual">
+    <svg viewBox="0 0 360 360" role="img" [attr.aria-label]="'Circunferencia unidad: ángulo original ' + degrees + ' grados y transformado ' + targetAngle + ' grados'">
+      <circle cx="180" cy="180" r="130" class="circle"/>
+      <line x1="20" y1="180" x2="340" y2="180" class="axis"/><line x1="180" y1="20" x2="180" y2="340" class="axis"/>
+      <text x="305" y="200">1</text><text x="188" y="50">1</text><text x="310" y="165">cos</text><text x="190" y="25">sin</text>
+      <line x1="180" y1="180" [attr.x2]="x(base.cos)" [attr.y2]="y(base.sin)" class="base"/>
+      <circle [attr.cx]="x(base.cos)" [attr.cy]="y(base.sin)" r="7" class="base-point"/>
+      <line x1="180" y1="180" [attr.x2]="x(target.cos)" [attr.y2]="y(target.sin)" class="target"/>
+      <line [attr.x1]="x(target.cos)" [attr.y1]="y(target.sin)" [attr.x2]="x(target.cos)" y2="180" class="projection"/>
+      <line [attr.x1]="x(target.cos)" [attr.y1]="y(target.sin)" x2="180" [attr.y2]="y(target.sin)" class="projection"/>
+      <circle [attr.cx]="x(target.cos)" [attr.cy]="y(target.sin)" r="4" class="target-point"/>
+    </svg>
+    <div><p class="base-label">Azul: θ = {{ degrees }}°</p><p class="target-label">Naranja: {{ mode === 'half' ? 'θ/2' : 'nθ' }} = {{ targetAngle }}°</p>
+      <table><caption>Valores aproximados</caption><thead><tr><th scope="col">Función</th><th scope="col">θ</th><th scope="col">{{ mode === 'half' ? 'θ/2' : 'nθ' }}</th></tr></thead>
+        <tbody><tr><th scope="row">Seno</th><td>{{ format(base.sin) }}</td><td>{{ format(target.sin) }}</td></tr>
+          <tr><th scope="row">Coseno</th><td>{{ format(base.cos) }}</td><td>{{ format(target.cos) }}</td></tr>
+          <tr><th scope="row">Tangente</th><td>{{ format(base.tan) }}</td><td>{{ format(target.tan) }}</td></tr></tbody></table>
+      <p class="note">Las proyecciones del punto naranja dan su coseno y su seno. La tangente es su cociente y no existe cuando el coseno es cero.</p>
+    </div>
+  </div>
+  <div *ngIf="mode === 'multiple'" class="formulas">
+    <h4>Generador de identidades</h4><p>Con s = sin θ y c = cos θ, la expansión de (c + is)ⁿ produce:</p>
+    <app-formula [expression]="sineFormula"></app-formula><app-formula [expression]="cosineFormula"></app-formula><app-formula [expression]="tangentFormula"></app-formula>
+    <p class="note">La identidad de la tangente requiere que el denominador sea distinto de cero. Estas expresiones en s y c no necesitan que tan θ exista.</p>
+  </div>
+  <div *ngIf="mode === 'half'"><p>Signos de esta mitad: seno {{ target.sin > 1e-12 ? 'positivo' : target.sin < -1e-12 ? 'negativo' : 'cero' }};
+    coseno {{ target.cos > 1e-12 ? 'positivo' : target.cos < -1e-12 ? 'negativo' : 'cero' }}.</p>
+    <p class="note">Prueba θ = 180° y θ = 540°: sus puntos originales coinciden, pero sus mitades son 90° y 270°.
+      Por eso hay que conocer el ángulo y su cuadrante para elegir el signo de una raíz.</p></div>
+</section>

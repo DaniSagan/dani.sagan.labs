@@ -1,0 +1,8 @@
+:host { display: block; margin: 1.5rem 0; }
+figure { margin: 0; padding: 1rem; border: 1px solid #333; border-radius: 12px; background: #0f0f18; color: #e6e6ef; }
+svg { display: block; width: 100%; height: auto; } text { fill: #e6e6ef; font: 15px sans-serif; }
+.axis { stroke: #73738d; }.basis { stroke: #a2a2ba; stroke-dasharray: 5 5; }
+.u-vector { stroke: #75cfff; stroke-width: 3; }.v-vector { stroke: #ffb184; stroke-width: 3; stroke-dasharray: 8 3; }
+.result-vector { stroke: #8edbb1; stroke-width: 3; }.u-label { fill: #75cfff; }.v-label { fill: #ffb184; }.result-label { fill: #8edbb1; }
+.angle, .right-angle { fill: none; stroke: #c6a0ff; stroke-width: 1.5; }.projection { stroke: #8edbb1; stroke-dasharray: 3 5; }
+.point { fill: #8edbb1; }figcaption { color: #b9b9cc; font-size: .9rem; margin-top: .8rem; }
