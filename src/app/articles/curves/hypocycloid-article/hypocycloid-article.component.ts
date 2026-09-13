@@ -20,11 +20,11 @@ export class HypocycloidArticleComponent extends CurveArticleBaseComponent {
   override bounds: [number, number, number, number] = [-8, 8, -8, 8];
   override paramDefinitions = [
     { key: 'R', label: 'R', min: 2, max: 8, step: 0.5, value: 5 },
-    { key: 'r', label: 'r', min: 0.5, max: 3, step: 0.1, value: 1.5 }
+    { key: 'r', label: 'r', min: 0.5, max: 3, step: 0.1, value: 1.0 }
   ];
   override kind: 'implicit' | 'parametric' = 'parametric';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ x = (R-r)\cos t + r\cos\left(\frac{R-r}{r}t\right), \quad y = (R-r)\sin t - r\sin\left(\frac{R-r}{r}t\right) $$`;
+    return `$$ x = (R-r)\\cos t + r\\cos\\left(\\frac{R-r}{r}t\\right), \\quad y = (R-r)\\sin t - r\\sin\\left(\\frac{R-r}{r}t\\right) $$`;
   }
   protected override paramX = (t: number, params: Record<string, number>) => (params.R - params.r) * Math.cos(t) + params.r * Math.cos(((params.R - params.r) / params.r) * t);
   protected override paramY = (t: number, params: Record<string, number>) => (params.R - params.r) * Math.sin(t) - params.r * Math.sin(((params.R - params.r) / params.r) * t);

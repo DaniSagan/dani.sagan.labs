@@ -1,0 +1,142 @@
+:host {
+  display: block;
+  margin: 1.5rem 0;
+}
+.widget {
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  background: #0f0f18;
+  color: #e6e6ef;
+  color-scheme: dark;
+}
+h3 {
+  margin-top: 0;
+}
+.controls,
+.presets,
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: end;
+  margin: 1rem 0;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+input[type="number"] {
+  width: 145px;
+  max-width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #68687e;
+  border-radius: 5px;
+  background: #242430;
+  color: #e6e6ef;
+}
+button {
+  border: 1px solid #8ab4f8;
+  border-radius: 6px;
+  background: #8ab4f8;
+  color: #0f0f18;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+.presets button {
+  background: #242430;
+  color: #a8c7fa;
+}
+button:hover {
+  filter: brightness(1.1);
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f6c76b;
+  outline-offset: 3px;
+}
+.result {
+  background: #242430;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+.note {
+  font-size: 0.9rem;
+  color: #b9b9cc;
+}
+.error {
+  color: #ff9b9b;
+}
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #171722;
+  border-radius: 8px;
+}
+svg text {
+  font: 12px sans-serif;
+  fill: #c9c9dc;
+}
+.axis {
+  stroke: #85859f;
+  stroke-width: 1;
+}
+.grid {
+  stroke: #303042;
+}
+.curve {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+.real {
+  color: #75cfff;
+  stroke: #75cfff;
+}
+.imaginary {
+  color: #ffb184;
+  stroke: #ffb184;
+}
+.modulus {
+  color: #c6a0ff;
+  stroke: #c6a0ff;
+}
+.dashed {
+  stroke-dasharray: 7 4;
+}
+.dotted {
+  stroke-dasharray: 2 4;
+}
+.cursor {
+  stroke: #e6e6ef;
+  stroke-dasharray: 4;
+}
+.marker {
+  fill: #ff7896;
+  stroke: white;
+  stroke-width: 2;
+}
+.exploration {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.readout {
+  overflow-wrap: anywhere;
+}
+input[type="range"] {
+  accent-color: #8ab4f8;
+  width: 100%;
+  margin: 1rem 0;
+}
+@media (max-width: 600px) {
+  .exploration {
+    grid-template-columns: 1fr;
+  }
+}

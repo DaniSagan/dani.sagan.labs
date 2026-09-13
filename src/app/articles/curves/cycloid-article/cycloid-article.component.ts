@@ -8,9 +8,14 @@ import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-b
 @Component({
   selector: 'app-cycloid-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    MathjaxModule,
+    ImplicitCurveGraphComponent,
+  ],
   templateUrl: './cycloid-article.component.html',
-  styleUrls: ['./cycloid-article.component.css']
+  styleUrls: ['./cycloid-article.component.css'],
 })
 export class CycloidArticleComponent extends CurveArticleBaseComponent {
   static title = 'Cicloide';
@@ -18,12 +23,23 @@ export class CycloidArticleComponent extends CurveArticleBaseComponent {
 
   override title = CycloidArticleComponent.title;
   override bounds: [number, number, number, number] = [-8, 8, -3, 5];
-  override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }];
+  override paramDefinitions = [
+    { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 },
+  ];
   override kind: 'implicit' | 'parametric' = 'parametric';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ x = a(t - \sin t), \quad y = a(1 - \cos t) $$`;
+    return `$$ x = a(t - \\sin t), \\quad y = a(1 - \\cos t) $$`;
   }
-  protected override paramX = (t: number, params: Record<string, number>) => params.a * (t - Math.sin(t));
-  protected override paramY = (t: number, params: Record<string, number>) => params.a * (1 - Math.cos(t));
-  protected override evaluateImplicit = (_x: number, _y: number, _params: Record<string, number>) => 0;
+  protected override paramX = (t: number, params: Record<string, number>) =>
+    params.a * (t - Math.sin(t));
+  protected override paramY = (t: number, params: Record<string, number>) =>
+    params.a * (1 - Math.cos(t));
+  protected override evaluateImplicit = (
+    _x: number,
+    _y: number,
+    _params: Record<string, number>,
+  ) => 0;
+
+  parametricMinValue = -4.0 * Math.PI;
+  parametricMaxValue = 4.0 * Math.PI;
 }

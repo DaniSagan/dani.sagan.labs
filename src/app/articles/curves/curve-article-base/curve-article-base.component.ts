@@ -20,6 +20,8 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
   kind: 'implicit' | 'parametric' = 'implicit';
   paramDefinitions: CurveParamDefinition[] = [];
   params: Record<string, number> = {};
+  parametricMinValue = -Math.PI;
+  parametricMaxValue = Math.PI;
 
   protected abstract buildEquation(params: Record<string, number>): string;
   protected abstract evaluateImplicit(x: number, y: number, params: Record<string, number>): number;
@@ -66,7 +68,7 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
       const steps = 1200;
 
       for (let i = 0; i < steps; i++) {
-        const t = -Math.PI + (i / steps) * (2 * Math.PI);
+        const t = this.parametricMinValue + (i / steps) * (this.parametricMaxValue - this.parametricMinValue);
         const x = this.paramX!(t, this.params);
         const y = this.paramY!(t, this.params);
         const point = this.curveGraph.xyToPixel(new Vec2(x, y));

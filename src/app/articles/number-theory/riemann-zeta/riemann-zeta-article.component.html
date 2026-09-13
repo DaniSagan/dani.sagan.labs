@@ -1,0 +1,62 @@
+<h2>La función zeta de Riemann: de una suma a los números primos</h2>
+<p class="dropcap">Sumar los inversos de los cuadrados produce π²/6. Si cambiamos el exponente por un número complejo,
+  esa suma abre una puerta a la distribución de los números primos. La función zeta de Riemann, escrita ζ(s),
+  conecta el análisis complejo con la teoría de números: por eso este artículo pertenece a esta última categoría.</p>
+
+<h3>Una serie que codifica los primos</h3>
+<p>Escribimos s = σ + it, donde σ es la parte real y t la parte imaginaria. Para σ &gt; 1, la serie converge
+  absolutamente:</p>
+<app-formula
+  expression="\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s},\qquad n^{-s}=e^{-s\log n},\qquad \Re(s)>1"></app-formula>
+<p>El producto de Euler expresa la misma función usando únicamente números primos. Al expandir cada factor
+  como una serie geométrica, la factorización única hace que cada entero positivo aparezca exactamente una vez:</p>
+<app-formula expression="\zeta(s)=\prod_{p\;\mathrm{primo}}\frac{1}{1-p^{-s}},\qquad \Re(s)>1"></app-formula>
+<p>Esta identidad explica su papel en teoría de números: una función analítica reúne información sobre todos los primos.
+  Riemann estudió esta conexión con una variable compleja en su trabajo de 1859.</p>
+
+<h3>Más allá de la serie: continuación analítica</h3>
+<p>La serie anterior no converge en la franja crítica. Para llegar allí se usa la continuación analítica,
+  que extiende de manera única la función a todo el plano complejo salvo un polo simple en s = 1, de residuo 1.
+  Cerca de ese punto, su término dominante es 1/(s − 1).
+  <a href="https://dlmf.nist.gov/25.2">Definición y continuación en DLMF (NIST)</a>.
+</p>
+<app-formula expression="\zeta(2)=\frac{\pi^2}{6},\qquad \zeta(0)=-\frac12,\qquad \zeta(-1)=-\frac1{12}"></app-formula>
+<p>El último valor corresponde a la función continuada: no significa que la suma ordinaria 1 + 2 + 3 + ⋯
+  sea negativa ni convergente. Es esencial distinguir la serie original de su continuación.</p>
+<p>La ecuación funcional relaciona valores a ambos lados del plano. La función gamma Γ extiende el factorial,
+  con Γ(n) = (n − 1)! para enteros positivos:</p>
+<app-formula expression="\zeta(s)=2^s\pi^{s-1}\sin\!\left(\frac{\pi s}{2}\right)\Gamma(1-s)\zeta(1-s)"></app-formula>
+<p>En puntos donde aparecen factores singulares, esta identidad se interpreta por límites.
+  <a href="https://dlmf.nist.gov/25.4">Ecuaciones funcionales en DLMF</a>.
+</p>
+<app-zeta-calculator></app-zeta-calculator>
+
+<h3>Los ceros y la franja crítica</h3>
+<p>Los enteros negativos pares −2, −4, −6, … son los ceros triviales.
+  Los demás ceros están en la <strong>franja crítica 0 &lt; σ &lt; 1</strong>.
+  Dentro de ella se encuentra la <strong>recta crítica σ = ½</strong>: franja y recta son objetos distintos.</p>
+<p>La hipótesis de Riemann afirma que todos los ceros no triviales tienen parte real ½.
+  Los ceros aparecen en pares conjugados y tienen simetría respecto a la recta crítica.
+  <a href="https://dlmf.nist.gov/25.10">Ceros e hipótesis de Riemann en DLMF</a>.
+</p>
+<app-formula
+  expression="\zeta\!\left(\frac12+it\right)=0,\qquad t\approx14.134725,\;21.022040,\;25.010858,\ldots"></app-formula>
+<p>Estos son los primeros ceros con parte imaginaria positiva. En ellos se anulan simultáneamente las dos componentes
+  de ζ(s). La posición de los ceros interviene en fórmulas que describen el recuento de primos;
+  la hipótesis impondría un control muy preciso de las fluctuaciones de ese recuento.</p>
+<app-zeta-critical-strip></app-zeta-critical-strip>
+
+<h3>Qué observar en los gráficos</h3>
+<p>Empieza con σ = 0,5 y t entre 0 y 40. Usa «Explorar el primer cero» para acercarte a t ≈ 14,134725:
+  el módulo se aproxima a cero y la trayectoria pasa junto al origen. Después cambia σ a 0,3 o 0,7
+  y compara el recorrido. También puedes elegir un intervalo negativo para observar la conjugación
+  ζ(σ − it) = la conjugada de ζ(σ + it).</p>
+<p>Las gráficas representan muestras unidas por segmentos. Un valor muy pequeño no certifica un cero exacto,
+  y explorar una cantidad finita de puntos no prueba una afirmación sobre todos los ceros.</p>
+
+<h3>Cómo se calcula</h3>
+<p>La calculadora usa la fórmula de Euler–Maclaurin para combinar una suma finita con correcciones de su cola,
+  y comprueba la estabilidad al duplicar el número de términos. En el semiplano izquierdo emplea la ecuación funcional.
+  Son aproximaciones de doble precisión, no un sistema de aritmética de precisión arbitraria.
+  <a href="https://dlmf.nist.gov/25.11#iii">Representaciones de Euler–Maclaurin en DLMF</a>.
+</p>
