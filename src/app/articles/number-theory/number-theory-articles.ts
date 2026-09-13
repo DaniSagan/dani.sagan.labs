@@ -1,4 +1,5 @@
 import { Type } from '@angular/core';
+import { PerfectNumbersArticleComponent } from './perfect-numbers/perfect-numbers-article.component';
 import { BernoulliNumbersArticleComponent } from './bernoulli-numbers/bernoulli-numbers-article.component';
 import { RiemannZetaArticleComponent } from './riemann-zeta/riemann-zeta-article.component';
 import { DivisionAlgorithmComponent } from './division-algorithm/division-algorithm.component';
@@ -33,7 +34,7 @@ export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   FermatFourSquareTheoremComponent, QuadraticReciprocityComponent,
   EulerCriterionComponent, PrimitiveRootTheoremComponent, OrdersTheoremComponent,
   DivisorSumTheoremComponent, EuclidEulerPerfectNumbersComponent, RiemannZetaArticleComponent,
-  BernoulliNumbersArticleComponent
+  BernoulliNumbersArticleComponent, PerfectNumbersArticleComponent
 ];
 
 export const NUMBER_THEORY_NAV_ITEMS = NUMBER_THEORY_ARTICLES.map(article => ({

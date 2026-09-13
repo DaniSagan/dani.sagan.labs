@@ -1,0 +1,27 @@
+<section class="widget" aria-labelledby="divisor-title">
+  <h3 id="divisor-title">La suma de los divisores</h3>
+  <p>Compara un número con la suma de todos sus divisores positivos menores que él.</p>
+  <form (ngSubmit)="calculate()">
+    <label for="perfect-input">Número entero (1–{{ maximum }})</label>
+    <div class="controls"><input id="perfect-input" name="n" type="number" min="1" [max]="maximum" step="1" required [(ngModel)]="input">
+      <button type="submit">Explorar divisores</button></div>
+  </form>
+  <div class="controls examples">
+    <button type="button" *ngFor="let value of [1, 6, 12, 28, 496, 8128]" (click)="example(value)">{{ value }}</button>
+  </div>
+  <p class="error" role="alert" *ngIf="error">{{ error }} La visualización conserva el último número válido.</p>
+  <p aria-live="polite"><strong>{{ n }} es {{ classification }}</strong>: la suma de todos sus divisores propios es {{ total }}.
+    Diferencia respecto a {{ n }}: {{ total - n }}.</p>
+  <p>Activa o desactiva divisores para ver su contribución a la suma. La clasificación siempre utiliza todos los divisores.</p>
+  <div class="controls"><button type="button" (click)="selectAll()">Seleccionar todos</button><button type="button" (click)="clear()">Vaciar selección</button></div>
+  <div class="divisors" aria-label="Divisores propios">
+    <button type="button" *ngFor="let d of divisors" [attr.aria-pressed]="selected.has(d)" (click)="toggle(d)">{{ d }}</button>
+  </div>
+  <p *ngIf="!divisors.length">El 1 no tiene divisores propios positivos: la suma vacía vale 0.</p>
+  <div class="chart" role="img" [attr.aria-label]="'Comparación: número ' + n + ', suma seleccionada ' + partial + ', suma total ' + total">
+    <p>Número: {{ n }}</p><div class="track"><div class="bar number" [style.width.%]="100 * n / scale"></div></div>
+    <p>Suma seleccionada: {{ partial }}</p><div class="track"><div class="bar selected" [style.width.%]="100 * partial / scale"></div></div>
+    <p>Suma de todos los divisores: {{ total }}</p><div class="track"><div class="bar total" [style.width.%]="100 * total / scale"></div></div>
+  </div>
+  <p class="note">Las tres barras comparten escala. Un número perfecto iguala la primera y la tercera barra.</p>
+</section>

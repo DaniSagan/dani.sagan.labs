@@ -1,0 +1,49 @@
+<h2>Números perfectos: cuando los divisores reconstruyen el número</h2>
+<p class="dropcap">El 6 tiene tres divisores positivos menores que él: 1, 2 y 3. Al sumarlos, recuperamos el propio 6.
+  El 28 comparte esta propiedad: 1 + 2 + 4 + 7 + 14 = 28. Un entero positivo con este equilibrio se llama <strong>número perfecto</strong>.</p>
+
+<h3>Perfectos, deficientes y abundantes</h3>
+<p>Los divisores propios positivos de n son aquellos que lo dividen exactamente y son menores que n.
+  Si llamamos s(n) a su suma, podemos comparar s(n) con n:</p>
+<app-formula expression="s(n)=\sum_{d\mid n,\;1\le d\lt n}d,\qquad n\text{ perfecto}\iff s(n)=n"></app-formula>
+<p>Un número es <strong>deficiente</strong> si la suma se queda corta y <strong>abundante</strong> si la supera.
+  Por ejemplo, s(8) = 1 + 2 + 4 = 7, mientras que s(12) = 1 + 2 + 3 + 4 + 6 = 16.
+  El 1 es deficiente: no tiene divisores propios positivos y su suma es 0.</p>
+<p>No basta con encontrar algunos divisores que sumen n. Para ser perfecto, la suma debe incluirlos todos.
+  El 12, por ejemplo, cumple 2 + 4 + 6 = 12, pero es abundante.</p>
+<app-divisor-balance></app-divisor-balance>
+
+<h3>Otra forma de expresar el equilibrio</h3>
+<p>La función σ(n) suma todos los divisores positivos, incluido el propio n. Por tanto, σ(n) = s(n) + n:</p>
+<app-formula expression="n\text{ perfecto}\iff\sigma(n)=2n"></app-formula>
+<p>Esta formulación permite aprovechar la factorización. Si dos números son coprimos, σ de su producto es
+  el producto de sus sumas de divisores. Para una potencia de un primo, basta una suma geométrica:</p>
+<app-formula expression="\sigma(q^a)=1+q+\cdots+q^a=\frac{q^{a+1}-1}{q-1}\qquad(q\text{ primo})"></app-formula>
+<p>En 28 = 2² · 7 obtenemos σ(28) = (1 + 2 + 4)(1 + 7) = 56 = 2 · 28.</p>
+
+<h3>De los primos de Mersenne a los perfectos pares</h3>
+<p>Euclides dio una construcción: si M = 2ᵖ − 1 es primo, entonces N = 2ᵖ⁻¹M es perfecto.
+  Euler demostró que todos los perfectos pares se obtienen de esta manera.</p>
+<app-formula expression="N=2^{p-1}(2^p-1),\qquad 2^p-1\text{ primo}"></app-formula>
+<p>Los exponentes p = 2, 3, 5 y 7 producen 6, 28, 496 y 8128.
+  Puedes leer la demostración en el artículo sobre el <a routerLink="/articles/euclid-euler-perfect-numbers">teorema de Euclides–Euler</a>.</p>
+<p>Es necesario que p sea primo, pero eso no es suficiente: 2¹¹ − 1 = 2047 = 23 · 89.
+  Hay que comprobar la primalidad de 2ᵖ − 1 antes de afirmar que la construcción da un perfecto.</p>
+<app-mersenne-builder></app-mersenne-builder>
+
+<h3>Una forma triangular</h3>
+<p>La misma expresión explica una propiedad geométrica de todos los perfectos pares. Si M = 2ᵖ − 1,
+  entonces M + 1 = 2ᵖ y:</p>
+<app-formula expression="N=\frac{M(M+1)}2=1+2+\cdots+M"></app-formula>
+<p>Así, 6 forma un triángulo de 3 filas y 28 uno de 7 filas. No todos los números triangulares son perfectos:
+  10 = 1 + 2 + 3 + 4, pero sus divisores propios solo suman 8.</p>
+
+<h3>Preguntas que siguen abiertas</h3>
+<p>No se sabe si existen números perfectos impares. Tampoco se sabe si hay infinitos perfectos pares:
+  por Euclides–Euler, esta última pregunta equivale a la existencia de infinitos primos de Mersenne.
+  Una exploración finita, por grande que sea, no resuelve ninguna de las dos cuestiones.
+  <a href="https://mathworld.wolfram.com/PerfectNumber.html">Números perfectos en MathWorld</a> y
+  <a href="https://mathworld.wolfram.com/OddPerfectNumber.html">el problema de los perfectos impares</a>.</p>
+<p><strong>Para explorar.</strong> Compara 28 y 30 en el primer widget. Después desactiva algunos divisores de 12
+  hasta conseguir una suma de 12: explica por qué eso no lo convierte en perfecto. En el constructor,
+  compara p = 7 y p = 11 y observa qué condición falla en el segundo caso.</p>
