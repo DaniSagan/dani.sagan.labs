@@ -1,0 +1,47 @@
+<h2>La espiral de Ulam: diagonales entre los números primos</h2>
+<p class="dropcap">Escribe el 1 en una cuadrícula y coloca los enteros siguientes dando vueltas a su alrededor.
+  Marca ahora los primos. Entre los puntos aparecen alineaciones diagonales: una distribución que parecía irregular
+  sobre la recta numérica adquiere una estructura visible al cambiar la forma de colocar los números.</p>
+<h3>Construir la espiral cuadrada</h3>
+<p>Usaremos el 1 en el origen, el 2 a su derecha y el 3 encima del 2. Continuamos hacia la izquierda, después
+  hacia abajo y de nuevo hacia la derecha. Las longitudes de los tramos son 1, 1, 2, 2, 3, 3…
+  El primer anillo se completa con el 9, y el siguiente con el 25.</p>
+<app-formula expression="\begin{matrix}17&16&15&14&13\\18&5&4&3&12\\19&6&1&2&11\\20&7&8&9&10\\21&22&23&24&25\end{matrix}"></app-formula>
+<p>Un primo es un entero mayor que 1 cuyos únicos divisores positivos son 1 y él mismo. El 1 no es primo.
+  Al destacar 2, 3, 5, 7, 11, 13… obtenemos la espiral de Ulam. Girar o reflejar el dibujo cambia su orientación,
+  pero conserva las alineaciones.</p>
+<app-ulam-explorer></app-ulam-explorer>
+<h3>Los anillos esconden cuadrados</h3>
+<p>El anillo de radio r contiene 8r casillas nuevas. Su esquina inferior derecha es el cuadrado impar (2r + 1)².
+  Desde esa esquina, recorrer un lado resta 2r al valor. Así se obtienen las cuatro diagonales que pasan por las esquinas:</p>
+<app-formula expression="\begin{aligned}\text{NE: }&4r^2-2r+1,\\\text{NO: }&4r^2+1,\\\text{SO: }&4r^2+2r+1,\\\text{SE: }&(2r+1)^2,\qquad r\ge1.\end{aligned}"></app-formula>
+<section aria-label="Comparar diagonales de la espiral">
+  <h3>Explora las cuatro diagonales</h3>
+  <label>Anillos mostrados: {{ rings }}<input type="range" min="1" max="20" step="1" [(ngModel)]="rings"></label>
+  <div class="diagonals"><table><caption>Valores de las esquinas por anillo</caption>
+    <thead><tr><th scope="col">r</th><th scope="col">NE</th><th scope="col">NO</th><th scope="col">SO</th><th scope="col">SE</th></tr></thead>
+    <tbody><tr *ngFor="let row of rows"><th scope="row">{{ row.r }}</th><td>{{ row.ne }}</td><td>{{ row.nw }}</td><td>{{ row.sw }}</td><td>{{ row.se }}</td></tr></tbody>
+  </table></div>
+</section>
+<p>La diagonal sureste contiene 9, 25, 49, 81…: todos son compuestos porque son cuadrados de enteros mayores que 1.
+  En las otras aparecen tanto primos como compuestos. Por ejemplo, la diagonal suroeste empieza en 7, 21, 43:
+  una alineación no es una garantía de primalidad.</p>
+<h3>Por qué aparecen líneas ricas en primos</h3>
+<p>Al avanzar por muchas líneas de la cuadrícula aparecen sucesiones dadas por polinomios cuadráticos.
+  Sus propiedades de divisibilidad no son iguales: algunas fórmulas fuerzan factores pequeños con frecuencia;
+  otras los evitan en más posiciones. Esta diferencia ayuda a explicar las franjas visibles.
+  El análisis de <a href="https://blogs.mathworks.com/cleve/2015/01/05/prime-spiral/">Cleve Moler sobre la espiral de primos</a>
+  desarrolla esta relación entre la geometría y las fórmulas cuadráticas.</p>
+<p>Un ejemplo clásico de polinomio rico en primos es n² + n + 41: produce primos para n = 0,…,39, pero en n = 40
+  da 1681 = 41². No hay que identificar automáticamente esta fórmula con una diagonal completa de nuestra espiral:
+  las fórmulas concretas dependen de la línea y de cómo numeramos sus posiciones.</p>
+<h3>Una imagen sugerente no es una demostración</h3>
+<p>Las alineaciones no predicen por sí solas si el siguiente número será primo. Tampoco un segmento largo de primos
+  demuestra que una fórmula los produzca siempre. El dibujo sirve para formular preguntas y comparar patrones;
+  las afirmaciones sobre infinitos valores requieren argumentos matemáticos.</p>
+<p>En zonas muy lejanas, el visor mantiene exactos los enteros y sus posiciones mediante BigInt. Comprobar primalidad
+  puede ser mucho más costoso que localizar una casilla: por eso separa los primos demostrados de los candidatos
+  que superan un test de Miller–Rabin. Un punto naranja no es una demostración de primalidad.</p>
+<p><strong>Para explorar.</strong> Reduce la ventana a 7 × 7, activa los números y compara con la matriz inicial.
+  Después amplía el tramo y la ventana para observar las diagonales. Busca 49: ¿en qué diagonal cae?
+  Finalmente escribe un N de muchas cifras y pulsa «Ir a N» para inspeccionar su entorno sin calcular los anteriores.</p>
