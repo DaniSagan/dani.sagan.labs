@@ -1,0 +1,80 @@
+<h2>Series de Fourier: construir una onda con otras ondas</h2>
+<p class="dropcap">Una onda cuadrada tiene tramos planos y saltos bruscos. Una sinusoide, en cambio,
+  es suave en todas partes. ¿Cómo puede una suma de sinusoides reconstruir una señal con esquinas
+  e incluso discontinuidades? Las series de Fourier muestran cómo una función periódica puede
+  descomponerse en oscilaciones de distintas frecuencias.</p>
+
+<h3>La frecuencia fundamental y sus armónicos</h3>
+<p>Trabajaremos con funciones de período 2π. La oscilación sin(x) completa una vuelta en ese intervalo;
+  sin(2x) completa dos, sin(3x) tres, y así sucesivamente. Estas frecuencias enteras son los
+  <strong>armónicos</strong>. La forma general de la serie es:</p>
+<app-formula expression="f(x)\sim\frac{a_0}{2}+\sum_{k=1}^{\infty}\bigl(a_k\cos(kx)+b_k\sin(kx)\bigr)"></app-formula>
+<p>El término a₀/2 es el valor medio. Los coeficientes aₖ y bₖ describen cuánto aporta cada coseno
+  y seno. El símbolo ∼ indica que es la serie asociada a f: antes de escribir una igualdad debemos
+  precisar en qué sentido converge. Para una señal de período T sustituimos x por 2πt/T.</p>
+
+<h3>Reconstruir una señal paso a paso</h3>
+<p>En el explorador, N es la frecuencia armónica máxima incluida, no el número de coeficientes
+  distintos de cero. Las tres señales elegidas son impares y tienen media cero, por lo que solo
+  necesitan senos. El espectro permite ver sus coeficientes con signo.</p>
+<app-fourier-explorer></app-fourier-explorer>
+<p>La onda triangular suele aproximarse mejor con pocos armónicos que la cuadrada o el diente
+  de sierra. Sus coeficientes decrecen como 1/k², frente al 1/k de las otras dos: las frecuencias
+  altas aportan menos. Esa diferencia está relacionada con la continuidad de la señal.</p>
+
+<h3>Cómo se calculan los coeficientes</h3>
+<p>Los senos y cosenos son ortogonales en un período. Al multiplicar dos armónicos de distinta
+  frecuencia e integrar, las contribuciones positivas y negativas se compensan. Por ejemplo:</p>
+<app-formula expression="\int_{-\pi}^{\pi}\sin(mx)\sin(nx)\,dx=\begin{cases}0,&m\ne n,\\\pi,&m=n,\end{cases}\qquad m,n\ge1"></app-formula>
+<p>Esta propiedad permite aislar una frecuencia multiplicando por su seno o coseno e integrando:</p>
+<app-formula expression="a_k=\frac1\pi\int_{-\pi}^{\pi}f(x)\cos(kx)\,dx\quad(k\ge0),\qquad b_k=\frac1\pi\int_{-\pi}^{\pi}f(x)\sin(kx)\,dx\quad(k\ge1)"></app-formula>
+<p>Si f es impar, los aₖ se anulan. Si es par, se anulan los bₖ. La simetría ahorra cálculos,
+  pero depende del origen que hayamos elegido: desplazar una señal puede mezclar senos y cosenos.</p>
+
+<h3>El ejemplo de la onda cuadrada</h3>
+<p>Tomemos f(x) = −1 para −π &lt; x &lt; 0 y f(x) = 1 para 0 &lt; x &lt; π, repetida
+  periódicamente. Por ser impar, solo calculamos los coeficientes de seno:</p>
+<app-formula expression="b_k=\frac2\pi\int_0^\pi\sin(kx)\,dx=\frac{2(1-(-1)^k)}{\pi k}"></app-formula>
+<p>Los armónicos pares desaparecen y los impares producen:</p>
+<app-formula expression="f(x)\sim\frac4\pi\left(\sin x+\frac{\sin3x}{3}+\frac{\sin5x}{5}+\cdots\right)"></app-formula>
+<p>Esto explica por qué pasar de N = 3 a N = 4 no cambia la reconstrucción. Para el diente
+  de sierra f(x) = x/π en −π &lt; x &lt; π y para la onda triangular del explorador, las series son:</p>
+<app-formula expression="\frac{x}{\pi}\sim\frac2\pi\sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k}\sin(kx)"></app-formula>
+<app-formula expression="\frac2\pi\arcsin(\sin x)=\frac8{\pi^2}\sum_{j=0}^{\infty}\frac{(-1)^j}{(2j+1)^2}\sin((2j+1)x)"></app-formula>
+
+<h3>Qué ocurre en un salto</h3>
+<p>Para una función periódica continuamente diferenciable a trozos, la serie converge en cada
+  punto al promedio de sus límites laterales. En un punto de continuidad, ese promedio es f(x).
+  En el salto de la onda cuadrada, vale (−1 + 1)/2 = 0, independientemente del valor que asignemos
+  a la función justo en ese punto.</p>
+<p>Cerca del salto aparece una sobreoscilación. Al añadir armónicos, se concentra en una región
+  más estrecha, pero su altura no desaparece: es el <strong>fenómeno de Gibbs</strong>.
+  En esta onda, el primer máximo se aproxima a 1,17898: el exceso es aproximadamente el 8,949 %
+  de la altura del salto, que es 2, no de la meseta de altura 1.</p>
+<app-fourier-explorer [gibbs]="true"></app-fourier-explorer>
+<p>La media de Fejér promedia las sumas parciales S₀,…,Sₙ. Esto equivale a multiplicar el
+  armónico k por 1 − k/(N + 1). Suaviza la transición y, para esta señal, evita el sobrepaso
+  de las mesetas; a cambio, la transición queda más extendida. Es otra forma de sumar la serie,
+  no la misma suma parcial con más términos.</p>
+
+<h3>Error global y energía</h3>
+<p>Una aproximación puede mejorar globalmente aunque conserve sobreoscilaciones junto a los
+  saltos. Para funciones de cuadrado integrable, las sumas parciales convergen en error cuadrático
+  medio. La identidad de Parseval relaciona la energía media de la señal con sus coeficientes:</p>
+<app-formula expression="\frac1{2\pi}\int_{-\pi}^{\pi}|f(x)|^2\,dx=\frac{a_0^2}{4}+\frac12\sum_{k=1}^{\infty}(a_k^2+b_k^2)"></app-formula>
+<p>Aquí f es real. Cada armónico aporta una parte de esa energía. Al truncar, dejamos fuera
+  las frecuencias altas; esto explica la pérdida de detalles finos al filtrar una señal.</p>
+
+<h3>Fourier y Taylor describen cosas distintas</h3>
+<p>Las <a routerLink="../taylor-series">series de Taylor</a> utilizan derivadas en un centro
+  para construir potencias de x − a. Fourier utiliza integrales sobre un período para obtener
+  frecuencias. Una señal con saltos puede tener una serie de Fourier útil aunque no tenga
+  derivadas en esos puntos.</p>
+<p>Esta descomposición aparece al estudiar vibraciones, sonido y la difusión del calor.
+  Las series describen frecuencias discretas de señales periódicas; no deben confundirse con
+  la transformada de Fourier, que permite tratar otros contextos.</p>
+<p><strong>Para explorar.</strong> Compara las tres señales con N = 5 y observa sus espectros.
+  En la onda cuadrada, aumenta N de 3 a 4 y después a 5. En el visor de Gibbs, sube N y acerca
+  el salto: ¿se reduce la altura del pico o se desplaza hacia el origen?</p>
+<p>Referencias: <a href="https://dlmf.nist.gov/1.8">series de Fourier</a> y
+  <a href="https://dlmf.nist.gov/6.16#i">fenómeno de Gibbs</a> en la DLMF del NIST.</p>

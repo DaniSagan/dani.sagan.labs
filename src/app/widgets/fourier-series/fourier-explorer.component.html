@@ -1,0 +1,26 @@
+<section class="widget" [attr.aria-label]="gibbs ? 'Explorador del fenómeno de Gibbs' : 'Reconstrucción de ondas con Fourier'">
+  <h3>{{ gibbs ? 'Acércate al salto' : 'Suma armónicos y recupera la onda' }}</h3>
+  <div class="controls">
+    <label *ngIf="!gibbs">Señal<select [(ngModel)]="wave" (ngModelChange)="update()"><option value="square">Onda cuadrada</option><option value="saw">Diente de sierra</option><option value="triangle">Onda triangular</option></select></label>
+    <label>Armónico máximo N: {{ maximum }}<input type="range" min="1" [max]="gibbs ? 99 : 40" [step]="gibbs ? 2 : 1" [(ngModel)]="maximum" (ngModelChange)="update()"></label>
+    <label *ngIf="gibbs">Ventana: −{{ halfWidth }} a {{ halfWidth }}<input type="range" min="0.1" max="1" step="0.05" [(ngModel)]="halfWidth" (ngModelChange)="update()"></label>
+    <label *ngIf="!gibbs">Punto x: {{ point }}<input type="range" min="-3" max="3" step="0.05" [(ngModel)]="point"></label>
+  </div>
+  <label *ngIf="gibbs" class="toggle"><input type="checkbox" [(ngModel)]="showFejer"> Comparar con la media de Fejér</label>
+  <p>Azul continuo: señal · Amarillo discontinuo: suma parcial<span *ngIf="gibbs && showFejer"> · Verde punteado: media de Fejér</span>.</p>
+  <svg viewBox="0 0 620 310" role="img" [attr.aria-label]="gibbs ? 'Detalle de la sobreoscilación junto al salto en cero' : 'Señal y reconstrucción entre menos pi y pi'">
+    <g *ngFor="let tick of yTicks"><line x1="50" x2="590" [attr.y1]="py(tick)" [attr.y2]="py(tick)" class="grid"/><text x="42" [attr.y]="py(tick) + 4" text-anchor="end">{{ tick }}</text></g>
+    <line [attr.x1]="px(0)" [attr.x2]="px(0)" y1="25" y2="280" class="grid"/>
+    <path [attr.d]="targetCurve" stroke="#8ab4f8" stroke-width="3" fill="none"/>
+    <path [attr.d]="curve" stroke="#f6c76b" stroke-width="2" stroke-dasharray="7 4" fill="none"/>
+    <path *ngIf="gibbs && showFejer" [attr.d]="fejerCurve" stroke="#6ed5ba" stroke-width="2" stroke-dasharray="2 3" fill="none"/>
+    <circle *ngIf="gibbs && peakX <= extent" [attr.cx]="px(peakX)" [attr.cy]="py(peak)" r="4" fill="#ef9fa8"/>
+    <circle *ngIf="!gibbs" [attr.cx]="px(point)" [attr.cy]="py(approximation)" r="4" fill="#f6c76b"/>
+    <text x="50" y="295" text-anchor="middle">{{ gibbs ? -halfWidth : '−π' }}</text><text x="320" y="295" text-anchor="middle">0</text><text x="590" y="295" text-anchor="middle">{{ gibbs ? halfWidth : 'π' }}</text><text x="470" y="309">x (radianes)</text>
+  </svg>
+  <div *ngIf="!gibbs" class="readout" aria-live="polite">En x = {{ point }}: señal = {{ actual | number:'1.0-6' }} · suma = {{ approximation | number:'1.0-6' }}<p>En los saltos usamos el promedio de los límites laterales como valor de referencia.</p></div>
+  <div *ngIf="gibbs" class="readout" aria-live="polite"><strong>Primer máximo: {{ peak | number:'1.0-6' }}</strong> en x = {{ peakX | number:'1.0-6' }}.<p>Exceso respecto a la altura del salto: {{ (peak - 1) / 2 * 100 | number:'1.0-4' }} %.</p><p *ngIf="peakX > extent">El primer máximo está fuera de la ventana actual. Amplíala o aumenta N.</p><p>En x = 0, todas las sumas parciales valen 0.</p></div>
+  <details *ngIf="!gibbs"><summary>Explorar el espectro de coeficientes</summary><p>Longitud: |bₖ| respecto a 4/π. El signo se conserva en la columna numérica. En estas señales a₀ = aₖ = 0.</p><div class="scroll" tabindex="0" role="region" aria-label="Coeficientes de los armónicos"><table><caption>Coeficientes de seno incluidos hasta N = {{ maximum }}</caption><thead><tr><th scope="col">k</th><th scope="col">bₖ</th><th scope="col">Magnitud</th></tr></thead><tbody><tr *ngFor="let coefficient of coefficients; let i = index"><th scope="row">{{ i + 1 }}</th><td>{{ coefficient | number:'1.0-6' }}</td><td class="spectrum"><span [style.width.%]="(coefficient < 0 ? -coefficient : coefficient) * 78.5398163397"></span></td></tr></tbody></table></div></details>
+  <p class="note">Se usan coeficientes analíticos y valores redondeados. La gráfica muestra una suma finita;
+    la convergencia de la serie requiere el argumento matemático del artículo.</p>
+</section>
