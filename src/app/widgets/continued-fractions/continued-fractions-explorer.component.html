@@ -1,0 +1,27 @@
+<section class="widget" aria-label="Explorador de convergentes">
+  <h3>Acercarse, término a término</h3>
+  <div class="controls">
+    <label>Número<select [(ngModel)]="exampleIndex"><option *ngFor="let item of examples; let i = index" [ngValue]="i">{{ item.label }}</option></select></label>
+    <label>Términos: {{ count }}<input type="range" min="1" max="8" step="1" [(ngModel)]="count"></label>
+  </div>
+  <p class="readout" aria-live="polite">{{ notation }} ≈ {{ rows[rows.length - 1].value | number:'1.1-12' }}</p>
+  <svg viewBox="0 0 580 310" role="img" aria-label="Error absoluto de cada convergente en escala logarítmica. Los valores exactos se muestran en la tabla.">
+    <g *ngFor="let tick of ticks">
+      <line x1="58" x2="550" [attr.y1]="30 + tick * 20" [attr.y2]="30 + tick * 20" class="grid" />
+      <text x="48" [attr.y]="34 + tick * 20" text-anchor="end">10<tspan baseline-shift="super" font-size="8">{{ -tick }}</tspan></text>
+    </g>
+    <polyline [attr.points]="points" fill="none" stroke="#8ab4f8" stroke-width="2" />
+    <g *ngFor="let row of rows">
+      <circle [attr.cx]="row.x" [attr.cy]="row.y" r="5" fill="#f6c76b"><title>{{ row.p }}/{{ row.q }} · error {{ row.error.toExponential(3) }}</title></circle>
+      <text [attr.x]="row.x" y="288" text-anchor="middle">{{ row.n }}</text>
+    </g>
+    <text x="300" y="306" text-anchor="middle">Índice del convergente (n)</text>
+  </svg>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de convergentes">
+    <table><caption>Convergentes y error absoluto respecto al número elegido</caption>
+      <thead><tr><th scope="col">n</th><th scope="col">aₙ</th><th scope="col">pₙ/qₙ</th><th scope="col">Valor</th><th scope="col">Error absoluto</th><th scope="col">Posición</th></tr></thead>
+      <tbody><tr *ngFor="let row of rows"><th scope="row">{{ row.n }}</th><td>{{ row.a }}</td><td>{{ row.p }}/{{ row.q }}</td><td>{{ row.value | number:'1.1-10' }}</td><td>{{ row.error.toExponential(3) }}</td><td>{{ row.value < example.value ? 'Por debajo' : 'Por encima' }}</td></tr></tbody>
+    </table>
+  </div>
+  <p class="note">Se muestran hasta ocho términos. Los valores decimales y los errores están redondeados.</p>
+</section>

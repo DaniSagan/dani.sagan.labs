@@ -1,0 +1,19 @@
+<section class="widget" aria-label="Fracciones continuas con cuadrados">
+  <h3>Una fracción hecha de cuadrados</h3>
+  <div class="controls">
+    <label>Numerador p<input type="number" min="1" max="100" step="1" [(ngModel)]="numerator" (ngModelChange)="reset()"></label>
+    <label>Denominador q<input type="number" min="1" max="100" step="1" [(ngModel)]="denominator" (ngModelChange)="reset()"></label>
+  </div>
+  <p *ngIf="!valid" role="alert">Introduce dos enteros entre 1 y 100.</p>
+  <ng-container *ngIf="valid">
+    <p class="readout" aria-live="polite">{{ numerator }}/{{ denominator }} = {{ notation }}</p>
+    <label>Divisiones visibles: {{ visibleSteps }} de {{ steps.length }}<input type="range" min="1" [max]="steps.length" step="1" [(ngModel)]="visibleSteps"></label>
+    <svg class="squares" [attr.viewBox]="'-1 -1 ' + (numerator + 2) + ' ' + (denominator + 2)" role="img" [attr.aria-label]="'Rectángulo de ' + numerator + ' por ' + denominator + ' dividido en cuadrados según las divisiones visibles'">
+      <rect x="0" y="0" [attr.width]="numerator" [attr.height]="denominator" fill="#242430" stroke="#e6e6ef" vector-effect="non-scaling-stroke" />
+      <rect *ngFor="let square of squares" [attr.x]="square.x" [attr.y]="square.y" [attr.width]="square.size" [attr.height]="square.size" [attr.fill]="colors[square.stage]" stroke="#0f0f18" vector-effect="non-scaling-stroke"><title>División {{ square.stage + 1 }}: cuadrado de lado {{ square.size }}</title></rect>
+    </svg>
+    <ol><li *ngFor="let step of steps; let i = index" [class.pending]="i >= visibleSteps"><span class="swatch" [style.background]="colors[i]"></span>{{ step.dividend }} = {{ step.quotient }} × {{ step.divisor }} + {{ step.remainder }} · {{ step.quotient }} cuadrados de lado {{ step.divisor }} {{ i >= visibleSteps ? '(pendiente)' : '' }}</li></ol>
+    <p class="note">Cada color corresponde a una división. La zona oscura es el resto aún sin descomponer.
+      Si p es menor que q, el primer coeficiente es 0 y la primera división no retira cuadrados.</p>
+  </ng-container>
+</section>

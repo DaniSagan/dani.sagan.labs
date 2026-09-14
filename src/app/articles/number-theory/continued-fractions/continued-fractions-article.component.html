@@ -1,0 +1,63 @@
+<h2>Fracciones continuas: números dentro de números</h2>
+<p class="dropcap">La fracción 355/113 aproxima π con un error menor que tres diez millonésimas.
+  ¿Cómo encontrar una fracción tan precisa sin probar miles de posibilidades? Una fracción continua
+  descompone un número en partes enteras e inversos. Al detener esa descomposición en distintos puntos,
+  aparecen aproximaciones racionales cada vez más finas.</p>
+
+<h3>Separar, invertir y repetir</h3>
+<p>Tomamos la parte entera de un número real x. Si queda una parte fraccionaria, la invertimos
+  y repetimos. Así obtenemos una <strong>fracción continua simple</strong>: todos sus numeradores
+  son 1, el primer coeficiente es un entero y los siguientes son enteros positivos.</p>
+<app-formula expression="x=a_0+\cfrac{1}{a_1+\cfrac{1}{a_2+\cfrac{1}{\ddots}}}=[a_0;a_1,a_2,\ldots]"></app-formula>
+<p>Por ejemplo, 43/19 tiene parte entera 2 y resto 5/19. Al invertir el resto obtenemos
+  19/5 = 3 + 4/5; después, 5/4 = 1 + 1/4. El último inverso es el entero 4 y el proceso termina.</p>
+<app-formula expression="\frac{43}{19}=2+\cfrac{1}{3+\cfrac{1}{1+\cfrac{1}{4}}}=[2;3,1,4]"></app-formula>
+
+<h3>El algoritmo de Euclides, dibujado</h3>
+<p>Para una fracción positiva p/q, las divisiones del algoritmo de Euclides producen precisamente
+  esos coeficientes. En un rectángulo de lados p y q, cada división indica cuántos cuadrados del
+  mayor tamaño posible podemos retirar. Repetimos en el rectángulo sobrante hasta llenarlo.</p>
+<app-euclidean-squares></app-euclidean-squares>
+<p>El último resto no nulo es el máximo común divisor de p y q, y también el lado de los cuadrados
+  más pequeños. Por eso cualquier racional tiene una expansión finita. Su escritura no es del todo única:
+  el último coeficiente, si es mayor que 1, puede sustituirse por ese coeficiente menos 1 seguido de un 1.
+  Así, [2;3,1,4] = [2;3,1,3,1]. Usaremos la forma cuyo último coeficiente es mayor que 1,
+  salvo cuando el número sea un entero.</p>
+
+<h3>Convergentes: detenerse también sirve</h3>
+<p>Al cortar después de un coeficiente obtenemos un <strong>convergente</strong> pₙ/qₙ.
+  No hace falta evaluar toda la fracción anidada: cada numerador y denominador se calcula
+  usando los dos anteriores.</p>
+<app-formula expression="p_n=a_np_{n-1}+p_{n-2},\qquad q_n=a_nq_{n-1}+q_{n-2}"></app-formula>
+<app-formula expression="p_{-2}=0,\quad p_{-1}=1,\qquad q_{-2}=1,\quad q_{-1}=0"></app-formula>
+<p>Para π, los primeros coeficientes son [3;7,15,1,…]. Los cortes dan 3, 22/7, 333/106
+  y 355/113. Mueve el control para ver qué aporta cada término; la gráfica representa el error
+  en escala logarítmica: bajar una línea horizontal significa dividir el error por diez.</p>
+<app-continued-fractions-explorer></app-continued-fractions-explorer>
+
+<h3>Por qué aproximan tan bien</h3>
+<p>Dos convergentes consecutivos cumplen una identidad especialmente rígida:</p>
+<app-formula expression="p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1}\qquad(n\geq1)"></app-formula>
+<p>Esto garantiza que cada convergente está reducido y que la distancia entre dos consecutivos
+  es 1/(qₙqₙ₋₁). Para una expansión infinita simple, los convergentes de índice par quedan por
+  debajo del número y los de índice impar por encima. Ambos lados se acercan al mismo límite.</p>
+<p>Además, para un irracional se cumple la siguiente cota. Los denominadores grandes permiten
+  errores pequeños; un coeficiente siguiente especialmente grande hace que el convergente actual
+  resulte especialmente preciso.</p>
+<app-formula expression="\left|x-\frac{p_n}{q_n}\right|<\frac{1}{q_nq_{n+1}}\leq\frac{1}{q_n^2}"></app-formula>
+<p>El siguiente coeficiente tras [3;7,15,1] en π es 292. Ese salto explica la notable precisión
+  de 355/113. Los convergentes proporcionan buenas aproximaciones con denominadores contenidos;
+  no significa que cada uno sea el más cercano entre todas las fracciones sin limitar su denominador.</p>
+
+<h3>Cuando el patrón continúa para siempre</h3>
+<p>Los irracionales tienen expansiones infinitas. En algunos casos, una ecuación revela un patrón
+  que se repite. Para el número áureo, la relación φ = 1 + 1/φ reproduce la misma cola una y otra vez:</p>
+<app-formula expression="\varphi=\frac{1+\sqrt5}{2}=[1;1,1,1,\ldots],\qquad\sqrt2=[1;2,2,2,\ldots]"></app-formula>
+<p>Los convergentes de φ son 1/1, 2/1, 3/2, 5/3, 8/5…: cocientes de números consecutivos
+  de Fibonacci. Para √2 aparecen 1/1, 3/2, 7/5 y 17/12. En este segundo caso, la cola
+  t = 2 + 1/t tiene solución positiva 1 + √2, de modo que 1 + 1/t = √2.</p>
+<p><strong>Para explorar.</strong> Compara φ y √2 con el mismo número de términos.
+  Después selecciona π y pasa de cuatro a cinco términos. En el rectángulo, prueba 34/21:
+  ¿qué relación encuentras entre sus cuadrados y los coeficientes del número áureo?</p>
+<p>Como referencia para la notación, las recurrencias y las identidades de los convergentes,
+  puedes consultar la <a href="https://dlmf.nist.gov/1.12">Digital Library of Mathematical Functions del NIST</a>.</p>

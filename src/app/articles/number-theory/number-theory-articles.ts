@@ -1,4 +1,5 @@
 import { Type } from '@angular/core';
+import { ContinuedFractionsArticleComponent } from './continued-fractions/continued-fractions-article.component';
 import { UlamSpiralArticleComponent } from './ulam-spiral/ulam-spiral-article.component';
 import { CollatzArticleComponent } from './collatz/collatz-article.component';
 import { AliquotSequencesArticleComponent } from './aliquot-sequences/aliquot-sequences-article.component';
@@ -31,6 +32,7 @@ import { EuclidEulerPerfectNumbersComponent } from './euclid-euler-perfect-numbe
 interface ArticleComponent extends Type<unknown> { title: string; route: string; }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  ContinuedFractionsArticleComponent,
   DivisionAlgorithmComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
   FundamentalTheoremArithmeticComponent, EuclidInfinitelyManyPrimesComponent,
   LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,
