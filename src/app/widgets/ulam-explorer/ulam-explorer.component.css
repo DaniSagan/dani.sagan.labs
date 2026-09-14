@@ -1,13 +1,76 @@
-:host { display: block; margin: 1.5rem 0; }
-.widget { background: #0f0f18; color: #e6e6ef; color-scheme: dark; border: 1px solid #333; border-radius: 12px; padding: clamp(1rem, 3vw, 1.8rem); }
-h3 { margin-top: 0; }.controls { display: flex; flex-wrap: wrap; gap: .7rem; align-items: end; margin: 1rem 0; }
-label { display: block; font-weight: 600; }
-input[type=text] { display: block; width: 220px; max-width: 100%; padding: .5rem; border: 1px solid #68687e; border-radius: 5px; background: #242430; color: #e6e6ef; }
-input[type=range] { width: 100%; display: block; margin: 1rem 0; }input { accent-color: #8ab4f8; }
-button { padding: .5rem .8rem; border: 1px solid #8ab4f8; border-radius: 6px; background: #8ab4f8; color: #0f0f18; cursor: pointer; }
-button:focus-visible, input:focus-visible { outline: 3px solid #f6c76b; outline-offset: 3px; }
-svg { display: block; width: 100%; max-width: 800px; height: auto; aspect-ratio: 1; background: #050509; margin: auto; cursor: crosshair; }
-.prime { fill: #75cfff; }.probable { fill: #ffb184; }.composite { fill: #272733; }.pending { fill: #696979; }.unit { fill: #ba8be0; }
-.selected { fill: none; stroke: #fff; stroke-width: 2; pointer-events: none; }
-svg text { fill: #fff; font: 10px sans-serif; paint-order: stroke; stroke: #111; stroke-width: 2px; pointer-events: none; }
-.note { color: #b9b9cc; }.value { overflow-wrap: anywhere; }.error { color: #ff9b9b; }
+:host {
+  display: block;
+  margin: 1.5rem 0;
+}
+.widget {
+  background: #0f0f18;
+  color: #e6e6ef;
+  color-scheme: dark;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: clamp(1rem, 3vw, 1.8rem);
+}
+h3 {
+  margin-top: 0;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: end;
+  margin: 1rem 0;
+}
+label {
+  display: block;
+  font-weight: 600;
+}
+input[type="text"] {
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #68687e;
+  border-radius: 5px;
+  background: #242430;
+  color: #e6e6ef;
+}
+input[type="range"] {
+  width: 100%;
+  display: block;
+  margin: 1rem 0;
+}
+input {
+  accent-color: #8ab4f8;
+}
+button {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #8ab4f8;
+  border-radius: 6px;
+  background: #8ab4f8;
+  color: #0f0f18;
+  cursor: pointer;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid #f6c76b;
+  outline-offset: 3px;
+}
+.spiral-image {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  aspect-ratio: 1;
+  background: #050509;
+  margin: auto;
+  cursor: crosshair;
+}
+.note {
+  color: #b9b9cc;
+}
+.value {
+  overflow-wrap: anywhere;
+}
+.error {
+  color: #ff9b9b;
+}

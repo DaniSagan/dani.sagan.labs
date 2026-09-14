@@ -1,33 +1,36 @@
 <section class="widget" aria-label="Explorador de la espiral de Ulam">
   <h3>Una ventana a la espiral</h3>
-  <form (ngSubmit)="apply()"><div class="controls">
-    <label>Dibujar el tramo 1…N<input type="text" name="end" inputmode="numeric" required [(ngModel)]="endInput"></label>
-    <label>Centrar en el número<input type="text" name="target" inputmode="numeric" required [(ngModel)]="targetInput"></label>
-    <button type="submit">Ir</button><button type="button" (click)="apply(true)">Ir a N</button><button type="button" (click)="origin()">Volver al 1</button>
-  </div></form>
+  <form (ngSubmit)="apply()">
+    <div class="controls">
+      <label>Dibujar el tramo 1…N<input type="text" name="end" inputmode="numeric" required
+          [(ngModel)]="endInput"></label>
+      <label>Centrar en el número<input type="text" name="target" inputmode="numeric" required
+          [(ngModel)]="targetInput"></label>
+      <button type="submit">Ir</button><button type="button" (click)="apply(true)">Ir a N</button><button type="button"
+        (click)="origin()">Volver al 1</button>
+    </div>
+  </form>
   <p *ngIf="error" class="error" role="alert">{{ error }}</p>
-  <label>Amplitud de la ventana: {{ size }} × {{ size }} casillas
-    <input type="range" min="3" max="50" step="1" [(ngModel)]="radius" (ngModelChange)="render()"></label>
+  <label>Tamaño de celda: {{ cellSize }} px. Ventana: {{ size }} × {{ size }} casillas
+    <input type="range" min="1" max="100" step="1" [(ngModel)]="cellSize" (ngModelChange)="render()"></label>
   <div class="controls"><button type="button" (click)="pan(-1, 0)" aria-label="Mover a la izquierda">←</button>
     <button type="button" (click)="pan(0, 1)" aria-label="Mover arriba">↑</button>
     <button type="button" (click)="pan(0, -1)" aria-label="Mover abajo">↓</button>
     <button type="button" (click)="pan(1, 0)" aria-label="Mover a la derecha">→</button>
     <button type="button" *ngIf="running" (click)="stop()">Detener</button>
     <button type="button" *ngIf="!running && completed < cells.length" (click)="resume()">Continuar</button>
-    <label><input type="checkbox" [(ngModel)]="labels"> Mostrar números pequeños</label></div>
+    <label><input type="checkbox" [(ngModel)]="labels" (ngModelChange)="redrawImage()"> Mostrar números pequeños</label>
+  </div>
   <p class="note">N y el destino no tienen un máximo prefijado. Se dibuja solo la ventana visible, sin recorrer
     los enteros anteriores. La amplitud limita las casillas en pantalla, no el número al que puedes llegar.
     La memoria y el tiempo disponibles siguen siendo límites prácticos.</p>
-  <svg viewBox="0 0 600 600" role="img" aria-label="Espiral cuadrada; usa el campo Centrar en el número para inspeccionar con teclado" (click)="inspect($event)">
-    <g *ngFor="let cell of cells">
-      <rect [attr.x]="cell.x" [attr.y]="cell.y" [attr.width]="pitch - 0.5" [attr.height]="pitch - 0.5" [attr.class]="cell.state"/>
-      <text *ngIf="labels && radius <= 10 && cell.n < 10000" [attr.x]="cell.x + pitch / 2" [attr.y]="cell.y + pitch * 0.65" text-anchor="middle">{{ cell.n }}</text>
-    </g>
-    <rect *ngIf="selected as s" [attr.x]="s.x" [attr.y]="s.y" [attr.width]="pitch" [attr.height]="pitch" class="selected"/>
-  </svg>
+  <img #viewport class="spiral-image" [src]="imageUrl"
+    alt="Espiral cuadrada; usa el campo Centrar en el n?mero para inspeccionar con teclado" (click)="inspect($event)">
   <p class="note">Azul: primo demostrado. Naranja: primo probable. Gris oscuro: compuesto. Gris claro: pendiente.
-    Morado: 1. El fondo negro queda fuera del tramo 1…N. Las etiquetas se muestran con ventanas de hasta 21 × 21 y valores de menos de cinco cifras.</p>
-  <p aria-live="polite">{{ running ? 'Comprobando' : completed === cells.length ? 'Comprobación terminada' : 'En pausa' }}:
+    Morado: 1. El fondo negro queda fuera del tramo 1…N. Las etiquetas se muestran con celdas de al menos 28 px y
+    valores de menos de cinco cifras.</p>
+  <p aria-live="polite">{{ running ? 'Comprobando' : completed === cells.length ? 'Comprobación terminada' : 'En pausa'
+    }}:
     {{ completed }} / {{ cells.length }} casillas.</p>
   <p *ngIf="selected as s" class="value" aria-live="polite"><strong>{{ s.n }}</strong>: {{ label(s.state) }}.</p>
   <p class="value">Centro: x = {{ cx }}, y = {{ cy }}.</p>
