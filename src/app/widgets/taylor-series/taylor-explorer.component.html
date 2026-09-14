@@ -1,0 +1,28 @@
+<section class="widget" aria-label="Comparador de funciones y polinomios de Taylor">
+  <h3>Haz que el polinomio siga a la curva</h3>
+  <div class="controls">
+    <label>Función<select [(ngModel)]="kind"><option value="sin">sin(x)</option><option value="cos">cos(x)</option><option value="exp">eˣ</option></select></label>
+    <label>Orden n: {{ order }}<input type="range" min="0" max="12" step="1" [(ngModel)]="order"></label>
+    <label>Centro a: {{ center }}<input type="range" min="-2" max="2" step="0.25" [(ngModel)]="center"></label>
+    <label>Punto x: {{ x }}<input type="range" min="-3" max="3" step="0.05" [(ngModel)]="x"></label>
+  </div>
+  <p class="legend">Azul continuo: función · Amarillo discontinuo: polinomio · Línea vertical gris: centro a.</p>
+  <svg viewBox="0 0 620 320" role="img" aria-label="Comparación de la función y su polinomio entre menos tres y tres. Los valores en el punto elegido aparecen debajo.">
+    <g *ngFor="let tick of yTicks"><text x="43" [attr.y]="py(tick) + 24" text-anchor="end">{{ tick }}</text></g>
+    <g *ngFor="let tick of xTicks"><text [attr.x]="50 + px(tick)" y="300" text-anchor="middle">{{ tick }}</text></g>
+    <svg x="50" y="20" width="540" height="260" viewBox="0 0 540 260" overflow="hidden">
+      <line *ngFor="let tick of yTicks" x1="0" x2="540" [attr.y1]="py(tick)" [attr.y2]="py(tick)" class="grid"/>
+      <line [attr.x1]="px(center)" [attr.x2]="px(center)" y1="0" y2="260" stroke="#b9b9ce" stroke-dasharray="3 4"/>
+      <path [attr.d]="path(false)" stroke="#8ab4f8" stroke-width="3" fill="none"/>
+      <path [attr.d]="path(true)" stroke="#f6c76b" stroke-width="2" stroke-dasharray="7 4" fill="none"/>
+      <line [attr.x1]="px(x)" [attr.x2]="px(x)" [attr.y1]="py(actual)" [attr.y2]="py(approximation)" stroke="#ef9fa8" stroke-width="2"/>
+      <circle [attr.cx]="px(x)" [attr.cy]="py(actual)" r="4" fill="#8ab4f8"/>
+      <circle [attr.cx]="px(x)" [attr.cy]="py(approximation)" r="4" fill="#f6c76b"/>
+    </svg>
+    <text x="310" y="318" text-anchor="middle">x (radianes para seno y coseno)</text>
+  </svg>
+  <div class="readout" aria-live="polite">f({{ x }}) = {{ actual | number:'1.0-8' }} · P<sub>{{ order }}</sub>({{ x }}) = {{ approximation | number:'1.0-8' }}<br><strong>Error absoluto: {{ error.toExponential(4) }}</strong></div>
+  <details><summary>Ver coeficientes del polinomio</summary><p>Pₙ(x) = c₀ + c₁(x − a) + … + cₙ(x − a)ⁿ</p><div class="scroll" tabindex="0" role="region" aria-label="Coeficientes de Taylor"><table><caption>Coeficientes cₖ = f⁽ᵏ⁾(a)/k!</caption><thead><tr><th scope="col">k</th><th scope="col">cₖ</th></tr></thead><tbody><tr *ngFor="let c of coefficients; let k = index"><th scope="row">{{ k }}</th><td>{{ c.toExponential(6) }}</td></tr></tbody></table></div></details>
+  <p class="note">La ventana vertical va de {{ yMin }} a {{ yMax }}. Los trazos fuera de ella se recortan;
+    los valores numéricos siguen disponibles. Los resultados están redondeados.</p>
+</section>

@@ -1,0 +1,69 @@
+<h2>Series de Taylor: una función vista a través de sus derivadas</h2>
+<p class="dropcap">Cerca de un punto, una curva suave se parece a su recta tangente. Si además
+  queremos capturar cómo se curva, podemos añadir un término cuadrático. Después uno cúbico,
+  y así sucesivamente. Los polinomios de Taylor convierten la información de las derivadas
+  en aproximaciones que podemos calcular con sumas y multiplicaciones.</p>
+
+<h3>Del valor a la forma local</h3>
+<p>Elegimos un centro a. La aproximación constante conserva el valor f(a); la lineal añade
+  la pendiente f′(a). La cuadrática incorpora la segunda derivada:</p>
+<app-formula expression="P_0(x)=f(a),\quad P_1(x)=f(a)+f'(a)(x-a),\quad P_2(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2"></app-formula>
+<p>El polinomio de Taylor de orden n conserva todas las derivadas hasta ese orden en el centro.</p>
+<app-formula expression="P_n(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k,\qquad P_n^{(j)}(a)=f^{(j)}(a)\quad(0\le j\le n)"></app-formula>
+<p>El factorial no es un adorno: al derivar k veces (x − a)ᵏ obtenemos k!.
+  Dividir por él hace que la derivada tenga el valor deseado. Hablamos de orden n porque el
+  grado puede ser menor si alguno de los coeficientes finales es cero. Cuando a = 0,
+  el desarrollo también se llama <strong>de Maclaurin</strong>.</p>
+<app-taylor-explorer></app-taylor-explorer>
+
+<h3>Tres desarrollos que conviene reconocer</h3>
+<p>La exponencial es su propia derivada. En el origen todas sus derivadas valen 1, de modo que:</p>
+<app-formula expression="e^x=\sum_{k=0}^{\infty}\frac{x^k}{k!}=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots"></app-formula>
+<p>Las derivadas del seno y del coseno se repiten en ciclos de cuatro. Sus ceros en el origen
+  eliminan, respectivamente, las potencias pares y las impares:</p>
+<app-formula expression="\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots,\qquad\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots"></app-formula>
+<p>Estas tres series representan sus funciones para todo x real. En las funciones trigonométricas
+  usamos radianes. Prueba el seno con centro 0: pasar del orden 3 al 4 no cambia el polinomio,
+  porque el coeficiente de x⁴ es cero.</p>
+
+<h3>El resto mide lo que falta</h3>
+<p>Un polinomio de Taylor es una aproximación finita; una serie es un objeto infinito.
+  La diferencia Rₙ(x) = f(x) − Pₙ(x) se llama resto. Si f tiene n + 1 derivadas continuas
+  en el segmento entre a y x, el teorema de Taylor da, para algún punto ξ entre ambos:</p>
+<app-formula expression="R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}"></app-formula>
+<p>Si el valor absoluto de esa derivada no supera M en todo el segmento, obtenemos una cota:</p>
+<app-formula expression="|R_n(x)|\le\frac{M|x-a|^{n+1}}{(n+1)!}"></app-formula>
+<p>Para aproximar sin(0,5) con P₃(x) = x − x³/6, la cuarta derivada está acotada por 1.
+  El error es, por tanto, menor o igual que 0,5⁴/4! ≈ 0,0026042. Esta cota es una garantía,
+  no el error exacto, que es aproximadamente 0,00025887.</p>
+<p>Para afirmar que la serie representa a f en un punto necesitamos que Rₙ(x) tienda a cero
+  cuando n crece. Coincidir en muchas derivadas, por sí solo, no sustituye esa condición.</p>
+
+<h3>Más términos no siempre acercan</h3>
+<p>La función 1/(1 − x), desarrollada alrededor de 0, produce la serie geométrica:</p>
+<app-formula expression="\frac{1}{1-x}=\sum_{k=0}^{\infty}x^k=1+x+x^2+\cdots\qquad(|x|<1)"></app-formula>
+<p>La suma hasta el orden n y su error se pueden calcular exactamente cuando x ≠ 1:</p>
+<app-formula expression="P_n(x)=\frac{1-x^{n+1}}{1-x},\qquad\frac{1}{1-x}-P_n(x)=\frac{x^{n+1}}{1-x}"></app-formula>
+<app-taylor-convergence></app-taylor-convergence>
+<p>Si |x| &lt; 1, la potencia xⁿ⁺¹ tiende a cero. En x = −1 las sumas alternan entre 1 y 0:
+  no convergen a 1/2, aunque la función sí esté definida allí. En x = 1 las sumas son n + 1
+  y la función no está definida. Fuera de ese intervalo, los términos ni siquiera tienden a cero.</p>
+
+<h3>Radio de convergencia y extremos</h3>
+<p>Una serie de potencias centrada en a tiene un radio R: converge absolutamente si |x − a| &lt; R
+  y diverge si |x − a| &gt; R. Los extremos se estudian por separado. El radio puede ser cero o infinito.
+  Para la serie geométrica es 1; para la exponencial, el seno y el coseno es infinito.</p>
+<p>El intervalo donde existe la función no tiene por qué coincidir con el de convergencia de su serie.
+  Además, al mover el centro cambian los coeficientes y puede cambiar la región donde la aproximación resulta útil.</p>
+
+<h3>Suave no significa igual a su serie</h3>
+<p>Hay funciones con derivadas de todos los órdenes que no coinciden con su serie de Taylor.
+  Un ejemplo es la siguiente función, extendida con valor cero en el origen:</p>
+<app-formula expression="f(x)=\begin{cases}e^{-1/x^2},&x\ne0,\\0,&x=0.\end{cases}"></app-formula>
+<p>Todas sus derivadas en 0 son cero, así que su serie de Taylor allí es la serie nula.
+  Sin embargo, f(x) es positiva para todo x distinto de cero. Una función que coincide localmente
+  con su serie de Taylor se llama <strong>analítica</strong>; tener infinitas derivadas no basta.</p>
+<p><strong>Para explorar.</strong> Compara la exponencial cerca y lejos del centro con orden 2.
+  Después mueve el centro hacia el punto que quieres aproximar. En la serie geométrica, compara
+  x = 0,5, x = 0,95 y x = −1: ¿qué diferencia observas al aumentar el orden?</p>
+<p>Referencia: <a href="https://dlmf.nist.gov/1.4#vi">teorema de Taylor y resto para variables reales en la DLMF del NIST</a>.</p>

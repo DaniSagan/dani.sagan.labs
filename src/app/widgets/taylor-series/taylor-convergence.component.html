@@ -1,0 +1,18 @@
+<section class="widget" aria-label="Convergencia de la serie geométrica">
+  <h3>¿Acercarse, oscilar o alejarse?</h3>
+  <div class="controls"><label>Punto x: {{ x }}<input type="range" min="-1.5" max="1.5" step="0.05" [(ngModel)]="x"></label><label>Orden máximo: {{ order }}<input type="range" min="0" max="30" step="1" [(ngModel)]="order"></label></div>
+  <p>Azul: sumas parciales Pₙ(x) = 1 + x + … + xⁿ. Amarillo discontinuo: valor de la función,
+    cuando está definida; fuera del intervalo de convergencia no es el límite de las sumas.</p>
+  <svg viewBox="0 0 610 290" role="img" aria-label="Sucesión de sumas parciales. Valores completos en la tabla desplegable.">
+    <line x1="65" x2="555" y1="135" y2="135" class="grid"/>
+    <text x="60" y="29" text-anchor="end">{{ scale | number:'1.0-1' }}</text><text x="60" y="139" text-anchor="end">0</text><text x="60" y="249" text-anchor="end">{{ -scale | number:'1.0-1' }}</text>
+    <line *ngIf="target !== null" x1="65" x2="555" [attr.y1]="py(target!)" [attr.y2]="py(target!)" stroke="#f6c76b" stroke-dasharray="6 4"/>
+    <polyline [attr.points]="points" fill="none" stroke="#8ab4f8" stroke-width="2"/>
+    <circle *ngFor="let sum of sums; let n = index" [attr.cx]="px(n)" [attr.cy]="py(sum)" r="3" fill="#8ab4f8"><title>Orden {{ n }}: {{ sum }}</title></circle>
+    <text x="65" y="267">0</text><text *ngIf="order > 0" x="555" y="267" text-anchor="end">{{ order }}</text><text x="310" y="287" text-anchor="middle">Orden n</text>
+  </svg>
+  <div class="readout" aria-live="polite"><strong>{{ status }}</strong><p>Última suma: {{ last | number:'1.0-8' }}</p><p *ngIf="target !== null">Valor de la función: {{ target | number:'1.0-8' }} · Error absoluto: {{ error?.toExponential(4) }}</p></div>
+  <details><summary>Ver sumas parciales</summary><div class="scroll" tabindex="0" role="region" aria-label="Tabla de sumas parciales"><table><caption>Sumas evaluadas en x = {{ x }}</caption><thead><tr><th scope="col">n</th><th scope="col">Pₙ(x)</th></tr></thead><tbody><tr *ngFor="let sum of sums; let n = index"><th scope="row">{{ n }}</th><td>{{ sum | number:'1.0-8' }}</td></tr></tbody></table></div></details>
+  <p class="note">La escala vertical se adapta a las sumas y al valor de la función. Una lista finita
+    ilustra el comportamiento; la fórmula del resto permite demostrar la convergencia.</p>
+</section>

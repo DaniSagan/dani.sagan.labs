@@ -15,6 +15,7 @@ import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/ico
 import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { NUMBER_THEORY_NAV_ITEMS } from 'src/app/articles/number-theory/number-theory-articles';
 import { COMBINATORICS_NAV_ITEMS } from 'src/app/articles/combinatorics/combinatorics-articles';
+import { CALCULUS_NAV_ITEMS } from 'src/app/articles/calculus/calculus-articles';
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
@@ -216,6 +217,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
+      { name: 'Cálculo', items: CALCULUS_NAV_ITEMS },
       { name: 'Números complejos', items: COMPLEX_NUMBERS_NAV_ITEMS },
       { name: 'Geometría', items: this.geometry },
       { name: 'Curvas', items: this.curves },
