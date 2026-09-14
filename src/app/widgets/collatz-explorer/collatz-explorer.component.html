@@ -1,0 +1,113 @@
+<section class="widget" aria-label="Laboratorio de Collatz">
+  <h3>Prueba un número de partida</h3>
+  <form (ngSubmit)="calculate()">
+    <div class="controls">
+      <label>Inicio<input name="start" type="text" inputmode="numeric" pattern="[0-9]+" required
+          [(ngModel)]="input"></label>
+      <label>Máximo de pasos<input name="limit" type="number" min="1" max="100000" step="1" [required]="!unlimited"
+          [disabled]="unlimited" [(ngModel)]="limit"></label>
+      <label><input name="unlimited" type="checkbox" [(ngModel)]="unlimited"> Sin límite de pasos</label>
+      <button type="submit">{{ running ? 'Reiniciar' : 'Calcular' }}</button>
+      <button type="button" *ngIf="running" (click)="stop()">Detener</button>
+    </div>
+  </form>
+  <div class="controls"><button type="button" *ngFor="let n of [1, 6, 27, 97, 871, 6171, 837799, 670617279, 75128138247]" (click)="example(n)">{{ n
+      }}</button></div>
+  <p class="note">Introduce un entero positivo decimal, sin tope de magnitud prefijado. El tiempo y la memoria
+    disponibles
+    limitan el cálculo. «Sin límite de pasos» permite continuar hasta llegar a 1, detectar una repetición o pulsar
+    Detener.
+    Los cambios se aplican al iniciar otro recorrido. Cada aplicación de n/2 o 3n+1 cuenta como un paso.</p>
+  <p *ngIf="error" role="alert" class="error">{{ error }}</p>
+  <ng-container *ngIf="run as r">
+    <p aria-live="polite"><strong>{{ message }}</strong></p>
+    <div class="stats">
+      <p>Pasos calculados<strong>{{ r.steps }}</strong></p>
+      <p>Máximo {{ r.status === 'one' ? 'del recorrido' : 'hasta ahora' }}<strong>{{ r.maximum }}</strong>Primera vez en
+        el paso {{ r.peakStep }}</p>
+      <p>Pasos pares / impares<strong>{{ r.even }} / {{ r.odd }}</strong></p>
+      <p>Primer descenso bajo el inicio<strong>{{ r.firstDescent === null ? 'No observado' : 'Paso ' + r.firstDescent
+          }}</strong></p>
+    </div>
+    <h4>Altura del recorrido y máximo acumulado</h4>
+    <label><input type="checkbox" [(ngModel)]="logarithmic" (ngModelChange)="plot()"> Escala logarítmica (log₁₀ del
+      valor)</label>
+    <svg viewBox="0 0 680 300" role="img" aria-label="Gráfica de valores por paso, con máximo acumulado en naranja">
+      <g *ngFor="let tick of ticks">
+        <line x1="75" [attr.y1]="250 - 210 * tick" x2="625" [attr.y2]="250 - 210 * tick" class="grid" />
+        <text x="68" [attr.y]="254 - 210 * tick" text-anchor="end">{{ tickLabel(tick) }}</text>
+      </g>
+      <path [attr.d]="path" class="curve" />
+      <path [attr.d]="recordPath" class="record" />
+      <circle [attr.cx]="x(selected)" [attr.cy]="y(r.values[selected])" r="5" class="point" />
+      <text x="75" y="280">0</text><text x="320" y="280">Paso</text><text x="625" y="280" text-anchor="end">{{ r.steps
+        }}</text>
+    </svg>
+    <p class="note">Azul: trayectoria. Naranja: máximo acumulado. Las gráficas largas agrupan puntos conservando los
+      mínimos
+      y máximos de cada grupo; los datos y el inspector mantienen todos los pasos exactos. Las etiquetas largas del eje
+      se abrevian.</p>
+    <label>Inspeccionar paso {{ selected }}<input type="range" min="0" [max]="r.steps" step="1"
+        [(ngModel)]="selected"></label>
+    <p class="value">a{{ selected }} = <strong>{{ r.values[selected] }}</strong></p>
+    <p *ngIf="selected < r.steps">Operación: {{ operation(r.values[selected]) }}</p>
+    <p *ngIf="selected < r.steps" class="value">Siguiente valor: {{ r.values[selected + 1] }}</p>
+    <details>
+      <summary>Récords de altura del recorrido ({{ r.records.length }}, incluido el inicio)</summary>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Paso</th>
+              <th>Nuevo máximo exacto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of r.records">
+              <td><button type="button" (click)="selected = record.step">{{ record.step }}</button></td>
+              <td>{{ record.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </ng-container>
+  <h4>Récords de esta sesión</h4>
+  <p class="note">Solo cuentan recorridos que han llegado a 1. Son récords entre tus pruebas en esta página, no récords
+    mundiales.
+    Se reinician al salir del componente. En caso de empate se conserva el primero.</p>
+  <p *ngIf="heightRecord as h" class="value">Mayor altura: <strong>{{ h.maximum }}</strong>, desde {{ h.start }}.</p>
+  <p *ngIf="durationRecord as h" class="value">Mayor duración: <strong>{{ h.steps }} pasos</strong>, desde {{ h.start
+    }}.</p>
+  <ng-container *ngIf="history.length">
+    <h4>Comparar duración de las últimas 12 pruebas completas</h4>
+    <svg [attr.viewBox]="'0 0 680 ' + (history.length * 30 + 30)" role="img"
+      aria-label="Comparación de pasos hasta 1 por número de partida">
+      <g *ngFor="let h of history; let i = index"><text x="145" [attr.y]="i * 30 + 22" text-anchor="end">{{
+          short(h.start) }}</text>
+        <rect x="155" [attr.y]="i * 30 + 7" [attr.width]="historyWidth(h.steps)" height="18" class="bar" />
+        <text [attr.x]="163 + historyWidth(h.steps)" [attr.y]="i * 30 + 22">{{ h.steps }}</text>
+        <title>Inicio {{ h.start }}: {{ h.steps }} pasos</title>
+      </g>
+    </svg>
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Inicio exacto</th>
+            <th>Pasos hasta 1</th>
+            <th>Máximo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let h of history">
+            <td>{{ h.start }}</td>
+            <td>{{ h.steps }}</td>
+            <td>{{ h.maximum }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button type="button" (click)="clearHistory()">Borrar historial y récords</button>
+  </ng-container>
+</section>

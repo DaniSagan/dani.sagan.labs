@@ -1,0 +1,58 @@
+<h2>La conjetura de Collatz: multiplicar, dividir y volver a empezar</h2>
+<p class="dropcap">Elige cualquier entero positivo. Si es par, divídelo por dos; si es impar, multiplícalo por tres
+  y suma uno. Repite. La conjetura de Collatz afirma que, independientemente del punto de partida, acabarás llegando a
+  1.
+  Una regla que cabe en una línea plantea un problema que todavía no sabemos resolver para todos los números.</p>
+<h3>Dos instrucciones, una sola sucesión</h3>
+<app-formula
+  expression="C(n)=\begin{cases}n/2,&n\text{ par},\\3n+1,&n\text{ impar},\end{cases}\qquad a_0=n,\quad a_{k+1}=C(a_k)"></app-formula>
+<p>Partiendo de 6, el recorrido es corto y se puede comprobar a mano:</p>
+<app-formula expression="6\to3\to10\to5\to16\to8\to4\to2\to1"></app-formula>
+<p>Son ocho pasos y nueve términos, contando el inicial. Su máximo es 16, alcanzado en el paso 4.
+  Si continuamos desde 1 aparece el ciclo 1 → 4 → 2 → 1. El explorador se detiene en la primera llegada a 1;
+  empezar en 1 cuenta como cero pasos y máximo 1.</p>
+<h3>Un pequeño inicio puede dar una gran excursión</h3>
+<p>El número 27 necesita 111 pasos para alcanzar 1 y llega hasta 9232, en el paso 77. Un inicio mayor no implica
+  un recorrido más largo: las potencias de dos bajan directamente hasta 1 mediante divisiones sucesivas.</p>
+<app-formula expression="2^m\to2^{m-1}\to\cdots\to2\to1\qquad(m\ge0)"></app-formula>
+<app-collatz-explorer></app-collatz-explorer>
+<h3>Cómo leer las medidas y los récords</h3>
+<p>El <strong>tiempo total de parada</strong> es el número de aplicaciones de la regla necesarias para llegar a 1.
+  El primer descenso bajo el valor inicial mide otra cosa: una trayectoria puede bajar de su inicio y seguir dando
+  muchas vueltas. El máximo incluye el número inicial y todos los términos calculados.</p>
+<p>Los récords de altura del recorrido marcan cada valor que supera a todos sus predecesores. El gráfico naranja
+  conserva ese máximo acumulado incluso cuando la trayectoria azul desciende. Los récords de sesión comparan
+  tus recorridos completos entre sí; el historial permite contrastar duración y altura sin confundirlas.</p>
+<p>La escala logarítmica representa log₁₀ del valor: una diferencia de una unidad vertical significa multiplicar
+  por diez. Resulta útil cuando hay picos grandes. Las operaciones se calculan con enteros exactos;
+  únicamente las coordenadas de la gráfica y sus etiquetas abreviadas son aproximaciones.</p>
+<h3>Por qué las bajadas no bastan para demostrarlo</h3>
+<p>Después de un paso impar, 3n + 1 siempre es par, así que habrá al menos una división por dos. Pero el efecto
+  conjunto, (3n + 1)/2, puede aumentar el valor. A veces siguen varias divisiones; otras veces vuelve pronto
+  una subida. Esta alternancia depende de los términos concretos.</p>
+<p>Si se pudiera demostrar que todo inicio mayor que 1 termina bajando por debajo de sí mismo, una inducción fuerte
+  demostraría la conjetura. Precisamente falta una garantía general de ese descenso. Observar muchos ejemplos
+  favorables o razonar con paridades supuestamente aleatorias no sustituye esa demostración.</p>
+<h3>Qué se sabe y qué sigue abierto</h3>
+<p><strong>Estado consultado el 14 de septiembre de 2026:</strong> no se conoce una demostración general ni un
+  contraejemplo aceptado. El <a href="https://pcbarina.fit.vut.cz/">proyecto de verificación de David Bařina</a>
+  informa de la comprobación de todos los enteros positivos menores que 2075 · 2⁶⁰, un poco más de 2⁷¹.
+  Su <a href="https://link.springer.com/article/10.1007/s11227-025-07337-0">artículo de 2025</a>
+  documenta el hito anterior de 2⁷¹ y los métodos de cálculo.</p>
+<p>Una verificación finita, por enorme que sea, deja infinitos posibles inicios. Si la conjetura fuera falsa,
+  alguna trayectoria positiva entraría en un ciclo que no contiene 1 o no estaría acotada. Alcanzar el máximo
+  de pasos del explorador solo significa que hemos interrumpido una comprobación: no demuestra ninguno de esos
+  comportamientos.</p>
+<p><strong>Para explorar.</strong> Compara 27 con 32. Después prueba 97 y 871: ¿el recorrido más largo tiene también
+  el mayor pico? Reduce el máximo de pasos a 20 y vuelve a probar 27. Explica por qué el resultado parcial no
+  contradice su llegada a 1. Por último, introduce una potencia de dos grande y predice su duración antes de calcular.
+</p>
+<div class="footnotes">
+  <h4>Más información</h4>
+  <ol>
+    <li>Wikipedia <em>Conjetura de Collatz</em> <a href="https://es.wikipedia.org/wiki/Conjetura_de_Collatz" target="_blank">🔗</a>.</li>
+    <li>OEIS <em>A284668 - Numbers that have the largest Collatz total stopping time of all numbers below 10^n. The smallest number is chosen in case of ties. </em> <a href="https://oeis.org/A284668" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>The Simplest Math Problem No One Can Solve - Collatz Conjecture </em> <a href="https://www.youtube.com/watch?v=094y1Z2wpJg" target="_blank">🔗</a>.</li>
+    <li>Youtube <em>UNCRACKABLE? The Collatz Conjecture - Numberphile </em> <a href="https://www.youtube.com/watch?v=5mFpVDpKX70" target="_blank">🔗</a>.</li>
+  </ol>
+</div>
