@@ -1,0 +1,45 @@
+<h2>La identidad de Euler: e^(iπ) + 1 = 0</h2>
+<p class="dropcap">Una exponencial, un número imaginario y media vuelta a una circunferencia terminan en una igualdad
+  sorprendentemente breve. La identidad de Euler reúne cinco constantes fundamentales, pero su significado se ve
+  mejor como un movimiento: partir de 1, girar media vuelta hasta −1 y avanzar una unidad hasta 0.</p>
+<app-formula expression="e^{i\pi}+1=0"></app-formula>
+<h3>Los cinco protagonistas</h3>
+<p>El 0 es el elemento neutro de la suma y el 1 es el de la multiplicación. La constante e, aproximadamente 2,71828,
+  es la base de la exponencial natural; π, aproximadamente 3,14159, expresa en radianes una media vuelta.
+  La unidad imaginaria i satisface i² = −1. La identidad no afirma que estas constantes sean iguales:
+  muestra una relación exacta entre ellas mediante multiplicación, exponenciación y suma.</p>
+<h3>La fórmula de Euler describe un giro</h3>
+<p>En el plano complejo, a + bi es el punto (a, b): el eje horizontal representa la parte real y el vertical,
+  la imaginaria. Para cualquier ángulo real θ, medido en radianes, la fórmula de Euler dice:</p>
+<app-formula expression="e^{i\theta}=\cos\theta+i\sin\theta"></app-formula>
+<p>El punto tiene módulo 1 porque cos²θ + sin²θ = 1. Al aumentar θ desde 0, recorre la circunferencia unidad
+  en sentido antihorario. No aumenta su distancia al origen: cambia su dirección.</p>
+<app-formula expression="e^{i\cdot0}=1,\qquad e^{i\pi/2}=i,\qquad e^{i\pi}=-1,\qquad e^{i2\pi}=1"></app-formula>
+<app-euler-identity-explorer></app-euler-identity-explorer>
+<h3>De la fórmula a la identidad</h3>
+<p>La <strong>fórmula de Euler</strong> vale para cualquier ángulo real. La <strong>identidad de Euler</strong>
+  es el caso particular θ = π, escrito con todos los términos en un mismo lado. Como cos π = −1 y sin π = 0:</p>
+<app-formula expression="e^{i\pi}=\cos\pi+i\sin\pi=-1+i\cdot0=-1"></app-formula>
+<app-formula expression="e^{i\pi}+1=-1+1=0"></app-formula>
+<p>Sumar 1 traslada un punto una unidad hacia la derecha. Por eso, en el widget, el punto naranja e^(iθ) + 1
+  describe una circunferencia centrada en 1 y pasa por el origen cuando el punto azul está en −1.
+  La parte imaginaria ya es cero antes de sumar 1.</p>
+<h3>¿De dónde sale la fórmula de Euler?</h3>
+<p>Podemos extender la exponencial a los números complejos mediante su serie de potencias, que converge
+  absolutamente para cualquier z complejo:</p>
+<app-formula expression="e^z=\sum_{n=0}^{\infty}\frac{z^n}{n!}=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots"></app-formula>
+<p>Al sustituir z = iθ, las potencias de i repiten el patrón 1, i, −1, −i. La convergencia absoluta permite
+  agrupar los términos pares y los impares. Aparecen exactamente las series del coseno y del seno:</p>
+<app-formula expression="e^{i\theta}=\left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right)+i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right)=\cos\theta+i\sin\theta"></app-formula>
+<p>Esta es una igualdad entre series infinitas, no una aproximación obtenida al quedarse con unos pocos términos.
+  Explica por qué una función asociada al crecimiento real también describe rotaciones cuando su exponente es imaginario.</p>
+<h3>Exactitud y otras medias vueltas</h3>
+<p>El resultado es exactamente cero. Un cálculo numérico de sin π puede devolver un residuo diminuto por redondeo:
+  eso refleja la precisión del ordenador, no un fallo de la identidad. El widget señala los cuartos de vuelta
+  con sus valores exactos y muestra aproximaciones para los demás ángulos.</p>
+<p>π no es el único ángulo que lleva a −1. Cada vuelta completa adicional termina en el mismo punto:</p>
+<app-formula expression="e^{i\theta}+1=0\quad\Longleftrightarrow\quad\theta=(2k+1)\pi,\qquad k\in\mathbb Z\quad(\theta\in\mathbb R)"></app-formula>
+<p>Aquí usamos la exponencial compleja, que asigna un único resultado a cada exponente. La elección de ramas aparece
+  al invertirla mediante un logaritmo, como ocurre en el artículo <a routerLink="/articles/imaginary-power">¿Por qué iⁱ es real?</a>.</p>
+<p><strong>Para explorar.</strong> Compara θ = π/2, π y 2π. ¿En cuál se anula la parte imaginaria? ¿Basta eso para
+  que e^(iθ) + 1 sea cero? Después selecciona −π y 3π: cambia el ángulo recorrido, pero no el destino.</p>

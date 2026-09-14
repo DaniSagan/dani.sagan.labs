@@ -1,0 +1,30 @@
+<section class="widget" aria-label="Explorar la identidad de Euler">
+  <h3>Gira y suma una unidad</h3>
+  <label>Ángulo θ = {{ format(turns) }}π rad
+    <input type="range" min="-1" max="3" step="0.01" [(ngModel)]="turns">
+  </label>
+  <div class="controls"><button type="button" *ngFor="let preset of presets" (click)="turns = preset"
+    [attr.aria-pressed]="turns === preset">{{ format(preset) }}π</button></div>
+  <svg viewBox="0 0 560 350" role="img" [attr.aria-label]="'Ángulo ' + format(turns) + ' pi. Parte real ' + format(real) + ', imaginaria ' + format(imaginary) + '. Al sumar uno: parte real ' + format(real + 1)">
+    <line x1="35" y1="175" x2="515" y2="175" class="axis"/><line x1="210" y1="20" x2="210" y2="330" class="axis"/>
+    <circle cx="210" cy="175" r="120" class="unit"/><circle cx="330" cy="175" r="120" class="translated"/>
+    <path [attr.d]="arc" class="arc"/>
+    <line x1="210" y1="175" [attr.x2]="x(real)" [attr.y2]="y(imaginary)" class="radius"/>
+    <line [attr.x1]="x(real)" [attr.y1]="y(imaginary)" [attr.x2]="x(real + 1)" [attr.y2]="y(imaginary)" class="translation"/>
+    <path [attr.d]="'M' + (x(real + 1) - 9) + ',' + (y(imaginary) - 5) + 'l9,5 l-9,5'" class="translation"/>
+    <text [attr.x]="x(real + 0.5)" [attr.y]="y(imaginary) - 12" text-anchor="middle">+1</text>
+    <circle [attr.cx]="x(real)" [attr.cy]="y(imaginary)" r="6" class="source"/>
+    <circle [attr.cx]="x(real + 1)" [attr.cy]="y(imaginary)" r="7" class="sum"/>
+    <text x="80" y="197">−1</text><text x="195" y="197">0</text><text x="326" y="197">1</text><text x="446" y="197">2</text>
+    <text x="220" y="52">i</text><text x="220" y="303">−i</text><text x="508" y="164">Re</text><text x="220" y="24">Im</text>
+  </svg>
+  <p class="legend">Azul: e^(iθ), sobre el círculo centrado en 0. Naranja: e^(iθ) + 1, sobre el círculo centrado en 1.
+    La flecha naranja indica la traslación de una unidad hacia la derecha.</p>
+  <div aria-live="polite" class="result">
+    <p>e^(iθ) {{ exact ? '=' : '≈' }} {{ format(real) }} + ({{ format(imaginary) }})i<br>
+      e^(iθ) + 1 {{ exact ? '=' : '≈' }} <strong>{{ format(real + 1) }} + ({{ format(imaginary) }})i</strong></p>
+    <p>{{ isZero ? 'La suma es exactamente 0: una media vuelta impar lleva a −1.' : 'La suma no es cero para este ángulo.' }}</p>
+  </div>
+  <p class="note">Ángulos en radianes. El arco azul sigue el giro desde 1; las vueltas completas se superponen.
+    Los valores de los cuartos de vuelta son exactos; los demás se redondean a seis decimales.</p>
+</section>
