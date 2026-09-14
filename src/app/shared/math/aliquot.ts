@@ -1,24 +1,22 @@
-import { properDivisors } from './perfect-numbers';
+import { bigintDivisorData, parseAliquotStart } from './aliquot-bigint';
 
-export const ALIQUOT_VALUE_LIMIT = 100000000;
 export interface AliquotResult {
-  values: number[];
-  status: 'zero' | 'cycle' | 'steps' | 'value';
+  values: bigint[];
+  status: 'zero' | 'cycle' | 'steps';
   cycleStart: number | null;
 }
 
-export function aliquotSequence(start: number, steps = 100): AliquotResult {
-  if (!Number.isInteger(start) || start < 1 || start > ALIQUOT_VALUE_LIMIT) throw new Error('Introduce un entero entre 1 y 100000000.');
+export function aliquotSequence(start: bigint | number | string, steps = 100): AliquotResult {
   if (!Number.isInteger(steps) || steps < 1 || steps > 200) throw new Error('Elige entre 1 y 200 pasos.');
-  const values = [start];
-  const seen = new Map<number, number>([[start, 0]]);
+  const initial = parseAliquotStart(start);
+  const values = [initial];
+  const seen = new Map<bigint, number>([[initial, 0]]);
   for (let i = 0; i < steps; i++) {
-    const next = properDivisors(values[values.length - 1]).reduce((a, b) => a + b, 0);
+    const next = bigintDivisorData(values[values.length - 1]).sum;
     values.push(next);
-    if (next === 0) return { values, status: 'zero', cycleStart: null };
+    if (next === 0n) return { values, status: 'zero', cycleStart: null };
     const cycleStart = seen.get(next);
     if (cycleStart !== undefined) return { values, status: 'cycle', cycleStart };
-    if (next > ALIQUOT_VALUE_LIMIT) return { values, status: 'value', cycleStart: null };
     seen.set(next, values.length - 1);
   }
   return { values, status: 'steps', cycleStart: null };

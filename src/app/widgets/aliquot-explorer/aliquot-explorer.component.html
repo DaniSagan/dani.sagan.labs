@@ -1,40 +1,64 @@
 <section class="widget" aria-labelledby="aliquot-title">
   <h3 id="aliquot-title">Explorar una sucesión alícuota</h3>
-  <form (ngSubmit)="calculate()"><div class="controls">
-    <label>Inicio (1–100000000)<input name="start" type="number" min="1" max="100000000" step="1" required [(ngModel)]="input"></label>
-    <label>Máximo de pasos<input name="steps" type="number" min="1" step="1" [required]="!unlimited" [disabled]="unlimited" [(ngModel)]="steps"></label>
-    <label><input name="unlimited" type="checkbox" [(ngModel)]="unlimited"> Sin límite de pasos</label>
-    <button type="submit">{{ running ? 'Reiniciar recorrido' : 'Calcular recorrido' }}</button>
-    <button type="button" *ngIf="running" (click)="stop()">Detener</button></div></form>
-  <div class="controls"><button type="button" *ngFor="let n of [12, 6, 220, 25, 12496, 1]" (click)="example(n)">{{ n }}</button></div>
+  <form (ngSubmit)="calculate()">
+    <div class="controls">
+      <label>Inicio<input name="start" type="text" inputmode="numeric" pattern="[0-9]+" required
+          [(ngModel)]="input"></label>
+      <label>Máximo de pasos<input name="steps" type="number" min="1" step="1" [required]="!unlimited"
+          [disabled]="unlimited" [(ngModel)]="steps"></label>
+      <label><input name="unlimited" type="checkbox" [(ngModel)]="unlimited"> Sin límite de pasos</label>
+      <button type="submit">{{ running ? 'Reiniciar recorrido' : 'Calcular recorrido' }}</button>
+      <button type="button" *ngIf="running" (click)="stop()">Detener</button>
+    </div>
+  </form>
+  <div class="controls"><button type="button" *ngFor="let n of [12, 6, 220, 25, 12496, 1, 138, 276]" (click)="example(n)">{{ n
+      }}</button></div>
   <p class="error" role="alert" *ngIf="error">{{ error }}</p>
   <ng-container *ngIf="result as r">
     <p aria-live="polite"><strong>{{ message }}</strong></p>
-    <p *ngIf="r.status === 'cycle'">{{ period === 1 ? 'El ciclo es un número perfecto.' : period === 2 ? 'El ciclo es una pareja de números amigos.' : 'El ciclo es de números sociables.' }}</p>
-    <label class="scale"><input type="checkbox" [(ngModel)]="logarithmic" (ngModelChange)="plot()"> Escala logarítmica log₁₀(1 + valor)</label>
-    <svg viewBox="0 0 690 300" role="img" [attr.aria-label]="'Evolución de la sucesión desde ' + r.values[0] + '. ' + message">
-      <g *ngFor="let tick of ticks"><line x1="65" [attr.y1]="250 - tick * 210" x2="625" [attr.y2]="250 - tick * 210" class="grid"/>
-        <text x="60" [attr.y]="254 - tick * 210" text-anchor="end">{{ tickLabel(tick) }}</text></g>
-      <line x1="65" y1="250" x2="635" y2="250" class="axis"/>
-      <path [attr.d]="path" class="curve"/>
-      <circle *ngFor="let p of points" [attr.cx]="p.x" [attr.cy]="p.y" r="3" [class.cycle]="r.cycleStart !== null && p.index >= r.cycleStart" class="point"><title>a{{ p.index }} = {{ p.value }}</title></circle>
-      <circle [attr.cx]="points[selected].x" [attr.cy]="points[selected].y" r="6" class="selected"/>
-      <text x="65" y="280">0</text><text x="625" y="280">{{ r.values.length - 1 }}</text><text x="250" y="280">Índice k</text>
+    <p *ngIf="r.status === 'cycle'">{{ period === 1 ? 'El ciclo es un número perfecto.' : period === 2 ? 'El ciclo es
+      una pareja de números amigos.' : 'El ciclo es de números sociables.' }}</p>
+    <label class="scale"><input type="checkbox" [(ngModel)]="logarithmic" (ngModelChange)="plot()"> Escala logarítmica
+      log₁₀(1 + valor)</label>
+    <svg viewBox="0 0 690 300" role="img"
+      [attr.aria-label]="'Evolución de la sucesión desde ' + r.values[0] + '. ' + message">
+      <g *ngFor="let tick of ticks">
+        <line x1="65" [attr.y1]="250 - tick * 210" x2="625" [attr.y2]="250 - tick * 210" class="grid" />
+        <text x="60" [attr.y]="254 - tick * 210" text-anchor="end">{{ tickLabel(tick) }}</text>
+      </g>
+      <line x1="65" y1="250" x2="635" y2="250" class="axis" />
+      <path [attr.d]="path" class="curve" />
+      <circle *ngFor="let p of points" [attr.cx]="p.x" [attr.cy]="p.y" r="3"
+        [class.cycle]="r.cycleStart !== null && p.index >= r.cycleStart" class="point">
+        <title>a{{ p.index }} = {{ p.value }}</title>
+      </circle>
+      <circle [attr.cx]="points[selected].x" [attr.cy]="points[selected].y" r="6" class="selected" />
+      <text x="65" y="280">0</text><text x="625" y="280">{{ r.values.length - 1 }}</text><text x="250" y="280">Índice
+        k</text>
     </svg>
-    <p class="note">Eje vertical: {{ logarithmic ? 'log₁₀(1 + aₖ), para incluir el cero' : 'valor aₖ' }}. Naranja: términos del ciclo. Las líneas solo unen términos discretos.</p>
+    <p class="note">Eje vertical: {{ logarithmic ? 'log₁₀(1 + aₖ), para incluir el cero' : 'valor aₖ' }}. Naranja:
+      términos del ciclo. Las líneas solo unen términos discretos.</p>
     <label for="aliquot-position">Inspeccionar término a{{ selected }} = {{ r.values[selected] }}</label>
-    <input id="aliquot-position" type="range" min="0" [max]="r.values.length - 1" step="1" [ngModel]="selected" (ngModelChange)="select($event)">
+    <input id="aliquot-position" type="range" min="0" [max]="r.values.length - 1" step="1" [ngModel]="selected"
+      (ngModelChange)="select($event)">
     <div class="detail" *ngIf="selected < r.values.length - 1">
-      <h4>Cómo se obtiene el siguiente término</h4><p>Divisores propios de {{ r.values[selected] }}:</p>
+      <h4>Cómo se obtiene el siguiente término</h4>
+      <p>Divisores propios de {{ r.values[selected] }}:</p>
       <div class="chips"><span *ngFor="let divisor of divisors">{{ divisor }}</span></div>
       <p *ngIf="!divisors.length">Ninguno: la suma vacía es 0.</p>
       <p>Suma = <strong>{{ r.values[selected + 1] }}</strong> = a{{ selected + 1 }}.</p>
     </div>
     <p *ngIf="selected === r.values.length - 1">Último término mostrado. {{ message }}</p>
-    <details><summary>Ver todos los términos</summary><div class="terms"><button type="button" *ngFor="let value of r.values; let i = index" [attr.aria-pressed]="selected === i" (click)="select(i)">a{{ i }} = {{ value }}</button></div></details>
+    <details>
+      <summary>Ver todos los términos</summary>
+      <div class="terms"><button type="button" *ngFor="let value of r.values; let i = index"
+          [attr.aria-pressed]="selected === i" (click)="select(i)">a{{ i }} = {{ value }}</button></div>
+    </details>
   </ng-container>
-  <p class="note">Se calcula y dibuja un nuevo término cada 180 ms. Los cambios de inicio o límite se aplican al iniciar otro recorrido.
+  <p class="note">Se hace una pausa de 180 ms entre términos. Los cambios de inicio o límite se aplican al iniciar otro
+    recorrido.
     «Sin límite» elimina el máximo de pasos; puedes detener el cálculo en cualquier momento.
     Al llegar a cero o repetirse un término, el recorrido se detiene automáticamente.
-    Si el nuevo término supera 100000000, se muestra pero no se calculan sus divisores.</p>
+    Los valores se calculan como enteros exactos sin un tope de magnitud prefijado. Factorizar valores grandes puede
+    llevar tiempo.</p>
 </section>

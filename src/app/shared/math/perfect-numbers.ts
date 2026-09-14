@@ -1,18 +1,59 @@
 export const MAX_PERFECT_INPUT = 1000000000;
 
+// Bound the cache by the number of stored divisors, including entries for primes.
+const divisorCache = new Map<number, readonly number[]>();
+const CACHE_BUDGET = 100000;
+let cachedSize = 0;
+
 export function properDivisors(n: number): number[] {
-  if (!Number.isInteger(n) || n < 1 || n > MAX_PERFECT_INPUT) {
-    throw new Error(`Introduce un entero entre 1 y ${MAX_PERFECT_INPUT}.`);
+  if (!Number.isSafeInteger(n) || n < 1) {
+    throw new Error(`Introduce un entero entre 1 y ${Number.MAX_SAFE_INTEGER}.`);
   }
-  if (n === 1) return [];
+  const cached = divisorCache.get(n);
+  if (cached) {
+    divisorCache.delete(n);
+    divisorCache.set(n, cached);
+    return [...cached];
+  }
+
+  // Factor the shrinking remainder, then generate divisors from prime powers.
+  let remainder = n;
   const divisors = [1];
-  for (let d = 2; d * d <= n; d++) {
-    if (n % d === 0) {
-      divisors.push(d);
-      if (d * d !== n) divisors.push(n / d);
+  const extract = (prime: number): void => {
+    const length = divisors.length;
+    let power = 1;
+    while (remainder % prime === 0) {
+      remainder /= prime;
+      power *= prime;
+      for (let i = 0; i < length; i++) divisors.push(divisors[i] * power);
     }
+  };
+  extract(2);
+  extract(3);
+  // All remaining prime factors are of the form 6k ? 1.
+  for (let d = 5, increment = 2; d <= remainder / d; d += increment, increment = 6 - increment) {
+    extract(d);
   }
-  return divisors.sort((a, b) => a - b);
+  if (remainder > 1) extract(remainder);
+  const result = divisors.filter(d => d !== n).sort((a, b) => a - b);
+  const cost = result.length + 1;
+  if (cost <= CACHE_BUDGET) {
+    while (cachedSize + cost > CACHE_BUDGET) {
+      const oldest = divisorCache.keys().next().value!;
+      cachedSize -= divisorCache.get(oldest)!.length + 1;
+      divisorCache.delete(oldest);
+    }
+    divisorCache.set(n, result);
+    cachedSize += cost;
+  }
+  // Callers can modify their copy without corrupting subsequent calculations.
+  return [...result];
+}
+
+/** Returns null when the exact sum cannot be represented safely as a number. */
+export function properDivisorSum(n: number): number | null {
+  const sum = properDivisors(n).reduce((total, divisor) => total + BigInt(divisor), 0n);
+  return sum <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(sum) : null;
 }
 
 export function mersenneConstruction(p: number): { mersenne: number; factor: number | null; candidate: bigint } {
