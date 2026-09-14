@@ -1,3 +1,4 @@
+import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
 import { Injectable } from '@angular/core';
 import { NavbarItem } from './navbar-item';
 import { NavbarProvider } from './navbar-provider';
@@ -215,6 +216,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
+      { name: 'Números complejos', items: COMPLEX_NUMBERS_NAV_ITEMS },
       { name: 'Geometría', items: this.geometry },
       { name: 'Curvas', items: this.curves },
       { name: 'Probabilidad', items: this.probability },

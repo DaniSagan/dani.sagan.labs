@@ -1,3 +1,4 @@
+import { COMPLEX_NUMBERS_ARTICLES } from './complex-numbers/complex-numbers-articles';
 import { Component, NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { TestArticleComponent } from './test-article/test-article.component';
@@ -182,6 +183,7 @@ const routes: Routes = [
         path: article.route,
         component: article
       })),
+      ...COMPLEX_NUMBERS_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...COMBINATORICS_ARTICLES.map(article => ({ path: article.route, component: article })),
       { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },
       { path: HeronFormulaArticleComponent.route, component: HeronFormulaArticleComponent },

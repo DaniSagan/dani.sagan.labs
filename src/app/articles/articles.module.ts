@@ -1,3 +1,4 @@
+import { COMPLEX_NUMBERS_ARTICLES } from './complex-numbers/complex-numbers-articles';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -113,6 +114,7 @@ import {
     ArithmeticDerivativeArticleComponent,
     ...NUMBER_THEORY_ARTICLES,
     ...COMBINATORICS_ARTICLES,
+    ...COMPLEX_NUMBERS_ARTICLES,
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
     HeronFormulaArticleComponent,

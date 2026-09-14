@@ -1,0 +1,43 @@
+<h2>¿Cómo puede i elevado a i ser un número real?</h2>
+<p class="dropcap">La unidad imaginaria i cumple i² = −1. Parece razonable esperar que elevarla a un exponente
+  imaginario produzca algo igualmente imaginario. Sin embargo, el valor principal de iⁱ es un número real positivo,
+  aproximadamente 0,207879576. Para entenderlo hay que mirar qué significa una potencia compleja.</p>
+<app-formula expression="i^i= e^{-\pi/2}\approx 0{,}207879576\qquad\text{(valor principal)}"></app-formula>
+<h3>La exponencial: tamaño y giro</h3>
+<p>En el plano complejo, a + bi se representa mediante el punto (a, b). El número i está en (0, 1):
+  tiene módulo 1 y forma un ángulo de π/2 radianes con el eje real positivo.
+  La fórmula de Euler conecta esos ángulos con la exponencial:</p>
+<app-formula expression="e^{i\theta}=\cos\theta+i\sin\theta,\qquad e^{i\pi/2}=i"></app-formula>
+<p>Más generalmente, la parte real del exponente controla el módulo del resultado y la parte imaginaria controla
+  su ángulo. Si el exponente es real, el resultado está en el semieje real positivo.</p>
+<app-formula expression="e^{a+bi}=e^a(\cos b+i\sin b),\qquad |e^{a+bi}|=e^a"></app-formula>
+<app-complex-exponential></app-complex-exponential>
+<h3>Definir la potencia con un logaritmo</h3>
+<p>Para una base compleja no nula, definimos una potencia usando un valor de su logaritmo:
+  zʷ = exp(w log z). Primero elegimos el <strong>logaritmo principal</strong>, escrito Log,
+  cuyo argumento está en el intervalo (−π, π]. Como el módulo de i es 1, su logaritmo principal no tiene parte real:</p>
+<app-formula expression="\operatorname{Log}i=\ln|i|+i\operatorname{Arg}i=\ln1+i\frac{\pi}{2}=i\frac{\pi}{2}"></app-formula>
+<p>Ahora multiplicamos ese logaritmo por el exponente i y aplicamos la exponencial.
+  El paso decisivo es i · i = −1: el exponente resultante es real y negativo.</p>
+<app-formula expression="\exp(i\operatorname{Log}i)=\exp\!\left(i\cdot i\frac{\pi}{2}\right)=\exp\!\left(-\frac{\pi}{2}\right)"></app-formula>
+<p>Geométricamente, multiplicar por i gira un vector un cuarto de vuelta en sentido antihorario.
+  El vector Log i, que apunta hacia arriba, pasa a apuntar hacia la izquierda: i Log i = −π/2.
+  Su exponencial es, por tanto, positiva y menor que 1. En el primer widget puedes comparar los botones
+  «e^(Log i) = i» y «e^(i Log i) = iⁱ».</p>
+<h3>Una vuelta más: los otros valores de iⁱ</h3>
+<p>El mismo punto i también tiene argumentos π/2 + 2πk, con k entero: sumar vueltas completas no cambia el punto.
+  Por eso el logaritmo complejo tiene varios valores. Si los usamos todos en la definición de la potencia, obtenemos:</p>
+<app-formula expression="\log i=i\left(\frac{\pi}{2}+2\pi k\right),\qquad k\in\mathbb Z"></app-formula>
+<app-formula expression="\left\{\exp(iL):e^L=i\right\}=\left\{e^{-\pi/2-2\pi k}:k\in\mathbb Z\right\}"></app-formula>
+<p><strong>Todos estos valores son reales positivos.</strong> El principal corresponde a k = 0.
+  Para k = −1 obtenemos e^(3π/2), aproximadamente 111,318; para k = 1 obtenemos e^(−5π/2),
+  aproximadamente 0,000388203. Son valores de la potencia multivaluada, no aproximaciones distintas del mismo número.</p>
+<app-imaginary-power-branches></app-imaginary-power-branches>
+<h3>Qué podemos concluir y qué regla debemos evitar</h3>
+<p>Al aumentar k en una unidad, el valor se multiplica por e^(−2π). Cuando k tiende a +∞, los valores se acercan
+  a cero sin alcanzarlo; cuando k tiende a −∞, crecen sin límite. Ninguno es cero ni negativo.</p>
+<p>No conviene aplicar sin más la regla (zᵃ)ᵇ = zᵃᵇ a potencias complejas: las elecciones de logaritmo importan.
+  Aquí hemos fijado explícitamente el logaritmo antes de calcular. Así, «iⁱ es real» tiene una explicación precisa:
+  su valor principal es e^(−π/2), y todos los valores que resultan de los demás logaritmos de i también son reales positivos.</p>
+<p><strong>Para explorar.</strong> En el primer widget fija b = 0 y cambia a: ¿puede el punto cruzar al eje real negativo?
+  En el segundo compara k = −1, 0 y 1. Explica por qué el punto inicial sigue siendo i mientras el resultado cambia.</p>

@@ -1,0 +1,26 @@
+<section class="widget" aria-label="Explorar los valores de i elevado a i">
+  <h3>El mismo i, diferentes logaritmos</h3>
+  <label>Rama k = {{ k }} {{ k === 0 ? '(principal)' : '' }}
+    <input type="range" min="-3" max="3" step="1" [(ngModel)]="k"></label>
+  <button type="button" (click)="k = 0">Volver al valor principal</button>
+  <p aria-live="polite">Argumento: ({{ 0.5 + 2 * k }})π rad.
+    Logaritmo elegido: ({{ format(angle(k)) }})i.<br>
+    Al multiplicar por i: {{ format(-angle(k)) }}.
+    Valor de la potencia: <strong>{{ format(value(k)) }}</strong>.</p>
+  <svg viewBox="0 0 600 155" role="img" [attr.aria-label]="'Valores positivos en escala logarítmica. Rama seleccionada ' + k + ', valor ' + format(value(k))">
+    <line x1="40" y1="65" x2="560" y2="65" class="axis"/>
+    <line x1="300" y1="48" x2="300" y2="82" class="axis"/><text x="300" y="108" text-anchor="middle">valor 1</text>
+    <g *ngFor="let branch of branches">
+      <circle [attr.cx]="x(branch)" cy="65" [attr.r]="branch === k ? 8 : 5" class="point" [class.selected]="branch === k"/>
+      <text [attr.x]="x(branch)" y="35" text-anchor="middle">k = {{ branch }}</text>
+    </g>
+    <text x="40" y="140">Menor valor</text><text x="560" y="140" text-anchor="end">Mayor valor</text>
+  </svg>
+  <p class="note">Se muestran siete ramas de las infinitas posibles. El eje representa ln(valor):
+    a distancias iguales corresponden factores iguales, no diferencias iguales. Todos los puntos representan valores positivos.</p>
+  <div class="table-scroll"><table><caption>Comparar las ramas visibles</caption>
+    <thead><tr><th scope="col">k</th><th scope="col">Exponente real</th><th scope="col">Valor aproximado</th></tr></thead>
+    <tbody><tr *ngFor="let branch of branches" [class.active]="branch === k"><th scope="row">{{ branch }}{{ branch === 0 ? ' (principal)' : '' }}</th>
+      <td>{{ -0.5 - 2 * branch }}π</td><td>{{ format(value(branch)) }}</td></tr></tbody>
+  </table></div>
+</section>

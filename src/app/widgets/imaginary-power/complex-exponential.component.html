@@ -1,0 +1,24 @@
+<section class="widget" aria-label="Explorar la exponencial compleja">
+  <h3>Del exponente al plano complejo</h3>
+  <div class="controls">
+    <label>Parte real a = {{ format(a) }}<input type="range" min="-3" max="2" step="0.01" [(ngModel)]="a"></label>
+    <label>Parte imaginaria b = {{ format(b) }} rad<input type="range" [min]="-pi" [max]="pi" step="0.01" [(ngModel)]="b"></label>
+  </div>
+  <div class="controls"><button type="button" (click)="preset(false)">e^(Log i) = i</button>
+    <button type="button" (click)="preset(true)">e^(i Log i) = iⁱ</button></div>
+  <div class="visual-row">
+    <svg viewBox="0 0 320 300" role="img" [attr.aria-label]="'Exponencial: parte real ' + format(real) + ', parte imaginaria ' + format(imaginary)">
+      <line x1="20" y1="150" x2="300" y2="150" class="axis"/><line x1="160" y1="20" x2="160" y2="280" class="axis"/>
+      <text x="282" y="172">Re</text><text x="170" y="25">Im</text><text x="145" y="168">0</text>
+      <circle cx="160" cy="150" [attr.r]="unit" class="unit"/>
+      <text [attr.x]="163 + unit" y="168">1</text>
+      <circle cx="160" cy="150" [attr.r]="radius * unit" class="orbit"/>
+      <line x1="160" y1="150" [attr.x2]="160 + real * unit" [attr.y2]="150 - imaginary * unit" class="vector"/>
+      <circle [attr.cx]="160 + real * unit" [attr.cy]="150 - imaginary * unit" r="6" class="point"/>
+    </svg>
+    <div aria-live="polite"><p>e^(a + bi) ≈ <strong>{{ format(real) }} + ({{ format(imaginary) }})i</strong></p>
+      <p>Módulo eᵃ ≈ {{ format(radius) }}<br>Ángulo b ≈ {{ format(b) }} rad</p>
+      <p class="note">La circunferencia discontinua tiene radio 1; la azul, radio eᵃ.
+        La escala se ajusta para mantener visible el resultado.</p></div>
+  </div>
+</section>
