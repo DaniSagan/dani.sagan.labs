@@ -1,0 +1,74 @@
+<h2>El triángulo de Pascal: una suma que lo conecta todo</h2>
+<p class="dropcap">Escribe un 1. Debajo, coloca dos unos. Para seguir creciendo, deja un 1 en cada
+  extremo y suma los dos números de encima en cada posición interior. Esta regla tan pequeña
+  construye una tabla que cuenta elecciones, desarrolla potencias y dibuja patrones que se repiten.</p>
+
+<h3>Construir el triángulo</h3>
+<p>Numeramos las filas desde n = 0 y las posiciones de cada fila desde k = 0 hasta k = n.
+  La fila 4, por ejemplo, es 1, 4, 6, 4, 1. Cada entrada se llama <strong>coeficiente binomial</strong>
+  y se lee «n sobre k».</p>
+<app-formula expression="\binom{0}{0}=1,\qquad\binom{n}{0}=\binom{n}{n}=1"></app-formula>
+<app-formula expression="\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}\qquad(1\le k\le n-1)"></app-formula>
+<p>El 6 central de la fila 4 nace de 3 + 3. Selecciona una casilla para localizar sus dos
+  progenitores y comprobar la suma. Los bordes son unos porque solo tienen un camino de llegada desde la cima.</p>
+<app-pascal-explorer></app-pascal-explorer>
+
+<h3>Elegir sin importar el orden</h3>
+<p>Imagina cinco personas y un equipo de dos. Hay diez equipos distintos: elegir a Ana y Luis
+  es lo mismo que elegir a Luis y Ana. En general, la entrada de la fila n y posición k cuenta
+  los subconjuntos de k elementos de un conjunto de n elementos distintos.</p>
+<app-formula expression="\binom{n}{k}=\frac{n!}{k!(n-k)!},\qquad 0\le k\le n,\quad 0!=1"></app-formula>
+<p>Para entender la regla de suma, fija una persona: los equipos que la incluyen se completan
+  eligiendo k − 1 personas entre las otras n − 1; los que no la incluyen eligen las k entre esas
+  mismas n − 1. Son dos casos que no se solapan y juntos cuentan todos los equipos.</p>
+<p>Elegir quién entra equivale a elegir quién se queda fuera. De ahí la simetría de cada fila:</p>
+<app-formula expression="\binom{n}{k}=\binom{n}{n-k}"></app-formula>
+
+<h3>Potencias de un binomio</h3>
+<p>Al multiplicar n factores (a + b), cada término se obtiene escogiendo a o b en cada factor.
+  Para producir a elevado a n − k y b elevado a k, debemos elegir en qué k factores tomamos b.
+  El triángulo cuenta exactamente esas elecciones.</p>
+<app-formula expression="(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k"></app-formula>
+<app-formula expression="(a+b)^4=a^4+4a^3b+6a^2b^2+4ab^3+b^4"></app-formula>
+<p>Si a = b = 1, obtenemos que la suma de la fila n es 2ⁿ. También podemos verlo contando
+  todos los subconjuntos: cada uno de los n elementos tiene dos opciones, entrar o quedarse fuera.
+  Si a = 1 y b = −1, la suma alternada de cualquier fila con n ≥ 1 es cero.</p>
+
+<h3>De contar resultados a calcular probabilidades</h3>
+<p>En cuatro lanzamientos independientes de una moneda equilibrada hay 16 secuencias equiprobables.
+  Seis contienen exactamente dos caras, así que su probabilidad es 6/16 = 37,5 %.
+  Dividir la fila 4 entre 16 transforma sus coeficientes en una distribución de probabilidad.</p>
+<p>Si la probabilidad de cara es p en cada lanzamiento, una secuencia con k caras tiene probabilidad
+  pᵏ(1 − p)ⁿ⁻ᵏ. Multiplicamos por el número de secuencias con esa cantidad de caras:</p>
+<app-formula expression="P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\qquad k=0,\ldots,n"></app-formula>
+<app-pascal-probability></app-pascal-probability>
+<p>La suma de todas las probabilidades es (p + (1 − p))ⁿ = 1. Para p = 0,5 la distribución es
+  simétrica; al aumentar p se desplaza hacia cantidades mayores de caras. La media es np,
+  que puede no ser un entero: representa un promedio tras repetir muchas veces el experimento.</p>
+
+<h3>Diagonales con nombres propios</h3>
+<p>Después del borde de unos, la siguiente diagonal contiene 1, 2, 3, 4…; la siguiente,
+  1, 3, 6, 10…: los números triangulares. Acumular una diagonal produce un número de la siguiente,
+  como expresa la identidad del «palo de hockey»:</p>
+<app-formula expression="\sum_{j=r}^{n}\binom{j}{r}=\binom{n+1}{r+1}\qquad(n\ge r\ge0)"></app-formula>
+<p>Por ejemplo, 1 + 2 + 3 + 4 = 10. La identidad se demuestra aplicando repetidamente la regla
+  de Pascal: cada suma desplaza el resultado una fila hacia abajo y una posición hacia el interior.</p>
+<p>También aparecen los números de Fibonacci al sumar diagonales menos inclinadas.
+  Con F₀ = 0 y F₁ = 1, tenemos:</p>
+<app-formula expression="F_{n+1}=\sum_{k=0}^{\lfloor n/2\rfloor}\binom{n-k}{k}"></app-formula>
+<p>Para n = 5, la suma es 1 + 4 + 3 = 8. Una forma de entenderla es contar cómo cubrir una
+  tira de longitud n con piezas de longitud 1 y 2: si usamos k piezas dobles, hay n − k piezas
+  en total y debemos elegir cuáles k son dobles.</p>
+
+<h3>Colorear la divisibilidad</h3>
+<p>Vuelve al primer explorador y selecciona «Restos módulo 2». Los números pares dejan resto 0
+  y los impares resto 1. Al mostrar 32 filas aparece una versión discreta del triángulo de Sierpiński:
+  grandes regiones triangulares vacías separan copias más pequeñas del mismo patrón.</p>
+<p>La regla de suma sigue funcionando con restos: dos impares producen un par; un par y un impar
+  producen un impar. Con módulos 3 y 5 aparecen otras estructuras. Los colores representan el resto,
+  no el tamaño del coeficiente; al seleccionar una casilla puedes consultar su valor completo.</p>
+<p><strong>Para explorar.</strong> Comprueba la suma de la fila 8. Busca la entrada 20 de la fila 6
+  y explica qué cuenta. Después, en el experimento de monedas, fija seis lanzamientos y compara
+  la probabilidad de tres caras para p = 0,5 y p = 0,8.</p>
+<p>Puedes consultar la notación, las identidades y la interpretación combinatoria en
+  <a href="https://dlmf.nist.gov/26.3">Coeficientes binomiales y caminos en la DLMF del NIST</a>.</p>

@@ -1,0 +1,33 @@
+<section class="widget" aria-label="Explorador del triángulo de Pascal">
+  <h3>Explora las sumas y los colores</h3>
+  <div class="controls">
+    <label>Representación<select [(ngModel)]="modulus" (ngModelChange)="update()">
+      <option [ngValue]="0">Coeficientes</option><option [ngValue]="2">Restos módulo 2</option><option [ngValue]="3">Restos módulo 3</option><option [ngValue]="5">Restos módulo 5</option>
+    </select></label>
+    <label>Última fila: {{ lastRow }} ({{ lastRow + 1 }} filas)<input type="range" min="0" [max]="maxRow" step="1" [(ngModel)]="lastRow" (ngModelChange)="update()"></label>
+  </div>
+  <p>Selecciona una casilla con el ratón o con Tab y Enter. El borde amarillo señala tu elección;
+    los bordes verdes, sus progenitores. Desplaza el panel horizontalmente si lo necesitas.</p>
+  <div class="legend" *ngIf="modulus"><span *ngFor="let residue of residues"><i [style.background]="colors[residue]"></i>Resto {{ residue }}</span></div>
+  <div class="scroll" tabindex="0" role="region" aria-label="Filas del triángulo">
+    <div class="triangle" [class.modular]="modulus !== 0" [style.min-width.px]="(lastRow + 1) * (modulus ? 28 : 54) + 44">
+      <div class="triangle-row" *ngFor="let row of rows; let n = index">
+        <span class="row-index">{{ n }}</span>
+        <button type="button" *ngFor="let value of row; let k = index" (click)="select(n, k)"
+          [class.selected]="n === selectedN && k === selectedK" [class.parent]="isParent(n, k)"
+          [attr.aria-pressed]="n === selectedN && k === selectedK"
+          [attr.aria-label]="'Fila ' + n + ', posición ' + k + ': ' + value + (modulus ? ', resto ' + (value % modulus) : '')"
+          [style.background]="modulus ? colors[value % modulus] : null" [style.color]="modulus && value % modulus ? '#0f0f18' : null">
+          {{ modulus ? value % modulus : value }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="readout" aria-live="polite">
+    <strong>Fila {{ selectedN }}, posición {{ selectedK }}: {{ value }}</strong>
+    <p>{{ parents }}<span *ngIf="selectedN > 0 && (selectedK === 0 || selectedK === selectedN)">. Fuera del triángulo tomamos el valor 0.</span></p>
+    <p>Hay {{ value }} formas de elegir {{ selectedK }} elementos entre {{ selectedN }}.
+      La suma de esta fila es 2<sup>{{ selectedN }}</sup> = {{ rowSum }}.</p>
+    <p *ngIf="modulus">{{ value }} deja resto {{ value % modulus }} al dividir entre {{ modulus }}.</p>
+  </div>
+</section>

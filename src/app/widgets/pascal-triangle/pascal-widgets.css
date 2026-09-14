@@ -1,0 +1,29 @@
+:host { display: block; margin: 1.5rem 0; }
+.widget { background: #0f0f18; color: #e6e6ef; color-scheme: dark; border: 1px solid #39394b; border-radius: 12px; padding: clamp(1rem, 3vw, 1.8rem); }
+h3 { margin-top: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+label { display: block; flex: 1 1 180px; font-weight: 600; }
+input, select { display: block; width: 100%; margin-top: .5rem; accent-color: #8ab4f8; }
+select { background: #242430; color: #e6e6ef; border: 1px solid #68687e; border-radius: 5px; padding: .5rem; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, .scroll:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+.scroll { overflow-x: auto; padding: 4px; }
+.triangle { width: 100%; padding: 4px 0; }
+.triangle-row { display: flex; justify-content: center; position: relative; padding-left: 36px; }
+.row-index { position: absolute; left: 0; align-self: center; color: #b9b9ce; font-size: .75rem; }
+button { width: 50px; height: 34px; margin: 2px; padding: 0; border: 2px solid #505066; border-radius: 5px; background: #242430; color: #e6e6ef; font-size: .8rem; cursor: pointer; font-variant-numeric: tabular-nums; }
+.modular button { width: 26px; height: 26px; margin: 1px; font-size: .7rem; border-width: 1px; }
+button.selected { outline: 3px solid #f6c76b; outline-offset: -2px; }
+button.parent { outline: 3px dashed #6ed5ba; outline-offset: -2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }
+.legend i { display: inline-block; width: .8rem; height: .8rem; margin-right: .4rem; border: 1px solid #68687e; }
+.readout { border-left: 3px solid #f6c76b; padding: .6rem 1rem; margin: 1rem 0; background: #191923; }
+.readout p { margin: .5rem 0 0; }
+.readout strong { color: #f6c76b; }
+svg { display: block; width: 100%; height: auto; max-width: 800px; margin: 1rem auto; }
+svg text { fill: #e6e6ef; font-size: 10px; }
+.grid { stroke: #39394b; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+caption { color: #b9b9ce; caption-side: top; }
+th, td { padding: .5rem; text-align: left; border-bottom: 1px solid #39394b; }
+summary { cursor: pointer; color: #8ab4f8; }
+.note { color: #b9b9ce; margin: 1rem 0 0; }

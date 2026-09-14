@@ -1,0 +1,23 @@
+<section class="widget" aria-label="Distribución binomial con monedas">
+  <h3>Una fila, muchas monedas</h3>
+  <div class="controls">
+    <label>Lanzamientos: {{ n }}<input type="range" min="1" max="24" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+    <label>Probabilidad de cara: {{ percent }} %<input type="range" min="0" max="100" step="1" [(ngModel)]="percent"></label>
+    <label>Caras que quieres obtener: {{ k }}<input type="range" min="0" [max]="n" step="1" [(ngModel)]="k"></label>
+  </div>
+  <svg viewBox="0 0 580 265" role="img" aria-label="Probabilidad de cada cantidad de caras, de cero a cien por ciento. Datos disponibles en la tabla inferior.">
+    <g *ngFor="let tick of ticks"><line x1="53" x2="555" [attr.y1]="225 - tick * 2" [attr.y2]="225 - tick * 2" class="grid"/><text x="47" [attr.y]="229 - tick * 2" text-anchor="end">{{ tick }} %</text></g>
+    <g *ngFor="let bar of bars"><rect [attr.x]="bar.x" [attr.y]="bar.y" [attr.width]="bar.width" [attr.height]="bar.height" [attr.fill]="bar.k === k ? '#f6c76b' : '#8ab4f8'"><title>{{ bar.k }} caras: {{ bar.probability * 100 | number:'1.0-4' }} %</title></rect><text [attr.x]="bar.x + bar.width / 2" y="242" text-anchor="middle">{{ bar.k }}</text></g>
+    <text x="300" y="261" text-anchor="middle">Número de caras</text>
+  </svg>
+  <div class="readout" aria-live="polite"><strong>P({{ k }} caras) = {{ probabilities[k] * 100 | number:'1.0-6' }} %</strong>
+    <p>{{ coefficients[k] }} secuencias tienen exactamente {{ k }} caras. Media: {{ n * percent / 100 | number:'1.0-2' }} caras.</p>
+  </div>
+  <details><summary>Ver coeficientes y probabilidades</summary><div class="scroll" tabindex="0" role="region" aria-label="Tabla de la distribución binomial"><table>
+    <caption>Resultados para {{ n }} lanzamientos independientes</caption>
+    <thead><tr><th scope="col">Caras</th><th scope="col">Coeficiente</th><th scope="col">Probabilidad</th></tr></thead>
+    <tbody><tr *ngFor="let probability of probabilities; let i = index"><th scope="row">{{ i }}</th><td>{{ coefficients[i] }}</td><td>{{ probability * 100 | number:'1.0-6' }} %</td></tr></tbody>
+  </table></div></details>
+  <p class="note">Las probabilidades se muestran redondeadas: un valor muy pequeño puede aparecer como 0 %.
+    La escala vertical se mantiene fija para comparar distribuciones.</p>
+</section>
