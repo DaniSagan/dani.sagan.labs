@@ -1,0 +1,30 @@
+<section class="widget" aria-label="Explorador del desarrollo binomial">
+  <h3>Del binomio a sus términos</h3>
+  <div class="controls">
+    <label>Exponente n: {{ n }}<input type="range" min="0" max="10" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+    <label>a = {{ a }}<input type="range" min="-3" max="3" step="1" [(ngModel)]="a"></label>
+    <label>b = {{ b }}<input type="range" min="-3" max="3" step="1" [(ngModel)]="b"></label>
+  </div>
+  <div class="expression" aria-label="Desarrollo simbólico">
+    (a + b)<sup>{{ n }}</sup> =
+    <span *ngFor="let term of terms; let first = first"><span *ngIf="!first"> + </span>{{ term.coefficient }}·a<sup>{{ term.powerA }}</sup>·b<sup>{{ term.powerB }}</sup></span>
+  </div>
+  <label>Término seleccionado, k = {{ k }}<input type="range" min="0" [max]="n" step="1" [(ngModel)]="k" [disabled]="n === 0"></label>
+  <svg viewBox="0 0 590 280" role="img" aria-label="Valores con signo de los términos. El término seleccionado es amarillo. La tabla inferior contiene todos los valores.">
+    <line x1="62" x2="566" y1="140" y2="140" class="axis"/>
+    <text x="58" y="39" text-anchor="end">{{ scale }}</text><text x="58" y="144" text-anchor="end">0</text><text x="58" y="249" text-anchor="end">{{ -scale }}</text>
+    <g *ngFor="let bar of bars"><rect [attr.x]="bar.x" [attr.y]="bar.y" [attr.width]="bar.width" [attr.height]="bar.height" [attr.fill]="bar.k === k ? '#f6c76b' : (bar.value < 0 ? '#ef9fa8' : '#8ab4f8')"><title>k = {{ bar.k }}: {{ bar.value }}</title></rect><text [attr.x]="bar.x + bar.width / 2" y="264" text-anchor="middle">{{ bar.k }}</text></g>
+    <text x="310" y="278" text-anchor="middle">Índice k</text>
+  </svg>
+  <div class="readout" aria-live="polite">
+    <p>Término {{ k }}: {{ selected.coefficient }} · ({{ a }})<sup>{{ selected.powerA }}</sup> · ({{ b }})<sup>{{ selected.powerB }}</sup> = <strong>{{ selected.value }}</strong></p>
+    <p>Suma de términos: <strong>{{ sum }}</strong> · Potencia directa: ({{ a }} + ({{ b }}))<sup>{{ n }}</sup> = <strong>{{ direct }}</strong></p>
+  </div>
+  <details><summary>Ver todos los términos</summary><div class="scroll" tabindex="0" role="region" aria-label="Tabla del desarrollo"><table>
+    <caption>Coeficientes, exponentes y valores del desarrollo</caption>
+    <thead><tr><th scope="col">k</th><th scope="col">Coeficiente</th><th scope="col">Exponente de a</th><th scope="col">Exponente de b</th><th scope="col">Valor</th></tr></thead>
+    <tbody><tr *ngFor="let term of terms"><th scope="row">{{ term.k }}</th><td>{{ term.coefficient }}</td><td>{{ term.powerA }}</td><td>{{ term.powerB }}</td><td>{{ term.value }}</td></tr></tbody>
+  </table></div></details>
+  <p class="note">Los controles usan enteros para que los cálculos sean exactos en este intervalo.
+    La escala se adapta al mayor valor absoluto; un término nulo no tiene altura.</p>
+</section>

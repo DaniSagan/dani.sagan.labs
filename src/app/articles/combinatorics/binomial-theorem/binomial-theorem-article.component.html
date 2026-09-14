@@ -1,0 +1,69 @@
+<h2>El teorema binomial: desarrollar una potencia contando elecciones</h2>
+<p class="dropcap">El cuadrado de una suma no es la suma de los cuadrados: entre a² y b² aparece
+  el término 2ab. Al multiplicar (a + b)(a + b), podemos obtener ab de dos formas: elegir a en el
+  primer factor y b en el segundo, o hacerlo al revés. El teorema binomial extiende esta idea a cualquier
+  potencia entera no negativa.</p>
+
+<h3>Una fórmula para todas las potencias</h3>
+<p>Para números reales o complejos a y b y un entero n ≥ 0, el desarrollo es:</p>
+<app-formula expression="(a+b)^n=\sum_{k=0}^{n}\binom{n}{k}a^{n-k}b^k,\qquad\binom{n}{k}=\frac{n!}{k!(n-k)!}"></app-formula>
+<p>La suma recorre n + 1 términos. El exponente de a baja desde n hasta 0 mientras el de b sube
+  desde 0 hasta n; ambos suman siempre n. El coeficiente binomial indica cuántas veces aparece
+  cada producto al multiplicar todos los factores.</p>
+<app-formula expression="(a+b)^3=a^3+3a^2b+3ab^2+b^3"></app-formula>
+<p>Para n = 0, el desarrollo es el polinomio constante 1. En esta identidad un factor con exponente
+  cero se interpreta como 1 incluso al evaluar a = 0 o b = 0: simplemente no hay factores de esa variable.</p>
+
+<h3>Explora los términos, incluidos sus signos</h3>
+<p>Cambia el exponente y los valores de a y b. Cada barra representa un término completo, con
+  su coeficiente y sus potencias. Las barras bajo el eje son negativas y pueden cancelar otras positivas.</p>
+<app-binomial-explorer></app-binomial-explorer>
+<p>Si b = −a y n ≥ 1, la suma vale cero aunque muchos términos no sean nulos. Es una buena
+  manera de distinguir el tamaño de los términos del valor final del desarrollo.</p>
+
+<h3>Por qué aparecen esos coeficientes</h3>
+<p>Escribamos (a + b)ⁿ como el producto de n factores iguales. Al distribuir la multiplicación,
+  cada elección de una letra en cada factor produce un producto. Hay 2ⁿ elecciones en total.
+  Para obtener aⁿ⁻ᵏbᵏ necesitamos elegir b en exactamente k posiciones.</p>
+<app-binomial-choices></app-binomial-choices>
+<p>Las posiciones elegidas forman un subconjunto de tamaño k de las n posiciones disponibles.
+  Hay exactamente «n sobre k» subconjuntos. Como la multiplicación de números es conmutativa,
+  todos esos productos son iguales y se agrupan en un solo término con ese coeficiente.</p>
+<p>Este argumento demuestra la fórmula: hemos clasificado todas las elecciones por su número de letras b,
+  sin omitir ninguna ni contar ninguna dos veces.</p>
+
+<h3>La conexión con el triángulo de Pascal</h3>
+<p>Los coeficientes de (a + b)ⁿ forman la fila n del
+  <a routerLink="../pascal-triangle">triángulo de Pascal</a>, contando su cima como fila 0.
+  Multiplicar un desarrollo por otro factor (a + b) explica su regla de suma: un término recibe
+  la contribución de multiplicar por a el de su misma posición, y por b el anterior.</p>
+<app-formula expression="\binom{n+1}{k}=\binom{n}{k}+\binom{n}{k-1}"></app-formula>
+<p>Por ejemplo, la fila 4 es 1, 4, 6, 4, 1. Sus extremos son unos porque hay una sola forma
+  de elegir siempre a o siempre b. Su simetría refleja que elegir k posiciones para b equivale
+  a elegir las otras n − k para a.</p>
+
+<h3>Encontrar un término sin desarrollar todo</h3>
+<p>Para hallar el coeficiente de x³ en (2x − 1)⁵, usamos a = 2x y b = −1.
+  La potencia de x es 5 − k, así que necesitamos k = 2:</p>
+<app-formula expression="\binom{5}{2}(2x)^3(-1)^2=10\cdot8x^3=80x^3"></app-formula>
+<p>El coeficiente buscado es 80. Los paréntesis importan: se eleva todo 2x, no solo x,
+  y el signo de −1 depende de si su exponente es par o impar.</p>
+
+<h3>Calcular cerca de un número cómodo</h3>
+<p>El teorema también sirve para calcular mentalmente. Para elevar 101 al cubo, escribe 101 = 100 + 1:</p>
+<app-formula expression="101^3=100^3+3\cdot100^2+3\cdot100+1=1\,030\,301"></app-formula>
+<p>Si el incremento es pequeño, los términos de mayor grado pueden ser pequeños.
+  Por ejemplo, (1 + h)³ = 1 + 3h + 3h² + h³. Al aproximarlo por 1 + 3h, descartamos
+  exactamente 3h² + h³; para h = 0,01, el error absoluto es 0,000301.</p>
+
+<h3>Qué afirma y qué no afirma</h3>
+<p>El desarrollo finito que hemos usado requiere que n sea un entero no negativo.
+  Para exponentes negativos o fraccionarios existen expansiones en series infinitas, con condiciones
+  de convergencia: no basta con introducir ese exponente en esta suma finita.</p>
+<p>Tampoco podemos sustituir a y b por matrices arbitrarias y agrupar los productos del mismo modo.
+  En general, AB y BA no son iguales: el cuadrado es A² + AB + BA + B².
+  Si las matrices conmutan, la fórmula binomial sí conserva su forma habitual.</p>
+<p><strong>Para explorar.</strong> Fija a = 1 y b = 1 para comprobar la suma de los coeficientes.
+  Después cambia b a −1 y observa la cancelación. En el selector de productos, usa cinco factores
+  y marca dos letras b: ¿por qué hay diez elecciones que producen el mismo monomio?</p>
+<p>Referencia: <a href="https://dlmf.nist.gov/1.2#i">teorema binomial y coeficientes binomiales en la DLMF del NIST</a>.</p>

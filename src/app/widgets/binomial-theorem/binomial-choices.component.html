@@ -1,0 +1,14 @@
+<section class="widget" aria-label="Elecciones de letras en los factores">
+  <h3>Elige una letra en cada factor</h3>
+  <label>Número de factores: {{ n }}<input type="range" min="1" max="6" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+  <p>Pulsa cada factor para alternar entre a y b. La posición importa al elegir; al multiplicar,
+    las elecciones con la misma cantidad de letras b producen el mismo monomio.</p>
+  <div class="factors"><button type="button" *ngFor="let letter of letters; let i = index; trackBy: trackIndex" (click)="toggle(i)" [attr.aria-label]="'Factor ' + (i + 1) + ': ' + letter + '. Alternar a o b'" [attr.aria-pressed]="letter === 'b'">
+    <small>Factor {{ i + 1 }}</small><span [class.chosen]="letter === 'a'">a</span> + <span [class.chosen]="letter === 'b'">b</span>
+  </button></div>
+  <div class="readout" aria-live="polite"><p>{{ word }} = a<sup>{{ n - k }}</sup>b<sup>{{ k }}</sup></p>
+    <p><strong>{{ choices.length }} elecciones</strong> de las {{ total }} posibles producen este monomio.
+      Su término agrupado es {{ choices.length }}·a<sup>{{ n - k }}</sup>b<sup>{{ k }}</sup>.</p></div>
+  <p>Estas son todas las elecciones con {{ k }} letras b. Puedes seleccionar cualquiera:</p>
+  <div class="choices"><button type="button" *ngFor="let choice of choices" (click)="select(choice)" [class.active]="choice === word" [attr.aria-pressed]="choice === word" [attr.aria-label]="'Elegir ' + choice">{{ choice }}</button></div>
+</section>
