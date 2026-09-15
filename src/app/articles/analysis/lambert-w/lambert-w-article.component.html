@@ -1,0 +1,152 @@
+<h2>La función W de Lambert: despejar cuando la incógnita también está en el exponente</h2>
+<p class="dropcap">Un logaritmo resuelve eˣ = a, pero en xeˣ = a deja x + ln x = ln a: la incógnita sigue apareciendo
+  de dos maneras. La función W de Lambert da nombre a la inversa que necesitamos. Su utilidad está en reconocer
+  qué cambio de variable transforma una ecuación en un producto de la forma u·eᵘ.</p>
+
+<h3>1. Definición: invertir w·eʷ</h3>
+<app-formula expression="w e^w=z\quad\Longleftrightarrow\quad w=W_k(z)"></app-formula>
+<p>El índice k indica una rama. No representa una potencia ni una derivada. Algunos valores inmediatos son
+  W₀(0) = 0, W₀(e) = 1 y W₀(−1/e) = −1. W₀(1) ≈ 0,5671432904 es la solución de weʷ = 1.</p>
+<p>Introducir W no convierte mágicamente una ecuación en elemental: permite expresar su solución con una función
+  bien definida, igual que ocurre al introducir logaritmos para invertir exponenciales.</p>
+
+<h3>2. Por qué existen dos ramas reales</h3>
+<p>Consideremos f(w) = weʷ. Su derivada es eʷ(1 + w): decrece antes de −1 y crece después.
+  Alcanza su mínimo −1/e en w = −1. Además, se aproxima a cero por debajo cuando w tiende a menos infinito.</p>
+<div class="table-scroll"><table><caption>Soluciones reales de weʷ = z</caption><thead><tr><th>Argumento z</th><th>Soluciones</th></tr></thead><tbody>
+  <tr><td>z &lt; −1/e</td><td>Ninguna real.</td></tr><tr><td>z = −1/e</td><td>Una: w = −1; ambas ramas coinciden.</td></tr>
+  <tr><td>−1/e &lt; z &lt; 0</td><td>Dos: W₀(z) entre −1 y 0, y W₋₁(z) menor que −1.</td></tr>
+  <tr><td>z = 0</td><td>Una finita: W₀(0) = 0. W₋₁ tiende a menos infinito al acercarse a cero por la izquierda.</td></tr>
+  <tr><td>z &gt; 0</td><td>Una: W₀(z), positiva.</td></tr></tbody></table></div>
+<p>En el plano complejo hay ramas Wₖ con índices enteros. Aquí resolvemos ecuaciones reales; los widgets no calculan
+  las ramas complejas. <a href="https://dlmf.nist.gov/4.13">Definición y ramas en DLMF (NIST)</a>.</p>
+<app-lambert-w-explorer></app-lambert-w-explorer>
+
+<h3>3. Método de resolución</h3>
+<ol><li>Fija el dominio original: argumentos de logaritmos, bases de potencias y denominadores.</li>
+  <li>Aísla un producto y busca que el factor variable coincida con el exponente: u·eᵘ = z.</li>
+  <li>Introduce un cambio afín, logarítmico o una raíz, anotando las condiciones para que sea reversible.</li>
+  <li>Examina las ramas reales permitidas por z; no uses siempre W₀.</li>
+  <li>Deshaz el cambio y comprueba cada candidato en la ecuación original.</li></ol>
+<p>Tomar logaritmos puede eliminar soluciones negativas; dividir por una incógnita puede eliminar la solución cero.
+  Esos casos deben tratarse antes de transformar.</p>
+
+<h3>4. Producto exponencial: xeˣ = 3</h3>
+<p>Ya está en la forma canónica:</p>
+<app-formula expression="xe^x=3\quad\Longrightarrow\quad x=W_0(3)\approx1.049908895"></app-formula>
+<p>Como 3 es positivo, solo hay una solución real. Con un coeficiente a distinto de cero:</p>
+<app-formula expression="xe^{ax}=b\quad\Longrightarrow\quad (ax)e^{ax}=ab\quad\Longrightarrow\quad x=\frac{W_k(ab)}{a}"></app-formula>
+<p>Si a = 0, la ecuación es simplemente x = b. Si b = 0, la solución es x = 0 y no debe perderse al tomar logaritmos.</p>
+
+<h3>5. Dos soluciones: xe⁻ˣ = c</h3>
+<p>Multiplicamos por −1 y ponemos u = −x:</p>
+<app-formula expression="xe^{-x}=c\quad\Longrightarrow\quad (-x)e^{-x}=-c\quad\Longrightarrow\quad x=-W_k(-c)"></app-formula>
+<p>Para c = 0,2 obtenemos x ≈ 0,2591711018 y x ≈ 2,542641358. Ambas soluciones son positivas.
+  Para 0 &lt; c &lt; 1/e hay dos; para c = 1/e coinciden en x = 1; para c &gt; 1/e no hay soluciones reales.
+  Si c = 0, x = 0; si c es negativo, hay una única solución negativa.</p>
+<app-lambert-equation></app-lambert-equation>
+
+<h3>6. Una recta multiplicada por una exponencial</h3>
+<p>Consideremos (ax + b)eᶜˣ = d con a y c distintos de cero. El cambio u = (c/a)(ax + b)
+  hace que cx = u − cb/a:</p>
+<app-formula expression="(ax+b)e^{cx}=d\quad\Longrightarrow\quad ue^u=\frac{cd}{a}e^{cb/a}"></app-formula>
+<app-formula expression="x=\frac1c W_k\!\left(\frac{cd}{a}e^{cb/a}\right)-\frac ba"></app-formula>
+<p>Ejemplo: (x + 2)eˣ = 3. Con u = x + 2 resulta ueᵘ = 3e² y x = W₀(3e²) − 2.
+  El argumento es positivo, por lo que la solución es única. Si c = 0 la ecuación es lineal;
+  si a = 0 se resuelve como una exponencial, separando el caso b = 0.</p>
+
+<h3>7. Exponencial igual a recta: eˣ = ax + b</h3>
+<p>Para a distinto de cero, despejamos la parte afín y usamos u = −x − b/a:</p>
+<app-formula expression="e^x=ax+b\quad\Longrightarrow\quad ue^u=-\frac{e^{-b/a}}a\quad\Longrightarrow\quad x=-W_k\!\left(-\frac{e^{-b/a}}a\right)-\frac ba"></app-formula>
+<p>Ejemplo: eˣ = 2x + 1. El argumento −e⁻¹ᐟ²/2 está entre −1/e y 0.
+  W₀ da x = 0 y W₋₁ da x ≈ 1,256431209. La condición 2x + 1 &gt; 0 se cumple en ambas.
+  Si a = 0, hay una solución ln b cuando b &gt; 0 y ninguna cuando b ≤ 0.</p>
+
+<h3>8. Sumas con logaritmos: x + ln x = a</h3>
+<p>El dominio es x &gt; 0. Exponenciar es reversible en él:</p>
+<app-formula expression="x+\ln x=a\quad\Longrightarrow\quad xe^x=e^a\quad\Longrightarrow\quad x=W_0(e^a)"></app-formula>
+<p>Hay una solución para cada a real, porque eᵃ es positivo. Por ejemplo, x + ln x = 1 da x = 1.
+  En general, para A distinto de cero:</p>
+<app-formula expression="\ln x+Ax=B\quad\Longrightarrow\quad x=\frac{W_k(Ae^B)}A,\qquad x>0"></app-formula>
+<p>Si A &gt; 0 hay una solución; si A &lt; 0 puede haber cero, una o dos, según el argumento.
+  Si A = 0, x = eᴮ.</p>
+
+<h3>9. Un logaritmo frente a una recta: ln x = ax + b</h3>
+<p>Con x &gt; 0 y a distinto de cero, exponenciamos y reordenamos:</p>
+<app-formula expression="\ln x=ax+b\quad\Longrightarrow\quad (-ax)e^{-ax}=-ae^b\quad\Longrightarrow\quad x=-\frac{W_k(-ae^b)}a"></app-formula>
+<p>Ejemplo: ln x = x/2 − 1. El argumento es −1/(2e), y hay dos raíces positivas,
+  aproximadamente 0,463921906 y 5,356693980. No hay que confundir esta ecuación con la del apartado anterior:
+  el signo del término lineal cambia el número de soluciones.</p>
+
+<h3>10. Un producto logarítmico: x ln x = a</h3>
+<p>El dominio es x &gt; 0. Ponemos u = ln x, de modo que x = eᵘ:</p>
+<app-formula expression="x\ln x=a\quad\Longrightarrow\quad ue^u=a\quad\Longrightarrow\quad x=e^{W_k(a)}"></app-formula>
+<p>Para −1/e &lt; a &lt; 0 hay dos soluciones en (0, 1); para a = −1/e, una en x = 1/e;
+  para a &lt; −1/e, ninguna. Para a = 0 solo x = 1 es admisible: x = 0 no pertenece al dominio.
+  Para a &gt; 0 hay una solución mayor que 1. Si a ≠ 0, también se puede escribir x = a/Wₖ(a);
+  esa forma produce 0/0 cuando a = 0, por lo que es preferible la exponencial.</p>
+
+<h3>11. La incógnita como base y exponente: xˣ = A</h3>
+<p>Trabajamos con x &gt; 0 y A &gt; 0, donde xˣ = eˣˡⁿˣ está bien definida de forma continua.
+  Tomar logaritmos reduce el problema al anterior:</p>
+<app-formula expression="x^x=A\quad\Longrightarrow\quad x\ln x=\ln A\quad\Longrightarrow\quad x=e^{W_k(\ln A)}"></app-formula>
+<p>El mínimo es A = e⁻¹ᐟᵉ, alcanzado en x = 1/e. Entre ese mínimo y 1 hay dos soluciones;
+  por debajo del mínimo no hay ninguna; para A ≥ 1 hay una. En A = 1 la solución es x = 1.
+  Ejemplo: xˣ = 2 tiene la solución x ≈ 1,559610470. No se incluyen aquí bases negativas:
+  sus potencias reales requieren un análisis de dominio diferente.</p>
+
+<h3>12. La incógnita en el exponente: aˣ = x</h3>
+<p>Para a &gt; 0, cualquier solución debe ser positiva. Si a ≠ 1:</p>
+<app-formula expression="a^x=x\quad\Longrightarrow\quad (-x\ln a)e^{-x\ln a}=-\ln a\quad\Longrightarrow\quad x=-\frac{W_k(-\ln a)}{\ln a}"></app-formula>
+<p>Para 0 &lt; a &lt; 1 hay una solución. Para 1 &lt; a &lt; e¹ᐟᵉ hay dos; en a = e¹ᐟᵉ hay una, x = e;
+  por encima no hay soluciones reales. Si a = 1, x = 1. Por ejemplo, (√2)ˣ = x tiene las dos soluciones exactas x = 2 y x = 4.</p>
+
+<h3>13. Una potencia por una exponencial: x²eˣ = A</h3>
+<p>Para A &gt; 0 hay que conservar ambos signos al extraer la raíz:</p>
+<app-formula expression="(xe^{x/2})^2=A\quad\Longrightarrow\quad \frac x2 e^{x/2}=\pm\frac{\sqrt A}{2}\quad\Longrightarrow\quad x=2W_k\!\left(\pm\frac{\sqrt A}{2}\right)"></app-formula>
+<p>El signo positivo da una raíz positiva. El negativo aporta dos raíces negativas si 0 &lt; A &lt; 4/e²,
+  una raíz negativa doble en A = 4/e², y ninguna si A &gt; 4/e².
+  En particular, x²eˣ = 0,1 tiene tres raíces reales. Para A = 0, x = 0; para A &lt; 0 no hay raíces reales.</p>
+<p>Más generalmente, para x &gt; 0, A &gt; 0, m &gt; 0 y b ≠ 0:</p>
+<app-formula expression="x^m e^{bx}=A\quad\Longrightarrow\quad x=\frac mb W_k\!\left(\frac bm A^{1/m}\right)"></app-formula>
+<p>La restricción x &gt; 0 evita perder signos en raíces pares. Para buscar también raíces negativas con m entero,
+  hay que separar los casos de paridad, como acabamos de hacer con m = 2.</p>
+
+<h3>14. Aplicación: cruzar un umbral de crecimiento y decaimiento</h3>
+<p>Supongamos una magnitud P(t) = A·t·e⁻ᵏᵗ, con A, k positivos y t ≥ 0.
+  Primero crece, alcanza su máximo en t = 1/k y después decae. Los instantes en que alcanza un nivel B se obtienen con:</p>
+<app-formula expression="At e^{-kt}=B\quad\Longrightarrow\quad t=-\frac1k W_j\!\left(-\frac{kB}{A}\right)"></app-formula>
+<p>Si 0 &lt; B &lt; A/(ke), W₀ da el cruce ascendente y W₋₁ el descendente. En el máximo coinciden;
+  por encima no hay cruces. Para B = 0 solo t = 0 es finito; la caída hacia cero al infinito no es otro instante solución.
+  Las unidades deben ser coherentes: kt y kB/A son adimensionales.</p>
+
+<h3>15. Aplicación: una ecuación con retardo</h3>
+<p>En el modelo y′(t) = a·y(t − τ), con τ &gt; 0, buscamos modos exponenciales y(t) = eˡᵃᵐᵇᵈᵃᵗ.
+  Sustituirlos conduce a λ = a·e⁻ˡᵃᵐᵇᵈᵃᵗᵃᵘ:</p>
+<app-formula expression="\lambda e^{\lambda\tau}=a\quad\Longrightarrow\quad \lambda_k=\frac{W_k(a\tau)}{\tau}"></app-formula>
+<p>En este problema las ramas complejas importan: describen modos oscilatorios además de los reales.
+  Encontrar una raíz real no equivale a resolver el problema de evolución completo, que requiere una historia inicial
+  en un intervalo de longitud τ. Para a = 0, la ecuación es y′ = 0 y la raíz característica finita es λ = 0.</p>
+
+<h3>16. Derivada, aproximaciones y cálculo numérico</h3>
+<p>Derivamos W(z)eᵂ⁽ᶻ⁾ = z implícitamente:</p>
+<app-formula expression="W'(z)=\frac{1}{e^{W(z)}(1+W(z))}=\frac{W(z)}{z(1+W(z))}"></app-formula>
+<p>La segunda forma necesita z ≠ 0. En la rama principal W₀′(0) = 1 por límite.
+  En −1/e el factor 1 + W se anula: la pendiente se hace infinita y el cálculo es sensible a errores en el argumento.</p>
+<app-formula expression="W_0(z)=z-z^2+\frac32z^3-\frac83z^4+\cdots,\qquad |z|\lt1/e"></app-formula>
+<p>Para z positivo grande, una primera aproximación es ln z − ln ln z; no es una identidad.
+  El widget usa intervalos que contienen cada raíz y bisección. Para valores extremos trabaja con
+  w + ln|w| = ln|z|, evitando calcular exponenciales enormes. La verificación numérica no sustituye al análisis del dominio.</p>
+
+<h3>17. Errores frecuentes y límites del método</h3>
+<ul><li>W no distribuye sobre sumas ni productos: W(a + b) no es W(a) + W(b).</li>
+  <li>W₀(ueᵘ) = u solo cuando u ≥ −1. Si u &lt; −1, la inversión que recupera u es W₋₁.</li>
+  <li>En −1/e las ramas dan la misma raíz; no deben contarse dos soluciones distintas.</li>
+  <li>En cero, W₋₁ no aporta una raíz real finita.</li>
+  <li>W no resuelve automáticamente cualquier ecuación trascendente. Expresiones como eˣ + x² = 0
+    no se reducen por una regla general a una sola W; en este ejemplo, la positividad descarta directamente raíces reales.</li>
+  <li>Las soluciones de una transformación deben comprobarse en la ecuación original, especialmente si se han elevado potencias o tomado raíces.</li></ul>
+<p><strong>Para practicar.</strong> Resuelve 2xe²ˣ = 1, ln x = −x, (x − 1)e²ˣ = 3 y xˣ = 0,8.
+  Las formas resultantes son, respectivamente, x = W₀(1)/2; x = W₀(1);
+  x = 1 + W₀(6e⁻²)/2; y x = exp(Wₖ(ln 0,8)), con k = 0 y −1 en el último caso.
+  Comprueba cada resultado y justifica el número de raíces antes de aproximarlas.</p>

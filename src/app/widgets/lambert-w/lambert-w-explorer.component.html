@@ -1,0 +1,21 @@
+<section class="widget" aria-labelledby="lambert-title">
+  <h3 id="lambert-title">Calculadora y ramas reales</h3>
+  <form (ngSubmit)="calculate()"><div class="controls"><label>Argumento z<input name="z" type="number" step="any" required [(ngModel)]="input"></label>
+    <label>Rama<select name="branch" [(ngModel)]="branch" (ngModelChange)="calculate()"><option [ngValue]="0">W₀ · principal</option><option [ngValue]="-1">W₋₁ · inferior</option></select></label>
+    <button type="submit">Calcular</button></div></form>
+  <div class="controls"><button type="button" (click)="example(branchPoint)">−1/e</button><button type="button" *ngFor="let z of [-0.2, 0, 1]" (click)="example(z)">{{ z }}</button></div>
+  <div aria-live="polite"><p class="error" *ngIf="error">{{ error }}</p>
+    <p *ngIf="value !== null" class="result">W{{ branch }}({{ evaluated }}) ≈ <strong>{{ value.toPrecision(12) }}</strong><br>Comprobación: w·eʷ ≈ {{ check?.toPrecision(12) }}</p></div>
+  <svg viewBox="0 0 700 360" role="img" aria-label="Las ramas reales W cero y W menos uno se unen en menos uno sobre e, menos uno">
+    <g *ngFor="let t of ticks"><line x1="60" [attr.y1]="y(t)" x2="640" [attr.y2]="y(t)" class="grid"/><text x="35" [attr.y]="y(t)+4">{{ t }}</text></g>
+    <line [attr.x1]="x(0)" y1="30" [attr.x2]="x(0)" y2="310" class="axis"/>
+    <g *ngFor="let t of xTicks"><text [attr.x]="x(t)" y="337" text-anchor="middle">{{ t }}</text></g>
+    <path [attr.d]="paths[0]" class="curve"/><path [attr.d]="paths[1]" class="curve secondary"/>
+    <circle [attr.cx]="x(branchPoint)" [attr.cy]="y(-1)" r="4" class="marker"/>
+    <circle *ngIf="visible" [attr.cx]="x(evaluated)" [attr.cy]="y(value!)" r="6" class="marker"/>
+    <text x="500" y="60">W₀</text><text x="165" y="285">W₋₁</text><text x="650" y="337">z</text><text x="15" y="20">W(z)</text>
+  </svg>
+  <p *ngIf="value !== null && !visible">El valor calculado está fuera de la ventana del gráfico.</p>
+  <p class="note">Azul: W₀. Naranja discontinuo: W₋₁. Aproximaciones en doble precisión, solo para argumentos y ramas reales.
+    Cerca de −1/e, pequeños cambios en z pueden producir cambios apreciables en W. El botón −1/e utiliza el valor numérico del punto de unión.</p>
+</section>
