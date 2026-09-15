@@ -1,0 +1,60 @@
+<h2>El teseracto: un cubo en cuatro dimensiones</h2>
+<p class="dropcap">Un cuadrado tiene cuatro lados. Un cubo tiene seis caras cuadradas. ¿Qué obtenemos al dar un paso más? El <strong>teseracto</strong>, también llamado hipercubo tetradimensional, está limitado por ocho cubos. No cabe en nuestro espacio tridimensional sin perder información, pero podemos calcularlo, proyectarlo, cortarlo y observar cómo gira. La cuarta coordenada es aquí una dirección espacial adicional; no representa el tiempo.</p>
+<p>Empieza con la vista «Cubo dentro de cubo». Después activa la rotación doble: las celdas parecen atravesarse y cambiar de tamaño, aunque el objeto original permanece rígido. El laboratorio permite separar esa apariencia de la geometría que la produce.</p>
+<app-tesseract-viewer/>
+
+<h3>1. De un segmento a un hipercubo</h3>
+<p>Hay una construcción que funciona en cualquier dimensión: duplicar un objeto, trasladar la copia en una dirección nueva y unir los puntos correspondientes. Dos puntos dan un segmento; dos segmentos, un cuadrado; dos cuadrados, un cubo. Al conectar dos cubos a lo largo de una cuarta dirección obtenemos un teseracto.</p>
+<figure class="construction">
+  <svg viewBox="0 0 800 210" role="img" aria-labelledby="tesseract-construction-title">
+    <title id="tesseract-construction-title">Construcción dimensional: segmento, cuadrado, cubo y proyección de un teseracto</title>
+    <g fill="none" stroke="#84d8f6" stroke-width="2.5" stroke-linejoin="round">
+      <path d="M30 110H125"/>
+      <path d="M215 65H310V160H215Z"/>
+      <path d="M400 85H480V165H400ZM430 55H510V135H430ZM400 85L430 55M480 85L510 55M480 165L510 135M400 165L430 135"/>
+      <path d="M620 70H720V170H620ZM655 35H755V135H655ZM620 70L655 35M720 70L755 35M720 170L755 135M620 170L655 135"/>
+      <path stroke="#c19aff" d="M656 88H697V129H656ZM670 74H711V115H670ZM656 88L670 74M697 88L711 74M697 129L711 115M656 129L670 115"/>
+      <path stroke="#74f2c7" stroke-width="1.5" d="M620 70L656 88M720 70L697 88M720 170L697 129M620 170L656 129M655 35L670 74M755 35L711 74M755 135L711 115M655 135L670 115"/>
+    </g>
+    <g fill="#cbd6e9" font-size="13" text-anchor="middle"><text x="78" y="198">1D · 2 vértices</text><text x="263" y="198">2D · 4 vértices</text><text x="455" y="198">3D · 8 vértices</text><text x="690" y="198">4D · 16 vértices</text></g>
+  </svg>
+  <figcaption>En cada paso se duplica el número de vértices. El último dibujo es una representación proyectada, no un objeto que pueda construirse rígidamente en 3D con esta apariencia.</figcaption>
+</figure>
+<p>Un modelo especialmente sencillo es el producto de cuatro intervalos. Sus puntos tienen cuatro coordenadas y sus vértices se obtienen eligiendo cada coordenada igual a −1 o +1:</p>
+<app-formula expression="T=[-1,1]^4,\qquad (x,y,z,w)\in T,\qquad V=\{(\pm1,\pm1,\pm1,\pm1)\}" displayMode="block"/>
+<p>Dos vértices están unidos por una arista si difieren en exactamente una coordenada. En este modelo todas las aristas miden 2 y la distancia del centro a cualquier vértice también es 2. Sus diagonales principales miden 4.</p>
+
+<h3>2. Contar lo que no podemos ver directamente</h3>
+<p>Para construir una cara de dimensión k de un hipercubo de dimensión n, elegimos qué k coordenadas pueden variar y fijamos las restantes en uno de sus dos extremos. Esto da una fórmula que cuenta vértices, aristas, caras cuadradas y celdas cúbicas:</p>
+<app-formula expression="f_k=2^{n-k}\binom{n}{k},\qquad n=4" displayMode="block"/>
+<div class="table-scroll"><table><thead><tr><th>Elemento</th><th>Coordenadas libres</th><th>Cantidad</th></tr></thead><tbody><tr><td>Vértices</td><td>0</td><td>16</td></tr><tr><td>Aristas</td><td>1</td><td>32</td></tr><tr><td>Caras cuadradas</td><td>2</td><td>24</td></tr><tr><td>Celdas cúbicas</td><td>3</td><td>8</td></tr><tr><td>Interior tetradimensional</td><td>4</td><td>1</td></tr></tbody></table></div>
+<p>En cada vértice concurren cuatro aristas. Cada arista pertenece a tres celdas cúbicas y cada cara cuadrada es compartida por dos celdas. Selecciona una de las ocho celdas del visor: fijar, por ejemplo, w=+1 deja libres x, y y z, y por tanto define un cubo entero.</p>
+<app-formula expression="16-32+24-8=0" displayMode="block"/>
+<p>Esta es la relación de Euler para la frontera del teseracto. La frontera de un cubo ordinario tiene la topología de una esfera de dimensión 2; la del teseracto tiene la de una esfera de dimensión 3, cuya característica de Euler es cero.</p>
+
+<h3>3. Por qué aparece un cubo dentro de otro</h3>
+<p>Una proyección ortogonal 4D→3D simplemente olvida w. Sin rotación, las dos celdas w=−1 y w=+1 coinciden en la imagen. La perspectiva, en cambio, introduce un factor de escala que depende de esa cuarta coordenada:</p>
+<app-formula expression="\pi_d(x,y,z,w)=\left(\frac{dx}{d-w},\frac{dy}{d-w},\frac{dz}{d-w}\right),\qquad d&gt;2" displayMode="block"/>
+<p>La cámara 4D está en (0,0,0,d) y proyecta sobre w=0. Con d=4, el cubo w=+1 se amplía por 4/3 y el cubo w=−1 se reduce por 4/5. Las ocho aristas restantes conectan sus vértices correspondientes. No hay un cubo «pequeño» dentro de otro «grande» en el teseracto original: ambas celdas son congruentes.</p>
+<p>El visor hace después una segunda proyección: la cámara 3D muestra esta figura tridimensional en tu pantalla 2D. Puedes orbitar esa cámara sin alterar el teseracto. Las intersecciones aparentes y las diferencias de longitud son consecuencias de las proyecciones. Los colores identifican las cuatro direcciones originales de las aristas y permanecen asociados a ellas durante el giro.</p>
+
+<h3>4. Rotar en cuatro dimensiones</h3>
+<p>Una rotación se describe mediante un plano. En 3D estamos acostumbrados a nombrar el eje perpendicular a ese plano; en 4D esa descripción por un único eje ya no basta. Hay seis planos coordenados: XY, XZ, XW, YZ, YW y ZW. Por ejemplo, un giro en XW transforma dos coordenadas y conserva las otras dos:</p>
+<app-formula expression="x'=x\cos\theta-w\sin\theta,\qquad w'=x\sin\theta+w\cos\theta,\qquad y'=y,\quad z'=z" displayMode="block"/>
+<p>La suma de los cuadrados de las coordenadas no cambia. Tampoco cambian las distancias entre puntos, los ángulos ni el hipervolumen. En cambio, la imagen proyectada sí se deforma porque cada vértice puede acercarse o alejarse de la cámara 4D.</p>
+<app-formula expression="x'^2+y'^2+z'^2+w'^2=x^2+y^2+z^2+w^2" displayMode="block"/>
+<p>Una particularidad de 4D es que pueden producirse giros simultáneos en dos planos ortogonales, como XW e YZ. Es una <strong>rotación doble</strong>. Los giros en estos dos planos conmutan, aunque las rotaciones que comparten una coordenada generalmente no lo hacen. En una rotación doble genérica no queda fija ninguna dirección no nula. Si las magnitudes de los dos ángulos son iguales, se habla de una rotación isoclínica.</p>
+
+<h3>5. Una sección no es una sombra</h3>
+<p>Proyectar reúne información de todo el objeto. Cortar conserva únicamente sus puntos que pertenecen a un hiperplano. En el laboratorio, el modo «Sección tridimensional» intersecta el teseracto girado con w=c y representa las coordenadas x, y y z de los puntos resultantes.</p>
+<p>Sin giro, todos los cortes interiores con −1&lt;c&lt;1 son cubos iguales. Fuera del intervalo no hay intersección. Tras un giro general, las secciones pueden cambiar de forma, aparecer a partir de un vértice, crecer, desarrollar nuevas caras y volver a desaparecer. Son poliedros convexos: tanto el teseracto como el hiperplano son conjuntos convexos.</p>
+<p>Para calcularlas, buscamos dónde cada una de las 32 aristas cruza el hiperplano. Si sus extremos son A y B, el parámetro del punto de corte es:</p>
+<app-formula expression="P=A+t(B-A),\qquad t=\frac{c-w_A}{w_B-w_A},\qquad 0\le t\le1" displayMode="block"/>
+<p>La fórmula se aplica cuando las coordenadas w de los extremos son distintas. Si toda la arista pertenece al plano, se conservan ambos extremos. La envolvente convexa de los puntos de corte forma la sección; los cortes degenerados pueden tener dimensión menor que tres.</p>
+<aside class="experiment"><h4>Tres experimentos para orientarte</h4><ol><li><strong>Recupera las ocho celdas.</strong> Pausa la vista inicial y selecciónalas una a una. Las seis que unen el cubo interior con el exterior también son cubos antes de proyectarse.</li><li><strong>Separa cámara y rotación.</strong> Orbita con el ratón; después gira solamente XW. El primer gesto cambia el punto de vista 3D; el segundo mezcla una coordenada visible con w.</li><li><strong>Compara sombra y sección.</strong> Pon todas las rotaciones a cero y mueve el corte de −1.5 a +1.5. Repite con XW=35°, YW=35° y ZW=35°. La familia de sólidos que aparece cuenta otra historia del mismo objeto.</li></ol></aside>
+
+<h3>6. Medir en cuatro dimensiones</h3>
+<p>Si la arista tiene longitud a, cada celda tiene volumen a³, la frontera tiene medida tridimensional 8a³ y el interior tiene hipervolumen a⁴. Son magnitudes de distinta dimensión, igual que el área de las caras de un cubo y su volumen interior.</p>
+<app-formula expression="V_4=a^4,\qquad S_3=8a^3,\qquad D=a\sqrt4=2a" displayMode="block"/>
+<p>El teseracto no exige imaginar una dirección imposible de dibujar: basta definir sus coordenadas y seguir las consecuencias. Una sola imagen siempre pierde información, pero las proyecciones, las rotaciones y las secciones se complementan para reconstruir su estructura.</p>
+<p class="references">Para profundizar: <a href="https://mathworld.wolfram.com/Tesseract.html" target="_blank" rel="noopener noreferrer">Teseracto en MathWorld</a> y <a href="https://mathworld.wolfram.com/Hypercube.html" target="_blank" rel="noopener noreferrer">la familia de los hipercubos</a>.</p>

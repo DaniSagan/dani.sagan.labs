@@ -1,0 +1,57 @@
+<section class="laboratory" #laboratory aria-label="Laboratorio del teseracto">
+  <header>
+    <div><span class="eyebrow">LABORATORIO / CUATRO DIMENSIONES</span><h3>Una ventana a la cuarta dimensión</h3></div>
+    <span class="badge">16 V · 32 A · 24 C · 8 celdas</span>
+  </header>
+  <div class="presets" aria-label="Vistas guiadas">
+    <button type="button" (click)="preset('classic')">01 · Cubo dentro de cubo</button>
+    <button type="button" (click)="preset('double')">02 · Rotación doble</button>
+    <button type="button" (click)="preset('slice')">03 · Cortes 3D</button>
+  </div>
+  <div class="stage">
+    <div #viewport class="viewport"></div>
+    <div class="stage-label"><span class="live-dot" [class.paused]="!playing"></span>{{ mode === 'projection' ? 'PROYECCIÓN 4D → 3D' : 'INTERSECCIÓN CON w = ' + (slice | number:'1.2-2') }}</div>
+    <div class="error" *ngIf="error" role="alert">{{ error }}</div>
+    <div class="legend" *ngIf="mode === 'projection'"><span class="x">x</span><span class="y">y</span><span class="z">z</span><span class="w">w</span><small>dirección original de las aristas</small></div>
+    <div class="stage-bottom"><span>Arrastra para orbitar · Rueda o pellizco para acercar</span><button type="button" (click)="fullscreen()">Pantalla completa ⛶</button></div>
+  </div>
+  <div class="toolbar">
+    <button class="primary" type="button" (click)="togglePlay()" [disabled]="!!error">{{ playing ? 'Ⅱ Pausar' : '▶ Animar' }}</button>
+    <label>Velocidad <input aria-label="Velocidad de animación" type="range" min="0.05" max="1" step="0.05" [(ngModel)]="speed"></label>
+    <button type="button" (click)="orbit(-0.25)" aria-label="Orbitar cámara hacia la izquierda">↶ Cámara</button>
+    <button type="button" (click)="orbit(0.25)" aria-label="Orbitar cámara hacia la derecha">Cámara ↷</button>
+    <button type="button" (click)="exportImage()" [disabled]="!!error">Guardar PNG ↓</button>
+  </div>
+  <div class="control-grid">
+    <div class="panel">
+      <h4>Rotación en cuatro dimensiones</h4>
+      <p>Cada deslizador gira en un plano. Al tocarlo, se pausa la animación; los planos XW y YZ se animan simultáneamente.</p>
+      <div class="angles">
+        <label *ngFor="let plane of planes; let i = index"><span>{{ plane }}</span><input type="range" min="0" max="360" step="1" [attr.aria-label]="'Rotación en el plano ' + plane" [(ngModel)]="angles[i]" (ngModelChange)="manualRotation()"><output>{{ angles[i] | number:'1.0-0' }}°</output></label>
+      </div>
+      <p class="footnote">Orden de composición: XY, XZ, XW, YZ, YW, ZW. Orbitar la cámara no modifica estas coordenadas.</p>
+    </div>
+    <div class="panel">
+      <h4>Cómo mirar</h4>
+      <label class="field">Vista <select [(ngModel)]="mode" (ngModelChange)="update()"><option value="projection">Proyección del teseracto</option><option value="slice">Sección tridimensional</option></select></label>
+      <ng-container *ngIf="mode === 'projection'">
+        <label class="check"><input type="checkbox" [(ngModel)]="perspective" (ngModelChange)="update()">Perspectiva 4D (desmarca para ortogonal)</label>
+        <label class="field" *ngIf="perspective">Distancia 4D · {{ distance | number:'1.1-1' }}<input type="range" min="2.6" max="8" step="0.1" [(ngModel)]="distance" (ngModelChange)="update()"></label>
+        <label class="check"><input type="checkbox" [(ngModel)]="facesVisible" (ngModelChange)="update()">Membranas de las caras</label>
+      </ng-container>
+      <ng-container *ngIf="mode === 'slice'">
+        <label class="field">Posición del corte · w = {{ slice | number:'1.2-2' }}<input aria-label="Posición del hiperplano de corte" type="range" min="-2.05" max="2.05" step="0.01" [(ngModel)]="slice" (ngModelChange)="update()"></label>
+        <p class="slice-status" aria-live="polite">{{ sliceKind }} · {{ sliceCount }} vértices</p>
+        <p>Este sólido es una intersección real en 3D: no utiliza la perspectiva 4D. Prueba a rotar XW, YW y ZW antes de desplazar el corte.</p>
+      </ng-container>
+      <label class="check"><input type="checkbox" [(ngModel)]="bloomEnabled">Halo luminoso</label>
+      <p class="footnote">Desactiva el halo si necesitas reducir la carga gráfica. Los puntos que recorren las aristas son un efecto visual.</p>
+    </div>
+  </div>
+  <div class="cells" *ngIf="mode === 'projection'">
+    <h4>Descubre sus ocho celdas cúbicas</h4>
+    <div class="cell-buttons"><button type="button" [class.active]="selectedCell === -1" [attr.aria-pressed]="selectedCell === -1" (click)="selectCell(-1)">Todas</button><button type="button" *ngFor="let cell of cells; let i = index" [class.active]="selectedCell === i" [attr.aria-pressed]="selectedCell === i" (click)="selectCell(i)">{{ cell.label }}</button></div>
+    <p>{{ selectedCell === -1 ? 'Cada celda fija una de las cuatro coordenadas y deja variar las otras tres.' : 'La celda resaltada tiene 8 vértices, 12 aristas y 6 caras cuadradas. La proyección puede deformar su apariencia.' }}</p>
+  </div>
+  <p class="notice" aria-live="polite">{{ notice }}</p>
+</section>

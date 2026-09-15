@@ -1,4 +1,5 @@
 import { CevaTheoremArticleComponent } from './ceva-theorem/ceva-theorem-article.component';
+import { TesseractArticleComponent } from './tesseract/tesseract-article.component';
 import { MenelausTheoremArticleComponent } from './menelaus-theorem/menelaus-theorem-article.component';
 import { EulerLineArticleComponent } from './euler-line/euler-line-article.component';
 import { NinePointCircleArticleComponent } from './nine-point-circle/nine-point-circle-article.component';
@@ -30,6 +31,7 @@ import { StewartTheoremArticleComponent } from './stewart-theorem/stewart-theore
 import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theorem-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  TesseractArticleComponent,
   CevaTheoremArticleComponent,
   MenelausTheoremArticleComponent,
   EulerLineArticleComponent,
