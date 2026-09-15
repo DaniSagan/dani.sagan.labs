@@ -1,0 +1,61 @@
+<h2>Teorema de Bayes: actualizar una probabilidad con nueva información</h2>
+<p class="dropcap">Un sensor detecta el 90 % de las piezas defectuosas. Si da la alarma, ¿hay un 90 % de probabilidad
+  de que la pieza esté defectuosa? No necesariamente: también necesitamos saber cuántas piezas tienen defectos
+  y cuántas alarmas produce el sensor cuando la pieza es correcta.</p>
+<h3>Dos probabilidades que no son la misma</h3>
+<p>Sea H la hipótesis «la pieza es defectuosa» y A la observación «hay alarma».
+  P(A | H) pregunta por la alarma entre las piezas defectuosas. P(H | A) pregunta por los defectos entre las alarmas.
+  Cambiar el orden cambia el grupo de referencia.</p>
+<h3>Deducción a partir de la probabilidad condicionada</h3>
+<p>La probabilidad de que ocurran H y A puede calcularse en cualquiera de los dos órdenes:</p>
+<app-formula expression="P(H\cap A)=P(A\mid H)P(H)=P(H\mid A)P(A)"></app-formula>
+<p>Si P(A) &gt; 0, dividimos por la probabilidad de la observación:</p>
+<app-formula expression="P(H\mid A)=\frac{P(A\mid H)P(H)}{P(A)}"></app-formula>
+<p>Esta es la fórmula de Bayes. P(H) es la probabilidad <strong>previa</strong>; P(A | H), la <strong>verosimilitud</strong>
+  de la observación bajo la hipótesis; P(H | A), la probabilidad <strong>posterior</strong>.
+  El denominador normaliza el resultado usando todas las maneras en que puede aparecer A.</p>
+<h3>Calcular el denominador</h3>
+<p>Una alarma procede de una pieza defectuosa o de una correcta. Estas posibilidades son excluyentes y cubren todos los casos:</p>
+<app-formula expression="P(A)=P(A\mid H)P(H)+P(A\mid\neg H)P(\neg H)"></app-formula>
+<app-formula expression="P(H\mid A)=\frac{P(A\mid H)P(H)}{P(A\mid H)P(H)+P(A\mid\neg H)(1-P(H))}"></app-formula>
+<p>La tasa de falsas alarmas P(A | no H) no es la proporción de alarmas falsas entre todas las alarmas.
+  Precisamente esta última proporción es 1 − P(H | A).</p>
+<h3>Un ejemplo contado en piezas</h3>
+<p>Supongamos un 1 % de piezas defectuosas, un 90 % de detección y un 5 % de falsas alarmas entre las piezas correctas.
+  En 10000 piezas esperamos 100 defectuosas y 9900 correctas. El sensor detectaría 90 defectuosas,
+  pero también daría 495 falsas alarmas.</p>
+<app-formula expression="P(H\mid A)=\frac{0.90\cdot0.01}{0.90\cdot0.01+0.05\cdot0.99}=\frac{90}{585}\approx0.153846"></app-formula>
+<p>Solo alrededor del 15,38 % de las alarmas corresponde a defectos reales. No hay contradicción con la detección del 90 %:
+  la población de piezas correctas es mucho mayor. Ignorar esa frecuencia inicial es olvidar la tasa base.</p>
+<app-bayes-explorer></app-bayes-explorer>
+<h3>¿Qué ocurre si no hay alarma?</h3>
+<p>Podemos condicionar al resultado contrario. En el ejemplo quedan 10 defectuosas sin detectar y 9405 correctas sin alarma:</p>
+<app-formula expression="P(H\mid\neg A)=\frac{(1-P(A\mid H))P(H)}{(1-P(A\mid H))P(H)+(1-P(A\mid\neg H))(1-P(H))}"></app-formula>
+<p>Así, la probabilidad de defecto sin alarma es 10/9415, aproximadamente un 0,106 %.
+  Si un resultado tiene probabilidad cero, su probabilidad condicionada no se define mediante este cociente.</p>
+<h3>Más de dos hipótesis</h3>
+<p>Si H₁,…,Hₘ forman una partición —son incompatibles entre sí y cubren todos los casos—,
+  cada hipótesis contribuye a la probabilidad total de la evidencia:</p>
+<app-formula expression="P(H_i\mid A)=\frac{P(A\mid H_i)P(H_i)}{\sum_{j=1}^{m}P(A\mid H_j)P(H_j)}"></app-formula>
+<p>Por ejemplo, para inferir de qué máquina procede una pieza defectuosa, las probabilidades previas son las proporciones
+  de producción de cada máquina, y las verosimilitudes son sus tasas de defecto. No basta con elegir la máquina menos fiable:
+  también importa cuánto produce cada una.</p>
+<h3>Actualizar varias veces</h3>
+<p>La posterior tras observar A puede convertirse en la previa para una nueva observación B. La forma general usa
+  P(B | H, A): la fiabilidad de la segunda observación puede depender de la primera.</p>
+<app-formula expression="P(H\mid A,B)=\frac{P(B\mid H,A)P(H\mid A)}{P(B\mid A)}"></app-formula>
+<p>Solo si A y B son independientes condicionadas a H podemos sustituir P(B | H, A) por P(B | H).
+  Para simplificar también la hipótesis contraria se necesita independencia condicionada a no H.
+  Repetir una lectura del mismo sensor no garantiza esas condiciones.</p>
+<h3>Una forma multiplicativa: las razones de probabilidades</h3>
+<p>Cuando las probabilidades y los denominadores implicados son positivos, dividir la hipótesis por su complemento da:</p>
+<app-formula expression="\frac{P(H\mid A)}{P(\neg H\mid A)}=\frac{P(H)}{P(\neg H)}\frac{P(A\mid H)}{P(A\mid\neg H)}"></app-formula>
+<p>La razón previa se multiplica por la razón de verosimilitudes. En el ejemplo, esta última vale 0,90/0,05 = 18:
+  la alarma favorece mucho la hipótesis de defecto, pero parte de una razón previa de solo 1/99.</p>
+<h3>Qué nos dice y qué no nos dice</h3>
+<p>Bayes es una identidad matemática, no una garantía de que los datos de entrada sean correctos. Si la frecuencia de defectos
+  o las tasas del sensor cambian, la conclusión también cambia. Y actualizar una probabilidad con una observación
+  no demuestra por sí solo una relación causal.</p>
+<p><strong>Para explorar.</strong> Conserva la detección y las falsas alarmas, pero cambia la frecuencia de defectos del 1 % al 50 %.
+  Después iguala ambas tasas del sensor: comprueba que la observación deja de modificar la probabilidad previa.
+  Finalmente, busca parámetros para los que nunca haya alarmas y explica por qué la posterior queda sin definir.</p>

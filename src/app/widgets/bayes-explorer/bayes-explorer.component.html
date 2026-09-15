@@ -1,0 +1,36 @@
+<section class="widget" aria-labelledby="bayes-title">
+  <h3 id="bayes-title">¿Qué significa que salte una alarma?</h3>
+  <p>Un sensor revisa piezas de una fábrica. H significa «pieza defectuosa» y A, «el sensor da la alarma».
+    Cambia los parámetros para ver qué proporción de las alarmas corresponde a defectos reales.</p>
+  <label for="bayes-prior">P(H): piezas defectuosas = {{ prior }} %</label>
+  <input id="bayes-prior" type="range" min="0" max="100" step="0.1" [(ngModel)]="prior">
+  <label for="bayes-sensitivity">P(A | H): detección de defectos = {{ sensitivity }} %</label>
+  <input id="bayes-sensitivity" type="range" min="0" max="100" step="0.1" [(ngModel)]="sensitivity">
+  <label for="bayes-false">P(A | no H): falsas alarmas entre piezas correctas = {{ falsePositive }} %</label>
+  <input id="bayes-false" type="range" min="0" max="100" step="0.1" [(ngModel)]="falsePositive">
+  <div class="controls"><button type="button" (click)="preset(1,90,5)">Defecto poco frecuente</button>
+    <button type="button" (click)="preset(50,90,5)">Mismo sensor, otra fábrica</button>
+    <button type="button" (click)="preset(10,50,50)">Sensor sin información</button>
+    <button type="button" (click)="preset(10,100,0)">Sensor perfecto</button></div>
+  <div class="result" aria-live="polite"><p>Antes de observar: P(H) = {{ prior }} %.</p>
+    <p>Tras una alarma: <strong>P(H | A) = {{ percent(result.posterior) }}</strong>.</p>
+    <p>Sin alarma: P(H | no A) = {{ percent(result.negativePosterior) }}.</p>
+    <p *ngIf="result.posterior === null">La alarma es imposible con estos parámetros: no podemos condicionar a un suceso de probabilidad cero.</p>
+    <p *ngIf="result.negativePosterior === null">La ausencia de alarma es imposible con estos parámetros.</p></div>
+  <h4>Frecuencias esperadas en 10000 piezas</h4>
+  <p>Las barras comparten escala: el ancho completo representa 10000 piezas. Los valores son esperados, no una simulación aleatoria.</p>
+  <div *ngFor="let row of rows" class="row-data">
+    <p>{{ row.label }}: <strong>{{ row.probability * 10000 | number:'1.0-2' }}</strong> ({{ percent(row.probability) }})</p>
+    <div class="track"><div class="bar" [style.width.%]="100 * row.probability" [style.background]="row.color"></div></div>
+  </div>
+  <h4>Acercar solo las alarmas</h4>
+  <ng-container *ngIf="result.posterior !== null; else noAlarms">
+    <div class="stack" role="img" [attr.aria-label]="'Entre las alarmas, defectos reales: ' + percent(result.posterior) + '; falsas alarmas: ' + percent(1 - result.posterior)">
+      <div [style.width.%]="100 * result.posterior" class="true"></div><div [style.width.%]="100 * (1 - result.posterior)" class="false"></div>
+    </div>
+    <p>Azul: defecto real ({{ percent(result.posterior) }}). Naranja: falsa alarma ({{ percent(1 - result.posterior) }}).</p>
+    <p>Dividimos {{ result.truePositive * 10000 | number:'1.0-2' }} defectos detectados entre {{ result.evidence * 10000 | number:'1.0-2' }} alarmas totales.</p>
+  </ng-container>
+  <ng-template #noAlarms><p>No hay alarmas que representar.</p></ng-template>
+  <p class="note">Las cifras se redondean para mostrarlas; el cálculo utiliza las probabilidades sin redondear.</p>
+</section>
