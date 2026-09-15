@@ -1,0 +1,22 @@
+<section class="widget" aria-labelledby="birthday-title">
+  <h3 id="birthday-title">¿Cuántas personas hacen falta?</h3>
+  <label for="birthday-n">Personas en el grupo: {{ n }}</label><input id="birthday-n" type="range" min="0" max="100" step="1" [(ngModel)]="n" (ngModelChange)="reset()">
+  <div class="controls"><button type="button" *ngFor="let value of [2, 10, 23, 30, 50, 70]" (click)="preset(value)">{{ value }} personas</button></div>
+  <div class="result" aria-live="polite"><p>Al menos dos comparten cumpleaños: <strong>{{ percent(probability) }}</strong>.</p>
+    <p>Al menos una coincide con una fecha fijada de antemano: {{ percent(fixedDateProbability) }}.</p>
+    <p>Parejas distintas en el grupo: {{ n * (n - 1) / 2 }}.</p></div>
+  <svg viewBox="0 0 700 330" role="img" aria-label="Probabilidad de al menos una coincidencia de cumpleaños según el número de personas">
+    <g *ngFor="let tick of ticks"><line x1="55" [attr.y1]="y(tick)" x2="635" [attr.y2]="y(tick)" class="grid"/><text x="48" [attr.y]="y(tick)+4" text-anchor="end">{{ tick * 100 }} %</text></g>
+    <line x1="55" [attr.y1]="y(0.5)" x2="635" [attr.y2]="y(0.5)" class="threshold"/>
+    <path [attr.d]="path" class="curve"/><circle [attr.cx]="x(n)" [attr.cy]="y(probability)" r="5" class="marker"/>
+    <g *ngFor="let tick of xTicks"><text [attr.x]="x(tick)" y="305" text-anchor="middle">{{ tick }}</text></g><text x="530" y="325">Personas</text>
+  </svg>
+  <h4>Un grupo simulado</h4><p>Naranja y borde discontinuo: fechas compartidas. {{ repeatedDates }} fechas repetidas en este grupo.</p>
+  <div class="people"><span *ngFor="let day of birthdays; let i = index" [class.repeated]="counts.get(day)! > 1">{{ i + 1 }} · {{ date(day) }}<strong *ngIf="counts.get(day)! > 1"> ×{{ counts.get(day) }}</strong></span></div>
+  <p *ngIf="!birthdays.length">El grupo está vacío: no puede haber coincidencias.</p>
+  <div class="controls"><button type="button" (click)="draw()" [disabled]="running">Otro grupo</button><button type="button" (click)="run()" [disabled]="running">Simular 1000 grupos</button>
+    <button type="button" *ngIf="running" (click)="stop()">Detener</button><button type="button" (click)="reset()">Reiniciar estadísticas</button></div>
+  <p aria-live="polite">{{ trials }} grupos simulados; {{ collisions }} con alguna coincidencia<span *ngIf="trials">: {{ percent(collisions / trials) }}</span>.</p>
+  <p class="note">La simulación acumula grupos del mismo tamaño y se reinicia al cambiarlo. «Otro grupo» es solo una muestra visual y no modifica las estadísticas.
+    Cada cumpleaños se elige de forma independiente entre 365 fechas equiprobables, sin 29 de febrero. La frecuencia simulada fluctúa alrededor de la probabilidad teórica.</p>
+</section>

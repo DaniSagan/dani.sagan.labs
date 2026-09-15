@@ -1,0 +1,48 @@
+<h2>La paradoja del cumpleaños: muchas parejas en un grupo pequeño</h2>
+<p class="dropcap">En un grupo de 23 personas, la probabilidad de que al menos dos compartan día y mes de cumpleaños supera el 50 %.
+  Parece sorprendente frente a los 365 días del año, pero no estamos comparando a todos con una única persona:
+  estamos buscando una coincidencia entre cualquier pareja.</p>
+<h3>Qué suponemos</h3>
+<p>Usaremos un modelo con 365 fechas igualmente probables, cumpleaños independientes y sin 29 de febrero.
+  «Coincidir» significa compartir día y mes, sin importar el año. En poblaciones reales la distribución puede no ser uniforme
+  y las personas seleccionadas pueden no ser independientes; los porcentajes siguientes corresponden al modelo.</p>
+<h3>Es más fácil contar lo contrario</h3>
+<p>Contar directamente todos los casos con parejas, tríos o varias coincidencias puede contar situaciones más de una vez.
+  En cambio, el suceso complementario —que todos los cumpleaños sean diferentes— se construye persona a persona.</p>
+<p>La primera puede cumplir años cualquier día. La segunda debe evitar una fecha; la tercera, dos fechas,
+  suponiendo que las anteriores sean distintas. Continuamos multiplicando probabilidades condicionadas:</p>
+<app-formula expression="P(\text{todos distintos})=1\cdot\frac{364}{365}\cdot\frac{363}{365}\cdots\frac{365-n+1}{365}"></app-formula>
+<app-formula expression="P(\text{alguna coincidencia})=1-\prod_{k=0}^{n-1}\left(1-\frac{k}{365}\right),\qquad 0\le n\le365"></app-formula>
+<p>Para n = 0, el producto vacío vale 1, así que la probabilidad de coincidencia es 0. También es 0 para una sola persona.
+  Si n &gt; 365, la coincidencia está garantizada por el principio del palomar.</p>
+<h3>El umbral de las 23 personas</h3>
+<p>Con 22 personas la probabilidad es aproximadamente 47,57 %; con 23, 50,73 %.
+  Con 30 alcanza el 70,63 %, y con 50 ronda el 97,04 %. No hay una contradicción matemática:
+  la palabra «paradoja» describe el choque con nuestra intuición.</p>
+<app-birthday-explorer></app-birthday-explorer>
+<h3>Por qué crece tan deprisa</h3>
+<p>Un grupo de n personas contiene n(n − 1)/2 parejas. Para 23 personas son 253 comparaciones posibles.</p>
+<app-formula expression="\binom{n}{2}=\frac{n(n-1)}2,\qquad \binom{23}{2}=253"></app-formula>
+<p>El número esperado de parejas coincidentes es 253/365 ≈ 0,693. Eso no es la probabilidad de alguna coincidencia:
+  un mismo grupo puede aportar varias parejas. Tampoco podemos multiplicar sin más probabilidades de no coincidencia
+  para todas las parejas, porque el conjunto de esas condiciones no es mutuamente independiente.</p>
+<h3>Una aproximación útil</h3>
+<p>Tomando logaritmos del producto y usando ln(1 − u) ≈ −u cuando u es pequeño:</p>
+<app-formula expression="\ln P(\text{todos distintos})\approx-\sum_{k=0}^{n-1}\frac{k}{365}=-\frac{n(n-1)}{2\cdot365}"></app-formula>
+<app-formula expression="P(\text{alguna coincidencia})\approx1-e^{-n(n-1)/(2\cdot365)}"></app-formula>
+<p>Al igualar esta aproximación a 1/2 obtenemos n(n − 1) ≈ 730 ln 2. Sugiere un umbral cercano a 23,
+  que se confirma con el producto exacto. La aproximación es útil cuando n es pequeño respecto al número de fechas.</p>
+<h3>Coincidir con una fecha concreta es otra pregunta</h3>
+<p>Si fijamos una fecha antes de observar el grupo, cada persona tiene probabilidad 1/365 de coincidir con ella.
+  Para n personas, la probabilidad de que al menos una lo haga es:</p>
+<app-formula expression="P(\text{coincidir con una fecha fija})=1-\left(\frac{364}{365}\right)^n"></app-formula>
+<p>Para 23 personas es solo un 6,12 % aproximadamente. Si tú estás incluido en un grupo de n personas y preguntas
+  si alguien comparte tu cumpleaños, hay n − 1 personas adicionales: ese es el exponente que debes usar.</p>
+<h3>Más allá de los cumpleaños</h3>
+<p>Con m resultados posibles uniformes e independientes, la misma deducción sustituye 365 por m.
+  El umbral aproximado del 50 % crece como √(2m ln 2), no como m.
+  Esta idea explica por qué las colisiones entre identificadores aleatorios aparecen antes de lo que sugiere
+  la comparación con un identificador concreto.</p>
+<p><strong>Para explorar.</strong> Simula varios miles de grupos de 23 personas y compara su frecuencia con el 50,73 % teórico.
+  Después cambia a 2 y a 50 personas. Explica por qué ver un grupo sin coincidencias con 50 personas
+  no contradice una probabilidad de coincidencia cercana al 97 %.</p>
