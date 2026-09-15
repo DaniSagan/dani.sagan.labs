@@ -17,6 +17,7 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
 import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
 import { COMBINATORICS_ARTICLES } from './combinatorics/combinatorics-articles';
 import { CALCULUS_ARTICLES } from './calculus/calculus-articles';
+import { TOPOLOGY_ARTICLES } from './topology/topology-articles';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
@@ -187,6 +188,7 @@ const routes: Routes = [
       ...COMPLEX_NUMBERS_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...COMBINATORICS_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...CALCULUS_ARTICLES.map(article => ({ path: article.route, component: article })),
+      ...TOPOLOGY_ARTICLES.map(article => ({ path: article.route, component: article })),
       { path: PtolemyTheoremArticleComponent.route, component: PtolemyTheoremArticleComponent },
       { path: HeronFormulaArticleComponent.route, component: HeronFormulaArticleComponent },
       ...GEOMETRY_ARTICLES.map(article => ({ path: article.route, component: article })),

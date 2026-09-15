@@ -1,0 +1,68 @@
+<h2>La cinta de Möbius: una superficie con una sola cara</h2>
+<p class="dropcap">Toma una tira de papel, gira uno de sus extremos media vuelta y pega los dos extremos
+  cortos. Acabas de construir una cinta de Möbius. Si recorres su superficie con un lápiz sin cruzar
+  el borde, puedes llegar a lo que antes de pegar parecía la otra cara del papel.</p>
+
+<h3>Media vuelta cambia la superficie</h3>
+<p>Si unes los extremos sin girarlos, obtienes una cinta ordinaria con dos caras y dos componentes
+  de borde. Con media vuelta, la cinta de Möbius tiene una sola cara y una sola componente de borde.
+  Las diferencias no dependen de cuánto la dobles o estires, siempre que no cortes ni pegues nuevos puntos.</p>
+<p>El modelo matemático es una superficie sin espesor. El papel real tiene un pequeño grosor,
+  pero permite experimentar con esa idealización. «Una sola cara» no significa que un pequeño
+  fragmento deje de tener dos lados locales: significa que no podemos distinguirlos de manera coherente
+  en toda la superficie.</p>
+<app-mobius-strip-viewer></app-mobius-strip-viewer>
+
+<h3>Una flecha que vuelve invertida</h3>
+<p>Imagina una flecha perpendicular a la cinta que se mueve continuamente por la línea central.
+  Tras una vuelta regresa al mismo punto, pero apunta al lado opuesto. Necesita dos vueltas para
+  recuperar su dirección original. Esta imposibilidad de elegir una normal continua en toda la
+  superficie expresa su <strong>no orientabilidad</strong>.</p>
+<p>En el visor, el recorrido central se cierra después de una vuelta, aunque la flecha no recupere
+  su orientación hasta la segunda. El recorrido del borde es distinto: necesita dos vueltas alrededor
+  del agujero para regresar al punto de partida. Así recorre los dos lados largos del rectángulo original
+  como una única curva cerrada.</p>
+
+<h3>La cinta desplegada: identificar los extremos</h3>
+<p>Podemos describir la superficie sin dibujarla en tres dimensiones. Partimos de un rectángulo
+  con coordenadas u entre 0 y 1 y v entre −1 y 1. Pegamos el extremo derecho al izquierdo
+  invirtiendo la coordenada transversal:</p>
+<app-formula expression="(0,v)\sim(1,-v)"></app-formula>
+<p>El símbolo ∼ significa que ambos puntos pasan a ser el mismo punto de la superficie.
+  Las flechas sobre los lados cortos indican el sentido del pegado. Los lados largos quedan libres
+  y forman el borde.</p>
+<app-mobius-gluing></app-mobius-gluing>
+<p>Para la cinta sin torsión, la regla es (0,v) ∼ (1,v). Entonces el borde superior se cierra sobre
+  sí mismo y el inferior también: quedan dos componentes. En Möbius, el superior continúa por el
+  inferior al cruzar la unión; ambos forman una sola componente.</p>
+
+<h3>Una parametrización en el espacio</h3>
+<p>El visor utiliza una circunferencia central de radio R y un segmento transversal que gira media
+  vuelta al recorrerla. Si h es la semianchura, con 0 &lt; h &lt; R, una parametrización es:</p>
+<app-formula expression="\begin{aligned}x(u,v)&=(R+v\cos(u/2))\cos u,\\y(u,v)&=(R+v\cos(u/2))\sin u,\\z(u,v)&=v\sin(u/2),\end{aligned}\qquad 0\le u\le2\pi,\quad-h\le v\le h"></app-formula>
+<p>Cuando u pasa de 0 a 2π, el segmento transversal cambia de signo: el punto con coordenada v
+  se encuentra con el de coordenada −v. Para trazar el borde completo podemos mantener v = h
+  y prolongar u hasta 4π. Es una representación geométrica ideal; no reproduce necesariamente la forma
+  que adopta una tira de papel rígida al pegarla.</p>
+
+<h3>Qué ocurre al cortar por el centro</h3>
+<p>En una cinta ordinaria, cortar por la línea central separa dos anillos. En una cinta de Möbius,
+  el mismo corte deja <strong>una sola cinta más larga</strong>, con dos caras y dos componentes de borde:
+  topológicamente es un anillo, aunque siga retorcida en el espacio.</p>
+<p>El diagrama de pegado explica por qué. La mitad superior no se cierra sobre sí misma: continúa
+  en la mitad inferior a través de la unión. Después del corte, esas mitades siguen conectadas por
+  los extremos. Es una buena prueba para hacer con una tira de papel antes de intentar imaginar el resultado.</p>
+
+<h3>Una propiedad que sobrevive a las deformaciones</h3>
+<p>La cinta puede contraerse sobre su circunferencia central sin cambiar su tipo de homotopía.
+  Por eso tiene característica de Euler χ = 0, igual que un anillo. Ese número, por sí solo,
+  no basta para distinguir ambas superficies: también importan la orientabilidad y el número de
+  componentes del borde.</p>
+<p>La cinta de Möbius puede representarse en el espacio tridimensional sin atravesarse a sí misma.
+  Su peculiaridad no es una intersección escondida, sino la forma de unir los extremos. Tampoco es una
+  superficie cerrada: tiene borde.</p>
+<p><strong>Para explorar.</strong> En el recorrido central, compara 0, 1 y 2 vueltas mirando la flecha.
+  Después sigue el borde y comprueba cuándo vuelve al punto inicial. Cambia a la cinta sin torsión
+  y repite. Por último, usa el diagrama plano para explicar la diferencia sin recurrir al dibujo 3D.</p>
+<p>Referencias: <a href="https://mathworld.wolfram.com/MoebiusStrip.html">cinta de Möbius en MathWorld</a>
+  y <a href="https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club/episode-10">experimentos con cintas en el club matemático de Oxford</a>.</p>

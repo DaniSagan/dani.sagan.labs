@@ -1,0 +1,18 @@
+<section class="widget" aria-label="Modelo tridimensional de la cinta de Möbius">
+  <h3>Recorre la superficie y su borde</h3>
+  <div class="controls"><label>Superficie<select [(ngModel)]="twisted" (ngModelChange)="rebuild()"><option [ngValue]="true">Cinta de Möbius</option><option [ngValue]="false">Cinta sin torsión</option></select></label><label>Semianchura: {{ width }}<input type="range" min="0.3" max="0.9" step="0.1" [(ngModel)]="width" (ngModelChange)="rebuild()"></label></div>
+  <div #host class="canvas-host"></div>
+  <p *ngIf="unavailable" role="status">El navegador no ha podido iniciar el visor 3D. Puedes explorar la unión de los extremos en el diagrama plano que aparece más abajo.</p>
+  <ng-container *ngIf="!unavailable">
+    <p>Arrastra para girar y usa la rueda o dos dedos para acercarte. Amarillo: borde; blanco: línea central;
+      rosa: punto del recorrido y flecha normal. La cinta sin torsión tiene un segundo borde verde.</p>
+    <div class="controls"><button type="button" (click)="view(false)">Vista oblicua</button><button type="button" (click)="view(true)">Vista superior</button></div>
+    <label>Recorrido<select [(ngModel)]="route" (ngModelChange)="move()"><option value="center">Centro y orientación de la normal</option><option value="edge">Borde</option></select></label>
+    <label>Vueltas alrededor del agujero: {{ laps }}<input type="range" min="0" max="2" step="0.01" [(ngModel)]="laps" (ngModelChange)="move()"></label>
+    <div class="controls"><button type="button" *ngFor="let lap of [0, 1, 2]" (click)="laps = lap; move()">{{ lap }} vueltas</button></div>
+  </ng-container>
+  <div class="readout" aria-live="polite">{{ twisted ? 'No orientable · Una componente de borde.' : 'Orientable · Dos componentes de borde.' }}
+    <p *ngIf="route === 'center'">{{ twisted ? 'Una vuelta cierra el recorrido central, pero invierte la normal; dos vueltas recuperan su dirección.' : 'Una vuelta cierra el recorrido central y recupera la dirección de la normal.' }}</p>
+    <p *ngIf="route === 'edge'">{{ twisted ? 'El borde vuelve al punto inicial tras dos vueltas.' : 'Cada borde vuelve al punto inicial tras una vuelta.' }}</p>
+  </div>
+</section>

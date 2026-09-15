@@ -26,6 +26,7 @@ import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic
 import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
 import { COMBINATORICS_ARTICLES } from './combinatorics/combinatorics-articles';
 import { CALCULUS_ARTICLES } from './calculus/calculus-articles';
+import { TOPOLOGY_ARTICLES } from './topology/topology-articles';
 import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
@@ -116,6 +117,7 @@ import {
     ...NUMBER_THEORY_ARTICLES,
     ...COMBINATORICS_ARTICLES,
     ...CALCULUS_ARTICLES,
+    ...TOPOLOGY_ARTICLES,
     ...COMPLEX_NUMBERS_ARTICLES,
     ParabolaArticleComponent,
     PtolemyTheoremArticleComponent,
