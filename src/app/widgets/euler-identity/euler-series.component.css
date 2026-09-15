@@ -1,0 +1,11 @@
+.zoom { display: flex; gap: .6rem; align-items: center; }
+.zoom input { width: auto; }
+svg svg { width: 360px; height: 360px; margin: 0; }
+.destination { fill: none; stroke: #6ed5ba; stroke-width: 2; }
+details { margin-top: 1rem; }
+summary { cursor: pointer; color: #8ab4f8; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+caption { color: #b9b9cc; caption-side: top; }
+th, td { padding: .5rem; text-align: left; white-space: nowrap; border-bottom: 1px solid #39394b; }
+summary:focus-visible, .table-scroll:focus-visible { outline: 3px solid #f6c76b; outline-offset: 3px; }

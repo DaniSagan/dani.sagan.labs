@@ -1,0 +1,27 @@
+<section class="widget" aria-label="Sumas parciales de la exponencial imaginaria">
+  <h3>Construye e^(iθ) término a término</h3>
+  <label>Ángulo θ = {{ turns }}π<input type="range" min="-1" max="1" step="0.01" [(ngModel)]="turns"></label>
+  <label>Orden N: {{ order }} ({{ order + 1 }} términos)<input type="range" min="0" max="24" step="1" [(ngModel)]="order"></label>
+  <label class="zoom"><input type="checkbox" [(ngModel)]="zoom"> Ampliar alrededor del punto de destino</label>
+  <p>Sₙ = 1 + iθ + (iθ)²/2! + … + (iθ)ⁿ/n!</p>
+  <svg viewBox="0 0 440 410" role="img" aria-label="Camino de las sumas parciales en el plano complejo. Los datos completos están en la tabla inferior.">
+    <svg x="40" y="15" width="360" height="360" viewBox="0 0 360 360" overflow="hidden">
+      <line x1="0" x2="360" [attr.y1]="y(0)" [attr.y2]="y(0)" class="axis"/>
+      <line y1="0" y2="360" [attr.x1]="x(0)" [attr.x2]="x(0)" class="axis"/>
+      <circle [attr.cx]="x(0)" [attr.cy]="y(0)" [attr.r]="160 / scale" class="unit"/>
+      <path [attr.d]="path" class="arc"/>
+      <circle *ngFor="let sum of sums" [attr.cx]="x(sum.real)" [attr.cy]="y(sum.imaginary)" r="3" class="source"><title>S{{ sum.n }} = {{ sum.real }} + ({{ sum.imaginary }})i</title></circle>
+      <circle [attr.cx]="x(target.real)" [attr.cy]="y(target.imaginary)" r="8" class="destination"/>
+      <circle [attr.cx]="x(last.real)" [attr.cy]="y(last.imaginary)" r="4" class="sum"/>
+    </svg>
+    <text x="40" y="395">Re: {{ center.real - scale | number:'1.0-2' }} a {{ center.real + scale | number:'1.0-2' }}</text>
+    <text x="40" y="409">Im: {{ center.imaginary - scale | number:'1.0-2' }} a {{ center.imaginary + scale | number:'1.0-2' }}</text>
+  </svg>
+  <p class="legend">Azul: sumas consecutivas · Naranja: última suma · Anillo verde: destino e^(iθ).
+    La circunferencia discontinua tiene radio 1. Ambas coordenadas usan la misma escala.</p>
+  <div class="result" aria-live="polite"><p>S<sub>{{ order }}</sub> ≈ {{ last.real | number:'1.0-10' }} + ({{ last.imaginary | number:'1.0-10' }})i</p><p>Distancia al destino: <strong>{{ error.toExponential(4) }}</strong></p></div>
+  <details><summary>Ver cada término y su suma</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de sumas complejas"><table><caption>Partes real e imaginaria</caption><thead><tr><th scope="col">n</th><th scope="col">Re del término</th><th scope="col">Im del término</th><th scope="col">Re de Sₙ</th><th scope="col">Im de Sₙ</th></tr></thead><tbody><tr *ngFor="let sum of sums"><th scope="row">{{ sum.n }}</th><td>{{ sum.termReal | number:'1.0-8' }}</td><td>{{ sum.termImaginary | number:'1.0-8' }}</td><td>{{ sum.real | number:'1.0-8' }}</td><td>{{ sum.imaginary | number:'1.0-8' }}</td></tr></tbody></table></div></details>
+  <p class="note">La vista general adapta su escala a las sumas; la ampliación mantiene una ventana fija
+    alrededor del destino y recorta lo que queda fuera. Los cálculos tienen precisión finita: un error
+    muy pequeño o redondeado a cero no sustituye la demostración de la identidad.</p>
+</section>

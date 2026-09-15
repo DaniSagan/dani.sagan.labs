@@ -33,6 +33,24 @@
 <app-formula expression="e^{i\theta}=\left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right)+i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right)=\cos\theta+i\sin\theta"></app-formula>
 <p>Esta es una igualdad entre series infinitas, no una aproximación obtenida al quedarse con unos pocos términos.
   Explica por qué una función asociada al crecimiento real también describe rotaciones cuando su exponente es imaginario.</p>
+<h3>Sumar hasta llegar a −1</h3>
+<p>Los primeros pasos no se quedan sobre la circunferencia: 1 + iπ está muy lejos de −1.
+  Los términos siguientes corrigen alternativamente las partes real e imaginaria. El segmento que une dos
+  sumas consecutivas representa el término que acabamos de añadir, no un tramo de la rotación e^(iθ).</p>
+<app-euler-series></app-euler-series>
+<p>El factorial del denominador acaba dominando a las potencias de cualquier ángulo fijo.
+  Por eso los términos tienden a cero y la serie converge absolutamente. En concreto, el cociente
+  entre los módulos de dos términos consecutivos es |θ|/(n + 1), que tiende a cero.
+  Puedes relacionar esta construcción con las <a routerLink="/articles/taylor-series">series de Taylor</a>.</p>
+<h3>Multiplicar exponenciales es sumar giros</h3>
+<p>La ley de la exponencial sigue siendo válida para exponentes complejos. Aplicada a dos ángulos:</p>
+<app-formula expression="e^{i\alpha}e^{i\beta}=e^{i(\alpha+\beta)}"></app-formula>
+<p>Multiplicar por i gira un cuarto de vuelta: 1 pasa a i, después a −1, luego a −i y finalmente
+  vuelve a 1. Dos cuartos de vuelta explican geométricamente i² = −1. Más generalmente,
+  multiplicar un número complejo por e^(iθ) lo gira θ radianes sin cambiar su módulo.</p>
+<p>También podemos ver el giro mediante una derivada. Si z(θ) = e^(iθ), entonces z′(θ) = iz(θ):
+  el vector velocidad es perpendicular al vector de posición. Partiendo de z(0) = 1,
+  el movimiento recorre la circunferencia unidad en sentido antihorario.</p>
 <h3>Exactitud y otras medias vueltas</h3>
 <p>El resultado es exactamente cero. Un cálculo numérico de sin π puede devolver un residuo diminuto por redondeo:
   eso refleja la precisión del ordenador, no un fallo de la identidad. El widget señala los cuartos de vuelta
