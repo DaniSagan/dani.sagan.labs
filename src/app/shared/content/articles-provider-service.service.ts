@@ -15,6 +15,7 @@ import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/ico
 import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { NUMBER_THEORY_NAV_ITEMS } from 'src/app/articles/number-theory/number-theory-articles';
 import { COMBINATORICS_NAV_ITEMS } from 'src/app/articles/combinatorics/combinatorics-articles';
+import { ANALYSIS_NAV_ITEMS } from 'src/app/articles/analysis/analysis-articles';
 import { CALCULUS_NAV_ITEMS } from 'src/app/articles/calculus/calculus-articles';
 import { TOPOLOGY_NAV_ITEMS } from 'src/app/articles/topology/topology-articles';
 import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
@@ -220,6 +221,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
+      { name: 'Análisis Matemático', items: ANALYSIS_NAV_ITEMS },
       { name: 'Cálculo', items: CALCULUS_NAV_ITEMS },
       { name: 'Topología', items: TOPOLOGY_NAV_ITEMS },
       { name: 'Números complejos', items: COMPLEX_NUMBERS_NAV_ITEMS },

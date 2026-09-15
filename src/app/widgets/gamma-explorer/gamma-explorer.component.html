@@ -1,0 +1,30 @@
+<section class="widget" aria-labelledby="gamma-title">
+  <h3 id="gamma-title">Calculadora y gráfica de Γ(x)</h3>
+  <form (ngSubmit)="calculate()"><label for="gamma-input">Argumento real x (−170 a 171)</label>
+    <div class="controls"><input id="gamma-input" name="x" type="number" min="-170" max="171" step="any" required [(ngModel)]="input">
+      <button type="submit">Calcular Γ(x)</button></div></form>
+  <div class="controls"><button type="button" *ngFor="let x of [0.5, 1, 5, -0.5, -1.5, 0]" (click)="example(x)">x = {{ x }}</button></div>
+  <div aria-live="polite"><p class="error" *ngIf="error">{{ error }}</p>
+    <p class="result" *ngIf="value !== null">Γ({{ evaluated }}) ≈ <strong>{{ format(value) }}</strong></p></div>
+  <p class="note">Aproximación de Lanczos en doble precisión, con reflexión para valores negativos. Las cifras mostradas son aproximadas.</p>
+  <h4>Explorar las ramas y los factoriales</h4>
+  <label><input type="checkbox" [(ngModel)]="logarithmic" (ngModelChange)="plot()"> Escala logarítmica con signo</label>
+  <svg viewBox="0 0 690 360" role="img" aria-label="Gráfica real de gamma, con ramas separadas en los polos y puntos de factoriales">
+    <g *ngFor="let tick of yTicks"><line x1="65" [attr.y1]="180 - 135 * tick" x2="625" [attr.y2]="180 - 135 * tick" class="grid"/>
+      <text x="55" [attr.y]="185 - 135 * tick" text-anchor="end">{{ tick * bound }}</text></g>
+    <line x1="65" y1="180" x2="625" y2="180" class="axis"/>
+    <g *ngFor="let tick of xTicks"><text [attr.x]="x(tick)" y="338" text-anchor="middle">{{ tick }}</text></g>
+    <line *ngFor="let pole of poles" [attr.x1]="x(pole)" y1="35" [attr.x2]="x(pole)" y2="315" class="pole"/>
+    <path *ngFor="let path of paths" [attr.d]="path" class="curve"/>
+    <ng-container *ngFor="let p of factorialPoints"><circle *ngIf="visible(p.value)" [attr.cx]="x(p.x)" [attr.cy]="y(p.value)" r="4" class="factorial"><title>Γ({{ p.x }}) = {{ p.x - 1 }}!</title></circle></ng-container>
+    <line [attr.x1]="x(cursor)" y1="35" [attr.x2]="x(cursor)" y2="315" class="cursor"/>
+    <circle *ngIf="cursorValue !== null && visible(cursorValue)" [attr.cx]="x(cursor)" [attr.cy]="y(cursorValue!)" r="5" class="marker"/>
+    <text x="650" y="338">x</text>
+  </svg>
+  <p class="note">Azul: Γ(x). Naranja: polos. Verde: Γ(n) = (n − 1)!.
+    Eje vertical: {{ logarithmic ? 'signo(Γ) · log₁₀(1 + |Γ|)' : 'Γ(x)' }}.
+    Se omiten los valores fuera de la ventana vertical; las ramas no se unen a través de los polos. x = −5 también es un polo, en el borde.</p>
+  <label for="gamma-cursor">Recorrer x = {{ cursor }}</label><input id="gamma-cursor" type="range" min="-5" max="6" step="0.01" [(ngModel)]="cursor" (ngModelChange)="updateCursor()">
+  <p *ngIf="cursorValue !== null">Γ({{ cursor }}) ≈ {{ format(cursorValue) }} <span *ngIf="!visible(cursorValue)">(fuera de la ventana vertical)</span></p>
+  <p class="error" *ngIf="cursorError">{{ cursorError }}</p>
+</section>

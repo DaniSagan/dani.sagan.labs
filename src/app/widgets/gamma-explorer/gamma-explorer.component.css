@@ -1,0 +1,6 @@
+:host { display: block; margin: 1.5rem 0; }.widget { background: #0f0f18; color: #e6e6ef; color-scheme: dark; border: 1px solid #333; border-radius: 12px; padding: clamp(1rem, 3vw, 1.8rem); }
+h3 { margin-top: 0; }label { font-weight: 600; }.controls { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1rem 0; }
+input[type=number] { width: 160px; padding: .5rem; border: 1px solid #68687e; border-radius: 5px; background: #242430; color: #e6e6ef; }input[type=range] { width: 100%; margin: 1rem 0; }input { accent-color: #8ab4f8; }
+button { padding: .5rem .8rem; border: 1px solid #8ab4f8; border-radius: 6px; background: #8ab4f8; color: #0f0f18; cursor: pointer; }button:hover { filter: brightness(1.1); }button:focus-visible, input:focus-visible { outline: 3px solid #f6c76b; outline-offset: 3px; }
+.result { background: #242430; padding: 1rem; border-radius: 8px; overflow-wrap: anywhere; }.note { color: #b9b9cc; }.error { color: #ff9b9b; }
+svg { display: block; width: 100%; height: auto; }svg text { fill: #c9c9dc; font: 12px sans-serif; }.grid { stroke: #303042; }.axis { stroke: #85859f; }.pole { stroke: #ffb184; stroke-dasharray: 4 5; }.curve { fill: none; stroke: #75cfff; stroke-width: 2; }.factorial { fill: #8edbb1; }.cursor { stroke: #e6e6ef; stroke-dasharray: 2 4; }.marker { fill: #e6e6ef; }

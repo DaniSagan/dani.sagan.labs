@@ -1,0 +1,42 @@
+<h2>La función gamma: más allá del factorial</h2>
+<p class="dropcap">El factorial multiplica enteros consecutivos: 4! = 1 · 2 · 3 · 4 = 24.
+  ¿Podemos prolongar esa idea a valores que no sean enteros? La función gamma lo hace de una manera compatible
+  con la regla del factorial, aunque con un desplazamiento que conviene recordar:</p>
+<app-formula expression="\Gamma(n+1)=n!,\qquad n=0,1,2,\ldots"></app-formula>
+<p>Así, Γ(5) = 4! = 24, no 5!. La letra Γ es la gamma mayúscula; no debe confundirse con la constante de Euler γ.</p>
+<h3>Una integral que define la función</h3>
+<p>Para x positivo, la definición de Euler es una integral impropia:</p>
+<app-formula expression="\Gamma(x)=\int_0^\infty t^{x-1}e^{-t}\,dt,\qquad x>0"></app-formula>
+<p>Cerca de cero, la potencia es integrable cuando x &gt; 0. En el infinito, el factor exponencial hace que
+  el integrando decaiga lo bastante deprisa. Para x = 1, la integral de e⁻ᵗ vale 1, de modo que Γ(1) = 1.</p>
+<h3>Por qué aparece el factorial</h3>
+<p>Integramos por partes en Γ(x + 1), tomando u = tˣ y dv = e⁻ᵗ dt. Para x positivo,
+  el término de borde se anula tanto en cero como en infinito:</p>
+<app-formula expression="\Gamma(x+1)=[-t^xe^{-t}]_0^\infty+x\int_0^\infty t^{x-1}e^{-t}\,dt=x\Gamma(x)"></app-formula>
+<p>Empezando en Γ(1) = 1 obtenemos Γ(2) = 1, Γ(3) = 2, Γ(4) = 6 y Γ(5) = 24.
+  La recurrencia y el valor inicial explican los factoriales, aunque por sí solos no determinan una única interpolación
+  entre los enteros: la integral especifica cuál es la función gamma.</p>
+<app-gamma-explorer></app-gamma-explorer>
+<h3>El valor en un medio</h3>
+<p>En la integral de Γ(½), el cambio t = u² transforma la raíz del denominador:</p>
+<app-formula expression="\Gamma\!\left(\frac12\right)=2\int_0^\infty e^{-u^2}\,du=\sqrt\pi"></app-formula>
+<p>La última igualdad procede de la integral gaussiana. Si I es la integral de e⁻ᵘ² sobre toda la recta,
+  su cuadrado se convierte en una integral doble. En coordenadas polares:</p>
+<app-formula expression="I^2=\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\pi"></app-formula>
+<p>Como I es positivo, I = √π. Aplicando ahora la recurrencia:</p>
+<app-formula expression="\Gamma\!\left(\frac32\right)=\frac{\sqrt\pi}{2},\qquad \Gamma\!\left(\frac52\right)=\frac{3\sqrt\pi}{4}"></app-formula>
+<h3>Valores negativos y polos</h3>
+<p>La integral original no converge para x ≤ 0. Sin embargo, la relación Γ(x) = Γ(x + 1)/x permite extender
+  la función a los intervalos negativos, evitando los enteros no positivos. Por ejemplo:</p>
+<app-formula expression="\Gamma\!\left(-\frac12\right)=-2\sqrt\pi,\qquad \Gamma\!\left(-\frac32\right)=\frac{4\sqrt\pi}{3}"></app-formula>
+<p>En 0, −1, −2, … hay polos simples, no valores finitos. Las ramas de la gráfica cambian de signo entre polos;
+  no deben unirse a través de esas discontinuidades. La continuación al plano complejo es meromorfa y no tiene ceros.
+  <a href="https://dlmf.nist.gov/5.2">Definición y propiedades analíticas en DLMF (NIST)</a>.</p>
+<h3>La fórmula de reflexión</h3>
+<app-formula expression="\Gamma(x)\Gamma(1-x)=\frac{\pi}{\sin(\pi x)},\qquad x\notin\mathbb Z"></app-formula>
+<p>Esta identidad conecta argumentos a ambos lados de ½. Para x = ½ recupera Γ(½)² = π.
+  También permite calcular valores negativos a partir de valores positivos.
+  <a href="https://dlmf.nist.gov/5.5">Recurrencia y reflexión en DLMF</a>.</p>
+<p><strong>Para explorar.</strong> Compara Γ(5) con 4!, recorre los dos lados de cero y observa sus signos.
+  Activa la escala logarítmica para ver los puntos factoriales que quedan fuera de la ventana lineal.
+  Finalmente, comprueba que Γ(2,5) = 1,5 · Γ(1,5) con la calculadora.</p>
