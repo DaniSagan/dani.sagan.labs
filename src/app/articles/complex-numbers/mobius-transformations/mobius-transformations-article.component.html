@@ -1,0 +1,69 @@
+<h2>Transformaciones de Möbius: una geometría que incluye el infinito</h2>
+<p class="dropcap">Una circunferencia puede convertirse en una recta sin dejar de pertenecer a la
+  misma familia geométrica. Para verlo, necesitamos ampliar el plano complejo con un punto en el infinito.
+  Las transformaciones de Möbius reorganizan ese plano extendido mediante una sencilla fracción.</p>
+
+<h3>Cuatro coeficientes y una condición</h3>
+<p>Una transformación de Möbius tiene la forma siguiente, con coeficientes complejos:</p>
+<app-formula expression="T(z)=\frac{az+b}{cz+d},\qquad ad-bc\ne0"></app-formula>
+<p>La condición sobre el determinante evita que la fracción se reduzca a una función constante.
+  Multiplicar los cuatro coeficientes por un mismo número complejo no nulo no cambia la transformación.
+  Por eso no debemos interpretar cada cuádrupla como una transformación diferente.</p>
+<p>Si c = 0, obtenemos una transformación afín: un giro y cambio de escala seguidos de una
+  traslación. Cuando c ≠ 0 aparece un punto especial, el <strong>polo</strong>, donde el denominador se anula.</p>
+<app-formula expression="T\!\left(-\frac dc\right)=\infty,\qquad T(\infty)=\frac ac\quad(c\ne0)"></app-formula>
+<p>En el plano extendido, el polo tiene una imagen perfectamente definida: el único punto ∞.
+  Si c = 0, el infinito se mantiene fijo. Esta ampliación se puede representar como una esfera,
+  la esfera de Riemann, mediante proyección estereográfica.</p>
+
+<h3>Circunferencias que se convierten en rectas</h3>
+<p>Una <strong>circunferencia generalizada</strong> es una circunferencia ordinaria o una recta
+  junto con ∞. Las transformaciones de Möbius llevan circunferencias generalizadas a otras.
+  Una circunferencia que pasa por el polo se transforma en una recta porque su imagen contiene ∞.</p>
+<p>En el visor, mueve el centro y el radio de la circunferencia. El punto amarillo recorre su borde;
+  el segundo plano muestra su imagen. El botón «Pasar por el polo» prepara un caso en el que
+  la circunferencia se convierte exactamente en una recta.</p>
+<app-mobius-explorer></app-mobius-explorer>
+
+<h3>La inversión compleja: z se convierte en 1/z</h3>
+<p>Para z = x + iy distinto de cero:</p>
+<app-formula expression="\frac1z=\frac{x-iy}{x^2+y^2}"></app-formula>
+<p>El módulo r se convierte en 1/r y el argumento θ en −θ. Esta operación incluye una reflexión
+  respecto del eje real además de la inversión radial. No es la misma aplicación que z/|z|²,
+  que conserva el argumento.</p>
+<p>La circunferencia |z − 1| = 1 pasa por el polo 0. Al sustituir z = 1/w en su ecuación,
+  obtenemos |1 − w|² = |w|² y, por tanto, Re(w) = 1/2. Una circunferencia entera se ha
+  convertido en una recta vertical.</p>
+
+<h3>Del semiplano al disco</h3>
+<p>La transformación de Cayley del visor es:</p>
+<app-formula expression="T(z)=\frac{z-i}{z+i}"></app-formula>
+<p>Envía i a 0, −i a ∞ y ∞ a 1. Para z = x + iy con y &gt; 0, se cumple
+  |z − i| &lt; |z + i|, así que |T(z)| &lt; 1: el semiplano superior se transforma en el disco unidad.
+  La recta real, completada con ∞, se convierte en su circunferencia frontera.</p>
+
+<h3>Lo que se conserva: ángulos y razón doble</h3>
+<p>Las distancias y los radios pueden cambiar. Los ángulos orientados entre curvas se conservan
+  localmente, porque fuera del polo la derivada existe y nunca se anula:</p>
+<app-formula expression="T'(z)=\frac{ad-bc}{(cz+d)^2}"></app-formula>
+<p>Multiplicar por un complejo no nulo aplica el mismo giro y factor de escala a todas las direcciones
+  en un punto. En el polo y en ∞ interpretamos esta propiedad usando coordenadas locales de la esfera.</p>
+<p>Otra cantidad que permanece igual es la <strong>razón doble</strong> de cuatro puntos distintos.
+  Con la convención que usaremos aquí:</p>
+<app-formula expression="[z_1,z_2;z_3,z_4]=\frac{(z_1-z_2)(z_3-z_4)}{(z_1-z_4)(z_3-z_2)}"></app-formula>
+<p>Aplicar T a los cuatro puntos conserva ese cociente. Si alguno es ∞, se interpreta mediante
+  un límite. La segunda parte del visor permite mover un punto y comparar ambos valores;
+  los puntos elegidos allí tienen imágenes finitas en todos los ejemplos.</p>
+
+<h3>Deshacer y encadenar transformaciones</h3>
+<p>Al despejar z de w = (az + b)/(cz + d), encontramos otra transformación de Möbius:</p>
+<app-formula expression="T^{-1}(w)=\frac{dw-b}{-cw+a}"></app-formula>
+<p>Así, cada punto de la esfera tiene una única imagen y una única preimagen. También podemos
+  asociar T a una matriz, entendida salvo un factor escalar no nulo:</p>
+<app-formula expression="M_T=\begin{pmatrix}a&b\\c&d\end{pmatrix},\qquad M_{T\circ S}=M_T M_S"></app-formula>
+<p>La multiplicación de matrices traduce la composición de transformaciones. En particular,
+  invertir dos veces con T(z) = 1/z devuelve el punto original, intercambiando 0 e ∞ en cada paso.</p>
+<p><strong>Para explorar.</strong> Selecciona 1/z y pulsa «Pasar por el polo». Comprueba que la imagen
+  es Re(w) = 1/2. Reduce el radio: vuelve a ser una circunferencia. Después selecciona Cayley
+  y observa la imagen del punto i. En la razón doble, mueve el cuarto punto y compara los resultados.</p>
+<p>Referencia: <a href="https://dlmf.nist.gov/1.9#iv">transformaciones bilineales, derivada y razón doble en la DLMF del NIST</a>.</p>
