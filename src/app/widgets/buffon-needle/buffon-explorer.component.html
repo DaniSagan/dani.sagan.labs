@@ -1,0 +1,40 @@
+<section class="widget" aria-label="Simulación de la aguja de Buffon">
+  <h3>Lanza agujas y estima π</h3>
+  <label>Longitud relativa ℓ/d: {{ ratio }}<input type="range" min="0.1" max="1" step="0.1" [(ngModel)]="ratio" (ngModelChange)="reset()"></label>
+  <p>Cambiar la longitud inicia un experimento nuevo. Cada tanda añade lanzamientos independientes.</p>
+  <div class="controls"><button type="button" *ngFor="let batch of [1, 100, 1000, 10000]" (click)="launch(batch)" [disabled]="count >= limit">Lanzar {{ batch | number }}</button><button type="button" (click)="reset()">Reiniciar</button></div>
+  <svg viewBox="0 0 540 360" role="img" aria-label="Últimas agujas lanzadas. Las que cruzan una línea son amarillas y continuas; las demás, azules discontinuas.">
+    <line *ngFor="let line of lines" x1="0" x2="540" [attr.y1]="line * 60" [attr.y2]="line * 60" class="floor"/>
+    <line *ngFor="let needle of needles" [attr.x1]="60 * (needle.x - ratio * needle.dx / 2)" [attr.x2]="60 * (needle.x + ratio * needle.dx / 2)" [attr.y1]="60 * (needle.y - ratio * needle.dy / 2)" [attr.y2]="60 * (needle.y + ratio * needle.dy / 2)" [attr.stroke]="needle.crosses ? '#f6c76b' : '#8ab4f8'" [attr.stroke-dasharray]="needle.crosses ? null : '4 3'" stroke-width="2"><title>{{ needle.crosses ? 'Cruza una línea' : 'No cruza' }}</title></line>
+  </svg>
+  <p class="note">Se dibujan hasta las últimas 120 agujas, pero se cuentan todos los lanzamientos. Límite por experimento: 1.000.000.</p>
+  <div class="readout" aria-live="polite">Lanzamientos: {{ count | number }} · Cruces: {{ crosses | number }}
+    <p *ngIf="count">Frecuencia: {{ frequency * 100 | number:'1.0-3' }} % · Probabilidad teórica: {{ probability * 100 | number:'1.0-3' }} %</p>
+    <p *ngIf="estimate !== null"><strong>Estimación de π: {{ estimate | number:'1.0-6' }}</strong></p>
+    <p *ngIf="estimate === null">{{ count ? 'Todavía no hay cruces: no hay estimación finita de π.' : 'Lanza la primera tanda para comenzar.' }}</p>
+  </div>
+  <ng-container *ngIf="history.length">
+    <h4>Frecuencia de cruces tras cada tanda</h4>
+    <svg viewBox="0 0 590 220" role="img" aria-label="Evolución de la frecuencia de cruces. La línea amarilla es la probabilidad teórica.">
+      <g *ngFor="let tick of [0, 0.5, 1]"><line x1="50" x2="540" [attr.y1]="180 - tick * 140" [attr.y2]="180 - tick * 140" class="floor"/><text x="43" [attr.y]="184 - tick * 140" text-anchor="end">{{ tick * 100 }} %</text></g>
+      <line x1="50" x2="540" [attr.y1]="180 - probability * 140" [attr.y2]="180 - probability * 140" stroke="#f6c76b" stroke-dasharray="6 4"/>
+      <path [attr.d]="curve" stroke="#8ab4f8" stroke-width="2" fill="none"/>
+      <circle *ngFor="let row of history" [attr.cx]="50 + row.count / count * 490" [attr.cy]="180 - row.frequency * 140" r="3" fill="#8ab4f8"/>
+      <text x="50" y="200">0</text><text x="540" y="200" text-anchor="end">{{ count | number }}</text><text x="290" y="217" text-anchor="middle">Lanzamientos acumulados</text>
+    </svg>
+    <details><summary>Ver datos de las últimas 100 tandas</summary><div class="scroll" tabindex="0" role="region" aria-label="Historial de frecuencias"><table><caption>Frecuencia acumulada al finalizar cada tanda</caption><thead><tr><th scope="col">Lanzamientos</th><th scope="col">Cruces (%)</th></tr></thead><tbody><tr *ngFor="let row of history"><td>{{ row.count | number }}</td><td>{{ row.frequency * 100 | number:'1.0-4' }}</td></tr></tbody></table></div></details>
+  </ng-container>
+</section>
+<section class="widget" aria-label="Condición geométrica del cruce">
+  <h3>Decide cuándo toca una línea</h3>
+  <p>Usamos d = 1 y la misma razón ℓ/d = {{ ratio }} elegida arriba. El diagrama no añade lanzamientos.</p>
+  <div class="controls"><label>Ángulo con las líneas: {{ angle }}°<input type="range" min="0" max="90" step="1" [(ngModel)]="angle"></label><label>Distancia del centro a la línea: {{ distance }}<input type="range" min="0" max="0.5" step="0.01" [(ngModel)]="distance"></label></div>
+  <svg viewBox="0 0 540 350" role="img" aria-label="Una aguja junto a dos líneas paralelas, con su distancia y proyección perpendicular">
+    <line x1="20" x2="520" y1="220" y2="220" class="floor"/><line x1="20" x2="520" y1="20" y2="20" class="floor"/>
+    <line [attr.x1]="270 - 100 * ratio * cosine" [attr.x2]="270 + 100 * ratio * cosine" [attr.y1]="220 - 200 * distance + 100 * ratio * sine" [attr.y2]="220 - 200 * distance - 100 * ratio * sine" [attr.stroke]="reaches ? '#f6c76b' : '#8ab4f8'" stroke-width="4"/>
+    <line x1="270" x2="270" [attr.y1]="220 - 200 * distance" y2="220" stroke="#ef9fa8" stroke-dasharray="4 3"/>
+    <circle cx="270" [attr.cy]="220 - 200 * distance" r="5" fill="#fff"/>
+    <text x="285" y="245">Línea más cercana</text><text x="25" y="40">Separación d = 1</text>
+  </svg>
+  <div class="readout" aria-live="polite">x = {{ distance }} · (ℓ/2) sin θ = {{ ratio * sine / 2 | number:'1.0-5' }}<p><strong>{{ reaches ? 'Toca o cruza: la proyección alcanza la línea.' : 'No cruza: la proyección no alcanza la línea.' }}</strong></p></div>
+</section>

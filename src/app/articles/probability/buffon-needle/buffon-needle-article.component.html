@@ -1,0 +1,71 @@
+<h2>La aguja de Buffon: encontrar π entre líneas paralelas</h2>
+<p class="dropcap">Dibuja líneas paralelas igualmente espaciadas y deja caer una aguja sobre ellas.
+  A veces cruzará una línea y otras quedará entre dos. Al repetir el experimento, la proporción
+  de cruces revela una relación con π, aunque el dibujo no contenga ninguna circunferencia.</p>
+
+<h3>Qué significa lanzar al azar</h3>
+<p>La aguja es un segmento de longitud ℓ y las líneas están separadas una distancia d.
+  Supondremos 0 &lt; ℓ ≤ d. El centro debe ser uniforme respecto a la posición entre líneas,
+  y la orientación debe ser uniforme e independiente de esa posición. Los lanzamientos también
+  se consideran independientes entre sí.</p>
+<p>No necesitamos elegir un punto «uniformemente en todo el plano», algo que no define una
+  distribución de probabilidad. Basta elegir su posición perpendicular a las líneas dentro
+  de una franja y aprovechar la repetición del patrón. La posición a lo largo de una línea no afecta al cruce.</p>
+
+<h3>La condición geométrica del cruce</h3>
+<p>Llamemos x a la distancia del centro a la línea más cercana. Entonces 0 ≤ x ≤ d/2.
+  Por simetría, podemos reducir la orientación al ángulo θ entre 0 y π/2 que forma la aguja
+  con las líneas. La proyección perpendicular de media aguja mide (ℓ/2) sin θ.</p>
+<app-formula expression="\text{La aguja toca o cruza una línea}\quad\Longleftrightarrow\quad x\le\frac{\ell}{2}\sin\theta"></app-formula>
+<p>Si la aguja es paralela, casi nunca cruza. Si es perpendicular, tiene la mayor proyección
+  posible. Tocar exactamente una línea cuenta como cruce en el visor; en el modelo continuo
+  ese caso tiene probabilidad cero y no modifica el resultado.</p>
+<app-buffon-explorer></app-buffon-explorer>
+
+<h3>La probabilidad aparece como un área</h3>
+<p>La distancia x es uniforme en [0,d/2] y el ángulo reducido θ es uniforme en [0,π/2].
+  Cada lanzamiento corresponde a un punto del rectángulo de posibilidades (θ,x), de área πd/4.
+  Los casos favorables están bajo la curva x = (ℓ/2) sin θ.</p>
+<app-formula expression="P(\text{cruce})=\frac{\displaystyle\int_0^{\pi/2}\frac{\ell}{2}\sin\theta\,d\theta}{(\pi/2)(d/2)}=\frac{2\ell}{\pi d}"></app-formula>
+<p>El factor π procede del intervalo de orientaciones. Si ℓ = d, la probabilidad es 2/π,
+  aproximadamente 0,63662. Reducir la longitud a la mitad reduce también la probabilidad a la mitad.</p>
+
+<h3>Estimar π contando cruces</h3>
+<p>Tras N lanzamientos, si C han cruzado una línea, la frecuencia C/N aproxima la probabilidad.
+  Despejando π obtenemos, siempre que C &gt; 0:</p>
+<app-formula expression="\widehat\pi=\frac{2\ell N}{dC}"></app-formula>
+<p>Por ejemplo, con ℓ = d y 636 cruces de 1000 lanzamientos, la estimación sería 2000/636 ≈ 3,14465.
+  Es un ejemplo aritmético, no un resultado garantizado para cada tanda. Si todavía no hay cruces,
+  el cociente no proporciona una estimación finita.</p>
+
+<h3>Más lanzamientos, menos ruido… en promedio</h3>
+<p>Para lanzamientos independientes, C sigue una distribución binomial con parámetros N y p.
+  La desviación típica de la frecuencia C/N es:</p>
+<app-formula expression="\sigma_{C/N}=\sqrt{\frac{p(1-p)}{N}},\qquad p=\frac{2\ell}{\pi d}"></app-formula>
+<p>Para reducir esa escala de error a la mitad hacen falta aproximadamente cuatro veces más
+  lanzamientos. La frecuencia no tiene por qué acercarse de forma monótona: una tanda nueva
+  puede alejarla temporalmente del valor teórico.</p>
+<p>Además, invertir la frecuencia introduce un estimador no lineal. Aunque C/N es insesgado
+  para p, no se deduce que 2ℓN/(dC) sea insesgado para π. Las tandas pequeñas pueden producir
+  resultados muy variables; la ley de los grandes números explica la convergencia a largo plazo.</p>
+
+<h3>Una simulación que no usa π para orientar las agujas</h3>
+<p>Una forma habitual de simular consiste en generar un ángulo uniforme y usar seno y coseno.
+  El visor utiliza otra: elige un punto uniforme en un cuadrado, rechaza los que quedan fuera del
+  disco unidad y normaliza el vector restante. La simetría circular hace uniforme la orientación.</p>
+<p>Ese procedimiento solo necesita operaciones aritméticas y una raíz cuadrada para generar
+  los lanzamientos. La constante π se usa en la referencia teórica y en el diagrama de ángulos,
+  pero no para decidir los cruces aleatorios. El generador del navegador es seudoaleatorio:
+  el experimento ilustra el método, no es una técnica eficiente para calcular millones de cifras de π.</p>
+
+<h3>Qué cambia con una aguja más larga</h3>
+<p>La fórmula sencilla requiere ℓ ≤ d. Para ℓ &gt; d, algunas orientaciones cruzan una línea
+  con cualquier posición del centro, y una aguja puede alcanzar varias líneas. El área favorable
+  debe recortarse a la altura d/2: no podemos seguir usando 2ℓ/(πd), que incluso podría superar 1.</p>
+<p>En un experimento físico también importan el grosor de las marcas, los bordes de la mesa,
+  los rebotes y la preferencia por ciertas orientaciones. La fórmula corresponde a segmentos ideales
+  y al modelo uniforme e independiente descrito al principio.</p>
+<p><strong>Para explorar.</strong> Usa ℓ/d = 1 y realiza varias tandas. Reinicia y repite para comparar
+  las fluctuaciones. Después prueba ℓ/d = 0,5. En el diagrama, fija θ = 30° y comprueba que la
+  distancia máxima de cruce es ℓ/4.</p>
+<p>Referencia: <a href="https://mathworld.wolfram.com/BuffonsNeedleProblem.html">problema de la aguja de Buffon en MathWorld</a>.</p>

@@ -31,6 +31,7 @@ import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component'
 import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
 import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
+import { BuffonNeedleArticleComponent } from './probability/buffon-needle/buffon-needle-article.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
 import { HeronFormulaArticleComponent } from './geometry/heron-formula/heron-formula-article.component';
@@ -124,6 +125,7 @@ import {
     HeronFormulaArticleComponent,
     ...GEOMETRY_ARTICLES,
     PercolationDiagramComponent,
+    BuffonNeedleArticleComponent,
     TrigInverseTrigCompositionComponent,
     CardioidArticleComponent,
     RoseArticleComponent,

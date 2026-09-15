@@ -29,6 +29,7 @@ import { PhoenixSetComponent } from './fractals/phoenix-set/phoenix-set.componen
 import { NewtonComponent } from './fractals/newton/newton.component';
 import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifurcation-diagram.component';
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
+import { BuffonNeedleArticleComponent } from './probability/buffon-needle/buffon-needle-article.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { TrigNFunctionsComponent } from './trigonometry/trig-nfunctions/trig-nfunctions.component';
 import { HeptagonArticleComponent } from './regular-polygons/heptagon-article/heptagon-article.component';
@@ -193,6 +194,7 @@ const routes: Routes = [
       { path: HeronFormulaArticleComponent.route, component: HeronFormulaArticleComponent },
       ...GEOMETRY_ARTICLES.map(article => ({ path: article.route, component: article })),
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
+      { path: BuffonNeedleArticleComponent.route, component: BuffonNeedleArticleComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
       { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) },
       { path: TrigNFunctionsComponent.route, loadComponent: () => import('./trigonometry/trig-nfunctions/trig-nfunctions.component').then(mod => mod.TrigNFunctionsComponent) }

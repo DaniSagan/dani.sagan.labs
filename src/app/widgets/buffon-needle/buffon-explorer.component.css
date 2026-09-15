@@ -1,0 +1,21 @@
+:host { display: block; margin: 1.5rem 0; }
+.widget { margin: 1.5rem 0; background: #0f0f18; color: #e6e6ef; color-scheme: dark; border: 1px solid #39394b; border-radius: 12px; padding: clamp(1rem, 3vw, 1.8rem); }
+h3 { margin-top: 0; }
+.controls { display: flex; flex-wrap: wrap; gap: .8rem; margin: 1rem 0; }
+label { display: block; flex: 1 1 180px; font-weight: 600; }
+input { display: block; width: 100%; margin-top: .5rem; accent-color: #8ab4f8; }
+button { padding: .5rem .7rem; border-radius: 5px; background: #242430; color: #e6e6ef; border: 1px solid #68687e; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+svg { display: block; width: 100%; max-width: 800px; height: auto; margin: 1rem auto; }
+svg text { fill: #e6e6ef; font-size: 11px; }
+.floor { stroke: #68687e; }
+.readout { border-left: 3px solid #f6c76b; background: #191923; padding: .8rem 1rem; margin: 1rem 0; }
+.readout p { margin: .5rem 0 0; }
+strong { color: #f6c76b; }
+.note, caption { color: #b9b9ce; }
+summary { cursor: pointer; color: #8ab4f8; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+caption { caption-side: top; }
+th, td { text-align: left; padding: .5rem; border-bottom: 1px solid #39394b; }
+input:focus-visible, button:focus-visible, summary:focus-visible, .scroll:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
