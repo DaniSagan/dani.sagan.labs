@@ -1,0 +1,21 @@
+<section class="widget" aria-label="Identificaciones del cuadrado de Klein">
+  <h3>Cruza la unión invertida</h3>
+  <div class="controls"><label>Superficie<select [(ngModel)]="twisted"><option [ngValue]="true">Botella de Klein</option><option [ngValue]="false">Toro</option></select></label><label>Altura inicial v: {{ height }}<input type="range" min="0.1" max="0.9" step="0.05" [(ngModel)]="height"></label></div>
+  <label>Recorrido horizontal: {{ distance }} vueltas<input type="range" min="0" max="2" step="0.01" [(ngModel)]="distance"></label>
+  <div class="controls"><button type="button" *ngFor="let lap of [0, 1, 2]" (click)="distance = lap">{{ lap }} vueltas</button><button type="button" (click)="height = 0.5">Recorrido central</button></div>
+  <svg viewBox="0 0 560 295" role="img" [attr.aria-label]="'Cuadrado identificado. Altura actual ' + traveler.v + '. Dirección transversal ' + (traveler.flipped ? 'invertida' : 'inicial')">
+    <rect x="80" y="55" width="400" height="180" fill="#242430"/>
+    <path d="M80,55 H480 M275,49 L285,55 L275,61 M80,235 H480 M275,229 L285,235 L275,241" class="horizontal"/>
+    <path d="M80,235 V55 M74,151 L80,141 L86,151" class="vertical"/>
+    <path [attr.d]="twisted ? 'M480,55 V235 M474,139 L480,149 L486,139' : 'M480,235 V55 M474,151 L480,141 L486,151'" class="vertical"/>
+    <line x1="80" x2="480" [attr.y1]="y(height)" [attr.y2]="y(height)" stroke="#77778f" stroke-dasharray="4 4"/>
+    <line *ngIf="twisted && height !== 0.5" x1="80" x2="480" [attr.y1]="y(1-height)" [attr.y2]="y(1-height)" stroke="#77778f" stroke-dasharray="4 4"/>
+    <path [attr.d]="arrow" fill="none" stroke="#ef9fa8" stroke-width="3"/>
+    <circle [attr.cx]="x(traveler.u)" [attr.cy]="y(traveler.v)" r="6" fill="#f6c76b"/>
+    <text x="80" y="263" text-anchor="middle">u = 0</text><text x="480" y="263" text-anchor="middle">u = 1</text><text x="280" y="38" text-anchor="middle">v = 1</text><text x="280" y="263" text-anchor="middle">v = 0</text>
+    <text x="280" y="290" text-anchor="middle">Todos los lados se pegan: no queda borde.</text>
+  </svg>
+  <div class="readout" aria-live="polite">Cruces de la unión: {{ traveler.crossings }} · Altura actual: {{ traveler.v | number:'1.0-2' }}<p>Dirección transversal: {{ traveler.flipped ? 'invertida' : 'inicial' }}. {{ twisted ? 'Botella de Klein: no orientable.' : 'Toro: orientable.' }}</p></div>
+  <p class="note">El salto entre extremos del dibujo es continuo en la superficie pegada. La flecha rosa es
+    un vector transversal dentro del cuadrado; muestra la inversión de orientación al cruzar la unión.</p>
+</section>

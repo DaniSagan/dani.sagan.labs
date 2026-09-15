@@ -1,0 +1,73 @@
+<h2>La botella de Klein: una superficie sin borde y no orientable</h2>
+<p class="dropcap">Imagina alargar el cuello de una botella, hacerlo atravesar su pared y unir su
+  boca al fondo, abierto previamente para recibirla. El dibujo resultante sugiere una superficie
+  en la que no podemos distinguir dos caras de manera global. Pero el cruce de la pared es un
+  recurso de la representación: los puntos de las dos láminas que se cruzan siguen siendo distintos.</p>
+
+<h3>Una botella que no es un recipiente ordinario</h3>
+<p>La botella de Klein es una superficie bidimensional, compacta, sin borde y no orientable.
+  «Bidimensional» significa que cerca de cada punto necesitamos dos coordenadas para situarnos,
+  como en una hoja de papel. No significa que podamos dibujarla fielmente en un plano.</p>
+<p>En tres dimensiones podemos representarla con autointersecciones. Una representación sin
+  ellas requiere cuatro dimensiones. La superficie abstracta no tiene una soldadura en el cruce:
+  un viajero debe continuar por su propia lámina y no puede saltar a la otra.</p>
+<app-klein-bottle-viewer></app-klein-bottle-viewer>
+
+<h3>Construirla a partir de un cuadrado</h3>
+<p>Una descripción más precisa que el dibujo de una botella consiste en pegar los lados de un
+  cuadrado. Unimos arriba con abajo conservando la coordenada horizontal, y derecha con izquierda
+  invirtiendo la coordenada vertical:</p>
+<app-formula expression="(u,0)\sim(u,1),\qquad(0,v)\sim(1,1-v),\qquad0\le u,v\le1"></app-formula>
+<p>Las flechas del diagrama indican qué puntos se identifican. Todos los lados quedan pegados:
+  ninguno queda como borde de la superficie. En una unión, dos medios discos se juntan para formar
+  un disco completo, de modo que tampoco aparecen bordes ocultos en las costuras.</p>
+<app-klein-gluing></app-klein-gluing>
+
+<h3>Por qué no es un toro</h3>
+<p>Si pegamos ambos pares de lados sin invertirlos, obtenemos un toro. Cambiar la orientación
+  de uno de los pegados produce la botella de Klein. Ambas superficies son cerradas y tienen
+  característica de Euler cero, pero solo el toro es orientable.</p>
+<p>La inversión se ve en un pequeño vector transversal que acompaña a un viajero. Al cruzar
+  la unión derecha–izquierda, su dirección vertical se invierte. En el recorrido central v = 1/2,
+  una vuelta devuelve al viajero al mismo punto con esa dirección invertida: no existe una elección
+  coherente de orientación en toda la superficie.</p>
+<p>Fuera de esa línea central, una vuelta lleva la altura v a 1 − v. Se necesitan dos para volver
+  a la altura original. El diagrama distingue ese desplazamiento de la inversión de orientación.</p>
+
+<h3>La relación con la cinta de Möbius</h3>
+<p>La <a routerLink="/articles/mobius-strip">cinta de Möbius</a> también es no orientable,
+  pero tiene una componente de borde. La botella de Klein no tiene ninguna. Una forma de construirla
+  es unir dos cintas de Möbius a lo largo de sus respectivos bordes.</p>
+<p>En el cuadrado, corta por las líneas v = 1/4 y v = 3/4. La región central forma una cinta
+  de Möbius: sus extremos verticales se pegan con inversión. Las regiones superior e inferior,
+  unidas por el pegado horizontal, forman la segunda. Las dos líneas de corte se conectan a través
+  del pegado vertical y constituyen una única curva cerrada de separación.</p>
+
+<h3>Contar vértices, aristas y caras</h3>
+<p>Tras realizar los pegados del cuadrado, sus cuatro esquinas representan un único vértice.
+  Los cuatro lados se agrupan en dos aristas, y el interior aporta una cara. Así calculamos:</p>
+<app-formula expression="\chi=V-E+F=1-2+1=0"></app-formula>
+<p>Esta cuenta describe una descomposición de la superficie, no los cruces aparentes del modelo 3D.
+  La autointersección del dibujo no añade un vértice. La característica de Euler es un invariante
+  útil, pero no distingue por sí sola la botella de Klein del toro.</p>
+
+<h3>Dos dimensiones propias, cuatro para representarla sin cruces</h3>
+<p>Un ejemplo de representación en cuatro coordenadas usa dos ángulos u y v y un radio R &gt; 1:</p>
+<app-formula expression="\begin{aligned}X_1&=(R+\cos v)\cos u,\\X_2&=(R+\cos v)\sin u,\\X_3&=\sin v\cos(u/2),\\X_4&=\sin v\sin(u/2).\end{aligned}"></app-formula>
+<p>Al pasar de u = 0 a u = 2π se invierten las dos últimas coordenadas, lo que equivale a
+  sustituir v por −v. La identificación retorcida sigue presente, pero ahora las láminas pueden
+  separarse en una dirección adicional. Solo hay dos parámetros libres: la superficie continúa
+  siendo bidimensional.</p>
+<p>La condición R &gt; 1 permite recuperar u a partir de las primeras dos coordenadas. Con u conocido,
+  las cuatro coordenadas determinan cos v y sin v, salvo las identificaciones de los extremos.
+  Por eso esta representación no confunde puntos distintos de la botella.</p>
+
+<h3>Cómo interpretar un modelo físico</h3>
+<p>Una pieza de vidrio o una impresión 3D puede ilustrar la forma, pero tiene espesor y está
+  limitada a tres dimensiones. Si se sueldan las láminas en la autointersección, se cambia la
+  superficie: allí ya no hay un entorno con forma de disco. Si se abre un agujero para pasar
+  el cuello, se introduce un borde. Ninguno de esos recursos es la botella abstracta completa.</p>
+<p><strong>Para explorar.</strong> En el modelo 3D, mueve la sección por el cuello y activa la malla
+  para localizar el cruce. En el cuadrado, empieza en v = 0,25 y cruza dos veces la unión invertida.
+  Después prueba v = 0,5: ¿qué cambia en el punto y qué cambia en la flecha? Compara con el toro.</p>
+<p>Referencia: <a href="https://mathworld.wolfram.com/KleinBottle.html">botella de Klein en MathWorld</a>.</p>

@@ -1,0 +1,13 @@
+<section class="widget" aria-label="Visor tridimensional de la botella de Klein">
+  <h3>Una representación en tres dimensiones</h3>
+  <div #host class="canvas-host"></div>
+  <p *ngIf="unavailable" role="status">El navegador no ha podido iniciar el visor 3D. El diagrama plano de abajo permite explorar las identificaciones sin WebGL.</p>
+  <ng-container *ngIf="!unavailable">
+    <p>Arrastra para girar; usa la rueda o dos dedos para acercarte. La sección amarilla recorre
+      el cuerpo y el cuello. El punto rosa se mueve sobre esa sección.</p>
+    <div class="controls"><button type="button" (click)="view(false)">Vista oblicua</button><button type="button" (click)="view(true)">Vista frontal</button><label class="toggle"><input type="checkbox" [(ngModel)]="wireframe" (ngModelChange)="update()"> Mostrar malla</label></div>
+    <div class="controls"><label>Posición de la sección u: {{ section }}<input type="range" min="0" max="1" step="0.01" [(ngModel)]="section" (ngModelChange)="update()"></label><label>Posición en la sección v: {{ point }}<input type="range" min="0" max="1" step="0.01" [(ngModel)]="point" (ngModelChange)="update()"></label></div>
+    <div class="readout" aria-live="polite">Punto del modelo: ({{ position.x | number:'1.0-3' }}, {{ position.y | number:'1.0-3' }}, {{ position.z | number:'1.0-3' }})</div>
+  </ng-container>
+  <p class="note">La intersección no es una unión entre las láminas. Algunas partes de la sección pueden quedar ocultas detrás de la superficie: gira el modelo o activa la malla. Sus parámetros describen esta inmersión, no las coordenadas del cuadrado del siguiente visor.</p>
+</section>
