@@ -32,6 +32,7 @@ import { BifurcationDiagramComponent } from './fractals/bifurcation-diagram/bifu
 import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
 import { BayesTheoremArticleComponent } from './probability/bayes-theorem/bayes-theorem-article.component';
 import { BirthdayParadoxArticleComponent } from './probability/birthday-paradox/birthday-paradox-article.component';
+import { MontyHallArticleComponent } from './probability/monty-hall/monty-hall-article.component';
 import { BuffonNeedleArticleComponent } from './probability/buffon-needle/buffon-needle-article.component';
 import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { TrigNFunctionsComponent } from './trigonometry/trig-nfunctions/trig-nfunctions.component';
@@ -200,6 +201,7 @@ const routes: Routes = [
       { path: PercolationDiagramComponent.route, component: PercolationDiagramComponent },
       { path: BayesTheoremArticleComponent.route, component: BayesTheoremArticleComponent },
       { path: BirthdayParadoxArticleComponent.route, component: BirthdayParadoxArticleComponent },
+      { path: MontyHallArticleComponent.route, component: MontyHallArticleComponent },
       { path: BuffonNeedleArticleComponent.route, component: BuffonNeedleArticleComponent },
       //{ path: TrigInverseTrigCompositionComponent.route, component: TrigInverseTrigCompositionComponent },
       { path: TrigInverseTrigCompositionComponent.route, loadComponent: () => import('./trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component').then(mod => mod.TrigInverseTrigCompositionComponent) },

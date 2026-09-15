@@ -1,0 +1,50 @@
+<h2>Monty Hall: por qué conviene cambiar de puerta</h2>
+<p class="dropcap">Hay tres puertas: una oculta un premio y las otras dos, cabras. Eliges una.
+  El presentador abre otra puerta y muestra una cabra. Quedan dos cerradas y te ofrece cambiar.
+  ¿Da igual? Con las reglas clásicas, mantener gana con probabilidad 1/3 y cambiar gana con probabilidad 2/3.</p>
+<h3>Las reglas importan</h3>
+<ul><li>El premio se coloca con igual probabilidad detrás de cada puerta.</li>
+  <li>El presentador conoce su ubicación y nunca abre la puerta elegida ni la del premio.</li>
+  <li>Siempre abre una puerta con cabra y siempre ofrece cambiar.</li>
+  <li>Si hay dos puertas que puede abrir, en nuestro modelo elige cada una con probabilidad 1/2.</li></ul>
+<p>La apertura no es una elección ciega: el presentador usa información sobre el premio. Esa diferencia explica
+  por qué tener dos puertas cerradas no significa automáticamente que cada una tenga probabilidad 1/2.</p>
+<h3>La explicación más corta</h3>
+<p>Si tu primera elección es correcta, cambiar pierde. Si tu primera elección es incorrecta, el presentador está obligado
+  a abrir la otra puerta con cabra y cambiar gana. Por tanto, cambiar gana exactamente cuando te equivocas al principio.</p>
+<app-formula expression="P(\text{ganar manteniendo})=\frac13,\qquad P(\text{ganar cambiando})=1-\frac13=\frac23"></app-formula>
+<p>Supongamos que eliges la puerta 1. Los tres casos posibles, igualmente probables, son:</p>
+<ul><li>Premio en 1: el presentador abre 2 o 3. Mantener gana; cambiar pierde.</li>
+  <li>Premio en 2: el presentador abre 3. Mantener pierde; cambiar gana.</li>
+  <li>Premio en 3: el presentador abre 2. Mantener pierde; cambiar gana.</li></ul>
+<app-monty-hall></app-monty-hall>
+<h3>Verlo con el teorema de Bayes</h3>
+<p>Elegiste la puerta 1 y observas que el presentador abre la 3. Sea Hᵢ «el premio está en i» y A «abre la 3».
+  Bajo la regla de desempate equiprobable:</p>
+<app-formula expression="P(A\mid H_1)=\frac12,\qquad P(A\mid H_2)=1,\qquad P(A\mid H_3)=0"></app-formula>
+<p>La probabilidad total de observar esa apertura es (1/2)(1/3) + (1)(1/3) = 1/2.
+  Aplicando el <a routerLink="/articles/bayes-theorem">teorema de Bayes</a>:</p>
+<app-formula expression="P(H_1\mid A)=\frac{(1/2)(1/3)}{1/2}=\frac13,\qquad P(H_2\mid A)=\frac{1\cdot(1/3)}{1/2}=\frac23"></app-formula>
+<p>La apertura de la puerta 3 era más probable si el premio estaba en la 2 que si estaba en la 1.
+  No hemos recibido una información neutral entre las dos puertas restantes.</p>
+<h3>¿Y si el presentador elige al azar sin saber?</h3>
+<p>Es otro juego. Supongamos que abre al azar una de las dos puertas que no elegiste, pudiendo revelar el premio.
+  Si condicionamos a que haya mostrado una cabra, la situación cambia: cuando acertaste inicialmente siempre puede
+  mostrar una cabra; cuando fallaste, solo lo hace la mitad de las veces.</p>
+<app-formula expression="P(\text{acierto inicial}\mid\text{muestra cabra})=\frac{1\cdot(1/3)}{1\cdot(1/3)+(1/2)(2/3)}=\frac12"></app-formula>
+<p>En esa variante, tras ver una cabra, mantener y cambiar tienen la misma probabilidad de éxito.
+  Si el presentador solo ofrece cambiar en ocasiones elegidas según dónde esté el premio, también debemos conocer esa política.</p>
+<h3>La regla de desempate y la puerta concreta</h3>
+<p>El argumento «cambiar gana cuando fallas al principio» no necesita que el presentador desempate al azar:
+  la estrategia de cambiar siempre sigue ganando en 2/3 de las rondas bajo las otras reglas clásicas.
+  Sin embargo, la probabilidad condicionada a que abra una puerta concreta sí puede depender del desempate.</p>
+<p>Por ejemplo, si siempre abre la puerta 3 cuando puede y tú elegiste la 1, observar la apertura de la 3
+  deja probabilidades 1/2 y 1/2 para las puertas 1 y 2. Si abre la 2, el premio está necesariamente en la 3.
+  Al promediar ambos tipos de ronda, cambiar sigue ganando 2/3 de las veces.</p>
+<h3>Imaginar cien puertas</h3>
+<p>Eliges una de cien puertas y el presentador, que conoce el premio, abre 98 puertas con cabras, dejando solo una alternativa.
+  Acertaste al principio con probabilidad 1/100. Cambiar a la única alternativa gana siempre que fallaste,
+  así que su probabilidad de éxito es 99/100. La información del presentador concentra las alternativas sin premio.</p>
+<p><strong>Para explorar.</strong> Juega varias rondas y después simula miles de ensayos. Observa que en cada ensayo
+  exactamente una de las dos estrategias gana. Explica por qué perder una ronda al cambiar no contradice que esa estrategia
+  sea mejor a largo plazo.</p>

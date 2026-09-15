@@ -33,6 +33,7 @@ import { BifurcationDiagramComponent } from 'src/app/articles/fractals/bifurcati
 import { PercolationDiagramComponent } from 'src/app/articles/probability/percolation-diagram/percolation-diagram.component';
 import { BayesTheoremArticleComponent } from 'src/app/articles/probability/bayes-theorem/bayes-theorem-article.component';
 import { BirthdayParadoxArticleComponent } from 'src/app/articles/probability/birthday-paradox/birthday-paradox-article.component';
+import { MontyHallArticleComponent } from 'src/app/articles/probability/monty-hall/monty-hall-article.component';
 import { BuffonNeedleArticleComponent } from 'src/app/articles/probability/buffon-needle/buffon-needle-article.component';
 import { TrigInverseTrigCompositionComponent } from 'src/app/articles/trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 import { TrigNFunctionsComponent } from 'src/app/articles/trigonometry/trig-nfunctions/trig-nfunctions.component';
@@ -201,7 +202,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: BuffonNeedleArticleComponent.title, route: BuffonNeedleArticleComponent.route },
     { name: PercolationDiagramComponent.title, route: PercolationDiagramComponent.route },
     { name: BayesTheoremArticleComponent.title, route: BayesTheoremArticleComponent.route },
-    { name: BirthdayParadoxArticleComponent.title, route: BirthdayParadoxArticleComponent.route }
+    { name: BirthdayParadoxArticleComponent.title, route: BirthdayParadoxArticleComponent.route },
+    { name: MontyHallArticleComponent.title, route: MontyHallArticleComponent.route }
   ];
 
   trigonometry: NavbarItem[] = [

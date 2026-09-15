@@ -1,0 +1,28 @@
+<section class="widget" aria-labelledby="monty-title">
+  <h3 id="monty-title">Juega una ronda</h3>
+  <p>El premio ya está colocado al azar. Elige una puerta; el presentador abrirá otra que contiene una cabra.</p>
+  <div class="doors"><button type="button" *ngFor="let door of doors" (click)="choose(door)" [disabled]="round !== null"
+    [class.chosen]="round?.choice === door" [class.open]="round?.opened === door" [class.prize]="finalChoice !== null && prize === door">
+    <strong>Puerta {{ door + 1 }}</strong><span>{{ label(door) }}</span>
+    <small *ngIf="round?.choice === door">Elección inicial</small><small *ngIf="finalChoice === door">Elección final</small>
+  </button></div>
+  <div aria-live="polite"><p *ngIf="!round">Selecciona una de las tres puertas.</p>
+    <p *ngIf="round && finalChoice === null">El presentador abre la puerta {{ round.opened + 1 }}. ¿Mantienes la {{ round.choice + 1 }} o cambias a la {{ round.switched + 1 }}?</p>
+    <p *ngIf="finalChoice !== null"><strong>{{ finalChoice === prize ? '¡Has ganado el premio!' : 'Esta vez has elegido una cabra.' }}</strong>
+      El premio estaba en la puerta {{ prize + 1 }}.</p></div>
+  <div class="controls"><ng-container *ngIf="round && finalChoice === null"><button type="button" (click)="finish(false)">Mantener</button><button type="button" (click)="finish(true)">Cambiar</button></ng-container>
+    <button type="button" (click)="resetGame()">Nueva ronda</button></div>
+  <p class="note">El presentador conoce el premio, nunca abre tu puerta ni la del premio y siempre ofrece cambiar.
+    Si puede abrir dos puertas, elige entre ellas al azar con igual probabilidad.</p>
+  <h3>Comparar las dos estrategias</h3>
+  <p>En cada ensayo evaluamos qué habría ocurrido al mantener y al cambiar, usando la misma colocación del premio y elección inicial.
+    Las rondas manuales no se suman a estos ensayos.</p>
+  <div class="controls"><button type="button" (click)="run()" [disabled]="running">Simular 1000 rondas</button>
+    <button type="button" *ngIf="running" (click)="stop()">Detener</button><button type="button" (click)="resetStats()">Reiniciar estadísticas</button></div>
+  <p aria-live="polite">{{ trials }} ensayos completados.</p>
+  <p>Mantener: {{ stayWins }} premios · {{ percent(stayWins) }}. Teoría: 33,33 %.</p>
+  <div class="track"><div class="stay" [style.width.%]="trials ? 100 * stayWins / trials : 0"></div></div>
+  <p>Cambiar: {{ switchWins }} premios · {{ percent(switchWins) }}. Teoría: 66,67 %.</p>
+  <div class="track"><div class="switch" [style.width.%]="trials ? 100 * switchWins / trials : 0"></div></div>
+  <p class="note">Las barras van de 0 a 100 %. Los resultados aleatorios fluctúan; cambiar mejora la probabilidad, pero no garantiza ganar una ronda concreta.</p>
+</section>
