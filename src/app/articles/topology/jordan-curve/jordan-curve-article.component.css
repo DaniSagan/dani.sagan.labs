@@ -35,13 +35,3 @@ app-formula[displayMode="block"] {
 .references {
   font-size: 0.9rem;
 }
-.image-text-left {
-  float: left;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-}
-.image-text-right {
-  float: right;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
-}

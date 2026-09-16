@@ -309,3 +309,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
   margin-bottom: 0.6rem;
   line-height: 1.5;
 }
+
+.image-text-left {
+  float: left;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.image-text-right {
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
