@@ -1,0 +1,28 @@
+<section class="lab" aria-label="Laboratorio de la fórmula de Euler">
+  <header><span class="eyebrow">TOPOLOGÍA A LA VISTA</span><h3>El equilibrio de un grafo plano</h3><p>Añade conexiones. Abre ciclos. Observa qué cambia y qué permanece.</p></header>
+  <div class="presets"><button type="button" (click)="load('tree')">Árbol</button><button type="button" (click)="load('grid')">Cuadrícula</button><button type="button" (click)="load('mesh')">Triangulación interior</button><button type="button" (click)="load('islands')">Islas separadas</button><button type="button" (click)="load('empty')">Sin aristas</button></div>
+  <div class="equation" aria-live="polite"><span><b>9</b><small>Vértices · V</small></span><i>−</i><span><b>{{ edgeCount }}</b><small>Aristas · A</small></span><i>+</i><span><b>{{ faceCount }}</b><small>Caras · F</small></span><i>=</i><span class="result"><b>{{ balance }}</b><small>1 + k · k = {{ components }}</small></span></div>
+  <div class="stage">
+    <svg viewBox="0 0 690 480" role="group" aria-label="Grafo plano editable de nueve vértices. Las aristas discontinuas están desactivadas.">
+      <defs><pattern id="plane-euler-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#759abd" opacity=".15"/></pattern><radialGradient id="plane-euler-back"><stop stop-color="#203550"/><stop offset="1" stop-color="#0b1120"/></radialGradient></defs>
+      <rect width="690" height="480" fill="url(#plane-euler-back)"/><rect width="690" height="480" fill="url(#plane-euler-dots)"/>
+      <rect x="16" y="16" width="658" height="448" rx="16" fill="none" [attr.stroke]="selectedFace === 0 ? '#f2bd86' : '#35435a'" stroke-dasharray="5 8"/>
+      <text x="34" y="45" class="outside">F₀ · CARA EXTERIOR</text>
+      <g *ngFor="let face of faces; let i = index" role="button" tabindex="0" [attr.aria-label]="'Resaltar cara interior ' + (i + 1)" (click)="selectedFace = i + 1" (keydown.enter)="selectedFace = i + 1" (keydown.space)="$event.preventDefault(); selectedFace = i + 1" class="face">
+        <path [attr.d]="face.path" [attr.fill]="colors[i % colors.length]" [attr.fill-opacity]="selectedFace === i + 1 ? 0.6 : selectedFace === 0 ? 0.05 : 0.22" fill-rule="evenodd"/>
+        <text [attr.x]="face.x" [attr.y]="face.y + 5" text-anchor="middle">F{{ i + 1 }}</text>
+      </g>
+      <g *ngFor="let edge of edges; let i = index" class="edge" [class.off]="!enabled[i]" role="button" tabindex="0" [attr.aria-pressed]="enabled[i]" [attr.aria-label]="'Arista ' + (edge[0] + 1) + '–' + (edge[1] + 1) + (enabled[i] ? ': retirar' : ': añadir')" (click)="toggle(i)" (keydown.enter)="toggle(i)" (keydown.space)="$event.preventDefault(); toggle(i)">
+        <line class="hit" [attr.x1]="points[edge[0]].x" [attr.y1]="points[edge[0]].y" [attr.x2]="points[edge[1]].x" [attr.y2]="points[edge[1]].y"/>
+        <line class="line" [attr.x1]="points[edge[0]].x" [attr.y1]="points[edge[0]].y" [attr.x2]="points[edge[1]].x" [attr.y2]="points[edge[1]].y"/>
+      </g>
+      <g *ngFor="let point of points; let i = index" [attr.transform]="'translate(' + point.x + ',' + point.y + ')'" class="vertex"><circle r="19" [attr.stroke]="showComponents ? colors[roots[i] % colors.length] : '#a7dfe9'"/><text y="5" text-anchor="middle">{{ i + 1 }}</text></g>
+    </svg>
+    <div class="legend"><span>━━ Arista activa</span><span>┄ Conexión disponible</span><span>{{ faces.length }} caras interiores + 1 exterior</span></div>
+  </div>
+  <div class="controls"><button type="button" class="primary" (click)="animateProof()" [disabled]="running">▶ Demostrar por eliminación</button><button type="button" (click)="stop(); proofStep()">Un paso</button><button type="button" *ngIf="running" (click)="stop()">Pausar</button><button type="button" (click)="undo()" [disabled]="!history.length">↶ Deshacer</button><button type="button" (click)="showComponents = !showComponents" [attr.aria-pressed]="showComponents">Colorear componentes</button></div>
+  <p class="message" role="status">{{ message }}</p>
+  <div class="face-list"><span>Explora las caras:</span><button type="button" [class.selected]="selectedFace === 0" (click)="selectedFace = 0">F₀ · Exterior</button><button type="button" *ngFor="let face of faces; let i = index" [class.selected]="selectedFace === i + 1" (click)="selectedFace = i + 1">F{{ i + 1 }}</button><button type="button" (click)="selectedFace = -1">Todas</button></div>
+  <details><summary>Editar aristas mediante botones</summary><div class="edge-list"><button type="button" *ngFor="let edge of edges; let i = index" [attr.aria-pressed]="enabled[i]" (click)="toggle(i)">{{ edge[0] + 1 }}–{{ edge[1] + 1 }} {{ enabled[i] ? '✓' : '+' }}</button></div></details>
+  <p class="note">Las conexiones disponibles nunca se cruzan. Los nueve vértices, incluidos los aislados, cuentan en V y en las componentes. Las caras se detectan recorriendo sus bordes, sin deducirlas de la fórmula que estamos comprobando.</p>
+</section>

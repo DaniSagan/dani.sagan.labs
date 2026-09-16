@@ -1,0 +1,12 @@
+:host { display:block; min-width:0; }
+app-formula[displayMode=block] { display:block; max-width:100%; overflow-x:auto; margin:1rem 0; }
+.diagram { background:#0f0f18; border:1px solid #354159; border-radius:14px; padding:1.2rem; margin:1.5rem 0; overflow-x:auto; }
+.diagram svg { width:100%; min-width:500px; height:auto; }
+figcaption { color:#b7c7db; font-size:.85rem; line-height:1.7; margin-top:.8rem; }
+.table-scroll { overflow-x:auto; margin:1.5rem 0; }
+table { width:100%; border-collapse:collapse; }
+th,td { padding:.7rem .9rem; text-align:left; border-bottom:1px solid #85859b55; }
+.theorem { background:#0f0f18; border-left:3px solid #8de0cc; border-radius:0 12px 12px 0; padding:1.2rem 1.5rem; margin:1.5rem 0; }
+.theorem h4 { color:#9de6d8; }
+.theorem p { color:#c8d8eb; margin-bottom:0; }
+.references { font-size:.9rem; }

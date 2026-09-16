@@ -1,0 +1,63 @@
+<h2>La fórmula de Euler para grafos planares</h2>
+<p class="dropcap">Dibuja una red de puntos y conexiones sin que las líneas se crucen. Cuenta sus vértices, sus aristas y las regiones en las que divide el plano. Si la red está conectada, esos tres números obedecen una identidad sorprendentemente rígida: vértices menos aristas más caras siempre vale dos. La forma de las líneas puede cambiar, pero el balance permanece.</p>
+<app-formula expression="V-A+F=2" displayMode="block"/>
+<p>La letra F cuenta las caras, incluida la región exterior ilimitada. Esta precisión es esencial: un triángulo tiene tres vértices, tres aristas y <strong>dos caras</strong>, no una. Vamos a explorar de dónde sale la fórmula, cómo cambia si el grafo se desconecta y por qué permite demostrar que ciertas redes nunca podrán dibujarse sin cruces.</p>
+<app-plane-euler-explorer/>
+
+<h3>1. Planar no significa «dibujado sin cruces»</h3>
+<p>Un <strong>grafo planar</strong> es un grafo que admite algún dibujo en el plano sin cruces de aristas, salvo en sus extremos comunes. Un <strong>grafo plano</strong> es el grafo junto con un dibujo concreto de ese tipo. La distinción importa: un dibujo puede tener cruces innecesarios aunque el grafo sea planar.</p>
+<p>Las <strong>caras</strong> son las regiones conexas del plano que quedan al retirar los vértices y las aristas del dibujo. No se requiere que sean polígonos convexos, ni que todas estén encerradas. Hay exactamente una cara exterior, incluso cuando el grafo tiene varias componentes.</p>
+<figure class="diagram"><svg viewBox="0 0 720 245" role="img" aria-labelledby="planar-euler-redraw"><title id="planar-euler-redraw">El grafo K4 en dos dibujos: un cuadrado con diagonales que se cruzan y una representación plana con un vértice interior</title><g fill="none" stroke="#98cadf" stroke-width="2.5"><path d="M55 45H215V195H55ZM55 45L215 195M215 45L55 195"/><path d="M475 30L390 205H655ZM475 30L505 135M390 205L505 135M655 205L505 135"/></g><circle cx="135" cy="120" r="16" fill="none" stroke="#ffb184" stroke-dasharray="4 4"/><g fill="#14283b" stroke="#93e4ce" stroke-width="2"><circle cx="55" cy="45" r="14"/><circle cx="215" cy="45" r="14"/><circle cx="215" cy="195" r="14"/><circle cx="55" cy="195" r="14"/><circle cx="475" cy="30" r="14"/><circle cx="655" cy="205" r="14"/><circle cx="505" cy="135" r="14"/><circle cx="390" cy="205" r="14"/></g><g fill="#e5eefb" text-anchor="middle" font-size="12"><text x="55" y="49">1</text><text x="215" y="49">2</text><text x="215" y="199">3</text><text x="55" y="199">4</text><text x="475" y="34">1</text><text x="655" y="209">2</text><text x="505" y="139">3</text><text x="390" y="209">4</text><text x="135" y="235">Un cruce no es un vértice</text><text x="505" y="235">Mismo grafo: 4 − 6 + 4 = 2</text></g><text x="290" y="130" fill="#e0c9a4" font-size="28">→</text></svg><figcaption>K₄ conecta cada par de sus cuatro vértices. Cambiar su dibujo elimina el cruce sin añadir ni quitar conexiones.</figcaption></figure>
+<p>Los vértices de grado cero también cuentan. Un punto aislado no divide ninguna cara, pero sí constituye una componente conexa. Por otra parte, una arista que se puede retirar sin separar el grafo pertenece a un ciclo; una que sí lo separa se llama <strong>arista puente</strong>.</p>
+
+<h3>2. La demostración: deshacer los ciclos</h3>
+<p>Supongamos primero que el grafo plano es finito y conexo. Si contiene un ciclo, escoge una arista de ese ciclo y bórrala. Sus extremos siguen conectados por el resto del ciclo, de modo que el grafo continúa conexo. Las dos caras que estaban a sus lados se fusionan.</p>
+<app-formula expression="\Delta V=0,\qquad \Delta A=-1,\qquad \Delta F=-1" displayMode="block"/>
+<app-formula expression="V-(A-1)+(F-1)=V-A+F" displayMode="block"/>
+<p>El balance no cambia. Repite hasta que no queden ciclos. Lo que queda es un <strong>árbol generador</strong>: conserva todos los vértices, sigue conectado y tiene exactamente V−1 aristas.</p>
+<p>Un árbol dibujado en el plano tiene una sola cara. Sus ramas no encierran regiones: siempre podemos rodear sus extremos. Así, en el último paso sabemos calcular el balance:</p>
+<app-formula expression="A_{\text{árbol}}=V-1,\qquad F_{\text{árbol}}=1,\qquad V-(V-1)+1=2" displayMode="block"/>
+<p>Como cada eliminación conservó V−A+F, el grafo inicial también tenía valor dos. En el laboratorio, «Demostrar por eliminación» retira únicamente aristas de ciclos. Los colores de las caras muestran sus fusiones; los vértices nunca desaparecen.</p>
+<p>El dato A=V−1 para un árbol puede demostrarse retirando hojas: cada hoja eliminada se lleva un vértice y una arista. El proceso acaba en un solo vértice, sin aristas, y conserva V−A=1.</p>
+
+<h3>3. Qué ocurre al quitar una arista puente</h3>
+<p>Una arista puente no separa dos caras diferentes. Sus dos lados pertenecen a la misma cara. Al quitarla disminuye A, pero F no cambia: lo que aumenta es el número de componentes conexas. Por eso no podemos aplicar indiscriminadamente el paso anterior a cualquier arista.</p>
+<div class="table-scroll"><table><thead><tr><th>Operación</th><th>ΔV</th><th>ΔA</th><th>ΔF</th><th>Δk</th></tr></thead><tbody><tr><td>Retirar una arista de un ciclo</td><td>0</td><td>−1</td><td>−1</td><td>0</td></tr><tr><td>Retirar una arista puente</td><td>0</td><td>−1</td><td>0</td><td>+1</td></tr><tr><td>Añadir un vértice aislado</td><td>+1</td><td>0</td><td>0</td><td>+1</td></tr><tr><td>Subdividir una arista con un nuevo vértice</td><td>+1</td><td>+1</td><td>0</td><td>0</td></tr></tbody></table></div>
+<p>En la última fila, una arista se sustituye por dos; por eso el incremento neto de A es uno. Ninguna región nueva aparece.</p>
+
+<h3>4. La fórmula para varias componentes</h3>
+<p>Sea k el número de componentes conexas, incluidos los vértices aislados. Podemos eliminar aristas de ciclos en cada componente sin cambiar k. Al terminar queda un bosque con V−k aristas y una sola cara exterior:</p>
+<app-formula expression="V-A+F=V-(V-k)+1=1+k" displayMode="block"/>
+<aside class="theorem"><h4>Fórmula de Euler para un grafo plano finito</h4><p>Si V es el número de vértices, A el de aristas, F el de caras —incluida la exterior— y k el de componentes conexas, entonces V−A+F=1+k. Cuando el grafo es conexo, k=1 y recuperamos V−A+F=2.</p></aside>
+<p>Dos triángulos separados tienen V=6, A=6 y F=3: dos interiores y un exterior común. El resultado es 3=1+2. Aunque dibujemos un triángulo dentro del otro, siguen existiendo tres caras; la región entre ambos tiene un agujero. Las caras de un grafo desconectado no tienen por qué ser discos.</p>
+<p>En el escenario «Islas separadas» hay además tres vértices aislados: V=9, A=6, F=3 y k=5. Se cumple 9−6+3=6=1+5. El laboratorio mantiene siempre los nueve vértices para que las variaciones se deban únicamente a las aristas.</p>
+
+<h3>5. Euler pone un límite a las aristas</h3>
+<p>Ahora suponemos que el grafo es <strong>simple</strong>: no tiene lazos ni aristas paralelas, y V es al menos 3. En un dibujo plano conexo, la longitud del borde de cada cara es al menos tres. Al sumar esas longitudes contamos cada arista dos veces, una por cada lado. Una arista puente también se cuenta dos veces, aunque ambas apariciones pertenezcan a la misma cara.</p>
+<app-formula expression="3F\le\sum_{f}\deg(f)=2A" displayMode="block"/>
+<p>Sustituimos F=2−V+A y despejamos:</p>
+<app-formula expression="3(2-V+A)\le2A\quad\Longrightarrow\quad A\le3V-6" displayMode="block"/>
+<p>La cota también vale para grafos simples planares desconectados con V≥3: podemos conectar sus componentes añadiendo aristas sin cruces ni duplicados y aplicar la cota al grafo resultante. Si un grafo tiene más de 3V−6 aristas, queda descartada su planaridad.</p>
+<p>La igualdad, en el caso conexo simple con V≥3, corresponde a un dibujo en el que todas las caras son triangulares, incluida la exterior. La cuadrícula triangulada del laboratorio solo triangula su interior: su cara exterior tiene ocho lados, así que no satura esa cota.</p>
+<app-planarity-bound/>
+
+<h3>6. Dos redes que no caben en el plano</h3>
+<p><strong>El grafo completo K₅.</strong> Conecta cada par de cinco vértices, por lo que tiene diez aristas. La cota planar solo admite nueve:</p>
+<app-formula expression="V=5,\qquad A=\binom52=10&gt;3\cdot5-6=9" displayMode="block"/>
+<p>Por tanto, ningún dibujo de K₅ puede evitar todos los cruces sin alterar sus conexiones. No necesitamos probar todos sus posibles dibujos.</p>
+<p><strong>El grafo bipartito completo K₃,₃.</strong> Tiene dos grupos de tres vértices y cada vértice de un grupo se conecta con los tres del otro. Hay seis vértices y nueve aristas. La cota anterior no lo descarta: 9≤12. Necesitamos utilizar que es bipartito.</p>
+<p>En un grafo bipartito no existen ciclos impares. Para un grafo simple, conexo, bipartito y con V≥3, los bordes de las caras tienen longitud al menos cuatro. El recuento de lados da 4F≤2A y, usando Euler, una cota más fuerte:</p>
+<app-formula expression="4(2-V+A)\le2A\quad\Longrightarrow\quad A\le2V-4" displayMode="block"/>
+<app-formula expression="K_{3,3}:\qquad A=9&gt;2\cdot6-4=8" displayMode="block"/>
+<p>Esta cota también se extiende a los grafos simples bipartitos planares desconectados con V≥3, conectando componentes y, si hace falta, intercambiando sus dos clases. El problema de conectar tres casas con tres suministros sin cruces es precisamente una representación de K₃,₃.</p>
+
+<h3>7. Lo que la fórmula no demuestra</h3>
+<p>Las desigualdades anteriores son condiciones necesarias, no suficientes. Por ejemplo, K₃,₃ cumple A≤3V−6 y sigue siendo no planar. Incluso las dos cotas pueden cumplirse en un grafo no planar: subdividir todas las aristas de K₅ una vez produce un grafo bipartito con V=15 y A=20, que cumple 20≤26 y 20≤39. Sigue siendo no planar, pues un dibujo sin cruces permitiría suprimir los vértices de subdivisión y obtener un dibujo plano de K₅.</p>
+<p>Tampoco podemos inventar un número F que haga salir dos y concluir que existe un dibujo plano. Primero necesitamos una representación sin cruces y contar sus caras reales. Si un cruce se convierte deliberadamente en un nuevo vértice, estamos cambiando el grafo.</p>
+<p>No hay que confundir esta identidad con el criterio de recorridos eulerianos: la fórmula cuenta regiones de un dibujo plano; el problema de <a routerLink="/articles/konigsberg-bridges">los puentes de Königsberg</a> estudia cómo recorrer todas las aristas una vez.</p>
+
+<h3>8. Del plano a la esfera y a los poliedros</h3>
+<p>Podemos interpretar la cara exterior como una cara más sobre una esfera. Al proyectar desde un punto de la esfera que no pertenezca al grafo, obtenemos un dibujo plano con los mismos vértices, aristas y caras. Así se conecta esta fórmula con la de los poliedros convexos: el esqueleto de un cubo da 8−12+6=2.</p>
+<p>En otras superficies el resultado cambia. Para una descomposición celular de una superficie cerrada orientable con g asas, donde cada cara sea topológicamente un disco, se cumple V−A+F=2−2g. Un toro tiene g=1 y balance cero. La condición sobre las caras es importante: no se aplica esta expresión sin más a cualquier dibujo sobre cualquier superficie.</p>
+<p>La fuerza de la fórmula de Euler está en que transforma un dibujo en una relación que sobrevive a las deformaciones. Y su demostración ofrece una estrategia concreta: quitar lo que cierra ciclos hasta que solo quede lo imprescindible para conectar.</p>
+<p class="references">Para profundizar: <a href="https://discrete.openmathbooks.org/dmoi3/sec_planar.html" target="_blank" rel="noopener noreferrer">Oscar Levin: grafos planares</a> y <a href="https://math.libretexts.org/Bookshelves/Combinatorics_and_Discrete_Mathematics/Combinatorics_%28Morris%29/03%3A_Graph_Theory/15%3A_Planar_Graphs/15.02%3A_Eulers_Formula" target="_blank" rel="noopener noreferrer">Joy Morris: fórmula de Euler</a>.</p>
