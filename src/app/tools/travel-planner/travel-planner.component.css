@@ -1,373 +1,405 @@
+
 :host {
   display: block;
+  --ink: #e6e6ef;
+  --muted: #b9b9ce;
+  --accent: #8ab4f8;
+  --line: #39394b
 }
 .travel-planner {
-  max-width: 1180px;
-  margin: 0 auto;
-  color: #172033;
+  max-width: 1440px;
+  margin: auto;
+  color: var(--ink);
+  padding: clamp(12px,3vw,36px);
+  background: var(--bg2, #0f0f18);
+  color-scheme: dark;
+  border-radius: 20px
 }
 .planner-header {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
+  align-items: center;
+  padding: 12px 0 28px;
+  border-bottom: 1px solid var(--line)
 }
 .planner-header h2 {
-  margin: 0.2rem 0 0.5rem;
+  font-size: clamp(1.7rem,3vw,2.6rem);
+  letter-spacing: -.04em;
+  max-width: 650px;
+  line-height: 1.15;
+  margin: 10px 0 16px
 }
 .planner-header p {
-  margin: 0;
-  color: #566175;
+  color: var(--muted);
+  margin: 0
 }
 .eyebrow {
-  color: #0284c7 !important;
-  font-weight: 700;
-  font-size: 0.8rem;
-  letter-spacing: 0.09em;
+  color: var(--accent)!important;
+  font-size: .72rem;
+  font-weight: 750;
   text-transform: uppercase;
+  letter-spacing: .14em
 }
-.file-actions,
-.form-actions,
-.card-actions {
+.file-actions,.form-actions,.card-actions,.dialog-actions {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.file-actions {
+  gap: 8px;
   flex-wrap: wrap;
+  align-items: center
 }
-button,
-.file-input {
-  border: 0;
-  border-radius: 0.5rem;
+button {
+  border: 1px solid transparent;
+  border-radius: 9px;
   cursor: pointer;
   font: inherit;
-  font-weight: 600;
-  padding: 0.7rem 1rem;
+  font-weight: 650;
+  padding: 10px 14px;
+  font-size: .85rem
+}
+button:disabled {
+  opacity: .5;
+  cursor: default
+}
+:is(button,a,input,textarea,select):focus-visible {
+  outline: 3px solid #f6c76b;
+  outline-offset: 3px
 }
 .primary-button {
-  background: #0284c7;
-  color: white;
+  background: var(--accent);
+  color: #0f0f18
 }
 .secondary-button {
-  background: #e0f2fe;
-  color: #075985;
-  display: inline-block;
+  background: #242430;
+  color: var(--ink)
 }
-.file-input input {
-  display: none;
+.cancel-button,.edit-button {
+  background: #242430;
+  color: var(--ink)
 }
-.trip-name {
-  margin-bottom: 1.25rem;
-  max-width: 520px;
+.delete-button {
+  color: #ffaaaa;
+  background: transparent;
+  margin-left: auto
+}
+.edit-button,.delete-button {
+  padding: 6px 9px;
+  font-size: .78rem
+}
+a {
+  color: var(--accent);
+  font-size: .82rem
 }
 label {
   display: block;
+  font-size: .8rem;
   font-weight: 650;
-  font-size: 0.9rem;
-  margin-bottom: 0.35rem;
+  margin-bottom: 6px
 }
-input,
-textarea {
+input,textarea,select {
   box-sizing: border-box;
   width: 100%;
-  border: 1px solid #cbd5e1;
-  border-radius: 0.45rem;
+  border: 1px solid #68687e;
+  border-radius: 8px;
+  background: #191923;
+  color: var(--ink);
   font: inherit;
-  padding: 0.65rem 0.7rem;
+  padding: 10px;
+  font-size: .88rem
 }
 textarea {
-  min-height: 5.5rem;
-  resize: vertical;
+  min-height: 78px;
+  resize: vertical
+}
+.trip-name {
+  margin-top: 24px;
+  max-width: 520px
+}
+.save-status {
+  font-size: .76rem;
+  color: var(--muted);
+  margin: 8px 0 20px
+}
+.trip-overview {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #191923;
+  margin-bottom: 28px
+}
+.trip-overview>div {
+  padding: 20px;
+  border-right: 1px solid var(--line)
+}
+.trip-overview strong {
+  display: block;
+  margin-top: 6px
+}
+.planner-workspace {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 28px
+}
+.planner-sidebar,.planner-itinerary {
+  min-width: 0
+}
+.activity-form,.activity-bag,.calendar-map-panel {
+  background: #191923;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 20px
+}
+.activity-form h3,.activity-bag h3 {
+  font-size: 1.08rem;
+  margin: 0 0 16px
 }
 .notes-label {
-  margin-top: 0.9rem;
+  margin-top: 14px
 }
-.activity-form {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
-  padding: 1.25rem;
-}
-.activity-form h3 {
-  margin: 0 0 1rem;
-}
-.form-row {
+.form-row,.date-time-fields {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-top: 0.9rem;
+  gap: 10px;
+  margin-top: 14px
 }
-.map-hint {
-  color: #64748b;
-  font-size: 0.83rem;
-  margin: 1rem 0 0;
+.form-actions {
+  margin-top: 18px
 }
-.date-time-fields {
-  display: grid;
-  gap: 0.9rem;
-  margin-top: 0.9rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.map-hint,.time-note {
+  font-size: .76rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 14px 0 8px
+}
+#activity-edit-map,#bag-activity-map {
+  height: 180px;
+  border-radius: 9px;
+  z-index: 0
 }
 #travel-planner-map {
-  height: 320px;
-  border-radius: 0.45rem;
-  overflow: hidden;
+  height: 300px;
+  border-radius: 9px;
+  z-index: 0
 }
 .calendar-map-panel {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 1.25rem;
+  padding: 10px;
+  margin: 16px 0
 }
-.calendar-map-panel small {
-  display: block;
-  margin-top: 0.5rem;
-  color: #64748b;
+.itinerary-toolbar,.calendar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px
 }
-.activity-edit-map-panel {
-  margin-top: 0.9rem;
-}
-#activity-edit-map {
-  border-radius: 0.45rem;
-  height: 260px;
-  overflow: hidden;
+.itinerary-toolbar h3 {
+  margin: 4px 0;
+  font-size: 1.5rem
 }
 .day-tabs {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
   overflow-x: auto;
-  padding: 1.5rem 0 0.8rem;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 16px 0 2px
 }
 .day-tabs button {
-  color: #475569;
-  background: #f1f5f9;
   white-space: nowrap;
-  padding: 0.5rem 0.75rem;
+  background: #191923;
+  border-color: var(--line);
+  color: var(--muted)
 }
-.day-tabs button.active {
-  background: #0284c7;
-  color: white;
+.day-tabs button.active,.view-switch button[aria-pressed=true] {
+  background: var(--accent);
+  color: #0f0f18
 }
-.day-tabs span,
-.empty-state {
-  color: #64748b;
+.view-switch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap
+}
+.view-switch span {
+  font-size: .78rem;
+  color: var(--muted);
+  margin-left: auto
+}
+.view-switch button {
+  background: #242430;
+  color: var(--ink)
 }
 .calendar-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin: 1.3rem 0 0.8rem;
+  margin: 24px 0 16px
 }
 .calendar-heading h3 {
-  margin: 0;
+  font-size: 1.05rem;
   text-transform: capitalize;
+  margin: 0
 }
-.calendar-heading span {
-  color: #64748b;
-  font-size: 0.9rem;
+.agenda-list,.bag-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 12px
+}
+.agenda-card {
+  display: flex;
+  background: #191923;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  gap: 18px
+}
+.agenda-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: .82rem;
+  min-width: 45px
+}
+.stop-number {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #26334b;
+  color: var(--accent);
+  width: 30px;
+  height: 30px;
+  font-weight: 700
+}
+.agenda-content {
+  flex: 1;
+  min-width: 0
+}
+.agenda-content h4 {
+  font-size: 1.05rem;
+  margin: 8px 0
+}
+.agenda-content p {
+  font-size: .83rem;
+  color: var(--muted);
+  margin: 8px 0 14px
+}
+.event-notes {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere
+}
+.has-conflict {
+  border-left: 3px solid #d6a045
+}
+.conflict-notice,.undo-notice {
+  padding: 12px;
+  border-radius: 8px;
+  background: #352b1a;
+  color: #f6c76b;
+  font-size: .83rem
+}
+.error,.form-error {
+  color: #ffaaaa!important
+}
+.empty-state {
+  text-align: center;
+  padding: 36px 18px;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  margin: 18px 0
+}
+.activity-bag {
+  margin-top: 18px
+}
+.bag-list li {
+  border-top: 1px solid var(--line);
+  padding: 14px 0
 }
 .calendar-scroll {
   max-height: 680px;
   overflow: auto;
-  border: 1px solid #dbe3ee;
-  border-radius: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 10px
 }
 .day-calendar {
   display: grid;
-  grid-template-columns: 64px minmax(360px, 1fr);
-  min-height: 1440px;
+  grid-template-columns: 54px minmax(260px,1fr);
+  min-height: 1440px
 }
 .time-column {
-  background: #f8fafc;
-  border-right: 1px solid #dbe3ee;
   display: grid;
-  grid-template-rows: repeat(24, 60px);
+  grid-template-rows: repeat(24,60px);
+  background: #242430
 }
 .time-column span {
-  color: #64748b;
-  font-size: 0.76rem;
-  padding: 0.25rem 0.55rem 0 0;
-  text-align: right;
-  transform: translateY(-0.55rem);
+  font-size: .7rem;
+  text-align: center;
+  color: var(--muted)
 }
 .calendar-grid {
-  background: white;
-  min-height: 1440px;
   position: relative;
+  background: #191923;
+  min-height: 1440px
 }
 .hour-line {
-  border-top: 1px solid #e2e8f0;
-  left: 0;
   position: absolute;
+  left: 0;
   right: 0;
+  border-top: 1px solid var(--line)
 }
 .calendar-event {
-  background: #dff2fe;
-  border-left: 4px solid #0284c7;
-  border-radius: 0.3rem;
-  box-sizing: border-box;
-  left: 0.5rem;
-  overflow: hidden;
-  padding: 0.35rem 0.55rem;
   position: absolute;
-  right: 0.5rem;
-  z-index: 1;
-}
-.calendar-event h4,
-.calendar-event p {
-  margin: 0;
-}
-.calendar-event h4 {
-  color: #075985;
-  font-size: 0.88rem;
-  line-height: 1.25;
-}
-.calendar-event p {
-  color: #475569;
-  font-size: 0.76rem;
-  line-height: 1.25;
-  margin-top: 0.12rem;
-}
-.calendar-event .event-notes {
-  margin-top: 0.3rem;
-  white-space: pre-wrap;
-}
-.delete-button {
-  background: transparent;
-  color: #dc2626;
-  font-size: 0.82rem;
-  margin-left: auto;
-  padding: 0.3rem;
-}
-.edit-button,
-.cancel-button {
-  background: #e2e8f0;
-  color: #334155;
-}
-.edit-button {
-  font-size: 0.82rem;
-  padding: 0.3rem 0.55rem;
-}
-.form-actions {
-  margin-top: 1.25rem;
-}
-.form-error,
-.error {
-  color: #b91c1c;
-}
-.form-error {
-  font-size: 0.88rem;
-  margin: -0.4rem 0 1rem;
-}
-.empty-state {
-  padding: 1.5rem 0;
-}
-.activity-bag {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.75rem;
-  margin-top: 1.5rem;
-  padding: 1.25rem;
-}
-.activity-bag h3,
-.activity-bag h4,
-.activity-bag p {
-  margin: 0;
-}
-.activity-bag > div > p,
-.bag-list p {
-  color: #64748b;
-  margin-top: 0.3rem;
-}
-.bag-list {
-  display: grid;
-  gap: 0.75rem;
-  list-style: none;
-  margin: 1rem 0 0;
-  padding: 0;
-}
-.bag-edit-form {
-  background: white;
-  border: 1px solid #bae6fd;
-  border-radius: 0.5rem;
-  margin-top: 1rem;
-  padding: 1rem;
-}
-.bag-edit-form h4 {
-  margin-bottom: 1rem;
-}
-#bag-activity-map {
-  border-radius: 0.45rem;
-  height: 260px;
-  overflow: hidden;
-}
-.bag-list li {
-  align-items: flex-start;
-  background: white;
-  border: 1px solid #dbe3ee;
-  border-radius: 0.5rem;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  padding: 0.85rem;
-}
-.bag-list .card-actions {
-  flex-shrink: 0;
+  box-sizing: border-box;
+  left: 5px;
+  right: 5px;
+  background: #26334b;
+  border-left: 3px solid var(--accent);
+  padding: 4px 8px;
+  overflow: auto;
+  border-radius: 5px
 }
 .dialog-backdrop {
-  align-items: center;
-  background: rgb(15 23 42 / 0.55);
-  display: flex;
-  inset: 0;
-  justify-content: center;
-  padding: 1rem;
   position: fixed;
-  z-index: 1000;
+  inset: 0;
+  z-index: 1100;
+  background: #080810cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px
 }
 .new-trip-dialog {
-  background: white;
-  border-radius: 0.75rem;
-  box-shadow: 0 20px 45px rgb(15 23 42 / 0.25);
+  background: #191923;
   max-width: 520px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 28px
 }
-.new-trip-dialog h3 {
-  margin: 0 0 0.75rem;
+@media(max-width:1050px){
+.planner-workspace {
+  gap: 18px
 }
-.new-trip-dialog p {
-  color: #475569;
-  line-height: 1.5;
-  margin: 0;
+.planner-header {
+  align-items: flex-start;
+  flex-direction: column
+}}
+@media(max-width:760px){
+.trip-overview {
+  grid-template-columns: 1fr 1fr
 }
-.dialog-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: flex-end;
-  margin-top: 1.5rem;
+.trip-overview>div {
+  border-bottom: 1px solid var(--line)
 }
-@media (max-width: 760px) {
-  .planner-header,
-  .calendar-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .form-row,
-  .date-time-fields {
-    grid-template-columns: 1fr;
-  }
-  .day-calendar {
-    grid-template-columns: 52px minmax(260px, 1fr);
-  }
-  .time-column span {
-    font-size: 0.7rem;
-    padding-right: 0.3rem;
-  }
+.calendar-heading {
+  align-items: flex-start;
+  flex-direction: column
 }
+.agenda-card {
+  padding: 12px;
+  gap: 10px
+}
+.itinerary-toolbar {
+  flex-wrap: wrap
+}
+.view-switch span {
+  width: 100%;
+  margin: 8px 0
+}}
+
+input::placeholder,textarea::placeholder { color: var(--muted); opacity: 1 }
+:is(#activity-edit-map,#bag-activity-map,#travel-planner-map) { --ink: #17332f; color: #17332f; color-scheme: light }

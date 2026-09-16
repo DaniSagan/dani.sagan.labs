@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { A11yModule } from '@angular/cdk/a11y';
 import * as L from 'leaflet';
 
 interface TravelActivity {
+  cost?: number;
+  category?: string;
   id: string;
   title: string;
   notes: string;
@@ -14,6 +17,8 @@ interface TravelActivity {
 }
 
 interface BagActivity {
+  cost?: number;
+  category?: string;
   id: string;
   title: string;
   notes: string;
@@ -22,6 +27,7 @@ interface BagActivity {
 }
 
 interface TravelPlan {
+  budget?: number;
   version: 2;
   name: string;
   activities: TravelActivity[];
@@ -29,6 +35,8 @@ interface TravelPlan {
 }
 
 interface SavedTravelDraft {
+  budget?: number;
+  scheduledBagActivityId?: string | null;
   version: 3;
   name: string;
   activities: TravelActivity[];
@@ -43,7 +51,7 @@ interface SavedTravelDraft {
 @Component({
   selector: 'app-travel-planner',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, A11yModule],
   templateUrl: './travel-planner.component.html',
   styleUrls: ['./travel-planner.component.css'],
 })
@@ -51,6 +59,66 @@ export class TravelPlannerComponent
   implements OnInit, AfterViewInit, OnDestroy
 {
   tripName = 'Mi viaje';
+  budget = 0;
+  view: 'agenda' | 'calendar' = 'agenda';
+  storageMessage = '';
+  readonly categories = ['Visita', 'Comida', 'Transporte', 'Alojamiento', 'Tiempo libre'];
+  deletedActivity: TravelActivity | null = null;
+
+  get totalCost(): number {
+    return this.activities.reduce((sum, activity) => sum + (activity.cost ?? 0), 0);
+  }
+
+  get dayCost(): number {
+    return this.selectedActivities.filter(a => a.start.substring(0, 10) === this.selectedDate).reduce((sum, activity) => sum + (activity.cost ?? 0), 0);
+  }
+
+  conflicts(activity: TravelActivity): boolean {
+    return this.activities.some(other => other.id !== activity.id && other.start < activity.end && other.end > activity.start);
+  }
+
+  get conflictCount(): number {
+    return this.selectedActivities.filter(activity => this.conflicts(activity)).length;
+  }
+
+  undoDelete(): void {
+    if (!this.deletedActivity) return;
+    this.activities = [...this.activities, this.deletedActivity];
+    this.deletedActivity = null;
+    this.renderMap();
+    this.saveDraft();
+  }
+
+  directions(activity: TravelActivity): string {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activity.latitude + ',' + activity.longitude)}`;
+  }
+
+  exportCalendar(): void {
+    const escape = (value: string) => value.replace(/\\/g, '\\\\').replace(/\r?\n/g, '\\n').replace(/;/g, '\\;').replace(/,/g, '\\,');
+    const stamp = (value: string) => value.replace(/[-:]/g, '') + '00';
+    const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//DaniSagan//Travel Planner//ES', 'CALSCALE:GREGORIAN'];
+    for (const activity of this.activities) {
+      lines.push('BEGIN:VEVENT', `UID:${escape(activity.id)}@danisagan`, `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')}`, `DTSTART:${stamp(activity.start)}`, `DTEND:${stamp(activity.end)}`, `SUMMARY:${escape(activity.title)}`, `DESCRIPTION:${escape(activity.notes)}`);
+      if (this.hasCoordinates(activity)) lines.push(`GEO:${activity.latitude};${activity.longitude}`);
+      lines.push('END:VEVENT');
+    }
+    lines.push('END:VCALENDAR');
+    const folded = lines.map(line => {
+      let result = '', size = 0;
+      for (const char of line) {
+        const bytes = new TextEncoder().encode(char).length;
+        if (size + bytes > 75) { result += '\r\n '; size = 1; }
+        result += char; size += bytes;
+      }
+      return result;
+    }).join('\r\n') + '\r\n';
+    const url = URL.createObjectURL(new Blob([folded], { type: 'text/calendar;charset=utf-8' }));
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `${this.fileName(this.tripName)}.ics`;
+    anchor.click();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
   activities: TravelActivity[] = [];
   bagActivities: BagActivity[] = [];
   bagDraft: BagActivity = this.createBagDraft();
@@ -103,21 +171,32 @@ export class TravelPlannerComponent
 
   get dates(): string[] {
     return [
-      ...new Set(this.activities.map((a) => a.start.substring(0, 10))),
+      ...new Set([this.selectedDate, ...this.activities.flatMap(a => {
+        const result: string[] = [];
+        const day = new Date(a.start.substring(0, 10) + 'T00:00');
+        while (day.getTime() < new Date(a.end).getTime() && result.length < 366) {
+          result.push(this.toDateInput(day));
+          day.setDate(day.getDate() + 1);
+        }
+        return result;
+      })]),
     ].sort();
   }
 
   get selectedActivities(): TravelActivity[] {
     return this.activities
-      .filter((a) => a.start.substring(0, 10) === this.selectedDate)
+      .filter((a) => a.start < this.addMinutes(`${this.selectedDate}T00:00`, 1440) && a.end > `${this.selectedDate}T00:00`)
       .sort((a, b) => a.start.localeCompare(b.start));
   }
 
   get totalDuration(): number {
-    return this.selectedActivities.reduce(
-      (total, activity) => total + this.durationInMinutes(activity),
-      0,
-    );
+    const dayStart = new Date(`${this.selectedDate}T00:00`).getTime();
+    const dayEnd = new Date(this.addMinutes(`${this.selectedDate}T00:00`, 1440)).getTime();
+    return this.selectedActivities.reduce((total, activity) => {
+      const start = Math.max(new Date(activity.start).getTime(), dayStart);
+      const end = Math.min(new Date(activity.end).getTime(), dayEnd);
+      return total + Math.max(0, end - start) / 60000;
+    }, 0);
   }
 
   addActivity(): void {
@@ -126,10 +205,11 @@ export class TravelPlannerComponent
       !this.draft.title.trim() ||
       !this.draft.start ||
       !this.draft.end ||
+      !this.normalizeActivity(this.draft) ||
       new Date(this.draft.end).getTime() <= new Date(this.draft.start).getTime()
     ) {
       this.activityError =
-        'Introduce una actividad y una fecha y hora de fin posterior al inicio.';
+        'Revisa el título, las fechas (fin posterior al inicio), el coste no negativo y las coordenadas: latitud de −90 a 90 y longitud de −180 a 180, o ambas vacías.';
       return;
     }
     const activity = { ...this.draft, title: this.draft.title.trim() };
@@ -151,11 +231,13 @@ export class TravelPlannerComponent
   }
 
   startEditing(activity: TravelActivity): void {
+    this.scheduledBagActivityId = null;
     this.editingActivityId = activity.id;
     this.activityError = '';
     this.draft = { ...activity };
     this.saveDraft();
     this.updateActivityEditMap();
+    document.getElementById('activity-title')?.focus();
   }
 
   cancelEditing(): void {
@@ -168,6 +250,7 @@ export class TravelPlannerComponent
   }
 
   removeActivity(id: string): void {
+    this.deletedActivity = this.activities.find(activity => activity.id === id) ?? null;
     this.activities = this.activities.filter((a) => a.id !== id);
     if (this.editingActivityId === id) this.cancelEditing();
     this.renderMap();
@@ -176,8 +259,8 @@ export class TravelPlannerComponent
 
   addToBag(): void {
     this.activityError = '';
-    if (!this.draft.title.trim()) {
-      this.activityError = 'Introduce una actividad para añadirla a la bolsa.';
+    if (!this.draft.title.trim() || !this.validCoordinates(this.draft) || !Number.isFinite(this.draft.cost ?? 0) || (this.draft.cost ?? 0) < 0) {
+      this.activityError = 'Revisa el título, el coste y las coordenadas antes de añadir a la bolsa.';
       return;
     }
     this.bagActivities = [
@@ -186,6 +269,8 @@ export class TravelPlannerComponent
         id: this.newId(),
         title: this.draft.title.trim(),
         notes: this.draft.notes,
+        cost: this.draft.cost,
+        category: this.draft.category,
         latitude: this.draft.latitude,
         longitude: this.draft.longitude,
       },
@@ -205,10 +290,13 @@ export class TravelPlannerComponent
       id: activity.id,
       title: activity.title,
       notes: activity.notes,
+      cost: activity.cost ?? 0,
+      category: activity.category ?? 'Visita',
       latitude: activity.latitude,
       longitude: activity.longitude,
     };
     this.updateActivityEditMap();
+    document.getElementById('activity-title')?.focus();
     this.saveDraft();
   }
 
@@ -238,8 +326,8 @@ export class TravelPlannerComponent
 
   saveBagActivity(): void {
     if (!this.editingBagActivityId) return;
-    if (!this.bagDraft.title.trim()) {
-      this.bagError = 'Introduce un nombre para la actividad.';
+    if (!this.bagDraft.title.trim() || !this.validCoordinates(this.bagDraft)) {
+      this.bagError = 'Introduce un nombre y unas coordenadas válidas (o deja ambas vacías).';
       return;
     }
     const activity = { ...this.bagDraft, title: this.bagDraft.title.trim() };
@@ -250,9 +338,12 @@ export class TravelPlannerComponent
   }
 
   selectDate(date: string): void {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
     this.selectedDate = date;
-    this.draft.start = `${date}T12:00`;
-    this.draft.end = `${date}T14:00`;
+    if (!this.editingActivityId && !this.draft.title.trim()) {
+      this.draft.start = `${date}T12:00`;
+      this.draft.end = `${date}T14:00`;
+    }
     this.renderMap();
     this.saveDraft();
   }
@@ -260,6 +351,7 @@ export class TravelPlannerComponent
   download(): void {
     const plan: TravelPlan = {
       version: 2,
+      budget: this.budget,
       name: this.tripName.trim() || 'Mi viaje',
       activities: this.activities,
       bagActivities: this.bagActivities,
@@ -279,11 +371,17 @@ export class TravelPlannerComponent
     const file = input.files?.[0];
     if (!file) return;
     this.importError = '';
+    if (file.size > 5 * 1024 * 1024) {
+      this.importError = 'El archivo supera el límite de 5 MB.';
+      input.value = '';
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       try {
         const plan = JSON.parse(String(reader.result)) as {
           name?: unknown;
+          budget?: unknown;
           activities?: unknown[];
           bagActivities?: unknown[];
         };
@@ -299,13 +397,19 @@ export class TravelPlannerComponent
           throw new Error('Formato no valido');
         if (bagActivities.some((activity) => activity === null))
           throw new Error('Formato no valido');
+        const ids = [...activities, ...bagActivities].map(a => a!.id);
+        if (new Set(ids).size !== ids.length || activities.some(a => !a!.title.trim()) || bagActivities.some(a => !a!.title.trim())) throw new Error('Actividades no válidas');
+        if (plan.budget !== undefined && (typeof plan.budget !== 'number' || !Number.isFinite(plan.budget) || plan.budget < 0)) throw new Error('Presupuesto no válido');
+        this.budget = typeof plan.budget === 'number' ? plan.budget : 0;
+        this.deletedActivity = null;
+        this.destroyBagMap();
         this.tripName = typeof plan.name === 'string' ? plan.name : 'Mi viaje';
         this.activities = activities as TravelActivity[];
         this.bagActivities = bagActivities as BagActivity[];
         this.editingBagActivityId = null;
         this.bagDraft = this.createBagDraft();
         this.bagError = '';
-        this.selectedDate = this.dates[0] ?? this.toDateInput(new Date());
+        this.selectedDate = this.activities.map(a => a.start.substring(0, 10)).sort()[0] ?? this.toDateInput(new Date());
         this.cancelEditing();
         this.renderMap();
         this.saveDraft();
@@ -315,6 +419,7 @@ export class TravelPlannerComponent
         input.value = '';
       }
     };
+    reader.onerror = () => { this.importError = 'No se ha podido leer el archivo.'; input.value = ''; };
     reader.readAsText(file);
   }
 
@@ -334,6 +439,8 @@ export class TravelPlannerComponent
   saveDraft(): void {
     const draft: SavedTravelDraft = {
       version: 3,
+      budget: this.budget,
+      scheduledBagActivityId: this.scheduledBagActivityId,
       name: this.tripName,
       activities: this.activities,
       selectedDate: this.selectedDate,
@@ -344,9 +451,10 @@ export class TravelPlannerComponent
       editingBagActivityId: this.editingBagActivityId,
     };
     try {
-      document.cookie = `${this.draftCookieName}=${encodeURIComponent(JSON.stringify(draft))}; max-age=31536000; path=/; samesite=lax`;
+      localStorage.setItem(this.draftCookieName, JSON.stringify(draft));
+      this.storageMessage = 'En este dispositivo · Guardado';
     } catch {
-      // Si el navegador no puede guardar la cookie, el planificador sigue funcionando normalmente.
+      this.storageMessage = 'No se ha podido guardar. Descarga una copia del viaje.';
     }
   }
 
@@ -363,6 +471,9 @@ export class TravelPlannerComponent
   }
 
   startNewTrip(): void {
+    this.budget = 0;
+    this.deletedActivity = null;
+    this.destroyBagMap();
     this.tripName = 'Mi viaje';
     this.activities = [];
     this.bagActivities = [];
@@ -384,10 +495,19 @@ export class TravelPlannerComponent
   calendarActivityStyle(activity: TravelActivity): Record<string, string> {
     const start = new Date(activity.start);
     const end = new Date(activity.end);
-    const startMinutes = start.getHours() * 60 + start.getMinutes();
-    const endMinutes = end.getHours() * 60 + end.getMinutes();
+    const startMinutes = activity.start.substring(0, 10) < this.selectedDate ? 0 : start.getHours() * 60 + start.getMinutes();
+    const endMinutes = activity.end.substring(0, 10) > this.selectedDate ? 1440 : end.getHours() * 60 + end.getMinutes();
     const top = Math.max(0, startMinutes);
+    const columns: TravelActivity[][] = [];
+    for (const current of this.selectedActivities) {
+      let column = columns.find(items => items.every(item => item.end <= current.start));
+      if (!column) { column = []; columns.push(column); }
+      column.push(current);
+    }
+    const index = columns.findIndex(items => items.some(item => item.id === activity.id));
     return {
+      left: `calc(${index * 100 / columns.length}% + 4px)`,
+      width: `calc(${100 / columns.length}% - 8px)`,
       top: `${top}px`,
       height: `${Math.max(28, Math.min(1440, endMinutes) - top)}px`,
     };
@@ -397,6 +517,8 @@ export class TravelPlannerComponent
     return {
       id: this.newId(),
       title: '',
+      cost: 0,
+      category: 'Visita',
       notes: '',
       start: `${this.selectedDate}T12:00`,
       end: `${this.selectedDate}T14:00`,
@@ -507,10 +629,11 @@ export class TravelPlannerComponent
     const value = document.cookie
       .split('; ')
       .find((cookie) => cookie.startsWith(`${this.draftCookieName}=`));
-    if (!value) return;
     try {
+      const stored = localStorage.getItem(this.draftCookieName);
+      if (!stored && !value) return;
       const saved = JSON.parse(
-        decodeURIComponent(value.substring(this.draftCookieName.length + 1)),
+        stored ?? decodeURIComponent(value!.substring(this.draftCookieName.length + 1)),
       ) as Partial<SavedTravelDraft>;
       if (
         saved.version !== 3 ||
@@ -522,21 +645,23 @@ export class TravelPlannerComponent
         this.normalizeActivity(activity),
       );
       const activityDraft = this.normalizeActivity(saved.activityDraft);
-      if (activities.some((activity) => activity === null) || !activityDraft)
+      if (activities.some((activity) => activity === null))
         return;
       this.tripName = saved.name;
+      this.budget = typeof saved.budget === 'number' && Number.isFinite(saved.budget) && saved.budget >= 0 ? saved.budget : 0;
       this.activities = activities as TravelActivity[];
       this.selectedDate =
-        typeof saved.selectedDate === 'string'
+        typeof saved.selectedDate === 'string' && this.validDateTime(`${saved.selectedDate}T00:00`)
           ? saved.selectedDate
           : (this.dates[0] ?? this.toDateInput(new Date()));
-      this.draft = activityDraft;
+      this.draft = activityDraft ?? this.createDraft();
       const bagActivities = Array.isArray(saved.bagActivities)
         ? saved.bagActivities.map((activity) => this.normalizeBagActivity(activity))
         : [];
       this.bagActivities = bagActivities.filter(
         (activity): activity is BagActivity => activity !== null,
       );
+      this.scheduledBagActivityId = this.bagActivities.some(a => a.id === saved.scheduledBagActivityId) ? saved.scheduledBagActivityId! : null;
       const savedBagDraft = this.normalizeBagActivity(saved.bagDraft);
       this.editingBagActivityId =
         typeof saved.editingBagActivityId === 'string' &&
@@ -552,11 +677,14 @@ export class TravelPlannerComponent
           : this.createBagDraft();
       this.editingActivityId =
         typeof saved.editingActivityId === 'string' &&
+        !!activityDraft &&
         this.activities.some(
           (activity) => activity.id === saved.editingActivityId,
         )
           ? saved.editingActivityId
           : null;
+      if (this.editingActivityId) this.draft.id = this.editingActivityId;
+      this.saveDraft();
     } catch {
       // Una cookie antigua o dañada no debe impedir abrir el planificador.
     }
@@ -636,6 +764,10 @@ export class TravelPlannerComponent
       typeof activity.title !== 'string' ||
       typeof activity.start !== 'string' ||
       !end ||
+      !this.validDateTime(activity.start) ||
+      !this.validDateTime(end) ||
+      (activity.cost !== undefined && (typeof activity.cost !== 'number' || !Number.isFinite(activity.cost) || activity.cost < 0)) ||
+      !this.validCoordinates(activity) ||
       new Date(end).getTime() <= new Date(activity.start).getTime() ||
       (activity.latitude !== null &&
         activity.latitude !== undefined &&
@@ -647,6 +779,8 @@ export class TravelPlannerComponent
       return null;
     return {
       id: activity.id,
+      cost: activity.cost ?? 0,
+      category: this.categories.includes(activity.category ?? '') ? activity.category : 'Visita',
       title: activity.title,
       notes: typeof activity.notes === 'string' ? activity.notes : '',
       start: activity.start,
@@ -662,6 +796,7 @@ export class TravelPlannerComponent
     if (
       typeof activity.id !== 'string' ||
       typeof activity.title !== 'string' ||
+      !this.validCoordinates(activity) ||
       (activity.latitude !== null &&
         activity.latitude !== undefined &&
         typeof activity.latitude !== 'number') ||
@@ -674,6 +809,8 @@ export class TravelPlannerComponent
       id: activity.id,
       title: activity.title,
       notes: typeof activity.notes === 'string' ? activity.notes : '',
+      cost: typeof activity.cost === 'number' && Number.isFinite(activity.cost) && activity.cost >= 0 ? activity.cost : 0,
+      category: this.categories.includes(activity.category ?? '') ? activity.category : 'Visita',
       latitude: activity.latitude ?? null,
       longitude: activity.longitude ?? null,
     };
@@ -693,7 +830,16 @@ export class TravelPlannerComponent
   }
 
   private toDateInput(date: Date): string {
-    return date.toISOString().substring(0, 10);
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+  }
+  private validCoordinates(activity: Partial<BagActivity>): boolean {
+    const { latitude: lat, longitude: lng } = activity;
+    return (lat == null && lng == null) || (typeof lat === 'number' && typeof lng === 'number' && Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180);
+  }
+  private validDateTime(value: string): boolean {
+    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)) return false;
+    const date = new Date(value + 'Z');
+    return Number.isFinite(date.getTime()) && date.toISOString().substring(0, 16) === value;
   }
   private newId(): string {
     return typeof crypto !== 'undefined' && crypto.randomUUID
