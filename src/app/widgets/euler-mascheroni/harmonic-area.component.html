@@ -1,0 +1,16 @@
+<section class="lab" aria-label="Área entre la suma armónica y el logaritmo">
+  <header><span class="eyebrow">DE LO DISCRETO A LO CONTINUO</span><h3>Una diferencia que permanece</h3><p>Cada rectángulo tiene base 1 y altura 1/k. La curva dorada es y = 1/x; los pequeños excesos verdes se acumulan.</p></header>
+  <div class="buttons"><button type="button" *ngFor="let value of [1,4,8,20,40]" (click)="setN(value)" [attr.aria-pressed]="n===value">n = {{ value }}</button><button type="button" class="primary" (click)="animate()">{{ playing ? 'Ⅱ Pausar' : '▶ Añadir rectángulos' }}</button></div>
+  <svg class="plot" viewBox="0 0 740 390" role="group" aria-label="Rectángulos de altura uno dividido entre k y curva uno dividido entre x. El área verde representa H n menos logaritmo de n más uno.">
+    <defs><linearGradient id="harmonic-area-bg" x2="1" y2="1"><stop stop-color="#182b40"/><stop offset="1" stop-color="#0c1122"/></linearGradient></defs><rect width="740" height="390" fill="url(#harmonic-area-bg)"/>
+    <g class="grid"><line x1="60" y1="70" x2="680" y2="70"/><line x1="60" y1="200" x2="680" y2="200"/></g><g class="ticks"><text x="35" y="75">1</text><text x="22" y="205">½</text><text x="40" y="335">0</text><text x="56" y="355">1</text><text x="680" y="355" text-anchor="end">{{ n+1 }}</text><text x="698" y="335">x</text><text x="60" y="35">y</text></g>
+    <g *ngFor="let bar of bars" class="bar" role="button" tabindex="0" [attr.aria-label]="'Inspeccionar rectángulo ' + bar.k" (click)="selected=bar.k" (keydown.enter)="selected=bar.k" (keydown.space)="$event.preventDefault();selected=bar.k" [class.selected]="selected===bar.k"><rect [attr.x]="bar.x" [attr.y]="bar.y" [attr.width]="bar.width" [attr.height]="330-bar.y"/><path [attr.d]="bar.gap"/></g>
+    <path [attr.d]="curve" class="reciprocal"/><path d="M60 45V330H697" class="axis"/>
+    <text x="480" y="50" class="curve-label">y = 1/x</text><text x="480" y="73" class="area-label">Área verde → γ</text>
+  </svg>
+  <div class="metrics"><div><span>Rectángulos · Hₙ</span><strong>{{ h | number:'1.8-8' }}</strong></div><div><span>Área bajo 1/x · ln(n+1)</span><strong>{{ logarithm | number:'1.8-8' }}</strong></div><div class="mint"><span>Diferencia verde</span><strong>{{ lower | number:'1.8-8' }}</strong></div></div>
+  <div class="controls"><label>Número de rectángulos · {{ n }}<input type="range" min="1" max="40" step="1" [(ngModel)]="n" (ngModelChange)="manual()"></label><label>Inspeccionar intervalo · [{{ selected }}, {{ selected+1 }}]<input aria-label="Rectángulo a inspeccionar" type="range" min="1" [max]="n" step="1" [(ngModel)]="selected"></label></div>
+  <div class="insight" aria-live="polite"><b>Exceso del rectángulo {{ selected }}</b><p>1/{{ selected }} − ln(1 + 1/{{ selected }}) = {{ gapValue | number:'1.10-10' }}</p></div>
+  <div class="bracket"><span>{{ lower | number:'1.8-8' }}</span><b>&lt; γ &lt;</b><span>{{ upper | number:'1.8-8' }}</span></div>
+  <p class="note">El área verde es Hₙ − ln(n+1), una aproximación por debajo. La definición habitual usa Hₙ − ln n, que aproxima por arriba. Ambas se acercan a γ ≈ {{ gamma | number:'1.12-12' }}. Las cifras mostradas están redondeadas.</p>
+</section>

@@ -1,0 +1,19 @@
+<section class="lab" aria-label="Calculadora y comparación de convergencia hacia gamma">
+  <header><span class="eyebrow">MISMA SUMA · MUCHA MÁS PRECISIÓN</span><h3>Una carrera hacia 0,577215664901…</h3><p>Compara la definición directa con tres correcciones de Euler–Maclaurin. La gráfica muestra el error absoluto frente a un valor de referencia, con ambas escalas logarítmicas.</p></header>
+  <svg class="plot" viewBox="0 0 740 380" role="img" aria-label="Errores absolutos de cuatro aproximaciones a gamma para n entre uno y cien mil. Las correcciones reducen el error hasta alcanzar la precisión de la aritmética utilizada.">
+    <rect width="740" height="380" fill="#0d1628"/><rect x="65" y="300" width="590" height="18" fill="#847fa2" opacity=".15"/>
+    <g *ngFor="let t of ticks;let i=index"><line x1="65" x2="655" [attr.y1]="48+t*18" [attr.y2]="48+t*18" class="grid-line"/><text x="55" [attr.y]="53+t*18" text-anchor="end" class="tick-label">{{ tickLabels[i] }}</text></g>
+    <g *ngFor="let value of ns"><line [attr.x1]="x(value)" [attr.x2]="x(value)" y1="48" y2="318" class="grid-line"/><text [attr.x]="x(value)" y="342" text-anchor="middle" class="tick-label">{{ value }}</text></g>
+    <path *ngFor="let path of paths;let i=index" [attr.d]="path" [attr.stroke]="methods[i].color" fill="none" stroke-width="2.5"/>
+    <line [attr.x1]="x(n)" [attr.x2]="x(n)" y1="40" y2="320" stroke="#e0e9fc" stroke-dasharray="4 5" opacity=".7"/>
+    <circle *ngFor="let error of errors;let i=index" [attr.cx]="x(n)" [attr.cy]="y(error)" r="5" [attr.fill]="methods[i].color" stroke="#101729" stroke-width="2"/>
+    <text x="65" y="26" class="tick-label">Error absoluto (más abajo = menor error)</text><text x="710" y="342" class="tick-label">n</text>
+  </svg>
+  <div class="legend"><span *ngFor="let method of methods" [style.color]="method.color">● {{ method.name }}</span></div>
+  <div class="controls"><label>n · escala logarítmica<input aria-label="Número de términos en escala logarítmica" type="range" min="0" max="5" step="0.01" [(ngModel)]="exponent" (ngModelChange)="fromSlider()"></label><label>Número exacto de términos<input type="number" min="1" max="100000" step="1" [(ngModel)]="inputN" (ngModelChange)="fromInput()" [attr.aria-invalid]="!!error" aria-describedby="gamma-convergence-error"></label></div>
+  <p id="gamma-convergence-error" class="error" role="alert" *ngIf="error">{{ error }}</p>
+  <div class="buttons"><button type="button" *ngFor="let value of [1,10,100,1000,100000]" (click)="preset(value)">n = {{ value }}</button></div>
+  <div class="table-scroll"><table><thead><tr><th>Método</th><th>Aproximación · n = {{ n }}</th><th>Error absoluto observado</th></tr></thead><tbody><tr *ngFor="let method of methods;let i=index"><td [style.color]="method.color">{{ method.name }}<small>{{ method.formula }}</small></td><td class="number">{{ values[i] | number:'1.14-14' }}</td><td>{{ formatError(errors[i]) }}</td></tr></tbody></table></div>
+  <div class="insight"><b>Intervalo elemental que contiene γ</b><p>{{ lower | number:'1.12-12' }} &lt; γ &lt; {{ upper | number:'1.12-12' }}</p><p>Anchura matemática: ln(1 + 1/n) ≈ {{ width.toExponential(4) }}.</p></div>
+  <p class="note">Se suman hasta 100000 términos con compensación del error de redondeo. Los métodos no utilizan γ para calcular la aproximación; el valor de referencia solo sirve para comparar. Por debajo de aproximadamente 10⁻¹⁴ domina la precisión numérica: el gráfico se recorta en 10⁻¹⁵ y no certifica más dígitos. Las correcciones forman una expansión asintótica, no una serie que deba prolongarse indefinidamente para un n fijo.</p>
+</section>
