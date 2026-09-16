@@ -1,0 +1,55 @@
+<h2>El teorema de la curva de Jordan</h2>
+<p class="dropcap">Dibuja una línea cerrada sin que se cruce consigo misma. Parece evidente que has separado el plano en un interior y un exterior. Pero ¿seguiría siendo cierto si la línea tuviera infinitos recovecos, no admitiera tangentes o fuera imposible medir su longitud? El teorema de la curva de Jordan convierte esa intuición en una afirmación precisa que vale mucho más allá de los círculos y los polígonos.</p>
+<p>Su conclusión no depende de que la curva sea convexa, suave o fácil de dibujar. Depende de dos condiciones: que sea <strong>simple</strong> y que sea <strong>cerrada</strong>. El primer laboratorio permite explorar qué significa estar a un lado u otro; el segundo muestra qué puede cambiar cuando fallan esas condiciones.</p>
+<app-jordan-explorer/>
+
+<h3>1. Qué es una curva de Jordan</h3>
+<p>Una curva de Jordan es la imagen de una aplicación continua e inyectiva de la circunferencia en el plano. «Inyectiva» significa que puntos distintos de la circunferencia no se identifican al dibujarla: no hay cruces, contactos consigo misma ni segmentos recorridos de nuevo.</p>
+<app-formula expression="\gamma:S^1\longrightarrow\mathbb{R}^2,\qquad \gamma\text{ continua e inyectiva},\qquad J=\gamma(S^1)" displayMode="block"/>
+<p>También podemos parametrizarla durante un intervalo de tiempo, empezando y terminando en el mismo punto. En ese caso, la única repetición permitida es la de los extremos:</p>
+<app-formula expression="\gamma:[0,1]\longrightarrow\mathbb{R}^2,\qquad \gamma(0)=\gamma(1),\qquad \gamma|_{[0,1)}\text{ inyectiva}" displayMode="block"/>
+<p>Un triángulo, una elipse y una estrella poligonal sin cruces son ejemplos. La palabra «simple» no significa que tenga una forma sencilla. Un contorno muy accidentado puede ser simple; una figura de ocho, aunque sea fácil de dibujar, no lo es.</p>
+
+<h3>2. El enunciado completo</h3>
+<aside class="theorem"><h4>Teorema de la curva de Jordan</h4><p>El complemento de una curva simple cerrada del plano tiene exactamente dos componentes conexas: una acotada, llamada interior, y otra no acotada, llamada exterior. La curva es la frontera de ambas.</p></aside>
+<app-formula expression="\mathbb{R}^2\setminus J=I\,\dot\cup\,E,\qquad \partial I=\partial E=J" displayMode="block"/>
+<p>Las dos componentes son abiertas y disjuntas. «Acotada» quiere decir que el interior cabe en algún disco de radio finito. «No acotada» significa que el exterior contiene puntos arbitrariamente alejados. Y que toda la curva sea frontera de ambas regiones implica que, cerca de cualquiera de sus puntos, por pequeño que sea el entorno, hay puntos interiores y exteriores.</p>
+<p>La curva no pertenece a ninguna de estas componentes: al hablar del complemento la hemos retirado. Por eso el laboratorio distingue tres situaciones para un punto: interior, exterior y sobre la curva.</p>
+<p>Además, las componentes abiertas y conexas del plano son conexas por caminos. Puedes unir dos puntos interiores mediante un camino que permanezca dentro; lo mismo sucede con dos puntos exteriores. En cambio, cualquier camino continuo que conecte un punto interior con uno exterior tiene que tocar la curva.</p>
+
+<h3>3. Un algoritmo para los polígonos: contar cruces</h3>
+<p>Para decidir si un punto pertenece al interior de un polígono simple, lanza desde él un rayo hacia la derecha. Muy lejos del polígono estás en el exterior. Al atravesar transversalmente su frontera cambias de región. Por tanto, un número impar de cruces significa interior; un número par, incluido cero, significa exterior.</p>
+<app-formula expression="p\notin J:\qquad p\in I\ \Longleftrightarrow\ N(p)\equiv1\pmod2" displayMode="block"/>
+<p>Esta regla requiere cuidado cuando el rayo pasa por un vértice o es tangente a la frontera. Tocar y retroceder no equivale a entrar o salir. El algoritmo del laboratorio considera un extremo de cada intervalo vertical y excluye el otro. Así, un vértice atravesado se cuenta una vez y una tangencia contribuye cero o dos veces, conservando la paridad correcta. Las aristas horizontales no aportan cruces al conteo.</p>
+<p>Para una arista entre A y B cuyos extremos quedan a distintos lados de la altura del punto, la coordenada horizontal de la intersección es:</p>
+<app-formula expression="x_{\mathrm{corte}}=x_A+\frac{y_p-y_A}{y_B-y_A}(x_B-x_A)" displayMode="block"/>
+<p>Solo se cuentan las intersecciones a la derecha del punto. Antes de aplicar la paridad se comprueba si el punto está sobre alguna arista, porque allí no corresponde clasificarlo como interior o exterior.</p>
+<aside class="experiment"><h4>Tres experimentos</h4><ol><li>Selecciona «Estrella simple» y desplaza el punto verticalmente. Un rayo puede cruzar varias veces una frontera que no se cruza consigo misma.</li><li>Selecciona «Bahía profunda». El centro del dibujo está en el exterior, aunque haya curva a su izquierda, arriba y abajo. Estar rodeado en varias direcciones no basta para estar dentro.</li><li>Coloca el punto sobre la curva y comprueba que se suspende la clasificación por paridad. Después muévelo ligeramente a cada lado.</li></ol></aside>
+<p>Este procedimiento es un algoritmo para el modelo poligonal. No constituye por sí solo una demostración del teorema general: una curva de Jordan arbitraria puede cortar un rayo infinitas veces, y no tiene por qué disponer de segmentos ni de tangentes.</p>
+
+<h3>4. Por qué hacen falta las hipótesis</h3>
+<app-jordan-hypotheses/>
+<p><strong>Una curva abierta.</strong> Un arco de circunferencia deja un paso entre lo que parecía estar dentro y lo que parecía estar fuera. Su complemento es conexo. Por pequeña que sea una apertura positiva, el cambio topológico ya se ha producido; el grosor de una línea en pantalla puede ocultar esa diferencia.</p>
+<p><strong>Una curva con un cruce.</strong> La figura de ocho mostrada tiene dos lóbulos interiores y un exterior: tres componentes. La condición de simplicidad ha desaparecido. Esto no significa que todas las curvas con cruces tengan exactamente tres regiones; el resultado depende de sus conexiones.</p>
+<p><strong>Dos curvas anidadas.</strong> Cada una cumple el teorema individualmente, pero su unión no es la imagen de una sola circunferencia mediante una aplicación inyectiva. El complemento conjunto tiene tres regiones: el disco central, la región anular y el exterior. No hay contradicción con Jordan.</p>
+
+<h3>5. Por qué demostrarlo es más difícil de lo que parece</h3>
+<p>Para un polígono simple podemos razonar de forma finita. Una triangulación de su región interior, sin añadir vértices, tiene n−2 triángulos. La descomposición permite estudiar cómo se unen las regiones al añadir o retirar triángulos por aristas compartidas. Es una vía para demostrar la separación en el caso poligonal.</p>
+<p>Pero no podemos tratar cualquier curva continua como un polígono con muchísimos lados y dar el asunto por resuelto. Hay que controlar el paso al límite: que dos trazados estén muy próximos no garantiza, por sí solo, que sus complementos tengan la misma estructura. La demostración general necesita argumentos topológicos adicionales.</p>
+<p>La dificultad está en justificar simultáneamente que existe una región interior, que es una sola, que el exterior también es una sola región y que cada punto de la curva es frontera de ambas. Los dibujos ilustran estas afirmaciones, pero no sustituyen esa justificación. Aquí presentamos el enunciado y su interpretación computacional; no una prueba completa para todas las curvas continuas.</p>
+
+<h3>6. Una frontera fractal también puede separar</h3>
+<p>El borde del copo de Koch es una curva de Jordan: es cerrado y no se cruza consigo mismo. Su longitud es infinita, pero encierra una región acotada de área finita. El teorema no exige longitud finita ni suavidad. Los polígonos de las primeras iteraciones permiten intuir la frontera, aunque cada iteración finita y la curva límite sean objetos diferentes.</p>
+<p>El interior no tiene por qué ser convexo. Dos puntos interiores pueden necesitar un camino con rodeos para unirse sin tocar el borde. El teorema garantiza la existencia de un camino, no que el segmento recto entre esos puntos permanezca dentro.</p>
+
+<h3>7. Jordan, Schönflies y la forma de un disco</h3>
+<p>El teorema de Schönflies refuerza el resultado en el plano: existe un homeomorfismo de todo el plano que lleva la curva de Jordan a una circunferencia. Un homeomorfismo es una transformación continua, biyectiva y con inversa continua. En particular, el interior junto con su frontera es homeomorfo a un disco cerrado.</p>
+<p>Esto habla de equivalencia topológica, no de una transformación que preserve áreas, longitudes o ángulos. Tampoco afirma que la curva sea suave. La frontera puede ser geométricamente muy complicada y seguir delimitando, desde el punto de vista topológico, un disco.</p>
+
+<h3>8. Conexiones: grafos, mapas y número de vueltas</h3>
+<p>En un grafo dibujado sin cruces, un ciclo simple es una curva de Jordan. Su separación del plano explica por qué los ciclos pueden delimitar caras. Esta idea aparece al estudiar la <a routerLink="/articles/planar-euler">fórmula de Euler para grafos planares</a>, aunque una cara de un grafo general puede tener una frontera más compleja que un solo ciclo.</p>
+<p>En gráficos por ordenador y cartografía, decidir si un punto pertenece a una región poligonal sirve para seleccionar objetos, colorear superficies o comprobar pertenencia a una zona. El algoritmo de rayos del primer laboratorio es una forma de realizar esa prueba. Para contornos con autointersecciones pueden usarse reglas de relleno, pero esas convenciones ya no son el enunciado de Jordan.</p>
+<p>Otra conexión es el <strong>número de vueltas</strong>. Para una curva simple cerrada, orientada y regular a trozos, el índice respecto de un punto exterior vale cero; respecto de uno interior vale +1 o −1 según la orientación. En coordenadas complejas se expresa como:</p>
+<app-formula expression="\operatorname{Ind}_{\gamma}(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{d\zeta}{\zeta-z},\qquad z\notin J" displayMode="block"/>
+<p>La hipótesis de regularidad permite escribir esta integral usual. El teorema de Jordan, en cambio, solo requiere continuidad y simplicidad. La distinción evita imponer al resultado general unas condiciones que no necesita.</p>
+<p class="references">Para profundizar: <a href="https://mathworld.wolfram.com/JordanCurveTheorem.html" target="_blank" rel="noopener noreferrer">el teorema de Jordan en MathWorld</a> y <a href="https://pi.math.cornell.edu/~hatcher/AT/ATpage.html" target="_blank" rel="noopener noreferrer">Algebraic Topology, de Allen Hatcher</a>, donde puede consultarse una demostración general.</p>
