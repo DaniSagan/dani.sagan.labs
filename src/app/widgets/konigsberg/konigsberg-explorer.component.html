@@ -1,0 +1,50 @@
+<section class="lab" aria-label="Laboratorio de los puentes de Königsberg">
+  <header><div><span class="eyebrow">LABORATORIO DE GRAFOS · KÖNIGSBERG</span><h3>Siete puentes. Un solo paseo.</h3></div><span class="counter">{{ steps.length }} / {{ active.length }}<small>puentes recorridos</small></span></header>
+  <div class="presets" aria-label="Escenarios"><button type="button" (click)="load('original')">01 · Los siete puentes</button><button type="button" (click)="load('open')">02 · Quitar un puente</button><button type="button" (click)="load('circuit')">03 · Añadir dos</button><button type="button" (click)="load('disconnected')">04 · ¿Basta con grados pares?</button></div>
+  <div class="view-controls"><label>Mapa <input aria-label="Transformar mapa en grafo" type="range" min="0" max="100" [(ngModel)]="abstraction"> Grafo</label><label class="edit"><input type="checkbox" [(ngModel)]="editing" (ngModelChange)="setEditing()">Editar puentes</label></div>
+  <div class="stage" [class.graph]="abstraction > 50">
+    <svg viewBox="0 0 820 500" role="group" aria-label="Cuatro regiones conectadas por puentes. Elige una región y después puentes adyacentes sin repetirlos.">
+      <defs>
+        <linearGradient id="konigsberg-water" x2="1" y2="1"><stop stop-color="#102a43"/><stop offset="1" stop-color="#122035"/></linearGradient>
+        <linearGradient id="konigsberg-land" x2="0" y2="1"><stop stop-color="#254b4b"/><stop offset="1" stop-color="#1b343e"/></linearGradient>
+        <pattern id="konigsberg-grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#5c80a5" opacity=".2"/></pattern>
+        <filter id="konigsberg-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4"/></filter>
+      </defs>
+      <rect width="820" height="500" fill="#0c1222"/>
+      <rect width="820" height="500" fill="url(#konigsberg-grid)"/>
+      <g [attr.opacity]="1 - abstraction / 100" class="landscape" aria-hidden="true">
+        <rect width="820" height="500" fill="url(#konigsberg-water)"/>
+        <g class="currents" fill="none" stroke="#5ab6d6" stroke-width="1" opacity=".25"><path d="M-20 172 Q220 112 455 151 T850 131"/><path d="M-20 330 Q220 385 455 349 T850 365"/><path d="M510 148 Q550 250 510 351"/></g>
+        <g fill="url(#konigsberg-land)" stroke="#55877e" stroke-width="1.5"><path d="M0 0H820V91Q620 143 500 111T230 127T0 95Z"/><path d="M0 500H820V409Q620 357 500 389T230 373T0 405Z"/><path d="M190 250C190 178 395 162 440 228C490 304 259 335 201 281Z"/><path d="M610 198Q665 152 820 182V322Q658 352 607 295Q560 248 610 198Z"/></g>
+        <g fill="#91b4ad" font-size="10" letter-spacing="3"><text x="42" y="62">ORILLA NORTE</text><text x="42" y="451">ORILLA SUR</text><text x="209" y="288">ISLA CENTRAL</text><text x="655" y="309">ISLA ORIENTAL</text></g>
+        <text x="42" y="236" fill="#6eafc8" font-size="12" letter-spacing="4">PREGEL</text>
+      </g>
+      <g *ngFor="let bridge of bridges" class="bridge" [class.available]="available(bridge) && !editing" [class.used]="steps.includes(bridge.id)" [class.inactive]="!bridge.active" [class.editable]="editing"
+        role="button" tabindex="0" [attr.aria-label]="'Puente ' + bridge.id + ', ' + regions[bridge.a].label + ' a ' + regions[bridge.b].label + (bridge.active ? (steps.includes(bridge.id) ? ', recorrido' : ', sin recorrer') : ', desactivado')"
+        (click)="clickBridge(bridge)" (keydown.enter)="clickBridge(bridge)" (keydown.space)="$event.preventDefault(); clickBridge(bridge)">
+        <path class="hit" [attr.d]="bridge.path"/>
+        <path class="bridge-halo" [attr.d]="bridge.path" filter="url(#konigsberg-glow)"/>
+        <path class="bridge-outline" [attr.d]="bridge.path"/>
+        <path class="bridge-line" [attr.d]="bridge.path"/>
+        <path *ngIf="steps.includes(bridge.id)" class="flow" [attr.d]="bridge.path"/>
+        <g [attr.transform]="'translate(' + bridge.midX + ',' + bridge.midY + ')'"><rect x="-14" y="-12" width="28" height="24" rx="7"/><text text-anchor="middle" y="4">{{ bridge.id }}</text></g>
+      </g>
+      <g *ngFor="let region of regions; let i = index" class="region" [class.odd]="analysis.degrees[i] % 2" [class.selected]="current === i" [attr.transform]="'translate(' + region.x + ',' + region.y + ')'" role="button" tabindex="0" [attr.aria-label]="region.name + ', región ' + region.label + ', grado ' + analysis.degrees[i] + '. Elegir como inicio'" (click)="chooseRegion(i)" (keydown.enter)="chooseRegion(i)" (keydown.space)="$event.preventDefault(); chooseRegion(i)">
+        <circle class="region-aura" r="38"/><circle class="region-body" r="26"/><text class="region-letter" text-anchor="middle" y="6">{{ region.label }}</text>
+        <g transform="translate(19,-22)"><circle class="degree-dot" r="12"/><text class="degree-label" text-anchor="middle" y="4">{{ analysis.degrees[i] }}</text></g>
+      </g>
+      <g *ngIf="current !== null" class="walker" [attr.transform]="'translate(' + walker.x + ',' + walker.y + ')'" aria-hidden="true"><circle r="12" fill="#fff3c2" opacity=".5" filter="url(#konigsberg-glow)"/><circle r="6" fill="#fff4cd" stroke="#fff" stroke-width="2"/></g>
+    </svg>
+    <div class="legend"><span><i class="odd-dot"></i>Grado impar</span><span><i class="even-dot"></i>Grado par</span><span><i class="walk-dot"></i>Tu posición</span><small>Esquema topológico, no mapa a escala</small></div>
+  </div>
+  <div class="play-controls" *ngIf="!editing && !steps.length && !auto" aria-label="Elegir región de salida"><button type="button" *ngFor="let region of regions; let i = index" [attr.aria-pressed]="current === i" (click)="chooseRegion(i)" [disabled]="!analysis.degrees[i]">Salir de {{ region.label }}</button></div>
+  <div class="play-controls"><button type="button" class="primary" (click)="reset()">Reiniciar paseo</button><button type="button" (click)="undo()" [disabled]="!steps.length">↶ Deshacer</button><button type="button" (click)="solve()" [disabled]="analysis.kind === 'impossible' || analysis.kind === 'empty' || auto">▶ Mostrar recorrido</button><button type="button" *ngIf="auto" (click)="stop()">Pausar</button></div>
+  <p class="message" role="status">{{ editing ? 'Activa o desactiva puentes en el dibujo o en la lista. Cada cambio reinicia el paseo.' : message }}</p>
+  <div class="dashboard">
+    <div class="verdict" [class.possible]="analysis.kind === 'open' || analysis.kind === 'circuit'"><span class="eyebrow">EL CRITERIO DE EULER</span><h4>{{ status }}</h4><p>{{ explanation }}</p><div class="degrees"><span *ngFor="let region of regions; let i = index" [class.odd]="analysis.degrees[i] % 2">{{ region.label }} <strong>{{ analysis.degrees[i] }}</strong><small>{{ analysis.degrees[i] % 2 ? 'impar' : 'par' }}</small></span></div></div>
+    <div class="route"><span class="eyebrow">TU RECORRIDO</span><div class="route-sequence"><ng-container *ngFor="let vertex of visited; let i = index"><span *ngIf="i" class="route-bridge">—{{ steps[i - 1] }}→</span><b>{{ regions[vertex].label }}</b></ng-container><p *ngIf="!visited.length">Selecciona A, B, C o D en el mapa para comenzar.</p></div><p>Los números indican puentes; las letras, regiones. Puedes regresar a una región, pero no reutilizar un puente.</p><div class="progress-track" role="progressbar" aria-label="Puentes recorridos" [attr.aria-valuenow]="steps.length" aria-valuemin="0" [attr.aria-valuemax]="active.length"><span [style.width.%]="active.length ? steps.length / active.length * 100 : 0"></span></div></div>
+  </div>
+  <div class="bridge-list"><h4>{{ editing ? 'Configura la red' : 'Puentes · también puedes cruzar desde aquí' }}</h4><div class="bridge-buttons"><button type="button" *ngFor="let bridge of bridges" [class.used]="steps.includes(bridge.id)" [class.off]="!bridge.active" [disabled]="!editing && (!available(bridge) || auto || moving)" [attr.aria-pressed]="editing ? bridge.active : null" (click)="clickBridge(bridge)">{{ bridge.id }} · {{ regions[bridge.a].label }}–{{ regions[bridge.b].label }} {{ !bridge.active ? '×' : steps.includes(bridge.id) ? '✓' : '' }}</button></div>
+    <ng-container *ngIf="editing"><p>Añade una conexión (hasta 16 puentes en total). Las conexiones nuevas son una modificación abstracta del problema.</p><div class="bridge-buttons"><button type="button" *ngFor="let pair of pairs" (click)="addBridge(pair.a, pair.b)" [disabled]="bridges.length >= 16">+ {{ regions[pair.a].label }}–{{ regions[pair.b].label }}</button></div></ng-container>
+  </div>
+</section>
