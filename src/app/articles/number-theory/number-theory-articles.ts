@@ -1,3 +1,4 @@
+import { ArithmeticDerivativeArticleComponent } from './arithmetic-derivative/arithmetic-derivative-article.component';
 import { Type } from '@angular/core';
 import { ContinuedFractionsArticleComponent } from './continued-fractions/continued-fractions-article.component';
 import { UlamSpiralArticleComponent } from './ulam-spiral/ulam-spiral-article.component';
@@ -42,7 +43,8 @@ export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   EulerCriterionComponent, PrimitiveRootTheoremComponent, OrdersTheoremComponent,
   DivisorSumTheoremComponent, EuclidEulerPerfectNumbersComponent, RiemannZetaArticleComponent,
   BernoulliNumbersArticleComponent, PerfectNumbersArticleComponent, FibonacciNumbersArticleComponent,
-  AmicableNumbersArticleComponent, AliquotSequencesArticleComponent, CollatzArticleComponent, UlamSpiralArticleComponent
+  AmicableNumbersArticleComponent, AliquotSequencesArticleComponent, CollatzArticleComponent, UlamSpiralArticleComponent,
+  ArithmeticDerivativeArticleComponent
 ];
 
 export const NUMBER_THEORY_NAV_ITEMS = NUMBER_THEORY_ARTICLES.map(article => ({

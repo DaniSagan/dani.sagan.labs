@@ -12,7 +12,6 @@ import { HexahedronViewerComponent } from 'src/app/articles/platonic-solids/hexa
 import { OctahedronViewerComponent } from 'src/app/articles/platonic-solids/octahedron-viewer/octahedron-viewer.component';
 import { DodecahedronViewerComponent } from 'src/app/articles/platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
 import { IcosahedronViewerComponent } from 'src/app/articles/platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
-import { ArithmeticDerivativeArticleComponent } from 'src/app/articles/number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
 import { NUMBER_THEORY_NAV_ITEMS } from 'src/app/articles/number-theory/number-theory-articles';
 import { COMBINATORICS_NAV_ITEMS } from 'src/app/articles/combinatorics/combinatorics-articles';
 import { ANALYSIS_NAV_ITEMS } from 'src/app/articles/analysis/analysis-articles';
@@ -45,8 +44,6 @@ import { TriangleArticleComponent } from 'src/app/articles/regular-polygons/tria
 import { SquareArticleComponent } from 'src/app/articles/regular-polygons/square-article/square-article.component';
 import { HexagonArticleComponent } from 'src/app/articles/regular-polygons/hexagon-article/hexagon-article.component';
 import { OctagonArticleComponent } from 'src/app/articles/regular-polygons/octagon-article/octagon-article.component';
-import { PtolemyTheoremArticleComponent } from 'src/app/articles/geometry/ptolemy-theorem/ptolemy-theorem-article.component';
-import { HeronFormulaArticleComponent } from 'src/app/articles/geometry/heron-formula/heron-formula-article.component';
 import { GEOMETRY_ARTICLES } from 'src/app/articles/geometry/geometry-articles';
 import { KochSnowflakeComponent } from 'src/app/articles/fractals/koch-snowflake/koch-snowflake.component';
 import { CantorSetComponent } from 'src/app/articles/fractals/cantor-set/cantor-set.component';
@@ -165,7 +162,6 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   numericTheory: NavbarItem[] =
   [
     ...NUMBER_THEORY_NAV_ITEMS,
-    { name: ArithmeticDerivativeArticleComponent.title, route: ArithmeticDerivativeArticleComponent.route }
   ];
 
   curves: NavbarItem[] =
@@ -193,8 +189,6 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   geometry: NavbarItem[] = [
-    { name: PtolemyTheoremArticleComponent.title, route: PtolemyTheoremArticleComponent.route },
-    { name: HeronFormulaArticleComponent.title, route: HeronFormulaArticleComponent.route },
     ...GEOMETRY_ARTICLES.map(article => ({ name: article.title, route: article.route }))
   ];
 

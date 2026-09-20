@@ -1,3 +1,5 @@
+import { HeronFormulaArticleComponent } from './heron-formula/heron-formula-article.component';
+import { PtolemyTheoremArticleComponent } from './ptolemy-theorem/ptolemy-theorem-article.component';
 import { CevaTheoremArticleComponent } from './ceva-theorem/ceva-theorem-article.component';
 import { TesseractArticleComponent } from './tesseract/tesseract-article.component';
 import { MenelausTheoremArticleComponent } from './menelaus-theorem/menelaus-theorem-article.component';
@@ -31,6 +33,8 @@ import { StewartTheoremArticleComponent } from './stewart-theorem/stewart-theore
 import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theorem-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  PtolemyTheoremArticleComponent,
+  HeronFormulaArticleComponent,
   TesseractArticleComponent,
   CevaTheoremArticleComponent,
   MenelausTheoremArticleComponent,

@@ -1,167 +1,59 @@
-import { COMPLEX_NUMBERS_ARTICLES } from './complex-numbers/complex-numbers-articles';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-//import { ArticlesRoutingModule } from './articles-routing.module';
-import { TestArticleComponent } from './test-article/test-article.component';
 import { MathjaxModule } from 'mathjax-angular';
 
-import { FormsModule } from '@angular/forms';
-import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
 import { WidgetsModule } from '../widgets/widgets.module';
-import { SierpinskiTriangleComponent } from './fractals/sierpinski-triangle/sierpinski-triangle.component';
-import { SierpinskiCarpetComponent } from './fractals/sierpinski-carpet/sierpinski-carpet.component';
-import { BarnsleyFernComponent } from './fractals/barnsley-fern/barnsley-fern.component';
-import { DragonCurveComponent } from './fractals/dragon-curve/dragon-curve.component';
-import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
-import { DodecahedronViewerComponent } from './platonic-solids/dodecahedron-viewer/dodecahedron-viewer.component';
-import { HexahedronViewerComponent } from './platonic-solids/hexahedron-viewer/hexahedron-viewer.component';
-import { IcosahedronViewerComponent } from './platonic-solids/icosahedron-viewer/icosahedron-viewer.component';
-import { OctahedronViewerComponent } from './platonic-solids/octahedron-viewer/octahedron-viewer.component';
-import { TetrahedronViewerComponent } from './platonic-solids/tetrahedron-viewer/tetrahedron-viewer.component';
-import { RouterModule } from '@angular/router';
-import { ArticlesContentComponent } from './articles-content/articles-content.component';
 import { ArticlesRoutingModule } from './articles-routing.module';
-import { ArithmeticDerivativeArticleComponent } from './number-theory/arithmetic-derivative/arithmetic-derivative-article.component';
-import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
-import { COMBINATORICS_ARTICLES } from './combinatorics/combinatorics-articles';
+
+import { ArticlesContentComponent } from './articles-content/articles-content.component';
+import { ArticlesNavbarComponent } from './articles-navbar/articles-navbar.component';
+import { TestArticleComponent } from './test-article/test-article.component';
+
 import { ANALYSIS_ARTICLES } from './analysis/analysis-articles';
 import { CALCULUS_ARTICLES } from './calculus/calculus-articles';
-import { TOPOLOGY_ARTICLES } from './topology/topology-articles';
-import { MandelbrotComponent } from './fractals/mandelbrot/mandelbrot.component';
-import { ApollonianSieveComponent } from './fractals/apollonian-sieve/apollonian-sieve.component';
-import { ParabolaArticleComponent } from './curves/parabola-article/parabola-article.component';
-import { PercolationDiagramComponent } from './probability/percolation-diagram/percolation-diagram.component';
-import { BayesTheoremArticleComponent } from './probability/bayes-theorem/bayes-theorem-article.component';
-import { BirthdayParadoxArticleComponent } from './probability/birthday-paradox/birthday-paradox-article.component';
-import { MontyHallArticleComponent } from './probability/monty-hall/monty-hall-article.component';
-import { BuffonNeedleArticleComponent } from './probability/buffon-needle/buffon-needle-article.component';
-import { TrigInverseTrigCompositionComponent } from './trigonometry/trig-inverse-trig-composition/trig-inverse-trig-composition.component';
-import { PtolemyTheoremArticleComponent } from './geometry/ptolemy-theorem/ptolemy-theorem-article.component';
-import { HeronFormulaArticleComponent } from './geometry/heron-formula/heron-formula-article.component';
+import { COMBINATORICS_ARTICLES } from './combinatorics/combinatorics-articles';
+import { COMPLEX_NUMBERS_ARTICLES } from './complex-numbers/complex-numbers-articles';
+import { CURVES_ARTICLES } from './curves/curves-articles';
+import { DYNAMICAL_SYSTEMS_ARTICLES } from './lorenz-attractor/dynamical-systems-articles';
+import { FRACTALS_ARTICLES } from './fractals/fractals-articles';
 import { GEOMETRY_ARTICLES } from './geometry/geometry-articles';
-import { CardioidArticleComponent } from './curves/cardioid-article/cardioid-article.component';
-import { RoseArticleComponent } from './curves/rose-article/rose-article.component';
-import { LemniscateArticleComponent } from './curves/lemniscate-article/lemniscate-article.component';
-import { CassiniArticleComponent } from './curves/cassini-article/cassini-article.component';
-import { ArchimedeanSpiralArticleComponent } from './curves/archimedean-spiral-article/archimedean-spiral-article.component';
-import { LogarithmicSpiralArticleComponent } from './curves/logarithmic-spiral-article/logarithmic-spiral-article.component';
-import { AstroidArticleComponent } from './curves/astroid-article/astroid-article.component';
-import { DeltoidArticleComponent } from './curves/deltoid-article/deltoid-article.component';
-import { TrifoliumArticleComponent } from './curves/trifolium-article/trifolium-article.component';
-import { EpicycloidArticleComponent } from './curves/epicycloid-article/epicycloid-article.component';
-import { HypocycloidArticleComponent } from './curves/hypocycloid-article/hypocycloid-article.component';
-import { CycloidArticleComponent } from './curves/cycloid-article/cycloid-article.component';
-import { LissajousArticleComponent } from './curves/lissajous-article/lissajous-article.component';
-import { ConchoidArticleComponent } from './curves/conchoid-article/conchoid-article.component';
-import { CissoidArticleComponent } from './curves/cissoid-article/cissoid-article.component';
-import { ParabolaLikeArticleComponent } from './curves/parabola-like-article/parabola-like-article.component';
-import { KochSnowflakeComponent } from './fractals/koch-snowflake/koch-snowflake.component';
-import { CantorSetComponent } from './fractals/cantor-set/cantor-set.component';
-import { VicsekFractalComponent } from './fractals/vicsek-fractal/vicsek-fractal.component';
-import { LevyCCurveComponent } from './fractals/levy-c-curve/levy-c-curve.component';
-import { HilbertCurveComponent } from './fractals/hilbert-curve/hilbert-curve.component';
-import { PeanoCurveComponent } from './fractals/peano-curve/peano-curve.component';
-import { GosperCurveComponent } from './fractals/gosper-curve/gosper-curve.component';
-import { MinkowskiSausageComponent } from './fractals/minkowski-sausage/minkowski-sausage.component';
-import { TSquareComponent } from './fractals/t-square/t-square.component';
-import { HTreeComponent } from './fractals/h-tree/h-tree.component';
-import { PythagorasTreeComponent } from './fractals/pythagoras-tree/pythagoras-tree.component';
-import { JuliaSetComponent } from './fractals/julia-set/julia-set.component';
-import { TricornComponent } from './fractals/tricorn/tricorn.component';
-import { MultibrotComponent } from './fractals/multibrot/multibrot.component';
-import { CantorDustComponent } from './fractals/cantor-dust/cantor-dust.component';
-import {
-  BinaryFractalTreeComponent,
-  BoxFractalComponent,
-  CesaroFractalComponent,
-  CrossFractalComponent,
-  DurerPentagonComponent,
-  FractalCanopyComponent,
-  FractalPlantComponent,
-  HexaflakeComponent,
-  JerusalemCrossComponent,
-  KochAntisnowflakeComponent,
-  KochCurveComponent,
-  MengerSpongeComponent,
-  MooreCurveComponent,
-  PaperfoldingCurveComponent,
-  PentaflakeComponent,
-  QuadraticKochIslandComponent,
-  SierpinskiArrowheadComponent,
-  SierpinskiCurveComponent,
-  TerdragonComponent,
-  TwindragonComponent,
-} from './fractals/additional-fractals';
+import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';
+import { PLATONIC_SOLIDS_ARTICLES } from './platonic-solids/platonic-solids-articles';
+import { PROBABILITY_ARTICLES } from './probability/probability-articles';
+import { TOPOLOGY_ARTICLES } from './topology/topology-articles';
+import { TRIGONOMETRY_ARTICLES } from './trigonometry/trigonometry-articles';
 
 @NgModule({
   imports: [
     CommonModule,
-    // ArticlesRoutingModule,
     MathjaxModule.forChild(),
     WidgetsModule,
     FormsModule,
     RouterModule,
     ArticlesRoutingModule,
+
+    // Article layout
     ArticlesContentComponent,
-    TestArticleComponent,
     ArticlesNavbarComponent,
-    SierpinskiTriangleComponent,
-    SierpinskiCarpetComponent,
-    BarnsleyFernComponent,
-    DragonCurveComponent,
-    MandelbrotComponent,
-    ApollonianSieveComponent,
-    LorenzAttractorComponent,
-    DodecahedronViewerComponent,
-    HexahedronViewerComponent,
-    IcosahedronViewerComponent,
-    OctahedronViewerComponent,
-    TetrahedronViewerComponent,
-    ArithmeticDerivativeArticleComponent,
-    ...NUMBER_THEORY_ARTICLES,
-    ...COMBINATORICS_ARTICLES,
+    TestArticleComponent,
+
+    // Article collections
     ...ANALYSIS_ARTICLES,
     ...CALCULUS_ARTICLES,
-    ...TOPOLOGY_ARTICLES,
+    ...COMBINATORICS_ARTICLES,
     ...COMPLEX_NUMBERS_ARTICLES,
-    ParabolaArticleComponent,
-    PtolemyTheoremArticleComponent,
-    HeronFormulaArticleComponent,
+    ...CURVES_ARTICLES,
+    ...DYNAMICAL_SYSTEMS_ARTICLES,
+    ...FRACTALS_ARTICLES,
     ...GEOMETRY_ARTICLES,
-    PercolationDiagramComponent,
-    BayesTheoremArticleComponent,
-    BirthdayParadoxArticleComponent,
-    MontyHallArticleComponent,
-    BuffonNeedleArticleComponent,
-    TrigInverseTrigCompositionComponent,
-    CardioidArticleComponent,
-    RoseArticleComponent,
-    LemniscateArticleComponent,
-    CassiniArticleComponent,
-    ArchimedeanSpiralArticleComponent,
-    LogarithmicSpiralArticleComponent,
-    AstroidArticleComponent,
-    DeltoidArticleComponent,
-    TrifoliumArticleComponent,
-    EpicycloidArticleComponent,
-    HypocycloidArticleComponent,
-    CycloidArticleComponent,
-    LissajousArticleComponent,
-    ConchoidArticleComponent,
-    CissoidArticleComponent,
-    ParabolaLikeArticleComponent
-    , KochSnowflakeComponent, CantorSetComponent, VicsekFractalComponent, LevyCCurveComponent,
-    HilbertCurveComponent, PeanoCurveComponent, GosperCurveComponent, MinkowskiSausageComponent,
-    TSquareComponent, HTreeComponent, PythagorasTreeComponent, JuliaSetComponent,
-    TricornComponent, MultibrotComponent, CantorDustComponent,
-    KochCurveComponent, CesaroFractalComponent, QuadraticKochIslandComponent,
-    SierpinskiArrowheadComponent, SierpinskiCurveComponent, MooreCurveComponent,
-    FractalCanopyComponent, BinaryFractalTreeComponent, FractalPlantComponent,
-    TerdragonComponent, TwindragonComponent, PaperfoldingCurveComponent,
-    BoxFractalComponent, CrossFractalComponent, KochAntisnowflakeComponent,
-    PentaflakeComponent, HexaflakeComponent, DurerPentagonComponent,
-    MengerSpongeComponent, JerusalemCrossComponent
+    ...NUMBER_THEORY_ARTICLES,
+    ...PLATONIC_SOLIDS_ARTICLES,
+    ...PROBABILITY_ARTICLES,
+    ...TOPOLOGY_ARTICLES,
+    ...TRIGONOMETRY_ARTICLES,
   ],
 })
 export class ArticlesModule {}
