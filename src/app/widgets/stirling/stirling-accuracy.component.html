@@ -1,0 +1,31 @@
+<section class="lab" aria-labelledby="stirling-accuracy-title">
+  <header><span class="eyebrow">LABORATORIO 01 · PRECISIÓN</span><h3 id="stirling-accuracy-title">Un factorial sin multiplicar</h3><p>Compara magnitudes enormes y descubre cuánto aporta cada corrección.</p></header>
+  <div class="tabs" role="group" aria-label="Aproximación seleccionada">
+    @for (item of methods; track item.name; let i = $index) { <button type="button" [class.active]="method === i" [attr.aria-pressed]="method === i" (click)="method = i">{{ item.name }}</button> }
+  </div>
+  <p class="formula">{{ methods[method].formula }}</p>
+  <div class="metrics">
+    <div><span>n! · referencia numérica</span><strong>{{ reference.mantissa }} × 10<sup>{{ reference.exponent }}</sup></strong></div>
+    <div><span>Aproximación seleccionada</span><strong class="mint">{{ approximation.mantissa }} × 10<sup>{{ approximation.exponent }}</sup></strong></div>
+    <div><span>Error relativo absoluto</span><strong class="gold">{{ formatError(relativeError) }}</strong></div>
+  </div>
+  <div class="chart-caption">Error relativo frente a n · ambos ejes logarítmicos</div>
+  <svg class="chart" viewBox="0 0 690 324" role="img" aria-label="Comparación de errores relativos: las correcciones hacen descender el error más rápidamente. Las curvas se recortan al llegar al umbral numérico de diez elevado a menos once.">
+    @for (tick of ticks; track tick.v) { <line class="grid" x1="66" x2="630" [attr.y1]="y(tick.v)" [attr.y2]="y(tick.v)" /><text x="54" [attr.y]="y(tick.v)+4" text-anchor="end">{{ tick.label }}</text> }
+    @for (nTick of presets; track nTick) { <line class="grid" [attr.x1]="x(nTick)" [attr.x2]="x(nTick)" y1="35" y2="266" /><text [attr.x]="x(nTick)" y="292" text-anchor="middle">{{ nTick }}</text> }
+    <rect x="66" y="260" width="564" height="12" class="floor" />
+    @for (path of paths; track path; let i = $index) { <path class="curve" [attr.d]="path" [attr.stroke]="methods[i].color" [attr.stroke-dasharray]="i === 0 ? null : i === 1 ? '8 4' : '2 4'" [attr.opacity]="method === i ? 1 : 0.5" /> }
+    <line class="cursor" [attr.x1]="x(n)" [attr.x2]="x(n)" y1="35" y2="266" />
+    <circle [attr.cx]="x(n)" [attr.cy]="y(relativeError < 0 ? -relativeError : relativeError)" r="5" [attr.fill]="methods[method].color" />
+    <text x="348" y="317" text-anchor="middle">n · número de factores</text>
+  </svg>
+  <div class="legend">@for (item of methods; track item.name; let i = $index) { <span [style.color]="item.color">{{ i === 0 ? '━' : i === 1 ? '┄' : '┈' }} {{ item.name }}</span> }</div>
+  <div class="controls">
+    <div class="label-row"><label for="stirling-n">Tamaño del factorial</label><output>n = {{ n }}</output></div>
+    <input id="stirling-n" type="range" min="0" max="3" step="0.01" [ngModel]="exponent" (ngModelChange)="fromSlider($event)" [attr.aria-valuetext]="n + ' factores'">
+    <div class="control-row"><div class="presets">@for (value of presets; track value) { <button type="button" [class.active]="value === n" [attr.aria-pressed]="value === n" (click)="selectN(value)">{{ value }}</button> }</div>
+      <form (ngSubmit)="fromInput()"><label for="stirling-exact-n">n exacto</label><input id="stirling-exact-n" type="number" name="n" min="1" max="1000" step="1" required [(ngModel)]="inputN"><button type="submit">Aplicar</button></form></div>
+    @if (error) { <p role="alert" class="error">{{ error }}</p> }
+  </div>
+  <footer><span class="eyebrow">EL COCIENTE ES LO QUE IMPORTA</span><p class="readout">A / n! ≈ {{ ratio }}</p><p>{{ direction }}. La referencia se calcula sumando ln(k), con compensación del redondeo. La banda inferior indica errores menores que ~10⁻¹¹: no se interpretan como cero ni como cifras garantizadas.</p></footer>
+</section>

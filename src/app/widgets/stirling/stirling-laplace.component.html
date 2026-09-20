@@ -1,0 +1,23 @@
+<section class="lab" aria-labelledby="stirling-laplace-title">
+  <header><span class="eyebrow">LABORATORIO 02 · MÉTODO DE LAPLACE</span><h3 id="stirling-laplace-title">La campana escondida en n!</h3><p>Centra la integral en su máximo y mide las distancias en unidades de √n.</p></header>
+  <div class="metrics">
+    <div><span>Área total del perfil exacto</span><strong class="mint">{{ area.toFixed(8) }}</strong></div>
+    <div><span>Área gaussiana √(2π)</span><strong>{{ gaussianArea.toFixed(8) }}</strong></div>
+    <div><span>Cociente de áreas</span><strong class="gold">{{ (area / gaussianArea).toFixed(8) }}</strong></div>
+  </div>
+  <svg class="chart" viewBox="0 0 690 324" role="img" aria-label="Perfil de la integral del factorial centrado en su máximo y reescalado, frente a la campana exp de menos u al cuadrado entre dos.">
+    @for (tick of heights; track tick) { <line class="grid" x1="66" x2="630" [attr.y1]="y(tick)" [attr.y2]="y(tick)" /><text x="54" [attr.y]="y(tick)+4" text-anchor="end">{{ tick }}</text> }
+    @for (tick of ticks; track tick) { <line class="grid" [attr.x1]="x(tick)" [attr.x2]="x(tick)" y1="35" y2="270" /><text [attr.x]="x(tick)" y="291" text-anchor="middle">{{ tick }}</text> }
+    @if (boundary > -4) { <rect class="floor" x="66" y="35" [attr.width]="x(boundary)-66" height="235" /><line class="cursor" [attr.x1]="x(boundary)" [attr.x2]="x(boundary)" y1="35" y2="270" /> }
+    <path class="area-fill" [attr.d]="kernelPath + ' L630,270 L66,270 Z'" />
+    <path class="curve" stroke="#94e4cd" [attr.d]="kernelPath" />
+    <path class="curve" stroke="#efcc85" stroke-dasharray="7 5" [attr.d]="gaussianPath" />
+    <text x="348" y="317" text-anchor="middle">u = (t − n) / √n</text>
+  </svg>
+  <div class="legend"><span class="mint">━ Perfil exacto gₙ(u)</span><span class="gold">┄ Gaussiana exp(−u²/2)</span></div>
+  <div class="controls"><div class="label-row"><label for="stirling-laplace-n">Tamaño n</label><output>n = {{ n }}</output></div>
+    <input id="stirling-laplace-n" type="range" min="0" max="3" step="0.01" [ngModel]="exponent" (ngModelChange)="fromSlider($event)" [attr.aria-valuetext]="'n igual a ' + n">
+    <div class="presets">@for (value of presets; track value) { <button type="button" [class.active]="value === n" [attr.aria-pressed]="value === n" (click)="selectN(value)">{{ value }}</button> }</div>
+  </div>
+  <footer><span class="eyebrow">DE UNA INTEGRAL A UNA APROXIMACIÓN</span><p class="readout">Altura × anchura × área ≈ (n/e)ⁿ × √n × √(2π)</p><p>La región sombreada a la izquierda, cuando aparece, queda fuera del dominio t &gt; 0. La gráfica muestra −4 ≤ u ≤ 6; las áreas indicadas corresponden al dominio completo, no solo a la ventana visible. El área exacta se obtiene a partir de ln(n!), no por integración de los píxeles.</p></footer>
+</section>

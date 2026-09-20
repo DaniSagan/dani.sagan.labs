@@ -1,0 +1,65 @@
+<h2>La fórmula de Stirling</h2>
+<p class="dropcap">El factorial cuenta las maneras de ordenar objetos distintos: n! = 1 · 2 · 3 · … · n. Su crecimiento es vertiginoso. Diez objetos admiten más de tres millones de órdenes; cien, un número de 158 cifras. La fórmula de Stirling permite estimar ese producto enorme mediante una expresión de tamaño manejable.</p>
+<aside class="theorem"><span class="section-label">LA APROXIMACIÓN FUNDAMENTAL</span>
+  <app-formula expression="\boxed{n!\sim\sqrt{2\pi n}\left(\frac ne\right)^n}\qquad(n\to\infty)" displayMode="block" />
+  <p>El símbolo ∼ significa que el cociente entre ambos miembros tiende a 1. No significa que su diferencia tienda a cero.</p>
+</aside>
+<p>La fórmula lleva el nombre de James Stirling y está ligada también al trabajo de Abraham de Moivre. Su utilidad va más allá de calcular factoriales: permite estimar coeficientes binomiales, probabilidades y el crecimiento de muchas expresiones combinatorias.</p>
+
+<h3>1. Aproximar un producto con una suma</h3>
+<p>Tomar logaritmos convierte el producto en una suma. Todos los logaritmos que aparecen aquí son naturales:</p>
+<app-formula expression="\ln(n!)=\sum_{k=1}^{n}\ln k" displayMode="block" />
+<p>Como primera estimación, sustituimos la suma por el área bajo ln x. La integral se calcula inmediatamente:</p>
+<app-formula expression="\int_1^n\ln x\,dx=n\ln n-n+1" displayMode="block" />
+<p>Esto explica la escala dominante n ln n − n y, al exponenciar, el factor (n/e)<sup>n</sup>. Pero no basta para obtener una aproximación con error relativo pequeño: falta el factor √(2πn), que sigue creciendo. Una corrección pequeña frente a n ln n puede ser decisiva después de exponenciar.</p>
+
+<h3>2. Qué significa que la aproximación sea buena</h3>
+<p>Si A es una aproximación a n!, medimos su error relativo mediante |A/n! − 1|. Así podemos comparar números de tamaños muy diferentes. La fórmula básica subestima el factorial para todo entero n ≥ 1. Su error relativo principal es aproximadamente 1/(12n).</p>
+<app-stirling-accuracy />
+<aside class="experiment"><h4>Prueba con n = 10 y n = 100</h4><p>La fórmula básica tiene un error relativo cercano al 0,83 % para n = 10 y al 0,083 % para n = 100. Selecciona una o dos correcciones y compara las pendientes. Las fórmulas corregidas del widget aplican correcciones al logaritmo y después exponencian; no son truncamientos de una serie multiplicativa.</p></aside>
+<p>La diferencia absoluta entre la fórmula básica y el factorial no tiende a cero: es aproximadamente n!/(12n), que crece. Lo que disminuye es la diferencia como fracción del tamaño de n!.</p>
+
+<h3>3. Por qué aparece una gaussiana</h3>
+<p>La <a routerLink="/articles/gamma-function">función gamma</a> ofrece una representación integral del factorial:</p>
+<app-formula expression="n!=\Gamma(n+1)=\int_0^\infty t^n e^{-t}\,dt=\int_0^\infty e^{n\ln t-t}\,dt" displayMode="block" />
+<p>El exponente h(t) = n ln t − t alcanza su máximo en t = n, ya que h′(t) = n/t − 1. Allí h″(n) = −1/n. El perfil tiene, por tanto, una anchura característica del orden de √n. Centramos la variable y la reescalamos:</p>
+<app-formula expression="t=n+\sqrt n\,u,\qquad n!=\left(\frac ne\right)^n\sqrt n\int_{-\sqrt n}^{\infty}\exp\left[n\left(\ln\left(1+\frac u{\sqrt n}\right)-\frac u{\sqrt n}\right)\right]du" displayMode="block" />
+<p>Para u fijo, la expansión de ln(1+v) cancela el término lineal y deja como término dominante −u²/2:</p>
+<app-formula expression="n\left(\ln\left(1+\frac u{\sqrt n}\right)-\frac u{\sqrt n}\right)=-\frac{u^2}{2}+\frac{u^3}{3\sqrt n}-\frac{u^4}{4n}+\cdots" displayMode="block" />
+<p>El perfil reescalado se aproxima a exp(−u²/2). No es una densidad normalizada: su altura máxima es 1 y su área total es √(2π).</p>
+<app-stirling-laplace />
+<p>El método de Laplace justifica que la contribución principal procede del entorno del máximo y que las colas no alteran el límite. La convergencia puntual de los perfiles, por sí sola, no bastaría para intercambiar límite e integral. Con ese control se obtiene:</p>
+<app-formula expression="\int_{-\sqrt n}^{\infty}g_n(u)\,du\longrightarrow\int_{-\infty}^{\infty}e^{-u^2/2}\,du=\sqrt{2\pi}" displayMode="block" />
+<p>Multiplicar la altura (n/e)<sup>n</sup>, la anchura √n y el área límite √(2π) produce exactamente la fórmula de Stirling. Esta derivación explica sus factores; el control uniforme de las colas es el paso analítico adicional que convierte el argumento local en una demostración completa.</p>
+
+<h3>4. Corregir el error con Euler–Maclaurin</h3>
+<p>La fórmula de Euler–Maclaurin permite refinar la comparación entre la suma de logaritmos y su integral. Las correcciones contienen los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Para el logaritmo del factorial:</p>
+<app-formula expression="\ln(n!)\sim\left(n+\frac12\right)\ln n-n+\frac12\ln(2\pi)+\frac1{12n}-\frac1{360n^3}+\frac1{1260n^5}-\cdots" displayMode="block" />
+<p>De ahí salen las dos mejoras del primer widget: multiplicar la fórmula básica por exp(1/(12n)), o por exp(1/(12n) − 1/(360n³)). Sus errores relativos son, respectivamente, de orden n<sup>−3</sup> y n<sup>−5</sup>, frente al orden n<sup>−1</sup> de la fórmula básica.</p>
+<p>Si, en cambio, expandimos la exponencial y agrupamos potencias de 1/n, obtenemos otra forma habitual:</p>
+<app-formula expression="n!\sim\sqrt{2\pi n}\left(\frac ne\right)^n\left(1+\frac1{12n}+\frac1{288n^2}-\frac{139}{51840n^3}+\cdots\right)" displayMode="block" />
+<p>Estas expansiones son asintóticas: para un número fijo de términos, describen el comportamiento al crecer n. No prometen que añadir términos indefinidamente mejore la respuesta para un n fijo. Tampoco eliminan el redondeo de los cálculos numéricos.</p>
+
+<h3>5. Una cota, no solo una estimación</h3>
+<p>Para n positivo, el resto de la expansión logarítmica tiene el signo del primer término omitido y su módulo queda acotado por ese término. Con las primeras correcciones obtenemos, para enteros n ≥ 1:</p>
+<app-formula expression="L_n+\frac1{12n}-\frac1{360n^3}\lt\ln(n!)\lt L_n+\frac1{12n},\qquad L_n=\left(n+\frac12\right)\ln n-n+\frac12\ln(2\pi)" displayMode="block" />
+<p>Al exponenciar, A₂ queda por debajo del factorial y A₁ por encima. Esto justifica la dirección de los errores mostrados en el laboratorio, incluso cuando la diferencia es demasiado pequeña para distinguirla con los decimales impresos.</p>
+
+<h3>6. Aplicación: el centro del triángulo de Pascal</h3>
+<p>El coeficiente binomial central cuenta las formas de escoger n elementos entre 2n. Sustituimos los tres factoriales por sus aproximaciones:</p>
+<app-formula expression="\binom{2n}{n}=\frac{(2n)!}{(n!)^2}\sim\frac{\sqrt{4\pi n}(2n/e)^{2n}}{2\pi n(n/e)^{2n}}=\frac{4^n}{\sqrt{\pi n}}" displayMode="block" />
+<p>En 2n lanzamientos independientes de una moneda equilibrada, la probabilidad de obtener exactamente n caras es ese coeficiente dividido entre 4<sup>n</sup>. Por tanto:</p>
+<app-formula expression="\mathbb P(\text{exactamente }n\text{ caras en }2n\text{ lanzamientos})\sim\frac1{\sqrt{\pi n}}" displayMode="block" />
+<p>El resultado central es el más probable de todos los recuentos individuales, pero su probabilidad tiende a cero. La masa se reparte entre un número creciente de valores cercanos al centro.</p>
+
+<h3>7. Calcular sin desbordamientos</h3>
+<p>Un factorial puede superar rápidamente el rango de los números de coma flotante. Trabajar con ln(n!) evita formar el producto. Para un cociente de factoriales, se restan sus logaritmos y solo se exponencia al final si el resultado cabe en el rango disponible.</p>
+<app-formula expression="\log_{10}(n!)=\frac{\ln(n!)}{\ln10},\qquad\text{cifras de }n!=\left\lfloor\log_{10}(n!)\right\rfloor+1" displayMode="block" />
+<p>La identidad para el número de cifras es exacta, pero usar un logaritmo aproximado cerca de un entero exige cuidado con el redondeo. Del mismo modo, dos aproximaciones que imprimen los mismos decimales no tienen por qué ser iguales. Los widgets señalan explícitamente el umbral por debajo del cual su comparación numérica deja de resolver el error.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://dlmf.nist.gov/5.11#i" target="_blank" rel="noopener noreferrer">NIST DLMF, 5.11(i): expansiones asintóticas de la función gamma</a>.</li>
+  <li><a href="https://dlmf.nist.gov/5.11#ii" target="_blank" rel="noopener noreferrer">NIST DLMF, 5.11(ii): cotas del error y del resto</a>.</li>
+  <li><a href="https://dlmf.nist.gov/2.3#iii" target="_blank" rel="noopener noreferrer">NIST DLMF, 2.3(iii): método de Laplace para integrales</a>.</li>
+</ul>
