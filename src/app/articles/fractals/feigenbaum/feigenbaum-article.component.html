@@ -1,0 +1,47 @@
+<article aria-labelledby="feigenbaum-title">
+  <span class="section-label">DUPLICACIÓN DE PERÍODO · UNIVERSALIDAD · CAOS</span>
+  <h2 id="feigenbaum-title">La constante de Feigenbaum</h2>
+  <p class="dropcap">Una regla sencilla puede producir un equilibrio, después una alternancia entre dos valores, luego cuatro, ocho… y finalmente una evolución caótica. Las duplicaciones se suceden cada vez más deprisa. En la proporción con la que se comprimen aparece un número que también encontramos al cambiar la regla: 4,669201609…</p>
+  <aside class="theorem"><span class="section-label">EL NÚMERO DETRÁS DE LA CASCADA</span>
+    <app-formula expression="\boxed{\delta=\lim_{n\to\infty}\frac{r_n-r_{n-1}}{r_{n+1}-r_n}=4{,}669201609102990\ldots}" displayMode="block" />
+    <p>rₙ es el parámetro en el que el ciclo estable de período 2ⁿ⁻¹ se duplica. δ describe la contracción asintótica de los intervalos entre duplicaciones consecutivas.</p>
+  </aside>
+
+  <h3>1. De una parábola a una historia infinita</h3>
+  <p>En la <a routerLink="/articles/bifurcation-diagram">aplicación logística</a>, cada estado se obtiene a partir del anterior. Para 0 ≤ r ≤ 4, un estado inicial en [0, 1] permanece en ese intervalo:</p>
+  <app-formula expression="x_{k+1}=f_r(x_k)=r x_k(1-x_k)" displayMode="block" />
+  <p>Una órbita es la sucesión x₀, x₁, x₂… Un punto fijo satisface f(x) = x; un ciclo de período p regresa al mismo estado después de p pasos, sin hacerlo antes. Lo que importa para observar un atractor es el comportamiento después del transitorio, no solo los primeros pasos.</p>
+  <p>El punto fijo no nulo es x* = 1 − 1/r. Una pequeña perturbación se multiplica, aproximadamente, por f′(x*) = 2 − r en cada paso. Por eso es estable para 1 &lt; r &lt; 3: el valor absoluto del multiplicador es menor que uno. En r = 3 llega a −1, pierde estabilidad y nace un ciclo de período 2.</p>
+  <app-formula expression="r_1=3,\qquad r_2=1+\sqrt6\approx3{,}449489743,\qquad r_3\approx3{,}544090360" displayMode="block" />
+  <p>Después aparecen ciclos de períodos 4, 8, 16… La cascada principal se acumula en r∞ ≈ 3,569945672. Ese umbral no significa que todo parámetro posterior sea caótico: entre las regiones caóticas existen ventanas periódicas, como la de período 3.</p>
+
+  <h3>2. Mira cómo se rompe el equilibrio</h3>
+  <app-feigenbaum-explorer />
+  <aside class="experiment"><h4>Tres experimentos para orientarte</h4><p>Empieza con «Período 2» y pasa a «Período 4»: cuenta los estados que se repiten. Amplía después la región «Acumulación» para ver nuevas divisiones. Por último, compara «Caos» y «Período 3» con la misma perturbación inicial: aumentar r no equivale a aumentar el desorden de forma monótona.</p></aside>
+  <p>La sensibilidad se cuantifica mediante el exponente de Lyapunov. Para el mapa logístico, su expresión a lo largo de una órbita es:</p>
+  <app-formula expression="\lambda=\lim_{N\to\infty}\frac1N\sum_{k=0}^{N-1}\ln\left|r(1-2x_k)\right|" displayMode="block" />
+  <p>Un valor negativo indica contracción media de perturbaciones infinitesimales; uno positivo indica expansión media. Al principio de esa expansión, mientras la separación siga siendo pequeña, esperamos |Δxₙ| ≈ |Δx₀|eⁿλ. La distancia no puede crecer indefinidamente dentro de [0, 1]. Un cálculo de duración finita y un valor cercano a cero requieren cautela.</p>
+
+  <h3>3. Medir la constante sin confundir dos sucesiones</h3>
+  <p>Podríamos localizar cada bifurcación rₙ buscando dónde un ciclo pierde estabilidad. Hay otra sucesión especialmente cómoda para calcular: los parámetros <strong>superestables</strong> sₙ. En ellos, el ciclo de período 2ⁿ contiene el punto crítico x = ½. Como f′(½) = 0, el producto de derivadas a lo largo del ciclo se anula.</p>
+  <app-formula expression="f_{s_n}^{\,2^n}\!\left(\tfrac12\right)=\tfrac12,\qquad \widehat\delta_n=\frac{s_{n-1}-s_{n-2}}{s_n-s_{n-1}}\longrightarrow\delta" displayMode="block" />
+  <p>El superíndice indica composición, no una potencia del valor de la función. La ecuación también tiene raíces de períodos inferiores: hay que seguir la rama de período exacto 2ⁿ de la cascada principal. En la familia logística empezamos con s₀ = 2 y s₁ ≈ 3,236067977. Estos valores están dentro de las regiones estables; no son los rₙ de sus fronteras.</p>
+  <app-feigenbaum-convergence />
+  <p>Si Δₙ = sₙ − sₙ₋₁, los intervalos siguientes son aproximadamente Δₙ/δ, Δₙ/δ²… La suma de esa cola geométrica sugiere una estimación del punto de acumulación:</p>
+  <app-formula expression="s_\infty\approx s_n+\frac{s_n-s_{n-1}}{\widehat\delta_n-1}" displayMode="block" />
+
+  <h3>4. ¿Por qué también aparece en un seno?</h3>
+  <p>La segunda familia del laboratorio es fₐ(x) = a·sen(πx), con 0 ≤ a ≤ 1. Su forma no es una parábola, pero ambas funciones tienen un único máximo suave y cuadrático: cerca del máximo, el primer término no constante es proporcional al cuadrado de la distancia. Las dos recorren una cascada de duplicaciones con el mismo límite δ.</p>
+  <p>La universalidad tiene condiciones. Se refiere a familias suaves unimodales con un máximo cuadrático no degenerado y una cascada de duplicación del tipo considerado. Un máximo más plano, una esquina o una ruta distinta hacia el caos pueden dar otro comportamiento. δ no es una constante de cualquier sistema caótico.</p>
+  <p>La idea de <strong>renormalización</strong> consiste en observar dos iteraciones como un nuevo paso y reescalar la región próxima al punto crítico. Al repetir esa operación, mapas diferentes se aproximan a una misma forma límite. δ expresa el factor de expansión de la perturbación relevante alrededor de ese punto fijo funcional; su inverso explica la contracción de los intervalos de parámetros.</p>
+
+  <h3>5. La otra constante: la escala espacial</h3>
+  <p>δ mide distancias entre parámetros. Una segunda constante, α, describe cómo se reescala la geometría de las órbitas. Para los ciclos superestables, tomemos la distancia con signo desde el punto crítico hasta su imagen después de medio período:</p>
+  <app-formula expression="d_n=f_{s_n}^{\,2^{n-1}}\!\left(\tfrac12\right)-\tfrac12,\qquad \frac{d_{n-1}}{d_n}\longrightarrow\alpha\approx-2{,}502907875\ldots" displayMode="block" />
+  <p>La tabla calcula también estos cocientes. El signo negativo refleja la inversión de orientación entre escalas sucesivas. Si solo se comparan longitudes, se cita |α| ≈ 2,5029. No hay que confundir esta contracción espacial con el factor δ ≈ 4,6692 en el eje de parámetros.</p>
+
+  <h3>6. Lo que revela el experimento</h3>
+  <p>Una sucesión determinista no tiene por qué ser fácil de predecir. Y una imagen irregular puede esconder leyes cuantitativas precisas: períodos que se duplican, escalas que se contraen y cocientes que convergen. Los laboratorios permiten observar estas relaciones con precisión finita; la explicación de su universalidad exige estudiar la dinámica de la renormalización.</p>
+  <h3>Referencias</h3>
+  <ul class="references"><li><a href="https://sites.math.rutgers.edu/~zeilberg/Bio21/MF78.pdf" target="_blank" rel="noopener noreferrer">Mitchell J. Feigenbaum, Quantitative Universality for a Class of Nonlinear Transformations (1978)</a>. Trabajo original sobre escalas universales y renormalización.</li></ul>
+</article>

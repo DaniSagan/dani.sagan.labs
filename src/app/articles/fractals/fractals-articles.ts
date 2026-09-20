@@ -1,4 +1,5 @@
 import { BurningShipComponent } from './burning-ship/burning-ship.component';
+import { FeigenbaumArticleComponent } from './feigenbaum/feigenbaum-article.component';
 import { PhoenixSetComponent } from './phoenix-set/phoenix-set.component';
 import { NewtonComponent } from './newton/newton.component';
 import { BifurcationDiagramComponent } from './bifurcation-diagram/bifurcation-diagram.component';
@@ -47,6 +48,7 @@ import { TricornComponent } from './tricorn/tricorn.component';
 import { VicsekFractalComponent } from './vicsek-fractal/vicsek-fractal.component';
 
 export const FRACTALS_ARTICLES = [
+  FeigenbaumArticleComponent,
   ApollonianSieveComponent,
   BarnsleyFernComponent,
   BifurcationDiagramComponent,

@@ -1,0 +1,27 @@
+<section class="lab" aria-labelledby="convergence-title">
+  <div class="eyebrow">LABORATORIO · UNA CONSTANTE UNIVERSAL</div>
+  <h4 id="convergence-title">Calcula δ con dos reglas distintas</h4>
+  <p>Localizamos los parámetros sₙ que hacen regresar x = ½ a sí mismo tras 2ⁿ pasos. Los valores se calculan al abrir el laboratorio, buscando y refinando las raíces por bisección.</p>
+  <div class="controls">
+    <label>Familia<select [(ngModel)]="kind"><option value="logistic">Logística: f(x) = r·x·(1−x)</option><option value="sine">Seno: f(x) = a·sen(πx)</option></select></label>
+    <label>Nivel n = {{ level }} · período {{ selected.period }}<input type="range" min="2" max="8" step="1" [(ngModel)]="level"></label>
+    <button type="button" (click)="exportCsv()">Descargar datos CSV</button>
+  </div>
+  <div class="readouts"><div><span>COCIENTE δₙ</span><strong>{{ selected.delta | number:'1.8-8' }}</strong></div><div><span>ERROR ABSOLUTO</span><strong>{{ error.toExponential(2) }}</strong></div><div><span>COCIENTE ESPACIAL αₙ</span><strong>{{ selected.alpha | number:'1.6-6' }}</strong></div></div>
+  <p>Error |δₙ − δ| · escala logarítmica · <span class="mint-text">━━ logística</span> · <span class="gold-text">┄┄ seno</span></p>
+  <svg viewBox="0 0 800 295" role="img" aria-label="Comparación del error de los cocientes de Feigenbaum para las familias logística y seno">
+    <path d="M65 25V255H740 M65 86H740 M65 142H740 M65 198H740" class="axis"/>
+    <path [attr.d]="path('logistic')" class="mint"/><path [attr.d]="path('sine')" class="gold dashed"/>
+    <ng-container *ngFor="let row of logistic.slice(2, level + 1)"><circle [attr.cx]="65+(row.n-2)*110" [attr.cy]="y(absError(row.delta))" r="3" fill="#82e3cc"/></ng-container>
+    <ng-container *ngFor="let row of sine.slice(2, level + 1)"><circle [attr.cx]="65+(row.n-2)*110" [attr.cy]="y(absError(row.delta))" r="3" fill="#f6cc80"/></ng-container>
+    <text x="20" y="34">1</text><text x="5" y="90">10⁻²</text><text x="5" y="146">10⁻⁴</text><text x="5" y="202">10⁻⁶</text><text x="5" y="258">10⁻⁸</text>
+    <text *ngFor="let n of [2,3,4,5,6,7,8]" [attr.x]="62+(n-2)*110" y="277">{{ n }}</text><text x="765" y="277">n</text>
+  </svg>
+  <div class="table-wrap"><table>
+    <caption>Cascada superestable de la familia {{ kind === 'logistic' ? 'logística' : 'seno' }}. sₙ no es el punto de bifurcación rₙ.</caption>
+    <thead><tr><th scope="col">n</th><th scope="col">Período</th><th scope="col">sₙ</th><th scope="col">δₙ</th><th scope="col">αₙ</th></tr></thead>
+    <tbody><tr *ngFor="let row of rows.slice(0, level + 1)" [class.active]="row.n === level"><td>{{ row.n }}</td><td>{{ row.period }}</td><td>{{ row.parameter | number:'1.10-10' }}</td><td>{{ row.delta === null ? '—' : (row.delta | number:'1.7-7') }}</td><td>{{ row.alpha === null ? '—' : (row.alpha | number:'1.6-6') }}</td></tr></tbody>
+  </table></div>
+  <p>Si prolongamos geométricamente el último intervalo, estimamos el parámetro de acumulación en <strong>{{ prediction | number:'1.10-10' }}</strong>. Es una extrapolación: los cocientes todavía no son exactamente constantes.</p>
+  <p class="note">Se muestran ocho duplicaciones para limitar la pérdida de precisión al restar parámetros cada vez más próximos. La convergencia numérica ilustra la universalidad, pero no la demuestra.</p>
+</section>

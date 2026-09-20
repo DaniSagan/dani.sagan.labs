@@ -1,4 +1,5 @@
 import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
+import { FeigenbaumArticleComponent } from 'src/app/articles/fractals/feigenbaum/feigenbaum-article.component';
 import { Injectable } from '@angular/core';
 import { NavbarItem } from './navbar-item';
 import { NavbarProvider } from './navbar-provider';
@@ -101,6 +102,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: PhoenixSetComponent.title, route: PhoenixSetComponent.route },
     { name: NewtonComponent.title, route: NewtonComponent.route },
     { name: BifurcationDiagramComponent.title, route: BifurcationDiagramComponent.route },
+    { name: FeigenbaumArticleComponent.title, route: FeigenbaumArticleComponent.route },
     { name: KochSnowflakeComponent.title, route: KochSnowflakeComponent.route },
     { name: CantorSetComponent.title, route: CantorSetComponent.route },
     { name: VicsekFractalComponent.title, route: VicsekFractalComponent.route },
