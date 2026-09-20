@@ -31,9 +31,9 @@
       <path class="curve mint-line" [attr.d]="sumPath" />
       <circle class="probe" [attr.cx]="x(n)" [attr.cy]="sumY(partial)" r="5" />
     } @else {
-      @for (tick of errorTicks; track tick) {
-        <line class="grid" x1="62" x2="634" [attr.y1]="errorY(tick)" [attr.y2]="errorY(tick)" />
-        <text x="50" [attr.y]="errorY(tick) + 4" text-anchor="end">{{ tick }}</text>
+      @for (tick of errorTicks; track tick.value) {
+        <line class="grid" x1="62" x2="634" [attr.y1]="errorY(tick.value)" [attr.y2]="errorY(tick.value)" />
+        <text x="50" [attr.y]="errorY(tick.value) + 4" text-anchor="end">{{ tick.label }}</text>
       }
       <path class="curve upper-line" [attr.d]="upperPath" />
       <path class="curve lower-line" [attr.d]="lowerPath" />

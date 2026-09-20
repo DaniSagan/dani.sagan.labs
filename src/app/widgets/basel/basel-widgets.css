@@ -57,5 +57,5 @@ input[type=number] { width: 85px; min-height: 38px; box-sizing: border-box; bord
   .metrics { grid-template-columns: 1fr; } .metrics > div { padding: 12px 20px; }
   .metrics > div + div { border-left: 0; border-top: 1px solid #2a394c; }
   .metrics strong { font-size: 19px; } .two-controls { grid-template-columns: 1fr; }
-  .chart text { font-size: 14px; }
+  .chart text { font-size: 24px; }
 }

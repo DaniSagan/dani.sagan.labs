@@ -14,7 +14,13 @@ export class BaselConvergenceComponent {
   readonly presets = [1, 10, 100, 1000, MAX_BASEL_N];
   readonly xTicks = [1, 10, 100, 1000, MAX_BASEL_N];
   readonly sumTicks = [0, 0.5, 1, 1.5];
-  readonly errorTicks = [1, 0.1, 0.01, 0.001, 0.0001];
+  readonly errorTicks = [
+    { value: 1, label: '1' },
+    { value: 0.1, label: '10⁻¹' },
+    { value: 0.01, label: '10⁻²' },
+    { value: 0.001, label: '10⁻³' },
+    { value: 0.0001, label: '10⁻⁴' },
+  ];
   n = 10;
   inputN: number | null = 10;
   exponent = 1;
