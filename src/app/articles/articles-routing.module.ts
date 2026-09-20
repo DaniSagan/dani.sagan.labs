@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ArticlesContentComponent } from './articles-content/articles-content.component';
+import { ArticlesIntroComponent } from './articles-intro/articles-intro.component';
 import { TestArticleComponent } from './test-article/test-article.component';
 
 import { ANALYSIS_ARTICLES } from './analysis/analysis-articles';
@@ -24,6 +25,7 @@ const routes: Routes = [
     path: '',
     component: ArticlesContentComponent,
     children: [
+      { path: '', pathMatch: 'full', component: ArticlesIntroComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
 
       ...ANALYSIS_ARTICLES.map(article => ({ path: article.route, component: article })),

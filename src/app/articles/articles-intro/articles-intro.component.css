@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.intro-label {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--accent3);
+  font:
+    700 0.7rem/1.6 system-ui,
+    sans-serif;
+  letter-spacing: 0.14em;
+}
+.intro-guides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  clear: both;
+}
+.intro-guides section {
+  padding: 1.5rem;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+.guide-number {
+  color: var(--accent3);
+  font:
+    0.8rem ui-monospace,
+    monospace;
+}
+.intro-guides h3 {
+  margin: 0.75rem 0 1rem;
+}
+.intro-guides p {
+  margin: 0;
+}
+.mobile-tip {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--gold);
+  background: var(--bg2);
+  border-radius: 0 8px 8px 0;
+}
+@media (max-width: 640px) {
+  .intro-guides {
+    grid-template-columns: 1fr;
+  }
+}
