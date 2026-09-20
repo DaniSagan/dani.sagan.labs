@@ -1,6 +1,48 @@
-canvas {
-  width: 100%;
-  height: 100%;
-  border: 1px solid black;
-  background-color: black;
-}
+:host { display: block; }
+.logistic-lab { --cyan: #68e0d3; --text: #e4edf5; --muted: #a5b5c7; clear: both; padding: 0; margin: 2rem 0; overflow: hidden; border: 1px solid #2c3b4e; border-radius: 18px; background: #101925; color: var(--text); font: 14px/1.5 system-ui, sans-serif; box-shadow: 0 20px 60px #0003; }
+.lab-header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 28px; background: radial-gradient(ellipse at top right, #18433e88, transparent 70%); }
+.eyebrow { color: var(--cyan); font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.lab-header h3 { color: var(--text); font: 600 clamp(23px, 3vw, 32px)/1.2 system-ui, sans-serif; margin: 8px 0; letter-spacing: -.03em; }
+.logistic-lab p { color: var(--muted); margin: 0; }
+.equation { white-space: nowrap; color: #dbcb9a; font: italic 20px Georgia, serif; }
+.preset-bar { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 28px 24px; }
+.logistic-lab button { font: inherit; color: var(--text); background: #172333; border: 1px solid #3b4c60; border-radius: 7px; min-height: 38px; padding: 7px 12px; cursor: pointer; }
+.logistic-lab button:hover { background: #25384a; border-color: #8ba7b7; }
+.logistic-lab button.active { color: #a3f1e7; background: #173b39; border-color: #499c92; }
+.logistic-lab :is(button,input,summary):focus-visible { outline: 2px solid #f2cd78; outline-offset: 3px; }
+.chart-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 14px 20px; border-top: 1px solid #293649; background: #0b111c; font-size: 12px; }
+.chart-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); margin-right: 7px; }
+.muted { color: var(--muted); }
+.zoom-controls { display: flex; gap: 5px; }
+.zoom-controls button { min-width: 38px; padding: 4px 10px; }
+.plot { position: relative; background: #0b111c; }
+.plot canvas { display: block; width: 100%; cursor: crosshair; }
+.plot-overlay { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.plot-overlay line { stroke: #f2cd78; stroke-width: 1; stroke-dasharray: 4 5; }
+.plot-overlay circle { fill: #f2cd78; }
+.plot-caption { display: flex; justify-content: space-between; gap: 16px; padding: 12px 20px 18px; background: #0b111c; color: var(--muted); font-size: 11px; }
+.plot-caption [role=status] { white-space: nowrap; color: var(--cyan); }
+.explorer-grid { display: grid; grid-template-columns: minmax(220px, .85fr) minmax(0, 1.4fr); border-top: 1px solid #293649; }
+.parameter-panel, .orbit-panel { padding: 24px; min-width: 0; }
+.parameter-panel { border-right: 1px solid #293649; }
+.parameter-panel label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin: 18px 0 8px; font-size: 12px; }
+.parameter-panel output { color: #f2cd78; font: 14px ui-monospace, monospace; }
+.logistic-lab input[type=range] { display: block; width: 100%; accent-color: var(--cyan); height: 22px; cursor: pointer; }
+.range-labels { display: flex; justify-content: space-between; color: var(--muted); font: 10px ui-monospace, monospace; }
+.parameter-panel .parameter-note { font-size: 11px; margin-top: 16px; }
+.orbit-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
+.orbit-heading > span:last-child { color: var(--muted); font-size: 11px; }
+.orbit-chart { width: 100%; height: auto; margin: 20px 0 10px; overflow: visible; }
+.orbit-chart text { fill: var(--muted); font: 11px system-ui, sans-serif; }
+.orbit-grid { stroke: #2b394c; fill: none; }
+.orbit-chart polyline { fill: none; stroke: #f2cd78; stroke-width: 1.5; stroke-linejoin: round; }
+.orbit-panel p { font-size: 11px; }
+.orbit-panel strong { color: #f2cd78; font-family: ui-monospace, monospace; }
+.advanced { border-top: 1px solid #293649; padding: 16px 24px; }
+.advanced summary { cursor: pointer; color: var(--text); font-size: 12px; padding: 4px 0; }
+.advanced form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: 16px; margin: 20px 0; }
+.advanced label { color: var(--muted); font-size: 11px; }
+.advanced input { box-sizing: border-box; width: 100%; display: block; margin-top: 6px; padding: 9px; color: var(--text); background: #0b111c; border: 1px solid #41536b; border-radius: 6px; font: 13px ui-monospace, monospace; }
+.advanced p { font-size: 11px; margin-top: 12px; }
+.advanced .error { color: #ffb4a9; }
+@media (max-width: 640px) { .lab-header { align-items: start; flex-direction: column; padding: 20px; gap: 12px; } .preset-bar { padding: 0 20px 20px; } .explorer-grid { grid-template-columns: 1fr; } .parameter-panel { border-right: 0; border-bottom: 1px solid #293649; } .advanced form { grid-template-columns: repeat(2, minmax(0, 1fr)); } .chart-toolbar .muted { display: none; } .plot-caption { flex-direction: column; gap: 4px; } }

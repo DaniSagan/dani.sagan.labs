@@ -1,4 +1,6 @@
 <h2>Aplicación Logística</h2>
+<img src="../../../../assets/img/rabbit-population.webp" alt="Prueba del teorema de la curva de Jordan"
+  class="image-text-right" width="50%" height="50%" />
 <p class="dropcap">
   La aplicación logística es un modelo matemático utilizado ampliamente en
   estudios de dinámica poblacional, teoría del caos y sistemas no lineales.
@@ -59,53 +61,76 @@
   observa cómo cambia el comportamiento del sistema.
 </p>
 
-<!-- <canvas #canvas width="800" height="600" style="border: 1px solid black;"></canvas> -->
+<section class="logistic-lab" aria-labelledby="lab-title">
+  <header class="lab-header">
+    <div><span class="eyebrow">LABORATORIO INTERACTIVO · 01</span>
+      <h3 id="lab-title">Del equilibrio al caos</h3>
+      <p>Una regla sencilla. Infinitos comportamientos.</p>
+    </div>
+    <div class="equation">x<sub>n+1</sub> = r x<sub>n</sub> (1 − x<sub>n</sub>)</div>
+  </header>
 
-
-<div class="widget-container">
-  <div class="widget-title">Diagrama de la aplicación logística</div>
-  <div class="controls">
-    <table>
-      <tr>
-        <td><app-move2d (movement)="onMovement($event)"/></td>
-        <td><app-zoom (zoom)="onZoom($event)" (reset)="onZoomReset()"/></td>
-        <td>
-          <div class="widget-control-group">
-            <form (ngSubmit)="update()">
-              <div>
-                <label>r min:
-                  <input type="number" [(ngModel)]="rMin" name="rMin" required>
-                </label>
-              </div>
-              <div>
-                <label>r max:
-                  <input type="number" [(ngModel)]="rMax" name="cRrMaxeal" required>
-                </label>
-              </div>
-              <div>
-                <label>y min:
-                  <input type="number" [(ngModel)]="yMin" name="yMin" required>
-                </label>
-              </div>
-              <div>
-                <label>y max:
-                  <input type="number" [(ngModel)]="yMax" name="yMax" required>
-                </label>
-              </div>
-              <div>
-                <label>Iteraciones máximas:
-                  <input type="number" [(ngModel)]="maxIterations" name="maxIterations" required>
-                </label>
-              </div>
-              <div>
-                <button type="submit">Actualizar</button>
-              </div>
-            </form>
-          </div>
-        </td>
-        <td></td>
-      </tr>
-    </table>
+  <div class="preset-bar" aria-label="Vistas del diagrama">
+    @for (preset of presets; track preset.label) {
+      <button type="button" [class.active]="activePreset === preset.label"
+        [attr.aria-pressed]="activePreset === preset.label" (click)="applyPreset(preset)">{{ preset.label }}</button>
+    }
   </div>
-  <canvas #canvas [width]="width" [height]="height"></canvas>
-</div>
+
+  <div class="chart-toolbar">
+    <div><span class="chart-dot"></span> Diagrama de bifurcación <span class="muted">/ valores a largo plazo</span></div>
+    <div class="zoom-controls">
+      <button type="button" aria-label="Alejar diagrama" (click)="zoom(2)">−</button>
+      <button type="button" aria-label="Acercar diagrama" (click)="zoom(0.5)">+</button>
+      <button type="button" (click)="resetView()">Restablecer</button>
+    </div>
+  </div>
+  <div class="plot" #plot [attr.aria-busy]="rendering">
+    <canvas #canvas (pointerdown)="selectFromPlot($event)" role="img"
+      aria-label="Diagrama de bifurcación: parámetro r en el eje horizontal y población x en el vertical. Usa el control de r para explorar con el teclado."></canvas>
+    <svg class="plot-overlay" [attr.viewBox]="'0 0 ' + width + ' ' + height" aria-hidden="true">
+      <line [attr.x1]="markerX" [attr.x2]="markerX" y1="22" [attr.y2]="height - 42" />
+      <circle [attr.cx]="markerX" cy="22" r="4" />
+    </svg>
+  </div>
+  <div class="plot-caption"><span>Selecciona un punto del diagrama para explorar su órbita.</span>
+    <span role="status">{{ rendering ? 'Calculando…' : 'Diagrama listo' }}</span></div>
+
+  <div class="explorer-grid">
+    <div class="parameter-panel">
+      <span class="eyebrow">EXPLORA UNA ÓRBITA</span>
+      <label for="logistic-r">Parámetro de crecimiento <output>{{ selectedR.toFixed(5) }}</output></label>
+      <input id="logistic-r" type="range" [min]="rMin" [max]="rMax" [step]="(rMax-rMin)/1000"
+        [ngModel]="selectedR" (ngModelChange)="selectR($event)">
+      <div class="range-labels"><span>{{ rMin.toFixed(4) }}</span><span>{{ rMax.toFixed(4) }}</span></div>
+      <label for="logistic-seed">Población inicial x₀ <output>{{ seed.toFixed(3) }}</output></label>
+      <input id="logistic-seed" type="range" min="0.001" max="0.999" step="0.001"
+        [ngModel]="seed" (ngModelChange)="changeSeed($event)">
+      <p class="parameter-note">La línea dorada señala r. Cambia x₀ para observar cómo evoluciona la misma regla desde otra población.</p>
+    </div>
+    <div class="orbit-panel">
+      <div class="orbit-heading"><span class="eyebrow">EVOLUCIÓN TEMPORAL</span><span>80 iteraciones · desde x₀</span></div>
+      <svg class="orbit-chart" viewBox="0 0 520 170" role="img" [attr.aria-label]="'Evolución de la población para r = ' + selectedR.toFixed(5)">
+        <path class="orbit-grid" d="M32 12H506 M32 76H506 M32 140H506" />
+        <text x="8" y="17">1</text><text x="2" y="81">0,5</text><text x="8" y="145">0</text>
+        <polyline [attr.points]="orbitPoints" />
+        <text x="32" y="163">0</text><text x="210" y="163">Iteración n</text><text x="490" y="163">80</text>
+      </svg>
+      <p>Último valor <strong>{{ lastValue.toFixed(6) }}</strong><span> · Población normalizada entre 0 y 1</span></p>
+    </div>
+  </div>
+
+  <details class="advanced">
+    <summary>Ajustes del diagrama</summary>
+    <form (ngSubmit)="applySettings()">
+      <label>r mínimo<input type="number" name="rMin" [(ngModel)]="draft.rMin" min="0" max="4" step="any" required></label>
+      <label>r máximo<input type="number" name="rMax" [(ngModel)]="draft.rMax" min="0" max="4" step="any" required></label>
+      <label>x mínimo<input type="number" name="yMin" [(ngModel)]="draft.yMin" min="0" max="1" step="any" required></label>
+      <label>x máximo<input type="number" name="yMax" [(ngModel)]="draft.yMax" min="0" max="1" step="any" required></label>
+      <label>Iteraciones de estabilización<input type="number" name="iterations" [(ngModel)]="draft.iterations" min="200" max="5000" step="100" required></label>
+      <button type="submit">Aplicar ajustes</button>
+    </form>
+    @if (error) { <p class="error" role="alert">{{ error }}</p> }
+    <p>Se descartan las iteraciones de estabilización y se dibujan las 256 siguientes por muestra de r. Una mayor intensidad indica más visitas; es una aproximación numérica, no una prueba de caos.</p>
+  </details>
+</section>
