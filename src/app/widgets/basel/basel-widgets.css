@@ -1,0 +1,61 @@
+:host { display: block; min-width: 0; }
+.basel-lab {
+  --mint: #94e4cd; --gold: #efcc85; --muted: #a8b5c8;
+  padding: 0; margin: 2rem 0; overflow: hidden; border: 1px solid #344457;
+  border-radius: 16px; background: #111b29; color: #e5edf6;
+  font: 14px/1.6 system-ui, sans-serif;
+}
+.lab-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px; background: radial-gradient(ellipse at top right, #20433e, transparent 75%); }
+.eyebrow { color: var(--mint); font-size: 10px; font-weight: 700; letter-spacing: .12em; }
+.lab-header h3 { margin: 8px 0; color: #edf5ff; font: 600 clamp(22px, 3vw, 30px)/1.2 system-ui, sans-serif; letter-spacing: -.025em; }
+.basel-lab p { margin: 0; color: var(--muted); }
+.formula-badge { white-space: nowrap; color: var(--gold); font: italic 28px Georgia, serif; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #2a394c; border-bottom: 1px solid #2a394c; }
+.metrics > div { padding: 18px 22px; }
+.metrics > div + div { border-left: 1px solid #2a394c; }
+.metrics span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 5px; }
+.metrics strong { font: 500 clamp(13px, 1.8vw, 19px) ui-monospace, monospace; color: #e5edf6; overflow-wrap: anywhere; }
+.mint, .metrics .mint { color: var(--mint); }
+.gold, .metrics .gold { color: var(--gold); }
+.lavender { color: #c9b6f4; }
+.chart-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 18px 22px 0; background: #0c1320; }
+.chart-toolbar > span { font-size: 11px; color: var(--muted); }
+.switch, .presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.basel-lab button { border: 1px solid #43576c; border-radius: 6px; padding: 8px 12px; min-height: 38px; background: #1b293b; color: #e5edf6; font: inherit; font-size: 12px; cursor: pointer; }
+.basel-lab button:hover { background: #2a3f50; }
+.basel-lab button.active { background: #193d36; border-color: #75bba8; color: #b9f5e1; }
+.basel-lab :is(button, input):focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.chart { display: block; width: 100%; height: auto; background: #0c1320; }
+.interactive { cursor: crosshair; }
+.chart text { fill: var(--muted); font: 12px system-ui, sans-serif; }
+.chart .gold-label { fill: var(--gold); }
+.grid { stroke: #243347; stroke-width: 1; }
+.curve { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.mint-line { stroke: var(--mint); }
+.reference, .upper-line { stroke: var(--gold); stroke-dasharray: 7 5; }
+.lower-line { stroke: #c9b6f4; stroke-dasharray: 3 4; stroke-width: 3; }
+.target-line { stroke: #c9b6f4; stroke-dasharray: 6 5; }
+.cursor { stroke: #a8b5c8; stroke-dasharray: 3 5; opacity: .6; }
+.probe { fill: var(--mint); stroke: #0c1320; stroke-width: 2; }
+.target-probe { fill: #c9b6f4; stroke: #0c1320; stroke-width: 2; }
+.error-segment { stroke: var(--gold); stroke-width: 3; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 10px 22px 20px; background: #0c1320; font-size: 11px; }
+.controls { padding: 22px; border-top: 1px solid #2a394c; }
+.slider-label { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; font-size: 12px; }
+output { color: var(--gold); font-family: ui-monospace, monospace; }
+input[type=range] { display: block; width: 100%; height: 28px; margin: 12px 0; accent-color: var(--mint); cursor: pointer; }
+.control-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 10px; }
+form { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12px; }
+input[type=number] { width: 85px; min-height: 38px; box-sizing: border-box; border: 1px solid #43576c; border-radius: 6px; background: #0c1320; color: #edf5ff; padding: 6px 8px; font: inherit; }
+.two-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+.insight { padding: 20px 24px; background: #172c2a; border-top: 1px solid #36554b; }
+.insight .interval { color: #e7f3ee; font: 500 clamp(12px, 1.8vw, 17px)/1.7 ui-monospace, monospace; margin: 8px 0; overflow-wrap: anywhere; }
+.insight p { font-size: 12px; }
+.controls .error { color: #ffb8aa; margin-top: 12px; font-size: 12px; }
+@media (max-width: 600px) {
+  .lab-header { padding: 20px; } .formula-badge { display: none; }
+  .metrics { grid-template-columns: 1fr; } .metrics > div { padding: 12px 20px; }
+  .metrics > div + div { border-left: 0; border-top: 1px solid #2a394c; }
+  .metrics strong { font-size: 19px; } .two-controls { grid-template-columns: 1fr; }
+  .chart text { font-size: 14px; }
+}

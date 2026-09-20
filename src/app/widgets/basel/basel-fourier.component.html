@@ -1,0 +1,40 @@
+<section class="basel-lab" aria-labelledby="basel-fourier-title">
+  <header class="lab-header"><div><span class="eyebrow">EXPERIMENTO 02 · SERIES DE FOURIER</span><h3 id="basel-fourier-title">Una parábola hecha de ondas</h3><p>Reconstruye x². En x = π, todos los términos se suman.</p></div><span class="formula-badge">x² ↔ Σ</span></header>
+  <div class="metrics">
+    <div><span>Valor exacto x²</span><strong>{{ target.toFixed(6) }}</strong></div>
+    <div><span>Reconstrucción Fₙ(x)</span><strong class="mint">{{ approximation.toFixed(6) }}</strong></div>
+    <div><span>Error en el punto elegido</span><strong class="gold">{{ error.toExponential(3) }}</strong></div>
+  </div>
+  <svg class="chart interactive" viewBox="0 0 690 324" (pointerdown)="selectFromChart($event)" role="img" aria-label="Parábola x al cuadrado y su aproximación mediante cosenos entre menos pi y pi. Los controles permiten seleccionar armónicos y posición con el teclado.">
+    @for (tick of yTicks; track tick) {
+      <line class="grid" x1="62" x2="634" [attr.y1]="y(tick)" [attr.y2]="y(tick)" />
+      <text x="50" [attr.y]="y(tick) + 4" text-anchor="end">{{ tick }}</text>
+    }
+    @for (tick of ticks; track tick.x) {
+      <line class="grid" [attr.x1]="62 + (tick.x + 1) * 286" [attr.x2]="62 + (tick.x + 1) * 286" y1="34" y2="282" />
+      <text [attr.x]="62 + (tick.x + 1) * 286" y="302" text-anchor="middle">{{ tick.label }}</text>
+    }
+    <path class="curve target-line" [attr.d]="targetPath" />
+    <path class="curve mint-line" [attr.d]="approximationPath" />
+    <line class="cursor" [attr.x1]="x(probeX)" [attr.x2]="x(probeX)" y1="34" y2="282" />
+    <line class="error-segment" [attr.x1]="x(probeX)" [attr.x2]="x(probeX)" [attr.y1]="y(target)" [attr.y2]="y(approximation)" />
+    <circle class="target-probe" [attr.cx]="x(probeX)" [attr.cy]="y(target)" r="5" />
+    <circle class="probe" [attr.cx]="x(probeX)" [attr.cy]="y(approximation)" r="4" />
+  </svg>
+  <div class="legend"><span class="lavender">┄ Parábola x²</span><span class="mint">━ Suma de {{ n }} armónicos</span><span class="gold">┃ Diferencia en x</span></div>
+  <div class="controls two-controls">
+    <div><div class="slider-label"><label for="basel-harmonics">Armónicos</label><output>N = {{ n }}</output></div>
+      <input id="basel-harmonics" type="range" min="1" max="80" step="1" [ngModel]="n" (ngModelChange)="updateHarmonics($event)">
+      <div class="presets">@for (value of presets; track value) { <button type="button" [class.active]="n === value" [attr.aria-pressed]="n === value" (click)="updateHarmonics(value)">{{ value }}</button> }</div>
+    </div>
+    <div><div class="slider-label"><label for="basel-position">Punto de observación</label><output>x = {{ position.toFixed(3) }} π</output></div>
+      <input id="basel-position" type="range" min="-1" max="1" step="0.001" [ngModel]="position" (ngModelChange)="selectPosition($event)">
+      <button type="button" (click)="selectPosition(1)">Ir a x = π</button>
+    </div>
+  </div>
+  <footer class="insight">
+    <span class="eyebrow">{{ position === 1 ? 'EL PUNTO DONDE APARECE BASILEA' : 'EXPLORA Y REGRESA A x = π' }}</span>
+    <p class="interval">Fₙ(π) = π²/3 + 4 Sₙ</p>
+    <p>Para N = {{ n }}, Sₙ ≈ {{ partial.toFixed(8) }}. Al crecer N, Fₙ(π) se acerca a π² y la identidad conduce a S = π²/6. La gráfica muestra aproximaciones finitas; la demostración justifica el paso al límite.</p>
+  </footer>
+</section>

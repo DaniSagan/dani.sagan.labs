@@ -1,0 +1,66 @@
+<h2>El teorema de Basilea</h2>
+<p class="dropcap">Suma los inversos de los cuadrados: uno, un cuarto, un noveno, un dieciseisavo… Los términos se hacen pequeños y la suma se acerca a un número finito. Lo sorprendente no es solo que exista un límite, sino que su valor exacto contenga π, aunque el enunciado no mencione círculos.</p>
+
+<aside class="theorem">
+  <span class="section-label">EL RESULTADO</span>
+  <app-formula expression="\boxed{\displaystyle\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}}" displayMode="block" />
+  <p>La suma de los inversos de los cuadrados de los enteros positivos es π²/6 ≈ 1,644934066848226.</p>
+</aside>
+<p>La búsqueda de este valor se conoce como el <strong>problema de Basilea</strong>. Euler lo resolvió en la década de 1730. El nombre recuerda la ciudad suiza vinculada a Euler y a la familia Bernoulli. Su solución abrió una conexión entre sumas infinitas, funciones trigonométricas y los valores de la función zeta.</p>
+
+<h3>1. Primero: ¿por qué la suma converge?</h3>
+<p>Que los términos tiendan a cero no basta: la serie armónica, formada por 1/n, diverge. Aquí podemos comparar cada término a partir de n = 2 con una diferencia que se cancela al sumar:</p>
+<app-formula expression="\frac{1}{n^2}\lt\frac{1}{n(n-1)}=\frac{1}{n-1}-\frac{1}{n},\qquad n\ge2" displayMode="block" />
+<app-formula expression="S_N=\sum_{n=1}^{N}\frac{1}{n^2}\le 1+\sum_{n=2}^{N}\left(\frac{1}{n-1}-\frac{1}{n}\right)=2-\frac{1}{N}\lt2" displayMode="block" />
+<p>Las sumas parciales aumentan porque todos los términos son positivos, y están acotadas por 2. Por tanto, convergen. Esto demuestra que existe una suma, pero todavía no identifica su valor.</p>
+
+<h3>2. Medir lo que falta</h3>
+<p>El resto R<sub>N</sub> es la suma desde el término N + 1 en adelante. Como 1/x² es positiva y decreciente, las áreas bajo su gráfica dan dos cotas estrictas:</p>
+<app-formula expression="\int_{N+1}^{\infty}\frac{dx}{x^2}\lt R_N=\sum_{n=N+1}^{\infty}\frac{1}{n^2}\lt\int_N^{\infty}\frac{dx}{x^2}" displayMode="block" />
+<app-formula expression="\frac{1}{N+1}\lt R_N\lt\frac{1}{N},\qquad S_N+\frac{1}{N+1}\lt\frac{\pi^2}{6}\lt S_N+\frac{1}{N}" displayMode="block" />
+<p>Estas cotas se obtienen sin usar el valor exacto de la suma. La última expresión lo incorpora para situarlo en el intervalo. El error de S<sub>N</sub> es del orden de 1/N: multiplicar el número de términos por diez aporta aproximadamente un decimal de precisión adicional.</p>
+<app-basel-convergence />
+<aside class="experiment"><h4>Dos cosas distintas que observar</h4><p>Con N = 100, la suma parcial vale aproximadamente 1,634984 y aún falta cerca de 0,009950. Sin embargo, el intervalo corregido tiene anchura 1/(N(N+1)), aproximadamente 0,000099. Acotar el resto aporta más información que limitarse a truncar la suma. En «Error y cotas», las tres curvas casi se superponen para N grande porque ambas cotas capturan el término principal del error.</p></aside>
+
+<h3>3. La idea de Euler: leer los ceros del seno</h3>
+<p>Un polinomio se puede factorizar a partir de sus raíces. Euler llevó esa intuición a la función seno, cuyos ceros no nulos son ±π, ±2π, ±3π… Emparejando los ceros positivos y negativos aparece el producto:</p>
+<app-formula expression="\frac{\sin x}{x}=\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2\pi^2}\right)" displayMode="block" />
+<p>Por otro lado, el desarrollo de Taylor alrededor del origen da:</p>
+<app-formula expression="\frac{\sin x}{x}=1-\frac{x^2}{6}+O(x^4)" displayMode="block" />
+<p>En un producto finito, el coeficiente de x² se obtiene escogiendo el término cuadrático de un factor y el 1 de todos los demás. En el producto infinito la comparación da:</p>
+<app-formula expression="-\frac{1}{\pi^2}\sum_{n=1}^{\infty}\frac{1}{n^2}=-\frac16\quad\Longrightarrow\quad\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}" displayMode="block" />
+<p>La intuición es brillante, pero la factorización infinita necesita justificación: conocer los ceros no determina por sí solo una función. Una formulación moderna demuestra la identidad del producto del seno y su convergencia uniforme en conjuntos compactos del plano complejo. Esto permite pasar al límite en los coeficientes de Taylor. No basta con tratar una función como si fuera un polinomio de grado infinito.</p>
+
+<h3>4. Una demostración con la parábola y Fourier</h3>
+<p>Podemos obtener el resultado mediante la <a routerLink="/articles/fourier-series">serie de Fourier</a> de f(x) = x² en [−π, π], extendida periódicamente. La función es par, de modo que no aparecen términos seno. Calculamos el término constante y los coeficientes coseno:</p>
+<app-formula expression="a_0=\frac{2}{\pi}\int_0^\pi x^2\,dx=\frac{2\pi^2}{3},\qquad a_n=\frac{2}{\pi}\int_0^\pi x^2\cos(nx)\,dx" displayMode="block" />
+<p>Dos integraciones por partes bastan. Los términos que contienen sin(nπ) desaparecen y cos(nπ) = (−1)<sup>n</sup>:</p>
+<app-formula expression="\int_0^\pi x^2\cos(nx)\,dx=-\frac2n\int_0^\pi x\sin(nx)\,dx=\frac{2\pi(-1)^n}{n^2}" displayMode="block" />
+<app-formula expression="x^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac{(-1)^n\cos(nx)}{n^2},\qquad -\pi\le x\le\pi" displayMode="block" />
+<p>La extensión periódica es continua, incluso al unir los extremos, porque (−π)² = π². Es suave a trozos, por lo que el teorema de convergencia de Fourier recupera la función también en x = π. Además, la convergencia de Σ1/n², ya demostrada sin conocer su suma, garantiza la convergencia absoluta y uniforme de esta serie.</p>
+<app-basel-fourier />
+<p>Ahora elegimos x = π. Cada coseno vale (−1)<sup>n</sup>, así que los dos signos se cancelan y todos los sumandos son positivos:</p>
+<app-formula expression="\pi^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac{1}{n^2}" displayMode="block" />
+<app-formula expression="\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac14\left(\pi^2-\frac{\pi^2}{3}\right)=\frac{\pi^2}{6}" displayMode="block" />
+<aside class="experiment"><h4>Cómo leer la reconstrucción</h4><p>Aumenta el número de armónicos y observa los extremos. La función periódica es continua, pero su derivada salta al pasar de π a −π; la aproximación redondea esa unión. No hay un salto de altura en x². La diferencia exacta en x = π es 4R<sub>N</sub>, de modo que los dos experimentos visualizan el mismo resto desde perspectivas distintas.</p></aside>
+
+<h3>5. Separar pares e impares</h3>
+<p>Los términos con índice par aportan un cuarto de la suma total. Los impares aportan los tres cuartos restantes:</p>
+<app-formula expression="\sum_{n=1}^{\infty}\frac{1}{(2n)^2}=\frac{\pi^2}{24},\qquad\sum_{n=0}^{\infty}\frac{1}{(2n+1)^2}=\frac{\pi^2}{8}" displayMode="block" />
+<p>Al restar la contribución de los pares a la de los impares obtenemos otra identidad:</p>
+<app-formula expression="1-\frac14+\frac19-\frac1{16}+\cdots=\frac{\pi^2}{12}" displayMode="block" />
+<p>Esta última también se obtiene evaluando la serie de Fourier en x = 0. En el widget, vuelve al centro de la parábola para reconocer esa cancelación.</p>
+
+<h3>6. Una puerta a la función zeta</h3>
+<p>La <a routerLink="/articles/riemann-zeta">función zeta de Riemann</a> reúne estas sumas en una familia. Para s real mayor que 1 se define por:</p>
+<app-formula expression="\zeta(s)=\sum_{n=1}^{\infty}\frac1{n^s},\qquad s&gt;1" displayMode="block" />
+<p>Basilea es el caso ζ(2). Otros exponentes pares también conducen a potencias de π:</p>
+<app-formula expression="\zeta(2)=\frac{\pi^2}{6},\qquad\zeta(4)=\frac{\pi^4}{90},\qquad\zeta(6)=\frac{\pi^6}{945}" displayMode="block" />
+<p>La fórmula general utiliza los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Lo que empezó como una pregunta sobre fracciones revela una estructura común entre aritmética, ondas y funciones especiales.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://scholarlycommons.pacific.edu/euler-works/41/" target="_blank" rel="noopener noreferrer">Leonhard Euler: De summis serierum reciprocarum</a>, memoria original y traducciones en el archivo de Euler.</li>
+  <li><a href="https://dlmf.nist.gov/4.22#E1" target="_blank" rel="noopener noreferrer">NIST DLMF, 4.22.1: producto infinito del seno</a>.</li>
+  <li><a href="https://dlmf.nist.gov/25.6#E1" target="_blank" rel="noopener noreferrer">NIST DLMF, 25.6: valores de la función zeta en enteros</a>.</li>
+</ul>

@@ -1,0 +1,65 @@
+<section class="basel-lab" aria-labelledby="basel-sum-title">
+  <header class="lab-header">
+    <div><span class="eyebrow">EXPERIMENTO 01 · CONVERGENCIA</span><h3 id="basel-sum-title">Acercarse al infinito</h3><p>Cada término suma menos. ¿Cuánto falta por sumar?</p></div>
+    <span class="formula-badge">π² / 6</span>
+  </header>
+  <div class="metrics">
+    <div><span>Suma parcial Sₙ</span><strong class="mint">{{ partial.toFixed(10) }}</strong></div>
+    <div><span>Límite π²/6</span><strong>{{ limit.toFixed(10) }}</strong></div>
+    <div><span>Error Rₙ = π²/6 − Sₙ</span><strong class="gold">{{ scientific(remainder) }}</strong></div>
+  </div>
+  <div class="chart-toolbar">
+    <div class="switch" role="group" aria-label="Magnitud representada">
+      <button type="button" [class.active]="mode === 'sum'" [attr.aria-pressed]="mode === 'sum'" (click)="mode = 'sum'">Suma parcial</button>
+      <button type="button" [class.active]="mode === 'error'" [attr.aria-pressed]="mode === 'error'" (click)="mode = 'error'">Error y cotas</button>
+    </div>
+    <span>{{ mode === 'sum' ? 'Eje N logarítmico' : 'Ambos ejes logarítmicos' }}</span>
+  </div>
+  <svg class="chart interactive" viewBox="0 0 690 324" (pointerdown)="selectFromChart($event)" role="img"
+    [attr.aria-label]="mode === 'sum' ? 'Sumas parciales acercándose a pi al cuadrado entre seis. Usa el control N para explorar con el teclado.' : 'Error de la suma parcial entre las cotas uno entre N más uno y uno entre N.'">
+    @for (tick of xTicks; track tick) {
+      <line class="grid" [attr.x1]="x(tick)" [attr.x2]="x(tick)" y1="34" y2="272" />
+      <text [attr.x]="x(tick)" y="294" text-anchor="middle">{{ tick }}</text>
+    }
+    @if (mode === 'sum') {
+      @for (tick of sumTicks; track tick) {
+        <line class="grid" x1="62" x2="634" [attr.y1]="sumY(tick)" [attr.y2]="sumY(tick)" />
+        <text x="50" [attr.y]="sumY(tick) + 4" text-anchor="end">{{ tick }}</text>
+      }
+      <line class="reference" x1="62" x2="634" [attr.y1]="sumY(limit)" [attr.y2]="sumY(limit)" />
+      <text class="gold-label" x="634" [attr.y]="sumY(limit) - 9" text-anchor="end">π²/6</text>
+      <path class="curve mint-line" [attr.d]="sumPath" />
+      <circle class="probe" [attr.cx]="x(n)" [attr.cy]="sumY(partial)" r="5" />
+    } @else {
+      @for (tick of errorTicks; track tick) {
+        <line class="grid" x1="62" x2="634" [attr.y1]="errorY(tick)" [attr.y2]="errorY(tick)" />
+        <text x="50" [attr.y]="errorY(tick) + 4" text-anchor="end">{{ tick }}</text>
+      }
+      <path class="curve upper-line" [attr.d]="upperPath" />
+      <path class="curve lower-line" [attr.d]="lowerPath" />
+      <path class="curve mint-line" [attr.d]="errorPath" />
+      <circle class="probe" [attr.cx]="x(n)" [attr.cy]="errorY(remainder)" r="5" />
+    }
+    <line class="cursor" [attr.x1]="x(n)" [attr.x2]="x(n)" y1="34" y2="272" />
+    <text x="348" y="318" text-anchor="middle">Número de términos N</text>
+  </svg>
+  <div class="legend">
+    <span class="mint">━ {{ mode === 'sum' ? 'Suma parcial' : 'Error real' }}</span>
+    @if (mode === 'error') { <span class="gold">┄ Cota superior 1/N</span><span class="lavender">┄ Cota inferior 1/(N+1)</span> }
+    @else { <span class="gold">┄ Límite exacto</span> }
+  </div>
+  <div class="controls">
+    <div class="slider-label"><label for="basel-n">Número de términos</label><output>N = {{ n }}</output></div>
+    <input id="basel-n" type="range" min="0" max="4" step="0.01" [ngModel]="exponent" (ngModelChange)="fromSlider($event)" [attr.aria-valuetext]="n + ' términos'">
+    <div class="control-row">
+      <div class="presets" aria-label="Cantidades de términos">@for (value of presets; track value) { <button type="button" [class.active]="n === value" [attr.aria-pressed]="n === value" (click)="selectN(value)">{{ value }}</button> }</div>
+      <form (ngSubmit)="fromInput()"><label for="basel-exact-n">N exacto</label><input id="basel-exact-n" name="n" type="number" min="1" max="10000" step="1" required [(ngModel)]="inputN"><button type="submit">Aplicar</button></form>
+    </div>
+    @if (error) { <p class="error" role="alert">{{ error }}</p> }
+  </div>
+  <footer class="insight">
+    <span class="eyebrow">EL INFINITO, ENTRE DOS NÚMEROS</span>
+    <p class="interval">{{ bounds.lower.toFixed(10) }} &lt; π²/6 &lt; {{ bounds.upper.toFixed(10) }}</p>
+    <p>Has acumulado el {{ percentage }} % de la suma. Intervalo obtenido con el criterio integral; extremos mostrados redondeados. Pulsa sobre la gráfica para seleccionar N.</p>
+  </footer>
+</section>
