@@ -1,0 +1,37 @@
+<section class="lab" aria-label="Explorador de tangentes de Newton">
+  <div class="eyebrow">01 · LA GEOMETRÍA DE UNA ITERACIÓN</div>
+  <h4>Una tangente, una nueva apuesta</h4>
+  <p>Elige una función y una semilla. La tangente en xₙ corta el eje horizontal en xₙ₊₁. Avanza paso a paso para ver cómo esa construcción se convierte en un algoritmo.</p>
+  <div class="controls">
+    <label>Función<select [(ngModel)]="choice" (ngModelChange)="select()"><option *ngFor="let e of examples; let i = index" [ngValue]="i">{{ e.label }} · {{ e.formula }}</option></select></label>
+    <label>Punto inicial x₀ · {{ format(seed) }}<input type="range" [min]="example.xmin" [max]="example.xmax" step="0.01" [(ngModel)]="seed" (ngModelChange)="update()"></label>
+  </div>
+  <div class="buttons"><button type="button" (click)="seed = 0; update()">Probar x₀ = 0</button><button type="button" (click)="select()">Restaurar ejemplo</button></div>
+  <svg class="pickable" viewBox="0 0 800 360" role="img" aria-label="Función, tangente y aproximaciones de Newton. También puedes elegir la semilla con el control deslizante." (click)="choosePoint($event)">
+    <defs><clipPath id="newton-tangent-clip"><rect x="55" y="35" width="690" height="285"/></clipPath></defs>
+    <g clip-path="url(#newton-tangent-clip)">
+      <line x1="55" [attr.y1]="sy(0)" x2="745" [attr.y2]="sy(0)" class="axis"/>
+      <line [attr.x1]="sx(0)" y1="35" [attr.x2]="sx(0)" y2="320" class="axis"/>
+      <path [attr.d]="curve" class="curve"/>
+      <path [attr.d]="tangent" class="gold"/>
+      <line [attr.x1]="sx(current.x)" [attr.y1]="sy(0)" [attr.x2]="sx(current.x)" [attr.y2]="sy(current.fx)" class="guide"/>
+      <circle [attr.cx]="sx(current.x)" [attr.cy]="sy(current.fx)" r="6" fill="#82e3cc"/>
+      <circle *ngIf="next" [attr.cx]="sx(next.x)" [attr.cy]="sy(0)" r="6" fill="#f6cc80"/>
+    </g>
+    <text x="55" y="345">{{ example.xmin }}</text><text x="720" y="345">{{ example.xmax }} · x</text>
+    <text x="8" y="45">{{ example.ymax }}</text><text x="8" y="315">{{ example.ymin }}</text>
+    <text x="60" y="22">f(x) = {{ example.formula }}</text>
+  </svg>
+  <div class="legend"><span class="mint-text">● Función / punto actual</span><span class="gold-text">━ Tangente / próximo corte</span></div>
+  <div class="buttons">
+    <button type="button" (click)="go(0)" [disabled]="step === 0">Inicio</button>
+    <button type="button" (click)="go(step - 1)" [disabled]="step === 0">Anterior</button>
+    <button type="button" (click)="go(step + 1)" [disabled]="!next">Siguiente paso</button>
+    <button type="button" (click)="toggle()" [disabled]="result.rows.length < 2">{{ playing ? 'Pausar' : 'Reproducir' }}</button>
+    <button type="button" (click)="exportCsv()">Exportar CSV</button>
+  </div>
+  <div class="readouts"><div><span>Iteración n</span><strong>{{ step }}</strong></div><div><span>xₙ</span><strong>{{ format(current.x) }}</strong></div><div><span>Residuo |f(xₙ)|</span><strong>{{ residual(current.fx) }}</strong></div></div>
+  <p class="insight" aria-live="polite">{{ status }}{{ outside ? '. El siguiente punto cae fuera del encuadre; consulta su valor en la tabla.' : '' }}</p>
+  <div class="table-wrap"><table><caption>Historial de la construcción · selecciona una iteración para inspeccionarla</caption><thead><tr><th>n</th><th>xₙ</th><th>f(xₙ)</th><th>f′(xₙ)</th></tr></thead><tbody><tr *ngFor="let row of result.rows; let i = index" [class.active]="i === step"><td><button type="button" (click)="go(i)" [attr.aria-label]="'Ver iteración ' + i" [attr.aria-pressed]="i === step">{{ i }}</button></td><td>{{ format(row.x) }}</td><td>{{ format(row.fx) }}</td><td>{{ format(row.derivative) }}</td></tr></tbody></table></div>
+  <p class="note">Puedes pulsar el gráfico para elegir x₀. Se muestran hasta 30 pasos, con tolerancia 10⁻¹² en residuo y paso relativo, o un cero calculado exacto. Se detectan derivadas nulas, repeticiones exactas y valores fuera de ±10⁸. Estos criterios numéricos no certifican una raíz matemática.</p>
+</section>

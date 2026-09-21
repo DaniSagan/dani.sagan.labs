@@ -1,0 +1,120 @@
+<h2>Newton–Raphson: encontrar una raíz siguiendo tangentes</h2>
+<p class="dropcap">Resolver una ecuación no siempre significa encontrar una fórmula cerrada. A menudo
+  basta con construir una sucesión de números que se acerque a la solución. El método de Newton–Raphson
+  hace una apuesta local: sustituye la curva por su tangente, resuelve ese problema más sencillo y vuelve
+  a empezar. Cerca de una raíz adecuada, unas pocas iteraciones pueden dar una precisión extraordinaria.
+  Lejos de ella, la misma regla puede fallar de formas sorprendentes.</p>
+
+<h3>De una ecuación a un corte con el eje</h3>
+<p>Buscamos un número α tal que f(α) = 0. Una ecuación como cos x = x se escribe como
+  f(x) = cos x − x. Elegimos una primera aproximación x₀, llamada <em>semilla</em>, y trazamos la
+  tangente a la gráfica en ese punto.</p>
+<app-formula expression="y=f(x_n)+f'(x_n)(x-x_n)"></app-formula>
+<p>El corte de esa recta con el eje horizontal se obtiene haciendo y = 0. Si la derivada no es nula,
+  aparece la regla de Newton:</p>
+<app-formula expression="\boxed{x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}}"></app-formula>
+<p>La fracción es una corrección con signo. El cociente combina cuánto se separa la función de cero
+  con lo rápido que está cambiando. Una pendiente pequeña puede convertir un residuo moderado en
+  un salto enorme. Prueba las semillas positivas y negativas de x² − 2 antes de explorar los casos difíciles.</p>
+<app-newton-tangent></app-newton-tangent>
+
+<h3>Calcular √2 sin una tecla de raíz cuadrada</h3>
+<p>Para f(x) = x² − 2, la derivada es 2x. La iteración se convierte en la media de xₙ y 2/xₙ:</p>
+<app-formula expression="x_{n+1}=\frac12\left(x_n+\frac{2}{x_n}\right)"></app-formula>
+<p>Empezando en 2 obtenemos 1,5; después 1,416666…; luego 1,414215686… y finalmente
+  1,414213562375…, ya muy cerca de √2. Una semilla negativa conduce a −√2. El algoritmo no conoce
+  cuál de las dos raíces nos interesa: esa elección depende del problema y del punto de partida.</p>
+
+<h3>Por qué puede duplicar las cifras correctas</h3>
+<p>La tangente es el polinomio de <a routerLink="../taylor-series">Taylor</a> de primer orden.
+  Si f tiene segunda derivada continua cerca de α y la raíz es simple, es decir, f′(α) ≠ 0,
+  existe un entorno desde el que Newton converge al empezar suficientemente cerca.
+  Para el error con signo eₙ = xₙ − α se obtiene:</p>
+<app-formula expression="\lim_{n\to\infty}\frac{e_{n+1}}{e_n^2}=\frac{f''(\alpha)}{2f'(\alpha)}"></app-formula>
+<p>Cuando esa constante no es cero, hablamos de convergencia cuadrática. Un error del orden de
+  10⁻³ puede pasar al orden de 10⁻⁶ y después al de 10⁻¹², una vez dentro del régimen local.
+  No es una promesa para cualquier semilla, ni una ganancia ilimitada: el redondeo termina por dominar.
+  Si f″(α) = 0, la convergencia puede ser aún más rápida.</p>
+<app-newton-convergence></app-newton-convergence>
+
+<h3>Las raíces múltiples cambian el ritmo</h3>
+<p>Una raíz de multiplicidad m puede escribirse localmente como f(x) = (x − α)ᵐg(x),
+  con g(α) ≠ 0. Cuando m &gt; 1, la derivada también se anula en la raíz y Newton ordinario pierde
+  su velocidad cuadrática: el cociente de errores tiende a 1 − 1/m.</p>
+<app-formula expression="\frac{e_{n+1}}{e_n}\longrightarrow\frac{m-1}{m},\qquad x_{n+1}=x_n-m\frac{f(x_n)}{f'(x_n)}\quad\text{(multiplicidad conocida)}"></app-formula>
+<p>La corrección multiplicada por m recupera, bajo las hipótesis de regularidad habituales, la
+  convergencia al menos cuadrática. Para la función pura (x − α)³, el método ordinario cumple
+  eₙ₊₁ = 2eₙ/3 exactamente en aritmética real; la versión multiplicada por 3 llega a α en un solo paso.
+  Este caso especial explica la tercera curva del laboratorio, pero no significa que cualquier raíz
+  triple pueda resolverse en una iteración.</p>
+
+<h3>Cuando la tangente engaña</h3>
+<ul>
+  <li><strong>Derivada nula.</strong> Para x² − 2, elegir x₀ = 0 deja una tangente horizontal
+    que no corta el eje. El cociente de Newton no está definido. Si f y f′ son ambos cero en un punto
+    exacto, ya estamos en una raíz y no hace falta calcular otro paso.</li>
+  <li><strong>Ciclos.</strong> Para f(x) = x³ − 2x + 2, la semilla 0 produce 1 y la semilla 1
+    produce 0. La sucesión repite 0, 1, 0, 1… sin acercarse a la raíz real negativa.</li>
+  <li><strong>Una raíz inexistente en el dominio.</strong> x² + 1 no tiene ceros reales.
+    Desde 1, el siguiente valor es 0 y la iteración se bloquea. Ninguna tolerancia puede crear una raíz real.</li>
+  <li><strong>Saltos y dominios.</strong> Una derivada muy pequeña puede enviar la siguiente
+    aproximación muy lejos o fuera del dominio de la función. Incluso una función suave con raíces
+    puede tener semillas que no converjan.</li>
+</ul>
+<p>Estos fallos son parte del comportamiento matemático del método. Por eso un algoritmo práctico
+  controla valores no finitos, número de iteraciones, tamaño del paso, residuo y restricciones del dominio.</p>
+
+<h3>Residuo pequeño no significa error pequeño</h3>
+<p>El residuo es |f(xₙ)|; el error es |xₙ − α|. El primero se puede calcular sin conocer la raíz;
+  el segundo normalmente no. Cerca de una raíz simple, el error se relaciona aproximadamente con
+  |f(xₙ)/f′(α)|. Si la función es muy plana, un residuo diminuto puede ocultar una aproximación pobre.</p>
+<p>Por ejemplo, para f(x) = (x − 1)³, el punto x = 1,001 tiene residuo 10⁻⁹, pero error 10⁻³.
+  Multiplicar f por una constante diminuta también reduce su residuo sin cambiar sus raíces ni los pasos
+  de Newton en aritmética exacta.</p>
+<app-formula expression="|f(x_n)|\le\varepsilon_f,\qquad |x_{n+1}-x_n|\le\varepsilon_x(1+|x_{n+1}|)"></app-formula>
+<p>Comprobar residuo y paso con tolerancias apropiadas a la escala del problema es más informativo
+  que usar uno solo. Aun así, el estancamiento por redondeo puede dar pasos nulos sin una solución fiable.
+  Si f es continua y tenemos un intervalo con cambio de signo, la bisección ofrece además un intervalo
+  que encierra una raíz y una cota de error mediante su anchura.</p>
+
+<h3>Rapidez con una red de seguridad</h3>
+<p>La bisección no necesita derivadas y conserva el encierro cuando sus hipótesis se cumplen,
+  aunque suele avanzar más despacio. Un método híbrido puede mantener ese intervalo, intentar
+  un paso de Newton y recurrir al punto medio si el paso sale del intervalo o no reduce suficientemente
+  su anchura. Así se combina la rapidez local con una garantía de progreso.</p>
+<p>Otra opción es amortiguar la corrección con un factor entre 0 y 1, elegido mediante una regla
+  de aceptación. Reducir el paso puede ayudar, pero un factor fijo no garantiza convergencia para
+  cualquier función. Si calcular la derivada es costoso, el método de la secante la aproxima a partir
+  de dos evaluaciones previas.</p>
+
+<h3>En el plano complejo, las semillas dibujan un fractal</h3>
+<p>La misma fórmula se aplica a funciones complejas donde la derivada existe. Para z³ − 1 hay
+  tres raíces, y cada una atrae un conjunto de semillas: su <em>cuenca de atracción</em>.
+  Lejos de las fronteras, semillas cercanas suelen compartir destino; cerca de ellas, pequeñas
+  perturbaciones pueden cambiar la raíz encontrada.</p>
+<app-formula expression="z_{n+1}=z_n-\frac{z_n^3-1}{3z_n^2}=\frac{2z_n+z_n^{-2}}{3},\qquad z_n\ne0"></app-formula>
+<app-newton-basins></app-newton-basins>
+<p>Las fronteras muestran una estructura fractal asociada a la dinámica de la aplicación de Newton.
+  El mapa colorea resultados numéricos con un presupuesto finito de iteraciones: no es una demostración
+  de lo que ocurre en cada punto. Puedes continuar con otras funciones en el
+  <a routerLink="../newton-set-fractal">explorador del fractal de Newton</a>.</p>
+
+<h3>De una variable a muchas</h3>
+<p>Para resolver un sistema F(x) = 0, la derivada se sustituye por la matriz jacobiana J.
+  En cada paso se resuelve un sistema lineal para la corrección Δx:</p>
+<app-formula expression="J_F(x_n)\,\Delta x_n=-F(x_n),\qquad x_{n+1}=x_n+\Delta x_n"></app-formula>
+<p>No es necesario formar explícitamente la inversa de la matriz. Esta idea aparece en simulación,
+  ecuaciones implícitas y optimización. En una variable, aplicar Newton a f′ busca puntos estacionarios
+  de f; distinguir un mínimo de un máximo exige información adicional.</p>
+
+<h3>Retos para explorar</h3>
+<ul>
+  <li>En x² − 2, compara las semillas 2, −2 y 0. ¿Qué decide el signo de la raíz encontrada?</li>
+  <li>En x³ − 2x + 2, observa el ciclo desde 0 y después mueve ligeramente la semilla. ¿Qué cambia?</li>
+  <li>En la comparación, cambia de raíz simple a triple. Contrasta la caída del residuo con la del error.</li>
+  <li>En el plano complejo, amplía una frontera y aumenta el límite de iteraciones. ¿Desaparecen todos los píxeles oscuros?</li>
+</ul>
+<p>Referencias: <a href="https://dlmf.nist.gov/3.8">DLMF del NIST, §3.8: ecuaciones no lineales</a>,
+  para la regla de Newton y sus órdenes de convergencia; y
+  <a href="https://fncbook.com/julia/secant/">Fundamentals of Numerical Computation: métodos basados en interpolación</a>,
+  de Tobin A. Driscoll y Richard J. Braun, para la secante y la combinación de métodos.</p>

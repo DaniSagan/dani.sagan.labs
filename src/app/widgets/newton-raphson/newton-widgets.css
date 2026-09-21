@@ -13,16 +13,13 @@
 }
 .eyebrow {
   font: 700 0.7rem system-ui;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.15em;
   color: #82e3cc;
   margin-bottom: 0.7rem;
 }
 h4 {
   font-size: 1.45rem;
   color: #f1f7fa;
-}
-h5 {
-  color: #82e3cc;
 }
 p {
   line-height: 1.7;
@@ -33,30 +30,36 @@ label {
   gap: 0.5rem;
   font-size: 0.88rem;
   flex: 1;
-  min-width: 160px;
+  min-width: 150px;
 }
 input[type="range"] {
   width: 100%;
   accent-color: #82e3cc;
-  min-height: 30px;
+  min-height: 32px;
 }
 button,
-select {
+select,
+input[type="number"] {
   font: inherit;
   color: #e4f0f4;
   background: #1c323c;
   border: 1px solid #58717c;
   border-radius: 7px;
   padding: 0.5rem 0.7rem;
+  max-width: 100%;
 }
 button {
   cursor: pointer;
   min-height: 40px;
 }
-button:hover,
+button:hover:not(:disabled),
 button[aria-pressed="true"] {
   background: #295346;
   border-color: #82e3cc;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 button:focus-visible,
 select:focus-visible,
@@ -67,30 +70,14 @@ input:focus-visible {
 .buttons,
 .controls {
   display: flex;
-  gap: 0.7rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
   margin: 1.2rem 0;
-}
-.controls {
   align-items: end;
-  gap: 1.3rem;
 }
-.diagram {
-  position: relative;
-  aspect-ratio: 800/360;
-  background: #0a141c;
-  border-radius: 8px;
-}
-.diagram canvas,
-.diagram svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.diagram svg {
-  cursor: crosshair;
-  background: transparent;
+.controls label {
+  min-width: 0;
+  flex-basis: 200px;
 }
 svg {
   display: block;
@@ -108,24 +95,21 @@ svg text {
   stroke: #54707f;
   stroke-width: 1;
 }
-.mint,
-.gold,
-.marker {
+.guide {
+  stroke: #54707f;
+  stroke-dasharray: 4 6;
+  fill: none;
+}
+.curve {
   fill: none;
   stroke: #82e3cc;
-  stroke-width: 1.8;
-  vector-effect: non-scaling-stroke;
+  stroke-width: 2.5;
 }
 .gold {
+  fill: none;
   stroke: #f6cc80;
-}
-.marker {
-  stroke: #f6cc80;
-  stroke-dasharray: 5 4;
-  stroke-width: 1;
-}
-.dashed {
-  stroke-dasharray: 5 4;
+  stroke-width: 2;
+  stroke-dasharray: 8 4;
 }
 .mint-text {
   color: #82e3cc;
@@ -133,12 +117,14 @@ svg text {
 .gold-text {
   color: #f6cc80;
 }
-.key {
-  margin-right: 1rem;
-}
 .note {
-  font-size: 0.82rem;
+  font-size: 0.83rem;
   color: #aebfc9;
+}
+.insight {
+  border-left: 3px solid #82e3cc;
+  padding: 0.7rem 1rem;
+  background: #82e3cc09;
 }
 .readouts {
   display: grid;
@@ -150,40 +136,24 @@ svg text {
   padding: 1rem;
   background: #0a141c;
   border-radius: 8px;
+  min-width: 0;
 }
 .readouts span {
   display: block;
-  font: 600 0.65rem system-ui;
-  letter-spacing: 0.08em;
+  font-size: 0.8rem;
   color: #aebfc9;
 }
 .readouts strong {
   display: block;
-  font: 500 1.4rem monospace;
+  font: 500 clamp(0.9rem, 2vw, 1.2rem) monospace;
   margin-top: 0.5rem;
   color: #82e3cc;
-}
-.readouts .small {
-  font: 500 0.9rem system-ui;
-}
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  align-items: center;
-}
-figure {
-  margin: 0;
-}
-figcaption {
-  font-size: 0.85rem;
-  margin-bottom: 0.8rem;
-}
-.epsilon {
-  max-width: 450px;
+  overflow-wrap: anywhere;
 }
 .table-wrap {
-  overflow-x: auto;
+  overflow: auto;
+  max-height: 340px;
+  margin-top: 1rem;
 }
 table {
   width: 100%;
@@ -194,7 +164,7 @@ table {
 th,
 td {
   text-align: right;
-  padding: 0.65rem;
+  padding: 0.6rem;
   border-bottom: 1px solid #35505b;
   white-space: nowrap;
 }
@@ -210,21 +180,56 @@ caption {
 tr.active {
   background: #28463e;
 }
-a {
-  color: #82e3cc;
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0.8rem 0;
+  font-size: 0.88rem;
+}
+.pickable {
+  cursor: crosshair;
+}
+.basin {
+  position: relative;
+  max-width: 600px;
+  aspect-ratio: 1;
+  margin: auto;
+}
+.basin canvas,
+.basin svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+.basin svg {
+  background: transparent;
+  touch-action: manipulation;
+}
+.basin svg text {
+  fill: white;
+  paint-order: stroke;
+  stroke: #101820;
+  stroke-width: 3px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
 }
 @media (max-width: 650px) {
+  .readouts,
   .split {
-    grid-template-columns: 1fr;
-  }
-  .readouts {
     grid-template-columns: 1fr;
   }
   .readouts > div {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    gap: 0.5rem;
   }
   .readouts strong {
     margin: 0;
