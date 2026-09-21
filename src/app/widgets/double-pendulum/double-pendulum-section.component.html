@@ -1,0 +1,19 @@
+<section class="lab" aria-label="Sección de Poincaré del péndulo doble">
+  <div class="eyebrow">03 · MIRAR SOLO CUANDO SE CRUZA UNA PUERTA</div>
+  <h4>Sección de Poincaré a energía fija</h4>
+  <p>Registramos θ₁ y su momento p₁ cuando el segundo brazo cruza la vertical inferior con ω₂ &gt; 0. Cinco colores representan cinco condiciones iniciales con la misma energía.</p>
+  <div class="buttons"><button *ngFor="let value of [0.5,2,4,6]" (click)="energyLevel = value; configure()" [attr.aria-pressed]="energyLevel === value">E/(mgℓ) = {{ value }}</button></div>
+  <div class="controls"><label>Tiempo por órbita<select [(ngModel)]="duration" (ngModelChange)="configure()"><option [ngValue]="60">60 s</option><option [ngValue]="180">180 s</option><option [ngValue]="600">600 s</option></select></label><label>Paso de integración<select [(ngModel)]="frequency" (ngModelChange)="configure()"><option [ngValue]="120">1/120 s</option><option [ngValue]="240">1/240 s</option><option [ngValue]="480">1/480 s</option></select></label></div>
+  <div class="buttons"><button (click)="start()" [disabled]="running">Calcular sección</button><button (click)="stop()" [disabled]="!running">Detener</button><button (click)="exportCsv()" [disabled]="!points.length || running">Exportar puntos CSV</button></div>
+  <div class="plot-wrap">
+    <canvas #canvas width="640" height="440" role="img" aria-label="Puntos de una sección de Poincaré; cada color representa una órbita distinta">Sección de Poincaré en coordenadas θ₁ y p₁ normalizado.</canvas>
+    <svg viewBox="0 0 640 440" aria-hidden="true"><path class="axis" d="M45 210H595 M320 30V390"/><text x="45" y="413">−π</text><text x="318" y="413">0</text><text x="550" y="413">π · θ₁</text><text x="20" y="22">p₁ / (mℓ²√(g/ℓ)) · límite ±{{ momentumLimit | number:'1.2-2' }}</text></svg>
+  </div>
+  <div class="legend"><span *ngFor="let color of colors; let i = index"><i [style.background]="color"></i>Órbita {{ i + 1 }}</span></div>
+  <div class="progress" role="progressbar" aria-label="Cálculo de la sección" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"><span [style.width.%]="progress"></span></div>
+  <p class="caption" role="status">{{ running ? 'Calculando' : progress === 100 ? 'Cálculo completo' : 'Cálculo detenido' }} · {{ progress }}% · {{ points.length }} cruces.</p>
+  <p *ngIf="message" class="insight">{{ message }}</p>
+  <p class="note">m₁ = m₂ = 1 kg, ℓ₁ = ℓ₂ = 1 m; U = 0 en el equilibrio inferior. Máxima deriva muestreada |E − E₀|/(3mgℓ): {{ maxDrift.toExponential(2) }}. Los cruces se refinan dentro de cada paso, no se redondean a la muestra más cercana.</p>
+  <details><summary>Condiciones iniciales reproducibles</summary><div class="table-wrap"><table><thead><tr><th>Órbita</th><th>θ₁ (rad)</th><th>θ₂</th><th>ω₁</th><th>ω₂ (rad/s)</th></tr></thead><tbody><tr *ngFor="let s of initialStates; let i = index"><td>{{ i + 1 }}</td><td>{{ s[0] | number:'1.4-4' }}</td><td>0</td><td>0</td><td>{{ s[3] | number:'1.4-4' }}</td></tr></tbody></table></div></details>
+  <p class="note">Curvas ordenadas y regiones dispersas sugieren regímenes distintos. Una muestra finita no demuestra caos, periodicidad ni llenado de una región. Compara tiempos y pasos de integración; las cinco órbitas no exploran todas las condiciones de esa energía.</p>
+</section>

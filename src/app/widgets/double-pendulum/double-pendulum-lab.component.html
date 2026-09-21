@@ -1,0 +1,65 @@
+<section class="lab" aria-label="Laboratorio del péndulo doble">
+  <div class="eyebrow">01 · DOS BRAZOS, CUATRO VARIABLES</div>
+  <h4>Una pequeña diferencia, dos historias</h4>
+  <div class="buttons"><button (click)="preset('quiet')">Oscilación pequeña</button><button (click)="preset('slow')">Modo lento</button><button (click)="preset('fast')">Modo rápido</button><button (click)="preset('chaos')">Gran amplitud</button><button (click)="preset('rotate')">Rotaciones</button></div>
+  <div class="split">
+    <div>
+      <svg #stage viewBox="0 0 600 500" class="pendulum" (pointermove)="drag($event, stage)" (pointerup)="endDrag()" (pointercancel)="endDrag()" role="img" aria-label="Péndulo principal turquesa y péndulo perturbado dorado; arrastra las masas o usa los controles de ángulos">
+        <defs><pattern id="double-pendulum-grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M50 0H0V50" fill="none" stroke="#243b47" stroke-width="0.6"/></pattern></defs>
+        <rect width="600" height="500" fill="url(#double-pendulum-grid)"/>
+        <circle cx="300" cy="250" r="200" class="guide"/>
+        <path *ngIf="trail" [attr.d]="trailA" class="curve tail"/><path *ngIf="trail && compare" [attr.d]="trailB" class="gold tail"/>
+        <g *ngIf="compare" class="other">
+          <path [attr.d]="'M300 250L' + sx(otherPosition.x1) + ' ' + sy(otherPosition.y1) + 'L' + sx(otherPosition.x2) + ' ' + sy(otherPosition.y2)" class="gold rod"/>
+          <circle [attr.cx]="sx(otherPosition.x1)" [attr.cy]="sy(otherPosition.y1)" r="9" fill="#f6cc80"/>
+          <circle [attr.cx]="sx(otherPosition.x2)" [attr.cy]="sy(otherPosition.y2)" r="9" fill="#f6cc80"/>
+        </g>
+        <path [attr.d]="'M300 250L' + sx(position.x1) + ' ' + sy(position.y1) + 'L' + sx(position.x2) + ' ' + sy(position.y2)" class="curve rod"/>
+        <circle cx="300" cy="250" r="6" fill="#fff"/>
+        <circle [attr.cx]="sx(position.x1)" [attr.cy]="sy(position.y1)" [attr.r]="10 + 3 * parameters.m1" fill="#82e3cc" class="handle" (pointerdown)="startDrag($event, 1, stage)"><title>Masa 1; arrastrar para preparar la posición inicial</title></circle>
+        <circle [attr.cx]="sx(position.x2)" [attr.cy]="sy(position.y2)" [attr.r]="10 + 3 * parameters.m2" fill="#82e3cc" class="handle" (pointerdown)="startDrag($event, 2, stage)"><title>Masa 2; arrastrar para preparar la posición inicial</title></circle>
+        <text x="20" y="28">t = {{ fmt(time, 2) }} s</text><text x="20" y="480">Radio máximo: {{ fmt(parameters.l1 + parameters.l2) }} m</text>
+      </svg>
+      <div class="buttons"><button (click)="running ? pause() : play()" [disabled]="time >= 120 || !!message">{{ running ? 'Pausar' : 'Iniciar' }}</button><button (click)="singleStep()" [disabled]="time >= 120 || !!message">Paso de 1/30 s</button><button (click)="reset()">Reiniciar</button></div>
+      <div class="controls"><label>Velocidad de reproducción<select [(ngModel)]="speed"><option [ngValue]="0.25">×0,25</option><option [ngValue]="1">×1</option><option [ngValue]="2">×2</option><option [ngValue]="4">×4</option></select></label><label>Paso de integración<select [(ngModel)]="frequency" (ngModelChange)="reset()"><option [ngValue]="120">1/120 s</option><option [ngValue]="240">1/240 s</option><option [ngValue]="480">1/480 s</option></select></label></div>
+      <div class="checks"><label><input type="checkbox" [(ngModel)]="compare"> Mostrar péndulo perturbado</label><label><input type="checkbox" [(ngModel)]="trail"> Rastro de los últimos 10 s</label></div>
+    </div>
+    <div>
+      <p class="note">Los ángulos se miden desde la vertical hacia abajo. Cambiar condiciones o parámetros reinicia el experimento; arrastrar una masa deja ambas velocidades iniciales en cero.</p>
+      <label>θ₁ inicial: {{ fmt(angle1, 2) }}°<input type="range" min="-180" max="180" step="0.1" [(ngModel)]="angle1" (ngModelChange)="reset()"></label>
+      <label>θ₂ inicial: {{ fmt(angle2, 2) }}°<input type="range" min="-180" max="180" step="0.1" [(ngModel)]="angle2" (ngModelChange)="reset()"></label>
+      <label>ω₁ inicial: {{ fmt(velocity1) }} rad/s<input type="range" min="-8" max="8" step="0.1" [(ngModel)]="velocity1" (ngModelChange)="reset()"></label>
+      <label>ω₂ inicial: {{ fmt(velocity2) }} rad/s<input type="range" min="-8" max="8" step="0.1" [(ngModel)]="velocity2" (ngModelChange)="reset()"></label>
+      <label>Diferencia inicial en θ₂<select [(ngModel)]="epsilon" (ngModelChange)="reset()"><option [ngValue]="0">0° · control idéntico</option><option [ngValue]="0.001">0,001°</option><option [ngValue]="0.01">0,01°</option><option [ngValue]="0.1">0,1°</option><option [ngValue]="1">1°</option></select></label>
+      <details><summary>Masas y longitudes</summary><label *ngFor="let control of parameterControls">{{ control.label }}: {{ fmt(parameters[control.key], 1) }}<input type="range" [min]="control.min" [max]="control.max" step="0.1" [(ngModel)]="parameters[control.key]" (ngModelChange)="reset()"></label></details>
+      <p class="note">g = 9,81 m/s². Varillas ideales sin masa, sin rozamiento ni colisiones. La animación comienza al pulsar «Iniciar» y se pausa al ocultar la pestaña.</p>
+    </div>
+  </div>
+  <p *ngIf="message" role="status" class="insight">{{ message }}</p>
+  <div class="readouts"><div><span>Energía E (J)</span><strong>{{ fmt(energy.total, 4) }}</strong></div><div><span>Deriva (E − E₀)/E*</span><strong>{{ scientific(drift) }}</strong></div><div><span>Separación de estados d</span><strong>{{ scientific(separation) }}</strong></div></div>
+  <div class="buttons" aria-label="Gráfica del experimento"><button (click)="tab = 'energy'" [attr.aria-pressed]="tab === 'energy'">Energía</button><button (click)="tab = 'separation'" [attr.aria-pressed]="tab === 'separation'">Sensibilidad y error</button><button (click)="tab = 'phase'" [attr.aria-pressed]="tab === 'phase'">Espacio de fases</button></div>
+  <svg *ngIf="tab === 'energy'" viewBox="0 0 600 260" role="img" aria-label="Energía cinética, potencial y total frente al tiempo">
+    <path class="axis" d="M45 25V220H565"/><path [attr.d]="kineticPath" class="curve"/><path [attr.d]="potentialPath" class="gold"/><path [attr.d]="totalPath" class="violet"/>
+    <text x="8" y="20">{{ fmt(energyScale, 1) }} J</text><text x="17" y="222">0</text><text x="45" y="245">{{ fmt(startTime, 1) }} s</text><text x="505" y="245">{{ fmt(time, 1) }} s</text>
+  </svg>
+  <div *ngIf="tab === 'energy'" class="legend"><span class="mint-text">— Cinética K</span><span class="gold-text">– – Potencial U</span><span class="violet-text">— Total E</span></div>
+  <ng-container *ngIf="tab === 'separation'">
+    <svg viewBox="0 0 600 260" role="img" aria-label="Separación física y diferencia entre pasos numéricos en escala logarítmica">
+      <path class="axis" d="M45 25V220H565"/><path class="guide" d="M45 220H565 M45 141H565 M45 61H565"/>
+      <path [attr.d]="separationPath" class="gold"/><path [attr.d]="numericalPath" class="violet"/>
+      <text x="4" y="225">10⁻¹²</text><text x="4" y="146">10⁻⁶</text><text x="18" y="66">1</text><text x="8" y="28">10²</text><text x="45" y="245">{{ fmt(startTime, 1) }} s</text><text x="505" y="245">{{ fmt(time, 1) }} s</text>
+    </svg>
+    <div class="legend"><span class="gold-text">– – Condición inicial perturbada</span><span class="violet-text">— Misma condición, pasos h y h/2</span></div>
+    <p class="note">d combina diferencias angulares módulo 2π y velocidades divididas por √(g/ℓ₁). El gráfico limita valores menores que 10⁻¹² al borde inferior; cero no es 10⁻¹². La comparación h/h/2 estima sensibilidad numérica, no el error exacto ni un exponente de Lyapunov.</p>
+  </ng-container>
+  <ng-container *ngIf="tab === 'phase'">
+    <label>Coordenada<select [(ngModel)]="phaseBob" (ngModelChange)="refreshCharts()"><option [ngValue]="0">θ₁ y ω₁</option><option [ngValue]="1">θ₂ y ω₂</option></select></label>
+    <svg viewBox="0 0 600 260" role="img" aria-label="Proyección del espacio de estados sobre ángulo y velocidad angular">
+      <path class="axis" d="M45 130H565 M300 25V225"/><path [attr.d]="phasePath" class="curve"/>
+      <text x="45" y="245">−π</text><text x="300" y="245">0</text><text x="535" y="245">π rad</text><text x="12" y="20">±{{ fmt(phaseScale, 2) }} rad/s</text>
+    </svg>
+    <p class="note">Esta es una proyección de un estado de cuatro dimensiones. Dos trazos pueden cruzarse sin que coincidan las otras variables. Los saltos de π a −π se dibujan sin unir sus extremos.</p>
+  </ng-container>
+  <p class="note">E* = (m₁ + m₂)gℓ₁ + m₂gℓ₂. RK4 con paso fijo; la velocidad de reproducción no cambia h. Se conservan hasta 60 s de datos, muestreados a 30 Hz. En dispositivos lentos, la reproducción puede avanzar más despacio.</p>
+  <button (click)="exportCsv()">Exportar datos CSV</button>
+</section>

@@ -1,0 +1,112 @@
+<h2>El péndulo doble: del orden al caos</h2>
+<p class="dropcap">Cuelga un péndulo del extremo de otro. Apenas has añadido una articulación, pero el
+  movimiento ya puede cambiar de carácter: oscilaciones coordinadas, intercambios de energía, vueltas
+  completas y trayectorias que parecen imposibles de anticipar. La regla sigue siendo determinista.
+  Lo que se vuelve frágil es nuestra capacidad de predecirla durante mucho tiempo.</p>
+<p>El péndulo doble no es caótico en cualquier situación. A pequeña amplitud aparecen movimientos
+  ordenados que podemos describir con dos modos normales. Al aumentar la energía, la no linealidad
+  permite regímenes más complejos y una fuerte sensibilidad a las condiciones iniciales.</p>
+
+<h3>1. Dos ángulos bastan para la posición, pero no para el estado</h3>
+<p>Usaremos dos masas puntuales m₁ y m₂, unidas por varillas rígidas de longitudes ℓ₁ y ℓ₂,
+  sin masa. El soporte está fijo, el movimiento ocurre en un plano y la gravedad es uniforme.
+  No incluimos rozamiento, resistencia del aire ni choques: los brazos pueden cruzarse en el dibujo.</p>
+<p>Ambos ángulos se miden respecto de la vertical <strong>hacia abajo</strong>, no uno respecto del otro.
+  Con el origen en el soporte y el eje y hacia arriba, las posiciones son:</p>
+<app-formula expression="x_1=\ell_1\sin\theta_1,\qquad y_1=-\ell_1\cos\theta_1"></app-formula>
+<app-formula expression="x_2=x_1+\ell_2\sin\theta_2,\qquad y_2=y_1-\ell_2\cos\theta_2"></app-formula>
+<p>Para decidir el futuro no basta una fotografía: también necesitamos las velocidades angulares.
+  El estado tiene cuatro componentes. Los ángulos son periódicos; sumar 2π no cambia la posición.</p>
+<app-formula expression="s=(\theta_1,\theta_2,\omega_1,\omega_2),\qquad \omega_i=\dot\theta_i"></app-formula>
+<p>En el laboratorio, comienza con «Oscilación pequeña» y después prueba «Gran amplitud». El péndulo
+  dorado parte de una ligera modificación de θ₂. Las otras tres variables y los parámetros son iguales.</p>
+<app-double-pendulum-lab></app-double-pendulum-lab>
+
+<h3>2. La energía muestra cómo están acoplados</h3>
+<p>La segunda masa se mueve porque gira su propia varilla y porque se desplaza la primera articulación.
+  Al elevar su velocidad al cuadrado aparece un término mixto. Esa es la razón de que no podamos
+  sumar dos péndulos simples independientes.</p>
+<app-formula expression="K=\frac12(m_1+m_2)\ell_1^2\omega_1^2+\frac12m_2\ell_2^2\omega_2^2+m_2\ell_1\ell_2\omega_1\omega_2\cos(\theta_1-\theta_2)"></app-formula>
+<p>Elegimos U = 0 cuando ambas masas están en su posición más baja. Cambiar ese origen solo añade
+  una constante a la energía; no modifica las ecuaciones de movimiento.</p>
+<app-formula expression="U=(m_1+m_2)g\ell_1(1-\cos\theta_1)+m_2g\ell_2(1-\cos\theta_2),\qquad E=K+U"></app-formula>
+<p>En este modelo ideal E es constante. La energía cinética y la potencial se intercambian, pero
+  un movimiento irregular no crea ni destruye energía. La curva de energía total sirve también
+  para detectar errores numéricos: una deriva apreciable requiere reducir el paso de integración.</p>
+
+<h3>3. Las ecuaciones: una matriz que cambia con la geometría</h3>
+<p>Aplicamos las ecuaciones de Euler–Lagrange al lagrangiano L = K − U. Si llamamos δ a la diferencia
+  θ₁ − θ₂, podemos escribir el resultado como un sistema lineal para las dos aceleraciones instantáneas:</p>
+<app-formula expression="\begin{pmatrix} A & B\\ B & C \end{pmatrix}\begin{pmatrix}\ddot\theta_1\\\ddot\theta_2\end{pmatrix}=\begin{pmatrix}r_1\\r_2\end{pmatrix}"></app-formula>
+<app-formula expression="A=(m_1+m_2)\ell_1^2,\qquad B=m_2\ell_1\ell_2\cos\delta,\qquad C=m_2\ell_2^2"></app-formula>
+<app-formula expression="r_1=-m_2\ell_1\ell_2\omega_2^2\sin\delta-(m_1+m_2)g\ell_1\sin\theta_1"></app-formula>
+<app-formula expression="r_2=m_2\ell_1\ell_2\omega_1^2\sin\delta-m_2g\ell_2\sin\theta_2"></app-formula>
+<p>Las incógnitas de este pequeño sistema son las aceleraciones; la evolución completa sigue siendo
+  no lineal porque B y los términos del segundo miembro dependen del estado. Para masas y longitudes
+  positivas, el determinante nunca se anula:</p>
+<app-formula expression="AC-B^2=m_2\ell_1^2\ell_2^2\left(m_1+m_2\sin^2\delta\right)>0"></app-formula>
+<p>Resolvemos la matriz en cada evaluación y avanzamos el estado con Runge–Kutta de orden cuatro.
+  Puedes contrastar estas ecuaciones con la
+  <a href="https://physics.umd.edu/hep/drew/pendulum2.html">derivación lagrangiana de Drew Baden, en la Universidad de Maryland</a>,
+  o con la <a href="https://www.myphysicslab.com/pendulum/double-pendulum-en.html">derivación mediante fuerzas de Erik Neumann</a>.</p>
+
+<h3>4. Antes del caos: dos modos normales</h3>
+<p>Cerca del equilibrio inferior, sin θ ≈ θ y cos(θ₁ − θ₂) ≈ 1. Los términos que multiplican
+  velocidades al cuadrado y diferencias angulares son de orden superior. Si ambas masas son m y
+  ambas longitudes ℓ, el sistema linealizado queda:</p>
+<app-formula expression="\begin{pmatrix}2&1\\1&1\end{pmatrix}\begin{pmatrix}\ddot\theta_1\\\ddot\theta_2\end{pmatrix}+\frac{g}{\ell}\begin{pmatrix}2&0\\0&1\end{pmatrix}\begin{pmatrix}\theta_1\\\theta_2\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}"></app-formula>
+<p>Buscamos movimientos en los que los dos ángulos oscilen con una frecuencia común y una proporción
+  fija. El determinante de ese problema de autovalores da dos frecuencias:</p>
+<app-formula expression="\omega_-^2=\frac g\ell(2-\sqrt2),\qquad \omega_+^2=\frac g\ell(2+\sqrt2)"></app-formula>
+<p>En el modo lento, θ₂ = √2 θ₁: los brazos oscilan en fase. En el rápido, θ₂ = −√2 θ₁:
+  lo hacen en oposición. Una combinación de ambos también es solución del modelo lineal.
+  Esa propiedad de superposición deja de ser exacta para las ecuaciones completas.</p>
+<app-double-pendulum-modes></app-double-pendulum-modes>
+
+<h3>5. Sensibilidad no significa azar</h3>
+<p>Dos estados exactamente iguales producen la misma evolución matemática. En un régimen caótico,
+  diferencias inicialmente diminutas pueden crecer con rapidez y acabar en movimientos muy distintos.
+  En un intervalo apropiado se suele describir ese crecimiento mediante una aproximación exponencial:</p>
+<app-formula expression="d(t)\approx d(0)e^{\lambda t}"></app-formula>
+<p>Una pendiente ascendente durante unos segundos no basta para estimar un exponente de Lyapunov.
+  La separación puede oscilar, saturarse o crecer por inestabilidad local. Para medir un exponente
+  hacen falta tiempos suficientes y un procedimiento que controle y renormalice las perturbaciones.</p>
+<p>El primer laboratorio usa una distancia adimensional en el estado: mide diferencias angulares
+  reducidas a [−π, π] y divide las diferencias de velocidad por √(g/ℓ₁). Cambiar únicamente θ₂ también
+  altera ligeramente la energía inicial; estas dos trayectorias no se fuerzan a compartir exactamente E.</p>
+<p>La línea violeta de «Sensibilidad y error» parte, en cambio, del <em>mismo</em> estado y compara pasos
+  h y h/2. Si esa diferencia alcanza la escala de la perturbación física, la imagen ya no permite
+  atribuir toda la separación a la condición inicial. Una energía bien conservada es necesaria para
+  confiar en la simulación, pero no garantiza una trayectoria exacta durante tiempos largos.</p>
+
+<h3>6. Una sección de Poincaré convierte movimiento en puntos</h3>
+<p>Una órbita vive en un espacio de cuatro dimensiones. Fijar E reduce una dimensión; observarla
+  solo cuando cruza una superficie reduce otra. Elegimos θ₂ = 0 módulo 2π y ω₂ &gt; 0, de modo que
+  todos los cruces tengan la misma orientación.</p>
+<p>En cada cruce guardamos θ₁ y su momento conjugado p₁. Este último no es simplemente una constante
+  por ω₁, porque el segundo brazo contribuye al movimiento de la primera articulación:</p>
+<app-formula expression="p_1=\frac{\partial K}{\partial\omega_1}=(m_1+m_2)\ell_1^2\omega_1+m_2\ell_1\ell_2\omega_2\cos(\theta_1-\theta_2)"></app-formula>
+<p>Una órbita periódica que corta la sección aparece como un conjunto finito de puntos. Movimientos
+  cuasiperiódicos pueden trazar curvas; órbitas caóticas pueden explorar regiones más amplias.
+  Estas estructuras pueden coexistir a una misma energía. El muestreo finito obliga a interpretar
+  el dibujo con cuidado, especialmente si solo hay unos pocos cruces.</p>
+<app-double-pendulum-section></app-double-pendulum-section>
+
+<h3>7. Un sistema caótico que no tiene por qué atraer</h3>
+<p>El péndulo de estos laboratorios es conservativo. No pierde energía hasta descansar ni se contrae
+  hacia un atractor disipativo como ocurre en otros modelos de caos. En coordenadas canónicas,
+  la evolución hamiltoniana conserva volumen de fase. La complejidad consiste en cómo se reorganizan
+  las trayectorias, no en que todas sean atraídas hacia una misma figura.</p>
+<p>También es reversible: invertir las dos velocidades permite recorrer hacia atrás una solución
+  exacta. En un experimento o en un ordenador, los errores dificultan esa reconstrucción prolongada.
+  Añadir rozamiento, motores o varillas con masa produciría otro modelo con otros balances energéticos.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>Fija la diferencia inicial en 0°. Las dos trayectorias del primer laboratorio deben coincidir.</li>
+  <li>Compara 0,001° y 0,1° en «Gran amplitud». ¿Cuánto tarda la separación en ser visible?</li>
+  <li>Repite un experimento con h = 1/120 s y con h = 1/480 s. Contrasta energía y sensibilidad numérica.</li>
+  <li>En los modos, comienza con A = 2° y lleva el tiempo a 20 s. Repite con 30° y compara los modelos.</li>
+  <li>En la sección, compara E/(mgℓ) = 0,5 y 6. Aumenta el tiempo para distinguir estructuras persistentes de muestras escasas.</li>
+  <li>Exporta el CSV y busca intervalos en los que la energía potencial se transforma en cinética. No atribuyas al caos una deriva de la energía total.</li>
+</ul>
