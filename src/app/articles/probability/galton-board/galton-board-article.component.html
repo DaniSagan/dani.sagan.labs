@@ -1,0 +1,54 @@
+<article aria-labelledby="galton-title">
+  <span class="section-label">AZAR · CAMINOS · DISTRIBUCIONES</span>
+  <h2 id="galton-title">El tablero de Galton</h2>
+  <p class="dropcap">Una bola cae, golpea un clavo y se desvía. Otro clavo, otra decisión. Es difícil anticipar su destino, pero al dejar caer muchas bolas aparece una forma reconocible: los casilleros centrales suelen acumular más que los extremos. El tablero de Galton convierte una sucesión de pequeñas decisiones aleatorias en una distribución que podemos ver, contar y calcular.</p>
+  <aside class="theorem"><span class="section-label">UNA SUMA DE DECISIONES</span>
+    <app-formula expression="K=B_1+\cdots+B_n,\qquad B_i\sim\operatorname{Bernoulli}(p),\qquad K\sim\operatorname{Bin}(n,p)" displayMode="block" />
+    <p>Con n desvíos independientes y probabilidad constante p de ir a la derecha, el número K de desvíos a la derecha sigue una distribución binomial. Hay n + 1 casilleros posibles: del 0 al n.</p>
+  </aside>
+
+  <h3>1. Qué representa cada rebote</h3>
+  <p>Imaginemos filas de clavos alternados. Numeramos un desvío hacia la izquierda con 0 y hacia la derecha con 1. Después de n filas, una trayectoria que contiene k unos termina en el casillero k. El tablero simétrico corresponde a p = ½; un sesgo hacia la derecha desplaza el centro de la distribución.</p>
+  <p>El modelo supone que las decisiones son independientes, que p no cambia de una fila a otra y que las bolas no se afectan entre sí. En un aparato físico, el tamaño de los clavos, la velocidad, los rozamientos o los choques entre bolas pueden alterar esas condiciones. Los laboratorios de esta página simulan decisiones de Bernoulli: la animación representa el recorrido, sin resolver la mecánica de cada impacto.</p>
+  <app-galton-board />
+  <aside class="experiment"><h4>Empieza con un tablero equilibrado</h4><p>Con 12 filas y p = 0,5, deja caer unas pocas bolas y observa lo irregular del histograma. Añade después varios lotes de 1 000. Las frecuencias se acercan a la curva teórica, aunque las diferencias no desaparecen ni disminuyen en cada paso. Cambia p a 0,8: el nuevo experimento se concentra hacia la derecha.</p></aside>
+
+  <h3>2. Los casilleros no tienen el mismo número de caminos</h3>
+  <p>Para llegar al extremo izquierdo solo hay una secuencia: izquierda en todas las filas. Para llegar al extremo derecho también hay una sola. Sin embargo, para terminar con tres desvíos a la derecha entre seis decisiones podemos situar esas tres derechas en muchas posiciones distintas.</p>
+  <app-formula expression="\#\{\text{caminos hacia }k\}=\binom nk=\frac{n!}{k!(n-k)!}" displayMode="block" />
+  <p>Con seis filas hay 2⁶ = 64 secuencias. Sus destinos se reparten según los números 1, 6, 15, 20, 15, 6, 1. Son una fila del <a routerLink="/articles/pascal-triangle">triángulo de Pascal</a>: cada nodo recibe los caminos que llegan de sus dos predecesores.</p>
+  <app-formula expression="\binom nk=\binom{n-1}{k-1}+\binom{n-1}{k}" displayMode="block" />
+  <app-galton-paths />
+  <p>Con p = ½, todas las secuencias completas tienen probabilidad 2⁻ⁿ. Los destinos centrales son más frecuentes porque reúnen más secuencias, no porque cada trayectoria individual sea más probable. Cuando p cambia, los caminos con distinto número de derechas dejan de ser equiprobables.</p>
+
+  <h3>3. De contar caminos a calcular probabilidades</h3>
+  <p>Una secuencia concreta con k derechas y n − k izquierdas tiene probabilidad pᵏ(1 − p)ⁿ⁻ᵏ. Como las secuencias que terminan en k son sucesos incompatibles, sumamos sus probabilidades:</p>
+  <app-formula expression="\boxed{P(K=k)=\binom nk p^k(1-p)^{n-k}},\qquad k=0,\ldots,n" displayMode="block" />
+  <p>En el tablero de seis filas equilibrado, P(K = 3) = 20/64 = 31,25 %. En cambio, P(K = 0) = 1/64 = 1,5625 %. Si dejamos caer N bolas, esperamos N·P(K = k) en el casillero k. Ese valor esperado puede ser fraccionario: describe el promedio entre repeticiones del experimento, no una cantidad obligatoria de bolas.</p>
+  <p>La posición media y la dispersión se obtienen sumando las contribuciones de los desvíos independientes:</p>
+  <app-formula expression="\mu=\mathbb E[K]=np,\qquad \operatorname{Var}(K)=np(1-p),\qquad \sigma=\sqrt{np(1-p)}" displayMode="block" />
+  <p>Por ejemplo, con n = 12 y p = ½, la media es 6 y la desviación típica es √3 ≈ 1,732 casilleros. La desviación típica se expresa en unidades de posición; la varianza, en sus cuadrados.</p>
+
+  <h3>4. Más bolas y más filas son dos ideas distintas</h3>
+  <p><strong>Aumentar el número de bolas N</strong>, manteniendo n y p, permite estimar mejor una distribución fija. Para cada casillero, la ley de los grandes números dice que su frecuencia relativa converge a su probabilidad. Si esa probabilidad es q, la desviación típica de la frecuencia de N bolas independientes es √(q(1 − q)/N). Multiplicar N por cuatro divide esa escala de fluctuación por dos.</p>
+  <p><strong>Aumentar el número de filas n</strong>, con p fijo entre 0 y 1, cambia la distribución de cada bola. La suma contiene más decisiones. Tras centrarla y dividirla por su desviación típica, el teorema central del límite conduce a una normal estándar:</p>
+  <app-formula expression="Z_n=\frac{K-np}{\sqrt{np(1-p)}}\xrightarrow{\ d\ }\mathcal N(0,1),\qquad n\to\infty,\quad 0\lt p\lt1" displayMode="block" />
+  <p>Esta convergencia es en distribución. La binomial continúa siendo discreta para todo n finito. Lanzar un millón de bolas en un tablero de dos filas reproduce con precisión tres probabilidades; no crea una distribución continua.</p>
+
+  <h3>5. Aproximar áreas, no probabilidades de un punto</h3>
+  <p>La normal con media μ = np y varianza σ² = np(1 − p) tiene una densidad suave. Una altura de esa curva no es la probabilidad de un casillero: hay que integrar un área. Para aproximar P(a ≤ K ≤ b), la corrección de continuidad amplía los extremos en medio casillero:</p>
+  <app-formula expression="P(a\le K\le b)\approx\Phi\!\left(\frac{b+1/2-\mu}{\sigma}\right)-\Phi\!\left(\frac{a-1/2-\mu}{\sigma}\right)" displayMode="block" />
+  <p>Φ es la función de distribución acumulada de la normal estándar. La aproximación suele funcionar mejor cuando tanto np como n(1 − p) son suficientemente grandes. Una regla práctica utiliza 10 como referencia para ambos, pero no garantiza un error concreto, sobre todo al estudiar probabilidades pequeñas en las colas.</p>
+  <app-galton-normal />
+  <aside class="experiment"><h4>Pon a prueba la campana</h4><p>Selecciona «Sesgo fuerte» y compara los valores exacto y aproximado. Después elige «Campana simétrica». Fija a = b y desactiva la corrección de continuidad: la normal asigna área cero a un solo punto. Actívala de nuevo para integrar la franja que corresponde a ese casillero.</p></aside>
+
+  <h3>6. Cuándo cambia la historia</h3>
+  <p>Si cada fila tiene una probabilidad distinta pᵢ pero los desvíos siguen siendo independientes, K ya no es binomial en general: sigue una distribución de Poisson-binomial, con media Σpᵢ y varianza Σpᵢ(1 − pᵢ). Si además las decisiones están correlacionadas, la varianza incluye términos de covarianza; las fórmulas del tablero ideal dejan de bastar.</p>
+  <p>El tablero muestra cómo una regularidad colectiva puede surgir sin que podamos anticipar cada trayectoria. Su fuerza está en conectar tres miradas sobre el mismo fenómeno: contar caminos, acumular resultados y aproximar probabilidades. La forma de campana aparece bajo unas condiciones concretas; los controles permiten explorar tanto su aparición como sus límites.</p>
+  <h3>Referencias</h3>
+  <ul class="references">
+    <li><a href="https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm" target="_blank" rel="noopener noreferrer">NIST: distribución binomial</a>. Función de probabilidad, media y dispersión.</li>
+    <li><a href="https://www.stat.berkeley.edu/~stark/Java/Html/BinHist.htm" target="_blank" rel="noopener noreferrer">Philip B. Stark, UC Berkeley: histograma binomial</a>. Interpretación de las barras y aproximación normal.</li>
+    <li><a href="https://homepage.stat.uiowa.edu/~mbognar/applets/binnormal.html" target="_blank" rel="noopener noreferrer">Matt Bognar, University of Iowa: binomial y aproximación normal</a>. Cálculo de probabilidades y corrección de continuidad.</li>
+  </ul>
+</article>

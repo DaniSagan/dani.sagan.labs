@@ -1,0 +1,53 @@
+<section class="lab" aria-labelledby="galton-board-title">
+  <span class="eyebrow">LABORATORIO 01 · DEL REBOTE A LA DISTRIBUCIÓN</span>
+  <h4 id="galton-board-title">Deja caer el azar</h4>
+  <p>Cada bola toma n decisiones independientes. Cambia el sesgo hacia la derecha y observa cómo se desplaza la distribución.</p>
+  <div class="controls">
+    <label>Filas n = {{ n }}<input type="range" min="2" max="20" step="1" [(ngModel)]="n" (ngModelChange)="reset()"></label>
+    <label>Probabilidad de derecha p = {{ p | number:'1.2-2' }}<input type="range" min="0" max="1" step="0.05" [(ngModel)]="p" (ngModelChange)="reset()"></label>
+    <label>Bolas por segundo: {{ rate }}<input type="range" min="2" max="30" step="1" [(ngModel)]="rate"></label>
+  </div>
+  <p class="note">Cambiar n o p inicia un experimento nuevo. La velocidad solo cambia la animación. Las curvas se comparan en frecuencias relativas.</p>
+  <div class="buttons">
+    <button type="button" class="primary" (click)="toggle()" [disabled]="total >= limit" [attr.aria-pressed]="running">{{ running ? 'Pausar' : 'Dejar caer bolas' }}</button>
+    <button type="button" (click)="batch(1)" [disabled]="total >= limit">+1 bola</button>
+    <button type="button" (click)="batch(1000)" [disabled]="total >= limit">+1 000 sin animación</button>
+    <button type="button" (click)="reset()">Reiniciar</button>
+  </div>
+  <figure>
+    <svg viewBox="0 0 780 380" role="img" aria-label="Tablero triangular de Galton con bolas animadas; el histograma inferior contabiliza las bolas que han llegado">
+      <path d="M375 10L390 25L405 10 M60 335H720" class="axis"/>
+      <circle *ngFor="let peg of pegs" [attr.cx]="peg.x" [attr.cy]="peg.y" r="3" fill="#668795"/>
+      <ng-container *ngFor="let mass of masses; let k = index">
+        <path [attr.d]="'M'+(x(n,k)-320/(n+1))+' 327V350'" class="axis"/>
+        <text [attr.x]="x(n,k)" y="367" text-anchor="middle">{{ k }}</text>
+      </ng-container>
+      <circle *ngFor="let ball of balls; trackBy: trackBall" [attr.cx]="ball.x" [attr.cy]="ball.y" r="4.5" fill="#f6cc80"/>
+    </svg>
+    <figcaption>Casillero k = número de desvíos a la derecha. Animación del modelo probabilístico; no se simulan fuerzas ni colisiones entre bolas. La animación se inicia solo al pulsar el botón.</figcaption>
+  </figure>
+  <div class="readouts"><div><span>BOLAS RECOGIDAS / EN VUELO</span><strong>{{ total | number }} / {{ balls.length }}</strong></div><div><span>MEDIA OBSERVADA / TEÓRICA</span><strong>{{ total ? (sampleMean | number:'1.2-2') : '—' }} / {{ mean | number:'1.2-2' }}</strong></div><div><span>DESVIACIÓN TEÓRICA σ</span><strong>{{ sigma | number:'1.3-3' }}</strong></div></div>
+  <p><span class="mint-text">▰ Frecuencia observada</span> · <span class="gold-text">┄ Probabilidad binomial</span></p>
+  <svg viewBox="0 0 780 250" role="img" aria-label="Histograma de frecuencias relativas frente a las probabilidades binomiales exactas">
+    <path d="M45 25V205H735" class="axis"/>
+    <ng-container *ngFor="let count of counts; let k = index">
+      <rect [attr.x]="binX(k)-300/(n+1)" [attr.y]="histY(total ? count/total : 0)" [attr.width]="600/(n+1)" [attr.height]="205-histY(total ? count/total : 0)" [attr.fill]="selected === k ? '#f6cc80' : '#83e3cc'" opacity="0.7"/>
+      <text [attr.x]="binX(k)" y="227" text-anchor="middle">{{ k }}</text>
+    </ng-container>
+    <path [attr.d]="theoreticalPath" class="gold"/>
+    <text x="3" y="32">{{ scale * 100 | number:'1.0-0' }}%</text><text x="13" y="207">0</text><text x="748" y="228">k</text>
+  </svg>
+  <label>Inspeccionar casillero k = {{ selected }}<input type="range" min="0" [max]="n" step="1" [(ngModel)]="selected"></label>
+  <p>Observadas: <strong>{{ counts[selected] }}</strong> bolas ({{ total ? (100 * counts[selected]/total | number:'1.2-2') : '0' }} %). Esperadas: <strong>{{ total * masses[selected] | number:'1.2-2' }}</strong> · P(K = {{ selected }}) = {{ masses[selected] * 100 | number:'1.3-3' }} %.</p>
+  <details><summary>Ver la convergencia y reproducir el experimento</summary>
+    <p>Distancia de variación total = ½ Σ|frecuencia − probabilidad|. Va de 0 a 1. Una muestra mayor suele reducirla, aunque puede subir temporalmente.</p>
+    <svg viewBox="0 0 780 205" role="img" aria-label="Distancia entre histograma y teoría frente al número de bolas en escala logarítmica">
+      <path d="M45 25V165H735" class="axis"/><path [attr.d]="convergencePath" class="mint"/>
+      <text x="20" y="30">1</text><text x="20" y="168">0</text><text x="45" y="190">1</text><text x="315" y="190">100</text><text x="585" y="190">10 000</text><text x="694" y="190">100 000</text>
+    </svg>
+    <p>Distancia actual: {{ total ? (distance | number:'1.4-4') : '—' }}. Límite por experimento: 100 000 bolas.</p>
+    <div class="controls"><label>Semilla reproducible<input type="number" min="0" max="4294967295" step="1" [(ngModel)]="seedInput"></label><button type="button" (click)="applySeed()">Aplicar y reiniciar</button><button type="button" (click)="exportCsv()" [disabled]="!total">Descargar CSV</button></div>
+    <p *ngIf="seedError" role="alert">{{ seedError }}</p>
+    <p class="note">Mismos n, p, semilla y número de bolas recogidas producen el mismo histograma. Los lotes completan primero las bolas en vuelo y después añaden las nuevas.</p>
+  </details>
+</section>

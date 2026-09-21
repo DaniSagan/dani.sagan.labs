@@ -1,0 +1,22 @@
+<section class="lab" aria-labelledby="galton-normal-title">
+  <span class="eyebrow">LABORATORIO 03 · DE LO DISCRETO A LA CAMPANA</span>
+  <h4 id="galton-normal-title">¿Cuándo se parece a una normal?</h4>
+  <p>Aquí no hay muestreo: las barras son probabilidades binomiales calculadas. La curva corresponde a una normal con la misma media y varianza.</p>
+  <div class="buttons"><button type="button" *ngFor="let preset of presets" (click)="select(preset.n,preset.p)" [attr.aria-pressed]="n === preset.n && p === preset.p">{{ preset.label }}</button></div>
+  <div class="controls"><label>Filas n = {{ n }}<input type="range" min="2" max="160" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label><label>Probabilidad p = {{ p | number:'1.2-2' }}<input type="range" min="0" max="1" step="0.01" [(ngModel)]="p" (ngModelChange)="update()"></label></div>
+  <div class="controls"><label class="check"><input type="checkbox" [(ngModel)]="correction" [disabled]="!sigma"> Corrección de continuidad en el cálculo</label><label class="check"><input type="checkbox" [(ngModel)]="standardized" [disabled]="!sigma"> Estandarizar: z = (k − μ) / σ</label></div>
+  <p><span class="mint-text">▰ Binomial</span> · barras doradas: intervalo seleccionado · <span class="gold-text">┄ Densidad normal</span></p>
+  <svg viewBox="0 0 780 305" role="img" aria-label="Probabilidades binomiales y curva normal, con el intervalo elegido resaltado">
+    <path d="M60 30V255H720" class="axis"/>
+    <rect *ngFor="let bar of bars" [attr.x]="barX(bar.k)" [attr.width]="barWidth(bar.k)" [attr.y]="y(bar.mass*densityScale)" [attr.height]="255-y(bar.mass*densityScale)" [attr.fill]="bar.k >= lower && bar.k <= upper ? '#f6cc80' : '#83e3cc'" opacity=".65"/>
+    <path [attr.d]="curve" class="gold"/>
+    <text x="4" y="36">{{ maxY | number:'1.2-2' }}</text><text x="34" y="258">0</text><text *ngFor="let tick of ticks" [attr.x]="tick.x" y="280" text-anchor="middle">{{ tick.label }}</text><text x="747" y="280">{{ standardized ? 'z' : 'k' }}</text>
+  </svg>
+  <p class="note">{{ standardized ? 'En la vista estandarizada las barras tienen altura σ·P(K=k), para conservar sus áreas; se muestra hasta ±4σ dentro del soporte.' : 'Cada barra tiene anchura 1: su área es P(K=k). La curva es una densidad, no la probabilidad de un punto.' }}</p>
+  <div class="controls"><label>Desde a = {{ lower }}<input type="range" min="0" [max]="n" step="1" [ngModel]="lower" (ngModelChange)="setLower($event)"></label><label>Hasta b = {{ upper }}<input type="range" min="0" [max]="n" step="1" [ngModel]="upper" (ngModelChange)="setUpper($event)"></label><button type="button" (click)="central()">Intervalo central ≈ μ ± σ</button></div>
+  <div class="readouts"><div><span>EXACTA · P({{ lower }} ≤ K ≤ {{ upper }})</span><strong>{{ 100*exact | number:'1.4-4' }} %</strong></div><div><span>APROXIMACIÓN NORMAL</span><strong>{{ approximate === null ? 'No definida' : (100*approximate | number:'1.4-4') + ' %' }}</strong></div><div><span>ERROR · PUNTOS PORCENTUALES</span><strong>{{ error === null ? '—' : (100*error | number:'1.4-4') }}</strong></div></div>
+  <p *ngIf="sigma">μ = {{ mean | number:'1.2-2' }} · σ = {{ sigma | number:'1.3-3' }} · np = {{ mean | number:'1.2-2' }} · n(1−p) = {{ n*(1-p) | number:'1.2-2' }}.</p>
+  <p *ngIf="sigma" [class.warning]="mean < 10 || n*(1-p) < 10">{{ mean >= 10 && n*(1-p) >= 10 ? 'Ambos recuentos esperados son al menos 10: es una orientación favorable, no una cota del error.' : 'Uno de los recuentos esperados es menor que 10: la asimetría o la discreción pueden hacer pobre la aproximación.' }}</p>
+  <p *ngIf="!sigma" class="warning">Con p = 0 o p = 1, todas las bolas llegan al mismo casillero. La varianza es cero: no hay una normal no degenerada ni se puede dividir por σ.</p>
+  <p class="note">{{ correction ? 'El cálculo integra la normal desde a − ½ hasta b + ½.' : 'Sin corrección, se integra desde a hasta b: si a = b, el área es cero aunque el casillero tenga probabilidad positiva.' }} La normal puede asignar masa fuera de [0,n]; no se recorta ni renormaliza. La función acumulada se evalúa numéricamente.</p>
+</section>

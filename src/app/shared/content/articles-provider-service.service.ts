@@ -1,4 +1,5 @@
 import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
+import { GaltonBoardArticleComponent } from 'src/app/articles/probability/galton-board/galton-board-article.component';
 import { FeigenbaumArticleComponent } from 'src/app/articles/fractals/feigenbaum/feigenbaum-article.component';
 import { Injectable } from '@angular/core';
 import { NavbarItem } from './navbar-item';
@@ -195,6 +196,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: GaltonBoardArticleComponent.title, route: GaltonBoardArticleComponent.route },
     { name: BuffonNeedleArticleComponent.title, route: BuffonNeedleArticleComponent.route },
     { name: PercolationDiagramComponent.title, route: PercolationDiagramComponent.route },
     { name: BayesTheoremArticleComponent.title, route: BayesTheoremArticleComponent.route },

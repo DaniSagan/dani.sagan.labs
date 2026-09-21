@@ -1,0 +1,82 @@
+import { TestBed } from '@angular/core/testing';
+import { GaltonBoardComponent } from './galton-board.component';
+import { GaltonNormalComponent } from './galton-normal.component';
+import { GaltonPathsComponent } from './galton-paths.component';
+
+describe('Galton laboratories', () => {
+  it('reproduces batches after a reset and clears results on parameter changes', async () => {
+    await TestBed.configureTestingModule({ imports: [GaltonBoardComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(GaltonBoardComponent);
+    const board = fixture.componentInstance;
+    fixture.detectChanges();
+    board.batch(1000);
+    const counts = [...board.counts];
+    expect(board.total).toBe(1000);
+    expect(board.distance).toBeLessThan(0.1);
+    board.reset(); board.batch(1000);
+    expect(board.counts).toEqual(counts);
+    board.p = 1; board.reset(); board.batch(10);
+    expect(board.counts[board.n]).toBe(10);
+    expect(board.counts.reduce((a, b) => a + b, 0)).toBe(10);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelectorAll('rect').length).toBe(board.n + 1);
+    fixture.destroy();
+  });
+  it('animates visible balls, counts arrivals and cancels animation on destruction', async () => {
+    let callback: FrameRequestCallback = () => undefined;
+    spyOn(window, 'requestAnimationFrame').and.callFake(cb => { callback = cb; return 42; });
+    const cancel = spyOn(window, 'cancelAnimationFrame');
+    await TestBed.configureTestingModule({ imports: [GaltonBoardComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(GaltonBoardComponent);
+    const board = fixture.componentInstance;
+    fixture.detectChanges();
+    board.toggle();
+    for (let time = 0; time <= 500; time += 40) callback(time);
+    fixture.detectChanges();
+    expect(board.balls.length).toBeGreaterThan(0);
+    expect(fixture.nativeElement.querySelectorAll('circle[fill="#f6cc80"]').length).toBe(board.balls.length);
+    for (let time = 520; time <= 3500; time += 40) callback(time);
+    expect(board.total).toBeGreaterThan(0);
+    fixture.destroy();
+    expect(board.running).toBeFalse();
+    expect(cancel).toHaveBeenCalledWith(42);
+  });
+  it('keeps the old experiment for an invalid seed', async () => {
+    await TestBed.configureTestingModule({ imports: [GaltonBoardComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(GaltonBoardComponent);
+    const board = fixture.componentInstance;
+    board.batch(10); board.seedInput = null; board.applySeed();
+    expect(board.total).toBe(10);
+    expect(board.seedError).not.toBe('');
+    fixture.destroy();
+  });
+  it('constructs a path, undoes a step and bounds it to the board', async () => {
+    await TestBed.configureTestingModule({ imports: [GaltonPathsComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(GaltonPathsComponent);
+    const lab = fixture.componentInstance;
+    [0, 1, 0, 1, 0, 1, 1].forEach(step => lab.step(step));
+    expect(lab.path.length).toBe(7);
+    expect(lab.currentK).toBe(3);
+    expect(lab.probability).toBe(20 / 64);
+    lab.undo(); expect(lab.path.length).toBe(6);
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelectorAll('circle').length).toBe(28);
+    fixture.destroy();
+  });
+  it('handles interval ordering, continuity and degenerate normals', async () => {
+    await TestBed.configureTestingModule({ imports: [GaltonNormalComponent] }).compileComponents();
+    const fixture = TestBed.createComponent(GaltonNormalComponent);
+    const lab = fixture.componentInstance;
+    lab.setLower(20); expect(lab.upper).toBe(20);
+    lab.setUpper(10); expect(lab.lower).toBe(10);
+    lab.correction = false; expect(lab.approximate).toBe(0);
+    lab.correction = true; expect(lab.approximate!).toBeGreaterThan(0);
+    lab.standardized = true; lab.p = 0; lab.update();
+    expect(lab.standardized).toBeFalse();
+    expect(lab.approximate).toBeNull();
+    expect(lab.curve).toBe('');
+    fixture.detectChanges();
+    expect(fixture.nativeElement.textContent).toContain('No definida');
+    fixture.destroy();
+  });
+});

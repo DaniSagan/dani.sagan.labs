@@ -1,0 +1,24 @@
+<section class="lab" aria-labelledby="galton-paths-title">
+  <span class="eyebrow">LABORATORIO 02 · LA GEOMETRÍA DE CONTAR</span>
+  <h4 id="galton-paths-title">Muchos caminos, un mismo destino</h4>
+  <p>Los números cuentan cuántas secuencias llegan a cada nodo. Las ramas verdes pueden terminar en el casillero seleccionado; dibuja en dorado tu propia trayectoria.</p>
+  <div class="controls">
+    <label>Filas n = {{ n }}<input type="range" min="2" max="8" step="1" [(ngModel)]="n" (ngModelChange)="changeRows()"></label>
+    <label>Destino k = {{ k }}<input type="range" min="0" [max]="n" step="1" [(ngModel)]="k"></label>
+    <label>Sesgo p = {{ p | number:'1.2-2' }}<input type="range" min="0" max="1" step="0.05" [(ngModel)]="p"></label>
+  </div>
+  <svg viewBox="0 0 780 395" role="img" aria-label="Triángulo de Pascal con las ramas que conducen al destino seleccionado y una trayectoria construida paso a paso">
+    <path *ngFor="let edge of edges" [attr.d]="edge.path" [attr.stroke]="edge.active ? '#528d7c' : '#293d49'" fill="none"/>
+    <path [attr.d]="drawnPath" class="gold" style="stroke-width:4;stroke-dasharray:none"/>
+    <g *ngFor="let node of nodes">
+      <circle [attr.cx]="x(node.row,node.k)" [attr.cy]="y(node.row)" r="16" [attr.fill]="reachable(node.row,node.k) ? '#244c43' : '#14232d'" [attr.stroke]="node.row === n && node.k === k ? '#f6cc80' : '#496471'"/>
+      <text [attr.x]="x(node.row,node.k)" [attr.y]="y(node.row)+4" text-anchor="middle">{{ node.count }}</text>
+    </g>
+    <text *ngFor="let node of nodes.slice(-n-1)" [attr.x]="x(n,node.k)" y="384" text-anchor="middle">k={{ node.k }}</text>
+  </svg>
+  <div class="buttons"><button type="button" (click)="step(0)" [disabled]="path.length > n">↙ Izquierda</button><button type="button" (click)="step(1)" [disabled]="path.length > n">Derecha ↘</button><button type="button" (click)="undo()" [disabled]="path.length === 1">Deshacer</button><button type="button" (click)="path = [0]">Borrar camino</button></div>
+  <p aria-live="polite">{{ instructions }} <strong *ngIf="path.length > n">· Llegada al casillero {{ currentK }}.</strong></p>
+  <div class="readouts"><div><span>CAMINOS HACIA k = {{ k }}</span><strong>{{ ways }}</strong></div><div><span>PROBABILIDAD DE UNO DE ELLOS</span><strong>{{ onePathProbability * 100 | number:'1.4-4' }} %</strong></div><div><span>PROBABILIDAD DEL CASILLERO</span><strong>{{ probability * 100 | number:'1.3-3' }} %</strong></div></div>
+  <p>Para llegar a k = {{ k }} hacen falta {{ k }} decisiones a la derecha y {{ n-k }} a la izquierda. Su orden cambia el camino, pero no el destino ni la probabilidad de cada una de estas {{ ways }} secuencias.</p>
+  <p class="note">Cambiar p modifica las probabilidades, no el número de caminos. El trazado manual permite construir incluso caminos de probabilidad cero cuando p vale 0 o 1.</p>
+</section>
