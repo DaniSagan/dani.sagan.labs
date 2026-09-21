@@ -1,0 +1,42 @@
+input[type="number"] {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #58717c;
+  border-radius: 7px;
+  background: #0a141c;
+  color: #e4f0f4;
+  padding: 0.5rem;
+  font: inherit;
+}
+.root {
+  fill: #f6cc80;
+  stroke: #0a141c;
+  stroke-width: 2;
+}
+.complex-root {
+  fill: none;
+  stroke: #82e3cc;
+  stroke-width: 2;
+}
+.tangent {
+  fill: none;
+  stroke: #f6cc80;
+  stroke-width: 2;
+}
+.iteration {
+  fill: #bca7ff;
+  stroke: #0a141c;
+  stroke-width: 1;
+}
+.region {
+  fill: #82e3cc20;
+}
+svg {
+  overflow: hidden;
+}
+.controls label {
+  flex-basis: 100px;
+}
+h5 {
+  margin-top: 1.5rem;
+}

@@ -1,0 +1,82 @@
+<section class="lab" aria-label="Laboratorio interactivo de la ecuación cúbica">
+  <div class="eyebrow">LABORATORIO · CUATRO MIRADAS, UNA ECUACIÓN</div>
+  <h4>Explora ax³ + bx² + cx + d = 0</h4>
+  <div class="controls">
+    <label *ngFor="let key of coefficients">Coeficiente {{ key }}
+      <input type="number" min="-20" max="20" step="0.1" [(ngModel)]="this[key]" (ngModelChange)="update()">
+    </label>
+  </div>
+  <div class="buttons" aria-label="Ejemplos">
+    <button (click)="preset(0,-3,1)">Tres reales</button>
+    <button (click)="preset(0,1,1)">Par complejo</button>
+    <button (click)="preset(0,-3,2)">Raíz doble</button>
+    <button (click)="preset(-3,3,-1)">Raíz triple</button>
+    <button (click)="preset(0,-15,-4)">Ejemplo clásico</button>
+  </div>
+  <p *ngIf="error" role="alert">{{ error }}</p>
+  <ng-container *ngIf="!error">
+    <div class="readouts"><div><span>p</span><strong>{{ fmt(s.p) }}</strong></div><div><span>q</span><strong>{{ fmt(s.q) }}</strong></div><div><span>Δ = (q/2)² + (p/3)³</span><strong>{{ fmt(s.delta) }}</strong></div></div>
+    <p class="insight" aria-live="polite">{{ classification }}. Traslación: x = t − ({{ fmt(s.shift) }}).</p>
+    <div class="buttons" aria-label="Visualización">
+      <button *ngFor="let name of modes; let i = index" [attr.aria-pressed]="mode === i" (click)="mode = i">{{ name }}</button>
+    </div>
+    <ng-container *ngIf="mode === 0 || mode === 3">
+      <svg viewBox="0 0 600 360" role="img" [attr.aria-label]="mode === 0 ? 'Gráfica del polinomio y sus raíces reales' : 'Gráfica del polinomio y tangente de Newton'">
+        <path class="axis" d="M40 180H560 M300 25V335"/>
+        <path class="curve" [attr.d]="curve"/>
+        <path *ngIf="mode === 3" class="tangent" [attr.d]="tangent"/>
+        <ng-container *ngIf="mode === 3">
+          <circle *ngFor="let x of iterates; let i = index" [attr.cx]="px(x)" cy="180" r="4" class="iteration"><title>Paso {{ i }}: {{ fmt(x) }}</title></circle>
+          <circle [attr.cx]="px(iterates[iterates.length - 1])" [attr.cy]="py(value(iterates[iterates.length - 1]))" r="6" class="root"><title>Punto de tangencia actual</title></circle>
+        </ng-container>
+        <ng-container *ngFor="let root of s.roots; let i = index"><circle *ngIf="root.im === 0" [attr.cx]="px(root.re)" cy="180" r="6" class="root"><title>x{{ i + 1 }} = {{ fmt(root.re) }}</title></circle></ng-container>
+        <text x="40" y="352">−{{ fmt(extent) }}</text><text x="510" y="352">{{ fmt(extent) }} · x</text><text x="310" y="25">f(x) · {{ fmt(yExtent) }}</text>
+      </svg>
+      <p class="note">Escalas automáticas: x ∈ [−{{ fmt(extent) }}, {{ fmt(extent) }}], y ∈ [−{{ fmt(yExtent) }}, {{ fmt(yExtent) }}]. Las raíces repetidas se superponen.</p>
+    </ng-container>
+    <ng-container *ngIf="mode === 0">
+      <h5>Las tres raíces en el plano complejo</h5>
+      <svg viewBox="0 0 600 360" role="img" aria-label="Raíces en el plano complejo, con la misma escala en ambos ejes">
+        <path class="axis" d="M100 180H500 M300 25V335"/><text x="500" y="170">Re</text><text x="310" y="25">Im</text>
+        <circle *ngFor="let root of s.roots; let i = index" [attr.cx]="cx(root.re)" [attr.cy]="cy(root.im)" [attr.r]="7 + i * 3" class="complex-root"><title>{{ rootText(root) }}</title></circle>
+        <text x="305" y="325">−{{ fmt(complexExtent) }}i</text><text x="440" y="200">{{ fmt(complexExtent) }}</text>
+      </svg>
+    </ng-container>
+    <ng-container *ngIf="mode === 1">
+      <p>Pulsa el mapa o usa los deslizadores. Este modo trabaja con la cúbica reducida (a = 1, b = 0); al modificarlo se actualizan también los coeficientes de arriba.</p>
+      <div class="controls"><label>p = {{ fmt(s.p) }}<input type="range" min="-6" max="6" step="0.01" [ngModel]="s.p" (ngModelChange)="setParameter('p', $event)"></label><label>q = {{ fmt(s.q) }}<input type="range" min="-6" max="6" step="0.01" [ngModel]="s.q" (ngModelChange)="setParameter('q', $event)"></label></div>
+      <svg viewBox="0 0 600 360" (click)="selectMap($event)" role="img" aria-label="Mapa de parámetros p y q. Dentro de la cúspide hay tres raíces reales; fuera, una.">
+        <path class="region" [attr.d]="cusp + ' Z'"/><path class="axis" d="M60 180H540 M300 36V324"/><path class="curve" [attr.d]="cusp"/>
+        <circle *ngIf="mapVisible" [attr.cx]="mapX(s.p)" [attr.cy]="mapY(s.q)" r="7" class="root"/>
+        <text x="80" y="170">3 reales</text><text x="375" y="100">1 real + 2 complejas</text><text x="540" y="200">p</text><text x="310" y="38">q</text><text x="55" y="345">−6</text><text x="535" y="345">6</text><text x="310" y="320">−6</text><text x="315" y="55">6</text>
+      </svg>
+      <p *ngIf="!mapVisible" class="note">Los parámetros actuales quedan fuera de este mapa [−6, 6] × [−6, 6]. Usa un deslizador para volver a su rango.</p>
+      <p class="note">Frontera: 4p³ + 27q² = 0. Sobre ella hay una raíz múltiple; en (0, 0), una raíz triple.</p>
+    </ng-container>
+    <ng-container *ngIf="mode === 2">
+      <ng-container *ngIf="s.p < 0 && s.delta <= 0; else noCircle">
+        <p>Radio R = {{ fmt(radius) }}; θ = {{ fmt(theta * 180 / 3.141592653589793) }}°. Proyecta los tres radios separados por 120° y resta {{ fmt(s.shift) }} para obtener x.</p>
+        <svg viewBox="0 0 600 360" role="img" aria-label="Proyecciones de tres radios sobre el eje real que construyen las raíces de la cúbica reducida">
+          <circle cx="300" cy="160" r="125" class="axis"/><path class="axis" d="M140 160H460"/>
+          <g *ngFor="let k of [0,1,2]">
+            <line x1="300" y1="160" [attr.x2]="circleX(k)" [attr.y2]="circleY(k)" class="curve"/>
+            <line [attr.x1]="circleX(k)" [attr.y1]="circleY(k)" [attr.x2]="circleX(k)" y2="310" class="guide"/>
+            <circle [attr.cx]="circleX(k)" cy="310" r="5" class="root"/>
+            <text [attr.x]="circleX(k)" [attr.y]="330 + k * 12" text-anchor="middle">t{{ k }} = {{ fmt(radius * (circleX(k)-300)/125) }}</text>
+          </g>
+          <path class="axis" d="M140 310H460"/>
+        </svg>
+      </ng-container>
+      <ng-template #noCircle><p class="insight">La construcción con tres ángulos reales requiere p &lt; 0 y Δ ≤ 0. Selecciona «Tres reales» o «Raíz doble» para explorar este caso. Si p = q = 0, las tres raíces t son cero.</p></ng-template>
+    </ng-container>
+    <ng-container *ngIf="mode === 3">
+      <label>Punto inicial x₀ = {{ fmt(x0) }}<input type="range" min="-6" max="6" step="0.05" [(ngModel)]="x0" (ngModelChange)="resetNewton()"></label>
+      <div class="buttons"><button (click)="step()" [disabled]="!!newtonMessage">Un paso de Newton</button><button (click)="resetNewton()">Reiniciar</button></div>
+      <p class="note">La línea dorada es la tangente en el último punto. Su corte con el eje x da el siguiente valor. Las iteraciones fuera de la ventana no son visibles en la gráfica.</p>
+      <p aria-live="polite">{{ newtonMessage }}</p>
+      <div class="table-wrap"><table><caption>Historial de Newton</caption><thead><tr><th>Paso</th><th>x</th><th>f(x)</th></tr></thead><tbody><tr *ngFor="let x of iterates; let i = index"><td>{{ i }}</td><td>{{ fmt(x) }}</td><td>{{ fmt(value(x)) }}</td></tr></tbody></table></div>
+    </ng-container>
+    <div class="table-wrap"><table><caption>Soluciones aproximadas, contando multiplicidades</caption><thead><tr><th>Raíz</th><th>Valor</th><th>|f(x)|</th></tr></thead><tbody><tr *ngFor="let root of s.roots; let i = index"><td>x{{ i + 1 }}</td><td>{{ rootText(root) }}</td><td>{{ residual(root) }}</td></tr></tbody></table></div>
+    <p class="note">Se muestran seis cifras significativas. El residuo usa la precisión interna. Cerca de Δ = 0, la clasificación usa una tolerancia relativa de redondeo; un residuo pequeño no garantiza un error pequeño en una raíz múltiple.</p>
+  </ng-container>
+</section>

@@ -1,0 +1,98 @@
+<h2>La ecuación cúbica: tres raíces, un cambio de perspectiva</h2>
+<p class="dropcap">Una parábola se resuelve completando un cuadrado. Al subir un grado aparece una sorpresa:
+  para encontrar tres soluciones reales podemos tener que atravesar los números complejos. La ecuación
+  cúbica reúne una fórmula exacta, una construcción con ángulos y una geometría que explica cuándo sus
+  raíces se encuentran y cuándo se separan.</p>
+<app-formula expression="ax^3+bx^2+cx+d=0,\qquad a\ne0"></app-formula>
+<p>Trabajaremos con coeficientes reales. Siempre hay al menos una raíz real: el término cúbico domina
+  en los extremos y el polinomio toma signos opuestos cuando x tiende a más y menos infinito.
+  Contando multiplicidades, existen exactamente tres raíces complejas; las que no son reales aparecen
+  en pares conjugados.</p>
+
+<h3>1. Eliminar el término cuadrático</h3>
+<p>Dividimos por a y trasladamos la variable. El desplazamiento coloca el punto de inflexión sobre
+  el eje vertical y hace desaparecer el término de segundo grado. No cambia cuántas raíces hay:
+  al terminar, deshacemos la traslación.</p>
+<app-formula expression="x=t-\frac{b}{3a}\quad\Longrightarrow\quad t^3+pt+q=0"></app-formula>
+<app-formula expression="p=\frac{c}{a}-\frac{b^2}{3a^2},\qquad q=\frac{2b^3}{27a^3}-\frac{bc}{3a^2}+\frac{d}{a}"></app-formula>
+<p>La <strong>cúbica reducida</strong> concentra el problema en dos parámetros. p controla la presencia
+  de dos extremos locales y q desplaza la curva verticalmente. Si p ≥ 0, la función es estrictamente
+  creciente, incluso cuando su derivada se anula aisladamente en p = 0.</p>
+
+<h3>2. La idea de Cardano: escribir t = u + v</h3>
+<p>Al desarrollar el cubo de una suma, el término mixto se puede cancelar imponiendo una condición
+  sobre el producto uv. Entonces conocer u³ y v³ se convierte en un problema de segundo grado.</p>
+<app-formula expression="(u+v)^3+p(u+v)+q=u^3+v^3+(3uv+p)(u+v)+q"></app-formula>
+<app-formula expression="uv=-\frac p3,\qquad u^3+v^3=-q,\qquad u^3v^3=-\frac{p^3}{27}"></app-formula>
+<p>Por tanto, u³ y v³ son las soluciones de la siguiente cuadrática. Su discriminante nos da la
+  cantidad que organiza todos los casos:</p>
+<app-formula expression="z^2+qz-\frac{p^3}{27}=0,\qquad \Delta=\left(\frac q2\right)^2+\left(\frac p3\right)^3"></app-formula>
+<app-formula expression="u^3=-\frac q2+\sqrt\Delta,\qquad v^3=-\frac q2-\sqrt\Delta"></app-formula>
+<p>Cuando Δ ≥ 0 podemos tomar las raíces cúbicas reales. Obtenemos una raíz mediante la fórmula
+  de Cardano y recuperamos la variable original:</p>
+<app-formula expression="x=\sqrt[3]{-\frac q2+\sqrt\Delta}+\sqrt[3]{-\frac q2-\sqrt\Delta}-\frac{b}{3a}"></app-formula>
+<p>En los complejos hay tres elecciones para cada raíz cúbica, pero <strong>no son independientes</strong>:
+  deben satisfacer uv = −p/3. Si elegimos u ≠ 0, fijamos v = −p/(3u). Con una pareja compatible,
+  las tres soluciones se obtienen usando las raíces cúbicas de la unidad.</p>
+<app-formula expression="\omega=e^{2\pi i/3},\qquad x_k=\omega^k u+\omega^{-k}v-\frac{b}{3a},\quad k=0,1,2"></app-formula>
+<p>Si p = q = 0, no hay que dividir entre u: t = 0 es una raíz triple. Si p = 0 y q ≠ 0,
+  elegimos para u una raíz cúbica no nula de −q y tomamos v = 0.</p>
+
+<h3>3. Un discriminante, tres paisajes</h3>
+<p>Conviene fijar la convención: aquí Δ es el radicando de Cardano. El discriminante habitual del
+  polinomio original es D = −108a⁴Δ; por eso sus signos son opuestos.</p>
+<ul>
+  <li><strong>Δ &gt; 0:</strong> una raíz real y dos raíces no reales conjugadas.</li>
+  <li><strong>Δ = 0:</strong> todas las raíces son reales y alguna se repite. Si p = q = 0, las tres coinciden.</li>
+  <li><strong>Δ &lt; 0:</strong> tres raíces reales distintas, aunque Cardano introduce una raíz cuadrada imaginaria.</li>
+</ul>
+<p>La frontera 4p³ + 27q² = 0 es una cúspide en el plano de parámetros. Podemos parametrizarla
+  imponiendo una raíz doble r: el polinomio y su derivada deben anularse a la vez.</p>
+<app-formula expression="p=-3r^2,\quad q=2r^3,\qquad t^3-3r^2t+2r^3=(t-r)^2(t+2r)"></app-formula>
+<p>En el laboratorio, cambia los coeficientes o selecciona un ejemplo. Las cuatro vistas comparten
+  la misma ecuación. En el mapa, atraviesa la frontera y observa cómo dos raíces reales se fusionan
+  antes de separarse en direcciones imaginarias.</p>
+<app-cubic-laboratory></app-cubic-laboratory>
+
+<h3>4. Tres raíces reales mediante trigonometría</h3>
+<p>Si Δ &lt; 0, necesariamente p &lt; 0. La identidad del ángulo triple permite resolver el problema
+  sin calcular con números complejos. Sustituimos t por la proyección de un radio sobre un eje:</p>
+<app-formula expression="t=2\sqrt{-\frac p3}\cos\theta,\qquad 4\cos^3\theta-3\cos\theta=\cos(3\theta)"></app-formula>
+<app-formula expression="\cos(3\theta)=\frac{-q}{2\sqrt{-(p/3)^3}},\qquad \theta_0=\frac13\arccos\!\left(\frac{-q}{2\sqrt{-(p/3)^3}}\right)"></app-formula>
+<app-formula expression="x_k=2\sqrt{-\frac p3}\cos\left(\theta_0-\frac{2\pi k}{3}\right)-\frac{b}{3a},\qquad k=0,1,2"></app-formula>
+<p>Los tres radios forman ángulos separados por 120°. Sus proyecciones son las tres raíces de la
+  cúbica reducida. En la frontera, dos proyecciones coinciden. La vista «Círculo trigonométrico»
+  muestra esta construcción y distingue la proyección t de la solución trasladada x.</p>
+
+<h3>5. Un viaje complejo con llegada real</h3>
+<p>Considera x³ − 15x − 4 = 0. Aquí p = −15, q = −4 y Δ = −121. Cardano conduce a
+  raíces cúbicas de 2 + 11i y 2 − 11i, aun cuando todas las respuestas son reales.</p>
+<app-formula expression="(2+i)^3=2+11i,\qquad (2-i)^3=2-11i,\qquad (2+i)(2-i)=5=-p/3"></app-formula>
+<p>La pareja es compatible y su suma vale 4. Al factorizar con esa raíz encontramos las otras dos:</p>
+<app-formula expression="x^3-15x-4=(x-4)(x^2+4x+1),\qquad x\in\{4,-2+\sqrt3,-2-\sqrt3\}"></app-formula>
+<p>Este ejemplo muestra por qué los complejos no son un obstáculo: pueden ser pasos intermedios
+  de una fórmula cuyo resultado es real. La expresión <em>casus irreducibilis</em> se reserva,
+  en sentido estricto, para la cúbica irreducible sobre los racionales con tres raíces reales;
+  este ejemplo, que sí tiene una raíz racional, ilustra el paso por los complejos sin ser irreducible.</p>
+
+<h3>6. Resolver exactamente y aproximar numéricamente</h3>
+<p>Una fórmula exacta puede ser delicada en un ordenador. Si dos cantidades grandes casi se cancelan,
+  se pierden cifras significativas. Para Δ &gt; 0, el laboratorio calcula primero el radical de mayor
+  magnitud y obtiene el otro a partir de uv = −p/3. Para Δ &lt; 0 usa la fórmula trigonométrica.</p>
+<p>Newton ofrece otra perspectiva: desde un punto inicial, seguimos la tangente hasta el eje horizontal
+  y repetimos. Cerca de una raíz simple y con un inicio adecuado, la convergencia suele ser muy rápida.</p>
+<app-formula expression="x_{n+1}=x_n-\frac{ax_n^3+bx_n^2+cx_n+d}{3ax_n^2+2bx_n+c}"></app-formula>
+<p>No hay una garantía global: una tangente horizontal impide el paso, pueden aparecer ciclos y las
+  raíces múltiples ralentizan la convergencia. Newton real tampoco encuentra las raíces no reales.
+  En la vista de tangentes puedes avanzar paso a paso y contrastar cada aproximación con su residuo.</p>
+<p>El residuo |f(x)| mide cuánto falla la ecuación, no la distancia exacta a una raíz. Cerca de una raíz
+  múltiple el polinomio es muy plano: un residuo diminuto puede coexistir con un error apreciable en x.</p>
+
+<h3>Experimentos para afinar la intuición</h3>
+<ul>
+  <li>Fija p = −3 y mueve q a través de 2. Observa la colisión de raíces en x = 1 y su separación en el plano complejo.</li>
+  <li>Selecciona la raíz triple. Comprueba que la traslación convierte (x − 1)³ en t³.</li>
+  <li>Compara las proyecciones del círculo con las raíces de la tabla para x³ − 3x + 1.</li>
+  <li>Introduce a = 1, b = 0, c = −2 y d = 2. En Newton, comienza en x₀ = 0: las iteraciones alternan entre 0 y 1.</li>
+  <li>Selecciona el ejemplo clásico y verifica la raíz 4 y las aproximaciones de −2 ± √3.</li>
+</ul>

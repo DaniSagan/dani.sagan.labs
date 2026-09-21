@@ -1,3 +1,4 @@
+import { ALGEBRA_NAV_ITEMS } from 'src/app/articles/algebra/algebra-articles';
 import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
 import { GaltonBoardArticleComponent } from 'src/app/articles/probability/galton-board/galton-board-article.component';
 import { FeigenbaumArticleComponent } from 'src/app/articles/fractals/feigenbaum/feigenbaum-article.component';
@@ -223,6 +224,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
       { name: 'Teoría de Números', items: this.numericTheory },
+      { name: 'Álgebra', items: ALGEBRA_NAV_ITEMS },
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
       { name: 'Análisis Matemático', items: ANALYSIS_NAV_ITEMS },
       { name: 'Cálculo', items: CALCULUS_NAV_ITEMS },

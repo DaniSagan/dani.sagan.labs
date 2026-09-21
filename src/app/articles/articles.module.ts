@@ -1,3 +1,4 @@
+import { ALGEBRA_ARTICLES } from './algebra/algebra-articles';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { TRIGONOMETRY_ARTICLES } from './trigonometry/trigonometry-articles';
     TestArticleComponent,
 
     // Article collections
+    ...ALGEBRA_ARTICLES,
     ...ANALYSIS_ARTICLES,
     ...CALCULUS_ARTICLES,
     ...COMBINATORICS_ARTICLES,

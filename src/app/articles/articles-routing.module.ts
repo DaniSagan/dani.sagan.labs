@@ -1,3 +1,4 @@
+import { ALGEBRA_ARTICLES } from './algebra/algebra-articles';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', component: ArticlesIntroComponent },
       { path: TestArticleComponent.route, component: TestArticleComponent },
 
+      ...ALGEBRA_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...ANALYSIS_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...CALCULUS_ARTICLES.map(article => ({ path: article.route, component: article })),
       ...COMBINATORICS_ARTICLES.map(article => ({ path: article.route, component: article })),
