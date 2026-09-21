@@ -1,0 +1,116 @@
+<h2>Polinomios ciclotómicos: del círculo a los fractales</h2>
+<p class="dropcap">Dividir una circunferencia en partes iguales parece una tarea geométrica. Sin embargo,
+  cada uno de sus vértices guarda información aritmética: cuántas multiplicaciones hacen falta para
+  regresar al punto de partida. Los polinomios ciclotómicos separan esas raíces según su orden y
+  convierten la simetría del círculo en una factorización con coeficientes enteros.</p>
+<p>Después daremos dos pasos distintos hacia los fractales: transformar los polinomios para que sus
+  raíces formen nubes ramificadas y estudiar qué ocurre al intentar encontrarlas con Newton.
+  La distinción importa: <strong>las raíces de los ciclotómicos clásicos están todas en la circunferencia
+  unidad</strong>. Una nube que se extiende fuera de ella necesita una construcción adicional.</p>
+
+<h3>1. Las raíces de la unidad tienen un orden</h3>
+<p>Una raíz n-ésima de la unidad satisface zⁿ = 1. Su módulo es uno y su argumento es un múltiplo
+  de una vuelta dividida en n partes. Para n = 1 obtenemos el punto 1; para n ≥ 3, los vértices de un
+  polígono regular.</p>
+<app-formula expression="\zeta_n=e^{2\pi i/n},\qquad z_k=\zeta_n^k,\quad 0\le k\lt n"></app-formula>
+<p>Multiplicar por ζₙᵏ equivale a girar k pasos. El <strong>orden</strong> de ese número es el menor entero
+  positivo d que cumple zᵈ = 1. Por ejemplo, −1 es una raíz duodécima de la unidad, pero su orden es dos:
+  vuelve a 1 mucho antes de completar doce multiplicaciones.</p>
+<app-formula expression="\operatorname{ord}(\zeta_n^k)=\frac{n}{\gcd(n,k)}"></app-formula>
+<p>La raíz es <strong>primitiva</strong> cuando su orden es exactamente n. Esto sucede si k y n son
+  coprimos. En n = 12, los exponentes primitivos son 1, 5, 7 y 11. El número de exponentes admisibles
+  es la función φ de Euler.</p>
+<app-formula expression="\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right),\qquad \varphi(1)=1"></app-formula>
+
+<h3>2. Un polinomio para cada orden exacto</h3>
+<p>El polinomio ciclotómico Φₙ reúne precisamente las raíces primitivas de orden n. Tiene grado φ(n),
+  coeficiente principal uno y raíces simples.</p>
+<app-formula expression="\Phi_n(x)=\prod_{\begin{subarray}{c}0\le k\lt n\\\gcd(k,n)=1\end{subarray}}(x-\zeta_n^k)"></app-formula>
+<p>Aunque el producto se escribe usando números complejos, sus coeficientes son enteros. Además,
+  Φₙ es irreducible sobre los racionales: ninguna factorización no trivial con coeficientes racionales
+  puede separar una parte de sus raíces. Esa es una afirmación algebraica más fuerte que la simple
+  observación de que las raíces conjugadas aparecen juntas.</p>
+<p>Cada raíz de xⁿ − 1 tiene un único orden d que divide n. Agruparlas por ese orden da la identidad
+  fundamental y permite calcular los ciclotómicos por divisiones exactas:</p>
+<app-formula expression="x^n-1=\prod_{d\mid n}\Phi_d(x),\qquad \Phi_n(x)=\frac{x^n-1}{\prod_{d\mid n,\ d\lt n}\Phi_d(x)}"></app-formula>
+<p>Por ejemplo, x⁶ − 1 contiene raíces de órdenes 1, 2, 3 y 6, no solo las dos primitivas de orden seis.</p>
+<app-formula expression="x^6-1=(x-1)(x+1)(x^2+x+1)(x^2-x+1)"></app-formula>
+<p>En el primer laboratorio, los colores distinguen órdenes y los segmentos recorren las potencias
+  de una raíz seleccionada. El cálculo de coeficientes usa aritmética entera exacta.</p>
+<app-cyclotomic-roots></app-cyclotomic-roots>
+
+<h3>3. Patrones sencillos, coeficientes sorprendentes</h3>
+<p>Si p es primo, todas las raíces p-ésimas salvo 1 son primitivas. El cociente por x − 1 es una suma
+  geométrica. Para una potencia de primo ocurre una variante del mismo patrón:</p>
+<app-formula expression="\Phi_p(x)=1+x+\cdots+x^{p-1},\qquad \Phi_{p^m}(x)=\sum_{j=0}^{p-1}x^{j p^{m-1}}"></app-formula>
+<p>En particular, Φ₈(x) = x⁴ + 1 y Φ₁₆(x) = x⁸ + 1. Es tentador concluir que todos los coeficientes
+  de los ciclotómicos son −1, 0 o 1. El explorador permite refutarlo: selecciona n = 105 y observa
+  los coeficientes de valor −2. La geometría circular de las raíces no obliga a que los coeficientes
+  sean pequeños.</p>
+<p>También podemos invertir la identidad de factorización mediante la función de Möbius μ:</p>
+<app-formula expression="\Phi_n(x)=\prod_{d\mid n}(x^d-1)^{\mu(n/d)}"></app-formula>
+<p>Aquí μ(m) vale cero si m tiene un factor primo repetido; en otro caso vale (−1)ʳ, donde r cuenta
+  sus factores primos, y μ(1) = 1. Los exponentes negativos se interpretan como un cociente que se
+  simplifica a un polinomio. No conviene evaluarlo numéricamente como un cociente cerca de una raíz
+  de la unidad: puede aparecer una indeterminación artificial 0/0.</p>
+
+<h3>4. Fractalizar: cambiar la regla que construye las raíces</h3>
+<p>David P. Roberts estudia una extensión de los ciclotómicos mediante dos operadores. Para p = 2,
+  partimos de f(x) = x + 1 y, si f tiene grado d, definimos:</p>
+<app-formula expression="(Ff)(x)=f(x^2),\qquad (Rf)(x)=(x-1)^d f\!\left(\frac1{1-x}\right)"></app-formula>
+<p>Solo F produce Φ₂, Φ₄, Φ₈… Intercalar R cambia la distribución de raíces. Podemos dibujarla sin
+  expandir polinomios enormes: F reemplaza cada raíz α por sus dos raíces cuadradas y R envía cada
+  raíz β a 1 − 1/β. El segundo laboratorio aplica estas operaciones en el orden indicado.</p>
+<app-formula expression="x+1\xrightarrow{F}x^2+1\xrightarrow{R}(x-1)^2+1=x^2-2x+2"></app-formula>
+<p>Las primeras raíces transformadas son 1 ± i. Los niveles siguientes revelan la estructura
+  ramificada. Cada nivel sigue siendo finito; observar más detalle no demuestra por sí solo la
+  existencia ni la dimensión de un límite fractal. Esta construcción pertenece a la familia de
+  <a href="https://static1.squarespace.com/static/577da80de3df288b496f8cf7/t/578427c25016e1887f951b67/1468278723189/FCP.pdf">polinomios ciclotómicos fractalizados de Roberts</a>.</p>
+<app-cyclotomic-fractal></app-cyclotomic-fractal>
+
+<h3>5. Otro paisaje: las cuencas de Newton</h3>
+<p>Ahora mantenemos fijo un ciclotómico clásico y cambiamos el punto inicial del algoritmo de Newton.
+  Cada punto del plano es una conjetura z₀. Si su órbita se aproxima a una raíz, lo coloreamos según
+  esa raíz; el brillo indica la rapidez de convergencia.</p>
+<app-formula expression="z_{j+1}=N_n(z_j)=z_j-\frac{\Phi_n(z_j)}{\Phi_n'(z_j)}"></app-formula>
+<p>Los colores forman <strong>cuencas de atracción</strong>. Sus fronteras pueden presentar detalle
+  fractal: dos puntos iniciales muy próximos pueden terminar en raíces diferentes. Aquí el fractal
+  describe la dinámica del algoritmo; sus píxeles no son raíces del polinomio.</p>
+<p>No todos los grados producen una frontera complicada. Φ₁ es lineal y Newton llega a su raíz
+  en un paso. Para Φ₃ o Φ₄, ambos cuadráticos, las dos cuencas están separadas por una recta.
+  Compara estos casos con Φ₅, Φ₈ o Φ₁₅.</p>
+<app-cyclotomic-newton></app-cyclotomic-newton>
+
+<h3>6. Calcular sin perder de vista lo que vemos</h3>
+<p>Las raíces de Φₙ se conocen de antemano, así que podemos evaluar el paso de Newton a través de
+  la derivada logarítmica. Si las raíces son α₁,…,αd, derivar el producto de factores da:</p>
+<app-formula expression="\frac{\Phi_n'(z)}{\Phi_n(z)}=\sum_{r=1}^{\varphi(n)}\frac1{z-\alpha_r},\qquad N_n(z)=z-\left(\sum_r\frac1{z-\alpha_r}\right)^{-1}"></app-formula>
+<p>Estas expresiones se usan fuera de las raíces. El simulador comprueba primero si ya está cerca
+  de alguna. Si la suma se anula, el siguiente paso es singular; si se agota el presupuesto de
+  iteraciones, el punto queda sin clasificar. Ninguno de esos píxeles oscuros se declara automáticamente
+  una raíz, ni una prueba de divergencia.</p>
+<p>La simetría respecto del eje real tiene una explicación común a ambos laboratorios: los
+  polinomios tienen coeficientes reales, por lo que la conjugación conserva las raíces y conmuta
+  con el paso de Newton. En cambio, no debemos atribuir a Φₙ toda la simetría de xⁿ − 1:
+  una rotación puede llevar una raíz primitiva a una que no lo es.</p>
+
+<h3>¿Y las famosas nubes de raíces con huecos alrededor del círculo?</h3>
+<p>Hay una tercera imagen relacionada: la nube obtenida al reunir raíces de muchos polinomios de
+  coeficientes pequeños. Los de Littlewood tienen todos sus coeficientes en &#123;−1, 1&#125;; los que permiten
+  también cero pertenecen a otra familia. No son, en general, ciclotómicos. Las raíces de la unidad
+  ayudan a organizar sus patrones, pero la nube incluye raíces fuera de la circunferencia.
+  <a href="https://math.ucr.edu/home/baez/roots/">The Beauty of Roots, de John Baez</a>, muestra esa construcción
+  y su relación con sistemas de funciones iteradas.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>En n = 12, compara k = 1, 4 y 6. Predice sus órdenes antes de mirar el resultado.</li>
+  <li>Comprueba que la suma de los grados de los factores de x¹² − 1 es doce.</li>
+  <li>En la nube, comienza en el nivel cero. Alterna «Solo F» y «F → R» y sigue los tres primeros niveles.</li>
+  <li>Amplía una rama y aumenta el nivel: ¿aparecen raíces nuevas o solo se separan las que ya había?</li>
+  <li>En Newton, compara n = 4 con n = 8. Aumenta el límite de pasos cerca de una frontera y observa qué píxeles cambian.</li>
+  <li>Selecciona z₀ y su conjugado. Compara los destinos y el número de iteraciones.</li>
+</ul>
+<p>Para profundizar: <a href="https://www.math.columbia.edu/~bayer/S22/Combinatorics/Week13/Cyclotomic.pdf">notas de Dave Bayer sobre inversión de Möbius y ciclotómicos</a>;
+  <a href="https://arxiv.org/abs/1611.06783">Cyclotomic polynomials at roots of unity</a>, de Bzdęga, Herrera-Poyatos y Moree;
+  y <a href="https://people.math.harvard.edu/~knill/teaching/math22b2022/handouts/lecture18.pdf">la introducción de Oliver Knill al método de Newton</a>.</p>

@@ -1,0 +1,24 @@
+<section class="lab" aria-label="Cuencas de Newton de polinomios ciclotómicos">
+  <div class="eyebrow">03 · UN FRACTAL DE PUNTOS INICIALES</div>
+  <h4>¿A qué raíz te lleva Newton?</h4>
+  <div class="controls"><label>Polinomio Φₙ<select [(ngModel)]="n" (ngModelChange)="update()"><option *ngFor="let p of [1,3,4,5,7,8,12,15,30]" [ngValue]="p">n = {{ p }}</option></select></label><label>Máximo de pasos: {{ max }}<input type="range" min="15" max="100" step="5" [(ngModel)]="max" (change)="update()"></label><label>Resolución<select [(ngModel)]="size" (ngModelChange)="draw()"><option [ngValue]="240">Rápida · 240²</option><option [ngValue]="360">Equilibrada · 360²</option><option [ngValue]="600">Detalle · 600²</option></select></label></div>
+  <p *ngIf="roots.length <= 2" class="insight">Este caso tiene grado {{ roots.length }}: no produce una frontera fractal compleja. Con dos raíces, la frontera es la mediatriz; con una, Newton llega a ella en un paso.</p>
+  <div class="stage">
+    <canvas #canvas width="360" height="360" role="img" aria-label="Mapa de convergencia de Newton: cada color corresponde a una raíz primitiva">Mapa de cuencas de convergencia.</canvas>
+    <svg viewBox="0 0 600 600" (click)="pick($event)" role="img" aria-label="Selecciona un punto inicial para ver su órbita; también puedes introducir sus coordenadas debajo">
+      <path *ngIf="showOrbit" [attr.d]="path" class="orbit"/>
+      <circle *ngFor="let root of roots; let i = index" [attr.cx]="sx(root.re)" [attr.cy]="sy(root.im)" r="5" fill="#fff" stroke="#101820" stroke-width="2"><title>Raíz k = {{ root.k }}</title></circle>
+      <circle [attr.cx]="sx(re)" [attr.cy]="sy(im)" r="6" fill="none" stroke="#fff" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="progress" role="progressbar" aria-label="Renderizado del fractal" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"><span [style.width.%]="progress"></span></div>
+  <p class="caption">{{ drawing ? 'Calculando' : progress === 100 ? 'Renderizado completo' : 'Renderizado detenido' }} · {{ progress }}%. Centro ({{ centerRe | number:'1.2-5' }}, {{ centerIm | number:'1.2-5' }}), ancho {{ span | number:'1.3-5' }}.</p>
+  <div class="legend"><span *ngFor="let root of roots; let i = index"><i [style.background]="color(i)"></i>k = {{ root.k }}</span><span>Oscuro: sin clasificar o singular</span></div>
+  <div class="controls"><label>Re(z₀)<input type="number" min="-100" max="100" step="0.01" [(ngModel)]="re" (change)="select()"></label><label>Im(z₀)<input type="number" min="-100" max="100" step="0.01" [(ngModel)]="im" (change)="select()"></label></div>
+  <label class="check"><input type="checkbox" [(ngModel)]="showOrbit"> Superponer la órbita seleccionada</label>
+  <div class="buttons"><button (click)="zoom(0.5)" [disabled]="!!error || span <= 0.002">Ampliar en z₀</button><button (click)="zoom(2)" [disabled]="!!error || span >= 8">Alejar en z₀</button><button (click)="reset()">Restablecer vista</button><button (click)="stop()" [disabled]="!drawing">Detener</button><button (click)="draw()" [disabled]="drawing">Recalcular</button><button (click)="download()" [disabled]="drawing || progress !== 100">Guardar mapa PNG</button></div>
+  <p *ngIf="error" role="alert">{{ error }}</p><p *ngIf="!error" class="insight" aria-live="polite">{{ status }}</p>
+  <p class="note">Pulsa el mapa para seleccionar z₀. Los puntos blancos son raíces, la línea dorada es su órbita de Newton; el PNG guarda solo el mapa. El color identifica el destino y el brillo aumenta cuanto más rápida es la convergencia. Tolerancia: distancia a una raíz menor que 10⁻⁶.</p>
+  <p *ngIf="outside" class="note">Parte de la órbita sale de la ventana; la tabla conserva sus coordenadas.</p>
+  <details><summary>Ver los pasos de la órbita seleccionada</summary><div class="table-wrap"><table><thead><tr><th>Paso</th><th>Re(z)</th><th>Im(z)</th></tr></thead><tbody><tr *ngFor="let point of selected.points; let i = index"><td>{{ i }}</td><td>{{ point.re | number:'1.2-7' }}</td><td>{{ point.im | number:'1.2-7' }}</td></tr></tbody></table></div></details>
+</section>

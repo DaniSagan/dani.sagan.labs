@@ -1,0 +1,35 @@
+<section class="lab" aria-label="Explorador de raíces primitivas y factorización">
+  <div class="eyebrow">01 · LA ARITMÉTICA DEL CÍRCULO</div>
+  <h4>¿Qué raíces pertenecen a Φₙ?</h4>
+  <div class="buttons"><button *ngFor="let p of presets" (click)="setN(p)" [attr.aria-pressed]="n === p">n = {{ p }}</button></div>
+  <div class="controls">
+    <label>Índice n = {{ n }}<input type="range" min="1" max="120" step="1" [ngModel]="n" (ngModelChange)="setN($event)"></label>
+    <label>Exponente k = {{ k }}<input type="range" min="0" [max]="n - 1" step="1" [(ngModel)]="k"></label>
+  </div>
+  <label class="check"><input type="checkbox" [(ngModel)]="onlyPrimitive"> Destacar solo las raíces primitivas</label>
+  <div class="split">
+    <svg viewBox="0 0 440 430" role="img" aria-label="Raíces de la unidad coloreadas por su orden y órbita de potencias de la raíz seleccionada">
+      <path class="axis" d="M25 210H415 M220 20V400"/><circle cx="220" cy="210" r="165" class="guide"/>
+      <path [attr.d]="path" class="orbit"/>
+      <circle *ngFor="let root of roots" [attr.cx]="root.x" [attr.cy]="root.y" [attr.r]="root.k === k ? 8 : 4" [attr.fill]="color(root.order)" [attr.opacity]="onlyPrimitive && root.order !== n ? 0.12 : 1"><title>k = {{ root.k }}, orden {{ root.order }}</title></circle>
+      <text x="400" y="232">Re</text><text x="229" y="22">Im</text><text x="385" y="201">1</text><text x="222" y="425">|z| = 1</text>
+    </svg>
+    <div>
+      <div class="readouts"><div><span>Grado φ(n)</span><strong>{{ degree }}</strong></div><div><span>Orden de ζₙᵏ</span><strong>{{ order }}</strong></div></div>
+      <p class="insight">ζ = exp(2πi · {{ k }}/{{ n }}) {{ order === n ? 'es primitiva' : 'no es primitiva' }} de orden {{ n }}. Sus potencias regresan a 1 después de {{ order }} pasos.</p>
+      <p class="note">El deslizador k selecciona el punto grande. Los segmentos unen potencias sucesivas; no representan nuevas raíces. Cada color identifica un orden divisor de n.</p>
+      <div class="legend"><span *ngFor="let d of ds"><i [style.background]="color(d)"></i>Orden {{ d }}</span></div>
+    </div>
+  </div>
+  <p class="polynomial">Φ{{ subscript(n) }}(x) = {{ polynomial }}</p>
+  <h5>Coeficientes enteros, calculados exactamente</h5>
+  <svg viewBox="0 0 640 180" role="img" aria-label="Coeficientes del polinomio, desde el término constante a la izquierda hasta el término principal a la derecha">
+    <path class="axis" d="M20 90H620"/>
+    <rect *ngFor="let coefficient of coefficients; let j = index" [attr.x]="20 + j * 600 / coefficients.length" [attr.y]="coefficient > 0 ? 90 - (+coefficient.toString()) * 65 / maximum : 90" [attr.width]="560 / coefficients.length" [attr.height]="coefficient < 0 ? (-coefficient.toString()) * 65 / maximum : (+coefficient.toString()) * 65 / maximum" [attr.fill]="coefficient < 0 ? '#f6cc80' : '#82e3cc'"/>
+    <text x="20" y="172">x⁰</text><text x="565" y="172">x^{{ degree }}</text><text x="20" y="17">Altura máxima: {{ maximum }}</text>
+  </svg>
+  <p class="note">Prueba n = 105: los coeficientes de un ciclotómico no están limitados a −1, 0 y 1.</p>
+  <h5>Desmontar xⁿ − 1 por órdenes</h5>
+  <p class="polynomial">x^{{ n }} − 1 = {{ factorization }}</p>
+  <details><summary>Ver todos los factores y sus grados</summary><div class="table-wrap"><table><thead><tr><th>d</th><th>Grado</th><th>Φd(x)</th></tr></thead><tbody><tr *ngFor="let d of ds"><td>{{ d }}</td><td>{{ factorDegree(d) }}</td><td>{{ formula(d) }}</td></tr></tbody></table></div></details>
+</section>
