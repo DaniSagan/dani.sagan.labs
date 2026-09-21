@@ -19,7 +19,7 @@ import { COMBINATORICS_NAV_ITEMS } from 'src/app/articles/combinatorics/combinat
 import { ANALYSIS_NAV_ITEMS } from 'src/app/articles/analysis/analysis-articles';
 import { CALCULUS_NAV_ITEMS } from 'src/app/articles/calculus/calculus-articles';
 import { TOPOLOGY_NAV_ITEMS } from 'src/app/articles/topology/topology-articles';
-import { LorenzAttractorComponent } from 'src/app/articles/lorenz-attractor/lorenz-attractor.component';
+import { DYNAMICAL_SYSTEMS_NAV_ITEMS } from 'src/app/articles/dynamical-systems/dynamical-systems-articles';
 import { TestArticleComponent } from 'src/app/articles/test-article/test-article.component';
 import { MandelbrotComponent } from 'src/app/articles/fractals/mandelbrot/mandelbrot.component';
 import { ApollonianSieveComponent } from 'src/app/articles/fractals/apollonian-sieve/apollonian-sieve.component';
@@ -211,8 +211,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
 
   others: NavbarItem[] =
   [
-    { name: TestArticleComponent.title, route: TestArticleComponent.route },
-    { name: LorenzAttractorComponent.title, route: LorenzAttractorComponent.route }
+    { name: TestArticleComponent.title, route: TestArticleComponent.route }
   ];
 
   override getNavbar(): Navbar {
@@ -227,6 +226,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
       { name: 'Análisis Matemático', items: ANALYSIS_NAV_ITEMS },
       { name: 'Cálculo', items: CALCULUS_NAV_ITEMS },
+      { name: 'Sistemas dinámicos', items: DYNAMICAL_SYSTEMS_NAV_ITEMS },
       { name: 'Topología', items: TOPOLOGY_NAV_ITEMS },
       { name: 'Números complejos', items: COMPLEX_NUMBERS_NAV_ITEMS },
       { name: 'Geometría', items: this.geometry },

@@ -10,7 +10,7 @@ import { CALCULUS_ARTICLES } from './calculus/calculus-articles';
 import { COMBINATORICS_ARTICLES } from './combinatorics/combinatorics-articles';
 import { COMPLEX_NUMBERS_ARTICLES } from './complex-numbers/complex-numbers-articles';
 import { CURVES_ARTICLES } from './curves/curves-articles';
-import { DYNAMICAL_SYSTEMS_ARTICLES } from './lorenz-attractor/dynamical-systems-articles';
+import { DYNAMICAL_SYSTEMS_ARTICLES } from './dynamical-systems/dynamical-systems-articles';
 import { FRACTALS_ARTICLES } from './fractals/fractals-articles';
 import { GEOMETRY_ARTICLES } from './geometry/geometry-articles';
 import { NUMBER_THEORY_ARTICLES } from './number-theory/number-theory-articles';

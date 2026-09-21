@@ -1,0 +1,113 @@
+<h2>Pilas de arena: una regla local, un mundo de avalanchas</h2>
+<p class="dropcap">Deja caer un grano. A veces no pasa nada visible; otras, ese pequeño cambio
+  desencadena una cascada que recorre todo el tablero. El modelo abeliano de pilas de arena convierte
+  esta idea en un sistema discreto de reglas exactas. Sus patrones parecen dibujados con paciencia,
+  pero nacen de repetir una operación elemental: quitar cuatro granos y repartirlos entre los vecinos.</p>
+
+<h3>Una cuadrícula, cuatro vecinos y un sumidero</h3>
+<p>Cada celda guarda una altura h: un entero no negativo que representa su número de granos.
+  Las alturas 0, 1, 2 y 3 son estables. Cuando una celda tiene al menos 4 granos, puede
+  <strong>derrumbarse</strong>: pierde cuatro y entrega uno a cada vecino de arriba, abajo, izquierda y derecha.
+  No hay intercambio diagonal.</p>
+<app-formula expression="h_{i,j}\ge4:\quad h_{i,j}\leftarrow h_{i,j}-4,\qquad h_{i\pm1,j}\leftarrow h_{i\pm1,j}+1,\qquad h_{i,j\pm1}\leftarrow h_{i,j\pm1}+1"></app-formula>
+<p>Los granos destinados a vecinos fuera de la cuadrícula desaparecen en un <em>sumidero</em>.
+  El umbral sigue siendo 4 incluso en los bordes: un derrumbe en una esquina pierde dos granos;
+  uno en un borde que no es esquina pierde uno. Así, el interior conserva arena y la frontera la disipa.</p>
+<p>Una celda puede derrumbarse varias veces durante una misma relajación. El proceso termina cuando
+  ninguna celda alcanza el umbral. En esta cuadrícula finita con bordes abiertos, cualquier configuración
+  finita de granos se estabiliza.</p>
+<app-sandpile-explorer></app-sandpile-explorer>
+
+<h3>De una montaña de granos a un mosaico</h3>
+<p>Un depósito grande en el centro de un tablero vacío genera regiones de alturas distintas y fronteras
+  geométricas muy marcadas. La simetría de la cuadrícula se conserva en el resultado: las direcciones
+  horizontal y vertical importan, de modo que no estamos simulando una montaña circular continua.</p>
+<p>El color representa un número entero, no la altura de una superficie tridimensional. El mapa de
+  <strong>odómetro</strong> muestra otra cantidad: cuántas veces se ha derrumbado cada celda desde el inicio.
+  Dos celdas pueden acabar con la misma altura y haber participado de forma muy diferente en el proceso.</p>
+<app-formula expression="M_{\mathrm{inicial}}+M_{\mathrm{añadida}}=M_{\mathrm{final}}+M_{\mathrm{sumidero}},\qquad s=\sum_v u(v)"></app-formula>
+<p>Aquí u(v) es el odómetro y s el número total de derrumbes. El balance de masa permite comprobar
+  que el simulador ni crea ni pierde granos en el interior. La disipación no es un detalle accesorio:
+  si cerramos los bordes y conservamos demasiada arena, puede no existir una configuración estable.</p>
+
+<h3>¿Qué significa «abeliano»?</h3>
+<p>Si hay varias celdas inestables, podemos elegir cuál derrumbar primero. Las escenas intermedias
+  cambian, pero, al completar la estabilización, obtenemos <strong>las mismas alturas y el mismo
+  odómetro</strong>. Esta independencia del orden es la propiedad abeliana.</p>
+<p>La afirmación requiere derrumbes <em>legales</em>: solo se puede derrumbar una celda que tenga
+  al menos cuatro granos, y hay que continuar hasta que todas sean estables. No permite cambiar
+  la regla de reparto, añadir granos diferentes ni detener un proceso a mitad para compararlo con otro terminado.</p>
+<app-sandpile-abelian></app-sandpile-abelian>
+
+<h3>Por qué el orden no puede cambiar el final</h3>
+<p>Cada derrumbe suma al tablero un vector fijo: −4 en su celda y +1 en sus vecinos interiores.
+  Estas modificaciones conmutan como sumas. Falta justificar que diferentes secuencias legales
+  completas usan el mismo número de derrumbes en cada celda.</p>
+<p>Un argumento de <em>mínima acción</em> resuelve ese paso. Supón que una secuencia legal fuera
+  a derrumbar una celda por encima del número indicado por otra secuencia que ya estabiliza.
+  Considera la primera vez que ocurre. En esa celda, el número de derrumbes propios aún coincide
+  con el de la secuencia estabilizante, mientras que los vecinos han enviado como mucho tantos granos
+  como en ella. Su altura no podría superar la altura final estable. Por tanto, ese siguiente derrumbe
+  no sería legal: contradicción.</p>
+<p>Aplicando el razonamiento en ambas direcciones, los dos odómetros coinciden. Como la actualización
+  total depende solo de esos recuentos, también coinciden las alturas finales y la pérdida al sumidero.</p>
+<app-formula expression="\operatorname{stab}\!\left(\operatorname{stab}(h+a)+b\right)=\operatorname{stab}(h+a+b)=\operatorname{stab}\!\left(\operatorname{stab}(h+b)+a\right)"></app-formula>
+<p>Para depósitos no negativos a y b, tampoco importa en qué orden los añadimos si estabilizamos
+  entre ellos. Sí puede cambiar cómo se reparte la actividad entre las dos avalanchas individuales.</p>
+
+<h3>Una avalancha no es una sola magnitud</h3>
+<p>Partimos ahora de un estado estable, añadimos un único grano y dejamos que termine la relajación.
+  Llamamos <strong>tamaño s</strong> al número de derrumbes y <strong>área a</strong> al número de celdas
+  que se derrumbaron al menos una vez. Una misma celda puede contribuir varias veces al tamaño,
+  pero solo una al área.</p>
+<app-formula expression="s=\sum_v u(v),\qquad a=\left|\{v:u(v)>0\}\right|,\qquad 0\le a\le s"></app-formula>
+<p>También podemos medir cuántos granos se pierden en el borde. Si el grano añadido no provoca ningún
+  derrumbe, registramos s = a = 0. Una duración necesita una convención adicional: en el laboratorio
+  de patrones, una ronda permite un derrumbe por celda inicialmente inestable. El número de operaciones
+  de un programa o su velocidad de reproducción no es un tiempo físico universal del modelo.</p>
+
+<h3>Alimentación lenta y criticalidad autoorganizada</h3>
+<p>El experimento clásico separa dos escalas: la aportación de arena es lenta y cada avalancha termina
+  antes de añadir el siguiente grano. La acumulación en el interior compite con la pérdida en el borde.
+  Después de un transitorio, el sistema puede mostrar una distribución muy amplia de respuestas,
+  sin ajustar a mano un parámetro hasta un punto crítico.</p>
+<p>Esta idea de <strong>criticalidad autoorganizada</strong> fue impulsada por Bak, Tang y Wiesenfeld
+  en 1987; Dhar desarrolló posteriormente la estructura abeliana del modelo. La metáfora de la arena
+  es útil, pero la regla de umbral no pretende reproducir todos los mecanismos de una pila granular real.</p>
+<app-sandpile-avalanches></app-sandpile-avalanches>
+
+<h3>Cómo leer la gráfica sin pedirle más de lo que dice</h3>
+<p>La gráfica acumulada estima la fracción de avalanchas positivas cuyo tamaño alcanza al menos s.
+  Usa escalas logarítmicas para hacer visibles eventos pequeños y grandes en el mismo dibujo.
+  Los eventos sin derrumbes cuentan en el resumen y en el CSV, pero se excluyen de esa gráfica.</p>
+<app-formula expression="\widehat{P}(S\ge s\mid S>0)=\frac{\#\{k:S_k\ge s\}}{\#\{k:S_k>0\}},\qquad s\ge1"></app-formula>
+<p>Un tablero finito limita las escalas accesibles. El calentamiento puede ser insuficiente y los
+  eventos consecutivos no tienen por qué ser independientes. Para estudiar leyes de escala hace falta
+  comparar tamaños de sistema, controlar el transitorio y analizar la incertidumbre; no basta ajustar
+  una recta a unos pocos puntos. Por eso este laboratorio ofrece datos y exportación, sin atribuirles
+  automáticamente un exponente crítico.</p>
+
+<h3>Detrás del autómata hay álgebra</h3>
+<p>La regla puede escribirse con una matriz Δ: tiene un 4 en cada entrada diagonal y un −1
+  entre vecinos interiores. Los enlaces que faltan en el borde van al sumidero.</p>
+<app-formula expression="\Delta_{vv}=4,\quad\Delta_{vw}=-1\ \text{si }v\sim w,\qquad h_{\mathrm{final}}=h_{\mathrm{inicial}}+b-\Delta u"></app-formula>
+<p>Las configuraciones estables no son todas equivalentes desde el punto de vista de la dinámica.
+  Bajo adiciones aleatorias con probabilidad positiva en cada celda, unas son transitorias y otras
+  pertenecen a la clase recurrente. En esta última aparece un grupo abeliano bajo la suma seguida de
+  estabilización; su identidad no tiene por qué ser el tablero vacío.</p>
+<p>El número de configuraciones recurrentes es det Δ. El teorema matriz–árbol conecta ese determinante
+  con el número de árboles generadores del grafo que incluye el sumidero. Así, un juego de redistribuir
+  granos enlaza autómatas celulares, probabilidad, combinatoria y álgebra.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>En un tablero 9 × 9 vacío, deposita cuatro granos en el centro y ejecuta una ronda. Repítelo en una esquina y comprueba la pérdida.</li>
+  <li>Estabiliza el mismo depósito central en tamaños distintos. ¿Cuándo empiezan a importar los bordes?</li>
+  <li>En la comparación abeliana, detente tras varios pasos: ¿coinciden ya las alturas? Completa ambos procesos y compara sus odómetros.</li>
+  <li>En las avalanchas, ejecuta la misma semilla dos veces. Después cambia el calentamiento y compara el comienzo vacío con la muestra posterior.</li>
+</ul>
+<p>Para profundizar: Deepak Dhar,
+  <a href="https://arxiv.org/abs/cond-mat/9808047">The Abelian Sandpile and Related Models</a>,
+  sobre la estructura algebraica y las avalanchas; y Anne Fey, Lionel Levine y David B. Wilson,
+  <a href="https://pi.math.cornell.edu/~levine/soc.pdf">The Approach to Criticality in Sandpiles</a>,
+  sobre los matices de la densidad y la aproximación a la criticalidad.</p>

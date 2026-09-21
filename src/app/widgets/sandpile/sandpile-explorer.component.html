@@ -1,0 +1,30 @@
+<section class="lab" aria-label="Laboratorio de patrones de arena">
+  <div class="eyebrow">01 · CUATRO GRANOS DESATAN EL CAMBIO</div>
+  <h4>Construye, derrumba, observa</h4>
+  <p>Cada celda con cuatro o más granos entrega uno a cada vecino. Selecciona una celda en el tablero o con los controles y añade arena. Los bordes abiertos absorben los granos que salen.</p>
+  <div class="controls">
+    <label>Lado del tablero<select [(ngModel)]="size" (ngModelChange)="reset('central')"><option [ngValue]="9">9 × 9 · ver números</option><option [ngValue]="33">33 × 33</option><option [ngValue]="65">65 × 65</option><option [ngValue]="97">97 × 97</option></select></label>
+    <label>Depósito central<select [(ngModel)]="grains" (ngModelChange)="reset('central')"><option [ngValue]="256">256 granos</option><option [ngValue]="4096">4.096 granos</option><option [ngValue]="16384">16.384 granos</option><option [ngValue]="32768">32.768 granos</option></select></label>
+    <label>Visualización<select [(ngModel)]="view"><option value="height">Altura de cada pila</option><option value="odometer">Odómetro: derrumbes por celda</option></select></label>
+  </div>
+  <app-sandpile-grid #grid [pile]="pile" [revision]="revision" [view]="view" [selected]="selected" (cellSelected)="choose($event)"></app-sandpile-grid>
+  <div class="legend" *ngIf="view === 'height'"><span *ngFor="let color of colors; let i = index"><i class="swatch" [style.background]="color"></i>{{ i === 4 ? '≥ 4 · inestable' : i + ' granos' }}</span></div>
+  <p class="note" *ngIf="view === 'odometer'">Oscuro: ningún derrumbe. Claro: más derrumbes. Intensidad logarítmica normalizada al máximo actual; recuentos acumulados desde el reinicio.</p>
+  <div class="controls">
+    <label>Fila · {{ row + 1 }}<input type="range" min="0" [max]="size - 1" step="1" [(ngModel)]="row"></label>
+    <label>Columna · {{ column + 1 }}<input type="range" min="0" [max]="size - 1" step="1" [(ngModel)]="column"></label>
+    <label>Añadir por pulsación<select [(ngModel)]="brush"><option [ngValue]="1">1 grano</option><option [ngValue]="4">4 granos</option><option [ngValue]="64">64 granos</option><option [ngValue]="1024">1.024 granos</option></select></label>
+  </div>
+  <p class="note">Celda ({{ row + 1 }}, {{ column + 1 }}): {{ pile.heights[selected] | number }} granos y {{ pile.odometer[selected] | number }} derrumbes acumulados.</p>
+  <div class="buttons">
+    <button type="button" (click)="add()" [disabled]="!allowed">Añadir a la celda</button>
+    <button type="button" (click)="step()" [disabled]="pile.stable">Una ronda</button>
+    <button type="button" (click)="run('slow')" [disabled]="pile.stable || mode === 'slow'">Animar rondas</button>
+    <button type="button" (click)="run('fast')" [disabled]="pile.stable || mode === 'fast'">Estabilizar rápido</button>
+    <button type="button" (click)="pause()" [disabled]="!mode">Pausar</button>
+  </div>
+  <div class="buttons"><button type="button" (click)="reset('central')">Recrear depósito</button><button type="button" (click)="reset('wave')">Todo a 3 + un grano</button><button type="button" (click)="reset('empty')">Vaciar</button></div>
+  <div class="readouts"><div><span>Granos dentro</span><strong>{{ pile.mass | number }}</strong></div><div><span>Absorbidos por el borde</span><strong>{{ pile.lost | number }}</strong></div><div><span>Derrumbes totales</span><strong>{{ pile.topplings | number }}</strong></div></div>
+  <p class="insight">{{ pile.stable ? 'Configuración estable: todas las alturas son menores que 4.' : pile.active + ' celdas inestables.' }} Balance: {{ injected | number }} añadidos = {{ pile.mass | number }} dentro + {{ pile.lost | number }} fuera.</p>
+  <p class="note">Una ronda derrumba una vez cada celda que era inestable al iniciarla. El modo rápido agrupa derrumbes legales; conserva el resultado, pero no representa tiempo físico. Cambiar tamaño o depósito reinicia el experimento. Límite: un millón de granos añadidos por reinicio.</p>
+</section>

@@ -1,0 +1,14 @@
+<section class="lab" aria-label="Comparación de órdenes de derrumbe">
+  <div class="eyebrow">02 · DISTINTO ORDEN, MISMO DESTINO</div>
+  <h4>Pon a prueba la propiedad abeliana</h4>
+  <p>Dos tableros idénticos procesan sus celdas inestables en órdenes diferentes. La cola atiende primero la celda pendiente más antigua; la pila, la más reciente. Cada paso ejecuta un derrumbe legal en cada tablero.</p>
+  <div class="controls"><label>Configuración reproducible · semilla {{ seed }}<input type="range" min="1" max="30" step="1" [(ngModel)]="seed" (ngModelChange)="reset()"></label><label>Granos extra en el centro · {{ amount }}<input type="range" min="4" max="200" step="4" [(ngModel)]="amount" (ngModelChange)="reset()"></label></div>
+  <div class="split">
+    <div><h5>A · Cola: primero en entrar, primero en salir</h5><app-sandpile-grid [pile]="left" [revision]="revision" label="Tablero A: orden de cola, con alturas escritas en cada celda."></app-sandpile-grid><p class="note">{{ left.topplings }} derrumbes · {{ left.lost }} granos perdidos · {{ left.stable ? 'estable' : 'inestable' }}</p></div>
+    <div><h5>B · Pila: último en entrar, primero en salir</h5><app-sandpile-grid [pile]="right" [revision]="revision" label="Tablero B: orden de pila, con alturas escritas en cada celda."></app-sandpile-grid><p class="note">{{ right.topplings }} derrumbes · {{ right.lost }} granos perdidos · {{ right.stable ? 'estable' : 'inestable' }}</p></div>
+  </div>
+  <div class="buttons"><button type="button" (click)="step()" [disabled]="done">Un derrumbe en cada tablero</button><button type="button" (click)="finish()" [disabled]="done || playing">Completar ambos</button><button type="button" (click)="pause()" [disabled]="!playing">Pausar</button><button type="button" (click)="reset()">Reiniciar comparación</button></div>
+  <div class="readouts"><div><span>Celdas con alturas diferentes</span><strong>{{ differences }}</strong></div><div><span>Celdas con odómetros diferentes</span><strong>{{ odometerDifferences }}</strong></div><div><span>Comparación</span><strong>{{ done ? 'Final' : 'Intermedia' }}</strong></div></div>
+  <p class="insight" aria-live="polite">{{ done ? (differences === 0 && odometerDifferences === 0 ? 'Coinciden todas las alturas y todos los recuentos de derrumbes.' : 'Los resultados no coinciden.') : 'Durante la relajación, las configuraciones pueden ser diferentes. La igualdad se exige al terminar.' }}</p>
+  <p class="note">Mismas alturas iniciales, misma regla y mismos bordes abiertos. No se añaden granos durante la comparación. La semilla solo genera la configuración inicial; los derrumbes son deterministas. Estos ejemplos ilustran el teorema, no sustituyen su demostración.</p>
+</section>
