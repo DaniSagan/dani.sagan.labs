@@ -1,0 +1,39 @@
+<section class="lab" aria-label="Carrera de trayectorias">
+  <div class="eyebrow">01 · LABORATORIO DE TIEMPO MÍNIMO</div>
+  <h4>Más corto no siempre es más rápido</h4>
+  <p>Las tres partículas salen del reposo a la vez. Cambia el destino y diseña una parábola: ¿cuánto puedes acercarte a la cicloide?</p>
+  <div class="buttons">
+    <button type="button" (click)="preset(3, 5)">Descenso pronunciado</button>
+    <button type="button" (click)="preset(6, 3)">Carrera clásica</button>
+    <button type="button" (click)="preset(9, 1)">Bajar y volver a subir</button>
+  </div>
+  <div class="controls">
+    <label>Distancia horizontal · {{ distance | number:'1.1-1' }} m<input type="range" min="1" max="10" step="0.1" [(ngModel)]="distance" (ngModelChange)="update()"></label>
+    <label>Desnivel · {{ depth | number:'1.1-1' }} m<input type="range" min="0.5" max="6" step="0.1" [(ngModel)]="depth" (ngModelChange)="update()"></label>
+    <label>Curvatura de tu parábola · {{ bend | number:'1.1-1' }} m<input type="range" min="0" max="8" step="0.1" [(ngModel)]="bend" (ngModelChange)="update()"></label>
+    <label>Gravedad<select [(ngModel)]="gravity" (ngModelChange)="update()"><option [ngValue]="9.81">Tierra · 9,81 m/s²</option><option [ngValue]="1.62">Luna · 1,62 m/s²</option><option [ngValue]="3.71">Marte · 3,71 m/s²</option></select></label>
+  </div>
+  <svg viewBox="0 0 800 370" role="img" aria-label="Carrera entre una cicloide, una recta y una parábola. El eje vertical mide profundidad hacia abajo.">
+    <path d="M48 20V342H770" class="axis"/><text x="60" y="24">A · reposo</text><text x="600" y="360">x → · y ↓ (metros)</text>
+    <line x1="48" [attr.y1]="sy(depth)" x2="770" [attr.y2]="sy(depth)" class="guide"/>
+    <g *ngFor="let track of tracks">
+      <path [attr.d]="track.path" fill="none" [attr.stroke]="track.color" [attr.stroke-dasharray]="track.dash" stroke-width="2.5"/>
+      <circle [attr.cx]="sx(ball(track).x)" [attr.cy]="sy(ball(track).y)" r="6" [attr.fill]="track.color" stroke="#101820" stroke-width="2"/>
+    </g>
+    <text [attr.x]="sx(distance) + 10" [attr.y]="sy(depth) - 10">B</text>
+  </svg>
+  <div class="buttons">
+    <button type="button" (click)="toggle()">{{ playing ? 'Pausar' : elapsed >= duration ? 'Repetir carrera' : 'Iniciar / continuar' }}</button>
+    <button type="button" (click)="reset()">Reiniciar</button>
+    <label>Velocidad de reproducción<select [(ngModel)]="speed"><option [ngValue]="0.25">¼×</option><option [ngValue]="0.5">½×</option><option [ngValue]="1">1×</option></select></label>
+  </div>
+  <label>Reloj compartido · {{ elapsed | number:'1.2-2' }} s<input type="range" min="0" [max]="duration" step="0.001" [ngModel]="elapsed" (ngModelChange)="seek($event)"></label>
+  <div class="table-wrap"><table>
+    <caption>Tiempo de llegada, longitud y velocidad instantánea</caption>
+    <thead><tr><th>Trayectoria</th><th>Tiempo</th><th>Longitud</th><th>Velocidad</th><th>Estado</th></tr></thead>
+    <tbody><tr *ngFor="let track of tracks"><th [style.color]="track.color">{{ track.name }}</th><td>{{ track.time | number:'1.3-3' }} s</td><td>{{ track.length | number:'1.2-2' }} m</td><td>{{ velocity(track) | number:'1.2-2' }} m/s</td><td>{{ elapsed >= track.time ? 'Llegada' : elapsed === 0 ? 'En reposo' : 'En marcha' }}</td></tr></tbody>
+  </table></div>
+  <p class="insight">La cicloide ahorra un {{ saving | number:'1.1-1' }} % de tiempo frente a la recta.
+    {{ solution.theta > 3.141592654 ? 'El destino está después del punto más bajo: compensa ganar velocidad y remontar al final.' : 'En esta configuración, la cicloide desciende hasta el destino.' }}</p>
+  <p class="note">Modelo sin rozamiento ni rodadura; al llegar, el marcador se congela y la tabla conserva la velocidad de llegada. La parábola es y = Hu + 4bu(1 − u), x = Xu. Su tiempo se aproxima con 600 segmentos; la cicloide usa su solución exacta. Ambos ejes comparten escala.</p>
+</section>

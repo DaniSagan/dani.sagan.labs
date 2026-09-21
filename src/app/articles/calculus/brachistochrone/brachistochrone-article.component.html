@@ -1,0 +1,91 @@
+<h2>La braquistócrona: el camino que gana al reloj</h2>
+<p class="dropcap">Entre dos puntos, la recta es el camino más corto. Pero si una partícula se desliza
+  por una pista bajo la gravedad, ¿es también el más rápido? Una caída inicial más pronunciada permite
+  ganar velocidad antes. La curva ganadora equilibra esa ventaja con el desvío necesario para conseguirla:
+  es un arco de cicloide, llamado <strong>braquistócrona</strong>, o curva de tiempo mínimo.</p>
+
+<h3>Una carrera con reglas precisas</h3>
+<p>Fijamos un punto de salida A y otro punto B, más bajo y separado horizontalmente. La partícula
+  parte del reposo, desliza sin rozamiento por una guía fija y permanece sujeta a ella. La gravedad es
+  uniforme; no hay resistencia del aire ni energía de rotación. Los círculos de los laboratorios son
+  marcadores de partículas, no esferas que ruedan.</p>
+<p>Tomaremos A como origen y mediremos la profundidad y <strong>hacia abajo</strong>. Así B tiene
+  coordenadas (X, H), con X y H positivos. Antes de iniciar la carrera, intenta adivinar qué trayectoria
+  llegará primero y prueba a mejorar la parábola cambiando su curvatura.</p>
+<app-brachistochrone-race></app-brachistochrone-race>
+
+<h3>Del camino más corto al tiempo más corto</h3>
+<p>La conservación de la energía convierte la pérdida de altura en energía cinética. La masa se cancela:
+  a una misma profundidad, todas las partículas que salieron del reposo desde A tienen la misma rapidez.</p>
+<app-formula expression="\frac12 mv^2=mgy\quad\Longrightarrow\quad v(y)=\sqrt{2gy}"></app-formula>
+<p>Un pequeño tramo de longitud ds requiere un tiempo dt = ds/v. Si describimos la pista como y(x),
+  su longitud elemental es √(1 + y′²) dx. El tiempo total es, por tanto:</p>
+<app-formula expression="T[y]=\int_0^X\frac{\sqrt{1+y'(x)^2}}{\sqrt{2g\,y(x)}}\,dx,\qquad y(0)=0,\quad y(X)=H"></app-formula>
+<p>Ahora no buscamos el mínimo de una función de un número: buscamos el mínimo de una cantidad que
+  depende de una <em>función entera</em>. Ese es el salto al cálculo de variaciones. La integral es impropia
+  en la salida, donde la rapidez es cero; esto no impide que el tiempo total sea finito.</p>
+
+<h3>La ecuación que selecciona la curva</h3>
+<p>El integrando F no depende explícitamente de x. La identidad de Beltrami, una consecuencia de la
+  ecuación de Euler–Lagrange, proporciona una primera integral en los tramos regulares de una extremal:</p>
+<app-formula expression="F-y'\frac{\partial F}{\partial y'}=\frac{1}{\sqrt{2gy}\sqrt{1+y'^2}}=C\quad\Longrightarrow\quad y(1+y'^2)=2a"></app-formula>
+<p>La constante a es positiva y tiene unidades de longitud. La siguiente parametrización satisface
+  esta relación y permite tratar la tangente vertical inicial sin exigir una pendiente finita:</p>
+<app-formula expression="x(\theta)=a(\theta-\sin\theta),\qquad y(\theta)=a(1-\cos\theta),\qquad 0\le\theta\le\theta_B<2\pi"></app-formula>
+<p>Es una <a routerLink="../cycloid">cicloide</a>: la huella de un punto del borde de un círculo que
+  rueda sin deslizar. Aquí aparece orientada con las cúspides arriba. La condición variacional identifica
+  la candidata; demostrar que es el mínimo global requiere además un argumento de suficiencia.
+  Para el problema ideal planteado, el arco sin cúspides interiores es la solución minimizante.</p>
+<app-cycloid-construction></app-cycloid-construction>
+
+<h3>Una cicloide a medida de los extremos</h3>
+<p>No basta elegir cualquier círculo. Las coordenadas del destino fijan el ángulo final y el radio:</p>
+<app-formula expression="\frac{X}{H}=\frac{\theta_B-\sin\theta_B}{1-\cos\theta_B},\qquad a=\frac{H}{1-\cos\theta_B}"></app-formula>
+<p>En el intervalo 0 &lt; θ<sub>B</sub> &lt; 2π, la primera razón crece de cero a infinito y determina
+  un único ángulo. El laboratorio lo encuentra por bisección. Si X/H supera π/2, el destino queda
+  después del punto más bajo de la cicloide: la pista óptima <strong>desciende por debajo de B y luego
+  remonta</strong>. Imponer que la pista siempre descienda cambiaría el problema.</p>
+<p>Sobre la cicloide, tanto ds como la rapidez contienen el mismo factor sin(θ/2), que se cancela.
+  El tiempo resulta especialmente sencillo:</p>
+<app-formula expression="ds=2a\sin(\theta/2)\,d\theta,\qquad v=2\sqrt{ag}\sin(\theta/2),\qquad T=\theta_B\sqrt{\frac{a}{g}}"></app-formula>
+<p>El parámetro θ avanza uniformemente con el tiempo, aunque la partícula no se mueva a rapidez
+  constante. Multiplicar todas las longitudes por un factor λ multiplica el tiempo por √λ.
+  Cambiar g multiplica los tiempos por un factor común proporcional a 1/√g, sin cambiar la curva óptima.</p>
+
+<h3>La intuición óptica de Bernoulli</h3>
+<p>Johann Bernoulli planteó el desafío en 1696. Su razonamiento conectó la caída con el principio de
+  Fermat: la luz elige caminos de tiempo estacionario. Imagina el plano dividido en capas horizontales,
+  cada una con una rapidez mayor que la anterior. La ley de Snell hace que el camino se incline
+  progresivamente al atravesarlas. En el límite de capas infinitamente finas, esa construcción conduce
+  a la cicloide.</p>
+<p>Si α es el ángulo de la tangente con la vertical, la relación óptica conserva sin α/v.
+  Como sin α = 1/√(1 + y′²), recuperamos la misma constante que en la identidad de Beltrami.
+  La aceleración inicial casi vertical deja de ser una sorpresa: cerca de la salida, la rapidez es muy pequeña.</p>
+
+<h3>Otra sorpresa: la tautócrona</h3>
+<p>Hay una segunda pregunta, distinta de la carrera entre pistas: si soltamos partículas desde
+  distintos puntos de una <strong>misma</strong> cicloide, ¿cuánto tardan en alcanzar su punto más bajo?
+  Todas tardan lo mismo, siempre que partan del reposo y no haya rozamiento. Esta propiedad,
+  estudiada por Huygens, se llama <em>tautocronía</em>.</p>
+<app-tautochrone-explorer></app-tautochrone-explorer>
+<p>En una rama, sea s la longitud de arco que falta hasta el fondo y s₀ su valor inicial. La altura
+  sobre el fondo es s²/(8a), de modo que el movimiento en la coordenada s es armónico simple:</p>
+<app-formula expression="s=4a\cos(\theta/2),\qquad \ddot{s}=-\frac{g}{4a}s,\qquad s(t)=s_0\cos\left(\sqrt{\frac{g}{4a}}\,t\right)"></app-formula>
+<p>El primer cero del coseno ocurre en un tiempo que no depende de s₀:</p>
+<app-formula expression="T_{\mathrm{fondo}}=\pi\sqrt{\frac{a}{g}}"></app-formula>
+<p>La partícula que empieza exactamente en el fondo ya ha llegado; la fórmula describe las salidas
+  por encima de él. Tampoco implica que cualquier punto de la cicloide sea un destino tautócrono:
+  el punto de llegada debe ser el fondo. Braquistocronía y tautocronía comparten una curva, pero
+  responden a preguntas diferentes.</p>
+
+<h3>Preguntas para seguir explorando</h3>
+<ul>
+  <li>En la carrera clásica, busca la mejor parábola posible. ¿Gana a la recta? ¿Consigue alcanzar el tiempo de la cicloide?</li>
+  <li>Prueba «Bajar y volver a subir». ¿Por qué la partícula pierde rapidez al final y aun así llega antes?</li>
+  <li>Cambia la gravedad. Comprueba que los tiempos cambian, pero el porcentaje de ahorro se conserva.</li>
+  <li>En la tautócrona, triplica el radio. ¿El tiempo se triplica o se multiplica por √3?</li>
+</ul>
+<p>Fuentes para profundizar: H. J. Sussmann y J. C. Willems,
+  <a href="https://sites.math.rutgers.edu/~sussmann/papers/brachistochrone-mex.pdf">The Brachistochrone Problem and Modern Control Theory</a>,
+  con el desarrollo variacional y óptico y la discusión del mínimo global; y la
+  <a href="https://www.wolfram.com/language/11/symbolic-and-numeric-calculus/solve-the-tautochrone-problem.html">derivación simbólica del problema de la tautócrona de Wolfram</a>.</p>

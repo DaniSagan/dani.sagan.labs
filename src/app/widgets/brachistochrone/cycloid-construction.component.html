@@ -1,0 +1,22 @@
+<section class="lab" aria-label="Construcción de la cicloide">
+  <div class="eyebrow">02 · GEOMETRÍA EN MOVIMIENTO</div>
+  <h4>La huella de una rueda</h4>
+  <p>Desliza el ángulo para hacer rodar el círculo por debajo de la recta. El punto de su borde dibuja la cicloide invertida: empieza con tangente vertical y alcanza el fondo en θ = π.</p>
+  <div class="controls">
+    <label>Ángulo θ · {{ theta | number:'1.2-2' }} rad<input type="range" min="0" max="6.283185307179586" step="0.01" [(ngModel)]="theta"></label>
+    <label>Radio a · {{ radius | number:'1.1-1' }} m<input type="range" min="0.5" max="3" step="0.1" [(ngModel)]="radius"></label>
+  </div>
+  <div class="buttons"><button type="button" (click)="theta = 0">Cúspide inicial</button><button type="button" (click)="theta = pi">Punto más bajo</button><button type="button" (click)="theta = 2 * pi">Una vuelta completa</button></div>
+  <svg viewBox="0 0 860 300" role="img" aria-label="Una circunferencia rueda sin deslizar y su punto marcado traza una cicloide con las cúspides arriba.">
+    <path d="M30 48H835" class="axis"/><path [attr.d]="fullPath" class="guide" fill="none"/>
+    <path [attr.d]="trace" class="curve"/>
+    <circle [attr.cx]="cx" cy="148" r="100" class="wheel"/>
+    <line [attr.x1]="cx" y1="148" [attr.x2]="px" [attr.y2]="py" stroke="#f6cc80" stroke-width="2"/>
+    <line [attr.x1]="cx" y1="48" [attr.x2]="cx" y2="148" class="guide"/>
+    <circle [attr.cx]="px" [attr.cy]="py" r="6" fill="#82e3cc"/>
+    <circle [attr.cx]="cx" cy="148" r="3" fill="#f6cc80"/>
+    <text x="36" y="28">y = 0 · línea de rodadura</text><text x="348" y="280">θ = π · y = 2a</text>
+  </svg>
+  <div class="readouts"><div><span>x = a(θ − sin θ)</span><strong>{{ point.x | number:'1.3-3' }} m</strong></div><div><span>y = a(1 − cos θ)</span><strong>{{ point.y | number:'1.3-3' }} m</strong></div><div><span>Tiempo desde la cúspide · Tierra</span><strong>{{ travelTime | number:'1.3-3' }} s</strong></div></div>
+  <p class="note">El encuadre se adapta al radio: la forma se mantiene y las medidas cambian. El círculo genera la curva; no representa una bola que rueda por ella. El tiempo corresponde a una partícula que desliza desde el reposo.</p>
+</section>
