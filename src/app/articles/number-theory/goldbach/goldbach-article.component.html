@@ -1,0 +1,101 @@
+<h2>La conjetura de Goldbach</h2>
+<p class="dropcap">Elige un número par mayor que dos. ¿Puedes construirlo sumando solo dos números
+  primos? Para 8 basta 3 + 5; para 20, sirven 3 + 17 y 7 + 13. La conjetura de Goldbach afirma que
+  siempre encontraremos al menos una pareja. La frase cabe en una línea, pero una demostración general
+  sigue siendo un problema abierto.</p>
+
+<h3>1. Un enunciado sencillo, un alcance infinito</h3>
+<p>En su forma moderna, llamada <em>fuerte</em> o <em>binaria</em>, la conjetura dice:</p>
+<app-formula expression="\forall N\in2\mathbb{Z},\ N\ge4,\quad \exists p,q\text{ primos}:\ N=p+q"></app-formula>
+<p>Los primos no tienen por qué ser distintos: 4 = 2 + 2 y 6 = 3 + 3 son ejemplos válidos.
+  El 1 no es primo. El 2 sí lo es y es el único primo par. Por ello, salvo en N = 4,
+  cualquier pareja de Goldbach está formada por dos primos impares: si uno fuera 2, el otro
+  sería un par mayor que 2 y, por tanto, compuesto.</p>
+<p>El problema nació en la correspondencia entre Goldbach y Euler de 1742. Su formulación histórica
+  empleaba convenciones diferentes sobre el 1; aquí utilizaremos siempre la definición moderna de primo.</p>
+
+<h3>2. Encontrar una pareja no es contarlas todas</h3>
+<p>Para verificar un número basta una descomposición. Para estudiar cómo se distribuyen las soluciones,
+  interesa contarlas. Denotaremos por g(N) el número de parejas con p ≤ q, de modo que 3 + 7 y 7 + 3
+  representen la misma solución.</p>
+<app-formula expression="g(N)=\#\{(p,q):p,q\text{ primos},\ p\le q,\ p+q=N\}"></app-formula>
+<p>Así, g(10) = 2, por las parejas 3 + 7 y 5 + 5. La conjetura equivale a afirmar que g(N) ≥ 1
+  para todo par N ≥ 4. El laboratorio usa una criba de Eratóstenes y comprueba cada candidato
+  hasta N/2. Sus resultados son exactos dentro del intervalo permitido.</p>
+<app-goldbach-pairs></app-goldbach-pairs>
+<p>Los arcos conectan p con N − p sobre la misma recta. Todos comparten el punto medio N/2,
+  pero eso no obliga a que exista un primo en ambos extremos. La simetría organiza la búsqueda;
+  no garantiza que tenga éxito para todos los números.</p>
+
+<h3>3. El cometa: orden dentro de la irregularidad</h3>
+<p>Al dibujar un punto (N, g(N)) para cada número par aparece una nube que se abre como la cola
+  de un cometa. La tendencia global crece, pero la sucesión no es monótona: un par mayor puede tener
+  menos representaciones que su vecino. Las bandas reflejan restricciones aritméticas, no ruido de dibujo.</p>
+<app-goldbach-comet></app-goldbach-comet>
+<p>El teorema de los números primos sugiere una densidad aproximada de 1/ln x cerca de x.
+  Si tratáramos ingenuamente las condiciones «p es primo» y «N − p es primo» como independientes,
+  y usáramos ln N para ambas, obtendríamos una escala de crecimiento:</p>
+<app-formula expression="g_{\mathrm{ingenuo}}(N)=\frac{N}{2(\ln N)^2}"></app-formula>
+<p>El factor 1/2 evita contar dos veces las parejas. Esta aproximación ignora incluso la correlación
+  de paridad: para N par, p y N − p tienen la misma paridad. Por eso la línea del gráfico es un punto
+  de partida para discutir el modelo, no un ajuste preciso. Una tendencia creciente tampoco descarta
+  que aparezca un cero aislado mucho más lejos.</p>
+
+<h3>4. Por qué importan los restos</h3>
+<p>Todo primo mayor que 3 tiene resto 1 o 5 al dividirlo entre 6. Si N es múltiplo de 6, una pareja
+  de primos mayores que 3 debe combinar los restos 1 y 5. Si N tiene resto 2, necesita 1 + 1;
+  si tiene resto 4, necesita 5 + 5. Los primos 2 y 3 se tratan como excepciones, no se descartan.</p>
+<app-formula expression="1+5\equiv0,\qquad1+1\equiv2,\qquad5+5\equiv4\pmod6"></app-formula>
+<p>Otra forma de verlo: módulo un primo impar ℓ, las clases p ≡ 0 y p ≡ N suelen impedir que
+  ambos sumandos sean primos. Si ℓ divide a N, esas dos clases coinciden y solo se prohíbe una.
+  Esto favorece a los números con ciertos divisores pequeños y ayuda a explicar las bandas del cometa.</p>
+<app-goldbach-sieve></app-goldbach-sieve>
+<p>Superar unos pocos filtros no equivale a ser primo. Por ejemplo, 49 sobrevive si solo descartamos
+  múltiplos compuestos de 2, 3 y 5. Para certificar un candidato por división basta comprobar los
+  primos hasta su raíz cuadrada. Al aumentar indefinidamente N, también aumenta el alcance necesario
+  de esas comprobaciones.</p>
+
+<h3>5. Una predicción más fina</h3>
+<p>La heurística de Hardy y Littlewood incorpora las correlaciones modulares. En su forma asintótica
+  para parejas sin orden, predice:</p>
+<app-formula expression="g(N)\sim C_2\frac{N}{(\ln N)^2}\prod_{\ell\mid N,\ \ell>2}\frac{\ell-1}{\ell-2}"></app-formula>
+<app-formula expression="C_2=\prod_{\ell>2\text{ primo}}\left(1-\frac{1}{(\ell-1)^2}\right)\approx0.6601618"></app-formula>
+<p>El producto finito incluye cada divisor primo impar de N una sola vez. Un factor 3 aporta
+  (3 − 1)/(3 − 2) = 2, mientras que un factor 5 aporta 4/3. El símbolo ∼ expresa una razón que
+  tendería a 1 al crecer N por los pares; no una igualdad para valores pequeños. Esta fórmula
+  sigue siendo conjetural. Para parejas ordenadas, el término principal lleva un factor 2 adicional.</p>
+
+<h3>6. Comprobar muchísimo no es demostrarlo todo</h3>
+<p>Oliveira e Silva, Herzog y Pardi publicaron en 2014 una verificación de todos los pares hasta
+  4 · 10¹⁸. Es un resultado computacional extraordinario y un límite publicado concreto, no una
+  demostración del enunciado infinito. El explorador de esta página llega a 100 000 y el cometa
+  a 5 000; no reproducen aquella gran verificación.</p>
+<p>Una sola pareja certifica un caso. Un solo número par sin parejas refutaría la conjetura.
+  En cambio, cualquier intervalo finito deja sin comprobar infinitos números. Tampoco basta
+  demostrar que «casi todos» los pares cumplen la propiedad: podrían quedar excepciones.</p>
+
+<h3>7. La versión ternaria sí es un teorema</h3>
+<p>La llamada conjetura débil o ternaria afirma que todo impar mayor que 5 es suma de tres primos,
+  permitiendo repeticiones. Harald Helfgott la demostró en 2013. Por ejemplo, 7 = 2 + 2 + 3
+  y 9 = 3 + 3 + 3.</p>
+<app-formula expression="M\ge7,\ M\text{ impar}\quad\Longrightarrow\quad M=p+q+r\text{ con }p,q,r\text{ primos}"></app-formula>
+<p>La versión fuerte implicaría la débil: para un impar M ≥ 7, el par M − 3 es al menos 4;
+  si fuese suma de dos primos, al añadir 3 obtendríamos los tres. Pero la implicación inversa
+  no se deduce de ese argumento: una representación ternaria no obliga a que uno de sus sumandos
+  sea precisamente 3. Probar la débil no resuelve la fuerte.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>Compara 98, 100 y 102. ¿Crece siempre el número de parejas?</li>
+  <li>Busca una suma con dos primos iguales. ¿Qué condición debe cumplir N/2?</li>
+  <li>Filtra el cometa por restos módulo 6 y compara las bandas sin cambiar la escala.</li>
+  <li>En la criba, fija N = 100 y activa solo 2, 3 y 5. ¿Por qué sobrevive 23 + 77? Activa 7.</li>
+  <li>Comprueba que los filtros nunca eliminan 3 + 7 para N = 10, aunque actives los divisores 3 y 7.</li>
+</ul>
+
+<h3>Fuentes y lecturas</h3>
+<ul>
+  <li><a href="https://sweet.ua.pt/tos/goldbach.html" target="_blank" rel="noopener noreferrer">Tomás Oliveira e Silva: verificación de Goldbach, datos y heurística de Hardy–Littlewood</a>.</li>
+  <li><a href="https://www.ams.org/mcom/2014-83-288/S0025-5718-2013-02787-1/" target="_blank" rel="noopener noreferrer">Oliveira e Silva, Herzog y Pardi (2014): verificación hasta 4 · 10¹⁸</a>.</li>
+  <li><a href="https://arxiv.org/abs/1312.7748" target="_blank" rel="noopener noreferrer">Harald Helfgott: The ternary Goldbach conjecture is true</a>.</li>
+</ul>

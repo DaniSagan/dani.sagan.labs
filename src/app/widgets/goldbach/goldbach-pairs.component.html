@@ -1,0 +1,37 @@
+<section class="widget" aria-label="Explorador de parejas de Goldbach">
+  <h3>Laboratorio · dos primos, una suma</h3>
+  <form class="controls" (ngSubmit)="setNumber(draft)">
+    <label>Número par N <input type="number" name="even" min="4" max="100000" step="2" [(ngModel)]="draft" /></label>
+    <button type="submit">Explorar</button>
+    @for (example of [4, 28, 100, 210, 1000]; track example) {
+      <button type="button" (click)="setNumber(example)">{{ example }}</button>
+    }
+  </form>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> }
+  <div class="stats" aria-live="polite"><span>N = {{ n }}</span><span>{{ pairs.length }} parejas sin repetir el orden</span></div>
+  <svg viewBox="0 0 700 270" role="img" [attr.aria-label]="'Arcos de las descomposiciones de ' + n + '. La pareja seleccionada se muestra debajo.'">
+    <line class="axis" x1="35" y1="230" x2="665" y2="230" />
+    @for (pair of visiblePairs; track pair[0]) { <path class="arc" [attr.d]="arc(pair)" /> }
+    @if (selectedPair; as pair) {
+      <path class="arc active" [attr.d]="arc(pair)" />
+      <circle [attr.cx]="35 + 630 * pair[0] / n" cy="230" r="4" fill="#ffcb7c" />
+      <circle [attr.cx]="35 + 630 * pair[1] / n" cy="230" r="4" fill="#ffcb7c" />
+    }
+    <text x="35" y="253">0</text><text x="350" y="253" text-anchor="middle">{{ n / 2 }}</text><text x="665" y="253" text-anchor="end">{{ n }}</text>
+  </svg>
+  @if (selectedPair; as pair) {
+    <p class="selection" aria-live="polite">{{ n }} = <strong>{{ pair[0] }} + {{ pair[1] }}</strong> · distancia entre primos: {{ pair[1] - pair[0] }}</p>
+  }
+  <p class="note">Selecciona una pareja para destacar su arco. Si ambos primos coinciden, el arco se reduce a un punto central.</p>
+  <div class="pairs">
+    @for (pair of visiblePairs; track pair[0]; let i = $index) {
+      <button type="button" [attr.aria-pressed]="selected === page * 40 + i" (click)="selected = page * 40 + i">{{ pair[0] }} + {{ pair[1] }}</button>
+    }
+  </div>
+  @if (pairs.length > 40) {
+    <div class="controls"><button type="button" [disabled]="page === 0" (click)="page = page - 1; selected = page * 40">Anterior</button>
+      <span>Parejas {{ page * 40 + 1 }}–{{ page * 40 + visiblePairs.length }} de {{ pairs.length }}</span>
+      <button type="button" [disabled]="(page + 1) * 40 >= pairs.length" (click)="page = page + 1; selected = page * 40">Siguiente</button></div>
+    <p class="note">Se dibujan los arcos de la página actual, hasta 40 a la vez.</p>
+  }
+</section>

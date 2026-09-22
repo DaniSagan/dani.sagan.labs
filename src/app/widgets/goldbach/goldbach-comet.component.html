@@ -1,0 +1,24 @@
+<section class="widget" aria-label="Cometa de Goldbach">
+  <h3>Laboratorio · el cometa de Goldbach</h3>
+  <div class="controls">
+    <label>Hasta N = <select [(ngModel)]="limit" (ngModelChange)="changeLimit()">@for (n of [100, 500, 1000, 5000]; track n) { <option [ngValue]="n">{{ n }}</option> }</select></label>
+    <label>Clase módulo 6 <select [(ngModel)]="residue"><option [ngValue]="-1">Todas</option><option [ngValue]="0">0</option><option [ngValue]="2">2</option><option [ngValue]="4">4</option></select></label>
+    <label><input type="checkbox" [(ngModel)]="showModel" /> Modelo ingenuo</label>
+  </div>
+  <p class="legend"><span style="color:#74d6e8">● N ≡ 0</span><span style="color:#ffcb7c">● N ≡ 2</span><span style="color:#c5a4ff">● N ≡ 4 (mód. 6)</span></p>
+  <svg viewBox="0 0 700 350" role="img" aria-label="Número de parejas sin orden frente al número par N. Pulsa para inspeccionar o utiliza el deslizador inferior." (pointerdown)="inspect($event)">
+    <line class="axis" x1="55" y1="305" x2="665" y2="305" /><line class="axis" x1="55" y1="35" x2="55" y2="305" />
+    <text x="12" y="25">g(N)</text><text x="45" y="310" text-anchor="end">0</text><text x="45" y="40" text-anchor="end">{{ maxY }}</text>
+    <text x="55" y="330">4</text><text x="665" y="330" text-anchor="end">N = {{ limit }}</text>
+    @for (d of visible; track d.n) {
+      <circle [attr.cx]="x(d.n)" [attr.cy]="y(d.count, maxY)" r="2.2" [attr.fill]="colors[(d.n % 6) / 2]" opacity=".75"><title>N = {{ d.n }}; g(N) = {{ d.count }}</title></circle>
+    }
+    @if (showModel) { <path [attr.d]="modelPath" fill="none" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 4" /> }
+    <circle [attr.cx]="x(selected)" [attr.cy]="y(current.count, maxY)" r="6" fill="none" stroke="#ffffff" stroke-width="2" />
+  </svg>
+  <label for="goldbach-inspect">Inspeccionar N = {{ selected }}</label>
+  <input id="goldbach-inspect" type="range" min="4" [max]="limit" step="2" [(ngModel)]="selected" />
+  <p class="selection" aria-live="polite">N = {{ selected }} · g(N) = {{ current.count }} · N mod 6 = {{ selected % 6 }} · una pareja: {{ witness[0] }} + {{ witness[1] }}</p>
+  <p class="note">Cada punto es un recuento exacto, sin muestreo. La línea blanca N / (2 ln² N) es una aproximación ingenua que ignora las restricciones modulares; no es una cota ni una predicción exacta. El deslizador permite consultar también las clases ocultas por el filtro.</p>
+  <details><summary>Ver los datos del gráfico en tabla</summary><div class="table-scroll"><table><thead><tr><th>N</th><th>g(N)</th><th>N mod 6</th></tr></thead><tbody>@for (d of visible; track d.n) { <tr><td>{{ d.n }}</td><td>{{ d.count }}</td><td>{{ d.n % 6 }}</td></tr> }</tbody></table></div></details>
+</section>

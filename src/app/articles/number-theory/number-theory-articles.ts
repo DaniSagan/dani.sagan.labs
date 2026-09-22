@@ -1,4 +1,5 @@
 import { ArithmeticDerivativeArticleComponent } from './arithmetic-derivative/arithmetic-derivative-article.component';
+import { GoldbachArticleComponent } from './goldbach/goldbach-article.component';
 import { Type } from '@angular/core';
 import { ContinuedFractionsArticleComponent } from './continued-fractions/continued-fractions-article.component';
 import { UlamSpiralArticleComponent } from './ulam-spiral/ulam-spiral-article.component';
@@ -33,7 +34,7 @@ import { EuclidEulerPerfectNumbersComponent } from './euclid-euler-perfect-numbe
 interface ArticleComponent extends Type<unknown> { title: string; route: string; }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
-  ContinuedFractionsArticleComponent,
+  ContinuedFractionsArticleComponent, GoldbachArticleComponent,
   DivisionAlgorithmComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
   FundamentalTheoremArithmeticComponent, EuclidInfinitelyManyPrimesComponent,
   LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,

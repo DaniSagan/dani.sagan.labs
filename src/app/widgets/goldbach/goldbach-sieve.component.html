@@ -1,0 +1,16 @@
+<section class="widget" aria-label="Criba modular de parejas">
+  <h3>Laboratorio · filtrar no es demostrar</h3>
+  <label for="goldbach-sieve-n">Número par N = {{ n }}</label><input id="goldbach-sieve-n" type="range" min="4" max="200" step="2" [(ngModel)]="n" />
+  <p>Activa divisores para descartar parejas que contienen un múltiplo compuesto. Se conserva el propio primo: 3 no se elimina por ser divisible entre 3.</p>
+  <div class="controls">@for (d of divisors; track d) { <button type="button" [attr.aria-pressed]="active.includes(d)" (click)="toggle(d)">Divisor {{ d }}</button> }
+    <button type="button" (click)="active = []">Quitar filtros</button><button type="button" (click)="active = [2, 3, 5, 7, 11, 13]">Aplicar todos</button>
+  </div>
+  <label><input type="checkbox" [(ngModel)]="reveal" /> Revelar las parejas de primos</label>
+  <p aria-live="polite">{{ survivors }} de {{ n / 2 - 1 }} candidatos sobreviven a los filtros activos.</p>
+  <p class="note">Tachado: descartado por un divisor. ✓: dos primos, al revelar. Sin marca: todavía no decidido por los filtros. Todos los filtros juntos bastan en este laboratorio porque √200 &lt; 15.</p>
+  <div class="grid">@for (c of candidates; track c.p) {
+    <div class="cell" [class.excluded]="c.divisor" [class.prime]="reveal && c.valid">{{ c.p }} + {{ c.q }}
+      @if (c.divisor) { <small>divisor {{ c.divisor }}</small> } @else if (reveal && c.valid) { <small>✓ dos primos</small> } @else { <small>candidato</small> }
+    </div>
+  }</div>
+</section>
