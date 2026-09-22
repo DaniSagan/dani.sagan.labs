@@ -1,0 +1,148 @@
+<h2>La transformada de Laplace</h2>
+<p class="dropcap">Una ecuación diferencial describe cómo cambia un sistema instante a instante.
+  La transformada de Laplace permite observar ese mismo sistema desde otra perspectiva: convierte
+  derivadas en operaciones algebraicas, conserva la información de las condiciones iniciales y
+  facilita el tratamiento de entradas que se encienden, se apagan o llegan con retraso.</p>
+<p>La idea es pesar toda la evolución temporal con una exponencial. Cambiar ese peso permite explorar
+  cuánto crece una señal, cómo oscila y qué modos dominan su respuesta. Trabajaremos con la transformada
+  <strong>unilateral</strong>, que integra desde t = 0. Para las fórmulas de derivación usaremos
+  funciones ordinarias y sus valores iniciales por la derecha, sin impulsos en el origen.</p>
+
+<h3>1. Una integral que amortigua y hace girar</h3>
+<app-formula expression="F(s)=\mathcal{L}\{f\}(s)=\int_0^\infty e^{-st}f(t)\,dt,\qquad s=\sigma+i\omega"></app-formula>
+<p>La variable s es compleja. Su parte real σ controla un peso exponencial; su parte imaginaria ω
+  introduce una oscilación. No estamos evaluando f en un número complejo: integramos f(t), con t real,
+  contra una familia de pesos complejos.</p>
+<app-formula expression="e^{-st}=e^{-\sigma t}\bigl(\cos(\omega t)-i\sin(\omega t)\bigr)"></app-formula>
+<p>Para una señal que crece, elegir un σ suficientemente grande puede hacer converger la integral.
+  Si f es continua a trozos en cada intervalo finito y satisface |f(t)| ≤ Meᵃᵗ para t suficientemente
+  grande, entonces su transformada converge absolutamente cuando Re s &gt; a. Es una condición
+  suficiente útil, no una descripción de todas las funciones transformables.</p>
+
+<h3>2. La región de convergencia forma parte de la respuesta</h3>
+<p>La exponencial f(t) = eᵃᵗ ofrece un ejemplo completo. Primero integramos hasta un horizonte T finito:</p>
+<app-formula expression="I(T)=\int_0^T e^{-(s-a)t}\,dt=\frac{1-e^{-(s-a)T}}{s-a},\qquad s\ne a"></app-formula>
+<p>El término exponencial desaparece al tomar T → ∞ únicamente si Re s &gt; a. En s = a,
+  la integral finita vale T. En la frontera Re s = a, con parte imaginaria no nula, oscila sin
+  alcanzar un límite. Por tanto:</p>
+<app-formula expression="\mathcal{L}\{e^{at}\}(s)=\frac{1}{s-a},\qquad \operatorname{Re}s>a"></app-formula>
+<app-laplace-convergence></app-laplace-convergence>
+<p>La función racional 1/(s − a) puede evaluarse fuera de ese semiplano, salvo en el polo s = a.
+  Pero allí ya no coincide con la integral impropia que la originó. Confundir una prolongación
+  algebraica con una integral convergente es uno de los errores más frecuentes al usar esta transformada.</p>
+
+<h3>3. Un pequeño diccionario</h3>
+<p>La linealidad permite combinar transformadas conocidas. Las igualdades se usan en una región donde
+  convergen las integrales implicadas; la región de la suma puede ampliarse si hay cancelaciones.</p>
+<app-formula expression="\mathcal{L}\{\alpha f+\beta g\}=\alpha F+\beta G"></app-formula>
+<div class="table-scroll"><table>
+  <caption>Transformadas unilaterales básicas; a real, b &gt; 0 y n entero no negativo</caption>
+  <thead><tr><th>f(t)</th><th>F(s)</th><th>Región de convergencia</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>1/s</td><td>Re s &gt; 0</td></tr>
+    <tr><td>tⁿ</td><td>n! / sⁿ⁺¹</td><td>Re s &gt; 0</td></tr>
+    <tr><td>eᵃᵗ</td><td>1/(s − a)</td><td>Re s &gt; a</td></tr>
+    <tr><td>sen(bt)</td><td>b/(s² + b²)</td><td>Re s &gt; 0</td></tr>
+    <tr><td>cos(bt)</td><td>s/(s² + b²)</td><td>Re s &gt; 0</td></tr>
+  </tbody>
+</table></div>
+<p>Multiplicar por una exponencial desplaza la variable compleja. Por ejemplo, una oscilación amortiguada
+  tiene sus polos desplazados hacia el semiplano izquierdo:</p>
+<app-formula expression="\mathcal{L}\{e^{at}f(t)\}(s)=F(s-a),\qquad \mathcal{L}\{e^{-ct}\sin(bt)\}(s)=\frac{b}{(s+c)^2+b^2}"></app-formula>
+<p>En el segundo ejemplo, para c &gt; 0, la región de convergencia es Re s &gt; −c.
+  Multiplicar por t también tiene una traducción sencilla, bajo las condiciones que permiten derivar
+  dentro de la integral:</p>
+<app-formula expression="\mathcal{L}\{t f(t)\}(s)=-F'(s)"></app-formula>
+
+<h3>4. Las derivadas guardan memoria del inicio</h3>
+<p>Integrar por partes transforma una derivada temporal en una multiplicación por s, pero deja
+  un término de borde. Si las funciones y sus derivadas cumplen las hipótesis de convergencia pertinentes:</p>
+<app-formula expression="\mathcal{L}\{f'\}=sF(s)-f(0^+),\qquad \mathcal{L}\{f''\}=s^2F(s)-s f(0^+)-f'(0^+)"></app-formula>
+<p>Omitir esos términos equivale a imponer condiciones iniciales nulas, aunque el problema no las tenga.
+  Veámoslo en un ejemplo con una condición inicial no nula:</p>
+<app-formula expression="y'+2y=1,\quad y(0)=3\quad\Longrightarrow\quad (s+2)Y(s)=3+\frac1s"></app-formula>
+<app-formula expression="Y(s)=\frac{1}{2s}+\frac{5}{2(s+2)}\quad\Longrightarrow\quad y(t)=\frac12+\frac52e^{-2t}"></app-formula>
+<p>La solución comienza en 3 y tiende a 1/2. El término constante es la respuesta permanente;
+  la exponencial es un transitorio que conserva la información del arranque.</p>
+
+<h3>5. Polos y modos de un sistema</h3>
+<p>Con condiciones iniciales nulas, un sistema lineal de coeficientes constantes admite una función de
+  transferencia H(s) que relaciona entrada y salida mediante Y(s) = H(s)U(s). Para un oscilador normalizado:</p>
+<app-formula expression="y''+2\zeta\omega_0y'+\omega_0^2y=\omega_0^2u(t),\qquad H(s)=\frac{\omega_0^2}{s^2+2\zeta\omega_0s+\omega_0^2}"></app-formula>
+<app-formula expression="s_{1,2}=-\zeta\omega_0\pm\omega_0\sqrt{\zeta^2-1}"></app-formula>
+<p>Con 0 &lt; ζ &lt; 1 hay dos polos complejos conjugados y una respuesta oscilante amortiguada.
+  En ζ = 1 coinciden en un polo doble. Para ζ &gt; 1 son dos polos reales negativos.
+  Un polo simple genera un modo exponencial; un polo repetido puede introducir factores como t multiplicando
+  a esa exponencial.</p>
+<app-laplace-poles></app-laplace-poles>
+<p>Para sistemas causales racionales propios, la estabilidad BIBO —entrada acotada produce salida
+  acotada— exige que todos los polos de la función de transferencia reducida estén estrictamente a la
+  izquierda del eje imaginario. Esto describe la relación entrada-salida; una cancelación de polos
+  y ceros puede ocultar modos internos y no garantiza por sí sola estabilidad interna.</p>
+<p>En este oscilador no hay cancelaciones. Con ζ = 0, la respuesta al escalón permanece acotada,
+  pero una excitación resonante puede crecer sin límite. Una única entrada de prueba no basta para
+  establecer estabilidad BIBO.</p>
+
+<h3>6. Encender una señal más tarde</h3>
+<p>El escalón de Heaviside u(t − a) vale cero antes de a y uno después. Para a ≥ 0, retrasar la señal
+  completa tiene una traducción especialmente simple:</p>
+<app-formula expression="\mathcal{L}\{u(t-a)f(t-a)\}(s)=e^{-as}F(s)"></app-formula>
+<p>Hay que desplazar también el argumento de f. La expresión u(t − a)f(t) no sigue esa regla tal cual.
+  El valor asignado al escalón justo en su salto no cambia la integral. Un pulso de altura uno,
+  que comienza en a y dura b &gt; 0, se escribe como diferencia de escalones:</p>
+<app-formula expression="f(t)=u(t-a)-u(t-a-b),\qquad F(s)=e^{-as}\frac{1-e^{-bs}}{s}"></app-formula>
+<p>Como el pulso tiene soporte finito, su transformada converge para todo s complejo.
+  La aparente singularidad en s = 0 es removible: su valor allí es b, el área del pulso.</p>
+
+<h3>7. La convolución suma la memoria del sistema</h3>
+<p>Si h es la respuesta al impulso de un sistema causal desde el reposo, cada instante pasado τ
+  aporta una respuesta desplazada h(t − τ), ponderada por la entrada f(τ). Sumar esas contribuciones
+  da una convolución:</p>
+<app-formula expression="(h*f)(t)=\int_0^t h(t-\tau)f(\tau)\,d\tau,\qquad \mathcal{L}\{h*f\}(s)=H(s)F(s)"></app-formula>
+<p>La identidad se aplica donde las condiciones de integrabilidad permiten intercambiar las integrales.
+  Un producto de transformadas corresponde a una convolución temporal; en general,
+  la transformada de h(t)f(t) no es H(s)F(s).</p>
+<p>Para y′ + ky = f(t), con k &gt; 0 y y(0) = 0, tenemos H(s) = 1/(s + k) y h(t) = e⁻ᵏᵗ
+  para t ≥ 0. Con la entrada rectangular anterior, la salida crece durante el pulso y decae después:</p>
+<app-formula expression="y(t)=\begin{cases}0,&t\lt a,\\\dfrac{1-e^{-k(t-a)}}{k},&a\le t\lt a+b,\\\dfrac{1-e^{-kb}}{k}e^{-k(t-a-b)},&t\ge a+b.\end{cases}"></app-formula>
+<app-laplace-convolution></app-laplace-convolution>
+<p>En este ejemplo la entrada salta, pero la salida es continua. Su derivada sí cambia bruscamente
+  al encender y apagar el pulso. El sistema acumula el efecto de la entrada en lugar de copiar sus saltos.</p>
+
+<h3>8. Volver al tiempo</h3>
+<p>Para funciones racionales sencillas, la inversión se hace descomponiendo en fracciones parciales
+  y reconociendo entradas del diccionario. Los factores exponenciales e⁻ᵃˢ indican retrasos.
+  El ejemplo y′ + 2y = 1 ya utilizó este procedimiento.</p>
+<p>La fórmula general de inversión integra sobre una recta vertical situada dentro del semiplano
+  de convergencia y a la derecha de las singularidades, bajo las hipótesis de inversión apropiadas:</p>
+<app-formula expression="f(t)=\frac{1}{2\pi i}\lim_{R\to\infty}\int_{\gamma-iR}^{\gamma+iR}e^{st}F(s)\,ds"></app-formula>
+<p>En puntos de continuidad recupera f(t); en saltos regulares aparece la semisuma de los límites
+  laterales. La inversión numérica requiere métodos específicos: sustituir el infinito por un número
+  grande puede introducir oscilaciones y amplificar errores. Los laboratorios de esta página usan
+  soluciones analíticas, no una inversión numérica de esta integral.</p>
+
+<h3>9. Laplace y Fourier</h3>
+<p>Fijar σ significa aplicar una transformada de Fourier a la señal amortiguada e<sup>−σt</sup>f(t),
+  extendida por cero a t &lt; 0. En particular, F(iω) coincide con la transformada de Fourier de esa
+  extensión causal cuando el eje imaginario pertenece a una región donde la integral correspondiente
+  existe. No siempre es lícito poner σ = 0: una señal puede tener transformada de Laplace y no tener
+  una integral de Fourier ordinaria convergente.</p>
+<p>La versión bilateral de Laplace integra sobre toda la recta real. Puede tener una franja de convergencia
+  en lugar de un semiplano y necesita especificarla para identificar la señal. No debe mezclarse con
+  las fórmulas unilaterales de condiciones iniciales utilizadas aquí.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>Acerca σ a a por la derecha. ¿Por qué hace falta un horizonte mayor para obtener el mismo error?</li>
+  <li>En la frontera σ = a, compara ω = 0 con ω = 2. Distingue crecimiento y oscilación sin límite convergente.</li>
+  <li>Compara ζ = 0,3, ζ = 1 y ζ = 1,8. Relaciona cada curva con las coordenadas de sus polos.</li>
+  <li>Retrasa el pulso sin variar su duración. Comprueba que la salida se retrasa la misma cantidad.</li>
+  <li>Aumenta k. Observa cómo cambia tanto la memoria temporal como la altura de la respuesta.</li>
+</ul>
+
+<h3>Lecturas y recursos</h3>
+<ul>
+  <li><a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/pages/unit-iii-fourier-series-and-laplace-transform/" target="_blank" rel="noopener noreferrer">MIT OpenCourseWare: series de Fourier y transformada de Laplace</a>.</li>
+  <li><a href="https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/pages/unit-iii-fourier-series-and-laplace-transform/laplace-transform-solving-initial-value-problems/" target="_blank" rel="noopener noreferrer">MIT: resolución de problemas con condiciones iniciales</a>.</li>
+  <li><a href="https://ocw.mit.edu/courses/res-18-009-learn-differential-equations-up-close-with-gilbert-strang-and-cleve-moler-fall-2015/resources/laplace-transforms-and-convolution/" target="_blank" rel="noopener noreferrer">Gilbert Strang: transformadas de Laplace y convolución</a>.</li>
+</ul>

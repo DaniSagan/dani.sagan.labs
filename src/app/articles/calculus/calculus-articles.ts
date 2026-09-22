@@ -1,4 +1,5 @@
 import { TaylorSeriesArticleComponent } from './taylor-series/taylor-series-article.component';
+import { LaplaceTransformArticleComponent } from './laplace-transform/laplace-transform-article.component';
 import { FourierSeriesArticleComponent } from './fourier-series/fourier-series-article.component';
 import { BrachistochroneArticleComponent } from './brachistochrone/brachistochrone-article.component';
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
@@ -6,6 +7,7 @@ import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-a
 export const CALCULUS_ARTICLES = [
   TaylorSeriesArticleComponent,
   FourierSeriesArticleComponent,
+  LaplaceTransformArticleComponent,
   BrachistochroneArticleComponent,
   NewtonRaphsonArticleComponent,
 ];

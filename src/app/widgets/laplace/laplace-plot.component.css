@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0b1220;
+  border-radius: 8px;
+}
+text {
+  fill: #bac9df;
+  font: 12px monospace;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.85rem;
+}
+.scale {
+  font-size: 0.8rem;
+  color: #bac9df;
+}
