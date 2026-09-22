@@ -1,6 +1,9 @@
 <nav class="section-navigation" [attr.aria-label]="'Navegación de ' + title">
   <div class="navigation-header">
-    <h2 class="navbar-title">{{ title }}</h2>
+    <h2 class="navbar-title">
+      <span>{{ title }}</span>
+      <span class="total-count" title="Total de páginas"><span class="search-label">Total: </span>{{ totalCount }}</span>
+    </h2>
     <label class="search-label" [for]="sidebarId + '-search'">Buscar una página</label>
     <div class="search-control">
       <span class="search-icon" aria-hidden="true">⌕</span>

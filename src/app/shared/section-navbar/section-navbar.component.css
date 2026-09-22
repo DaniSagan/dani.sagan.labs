@@ -21,7 +21,23 @@
 }
 
 .navbar-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   margin: 0 0 0.75rem;
+}
+
+.total-count {
+  flex: 0 0 auto;
+  min-width: 1.5rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-dim);
+  font: 0.75rem 'Courier Prime', monospace;
+  text-align: center;
+  letter-spacing: normal;
 }
 
 .search-label {

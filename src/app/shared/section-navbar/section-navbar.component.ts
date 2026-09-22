@@ -40,6 +40,10 @@ export class SectionNavbarComponent implements OnChanges {
       .filter(section => section.items.length > 0);
   }
 
+  get totalCount(): number {
+    return this.sections.reduce((total, section) => total + section.items.length, 0);
+  }
+
   get resultCount(): number {
     return this.filteredSections.reduce((total, section) => total + section.items.length, 0);
   }

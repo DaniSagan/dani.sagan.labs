@@ -21,7 +21,7 @@ export class CissoidArticleComponent extends CurveArticleBaseComponent {
   override paramDefinitions = [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.4 }];
   override kind: 'implicit' | 'parametric' = 'implicit';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ y^2 = \frac{x^3}{2a - x} $$`;
+    return `$$ y^2 = \\frac{x^3}{2a - x} $$`;
   }
   override evaluateImplicit(x: number, y: number, params: Record<string, number>): number {
     return y * y - (x * x * x / (2 * params.a - x));
