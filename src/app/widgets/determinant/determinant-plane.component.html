@@ -1,0 +1,27 @@
+<section class="lab" aria-label="Determinante como área orientada">
+  <div class="eyebrow">01 · EL ÁREA TIENE SIGNO</div><h4>De un cuadrado a un paralelogramo</h4>
+  <div class="buttons"><button (click)="preset('area')">Área ×2</button><button (click)="preset('shear')">Cizalla</button><button (click)="preset('reflection')">Reflexión</button><button (click)="preset('collapse')">Colapso</button><button (click)="preset('rotation')">Giro de 180°</button><button (click)="preset('identity')">Identidad</button></div>
+  <div class="split"><div><app-determinant-matrix-input [(matrix)]="matrix" [limit]="3" [step]="0.1"></app-determinant-matrix-input><p class="note">Las columnas son las imágenes de los vectores de la base. Admite números entre −3 y 3.</p>
+    <label>Aplicar después una transformación B<select [(ngModel)]="composition"><option value="identity">Identidad</option><option value="reflection">Reflexión · det B = −1</option><option value="shear">Cizalla · det B = 1</option><option value="scale">Estirar horizontalmente · det B = 2</option></select></label>
+    <label>Interpolación desde I hasta BA: t = {{ fmt(t) }}<input type="range" min="0" max="1" step="0.01" [(ngModel)]="t"></label>
+    <p class="note">M(t) = (1 − t)I + tBA. Se aplica primero A y después B. Esta interpolación mueve los coeficientes en línea recta; no es necesariamente una rotación física.</p>
+  </div><div *ngIf="valid; else invalid"><div class="readouts"><div><span>det M(t)</span><strong>{{ fmt(det) }}</strong></div><div><span>Área</span><strong>{{ fmt(area) }}</strong></div></div><p class="insight">{{ orientation }}.</p><p>det A = {{ fmt(determinantA) }}<br>det B = {{ fmt(determinantB) }}<br>det(BA) = {{ fmt(determinantA * determinantB) }}</p><p class="note">El área es |det M(t)|. El signo distingue la orientación de las columnas, no un área física negativa.</p></div></div>
+  <ng-template #invalid><p role="alert">Completa todas las entradas con números entre −3 y 3.</p></ng-template>
+  <ng-container *ngIf="valid">
+    <svg #plane viewBox="0 0 600 520" class="interactive" (pointermove)="drag($event,plane)" (pointerup)="stop()" (pointercancel)="stop()" role="img" aria-label="Cuadrado unidad y su imagen; vectores columna turquesa y dorado">
+      <path class="axis" d="M25 260H575 M300 20V500"/>
+      <g class="mesh"><ng-container *ngFor="let k of grid"><path [attr.d]="'M'+point(k,-2)+'L'+point(k,2)"/><path [attr.d]="'M'+point(-2,k)+'L'+point(2,k)"/></ng-container></g>
+      <polygon [attr.points]="original" class="guide"/><polygon [attr.points]="polygon" [attr.fill]="fill" stroke="#82e3cc" stroke-width="1.5"/>
+      <path [attr.d]="ellipse" class="violet faint"/>
+      <line x1="300" y1="260" [attr.x2]="sx(current[0][0])" [attr.y2]="sy(current[1][0])" class="curve vector"/>
+      <line x1="300" y1="260" [attr.x2]="sx(current[0][1])" [attr.y2]="sy(current[1][1])" class="gold vector"/>
+      <circle [attr.cx]="sx(current[0][0])" [attr.cy]="sy(current[1][0])" r="9" fill="#82e3cc" class="handle" (pointerdown)="start($event,0,plane)"><title>Primera columna</title></circle>
+      <circle [attr.cx]="sx(current[0][1])" [attr.cy]="sy(current[1][1])" r="9" fill="#f6cc80" class="handle" (pointerdown)="start($event,1,plane)"><title>Segunda columna</title></circle>
+      <text x="560" y="280">x</text><text x="310" y="25">y</text><text x="25" y="505">Ventana: ±{{ fmt(extent) }} · misma escala en x e y</text>
+    </svg>
+    <p class="note">{{ draggable ? 'Arrastra los extremos de las columnas (ajuste a décimas), o edita sus coordenadas.' : 'Para arrastrar las columnas, lleva t a 1 y selecciona B = Identidad.' }} El contorno violeta es la imagen de la circunferencia unidad; el cuadrado original aparece discontinuo.</p>
+    <h5>El determinante durante el recorrido</h5>
+    <svg viewBox="0 0 600 220" role="img" aria-label="Determinante de la matriz interpolada frente a t"><path class="axis" d="M45 110H555 M45 25V185"/><path [attr.d]="curve" class="curve"/><circle [attr.cx]="45+510*t" [attr.cy]="110-65*det/detScale" r="5" fill="#f6cc80"/><text x="45" y="205">t = 0</text><text x="520" y="205">t = 1</text><text x="8" y="20">Escala vertical: ±{{ fmt(detScale) }}</text><text x="18" y="115">0</text></svg>
+    <p class="note">Prueba «Giro de 180°» y t = 0,5: aunque ambos extremos tienen determinante 1, el camino elegido pasa por la matriz nula. El determinante no interpola linealmente.</p>
+  </ng-container>
+</section>

@@ -1,0 +1,14 @@
+<section class="lab" aria-label="Eliminación exacta por filas">
+  <div class="eyebrow">04 · CALCULAR SIN PERDER EL FACTOR</div><h4>Un libro de cuentas para las filas</h4>
+  <div class="buttons"><button (click)="preset('swap')">Hay que intercambiar</button><button (click)="preset('singular')">Matriz singular</button><button (click)="preset('triangular')">Ya triangular</button></div>
+  <app-determinant-matrix-input [matrix]="matrix" (matrixChange)="update($event)" [limit]="5"></app-determinant-matrix-input>
+  <p *ngIf="!valid" role="alert">Completa la matriz con enteros entre −5 y 5.</p>
+  <ng-container *ngIf="valid"><div class="buttons"><button (click)="index=0" [disabled]="index===0">Inicio</button><button (click)="index=index-1" [disabled]="index===0">Anterior</button><button (click)="index=index+1" [disabled]="index===steps.length-1">Siguiente operación</button><button (click)="index=steps.length-1" [disabled]="index===steps.length-1">Resultado</button></div>
+    <label>Paso {{ index }} de {{ steps.length-1 }}<input type="range" min="0" [max]="steps.length-1" step="1" [(ngModel)]="index"></label><p class="insight" aria-live="polite">{{ current.description }}</p>
+    <div class="matrix-display" style="grid-template-columns:repeat(3,1fr)"><ng-container *ngFor="let r of current.matrix;let i=index"><span *ngFor="let value of r;let j=index" [class.selected]="i===current.row" [class.pivot]="i===current.pivot && j===current.pivot">{{ value.toString() }}</span></ng-container></div>
+    <div class="readouts"><div><span>Factor acumulado f</span><strong>{{ current.factor.toString() }}</strong></div><div><span>det matriz actual</span><strong>{{ currentDet }}</strong></div><div><span>det A original</span><strong>{{ originalDet }}</strong></div></div>
+    <p class="equation">det(actual) = f · det(A): {{ currentDet }} = ({{ current.factor.toString() }}) · ({{ originalDet }}).</p>
+    <p *ngIf="current.triangular" class="insight">Producto diagonal = {{ diagonal.toString() }}. Recuperamos det(A) = ({{ diagonal.toString() }}) / ({{ current.factor.toString() }}) = {{ recovered }}.</p>
+    <p class="note">Se utilizan fracciones exactas. Normalizar un pivote también cambia el determinante: ese factor se registra. Un pivote inicial cero no implica que la matriz sea singular; primero se busca otra fila. Editar una entrada reinicia los pasos.</p>
+  </ng-container>
+</section>

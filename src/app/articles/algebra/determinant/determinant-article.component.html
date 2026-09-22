@@ -1,0 +1,127 @@
+<h2>El determinante: área, volumen y orientación</h2>
+<p class="dropcap">Una matriz puede estirar, inclinar, girar o aplastar el espacio. El determinante resume
+  dos aspectos de esa transformación en un solo número: cuánto multiplica los volúmenes y si conserva
+  o invierte la orientación. Detrás de las reglas de signos y de los productos de entradas hay una
+  pregunta geométrica: ¿qué le ocurre a una pequeña caja cuando aplicamos la matriz?</p>
+<p>Trabajaremos con matrices cuadradas reales. En dimensión dos hablaremos de áreas; en dimensión tres,
+  de volúmenes. El determinante puede ser negativo, pero el área o volumen geométrico siempre se obtiene
+  tomando su valor absoluto.</p>
+
+<h3>1. Las columnas son las imágenes de la base</h3>
+<p>Para entender una transformación lineal basta saber dónde envía los vectores de la base.
+  En una matriz 2 × 2, la primera columna es la imagen de (1, 0) y la segunda, la de (0, 1).
+  El cuadrado unidad se transforma en el paralelogramo generado por esas columnas.</p>
+<app-formula expression="A=\begin{pmatrix}a&b\\c&d\end{pmatrix},\qquad Ae_1=\begin{pmatrix}a\\c\end{pmatrix},\quad Ae_2=\begin{pmatrix}b\\d\end{pmatrix}"></app-formula>
+<app-formula expression="\det A=ad-bc,\qquad \operatorname{área}(A[0,1]^2)=|ad-bc|"></app-formula>
+<p>El signo registra el orden de los dos vectores. Intercambiar las columnas conserva el paralelogramo
+  como conjunto, pero invierte su orientación. Si los vectores se alinean, la figura pierde su área:
+  el determinante es cero.</p>
+<app-determinant-plane></app-determinant-plane>
+
+<h3>2. Por qué una cizalla conserva el área</h3>
+<p>Sumar a una columna un múltiplo de la otra desplaza un lado del paralelogramo paralelamente a su
+  base. La altura no cambia. Esta observación geométrica explica una de las reglas de cálculo más
+  útiles: esa operación no cambia el determinante.</p>
+<app-formula expression="\det(u,v+\lambda u)=\det(u,v)+\lambda\det(u,u)=\det(u,v)"></app-formula>
+<p>La igualdad utiliza dos propiedades: linealidad en cada columna por separado y anulación cuando
+  dos columnas coinciden. Junto con det(I) = 1, caracterizan el determinante. La linealidad es
+  <em>multilinealidad</em>: si duplicas una sola columna, duplicas el determinante; si duplicas todas
+  las columnas de una matriz n × n, lo multiplicas por 2ⁿ.</p>
+<app-formula expression="\det(\lambda A)=\lambda^n\det A,\qquad \det(A+B)\ne\det A+\det B\ \text{en general}"></app-formula>
+<p>Por ejemplo, en dimensión dos, det(I + I) = 4, mientras que det(I) + det(I) = 2. El determinante
+  no es una función lineal de la matriz completa.</p>
+
+<h3>3. El salto al volumen</h3>
+<p>Tres columnas u, v y w generan un paralelepípedo. Su volumen orientado es el producto mixto:
+  el producto vectorial de dos columnas da un vector perpendicular a la base, y el producto escalar
+  con la tercera incorpora la altura con su signo.</p>
+<app-formula expression="A=(u\ v\ w),\qquad \det A=u\cdot(v\times w),\qquad V=|\det A|"></app-formula>
+<p>Si las tres columnas están en un mismo plano, el volumen es cero, aunque algunos lados puedan ser
+  largos. La cámara del siguiente laboratorio puede girar sin cambiar la matriz: distinguir el objeto
+  de su proyección evita confundir una vista de canto con un volumen nulo.</p>
+<app-determinant-volume></app-determinant-volume>
+
+<h3>4. La fórmula general elige una entrada de cada fila y columna</h3>
+<p>Una permutación σ indica qué columna elegir en cada fila. Multiplicamos las entradas elegidas y
+  asignamos un signo a la permutación. El determinante suma todas esas contribuciones.</p>
+<app-formula expression="\det A=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}"></app-formula>
+<p>El signo es positivo si el número de inversiones es par y negativo si es impar. Una inversión
+  es un par de posiciones cuyo orden queda invertido por σ. Para n = 2 hay dos productos, ad y bc;
+  para n = 3 hay seis. El signo de la permutación y el signo de las entradas son cosas distintas.</p>
+<p>Esta fórmula define el determinante en cualquier dimensión, pero contiene n! términos. Es útil
+  para demostrar propiedades y comprender los signos; no es el método adecuado para calcular matrices
+  grandes. La regla de Sarrus es una disposición particular de los seis términos de orden tres:
+  prolongar sus diagonales no da una regla válida para orden cuatro.</p>
+
+<h3>5. Menores y cofactores: agrupar la misma suma</h3>
+<p>El menor asociado a una entrada es el determinante de la submatriz que queda al quitar su fila
+  y su columna. El cofactor añade el signo del tablero alternante. Podemos expandir por cualquier
+  fila o columna; elegir una con muchos ceros reduce el trabajo.</p>
+<app-formula expression="C_{ij}=(-1)^{i+j}\det A_{\widehat i,\widehat j},\qquad \det A=\sum_{j=1}^n a_{ij}C_{ij}"></app-formula>
+<p>El índice i se mantiene fijo en esta expansión por filas. El signo de Cij no se obtiene mirando
+  si aij es positivo o negativo. Tampoco hay que confundir un menor, que es un número, con la
+  submatriz que se utiliza para calcularlo.</p>
+<app-determinant-expansion></app-determinant-expansion>
+
+<h3>6. Operaciones por filas: llevar una contabilidad exacta</h3>
+<p>Las reglas para filas son las mismas que para columnas, porque det(Aᵀ) = det(A):</p>
+<ul>
+  <li>Intercambiar dos filas multiplica el determinante por −1.</li>
+  <li>Multiplicar una fila por λ multiplica el determinante por λ.</li>
+  <li>Sumar a una fila un múltiplo de otra no cambia el determinante.</li>
+</ul>
+<p>La eliminación convierte la matriz en triangular. En una matriz triangular solo sobrevive el
+  producto de las entradas diagonales en la fórmula de permutaciones. Para recuperar el determinante
+  original hay que deshacer los factores introducidos durante las operaciones.</p>
+<app-formula expression="\det U=\prod_{i=1}^n u_{ii},\qquad \det U=f\det A\ \Longrightarrow\ \det A=\frac{\prod_i u_{ii}}{f}"></app-formula>
+<p>Un pivote cero no implica por sí solo que el determinante sea cero: puede bastar intercambiar filas.
+  El siguiente cálculo trabaja con fracciones exactas y registra cada cambio, incluidos los factores
+  de normalización de los pivotes.</p>
+<app-determinant-elimination></app-determinant-elimination>
+
+<h3>7. Cero significa pérdida de una dimensión</h3>
+<p>Para una matriz cuadrada, estas afirmaciones son equivalentes: el determinante es cero, sus columnas
+  son linealmente dependientes, existe un vector no nulo que se transforma en cero y la matriz no tiene
+  inversa. Geométricamente, una región con volumen se aplasta en un subespacio de menor dimensión.</p>
+<app-formula expression="\det A\ne0\quad\Longleftrightarrow\quad A\text{ es invertible}\quad\Longleftrightarrow\quad Ax=b\text{ tiene solución única para todo }b"></app-formula>
+<p>Si det(A) = 0, un sistema Ax = b puede tener ninguna solución o infinitas; el determinante solo
+  no decide cuál de las dos situaciones ocurre. En cambio, cuando es distinto de cero, cada salida
+  tiene una única preimagen.</p>
+
+<h3>8. Componer transforma los volúmenes dos veces</h3>
+<p>Si aplicamos primero A y después B, la matriz de la composición es BA. El primer cambio de volumen
+  se multiplica por el segundo, y los signos se combinan del mismo modo. Dos inversiones de orientación
+  restauran la orientación original.</p>
+<app-formula expression="\det(BA)=\det B\det A,\qquad \det(A^{-1})=\frac1{\det A}"></app-formula>
+<p>Esta multiplicatividad no significa que AB y BA sean iguales: matrices diferentes pueden tener
+  el mismo determinante. Tampoco det(A) = 1 garantiza que A sea una rotación; una cizalla conserva
+  el área sin conservar longitudes ni ángulos.</p>
+
+<h3>9. Un determinante pequeño no basta para diagnosticar estabilidad</h3>
+<p>El tamaño del determinante depende de la escala. La matriz 0,001 I en dimensión dos tiene
+  determinante 10⁻⁶ y, sin embargo, trata ambas direcciones por igual: su número de condición en
+  norma euclídea es 1. La matriz diagonal con entradas 1000 y 0,001 tiene determinante 1, pero su
+  número de condición es 10⁶: unas direcciones se amplifican mucho más que otras.</p>
+<p>Para decidir si un problema es casi singular numéricamente conviene estudiar sus valores singulares
+  o una estimación del número de condición, teniendo en cuenta la escala. En matrices grandes se usa
+  habitualmente una factorización con pivoteo para calcular el determinante; para resolver Ax = b
+  no hace falta calcular antes det(A) ni construir explícitamente A⁻¹.</p>
+
+<h3>10. Más allá de matrices constantes</h3>
+<p>En un cambio de variables no lineal, la matriz jacobiana describe la transformación local.
+  Su determinante indica cuánto se amplifican áreas o volúmenes cerca de cada punto. En una integral
+  de volumen aparece el valor absoluto; si se trabaja con orientación, el signo sigue siendo relevante.</p>
+<app-formula expression="dV_{\mathrm{imagen}}=|\det J_F(x)|\,dV_{\mathrm{origen}}"></app-formula>
+<p>Otra aparición fundamental es el polinomio característico: un número λ es autovalor si la
+  transformación A − λI pierde invertibilidad. Por eso los autovalores se buscan resolviendo
+  det(A − λI) = 0.</p>
+
+<h3>Experimentos para continuar</h3>
+<ul>
+  <li>Arrastra una columna hasta alinearla con la otra. Observa cómo cambia el signo al atravesar el colapso.</li>
+  <li>Aplica una cizalla después de una reflexión y comprueba el producto de determinantes.</li>
+  <li>Selecciona el giro de 180° y recorre t. Explica por qué el colapso es una propiedad del camino elegido.</li>
+  <li>En 3D, construye una tercera columna que sea la suma de las otras dos y gira la cámara.</li>
+  <li>En cofactores, calcula el mismo determinante por cada fila y compara las contribuciones.</li>
+  <li>En eliminación, detente después de normalizar un pivote. Comprueba por qué el producto diagonal final necesita el factor acumulado.</li>
+</ul>
