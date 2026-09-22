@@ -1,0 +1,92 @@
+<header>
+  <span class="series-label">El arte de integrar · {{ chapter.methods.length }} técnicas y enfoques</span>
+  <h2>{{ chapter.title }}</h2>
+  <p class="dropcap">{{ chapter.intro }}</p>
+  <p class="prerequisites"><strong>Punto de partida.</strong> {{ chapter.prerequisites }}</p>
+</header>
+<nav class="series-nav" aria-label="Serie sobre métodos de integración">
+  @for (item of chapters; track item.route) {
+    <a [routerLink]="['/articles', item.route]" [attr.aria-current]="item.route === chapter.route ? 'page' : null">{{ item.title }}</a>
+  }
+</nav>
+<aside class="guide">
+  <h3>¿Por dónde empezar?</h3>
+  <label for="integration-situation">¿Qué aspecto tiene el problema?</label>
+  <select id="integration-situation" [(ngModel)]="situation">
+    <option value="composition">Composición o producto de funciones</option>
+    <option value="rational">Cociente de polinomios o raíces</option>
+    <option value="definite">Integral definida que parece resistente</option>
+    <option value="oscillation">Muchas oscilaciones</option>
+    <option value="numerical">Necesito un valor numérico fiable</option>
+  </select>
+  <p role="status" aria-live="polite">{{ recommendations[situation].text }}</p>
+  <a [routerLink]="['/articles', recommendations[situation].route]" [fragment]="recommendations[situation].fragment">Explorar la técnica sugerida →</a>
+</aside>
+<details class="contents" open>
+  <summary>En este artículo</summary>
+  <ol>@for (method of chapter.methods; track method.id) {
+    <li><a [routerLink]="['/articles', chapter.route]" [fragment]="method.id">{{ method.title.substring(method.title.indexOf(' ') + 1) }}</a></li>
+  }</ol>
+</details>
+<p>Una <strong>primitiva</strong> es una función; una <strong>integral definida</strong> es un valor; una
+  <strong>aproximación numérica</strong> lleva un error. Los métodos siguientes resuelven tareas distintas,
+  y a menudo la solución combina varios. Este recorrido es amplio, pero no pretende agotar todas sus variantes.</p>
+@for (method of chapter.methods; track method.id) {
+  <section [id]="method.id">
+    <h3>{{ method.title }}</h3>
+    <p>{{ method.idea }}</p>
+    <app-formula [expression]="method.formula" />
+    <p>{{ method.example }}</p>
+    <p class="caution"><strong>Condiciones y límites.</strong> {{ method.caution }}</p>
+    @switch (method.id) {
+      @case ('substitution') { <app-integration-lab mode="substitution" /> }
+      @case ('feynman') { <app-integration-lab mode="parameter" /> }
+      @case ('residues') { <app-integration-lab mode="residues" /> }
+      @case ('laplace') { <app-integration-lab mode="laplace" /> }
+      @case ('newton-cotes') { <app-integration-lab mode="quadrature" /> }
+      @case ('quasi-monte-carlo') { <app-integration-lab mode="sampling" /> }
+    }
+  </section>
+}
+<section>
+  <h3>Una estrategia que puedes reutilizar</h3>
+  <ol class="strategy">
+    <li><strong>Define el objetivo.</strong> ¿Primitiva, valor exacto, comportamiento límite o aproximación con tolerancia?</li>
+    <li><strong>Inspecciona el dominio.</strong> Localiza singularidades, extremos infinitos y ramas; comprueba convergencia.</li>
+    <li><strong>Busca estructura.</strong> Simplificación, simetría, derivada interior, producto, parámetro, peso o fase.</li>
+    <li><strong>Transforma y justifica.</strong> Cambia también los diferenciales y límites; comprueba cualquier intercambio de suma, derivada o integral.</li>
+    <li><strong>Contrasta el resultado.</strong> Deriva una primitiva, revisa signos y escalas o compara cuadraturas al refinar. Que dos números coincidan no constituye por sí solo una demostración.</li>
+  </ol>
+</section>
+<section class="references">
+  <h3>Para seguir explorando</h3>
+  @switch (chapter.route) {
+    @case ('integration-classical') {
+      <p>Continúa con <a routerLink="/articles/integration-advanced">parámetros, contornos y métodos asintóticos</a>,
+        o pasa al <a routerLink="/articles/integration-numerical">laboratorio de integración numérica</a>.</p>
+      <p>Las <a routerLink="/articles/taylor-series">series de Taylor</a> conectan las aproximaciones locales con la integración término a término.</p>
+    }
+    @case ('integration-advanced') {
+      <p>Referencias para ampliar las hipótesis y demostraciones:
+        <a href="https://dlmf.nist.gov/5.12">NIST DLMF: función beta</a>,
+        <a href="https://dlmf.nist.gov/2.3">integrales reales y asintótica</a>,
+        <a href="https://dlmf.nist.gov/2.4">contornos y puntos de silla</a>,
+        <a href="https://dlmf.nist.gov/5.13">integrales de Mellin–Barnes</a> y
+        <a href="https://docs.sympy.org/latest/modules/integrals/integrals.html">documentación de integración simbólica de SymPy</a>.</p>
+      <p>Relaciona estas ideas con la <a routerLink="/articles/laplace-transform">transformada de Laplace</a>
+        y continúa con <a routerLink="/articles/integration-numerical">cuadratura y métodos computacionales</a>.</p>
+    }
+    @case ('integration-numerical') {
+      <p>Consulta <a href="https://dlmf.nist.gov/3.5">NIST DLMF: cuadratura</a> para reglas y condiciones de error,
+        y <a href="https://docs.scipy.org/doc/scipy/reference/stats.qmc.html">la documentación de SciPy sobre cuasi-Monte Carlo</a>
+        para secuencias, aleatorización y sus límites.</p>
+      <p>Los métodos implementados en el laboratorio son reglas compuestas de punto medio, trapecio, Simpson y Gauss–Legendre
+        de dos nodos, junto a muestreo pseudoaleatorio y Halton. Los demás se explican como técnicas para ampliar el repertorio.</p>
+    }
+  }
+</section>
+<nav class="series-nav" aria-label="Continuar la serie">
+  @for (item of chapters; track item.route) {
+    @if (item.route !== chapter.route) { <a [routerLink]="['/articles', item.route]">{{ item.title }} →</a> }
+  }
+</nav>

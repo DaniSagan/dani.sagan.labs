@@ -59,4 +59,22 @@ describe('FormulaComponent', () => {
     tick(100);
     expect(fixture.componentInstance.isMathJaxReady).toBeFalse();
   }));
+
+  it('escapes the HTML transport while preserving the displayed LaTeX source', () => {
+    (window as any).MathJax = { isReady: true, typesetPromise: () => Promise.resolve() };
+    const expression = String.raw`\begin{aligned}0&<s<1\\x&>0\end{aligned}`;
+    fixture.componentRef.setInput('expression', expression);
+    fixture.componentRef.setInput('showCode', true);
+    fixture.detectChanges();
+    const directive = fixture.debugElement.query(By.directive(MathjaxStubDirective));
+    expect(directive.injector.get(MathjaxStubDirective).mathjax).toBe(
+      String.raw`$$ \begin{aligned}0&amp;&lt;s&lt;1\\x&amp;&gt;0\end{aligned} $$`,
+    );
+    expect(fixture.nativeElement.querySelector('.expression-code').textContent).toBe(expression);
+    fixture.componentRef.setInput('displayMode', 'inline');
+    fixture.detectChanges();
+    expect(directive.injector.get(MathjaxStubDirective).mathjax).toBe(
+      String.raw`$ \begin{aligned}0&amp;&lt;s&lt;1\\x&amp;&gt;0\end{aligned} $`,
+    );
+  });
 });

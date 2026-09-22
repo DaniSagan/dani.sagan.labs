@@ -1,0 +1,119 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.series-label {
+  font:
+    0.75rem "Courier Prime",
+    monospace;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.prerequisites {
+  font-size: 1rem;
+}
+.series-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 1.5rem 0;
+}
+.series-nav a {
+  flex: 1 1 180px;
+  border: 1px solid var(--rule);
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.series-nav a[aria-current="page"] {
+  border-color: var(--gold);
+  background: var(--panel);
+}
+.guide {
+  padding: 1.25rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  margin: 2rem 0;
+}
+.guide h3 {
+  margin: 0 0 0.7rem;
+}
+.guide label {
+  display: block;
+  font-size: 1rem;
+}
+.guide select {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 0.6rem;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font: inherit;
+  font-size: 1rem;
+}
+.guide p {
+  margin-bottom: 0.5rem;
+}
+.contents {
+  border-block: 1px solid var(--rule);
+  padding: 1rem 0;
+}
+.contents summary {
+  cursor: pointer;
+  color: var(--gold);
+}
+.contents ol {
+  columns: 2;
+  column-gap: 2.5rem;
+  font-size: 1rem;
+  margin: 0.8rem 0;
+}
+.contents li {
+  break-inside: avoid;
+  margin: 0.3rem 0;
+}
+section {
+  padding: 1rem 0 1.5rem;
+  scroll-margin-top: 110px;
+}
+section h3 {
+  margin: 1rem 0;
+}
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.25rem 0;
+}
+.caution {
+  font-size: 1rem;
+  border-left: 2px solid var(--rule);
+  padding-left: 1rem;
+}
+.strategy li {
+  margin: 0.6rem 0;
+}
+.references {
+  font-size: 1rem;
+}
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 4px;
+}
+@media (max-width: 600px) {
+  .contents ol {
+    columns: 1;
+  }
+  .series-nav {
+    flex-direction: column;
+  }
+  .series-nav a {
+    flex: auto;
+  }
+}

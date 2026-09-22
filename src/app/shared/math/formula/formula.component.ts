@@ -36,6 +36,7 @@ export class FormulaComponent implements OnInit, OnDestroy {
   }
 
   codeExpression!: string;
+  mathjaxExpression = '';
 
   ngOnInit(): void {
     this.updateCodeExpression();
@@ -51,6 +52,12 @@ export class FormulaComponent implements OnInit, OnDestroy {
     this.codeExpression = this._displayMode === 'inline'
       ? '$ ' + math + ' $'
       : '$$ ' + math + ' $$';
+    // mathjax-angular writes its input through innerHTML. Escape only that
+    // input so inequalities and alignment markers reach MathJax as TeX text.
+    this.mathjaxExpression = this.codeExpression
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
   }
 
   private ensureMathJaxReady(): void {

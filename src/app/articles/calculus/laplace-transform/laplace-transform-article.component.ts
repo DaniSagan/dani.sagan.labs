@@ -14,7 +14,7 @@ import { LaplaceConvolutionComponent } from '../../../widgets/laplace/laplace-co
     LaplaceConvolutionComponent,
   ],
   templateUrl: './laplace-transform-article.component.html',
-  styleUrls: ['./laplace-transform-article.component.scss'],
+  styleUrls: ['./laplace-transform-article.component.css'],
 })
 export class LaplaceTransformArticleComponent {
   static title = 'La transformada de Laplace';

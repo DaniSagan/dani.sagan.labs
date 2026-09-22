@@ -1,0 +1,63 @@
+<div class="lab">
+  <header><span class="eyebrow">Laboratorio interactivo</span><h4>{{ titles[mode] }}</h4></header>
+  <div class="controls">
+    @switch (mode) {
+      @case ('substitution') {
+        <label>Extremo b = {{ parameter | number:'1.2-2' }}<input aria-label="Extremo superior b" type="range" min="0.1" max="1.4" step="0.01" [(ngModel)]="parameter" (ngModelChange)="update()"></label>
+      }
+      @case ('parameter') {
+        <label>Parámetro a = {{ parameter | number:'1.2-2' }}<input aria-label="Parámetro a" type="range" min="0" max="4" step="0.05" [(ngModel)]="parameter" (ngModelChange)="update()"></label>
+      }
+      @case ('laplace') {
+        <label>Concentración λ = {{ lambda }}<input aria-label="Concentración lambda" type="range" min="1" max="80" step="1" [(ngModel)]="lambda" (ngModelChange)="update()"></label>
+      }
+      @case ('residues') {
+        <label>Radio R = {{ radius | number:'1.2-2' }}<input aria-label="Radio del contorno" type="range" min="0.3" max="2.4" step="0.05" [(ngModel)]="radius" (ngModelChange)="update()"></label>
+      }
+      @case ('quadrature') {
+        <label>Función<select [(ngModel)]="functionId" (ngModelChange)="update()"><option value="exp">eˣ: suave</option><option value="peak">1 / (1 + 400(x−0,37)²): pico estrecho</option><option value="sqrt">√x: derivada singular en 0</option></select></label>
+        <label>Representación<select [(ngModel)]="rule" (ngModelChange)="update()"><option value="midpoint">Punto medio</option><option value="trapezoid">Trapecios</option><option value="simpson">Parábolas de Simpson</option><option value="gauss">Nodos de Gauss</option></select></label>
+        <label>Paneles: {{ panels }}<input aria-label="Número par de paneles" type="range" min="2" max="64" step="2" [(ngModel)]="panels" (ngModelChange)="update()"></label>
+      }
+      @case ('sampling') {
+        <label>Secuencia<select [(ngModel)]="sampling" (ngModelChange)="update()"><option value="random">Pseudoaleatoria reproducible</option><option value="halton">Halton, bases 2 y 3</option></select></label>
+        <label>Muestras: {{ count }}<input aria-label="Número de muestras" type="range" min="64" max="2048" step="64" [(ngModel)]="count" (ngModelChange)="update()"></label>
+        <button type="button" [disabled]="sampling !== 'random'" (click)="resample()">Otra muestra</button>
+      }
+    }
+    <button type="button" (click)="reset()">Restablecer</button>
+  </div>
+  @if (mode === 'residues') {
+    <svg viewBox="0 0 660 310" role="img" [attr.aria-label]="note">
+      <title>Contorno semicircular positivo para 1/(z²+1)</title>
+      <path d="M60,210 H610 M330,295 V20" class="axis" />
+      <path [attr.d]="'M'+(330-radius*60)+',210 A'+radius*60+','+radius*60+' 0 0 1 '+(330+radius*60)+',210 Z'" class="contour" />
+      <circle cx="330" cy="150" r="6" class="pole"/><circle cx="330" cy="270" r="6" class="pole"/>
+      <text x="344" y="149">i · polo</text><text x="344" y="275">−i · polo exterior</text>
+      <text x="580" y="234">Re z</text><text x="345" y="30">Im z</text>
+      <text x="260" y="202">segmento →</text><text x="245" y="52">← arco superior</text>
+    </svg>
+  } @else {
+    <svg viewBox="0 0 660 290" role="img" [attr.aria-label]="titles[mode] + '. ' + note">
+      <title>{{ titles[mode] }}</title>
+      @for (tick of [0, 0.5, 1]; track tick) {
+        <path [attr.d]="'M52,'+y(tick*ymax)+' H620'" class="grid" />
+        <text x="4" [attr.y]="y(tick*ymax)+4">{{ tick*ymax | number:'1.0-2' }}</text>
+        <text [attr.x]="x(tick*xmax)" y="272">{{ tick*xmax | number:'1.0-2' }}</text>
+      }
+      <path d="M52,26 V246 H620" class="axis" />
+      @for (shape of shapes; track $index) { <path [attr.d]="shape" class="area" [class.second]="$index === 1 && mode === 'substitution'" /> }
+      @for (dot of dots; track $index) { <circle [attr.cx]="dot.x" [attr.cy]="dot.y" [attr.r]="mode === 'sampling' ? 2 : 4" [class.hit]="dot.inside" [class.miss]="!dot.inside" /> }
+      @for (curve of curves; track curve.label) { <path [attr.d]="curve.path" fill="none" [attr.stroke]="curve.color" stroke-width="2.5" /> }
+      <text x="640" y="272">{{ mode === 'substitution' ? 'x,u' : 'x' }}</text>
+    </svg>
+    <div class="legend">@for (curve of curves; track curve.label) { <span><i [style.background]="curve.color"></i>{{ curve.label }}</span> }</div>
+    @if (mode === 'sampling') { <p class="hint">Azul claro: dentro del disco. Rosa: fuera del disco. Cada punto es una muestra en el cuadrado unidad.</p> }
+  }
+  <p class="result" role="status" aria-live="polite">{{ note }}</p>
+  @if (rows.length) {
+    <div class="table-scroll"><table><caption>Comparación de precisión y coste</caption><thead><tr><th>Método</th><th>Aproximación</th><th>Error absoluto</th><th>Nodos distintos</th></tr></thead><tbody>
+      @for (row of rows; track row.name) { <tr><th scope="row">{{ row.name }}</th><td>{{ format(row.value) }}</td><td>{{ format(row.error) }}</td><td>{{ row.evaluations }}</td></tr> }
+    </tbody></table></div>
+  }
+</div>
