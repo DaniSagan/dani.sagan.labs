@@ -1,0 +1,51 @@
+<section class="lab" aria-label="Paseo aleatorio con barreras absorbentes">
+  <header><span class="eyebrow">03 / ABSORCIÓN</span>
+    <h4>¿En qué extremo acabará el paseo?</h4>
+    <p>En cada paso avanzas una posición a la derecha con probabilidad p o a la izquierda con 1−p. Al llegar a 0 o a 6
+      te quedas allí.</p>
+  </header>
+  <div class="controls"><label>Probabilidad de ir a la derecha p = {{ p | number:'1.2-2' }} <input type="range"
+        min="0.05" max="0.95" step="0.01" [(ngModel)]="p" (ngModelChange)="compute()"></label><label>Estado inicial
+      <select [(ngModel)]="initial" (ngModelChange)="compute()">
+        <option *ngFor="let state of states" [ngValue]="state">{{ state }}</option>
+      </select></label><label>Paso observado n = {{ t }} <input type="range" min="0" max="120" step="1"
+        [(ngModel)]="t"></label></div>
+  <figure><svg viewBox="0 0 660 200" role="img" aria-label="Distribución de probabilidad entre las siete posiciones">
+      <line x1="65" x2="605" y1="155" y2="155" class="axis" />
+      <g *ngFor="let state of states">
+        <rect [attr.x]="45 + state * 90" [attr.y]="145 - history[t][state] * 100" width="40"
+          [attr.height]="history[t][state] * 100" [attr.fill]="state === 0 || state === 6 ? '#f5c57d' : '#8bdcc5'" />
+        <text [attr.x]="65 + state * 90" y="175" text-anchor="middle">{{ state }}</text><text [attr.x]="65 + state * 90"
+          y="30" text-anchor="middle">{{ history[t][state] | percent:'1.1-1' }}</text>
+      </g>
+    </svg>
+    <figcaption>Altura proporcional a la probabilidad en n = {{ t }}. Dorado: estados absorbentes.</figcaption>
+  </figure>
+  <figure><svg viewBox="0 0 660 270" role="img"
+      aria-label="Probabilidades de absorción acumulada y de seguir en estados transitorios">
+      <path class="axis" d="M50 30V220H610" />
+      <path *ngFor="let curve of curves; let i = index" [attr.d]="curve" class="curve"
+        [attr.stroke]="['#c4b3ff','#f5c57d','#8bdcc5'][i]" [attr.stroke-dasharray]="[null,'7 4','2 4'][i]" />
+      <line [attr.x1]="50 + t / 120 * 560" [attr.x2]="50 + t / 120 * 560" y1="30" y2="220" stroke="#fff" /><text x="25"
+        y="35">1</text><text x="25" y="224">0</text><text x="50" y="244">0</text><text x="610" y="244">120</text>
+    </svg>
+    <figcaption>Lila continua: llegada a 0 · dorada discontinua: llegada a 6 · verde punteada: todavía en el interior.
+      Eje horizontal: número de pasos.</figcaption>
+  </figure>
+  <div class="controls">
+    <div class="metrics">
+      <div><small>Probabilidad final de llegar a 6</small><strong>{{ model.right[initial] | percent:'1.2-2' }}</strong>
+      </div>
+      <div><small>Tiempo medio hasta absorberse</small><strong>{{ model.time[initial] | number:'1.3-3' }} pasos</strong>
+      </div>
+    </div>
+    <h5>Contraste con 2 000 paseos simulados</h5>
+    <p>Llegadas a 0: {{ left }} · llegadas a 6: {{ right }} · sin terminar al paso 1 000: {{ censored }}.</p>
+    <p>Media de min(T, 1 000): {{ meanCappedTime | number:'1.3-3' }} pasos. {{ censored ? 'Hay censura: esta media
+      truncada subestima el tiempo medio completo.' : 'Todos los paseos de esta muestra terminaron antes del límite.' }}
+    </p><button (click)="seed = seed + 1; simulate()">Repetir simulación</button>
+  </div>
+  <footer>Las probabilidades finales y los tiempos medios se obtienen resolviendo sistemas lineales, sin Monte Carlo. La
+    animación por pasos muestra probabilidades a tiempo finito; las llegadas finales incluyen todo el futuro. Semilla {{
+    seed }}. El muestreo está limitado a 1 000 pasos por trayectoria.</footer>
+</section>

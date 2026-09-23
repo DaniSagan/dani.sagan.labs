@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.3rem 0;
+}
+.theorem,
+.experiment {
+  padding: 1.3rem 1.5rem;
+  margin: 1.8rem 0;
+  background: #142c36;
+  border-left: 3px solid #8bdcc5;
+  border-radius: 0 12px 12px 0;
+}
+.theorem p,
+.experiment p {
+  color: #d5e4ed;
+  margin: 0;
+}
+.experiment h4 {
+  color: #b8ebdc;
+  margin: 0 0 0.8rem;
+}
+.section-label {
+  color: #8bdcc5;
+  font:
+    700 0.7rem system-ui,
+    sans-serif;
+  letter-spacing: 0.14em;
+}
+.references {
+  font-size: 0.95rem;
+}
+.references li {
+  margin-bottom: 0.7rem;
+}

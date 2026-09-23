@@ -1,0 +1,47 @@
+<section class="lab" aria-label="Laboratorio de convergencia de dos estados">
+  <header><span class="eyebrow">02 / EQUILIBRIO Y OSCILACIÓN</span>
+    <h4>Estacionaria no siempre significa límite</h4>
+    <p>Dos estados bastan para separar unicidad, convergencia y periodicidad.</p>
+  </header>
+  <div class="controls">
+    <div class="actions"><button (click)="preset(0.15,0.25)">Mezcla</button><button (click)="preset(0.01,0.01)">Mezcla
+        lenta</button><button (click)="preset(1,1)">Alternancia perfecta</button><button (click)="preset(0,0)">Dos
+        estados aislados</button></div><label>α = P(A → B) = {{ alpha | number:'1.2-2' }} <input type="range" min="0"
+        max="1" step="0.01" [(ngModel)]="alpha" (ngModelChange)="compute()"></label><label>β = P(B → A) = {{ beta |
+      number:'1.2-2' }} <input type="range" min="0" max="1" step="0.01" [(ngModel)]="beta"
+        (ngModelChange)="compute()"></label><label>Probabilidad inicial de A = {{ initial | number:'1.2-2' }} <input
+        type="range" min="0" max="1" step="0.05" [(ngModel)]="initial" (ngModelChange)="compute()"></label>
+    <p>P = [{{ 1 - alpha | number:'1.2-2' }}, {{ alpha | number:'1.2-2' }}; {{ beta | number:'1.2-2' }}, {{ 1 - beta |
+      number:'1.2-2' }}]</p>
+  </div>
+  <figure><svg viewBox="0 0 660 270" role="img"
+      aria-label="Probabilidad del estado A y distancia a la distribución estacionaria">
+      <path class="axis" d="M50 30V220H610" />
+      <line *ngIf="pi !== null" x1="50" x2="610" [attr.y1]="220 - 190 * pi" [attr.y2]="220 - 190 * pi" stroke="#b5c6db"
+        stroke-dasharray="3 4" />
+      <path [attr.d]="curve" class="curve" stroke="#8bdcc5" />
+      <path [attr.d]="distanceCurve" class="curve" stroke="#f5c57d" stroke-dasharray="7 4" />
+      <line [attr.x1]="50 + t * 7" [attr.x2]="50 + t * 7" y1="30" y2="220" stroke="#fff" /><text x="25"
+        y="35">1</text><text x="25" y="224">0</text><text x="50" y="244">0</text><text x="610" y="244">80</text><text
+        x="330" y="265" text-anchor="middle">Paso n</text>
+    </svg>
+    <figcaption>Verde continua: P(Xₙ = A) · dorada discontinua: distancia de variación total · gris: π(A).</figcaption>
+  </figure>
+  <div class="controls"><label>Paso n = {{ t }} <input type="range" min="0" max="80" step="1" [(ngModel)]="t"></label>
+    <div class="metrics">
+      <div><small>λ₂ = 1 − α − β</small><strong>{{ eigenvalue | number:'1.2-2' }}</strong></div>
+      <div><small>π(A)</small><strong>{{ pi === null ? 'No única' : (pi | number:'1.4-4') }}</strong></div>
+      <div><small>Distancia en n</small><strong>{{ distance === null ? '—' : (distance | number:'1.4-4') }}</strong>
+      </div>
+    </div>
+    <p *ngIf="pi === null">P es la identidad: cualquier distribución es estacionaria y el estado inicial se conserva.
+    </p>
+    <p *ngIf="alpha === 1 && beta === 1">La cadena tiene período 2. Desde A o B, la distribución oscila para siempre; si
+      empiezas en (½, ½), se mantiene estacionaria.</p>
+    <p *ngIf="pi !== null && eigenvalue > -1 && eigenvalue < 1">La distancia se reduce por un factor |λ₂| en cada paso.
+      Si λ₂ es negativo, la probabilidad alterna alrededor de π(A).</p>
+  </div>
+  <footer>En dos estados, la distancia de variación total es |P(Xₙ = A) − π(A)|. Un valor cercano a cero en la lectura
+    puede ser efecto del redondeo. Una cadena reducible también puede tener un único límite: prueba α = 0 y β &gt; 0.
+  </footer>
+</section>

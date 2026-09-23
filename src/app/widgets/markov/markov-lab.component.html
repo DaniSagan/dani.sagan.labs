@@ -1,0 +1,127 @@
+<section class="lab" aria-label="Laboratorio de transiciones de Markov">
+  <header><span class="eyebrow">01 / TRANSICIONES</span>
+    <h4>Una trayectoria, muchas posibilidades</h4>
+    <p>Las flechas describen probabilidades. El anillo dorado sigue una trayectoria; las curvas muestran la distribución
+      de todo el conjunto.</p>
+  </header>
+  <div class="controls">
+    <div class="actions"><button (click)="preset('mixing')">Mezcla</button><button (click)="preset('cycle')">Ciclo
+        determinista</button><button (click)="preset('absorbing')">Dos estados absorbentes</button></div><label>Estado
+      inicial <select [(ngModel)]="initial" (ngModelChange)="reset()">
+        <option *ngFor="let name of names; let i = index" [ngValue]="i">{{ name }}</option>
+      </select></label>
+    <details>
+      <summary>Editar la matriz de transición</summary>
+      <p>Introduce pesos no negativos. «Aplicar» divide cada fila por su suma para convertirla en probabilidades. Las
+        filas son el origen y las columnas, el destino.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Pesos editables</caption>
+          <thead>
+            <tr>
+              <th>Desde / hacia</th>
+              <th *ngFor="let name of names">{{ name }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let name of names; let i = index">
+              <th scope="row">{{ name }}</th>
+              <td *ngFor="let destination of names; let j = index"><input type="number" min="0" step="1"
+                  [(ngModel)]="weights[i][j]" (ngModelChange)="dirty = true"
+                  [attr.aria-label]="'Peso de ' + name + ' a ' + destination"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div><button (click)="apply()">Aplicar pesos</button>
+      <p *ngIf="dirty">Hay cambios pendientes; las gráficas siguen usando la matriz aplicada.</p>
+      <p *ngIf="error" role="alert" class="error">{{ error }}</p>
+    </details>
+  </div>
+  <div class="workspace">
+    <figure><svg viewBox="0 -30 640 410" role="img"
+        aria-label="Grafo dirigido de transiciones; la matriz proporciona las probabilidades exactas">
+        <defs>
+          <marker id="markov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6"
+            orient="auto-start-reverse">
+            <path d="M0 0L10 5L0 10Z" fill="#8aabc6" />
+          </marker>
+        </defs>
+        <g *ngFor="let edge of edges">
+          <path [attr.d]="edge.path" fill="none" stroke="#8aabc6" stroke-width="2" marker-end="url(#markov-arrow)" />
+          <text [attr.x]="edge.x" [attr.y]="edge.y" text-anchor="middle" class="edge-label">{{ edge.probability |
+            number:'1.2-2' }}</text>
+        </g>
+        <g *ngFor="let node of nodes; let i = index">
+          <circle [attr.cx]="node.x" [attr.cy]="node.y" r="30" [attr.fill]="palette[i]"
+            [attr.stroke]="path[t] === i ? '#f5c57d' : '#20374b'" [attr.stroke-width]="path[t] === i ? 8 : 2" /><text
+            [attr.x]="node.x" [attr.y]="node.y + 6" text-anchor="middle" class="node-label">{{ names[i] }}</text>
+        </g>
+      </svg></figure>
+    <div class="readout">
+      <h5>Matriz P aplicada</h5>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Origen / destino</th>
+              <th *ngFor="let name of names">{{ name }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of matrix; let i = index">
+              <th>{{ names[i] }}</th>
+              <td *ngFor="let v of row">{{ v | number:'1.3-3' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>{{ irreducible ? 'Cadena irreducible. Período: ' + period + '.' : 'Cadena reducible: no todos los estados se
+        comunican.' }}</p>
+      <p *ngIf="stationary">Distribución estacionaria única: <span *ngFor="let v of stationary; let i = index">{{
+          names[i] }} = {{ v | number:'1.3-3' }}{{ i < 2 ? ' · ' : '' }}</span>.</p>
+      <p *ngIf="!stationary">El sistema estacionario no tiene solución única; no se muestra un único vector π.</p>
+      <p *ngIf="period && period > 1">Tener una distribución estacionaria única no evita la oscilación de las
+        distribuciones.</p>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="actions"><button (click)="toggle()">{{ running ? 'Pausar' : 'Reproducir' }}</button><button
+        (click)="pause(); next()" [disabled]="t === 60">Un paso</button><button (click)="reset()">Repetir
+        semilla</button><button (click)="seed = seed + 1; reset()">Nueva simulación</button></div><label>Instante n = {{
+      t }} <input type="range" min="0" max="60" step="1" [(ngModel)]="t" (ngModelChange)="pause()"></label>
+    <p>Trayectoria individual (últimos 12 estados): <span
+        *ngFor="let s of path.slice(t > 11 ? t - 11 : 0, t + 1); let last = last">{{ names[s] }}{{ last ? '' : ' → '
+        }}</span>.</p>
+  </div>
+  <figure><svg viewBox="0 0 660 270" role="img"
+      aria-label="Probabilidad exacta de cada estado frente al número de pasos">
+      <path class="axis" d="M50 30V220H610" />
+      <path *ngFor="let curve of curves; let i = index" [attr.d]="curve" [attr.stroke]="palette[i]"
+        [attr.stroke-dasharray]="[null,'7 4','2 4'][i]" class="curve" />
+      <line [attr.x1]="50 + t / 60 * 560" [attr.x2]="50 + t / 60 * 560" y1="30" y2="220" stroke="#fff" /><text x="25"
+        y="35">1</text><text x="25" y="224">0</text><text x="50" y="244">0</text><text x="610" y="244">60</text><text
+        x="330" y="263" text-anchor="middle">Paso n · A verde continua · B lila discontinua · C dorada punteada</text>
+    </svg></figure>
+  <div class="table-wrap controls">
+    <table>
+      <caption>Distribución en n = {{ t }}</caption>
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Exacta μ₀Pⁿ</th>
+          <th>2 000 trayectorias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let name of names; let i = index">
+          <th>{{ name }}</th>
+          <td>{{ current[i] | percent:'1.2-2' }}</td>
+          <td>{{ empirical[t][i] | percent:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>Semilla {{ seed }}. La columna empírica cuenta dónde están 2 000 trayectorias en el mismo instante; no es la
+    frecuencia temporal de una sola trayectoria. Las simulaciones usan un generador pseudoaleatorio reproducible. Las
+    probabilidades mostradas se redondean; los cálculos usan la matriz sin ese redondeo.</footer>
+</section>

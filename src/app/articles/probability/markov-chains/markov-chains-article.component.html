@@ -1,0 +1,124 @@
+<h2>Las cadenas de Markov</h2>
+<p class="dropcap">Un sistema cambia de estado: una máquina pasa de disponible a ocupada, un caminante salta entre
+  posiciones o una ficha recorre una red. No sabemos con certeza qué ocurrirá después, pero sí podemos especificar las
+  probabilidades de cada salto. Una cadena de Markov organiza esas reglas y permite estudiar tanto las trayectorias
+  individuales como la evolución de sus distribuciones.</p>
+<aside class="theorem"><span class="section-label">EL PRESENTE COMO INFORMACIÓN SUFICIENTE</span><app-formula
+    expression="\mathbb P(X_{n+1}=j\mid X_n=i,X_{n-1}=i_{n-1},\ldots,X_0=i_0)=\mathbb P(X_{n+1}=j\mid X_n=i)"
+    displayMode="block" />
+  <p>La igualdad se entiende para historias con probabilidad positiva. Conocido el estado actual, la historia anterior
+    no aporta información adicional sobre el siguiente estado.</p>
+</aside>
+<p>Esta propiedad no significa que los estados sucesivos sean independientes. Precisamente, el siguiente estado suele
+  depender del actual. Tampoco es una ley universal de los fenómenos reales: es una hipótesis de modelado que depende de
+  cómo definamos el estado. Aquí trabajaremos con tiempo discreto, un número finito de estados y reglas que no cambian
+  con el tiempo: cadenas <strong>homogéneas</strong>.</p>
+
+<h3>1. Una matriz para guardar las reglas</h3>
+<p>La probabilidad de pasar de i a j en un paso se escribe Pᵢⱼ. En nuestra convención, cada fila representa el estado de
+  origen y cada columna el destino. Sus entradas son no negativas y cada fila suma uno:</p>
+<app-formula expression="P_{ij}=\mathbb P(X_{n+1}=j\mid X_n=i),\qquad P_{ij}\ge0,\qquad\sum_jP_{ij}=1"
+  displayMode="block" />
+<p>Una flecha de un estado a sí mismo indica la posibilidad de permanecer allí. Un cero elimina una transición, pero no
+  necesariamente impide llegar al destino mediante varios pasos. Las probabilidades se refieren a cada salto, no a qué
+  fracción del tiempo acabará pasando el sistema en cada estado.</p>
+<app-markov-lab />
+<aside class="experiment">
+  <h4>Una trayectoria no es una distribución</h4>
+  <p>En el ejemplo «Mezcla», observa cómo la curva de cada estado se estabiliza mientras el punto dorado sigue saltando.
+    Cambia la semilla: cambia la trayectoria y fluctúan los porcentajes simulados, pero la distribución calculada
+    mediante la matriz permanece igual.</p>
+</aside>
+
+<h3>2. Evolucionar probabilidades</h3>
+<p>Representamos la distribución como un vector fila μₙ. Para llegar al estado j, sumamos las contribuciones de todos
+  los posibles estados anteriores, ponderadas por sus probabilidades de transición:</p>
+<app-formula expression="\mu_{n+1}(j)=\sum_i\mu_n(i)P_{ij},\qquad \mu_{n+1}=\mu_nP,\qquad \mu_n=\mu_0P^n"
+  displayMode="block" />
+<p>La entrada (Pⁿ)ᵢⱼ es la probabilidad de estar en j después de n pasos habiendo partido de i. No exige haber evitado j
+  en pasos anteriores: estar en un estado a tiempo n y llegar a él por primera vez a tiempo n son preguntas distintas.
+</p>
+<p>Por ejemplo, si P(A → A) = 0,7, P(A → B) = 0,2 y P(A → C) = 0,1, y las probabilidades de volver a A desde B y C son
+  0,2 y 0,1, respectivamente, la probabilidad de estar en A tras dos pasos desde A es:</p>
+<app-formula expression="(P^2)_{AA}=0{,}7^2+0{,}2\cdot0{,}2+0{,}1\cdot0{,}1=0{,}54" displayMode="block" />
+<p>El producto matricial suma todas las rutas intermedias sin tener que dibujarlas una a una. Para una trayectoria
+  concreta, la probabilidad conjunta se obtiene multiplicando la probabilidad inicial y las transiciones de su
+  recorrido.</p>
+
+<h3>3. Distribuciones que no cambian</h3>
+<p>Una distribución estacionaria π permanece igual después de aplicar la transición. Es un vector de probabilidades que
+  resuelve:</p>
+<app-formula expression="\pi P=\pi,\qquad \pi_i\ge0,\qquad\sum_i\pi_i=1" displayMode="block" />
+<p>«Estacionaria» describe una distribución, no una trayectoria inmóvil. Si arrancamos con esa distribución, la
+  probabilidad de cada estado se conserva aunque cada realización siga saltando. Toda cadena finita tiene al menos una
+  distribución estacionaria, pero puede tener varias y no siempre se alcanza un límite desde cualquier inicio.</p>
+<p>Una cadena es <strong>irreducible</strong> si cualquier estado puede alcanzar a cualquier otro. En una cadena finita
+  irreducible la distribución estacionaria es única. Para garantizar además que μ₀Pⁿ converge a ella desde cualquier
+  distribución inicial, basta con que la cadena sea <strong>aperiódica</strong>.</p>
+<p>El período de un estado es el máximo común divisor de los tiempos positivos en los que puede regresar a él con
+  probabilidad positiva. En una cadena irreducible todos los estados tienen el mismo período. Un ciclo determinista de
+  tres estados tiene período tres: posee una distribución estacionaria uniforme, pero desde un estado fijo la
+  distribución rota sin converger.</p>
+
+<h3>4. Ver cómo se pierde la memoria inicial</h3>
+<p>Para dos estados podemos resolver la dinámica explícitamente. Sea α la probabilidad de ir de A a B y β la de volver
+  de B a A. Cuando α + β &gt; 0:</p>
+<app-formula
+  expression="P=\begin{pmatrix}1-\alpha&\alpha\\\beta&1-\beta\end{pmatrix},\qquad \pi=\left(\frac{\beta}{\alpha+\beta},\frac{\alpha}{\alpha+\beta}\right)"
+  displayMode="block" />
+<app-formula expression="\mu_n(A)-\pi(A)=(1-\alpha-\beta)^n\bigl(\mu_0(A)-\pi(A)\bigr)" displayMode="block" />
+<app-markov-mixing />
+<p>El factor λ₂ = 1−α−β controla la evolución de la diferencia. Si su valor absoluto es menor que uno, la diferencia
+  desaparece. Cerca de uno en valor absoluto, el proceso es lento. Si es negativo, el signo alterna. Con α = β = 1 se
+  obtiene λ₂ = −1 y la alternancia no se amortigua.</p>
+<p>Una medida natural de cercanía entre dos distribuciones es la distancia de variación total:</p>
+<app-formula expression="d_{\mathrm{TV}}(\mu,\pi)=\frac12\sum_i|\mu_i-\pi_i|" displayMode="block" />
+<p>En dos estados se reduce a |μ(A)−π(A)|. Conviene distinguirla de la frecuencia de visitas en una sola trayectoria:
+  una cadena finita irreducible puede tener frecuencias temporales que convergen a π incluso si es periódica y sus
+  distribuciones a tiempo fijo no convergen.</p>
+
+<h3>5. Estados de los que no se sale</h3>
+<p>Un estado i es absorbente si Pᵢᵢ = 1. Una cadena absorbente tiene estados absorbentes y desde cada estado se puede
+  alcanzar alguno de ellos. En el caso finito, la absorción acaba ocurriendo con probabilidad uno. Eso no fija de
+  antemano ni el destino ni el tiempo necesario.</p>
+<app-markov-absorption />
+<p>Para el paseo simétrico del experimento, con p = ½ y barreras en 0 y 6, partir de i da una probabilidad i/6 de
+  terminar en 6 y un tiempo medio i(6−i) hasta llegar a cualquiera de las barreras. Desde 3, ambas salidas tienen
+  probabilidad ½ y la espera media es nueve pasos. La espera de una realización concreta puede ser mucho mayor o menor.
+</p>
+<p>Las ecuaciones de primer paso permiten calcular estas cantidades. Si hᵢ es la probabilidad de absorción en 6 y τᵢ el
+  tiempo medio, cada estado interior cumple:</p>
+<app-formula expression="h_i=(1-p)h_{i-1}+ph_{i+1},\quad h_0=0,\ h_6=1" displayMode="block" />
+<app-formula expression="\tau_i=1+(1-p)\tau_{i-1}+p\tau_{i+1},\quad\tau_0=\tau_6=0" displayMode="block" />
+
+<h3>6. La matriz fundamental</h3>
+<p>Si ordenamos primero los estados transitorios y después los absorbentes, la matriz adquiere una forma por bloques. Q
+  describe los saltos entre transitorios y R los saltos desde ellos a los absorbentes:</p>
+<app-formula expression="P=\begin{pmatrix}Q&R\\0&I\end{pmatrix},\qquad N=(I-Q)^{-1}=I+Q+Q^2+\cdots"
+  displayMode="block" />
+<p>La entrada Nᵢⱼ es el número esperado de visitas al estado transitorio j antes de absorberse, partiendo de i y
+  contando la visita inicial si i = j. La suma de una fila da el tiempo medio hasta la absorción. Multiplicar por R da
+  las probabilidades de cada destino absorbente:</p>
+<app-formula expression="\vec{\tau}=N\mathbf{1},\qquad B=NR" displayMode="block" />
+<p>La inversa y la serie anteriores se justifican porque los estados de Q son realmente transitorios en una cadena
+  absorbente finita. Si queda una clase cerrada sin acceso a la absorción, no podemos aplicar estas fórmulas a ese
+  bloque como si todos sus estados fueran transitorios.</p>
+
+<h3>7. Elegir bien el estado</h3>
+<p>El supuesto de Markov depende de qué información conservamos. Si la probabilidad de que una máquina falle depende del
+  tiempo que lleva funcionando, clasificarla solo como «funciona» o «no funciona» puede perder información relevante.
+  Añadir su edad al estado puede dar un modelo más adecuado, aunque también más grande.</p>
+<p>Los modelos de navegación, colas, fiabilidad o movimiento sobre redes aprovechan este equilibrio entre descripción y
+  simplificación. Antes de interpretar una distribución estacionaria conviene revisar las transiciones posibles, las
+  clases cerradas y la periodicidad. Simular muchas trayectorias ayuda a explorar el modelo; no confirma por sí solo que
+  sus supuestos describan el fenómeno real.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://chance.dartmouth.edu/teaching_aids/books_articles/probability_book/Chapter11.pdf" target="_blank"
+      rel="noopener noreferrer">Grinstead y Snell, Introduction to Probability, capítulo 11: Markov Chains</a>. Cadenas
+    finitas, distribuciones estacionarias y absorción.</li>
+  <li><a href="https://lips.cs.princeton.edu/the-fundamental-matrix-of-a-finite-markov-chain/" target="_blank"
+      rel="noopener noreferrer">Princeton: The Fundamental Matrix of a Finite Markov Chain</a>. Interpretación de la
+    matriz fundamental.</li>
+</ul>
