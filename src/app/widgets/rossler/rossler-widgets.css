@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.lab {
+  margin: 2rem 0;
+  overflow: hidden;
+  border: 1px solid #34485e;
+  border-radius: 16px;
+  background: #111e2d;
+  color: #e6eff8;
+  font:
+    14px/1.6 system-ui,
+    sans-serif;
+}
+header {
+  padding: 24px;
+  background: linear-gradient(120deg, #193840, #24283d);
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: #8ce6cd;
+  font-weight: 700;
+}
+h4 {
+  font-size: 25px;
+  line-height: 1.25;
+  margin: 10px 0;
+  color: #f4f8fc;
+}
+p {
+  color: #c4d2e2;
+  margin: 10px 0;
+}
+.controls,
+footer {
+  padding: 20px 24px;
+}
+label {
+  display: block;
+  margin: 12px 0;
+}
+input[type="range"] {
+  display: block;
+  width: 100%;
+  min-height: 32px;
+  accent-color: #8ce6cd;
+}
+button,
+select {
+  color: #e6eff8;
+  background: #20374b;
+  border: 1px solid #58728a;
+  border-radius: 7px;
+  padding: 8px 12px;
+  min-height: 44px;
+  font: inherit;
+  max-width: 100%;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  background: #2b495d;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+select {
+  margin-left: 8px;
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+:is(button, select, input, summary):focus-visible {
+  outline: 2px solid #f5ce88;
+  outline-offset: 3px;
+}
+details {
+  padding: 12px 0;
+}
+summary {
+  color: #b5eadb;
+  cursor: pointer;
+  min-height: 32px;
+}
+canvas.orbit {
+  display: block;
+  width: 100%;
+  height: 420px;
+  touch-action: pan-y;
+  cursor: grab;
+}
+canvas.orbit:active {
+  cursor: grabbing;
+}
+figure {
+  margin: 0;
+  padding: 16px 12px;
+  background: #091320;
+}
+figcaption {
+  padding: 0 12px;
+  color: #b9cadc;
+  font-size: 12px;
+}
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+svg text {
+  fill: #c4d2e2;
+  font:
+    12px system-ui,
+    sans-serif;
+}
+.axis {
+  fill: none;
+  stroke: #34485e;
+}
+.curve {
+  fill: none;
+  stroke: #8ce6cd;
+  stroke-width: 1.7;
+}
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+}
+small {
+  display: block;
+  color: #b9cadc;
+}
+strong {
+  color: #f5ce88;
+  font:
+    600 22px ui-monospace,
+    monospace;
+}
+footer {
+  background: #19303a;
+  font-size: 12px;
+  color: #c4d2e2;
+}
+progress {
+  display: block;
+  width: 100%;
+  height: 20px;
+  accent-color: #8ce6cd;
+}
+.error {
+  border-left: 3px solid #ff9a9a;
+  padding: 12px 24px;
+  color: #ffc1c1;
+}
+@media (max-width: 600px) {
+  header,
+  .controls,
+  footer {
+    padding: 16px;
+  }
+  h4 {
+    font-size: 22px;
+  }
+  select {
+    display: block;
+    margin: 8px 0 0;
+  }
+  svg text {
+    font-size: 15px;
+  }
+}

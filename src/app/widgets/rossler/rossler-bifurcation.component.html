@@ -1,0 +1,45 @@
+<section class="lab" aria-label="Diagrama de bifurcaciones de Rössler">
+  <header><span class="eyebrow">03 / CAMBIAR EL RÉGIMEN</span>
+    <h4>De unos pocos máximos a muchas alturas</h4>
+    <p>Para cada c se integra una órbita y se representan sus máximos locales de z. Pulsa una columna para llevar ese
+      parámetro al laboratorio y al experimento de sensibilidad.</p>
+  </header>
+  <div class="controls">
+    <div class="actions"><button (click)="start()" [disabled]="running || rows.length === 81">{{ rows.length ?
+        'Continuar barrido' : 'Calcular diagrama' }}</button><button (click)="pause()"
+        [disabled]="!running">Pausar</button><button (click)="reset()">Reiniciar</button></div><label>Columnas
+      calculadas: {{ rows.length }} / 81 <progress [value]="rows.length" max="81"
+        aria-label="Progreso del barrido"></progress></label>
+    <p role="status">{{ rows.length === 81 ? 'Barrido completo.' : running ? 'Calculando por columnas…' : 'Barrido
+      detenido. Los resultados visibles pueden ser parciales.' }}</p>
+  </div>
+  <p *ngIf="error" class="error" role="alert">{{ error }}</p>
+  <figure><svg viewBox="0 0 660 290" role="img"
+      aria-label="Diagrama de máximos de z frente al parámetro c; usa el selector inferior como alternativa al clic"
+      (click)="plotClick($event)">
+      <defs>
+        <clipPath id="rossler-bifurcation-clip">
+          <rect x="60" y="25" width="550" height="215" />
+        </clipPath>
+      </defs>
+      <path class="axis" d="M60 25V240H610" />
+      <g clip-path="url(#rossler-bifurcation-clip)">
+        <circle *ngFor="let p of dots" [attr.cx]="p.x" [attr.cy]="p.y" r="1.1" fill="#8ce6cd" fill-opacity="0.6">
+          <title>c = {{ p.c | number:'1.2-2' }}, máximo z = {{ p.z | number:'1.3-3' }}</title>
+        </circle>
+      </g>
+      <line [attr.x1]="60 + (c - 2) / 4 * 550" [attr.x2]="60 + (c - 2) / 4 * 550" y1="25" y2="240" stroke="#f5ce88" />
+      <text x="24" y="35">30</text><text x="32" y="244">0</text><text x="62" y="20">Máximos de z</text><text
+        *ngFor="let v of [2,3,4,5,6]" [attr.x]="60 + (v - 2) / 4 * 550" y="260" text-anchor="middle">{{ v }}</text><text
+        x="335" y="285" text-anchor="middle">Parámetro c</text>
+    </svg></figure>
+  <div class="controls"><label>Inspeccionar c = {{ inspected | number:'1.2-2' }} <input type="range" min="2" max="6"
+        step="0.05" [(ngModel)]="inspected"></label><button (click)="select(inspected)">Usar c = {{ inspected |
+      number:'1.2-2' }} en los experimentos</button>
+    <p>Últimos máximos de la columna calculada más cercana{{ selectedRow ? ' (c = ' + selectedRow.c.toFixed(2) + ')' :
+      '' }}: {{ peakSummary }}</p>
+  </div>
+  <footer>a = b = 0,2 · 81 valores de c, separados por 0,05 · cada columna parte de (1, 0, 0), descarta 300 unidades y
+    registra otras 300 · RK4 con h = 0,02. No es un cálculo de todos los atractores posibles ni una localización exacta
+    de bifurcaciones. La ventana vertical visible es 0 ≤ z ≤ 30.</footer>
+</section>

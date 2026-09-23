@@ -1,0 +1,122 @@
+<h2>El atractor de Rössler</h2>
+<p class="dropcap">Una órbita gira casi en un plano, se abre poco a poco y, de pronto, se eleva, se pliega y vuelve a
+  empezar. Nunca necesita elegir al azar su siguiente movimiento: tres ecuaciones determinan la velocidad en cada punto.
+  Sin embargo, sus vueltas pueden no repetirse y dos estados inicialmente casi idénticos pueden terminar en lugares muy
+  distintos. El sistema de Rössler muestra cuánto comportamiento puede surgir de una sola no linealidad.</p>
+<aside class="theorem"><span class="section-label">TRES ECUACIONES · UN TÉRMINO NO LINEAL</span>
+  <app-formula
+    expression="\begin{aligned}\dot x&=-y-z,\\\dot y&=x+ay,\\\dot z&=b+z(x-c).\end{aligned}\qquad a=b=0{,}2,\quad c=5{,}7"
+    displayMode="block" />
+  <p>El punto sobre una variable indica su derivada respecto al tiempo. Los parámetros clásicos producen la conocida
+    geometría caótica de espiral; otros valores pueden producir órbitas periódicas.</p>
+</aside>
+<p>Otto E. Rössler presentó este modelo en 1976. A diferencia del <a routerLink="/articles/lorenz-attractor">atractor de
+    Lorenz</a>, con sus dos lóbulos, su forma clásica gira alrededor de una sola región central. Las coordenadas x, y y
+  z describen un estado abstracto; el dibujo no representa necesariamente la posición de una partícula en el espacio
+  físico.</p>
+
+<h3>1. Leer la espiral en las ecuaciones</h3>
+<p>Cuando z es pequeña, las dos primeras ecuaciones se parecen a un oscilador: x e y intercambian su papel al girar. El
+  término ay introduce crecimiento en esa dinámica aproximadamente plana. Pero z no se queda a cero, porque el término
+  constante b la alimenta. Si x supera c, el factor x−c favorece el crecimiento de z.</p>
+<p>Ese crecimiento cambia el movimiento horizontal: el término −z hace caer x. Al volver x por debajo de c, z tiende a
+  disminuir y la órbita regresa cerca del plano. Esta explicación describe el mecanismo geométrico; no sustituye un
+  análisis de estabilidad ni garantiza caos para cualquier parámetro.</p>
+<app-rossler-lab [(c)]="c" />
+<aside class="experiment">
+  <h4>Una forma, varias miradas</h4>
+  <p>Empieza con c = 5,7 y alterna las proyecciones x–y y x–z. En la primera se ve el giro; en la segunda destacan las
+    excursiones verticales. Reproduce la órbita y observa cómo los picos dorados de z coinciden con esas elevaciones.
+    Usa la cámara 3D para distinguir pliegues que se superponen en una proyección.</p>
+</aside>
+
+<h3>2. Una órbita no es todo el atractor</h3>
+<p>Una trayectoria es la evolución de una condición inicial. Un atractor es un conjunto invariante al que se acercan las
+  órbitas de una región de condiciones iniciales, su cuenca de atracción. El trazo que vemos es una aproximación finita
+  de una trayectoria, no una representación exacta de cada punto del atractor.</p>
+<p>Por eso los experimentos descartan primero un <strong>transitorio</strong>: las primeras vueltas dependen
+  especialmente del punto de partida. El laboratorio parte de (1, 0, 0), deja pasar 150 unidades de tiempo y conserva
+  las siguientes 300. Ese descarte es una elección numérica explícita, no una prueba de que todos los transitorios
+  posibles hayan terminado.</p>
+<p>Las soluciones exactas de este campo suave no se cruzan en el espacio de fases: si dos coincidieran en el mismo
+  estado, la unicidad determinaría la misma evolución. Los cruces que aparecen al mirar el plano x–y pueden ser puntos
+  con alturas z distintas.</p>
+
+<h3>3. Puntos de equilibrio y contracción</h3>
+<p>En un equilibrio, las tres derivadas se anulan. Las dos primeras ecuaciones dan y = −z y x = az. Sustituir en la
+  tercera produce una ecuación cuadrática:</p>
+<app-formula
+  expression="az^2-cz+b=0,\qquad z_\pm=\frac{c\pm\sqrt{c^2-4ab}}{2a},\qquad (x_\pm,y_\pm,z_\pm)=(az_\pm,-z_\pm,z_\pm)"
+  displayMode="block" />
+<p>Esta expresión supone a ≠ 0 y c² ≥ 4ab. La existencia de un equilibrio no significa que atraiga las órbitas cercanas:
+  su estabilidad depende del jacobiano del campo.</p>
+<app-formula expression="J(x,y,z)=\begin{pmatrix}0&-1&-1\\1&a&0\\z&0&x-c\end{pmatrix},\qquad \nabla\!\cdot f=a+x-c"
+  displayMode="block" />
+<p>La divergencia mide la tasa instantánea de cambio logarítmico de un pequeño volumen transportado por el flujo. Puede
+  ser positiva en ciertos puntos; no hay contracción uniforme en todo el espacio. Un promedio negativo a lo largo de una
+  órbita es compatible con que el volumen se contraiga y, al mismo tiempo, algunas direcciones se estiren. Esa
+  combinación ayuda a entender una geometría estrecha y plegada.</p>
+
+<h3>4. Sensibilidad no significa azar</h3>
+<p>Las ecuaciones son deterministas, pero conocer un estado con precisión finita limita cuánto podemos predecir su
+  trayectoria individual en un régimen caótico. Mientras una perturbación permanezca suficientemente pequeña, su
+  crecimiento puede tener una envolvente aproximadamente exponencial:</p>
+<app-formula expression="d(t)=\|\mathbf x_1(t)-\mathbf x_2(t)\|,\qquad d(t)\approx d(0)e^{\lambda t}"
+  displayMode="block" />
+<app-rossler-sensitivity [c]="c" />
+<p>Una recta ascendente en la escala logarítmica indica crecimiento exponencial durante ese intervalo, pero la distancia
+  también puede disminuir localmente. Cuando alcanza el tamaño del atractor, se satura y ya no describe la evolución de
+  una perturbación infinitesimal.</p>
+<p>Un exponente de Lyapunov requiere un procedimiento que controle esa escala, por ejemplo evolucionando una
+  perturbación tangente y renormalizándola repetidamente. La tasa acumulada que muestra el widget es un diagnóstico de
+  dos órbitas finitas, no ese cálculo. Compara varias perturbaciones y dos pasos de integración antes de atribuir una
+  diferencia al sistema en lugar de al error numérico.</p>
+
+<h3>5. Cortar el flujo y observar sus regresos</h3>
+<p>Una sección de Poincaré sustituye el movimiento continuo por una sucesión de visitas. En el primer laboratorio usamos
+  el plano x = 0 y guardamos solo los cruces de negativo a positivo. Se representan las coordenadas (y, z) interpoladas
+  en esos instantes. La condición de dirección evita mezclar las dos orientaciones del cruce.</p>
+<p>Una órbita periódica puede dar uno o varios puntos en la sección; una trayectoria caótica puede producir una
+  estructura extendida. La apariencia depende del plano, la duración observada y la precisión. Una pequeña nube
+  alrededor de un punto no basta para diagnosticar caos.</p>
+<p>El <strong>mapa de retorno de máximos</strong> ofrece otra reducción: extraemos los máximos sucesivos de z y
+  dibujamos cada pareja (zₖ, zₖ₊₁). Para los parámetros clásicos aparece una relación plegada que recuerda a un mapa de
+  una variable. Esta proyección pierde información: no convierte por sí sola el sistema tridimensional en una ecuación
+  unidimensional exacta.</p>
+
+<h3>6. Un parámetro, distintos regímenes</h3>
+<p>Fijemos a = b = 0,2 y variemos c. En lugar de dibujar una órbita completa por cada valor, podemos conservar solo sus
+  máximos de z. Un ciclo simple produce prácticamente una altura; un ciclo con varias vueltas puede producir varias
+  alturas. Las bandas de muchas alturas revelan una dinámica más compleja y pueden alternarse con ventanas periódicas.
+</p>
+<app-rossler-bifurcation [(c)]="c" />
+<aside class="experiment">
+  <h4>Relaciona las tres herramientas</h4>
+  <p>Calcula el barrido y selecciona una columna con pocos máximos. Examina su órbita y su mapa de retorno en el primer
+    laboratorio. Después selecciona c = 5,7 y repite la comparación con el experimento de sensibilidad. El parámetro c
+    se comparte entre los tres widgets.</p>
+</aside>
+<p>El diagrama muestrea 81 parámetros separados por 0,05. No muestra todos los valores intermedios ni todas las posibles
+  cuencas de atracción. Además, una banda ancha puede incluir un transitorio largo. Encontrar un punto exacto de
+  bifurcación requiere refinar el parámetro y analizar la estabilidad; la imagen sirve para explorar y formular
+  preguntas.</p>
+
+<h3>7. Lo que puede decir una simulación</h3>
+<p>Los experimentos usan Runge–Kutta de cuarto orden con paso fijo. Es un método aproximado: reducir el paso permite
+  comprobar la estabilidad de rasgos como el rango de la órbita o la forma del mapa de retorno. En un régimen caótico,
+  dos integraciones precisas pueden separarse a largo plazo; exigir que coincidan punto por punto indefinidamente no es
+  un criterio razonable.</p>
+<p>Las gráficas distinguen el tiempo del modelo del tiempo de reproducción. Animar más rápido no cambia el paso de
+  integración. Tampoco se introduce ruido: la separación entre órbitas surge de sus condiciones iniciales y de la
+  dinámica, con los límites habituales del redondeo y la discretización.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://doi.org/10.1016/0375-9601(76)90101-8" target="_blank" rel="noopener noreferrer">O. E. Rössler, An
+      equation for continuous chaos (1976)</a>. Artículo original.</li>
+  <li><a href="https://www.cfm.brown.edu/people/dobrush/am34/Mathematica/ch3/rossler.html" target="_blank"
+      rel="noopener noreferrer">Brown University: Rössler attractor</a>. Ecuaciones, equilibrios y ejemplos numéricos.
+  </li>
+  <li><a href="https://doi.org/10.1017/S144618112300010X" target="_blank" rel="noopener noreferrer">Bursting solutions
+      of the Rössler equations</a>. Análisis de la dinámica y sus aproximaciones.</li>
+</ul>

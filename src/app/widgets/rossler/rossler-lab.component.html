@@ -1,0 +1,75 @@
+<section class="lab" aria-label="Laboratorio del atractor de Rössler">
+  <header><span class="eyebrow">01 / ESPACIO DE FASES</span>
+    <h4>Una espiral que se estira y se pliega</h4>
+    <p>Arrastra la vista 3D para girarla. El punto dorado y la serie temporal comparten el mismo instante.</p>
+  </header>
+  <div class="controls"><label>Parámetro c = {{ c | number:'1.2-2' }} <input type="range" min="2" max="6" step="0.01"
+        [ngModel]="c" (ngModelChange)="changeC($event)"></label>
+    <div class="actions"><button (click)="changeC(2)">c = 2</button><button (click)="changeC(4)">c = 4</button><button
+        (click)="changeC(5.7)">Clásico: c = 5,7</button></div>
+    <label>Proyección <select [(ngModel)]="projection" (ngModelChange)="draw()">
+        <option value="3d">3D · proyección ortográfica</option>
+        <option value="xy">Plano x–y</option>
+        <option value="xz">Plano x–z</option>
+        <option value="yz">Plano y–z</option>
+      </select></label>
+    <details>
+      <summary>Ajustar cámara y precisión</summary><label>Giro horizontal <input type="range" min="-3.14" max="3.14"
+          step="0.01" [(ngModel)]="yaw" (ngModelChange)="draw()"></label><label>Inclinación <input type="range"
+          min="-1.4" max="1.4" step="0.01" [(ngModel)]="pitch" (ngModelChange)="draw()"></label><label>Zoom <input
+          type="range" min="0.6" max="1.7" step="0.05" [(ngModel)]="zoom" (ngModelChange)="draw()"></label><label>Paso
+        de integración <select [(ngModel)]="h" (ngModelChange)="generate()">
+          <option [ngValue]="0.02">0,02</option>
+          <option [ngValue]="0.01">0,01 · mayor precisión</option>
+        </select></label><button (click)="resetView()">Restaurar cámara</button>
+    </details>
+  </div>
+  <p class="error" *ngIf="error" role="alert">{{ error }}</p>
+  <canvas #canvas class="orbit" role="img"
+    aria-label="Órbita tridimensional de Rössler; cambia la proyección o usa los controles de cámara para explorar su geometría"
+    (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp()"
+    (pointercancel)="pointerUp()" (lostpointercapture)="pointerUp()"></canvas>
+  <div class="controls">
+    <div class="actions"><button (click)="toggle()" [disabled]="!!error">{{ running ? 'Pausar' : 'Reproducir'
+        }}</button><button (click)="pause(); cursor = 0; draw()">Volver al inicio</button></div><label>Tiempo desde el
+      final del transitorio: {{ cursor | number:'1.1-1' }} <input type="range" min="0" max="300" step="0.1"
+        [(ngModel)]="cursor" (ngModelChange)="pause(); draw()"></label>
+    <p>x = {{ state[0] | number:'1.3-3' }} · y = {{ state[1] | number:'1.3-3' }} · z = {{ state[2] | number:'1.3-3' }}
+    </p>
+  </div>
+  <figure>
+    <figcaption>Serie temporal · x verde, y lila discontinua, z dorada punteada</figcaption><svg viewBox="0 0 660 220"
+      role="img" aria-label="Evolución temporal de x, y y z, con cursor sincronizado">
+      <path class="axis" d="M50 25V170H610" />
+      <path *ngFor="let path of timePaths; let i = index" [attr.d]="path" fill="none"
+        [attr.stroke]="['#8ce6cd','#c8b5ff','#f5ce88'][i]" [attr.stroke-dasharray]="[null,'6 3','2 3'][i]"
+        stroke-width="1" />
+      <line [attr.x1]="50 + cursor / 300 * 560" [attr.x2]="50 + cursor / 300 * 560" y1="25" y2="170" stroke="#f4f7fc" />
+      <text x="18" y="35">30</text><text x="25" y="124">0</text><text x="12" y="165">−15</text><text x="50"
+        y="192">0</text><text x="610" y="192" text-anchor="end">300</text><text x="330" y="213"
+        text-anchor="middle">Tiempo (unidades del modelo)</text>
+    </svg>
+  </figure>
+  <div class="controls"><label>Diagnóstico <select [(ngModel)]="diagnostic" (ngModelChange)="updateDiagnostic()">
+        <option value="return">Mapa de retorno de máximos de z</option>
+        <option value="section">Sección de Poincaré: x = 0, cruce creciente</option>
+      </select></label>
+    <p>{{ diagnostic === 'return' ? 'Cada punto enlaza dos máximos consecutivos: (zₖ, zₖ₊₁).' : 'Cada punto registra (y,
+      z) cuando la órbita cruza x = 0 de negativo a positivo.' }}</p>
+  </div>
+  <figure><svg viewBox="0 0 660 285" role="img"
+      [attr.aria-label]="diagnostic === 'return' ? 'Máximos consecutivos de z' : 'Intersecciones con la sección de Poincaré'">
+      <path class="axis" d="M60 25V230H610" />
+      <circle *ngFor="let p of plotPoints" [attr.cx]="p.x" [attr.cy]="p.y" r="3" fill="#8ce6cd">
+        <title>{{ p.label }}</title>
+      </circle><text x="65" y="20">{{ diagnostic === 'return' ? 'zₖ₊₁' : 'z' }}: {{ yRange }}</text><text x="330"
+        y="255" text-anchor="middle">{{ diagnostic === 'return' ? 'zₖ' : 'y' }}: {{ xRange }}</text>
+    </svg>
+    <figcaption>{{ diagnostic === 'return' ? peakCount + ' máximos detectados; se representan los pares consecutivos.' :
+      sectionCount + ' cruces detectados.' }} Los ejes se ajustan a los datos; una nube diminuta puede ser error
+      numérico alrededor de un punto periódico.</figcaption>
+  </figure>
+  <footer>a = b = 0,2 · inicio (1, 0, 0) · transitorio descartado: 150 · ventana: 300 · RK4, h = {{ h }}. La órbita
+    tenue muestra toda la ventana; el trazo verde muestra las últimas 12 unidades. La simulación no se reproduce
+    automáticamente.</footer>
+</section>

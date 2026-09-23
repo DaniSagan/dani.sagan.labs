@@ -1,0 +1,35 @@
+<section class="lab" aria-label="Sensibilidad a las condiciones iniciales">
+  <header><span class="eyebrow">02 / DOS FUTUROS CERCANOS</span>
+    <h4>La distancia que crece y se satura</h4>
+    <p>Dos órbitas parten del mismo punto tras el transitorio, salvo una perturbación ε en x. Parámetro compartido: c =
+      {{ c | number:'1.2-2' }}.</p>
+  </header>
+  <div class="controls"><label>Perturbación inicial ε = 10<sup>{{ exponent }}</sup><input type="range" min="-9" max="-2"
+        step="1" [(ngModel)]="exponent" (ngModelChange)="compute()"></label><label>Paso RK4 <select [(ngModel)]="h"
+        (ngModelChange)="compute()">
+        <option [ngValue]="0.02">0,02</option>
+        <option [ngValue]="0.01">0,01</option>
+      </select></label></div>
+  <p *ngIf="error" class="error" role="alert">{{ error }}</p>
+  <figure><svg viewBox="0 0 660 285" role="img" aria-label="Distancia euclídea entre dos órbitas en escala logarítmica">
+      <g *ngFor="let tick of ticks">
+        <line x1="60" x2="610" [attr.y1]="tickY(tick)" [attr.y2]="tickY(tick)" class="axis" /><text x="8"
+          [attr.y]="tickY(tick) + 4">10^{{ tick }}</text>
+      </g>
+      <path [attr.d]="path" class="curve" />
+      <line [attr.x1]="60 + cursor / 180 * 550" [attr.x2]="60 + cursor / 180 * 550" y1="30" y2="230" stroke="#f5ce88" />
+      <text x="60" y="251">0</text><text x="610" y="251" text-anchor="end">180</text><text x="335" y="278"
+        text-anchor="middle">Tiempo desde la perturbación</text>
+    </svg></figure>
+  <div class="controls"><label>Inspeccionar t = {{ cursor | number:'1.1-1' }} <input type="range" min="0" max="180"
+        step="0.2" [(ngModel)]="cursor"></label>
+    <div class="metrics">
+      <div><small>Distancia d(t)</small><strong>{{ current?.distance?.toExponential(3) ?? '—' }}</strong></div>
+      <div><small>ln(d(t)/ε) / t</small><strong>{{ cursor > 0 && current ? (logGrowth | number:'1.4-4') : '—'
+          }}</strong></div>
+    </div>
+  </div>
+  <footer>La tasa mostrada es un crecimiento acumulado de dos trayectorias, no un exponente de Lyapunov estimado con
+    renormalización. Al saturarse la distancia deja de medir el crecimiento local. La gráfica recorta distancias por
+    debajo de 10⁻¹² y por encima de 10²; el valor numérico conserva la distancia calculada.</footer>
+</section>
