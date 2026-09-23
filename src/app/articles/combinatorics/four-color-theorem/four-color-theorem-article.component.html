@@ -1,0 +1,119 @@
+<h2>El teorema de los cuatro colores</h2>
+<p class="dropcap">Dibuja un mapa, por complicado que sea, y pinta sus regiones de modo que dos vecinas nunca tengan el
+  mismo color. ¿Cuántos colores necesitas? Puede parecer que añadir fronteras obliga a ampliar la paleta
+  indefinidamente. Sin embargo, para un mapa plano ordinario con regiones conexas, cuatro colores siempre bastan. La
+  sencillez del enunciado contrasta con la dificultad de su demostración.</p>
+<aside class="theorem"><span class="section-label">CUATRO COLORES SON SUFICIENTES</span>
+  <p>Todo grafo planar finito sin lazos admite una coloración de sus vértices con, como máximo, cuatro colores, de
+    manera que los extremos de cada arista tengan colores distintos.</p><app-formula
+    expression="G\text{ planar}\quad\Longrightarrow\quad\chi(G)\le4" displayMode="block" />
+  <p>El número cromático χ(G) es el mínimo número de colores de una coloración válida. «Como máximo cuatro» no significa
+    que cada mapa necesite los cuatro.</p>
+</aside>
+
+<h3>1. Qué significa compartir frontera</h3>
+<p>Dos regiones son vecinas si comparten un tramo de frontera de longitud positiva. Tocarse en una esquina no basta.
+  Esta distinción es esencial: si muchas regiones se encuentran en un único punto, no exigimos un color distinto para
+  cada una de ellas.</p>
+<p>Consideramos mapas finitos con fronteras ordinarias, representables mediante un grafo plano, y cada región conexa. Si
+  un país tiene territorios separados y se exige que todos compartan color, se añade una restricción que el teorema no
+  garantiza. El exterior también puede tratarse como una región; en los ejercicios siguientes coloreamos solo el
+  interior del rectángulo.</p>
+<app-four-color-editor />
+<aside class="experiment">
+  <h4>La diferencia entre una esquina y una frontera</h4>
+  <p>Selecciona el mapa de cuatro regiones que se tocan en un punto. Las regiones diagonales pueden compartir color: dos
+    colores bastan. Cambia después al mapa de cuatro regiones mutuamente vecinas e intenta usar solo tres.</p>
+</aside>
+
+<h3>2. Del mapa al grafo dual</h3>
+<p>Coloca un vértice dentro de cada región y une dos vértices cuando sus regiones comparten frontera. Así se obtiene el
+  grafo de adyacencias, asociado al dual del mapa. Colorear regiones equivale a colorear sus vértices. Si dos regiones
+  comparten varios tramos, basta con una arista para expresar la restricción de color.</p>
+<p>El grafo es planar: puede dibujarse sin cruces de aristas salvo en sus extremos. Planar describe la posibilidad de
+  encontrar ese dibujo, no la apariencia de cualquier dibujo concreto. En los mosaicos convexos del laboratorio, las
+  líneas que unen las semillas de las regiones permiten superponer directamente las adyacencias.</p>
+<p>Este problema colorea <strong>vértices</strong>. No es el mismo problema que el <a
+    routerLink="/articles/ramsey-theorem">teorema de Ramsey R(3,3) = 6</a>, donde coloreamos aristas y buscamos
+  triángulos monocromáticos.</p>
+
+<h3>3. Por qué tres colores no siempre bastan</h3>
+<p>El primer mapa contiene cuatro regiones que son vecinas dos a dos. Su grafo es K₄: cuatro vértices unidos por las
+  seis aristas posibles. Cada vértice tiene que diferir de los otros tres, así que hacen falta cuatro colores.</p>
+<app-formula expression="\chi(K_4)=4" displayMode="block" />
+<p>K₄ es planar: se dibuja un triángulo exterior, se coloca el cuarto vértice dentro y se conecta con sus tres esquinas.
+  Este ejemplo demuestra que la cota cuatro no se puede reducir a tres. No demuestra que cuatro sean suficientes para
+  todos los mapas: esa es la parte difícil.</p>
+<p>La planaridad tampoco es opcional. K₅ necesita cinco colores porque sus cinco vértices son mutuamente adyacentes,
+  pero no es planar. Tener número cromático pequeño, por su parte, no garantiza planaridad: hay grafos no planares que
+  admiten dos colores.</p>
+
+<h3>4. Resolver un mapa concreto</h3>
+<p>Una estrategia sencilla asigna a cada región un color que no aparezca entre sus vecinas ya coloreadas. Puede
+  bloquearse por decisiones anteriores, aunque exista una solución. Por ello, no podemos confundir «esta elección no
+  funciona» con «ninguna coloración funciona».</p>
+<p>El siguiente experimento usa una heurística llamada DSATUR: da prioridad a un vértice con muchos colores distintos
+  entre sus vecinos ya coloreados, y desempata por grado. Añadimos búsqueda con retroceso para revisar las decisiones.
+  La heurística decide el orden; el retroceso explora alternativas.</p>
+<app-four-color-search />
+<p>Una coloración encontrada es fácil de verificar: se revisa que todos los vértices tengan color y que cada arista una
+  colores distintos. Para certificar que k colores no bastan en este buscador, hay que agotar todas sus ramas. Si
+  alcanza el límite de trabajo antes, el resultado es no concluyente. Ninguno de estos cálculos finitos constituye una
+  demostración para todos los grafos planares.</p>
+
+<h3>5. Cambiar colores sin romper el mapa</h3>
+<p>Partimos de una coloración válida y elegimos dos colores, por ejemplo 1 y 2. Conservamos solo los vértices que llevan
+  esos colores y las aristas entre ellos. Una componente conexa del subgrafo resultante es una <strong>componente o
+    cadena de Kempe</strong>.</p>
+<p>Podemos intercambiar 1 y 2 en toda esa componente. Las aristas internas siguen uniendo colores distintos. Una arista
+  hacia fuera tampoco crea un conflicto: si su extremo exterior tuviese uno de esos dos colores, estaría conectado a la
+  misma componente y no quedaría fuera de ella.</p>
+<app-four-color-kempe />
+<p>Intercambiar un solo vértice puede romper la coloración; intercambiar la componente bicolor completa la preserva. La
+  operación resulta útil para reorganizar colores, pero no garantiza que varios intercambios sucesivos liberen un color
+  deseado. Las componentes pueden cambiar después de cada intercambio.</p>
+
+<h3>6. Lo que explica Euler, y lo que queda por demostrar</h3>
+<p>La <a routerLink="/articles/planar-euler">fórmula de Euler</a> impone restricciones fuertes a los grafos planares. En
+  un grafo planar simple con V ≥ 3, el número de aristas E satisface E ≤ 3V − 6. Por tanto, su grado medio es menor que
+  seis y existe algún vértice de grado como máximo cinco.</p>
+<app-formula expression="\frac1V\sum_v\deg(v)=\frac{2E}{V}\le6-\frac{12}{V}<6" displayMode="block" />
+<p>Esto conduce por inducción a un resultado de seis colores: retiramos un vértice de grado como máximo cinco,
+  coloreamos el resto y lo reinsertamos usando un color que no esté en sus cinco vecinos. Reducir la cota a cinco
+  requiere un argumento adicional con cadenas de Kempe y la planaridad. Reducirla a cuatro exige mucho más: no basta con
+  repetir la misma idea.</p>
+<p>En una triangulación plana simple, contando también la cara exterior, la identidad se puede expresar mediante una
+  carga asignada a cada vértice:</p>
+<app-formula expression="\sum_v(6-\deg(v))=12" displayMode="block" />
+<p>Los argumentos de <strong>descarga</strong> redistribuyen cargas sin cambiar su suma total. Con reglas adecuadas,
+  permiten demostrar que alguna configuración de una colección determinada tiene que aparecer. Esta idea explica la
+  estructura de la prueba, pero la identidad por sí sola no demuestra el teorema de los cuatro colores.</p>
+
+<h3>7. Una demostración con ayuda del ordenador</h3>
+<p>El problema se planteó en el siglo XIX. En 1879, Alfred Kempe propuso una demostración que se creyó válida durante
+  años; Percy Heawood encontró un fallo en 1890. Las cadenas de Kempe sobrevivieron al error y siguen siendo una
+  herramienta importante.</p>
+<p>En 1976, Kenneth Appel y Wolfgang Haken anunciaron la primera demostración, con ayuda de cálculos por ordenador. La
+  estrategia supone que existe un contraejemplo mínimo y enfrenta dos hechos: todo posible contraejemplo mínimo tendría
+  que contener alguna configuración de una colección <strong>inevitable</strong>, pero cada configuración de esa
+  colección es <strong>reducible</strong> y por ello no puede aparecer en tal contraejemplo.</p>
+<p>La reducibilidad enlaza una configuración con problemas más pequeños cuya coloración se puede aprovechar. Verificarla
+  requiere un análisis preciso de las posibilidades de la frontera; no significa simplemente borrar cualquier región y
+  volver a pintarla después.</p>
+<p>Robertson, Sanders, Seymour y Thomas publicaron en 1997 otra demostración con una colección de 633 configuraciones.
+  Más tarde, el trabajo de Georges Gonthier llevó el argumento a una verificación formal en Coq. Se distingue así entre
+  ejecutar un programa que revisa casos y formalizar también el razonamiento que conecta esos casos con el teorema.</p>
+<p>Los widgets de este artículo permiten experimentar con coloraciones y comprobar invariantes concretos. La afirmación
+  universal descansa en la demostración matemática y en sus verificaciones, no en observar que muchos mapas de prueba se
+  dejan colorear.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://thomas.math.gatech.edu/FC/fourcolor.html" target="_blank" rel="noopener noreferrer">Robertson,
+      Sanders, Seymour y Thomas: The Four Color Theorem</a>. Resumen de la estrategia y materiales de la demostración.
+  </li>
+  <li><a href="https://thomas.math.gatech.edu/PAP/fc.pdf" target="_blank" rel="noopener noreferrer">The Four-Colour
+      Theorem (1997)</a>. Artículo de investigación.</li>
+  <li><a href="https://www.cl.cam.ac.uk/~lp15/Pages/4colproof.pdf" target="_blank" rel="noopener noreferrer">Georges
+      Gonthier: A computer-checked proof of the Four Colour Theorem</a>. Descripción de la verificación formal.</li>
+</ul>

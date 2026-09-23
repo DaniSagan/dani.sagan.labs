@@ -1,0 +1,36 @@
+<section class="lab" aria-label="Laboratorio de cadenas de Kempe">
+  <header><span class="eyebrow">03 / REORGANIZAR LOS COLORES</span>
+    <h4>Intercambiar una componente entera</h4>
+    <p>Elige dos colores y una región de uno de ellos. Se resaltan las regiones alcanzables usando solo esos dos
+      colores.</p>
+  </header>
+  <div class="controls"><label>Primer color <select [(ngModel)]="a">
+        <option *ngFor="let color of [0,1,2,3]" [ngValue]="color">{{ color + 1 }}</option>
+      </select></label><label>Segundo color <select [(ngModel)]="b">
+        <option *ngFor="let color of [0,1,2,3]" [ngValue]="color">{{ color + 1 }}</option>
+      </select></label>
+    <div class="actions"><button (click)="swap()" [disabled]="a === b || !component.length">Intercambiar
+        componente</button><button (click)="reset()">Otro mapa resuelto</button></div>
+  </div>
+  <div class="workspace"><app-four-color-map [map]="map" [colors]="colors" [selected]="selected"
+      [highlight]="a === b ? [] : component" (regionSelect)="selected = $event" />
+    <div class="readout">
+      <h5>Desde {{ label(selected) }}</h5>
+      <p *ngIf="a === b">Elige dos colores diferentes.</p>
+      <p *ngIf="a !== b && !component.length">La región seleccionada no usa ninguno de los dos colores. Selecciona otra
+        región o cambia la pareja.</p>
+      <p *ngIf="a !== b && component.length">Componente: <span *ngFor="let v of component; let last = last">{{ label(v)
+          }}{{ last ? '' : ', ' }}</span>.</p>
+      <div class="metrics">
+        <div><small>Intercambios</small><strong>{{ swaps }}</strong></div>
+        <div><small>Conflictos</small><strong>{{ conflicts }}</strong></div>
+      </div>
+      <p role="status">{{ conflicts === 0 ? 'La coloración sigue siendo válida.' : 'Hay un conflicto de coloración.' }}
+      </p>
+      <p>Intercambiar otra vez la misma componente restaura sus colores. Las regiones exteriores a ella se conservan.
+      </p>
+    </div>
+  </div>
+  <footer>El intercambio preserva una coloración válida, pero no promete liberar el color que necesites en otra región.
+    Una componente bicolor puede ramificarse: «cadena» no significa necesariamente un camino simple.</footer>
+</section>

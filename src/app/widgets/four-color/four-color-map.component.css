@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+polygon {
+  stroke: #091320;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+polygon.selected {
+  stroke: #fff;
+  stroke-width: 5;
+}
+polygon.highlight {
+  stroke: #fff;
+  stroke-width: 5;
+  stroke-dasharray: 7 4;
+}
+g:focus-visible {
+  outline: none;
+}
+g:focus-visible polygon {
+  stroke: #fff;
+  stroke-width: 7;
+}
+.dual,
+.label {
+  pointer-events: none;
+}
+.dual line {
+  stroke: #17243a;
+  stroke-width: 2.5;
+}
+.dual line.conflict {
+  stroke: #8f1433;
+  stroke-width: 6;
+  stroke-dasharray: 8 5;
+}
+.label circle {
+  fill: #112031;
+  stroke: #c8d9ed;
+  stroke-width: 1;
+}
+.label text {
+  fill: #fff;
+  font: 600 12px system-ui;
+}
+p {
+  padding: 0 18px;
+  color: #c5d3e5;
+  font: 12px/1.6 system-ui;
+}
+g[role="img"] polygon {
+  cursor: default;
+}

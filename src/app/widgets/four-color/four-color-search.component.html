@@ -1,0 +1,37 @@
+<section class="lab" aria-label="Coloreador paso a paso">
+  <header><span class="eyebrow">02 / BUSCAR Y RETROCEDER</span>
+    <h4>Un intento fallido no prueba imposibilidad</h4>
+    <p>El algoritmo elige una región con muchos colores distintos entre sus vecinos. Si se bloquea, deshace asignaciones
+      y prueba otras.</p>
+  </header>
+  <div class="controls"><label>Ejemplo <select [(ngModel)]="kind" (ngModelChange)="reset()">
+        <option value="four">Cuatro vecinas: K₄</option>
+        <option value="point">Contacto puntual: ciclo de cuatro</option>
+        <option value="mosaic">Mosaico de doce regiones</option>
+      </select></label><label>Colores disponibles <select [(ngModel)]="k" (ngModelChange)="reset()">
+        <option [ngValue]="2">2</option>
+        <option [ngValue]="3">3</option>
+        <option [ngValue]="4">4</option>
+      </select></label>
+    <div class="actions"><button (click)="toggle()">{{ running ? 'Pausar' : 'Reproducir' }}</button><button
+        (click)="pause(); next()" [disabled]="finished">Un paso</button><button (click)="pause(); step = step - 1"
+        [disabled]="step === 0">Anterior</button><button (click)="pause(); step = result.frames.length - 1">Ver
+        resultado</button><button (click)="reset()">Reiniciar</button></div>
+  </div>
+  <div class="workspace"><app-four-color-map [map]="map" [colors]="frame.colors" [selected]="frame.vertex"
+      [interactive]="false" />
+    <div class="readout">
+      <h5>Paso {{ step }} de {{ result.frames.length - 1 }}</h5>
+      <p aria-live="polite">{{ frame.message }}</p><label>Recorrer la búsqueda <input type="range" min="0"
+          [max]="result.frames.length - 1" step="1" [(ngModel)]="step" (ngModelChange)="pause()"></label>
+      <p *ngIf="finished">Asignaciones exploradas: {{ result.attempts }}. {{ result.status === 'solved' ? 'El resultado
+        se comprueba revisando todas las aristas.' : result.status === 'impossible' ? 'Se han agotado todas las ramas de
+        esta búsqueda para este mapa.' : 'Al alcanzar el límite no se puede concluir que el mapa sea imposible.' }}</p>
+      <p>Con K₄ y tres colores verás retrocesos hasta agotar la búsqueda. Con cuatro colores se completa la asignación.
+        El mapa del contacto puntual admite dos.</p>
+    </div>
+  </div>
+  <footer>Orden DSATUR con desempate por grado y búsqueda con retroceso. Límite: 10 000 asignaciones. Se calcula una
+    traza y se reproduce por pasos; no es el algoritmo de la demostración del teorema ni una prueba para todos los
+    mapas.</footer>
+</section>

@@ -1,0 +1,40 @@
+<section class="lab" aria-label="Editor de mapas con cuatro colores">
+  <header><span class="eyebrow">01 / COLOREAR EL MAPA</span>
+    <h4>La frontera decide quién es vecino</h4>
+    <p>Selecciona una región y asigna un color. Las etiquetas numéricas permiten distinguirlos sin depender solo del
+      tono.</p>
+  </header>
+  <div class="controls"><label>Mapa <select [(ngModel)]="kind" (ngModelChange)="load()">
+        <option value="four">Cuatro regiones mutuamente vecinas</option>
+        <option value="point">Cuatro regiones que se tocan en un punto</option>
+        <option value="mosaic">Mosaico de doce regiones</option>
+      </select></label>
+    <div class="actions"><button (click)="kind = 'mosaic'; seed = seed + 1; load()">Nuevo mosaico</button><button
+        (click)="undo()" [disabled]="!history.length">Deshacer</button><button (click)="clear()">Borrar
+        colores</button><button (click)="solve()">Resolver desde cero</button></div><label><input type="checkbox"
+        [(ngModel)]="dual"> Superponer grafo de adyacencias</label>
+  </div>
+  <div class="workspace"><app-four-color-map [map]="map" [colors]="colors" [selected]="selected" [dual]="dual"
+      (regionSelect)="selected = $event" />
+    <div class="readout">
+      <h5>Región {{ label(selected) }}</h5>
+      <div class="actions"><button *ngFor="let color of palette; let i = index" class="swatch"
+          [style.background]="color" (click)="paint(i)" [attr.aria-pressed]="colors[selected] === i">Color {{ i + 1
+          }}</button><button (click)="paint(-1)">Sin color</button></div>
+      <p>Vecinas: <span *ngFor="let v of neighbors; let last = last">{{ label(v) }}{{ last ? '' : ', ' }}</span>.</p>
+      <div class="metrics">
+        <div><small>Sin colorear</small><strong>{{ remaining }}</strong></div>
+        <div><small>Conflictos</small><strong>{{ conflicts.length }}</strong></div>
+        <div><small>Colores usados</small><strong>{{ used }}</strong></div>
+      </div>
+      <p role="status">{{ !remaining && !conflicts.length ? '¡Mapa completo y válido!' : conflicts.length ? 'Hay
+        regiones vecinas con el mismo color.' : 'Sin conflictos; todavía quedan regiones sin color.' }}</p>
+      <p *ngIf="message">{{ message }}</p>
+      <p *ngIf="conflicts.length">Conflictos: <span *ngFor="let e of conflicts; let last = last">{{ label(e[0]) }}–{{
+          label(e[1]) }}{{ last ? '' : ', ' }}</span>.</p>
+    </div>
+  </div>
+  <footer>El exterior del rectángulo no forma parte del mapa de este ejercicio. Los contactos en un único punto no
+    cuentan como frontera. Cada región es conexa; el mosaico se genera mediante celdas de Voronoi recortadas. Semilla
+    del mosaico: {{ seed }}.</footer>
+</section>
