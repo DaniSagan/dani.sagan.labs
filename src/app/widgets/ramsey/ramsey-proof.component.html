@@ -1,0 +1,39 @@
+<section class="lab" aria-label="Demostración interactiva del teorema de Ramsey">
+  <header><span class="eyebrow">02 / DEMOSTRAR</span>
+    <h4>Una prueba que sigue a tu grafo</h4>
+    <p>Edita las aristas o elige otro vértice de partida. El argumento encuentra un triángulo en cada coloración.</p>
+  </header>
+  <div class="controls">
+    <div class="actions"><button (click)="randomize()">Otra coloración</button><button (click)="branch(false)">Caso: un
+        lado coincide</button><button (click)="branch(true)">Caso: ninguno coincide</button></div><label>Vértice de
+      partida <select [ngModel]="pivot" (ngModelChange)="select(+$event)">
+        <option *ngFor="let v of [0,1,2,3,4,5]" [ngValue]="v">{{ labels([v]) }}</option>
+      </select></label>
+  </div>
+  <div class="workspace"><app-ramsey-graph [mask]="mask" [editable]="true" [selectable]="true" [pivot]="pivot"
+      [highlight]="highlight" [triangle]="step === 3 ? witness.triangle.vertices : []" (edgeToggle)="toggle($event)"
+      (vertexSelect)="select($event)" />
+    <div class="readout">
+      <nav class="step-list" aria-label="Pasos de la demostración"><button *ngFor="let title of steps; let i = index"
+          (click)="step = i" [attr.aria-current]="step === i ? 'step' : null">{{ i + 1 }}. {{ title }}</button></nav>
+      <div class="proof-text" aria-live="polite">
+        <p *ngIf="step === 0">Desde {{ labels([pivot]) }} salen cinco aristas. Cada una es roja o azul; no queda ninguna
+          pareja sin conectar.</p>
+        <p *ngIf="step === 1">Al repartir cinco aristas entre dos colores, al menos tres comparten color. Elegimos las
+          {{ witness.red ? 'rojas' : 'azules' }} hacia {{ labels(witness.chosen) }}.</p>
+        <p *ngIf="step === 2">Ahora miramos las tres aristas que unen {{ labels(witness.chosen) }} entre sí. Si alguna
+          es {{ witness.red ? 'roja' : 'azul' }}, cierra un triángulo con {{ labels([pivot]) }}. Si ninguna lo es, las
+          tres tienen el otro color.</p>
+        <p *ngIf="step === 3"><strong>{{ labels(witness.triangle.vertices) }}</strong> forman un triángulo {{
+          witness.triangle.red ? 'rojo' : 'azul' }}. {{ witness.matching === undefined ? 'Ningún lado entre los tres
+          vecinos coincide con las aristas de partida: el triángulo aparece entre ellos.' : 'Un lado entre dos vecinos
+          coincide con las aristas de partida: el triángulo incluye el vértice inicial.' }}</p>
+      </div>
+      <div class="actions"><button (click)="step = step - 1" [disabled]="step === 0">Anterior</button><button
+          (click)="step = step + 1" [disabled]="step === 3">Siguiente</button></div>
+    </div>
+  </div>
+  <footer>
+    <p>Este testigo demuestra la existencia de un triángulo. Puede haber otros que no pasan por el vértice elegido.</p>
+  </footer>
+</section>

@@ -1,0 +1,77 @@
+<section class="lab" aria-label="Censo exhaustivo de coloraciones">
+  <header><span class="eyebrow">03 / VERIFICAR</span>
+    <h4>Todas las coloraciones, una a una</h4>
+    <p>Un bit por arista. Recorremos cada configuración exactamente una vez, sin muestreo aleatorio.</p>
+  </header>
+  <div class="controls"><label>Grafo <select [(ngModel)]="n" (ngModelChange)="reset()">
+        <option [ngValue]="5">K₅ · 1 024 coloraciones</option>
+        <option [ngValue]="6">K₆ · 32 768 coloraciones</option>
+      </select></label>
+    <div class="actions"><button (click)="start()" [disabled]="running || complete">{{ processed ? 'Continuar' :
+        'Enumerar todas' }}</button><button (click)="pause()" [disabled]="!running">Pausar</button><button
+        (click)="reset()">Reiniciar</button></div>
+    <label>Coloraciones examinadas: {{ processed | number }} / {{ total | number }}<progress [value]="processed"
+        [max]="total" aria-label="Progreso del censo"></progress></label>
+    <p role="status">{{ complete ? 'Censo completo: los resultados son exhaustivos.' : running ? 'Enumeración en curso.
+      Las frecuencias son parciales.' : processed ? 'Censo pausado: resultados parciales.' : 'Pulsa «Enumerar todas»
+      para iniciar el censo.' }}</p>
+  </div>
+  <div *ngIf="processed" class="metrics controls">
+    <div><small>Sin triángulos</small><strong>{{ counts[0] | number }}</strong></div>
+    <div><small>Mínimo {{ complete ? 'global' : 'observado' }}</small><strong>{{ minimum }}</strong></div>
+    <div><small>Media {{ complete ? 'global' : 'parcial' }}</small><strong>{{ mean | number:'1.2-2' }}</strong></div>
+  </div>
+  <div *ngIf="processed" class="chart-wrap"><svg class="chart" viewBox="0 0 660 290" role="img"
+      aria-label="Frecuencia de coloraciones según su número de triángulos monocromáticos">
+      <path class="axis" d="M60 30V230H620" /><text x="55" y="26">{{ maximum }}</text><text x="40" y="234">0</text>
+      <rect *ngFor="let b of bins" [attr.x]="b.x + 1" [attr.y]="b.y" [attr.width]="560 / counts.length - 2"
+        [attr.height]="b.height" class="bar">
+        <title>{{ b.count }} triángulos: {{ b.frequency }} coloraciones</title>
+      </rect>
+      <ng-container *ngFor="let b of bins"><text *ngIf="b.count % 2 === 0" [attr.x]="b.x + 280 / counts.length" y="252"
+          text-anchor="middle">{{ b.count }}</text></ng-container><text x="330" y="280" text-anchor="middle">Número de
+        triángulos monocromáticos</text>
+    </svg>
+    <p class="note">Altura: número de coloraciones. El eje vertical se adapta a la frecuencia máxima durante el censo.
+    </p>
+  </div>
+  <div *ngIf="processed" class="workspace">
+    <div class="readout">
+      <h5>Inspecciona un ejemplo</h5>
+      <p>Cada botón abre una coloración con ese número de triángulos.</p>
+      <div class="actions count-buttons"><ng-container *ngFor="let count of counts; let i = index"><button *ngIf="count"
+            (click)="select(i)" [attr.aria-pressed]="selected === i">{{ i }} triángulos · {{ count | number }}
+            casos</button></ng-container></div>
+      <p *ngIf="selected >= 0">Configuración #{{ selectedMask }}: {{ selected }} triángulos. Se resalta el primero, si
+        existe.</p>
+    </div>
+    <app-ramsey-graph *ngIf="selected >= 0" [n]="n" [mask]="selectedMask" [highlight]="firstTriangle?.edges ?? []"
+      [triangle]="firstTriangle?.vertices ?? []" />
+  </div>
+  <details *ngIf="processed">
+    <summary>Ver la tabla completa de frecuencias</summary>
+    <div class="table-wrap">
+      <table>
+        <caption>{{ complete ? 'Censo completo' : 'Censo parcial' }} de K{{ n }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Triángulos</th>
+            <th scope="col">Coloraciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let count of counts; let i = index">
+            <th scope="row">{{ i }}</th>
+            <td>{{ count | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+  <footer>
+    <p>Los vértices están etiquetados: rotaciones, permutaciones e intercambios de color se cuentan como configuraciones
+      distintas cuando cambian las aristas rojas. No se están contando clases de isomorfismo.</p>
+    <p>Para K₅ hay 12 coloraciones sin triángulos. Para K₆ no hay ninguna: el mínimo es 2 y la media es 5. Estos valores
+      son referencias para contrastar con el censo completo.</p>
+  </footer>
+</section>

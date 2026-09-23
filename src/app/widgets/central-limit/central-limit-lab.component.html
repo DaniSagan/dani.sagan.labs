@@ -1,0 +1,29 @@
+<section class="lab" aria-label="Laboratorio de medias muestrales">
+  <header><span class="eyebrow">01 / LABORATORIO DE MUESTREO</span><h4>De cualquier forma a una campana</h4><p>Cada repetición extrae n observaciones independientes y guarda su media.</p></header>
+  <div class="controls">
+    <label>Población <select [(ngModel)]="population" (ngModelChange)="reset()"><option *ngFor="let p of populations" [value]="p.value">{{ p.label }}</option></select></label>
+    <label>Tamaño de cada muestra: <output>{{ n }}</output><input type="range" min="1" max="200" step="1" [(ngModel)]="n" (ngModelChange)="reset()"></label>
+    <div class="actions"><button *ngFor="let size of [1, 2, 10, 30, 100, 200]" (click)="n = size; reset()" [attr.aria-pressed]="n === size">n = {{ size }}</button></div>
+    <label class="check"><input type="checkbox" [(ngModel)]="standardized" (ngModelChange)="draw()"> Estandarizar: Z = (media − μ) / (σ / √n)</label>
+    <div class="actions"><button (click)="toggle()" [disabled]="values.length >= 10000">{{ running ? 'Pausar' : 'Simular en directo' }}</button><button (click)="add()" [disabled]="values.length >= 10000">+500 medias</button><button (click)="reset()">Repetir semilla</button><button (click)="newSeed()">Nueva semilla</button></div>
+  </div>
+  <div class="metrics"><div><small>Repeticiones</small><strong>{{ values.length }}</strong></div><div><small>Media empírica / μ</small><strong>{{ mean | number:'1.3-3' }} / {{ theory.mean | number:'1.3-3' }}</strong></div><div><small>Desviación de medias / σ/√n</small><strong>{{ sd | number:'1.3-3' }} / {{ standardError | number:'1.3-3' }}</strong></div></div>
+  <figure><figcaption>Histograma de {{ standardized ? 'medias estandarizadas' : 'medias' }} · altura = densidad</figcaption>
+    <svg viewBox="0 0 660 270" role="img" aria-label="Histograma de medias frente a la densidad normal teórica">
+      <path class="axis" d="M50 30V220H610"/>
+      <text x="8" y="36">{{ maxDensity | number:'1.1-1' }}</text><text x="28" y="224">0</text>
+      <rect *ngFor="let b of bars" [attr.x]="b.x" [attr.y]="b.y" width="13" [attr.height]="b.height" class="bar"><title>{{ b.label }}</title></rect>
+      <path [attr.d]="normalPath" class="reference"/>
+      <text *ngFor="let t of ticks" [attr.x]="t.x" y="244" text-anchor="middle">{{ t.label }}</text>
+      <text x="330" y="264" text-anchor="middle">{{ standardized ? 'Z' : 'Media muestral' }}</text>
+    </svg><p class="legend">▰ Verde: simulación · ━ Dorado: normal teórica</p>
+  </figure>
+  <details><summary>Comparar las probabilidades acumuladas</summary>
+    <svg viewBox="0 0 660 270" role="img" aria-label="Función de distribución empírica y normal acumulada">
+      <path class="axis" d="M50 30V220H610"/><text x="25" y="35">1</text><text x="25" y="224">0</text>
+      <path [attr.d]="empiricalPath" class="empirical"/><path [attr.d]="cdfPath" class="reference"/>
+      <text *ngFor="let t of ticks" [attr.x]="t.x" y="244" text-anchor="middle">{{ t.label }}</text>
+    </svg><p>Distancia máxima entre la acumulada empírica y la normal: <strong>{{ distance | number:'1.4-4' }}</strong>. Incluye error de Monte Carlo; no es la distancia exacta a la ley teórica ni tiene por qué disminuir en cada simulación.</p>
+  </details>
+  <footer><p>Última muestra: {{ latestText }} → media {{ values[values.length - 1] | number:'1.3-3' }}.</p><p>Semilla {{ seed }} · {{ outside }} de {{ values.length }} medias fuera del encuadre de ±4 desviaciones. Se cuentan en las estadísticas; el histograma no renormaliza el área visible. Límite: 10 000 repeticiones.</p><p *ngIf="population === 'bimodal'">Mezcla equiprobable de U(−2,5; −1,5) y U(1,5; 2,5): μ = 0 y σ² = 49/12.</p></footer>
+</section>

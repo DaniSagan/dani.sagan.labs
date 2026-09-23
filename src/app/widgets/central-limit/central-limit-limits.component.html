@@ -1,0 +1,53 @@
+<section class="lab" aria-label="Experimento sobre las hipótesis del teorema">
+  <header><span class="eyebrow">02 / PON A PRUEBA LAS HIPÓTESIS</span>
+    <h4>¿Promediar siempre concentra?</h4>
+    <p>Intervalo central del 80 % de las medias de 2 000 muestras. Cada fila usa el mismo eje horizontal.</p>
+  </header>
+  <div class="controls"><label>Modelo <select [(ngModel)]="model" (ngModelChange)="compute()">
+        <option value="independent">Uniformes independientes</option>
+        <option value="dependent">Uniformes idénticas dentro de cada muestra</option>
+        <option value="cauchy">Cauchy independientes</option>
+      </select></label><button (click)="seed = seed + 1; compute()">Repetir con otra semilla</button></div>
+  <figure><svg viewBox="0 0 660 300" role="img"
+      aria-label="Intervalos entre los percentiles 10 y 90 de las medias para distintos tamaños de muestra">
+      <path class="axis" d="M90 20V250H610" />
+      <g *ngFor="let row of rows; let i = index"><text x="12" [attr.y]="49 + i * 42">n={{ row.n }}</text>
+        <line [attr.x1]="x(row.lo)" [attr.x2]="x(row.hi)" [attr.y1]="44 + i * 42" [attr.y2]="44 + i * 42"
+          stroke="#83d5bf" stroke-width="8" />
+        <circle [attr.cx]="x(row.median)" [attr.cy]="44 + i * 42" r="5" fill="#f3cd82" />
+      </g>
+      <text *ngFor="let tick of [-4, -2, 0, 2, 4]" [attr.x]="x(tick)" y="274" text-anchor="middle">{{ tick
+        }}</text><text x="350" y="295" text-anchor="middle">Media de la muestra</text>
+    </svg>
+    <p class="legend">━ Verde: percentiles 10–90 · ● Dorado: mediana · eje fijo [−4, 4]</p>
+  </figure>
+  <div class="table-wrap">
+    <table>
+      <caption>Anchura empírica del intervalo central del 80 %</caption>
+      <thead>
+        <tr>
+          <th scope="col">n</th>
+          <th scope="col">P90 − P10</th>
+          <th scope="col">Referencia teórica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <th scope="row">{{ row.n }}</th>
+          <td>{{ row.width | number:'1.3-3' }}</td>
+          <td>{{ row.reference | number:'1.3-3' }}{{ model === 'independent' ? ' (normal aprox.)' : '' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer>
+    <p *ngIf="model === 'independent'">U(−1, 1): media 0 y varianza 1/3. La anchura se reduce aproximadamente como 1/√n;
+      la referencia normal es asintótica y es poco precisa para n = 1.</p>
+    <p *ngIf="model === 'dependent'">En cada muestra se genera un único U(−1, 1) y se repite n veces. La media es ese
+      mismo valor: no hay concentración. La anchura teórica es 1,6 para cualquier n.</p>
+    <p *ngIf="model === 'cauchy'">La media de n Cauchy estándar independientes sigue siendo Cauchy estándar. Su
+      esperanza y su varianza no existen. La anchura teórica es 2 tan(0,4π) ≈ 6,155 para todo n.</p>
+    <p>Semilla {{ seed }}. Los intervalos usan todas las medias, incluidas las colas. Los extremos dibujados se recortan
+      al eje si salen de [−4, 4]; la tabla conserva la anchura completa.</p>
+  </footer>
+</section>

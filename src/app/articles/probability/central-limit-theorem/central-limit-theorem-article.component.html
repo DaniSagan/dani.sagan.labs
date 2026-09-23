@@ -1,0 +1,54 @@
+<h2>El teorema central del límite</h2>
+<p class="dropcap">Un tiempo de espera puede tener una larga cola hacia la derecha. Una moneda solo produce dos resultados. Una población puede incluso dividirse en dos grupos separados. Sin embargo, al sumar muchas contribuciones independientes, aparece una forma común: la campana de Gauss. El teorema central del límite explica esa regularidad y precisa qué hay que centrar, cómo hay que escalar y bajo qué condiciones funciona.</p>
+<aside class="theorem"><span class="section-label">EL TEOREMA · VERSIÓN I.I.D.</span>
+  <p>Sean X₁, X₂, … variables aleatorias independientes e idénticamente distribuidas, con media μ y varianza finita σ² &gt; 0. Entonces:</p>
+  <app-formula expression="\bar X_n=\frac{1}{n}\sum_{i=1}^n X_i,\qquad Z_n=\frac{\sqrt n(\bar X_n-\mu)}{\sigma}=\frac{\sum_{i=1}^n X_i-n\mu}{\sigma\sqrt n}\xrightarrow{d}\mathcal N(0,1)" />
+  <p>La flecha indica convergencia en distribución: para cada umbral real z, P(Zₙ ≤ z) tiende a Φ(z), la probabilidad acumulada de una normal estándar.</p>
+</aside>
+
+<h3>1. La campana pertenece a las medias</h3>
+<p>Imagina que tomas diez tiempos de espera y calculas su media. Repites el procedimiento mil veces con nuevas observaciones. Obtienes mil medias: su histograma es distinto del histograma de los tiempos originales. El teorema describe la distribución de esas medias después de estandarizarlas. No transforma los datos originales en datos normales.</p>
+<p>En el laboratorio, n controla cuántas observaciones hay en cada muestra. El número de repeticiones controla cuántas medias se dibujan. Aumentar las repeticiones reduce el ruido de la simulación; aumentar n cambia la distribución que estamos estudiando. Prueba n = 1 para ver la población de partida.</p>
+<app-central-limit-lab />
+<aside class="experiment"><h4>Tres experimentos para mirar con atención</h4><p>Empieza con la exponencial y compara n = 1, 10 y 100. Después elige la población de dos grupos y observa cómo se mezclan sus picos. Por último, prueba Bernoulli con p = 0,05: incluso con n = 30, los éxitos son escasos y la distribución sigue siendo discreta y asimétrica. No existe un «n = 30» universal.</p></aside>
+
+<h3>2. Por qué aparece la raíz cuadrada</h3>
+<p>La independencia hace que las varianzas se sumen. Al dividir una variable por n, su varianza se divide por n². Por ello, las identidades siguientes son exactas para cualquier n bajo las hipótesis del teorema:</p>
+<app-formula expression="\mathbb E[\bar X_n]=\mu,\qquad \operatorname{Var}(\bar X_n)=\frac{\sigma^2}{n},\qquad \operatorname{sd}(\bar X_n)=\frac{\sigma}{\sqrt n}" />
+<p>La cantidad σ/√n es el error estándar de la media. Cuadruplicar el tamaño de muestra divide por dos esta escala de fluctuación. En el laboratorio, desactiva «Estandarizar» para ver cómo se estrecha el histograma; actívalo para comparar su forma con una normal de media cero y varianza uno.</p>
+<p>La ley de los grandes números y el teorema central del límite responden a preguntas distintas. La primera describe la concentración de la media alrededor de μ. El segundo amplía sus fluctuaciones por un factor √n y describe su forma límite.</p>
+
+<h3>3. De dónde sale la normal</h3>
+<p>Una explicación breve usa funciones características. Para Y = (X − μ)/σ, la función φ(t) = E[eⁱᵗʸ] tiene, gracias a la media cero y la varianza uno, la expansión φ(t) = 1 − t²/2 + o(t²) cerca del origen. La independencia convierte la función característica de una suma en un producto:</p>
+<app-formula expression="\varphi_{Z_n}(t)=\left[\varphi_Y\!\left(\frac{t}{\sqrt n}\right)\right]^n=\left[1-\frac{t^2}{2n}+o\!\left(\frac1n\right)\right]^n\longrightarrow e^{-t^2/2}" />
+<p>La última expresión es la función característica de una normal estándar. El teorema de continuidad de Lévy permite concluir la convergencia en distribución. Este argumento muestra por qué, tras centrar y escalar, sobreviven los dos primeros momentos y desaparecen muchos detalles de la población.</p>
+
+<h3>4. Las hipótesis importan</h3>
+<p>Si todas las observaciones de una muestra son copias del mismo valor aleatorio, promediarlas no añade información. Y si la población tiene colas suficientemente pesadas, puede que ni siquiera exista una varianza finita. La distribución de Cauchy ofrece un contraejemplo especialmente claro: el promedio de variables Cauchy estándar independientes vuelve a ser Cauchy estándar.</p>
+<app-central-limit-limits />
+<p>El teorema clásico no se puede aplicar a esos dos contraejemplos. Existen otras versiones para variables no idénticas o con ciertas formas de dependencia, pero requieren condiciones adicionales y, a veces, otra normalización. La sola palabra «promedio» no garantiza una campana.</p>
+
+<h3>5. ¿A qué velocidad nos acercamos?</h3>
+<p>El teorema garantiza un límite, no una precisión concreta para una muestra dada. Cuando además existe el tercer momento absoluto centrado ρ = E[|X − μ|³], el teorema de Berry–Esseen proporciona una cota con una constante universal C:</p>
+<app-formula expression="\sup_{z\in\mathbb R}\left|\mathbb P(Z_n\le z)-\Phi(z)\right|\le\frac{C\rho}{\sigma^3\sqrt n}" />
+<p>La razón ρ/σ³ explica por qué no basta con mirar n. Una distribución con valores extremos poco frecuentes puede exigir muchas más observaciones. Si ese tercer momento es infinito, esta cota no se aplica, aunque el teorema central del límite todavía puede ser válido si la varianza es finita. Además, un error absoluto pequeño en la acumulada puede representar un error relativo enorme para un suceso muy raro.</p>
+<p>La distancia del primer laboratorio compara una distribución empírica con la normal. También contiene ruido de simulación: no debe interpretarse como una comprobación numérica de la cota de Berry–Esseen.</p>
+
+<h3>6. Una aplicación: contar éxitos</h3>
+<p>La suma de n variables Bernoulli independientes con probabilidad de éxito p es una binomial. Su media es np y su varianza np(1−p). Es la misma estructura que aparece en el <a routerLink="/articles/galton-board">tablero de Galton</a>: muchas decisiones de dos posibles resultados producen un recuento.</p>
+<app-formula expression="K\sim\operatorname{Bin}(n,p),\qquad \mathbb P(K\le k)\approx\Phi\!\left(\frac{k+\tfrac12-np}{\sqrt{np(1-p)}}\right)" />
+<p>¿Por qué sumar medio punto? Cada masa situada en un entero k se representa por una celda que llega hasta k + ½. Esa corrección de continuidad ajusta la frontera al sustituir una distribución discreta por una curva continua.</p>
+<app-central-limit-binomial />
+<aside class="experiment"><h4>Busca los límites de la aproximación</h4><p>Compara la corrección activada y desactivada cerca de k = np. Después reduce p a 0,01 y desplaza k hacia una cola. Tener muchos ensayos no basta si el número esperado de éxitos sigue siendo pequeño.</p></aside>
+
+<h3>7. De una distribución a una estimación</h3>
+<p>Si σ es conocida y la aproximación normal es adecuada, la media cae aproximadamente el 95 % de las veces a menos de 1,96 errores estándar de μ. Invirtiendo esa relación se obtiene el intervalo aproximado:</p>
+<app-formula expression="\left[\bar X_n-1{,}96\frac{\sigma}{\sqrt n},\;\bar X_n+1{,}96\frac{\sigma}{\sqrt n}\right]" />
+<p>El 95 % describe la cobertura del procedimiento al repetir el muestreo: el intervalo cambia, el parámetro μ permanece fijo. Cuando σ se desconoce, sustituirla por la desviación muestral requiere justificar la aproximación; para observaciones normales, el intervalo con la distribución t de Student da la cobertura exacta correspondiente. Dependencia, sesgo de selección y colas extremas no desaparecen por aumentar el número de repeticiones de una simulación.</p>
+
+<h3>Referencias y lecturas</h3>
+<ul class="references">
+  <li><a href="https://www.statlect.com/asymptotic-theory/central-limit-theorem" target="_blank" rel="noopener noreferrer">Marco Taboga, StatLect: Central Limit Theorem</a>. Enunciado y argumento con funciones características.</li>
+  <li><a href="https://online.stat.psu.edu/stat414/Lesson28" target="_blank" rel="noopener noreferrer">Penn State, STAT 414: Approximations for Discrete Distributions</a>. Aproximación binomial y corrección de continuidad.</li>
+  <li><a href="https://www.math.uci.edu/~rvershyn/papers/berry-esseen.pdf" target="_blank" rel="noopener noreferrer">Roman Vershynin: A Friendly Proof of the Berry–Esseen Theorem</a>. Una cota cuantitativa para la aproximación normal.</li>
+</ul>

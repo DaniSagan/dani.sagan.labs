@@ -4,9 +4,11 @@ import { BirthdayParadoxArticleComponent } from './birthday-paradox/birthday-par
 import { BuffonNeedleArticleComponent } from './buffon-needle/buffon-needle-article.component';
 import { MontyHallArticleComponent } from './monty-hall/monty-hall-article.component';
 import { PercolationDiagramComponent } from './percolation-diagram/percolation-diagram.component';
+import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/central-limit-theorem-article.component';
 
 export const PROBABILITY_ARTICLES = [
   GaltonBoardArticleComponent,
+  CentralLimitTheoremArticleComponent,
   BayesTheoremArticleComponent,
   BirthdayParadoxArticleComponent,
   BuffonNeedleArticleComponent,

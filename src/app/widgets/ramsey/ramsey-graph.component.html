@@ -1,0 +1,30 @@
+<svg viewBox="0 0 500 460" role="group"
+  [attr.aria-label]="'Grafo completo de ' + n + ' vértices. Rojo continuo y azul discontinuo.'">
+  <polygon *ngIf="polygon" [attr.points]="polygon" class="triangle" />
+  <g *ngFor="let e of edges; let i = index" [class.dim]="highlight.length > 0 && !highlight.includes(i)">
+    <line [attr.x1]="nodes[e.a].x" [attr.y1]="nodes[e.a].y" [attr.x2]="nodes[e.b].x" [attr.y2]="nodes[e.b].y"
+      [attr.stroke]="red(i) ? '#ff8f98' : '#80c9ff'" [attr.stroke-dasharray]="red(i) ? null : '9 6'"
+      [attr.stroke-width]="highlight.includes(i) ? 6 : 3" class="edge" />
+    <line [attr.x1]="nodes[e.a].x" [attr.y1]="nodes[e.a].y" [attr.x2]="nodes[e.b].x" [attr.y2]="nodes[e.b].y"
+      class="hit" [class.editable]="editable" [attr.role]="editable ? 'button' : null"
+      [attr.tabindex]="editable ? 0 : null" [attr.aria-label]="edgeLabel(i) + (editable ? '. Cambiar color' : '')"
+      (click)="toggle(i)" (keydown.enter)="toggle(i)" (keydown.space)="$event.preventDefault(); toggle(i)">
+      <title>{{ edgeLabel(i) }}</title>
+    </line>
+  </g>
+  <g *ngFor="let node of nodes; let i = index" [attr.transform]="'translate(' + node.x + ',' + node.y + ')'"
+    [class.selectable]="selectable" [attr.role]="selectable ? 'button' : null" [attr.tabindex]="selectable ? 0 : null"
+    [attr.aria-label]="'Vértice ' + node.label + (selectable ? ': usar como origen' : '')"
+    (click)="selectable && vertexSelect.emit(i)" (keydown.enter)="selectable && vertexSelect.emit(i)"
+    (keydown.space)="$event.preventDefault(); selectable && vertexSelect.emit(i)">
+    <circle r="22" [class.pivot]="pivot === i" /><text text-anchor="middle" dy="6">{{ node.label }}</text>
+  </g>
+</svg>
+<p class="legend"><span>━ Roja</span><span>┄ Azul</span><span *ngIf="triangle.length">△ Triángulo seleccionado</span>
+</p>
+<details *ngIf="editable">
+  <summary>Editar por parejas (sin cruces)</summary>
+  <div class="pairs"><button *ngFor="let edge of edges; let i = index" (click)="toggle(i)"
+      [attr.aria-label]="edgeLabel(i) + '. Cambiar color'" [class.red]="red(i)">{{ nodes[edge.a].label }}–{{
+      nodes[edge.b].label }} · {{ red(i) ? 'R' : 'A' }}</button></div>
+</details>

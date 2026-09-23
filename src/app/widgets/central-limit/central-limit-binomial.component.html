@@ -1,0 +1,43 @@
+<section class="lab" aria-label="Calculadora de aproximación normal de la binomial">
+  <header><span class="eyebrow">03 / DE LO DISCRETO A LO CONTINUO</span>
+    <h4>¿Cuánto mejora medio paso?</h4>
+    <p>Compara P(K ≤ k), con K binomial, y su aproximación normal.</p>
+  </header>
+  <div class="controls">
+    <label>Ensayos n = <output>{{ n }}</output><input type="range" min="5" max="200" step="1" [(ngModel)]="n"
+        (ngModelChange)="update()"></label>
+    <label>Probabilidad p = <output>{{ p | number:'1.2-2' }}</output><input type="range" min="0.01" max="0.99"
+        step="0.01" [(ngModel)]="p" (ngModelChange)="update()"></label>
+    <label>Umbral k = <output>{{ k }}</output><input type="range" min="0" [max]="n" step="1" [(ngModel)]="k"
+        (ngModelChange)="update()"></label>
+    <label class="check"><input type="checkbox" [(ngModel)]="corrected" (ngModelChange)="update()"> Aplicar corrección
+      de continuidad (+0,5)</label>
+    <p class="notice" *ngIf="n * p < 5 || n * (1 - p) < 5">np o n(1−p) es menor que 5: espera una aproximación pobre,
+      especialmente en las colas.</p>
+  </div>
+  <figure>
+    <figcaption>Probabilidades acumuladas · eje horizontal: número de éxitos k</figcaption><svg viewBox="0 0 660 270"
+      role="img" aria-label="Probabilidad binomial acumulada frente a la aproximación normal">
+      <path class="axis" d="M50 30V220H610" /><text x="25" y="35">1</text><text x="25" y="224">0</text>
+      <path [attr.d]="exactPath" class="empirical" />
+      <path [attr.d]="normalPath" class="reference" />
+      <line [attr.x1]="50 + 560 * k / n" [attr.x2]="50 + 560 * k / n" y1="30" y2="220" stroke="#cad7e8"
+        stroke-dasharray="3 4" />
+      <text x="50" y="245">0</text><text x="330" y="245" text-anchor="middle">{{ n / 2 }}</text><text x="610" y="245"
+        text-anchor="end">{{ n }}</text>
+    </svg>
+    <p class="legend">━ Verde: binomial exacta · ┄ Dorado: normal {{ corrected ? 'con' : 'sin' }} corrección</p>
+  </figure>
+  <div class="metrics">
+    <div><small>P(K ≤ {{ k }}) exacta</small><strong>{{ exact | number:'1.6-6' }}</strong></div>
+    <div><small>Aproximación normal</small><strong>{{ approximation | number:'1.6-6' }}</strong></div>
+    <div><small>Error absoluto</small><strong>{{ error | number:'1.6-6' }}</strong></div>
+  </div>
+  <footer>
+    <p>μ = np = {{ n * p | number:'1.2-2' }} · σ = √(np(1−p)) = {{ sigma | number:'1.3-3' }}. Se evalúa Φ((k{{ corrected
+      ? ' + 0,5' : '' }} − np) / σ).</p>
+    <p>La curva verde suma las masas binomiales, sin simulación. La corrección suele mejorar la aproximación, pero no
+      garantiza menor error para todo n, p y k. «Exacta» se refiere al modelo binomial, calculado con precisión de coma
+      flotante.</p>
+  </footer>
+</section>

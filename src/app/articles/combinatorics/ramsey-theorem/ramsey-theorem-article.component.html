@@ -1,0 +1,109 @@
+<h2>El teorema de Ramsey: R(3,3) = 6</h2>
+<p class="dropcap">En una reunión de seis personas siempre hay tres que se conocen entre sí o tres que son mutuamente
+  desconocidas. No hace falta saber quién ha invitado a quién ni confiar en el azar. Basta con que, para cada pareja,
+  «conocerse» sea una relación recíproca con dos posibilidades: sí o no. Con cinco personas, en cambio, podemos evitar
+  ambos grupos. Ese umbral exacto se escribe R(3,3) = 6.</p>
+<aside class="theorem"><span class="section-label">EL ORDEN INEVITABLE</span>
+  <p>En cualquier coloración roja y azul de las aristas del grafo completo K₆ aparece un triángulo monocromático. Existe
+    una coloración de K₅ sin ninguno.</p><app-formula expression="\boxed{R(3,3)=6}" displayMode="block" />
+</aside>
+
+<h3>1. De una reunión a un grafo</h3>
+<p>Representamos cada persona por un vértice y cada pareja por una arista. Rojo significa que se conocen; azul, que no.
+  El grafo es <strong>completo</strong> porque todas las parejas tienen una arista, no porque todas sean rojas. El
+  símbolo Kₙ designa el grafo completo de n vértices.</p>
+<app-formula expression="|E(K_n)|=\binom n2=\frac{n(n-1)}2,\qquad |E(K_5)|=10,\qquad |E(K_6)|=15" displayMode="block" />
+<p>Tres vértices forman un triángulo monocromático cuando las tres aristas que los unen tienen el mismo color. Dos
+  relaciones del mismo color no bastan: que A conozca a B y a C no implica que B y C se conozcan. Tampoco importan las
+  longitudes o los cruces del dibujo; solo cuentan los extremos y el color de cada arista.</p>
+<app-ramsey-explorer />
+<aside class="experiment">
+  <h4>El reto de las quince aristas</h4>
+  <p>Empieza con el pentágono sin triángulos. Añade un sexto vértice y cambia sus conexiones intentando mantener el
+    contador a cero. Después abre las 32 extensiones del pentágono: modificar las cinco nuevas aristas no permite
+    escapar. El siguiente argumento explica por qué tampoco sirve rediseñar el resto del grafo.</p>
+</aside>
+
+<h3>2. Por qué seis siempre bastan</h3>
+<p>Elige cualquier vértice A. De él salen cinco aristas. El principio del palomar garantiza que al menos tres tienen el
+  mismo color: si cada color apareciera como máximo dos veces, solo habría cuatro aristas. Llamemos B, C y D a tres
+  vecinos conectados con A por el color mayoritario.</p>
+<app-formula expression="\left\lceil\frac52\right\rceil=3" displayMode="block" />
+<p>Supongamos que AB, AC y AD son rojas. Solo quedan dos casos. Si alguna de BC, BD o CD es roja, esa arista y las dos
+  conexiones correspondientes con A forman un triángulo rojo. Si ninguna es roja, las tres son azules y BCD es un
+  triángulo azul. Cuando el color mayoritario es azul, intercambiamos los nombres de los colores y el razonamiento es
+  idéntico.</p>
+<app-ramsey-proof />
+<p>Hemos probado que <strong>R(3,3) ≤ 6</strong>. No hemos supuesto que las coloraciones sean aleatorias ni
+  equilibradas. Tampoco hemos tenido que examinarlas una por una: los dos casos cubren todas las posibilidades. El
+  triángulo garantizado puede no contener el vértice desde el que empezamos.</p>
+
+<h3>3. Por qué cinco no bastan</h3>
+<p>Coloca cinco vértices en un pentágono. Pinta de rojo sus cinco lados y de azul las cinco diagonales. Las aristas
+  rojas forman un ciclo de longitud cinco, sin triángulos. Las azules también forman un ciclo de longitud cinco,
+  dibujado como una estrella, y tampoco contienen un triángulo.</p>
+<p>La estrella puede engañar al ojo: sus cruces interiores no son vértices. Para comprobar la ausencia de un triángulo
+  hay que elegir tres de los cinco vértices originales y mirar las tres aristas entre ellos.</p>
+<app-formula expression="R(3,3)>5\quad\text{y}\quad R(3,3)\le6\quad\Longrightarrow\quad R(3,3)=6" displayMode="block" />
+<p>Esta separación entre <strong>construir un contraejemplo</strong> y <strong>demostrar que a partir de cierto tamaño
+    es imposible</strong> es esencial. El pentágono prueba la cota inferior; el principio del palomar prueba la
+  superior. Una sola coloración de K₆ con triángulos no demostraría la afirmación universal.</p>
+
+<h3>4. Una sorpresa: hay al menos dos</h3>
+<p>La prueba anterior encuentra un triángulo, pero K₆ siempre contiene al menos dos monocromáticos. Podemos verlo
+  contando de otra manera. Sea rᵥ el número de aristas rojas que salen del vértice v y bᵥ el de azules. En v hay rᵥbᵥ
+  parejas de aristas de distinto color.</p>
+<p>Cada triángulo no monocromático aporta exactamente dos de esas parejas: dos de sus vértices tocan una arista de cada
+  color y el tercero toca dos del mismo color. Un triángulo monocromático no aporta ninguna. Si T es el número de
+  triángulos monocromáticos, obtenemos la identidad:</p>
+<app-formula expression="T=\binom n3-\frac12\sum_v r_vb_v" displayMode="block" />
+<p>En K₆, rᵥ + bᵥ = 5. El producto de dos enteros no negativos que suman cinco es como máximo seis, alcanzado por 2 y 3.
+  Como hay veinte ternas de vértices:</p>
+<app-formula expression="T\ge\binom63-\frac12\cdot6\cdot6=20-18=2" displayMode="block" />
+<p>La cota se alcanza. Divide los seis vértices en dos grupos de tres; pinta de rojo las aristas dentro de cada grupo y
+  de azul las que unen grupos distintos. Hay exactamente dos triángulos rojos y ninguno azul, porque las aristas azules
+  forman un grafo bipartito. El botón «K₆ con solo dos» muestra esta construcción.</p>
+
+<h3>5. Verificar todas las posibilidades</h3>
+<p>Cada una de las quince aristas de K₆ admite dos colores. Por tanto, hay 2¹⁵ = 32 768 coloraciones de sus vértices
+  etiquetados. Es un espacio pequeño para un ordenador: podemos enumerarlo entero y contar los triángulos de cada caso.
+</p>
+<app-ramsey-census />
+<p>El censo de K₅ encuentra doce coloraciones sin triángulos. Podemos explicar ese número: en una coloración sin
+  triángulos ningún vértice puede tener tres vecinos unidos a él por el mismo color, pues el argumento de los tres
+  vecinos forzaría un triángulo. Como cada vértice tiene grado cuatro, debe tener exactamente dos aristas rojas y dos
+  azules.</p>
+<p>El grafo rojo es entonces una unión de ciclos; con cinco vértices, sin lazos ni aristas múltiples y sin triángulos,
+  solo puede ser un ciclo de longitud cinco. Hay (5−1)!/2 = 12 ciclos distintos en cinco vértices etiquetados. El azul
+  queda determinado como su complemento. No hay que volver a multiplicar por dos: el ciclo complementario ya aparece
+  entre esos doce.</p>
+<p>También podemos anticipar la media del censo. Si cada arista se pinta de forma independiente con ambos colores
+  equiprobables, un triángulo tiene ocho coloraciones posibles y dos son monocromáticas. La probabilidad es 1/4. Por
+  linealidad de la esperanza:</p>
+<app-formula expression="\mathbb E[T]=\binom n3\frac14,\qquad \mathbb E[T\mid n=6]=5" displayMode="block" />
+<p>No hace falta que los indicadores de los distintos triángulos sean independientes para sumar sus esperanzas. La media
+  cinco tampoco significa que toda coloración tenga cinco triángulos: el mínimo es dos y el máximo veinte. La
+  enumeración confirma estos hechos para K₆; la demostración explica su necesidad.</p>
+
+<h3>6. Más allá de los triángulos</h3>
+<p>En general, R(s,t) es el menor n para el que toda coloración roja y azul de Kₙ contiene un Kₛ rojo o un Kₜ azul. Un
+  Kₛ monocromático exige que <em>todas</em> las parejas de sus s vértices compartan color. Intercambiar rojo y azul
+  muestra que R(s,t) = R(t,s).</p>
+<p>El mismo argumento alrededor de un vértice permite construir una cota recursiva para s,t ≥ 3:</p>
+<app-formula expression="R(s,t)\le R(s-1,t)+R(s,t-1),\qquad R(2,t)=t" displayMode="block" />
+<p>Si hay al menos R(s−1,t) vecinos rojos, entre ellos aparece un Kₜ azul o un Kₛ₋₁ rojo que se completa con el vértice
+  inicial. Si no hay tantos vecinos rojos, quedan al menos R(s,t−1) vecinos azules y se aplica el argumento simétrico.
+  Para s = t = 3, la cota da 3 + 3 = 6.</p>
+<p>La recurrencia garantiza una cota, no siempre el valor exacto. La dificultad de los números de Ramsey consiste en
+  acercar las construcciones que evitan patrones y los argumentos que los hacen inevitables. En R(3,3), un pentágono y
+  cinco aristas alrededor de un vértice bastan para cerrar esa distancia.</p>
+
+<h3>Referencias</h3>
+<ul class="references">
+  <li><a href="https://opentext.uleth.ca/Combinatorics/sect_colouring-Ramsey.html" target="_blank"
+      rel="noopener noreferrer">Joy Morris, Combinatorics: Ramsey Theory</a>. Definición de los números de Ramsey y el
+    caso R(3,3).</li>
+  <li><a href="https://www.cs.umd.edu/~gasarch/RAMSEYMULT/main.pdf" target="_blank" rel="noopener noreferrer">A
+      Pedagogical Approach to Ramsey Multiplicity</a>. Conteo de triángulos monocromáticos y multiplicidad de Ramsey.
+  </li>
+</ul>

@@ -1,0 +1,44 @@
+<section class="lab" aria-label="Editor de coloraciones de Ramsey">
+  <header><span class="eyebrow">01 / EXPLORAR</span>
+    <h4>Intenta escapar del triángulo</h4>
+    <p>Cambia el color de cualquier arista. Un triángulo cuenta cuando sus tres lados tienen el mismo color.</p>
+  </header>
+  <div class="controls">
+    <div class="actions"><button (click)="setSize(5)" [attr.aria-pressed]="n === 5">5 vértices</button><button
+        (click)="setSize(6)" [attr.aria-pressed]="n === 6">6 vértices</button><button
+        (click)="preset('pentagon')">Pentágono sin triángulos</button><button (click)="preset('minimum')">K₆ con solo
+        dos</button><button (click)="preset('random')">Al azar</button><button (click)="invert()">Intercambiar
+        colores</button><button (click)="preset('red')">Todo rojo</button></div>
+  </div>
+  <div class="workspace"><app-ramsey-graph [n]="n" [mask]="mask" [editable]="true"
+      [highlight]="selectedTriangle?.edges ?? []" [triangle]="selectedTriangle?.vertices ?? []"
+      (edgeToggle)="toggle($event)" />
+    <div class="readout">
+      <div class="metrics">
+        <div><small>Rojos</small><strong>{{ redCount }}</strong></div>
+        <div><small>Azules</small><strong>{{ triangles.length - redCount }}</strong></div>
+        <div><small>Total</small><strong>{{ triangles.length }}</strong></div>
+      </div>
+      <p role="status">{{ triangles.length === 0 ? '¡Ningún triángulo monocromático! Esta coloración demuestra que cinco
+        vértices no bastan.' : 'Hay ' + triangles.length + ' triángulos monocromáticos. Selecciona uno para
+        localizarlo.' }}</p>
+      <div class="actions"><button *ngFor="let t of triangles; let i = index"
+          (click)="selected = selected === i ? -1 : i" [attr.aria-pressed]="selected === i">{{ labels(t.vertices) }} ·
+          {{ t.red ? 'rojo' : 'azul' }}</button></div>
+      <p class="note">Los cruces de líneas no son vértices. Usa «Editar por parejas» si un cruce dificulta seleccionar
+        una arista.</p>
+    </div>
+  </div>
+  <details>
+    <summary>Añadir una sexta persona al pentágono: las 32 posibilidades</summary>
+    <p>Este control restaura el pentágono original y solo cambia las cinco aristas hacia F. Ninguna de sus 2⁵
+      extensiones escapa del teorema.</p><label>Extensión {{ extension + 1 }} de 32 <input type="range" min="0" max="31"
+        step="1" [(ngModel)]="extension" (ngModelChange)="extend()"></label><button (click)="extend()">Aplicar esta
+      extensión</button>
+  </details>
+  <footer>
+    <p>Comprobación por doble conteo: T = {{ totalTriangles }} − {{ wedgeSum }}/2 = <strong>{{ triangles.length
+        }}</strong>. T es el número total de triángulos monocromáticos; la suma cuenta parejas de aristas de distinto
+      color que comparten vértice.</p>
+  </footer>
+</section>

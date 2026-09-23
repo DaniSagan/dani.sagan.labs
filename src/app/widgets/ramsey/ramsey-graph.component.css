@@ -1,0 +1,103 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+svg {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  margin: auto;
+  height: auto;
+}
+.edge,
+.triangle {
+  pointer-events: none;
+}
+.triangle {
+  fill: #f4d28a;
+  fill-opacity: 0.14;
+  stroke: #f4d28a;
+  stroke-width: 1;
+}
+.dim {
+  opacity: 0.17;
+}
+.hit {
+  stroke: transparent;
+  stroke-width: 18;
+  pointer-events: stroke;
+}
+.editable,
+.selectable {
+  cursor: pointer;
+}
+.hit:focus-visible {
+  stroke: #f4d28a;
+  stroke-opacity: 0.5;
+  outline: none;
+}
+circle {
+  fill: #192c40;
+  stroke: #b7c8dc;
+  stroke-width: 2;
+}
+circle.pivot {
+  fill: #5a4826;
+  stroke: #f4d28a;
+  stroke-width: 3;
+}
+text {
+  fill: #eef5ff;
+  font: 600 18px system-ui;
+  pointer-events: none;
+}
+g:focus-visible {
+  outline: none;
+}
+g:focus-visible circle {
+  stroke: #f4d28a;
+  stroke-width: 5;
+}
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font: 12px system-ui;
+  color: #c9d7e6;
+}
+details {
+  padding: 12px 16px;
+  color: #c9d7e6;
+}
+summary {
+  cursor: pointer;
+  min-height: 32px;
+}
+.pairs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 0;
+}
+button {
+  padding: 8px 12px;
+  min-height: 44px;
+  border: 1px solid #80c9ff;
+  border-radius: 6px;
+  background: #142333;
+  color: #80c9ff;
+  cursor: pointer;
+}
+button.red {
+  border-color: #ff8f98;
+  color: #ff8f98;
+}
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #f4d28a;
+  outline-offset: 3px;
+}
+:host .dim:focus-within {
+  opacity: 1;
+}
