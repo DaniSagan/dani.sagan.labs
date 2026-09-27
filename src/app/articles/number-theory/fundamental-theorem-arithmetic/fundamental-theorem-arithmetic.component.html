@@ -3,6 +3,7 @@
 <app-formula expression="n=p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}"></app-formula>
 <p>Euclides conocía proposiciones muy próximas, aunque la formulación moderna se asocia a Gauss y a sus <em>Disquisitiones Arithmeticae</em> de 1801. El adjetivo “fundamental” está justificado: divisibilidad, máximo común divisor, funciones aritméticas y buena parte de la teoría elemental se apoyan en esta representación canónica.</p>
 <h3>Primero, la existencia</h3>
+<p>Una aplicación de la factorización es decidir qué divisores admiten reglas basadas solo en las últimas cifras y cómo combinar pruebas: puedes explorarlo en <a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a>.</p>
 <p>Sea n&gt;1. Si es primo, ya hemos terminado. Si no, se descompone como n=ab con 1&lt;a,b&lt;n. Cada factor que no sea primo vuelve a descomponerse. El proceso no puede continuar indefinidamente, pues produce enteros positivos cada vez menores. Al final todos los factores son primos.</p>
 <h3>Después, la parte difícil: la unicidad</h3>
 <p>Supongamos que un número admite dos productos de primos. El primer primo de una lista divide el producto completo de la otra. Por el lema de Euclides debe dividir uno de sus factores; al ser ambos primos, son iguales. Los cancelamos y repetimos. Todos los factores quedan emparejados, salvo posiblemente por su orden.</p>

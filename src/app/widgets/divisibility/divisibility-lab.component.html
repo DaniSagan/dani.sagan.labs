@@ -1,0 +1,68 @@
+<div class="widget" aria-labelledby="divisibility-lab-title">
+  <span class="eyebrow">LABORATORIO · TRANSFORMAR SIN PERDER LA RESPUESTA</span>
+  <h3 id="divisibility-lab-title">Una cifra, un bloque, un número más pequeño</h3>
+  <div class="presets" aria-label="Ejemplos de criterios">
+    <button type="button" (click)="preset('918082', 11)">918082 y 11</button>
+    <button type="button" (click)="preset('1001', 7)">Iterar con 7</button>
+    <button type="button" (click)="preset('1001', 13)">Iterar con 13</button>
+    <button type="button" (click)="preset('15', 6)">Una condición no basta</button>
+    <button type="button" (click)="preset('123321', 37)">Bloques de tres cifras</button>
+    <button type="button" (click)="preset('-104', 8)">Un entero negativo</button>
+  </div>
+  <div class="controls">
+    <label for="divisibility-number">Entero decimal N<input id="divisibility-number" type="text" maxlength="42"
+        [(ngModel)]="numberText" (ngModelChange)="update()" aria-describedby="divisibility-help"></label>
+    <label for="divisibility-modulus">Divisor m<select id="divisibility-modulus" [(ngModel)]="modulus"
+        (ngModelChange)="update()">
+        @for (divisor of divisors; track divisor) { <option [ngValue]="divisor">{{ divisor }}</option> }
+      </select></label>
+  </div>
+  <p id="divisibility-help" class="note">Hasta 40 cifras, con signo opcional. Los cambios reinician el recorrido.
+    Intenta anticipar cada transformación.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+  <p class="result" role="status">{{ trace.input }} {{ trace.divisible ? 'sí es' : 'no es' }} divisible por {{
+    trace.modulus }}.</p>
+  <div class="controls" aria-label="Recorrido del criterio">
+    <button type="button" (click)="move(-trace.steps.length)" [disabled]="step === 0">Reiniciar</button>
+    <button type="button" (click)="move(-1)" [disabled]="step === 0">Anterior</button>
+    <button type="button" (click)="move(1)" [disabled]="complete">Siguiente</button>
+    <button type="button" (click)="move(trace.steps.length)" [disabled]="complete">Ver final</button>
+  </div>
+  <div aria-live="polite" aria-atomic="true">
+    <div class="step-heading"><span class="eyebrow">PASO {{ step + 1 }} / {{ trace.steps.length }} · DIVISOR {{
+        current.modulus }}</span>
+      <h4>{{ current.title }}</h4>
+    </div>
+    <p>{{ current.explanation }}</p>
+    <div class="digits" aria-label="Cifras o bloques y sus pesos">
+      @for (term of current.terms; track term.position) {
+      <div class="digit" [class.negative]="term.weight.toString().startsWith('-')"
+        [class.ignored]="term.weight.toString() === '0'">
+        <small>peso {{ term.weight }}</small><strong>{{ term.text }}</strong><small>posición {{ term.position }}</small>
+      </div>
+      }
+    </div>
+    <p class="readout">Número transformado: {{ current.output }}</p>
+    <p class="note">{{ current.relation === 'congruence' ? 'Se conserva el resto para el divisor indicado.' : 'Se
+      conserva la divisibilidad; no se afirma que el resto sea el mismo.' }}</p>
+  </div>
+  <app-formula [expression]="current.formula"></app-formula>
+  @if (trace.checks.length > 1) {
+  <p class="note">Este criterio combina dos pruebas independientes sobre el número inicial; el divisor de cada paso
+    aparece en su cabecera.</p>
+  }
+  <details>
+    <summary>Ver el recorrido completo</summary>
+    <ol class="step-list">@for (item of trace.steps; track $index) {
+      <li><button type="button" (click)="step = $index" [attr.aria-current]="$index === step ? 'step' : null">{{
+          item.title }} · {{ item.output }}</button></li>
+      }
+    </ol>
+  </details>
+  <details>
+    <summary>Contrastar con la división directa</summary>
+    <p class="identity">{{ trace.input }} = {{ trace.modulus }} × ({{ quotient }}) + {{ trace.remainder }}.</p>
+    <p class="note">Esta comprobación independiente usa el número original; el recorrido explica el criterio.</p>
+  </details>
+  }
+</div>

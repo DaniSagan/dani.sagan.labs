@@ -1,0 +1,43 @@
+<div class="widget" aria-labelledby="divisibility-bases-title">
+  <span class="eyebrow">EXPLORADOR · CAMBIAR LA ESCRITURA</span>
+  <h3 id="divisibility-bases-title">El mismo entero, otras cifras</h3>
+  <div class="presets">
+    <button type="button" (click)="preset('63', 8)">63 en base 8</button>
+    <button type="button" (click)="preset('143', 12)">143 en base 12</button>
+    <button type="button" (click)="preset('255', 16)">255 en base 16</button>
+    <button type="button" (click)="preset('30', 2)">30 en binario</button>
+  </div>
+  <div class="controls">
+    <label for="divisibility-base-number">Entero N, escrito en decimal<input id="divisibility-base-number" type="text"
+        maxlength="42" [(ngModel)]="numberText" (ngModelChange)="update()"></label>
+    <label for="divisibility-base">Base b (2–16)<input id="divisibility-base" type="number" min="2" max="16" step="1"
+        [(ngModel)]="base" (ngModelChange)="update()"></label>
+  </div>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> } @else {
+  <p class="result" aria-live="polite">Valor absoluto en decimal: {{ representation.n }}.<br>
+    En base {{ base }}: <span class="encoded">{{ representation.encoded }}</span>.</p>
+  <p class="note">El signo no afecta a la divisibilidad. La entrada admite hasta 40 cifras decimales.
+    Usamos A = 10, B = 11, …, F = 15; las sumas que siguen se escriben en decimal.</p>
+  <div class="digits" aria-label="Valores de las cifras en la base elegida">
+    @for (digit of representation.digits; track digit.position) {
+    <div class="digit"><small>b<sup>{{ digit.position }}</sup></small><strong>{{ digit.symbol }}</strong><small>valor {{
+        digit.value }}</small></div>
+    }
+  </div>
+  @for (family of representation.families; track family.name) {
+  <div class="family">
+    <h4>{{ family.name }} → {{ family.reduced }}</h4>
+    <p>{{ family.reason }} (mod {{ family.related }}). El criterio vale para {{ family.related }} y para cada uno de sus
+      divisores:</p>
+    <div class="chips">
+      @for (check of family.divisors; track check.divisor) {
+      <span class="result" [class.unit]="check.divisible">{{ check.divisor }}: {{ check.divisible ? 'sí divide' : 'no
+        divide' }}</span>
+      }
+    </div>
+  </div>
+  }
+  <p class="note">El divisor 1 siempre divide. En base 2, la regla de sumar cifras para b − 1 = 1 es válida pero no
+    aporta información.</p>
+  }
+</div>

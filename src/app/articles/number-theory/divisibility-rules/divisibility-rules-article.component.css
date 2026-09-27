@@ -1,0 +1,31 @@
+.table-scroll {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.table-scroll:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+caption {
+  caption-side: top;
+  color: var(--gold);
+  text-align: left;
+}
+th,
+td {
+  padding: 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.quick-reference th {
+  white-space: nowrap;
+}
+h4 {
+  color: var(--gold);
+  margin-top: 1.5rem;
+}

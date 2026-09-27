@@ -1,0 +1,77 @@
+<div class="widget" aria-labelledby="discovery-title">
+  <span class="eyebrow">DESCUBRIDOR · LAS POTENCIAS SON LOS PESOS</span>
+  <h3 id="discovery-title">Encuentra un 0, un 1 o un −1</h3>
+  <div class="presets">
+    @for (m of [4, 7, 9, 11, 13, 37, 99, 101, 6]; track m) { <button type="button" (click)="preset(m)">m = {{ m
+      }}</button> }
+  </div>
+  <div class="controls">
+    <label for="discovery-modulus">Divisor m (2–150)<input id="discovery-modulus" type="number" min="2" max="150"
+        step="1" [(ngModel)]="modulus" (ngModelChange)="update()"></label>
+  </div>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> } @else {
+  <p>Estas tarjetas muestran 10ᵏ mod {{ modulus }}. Ignora el 1 de k = 0: para formar bloques necesitamos k ≥ 1.
+    El resto {{ modulus - 1 }} representa a −1. Predice qué podrías hacer con las cifras antes de revelar la
+    interpretación.</p>
+  <div class="digits" aria-label="Potencias de diez y restos">
+    @for (value of discovery.values.slice(0, shown); track $index) {
+    <div class="digit" [class.negative]="$index > 0 && (value === 0 || value === 1 || value === modulus - 1)">
+      <small>k = {{ $index }}</small><strong>{{ value }}</strong>
+    </div>
+    }
+  </div>
+  <div class="controls">
+    <button type="button" (click)="shown = shown - 1" [disabled]="shown <= 1">Ocultar último</button>
+    <button type="button" (click)="shown = shown + 1" [disabled]="shown === discovery.values.length">Siguiente
+      potencia</button>
+    <button type="button" (click)="shown = discovery.values.length" [disabled]="shown === discovery.values.length">Ver
+      ciclo completo</button>
+    <button type="button" (click)="interpreted = !interpreted" [attr.aria-expanded]="interpreted">{{ interpreted ?
+      'Ocultar interpretación' : 'Interpretar patrones' }}</button>
+  </div>
+  @if (interpreted) {
+  <div aria-live="polite">
+    <p class="note">Se ha recorrido todo el ciclo: cola de {{ discovery.start }} términos y período {{ discovery.period
+      }}.
+      El último resto repite uno anterior; desde ahí no aparecerán valores nuevos. Se muestran los primeros exponentes
+      positivos de cada patrón.</p>
+    @for (pattern of discovery.patterns; track pattern.kind) {
+    <div class="pattern">
+      <h4>10<sup>{{ pattern.exponent }}</sup> ≡ {{ pattern.kind === 'zero' ? '0' : pattern.kind === 'one' ? '1' : '−1'
+        }} (mod {{ modulus }})</h4>
+      <p>
+        @if (pattern.kind === 'zero') { Basta conservar las últimas {{ pattern.exponent }} cifras. }
+        @if (pattern.kind === 'one') { Suma bloques de {{ pattern.exponent }} cifras, agrupados desde la derecha. }
+        @if (pattern.kind === 'minus-one') { Alterna los signos de bloques de {{ pattern.exponent }} cifras, con signo
+        positivo en el bloque derecho. }
+      </p>
+      <button type="button" (click)="selected = pattern" [attr.aria-pressed]="selected === pattern">Aplicar este
+        patrón</button>
+    </div>
+    }
+    @if (!discovery.patterns.length) {
+    <p class="result">Ninguna potencia positiva da 0, 1 o −1. Puedes usar los pesos periódicos completos o combinar
+      criterios de factores coprimos; para 6, comprueba 2 y 3.</p>
+    }
+  </div>
+  @if (selected) {
+  <div class="controls"><label for="discovery-number">Aplicar a un entero decimal (hasta 40 cifras)<input
+        id="discovery-number" type="text" maxlength="42" [(ngModel)]="numberText"
+        (ngModelChange)="updateNumber()"></label></div>
+  @if (numberError) { <p class="error" role="alert">{{ numberError }}</p> }
+  @if (application; as result) {
+  <p>Trabajamos con el valor absoluto y separamos bloques desde la derecha:</p>
+  <div class="digits">@for (term of result.terms; track term.position) {
+    <div class="digit" [class.negative]="term.weight.toString() === '-1'"
+      [class.ignored]="term.weight.toString() === '0'"><small>peso {{ term.weight }}</small><strong>{{ term.text
+        }}</strong></div>
+    }
+  </div>
+  <p class="result" role="status">Resultado transformado: {{ result.sum }}. {{ number }} {{ result.divisible ? 'sí es' :
+    'no es' }} divisible por {{ modulus }}.</p>
+  <p class="note">Si el bloque es tan largo como el número, el criterio es correcto pero no simplifica el cálculo.</p>
+  }
+  }
+  }
+  }
+</div>

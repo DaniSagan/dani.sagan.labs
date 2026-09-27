@@ -1,0 +1,90 @@
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.widget p {
+  overflow-wrap: anywhere;
+}
+.digits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0;
+}
+.digit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--accent2);
+  border-radius: 6px;
+  min-width: 2rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  background: var(--paper);
+  font-variant-numeric: tabular-nums;
+}
+.digit small {
+  color: #b9b9ce;
+  font:
+    0.75rem "Courier Prime",
+    monospace;
+}
+.digit.negative {
+  border-color: var(--gold);
+}
+.digit.ignored {
+  opacity: 0.5;
+  border-style: dashed;
+}
+.digit strong {
+  font-size: 1.3rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.step-heading {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+}
+.step-heading h4 {
+  margin: 0.5rem 0;
+}
+.family {
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--rule);
+}
+.family h4 {
+  margin: 0.5rem 0;
+}
+.pattern {
+  border: 1px solid var(--rule);
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin: 0.8rem 0;
+}
+.pattern h4 {
+  margin: 0.25rem 0;
+}
+.pattern p {
+  margin-bottom: 0.5rem;
+}
+.encoded {
+  overflow-wrap: anywhere;
+  font:
+    1.2rem "Courier Prime",
+    monospace;
+  color: var(--gold);
+}
+.step-list {
+  padding-left: 1.4rem;
+}
+.step-list button {
+  margin: 0.3rem 0;
+  text-align: left;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}

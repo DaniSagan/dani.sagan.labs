@@ -1,0 +1,407 @@
+<h2>Criterios de divisibilidad</h2>
+<p class="dropcap">¿Por qué basta sumar las cifras para detectar múltiplos de 9, pero necesitamos alternar signos cuando
+  el divisor es 11?
+  ¿Por qué el 8 mira tres cifras y el 7 parece exigir una receta extraña? Todas estas reglas nacen de la misma pregunta:
+  ¿qué resto dejan las potencias de la base al dividirlas por el número que nos interesa?</p>
+<p>Un criterio de divisibilidad es una condición equivalente a ser múltiplo de un divisor. Su utilidad está en
+  reemplazar un cálculo
+  por otro más sencillo. Vamos a experimentar primero y a reconstruir después cada regla, para poder recuperarla aunque
+  olvidemos su enunciado.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="fundamentos">Divisibilidad y cifras</a></li>
+    <li><a routerLink="." fragment="laboratorio">Laboratorio</a></li>
+    <li><a routerLink="." fragment="clasicos">Criterios clásicos</a></li>
+    <li><a routerLink="." fragment="siete-trece">7 y 13</a></li>
+    <li><a routerLink="." fragment="construccion">Construir criterios</a></li>
+    <li><a routerLink="." fragment="combinar">Combinar criterios</a></li>
+    <li><a routerLink="." fragment="bases">Otras bases</a></li>
+    <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+  </ul>
+</nav>
+
+<h3 id="fundamentos">1. Qué queremos decidir</h3>
+<p>Para enteros a y b, decimos que <strong>a divide a b</strong> si b es un múltiplo entero de a:</p>
+<app-formula expression="a\mid b\quad\Longleftrightarrow\quad\exists k\in\mathbb Z:\ b=ak."></app-formula>
+<p>Por ejemplo, 7 ∣ 21 y 7 ∣ −21, porque 21 = 7·3 y −21 = 7·(−3). Además, 7 ∣ 0.
+  En cambio, 7 no divide a 22. No exigimos que el cociente k sea positivo.</p>
+<div class="convention">
+  <p>En los criterios elegiremos un <strong>divisor m &gt; 0</strong>. El caso m = 1 es trivial: divide a todos los
+    enteros.
+    Para estudiar cifras trabajaremos con |N|, pues m ∣ N equivale a m ∣ −N.
+    El cero es divisible por todo m positivo. Según la definición, 0 ∣ N solo cuando N = 0; no usaremos módulo cero.</p>
+</div>
+<p>Estas propiedades elementales sostienen las transformaciones que veremos:</p>
+<ul>
+  <li><strong>Transitividad:</strong> si a ∣ b y b ∣ c, escribimos b = au y c = bv; entonces c = a(uv), así que a ∣ c.
+  </li>
+  <li><strong>Combinaciones enteras:</strong> si m ∣ A y m ∣ B, entonces m ∣ (uA + vB) para cualesquiera enteros u,v,
+    porque A = mr y B = ms dan uA + vB = m(ur + vs).</li>
+  <li><strong>Quitar un múltiplo:</strong> si m ∣ (A − B), entonces m ∣ A si y solo si m ∣ B.
+    En un sentido usamos B = A − (A − B); en el otro, A = B + (A − B).</li>
+</ul>
+<p>La última equivalencia se expresa mediante <a routerLink="/articles/modular-arithmetic">congruencias</a>:
+  A ≡ B (mod m) significa m ∣ (A − B). Por eso sustituir N por un número congruente conserva la respuesta a «¿es
+  divisible por m?».</p>
+
+<h3>2. Las cifras son coeficientes, las posiciones son potencias</h3>
+<p>En la escritura decimal de un entero no negativo, la cifra a₀ ocupa las unidades, a₁ las decenas y así sucesivamente.
+  Cada cifra pertenece a &#123;0,…,9&#125;:</p>
+<app-formula expression="N=a_0+10a_1+10^2a_2+\cdots+10^ka_k=\sum_{i=0}^{k}a_i10^i."></app-formula>
+<p>Así, 47232 = 2 + 3·10 + 2·100 + 7·1000 + 4·10000. Al reducir módulo m, cada posición puede reemplazarse por su resto:
+</p>
+<app-formula expression="w_i=10^i\bmod m\quad\Longrightarrow\quad N\equiv\sum_{i=0}^{k}a_iw_i\pmod m."></app-formula>
+<div class="proof">
+  <p><strong>Demostración del método general.</strong> Como 10ⁱ − wᵢ es múltiplo de m, también lo es aᵢ(10ⁱ − wᵢ).
+    Sumando esas diferencias, obtenemos que N − ∑aᵢwᵢ es múltiplo de m.
+    Por tanto m ∣ N si y solo si m ∣ ∑aᵢwᵢ. Una tabla de potencias basta, en principio, para construir un criterio para
+    cualquier m.</p>
+</div>
+<p>Los criterios cómodos aparecen cuando los pesos son 0, 1, −1 o siguen un patrón corto.
+  La regla deja de ser una frase aislada: se convierte en una consecuencia de la escritura posicional.</p>
+
+<h3 id="laboratorio">3. Explora una transformación</h3>
+<p>Prueba 918082 con el divisor 11 y observa los signos de sus cifras. Después compara 1001 con los criterios del 7 y
+  del 13.
+  En cada paso, el laboratorio indica qué se conserva y por qué. En los criterios combinados, cada prueba parte del
+  entero inicial.</p>
+<app-divisibility-lab></app-divisibility-lab>
+
+<h3 id="clasicos">4. Mirar solamente el final: 2, 4, 5, 8 y 10</h3>
+<p><strong>Intuición.</strong> Cambiar las centenas de un número no altera si es divisible por 4: cada centena vale 100,
+  que ya es múltiplo de 4.
+  Del mismo modo, para el 8 podemos cambiar miles completos sin alterar el resultado.</p>
+<p><strong>Formulación general.</strong> Si m ∣ 10ᵏ, basta mirar el número formado por las últimas k cifras.
+  Si el número tiene menos cifras, se conserva completo; podemos imaginar ceros a su izquierda.</p>
+<div class="proof">
+  <p><strong>Demostración.</strong> Separamos N = 10ᵏA + B, con 0 ≤ B &lt; 10ᵏ.
+    Si m ∣ 10ᵏ, el primer sumando es múltiplo de m, luego N ≡ B (mod m).
+    En consecuencia m ∣ N equivale a m ∣ B.</p>
+  <app-formula
+    expression="m\mid10^k\quad\Longrightarrow\quad m\mid(10^kA+B)\ \Longleftrightarrow\ m\mid B."></app-formula>
+</div>
+<ul>
+  <li><strong>Por 2:</strong> 2 ∣ 10; la última cifra debe ser 0, 2, 4, 6 u 8. Así 1358 es divisible por 2.</li>
+  <li><strong>Por 5:</strong> 5 ∣ 10; la última cifra debe ser 0 o 5. Por ejemplo, 2345 sí es divisible y 2346 no.</li>
+  <li><strong>Por 10:</strong> la última cifra debe ser 0. El número 2340 cumple el criterio; 2345 no, aunque sea
+    múltiplo de 5.</li>
+  <li><strong>Por 4:</strong> 4 ∣ 100; las dos últimas cifras deben formar un múltiplo de 4.
+    En 7316 basta comprobar 16. El número 7318 es par, pero 18 no es múltiplo de 4.</li>
+  <li><strong>Por 8:</strong> 8 ∣ 1000; las tres últimas cifras deben formar un múltiplo de 8.
+    El número 12104 sirve porque 104 = 8·13. El número 12100 no sirve: 100 deja resto 4 al dividir entre 8.</li>
+</ul>
+<p>El mismo argumento da el criterio del <strong>25</strong>: como 25 ∣ 100, las dos últimas cifras deben ser 00, 25, 50
+  o 75.
+  Por ejemplo, 12375 es múltiplo de 25. No es una excepción nueva: es otra aplicación de la misma prueba.</p>
+<div class="proof">
+  <p><strong>¿Por qué unos divisores miran el final y otros no?</strong> Como 10ᵏ = 2ᵏ5ᵏ,
+    los divisores de alguna potencia de 10 son exactamente los números 2ˢ5ᵗ, con s,t ≥ 0.
+    Para m &gt; 1, basta tomar k = max(s,t). Es una consecuencia de la
+    <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a>.
+  </p>
+  <p>Además, la condición m ∣ 10ᵏ es necesaria para un criterio universal que dependa solo de las últimas k cifras:
+    0 y 10ᵏ tienen el mismo final de k ceros. Como 0 es divisible por m, también tendría que serlo 10ᵏ.
+    Por eso ningún número fijo de cifras finales basta para decidir todos los casos del 3 o del 7.</p>
+</div>
+
+<h3>5. Sumar cifras: los criterios del 3 y del 9</h3>
+<p><strong>Intuición.</strong> Una decena difiere de una unidad en 9; una centena difiere de una unidad en 99.
+  Si solo interesa el resto módulo 9, cambiar cada potencia de 10 por 1 no se nota.</p>
+<p><strong>Criterio.</strong> Un entero es divisible por 3 —respectivamente por 9— si y solo si la suma de sus cifras
+  es divisible por 3 —respectivamente por 9—.</p>
+<div class="proof">
+  <p>Para m = 3 o m = 9, tenemos 10 ≡ 1 (mod m). La compatibilidad con potencias da 10ⁱ ≡ 1 para todo i ≥ 0.
+    Aplicando el método posicional:</p>
+  <app-formula
+    expression="N=\sum_i a_i10^i\equiv\sum_i a_i=a_0+a_1+\cdots+a_k\pmod m,\qquad m\in\{3,9\}."></app-formula>
+  <p>Al conservarse el resto, se conserva en ambos sentidos la condición de que ese resto sea cero.
+    Podemos repetir la suma de cifras porque cada nueva transformación conserva la misma congruencia.</p>
+</div>
+<p>12345 tiene suma 15: es divisible por 3, pero no por 9. En cambio, 12348 tiene suma 18 y es divisible por ambos.
+  La regla exige que la suma sea <em>un múltiplo</em> del divisor: no tiene por qué ser exactamente 3 o 9.
+  Para el cero, la suma es 0 y la conclusión también es correcta.</p>
+
+<h3>6. Alternar signos: el criterio del 11</h3>
+<p><strong>Intuición.</strong> Módulo 11, una decena vale −1; una centena vale 1 y un millar vuelve a valer −1.
+  Las posiciones alternan, en lugar de tener todas el mismo peso.</p>
+<p><strong>Criterio.</strong> Un número es divisible por 11 si y solo si la suma alternada de sus cifras es múltiplo de
+  11.
+  Tomaremos signo positivo en las unidades.</p>
+<div class="proof">
+  <p>De 10 ≡ −1 (mod 11) obtenemos 10ⁱ ≡ (−1)ⁱ. Por tanto:</p>
+  <app-formula expression="N\equiv a_0-a_1+a_2-a_3+\cdots+(-1)^ka_k\pmod{11}."></app-formula>
+  <p>La divisibilidad es equivalente a que esa suma sea múltiplo de 11, incluido 0.
+    Si se empieza con el signo contrario, la suma cambia de signo, pero la divisibilidad no cambia.</p>
+</div>
+<app-formula expression="918082\equiv2-8+0-8+1-9=-22\equiv0\pmod{11}."></app-formula>
+<p>Así, 918082 es divisible por 11. El número siguiente, 918083, produce −21 y no lo es.
+  Un resultado negativo es perfectamente válido: −22 = 11·(−2).
+  También puede agruparse como «suma de posiciones pares menos suma de posiciones impares», contando desde las unidades.
+</p>
+
+<h3 id="siete-trece">7. Separar la última cifra: 7 y 13</h3>
+<p>Escribimos N = 10a + b, donde b es la última cifra y a es el entero que queda al quitarla.
+  Buscamos un número más corto cuya divisibilidad sea equivalente. La justificación requiere atender a las dos
+  implicaciones.</p>
+<h4>Divisibilidad por 7: restar el doble</h4>
+<p><strong>Criterio.</strong> 7 divide a N si y solo si divide a a − 2b.</p>
+<div class="proof">
+  <app-formula expression="N-10(a-2b)=21b,\qquad N\equiv10(a-2b)\pmod7."></app-formula>
+  <p>La diferencia es múltiplo de 7. Luego 7 ∣ N equivale a 7 ∣ 10(a − 2b).
+    Como gcd(10,7) = 1, la <a routerLink="/articles/modular-arithmetic" fragment="cancelacion">cancelación coprima</a>
+    permite quitar el factor 10. Cada paso es una equivalencia:</p>
+  <app-formula expression="7\mid N\Longleftrightarrow7\mid10(a-2b)\Longleftrightarrow7\mid(a-2b)."></app-formula>
+</div>
+<p>Para 203, obtenemos 20 − 2·3 = 14: sí es divisible por 7.
+  Para 204, obtenemos 20 − 2·4 = 12: no es divisible.
+  Para 1001, la transformación da 100 − 2 = 98, que es 7·14.</p>
+<h4>Divisibilidad por 13: sumar el cuádruple</h4>
+<p><strong>Criterio.</strong> 13 divide a N si y solo si divide a a + 4b.</p>
+<div class="proof">
+  <app-formula expression="N-10(a+4b)=-39b,\qquad N\equiv10(a+4b)\pmod{13}."></app-formula>
+  <p>Ahora la diferencia es múltiplo de 13. Como gcd(10,13) = 1, la misma cancelación prueba</p>
+  <app-formula expression="13\mid N\Longleftrightarrow13\mid10(a+4b)\Longleftrightarrow13\mid(a+4b)."></app-formula>
+</div>
+<p>Para 1001: 100 + 4·1 = 104 y después 10 + 4·4 = 26, múltiplo de 13.
+  Para 1002: 100 + 4·2 = 108 y después 10 + 4·8 = 42, que no es múltiplo de 13.</p>
+<div class="convention">
+  <p><strong>Conservar divisibilidad no es conservar el resto.</strong> Para 204, el criterio del 7 produce 12;
+    los restos respectivos son 1 y 5. Lo que se conserva es si el resto es cero.
+    Si una transformación produce un negativo, podemos tomar su valor absoluto antes de continuar.</p>
+</div>
+<div class="proof">
+  <p><strong>Cuándo parar.</strong> El laboratorio itera solo mientras |N| ≥ 100 y trabaja con el valor absoluto en cada
+    nueva separación.
+    Para N ≥ 100, |a − 2b| ≤ N/10 + 18 &lt; N y a + 4b ≤ N/10 + 36 &lt; N.
+    El valor absoluto disminuye estrictamente hasta quedar por debajo de 100; entonces se comprueba un múltiplo pequeño.
+    No conviene iterar sin condición de parada: en el criterio del 13, por ejemplo, 13 se transforma en 13 otra vez.</p>
+</div>
+<p><strong>La receta general detrás de estas dos reglas.</strong> Si gcd(10,m) = 1, busca un entero c tal que 10c ≡ 1
+  (mod m).
+  Entonces 10(a + cb) ≡ N (mod m), y la cancelación da m ∣ N si y solo si m ∣ (a + cb).
+  Para 7 podemos elegir c = −2; para 13, c = 4. Un representante pequeño de ese inverso suele dar una regla más
+  manejable.</p>
+
+<h3 id="construccion">8. Construir un criterio a partir de las potencias</h3>
+<p>En el descubridor, compara los divisores 4, 9, 11, 37 y 101. Antes de pulsar «Interpretar patrones», intenta explicar
+  qué significa encontrar una potencia congruente con 0, con 1 o con −1. Prueba también el 6: no siempre aparece uno de
+  esos tres valores.</p>
+<app-criterion-discovery></app-criterion-discovery>
+<p>Para trabajar con bloques de k cifras, ponemos B = 10ᵏ y agrupamos <strong>desde la derecha</strong>.
+  Si los bloques son C₀,C₁,…, cada uno está entre 0 y B − 1 y</p>
+<app-formula expression="N=C_0+BC_1+B^2C_2+\cdots."></app-formula>
+<div class="proof">
+  <p><strong>Tres patrones, tres criterios.</strong> Aplicamos la misma prueba posicional a la base B:</p>
+  <ul>
+    <li>Si B ≡ 0 (mod m), desaparecen todas las potencias positivas y N ≡ C₀: bastan las últimas k cifras.</li>
+    <li>Si B ≡ 1 (mod m), todas las potencias pesan 1 y N ≡ C₀ + C₁ + C₂ + ⋯: sumamos bloques.</li>
+    <li>Si B ≡ −1 (mod m), los pesos alternan y N ≡ C₀ − C₁ + C₂ − ⋯: alternamos bloques, empezando con + en el derecho.
+    </li>
+  </ul>
+  <p>En cada caso hay congruencia, por lo que la divisibilidad del número y la de su transformación son equivalentes.
+    Los ceros de un bloque cuentan como posiciones: 12 | 003 significa 12003 al usar bloques de tres cifras, no 123.</p>
+</div>
+<h4>Tres ejemplos que salen de una sola idea</h4>
+<ul>
+  <li><strong>37:</strong> 1000 − 1 = 999 = 27·37, luego 1000 ≡ 1 (mod 37).
+    Sumamos bloques de tres cifras: 123321 → 123 + 321 = 444 = 37·12. Es divisible por 37.</li>
+  <li><strong>99:</strong> 100 ≡ 1 (mod 99). Para 12375, los bloques 1 | 23 | 75 suman 99,
+    así que es divisible por 99. Sumar sus cifras sueltas daría 18 y no proporcionaría ese criterio.</li>
+  <li><strong>101:</strong> 100 ≡ −1 (mod 101). Para 123422, los bloques 12 | 34 | 22 producen
+    22 − 34 + 12 = 0. Es divisible por 101. La suma ordinaria, 68, no serviría.</li>
+</ul>
+<p>También 1001 = 7·11·13, de modo que 1000 ≡ −1 para cada uno de esos tres módulos.
+  La suma alternada de bloques de tres cifras ofrece otra regla para 7 y 13: 1001 → 1 − 1 = 0.
+  Un mismo divisor puede tener varios criterios correctos; interesa elegir el que simplifique el número concreto.</p>
+<div class="proof">
+  <p><strong>Por qué la búsqueda puede detenerse.</strong> Los restos wᵢ cumplen wᵢ₊₁ = 10wᵢ mod m.
+    Solo hay m valores posibles; cuando uno se repite, toda la sucesión posterior se repite por la misma regla.
+    Recorrer hasta esa primera repetición permite saber si aparecerán 0, 1 o −1.</p>
+  <p>Si gcd(10,m) = 1, de 10ⁱ ≡ 10ʲ con i &lt; j podemos cancelar 10ⁱ y obtener 10ʲ⁻ⁱ ≡ 1.
+    Por tanto siempre hay un criterio de suma de bloques, aunque su longitud puede ser poco práctica.
+    No tiene por qué aparecer −1: módulo 37 las potencias recorren 1,10,26,1,…</p>
+</div>
+<p>Cuando no aparece ninguno de los tres patrones, sigue siendo válido usar los pesos completos wᵢ del método general.
+  Otra posibilidad es descomponer el divisor y combinar pruebas. El siguiente apartado explica cuándo esa combinación es
+  legítima.</p>
+
+<h3 id="combinar">9. Combinar criterios sin perder factores</h3>
+<p>Para 6 comprobamos paridad y suma de cifras. El fundamento no es simplemente que 6 = 2·3:
+  también importa que sus factores sean coprimos.</p>
+<app-formula
+  expression="\gcd(u,v)=1\quad\Longrightarrow\quad uv\mid N\ \Longleftrightarrow\ (u\mid N\ \text{y}\ v\mid N),\qquad u,v>0."></app-formula>
+<div class="proof">
+  <p>Si uv ∣ N, ambos factores dividen a N. Recíprocamente, de u ∣ N escribimos N = ut.
+    Si también v ∣ N, entonces v ∣ ut. Como gcd(u,v) = 1, podemos cancelar u módulo v y concluir v ∣ t.
+    Así t = vs y N = uvs: el producto divide a N. Esto demuestra las dos implicaciones.</p>
+</div>
+<ul>
+  <li><strong>6 = 2·3:</strong> ser par y tener suma de cifras divisible por 3. El número 12348 cumple ambas
+    condiciones;
+    15 cumple la segunda, pero no la primera.</li>
+  <li><strong>12 = 3·4:</strong> suma de cifras divisible por 3 y dos últimas cifras divisibles por 4.
+    El número 1236 cumple ambas: suma 12 y final 36.</li>
+  <li><strong>15 = 3·5:</strong> terminar en 0 o 5 y tener suma divisible por 3; por ejemplo 12345.</li>
+  <li><strong>18 = 2·9:</strong> ser par y tener suma divisible por 9; por ejemplo 12348.</li>
+  <li><strong>24 = 3·8:</strong> suma divisible por 3 y tres últimas cifras divisibles por 8;
+    por ejemplo 12312, con suma 9 y final 312 = 8·39.</li>
+</ul>
+<p>Sin coprimalidad, la conclusión correcta utiliza el <a routerLink="/articles/gcd-euclid" fragment="mcm">mínimo común
+    múltiplo</a>:</p>
+<app-formula
+  expression="(u\mid N\ \text{y}\ v\mid N)\quad\Longleftrightarrow\quad\operatorname{mcm}(u,v)\mid N."></app-formula>
+<p>Por ejemplo, 12 es divisible por 4 y por 6, pero no por 24: mcm(4,6) = 12.
+  Tampoco basta combinar 2 y 6 para decidir divisibilidad por 12; esa combinación solo comprueba divisibilidad por 6.
+  La factorización en potencias de primos permite evitar estos errores: los exponentes del MCM son los máximos,
+  mientras que multiplicar factores repetidos puede exigir una potencia que no se ha comprobado.</p>
+
+<h3 id="bases">10. Cambiar la base cambia los criterios</h3>
+<p>El entero 63 se escribe 77 en base 8. Allí la suma de cifras es 14, que detecta su divisibilidad por 7;
+  la suma alternada es 0, que detecta su divisibilidad por 9. El número no ha cambiado: han cambiado las potencias
+  asociadas a sus posiciones.</p>
+<app-divisibility-bases></app-divisibility-bases>
+<p><strong>Formulación.</strong> En una base b ≥ 2, las cifras dᵢ son enteros entre 0 y b − 1 y N = ∑dᵢbⁱ.
+  El <a routerLink="/articles/division-algorithm">teorema de la división euclídea</a>, aplicado repetidamente a b,
+  produce esas cifras como restos sucesivos.</p>
+<div class="proof">
+  <app-formula expression="b\equiv1\pmod{b-1}\quad\Longrightarrow\quad N\equiv\sum_i d_i\pmod{b-1}."></app-formula>
+  <app-formula
+    expression="b\equiv-1\pmod{b+1}\quad\Longrightarrow\quad N\equiv\sum_i(-1)^i d_i\pmod{b+1}."></app-formula>
+  <p>Las pruebas son las mismas que para 9 y 11: elevamos la congruencia a cada potencia y sumamos los términos con sus
+    cifras.
+    Además, N ≡ d₀ (mod b), por lo que b divide a N si y solo si la última cifra es 0.
+    Cada regla vale también para los divisores de b − 1, b + 1 o b, respectivamente, porque una congruencia módulo un
+    entero
+    implica la congruencia módulo cualquiera de sus divisores.</p>
+</div>
+<p>En base 12, usamos A = 10 y B = 11. El número (BB)₁₂ representa 11·12 + 11 = 143:
+  su suma 22 es divisible por 11 y su suma alternada 0 es divisible por 13.
+  En base 2, b − 1 = 1 y el criterio de la suma es trivial; en cambio, la suma alternada da un criterio útil para el 3.
+</p>
+<p>Las reglas decimales del 9 y del 11 son, por tanto, los casos b − 1 y b + 1 de una ley general.
+  Aplicar la suma decimal a las cifras de otra base cambia el problema y puede producir una respuesta incorrecta.</p>
+
+<h3>11. Reconstruir una regla y consultarla rápidamente</h3>
+<ol>
+  <li>Escribe N como suma de cifras por potencias de la base.</li>
+  <li>Calcula los restos de esas potencias módulo el divisor.</li>
+  <li>Busca pesos 0, 1 o −1, quizá agrupando varias cifras en un bloque.</li>
+  <li>Si el divisor es coprimo con la base, considera separar la última cifra usando un inverso.</li>
+  <li>Si combinas criterios, comprueba coprimalidad o usa el MCM.</li>
+  <li>Escribe una equivalencia de divisibilidad, justifica sus dos sentidos y comprueba los casos cero y negativo.</li>
+</ol>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Resumen de criterios decimales">
+  <table class="quick-reference">
+    <caption>Resumen decimal: qué comprobar y de dónde sale</caption>
+    <thead>
+      <tr>
+        <th scope="col">Divisor</th>
+        <th scope="col">Criterio equivalente</th>
+        <th scope="col">Justificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">2, 5, 10</th>
+        <td>La última cifra es múltiplo del divisor.</td>
+        <td>m ∣ 10</td>
+      </tr>
+      <tr>
+        <th scope="row">4, 25</th>
+        <td>Las dos últimas cifras forman un múltiplo.</td>
+        <td>m ∣ 100</td>
+      </tr>
+      <tr>
+        <th scope="row">8</th>
+        <td>Las tres últimas cifras forman un múltiplo de 8.</td>
+        <td>8 ∣ 1000</td>
+      </tr>
+      <tr>
+        <th scope="row">3, 9</th>
+        <td>La suma de cifras es múltiplo del divisor.</td>
+        <td>10 ≡ 1</td>
+      </tr>
+      <tr>
+        <th scope="row">11</th>
+        <td>La suma alternada es múltiplo de 11.</td>
+        <td>10 ≡ −1</td>
+      </tr>
+      <tr>
+        <th scope="row">7</th>
+        <td>Para N = 10a + b, comprobar a − 2b.</td>
+        <td>N ≡ 10(a − 2b); se cancela 10.</td>
+      </tr>
+      <tr>
+        <th scope="row">13</th>
+        <td>Para N = 10a + b, comprobar a + 4b.</td>
+        <td>N ≡ 10(a + 4b); se cancela 10.</td>
+      </tr>
+      <tr>
+        <th scope="row">6, 12, 15, 18, 24</th>
+        <td>Combinar respectivamente (2,3), (3,4), (3,5), (2,9), (3,8).</td>
+        <td>Factores coprimos</td>
+      </tr>
+      <tr>
+        <th scope="row">37, 99</th>
+        <td>Sumar bloques de 3 o de 2 cifras, respectivamente.</td>
+        <td>1000 ≡ 1 o 100 ≡ 1</td>
+      </tr>
+      <tr>
+        <th scope="row">101</th>
+        <td>Alternar bloques de 2 cifras.</td>
+        <td>100 ≡ −1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>En la última columna, cada congruencia se entiende módulo el divisor de su fila.
+  En las reglas de bloques, se agrupa desde la derecha y se comprueba si el resultado es múltiplo del divisor.</p>
+
+<h3>12. Errores frecuentes</h3>
+<ul>
+  <li><strong>Usar solo el criterio del 3 para el 6:</strong> 15 tiene suma 6, pero es impar.
+    Una condición necesaria no basta cuando el criterio exige dos.</li>
+  <li><strong>Multiplicar divisores sin comprobar coprimalidad:</strong> 4 y 6 dividen a 12, pero 24 no.
+    Hay que combinar mediante el MCM.</li>
+  <li><strong>Confundir la suma con el divisor:</strong> para 11 son válidos 0, ±11, ±22,…; no solo el resultado 11.
+  </li>
+  <li><strong>Aplicar mal una transformación iterativa:</strong> en a − 2b o a + 4b, b es solo la última cifra,
+    no todo N. La cancelación del factor 10 es parte de la prueba.</li>
+  <li><strong>Afirmar que el resto siempre se conserva:</strong> los criterios recursivos de 7 y 13 conservan la
+    divisibilidad;
+    el resto transformado puede ser diferente.</li>
+  <li><strong>Agrupar desde la izquierda:</strong> para dos cifras, 12375 se separa como 1 | 23 | 75.
+    También hay que conservar los ceros interiores de los bloques.</li>
+  <li><strong>Olvidar la base:</strong> la suma de cifras sirve para b − 1 en base b; no para 9 en todas las bases.</li>
+  <li><strong>Dar solo ejemplos como prueba:</strong> varios aciertos sugieren una regla; la congruencia y las
+    equivalencias
+    demuestran que vale para todos los enteros.</li>
+</ul>
+
+<h3 id="ejercicios">13. Autoevaluación: cifras, argumentos y criterios nuevos</h3>
+<p>En 47a32, la letra a representa una única cifra entre 0 y 9, no un factor ni un número de varias cifras.
+  Anota todos los valores posibles cuando la pregunta lo pida.</p>
+<app-self-assessment quizId="divisibility-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3>14. Conexiones para continuar</h3>
+<ul>
+  <li><a routerLink="/articles/modular-arithmetic">Congruencias y aritmética modular:</a> explica por qué podemos operar
+    con restos,
+    cuándo es válida la cancelación y cómo obtener inversos.</li>
+  <li><a routerLink="/articles/gcd-euclid">MCD y algoritmo de Euclides:</a> permite comprobar coprimalidad,
+    construir inversos y combinar condiciones mediante el MCM.</li>
+  <li><a routerLink="/articles/fundamental-theorem-arithmetic">Teorema fundamental de la aritmética:</a>
+    explica los factores 2 y 5 de los criterios decimales y cómo reunir pruebas para potencias de primos.</li>
+  <li><a routerLink="/articles/division-algorithm">División euclídea:</a> fundamenta la separación N = 10a + b
+    y la construcción de la escritura posicional en cualquier base.</li>
+  <li><a routerLink="/articles/chinese-remainder-theorem">Teorema chino del resto:</a> combina condiciones de restos,
+    una extensión de combinar condiciones de divisibilidad por módulos coprimos.</li>
+  <li><a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat</a> y
+    <a routerLink="/articles/eulers-theorem">teorema de Euler:</a> garantizan potencias congruentes con 1
+    bajo sus hipótesis de coprimalidad. Aplicados a la base, proporcionan longitudes posibles de bloque.
+  </li>
+  <li><a routerLink="/articles/orders-theorem">Órdenes módulo n:</a> el orden de 10, cuando gcd(10,n) = 1,
+    es la menor longitud positiva k con 10ᵏ ≡ 1 (mod n), útil para buscar bloques más cortos.</li>
+</ul>
+<p>Recordar un criterio puede ahorrar unos segundos. Entender su congruencia permite reconstruirlo,
+  elegir otra regla más cómoda y deducir criterios para divisores y bases que nunca habíamos estudiado.</p>
