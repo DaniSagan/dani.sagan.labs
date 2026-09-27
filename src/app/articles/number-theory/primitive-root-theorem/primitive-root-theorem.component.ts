@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-primitive-root-theorem',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [FormulaComponent, RouterLink],
   templateUrl: './primitive-root-theorem.component.html',
   styleUrl: './primitive-root-theorem.component.css'
 })

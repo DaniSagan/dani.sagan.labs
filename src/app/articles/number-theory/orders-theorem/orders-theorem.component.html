@@ -3,6 +3,7 @@
 <app-formula expression="\operatorname{ord}_n(a)=\min\{d>0:a^d\equiv1\pmod n\}"></app-formula>
 <p>La definición requiere gcd(a,n)=1. Las potencias pertenecen entonces al grupo finito de unidades módulo n. La teoría de grupos del siglo XIX dio el lenguaje actual, aunque Gauss ya utilizaba implícitamente estos periodos en sus estudios de restos.</p>
 <h3>Dos afirmaciones fundamentales</h3>
+<p>La distinción entre periodicidad desde el inicio y periodicidad tras una cola se explora en <a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
 <p>El orden d divide φ(n), porque el subgrupo generado por a tiene d elementos y el teorema de Lagrange afirma que el tamaño de un subgrupo divide al del grupo. Además, a<sup>k</sup>≡1 si y solo si d|k.</p>
 <p>Para probar esta última equivalencia, dividimos k entre d: k=qd+r, con 0≤r&lt;d. Entonces a<sup>k</sup>≡(a<sup>d</sup>)<sup>q</sup>a<sup>r</sup>≡a<sup>r</sup>. Si el resultado es 1, la minimalidad de d obliga a r=0.</p>
 <app-formula expression="\operatorname{ord}_n(a)\mid\varphi(n),\qquad a^k\equiv1\Longleftrightarrow\operatorname{ord}_n(a)\mid k"></app-formula>

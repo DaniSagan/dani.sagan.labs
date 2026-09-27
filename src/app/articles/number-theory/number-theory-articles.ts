@@ -13,6 +13,7 @@ import { RiemannZetaArticleComponent } from './riemann-zeta/riemann-zeta-article
 import { DivisionAlgorithmComponent } from './division-algorithm/division-algorithm.component';
 import { BezoutIdentityComponent } from './bezout-identity/bezout-identity.component';
 import { GcdEuclidArticleComponent } from './gcd-euclid/gcd-euclid-article.component';
+import { ModularArithmeticArticleComponent } from './modular-arithmetic/modular-arithmetic-article.component';
 import { EuclidsLemmaComponent } from './euclids-lemma/euclids-lemma.component';
 import { FundamentalTheoremArithmeticComponent } from './fundamental-theorem-arithmetic/fundamental-theorem-arithmetic.component';
 import { EuclidInfinitelyManyPrimesComponent } from './euclid-infinitely-many-primes/euclid-infinitely-many-primes.component';
@@ -38,7 +39,7 @@ export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   ContinuedFractionsArticleComponent, GoldbachArticleComponent,
   DivisionAlgorithmComponent, GcdEuclidArticleComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
   FundamentalTheoremArithmeticComponent, EuclidInfinitelyManyPrimesComponent,
-  LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,
+  ModularArithmeticArticleComponent, LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,
   FermatsLittleTheoremComponent, EulersTheoremComponent, WilsonsTheoremComponent,
   EulerTotientFormulaComponent, MobiusInversionComponent, SumOfTwoSquaresComponent,
   FermatFourSquareTheoremComponent, QuadraticReciprocityComponent,

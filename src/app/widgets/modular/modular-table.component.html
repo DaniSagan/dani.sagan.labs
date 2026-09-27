@@ -1,0 +1,39 @@
+<div class="widget" aria-labelledby="modular-table-title">
+  <span class="eyebrow">LABORATORIO · LEER UNA TABLA</span>
+  <h3 id="modular-table-title">¿Dónde aparecen el cero y el uno?</h3>
+  <div class="controls">
+    <label for="modular-table-n">Módulo n (2–12)<input id="modular-table-n" type="number" min="2" max="12" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+    <label for="modular-table-op">Operación<select id="modular-table-op" [(ngModel)]="operation" (ngModelChange)="update()"><option value="add">Suma</option><option value="multiply">Multiplicación</option></select></label>
+  </div>
+  @if (!valid) { <p class="error" role="alert">Introduce un módulo entero entre 2 y 12.</p> } @else {
+    <p class="result" aria-live="polite">{{ a }} {{ operation === 'add' ? '+' : '×' }} {{ b }} ≡ {{ value(a, b) }} (mod {{ n }}).
+      @if (zeroDivisor(a, b)) { Dos clases no nulas producen cero: ambas son divisores de cero. }
+      @if (operation === 'multiply' && value(a, b) === 1) { Son inversos entre sí. }
+    </p>
+    <p class="note">Selecciona una celda para leer la operación. La fila elegida queda resaltada.
+      En pantallas pequeñas, desplaza la tabla horizontalmente para ver todas las columnas.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla de operaciones modular">
+      <table><caption>{{ operation === 'add' ? 'Suma' : 'Producto' }} módulo {{ n }}</caption>
+        <thead><tr><th scope="col">{{ operation === 'add' ? '+' : '×' }}</th>@for (r of residues; track r) { <th scope="col">{{ r }}</th> }</tr></thead>
+        <tbody>@for (row of residues; track row) {
+          <tr [class.selected]="row === a"><th scope="row">{{ row }}</th>
+            @for (column of residues; track column) {
+              <td><button type="button" (click)="select(row, column)" [attr.aria-pressed]="row === a && column === b"
+                [class.zero-divisor]="zeroDivisor(row, column)" [class.unit]="operation === 'multiply' && value(row, column) === 1"
+                [attr.aria-label]="row + (operation === 'add' ? ' más ' : ' por ') + column + ' módulo ' + n + ' es ' + value(row, column)">
+                {{ value(row, column) }}{{ zeroDivisor(row, column) ? ' †' : operation === 'multiply' && value(row, column) === 1 ? ' ★' : '' }}
+              </button></td>
+            }
+          </tr>
+        }</tbody>
+      </table>
+    </div>
+    @if (operation === 'multiply') {
+      <p class="legend"><span>★ Producto 1: inversos</span><span>† Producto 0 con factores no nulos</span></p>
+      <p>Unidades módulo {{ n }}: <strong>{{ units.join(', ') }}</strong>.</p>
+      <p class="note">{{ prime ? 'El módulo es primo: cada fila no nula contiene un 1 y ningún 0 fuera de la columna 0.' : 'El módulo es compuesto: algunas filas no nulas carecen de 1 y contienen ceros fuera de la columna 0.' }} Compara 6 con 7.</p>
+    } @else {
+      <p class="note">Cada fila contiene todos los residuos exactamente una vez: sumar una clase solo los cambia de orden. Observa también la simetría de la tabla.</p>
+    }
+  }
+</div>

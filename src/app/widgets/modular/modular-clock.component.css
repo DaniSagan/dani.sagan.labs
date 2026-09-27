@@ -1,0 +1,51 @@
+.clock-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+.clock {
+  width: 100%;
+  max-width: 380px;
+}
+.clock .rim {
+  stroke: #55505b;
+  stroke-width: 2;
+  fill: var(--paper);
+}
+.clock .mark {
+  fill: var(--bg2);
+  stroke: #68687e;
+}
+.clock .current-mark {
+  fill: #302918;
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+.clock .hand {
+  transform-origin: 180px 180px;
+  transition: transform 0.45s ease;
+}
+.clock .hand line {
+  stroke: var(--accent2);
+  stroke-width: 3;
+}
+.clock .hand circle {
+  fill: var(--accent2);
+}
+.clock .center {
+  fill: var(--gold);
+  font:
+    26px "Courier Prime",
+    monospace;
+}
+@media (max-width: 650px) {
+  .clock-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clock .hand {
+    transition: none;
+  }
+}

@@ -3,6 +3,7 @@
 <p>La función φ(n), llamada totiente, cuenta las clases entre 1 y n que son coprimas con n. Euler desarrolló estas ideas durante el siglo XVIII y publicó en 1763 el resultado que generaliza a Fermat:</p>
 <app-formula expression="\gcd(a,n)=1\quad\Longrightarrow\quad a^{\varphi(n)}\equiv1\pmod n"></app-formula>
 <h3>Un mazo de residuos que solo cambia de orden</h3>
+<p>El significado de unidad y la equivalencia entre invertibilidad y coprimalidad se desarrollan en <a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
 <p>Tomemos un sistema reducido de residuos r₁,…,rφ(n): contiene exactamente una vez cada clase invertible módulo n. Al multiplicar todos por a obtenemos otra lista de unidades. No puede haber repeticiones, porque a tiene inverso, y tampoco puede faltar ninguna; es la misma lista permutada.</p>
 <p>Multiplicando sus elementos se obtiene a<sup>φ(n)</sup>∏rᵢ≡∏rᵢ. El producto de los rᵢ también es invertible, de modo que se cancela. Esta prueba es casi idéntica a la de Fermat, pero sustituye todos los residuos no nulos por las unidades del módulo.</p>
 <h3>La última cifra de una potencia</h3>

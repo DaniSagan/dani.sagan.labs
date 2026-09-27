@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-chinese-remainder-theorem',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [FormulaComponent, RouterLink],
   templateUrl: './chinese-remainder-theorem.component.html',
   styleUrl: './chinese-remainder-theorem.component.css'
 })

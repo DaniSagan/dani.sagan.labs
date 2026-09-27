@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-quadratic-reciprocity',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [FormulaComponent, RouterLink],
   templateUrl: './quadratic-reciprocity.component.html',
   styleUrl: './quadratic-reciprocity.component.css'
 })

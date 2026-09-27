@@ -3,6 +3,7 @@
 <p>Euler introdujo el totiente en el siglo XVIII mientras generalizaba el pequeño teorema de Fermat. La notación φ se consolidó más tarde. Si los primos que dividen n son p₁,…,pₖ, entonces</p>
 <app-formula expression="\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right)"></app-formula>
 <h3>Quitar múltiplos sin contarlos dos veces</h3>
+<p>Puedes visualizar las unidades y distinguirlas de los divisores de cero en <a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
 <p>Para una potencia p<sup>a</sup>, no ser coprimo equivale a ser múltiplo de p. Entre los p<sup>a</sup> residuos hay p<sup>a−1</sup> múltiplos, de donde φ(p<sup>a</sup>)=p<sup>a</sup>−p<sup>a−1</sup>. Si m y n son coprimos, el teorema chino del resto identifica cada unidad módulo mn con una pareja formada por una unidad módulo m y otra módulo n. Así, φ(mn)=φ(m)φ(n). Aplicando esta multiplicatividad a la factorización prima aparece la fórmula.</p>
 <p>También puede verse mediante inclusión-exclusión: partimos de n enteros, eliminamos la fracción 1/p de múltiplos de cada primo y corregimos automáticamente las intersecciones al multiplicar los factores.</p>
 <h3>Ejemplo</h3>

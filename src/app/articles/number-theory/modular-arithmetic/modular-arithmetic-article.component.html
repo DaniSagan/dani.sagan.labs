@@ -1,0 +1,278 @@
+<h2>Congruencias: fundamentos y aritmética modular</h2>
+<p class="dropcap">Cinco horas después de las diez, un reloj de doce horas señala las tres. Han transcurrido quince horas desde el origen,
+  pero la aguja solo conserva la posición dentro de una vuelta. Los días de la semana, los turnos de una máquina y las últimas cifras de un número
+  plantean la misma pregunta: ¿qué información queda cuando dejamos de contar las vueltas completas?</p>
+<p>La aritmética modular convierte esa intuición en una forma rigurosa de calcular. Primero exploraremos las posiciones; después veremos por qué
+  podemos sumar y multiplicar sus clases, y por qué dividir exige más cuidado.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="congruencia">Congruencia y restos</a></li>
+    <li><a routerLink="." fragment="clases">Clases residuales</a></li>
+    <li><a routerLink="." fragment="operaciones">Operaciones</a></li>
+    <li><a routerLink="." fragment="cancelacion">Cancelación e inversos</a></li>
+    <li><a routerLink="." fragment="potencias">Potencias y aplicaciones</a></li>
+    <li><a routerLink="." fragment="errores">Errores frecuentes</a></li>
+    <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+    <li><a routerLink="." fragment="conexiones">Para continuar</a></li>
+  </ul>
+</nav>
+
+<h3>1. Un reloj que vuelve al principio</h3>
+<p>Numeramos las posiciones desde 0: en un reloj de doce horas, 0 ocupa el lugar habitual del 12. En un ciclo semanal podemos llamar 0 al lunes,
+  1 al martes y así hasta 6. Desde el miércoles, avanzar cinco días conduce al lunes: 2 + 5 termina en la posición 0 módulo 7.
+  Prueba también a retroceder: una posición negativa tiene igualmente un representante dentro de la vuelta.</p>
+<app-modular-clock></app-modular-clock>
+
+<h3 id="congruencia">2. Qué significa ser congruentes</h3>
+<p>Fijamos un <strong>módulo n, entero positivo</strong>. Para a,b enteros, decimos que a es congruente con b módulo n si su diferencia es múltiplo de n:</p>
+<app-formula expression="a\equiv b\pmod n\quad\Longleftrightarrow\quad n\mid(a-b)\quad\Longleftrightarrow\quad a-b=nt\text{ para algún }t\in\mathbb Z."></app-formula>
+<p>Así, 17 ≡ 5 (mod 12), pues 17 − 5 = 12; y −2 ≡ 3 (mod 5), pues −2 − 3 = −5.
+  En cambio, 17 no es congruente con 6 módulo 12: su diferencia, 11, no es múltiplo de 12.</p>
+<div class="convention">
+  <p><strong>El módulo forma parte de la afirmación.</strong> 17 ≡ 5 (mod 12) no afirma que 17 = 5 como enteros.
+    También 17 ≡ 5 (mod 3), pero no módulo 5. No mezclaremos congruencias de módulos distintos al aplicar una regla.</p>
+  <p>Trabajaremos siempre con n &gt; 0. Módulo 1, todos los enteros son congruentes y el único resto es 0.
+    Es un caso válido pero degenerado; al estudiar unidades, divisores de cero y módulos primos o compuestos supondremos n ≥ 2.</p>
+</div>
+
+<h3>3. La misma posición equivale al mismo resto</h3>
+<p>Por el <a routerLink="/articles/division-algorithm">teorema de la división euclídea</a>, cualquier entero a, positivo o negativo,
+  se escribe de forma única como a = nq + r, con 0 ≤ r &lt; n. Llamamos a r su <strong>resto canónico</strong>.</p>
+<div class="proof">
+  <p><strong>Equivalencia entre congruencia y restos.</strong> Escribamos a = nq + r y b = ns + t, con 0 ≤ r,t &lt; n.
+    Si r = t, entonces a − b = n(q − s), luego a ≡ b (mod n).
+    Recíprocamente, si n divide a a − b, también divide a r − t = (a − b) − n(q − s).
+    Como −n &lt; r − t &lt; n, el único múltiplo de n posible es 0. Por tanto r = t.</p>
+</div>
+<p>Por ejemplo, −17 = 5·(−4) + 3, así que −17 ≡ 3 (mod 5). El resto canónico es 3, no −2.
+  La igualdad −17 = 5·(−3) − 2 es cierta, pero no es una división euclídea con resto canónico.</p>
+<p>Usaremos <strong>a mod n</strong> para la operación que devuelve ese único entero r. En cambio,
+  <strong>a ≡ b (mod n)</strong> es una relación entre dos enteros: afirma que sus restos coinciden.
+  En algunos lenguajes, el operador <code>%</code> devuelve un resto con el signo del dividendo;
+  para n &gt; 0, la expresión <code>((a % n) + n) % n</code> lo normaliza al intervalo canónico.</p>
+
+<h3>4. Una relación de equivalencia</h3>
+<p>La congruencia módulo un n fijo permite agrupar enteros porque es una <strong>relación de equivalencia</strong> en ℤ.
+  Veamos sus tres propiedades directamente desde la divisibilidad.</p>
+<div class="proof">
+  <ul>
+    <li><strong>Reflexividad:</strong> a − a = 0 = n·0, luego a ≡ a (mod n).</li>
+    <li><strong>Simetría:</strong> si a − b = nt, entonces b − a = n(−t), luego b ≡ a (mod n).</li>
+    <li><strong>Transitividad:</strong> si a − b = nu y b − c = nv, al sumar obtenemos a − c = n(u + v), luego a ≡ c (mod n).</li>
+  </ul>
+</div>
+
+<h3 id="clases">5. Infinitos enteros, solo n clases</h3>
+<p>La <strong>clase residual</strong> de a es el conjunto de todos los enteros congruentes con él:</p>
+<app-formula expression="[a]_n=\{b\in\mathbb Z:b\equiv a\pmod n\}=a+n\mathbb Z=\{a+kn:k\in\mathbb Z\}."></app-formula>
+<p>Por ejemplo, [3]₅ = &#123;…, −12, −7, −2, 3, 8, 13, …&#125; = [−2]₅.
+  El entero 3 es un <em>representante</em>; la clase [3]₅ es un conjunto infinito. No son el mismo objeto.</p>
+<app-residue-classes></app-residue-classes>
+<div class="proof">
+  <p><strong>Las clases forman una partición.</strong> Todo entero pertenece a su propia clase por reflexividad.
+    Si dos clases comparten un entero c, por simetría y transitividad sus representantes son congruentes;
+    cualquier entero de una clase pertenece entonces a la otra. Por tanto dos clases son iguales o disjuntas.</p>
+  <p><strong>Hay exactamente n clases.</strong> Cada entero tiene un resto r entre 0 y n − 1, luego pertenece a [r]ₙ.
+    Dos restos distintos de ese intervalo no pueden ser congruentes, porque su diferencia no nula tiene valor absoluto menor que n.
+    Así, [0]ₙ,…,[n − 1]ₙ son todas las clases y ninguna se repite.</p>
+</div>
+<app-formula expression="\mathbb Z/n\mathbb Z=\{[0]_n,[1]_n,\ldots,[n-1]_n\}."></app-formula>
+<p>Este es el conjunto de clases residuales, no una división numérica de ℤ entre nℤ.
+  Un <strong>sistema completo de residuos</strong> elige exactamente un entero de cada clase.
+  El sistema canónico es 0,1,…,n − 1. Módulo 5 también sirven −2,−1,0,1,2;
+  en cambio 0,1,2,3,5 no sirve: repite la clase de 0 y omite la de 4.</p>
+
+<h3 id="operaciones">6. Observar las operaciones antes de justificarlas</h3>
+<p>En la tabla de suma, cada fila parece reorganizar las mismas clases. En la de multiplicación, compara n = 6 con n = 7:
+  ¿aparece siempre un 1 en cada fila no nula? ¿Pueden dos factores no nulos producir cero?</p>
+<app-modular-table></app-modular-table>
+<p>Para a ≡ b (mod n) y c ≡ d (mod n), las operaciones básicas respetan la congruencia:</p>
+<app-formula expression="a+c\equiv b+d,\qquad a-c\equiv b-d,\qquad ac\equiv bd\pmod n."></app-formula>
+<div class="proof">
+  <p><strong>Suma y resta.</strong> Si a − b = nu y c − d = nv, entonces
+    (a + c) − (b + d) = n(u + v) y (a − c) − (b − d) = n(u − v).
+    Ambas diferencias son múltiplos de n.</p>
+  <p><strong>Producto.</strong> La identidad que permite separar los dos cambios de representante es</p>
+  <app-formula expression="ac-bd=c(a-b)+b(c-d)=n(cu+bv)."></app-formula>
+  <p>Como cu + bv es entero, n divide a ac − bd. No hemos supuesto que los factores sean positivos ni coprimos.</p>
+</div>
+<p><strong>Potencias naturales.</strong> Si a ≡ b (mod n), entonces aᵏ ≡ bᵏ (mod n) para todo entero k ≥ 0.
+  Para k = 0 ambos productos vacíos valen 1; si la propiedad vale para k, multiplicar aᵏ ≡ bᵏ por a ≡ b prueba el caso k + 1.
+  Usamos aquí la convención algebraica a⁰ = 1, incluido 0⁰; no estamos tratando límites indeterminados.</p>
+<p>Estas reglas justifican <strong>reducir durante el cálculo</strong>: cada sustitución por un resto conserva la clase y, por transitividad,
+  conserva el resultado final. Por ejemplo, módulo 7:</p>
+<app-formula expression="123\cdot456+789\equiv4\cdot1+5\equiv2\pmod7."></app-formula>
+<p>No hace falta construir primero el entero 56877. El razonamiento se extiende a cualquier expresión polinómica con coeficientes enteros,
+  siempre que cada reducción use el mismo módulo. No autoriza a reducir los exponentes módulo n.</p>
+
+<h3>7. Calcular con enteros o con clases</h3>
+<p>Definimos [a]ₙ + [b]ₙ = [a + b]ₙ y [a]ₙ·[b]ₙ = [ab]ₙ.
+  Las demostraciones anteriores garantizan que estas operaciones están <strong>bien definidas</strong>:
+  cambiar a o b por cualquier otro representante no cambia la clase del resultado.</p>
+<p>La suma y el producto son asociativos y conmutativos, y el producto distribuye sobre la suma, porque esas igualdades ya valen en ℤ.
+  La clase [0]ₙ es neutra para la suma, [−a]ₙ es el opuesto de [a]ₙ y [1]ₙ es neutra para el producto.
+  Esta estructura se llama <strong>anillo de enteros módulo n</strong>; para usarla basta recordar que la división no está garantizada.</p>
+<p>Hay tres afirmaciones distintas: 8 = 3 es falsa en ℤ; 8 ≡ 3 (mod 5) es verdadera;
+  [8]₅ = [3]₅ es una igualdad verdadera entre clases. Cuando abreviamos una tabla escribiendo «3», representamos la clase [3]ₙ.</p>
+
+<h3 id="cancelacion">8. La trampa de cancelar</h3>
+<p>Módulo 6, 2·1 ≡ 2·4 porque ambos productos dejan resto 2. Sin embargo, 1 no es congruente con 4 módulo 6.
+  El problema no está en la multiplicación: al multiplicar por 2, dos clases distintas se han convertido en la misma.</p>
+<p><strong>Cancelación con módulo fijo.</strong> Si gcd(c,n) = 1, entonces ca ≡ cb (mod n) implica a ≡ b (mod n).</p>
+<div class="proof">
+  <p>La <a routerLink="/articles/bezout-identity">identidad de Bézout</a> proporciona enteros u,v con cu + nv = 1.
+    Multiplicamos por a − b:</p>
+  <app-formula expression="a-b=u\,c(a-b)+v\,n(a-b)."></app-formula>
+  <p>La hipótesis dice que n divide a c(a − b). Los dos sumandos de la derecha son múltiplos de n,
+    así que n divide a a − b. Esto prueba la cancelación.</p>
+  <p><strong>Por qué la condición es necesaria para una regla general.</strong> Si d = gcd(c,n) &gt; 1,
+    las clases de 0 y n/d son distintas, pues 0 &lt; n/d &lt; n. Pero c(n/d) = n(c/d) es múltiplo de n,
+    de modo que multiplicarlas por c produce la misma clase. La cancelación no puede ser válida para todos los pares.</p>
+</div>
+<p>Cuando el factor no es coprimo, todavía podemos cancelar si ajustamos el módulo:</p>
+<app-formula expression="ca\equiv cb\pmod n\quad\Longleftrightarrow\quad a\equiv b\pmod{n/d},\qquad d=\gcd(c,n)."></app-formula>
+<div class="proof">
+  <p>Escribimos c = dc′ y n = dn′, con gcd(c′,n′) = 1. Entonces n ∣ c(a − b) equivale a n′ ∣ c′(a − b).
+    Por la cancelación coprima demostrada, esto equivale a n′ ∣ a − b. El argumento incluye c = 0:
+    entonces d = n y el módulo resultante es 1, donde todas las congruencias son ciertas.</p>
+</div>
+<p>Así, 2a ≡ 2b (mod 6) equivale a a ≡ b (mod 3). El estudio de ecuaciones como 6x ≡ 9 (mod 15)
+  se desarrolla en <a routerLink="/articles/linear-congruence-theorem">congruencias lineales</a>.</p>
+
+<h3>9. Inversos: dividir significa multiplicar por una unidad</h3>
+<p>Para n ≥ 2, una clase [a]ₙ es una <strong>unidad</strong> si existe una clase [u]ₙ tal que [a]ₙ[u]ₙ = [1]ₙ.
+  Escribimos u ≡ a⁻¹ (mod n). Se trata de un inverso multiplicativo en las clases, no de la fracción racional 1/a.</p>
+<app-modular-inverse></app-modular-inverse>
+<app-formula expression="a\text{ tiene inverso módulo }n\quad\Longleftrightarrow\quad\gcd(a,n)=1."></app-formula>
+<div class="proof">
+  <p><strong>Necesidad.</strong> Si au ≡ 1 (mod n), existe t entero con au − nt = 1.
+    Cualquier divisor común de a y n divide al primer miembro y, por tanto, a 1. El MCD positivo es 1.</p>
+  <p><strong>Suficiencia.</strong> Si gcd(a,n) = 1, Bézout da ax + ny = 1.
+    Al reducir módulo n queda ax ≡ 1, así que x representa un inverso.</p>
+  <p><strong>Unicidad de la clase inversa.</strong> Si au ≡ av ≡ 1, entonces
+    u ≡ u(av) ≡ (ua)v ≡ v (mod n). Hay un único inverso como clase, aunque infinitos representantes enteros.</p>
+</div>
+<p>Para hallarlo usamos el <a routerLink="/articles/gcd-euclid" fragment="extendido">algoritmo extendido de Euclides</a>.
+  Por ejemplo, 43 = 2·17 + 9, 17 = 9 + 8 y 9 = 8 + 1 llevan a 1 = 2·43 − 5·17.
+  Luego el inverso de 17 módulo 43 es la clase de −5, cuyo representante canónico es 38.
+  La comprobación es 17·38 = 646 = 43·15 + 1.</p>
+<p>Multiplicar una congruencia por un inverso explica de otra forma la cancelación coprima.
+  No hay que calcular inversos mediante tanteo ni factorizar el módulo: el MCD y sus coeficientes bastan.</p>
+
+<h3>10. Qué cambia entre un módulo primo y uno compuesto</h3>
+<p>Una clase <strong>no nula</strong> [a]ₙ es un <strong>divisor de cero</strong> si existe otra clase no nula [b]ₙ con [a]ₙ[b]ₙ = [0]ₙ.
+  Módulo 6, [2]₆ y [3]₆ son divisores de cero porque 2·3 ≡ 0. La definición excluye al propio cero.</p>
+<div class="proof">
+  <p><strong>Una unidad no es divisor de cero.</strong> Si au ≡ 1 y ab ≡ 0, al multiplicar por u resulta b ≡ 0.
+    Por tanto no puede anular una clase no nula.</p>
+  <p><strong>En un módulo primo p, toda clase no nula es unidad.</strong> Su representante r satisface 1 ≤ r &lt; p;
+    como los únicos divisores positivos de p son 1 y p, gcd(r,p) = 1. Por el criterio del inverso, r es invertible.
+    En consecuencia no hay divisores de cero.</p>
+  <p><strong>En un módulo compuesto aparecen divisores de cero.</strong> Si n = uv con 1 &lt; u,v &lt; n,
+    las clases de u y v son no nulas, pero su producto es [n]ₙ = [0]ₙ.</p>
+  <p>Más precisamente, si 0 &lt; r &lt; n no es unidad, d = gcd(r,n) &gt; 1.
+    El entero s = n/d satisface 1 ≤ s &lt; n y rs = n(r/d) ≡ 0. Así, toda clase no nula no invertible es divisor de cero.</p>
+</div>
+<p>Para n ≥ 2, todas las clases no nulas son invertibles exactamente cuando n es primo.
+  En ese caso ℤ/pℤ recibe el nombre de <strong>cuerpo</strong>: se puede dividir por cualquier clase no nula.
+  Un módulo compuesto también tiene unidades —por ejemplo, 1 y 5 módulo 6—, pero no todas sus clases no nulas lo son.</p>
+
+<h3 id="potencias">11. Potencias: ¿un ciclo desde el principio?</h3>
+<p>Prueba la base 2 módulo 7 y después módulo 8. En ambos casos hay repetición, pero solo en el primero se vuelve al 1 inicial.
+  El explorador separa la <strong>cola</strong>, o parte inicial no periódica, del ciclo que se repite indefinidamente.</p>
+<app-modular-powers></app-modular-powers>
+<div class="proof">
+  <p><strong>Por qué siempre hay periodicidad eventual.</strong> Sea rₖ = aᵏ mod n, para k ≥ 0.
+    La regla rₖ₊₁ = arₖ mod n determina el siguiente término solo a partir del actual.
+    Entre los n + 1 valores r₀,…,rₙ, dos coinciden, pues solo hay n residuos posibles.
+    Si rᵢ = rⱼ con i &lt; j, aplicar reiteradamente la misma regla da rᵢ₊ₜ = rⱼ₊ₜ para todo t ≥ 0.
+    Desde i se repite un ciclo de longitud j − i, aunque un par de repeticiones cualquiera no asegura que esa longitud sea mínima.</p>
+  <p><strong>Con una base invertible no hay cola.</strong> Si aᶦ ≡ aʲ, podemos cancelar la unidad aᶦ y obtener aʲ⁻ᶦ ≡ 1.
+    Multiplicando por aᵏ vemos aᵏ⁺ʲ⁻ᶦ ≡ aᵏ para todo k ≥ 0. La periodicidad comienza en el exponente cero.
+    El menor exponente positivo que devuelve 1 es el <a routerLink="/articles/orders-theorem">orden multiplicativo</a>.</p>
+</div>
+<p>En cambio, 2ᵏ mod 8 produce 1,2,4,0,0,…: tiene cola de longitud 3 y período 1.
+  Para calcular un exponente k dentro del ciclo, con cola μ y período λ, podemos sustituirlo por μ + ((k − μ) mod λ),
+  siempre que k ≥ μ. Reducir k módulo λ sin atender a la cola sería incorrecto.</p>
+
+<h3>12. Cuadrados sucesivos: reducir el trabajo, no solo los números</h3>
+<p>Multiplicar cien veces no es necesario. Si conocemos a, obtenemos a², a⁴, a⁸,… elevando al cuadrado y reduciendo tras cada operación.
+  Después usamos la escritura binaria del exponente para seleccionar las potencias necesarias.</p>
+<p>Para 2¹⁰⁰ módulo 7, 100 = 64 + 32 + 4. Los restos de 2¹,2²,2⁴,2⁸,2¹⁶,2³²,2⁶⁴ son 2,4,2,4,2,4,2, respectivamente.
+  Multiplicando los tres seleccionados:</p>
+<app-formula expression="2^{100}=2^{64}2^{32}2^4\equiv2\cdot4\cdot2=16\equiv2\pmod7."></app-formula>
+<pre aria-label="Pseudocódigo de potenciación modular"><code>POTENCIA_MODULAR(a, k, n)   // n &gt; 0, k ≥ 0
+  R ← 1 mod n
+  B ← a mod n
+  e ← k
+  mientras e &gt; 0:
+    si e es impar:
+      R ← (R·B) mod n
+    B ← (B·B) mod n
+    e ← cociente entero de e entre 2
+  devolver R</code></pre>
+<div class="proof">
+  <p><strong>Corrección.</strong> El invariante es RBᵉ ≡ aᵏ (mod n). Se cumple inicialmente.
+    Si e = 2t, las nuevas variables satisfacen R(B²)ᵗ = RBᵉ. Si e = 2t + 1,
+    satisfacen (RB)(B²)ᵗ = RBᵉ. Reducir los productos no altera esas congruencias.
+    Cuando e = 0, queda R ≡ aᵏ.</p>
+  <p><strong>Terminación y coste.</strong> Para e &gt; 0, el cociente entero de e entre 2 es menor que e.
+    El bucle termina tras tantas iteraciones como cifras binarias tenga k: ⌊log₂k⌋ + 1 si k &gt; 0, y ninguna si k = 0.
+    Esto da un número de multiplicaciones del orden de log k, aunque el coste de cada multiplicación depende del tamaño del módulo.</p>
+</div>
+<p>No hace falta que a sea coprimo con n: los cuadrados sucesivos funcionan también con módulos compuestos y divisores de cero.
+  Los exponentes negativos exigirían definir primero el inverso, por lo que aquí los excluimos.</p>
+
+<h3>13. Últimas cifras y criterios de divisibilidad</h3>
+<ul>
+  <li><strong>Una última cifra.</strong> Como 7⁴ ≡ 1 (mod 10) y 2025 = 4·506 + 1,
+    7²⁰²⁵ ≡ 7 (mod 10). Su última cifra es 7.</li>
+  <li><strong>Dos últimas cifras.</strong> 7² = 49 y 7⁴ = 2401 ≡ 1 (mod 100).
+    Como 222 = 4·55 + 2, 7²²² ≡ 49 (mod 100). Sus dos últimas cifras son 49.
+    Si el resto fuera 3, escribiríamos 03.</li>
+  <li><strong>Divisibilidad por 9 y por 3.</strong> Si N = ∑dᵢ10ⁱ es la expansión decimal,
+    10 ≡ 1 (mod 9) implica N ≡ ∑dᵢ (mod 9). Por eso N es divisible por 9 exactamente cuando lo es la suma de sus cifras.
+    El mismo razonamiento vale módulo 3. Por ejemplo, 123456789 tiene suma 45 y es divisible por 9.</li>
+  <li><strong>Divisibilidad por 11.</strong> Como 10 ≡ −1 (mod 11), se obtiene N ≡ ∑(−1)ⁱdᵢ (mod 11),
+    con i = 0 en las unidades. El número 2728 es divisible por 11 porque 8 − 2 + 7 − 2 = 11.</li>
+</ul>
+<p><strong>Leer un entero grande sin construirlo.</strong> Al añadir una cifra d a la derecha de un prefijo P,
+  el nuevo número es 10P + d. Podemos guardar solo su resto y actualizar r ← (10r + d) mod n.
+  Para 12345 módulo 7, los restos de los prefijos 1,12,123,1234,12345 son 1,5,4,2,4. Luego el resto final es 4.
+  La compatibilidad de suma y producto prueba que este método sirve incluso con miles de cifras.</p>
+
+<h3 id="errores">14. Errores frecuentes y cómo detectarlos</h3>
+<ul>
+  <li><strong>Confundir congruencia con igualdad:</strong> 8 ≡ 3 (mod 5) compara restos; no cambia la igualdad ordinaria de los enteros.</li>
+  <li><strong>Cancelar sin comprobar:</strong> de 2x ≡ 2 (mod 6) se deduce x ≡ 1 (mod 3), no necesariamente x ≡ 1 (mod 6).</li>
+  <li><strong>Confundir resto y clase:</strong> −17 mod 5 = 3 es un entero; [−17]₅ = [3]₅ es una clase con infinitos representantes.</li>
+  <li><strong>Dejar un resto negativo como canónico:</strong> −2 es congruente con 3 módulo 5, pero solo 3 pertenece al intervalo 0,…,4.</li>
+  <li><strong>Suponer que no nulo significa invertible:</strong> [2]₆ no es cero y no tiene inverso. Hay que comprobar gcd(a,n) = 1.</li>
+  <li><strong>Confundir operación y relación:</strong> a mod n devuelve un resto; a ≡ b (mod n) afirma una divisibilidad. La semántica de <code>%</code> depende del lenguaje.</li>
+  <li><strong>Reducir el exponente módulo el módulo:</strong> aunque 8 ≡ 1 (mod 7), 2⁸ ≡ 4 y 2¹ ≡ 2 (mod 7).
+    Para reducir exponentes hay que justificar un período y, cuando exista, respetar la cola.</li>
+</ul>
+
+<h3 id="ejercicios">15. Autoevaluación con pistas</h3>
+<app-self-assessment quizId="modular-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3 id="conexiones">16. Un mapa para seguir explorando</h3>
+<p>Las ideas de este artículo permiten abordar los siguientes resultados sin perder de vista qué representan los símbolos:</p>
+<ul>
+  <li><strong>Divisibilidad y cálculo:</strong> el <a routerLink="/articles/gcd-euclid">MCD y el algoritmo de Euclides</a>
+    calculan la coprimalidad; la <a routerLink="/articles/bezout-identity">identidad de Bézout</a> la convierte en un certificado y en un inverso.</li>
+  <li><strong>Resolver ecuaciones:</strong> las <a routerLink="/articles/linear-congruence-theorem">congruencias lineales</a>
+    estudian ax ≡ b; el <a routerLink="/articles/chinese-remainder-theorem">teorema chino del resto</a> combina condiciones de distintos módulos.</li>
+  <li><strong>Predecir potencias:</strong> el <a routerLink="/articles/fermats-little-theorem">pequeño teorema de Fermat</a>
+    da a<sup>p−1</sup> ≡ 1 para p primo y p ∤ a; el <a routerLink="/articles/eulers-theorem">teorema de Euler</a>
+    lo generaliza a a<sup>φ(n)</sup> ≡ 1 cuando gcd(a,n) = 1. La <a routerLink="/articles/euler-totient-formula">función φ de Euler</a>
+    cuenta las unidades y permite calcular ese exponente.</li>
+  <li><strong>Encontrar el período exacto:</strong> los <a routerLink="/articles/orders-theorem">órdenes módulo n</a>
+    describen el primer retorno a 1; las <a routerLink="/articles/primitive-root-theorem">raíces primitivas</a>
+    preguntan cuándo las potencias de una sola unidad recorren todas las unidades.</li>
+  <li><strong>Estudiar cuadrados:</strong> el <a routerLink="/articles/euler-criterion">criterio de Euler</a>
+    decide, bajo sus hipótesis de primalidad, qué clases no nulas son cuadrados;
+    la <a routerLink="/articles/quadratic-reciprocity">reciprocidad cuadrática</a> relaciona esa pregunta para distintos primos.</li>
+</ul>
+<p>El reloj conserva una posición; la congruencia conserva una clase. Poder operar con esa información reducida,
+  sabiendo exactamente qué reglas sobreviven y cuáles necesitan hipótesis, es la idea que une toda esta aritmética.</p>

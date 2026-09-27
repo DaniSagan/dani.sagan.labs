@@ -1,0 +1,43 @@
+<div class="widget" aria-labelledby="modular-inverse-title">
+  <span class="eyebrow">EXPLORADOR · ENCONTRAR EL UNO</span>
+  <h3 id="modular-inverse-title">Un inverso, o una razón para que no exista</h3>
+  <div class="presets">
+    <button type="button" (click)="preset('17', '43')">17 módulo 43</button>
+    <button type="button" (click)="preset('2', '6')">Sin inverso</button>
+    <button type="button" (click)="preset('-3', '11')">Base negativa</button>
+  </div>
+  <div class="controls">
+    <label for="inverse-a">Entero a<input id="inverse-a" type="text" maxlength="20" [(ngModel)]="aText" (ngModelChange)="update()"></label>
+    <label for="inverse-n">Módulo n ≥ 2<input id="inverse-n" type="text" maxlength="20" [(ngModel)]="nText" (ngModelChange)="update()"></label>
+  </div>
+  <p class="note">Hasta 18 cifras por entrada. No se usan aproximaciones decimales.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+    <div aria-live="polite">
+      <p class="readout">MCD({{ result.a }}, {{ result.b }}) = {{ result.gcd }}</p>
+      @if (exists) {
+        <p class="result">Inverso canónico: <strong>{{ result.inverse }}</strong>.
+          {{ result.a }} × {{ result.inverse }} = {{ product }} ≡ 1 (mod {{ result.b }}).</p>
+      } @else {
+        <p class="result">No hay inverso: {{ result.gcd }} divide a {{ result.a }} y a {{ result.b }}, pero no a 1.</p>
+      }
+    </div>
+    @if (candidates.length) {
+      <p>Busca la tarjeta que llega a 1. Cada tarjeta muestra x → ax mod n.</p>
+      <div class="chips" aria-label="Productos de a por los residuos canónicos">
+        @for (candidate of candidates; track candidate.x) {
+          <span class="result" [class.unit]="candidate.inverse">{{ candidate.x }} → {{ candidate.residue }}{{ candidate.inverse ? ' ★ inverso' : '' }}</span>
+        }
+      </div>
+    } @else { <p class="note">Para módulos mayores de 48 mostramos el certificado de Bézout en lugar de enumerar todas las clases.</p> }
+    <details>
+      <summary>Ver el certificado de Bézout</summary>
+      <p class="identity">{{ result.gcd }} = ({{ result.a }})·({{ result.x }}) + ({{ result.b }})·({{ result.y }}).</p>
+      @if (exists) { <p>Al reducir módulo {{ result.b }}, el segundo sumando desaparece. El coeficiente {{ result.x }} representa el inverso; su resto canónico es {{ result.inverse }}.</p> }
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Restos y coeficientes de Bézout">
+        <table><caption>Cada fila cumple R = a·x + n·y</caption><thead><tr><th scope="col">R</th><th scope="col">x</th><th scope="col">y</th></tr></thead>
+          <tbody>@for (row of result.rows; track $index) { <tr><td>{{ row.remainder }}</td><td>{{ row.x }}</td><td>{{ row.y }}</td></tr> }</tbody>
+        </table>
+      </div>
+    </details>
+  }
+</div>

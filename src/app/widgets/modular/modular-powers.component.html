@@ -1,0 +1,61 @@
+<div class="widget" aria-labelledby="modular-powers-title">
+  <span class="eyebrow">LABORATORIO · POTENCIAS SIN NÚMEROS ENORMES</span>
+  <h3 id="modular-powers-title">Del patrón al cálculo rápido</h3>
+  <div class="presets">
+    <button type="button" (click)="preset('2', 7, '100')">2¹⁰⁰ módulo 7</button>
+    <button type="button" (click)="preset('2', 8, '100')">Una cola antes del ciclo</button>
+    <button type="button" (click)="preset('7', 100, '222')">Últimas dos cifras</button>
+    <button type="button" (click)="preset('-3', 10, '2025')">Base negativa</button>
+  </div>
+  <div class="controls">
+    <label for="powers-a">Base a<input id="powers-a" type="text" maxlength="20" [(ngModel)]="aText" (ngModelChange)="update()"></label>
+    <label for="powers-n">Módulo n (1–120)<input id="powers-n" type="number" min="1" max="120" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+    <label for="powers-k">Exponente k ≥ 0<input id="powers-k" type="text" maxlength="20" [(ngModel)]="exponentText" (ngModelChange)="update()"></label>
+  </div>
+  <p class="note">Base y exponente admiten hasta 18 cifras. Tomamos a⁰ = 1 como producto vacío, incluido 0⁰; módulo 1 su resto es 0.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+    <p class="result" aria-live="polite">({{ a }})^{{ exponent }} mod {{ n }} = <strong>{{ power.value }}</strong>.</p>
+    <h4>Primero, observa la sucesión</h4>
+    <svg viewBox="0 0 600 175" role="img" [attr.aria-label]="'Potencias desde k igual a cero. Cola de longitud ' + cycle.start + ', período ' + cycle.period">
+      <path class="grid-line" d="M25 20V140H580" />
+      <line [attr.x1]="plotX(cycle.start)" [attr.x2]="plotX(cycle.start)" y1="20" y2="140" stroke="#d4a843" stroke-dasharray="4 4" />
+      <polyline class="trail" [attr.points]="points" />
+      @for (value of sequence; track $index) {
+        <circle [attr.cx]="plotX($index)" [attr.cy]="140 - value * 115 / (n > 1 ? n - 1 : 1)"
+          [attr.r]="$index === cycleIndex ? 5 : 3" [attr.fill]="$index === cycleIndex ? '#d4a843' : '#4a9eff'" />
+      }
+      <text x="2" y="143">0</text><text x="2" y="25">{{ n - 1 }}</text><text x="25" y="168">k = 0</text><text x="575" y="168" text-anchor="end">k = {{ sequence.length - 1 }}</text>
+    </svg>
+    <p>Cola inicial: <strong>{{ cycle.start }}</strong> términos. Período mínimo del ciclo: <strong>{{ cycle.period }}</strong>.
+      La línea dorada marca el comienzo del ciclo; el último punto repite su primer valor.</p>
+    <div class="chips" aria-label="Potencias y residuos">
+      @for (value of sequence; track $index) {
+        <button type="button" [class.selected]="$index === cycleIndex" [class.unit]="$index >= cycle.start && $index !== cycleIndex"
+          [attr.aria-pressed]="$index === cycleIndex" (click)="exponentText = '' + $index; update()"
+          [attr.aria-label]="'Exponente ' + $index + ', residuo ' + value">
+          {{ $index }} → {{ value }}{{ $last ? ' ↩' : '' }}
+        </button>
+      }
+    </div>
+    <p class="note">La tarjeta dorada es el término que representa el exponente elegido. Los términos del ciclo tienen fondo verde.
+      Si hay cola, no se puede reducir sin más el exponente módulo el período desde k = 0.</p>
+    <details>
+      <summary>Calcular por cuadrados sucesivos, paso a paso</summary>
+      <p>En cada fila, si e es impar multiplicamos el acumulador por la base actual; después elevamos la base al cuadrado y dividimos e entre 2, descartando la parte fraccionaria. Todos los productos se reducen módulo {{ n }}.</p>
+      <div class="controls">
+        <button type="button" (click)="visible = visible - 1" [disabled]="visible === 0">Ocultar último paso</button>
+        <button type="button" (click)="visible = visible + 1" [disabled]="visible === power.steps.length">Mostrar siguiente paso</button>
+        <button type="button" (click)="visible = power.steps.length" [disabled]="visible === power.steps.length">Mostrar todos</button>
+      </div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Exponenciación binaria">
+        <table><caption>{{ visible }} de {{ power.steps.length }} iteraciones</caption>
+          <thead><tr><th scope="col">e</th><th scope="col">Base</th><th scope="col">Acumulador</th><th scope="col">Acción</th><th scope="col">Nuevo acumulador</th></tr></thead>
+          <tbody>@for (row of power.steps.slice(0, visible); track $index) {
+            <tr><td>{{ row.exponent }}</td><td>{{ row.base }}</td><td>{{ row.accumulator }}</td><td>{{ row.odd ? 'Multiplicar (e impar)' : 'Conservar (e par)' }}</td><td>{{ row.nextAccumulator }}</td></tr>
+          }</tbody>
+        </table>
+      </div>
+      @if (!power.steps.length) { <p>No hay iteraciones: el exponente es cero y devolvemos el resto de 1.</p> }
+    </details>
+  }
+</div>

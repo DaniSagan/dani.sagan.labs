@@ -1,0 +1,91 @@
+:host {
+  display: block;
+  margin: 1.5rem 0;
+  min-width: 0;
+}
+.widget {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  color-scheme: dark;
+}
+.eyebrow {
+  font:
+    0.7rem "Courier Prime",
+    monospace;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+}
+h3 {
+  margin-top: 0.5rem;
+}
+h4 {
+  color: var(--gold);
+}
+.exercise {
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 0;
+}
+.exercise:last-child {
+  border-bottom: 0;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: end;
+  margin: 1rem 0;
+}
+label {
+  display: block;
+  flex: 1 1 180px;
+  min-width: 0;
+}
+input,
+select,
+textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid #68687e;
+  padding: 0.5rem;
+  margin-top: 0.4rem;
+  border-radius: 5px;
+  font: inherit;
+}
+textarea {
+  resize: vertical;
+}
+button {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid #68687e;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.4;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.note {
+  color: #b9b9ce;
+}
+.result {
+  border-left: 3px solid var(--gold);
+  padding: 0.7rem 1rem;
+  background: var(--paper);
+}

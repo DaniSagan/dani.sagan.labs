@@ -1,0 +1,49 @@
+<div class="widget" aria-labelledby="modular-clock-title">
+  <span class="eyebrow">LABORATORIO · DAR LA VUELTA</span>
+  <h3 id="modular-clock-title">Un reloj con tantas horas como quieras</h3>
+  <div class="presets" aria-label="Ejemplos del reloj">
+    <button type="button" (click)="preset(12, 10, 5, 'add')">10 + 5, módulo 12</button>
+    <button type="button" (click)="preset(7, 2, 5, 'subtract')">Retroceder días</button>
+    <button type="button" (click)="preset(6, 2, 3, 'multiply')">2 × 3, módulo 6</button>
+    <button type="button" (click)="preset(7, 2, 6, 'power')">Potencias de 2</button>
+  </div>
+  <div class="controls">
+    <label for="clock-n">Módulo n (1–24)<input id="clock-n" type="number" min="1" max="24" step="1" [(ngModel)]="n" (ngModelChange)="update()"></label>
+    <label for="clock-a">a (−60 a 60)<input id="clock-a" type="number" min="-60" max="60" step="1" [(ngModel)]="a" (ngModelChange)="update()"></label>
+    <label for="clock-operation">Operación<select id="clock-operation" [(ngModel)]="operation" (ngModelChange)="update()">
+      <option value="add">a + b</option><option value="subtract">a − b</option><option value="multiply">a × b</option><option value="power">a elevado a k</option>
+    </select></label>
+    <label for="clock-b">{{ operation === 'power' ? 'k (0–20)' : 'b (−60 a 60)' }}<input id="clock-b" type="number" [min]="operation === 'power' ? 0 : -60" [max]="operation === 'power' ? 20 : 60" step="1" [(ngModel)]="b" (ngModelChange)="update()"></label>
+  </div>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> } @else {
+    <div class="clock-layout">
+      <svg class="clock" viewBox="0 0 360 360" role="img" [attr.aria-label]="'Reloj módulo ' + n + '. Residuo actual: ' + current.residue">
+        <circle class="rim" cx="180" cy="180" r="120" />
+        @for (point of points; track point.residue) {
+          <circle class="mark" [class.current-mark]="point.residue === current.residue" [attr.cx]="point.x" [attr.cy]="point.y" r="14" />
+          <text [attr.x]="point.x" [attr.y]="point.y + 4" text-anchor="middle">{{ point.residue }}</text>
+        }
+        <g class="hand" [style.transform]="'rotate(' + current.angle + 'deg)'">
+          <line x1="180" y1="145" x2="180" y2="67" /><circle cx="180" cy="60" r="6" />
+        </g>
+        <text class="center" x="180" y="189" text-anchor="middle">{{ current.residue }}</text>
+      </svg>
+      <div aria-live="polite" aria-atomic="true">
+        <p class="readout">Paso {{ step }} de {{ frames.length - 1 }}</p>
+        <p class="result">{{ current.raw }} = {{ n }} × ({{ current.turns }}) + {{ current.residue }}</p>
+        <p>El cociente {{ current.turns }} cuenta las vueltas con signo; el resto {{ current.residue }} es la posición canónica.</p>
+        @if (complete) { <p class="readout">({{ a }}) {{ symbol }} ({{ b }}) ≡ {{ current.residue }} (mod {{ n }})</p> }
+      </div>
+    </div>
+    <div class="controls" aria-label="Controles del reloj">
+      <button type="button" (click)="move(-frames.length)" [disabled]="step === 0">Reiniciar</button>
+      <button type="button" (click)="move(-1)" [disabled]="step === 0">Anterior</button>
+      <button type="button" (click)="toggle()" [disabled]="complete" [attr.aria-pressed]="playing">{{ playing ? 'Pausar' : 'Reproducir' }}</button>
+      <button type="button" (click)="move(1)" [disabled]="complete">Siguiente</button>
+      <button type="button" (click)="move(frames.length)" [disabled]="complete">Ver final</button>
+    </div>
+    <p class="note">Suma y resta: pasos de una unidad desde a. Producto: |b| saltos de a o de −a desde 0, según el signo de b.
+      Potencia: partimos de 1 y multiplicamos por a; la aguja une los residuos por el arco positivo, sin dibujar todas las vueltas del entero enorme.
+      El exponente 0 representa el producto vacío, incluido 0⁰ = 1 en este laboratorio.</p>
+  }
+</div>
