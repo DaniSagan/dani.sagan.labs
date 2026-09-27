@@ -1,0 +1,56 @@
+.equation {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.7rem;
+}
+.widget p {
+  overflow-wrap: anywhere;
+}
+.number-lines {
+  min-width: 740px;
+}
+.number-lines circle {
+  fill: var(--accent2);
+}
+.number-lines circle.common {
+  fill: var(--gold);
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+.number-lines text {
+  font-size: 11px;
+}
+.clock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+.clock-grid svg {
+  width: 210px;
+}
+.clock-grid circle.target {
+  fill: #302918;
+  stroke: var(--gold);
+  stroke-width: 3;
+}
+.clock-grid text {
+  font-size: 11px;
+}
+.clock-grid line {
+  stroke: var(--accent2);
+  stroke-width: 3;
+}
+.clock-grid .matched {
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+}
+.clock-grid p {
+  text-align: center;
+}
+.selector-card {
+  border: 1px solid var(--rule);
+  padding: 1rem;
+  border-radius: 8px;
+}
+.selector-card li {
+  overflow-wrap: anywhere;
+}

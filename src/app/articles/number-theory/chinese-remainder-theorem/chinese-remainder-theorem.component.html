@@ -1,14 +1,293 @@
-<h2>Teorema chino del resto</h2>
-<p class="dropcap">Un antiguo problema pregunta por un número que deja resto 2 al agruparlo de tres en tres, resto 3 al agruparlo de cinco en cinco y resto 2 al agruparlo de siete en siete. La respuesta menor es 23. El teorema chino del resto explica por qué la respuesta existe y en qué sentido es única.</p>
-<p>El problema figura en el <em>Sunzi Suanjing</em>, escrito entre los siglos III y V. En el siglo XIII, Qin Jiushao desarrolló procedimientos generales para sistemas mucho mayores. Esta tradición convierte al teorema en un bello ejemplo de ideas matemáticas que maduraron fuera de Europa.</p>
-<h3>Reconstruir a partir de piezas</h3>
-<p>Para interpretar las clases de soluciones y los inversos que usaremos, consulta <a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
-<p>Sean n₁,…,nₖ módulos coprimos dos a dos. Para cualesquiera restos a₁,…,aₖ, el sistema</p>
-<app-formula expression="x\equiv a_i\pmod{n_i}\qquad(1\le i\le k)"></app-formula>
-<p>tiene una única solución módulo N=n₁···nₖ. Para construirla, definimos Nᵢ=N/nᵢ. Como Nᵢ y nᵢ son coprimos, Bézout proporciona un inverso Mᵢ de Nᵢ módulo nᵢ. Entonces</p>
-<app-formula expression="x=\sum_{i=1}^k a_iN_iM_i"></app-formula>
-<p>satisface todas las condiciones: cada sumando salvo el i-ésimo se anula módulo nᵢ, mientras que ese término vale aᵢ. Si x e y fueran dos soluciones, cada nᵢ dividiría x−y; por coprimalidad, su producto N también lo dividiría. Así se prueba la unicidad módulo N.</p>
-<p>En el ejemplo inicial, N=105. Una construcción da x=233, que al reducir módulo 105 se convierte en 23. Todas las respuestas son 23+105t.</p>
-<h3>Por qué importa hoy</h3>
-<p>El teorema permite sustituir cálculos con enteros grandes por cálculos paralelos con módulos pequeños. Se utiliza en aritmética computacional y para acelerar operaciones criptográficas. Algebraicamente afirma que trabajar módulo un producto de coprimos equivale a trabajar por separado módulo cada factor.</p>
-<p>Resuelve ahora x≡1 (mod 4), x≡2 (mod 5), x≡3 (mod 7). Después explica por qué x≡0 (mod 2) y x≡1 (mod 4) es incompatible: aquí los módulos no son coprimos y los restos se contradicen.</p>
+<h2>Sistemas de congruencias y Teorema Chino del Resto</h2>
+<p class="dropcap">Una señal se repite cada tres minutos y otra cada cinco, pero no empiezan a la vez.
+  ¿Podemos predecir sus coincidencias? Cada reloj conoce solo un resto; juntos pueden identificar una posición
+  en un ciclo mucho más largo. El Teorema Chino del Resto explica cuándo es posible reconstruir esa posición y cómo hacerlo.</p>
+<p>Partiremos de progresiones que se cruzan, construiremos una solución con inversos y estudiaremos qué ocurre
+  cuando los módulos comparten factores. Para las operaciones básicas y la cancelación, conviene conocer
+  <a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
+<nav class="article-index" aria-label="Índice del artículo"><ul>
+  <li><a routerLink="." fragment="sistemas">Sistemas y progresiones</a></li>
+  <li><a routerLink="." fragment="laboratorio">Laboratorio visual</a></li>
+  <li><a routerLink="." fragment="tcr">Teorema clásico</a></li>
+  <li><a routerLink="." fragment="construccion">Construcción y ejemplo</a></li>
+  <li><a routerLink="." fragment="general">Módulos no coprimos</a></li>
+  <li><a routerLink="." fragment="varios">Varios módulos</a></li>
+  <li><a routerLink="." fragment="aplicaciones">Aplicaciones</a></li>
+  <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+</ul></nav>
+
+<h3 id="sistemas">1. Resolver significa encontrar una intersección</h3>
+<p>Recordemos lo imprescindible: x ≡ a (mod m) significa m ∣ (x − a), o equivalentemente x = a + mt
+  para algún entero t. La congruencia describe una <strong>progresión aritmética bilateral</strong>,
+  con valores positivos y negativos. Un sistema exige que el mismo x pertenezca a todas las progresiones:</p>
+<app-formula expression="\begin{cases}x\equiv a_1\pmod{m_1}\\x\equiv a_2\pmod{m_2}\\\vdots\\x\equiv a_k\pmod{m_k}\end{cases}\qquad
+  S=\bigcap_{i=1}^k(a_i+m_i\mathbb Z)."></app-formula>
+<p>Una <strong>solución</strong> es un entero de esa intersección. El sistema es <strong>compatible</strong> si la intersección
+  no es vacía; es incompatible si no hay ninguno. Resolverlo es describir todos sus elementos.</p>
+<div class="convention">
+  <p>Usaremos módulos enteros mᵢ &gt; 0 y residuos enteros arbitrarios. Podemos sustituir cada residuo por su representante
+    canónico entre 0 y mᵢ − 1 sin cambiar la condición. Un módulo 0 queda excluido; un módulo negativo puede reemplazarse
+    por su valor absoluto. Módulo 1 todos los enteros son congruentes: esa fila no impone restricción.</p>
+</div>
+<p>Con x ≡ 2 (mod 3) y x ≡ 3 (mod 5), aparecen las listas</p>
+<app-formula expression="\begin{aligned}2+3\mathbb Z&=\{\ldots,-7,-4,-1,2,5,8,11,\ldots\},\\
+  3+5\mathbb Z&=\{\ldots,-7,-2,3,8,13,18,23,\ldots\}.\end{aligned}"></app-formula>
+<p>Se encuentran en 8, pero también en −7 y 23. Su intersección completa es</p>
+<app-formula expression="x\equiv8\pmod{15}\quad\Longleftrightarrow\quad x=8+15t,\ t\in\mathbb Z,
+  \qquad\ldots,-22,-7,8,23,38,\ldots"></app-formula>
+<p>El número 8 es el representante canónico de la clase; no es la única solución entera.</p>
+
+<h3 id="laboratorio">2. Observar antes de demostrar</h3>
+<p>En el laboratorio, avanza hasta x = 8 y luego 15 unidades más. ¿Qué ha cambiado en cada reloj?
+  Prueba otros residuos sin cambiar los módulos 3 y 5. Después compara «No coprimos compatibles» con «Sin solución».
+  Intenta formular una condición de existencia antes de desplegar los cálculos.</p>
+<app-crt-explorer></app-crt-explorer>
+<p>La observación sugiere dos hechos distintos: con módulos coprimos siempre aparecen coincidencias;
+  cuando aparecen, forman una progresión. La ausencia de puntos en una ventana finita no es una prueba de imposibilidad:
+  para decidirlo necesitamos un argumento aritmético.</p>
+
+<h3 id="tcr">3. El TCR clásico: una clase, infinitos enteros</h3>
+<p><strong>Teorema.</strong> Sean m₁,…,mₖ enteros mayores que 1, <strong>coprimos dos a dos</strong>:
+  gcd(mᵢ,mⱼ) = 1 para i ≠ j. Para cualesquiera a₁,…,aₖ enteros, el sistema tiene solución y esta es única módulo M = m₁⋯mₖ.</p>
+<app-formula expression="\exists!\,[x]\in\mathbb Z/M\mathbb Z:\quad x\equiv a_i\pmod{m_i}\ (1\le i\le k),
+  \qquad M=\prod_{i=1}^k m_i."></app-formula>
+<p><strong>«Única módulo M»</strong> significa que todas las soluciones son congruentes entre sí módulo M:
+  existe exactamente un representante r en 0 ≤ r &lt; M y el conjunto solución es r + Mℤ.
+  Para dos módulos coprimos el período es mn. No basta que el MCD de todos los módulos juntos sea 1:
+  6, 10 y 15 tienen MCD global 1, pero ningún par es coprimo.</p>
+<p>Las filas de módulo 1 pueden eliminarse antes de aplicar este enunciado. Si solo quedan esas filas, todos los enteros son soluciones.</p>
+
+<h3 id="construccion">4. Existencia: fabricar una coordenada cada vez</h3>
+<p>Queremos construir un entero eᵢ que actúe como un <strong>selector</strong>: aporte un 1 en la fila i y un 0 en las demás.
+  Así, aᵢeᵢ aportará exactamente el residuo que necesitamos, sin alterar las otras filas.</p>
+<div class="proof">
+  <p><strong>Paso 1: anular las otras filas.</strong> Ponemos Mᵢ = M/mᵢ. Todo módulo mⱼ con j ≠ i divide Mᵢ.
+    Por tanto Mᵢ ≡ 0 (mod mⱼ). Además gcd(Mᵢ,mᵢ) = 1: si un primo dividiera ambos,
+    dividiría mᵢ y alguno de los demás factores, contradiciendo la coprimalidad por pares.</p>
+  <p><strong>Paso 2: ajustar la fila i.</strong> Por <a routerLink="/articles/bezout-identity">Bézout</a>,
+    existen yᵢ,zᵢ tales que Mᵢyᵢ + mᵢzᵢ = 1. Así yᵢ es un inverso de Mᵢ módulo mᵢ y eᵢ = Mᵢyᵢ cumple</p>
+  <app-formula expression="e_i\equiv\begin{cases}1\pmod{m_i},\\0\pmod{m_j}\quad(j\ne i).\end{cases}"></app-formula>
+  <p><strong>Paso 3: sumar las aportaciones.</strong> Definimos</p>
+  <app-formula expression="X=\sum_{i=1}^k a_ie_i=\sum_{i=1}^k a_iM_iy_i."></app-formula>
+  <p>Fijemos una fila j. Cada término con i ≠ j es múltiplo de mⱼ; el término j vale aⱼ·1 módulo mⱼ.
+    Luego X ≡ aⱼ (mod mⱼ). Como j era arbitrario, X satisface todo el sistema.
+    Reducir X módulo M proporciona el representante canónico r sin cambiar ninguna condición, pues cada mᵢ divide M.</p>
+</div>
+<p>El inverso puede calcularse con el <a routerLink="/articles/gcd-euclid" fragment="extendido">algoritmo extendido de Euclides</a>.
+  Elegir otro representante yᵢ + tmᵢ cambia el sumando aᵢMᵢyᵢ en aᵢMt: la clase final módulo M permanece igual.
+  En el constructor del laboratorio puedes seleccionar cada eᵢ y comprobar sus restos uno a uno.</p>
+
+<h3>5. Unicidad: qué impide una segunda clase</h3>
+<div class="proof">
+  <p>Sean x e y dos soluciones. Para todo i, ambas tienen residuo aᵢ módulo mᵢ, luego mᵢ ∣ (x − y).
+    Debemos justificar que <em>el producto</em> también divide esa diferencia.</p>
+  <p>Si u y v son coprimos y ambos dividen un entero d, escribimos d = ut.
+    De v ∣ ut y gcd(u,v) = 1 se obtiene v ∣ t por Bézout o por cancelación coprima. Así uv ∣ d.
+    Aplicamos este argumento sucesivamente: por coprimalidad por pares, cada nuevo mᵢ es coprimo con el producto anterior.</p>
+  <app-formula expression="m_i\mid(x-y)\ \forall i\quad\Longrightarrow\quad M\mid(x-y)
+    \quad\Longrightarrow\quad x\equiv y\pmod M."></app-formula>
+  <p>Recíprocamente, sumar cualquier múltiplo de M a una solución conserva todas las filas.
+    Por tanto el conjunto completo es r + Mℤ. Si un desplazamiento positivo h deja invariante ese conjunto,
+    r + h debe ser solución, de donde M ∣ h. Esto prueba que M es su período positivo mínimo.</p>
+</div>
+
+<h3>6. El ejemplo de 3, 5 y 7, sin pasos ocultos</h3>
+<app-formula expression="\begin{cases}x\equiv2\pmod3,\\x\equiv3\pmod5,\\x\equiv2\pmod7.\end{cases}
+  \qquad M=3\cdot5\cdot7=105."></app-formula>
+<ul>
+  <li>M₁ = 35. Como 35 ≡ 2 (mod 3) y 2·2 ≡ 1, y₁ = 2 y e₁ = 70.</li>
+  <li>M₂ = 21. Como 21 ≡ 1 (mod 5), y₂ = 1 y e₂ = 21.</li>
+  <li>M₃ = 15. Como 15 ≡ 1 (mod 7), y₃ = 1 y e₃ = 15.</li>
+</ul>
+<app-formula expression="X=2\cdot70+3\cdot21+2\cdot15=233=2\cdot105+23."></app-formula>
+<p>La respuesta es x ≡ 23 (mod 105). La comprobación independiente es inmediata:</p>
+<app-formula expression="23=3\cdot7+2=5\cdot4+3=7\cdot3+2."></app-formula>
+<p>Todas las soluciones son 23 + 105t, no solo 23 y 233. Por ejemplo, también −82 y 128.</p>
+<p>Este problema aparece en el <em>Sunzi Suanjing</em>. Su procedimiento usa precisamente las contribuciones 70, 21 y 15.
+  La referencia histórica se recoge en <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Sun_Zi/" target="_blank" rel="noopener noreferrer">MacTutor, Universidad de St Andrews</a>.
+  Los tres números del procedimiento histórico son los selectores que acabamos de construir.</p>
+
+<h3>7. Sustitución sucesiva: construir una sola progresión</h3>
+<p>Podemos resolver el mismo ejemplo sin calcular todos los selectores a la vez:</p>
+<ol>
+  <li>La primera fila equivale a x = 2 + 3k.</li>
+  <li>La segunda exige 2 + 3k ≡ 3 (mod 5), es decir 3k ≡ 1. El inverso de 3 es 2,
+    luego k = 2 + 5t y x = 8 + 15t.</li>
+  <li>La tercera exige 8 + 15t ≡ 2 (mod 7). Como 8 ≡ 1 y 15 ≡ 1,
+    t ≡ 1 (mod 7). Escribiendo t = 1 + 7s obtenemos x = 23 + 105s.</li>
+</ol>
+<p>En cada sustitución conservamos <strong>todos</strong> los valores del parámetro.
+  La fórmula directa resulta cómoda para construir selectores reutilizables con módulos fijos.
+  La sustitución suele ser más corta a mano con pocas filas y se adapta a módulos no coprimos;
+  también permite añadir nuevas condiciones sin empezar de nuevo.</p>
+
+<h3 id="general">8. Dos módulos generales: el MCD decide la compatibilidad</h3>
+<p>Comparemos dos sistemas antes de enunciar el resultado. Las filas x ≡ 0 (mod 2), x ≡ 1 (mod 4)
+  exigen a la vez paridad par e impar: nunca se cruzan. En cambio, x ≡ 2 (mod 6), x ≡ 5 (mod 9)
+  se cruzan en 14. Compartir factores no obliga a que el sistema sea incompatible.</p>
+<p><strong>Teorema general para dos módulos.</strong> Sean m,n &gt; 0, a,b enteros y d = gcd(m,n).
+  Entonces</p>
+<app-formula expression="\begin{cases}x\equiv a\pmod m\\x\equiv b\pmod n\end{cases}
+  \text{ tiene solución}\quad\Longleftrightarrow\quad d\mid(b-a)
+  \quad\Longleftrightarrow\quad a\equiv b\pmod d."></app-formula>
+<p>Cuando existe solución, es única módulo L = mcm(m,n) = mn/d.</p>
+<div class="proof">
+  <p><strong>Necesidad.</strong> Si x es solución, d divide tanto x − a como x − b, pues divide a m y n.
+    Al restar, d divide (x − a) − (x − b) = b − a.</p>
+  <p><strong>Suficiencia constructiva.</strong> Supongamos b − a = dc. Escribimos x = a + mk.
+    La segunda fila equivale a mk ≡ b − a (mod n). Definamos m′ = m/d y n′ = n/d. Entonces</p>
+  <app-formula expression="n\mid(mk-(b-a))\quad\Longleftrightarrow\quad
+    dn'\mid d(m'k-c)\quad\Longleftrightarrow\quad n'\mid(m'k-c)."></app-formula>
+  <p>Esta división reduce también el módulo. Como gcd(m′,n′) = 1, Bézout da um′ + vn′ = 1.
+    Si n′ &gt; 1, u es un inverso de m′ módulo n′, y todas las soluciones son k = uc + n't.
+    Si n′ = 1, cualquier entero k sirve y la misma expresión recorre todos los enteros.</p>
+  <app-formula expression="x=a+muc+mn' t,\qquad t\in\mathbb Z,\qquad mn'=\frac{mn}{d}=L."></app-formula>
+  <p>Esto construye soluciones y describe todas, pues las equivalencias anteriores son reversibles.</p>
+  <p><strong>Unicidad.</strong> Dos soluciones tienen diferencia divisible por m y por n.
+    Por la propiedad del <a routerLink="/articles/gcd-euclid" fragment="mcm">MCM</a>, L divide esa diferencia.
+    Recíprocamente, sumar L conserva ambas filas. El período positivo mínimo es L por el mismo argumento usado en el caso clásico.</p>
+</div>
+<p>La coprimalidad es una garantía de existencia <em>para cualesquiera residuos</em>, porque 1 divide cualquier diferencia.
+  Para unos residuos concretos, la condición exacta es que coincidan módulo el MCD.</p>
+<h4>Ejemplo compatible: dos señales con un factor común</h4>
+<p>Para x ≡ 2 (mod 6), x ≡ 5 (mod 9), d = 3 divide 5 − 2.
+  Sustituyendo x = 2 + 6k, obtenemos 6k ≡ 3 (mod 9), o 2k ≡ 1 (mod 3).
+  Luego k ≡ 2 (mod 3) y</p>
+<app-formula expression="x=2+6(2+3t)=14+18t,\qquad \operatorname{mcm}(6,9)=18."></app-formula>
+<p>14 = 6·2 + 2 = 9·1 + 5. El valor 32 también sirve: usar únicamente x ≡ 14 (mod 54)
+  perdería soluciones. El producto 54 es un período, pero no el menor.</p>
+<h4>Ejemplo incompatible: la contradicción permanece</h4>
+<p>Para x ≡ 0 (mod 2), x ≡ 1 (mod 4), d = 2 no divide 1 − 0.
+  El argumento es global: no habrá intersección por mucho que desplacemos la ventana del laboratorio.</p>
+
+<h3 id="varios">9. Varios módulos: compatibilidad por pares y solución global</h3>
+<p><strong>Teorema general.</strong> Para módulos positivos, un sistema de k filas es compatible si y solo si</p>
+<app-formula expression="a_i\equiv a_j\pmod{\gcd(m_i,m_j)}\quad\text{para todo par }i,j."></app-formula>
+<p>Cuando es compatible, sus soluciones forman una única clase módulo L = mcm(m₁,…,mₖ).
+  No basta comprobar solo pares vecinos de la lista: hay que considerar todos, o realizar las fusiones acumuladas.</p>
+<div class="proof">
+  <p><strong>Necesidad.</strong> Toda solución global resuelve cada subsistema de dos filas, al que se aplica el teorema anterior.</p>
+  <p><strong>Suficiencia.</strong> Factorizamos los módulos en potencias de primos.
+    Para cada primo p que aparece, elegimos una fila i(p) cuyo módulo contenga la mayor potencia pᴱ presente
+    en el sistema. Imponemos x ≡ aᵢ₍ₚ₎ (mod pᴱ). Estas nuevas condiciones tienen módulos coprimos entre sí,
+    así que el TCR clásico ya demostrado proporciona una solución x.</p>
+  <p>Veamos que cumple cualquier fila j. Si pᵉ divide mⱼ y es su potencia máxima de p,
+    entonces pᵉ divide gcd(mⱼ,mᵢ₍ₚ₎). La compatibilidad por pares implica aⱼ ≡ aᵢ₍ₚ₎ (mod pᵉ).
+    La solución construida, al coincidir con aᵢ₍ₚ₎ módulo pᴱ, coincide por tanto con aⱼ módulo pᵉ.
+    Esto vale para todas las potencias primas de mⱼ; al ser coprimas entre sí, su producto mⱼ divide x − aⱼ.
+    Así se cumplen todas las filas. Usamos aquí el <a routerLink="/articles/fundamental-theorem-arithmetic">teorema fundamental de la aritmética</a>.</p>
+  <p><strong>Unicidad.</strong> La diferencia entre dos soluciones es múltiplo de cada mᵢ, y por tanto de su MCM L.
+    Sumar L conserva todas las filas. De nuevo, el conjunto es r + Lℤ y L es su período positivo mínimo.</p>
+</div>
+<p>Esta prueba explica por qué las coincidencias locales son suficientes en este problema concreto.
+  Para calcular no hace falta factorizar: fusionamos la primera clase con la segunda, el resultado con la tercera y así sucesivamente.
+  En cada paso el módulo acumulado es el MCM de los módulos procesados.</p>
+<h4>Redundancia y residuos no canónicos</h4>
+<p>El sistema x ≡ −1 (mod 4), x ≡ 13 (mod 6), x ≡ 7 (mod 12)
+  se normaliza a residuos 3, 1 y 7. Las dos primeras filas dan x ≡ 7 (mod 12);
+  la tercera no añade restricción. La respuesta final sigue siendo 7 + 12ℤ.
+  En cambio, cambiar esa tercera fila a x ≡ 1 (mod 12) haría incompatible el sistema.</p>
+
+<h3>10. Del argumento al algoritmo</h3>
+<p>El <a routerLink="/articles/gcd-euclid" fragment="extendido">Euclides extendido</a> devuelve u,v con um + vn = d.
+  Al dividir la identidad entre d obtenemos u(m/d) + v(n/d) = 1, precisamente el inverso necesario en la fusión.
+  No hay que buscarlo por tanteo.</p>
+<pre aria-label="Pseudocódigo de fusión general">r ← a₁ mod m₁; L ← m₁
+para cada fila (a, m) restante:
+    a ← a mod m
+    (d, u, v) ← EuclidesExtendido(L, m)
+    si d no divide a − r: devolver «incompatible»
+    n ← m / d
+    k ← (u · ((a − r) / d)) mod n
+    r ← (r + L · k) mod (L · n)
+    L ← L · n
+devolver x ≡ r (mod L)</pre>
+<p>«mod» devuelve aquí el resto canónico; módulo 1 devuelve 0. El algoritmo realiza k − 1 fusiones como máximo.
+  Su invariante es que r + Lℤ contiene exactamente las soluciones de las filas procesadas.
+  Una fusión incompatible demuestra que el sistema completo tampoco puede tener solución.
+  El laboratorio usa enteros exactos para evitar pérdida de precisión en productos grandes.</p>
+
+<h3 id="aplicaciones">11. Reconstruir, sincronizar y calcular</h3>
+<h4>Un número y una cota</h4>
+<p>Los restos 2, 3 y 2 respecto a 3, 5 y 7 determinan 23 + 105ℤ.
+  Si además 0 ≤ N &lt; 105, N = 23. Si 200 ≤ N &lt; 300, N = 233.
+  La información de tamaño es lo que permite pasar de una clase a un entero concreto.</p>
+<h4>Calendarios y señales periódicas</h4>
+<p>Un evento ocurre los días t ≡ 1 (mod 7) y otro los días t ≡ 4 (mod 10), medidos desde un mismo día cero.
+  Escribiendo t = 1 + 7k, resulta 7k ≡ 3 (mod 10), y el inverso 3 da k ≡ 9.
+  Coinciden en t ≡ 64 (mod 70). La primera coincidencia no negativa es el día 64.</p>
+<p>Para señales que comienzan en los minutos 2 y 5 y se repiten cada 6 y 9 minutos,
+  el ejemplo general da t ≡ 14 (mod 18). La primera coincidencia tras esos inicios ocurre en el minuto 14.
+  Las fases importan: tener períodos conocidos no garantiza que dos señales lleguen a coincidir.
+  En problemas de tiempo hay que imponer además las restricciones t ≥ 0 y los instantes iniciales.</p>
+<h4>Últimas dos cifras: calcular módulo 4 y módulo 25</h4>
+<p>Para hallar las últimas dos cifras de 3¹⁰⁰ necesitamos el resto módulo 100.
+  Como 100 = 4·25, podemos separar dos cálculos pequeños. Módulo 4, una potencia par de 3 vale 1.
+  Módulo 25, <a routerLink="/articles/eulers-theorem">Euler</a> da 3²⁰ ≡ 1 porque gcd(3,25) = 1 y φ(25) = 20.
+  Así 3¹⁰⁰ ≡ 1 en ambos módulos. El TCR concluye</p>
+<app-formula expression="3^{100}\equiv1\pmod{100}."></app-formula>
+<p>Las últimas dos cifras son <strong>01</strong>. El TCR reconstruye el resto;
+  Euler o la <a routerLink="/articles/modular-arithmetic" fragment="potencias">potenciación modular</a> calculan cada componente.</p>
+<h4>Representación por residuos y aplicaciones modernas</h4>
+<p>Con módulos coprimos fijos, cada clase módulo M corresponde a una única tupla de restos.
+  Podemos sumar y multiplicar componente a componente y reconstruir el resultado módulo M.
+  Para recuperar un entero sin ambigüedad necesitamos una cota, por ejemplo 0 ≤ N &lt; M;
+  para un resultado con signo basta conocer un intervalo de longitud M que lo contenga.
+  Esta idea permite repartir cálculos con enteros grandes entre módulos pequeños.</p>
+<p>En ciertas operaciones privadas de RSA se calculan potencias módulo los factores primos y después se recombinan
+  mediante TCR, como describe la <a href="https://www.rfc-editor.org/rfc/rfc8017.html#section-5.1.2" target="_blank" rel="noopener noreferrer">especificación RFC 8017, sección 5.1.2</a>.
+  El TCR es una herramienta aritmética dentro del algoritmo; por sí solo no proporciona cifrado ni seguridad.</p>
+
+<h3 id="errores">12. Errores que cambian el conjunto solución</h3>
+<ul>
+  <li><strong>«La solución es 8».</strong> Para módulos 3 y 5 también sirven −7 y 23.
+    Escribe x ≡ 8 (mod 15) o x = 8 + 15t.</li>
+  <li><strong>Olvidar el módulo de unicidad.</strong> Una cifra aislada no describe qué otras soluciones hay.
+    Usa el producto en el caso clásico y el MCM en el general.</li>
+  <li><strong>Multiplicar módulos no coprimos.</strong> Para residuos 2 y 5 en módulos 6 y 9,
+    la clase módulo 54 omite soluciones de la clase módulo 18.</li>
+  <li><strong>«No coprimos implica incompatible».</strong> Ese mismo ejemplo tiene la solución 14.
+    La incompatibilidad se decide con los residuos módulo el MCD.</li>
+  <li><strong>Confundir MCD global 1 con coprimalidad por pares.</strong> Los módulos 6, 10 y 15 lo desmienten.</li>
+  <li><strong>Usar un inverso sin verificarlo.</strong> El inverso de 3 módulo 5 es 2, no 3:
+    3·3 deja resto 4. Comprueba siempre el producto módulo el módulo correspondiente.</li>
+  <li><strong>Interpretar un residuo negativo como inválido.</strong> −1 módulo 4 equivale a 3;
+    13 módulo 6 equivale a 1. Normalizar facilita comparar condiciones, pero no cambia el sistema.</li>
+  <li><strong>Resolver cada fila por separado.</strong> x ≡ 0 (mod 2) y x ≡ 1 (mod 4)
+    tienen infinitas soluciones individualmente y ninguna en común.</li>
+  <li><strong>Comprobar solo filas vecinas.</strong> x ≡ 0 (mod 2), x ≡ 0 (mod 3), x ≡ 1 (mod 4)
+    pasa las dos comprobaciones vecinas, pero la primera y la tercera se contradicen.</li>
+  <li><strong>Confundir un período con el mínimo.</strong> Para 14 + 18ℤ, 54 también es un período,
+    pero el positivo mínimo es 18. Si el sistema es incompatible, no hay una clase solución a la que atribuir ese período mínimo.</li>
+</ul>
+
+<h3>13. Una guía para reconstruir el resultado</h3>
+<p><strong>Vocabulario.</strong> Identifica la clase de cada fila, su representante, la intersección buscada,
+  la compatibilidad y la coprimalidad. Un inverso es un entero cuyo producto con el coeficiente vale 1 en el módulo correspondiente.</p>
+<p><strong>Enunciados.</strong> Recuerda las hipótesis separadas: coprimalidad por pares garantiza existencia para todos los residuos;
+  en general, estos deben coincidir módulo los MCD. La unicidad siempre se refiere a una clase, con módulo el MCM.</p>
+<p><strong>Demostraciones.</strong> Reconstruye la existencia clásica con los selectores; la unicidad, restando dos soluciones;
+  y la compatibilidad general, sustituyendo x = a + mk y reduciendo por el MCD. Si puedes explicar esas tres ideas,
+  puedes recuperar las fórmulas sin memorizarlas.</p>
+
+<h3 id="ejercicios">14. Autoevaluación: calcular y justificar</h3>
+<p>Antes de abrir las pistas, escribe el conjunto completo de soluciones y comprueba al menos un representante.
+  En las preguntas de demostración, compara tu argumento con el desarrollo y comprueba las dos implicaciones.</p>
+<app-self-assessment quizId="crt-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3 id="conexiones">15. Conexiones para continuar</h3>
+<ul>
+  <li><a routerLink="/articles/modular-arithmetic">Congruencias y aritmética modular</a>: clases, operaciones, cancelación e inversos.</li>
+  <li><a routerLink="/articles/gcd-euclid">MCD y Euclides</a> e <a routerLink="/articles/bezout-identity">identidad de Bézout</a>:
+    calculan la compatibilidad y los coeficientes de cada fusión.</li>
+  <li><a routerLink="/articles/linear-congruence-theorem">Congruencias lineales</a>: la ecuación en el parámetro de sustitución.</li>
+  <li><a routerLink="/articles/division-algorithm">División euclídea</a>: el representante canónico y la normalización.</li>
+  <li><a routerLink="/articles/euler-totient-formula">Función φ de Euler</a>,
+    <a routerLink="/articles/eulers-theorem">teorema de Euler</a> y <a routerLink="/articles/fermats-little-theorem">pequeño teorema de Fermat</a>:
+    cálculos de potencias antes de reconstruir un resto.</li>
+  <li><a routerLink="/articles/orders-theorem">Órdenes módulo n</a> y <a routerLink="/articles/primitive-root-theorem">raíces primitivas</a>:
+    ciclos multiplicativos en cada componente. El período de una sucesión de potencias no debe confundirse con el módulo de una clase solución.</li>
+  <li><a routerLink="/articles/quadratic-reciprocity">Reciprocidad cuadrática</a>: decide cuestiones sobre cuadrados en módulos primos;
+    para módulos coprimos, el TCR permite combinar elecciones de raíces de cada componente.</li>
+  <li><a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a>: exigir varios restos cero es un caso particular de intersección de clases.</li>
+</ul>

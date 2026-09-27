@@ -1,0 +1,218 @@
+<div class="widget" aria-labelledby="crt-title">
+  <span class="eyebrow">LABORATORIO · ENCONTRAR COINCIDENCIAS</span>
+  <h3 id="crt-title">Un entero, varias condiciones</h3>
+  <div class="presets">
+    <button type="button" (click)="preset(0)">Dos módulos coprimos</button>
+    <button type="button" (click)="preset(1)">El problema de 3, 5 y 7</button>
+    <button type="button" (click)="preset(2)">No coprimos compatibles</button>
+    <button type="button" (click)="preset(3)">Sin solución</button>
+    <button type="button" (click)="preset(4)">Negativos y redundancia</button>
+    <button type="button" (click)="preset(5)">Módulo 1</button>
+  </div>
+  <p class="note" id="crt-help">Introduce entre 2 y 6 congruencias, con enteros de hasta 18 cifras y módulos positivos.
+    El cálculo es exacto. Cambiar un dato reinicia la exploración.</p>
+  @for (row of rows; track i; let i = $index) {
+  <div class="controls equation">
+    <label [for]="'crt-a-' + i">Residuo a{{ i + 1 }}<input [id]="'crt-a-' + i" type="text" maxlength="19"
+        [(ngModel)]="row.residue" (ngModelChange)="update()" aria-describedby="crt-help"></label>
+    <label [for]="'crt-m-' + i">Módulo m{{ i + 1 }}<input [id]="'crt-m-' + i" type="text" maxlength="19"
+        [(ngModel)]="row.modulus" (ngModelChange)="update()" aria-describedby="crt-help"></label>
+    <button type="button" (click)="remove(i)" [disabled]="rows.length === 2"
+      [attr.aria-label]="'Eliminar congruencia ' + (i + 1)">Eliminar {{ i + 1 }}</button>
+  </div>
+  }
+  <button type="button" (click)="add()" [disabled]="rows.length === 6">Añadir congruencia</button>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> } @else {
+  <h4>El sistema normalizado</h4>
+  <div class="chips">@for (row of result.equations; track $index) {
+    <span class="result">x ≡ {{ row.residue }} (mod {{ row.modulus }})</span>
+    }
+  </div>
+  <p>{{ result.coprime ? 'Los módulos son coprimos dos a dos: cualquier elección de residuos es compatible.' :
+    'Hay módulos con factores comunes: la existencia depende también de los residuos.' }}</p>
+  @if (result.solution; as solution) {
+  <p class="result" role="status"><strong>x ≡ {{ solution.residue }} (mod {{ solution.modulus }})</strong><br>
+    Todas las soluciones: x = {{ solution.residue }} + {{ solution.modulus }}t, t entero.</p>
+  <p class="identity">Algunas soluciones: @for (t of samples; track $index) {
+    <span>{{ solution.residue + solution.modulus * t }}{{ $last ? '.' : ', ' }}</span>
+    }
+  </p>
+  <p class="note">El período positivo mínimo del conjunto de soluciones es {{ solution.modulus }}, el MCM de los
+    módulos.</p>
+  } @else {
+  <p class="result" role="status">Sistema incompatible: no existe ningún entero que satisfaga todas las condiciones.</p>
+  }
+  <details>
+    <summary>Comprobar compatibilidad por pares</summary>
+    <ul>@for (pair of result.pairs; track $index) {
+      <li>Filas {{ pair.i + 1 }} y {{ pair.j + 1 }}: MCD = {{ pair.gcd }}, diferencia de residuos = {{ pair.difference
+        }}.
+        {{ pair.compatible ? 'El MCD divide la diferencia: compatibles.' : 'El MCD no divide la diferencia:
+        contradicción.' }}</li>
+      }
+    </ul>
+  </details>
+
+  <h4>Rectas y relojes: ¿dónde se encuentran?</h4>
+  <p>Los puntos azules satisfacen una fila. Los dorados satisfacen todas. El cursor es x = <strong>{{ cursor
+      }}</strong>.
+    Desplaza la ventana y observa cómo se repiten las coincidencias.</p>
+  <div class="controls">
+    <button type="button" (click)="move(-20)">−20</button>
+    <button type="button" (click)="move(-1)">x − 1</button>
+    <button type="button" (click)="move(1)">x + 1</button>
+    <button type="button" (click)="move(20)">+20</button>
+    <button type="button" (click)="play()">{{ playing ? 'Pausar' : 'Reproducir' }}</button>
+    <button type="button" (click)="jump()" [disabled]="!result.solution">Ir a una solución</button>
+  </div>
+  <p class="note">La reproducción se detiene al encontrar una coincidencia o después de 200 avances.
+    El dibujo muestra solo 41 enteros consecutivos; que no se vea una coincidencia no demuestra incompatibilidad.</p>
+  <div class="table-scroll" tabindex="0" role="region"
+    aria-label="Rectas numéricas; desplaza horizontalmente para ver toda la ventana">
+    <svg class="number-lines" [attr.viewBox]="'0 0 780 ' + (result.equations.length * 58 + 30)" role="img"
+      aria-label="Progresiones aritméticas y coincidencias del sistema">
+      @for (row of result.equations; track i; let i = $index) {
+      <text x="5" [attr.y]="i * 58 + 17">Fila {{ i + 1 }}</text>
+      <line class="grid-line" x1="64" x2="764" [attr.y1]="i * 58 + 26" [attr.y2]="i * 58 + 26"></line>
+      @for (offset of offsets; track offset) {
+      @if (hit(offset, i)) {
+      <circle [attr.cx]="64 + (offset + 20) * 17.5" [attr.cy]="i * 58 + 26" r="4" [class.common]="common(offset)">
+        <title>x = {{ point(offset) }}</title>
+      </circle>
+      }
+      @if (offset % 10 === 0) {
+      <text [attr.x]="64 + (offset + 20) * 17.5" [attr.y]="i * 58 + 46" text-anchor="middle">{{ offset > 0 ? '+' : ''
+        }}{{ offset }}</text>
+      }
+      }
+      }
+    </svg>
+  </div>
+  <p class="note">Las marcas son desplazamientos respecto a x = {{ cursor }}.
+    Coincidencias en esta ventana: {{ coincidences || 'ninguna' }}.</p>
+  @if (clocksVisible) {
+  <div class="clock-grid">
+    @for (row of result.equations; track i; let i = $index) {
+    <div [class.matched]="hit(0, i)">
+      <svg viewBox="0 0 200 200" role="img"
+        [attr.aria-label]="'Reloj módulo ' + row.modulus + ': resto ' + residue(i) + ', objetivo ' + row.residue">
+        <circle cx="100" cy="100" r="65" class="grid-line"></circle>
+        @for (tick of ticks(row.modulus); track tick) {
+        <circle [attr.cx]="position(tick, row.modulus).x" [attr.cy]="position(tick, row.modulus).y" r="10"
+          [class.target]="tick.toString() === row.residue.toString()" fill="var(--paper)"></circle>
+        <text [attr.x]="position(tick, row.modulus, 84).x" [attr.y]="position(tick, row.modulus, 84).y + 4"
+          text-anchor="middle">{{ tick }}</text>
+        }
+        <line x1="100" y1="100" [attr.x2]="position(residue(i), row.modulus).x"
+          [attr.y2]="position(residue(i), row.modulus).y"></line>
+        <circle cx="100" cy="100" r="4" fill="var(--accent2)"></circle>
+      </svg>
+      <p>mod {{ row.modulus }}: {{ residue(i) }}<br>Objetivo {{ row.residue }} · {{ hit(0, i) ? 'coincide' : 'aún no' }}
+      </p>
+    </div>
+    }
+  </div>
+  } @else { <p class="note">Los relojes se dibujan cuando todos los módulos son ≤ 24. Las rectas y el cálculo exacto
+    siguen disponibles.</p> }
+
+  <details>
+    <summary>Resolver por sustitución, paso a paso</summary>
+    <p>Comenzamos con la primera fila y la fusionamos con cada fila siguiente. Cada resultado representa todas las
+      soluciones acumuladas.</p>
+    <div class="controls">
+      <button type="button" (click)="moveStep(-1)" [disabled]="step === 0">Paso anterior</button>
+      <button type="button" (click)="moveStep(1)" [disabled]="step === result.steps.length - 1">Paso siguiente</button>
+    </div>
+    @if (result.steps[step]; as s) {
+    <div class="selector-card" aria-live="polite">
+      <h4>Fusión {{ step + 1 }} / {{ result.steps.length }}</h4>
+      <p>x ≡ {{ s.left.residue }} (mod {{ s.left.modulus }}) y x ≡ {{ s.right.residue }} (mod {{ s.right.modulus }}).
+      </p>
+      <p>Escribimos x = {{ s.left.residue }} + {{ s.left.modulus }}k. Entonces
+        {{ s.left.modulus }}k ≡ {{ s.difference }} (mod {{ s.right.modulus }}).</p>
+      <p>Bézout: {{ s.left.modulus }}·({{ s.u }}) + {{ s.right.modulus }}·({{ s.v }}) = {{ s.gcd }}.</p>
+      @if (s.result; as merged) {
+      <p>El MCD {{ s.gcd }} divide {{ s.difference }}. Dividimos coeficiente, término y módulo por el MCD.</p>
+      @if (s.reducedModulus === one) {
+      <p>El módulo reducido es 1: cualquier k sirve. Elegimos k = 0; esta fila no añade restricciones.</p>
+      } @else {
+      <p>{{ s.left.modulus / s.gcd }}k ≡ {{ s.difference / s.gcd }} (mod {{ s.reducedModulus }}).
+        El coeficiente de Bézout {{ s.u }} es un inverso del coeficiente reducido.</p>
+      <p>k ≡ ({{ s.difference / s.gcd }})·({{ s.u }}) ≡ {{ s.parameter }} (mod {{ s.reducedModulus }}).</p>
+      }
+      <p class="result">x ≡ {{ merged.residue }} (mod {{ merged.modulus }}).
+        MCM = {{ s.left.modulus }}·{{ s.reducedModulus }} = {{ merged.modulus }}.</p>
+      } @else {
+      <p class="error">El MCD {{ s.gcd }} no divide {{ s.difference }}. La fusión es imposible; no se procesan más
+        filas.</p>
+      }
+    </div>
+    }
+  </details>
+  @if (result.coprime) {
+  <details>
+    <summary>Constructor clásico: descubrir los selectores</summary>
+    <p>M = {{ result.product }}. Selecciona un término para comprobar dónde vale 1 y dónde vale 0.</p>
+    <div class="controls">@for (entry of result.selectors; track $index) {
+      <button type="button" (click)="selector = $index" [attr.aria-pressed]="selector === $index"
+        [class.selected]="selector === $index">e{{ $index + 1 }}</button>
+      }
+    </div>
+    @if (result.selectors[selector]; as selected) {
+    <div class="selector-card">
+      <p>M{{ selector + 1 }} = {{ result.product }} / {{ result.equations[selector].modulus }} = {{ selected.partial }}.
+      </p>
+      <p>y{{ selector + 1 }} = {{ selected.inverse }}; e{{ selector + 1 }} = {{ selected.partial }}·{{ selected.inverse
+        }} = {{ selected.value }}.</p>
+      <ul>@for (residue of selected.residues; track $index) {
+        <li>e{{ selector + 1 }} mod {{ result.equations[$index].modulus }} = {{ residue }}
+          {{ $index === selector ? '← fila seleccionada' : '← término anulado' }}.</li>
+        }
+      </ul>
+    </div>
+    }
+    <p class="note">Una fila de módulo 1 es vacía: allí 0 ≡ 1 y usamos y = 0 sin buscar inverso.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Construcción clásica del TCR">
+      <table>
+        <caption>De los selectores a la suma</caption>
+        <thead>
+          <tr>
+            <th>i</th>
+            <th>aᵢ</th>
+            <th>mᵢ</th>
+            <th>Mᵢ</th>
+            <th>yᵢ</th>
+            <th>eᵢ</th>
+            <th>aᵢeᵢ</th>
+          </tr>
+        </thead>
+        <tbody>@for (entry of result.selectors; track i; let i = $index) {
+          <tr [class.selected]="selector === i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ result.equations[i].residue }}</td>
+            <td>{{ result.equations[i].modulus }}</td>
+            <td>{{ entry.partial }}</td>
+            <td>{{ entry.inverse }}</td>
+            <td>{{ entry.value }}</td>
+            <td>{{ entry.contribution }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <p class="result">Σ aᵢeᵢ = {{ result.sum }} ≡ {{ result.solution!.residue }} (mod {{ result.product }}).</p>
+  </details>
+  } @else { <p class="note">La fórmula de selectores exige coprimalidad dos a dos. Para este sistema utiliza la
+    explicación por sustitución.</p> }
+  @if (result.solution) {
+  <details>
+    <summary>Verificar cada condición original</summary>
+    <ul>@for (row of result.equations; track i; let i = $index) {
+      <li>{{ result.solution.residue }} mod {{ row.modulus }} = {{ verification(i) }};
+        {{ rows[i].residue }} mod {{ row.modulus }} = {{ row.residue }}. Coinciden.</li>
+      }
+    </ul>
+  </details>
+  }
+  }
+</div>
