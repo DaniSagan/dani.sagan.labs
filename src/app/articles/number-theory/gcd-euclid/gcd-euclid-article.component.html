@@ -1,0 +1,209 @@
+<h2>Máximo común divisor y algoritmo de Euclides</h2>
+<p class="dropcap">Dos cintas de 252 y 198 centímetros deben cortarse en trozos iguales, tan largos como sea posible y sin desperdiciar nada.
+  ¿Hay que probar todos los tamaños? Una división deja un sobrante; ese sobrante contiene exactamente la información que falta.
+  El algoritmo de Euclides convierte esta idea en un cálculo breve y en una demostración: podemos reducir los números sin perder sus divisores comunes.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="definicion">Divisores y MCD</a></li>
+    <li><a routerLink="." fragment="euclides">Algoritmo y prueba</a></li>
+    <li><a routerLink="." fragment="extendido">Bézout y algoritmo extendido</a></li>
+    <li><a routerLink="." fragment="propiedades">Propiedades</a></li>
+    <li><a routerLink="." fragment="mcm">Mínimo común múltiplo</a></li>
+    <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+  </ul>
+</nav>
+
+<h3 id="definicion">1. La mayor medida compartida</h3>
+<p>Para enteros d y a, escribimos <strong>d divide a a</strong>, o d ∣ a, si existe un entero t tal que a = dt.
+  Un <strong>divisor común</strong> de a y b divide a ambos. Si al menos uno de los dos números es distinto de cero,
+  su <strong>máximo común divisor</strong> es el mayor de sus divisores comunes positivos. Usaremos indistintamente MCD y la notación gcd.</p>
+<app-formula expression="\gcd(a,b)=\max\{d\in\mathbb Z_{>0}:d\mid a\text{ y }d\mid b\},\qquad(a,b)\ne(0,0)"></app-formula>
+<p>Los divisores positivos comunes de 48 y 18 son 1, 2, 3 y 6: el MCD es 6. Si el único divisor positivo común es 1,
+  decimos que los enteros son <strong>coprimos</strong>. No es necesario que sean primos: 8 y 15 son coprimos y ambos son compuestos.</p>
+<div class="proof">
+  <p><strong>Existencia y unicidad.</strong> El conjunto anterior no está vacío, pues contiene a 1.
+    Si a ≠ 0 y d &gt; 0 divide a a, entonces a = dt con |t| ≥ 1, de modo que d ≤ |a|.
+    Si a = 0, usamos b ≠ 0 y obtenemos d ≤ |b|. En ambos casos los divisores comunes positivos forman un conjunto finito no vacío:
+    existe un máximo. Si d y e fueran dos máximos, tendríamos d ≤ e y e ≤ d; por tanto d = e.</p>
+</div>
+<div class="convention">
+  <p><strong>Signos y cero.</strong> Un entero divide a a si y solo si divide a −a. Por eso
+    gcd(a,b) = gcd(|a|,|b|). Como todo entero positivo divide a 0, gcd(a,0) = |a| si a ≠ 0, y análogamente gcd(0,b) = |b|.</p>
+  <p>Para (0,0), todos los enteros positivos son divisores comunes y <strong>no hay máximo positivo</strong>.
+    Extendemos la definición por la convención gcd(0,0) = 0. Así gcd(a,0) = |a| vale para todo a.
+    La divisibilidad se entiende siempre como a = dt: también 0 ∣ 0 es cierto, aunque nunca dividiremos numéricamente entre cero.</p>
+</div>
+
+<app-gcd-invariance></app-gcd-invariance>
+
+<h3 id="euclides">2. El lema que permite olvidar números grandes</h3>
+<p>La <a routerLink="/articles/division-algorithm">división euclídea</a> afirma que, dados A ≥ 0 y B &gt; 0,
+  hay unos únicos enteros q y r con A = Bq + r y 0 ≤ r &lt; B. El siguiente lema explica por qué el resto es suficiente.</p>
+<app-formula expression="a=bq+r\quad\Longrightarrow\quad\gcd(a,b)=\gcd(b,r)"></app-formula>
+<div class="proof">
+  <p><strong>Demostración por igualdad de divisores comunes.</strong> Si d divide a a y a b, divide también a r = a − bq.
+    Luego todo divisor común de a y b lo es de b y r. Recíprocamente, si d divide a b y a r, divide a a = bq + r.
+    Por tanto ambos pares tienen exactamente los mismos divisores comunes positivos y, cuando existe, el mismo máximo.</p>
+  <p>Si uno de los pares es (0,0), la igualdad a = bq + r obliga a que el otro también lo sea; la igualdad de MCD
+    se mantiene por nuestra convención. El lema vale para cualquier q entero, incluso sin exigir un resto reducido.
+    La condición 0 ≤ r &lt; |b| será la que garantice la terminación.</p>
+</div>
+<p>Esto explica también el primer experimento: a y b comparten exactamente los mismos divisores que a + kb y b,
+  para cualquier entero k. No hemos conservado solamente un número máximo, sino toda una colección de divisores.</p>
+
+<h3>3. Explora la cadena de divisiones</h3>
+<p>Prueba primero 252 y 198. Antes de pulsar «Siguiente», predice el cociente y el resto.
+  Después compara con dos números coprimos, cambia un signo e invierte el orden. Al terminar, abre el algoritmo extendido:
+  las mismas divisiones contienen más información de la que parece.</p>
+<app-euclid-explorer></app-euclid-explorer>
+
+<h3>4. Por qué termina y por qué devuelve el MCD</h3>
+<p>Normalizamos los signos y repetimos una sola operación. La asignación del par en este pseudocódigo es simultánea:
+  el segundo valor se calcula usando los valores anteriores.</p>
+<pre aria-label="Pseudocódigo del algoritmo de Euclides"><code>EUCLIDES(a, b)
+  A ← |a|
+  B ← |b|
+  mientras B ≠ 0:
+    q ← cociente entero de A entre B
+    r ← A − q·B
+    (A, B) ← (B, r)
+  devolver A</code></pre>
+<div class="proof">
+  <p><strong>Terminación.</strong> Cada vez que B &gt; 0, el nuevo segundo término es r y cumple 0 ≤ r &lt; B.
+    Una sucesión estrictamente decreciente de enteros no negativos no puede continuar indefinidamente.
+    Tras un número finito de divisiones, el segundo término es cero.</p>
+  <p><strong>Corrección.</strong> Antes del bucle tenemos gcd(A,B) = gcd(a,b). El lema demuestra que esta igualdad se conserva
+    tras cada iteración: es el <em>invariante</em> del algoritmo. Al terminar, B = 0, luego gcd(a,b) = gcd(A,0) = A.
+    Si ambos datos iniciales son cero, el bucle no se ejecuta y devuelve el 0 convenido.</p>
+</div>
+<p><strong>Ejemplo completo: 252 y 198.</strong> Estas son todas las divisiones, incluida la que certifica la terminación:</p>
+<app-formula expression="\begin{aligned}252&=198\cdot1+54\\198&=54\cdot3+36\\54&=36\cdot1+18\\36&=18\cdot2+0\end{aligned}"></app-formula>
+<p>Por el lema, gcd(252,198) = gcd(198,54) = gcd(54,36) = gcd(36,18) = gcd(18,0) = 18.
+  Las cintas pueden cortarse en trozos de 18 cm: salen 14 y 11 trozos. El último resto es 0;
+  <strong>el MCD es el último resto no nulo</strong>, que aparece como divisor en la división final.</p>
+<p><strong>Con signos: −84 y 30.</strong> Trabajamos con 84 y 30:</p>
+<app-formula expression="84=30\cdot2+24,\qquad30=24\cdot1+6,\qquad24=6\cdot4+0."></app-formula>
+<p>El resultado es gcd(−84,30) = 6. Si introducimos 30 y −84, aparece primero 30 = 84·0 + 30 y después la misma cadena.
+  Si introducimos 84 y 0, no hace falta ninguna división: el resultado es 84.</p>
+
+<h3>5. Dividir un rectángulo en cuadrados</h3>
+<p>En un rectángulo de lados enteros positivos, cada división retira tantos cuadrados del lado menor como quepan.
+  El rectángulo restante tiene por lados el divisor y el resto. Prueba 48 y 18: aparecen 2 cuadrados de lado 18,
+  1 de lado 12 y 2 de lado 6. El último tamaño es el MCD. Cada lado inicial es múltiplo de él, así que también
+  podríamos recubrir todo el rectángulo con cuadrados iguales de ese tamaño.</p>
+<app-euclidean-squares></app-euclidean-squares>
+<p>La lista de cocientes enlaza esta construcción con las <a routerLink="/articles/continued-fractions">fracciones continuas</a>.
+  La visualización usa entradas positivas pequeñas para poder dibujar todos los cuadrados; el explorador numérico anterior admite signos y ceros.</p>
+
+<h3 id="extendido">6. De restos a combinaciones lineales</h3>
+<p>Si d divide a a y a b, entonces divide a cualquier combinación entera ax + by: basta escribir a = du y b = dv,
+  pues ax + by = d(ux + vy). El algoritmo aporta el recíproco más útil: <strong>el propio MCD puede escribirse como una de esas combinaciones</strong>.</p>
+<p>Volvamos al ejemplo y deshagamos las divisiones desde el último resto no nulo:</p>
+<app-formula expression="\begin{aligned}18&=54-36\\&=54-(198-3\cdot54)\\&=4\cdot54-198\\&=4(252-198)-198\\&=4\cdot252-5\cdot198.\end{aligned}"></app-formula>
+<p>Hemos encontrado los coeficientes de Bézout x = 4 e y = −5. En el ejemplo con signos,
+  6 = 30 − 24 = 30 − (84 − 2·30) = −84 + 3·30 = (−84)·1 + 30·3.</p>
+<p>Esta es una prueba constructiva de la <a routerLink="/articles/bezout-identity">identidad de Bézout</a>.
+  Su artículo desarrolla la demostración alternativa mediante el menor entero positivo; aquí vamos a seguir la información que conserva el algoritmo.</p>
+<p><strong>Algoritmo extendido.</strong> Numeramos R₀ = |a|, R₁ = |b| y Rᵢ = Rᵢ₋₂ − qᵢRᵢ₋₁ para i ≥ 2.
+  Junto a cada resto guardamos dos coeficientes que cumplen Rᵢ = axᵢ + byᵢ.
+  Inicializamos (x₀,y₀) = (εₐ,0) y (x₁,y₁) = (0,εᵦ), donde εₜ es −1 si t &lt; 0 y 1 si t ≥ 0.</p>
+<app-formula expression="x_i=x_{i-2}-q_ix_{i-1},\qquad y_i=y_{i-2}-q_iy_{i-1}."></app-formula>
+<div class="proof">
+  <p><strong>Por qué funcionan las recurrencias.</strong> Las dos primeras filas satisfacen el invariante, porque aεₐ = |a| y bεᵦ = |b|.
+    Si lo satisfacen dos filas consecutivas, la siguiente cumple</p>
+  <app-formula expression="R_i=(ax_{i-2}+by_{i-2})-q_i(ax_{i-1}+by_{i-1})=a(x_{i-2}-q_ix_{i-1})+b(y_{i-2}-q_iy_{i-1})."></app-formula>
+  <p>Por inducción, todas las filas son combinaciones de los datos originales. La última fila no nula tiene Rᵢ = gcd(a,b);
+    sus coeficientes son los que buscamos. Si a = b = 0, no hay fila no nula y podemos tomar x = y = 0.</p>
+</div>
+<pre aria-label="Pseudocódigo del algoritmo extendido"><code>EUCLIDES_EXTENDIDO(a, b)
+  (A, B) ← (|a|, |b|)
+  (xA, yA) ← (εa, 0)
+  (xB, yB) ← (0, εb)
+  mientras B ≠ 0:
+    q ← cociente entero de A entre B
+    (A, B, xA, xB, yA, yB) ←
+      (B, A−q·B, xB, xA−q·xB, yB, yA−q·yB)
+  devolver (A, xA, yA)</code></pre>
+<p>Todas las actualizaciones son simultáneas. Para (0,0), este pseudocódigo devuelve (0,1,0), también válido;
+  el widget elige (0,0,0). Los coeficientes no son únicos: para d = gcd(a,b) &gt; 0, si (x,y) sirve,
+  también sirve (x + t·b/d, y − t·a/d) para cualquier entero t, porque los términos añadidos se cancelan.</p>
+<div class="proof">
+  <p><strong>Qué combinaciones se pueden obtener.</strong> Sea d = gcd(a,b) &gt; 0. Toda combinación ax + by es múltiplo de d.
+    Y si d = ax₀ + by₀, cualquier múltiplo td = a(tx₀) + b(ty₀) también es una combinación.
+    Por tanto el conjunto de combinaciones coincide exactamente con el conjunto de múltiplos de d:</p>
+  <app-formula expression="\{ax+by:x,y\in\mathbb Z\}=d\mathbb Z."></app-formula>
+  <p>En particular, d es la <strong>menor combinación lineal positiva</strong>. Si a = b = 0, ambos conjuntos son &#123;0&#125;
+    y no hay combinación positiva. Esta distinción evita aplicar el principio del buen orden a un conjunto vacío.</p>
+</div>
+
+<h3 id="propiedades">7. Propiedades que ahora podemos demostrar</h3>
+<ul>
+  <li><strong>Simetría y signos:</strong> gcd(a,b) = gcd(b,a) = gcd(|a|,|b|). Los conjuntos de divisores positivos son idénticos.
+    También gcd(a,a) = |a| y gcd(a,1) = 1, directamente de la definición.</li>
+  <li><strong>Sumar un múltiplo:</strong> gcd(a + kb,b) = gcd(a,b) para k entero. Es la equivalencia de divisibilidad del lema.</li>
+  <li><strong>Caracterización por divisibilidad:</strong> un entero c divide a a y a b si y solo si divide a d = gcd(a,b).
+    Si c es divisor común, divide a d = ax + by. Si divide a d, como d divide a a y a b, también los divide c.
+    Para (0,0) la equivalencia sigue siendo cierta: todos los enteros dividen a 0, incluido el propio 0.</li>
+  <li><strong>Asociatividad:</strong> gcd(gcd(a,b),c) = gcd(a,gcd(b,c)). Por la caracterización anterior,
+    ambos tienen exactamente los divisores comunes de a, b y c. Esto permite definir el MCD de varios enteros sin ambigüedad.</li>
+</ul>
+<p>El MCD no solo es el divisor común <em>más grande</em>: es un divisor común que es <em>múltiplo de todos los demás</em>.
+  Esta segunda afirmación requería una prueba; no se deduce únicamente de comparar tamaños.</p>
+<div class="proof">
+  <p><strong>Homogeneidad.</strong> Para cualquier entero k, gcd(ka,kb) = |k|gcd(a,b).
+    Si k = 0 o a = b = 0, ambos lados son 0. En otro caso, sea d = gcd(a,b) &gt; 0 y D = gcd(ka,kb).
+    Como |k|d divide a ka y a kb, tenemos |k|d ≤ D. Además, de d = ax + by obtenemos kd = (ka)x + (kb)y:
+    D divide a kd, luego D ≤ |k|d. Las dos desigualdades prueban la igualdad.</p>
+  <p><strong>Reducir por el MCD produce coprimos.</strong> Si d &gt; 0, escribimos a = du y b = dv.
+    La homogeneidad da d = d·gcd(u,v), de donde gcd(u,v) = 1. Esta es la razón por la que dividir numerador
+    y denominador de una fracción por su MCD la deja irreducible.</p>
+</div>
+
+<h3 id="mcm">8. El mínimo común múltiplo</h3>
+<p>Si a y b son no nulos, su <strong>mínimo común múltiplo</strong>, mcm(a,b), es el menor entero positivo divisible por ambos.
+  Existe porque |ab| es un múltiplo común positivo, y el principio del buen orden garantiza un mínimo, necesariamente único.
+  Si alguno es cero, no hay múltiplos comunes positivos y adoptamos mcm(a,0) = mcm(0,a) = 0.</p>
+<app-formula expression="\gcd(a,b)\operatorname{mcm}(a,b)=|ab|."></app-formula>
+<div class="proof">
+  <p><strong>Demostración sin factorizar.</strong> Para a y b no nulos, sean d = gcd(a,b), |a| = du y |b| = dv,
+    con u,v positivos y coprimos. El número L = duv es múltiplo de |a| y de |b|.
+    Sea ahora N cualquier múltiplo común positivo. Como du divide a N, podemos escribir N = dut.
+    Además, dv divide a dut, así que v divide a ut.</p>
+  <p>La coprimalidad permite cancelar u: si uα + vβ = 1, al multiplicar por t vemos que
+    t = αut + βvt es divisible por v. Luego t = vs con s positivo y N = duvs = Ls.
+    Todo múltiplo común positivo es múltiplo de L, por lo que el menor es L. Finalmente,
+    dL = d²uv = |ab|.</p>
+  <p>Si alguno de los datos es cero, la identidad vale también: sus dos miembros son 0 por las convenciones adoptadas.</p>
+</div>
+<p>Para 252 y 198, mcm = (252/18)·198 = 2772. Así 18·2772 = 49896 = 252·198.
+  Para calcularlo conviene dividir antes de multiplicar. La fórmula mcm = |(a/d)b| sirve cuando d &gt; 0;
+  en (0,0) debemos devolver 0 directamente, sin formar 0/0.</p>
+<p>La <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única en primos</a> ofrece otra lectura.
+  Para valores absolutos no nulos, tomando exponentes cero para los primos ausentes:</p>
+<app-formula expression="|a|=\prod_p p^{\alpha_p},\quad |b|=\prod_p p^{\beta_p},\quad \gcd(a,b)=\prod_p p^{\min(\alpha_p,\beta_p)},\quad\operatorname{mcm}(a,b)=\prod_p p^{\max(\alpha_p,\beta_p)}."></app-formula>
+<p>Un divisor común no puede superar ninguno de los dos exponentes; un múltiplo común debe alcanzar ambos.
+  La igualdad min(α,β) + max(α,β) = α + β vuelve a demostrar la identidad del producto.
+  Euclides tiene una ventaja práctica: obtiene el MCD sin tener que factorizar los números.</p>
+
+<h3 id="ejercicios">9. Autoevaluación con pistas</h3>
+<app-euclid-exercises></app-euclid-exercises>
+
+<h3>10. Dónde reaparece esta misma idea</h3>
+<ul>
+  <li><a routerLink="/articles/bezout-identity">Bézout y ecuaciones diofánticas.</a> Para (a,b) ≠ (0,0), la ecuación ax + by = c
+    tiene soluciones enteras exactamente cuando gcd(a,b) divide a c. La necesidad procede de la divisibilidad;
+    la suficiencia, de multiplicar una identidad de Bézout por c/d. Si a = b = 0, solo es posible cuando c = 0.</li>
+  <li><a routerLink="/articles/linear-congruence-theorem">Congruencias lineales e inversos modulares.</a> Para m ≥ 2,
+    a es invertible módulo m si y solo si gcd(a,m) = 1. Si ax + my = 1, el coeficiente x es un inverso de a.
+    Para ax ≡ c (mod m), el MCD decide la existencia y el número de clases solución.</li>
+  <li><a routerLink="/articles/euclids-lemma">Lema de Euclides</a> y
+    <a routerLink="/articles/fundamental-theorem-arithmetic">teorema fundamental de la aritmética.</a>
+    Cancelar factores coprimos, como hicimos al demostrar la fórmula del MCM, es una pieza esencial de la unicidad de la factorización.</li>
+  <li><a routerLink="/articles/chinese-remainder-theorem">Teorema chino del resto.</a> Para módulos positivos coprimos,
+    Bézout permite construir la solución de un sistema de congruencias. Con módulos m y n no coprimos,
+    los residuos deben coincidir módulo gcd(m,n); cuando existe solución, es única módulo mcm(m,n).</li>
+  <li><a routerLink="/articles/continued-fractions">Fracciones continuas.</a> Los cocientes sucesivos de Euclides
+    describen una fracción racional y explican por qué su expansión termina.</li>
+</ul>
+<p>Un resto parece información sobrante. En Euclides es justo la información que permite avanzar:
+  conserva todos los divisores comunes, hace disminuir el problema y guarda los coeficientes necesarios para reconstruir la respuesta.</p>

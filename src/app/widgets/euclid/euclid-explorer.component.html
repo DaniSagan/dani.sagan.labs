@@ -1,0 +1,100 @@
+<div class="widget" aria-labelledby="euclid-title">
+  <span class="eyebrow">LABORATORIO · DIVIDIR Y CONSERVAR</span>
+  <h3 id="euclid-title">Dos enteros, un mismo divisor</h3>
+  <div class="presets" aria-label="Ejemplos de Euclides">
+    @for (presetValue of presets; track presetValue.label) {
+      <button type="button" (click)="preset(presetValue.a, presetValue.b)">{{ presetValue.label }}</button>
+    }
+  </div>
+  <div class="controls">
+    <label for="euclid-a">Entero a<input id="euclid-a" type="text" inputmode="text" maxlength="20"
+      [(ngModel)]="aText" (ngModelChange)="update()" aria-describedby="euclid-input-help" [attr.aria-invalid]="!!error"></label>
+    <label for="euclid-b">Entero b<input id="euclid-b" type="text" inputmode="text" maxlength="20"
+      [(ngModel)]="bText" (ngModelChange)="update()" aria-describedby="euclid-input-help" [attr.aria-invalid]="!!error"></label>
+  </div>
+  <p id="euclid-input-help" class="note">Hasta 18 cifras por entero, con signo opcional. Cada cambio reinicia el recorrido. Cálculo entero exacto.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> }
+  @else {
+    <p>Partimos de R0 = |a| = {{ result.rows[0].remainder }} y R1 = |b| = {{ result.rows[1].remainder }}.
+      Conservamos el orden: si |a| &lt; |b|, el primer cociente será 0.</p>
+    <div class="controls transport" aria-label="Recorrido de Euclides">
+      <button type="button" (click)="restart()" [disabled]="step === 0">Reiniciar</button>
+      <button type="button" (click)="move(-1)" [disabled]="step === 0">Anterior</button>
+      <button type="button" (click)="toggle()" [disabled]="complete" [attr.aria-pressed]="playing">{{ playing ? 'Pausar' : 'Reproducir' }}</button>
+      <button type="button" (click)="move(1)" [disabled]="complete">Siguiente</button>
+      <button type="button" (click)="move(result.divisions.length)" [disabled]="complete">Ver final</button>
+    </div>
+    <div role="status" aria-live="polite" aria-atomic="true">
+      <p class="readout">Paso {{ step }} de {{ result.divisions.length }}</p>
+      @if (current; as division) {
+        <p class="equation">{{ division.dividend }} = {{ division.divisor }} × {{ division.quotient }} + {{ division.remainder }}</p>
+        <dl class="metrics">
+          <div><dt>Dividendo</dt><dd>{{ division.dividend }}</dd></div>
+          <div><dt>Divisor</dt><dd>{{ division.divisor }}</dd></div>
+          <div><dt>Cociente</dt><dd>{{ division.quotient }}</dd></div>
+          <div><dt>Resto</dt><dd>{{ division.remainder }}</dd></div>
+        </dl>
+        <div class="division-bar" aria-hidden="true"><div [style.width.%]="usedPercent"></div></div>
+        <p class="note">Azul: {{ division.quotient }} grupos de {{ division.divisor }}. Dorado: resto {{ division.remainder }}.
+          La barra representa el dividendo; un resto muy pequeño puede no distinguirse a esta escala.</p>
+      } @else if (!complete) {
+        <p>Avanza para efectuar la primera división. El MCD se conserva en cada fila.</p>
+      }
+      @if (complete) {
+        <p class="result">MCD({{ result.a }}, {{ result.b }}) = <strong>{{ result.gcd }}</strong></p>
+        @if (bothZero) {
+          <p>Ambos enteros son cero: no hay un mayor divisor común positivo. Adoptamos MCD(0, 0) = 0 y MCM(0, 0) = 0.</p>
+        } @else {
+          <p>El segundo término es cero. El último término no nulo es {{ result.gcd }}, el MCD.</p>
+        }
+        <p>MCM = {{ result.lcm }}. Identidad de Bézout:
+          <strong class="identity">{{ result.gcd }} = ({{ result.a }}) × ({{ result.x }}) + ({{ result.b }}) × ({{ result.y }})</strong>.</p>
+      }
+    </div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Divisiones realizadas">
+      <table><caption>Historial de divisiones</caption>
+        <thead><tr><th scope="col">Paso</th><th scope="col">Dividendo</th><th scope="col">Divisor</th><th scope="col">Cociente</th><th scope="col">Resto</th></tr></thead>
+        <tbody>@for (division of result.divisions.slice(0, step); track $index) {
+          <tr [class.active]="$index === step - 1"><th scope="row">{{ $index + 1 }}</th><td>{{ division.dividend }}</td><td>{{ division.divisor }}</td><td>{{ division.quotient }}</td><td>{{ division.remainder }}</td></tr>
+        }</tbody>
+      </table>
+    </div>
+    <details class="extended">
+      <summary>Algoritmo extendido: de dónde salen x e y</summary>
+      <p>Cada fila mantiene Rᵢ = a·xᵢ + b·yᵢ, con los signos originales de a y b. El cociente de la fila i es el usado para obtener Rᵢ.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Tabla del algoritmo extendido">
+        <table><caption>Rᵢ = Rᵢ₋₂ − qᵢRᵢ₋₁; la misma operación se aplica a x e y</caption>
+          <thead><tr><th scope="col">i</th><th scope="col">Rᵢ</th><th scope="col">qᵢ</th><th scope="col">xᵢ</th><th scope="col">yᵢ</th></tr></thead>
+          <tbody>@for (row of visibleRows; track $index) {
+            <tr [class.active]="complete && !bothZero && $index === result.rows.length - 2">
+              <th scope="row">{{ $index }}</th><td>{{ row.remainder }}</td><td>{{ row.quotient === null ? '—' : row.quotient }}</td><td>{{ row.x }}</td><td>{{ row.y }}</td>
+            </tr>
+          }</tbody>
+        </table>
+      </div>
+      @if (!complete) { <p>Completa las divisiones para reconstruir las sustituciones hacia atrás.</p> }
+      @if (complete && substitutions.length) {
+        <h4>Volver desde el MCD</h4>
+        <p>R0 y R1 son los valores absolutos iniciales. Sustituimos cada resto por la diferencia que lo produjo y agrupamos términos.</p>
+        <div class="controls">
+          <button type="button" (click)="backStep = backStep - 1" [disabled]="backStep === 0">Deshacer sustitución</button>
+          <button type="button" (click)="backStep = backStep + 1" [disabled]="backStep === substitutions.length - 1">Sustituir siguiente resto</button>
+        </div>
+        <ol class="substitutions" aria-live="polite">
+          @for (substitution of substitutions.slice(0, backStep + 1); track $index) {
+            <li>
+              @if (substitution.replaced !== null) {
+                <p>Sustituye R{{ substitution.replaced }} = R{{ substitution.replaced - 2 }} − {{ result.rows[substitution.replaced].quotient }}·R{{ substitution.replaced - 1 }}.</p>
+              }
+              <p class="identity">{{ result.gcd }} = {{ expression(substitution) }}</p>
+              <p class="note identity">{{ result.gcd }} = {{ expression(substitution, true) }}</p>
+            </li>
+          }
+        </ol>
+        @if (backStep === substitutions.length - 1) {
+          <p class="result identity">Con los signos originales: {{ result.gcd }} = ({{ result.a }})·({{ result.x }}) + ({{ result.b }})·({{ result.y }}).</p>
+        }
+      }
+    </details>
+  }
+</div>

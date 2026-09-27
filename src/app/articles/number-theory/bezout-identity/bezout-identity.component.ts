@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-bezout-identity',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [FormulaComponent, RouterLink],
   templateUrl: './bezout-identity.component.html',
   styleUrl: './bezout-identity.component.css'
 })

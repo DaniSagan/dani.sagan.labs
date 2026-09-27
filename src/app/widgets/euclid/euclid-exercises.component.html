@@ -1,0 +1,35 @@
+<div class="widget" aria-labelledby="euclid-exercises-title">
+  <span class="eyebrow">TALLER · CALCULAR, EXPLICAR, APLICAR</span>
+  <h3 id="euclid-exercises-title">Pon a prueba tus argumentos</h3>
+  <p>Trabaja primero en papel. Abre las pistas de una en una y compara después tu explicación con la solución razonada.</p>
+  @for (exercise of exercises; track exercise.title; let i = $index) {
+    <div class="exercise">
+      <h4>{{ i + 1 }}. {{ exercise.title }}</h4>
+      <p [id]="'euclid-question-' + i">{{ exercise.question }}</p>
+      @if (exercise.answer) {
+        <div class="controls">
+          <label [for]="'euclid-answer-' + i">Tu respuesta
+            @if (exercise.choices) {
+              <select [id]="'euclid-answer-' + i" [(ngModel)]="exercise.input" (ngModelChange)="exercise.feedback = ''" [attr.aria-describedby]="'euclid-question-' + i">
+                <option value="">Selecciona una opción</option>
+                @for (choice of exercise.choices; track choice) { <option [value]="choice">{{ choice }}</option> }
+              </select>
+            } @else {
+              <input [id]="'euclid-answer-' + i" type="text" inputmode="numeric" maxlength="32" [(ngModel)]="exercise.input" (ngModelChange)="exercise.feedback = ''" [attr.aria-describedby]="'euclid-question-' + i">
+            }
+          </label>
+          <button type="button" (click)="check(exercise)">Comprobar</button>
+        </div>
+        <p role="status">{{ exercise.feedback }}</p>
+      }
+      <div class="controls">
+        <button type="button" (click)="exercise.revealed = exercise.revealed + 1" [disabled]="exercise.revealed === exercise.hints.length">Pista {{ exercise.revealed }} / {{ exercise.hints.length }}</button>
+        <button type="button" (click)="exercise.solved = !exercise.solved" [disabled]="exercise.revealed < exercise.hints.length" [attr.aria-expanded]="exercise.solved">{{ exercise.solved ? 'Ocultar solución' : 'Revelar solución razonada' }}</button>
+      </div>
+      <div aria-live="polite">
+        @for (hint of exercise.hints.slice(0, exercise.revealed); track $index) { <p class="note"><strong>Pista {{ $index + 1 }}.</strong> {{ hint }}</p> }
+        @if (exercise.solved) { <p class="result">{{ exercise.solution }}</p> }
+      </div>
+    </div>
+  }
+</div>

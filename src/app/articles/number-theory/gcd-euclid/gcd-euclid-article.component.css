@@ -1,0 +1,10 @@
+:host { display: block; min-width: 0; }
+app-formula { display: block; max-width: 100%; overflow-x: auto; margin: 1rem 0; }
+.article-index { border-left: 3px solid var(--gold); padding: .75rem 1.2rem; margin: 1.5rem 0; background: var(--bg2); }
+.article-index ul { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; list-style: none; margin: 0; padding: 0; }
+.proof { border-left: 2px solid var(--accent2); padding: .3rem 1rem; margin: 1.4rem 0; }
+.proof p:last-child { margin-bottom: 0; }
+.convention { border: 1px solid var(--rule); border-radius: 8px; background: var(--bg2); padding: 1rem; margin: 1.4rem 0; }
+h3[id] { scroll-margin-top: 6rem; }
+pre { background: var(--bg2); color: var(--ink); padding: 1rem; border: 1px solid var(--rule); border-radius: 8px; overflow-x: auto; font-size: .9rem; line-height: 1.65; }
+li { margin-bottom: .6rem; }

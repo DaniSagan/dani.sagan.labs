@@ -12,6 +12,7 @@ import { BernoulliNumbersArticleComponent } from './bernoulli-numbers/bernoulli-
 import { RiemannZetaArticleComponent } from './riemann-zeta/riemann-zeta-article.component';
 import { DivisionAlgorithmComponent } from './division-algorithm/division-algorithm.component';
 import { BezoutIdentityComponent } from './bezout-identity/bezout-identity.component';
+import { GcdEuclidArticleComponent } from './gcd-euclid/gcd-euclid-article.component';
 import { EuclidsLemmaComponent } from './euclids-lemma/euclids-lemma.component';
 import { FundamentalTheoremArithmeticComponent } from './fundamental-theorem-arithmetic/fundamental-theorem-arithmetic.component';
 import { EuclidInfinitelyManyPrimesComponent } from './euclid-infinitely-many-primes/euclid-infinitely-many-primes.component';
@@ -35,7 +36,7 @@ interface ArticleComponent extends Type<unknown> { title: string; route: string;
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   ContinuedFractionsArticleComponent, GoldbachArticleComponent,
-  DivisionAlgorithmComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
+  DivisionAlgorithmComponent, GcdEuclidArticleComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
   FundamentalTheoremArithmeticComponent, EuclidInfinitelyManyPrimesComponent,
   LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,
   FermatsLittleTheoremComponent, EulersTheoremComponent, WilsonsTheoremComponent,

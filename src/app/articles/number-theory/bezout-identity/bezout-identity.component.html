@@ -6,6 +6,7 @@
 <p>Sea <em>S</em> el conjunto de todas las combinaciones positivas <em>ax+by</em>. Por el principio del buen orden, <em>S</em> tiene un mínimo <em>d</em>. Dividamos <em>a</em> por <em>d</em>: si <em>a=dq+r</em>, el resto <em>r</em> también es combinación lineal de <em>a</em> y <em>b</em>. Como 0≤r&lt;d, la minimalidad obliga a r=0. Por tanto d divide a. Repitiendo el argumento con b vemos que d es divisor común.</p>
 <p>A la inversa, cualquier divisor común de <em>a</em> y <em>b</em> divide todas sus combinaciones lineales y, en particular, divide a <em>d</em>. Esto convierte a <em>d</em> en el máximo común divisor y concluye la demostración.</p>
 <h3>El algoritmo extendido en acción</h3>
+<p>Puedes recorrer las divisiones, reconstruir las sustituciones y explorar la tabla de coeficientes en el artículo sobre el <a routerLink="/articles/gcd-euclid">MCD y el algoritmo de Euclides</a>.</p>
 <p>Euclides da gcd(252,198)=18. Si se sustituyen los restos hacia atrás, no solo aparece el máximo común divisor, sino también los coeficientes que lo fabrican:</p>
 <app-formula expression="18=4\cdot252-5\cdot198"></app-formula>
 <p>La identidad decide además cuándo la ecuación diofántica <em>ax+by=c</em> tiene soluciones: exactamente cuando gcd(a,b) divide a <em>c</em>. En aritmética modular afirma que <em>a</em> posee inverso módulo <em>m</em> si y solo si son coprimos.</p>
