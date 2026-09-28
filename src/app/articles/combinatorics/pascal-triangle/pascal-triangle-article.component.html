@@ -53,7 +53,7 @@
 <app-formula expression="\sum_{j=r}^{n}\binom{j}{r}=\binom{n+1}{r+1}\qquad(n\ge r\ge0)"></app-formula>
 <p>Por ejemplo, 1 + 2 + 3 + 4 = 10. La identidad se demuestra aplicando repetidamente la regla
   de Pascal: cada suma desplaza el resultado una fila hacia abajo y una posición hacia el interior.</p>
-<p>También aparecen los números de Fibonacci al sumar diagonales menos inclinadas.
+<p>También aparecen los <a routerLink="/articles/fibonacci-numbers">números de Fibonacci</a> al sumar diagonales menos inclinadas.
   Con F₀ = 0 y F₁ = 1, tenemos:</p>
 <app-formula expression="F_{n+1}=\sum_{k=0}^{\lfloor n/2\rfloor}\binom{n-k}{k}"></app-formula>
 <p>Para n = 5, la suma es 1 + 4 + 3 = 8. Una forma de entenderla es contar cómo cubrir una
@@ -62,7 +62,7 @@
 
 <h3>Colorear la divisibilidad</h3>
 <p>Vuelve al primer explorador y selecciona «Restos módulo 2». Los números pares dejan resto 0
-  y los impares resto 1. Al mostrar 32 filas aparece una versión discreta del triángulo de Sierpiński:
+  y los impares resto 1. Al mostrar 32 filas aparece una versión discreta del <a routerLink="/articles/sierpinski-triangle">triángulo de Sierpiński</a>:
   grandes regiones triangulares vacías separan copias más pequeñas del mismo patrón.</p>
 <p>La regla de suma sigue funcionando con restos: dos impares producen un par; un par y un impar
   producen un impar. Con módulos 3 y 5 aparecen otras estructuras. Los colores representan el resto,

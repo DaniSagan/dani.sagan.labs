@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { MarkovLabComponent } from '../../../widgets/markov/markov-lab.component';
@@ -6,7 +7,7 @@ import { MarkovAbsorptionComponent } from '../../../widgets/markov/markov-absorp
 @Component({
   selector: 'app-markov-chains-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     FormulaComponent,
     MarkovLabComponent,
     MarkovMixingComponent,

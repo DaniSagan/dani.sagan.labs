@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -5,6 +6,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   templateUrl: './sierpinski-triangle.component.html',
   styleUrls: ['./sierpinski-triangle.component.css'],
   standalone: true,
+  imports: [RouterLink],
 })
 export class SierpinskiTriangleComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

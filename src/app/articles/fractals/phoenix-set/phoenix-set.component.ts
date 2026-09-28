@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Complex } from 'src/app/shared/math/complex';
 import { Vec2 } from 'src/app/shared/math/vec2';
@@ -13,7 +14,7 @@ import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 @Component({
   selector: 'app-phoenix-set',
   standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, Move2DComponent, ZoomComponent],
+  imports: [RouterLink, MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, Move2DComponent, ZoomComponent],
   templateUrl: './phoenix-set.component.html',
   styleUrl: './phoenix-set.component.css'
 })

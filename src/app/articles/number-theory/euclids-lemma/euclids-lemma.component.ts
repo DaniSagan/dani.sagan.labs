@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-euclids-lemma',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './euclids-lemma.component.html',
   styleUrl: './euclids-lemma.component.css'
 })

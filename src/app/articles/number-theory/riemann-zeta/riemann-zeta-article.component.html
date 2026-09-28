@@ -9,7 +9,7 @@
 <app-formula
   expression="\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s},\qquad n^{-s}=e^{-s\log n},\qquad \Re(s)>1"></app-formula>
 <p>El producto de Euler expresa la misma función usando únicamente números primos. Al expandir cada factor
-  como una serie geométrica, la factorización única hace que cada entero positivo aparezca exactamente una vez:</p>
+  como una serie geométrica, la <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a> hace que cada entero positivo aparezca exactamente una vez:</p>
 <app-formula expression="\zeta(s)=\prod_{p\;\mathrm{primo}}\frac{1}{1-p^{-s}},\qquad \Re(s)>1"></app-formula>
 <p>Esta identidad explica su papel en teoría de números: una función analítica reúne información sobre todos los primos.
   Riemann estudió esta conexión con una variable compleja en su trabajo de 1859.</p>
@@ -23,7 +23,7 @@
 <app-formula expression="\zeta(2)=\frac{\pi^2}{6},\qquad \zeta(0)=-\frac12,\qquad \zeta(-1)=-\frac1{12}"></app-formula>
 <p>El último valor corresponde a la función continuada: no significa que la suma ordinaria 1 + 2 + 3 + ⋯
   sea negativa ni convergente. Es esencial distinguir la serie original de su continuación.</p>
-<p>La ecuación funcional relaciona valores a ambos lados del plano. La función gamma Γ extiende el factorial,
+<p>La ecuación funcional relaciona valores a ambos lados del plano. La <a routerLink="/articles/gamma-function">función gamma</a> Γ extiende el factorial,
   con Γ(n) = (n − 1)! para enteros positivos:</p>
 <app-formula expression="\zeta(s)=2^s\pi^{s-1}\sin\!\left(\frac{\pi s}{2}\right)\Gamma(1-s)\zeta(1-s)"></app-formula>
 <p>En puntos donde aparecen factores singulares, esta identidad se interpreta por límites.

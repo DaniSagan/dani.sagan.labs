@@ -1,10 +1,10 @@
 <h2>Euclides, Euler y los números perfectos</h2>
 <p class="dropcap">El 6 es igual a 1+2+3, la suma de sus divisores propios. También lo es 28=1+2+4+7+14. Los antiguos llamaron perfectos a estos números; el teorema de Euclides–Euler explica exactamente de dónde proceden todos los perfectos pares.</p>
-<p>Euclides probó en los <em>Elementos</em> que ciertos primos producen números perfectos. Dos mil años más tarde, Euler demostró el recíproco: no existe ningún perfecto par fuera de esa construcción.</p>
+<p>Euclides probó en los <em>Elementos</em> que ciertos primos producen <a routerLink="/articles/perfect-numbers">números perfectos</a>. Dos mil años más tarde, Euler demostró el recíproco: no existe ningún perfecto par fuera de esa construcción.</p>
 <app-formula expression="N=2^{p-1}(2^p-1),\qquad 2^p-1\text{ primo}"></app-formula>
 <p>Los primos de la forma 2<sup>p</sup>−1 reciben el nombre de primos de Mersenne.</p>
 <h3>Por qué la fórmula funciona</h3>
-<p>Sea M=2<sup>p</sup>−1 primo. Como M es impar, la función suma de divisores es multiplicativa:</p>
+<p>Sea M=2<sup>p</sup>−1 primo. Como M es impar, la función <a routerLink="/articles/divisor-sum-theorem">suma de divisores</a> es multiplicativa:</p>
 <app-formula expression="\sigma(2^{p-1}M)=(2^p-1)(M+1)=M\cdot2^p=2N"></app-formula>
 <p>Por tanto, la suma de los divisores propios de N es N.</p>
 <h3>Por qué no hay otros perfectos pares</h3>

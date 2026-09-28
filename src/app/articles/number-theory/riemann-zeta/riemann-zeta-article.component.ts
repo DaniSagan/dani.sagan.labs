@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { ZetaCalculatorComponent } from '../../../widgets/zeta-calculator/zeta-calculator.component';
@@ -6,7 +7,7 @@ import { ZetaCriticalStripComponent } from '../../../widgets/zeta-critical-strip
 @Component({
   selector: 'app-riemann-zeta-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     FormulaComponent,
     ZetaCalculatorComponent,
     ZetaCriticalStripComponent,

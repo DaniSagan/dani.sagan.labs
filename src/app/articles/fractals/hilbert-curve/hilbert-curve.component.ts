@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -7,7 +8,7 @@ import {
 @Component({
   selector: 'app-hilbert-curve',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './hilbert-curve.component.html',
   styleUrl: './hilbert-curve.component.css',
 })

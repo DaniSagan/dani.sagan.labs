@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
@@ -10,7 +11,7 @@ interface PtolemyPoint {
 @Component({
   selector: 'app-ptolemy-theorem-article',
   standalone: true,
-  imports: [CommonModule, FormulaComponent],
+  imports: [RouterLink, CommonModule, FormulaComponent],
   templateUrl: './ptolemy-theorem-article.component.html',
   styleUrl: './ptolemy-theorem-article.component.css'
 })

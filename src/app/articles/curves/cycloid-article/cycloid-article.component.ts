@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,7 @@ import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-b
 @Component({
   selector: 'app-cycloid-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     CommonModule,
     FormsModule,
     MathjaxModule,

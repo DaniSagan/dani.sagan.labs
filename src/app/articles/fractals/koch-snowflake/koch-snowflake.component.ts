@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -9,7 +10,7 @@ import { Vec2 } from 'src/app/shared/math/vec2';
 @Component({
   selector: 'app-koch-snowflake',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './koch-snowflake.component.html',
   styleUrl: './koch-snowflake.component.css',
 })

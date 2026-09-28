@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-divisor-sum-theorem',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './divisor-sum-theorem.component.html',
   styleUrl: './divisor-sum-theorem.component.css'
 })

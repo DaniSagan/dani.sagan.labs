@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { ComplexExponentialComponent } from '../../../widgets/imaginary-power/complex-exponential.component';
@@ -5,7 +6,7 @@ import { ImaginaryPowerBranchesComponent } from '../../../widgets/imaginary-powe
 
 @Component({
   selector: 'app-imaginary-power-article', standalone: true,
-  imports: [FormulaComponent, ComplexExponentialComponent, ImaginaryPowerBranchesComponent],
+  imports: [RouterLink, FormulaComponent, ComplexExponentialComponent, ImaginaryPowerBranchesComponent],
   templateUrl: './imaginary-power-article.component.html'
 })
 export class ImaginaryPowerArticleComponent {

@@ -1,7 +1,7 @@
 <h2>Fórmula de Brahmagupta–Bretschneider</h2>
 <p class="dropcap">Cuatro lados no determinan por sí solos el área de un cuadrilátero: un marco articulado puede deformarse manteniendo sus longitudes. La fórmula de Bretschneider completa la de Brahmagupta incorporando la suma de dos ángulos opuestos. Trabajaremos con un cuadrilátero convexo ABCD, lados consecutivos a, b, c, d y ángulos opuestos B y D. Llamamos s al semiperímetro.</p>
 <h3>1. Sumar las áreas de dos triángulos</h3>
-<p>Trazamos la diagonal AC. Los triángulos ABC y ADC tienen áreas ab sin B/2 y cd sin D/2. Por convexidad, sus interiores no se superponen y sus áreas se suman. La ley de los cosenos expresa además la diagonal de dos maneras:</p>
+<p>Trazamos la diagonal AC. Los triángulos ABC y ADC tienen áreas ab sin B/2 y cd sin D/2. Por convexidad, sus interiores no se superponen y sus áreas se suman. La <a routerLink="/articles/law-of-cosines">ley de los cosenos</a> expresa además la diagonal de dos maneras:</p>
 <app-formula expression="2K=ab\sin B+cd\sin D" displayMode="block"/>
 <app-formula expression="a^2+b^2-2ab\cos B=c^2+d^2-2cd\cos D" displayMode="block"/>
 <app-geometry-diagram diagram="bretschneider-formula" description="La diagonal AC divide un cuadrilátero no cíclico en dos triángulos. Sus ángulos opuestos B y D determinan la corrección a la fórmula de Brahmagupta."/>
@@ -18,6 +18,6 @@
 <h3>4. Interpretar el término corrector</h3>
 <p>Si el cuadrilátero es cíclico, B+D=180° y el coseno se anula. Recuperamos Brahmagupta. Para lados fijos, el término que se resta nunca es negativo: una realización cíclica alcanza el área máxima. Como comprobación, un rombo de lado L y ángulo B tiene D=B, y la fórmula da K²=L⁴(1−cos²B), es decir, K=L² sin B.</p>
 <h3>Historia y curiosidades</h3>
-<p>La fórmula general está asociada al trabajo de Carl Anton Bretschneider en el siglo XIX, mientras el caso cíclico remite a Brahmagupta en el siglo VII. <a href="https://mathworld.wolfram.com/BretschneidersFormula.html">MathWorld</a> presenta la relación. La diferencia de épocas ilustra cómo una identidad clásica puede ampliarse añadiendo un único parámetro. No debe llamarse fórmula de Brahmagupta a la versión sin corrección cuando el cuadrilátero no es cíclico: el error sería geométrico, no una simple aproximación numérica.</p>
+<p>La fórmula general está asociada al trabajo de Carl Anton Bretschneider en el siglo XIX, mientras el caso cíclico remite a Brahmagupta en el siglo VII. <a href="https://mathworld.wolfram.com/BretschneidersFormula.html">MathWorld</a> presenta la relación. La diferencia de épocas ilustra cómo una identidad clásica puede ampliarse añadiendo un único parámetro. No debe llamarse <a routerLink="/articles/brahmagupta-formula">fórmula de Brahmagupta</a> a la versión sin corrección cuando el cuadrilátero no es cíclico: el error sería geométrico, no una simple aproximación numérica.</p>
 
 <p>La dependencia angular explica físicamente el movimiento de un marco de cuatro barras articuladas: las longitudes permanecen fijas, pero las diagonales y los ángulos cambian. La fórmula cuantifica la pérdida de área al abandonar la posición cíclica, sin atribuir esa pérdida a una modificación de los lados.</p>

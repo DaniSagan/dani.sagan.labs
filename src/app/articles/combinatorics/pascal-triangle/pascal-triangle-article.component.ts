@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { PascalExplorerComponent } from '../../../widgets/pascal-triangle/pascal-explorer.component';
@@ -5,7 +6,7 @@ import { PascalProbabilityComponent } from '../../../widgets/pascal-triangle/pas
 
 @Component({
   selector: 'app-pascal-triangle-article', standalone: true,
-  imports: [FormulaComponent, PascalExplorerComponent, PascalProbabilityComponent],
+  imports: [RouterLink, FormulaComponent, PascalExplorerComponent, PascalProbabilityComponent],
   templateUrl: './pascal-triangle-article.component.html'
 })
 export class PascalTriangleArticleComponent {

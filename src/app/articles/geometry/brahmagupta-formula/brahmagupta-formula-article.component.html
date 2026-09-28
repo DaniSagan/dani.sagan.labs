@@ -5,7 +5,7 @@
 <app-formula expression="D=180^\circ-B,\qquad K=\frac{ab\sin B+cd\sin D}{2}=\frac{ab+cd}{2}\sin B" displayMode="block"/>
 <app-geometry-diagram diagram="brahmagupta-formula" description="La diagonal AC divide el cuadrilátero cíclico en dos triángulos. Los ángulos opuestos B y D suman 180 grados."/>
 <h3>2. Eliminar el ángulo desconocido</h3>
-<p>La diagonal AC es común a ambos triángulos. Aplicamos la ley de los cosenos desde los ángulos B y D, igualamos los resultados y aprovechamos que cos D=−cos B. Así obtenemos el coseno solo en función de los lados:</p>
+<p>La diagonal AC es común a ambos triángulos. Aplicamos la <a routerLink="/articles/law-of-cosines">ley de los cosenos</a> desde los ángulos B y D, igualamos los resultados y aprovechamos que cos D=−cos B. Así obtenemos el coseno solo en función de los lados:</p>
 <app-formula expression="AC^2=a^2+b^2-2ab\cos B=c^2+d^2+2cd\cos B" displayMode="block"/>
 <app-formula expression="\cos B=\frac{a^2+b^2-c^2-d^2}{2(ab+cd)}" displayMode="block"/>
 <p>El denominador es positivo porque todos los lados lo son. Por tanto, no hemos dividido por una cantidad que pudiera anularse en un cuadrilátero ordinario.</p>
@@ -17,7 +17,7 @@
 <h3>4. Introducir el semiperímetro</h3>
 <p>Definimos s=(a+b+c+d)/2. Cada factor lineal vale dos veces una diferencia s−lado. Los cuatro doses se cancelan con el dieciséis de la izquierda. Tomamos la raíz positiva porque el cuadrilátero tiene área positiva:</p>
 <app-formula expression="\boxed{K=\sqrt{(s-a)(s-b)(s-c)(s-d)}}" displayMode="block"/>
-<p>Para un rectángulo de lados u y v, el semiperímetro es u+v y la expresión se reduce a √(vuvu)=uv. Si un lado tiende a cero y dos vértices se reúnen, recuperamos la fórmula de Herón para el triángulo restante.</p>
+<p>Para un rectángulo de lados u y v, el semiperímetro es u+v y la expresión se reduce a √(vuvu)=uv. Si un lado tiende a cero y dos vértices se reúnen, recuperamos la <a routerLink="/articles/heron-formula">fórmula de Herón</a> para el triángulo restante.</p>
 <h3>Historia y curiosidades</h3>
 <p>Brahmagupta presentó esta relación en la matemática india del siglo VII. Su nombre también aparece en identidades aritméticas y problemas de cuadriláteros; véase <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Brahmagupta/">MacTutor</a>. Entre los cuadriláteros convexos con cuatro lados fijos que admiten una realización cíclica, esa realización alcanza el área máxima. La fórmula de Bretschneider explica el motivo: para un cuadrilátero no cíclico aparece un término corrector no negativo que se resta del producto de Brahmagupta.</p>
 

@@ -6,7 +6,7 @@
 <p>Las diferencias son dirigidas, por lo que el resultado puede ser negativo. Al usar valores absolutos perderíamos información sobre el orden y la separación de los puntos. Un cambio de origen o de unidad no altera la expresión: todos los factores de escala se cancelan.</p>
 <app-geometry-diagram diagram="cross-ratio" description="Cuatro puntos A, B, C y D de una recta se proyectan desde O sobre otra recta. Las separaciones cambian, pero su razón cruzada se conserva."/>
 <h3>2. Escribir una transformación proyectiva</h3>
-<p>Sobre una recta, una proyectividad se expresa mediante una función fraccionaria lineal. Su determinante debe ser distinto de cero para que no colapse todos los puntos en uno. Escribimos φ(t) para la nueva coordenada:</p>
+<p>Sobre una recta, una proyectividad se expresa mediante una <a routerLink="/articles/mobius-transformations">función fraccionaria lineal</a>. Su <a routerLink="/articles/matrix-determinant">determinante</a> debe ser distinto de cero para que no colapse todos los puntos en uno. Escribimos φ(t) para la nueva coordenada:</p>
 <app-formula expression="\phi(t)=\frac{\alpha t+\beta}{\gamma t+\delta},\qquad \alpha\delta-\beta\gamma\neq0" displayMode="block"/>
 <p>Esta fórmula incluye proyecciones entre rectas cuando se eligen coordenadas adecuadas. Si el denominador se anula, la imagen es el punto del infinito; primero demostraremos el resultado cuando las cuatro imágenes sean finitas.</p>
 <h3>3. Restar dos imágenes</h3>

@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 import { GeometryDiagramComponent } from '../shared/geometry-diagram.component';
@@ -5,7 +6,7 @@ import { GeometryDiagramComponent } from '../shared/geometry-diagram.component';
 @Component({
   selector: 'app-menelaus-theorem-article',
   standalone: true,
-  imports: [FormulaComponent, GeometryDiagramComponent],
+  imports: [RouterLink, FormulaComponent, GeometryDiagramComponent],
   templateUrl: './menelaus-theorem-article.component.html',
   styleUrl: '../shared/geometry-article.css'
 })

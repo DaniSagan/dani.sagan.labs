@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-sum-of-two-squares',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './sum-of-two-squares.component.html',
   styleUrl: './sum-of-two-squares.component.css'
 })

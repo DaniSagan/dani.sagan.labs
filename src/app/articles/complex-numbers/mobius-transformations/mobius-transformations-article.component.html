@@ -6,7 +6,7 @@
 <h3>Cuatro coeficientes y una condición</h3>
 <p>Una transformación de Möbius tiene la forma siguiente, con coeficientes complejos:</p>
 <app-formula expression="T(z)=\frac{az+b}{cz+d},\qquad ad-bc\ne0"></app-formula>
-<p>La condición sobre el determinante evita que la fracción se reduzca a una función constante.
+<p>La condición sobre el <a routerLink="/articles/matrix-determinant">determinante</a> evita que la fracción se reduzca a una función constante.
   Multiplicar los cuatro coeficientes por un mismo número complejo no nulo no cambia la transformación.
   Por eso no debemos interpretar cada cuádrupla como una transformación diferente.</p>
 <p>Si c = 0, obtenemos una transformación afín: un giro y cambio de escala seguidos de una
@@ -48,7 +48,7 @@
 <app-formula expression="T'(z)=\frac{ad-bc}{(cz+d)^2}"></app-formula>
 <p>Multiplicar por un complejo no nulo aplica el mismo giro y factor de escala a todas las direcciones
   en un punto. En el polo y en ∞ interpretamos esta propiedad usando coordenadas locales de la esfera.</p>
-<p>Otra cantidad que permanece igual es la <strong>razón doble</strong> de cuatro puntos distintos.
+<p>Otra cantidad que permanece igual es la <strong><a routerLink="/articles/cross-ratio">razón doble</a></strong> de cuatro puntos distintos.
   Con la convención que usaremos aquí:</p>
 <app-formula expression="[z_1,z_2;z_3,z_4]=\frac{(z_1-z_2)(z_3-z_4)}{(z_1-z_4)(z_3-z_2)}"></app-formula>
 <p>Aplicar T a los cuatro puntos conserva ese cociente. Si alguno es ∞, se interpreta mediante

@@ -1,7 +1,7 @@
 <h2>Fórmula del área de Gauss</h2>
 <p class="dropcap">Si conocemos las coordenadas de los vértices de un polígono, podemos calcular su área sin medir alturas ni dividirlo manualmente en piezas. La fórmula del área de Gauss, conocida también como regla del cordón o <em>shoelace</em>, suma productos cruzados de coordenadas consecutivas. La condición fundamental es introducir los vértices en el orden en que se recorre el borde del polígono.</p>
 <h3>1. Recordar el área de un triángulo orientado</h3>
-<p>Para dos vectores u=(x1,y1) y v=(x2,y2), el determinante mide el área orientada del paralelogramo que forman. La mitad corresponde al triángulo con tercer vértice en el origen. El signo es positivo al girar de u a v en sentido antihorario y negativo en el contrario:</p>
+<p>Para dos vectores u=(x1,y1) y v=(x2,y2), el <a routerLink="/articles/matrix-determinant">determinante</a> mide el área orientada del paralelogramo que forman. La mitad corresponde al triángulo con tercer vértice en el origen. El signo es positivo al girar de u a v en sentido antihorario y negativo en el contrario:</p>
 <app-formula expression="\det(u,v)=x_1y_2-y_1x_2,\qquad K_{\mathrm{or}}(O,P_1,P_2)=\frac12\det(P_1,P_2)" displayMode="block"/>
 <app-geometry-diagram diagram="shoelace-formula" description="Los vértices se recorren en orden. Los triángulos orientados desde O muestran qué términos de área se suman y cuáles se cancelan."/>
 <h3>2. Sumar alrededor del borde</h3>

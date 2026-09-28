@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -9,7 +10,7 @@ import { drawLSystem } from '../shared/l-system-renderer';
 @Component({
   selector: 'app-cesaro-fractal',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './cesaro-fractal.component.html',
   styleUrl: './cesaro-fractal.component.css',
 })

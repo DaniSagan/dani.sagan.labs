@@ -7,11 +7,11 @@
 
 <h3>Obtención geométrica con lado de una unidad</h3>
 <h4>1. Obtener la diagonal con el teorema de Ptolomeo</h4>
-<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un cuadrilátero inscrito en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El teorema de Ptolomeo afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
+<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un cuadrilátero inscrito en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El <a routerLink="/articles/ptolemy-theorem">teorema de Ptolomeo</a> afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
 <app-formula expression="d^2=1\cdot1+1\cdot d,\qquad d^2-d-1=0,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
 <p>Elegimos la raíz positiva porque d es una longitud. Así obtenemos el número áureo mediante una ecuación cuadrática. Las cinco diagonales tienen esta misma longitud por la simetría del pentágono.</p>
 <h4>2. Hallar el radio mediante un triángulo rectángulo</h4>
-<p>El triángulo V₀V₁V₂ tiene lados uno, uno y d. Su altura desde V₁ biseca la base d; Pitágoras da h. Para relacionar h con el radio, trazamos el diámetro desde V₁ hasta su extremo opuesto B. El triángulo V₁V₂B es rectángulo por el teorema de Tales y semejante a uno de los medios triángulos anteriores: sus ángulos agudos coinciden por el teorema del ángulo inscrito. La correspondencia de lados da h/1 = 1/(2R).</p>
+<p>El triángulo V₀V₁V₂ tiene lados uno, uno y d. Su altura desde V₁ biseca la base d; Pitágoras da h. Para relacionar h con el radio, trazamos el diámetro desde V₁ hasta su extremo opuesto B. El triángulo V₁V₂B es rectángulo por el <a routerLink="/articles/thales-theorem">teorema de Tales</a> y semejante a uno de los medios triángulos anteriores: sus ángulos agudos coinciden por el teorema del ángulo inscrito. La correspondencia de lados da h/1 = 1/(2R).</p>
 <app-formula expression="h=\sqrt{1-\frac{d^2}{4}},\qquad R=\frac{1}{2h}=\sqrt{\frac{5+\sqrt5}{10}}" displayMode="block"/>
 <h4>3. Coordenadas exactas a partir de las distancias</h4>
 <p>Situamos O en el origen y V₀ en (R, 0). Para un vértice (x, y) a distancia s de V₀, aplicamos Pitágoras tanto al radio como a esa distancia. Restando las ecuaciones desaparece y:</p>

@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -9,7 +10,7 @@ import { drawLSystem } from '../shared/l-system-renderer';
 @Component({
   selector: 'app-quadratic-koch-island',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './quadratic-koch-island.component.html',
   styleUrl: './quadratic-koch-island.component.css',
 })

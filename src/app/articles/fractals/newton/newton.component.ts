@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
 import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
@@ -8,7 +9,7 @@ import { ComplexFunction } from './complex-function';
 @Component({
   selector: 'app-newton',
   standalone: true,
-  imports: [Move2DComponent, ZoomComponent],
+  imports: [RouterLink, Move2DComponent, ZoomComponent],
   templateUrl: './newton.component.html',
   styleUrl: './newton.component.css'
 })

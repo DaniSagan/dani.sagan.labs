@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 import { PolygonGenerator } from 'src/app/mathematics/geometry/polygon-generator';
@@ -6,7 +7,7 @@ import { Vec2 } from 'src/app/shared/math/vec2';
 @Component({
   selector: 'app-heptagon-article',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './heptagon-article.component.html',
   styleUrl: './heptagon-article.component.css'
 })

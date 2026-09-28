@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-euclid-infinitely-many-primes',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './euclid-infinitely-many-primes.component.html',
   styleUrl: './euclid-infinitely-many-primes.component.css'
 })

@@ -9,7 +9,7 @@
 <h3>2. Elegir coordenadas sencillas</h3>
 <p>Una transformación afín conserva rectas y razones de segmentos sobre una misma recta. Podemos trabajar, por tanto, con A=(0,0), B=(1,0) y C=(0,1), aunque el triángulo original tenga otra forma. Sustituimos estas coordenadas en las definiciones anteriores:</p>
 <app-formula expression="D=(1-d,d),\quad E=(0,1-e),\quad F=(f,0)" displayMode="block"/>
-<p>Tres puntos están alineados exactamente cuando su determinante de coordenadas ampliadas es cero. Geométricamente, ese determinante es el doble del área orientada del triángulo DEF; un área nula expresa la colinealidad que queremos demostrar.</p>
+<p>Tres puntos están alineados exactamente cuando su <a routerLink="/articles/matrix-determinant">determinante</a> de coordenadas ampliadas es cero. Geométricamente, ese determinante es el doble del área orientada del triángulo DEF; un área nula expresa la colinealidad que queremos demostrar.</p>
 <h3>3. Desarrollar el determinante</h3>
 <p>Escribimos una fila por cada punto y añadimos una tercera coordenada igual a uno. La expansión por la primera fila permite comprobar cada término sin invocar ningún resultado métrico:</p>
 <app-formula expression="\begin{vmatrix}1-d&d&1\\0&1-e&1\\f&0&1\end{vmatrix}=(1-d)(1-e)+df-f(1-e)=0" displayMode="block"/>

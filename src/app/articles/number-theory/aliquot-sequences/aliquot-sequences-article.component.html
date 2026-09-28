@@ -3,7 +3,7 @@
   Esta regla tan sencilla puede producir descensos, aumentos y ciclos. Una sucesión alícuota registra todo ese
   recorrido.</p>
 <h3>La regla de iteración</h3>
-<p>Si s(n) denota la suma de divisores propios, la sucesión que comienza en a₀ se define mediante:</p>
+<p>Si s(n) denota la <a routerLink="/articles/divisor-sum-theorem">suma de divisores</a> propios, la sucesión que comienza en a₀ se define mediante:</p>
 <app-formula expression="s(n)=\sum_{d\mid n,\;1\le d\lt n}d=\sigma(n)-n,\qquad a_{k+1}=s(a_k)"></app-formula>
 <p>La función σ incluye todos los divisores positivos, mientras que s excluye el propio n.
   Aplicamos la regla mientras el término sea positivo. Al llegar a 0 detenemos el recorrido; no intentamos sumar

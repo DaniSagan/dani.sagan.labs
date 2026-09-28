@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { FibonacciExplorerComponent } from '../../../widgets/fibonacci/fibonacci-explorer.component';
@@ -5,7 +6,7 @@ import { FibonacciSquaresComponent } from '../../../widgets/fibonacci/fibonacci-
 
 @Component({
   selector: 'app-fibonacci-numbers-article', standalone: true,
-  imports: [FormulaComponent, FibonacciExplorerComponent, FibonacciSquaresComponent],
+  imports: [RouterLink, FormulaComponent, FibonacciExplorerComponent, FibonacciSquaresComponent],
   templateUrl: './fibonacci-numbers-article.component.html'
 })
 export class FibonacciNumbersArticleComponent {

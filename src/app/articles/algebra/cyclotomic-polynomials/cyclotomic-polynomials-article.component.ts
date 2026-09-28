@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { CyclotomicRootsComponent } from '../../../widgets/cyclotomic/cyclotomic-roots.component';
@@ -6,7 +7,7 @@ import { CyclotomicNewtonComponent } from '../../../widgets/cyclotomic/cyclotomi
 
 @Component({
   selector: 'app-cyclotomic-polynomials-article', standalone: true,
-  imports: [FormulaComponent, CyclotomicRootsComponent, CyclotomicFractalComponent, CyclotomicNewtonComponent],
+  imports: [RouterLink, FormulaComponent, CyclotomicRootsComponent, CyclotomicFractalComponent, CyclotomicNewtonComponent],
   templateUrl: './cyclotomic-polynomials-article.component.html',
   styles: [':host { display: block; min-width: 0; } app-formula { display: block; max-width: 100%; overflow-x: auto; margin: 1rem 0; }']
 })

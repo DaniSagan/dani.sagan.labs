@@ -5,7 +5,7 @@
 <app-formula expression="AQ=AP,\qquad CQ=BP,\qquad \angle PAQ=60^\circ" displayMode="block"/>
 <app-geometry-diagram diagram="pompeiu-theorem" description="La rotación de 60 grados alrededor de A lleva B a C y P a Q. El triángulo PQC tiene lados iguales a PA, PB y PC."/>
 <h3>2. Reconocer otro equilátero</h3>
-<p>El triángulo APQ tiene dos lados iguales y el ángulo comprendido de sesenta grados. Por la ley de los cosenos, su tercer lado también mide AP. Hemos convertido así una de las distancias originales en el segmento que une P con su imagen rotada:</p>
+<p>El triángulo APQ tiene dos lados iguales y el ángulo comprendido de sesenta grados. Por la <a routerLink="/articles/law-of-cosines">ley de los cosenos</a>, su tercer lado también mide AP. Hemos convertido así una de las distancias originales en el segmento que une P con su imagen rotada:</p>
 <app-formula expression="PQ^2=AP^2+AQ^2-2AP\cdot AQ\cos60^\circ=AP^2" displayMode="block"/>
 <app-formula expression="PQ=PA" displayMode="block"/>
 <h3>3. Construir el triángulo de distancias</h3>
@@ -17,4 +17,4 @@
 <app-formula expression="\operatorname{Im}\bigl[(\omega z-z)\overline{(\omega-z)}\bigr]=0" displayMode="block"/>
 <p>Al desarrollar y simplificar obtenemos x²+y²−x−y/√3=0. Es la ecuación de la circunferencia que pasa por 0, 1 y ω, es decir, la circunscrita del equilátero. Por tanto, para P sobre esa circunferencia una de las tres distancias es la suma de las otras dos; fuera de ella las desigualdades son estrictas.</p>
 <h3>Historia y curiosidades</h3>
-<p>Dimitrie Pompeiu publicó el resultado en 1936. <a href="https://mathworld.wolfram.com/PompeiusTheorem.html">MathWorld</a> recoge también su conexión con la desigualdad de Ptolomeo: al aplicarla a P y los tres vértices, los lados iguales del equilátero se cancelan. La rotación utilizada aquí da además una construcción visual del triángulo auxiliar. El área de ese triángulo puede variar con P, aunque sus lados siempre conserven la interpretación de distancias a los tres vértices fijos.</p>
+<p>Dimitrie Pompeiu publicó el resultado en 1936. <a href="https://mathworld.wolfram.com/PompeiusTheorem.html">MathWorld</a> recoge también su conexión con la desigualdad de <a routerLink="/articles/ptolemy-theorem">Ptolomeo</a>: al aplicarla a P y los tres vértices, los lados iguales del equilátero se cancelan. La rotación utilizada aquí da además una construcción visual del triángulo auxiliar. El área de ese triángulo puede variar con P, aunque sus lados siempre conserven la interpretación de distancias a los tres vértices fijos.</p>

@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,7 @@ import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-b
 @Component({
   selector: 'app-cassini-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [RouterLink, CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
   templateUrl: './cassini-article.component.html',
   styleUrls: ['./cassini-article.component.css']
 })

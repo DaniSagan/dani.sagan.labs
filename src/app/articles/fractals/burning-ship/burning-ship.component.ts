@@ -1,9 +1,10 @@
+import { RouterLink } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-burning-ship',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, ],
   templateUrl: './burning-ship.component.html',
   styleUrl: './burning-ship.component.css'
 })

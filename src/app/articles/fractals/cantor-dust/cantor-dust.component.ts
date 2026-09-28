@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import {
@@ -8,7 +9,7 @@ import {
 @Component({
   selector: 'app-cantor-dust',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './cantor-dust.component.html',
   styleUrl: './cantor-dust.component.css',
 })

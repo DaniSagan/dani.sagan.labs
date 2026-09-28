@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -9,7 +10,7 @@ import { drawLSystem } from '../shared/l-system-renderer';
 @Component({
   selector: 'app-sierpinski-arrowhead',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './sierpinski-arrowhead.component.html',
   styleUrl: './sierpinski-arrowhead.component.css',
 })

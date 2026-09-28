@@ -19,7 +19,7 @@
 <app-formula expression="\operatorname{ord}(\zeta_n^k)=\frac{n}{\gcd(n,k)}"></app-formula>
 <p>La raíz es <strong>primitiva</strong> cuando su orden es exactamente n. Esto sucede si k y n son
   coprimos. En n = 12, los exponentes primitivos son 1, 5, 7 y 11. El número de exponentes admisibles
-  es la función φ de Euler.</p>
+  es la <a routerLink="/articles/euler-totient-formula">función φ de Euler</a>.</p>
 <app-formula expression="\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right),\qquad \varphi(1)=1"></app-formula>
 
 <h3>2. Un polinomio para cada orden exacto</h3>
@@ -47,7 +47,7 @@
   de los ciclotómicos son −1, 0 o 1. El explorador permite refutarlo: selecciona n = 105 y observa
   los coeficientes de valor −2. La geometría circular de las raíces no obliga a que los coeficientes
   sean pequeños.</p>
-<p>También podemos invertir la identidad de factorización mediante la función de Möbius μ:</p>
+<p>También podemos invertir la identidad de factorización mediante la <a routerLink="/articles/mobius-inversion">función de Möbius</a> μ:</p>
 <app-formula expression="\Phi_n(x)=\prod_{d\mid n}(x^d-1)^{\mu(n/d)}"></app-formula>
 <p>Aquí μ(m) vale cero si m tiene un factor primo repetido; en otro caso vale (−1)ʳ, donde r cuenta
   sus factores primos, y μ(1) = 1. Los exponentes negativos se interpretan como un cociente que se

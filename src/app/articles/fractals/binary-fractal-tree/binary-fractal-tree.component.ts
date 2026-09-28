@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import {
@@ -9,7 +10,7 @@ import {
 @Component({
   selector: 'app-binary-fractal-tree',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './binary-fractal-tree.component.html',
   styleUrl: './binary-fractal-tree.component.css',
 })

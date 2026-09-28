@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { SandpileExplorerComponent } from '../../../widgets/sandpile/sandpile-explorer.component';
@@ -6,7 +7,7 @@ import { SandpileAvalanchesComponent } from '../../../widgets/sandpile/sandpile-
 
 @Component({
   selector: 'app-sandpile-article', standalone: true,
-  imports: [FormulaComponent, SandpileExplorerComponent, SandpileAbelianComponent, SandpileAvalanchesComponent],
+  imports: [RouterLink, FormulaComponent, SandpileExplorerComponent, SandpileAbelianComponent, SandpileAvalanchesComponent],
   templateUrl: './sandpile-article.component.html'
 })
 export class SandpileArticleComponent {

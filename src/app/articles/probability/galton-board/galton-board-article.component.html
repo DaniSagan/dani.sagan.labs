@@ -31,7 +31,7 @@
 
   <h3>4. Más bolas y más filas son dos ideas distintas</h3>
   <p><strong>Aumentar el número de bolas N</strong>, manteniendo n y p, permite estimar mejor una distribución fija. Para cada casillero, la ley de los grandes números dice que su frecuencia relativa converge a su probabilidad. Si esa probabilidad es q, la desviación típica de la frecuencia de N bolas independientes es √(q(1 − q)/N). Multiplicar N por cuatro divide esa escala de fluctuación por dos.</p>
-  <p><strong>Aumentar el número de filas n</strong>, con p fijo entre 0 y 1, cambia la distribución de cada bola. La suma contiene más decisiones. Tras centrarla y dividirla por su desviación típica, el teorema central del límite conduce a una normal estándar:</p>
+  <p><strong>Aumentar el número de filas n</strong>, con p fijo entre 0 y 1, cambia la distribución de cada bola. La suma contiene más decisiones. Tras centrarla y dividirla por su desviación típica, el <a routerLink="/articles/central-limit-theorem">teorema central del límite</a> conduce a una normal estándar:</p>
   <app-formula expression="Z_n=\frac{K-np}{\sqrt{np(1-p)}}\xrightarrow{\ d\ }\mathcal N(0,1),\qquad n\to\infty,\quad 0\lt p\lt1" displayMode="block" />
   <p>Esta convergencia es en distribución. La binomial continúa siendo discreta para todo n finito. Lanzar un millón de bolas en un tablero de dos filas reproduce con precisión tres probabilidades; no crea una distribución continua.</p>
 
