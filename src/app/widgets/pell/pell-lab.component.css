@@ -1,0 +1,50 @@
+p,
+label {
+  overflow-wrap: anywhere;
+}
+svg {
+  width: 100%;
+  max-width: 640px;
+  display: block;
+  margin: 1rem auto;
+}
+.grid {
+  stroke: #353542;
+  stroke-width: 0.5;
+}
+.axis {
+  stroke: #888899;
+  stroke-width: 1;
+}
+circle {
+  fill: #646475;
+}
+.curve {
+  fill: none;
+  stroke: var(--accent2);
+  stroke-width: 2;
+}
+.growth-y {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+.solution {
+  fill: #a8e6a0;
+}
+.chosen {
+  fill: var(--gold);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.negative {
+  background: #392a43;
+}
+.toggle input {
+  display: inline;
+  width: auto;
+  margin-right: 0.5rem;
+}
+svg text {
+  font-size: 12px;
+}

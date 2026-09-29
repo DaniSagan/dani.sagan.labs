@@ -1,0 +1,381 @@
+<h2>Ecuación de Pell: una hipérbola escondida en una raíz</h2>
+<p class="dropcap">3² − 2·2² = 1. También 17² − 2·12² = 1, y 99² − 2·70² = 1.
+  Los pares crecen deprisa, pero no aparecen por azar. Sus cocientes se acercan a √2, y la fracción continua de esa raíz
+  contiene las instrucciones para encontrarlos. Vamos a pasar de buscar puntos enteros sobre una curva a construirlos
+  todos.</p>
+<app-formula
+  expression="\boxed{x^2-Dy^2=1}\quad\longleftrightarrow\quad\sqrt D\quad\longleftrightarrow\quad\text{fracciones continuas}"></app-formula>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="problema">El problema</a></li>
+    <li><a routerLink="." fragment="laboratorio">Experimentar</a></li>
+    <li><a routerLink="." fragment="aproximacion">Aproximaciones</a></li>
+    <li><a routerLink="." fragment="periodo">El período</a></li>
+    <li><a routerLink="." fragment="paridad">Paridad y demostración</a></li>
+    <li><a routerLink="." fragment="ejemplos">D = 2 y D = 13</a></li>
+    <li><a routerLink="." fragment="todas">Todas las soluciones</a></li>
+    <li><a routerLink="." fragment="aplicaciones">Aplicaciones</a></li>
+    <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+  </ul>
+</nav>
+
+<h3 id="problema">1. Una ecuación sencilla, una búsqueda difícil</h3>
+<p>La <strong>ecuación de Pell clásica</strong> es x² − Dy² = 1, con x,y enteros y D un entero positivo no cuadrado.
+  No necesitamos que D sea libre de cuadrados: D = 12 también está permitido.
+  La cuestión es diofántica: buscamos puntos de ℤ², no todos los puntos reales de la curva.
+  El artículo de <a routerLink="/articles/linear-diophantine-equations">ecuaciones diofánticas lineales</a>
+  introduce esta distinción; aquí la curva ya no es una recta.</p>
+<div class="convention">
+  <p>Siempre que digamos <strong>solución positiva</strong>, exigiremos x &gt; 0 e y &gt; 0.
+    Los pares (1,0) y (−1,0) son soluciones triviales. Una vez conocidas las positivas, las demás soluciones no
+    triviales
+    de la ecuación clásica se obtienen cambiando independientemente los signos de x e y.</p>
+</div>
+<p>¿Por qué excluir los cuadrados? Si D = k² &gt; 0,</p>
+<app-formula expression="(x-ky)(x+ky)=1."></app-formula>
+<div class="proof">
+  <p>Dos enteros cuyo producto es 1 son ambos 1 o ambos −1. Al sumar y restar, resulta x = ±1 e y = 0.
+    No hay soluciones positivas no triviales. Para D = 0, en cambio, x = ±1 e y queda libre: tampoco es el problema
+    clásico.</p>
+</div>
+<p>Para D = 2 aparecen (3,2), (17,12), (99,70), (577,408). Las primeras soluciones para D = 3,5,6,7 son
+  respectivamente (2,1), (9,4), (5,2), (8,3). Pero para D = 13 hay que llegar hasta (649,180).
+  Una búsqueda que se detenga en y = 100 no encontrará nada en este último caso.</p>
+<p>La <strong>solución fundamental positiva</strong> (x₁,y₁) es la solución con x₁ &gt; 1 mínimo.
+  Como x = √(1 + Dy²) crece con y &gt; 0, también minimiza y y x + y√D.
+  Esta definición presupone existencia; la periodicidad nos permitirá demostrarla.</p>
+
+<h3 id="laboratorio">2. Busca, compara y descubre la raíz</h3>
+<p>Empieza con D = 2. Amplía la búsqueda y compara x/y con √2. Después cambia a D = 13:
+  la búsqueda corta falla, pero el período continúa dando información.
+  En los convergentes, observa qué filas tienen norma +1 y cuáles −1 antes de leer el teorema.</p>
+<app-pell-lab></app-pell-lab>
+<p>El comparador permite comprobar que el tamaño de la solución fundamental no crece monótonamente con D.
+  El ejemplo D = 61 da x₁ = 1766319049 e y₁ = 226153980. Los enteros exactos son imprescindibles al generar sus
+  potencias.</p>
+
+<h3 id="aproximacion">3. Cada solución es una aproximación extraordinaria</h3>
+<p>Si x,y &gt; 0 y x² − Dy² = 1, entonces x/y &gt; √D. Factorizar explica cuánto se aproxima:</p>
+<app-formula expression="(x-y\sqrt D)(x+y\sqrt D)=1,\qquad
+ x-y\sqrt D=\frac1{x+y\sqrt D}."></app-formula>
+<div class="proof">
+  <p>Dividimos por y² y despejamos el error. No necesitamos restar dos decimales casi iguales:</p>
+  <app-formula expression="\left(\frac xy-\sqrt D\right)\left(\frac xy+\sqrt D\right)=\frac1{y^2},
+  \qquad 0&lt;\frac xy-\sqrt D=\frac1{y^2(x/y+\sqrt D)}&lt;\frac1{2\sqrt D\,y^2}."></app-formula>
+  <p>El error disminuye como una constante por 1/y². Además gcd(x,y) = 1: si un entero g divide ambos,
+    g² divide x² − Dy² = 1, así que |g| = 1.</p>
+</div>
+<p>Para norma −1, x/y queda por debajo de √D y la misma racionalización da el valor absoluto
+  1/[y²(x/y + √D)]. En ambos casos es menor que 1/(2y²):
+  para norma −1, x/y = √(D − 1/y²) ≥ √(D − 1) ≥ 1 y √D ≥ √2, por lo que la suma supera 2.</p>
+<p>Esta precisión obliga a buscar entre los convergentes de √D. El laboratorio estima el error a partir de la
+  norma exacta y de esta fórmula, evitando que la resta de dos decimales próximos dé un falso cero.</p>
+
+<h3>4. El recordatorio de fracciones continuas que necesitamos</h3>
+<p>Para α irracional positivo, escribimos α = [a₀;a₁,a₂,…].
+  El convergente pₙ/qₙ termina en aₙ: <strong>contamos desde n = 0</strong>.</p>
+<app-formula expression="p_{-2}=0,\ p_{-1}=1,\quad q_{-2}=1,\ q_{-1}=0,\qquad
+ p_n=a_np_{n-1}+p_{n-2},\quad q_n=a_nq_{n-1}+q_{n-2}."></app-formula>
+<p>Por tanto p₀/q₀ = a₀/1. Las recurrencias implican, por inducción,</p>
+<app-formula expression="p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1}."></app-formula>
+<p>En efecto, cada nuevo determinante es el opuesto del anterior; en n = 0 vale −1.
+  Esto prueba que pₙ y qₙ son coprimos. Para la construcción visual y las cotas habituales, consulta
+  <a routerLink="/articles/continued-fractions">Fracciones continuas</a>.
+</p>
+<details class="proof">
+  <summary>Por qué una aproximación tan buena tiene que ser un convergente</summary>
+  <p><strong>Criterio de Legendre.</strong> Si α es irracional, p/q está reducido, q &gt; 0 y
+    |α − p/q| &lt; 1/(2q²), entonces p/q es un convergente de α.</p>
+  <p>Una justificación mediante intervalos evita confundirlo con la afirmación falsa de que toda buena aproximación
+    es automáticamente un convergente. El racional positivo p/q admite dos expansiones finitas:
+    la que termina en un coeficiente mayor que 1 y la que sustituye ese final a por a − 1,1.
+    Para los enteros se usan [p] y [p − 1;1].</p>
+  <p>Si b/d es el convergente anterior de una de esas expansiones, todos los irracionales que prolongan ese prefijo
+    tienen la forma (pt + b)/(qt + d), t &gt; 1 irracional.
+    Forman el intervalo entre p/q y (p + b)/(q + d).
+    La identidad del determinante da una longitud 1/[q(q + d)] ≥ 1/(2q²), pues 0 ≤ d ≤ q.</p>
+  <p>Las dos expansiones tienen determinantes de signos opuestos, por lo que esos intervalos están a lados opuestos
+    de p/q. Todo irracional a distancia menor que 1/(2q²) cae en uno de ellos y tiene p/q como convergente.
+    Aplicando el criterio a la cota anterior, toda solución positiva de norma ±1 aparece entre los convergentes de √D.
+  </p>
+</details>
+
+<h3 id="periodo">5. Calcular la raíz sin redondearla</h3>
+<p>La expansión tiene la forma √D = [a₀; período a₁,…,aL], con a₀ = ⌊√D⌋.
+  Para obtenerla trabajamos con cocientes completos αₙ = (√D + mₙ)/dₙ, comenzando con</p>
+<app-formula expression="m_0=0,\quad d_0=1,\quad a_0=\lfloor\sqrt D\rfloor."></app-formula>
+<p>Racionalizar αₙ₊₁ = 1/(αₙ − aₙ) da el algoritmo exacto:</p>
+<app-formula expression="m_{n+1}=d_na_n-m_n,\qquad
+ d_{n+1}=\frac{D-m_{n+1}^2}{d_n},\qquad
+ a_{n+1}=\left\lfloor\frac{a_0+m_{n+1}}{d_{n+1}}\right\rfloor."></app-formula>
+<p>La última fórmula puede usar a₀ en lugar de √D: al dividir por un entero positivo,
+  la fracción √D − a₀, que está entre 0 y 1, no hace cruzar el siguiente entero.
+  Los dₙ son positivos e integrales. La divisibilidad se conserva porque
+  mₙ₊₁ ≡ −mₙ (mod dₙ), y dₙ divide D − mₙ².</p>
+<p>El primer estado con mL = a₀ y dL = 1 cierra el bloque; entonces aL = 2a₀.
+  Se incluye ese coeficiente en el período. Por ejemplo,</p>
+<app-formula expression="\sqrt2=[1;\overline2],\quad
+ \sqrt3=[1;\overline{1,2}],\quad
+ \sqrt7=[2;\overline{1,1,1,4}],\quad
+ \sqrt{13}=[3;\overline{1,1,1,1,6}]."></app-formula>
+<details class="proof">
+  <summary>Por qué el período existe y por qué termina en 2a₀</summary>
+  <p>Llamemos conjugado de (√D + m)/d al número (m − √D)/d.
+    Desde α₁, los cocientes completos cumplen α &gt; 1 y −1 &lt; α′ &lt; 0.
+    En efecto, α₁′ = 1/(−√D − a₀), y la transformación α ↦ 1/(α − ⌊α⌋)
+    conserva ambas desigualdades.</p>
+  <p>Estas condiciones implican 0 &lt; m &lt; √D y 0 &lt; d &lt; 2√D.
+    Solo hay un número finito de pares enteros (m,d). El proceso permanece en ese conjunto finito.
+    Además es inyectivo: dado el siguiente cociente β, su predecesor tiene la forma a + 1/β,
+    y la condición −1 &lt; a + 1/β′ &lt; 0 determina un único entero a.
+    Por tanto la órbita es un ciclo desde α₁, no solo a partir de una cola posterior.</p>
+  <p>El predecesor reducido de α₁ = 1/(√D − a₀) es √D + a₀, pues
+    2a₀ + 1/α₁ = √D + a₀. Si L es la longitud mínima del ciclo, αL = √D + a₀.
+    Esto da mL = a₀, dL = 1 y aL = 2a₀.</p>
+  <p>Recíprocamente, dₙ = 1 con n ≥ 1 fuerza −1 &lt; mₙ − √D &lt; 0,
+    luego mₙ = a₀. Ese estado aparece exactamente cada L pasos:
+    <strong>dₙ = 1 si y solo si L divide n</strong>.
+  </p>
+</details>
+
+<h3 id="paridad">6. El puente exacto entre período y Pell</h3>
+<p>La identidad que explica el método es</p>
+<app-formula expression="\boxed{p_n^2-Dq_n^2=(-1)^{n+1}d_{n+1}.}"></app-formula>
+<div class="proof">
+  <p>Para justificarla, ponemos m = mₙ₊₁ y d = dₙ₊₁. Sustituir el cociente completo en la fracción truncada da</p>
+  <app-formula expression="\sqrt D=\frac{p_n\alpha_{n+1}+p_{n-1}}{q_n\alpha_{n+1}+q_{n-1}},
+  \qquad \alpha_{n+1}=\frac{\sqrt D+m}{d}."></app-formula>
+  <p>Multiplicamos en cruz y separamos parte racional y coeficiente de √D.
+    Podemos hacerlo porque √D es irracional. Obtenemos</p>
+  <app-formula expression="p_n=mq_n+dq_{n-1},\qquad Dq_n=mp_n+dp_{n-1}."></app-formula>
+  <p>Multiplicamos la primera igualdad por pₙ, la segunda por qₙ y restamos:</p>
+  <app-formula expression="p_n^2-Dq_n^2=d(p_nq_{n-1}-p_{n-1}q_n)=(-1)^{n+1}d."></app-formula>
+</div>
+<p>Por la sección anterior, el valor absoluto es 1 exactamente cuando n + 1 es múltiplo de L.
+  Así, en los índices n = jL − 1,</p>
+<app-formula expression="p_{jL-1}^2-Dq_{jL-1}^2=(-1)^{jL}."></app-formula>
+<div class="convention">
+  <p><strong>Teorema.</strong> Si L es par, la fundamental de norma +1 es (pL−1,qL−1).
+    Si L es impar, la fundamental de norma −1 es (pL−1,qL−1), y la de norma +1 es (p2L−1,q2L−1).
+    La ecuación negativa tiene solución entera si y solo si L es impar.</p>
+</div>
+<p><strong>Existencia y minimalidad.</strong> Si L es par elegimos j = 1; si es impar elegimos j = 2.
+  Siempre obtenemos +1, luego existe una solución positiva. Toda solución positiva de norma ±1 es convergente,
+  por el criterio de Legendre, y solo los índices anteriores pueden tener esa norma.
+  Como a₀ ≥ 1 y los demás coeficientes son positivos, los numeradores de estos convergentes crecen estrictamente.
+  El primer índice permitido da la fundamental.
+  Si L es par, todos los jL son pares y nunca aparece −1: esto descarta todas las soluciones negativas, no solo las de
+  una búsqueda finita.</p>
+<p><strong>El detalle de índices.</strong> El bloque periódico es a₁,…,aL.
+  El convergente pL−1/qL−1 termina en aL−1, justo <em>antes</em> del coeficiente aL = 2a₀.
+  Decir «al final de un período» sin esta convención puede introducir un error de una posición.
+  El estado dL = 1 certifica la norma del convergente anterior.</p>
+<p>Para contrastar la identidad y la paridad con una referencia universitaria, consulta la
+  <a href="https://ocw.mit.edu/courses/18-781-theory-of-numbers-spring-2012/13cf7a5b5cc750bac32299824469a8d2_MIT18_781S12_lec21.pdf"
+    target="_blank" rel="noopener noreferrer">lección 21 de Teoría de Números del MIT</a>.
+  Hemos fijado los índices desde cero tanto en el texto como en el laboratorio.
+</p>
+
+<h3 id="ejemplos">7. Dos ejemplos completos</h3>
+<h4>D = 2: un período impar de longitud uno</h4>
+<p>Desde (m₀,d₀,a₀) = (0,1,1) obtenemos (1,1,2), que cierra el período.
+  Los convergentes y sus normas son</p>
+<app-formula expression="\begin{array}{c|rrrrrr}
+ n&0&1&2&3&4&5\\ \hline
+ p_n/q_n&1/1&3/2&7/5&17/12&41/29&99/70\\
+ p_n^2-2q_n^2&-1&1&-1&1&-1&1
+ \end{array}"></app-formula>
+<p>L = 1 es impar. La negativa empieza en n = 0 con (1,1).
+  La positiva empieza en n = 2L − 1 = 1: (3,2). Comprobamos 9 − 8 = 1.
+  No se debe confundir esta fundamental con la solución posterior (17,12).</p>
+<h4>D = 13: cinco términos, dos vueltas para +1</h4>
+<p>El algoritmo produce los estados (m,d,a): (0,1,3), (3,4,1), (1,3,1), (2,3,1),
+  (1,4,1), (3,1,6). Así L = 5. Repetimos 1,1,1,1,6 al calcular los convergentes:</p>
+<app-formula expression="\begin{array}{c|rrrrrrrrrr}
+ n&0&1&2&3&4&5&6&7&8&9\\ \hline
+ p_n&3&4&7&11&18&119&137&256&393&649\\
+ q_n&1&1&2&3&5&33&38&71&109&180\\
+ p_n^2-13q_n^2&-4&3&-3&4&-1&4&-3&3&-4&1
+ \end{array}"></app-formula>
+<p>En n = L − 1 = 4 aparece 18² − 13·5² = 324 − 325 = −1.
+  En n = 2L − 1 = 9 aparece</p>
+<app-formula expression="649^2-13\cdot180^2=421201-421200=1."></app-formula>
+<p>Esta es la fundamental. El método necesitó cinco estados para conocer el período y diez convergentes para obtenerla.
+  La búsqueda en y &lt; 180 no podía encontrarla. También se recupera elevando al cuadrado
+  18 + 5√13: (18 + 5√13)² = 649 + 180√13.</p>
+<h4>Un período par: D = 3</h4>
+<p>√3 = [1; período 1,2], L = 2. El convergente n = L − 1 = 1 es 2/1 y 4 − 3 = 1.
+  La negativa no tiene solución. Una comprobación independiente usa módulo 3:
+  x² − 3y² = −1 exigiría x² ≡ 2 (mod 3), pero los cuadrados solo dejan 0 o 1.</p>
+
+<h3>8. Multiplicar soluciones: la norma</h3>
+<p>Para α = a + b√D con a,b enteros, su conjugado es α′ = a − b√D y su <strong>norma</strong> es</p>
+<app-formula expression="N(\alpha)=\alpha\alpha'=a^2-Db^2,\qquad N(\alpha\beta)=N(\alpha)N(\beta)."></app-formula>
+<div class="proof">
+  <p>La conjugación respeta suma y producto: basta desarrollar y sustituir √D por −√D.
+    Por tanto (αβ)(αβ)′ = (αα′)(ββ′). Si ambas normas son 1, su producto también tiene norma 1.
+    En coordenadas,</p>
+  <app-formula expression="(x+y\sqrt D)(u+v\sqrt D)=(xu+Dyv)+(xv+yu)\sqrt D."></app-formula>
+  <app-formula expression="(xu+Dyv)^2-D(xv+yu)^2
+ =x^2u^2+D^2y^2v^2-Dx^2v^2-Dy^2u^2
+ =(x^2-Dy^2)(u^2-Dv^2)."></app-formula>
+  <p>Los términos cruzados se cancelan. Así, x′ = xu + Dyv e y′ = xv + yu producen otra solución positiva.
+    No hemos necesitado teoría de cuerpos: solo multiplicación de expresiones cuadráticas.</p>
+</div>
+<p>Norma −1 por norma −1 da +1. Por eso elevar al cuadrado una solución negativa produce una positiva.
+  En cambio, multiplicar una solución positiva por una negativa conserva el signo −1.</p>
+
+<h3 id="todas">9. Por qué la fundamental genera todas</h3>
+<p>Pongamos ε = x₁ + y₁√D &gt; 1. Su inverso ε⁻¹ = x₁ − y₁√D tiene también coeficientes enteros.
+  Cada potencia εᵏ, k ≥ 1, tiene norma 1 y coeficientes enteros positivos. Falta demostrar que ninguna solución queda
+  fuera.</p>
+<div class="proof">
+  <p>Sea α = x + y√D una solución positiva. Elegimos el entero k ≥ 0 para el que
+    εᵏ ≤ α &lt; εᵏ⁺¹ y definimos β = αε⁻ᵏ. Como el inverso tiene coeficientes enteros,
+    β = u + v√D con u,v enteros; además N(β) = 1 y 1 ≤ β &lt; ε.</p>
+  <app-formula expression="u=\frac{\beta+\beta^{-1}}2,\qquad
+ v=\frac{\beta-\beta^{-1}}{2\sqrt D}."></app-formula>
+  <p>Si β &gt; 1, estas expresiones dan u &gt; 1 y v &gt; 0.
+    La función t + 1/t es estrictamente creciente para t &gt; 1, pues su derivada es 1 − 1/t² &gt; 0.
+    De β &lt; ε se deduce u &lt; x₁, contradiciendo que x₁ sea mínimo.
+    Por tanto β = 1 y α = εᵏ. Como α &gt; 1, necesariamente k ≥ 1.</p>
+</div>
+<app-formula expression="\boxed{x_k+y_k\sqrt D=(x_1+y_1\sqrt D)^k,\qquad k=1,2,\ldots}"></app-formula>
+<p>La prueba establece exhaustividad, no solo una forma de fabricar ejemplos.
+  Usamos k para la potencia y n para el índice de convergente: son dos índices diferentes.
+  En norma +1, n = kL − 1 si L es par y n = 2kL − 1 si L es impar.</p>
+<p>Esta estructura multiplicativa abre la puerta a las unidades de norma 1 en teoría algebraica de números.
+  Aquí basta trabajar en las expresiones a + b√D con coeficientes enteros.
+  Una referencia adicional para el argumento de minimalidad son las
+  <a href="https://crypto.stanford.edu/pbc/notes/contfrac/pell.html" target="_blank" rel="noopener noreferrer">notas de
+    Ben Lynn sobre Pell</a>.
+</p>
+
+<h3>10. Recurrencias y crecimiento exponencial</h3>
+<p>Multiplicar una vez más por ε da un algoritmo para pasar de una solución a la siguiente:</p>
+<app-formula expression="x_0=1,\ y_0=0,\qquad
+ x_{k+1}=x_1x_k+Dy_1y_k,\quad y_{k+1}=y_1x_k+x_1y_k."></app-formula>
+<p>En D = 2, xₖ₊₁ = 3xₖ + 4yₖ e yₖ₊₁ = 2xₖ + 3yₖ.
+  Así obtenemos (3,2), (17,12), (99,70), (577,408), (3363,2378).
+  Por ejemplo, 17² − 2·12² = 289 − 288 = 1; 99² − 2·70² = 9801 − 9800 = 1;
+  577² − 2·408² = 332929 − 332928 = 1.</p>
+<p>La conjugación proporciona además fórmulas cerradas:</p>
+<app-formula expression="x_k=\frac{\varepsilon^k+\varepsilon^{-k}}2,\qquad
+ y_k=\frac{\varepsilon^k-\varepsilon^{-k}}{2\sqrt D}."></app-formula>
+<p>Como ε + ε⁻¹ = 2x₁, las potencias de ε y de ε⁻¹ satisfacen la misma recurrencia.
+  Al sumar y restar,</p>
+<app-formula expression="x_{k+2}=2x_1x_{k+1}-x_k,\qquad
+ y_{k+2}=2x_1y_{k+1}-y_k."></app-formula>
+<p>El término ε⁻ᵏ tiende a cero: xₖ se aproxima a εᵏ/2 e yₖ a εᵏ/(2√D).
+  Por eso el gráfico logarítmico se acerca a dos rectas de pendiente log₁₀ ε.
+  Como en <a routerLink="/articles/fibonacci-numbers">Fibonacci</a>, una recurrencia lineal produce crecimiento
+  exponencial,
+  aunque aquí la norma conserva una identidad cuadrática exacta.</p>
+
+<h3>11. Geometría: ver la curva no resuelve la aritmética</h3>
+<p>La ecuación real es una <a routerLink="/articles/hyperbola">hipérbola</a> con asíntotas x = ±√D·y.
+  Sus puntos enteros positivos son escasos y se separan cada vez más.
+  En D = 2 se ven varias soluciones con una escala moderada; para D = 13 la primera exige una ventana mucho mayor.</p>
+<p>El gráfico separa la curva continua, la retícula y las soluciones verificadas.
+  Una ventana sin puntos destacados no demuestra inexistencia. A escala grande,
+  x − y√D = 1/(x + y√D) es tan pequeño que la curva parece coincidir con una asíntota;
+  esa coincidencia visual no es una igualdad matemática.</p>
+
+<h3 id="aplicaciones">12. Reconocer Pell en otros problemas</h3>
+<h4>Números triangulares que son cuadrados</h4>
+<p>Buscamos n,m enteros no negativos tales que n(n + 1)/2 = m².
+  Multiplicar por 8 y completar el cuadrado transforma la pregunta:</p>
+<app-formula expression="4n(n+1)=8m^2\quad\Longleftrightarrow\quad
+ (2n+1)^2-8m^2=1."></app-formula>
+<p>Ponemos X = 2n + 1 e Y = m. Es Pell con D = 8, cuya fundamental es (3,1).
+  Recíprocamente, toda solución positiva tiene X impar, pues X² = 1 + 8Y² es impar,
+  así que n = (X − 1)/2 es entero. La transformación no añade ni pierde soluciones positivas.</p>
+<app-formula expression="(X,Y)=(3,1),(17,6),(99,35)
+ \quad\Longrightarrow\quad(n,m)=(1,1),(8,6),(49,35)."></app-formula>
+<p>Los cuadrados triangulares resultantes son 1, 36 y 1225; también está la solución trivial n = m = 0.
+  Obsérvese que D = 8 no es libre de cuadrados, pero el método funciona.</p>
+<h4>Catetos consecutivos y una ecuación negativa</h4>
+<p>Un triángulo rectángulo de lados enteros con catetos r y r + 1 e hipotenusa h satisface
+  r² + (r + 1)² = h². Multiplicando por 2 y completando el cuadrado:</p>
+<app-formula expression="(2r+1)^2-2h^2=-1."></app-formula>
+<p>Ahora X = 2r + 1 e Y = h. Las soluciones (7,5) y (41,29) producen
+  los triángulos (3,4,5) y (20,21,29).
+  X es impar porque X² = 2Y² − 1 lo obliga módulo 2, y para recuperar r ≥ 1 debemos excluir (1,1),
+  que daría el caso degenerado r = 0. Las potencias impares de 1 + √2 dan ejemplos de norma −1.</p>
+<h4>Una norma distinta</h4>
+<p>La ecuación n(n + 1) = 2m² + 1 equivale a (2n + 1)² − 8m² = 5.
+  Módulo 8 pediría X² ≡ 5, imposible: los cuadrados módulo 8 solo pueden ser 0,1,4.
+  Transformar el problema también puede servir para demostrar que no tiene solución.</p>
+
+<h3>13. Clásica, negativa y generalizada</h3>
+<p>En x² − Dy² = N, el caso N = 1 siempre tiene soluciones positivas para D positivo no cuadrado.
+  El caso N = −1 depende de la paridad del período.
+  Para otros N puede no haber ninguna solución, y una sola «fundamental» no describe necesariamente todas las familias.
+</p>
+<p>Si α tiene norma N y ε norma 1, entonces αεᵏ conserva norma N; esto genera soluciones desde una semilla,
+  pero no prueba que todas procedan de esa semilla.
+  Por ejemplo, (2,0) tiene norma 4 para D = 2, mientras que (3,1) tiene norma 1.
+  Multiplicar (2,0) por potencias de 3 + 2√2 mantiene norma 4, nunca la cambia a 1.</p>
+<p>Las <a routerLink="/articles/modular-arithmetic">congruencias</a> ayudan a descartar normas imposibles,
+  pero superar unas pocas comprobaciones modulares no demuestra existencia.
+  La teoría completa de la ecuación generalizada requiere más herramientas que las desarrolladas aquí.</p>
+
+<h3>14. Errores frecuentes</h3>
+<ul>
+  <li><strong>Usar D cuadrado como caso clásico.</strong> D = 9 solo da (±1,0) en norma +1.</li>
+  <li><strong>Llamar fundamental a (1,0).</strong> La fundamental exige ambas coordenadas positivas.</li>
+  <li><strong>Confundir una solución con la primera.</strong> (17,12) resuelve D = 2, pero (3,2) es menor.</li>
+  <li><strong>Concluir inexistencia tras pocos intentos.</strong> D = 13 no tiene solución positiva con y &lt; 180.</li>
+  <li><strong>Suponer que todos los convergentes resuelven Pell.</strong> Para D = 13, 3/1 tiene norma −4.</li>
+  <li><strong>Mezclar convergentes y semiconvergentes.</strong> Aquí usamos los cortes [a₀;…;aₙ] y sus recurrencias;
+    otras fracciones intermedias requieren otro análisis.</li>
+  <li><strong>Contar a₀ en el período.</strong> √2 tiene L = 1, no 2.</li>
+  <li><strong>Elegir pL en lugar de pL−1.</strong> Para D = 3, p₁/q₁ = 2/1 sirve, pero p₂/q₂ = 5/3 tiene norma −2.</li>
+  <li><strong>Creer que norma −1 siempre es posible.</strong> D = 3 la impide; su período es par.</li>
+  <li><strong>Confundir k con n.</strong> k cuenta potencias de la fundamental; n cuenta términos desde a₀.</li>
+  <li><strong>Olvidar el crecimiento.</strong> Una tabla pequeña puede contener enteros de centenares de cifras.</li>
+  <li><strong>Verificar con una raíz redondeada o con number.</strong> La cancelación de dos cuadrados enormes
+    puede borrar el 1. Se calcula x² − Dy² íntegramente con BigInt.</li>
+</ul>
+
+<h3>15. Una guía para reconstruir el argumento</h3>
+<p><strong>Definir:</strong> D positivo no cuadrado, solución positiva, fundamental y convergente desde índice cero.
+  <strong>Enunciar:</strong> periodicidad, índices L − 1 y 2L − 1, y criterio para norma −1.
+  <strong>Justificar:</strong> racionalizar el error, relacionar la norma con dₙ₊₁ y usar la paridad.
+</p>
+<p>Para demostrar la estructura completa, separa dos preguntas: la multiplicatividad construye soluciones;
+  reducir α entre dos potencias consecutivas de ε demuestra que no falta ninguna.
+  Para aplicaciones, comprueba siempre que la transformación inversa conserva integridad, signos y restricciones.</p>
+
+<h3 id="ejercicios">16. Autoevaluación: calcular y reconstruir pruebas</h3>
+<p>Prueba primero sin ayudas. Cada ejercicio permite revelar dos pistas, una estrategia y un desarrollo,
+  antes de la solución razonada. En las demostraciones, contrasta tu argumento con la solución: no se evalúan
+  automáticamente como una respuesta numérica.</p>
+<app-self-assessment quizId="pell-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3>17. Conexiones para continuar</h3>
+<ul>
+  <li><a routerLink="/articles/linear-diophantine-equations">Ecuaciones diofánticas lineales</a>: el contraste entre una
+    recta y una curva.</li>
+  <li><a routerLink="/articles/continued-fractions">Fracciones continuas</a>: convergentes, aproximaciones y patrones
+    periódicos.</li>
+  <li><a routerLink="/articles/gcd-euclid">MCD y Euclides</a> y <a routerLink="/articles/bezout-identity">Bézout</a>:
+    divisiones y determinantes de convergentes consecutivos.</li>
+  <li><a routerLink="/articles/modular-arithmetic">Aritmética modular</a> y
+    <a routerLink="/articles/linear-congruence-theorem">congruencias lineales</a>: filtros aritméticos y condiciones
+    sobre restos.
+  </li>
+  <li><a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a> y
+    <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a>: divisibilidad y coprimalidad.
+  </li>
+  <li><a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a>: recurrencias y aproximación de irracionales.
+  </li>
+  <li><a routerLink="/articles/hyperbola">Hipérbola</a> y
+    <a routerLink="/articles/sum-of-two-squares">sumas de dos cuadrados</a>: otras relaciones entre curvas y puntos
+    enteros.
+  </li>
+</ul>
+<p>Las ternas pitagóricas y otras ecuaciones diofánticas no lineales prolongan esta búsqueda.
+  La norma conduce hacia la teoría algebraica de números; los convergentes, hacia la aproximación diofántica.
+  El hilo común sigue siendo el mismo: experimentar, encontrar una estructura y demostrar que explica todas las
+  soluciones.</p>

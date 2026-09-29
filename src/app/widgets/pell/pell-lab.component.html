@@ -1,0 +1,143 @@
+<div class="widget" aria-labelledby="pell-title">
+  <span class="eyebrow">LABORATORIO · DE LA BÚSQUEDA AL PATRÓN</span>
+  <h3 id="pell-title">Una hipérbola, una raíz y una sucesión</h3>
+  <div class="presets">@for (D of presets; track D) { <button type="button" (click)="choose(D)">D = {{ D }}</button> }
+  </div>
+  <label for="pell-d">D<input id="pell-d" type="text" inputmode="numeric" maxlength="5" [(ngModel)]="dText"
+      (ngModelChange)="update()"></label>
+  <p class="note">D entre 1 y 10000; hasta 20 soluciones y dos períodos de convergentes más dos términos.
+    La lógica trabaja con BigInt; estos límites mantienen ágil la interacción. Los decimales y las gráficas son
+    aproximaciones.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> }
+  @else if (expansion.square) {
+  <p class="result" role="status">D = {{ expansion.a0 }}²: (x − {{ expansion.a0 }}y)(x + {{ expansion.a0 }}y) = 1.
+    Solo aparecen (1,0) y (−1,0); no hay solución positiva con y &gt; 0 ni período irracional.</p>
+  } @else {
+  <h4>1. Prueba primero una búsqueda pequeña</h4>
+  <label for="pell-search">Buscar 1 ≤ y ≤ {{ searchLimit }}<input id="pell-search" type="range" min="10" max="200"
+      step="10" [(ngModel)]="searchLimit" (ngModelChange)="searchSmall()"></label>
+  <p>Comprobamos exactamente si 1 + Dy² es cuadrado:
+    @for (p of search; track p.x) { <span>({{ p.x }}, {{ p.y }}) · </span> }
+    @if (!search.length) { <strong>Ninguna solución en esta ventana.</strong> }
+    Esto no demuestra que no haya soluciones fuera. La solución fundamental se calcula por fracciones continuas.</p>
+  <h4>2. La raíz revela un período</h4>
+  <p>√{{ expansion.D }} ≈ {{ root }}.</p>
+  <p class="result">[{{ expansion.a0 }}; período ({{ expansion.period.join(', ') }})], L = {{ expansion.period.length
+    }}.</p>
+  <p class="note">El bloque entre paréntesis se repite indefinidamente; a₀ no forma parte del período.</p>
+  <h4>3. Recorre los convergentes</h4>
+  <div class="controls">
+    <button type="button" (click)="move(-1)" [disabled]="step === 0">Anterior</button>
+    <button type="button" (click)="move(1)" [disabled]="step === rows.length - 1">Siguiente</button>
+    <button type="button" (click)="step = fundamentalIndex">Ir a la fundamental</button>
+  </div>
+  <label for="pell-step">Índice n = {{ step }}<input id="pell-step" type="range" min="0" [max]="rows.length - 1"
+      step="1" [(ngModel)]="step"></label>
+  <p>Estado del algoritmo para a{{ step }}: m = {{ currentState.m }}, d = {{ currentState.d }}, a = {{ currentState.a
+    }}.
+    Después del primer período se reutilizan sus estados.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Convergentes y normas exactas">
+    <table>
+      <caption>Hasta ocho filas anteriores al índice elegido. Error aproximado; norma exacta.</caption>
+      <thead>
+        <tr>
+          <th>n</th>
+          <th>aₙ</th>
+          <th>pₙ / qₙ</th>
+          <th>pₙ² − Dqₙ²</th>
+          <th>|pₙ/qₙ − √D| ≈</th>
+        </tr>
+      </thead>
+      <tbody>@for (r of visibleRows; track r.index) {
+        <tr [class.unit]="r.norm === one" [class.negative]="r.norm === minusOne">
+          <th>{{ r.index }}</th>
+          <td>{{ r.a }}</td>
+          <td>{{ r.p }} / {{ r.q }}</td>
+          <td>{{ r.norm }} @if (r.norm === one) { · Pell +1 } @if (r.norm === minusOne) { · Pell −1 }</td>
+          <td>{{ scientificError(expansion.D, r.p, r.q) }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <h4>4. Del primer +1 a todas las soluciones positivas</h4>
+  <p class="result" role="status">Fundamental: ({{ unit.x }}, {{ unit.y }}), convergente n = {{ fundamentalIndex }}.
+    {{ unit.x }}² − {{ expansion.D }}·{{ unit.y }}² = {{ norm(expansion.D, unit) }}.</p>
+  <p>@if (negative) { La ecuación negativa sí tiene solución: ({{ negative.x }}, {{ negative.y }}), de norma {{
+    norm(expansion.D, negative) }}. }
+    @else { El período es par: la ecuación negativa no tiene solución entera. }</p>
+  <label for="pell-count">Número de soluciones: {{ count }}<input id="pell-count" type="range" min="2" max="20" step="1"
+      [(ngModel)]="count" (ngModelChange)="generate()"></label>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Potencias de la solución fundamental">
+    <table>
+      <thead>
+        <tr>
+          <th>Potencia k</th>
+          <th>xₖ</th>
+          <th>yₖ</th>
+          <th>Norma exacta</th>
+          <th>Explorar</th>
+        </tr>
+      </thead>
+      <tbody>@for (p of solutions; track i; let i = $index) {
+        <tr [class.selected]="selected === i">
+          <th>{{ i + 1 }}</th>
+          <td>{{ p.x }}</td>
+          <td>{{ p.y }}</td>
+          <td>{{ norm(expansion.D, p) }}</td>
+          <td><button type="button" (click)="select(i)"
+              [attr.aria-label]="'Seleccionar potencia ' + (i + 1)">Seleccionar</button></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <p class="readout">Selección k = {{ selected + 1 }}: ({{ point.x }}, {{ point.y }}).
+    x/y ≈ {{ ratio }}; error ≈ {{ scientificError(expansion.D, point.x, point.y) }}; norma = {{ norm(expansion.D, point)
+    }}.</p>
+  <h4>5. La curva real y sus puntos enteros</h4>
+  <div class="controls"><label for="pell-zoom">Ventana ±{{ span }}<input id="pell-zoom" type="range" min="5" max="200"
+        step="1" [(ngModel)]="span" (ngModelChange)="zoom()"></label>
+    <button type="button" (click)="fit()">Ajustar a la selección</button>
+  </div>
+  <p class="note">Escala lineal: ambos ejes van de −S a S, con S = {{ scale }}.
+    Si S ≤ 30 se dibuja la retícula entera; para escalas mayores se muestran guías, sin pretender enumerar los enteros.
+  </p>
+  <svg class="hyperbola" viewBox="0 0 520 520" role="img" aria-label="Hipérbola y soluciones de Pell, con ambos signos">
+    @for (tick of ticks; track tick) {
+    <line [attr.x1]="260 + 220 * tick" [attr.x2]="260 + 220 * tick" y1="40" y2="480" class="grid"></line>
+    <line x1="40" x2="480" [attr.y1]="260 + 220 * tick" [attr.y2]="260 + 220 * tick" class="grid"></line>
+    }
+    <line x1="40" x2="480" y1="260" y2="260" class="axis"></line>
+    <line x1="260" x2="260" y1="40" y2="480" class="axis"></line>
+    @for (path of curves; track $index) { <path [attr.d]="path" class="curve"></path> }
+    @for (p of lattice; track $index) { <circle [attr.cx]="p.x" [attr.cy]="p.y" [attr.r]="p.solution ? 3 : 1"
+      [class.solution]="p.solution"></circle> }
+    @for (p of marks; track $index) {
+    <circle [attr.cx]="p.x" [attr.cy]="p.y" r="5" class="solution" [class.chosen]="selected === p.index"></circle>
+    }
+    <text x="483" y="280">x</text><text x="268" y="30">y</text><text x="480" y="505">S</text><text x="30"
+      y="505">−S</text><text x="250" y="505">0</text>
+  </svg>
+  <p class="note">Azul: puntos reales de la hipérbola. Verde: soluciones enteras visibles; oro: la selección y sus
+    simetrías.
+    La tabla permite seleccionar sin depender del gráfico. A gran escala, la curva casi coincide visualmente con sus
+    asíntotas;
+    las identidades se verifican con enteros, nunca leyendo píxeles.</p>
+  <h4>6. ¿Por qué crecen tan deprisa?</h4>
+  <label class="toggle"><input type="checkbox" [(ngModel)]="logarithmic" (ngModelChange)="growth()"> Escala logarítmica
+    decimal</label>
+  <svg viewBox="0 0 520 290" role="img" aria-label="Crecimiento de las coordenadas x e y según la potencia">
+    <line x1="45" x2="495" y1="255" y2="255" class="axis"></line>
+    <line x1="45" x2="45" y1="35" y2="255" class="axis"></line>
+    <path [attr.d]="growthX" class="curve"></path>
+    <path [attr.d]="growthY" class="growth-y"></path>
+    <text x="8" y="260">0</text><text x="45" y="280">1</text><text x="480" y="280">{{ count }}</text><text x="250"
+      y="280">k</text>
+  </svg>
+  <p class="note">Azul: xₖ; oro: yₖ. Eje vertical: {{ logarithmic ? 'log₁₀ del valor' : 'valor en escala lineal' }},
+    de 0 a {{ growthTop }}. En escala logarítmica, incrementos iguales representan multiplicaciones iguales.
+    Los valores exactos permanecen en la tabla.</p>
+  }
+</div>
+<app-pell-comparison (choose)="choose($event)"></app-pell-comparison>

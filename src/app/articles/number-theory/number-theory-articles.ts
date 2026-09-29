@@ -13,6 +13,7 @@ import { RiemannZetaArticleComponent } from './riemann-zeta/riemann-zeta-article
 import { DivisionAlgorithmComponent } from './division-algorithm/division-algorithm.component';
 import { BezoutIdentityComponent } from './bezout-identity/bezout-identity.component';
 import { LinearDiophantineArticleComponent } from './linear-diophantine/linear-diophantine-article.component';
+import { PellArticleComponent } from './pell/pell-article.component';
 import { GcdEuclidArticleComponent } from './gcd-euclid/gcd-euclid-article.component';
 import { ModularArithmeticArticleComponent } from './modular-arithmetic/modular-arithmetic-article.component';
 import { DivisibilityRulesArticleComponent } from './divisibility-rules/divisibility-rules-article.component';
@@ -42,6 +43,7 @@ interface ArticleComponent extends Type<unknown> {
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   ContinuedFractionsArticleComponent,
+  PellArticleComponent,
   GoldbachArticleComponent,
   DivisionAlgorithmComponent,
   GcdEuclidArticleComponent,

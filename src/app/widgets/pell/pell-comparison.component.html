@@ -1,0 +1,40 @@
+<div class="widget">
+  <h3>¿D mayor significa solución mayor?</h3>
+  <p>Compara los no cuadrados entre 2 y N. Selecciona una fila para estudiarla en el laboratorio.</p>
+  <div class="controls">
+    <label>N: {{ limit }}<input type="range" min="13" max="200" step="1" [(ngModel)]="limit" (ngModelChange)="update()">
+    </label>
+    <label>Ordenar por<select [(ngModel)]="order" (ngModelChange)="sort()">
+        <option value="D">D</option>
+        <option value="period">Longitud del período</option>
+        <option value="x">Tamaño de x₁</option>
+      </select>
+    </label>
+  </div>
+  <p class="note">Hasta 200; orden ascendente exacto. El tamaño de x₁ se compara como entero, sin convertirlo a
+    decimales.</p>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Comparación de soluciones fundamentales">
+    <table>
+      <thead>
+        <tr>
+          <th>D</th>
+          <th>L</th>
+          <th>x₁</th>
+          <th>y₁</th>
+          <th>Cifras de x₁</th>
+          <th>¿Norma −1?</th>
+        </tr>
+      </thead>
+      <tbody>@for (row of rows; track row.D) {<tr>
+          <th>
+            <button type="button" (click)="choose.emit(row.D)">{{ row.D }}</button>
+          </th>
+          <td>{{ row.period }}</td>
+          <td>{{ row.x }}</td>
+          <td>{{ row.y }}</td>
+          <td>{{ row.digits }}</td>
+          <td>{{ row.negative ? "Sí" : "No" }}</td>
+        </tr>}</tbody>
+    </table>
+  </div>
+</div>
