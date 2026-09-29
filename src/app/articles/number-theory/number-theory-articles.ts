@@ -12,6 +12,7 @@ import { BernoulliNumbersArticleComponent } from './bernoulli-numbers/bernoulli-
 import { RiemannZetaArticleComponent } from './riemann-zeta/riemann-zeta-article.component';
 import { DivisionAlgorithmComponent } from './division-algorithm/division-algorithm.component';
 import { BezoutIdentityComponent } from './bezout-identity/bezout-identity.component';
+import { LinearDiophantineArticleComponent } from './linear-diophantine/linear-diophantine-article.component';
 import { GcdEuclidArticleComponent } from './gcd-euclid/gcd-euclid-article.component';
 import { ModularArithmeticArticleComponent } from './modular-arithmetic/modular-arithmetic-article.component';
 import { DivisibilityRulesArticleComponent } from './divisibility-rules/divisibility-rules-article.component';
@@ -34,24 +35,52 @@ import { OrdersTheoremComponent } from './orders-theorem/orders-theorem.componen
 import { DivisorSumTheoremComponent } from './divisor-sum-theorem/divisor-sum-theorem.component';
 import { EuclidEulerPerfectNumbersComponent } from './euclid-euler-perfect-numbers/euclid-euler-perfect-numbers.component';
 
-interface ArticleComponent extends Type<unknown> { title: string; route: string; }
+interface ArticleComponent extends Type<unknown> {
+  title: string;
+  route: string;
+}
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
-  ContinuedFractionsArticleComponent, GoldbachArticleComponent,
-  DivisionAlgorithmComponent, GcdEuclidArticleComponent, BezoutIdentityComponent, EuclidsLemmaComponent,
-  FundamentalTheoremArithmeticComponent, EuclidInfinitelyManyPrimesComponent,
-  ModularArithmeticArticleComponent, DivisibilityRulesArticleComponent, LinearCongruenceTheoremComponent, ChineseRemainderTheoremComponent,
-  FermatsLittleTheoremComponent, EulersTheoremComponent, WilsonsTheoremComponent,
-  EulerTotientFormulaComponent, MobiusInversionComponent, SumOfTwoSquaresComponent,
-  FermatFourSquareTheoremComponent, QuadraticReciprocityComponent,
-  EulerCriterionComponent, PrimitiveRootTheoremComponent, OrdersTheoremComponent,
-  DivisorSumTheoremComponent, EuclidEulerPerfectNumbersComponent, RiemannZetaArticleComponent,
-  BernoulliNumbersArticleComponent, PerfectNumbersArticleComponent, FibonacciNumbersArticleComponent,
-  AmicableNumbersArticleComponent, AliquotSequencesArticleComponent, CollatzArticleComponent, UlamSpiralArticleComponent,
-  ArithmeticDerivativeArticleComponent
+  ContinuedFractionsArticleComponent,
+  GoldbachArticleComponent,
+  DivisionAlgorithmComponent,
+  GcdEuclidArticleComponent,
+  BezoutIdentityComponent,
+  LinearDiophantineArticleComponent,
+  EuclidsLemmaComponent,
+  FundamentalTheoremArithmeticComponent,
+  EuclidInfinitelyManyPrimesComponent,
+  ModularArithmeticArticleComponent,
+  DivisibilityRulesArticleComponent,
+  LinearCongruenceTheoremComponent,
+  ChineseRemainderTheoremComponent,
+  FermatsLittleTheoremComponent,
+  EulersTheoremComponent,
+  WilsonsTheoremComponent,
+  EulerTotientFormulaComponent,
+  MobiusInversionComponent,
+  SumOfTwoSquaresComponent,
+  FermatFourSquareTheoremComponent,
+  QuadraticReciprocityComponent,
+  EulerCriterionComponent,
+  PrimitiveRootTheoremComponent,
+  OrdersTheoremComponent,
+  DivisorSumTheoremComponent,
+  EuclidEulerPerfectNumbersComponent,
+  RiemannZetaArticleComponent,
+  BernoulliNumbersArticleComponent,
+  PerfectNumbersArticleComponent,
+  FibonacciNumbersArticleComponent,
+  AmicableNumbersArticleComponent,
+  AliquotSequencesArticleComponent,
+  CollatzArticleComponent,
+  UlamSpiralArticleComponent,
+  ArithmeticDerivativeArticleComponent,
 ];
 
-export const NUMBER_THEORY_NAV_ITEMS = NUMBER_THEORY_ARTICLES.map(article => ({
-  name: article.title,
-  route: article.route
-}));
+export const NUMBER_THEORY_NAV_ITEMS = NUMBER_THEORY_ARTICLES.map(
+  (article) => ({
+    name: article.title,
+    route: article.route,
+  }),
+);

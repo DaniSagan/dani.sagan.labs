@@ -1,0 +1,27 @@
+.widget p,
+.trace {
+  overflow-wrap: anywhere;
+}
+.existence {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0;
+}
+.existence button {
+  min-width: 3rem;
+}
+.existence button[aria-pressed="true"] {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+.trace {
+  padding: 1rem;
+  border-left: 2px solid var(--accent2);
+  background: var(--paper);
+}
+.bounds {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}

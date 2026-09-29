@@ -1,0 +1,54 @@
+:host {
+  margin: 0;
+}
+p,
+label {
+  overflow-wrap: anywhere;
+}
+.follow input {
+  display: inline;
+  width: auto;
+  margin-right: 0.4rem;
+}
+svg {
+  width: 100%;
+  max-width: 620px;
+}
+.grid-line {
+  stroke: #30303c;
+  stroke-width: 0.5;
+}
+.axis {
+  stroke: #777786;
+  stroke-width: 1;
+}
+circle {
+  fill: #646475;
+}
+.integer-solution {
+  fill: #a8e6a0;
+}
+.excluded {
+  fill: #68687e;
+}
+.real-line {
+  stroke: var(--accent2);
+  stroke-width: 2;
+}
+.particular {
+  fill: none;
+  stroke: var(--accent2);
+  stroke-width: 2;
+}
+.chosen {
+  fill: var(--gold);
+  stroke: var(--paper);
+  stroke-width: 1.5;
+}
+.step-vector {
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+svg text {
+  font-size: 11px;
+}

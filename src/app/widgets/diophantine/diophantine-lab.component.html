@@ -1,0 +1,142 @@
+<div class="widget" aria-labelledby="dio-title">
+  <span class="eyebrow">LABORATORIO · DE UNA RECTA A TODOS SUS PUNTOS ENTEROS</span>
+  <h3 id="dio-title">¿Qué enteros puede alcanzar ax + by?</h3>
+  <div class="presets">
+    <button type="button" (click)="preset('6','9','3')">Descubrir con 6 y 9</button>
+    <button type="button" (click)="preset('84','30','6')">Euclides: 84 y 30</button>
+    <button type="button" (click)="preset('4','6','5')">Sin solución entera</button>
+    <button type="button" (click)="preset('3','5','30')">Monedas</button>
+    <button type="button" (click)="preset('-4','6','-2')">Con signos</button>
+    <button type="button" (click)="preset('0','-5','10')">Una variable libre</button>
+    <button type="button" (click)="preset('0','0','0')">Todo el plano</button>
+  </div>
+  <div class="controls">
+    <label for="dio-a">a<input id="dio-a" type="text" maxlength="19" [(ngModel)]="aText" (ngModelChange)="update()"
+        aria-describedby="dio-help"></label>
+    <label for="dio-b">b<input id="dio-b" type="text" maxlength="19" [(ngModel)]="bText" (ngModelChange)="update()"
+        aria-describedby="dio-help"></label>
+    <label for="dio-c">c<input id="dio-c" type="text" maxlength="19" [(ngModel)]="cText" (ngModelChange)="update()"
+        aria-describedby="dio-help"></label>
+  </div>
+  <p id="dio-help" class="note">Enteros de hasta 18 cifras con signo opcional. Los cálculos son exactos. Las cotas
+    elegidas se conservan al cambiar de ecuación.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+  <p class="readout">({{ result.a }})x + ({{ result.b }})y = {{ result.c }}</p>
+  <h4>Desplaza c y busca un patrón</h4>
+  <p>Estos valores rodean al término actual. Verde y «sí» significan que existe alguna solución entera, antes de imponer
+    cotas.
+    Cambiar c desplaza la recta sin cambiar su dirección cuando (a,b) ≠ (0,0).</p>
+  <div class="existence" aria-label="Explorar términos independientes">
+    @for (offset of cOffsets; track $index) {
+    <button type="button" (click)="changeC(result.c + offset)" [class.unit]="exists(result.c + offset)"
+      [attr.aria-pressed]="offset === zero">{{ result.c + offset }} · {{ exists(result.c + offset) ? 'sí' : 'no'
+      }}</button>
+    }
+  </div>
+  <p class="result" role="status">MCD = {{ result.euclid.gcd }}.
+    @if (result.kind === 'line') { Divide a {{ result.c }}: existen infinitas soluciones enteras. }
+    @else if (result.kind === 'plane') { 0 = 0: todos los pares enteros son solución. }
+    @else if (result.euclid.gcd === zero) { 0 ≠ {{ result.c }}: no hay solución, ni siquiera real. }
+    @else { No divide a {{ result.c }}: no hay soluciones enteras, aunque sí una recta de soluciones reales. }
+  </p>
+  @if (result.kind === 'line') {
+  <p class="identity">Bézout: ({{ result.a }})·({{ result.euclid.x }}) + ({{ result.b }})·({{ result.euclid.y }}) = {{
+    result.euclid.gcd }}.</p>
+  <p>Factor c/d = {{ result.scale }}. Solución particular: ({{ result.particular!.x }}, {{ result.particular!.y }}).</p>
+  <p class="result">x = {{ result.particular!.x }} + ({{ result.direction!.x }})t,<br>
+    y = {{ result.particular!.y }} + ({{ result.direction!.y }})t, t ∈ ℤ.</p>
+  }
+  <details>
+    <summary>Euclides y sustituciones hacia atrás</summary>
+    <p>R0 y R1 son los valores absolutos. Al final recuperamos los signos originales de los coeficientes.</p>
+    <div class="controls">
+      <button type="button" (click)="moveTrace(-1)" [disabled]="traceStep === 0">Paso anterior</button>
+      <button type="button" (click)="moveTrace(1)" [disabled]="traceStep === trace.length - 1">Paso siguiente</button>
+      <button type="button" (click)="moveTrace(trace.length)" [disabled]="traceStep === trace.length - 1">Mostrar
+        todo</button>
+    </div>
+    <p class="note">Paso {{ traceStep + 1 }} / {{ trace.length }}</p>
+    <ol class="trace" aria-live="polite">@for (item of trace.slice(0, traceStep + 1); track $index) { <li>{{ item }}
+      </li> }</ol>
+  </details>
+  <h4>Imponer condiciones sin perder soluciones</h4>
+  <div class="controls"><label for="dio-mode">Conjunto buscado<select id="dio-mode" [(ngModel)]="mode"
+        (ngModelChange)="updateConstraints()">
+        <option value="all">Todos los enteros</option>
+        <option value="nonnegative">x, y ≥ 0</option>
+        <option value="positive">x, y &gt; 0</option>
+        <option value="box">Intervalos a medida</option>
+      </select></label></div>
+  @if (mode === 'box') {
+  <div class="bounds">
+    <label for="dio-x-min">Mínimo x<input id="dio-x-min" type="text" maxlength="19" [(ngModel)]="xMin"
+        (ngModelChange)="updateConstraints()"></label>
+    <label for="dio-x-max">Máximo x<input id="dio-x-max" type="text" maxlength="19" [(ngModel)]="xMax"
+        (ngModelChange)="updateConstraints()"></label>
+    <label for="dio-y-min">Mínimo y<input id="dio-y-min" type="text" maxlength="19" [(ngModel)]="yMin"
+        (ngModelChange)="updateConstraints()"></label>
+    <label for="dio-y-max">Máximo y<input id="dio-y-max" type="text" maxlength="19" [(ngModel)]="yMax"
+        (ngModelChange)="updateConstraints()"></label>
+  </div>
+  <p class="note">Los extremos están incluidos. Un campo vacío significa que no hay cota por ese lado.</p>
+  }
+  @if (constraintError) { <p class="error" role="alert">{{ constraintError }}</p> } @else {
+  <p class="result" role="status">Con estas restricciones: {{ count === null ? 'infinitas soluciones' : count + '
+    soluciones' }}.</p>
+  @if (result.kind === 'line') {
+  @if (range.empty) { <p>No hay ningún valor entero admisible de t.</p> } @else {
+  <p>Intervalo exacto del parámetro: {{ range.min === null ? '−∞' : range.min }} ≤ t ≤ {{ range.max === null ? '+∞' :
+    range.max }}, t entero.</p>
+  }
+  <div class="controls">
+    <label for="dio-t">Parámetro t<input id="dio-t" type="text" maxlength="61" [(ngModel)]="tText"
+        (ngModelChange)="readT()"></label>
+    <button type="button" (click)="moveT(-1)" [disabled]="!!parameterError">t − 1</button>
+    <button type="button" (click)="moveT(1)" [disabled]="!!parameterError">t + 1</button>
+    <button type="button" (click)="setT(zero)">t = 0</button>
+    <button type="button" (click)="firstAllowed()" [disabled]="range.empty">Ir a un t admisible</button>
+  </div>
+  <label for="dio-slider">Explorar alrededor de t = {{ sliderCenter }}<input id="dio-slider" type="range" min="-20"
+      max="20" step="1" [(ngModel)]="slider" (ngModelChange)="slide()"></label>
+  @if (parameterError) { <p role="alert" class="error">{{ parameterError }}</p> }
+  @if (selected; as point) {
+  <p class="readout">t = {{ t }} → ({{ point.x }}, {{ point.y }}) · {{ selectedAllowed ? 'cumple las cotas' : 'fuera de
+    las cotas' }}.</p>
+  <p class="identity">Comprobación: ({{ result.a }})·({{ point.x }}) + ({{ result.b }})·({{ point.y }}) = {{ result.a *
+    point.x + result.b * point.y }}.</p>
+  }
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Muestra de soluciones que cumplen las cotas">
+    <table>
+      <caption>Hasta nueve soluciones admitidas, próximas al parámetro seleccionado; el recuento anterior es total
+      </caption>
+      <thead>
+        <tr>
+          <th>t</th>
+          <th>x(t)</th>
+          <th>y(t)</th>
+          <th>ax + by</th>
+          <th>Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody>@for (row of sampleRows; track $index) {
+        <tr [class.selected]="row.t === t">
+          <th scope="row">{{ row.t }}</th>
+          <td>{{ row.x }}</td>
+          <td>{{ row.y }}</td>
+          <td>{{ row.value }} = {{ result.c }}</td>
+          <td><button type="button" (click)="setT(row.t)" [attr.aria-label]="'Seleccionar t = ' + row.t">Ver
+              punto</button></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  } @else if (result.kind === 'plane') {
+  <p>x e y son independientes: el conjunto restringido es el producto cartesiano de sus intervalos enteros.
+    No se puede describir todo ℤ² mediante la familia de una recta.</p>
+  }
+  <app-diophantine-lattice [result]="result" [selected]="selected"
+    [constraints]="constraints"></app-diophantine-lattice>
+  }
+  }
+</div>

@@ -1,0 +1,54 @@
+<div aria-labelledby="dio-lattice-title">
+  <h4 id="dio-lattice-title">Una recta sobre la retícula</h4>
+  <div class="controls">
+    <label for="dio-span">Semiancho de la ventana: {{ span }}<input id="dio-span" type="range" min="4" max="20" step="1"
+        [(ngModel)]="span" (ngModelChange)="refresh()"></label>
+    <label class="follow"><input type="checkbox" [(ngModel)]="follow" (ngModelChange)="refresh()"> Centrar en la
+      solución seleccionada</label>
+  </div>
+  <svg viewBox="0 0 520 520" role="img" aria-label="Retícula entera, recta real y soluciones enteras destacadas">
+    <defs>
+      <marker id="dio-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+        <path d="M0,0 L8,4 L0,8 Z" fill="var(--gold)"></path>
+      </marker>
+    </defs>
+    @for (mark of marks; track mark) {
+    <line class="grid-line" [attr.x1]="px(mark)" [attr.x2]="px(mark)" y1="30" y2="490" [class.axis]="mark === 0"></line>
+    <line class="grid-line" x1="30" x2="490" [attr.y1]="py(mark)" [attr.y2]="py(mark)" [class.axis]="mark === 0"></line>
+    @if (mark % 4 === 0) {
+    <text [attr.x]="px(mark)" y="508" text-anchor="middle">{{ mark }}</text>
+    <text x="23" [attr.y]="py(mark) + 4" text-anchor="end">{{ mark }}</text>
+    }
+    }
+    @if (segment; as line) { <line class="real-line" [attr.x1]="line.x1" [attr.y1]="line.y1" [attr.x2]="line.x2"
+      [attr.y2]="line.y2"></line> }
+    @for (point of points; track $index) {
+    <circle [attr.cx]="px(point.dx)" [attr.cy]="py(point.dy)" [attr.r]="point.solution ? 4 : 1.5"
+      [class.integer-solution]="point.solution" [class.excluded]="point.solution && !point.allowed">
+      <title>({{ point.x }}, {{ point.y }})</title>
+    </circle>
+    }
+    @if (locate(result.particular); as p) { <rect [attr.x]="p.x - 7" [attr.y]="p.y - 7" width="14" height="14"
+      class="particular"></rect> }
+    @if (locate(selected); as p) {
+    <circle [attr.cx]="p.x" [attr.cy]="p.y" r="7" class="chosen"></circle>
+    @if (locate(next); as q) { <line class="step-vector" [attr.x1]="p.x" [attr.y1]="p.y" [attr.x2]="q.x" [attr.y2]="q.y"
+      marker-end="url(#dio-arrow)"></line> }
+    }
+    <text x="493" y="275">x</text><text x="266" y="20">y</text>
+  </svg>
+  <p class="note">Azul: recta real. Verde: solución entera admitida; gris: solución que no cumple las cotas.
+    Cuadrado azul: solución particular. Círculo y flecha dorados: punto seleccionado y salto al siguiente.</p>
+  <p class="note">Centro de la ventana: ({{ center.x }}, {{ center.y }}). Las marcas indican desplazamientos desde ese
+    centro.
+    Hay {{ visibleSolutions }} puntos solución en esta ventana finita; su ausencia aquí no demuestra que no existan
+    fuera.
+    La línea es un dibujo aproximado; la clasificación de cada punto usa aritmética entera exacta.</p>
+  @if (selected && (!locate(selected) || !locate(next))) {
+  <p class="note">El punto seleccionado o el extremo del vector quedan fuera de la ventana. Centra la vista o amplía su
+    semiancho;
+    para saltos grandes, consulta las coordenadas exactas de la tabla.</p>
+  }
+  @if (result.kind === 'plane') { <p class="result">0x + 0y = 0: todo el plano real cumple la ecuación y toda la
+    retícula es solución entera. No hay una recta única.</p> }
+</div>

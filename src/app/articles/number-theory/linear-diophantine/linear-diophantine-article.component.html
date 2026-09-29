@@ -1,0 +1,356 @@
+<h2>Ecuaciones diofánticas lineales</h2>
+<p class="dropcap">Una recta contiene infinitos puntos, pero ¿cuántos tienen ambas coordenadas enteras?
+  Una combinación de paquetes de seis y de nueve unidades puede producir 15, 30 o 42 unidades.
+  ¿Podría producir exactamente 20, incluso si permitiésemos cantidades negativas? La respuesta depende
+  de un divisor común, y conocerlo permite pasar de una sola solución a todas ellas.</p>
+<p>Vamos a explorar la cadena que resuelve el problema: <strong>ecuación → MCD → existencia → solución particular
+    → familia completa → restricciones</strong>. La condición de divisibilidad explica cuándo empezar;
+  el vector que une puntos vecinos explica por qué la familia final no deja ninguna solución fuera.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="definicion">Enteros sobre una recta</a></li>
+    <li><a routerLink="." fragment="laboratorio">Laboratorio</a></li>
+    <li><a routerLink="." fragment="existencia">Existencia y demostración</a></li>
+    <li><a routerLink="." fragment="construccion">Euclides y Bézout</a></li>
+    <li><a routerLink="." fragment="general">Todas las soluciones</a></li>
+    <li><a routerLink="." fragment="limites">Casos límite</a></li>
+    <li><a routerLink="." fragment="restricciones">Cotas y problemas</a></li>
+    <li><a routerLink="." fragment="ejercicios">Autoevaluación</a></li>
+  </ul>
+</nav>
+
+<h3 id="definicion">1. La ecuación es la misma; cambia dónde buscamos</h3>
+<p>Una <strong>ecuación diofántica</strong> es, en este artículo, una ecuación con coeficientes enteros cuyas soluciones
+  buscamos en enteros. El nombre recuerda a Diofanto de Alejandría y su <em>Arithmetica</em>.
+  Su obra también admitía soluciones racionales positivas: la denominación actual no debe confundirse con una
+  restricción histórica exclusiva a los enteros. Puedes ampliar esta referencia en
+  <a href="https://mathshistory.st-andrews.ac.uk/Strick/diophantus.pdf" target="_blank"
+    rel="noopener noreferrer">MacTutor, Universidad de St Andrews</a>.
+</p>
+<app-formula expression="2x+3y=7,\qquad (x,y)\in\mathbb R^2,\ \mathbb Q^2\ \text{o}\ \mathbb Z^2."></app-formula>
+<p>Sobre ℝ, cada elección real de x determina y = (7 − 2x)/3: obtenemos una recta.
+  Sobre ℚ, solo admitimos parejas racionales, como (1/2,2). Sobre ℤ, buscamos puntos de la retícula:
+  (2,1) sirve; (1/2,2) no. Un punto real como (√2,(7 − 2√2)/3) tampoco es racional.</p>
+<p><strong>Resolver en enteros</strong> significa describir todos los pares enteros que satisfacen la igualdad.
+  Encontrar uno es un primer paso. Para 2x + 3y = 7, (2,1), (5,−1) y (−1,3) ya muestran que una solución particular no
+  es única.</p>
+<div class="convention">
+  <p>Trabajaremos con ax + by = c, donde a,b,c ∈ ℤ. Usamos gcd(a,b) = gcd(|a|,|b|) ≥ 0,
+    con gcd(0,0) = 0. Adoptamos ℕ = &#123;0,1,2,…&#125;; escribiremos <strong>no negativas</strong> para x,y ≥ 0
+    y <strong>positivas</strong> para x,y &gt; 0. Estas últimas condiciones son restricciones adicionales, no parte de
+    resolver sobre ℤ.</p>
+</div>
+<p>La ecuación 4x + 6y = 5 tiene una recta de soluciones reales y racionales —por ejemplo (5/4,0)—,
+  pero ninguna entera: el miembro izquierdo siempre es par. En 84x + 30y = 6 la existencia resulta menos evidente a
+  simple vista.
+  Necesitamos un criterio que resuelva ambos casos.</p>
+
+<h3 id="laboratorio">2. Desplazar una recta y descubrir el patrón</h3>
+<p>Comienza con 6x + 9y = c. Cambia solo c y anota qué valores permiten soluciones.
+  Busca −6, −3, 0, 3, 6 y 9; compáralos con 1, 2, 4 y 5.
+  Después cambia los coeficientes a 4 y 6. ¿Qué tienen en común exactamente los términos independientes que sí se
+  alcanzan?</p>
+<app-diophantine-lab></app-diophantine-lab>
+<p>Para 6 y 9, aparecen precisamente los múltiplos de 3. El patrón afecta a toda la retícula, no solo a los puntos
+  visibles.
+  Una ventana vacía no demuestra imposibilidad; el siguiente argumento sí lo hace.</p>
+
+<h3 id="existencia">3. El MCD es la condición exacta de existencia</h3>
+<p><strong>Teorema.</strong> Sean a,b,c enteros, con (a,b) ≠ (0,0), y d = gcd(a,b) &gt; 0. Entonces</p>
+<app-formula
+  expression="\boxed{\exists(x,y)\in\mathbb Z^2:\ ax+by=c\quad\Longleftrightarrow\quad d\mid c.}"></app-formula>
+<p>La afirmación contiene dos implicaciones: la necesidad descarta términos imposibles; la suficiencia garantiza que
+  todos los restantes se pueden construir.</p>
+<div class="proof">
+  <p><strong>Necesidad.</strong> Supongamos que (x,y) es una solución entera.
+    Como d ∣ a y d ∣ b, existen enteros A,B con a = dA y b = dB.
+    Multiplicar por enteros conserva la divisibilidad: d ∣ ax y d ∣ by.
+    Sumando, d divide ax + by = c.</p>
+  <app-formula expression="d\mid a,\ d\mid b\quad\Longrightarrow\quad
+    d\mid ax,\ d\mid by\quad\Longrightarrow\quad d\mid c."></app-formula>
+  <p>Esto todavía no construye ninguna solución: hasta aquí solo sabemos que d ∤ c hace imposible encontrarla.</p>
+</div>
+<div class="proof">
+  <p><strong>Suficiencia.</strong> Supongamos ahora d ∣ c, de modo que c = kd con k entero.
+    La <a routerLink="/articles/bezout-identity">identidad de Bézout</a> proporciona enteros u,v tales que au + bv = d.
+    Multiplicamos toda la identidad por k:</p>
+  <app-formula expression="a(ku)+b(kv)=k(au+bv)=kd=c."></app-formula>
+  <p>Por tanto x₀ = ku e y₀ = kv son enteros y forman una solución particular.
+    Hemos probado el recíproco, no solo una condición necesaria.</p>
+</div>
+<p>En lenguaje de conjuntos, las combinaciones lineales enteras de a y b son exactamente los múltiplos de su MCD:</p>
+<app-formula expression="a\mathbb Z+b\mathbb Z=d\mathbb Z."></app-formula>
+<p>Así se explica el experimento: 6ℤ + 9ℤ = 3ℤ. Si gcd(a,b) = 1, cualquier entero c es alcanzable;
+  esto no asegura que pueda alcanzarse usando x,y no negativos. Por ejemplo, 3x + 5y = 1 tiene solución entera,
+  pero ninguna con x,y ≥ 0.</p>
+
+<h3 id="construccion">4. Construir una solución sin tantear</h3>
+<p>El <a routerLink="/articles/gcd-euclid" fragment="extendido">algoritmo extendido de Euclides</a> convierte la prueba
+  en un método efectivo.
+  Resolvamos 84x + 30y = 6. Primero calculamos el MCD mediante divisiones:</p>
+<app-formula expression="\begin{aligned}
+ 84&=2\cdot30+24,\\30&=1\cdot24+6,\\24&=4\cdot6+0.
+\end{aligned}"></app-formula>
+<p>El último resto no nulo es d = 6 y divide al término independiente. Ahora recorremos las igualdades hacia atrás:</p>
+<app-formula expression="\begin{aligned}
+ 6&=30-24\\
+  &=30-(84-2\cdot30)\\
+  &=-84+3\cdot30.
+\end{aligned}"></app-formula>
+<p>Hemos obtenido u = −1 y v = 3. Como c/d = 1, la solución particular es (x₀,y₀) = (−1,3).
+  La comprobación es −84 + 90 = 6. Para 84x + 30y = 18 usaríamos la misma identidad multiplicada por 3
+  y obtendríamos (−3,9). Para término independiente 5, el proceso se detendría al comprobar que 6 no divide 5.</p>
+<p>En el laboratorio, «Euclides y sustituciones hacia atrás» muestra las divisiones, la reconstrucción y el ajuste de
+  signos.
+  La prueba de que las divisiones conservan el MCD se desarrolla en el artículo de Euclides; aquí usamos ese resultado
+  para construir coordenadas.</p>
+
+<h3 id="general">5. De un punto a la familia completa</h3>
+<p><strong>Teorema de la solución general.</strong> Supongamos (a,b) ≠ (0,0), d = gcd(a,b),
+  d ∣ c y que (x₀,y₀) es una solución particular. Todas las soluciones enteras, y solo ellas, son</p>
+<app-formula expression="\boxed{x=x_0+\frac bd\,t,\qquad y=y_0-\frac ad\,t,\qquad t\in\mathbb Z.}"></app-formula>
+<h4>Primera mitad: cada parámetro produce una solución</h4>
+<div class="proof">
+  <p>Los números a/d y b/d son enteros. Por tanto las coordenadas propuestas son enteras.
+    Al sustituirlas, los dos incrementos se cancelan:</p>
+  <app-formula expression="a\left(x_0+\frac bd t\right)+b\left(y_0-\frac ad t\right)
+    =ax_0+by_0+\frac{ab}{d}t-\frac{ab}{d}t=c."></app-formula>
+  <p>Esta prueba garantiza que no añadimos puntos falsos. Todavía falta justificar que no omitimos ninguno.</p>
+</div>
+<h4>Segunda mitad: cualquier otra solución pertenece a la familia</h4>
+<div class="proof">
+  <p>Sea (x₁,y₁) otra solución. Restamos las ecuaciones y dividimos entre d.
+    Con A = a/d, B = b/d, Δx = x₁ − x₀ y Δy = y₁ − y₀, resulta</p>
+  <app-formula expression="A\Delta x=-B\Delta y,\qquad \gcd(A,B)=1."></app-formula>
+  <p>Supongamos primero b ≠ 0, es decir B ≠ 0. La igualdad implica B ∣ AΔx.
+    Como A y B son coprimos, podemos cancelar A en esta afirmación de divisibilidad.
+    Para ver por qué, Bézout da rA + sB = 1. Multiplicando por Δx:</p>
+  <app-formula expression="\Delta x=rA\Delta x+sB\Delta x."></app-formula>
+  <p>Ambos sumandos son divisibles por B; por tanto B ∣ Δx. Existe entonces t ∈ ℤ con Δx = Bt.
+    Sustituyendo en AΔx = −BΔy obtenemos ABt = −BΔy.
+    Ahora sí cancelamos el entero no nulo B en una igualdad ordinaria: Δy = −At.
+    Así (x₁,y₁) = (x₀ + Bt,y₀ − At).</p>
+  <p>Si b = 0, necesariamente a ≠ 0. La ecuación fija x = c/a e y es libre.
+    Aquí A = ±1 y B = 0: x = x₀, y = y₀ − At recorre exactamente todos los enteros y.
+    Queda cubierto también este caso. Si a = 0 y b ≠ 0, el argumento anterior ya funciona con B = ±1.</p>
+</div>
+<p>El paso de cancelación es la versión coprima del <a routerLink="/articles/euclids-lemma">lema de Euclides</a>;
+  hemos dado el argumento de Bézout para poder reconstruirlo sin suponer que A o B sean primos.
+  El parámetro t es único una vez elegida la solución particular, pues el vector (B,−A) no es nulo.</p>
+<h4>Ejemplo: la misma recta, distintos puntos de partida</h4>
+<app-formula expression="84x+30y=6\quad\Longleftrightarrow\quad
+  (x,y)=(-1,3)+t(5,-14),\quad t\in\mathbb Z."></app-formula>
+<p>Para t = −1,0,1,2 aparecen (−6,17), (−1,3), (4,−11), (9,−25).
+  Si elegimos (4,−11) como particular, la familia (4 + 5s,−11 − 14s) describe los mismos puntos:
+  basta hacer t = s + 1. Cambiar el origen del parámetro no cambia el conjunto solución.</p>
+
+<h3>6. Geometría: un vector primitivo sobre una recta</h3>
+<p>Cuando (a,b) ≠ (0,0), ax + by = c es una recta real con vector normal (a,b).
+  Su vector de desplazamiento entero</p>
+<app-formula expression="v=\left(\frac bd,-\frac ad\right)\qquad\text{cumple}\qquad
+ (a,b)\cdot v=0."></app-formula>
+<p>Por eso avanzar según v mantiene la misma recta. Además gcd(|b/d|,|a/d|) = 1:
+  el vector es <strong>primitivo</strong>. La demostración de la solución general garantiza que
+  cualquier diferencia entre puntos enteros de la recta es un múltiplo entero de v;
+  no hay otro punto entero estrictamente entre dos puntos consecutivos de la familia.</p>
+<app-formula expression="(x,y)=(x_0,y_0)+tv,\qquad
+  \|v\|=\frac{\sqrt{a^2+b^2}}d."></app-formula>
+<p>Así, cuando existe una solución y los coeficientes no son ambos cero, existen infinitas en ambos sentidos.
+  El deslizador t del laboratorio recorre estos puntos. La solución real permite un parámetro real;
+  exigir t entero es lo que selecciona la retícula.</p>
+
+<h3 id="limites">7. Signos, ceros y casos degenerados</h3>
+<ul>
+  <li><strong>a = 0, b ≠ 0.</strong> Se necesita b ∣ c. Si se cumple, y = c/b y x es cualquier entero.
+    Ejemplo: −5y = 10 da (t,−2). Si b ∤ c no hay soluciones enteras.</li>
+  <li><strong>b = 0, a ≠ 0.</strong> Se necesita a ∣ c; entonces x = c/a e y es libre.
+    Ejemplo: 4x = 12 da (3,t).</li>
+  <li><strong>c = 0, (a,b) ≠ (0,0).</strong> (0,0) es particular y todas las soluciones son t(b/d,−a/d).
+    Por ejemplo, 6x + 9y = 0 da (3t,−2t).</li>
+  <li><strong>a = b = 0, c = 0.</strong> La igualdad es 0 = 0: todo ℤ² es solución.
+    Hay dos variables libres, no una recta.</li>
+  <li><strong>a = b = 0, c ≠ 0.</strong> La igualdad 0 = c es imposible incluso sobre ℝ.</li>
+</ul>
+<p>Con gcd(0,0) = 0, no aplicamos las fórmulas que contienen c/d, a/d o b/d.
+  Los signos de los coeficientes sí están permitidos en el caso no degenerado:
+  para −4x + 6y = −2, d = 2 y una familia es (x,y) = (2 + 3t,1 + 2t).
+  El signo del segundo incremento procede de −a/d, que aquí es positivo.</p>
+
+<h3 id="congruencias">8. Una congruencia es la misma búsqueda vista desde x</h3>
+<p>Si b ≠ 0, usamos el módulo positivo |b|:</p>
+<app-formula expression="\exists y\in\mathbb Z:\ ax+by=c
+  \quad\Longleftrightarrow\quad ax\equiv c\pmod{|b|},\qquad x\in\mathbb Z."></app-formula>
+<div class="proof">
+  <p>Si existe y, entonces ax − c = −by es múltiplo de |b|.
+    Recíprocamente, la congruencia afirma |b| ∣ (ax − c), lo cual equivale a b ∣ (c − ax).
+    Por tanto y = (c − ax)/b es un entero y reconstruye la ecuación.
+    Si b = 0, esta reformulación módulo b no se usa.</p>
+</div>
+<p>El criterio de existencia es el mismo porque gcd(a,|b|) = d.
+  Para 6x + 15y = 9 obtenemos 6x ≡ 9 (mod 15), o 2x ≡ 3 (mod 5).
+  De aquí x = 4 + 5t e y = −1 − 2t. La congruencia original tiene tres clases de x módulo 15,
+  pero la ecuación tiene una única familia de parejas parametrizada por t.</p>
+<p>La distinción entre clases y el número de soluciones de una congruencia se desarrolla en
+  <a routerLink="/articles/linear-congruence-theorem">Congruencias lineales</a>.
+  Para combinar varias condiciones de restos, continúa con
+  <a routerLink="/articles/chinese-remainder-theorem">Sistemas de congruencias y Teorema Chino del Resto</a>.
+</p>
+
+<h3 id="restricciones">9. Las cotas se convierten en un intervalo para t</h3>
+<p>Una vez obtenida la familia, imponer restricciones es un problema de desigualdades enteras.
+  Escribamos x = x₀ + pt, y = y₀ + qt, con p = b/d y q = −a/d.
+  Para una coordenada z = z₀ + st y cotas enteras L ≤ z ≤ U:</p>
+<app-formula expression="\begin{array}{ll}
+ s>0:&\displaystyle\left\lceil\frac{L-z_0}{s}\right\rceil\le t\le
+                 \left\lfloor\frac{U-z_0}{s}\right\rfloor,\\[6pt]
+ s<0:&\displaystyle\left\lceil\frac{U-z_0}{s}\right\rceil\le t\le
+                 \left\lfloor\frac{L-z_0}{s}\right\rfloor.
+\end{array}"></app-formula>
+<p>El techo ⌈r⌉ es el menor entero ≥ r y el suelo ⌊r⌋ el mayor entero ≤ r.
+  Al dividir por un número negativo cambia el sentido de la desigualdad.
+  Si s = 0, la coordenada es constante: o satisface las cotas para todo t, o las incumple para todos.</p>
+<p>Intersectamos los intervalos obtenidos para x e y. Si resulta A ≤ t ≤ B con A,B enteros y A ≤ B,
+  hay B − A + 1 soluciones. Si A &gt; B, no hay ninguna. Una cota ausente deja abierto ese lado;
+  con signos distintos puede haber infinitas soluciones incluso exigiendo ambas coordenadas positivas.</p>
+<h4>No negativas frente a positivas</h4>
+<p>Para 3x + 5y = 30 tomamos (0,6) como particular:</p>
+<app-formula expression="x=5t,\quad y=6-3t.
+  \qquad x,y\ge0\Longleftrightarrow0\le t\le2."></app-formula>
+<p>Hay tres parejas: (0,6), (5,3), (10,0).
+  Si exigimos x,y &gt; 0, al ser enteras las coordenadas pedimos x,y ≥ 1:
+  5t ≥ 1 y 6 − 3t ≥ 1 dejan únicamente t = 1, es decir (5,3).
+  Para 84x + 30y = 6, x ≥ 0 exige t ≥ 1 mientras y ≥ 0 exige t ≤ 0: ninguna solución es no negativa.</p>
+<h4>Un rectángulo acotado</h4>
+<p>En la misma familia (−1 + 5t,3 − 14t), impongamos −6 ≤ x ≤ 9 y −25 ≤ y ≤ 17.
+  La primera desigualdad da −1 ≤ t ≤ 2; la segunda también.
+  Hay cuatro soluciones, correspondientes a t = −1,0,1,2.
+  El laboratorio calcula estos extremos sin redondeos decimales y muestra el recuento total,
+  aunque la tabla enseñe solo una muestra de nueve filas.</p>
+
+<h3>10. Plantear el modelo antes de resolverlo</h3>
+<h4>Monedas y compras</h4>
+<p>Para formar 30 unidades con fichas de valores 3 y 5, definimos x como el número de fichas de valor 3 e y como el de
+  valor 5.
+  El modelo es 3x + 5y = 30 con x,y ≥ 0: son las tres combinaciones anteriores.
+  Si debe aparecer al menos una ficha de cada tipo, solo sirve (5,3).</p>
+<p>Una compra de cuadernos a 3 € y carpetas a 5 € cuesta 31 €, con al menos uno de cada tipo.
+  Planteamos 3x + 5y = 31. Módulo 3, y ≡ 2; luego y = 2 + 3t y x = 7 − 5t.
+  Las condiciones x,y ≥ 1 dan t = 0 o 1. Las compras posibles son 7 cuadernos y 2 carpetas, o 2 cuadernos y 5 carpetas.
+</p>
+<h4>Empaquetar sin sobrantes</h4>
+<p>Para repartir 60 piezas en cajas de 6 y de 9, 6x + 9y = 60 con x,y ≥ 0.
+  Dividimos toda la ecuación entre 3: 2x + 3y = 20.
+  Una familia es x = 10 − 3t, y = 2t; las cotas dan t = 0,1,2,3.
+  Hay cuatro distribuciones: (10,0), (7,2), (4,4), (1,6).
+  Si el total fuese 61, el MCD 3 demostraría la imposibilidad sin enumerar cajas.</p>
+<h4>Medidas enteras y signos</h4>
+<p>Si una barra de 43 cm se corta sin pérdida en segmentos de 5 y de 7 cm, planteamos 5x + 7y = 43 con x,y ≥ 0.
+  Módulo 5, 2y ≡ 3, luego y = 4 + 5t y x = 3 − 7t.
+  Las cotas obligan a t = 0: tres segmentos de 5 cm y cuatro de 7 cm.
+  El supuesto de corte sin pérdida forma parte del modelo; una pérdida por corte cambiaría la ecuación.</p>
+<p>En problemas de balance, un coeficiente negativo puede representar una retirada o un consumo.
+  La aritmética sigue siendo la misma, pero el significado de x e y decide qué signos y cotas son admisibles.</p>
+
+<h3 id="sistemas">11. Una primera mirada a los sistemas</h3>
+<p>Un sistema exige que el mismo par entero cumpla todas las ecuaciones.
+  Aunque cada fila admita soluciones enteras, su intersección puede no contener ninguna:</p>
+<app-formula expression="\begin{cases}x+y=1\\x-y=0\end{cases}
+  \quad\Longrightarrow\quad(x,y)=\left(\frac12,\frac12\right)\notin\mathbb Z^2."></app-formula>
+<p>En cambio, comprar 8 objetos, unos a 3 € y otros a 5 €, por 30 € da
+  x + y = 8 y 3x + 5y = 30. Sustituyendo y = 8 − x, obtenemos x = 5 e y = 3.</p>
+<p>Para dos ecuaciones con determinante no nulo, la solución real es única:
+  primero se calcula y después se comprueba que ambas coordenadas sean enteras.
+  Si las filas son dependientes, pueden contradecirse o reducirse a una sola ecuación diofántica.
+  Otra estrategia es sustituir la familia de la primera fila en la segunda y resolver para t.</p>
+<p>El <a routerLink="/articles/matrix-determinant">determinante</a> organiza el caso elemental.
+  Los sistemas de más dimensiones requieren controlar divisibilidad además del rango real;
+  aquí no necesitamos desarrollar su teoría matricial completa.</p>
+
+<h3>12. Más variables: el MCD sigue decidiendo</h3>
+<p>Si no todos los coeficientes son cero, la ecuación</p>
+<app-formula expression="a_1x_1+\cdots+a_nx_n=c"></app-formula>
+<p>tiene solución entera si y solo si d = gcd(a₁,…,aₙ) divide a c.</p>
+<div class="proof">
+  <p>La necesidad es la misma: d divide cada sumando y, por tanto, su suma.
+    Para la suficiencia, iteramos Bézout. Con tres coeficientes, si g = gcd(a₁,a₂) &gt; 0,
+    escribimos g = a₁u + a₂v y d = gs + a₃w.
+    Sustituyendo obtenemos d = a₁(us) + a₂(vs) + a₃w.
+    Multiplicar por c/d construye una solución. El argumento continúa por inducción.</p>
+  <p>Si g = 0, los dos primeros coeficientes son cero y empezamos con el primer coeficiente no nulo.
+    Si todos son cero, solo c = 0 es compatible y todas las variables son libres.</p>
+</div>
+<p>Por ejemplo, 6 + 10 − 15 = 1 demuestra que 6x + 10y + 15z = c tiene la solución (c,c,−c)
+  para cualquier entero c. No exige que los coeficientes sean coprimos por pares.
+  La existencia queda resuelta; describir una familia completa con varios parámetros es un paso adicional.</p>
+
+<h3 id="errores">13. Errores frecuentes y cómo descubrirlos</h3>
+<ul>
+  <li><strong>Confundir el criterio con una solución.</strong> Saber que 6 ∣ 18 no da todavía las coordenadas
+    de 84x + 30y = 18; hay que construirlas, por ejemplo escalando Bézout.</li>
+  <li><strong>Probar solo necesidad.</strong> Que toda solución implique d ∣ c no demuestra el recíproco.
+    La identidad de Bézout es el paso que lo establece.</li>
+  <li><strong>Quedarse con una particular.</strong> (2,1) resuelve 2x + 3y = 7, pero (5,−1) también.</li>
+  <li><strong>Olvidar dividir por d.</strong> En 4x + 6y = −2, el salto (6,−4) da soluciones,
+    pero omite una de cada dos; el salto primitivo es (3,−2).</li>
+  <li><strong>Usar el mismo signo sin comprobarlo.</strong> Para 2x + 3y = 7,
+    x = 2 + 3t, y = 1 + 2t produce 7 + 12t, no siempre 7.</li>
+  <li><strong>Dividir mal una desigualdad.</strong> 3 − 14t ≥ 0 significa t ≤ 3/14 y, para t entero, t ≤ 0.
+    No significa t ≥ 0. El suelo de −1/2 es −1, no 0.</li>
+  <li><strong>Buscar naturales cuando se piden enteros.</strong> La ausencia de soluciones no negativas de
+    84x + 30y = 6 no invalida la solución entera (−1,3).</li>
+  <li><strong>Dividir solo algunos términos.</strong> 6x + 9y = 12 se reduce a 2x + 3y = 4.
+    Mantener el 12 cambiaría la ecuación. Si c no es divisible por 3, no queda una ecuación de coeficientes enteros al
+    dividirlo todo.</li>
+  <li><strong>Suponer que toda recta entera cruza la retícula.</strong> 4x + 6y = 5 es un contraejemplo;
+    su punto racional (5/4,0) no es una solución diofántica.</li>
+  <li><strong>Aplicar fórmulas con d = 0.</strong> 0x + 0y = 0 describe todo el plano, y 0x + 0y = 1 no describe ningún
+    punto.</li>
+</ul>
+
+<h3>14. Lo esencial para reconstruir la teoría</h3>
+<p><strong>Definiciones.</strong> Una solución particular es un par que cumple la ecuación.
+  Una solución general describe todos los pares del dominio pedido; no basta una lista de ejemplos.
+  El dominio y las cotas deben figurar explícitamente.</p>
+<p><strong>Enunciados.</strong> Para (a,b) ≠ (0,0), recuerda d ∣ c y el vector (b/d,−a/d).
+  Los casos con dos coeficientes nulos se resuelven antes de dividir.</p>
+<p><strong>Demostraciones.</strong> Necesidad: divisibilidad de una suma.
+  Suficiencia: escalar Bézout. Familia completa: sustituir para comprobar y restar dos soluciones para probar que no
+  falta ninguna.
+  Cotas: intersectar intervalos enteros del parámetro.</p>
+
+<h3 id="ejercicios">15. Autoevaluación: del cálculo a la demostración</h3>
+<p>Los ejercicios avanzan de cálculos básicos a argumentos completos y problemas de modelización.
+  Las pistas se abren en orden: pista inicial, segunda pista, estrategia y desarrollo.
+  La solución razonada permite contrastar después cada paso.</p>
+<app-self-assessment quizId="diophantine-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3 id="conexiones">16. Un punto de partida para otras ecuaciones</h3>
+<ul>
+  <li><a routerLink="/articles/gcd-euclid">MCD y algoritmo de Euclides</a>:
+    las divisiones y los coeficientes que producen una solución.</li>
+  <li><a routerLink="/articles/bezout-identity">Identidad de Bézout</a>:
+    la descripción de todas las combinaciones lineales posibles.</li>
+  <li><a routerLink="/articles/division-algorithm">División euclídea</a> y
+    <a routerLink="/articles/euclids-lemma">lema de Euclides</a>: restos y cancelación coprima.
+  </li>
+  <li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a> y
+    <a routerLink="/articles/linear-congruence-theorem">congruencias lineales</a>: eliminar una variable y
+    reconstruirla.
+  </li>
+  <li><a routerLink="/articles/chinese-remainder-theorem">Sistemas de congruencias y TCR</a>:
+    compatibilidad de varias condiciones simultáneas.</li>
+  <li><a routerLink="/articles/fundamental-theorem-arithmetic">Teorema fundamental de la aritmética</a> y
+    <a routerLink="/articles/divisibility-rules">criterios de divisibilidad</a>: reconocer obstáculos aritméticos.
+  </li>
+  <li><a routerLink="/articles/continued-fractions">Fracciones continuas</a>:
+    los convergentes consecutivos satisfacen identidades de determinante ±1 que producen relaciones de Bézout.</li>
+  <li><a routerLink="/articles/sum-of-two-squares">Sumas de dos cuadrados</a> y
+    <a routerLink="/articles/fermat-four-square-theorem">cuatro cuadrados de Lagrange</a>:
+    ejemplos de problemas diofánticos donde la ecuación ya no es lineal.
+  </li>
+</ul>
+<p>Las ternas pitagóricas, x² + y² = z², y la ecuación de Pell, x² − Dy² = 1 para D positivo no cuadrado,
+  plantean la misma pregunta sobre puntos enteros en otras curvas. El criterio del MCD y la familia lineal no se
+  trasladan
+  directamente a ellas, pero permanecen herramientas esenciales: estudiar divisibilidad, usar congruencias,
+  construir ejemplos y demostrar que la descripción obtenida es completa.</p>
