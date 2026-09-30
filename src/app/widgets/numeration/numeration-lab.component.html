@@ -1,0 +1,127 @@
+<div class="widget" aria-labelledby="numeration-title">
+  <span class="eyebrow">LABORATORIO · UN ENTERO, VARIAS ESCRITURAS</span>
+  <h3 id="numeration-title">Cambiar la representación, conservar el número</h3>
+  <div class="presets">
+    <button type="button" (click)="preset('156',10,2)">156 a binario</button>
+    <button type="button" (click)="preset('2431',5,10)">2431 en base 5</button>
+    <button type="button" (click)="preset('7A3',16,2)">7A3 hexadecimal</button>
+    <button type="button" (click)="preset('-45',10,5)">Un entero negativo</button>
+    <button type="button" (click)="preset('0',10,2)">Cero</button>
+  </div>
+  <div class="controls">
+    <label for="numeral-input">Numeral<input id="numeral-input" type="text" maxlength="121" [(ngModel)]="input"
+        (ngModelChange)="update()" aria-describedby="numeral-help"></label>
+    <label for="numeral-source">Base de origen<select id="numeral-source" [(ngModel)]="source"
+        (ngModelChange)="update()">@for (b of bases; track b) {<option [ngValue]="b">{{ b }}</option>}</select></label>
+    <label for="numeral-target">Base de destino<select id="numeral-target" [(ngModel)]="target"
+        (ngModelChange)="update()">@for (b of bases; track b) {<option [ngValue]="b">{{ b }}</option>}</select></label>
+  </div>
+  <p id="numeral-help" class="note">Bases de 2 a 36: A = 10,…,Z = 35. Hasta 120 cifras, con signo opcional; sin prefijos
+    como 0x ni separadores.
+    Mayúsculas y minúsculas son equivalentes. Los ceros iniciales se normalizan. Todos los cálculos enteros son exactos.
+  </p>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> } @else {
+  <p class="result" role="status">Valor decimal: {{ value }}. Resultado en base {{ target }}: {{ output }}.</p>
+  <p>Separamos el signo y convertimos el valor absoluto {{ magnitude }}. El signo se añade al final; no es una cifra.
+  </p>
+  <h4>1. ¿Cuánto aporta cada cifra del origen?</h4>
+  <div class="digit-strip" tabindex="0" role="region" aria-label="Cifras en orden de lectura">
+    @for (term of terms; track i; let i = $index) {
+    <button type="button" (click)="selected = i" [class.selected]="selected === i" [attr.aria-pressed]="selected === i">
+      <strong>{{ term.symbol }}</strong><span>posición {{ term.position }}</span>
+    </button>
+    }
+  </div>
+  <p class="result">La cifra {{ place.symbol }} tiene valor {{ place.digit }} y ocupa la posición {{ place.position }}:
+    {{ place.digit }} · {{ source }}^{{ place.position }} = {{ place.digit }} · {{ place.weight }} = {{
+    place.contribution }}.</p>
+  <details>
+    <summary>Ver todo el desarrollo posicional</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Desarrollo en potencias de la base">
+      <table>
+        <thead>
+          <tr>
+            <th>Cifra</th>
+            <th>i</th>
+            <th>{{ source }}ⁱ</th>
+            <th>aᵢ · {{ source }}ⁱ</th>
+          </tr>
+        </thead>
+        <tbody>@for (term of terms; track term.position) {<tr>
+            <th>{{ term.symbol }} = {{ term.digit }}</th>
+            <td>{{ term.position }}</td>
+            <td>{{ term.weight }}</td>
+            <td>{{ term.contribution }}</td>
+          </tr>}</tbody>
+      </table>
+    </div>
+    <p>Suma de contribuciones = {{ magnitude }}. Recuperando el signo: {{ value }}.</p>
+  </details>
+  <h4>2. Evaluar de izquierda a derecha con Horner</h4>
+  <div class="controls">
+    <button type="button" (click)="moveHorner(-1)" [disabled]="hornerStep === 0">Horner anterior</button>
+    <button type="button" (click)="moveHorner(1)" [disabled]="hornerStep === horner.length - 1">Horner
+      siguiente</button>
+    <button type="button" (click)="hornerStep = horner.length - 1">Terminar Horner</button>
+  </div>
+  <ol class="trace" [attr.start]="hornerStep > 7 ? hornerStep - 6 : 1">
+    @for (row of hornerRows; track row.position) { <li>{{ row.before }} · {{ source }} + {{ row.digit }} = {{ row.after
+      }}.</li> }
+  </ol>
+  <p class="note">Paso {{ hornerStep + 1 }} de {{ horner.length }}. Multiplicar por la base desplaza las cifras; sumar
+    incorpora la siguiente.</p>
+  <h4>3. Extraer las cifras del destino desde la derecha</h4>
+  <div class="controls">
+    <button type="button" (click)="move(-1)" [disabled]="step === 0">División anterior</button>
+    <button type="button" (click)="move(1)" [disabled]="step === divisions.length - 1">División siguiente</button>
+    <button type="button" (click)="step = divisions.length - 1">Ir a la última división</button>
+  </div>
+  <label for="numeral-step">División {{ step + 1 }} de {{ divisions.length }}<input id="numeral-step" type="range"
+      min="0" [max]="divisions.length - 1" step="1" [(ngModel)]="step"></label>
+  <div class="table-scroll" tabindex="0" role="region" aria-label="Divisiones sucesivas">
+    <table>
+      <caption>Hasta ocho divisiones anteriores al paso seleccionado; cada cociente pasa a la siguiente fila.</caption>
+      <thead>
+        <tr>
+          <th>Dividendo</th>
+          <th>Base</th>
+          <th>Cociente</th>
+          <th>Resto / cifra</th>
+          <th>Posición</th>
+        </tr>
+      </thead>
+      <tbody>@for (row of rows; track row.position) {<tr>
+          <td>{{ row.dividend }}</td>
+          <td>{{ target }}</td>
+          <td>{{ row.quotient }}</td>
+          <td>{{ row.remainder }} / {{ row.symbol }}</td>
+          <td>{{ row.position }}</td>
+        </tr>}</tbody>
+    </table>
+  </div>
+  <p class="identity">{{ divisions[step].dividend }} = {{ target }} · {{ divisions[step].quotient }} + {{
+    divisions[step].remainder }}.</p>
+  <p class="result">Cifras obtenidas, leídas del último resto al primero: {{ suffix }}.
+    @if (step === divisions.length - 1) { El cociente ya es cero: hemos terminado. }
+    @else { Es solo el sufijo; quedan las cifras de mayor posición. }</p>
+  <h4>4. El mismo entero en seis bases</h4>
+  <div class="equivalents">@for (row of equivalents; track row.base) {
+    <div><strong>Base {{ row.base }} · {{ row.length }} cifras</strong>
+      <p>{{ row.text }}</p>
+    </div>
+    }
+  </div>
+  <h4>5. Agrupar bits sin pasar por decimal</h4>
+  <label for="numeral-block">Tamaño del bloque<select id="numeral-block" [(ngModel)]="blockSize"
+      (ngModelChange)="group()">
+      <option [ngValue]="3">3 bits → octal</option>
+      <option [ngValue]="4">4 bits → hexadecimal</option>
+    </select></label>
+  <div class="digit-strip" tabindex="0" role="region" aria-label="Correspondencia entre bloques binarios y cifras">
+    @for (block of groups.blocks; track $index) {<div class="block"><strong>{{ block.bits
+        }}</strong><span>↕</span><strong>{{ block.symbol }}</strong></div>}
+  </div>
+  <p class="note">Se agrupa desde la derecha y solo se rellena con ceros a la izquierda.
+    Cada bloque pesa una potencia de {{ groups.targetBase }}. Para números negativos, el signo se conserva aparte.</p>
+  }
+</div>

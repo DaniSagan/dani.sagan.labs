@@ -1,0 +1,44 @@
+<div class="widget" aria-labelledby="signed-title">
+  <span class="eyebrow">UNA PALABRA BINARIA NECESITA UNA INTERPRETACIÓN</span>
+  <h3 id="signed-title">El mismo patrón, distintas convenciones</h3>
+  <div class="controls">
+    <label for="signed-value">Entero decimal<input id="signed-value" type="text" maxlength="20" [(ngModel)]="text"
+        (ngModelChange)="update()"></label>
+    <label for="signed-width">Ancho<select id="signed-width" [(ngModel)]="width" (ngModelChange)="update()">
+        <option [ngValue]="4">4 bits</option>
+        <option [ngValue]="8">8 bits</option>
+        <option [ngValue]="16">16 bits</option>
+      </select></label>
+  </div>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+  <p class="result" role="status">Complemento a dos: {{ encoding.min }} ≤ n ≤ {{ encoding.max }}.
+    {{ value }} se codifica como el residuo {{ encoding.unsigned }} módulo {{ encoding.modulus }}.</p>
+  <div class="equivalents">
+    <div><strong>Signo y magnitud</strong>
+      <p class="bit-string">{{ encoding.signMagnitude ?? 'Fuera de rango' }}</p>
+    </div>
+    <div><strong>Complemento a uno</strong>
+      <p class="bit-string">{{ encoding.ones ?? 'Fuera de rango' }}</p>
+    </div>
+    <div><strong>Complemento a dos</strong>
+      <p class="bit-string">{{ encoding.twos }}</p>
+    </div>
+  </div>
+  <p>Activa o desactiva bits en complemento a dos. El primero tiene peso negativo; los restantes, pesos positivos.</p>
+  <div class="digit-strip" tabindex="0" role="region" aria-label="Bits en complemento a dos">
+    @for (bit of bits; track i; let i = $index) {
+    <button type="button" (click)="flip(i)"
+      [attr.aria-label]="'Cambiar bit de peso ' + (i === 0 ? 'menos ' : '') + '2 elevado a ' + (width - 1 - i)"
+      [attr.aria-pressed]="bit === '1'"><strong>{{ bit }}</strong><span>{{ i === 0 ? '−' : '+' }}2^{{ width - 1 - i
+        }}</span></button>
+    }
+  </div>
+  <p class="note">La cadena {{ encoding.twos }} vale {{ encoding.unsigned }} si se interpreta sin signo y {{ value }} en
+    complemento a dos.
+    Cambiar la interpretación no cambia los bits.</p>
+  @if (value === zero) {
+  <p>En signo y magnitud también aparece −0 como {{ encoding.negativeZeroSign }}; en complemento a uno,
+    como {{ encoding.negativeZeroOnes }}. El complemento a dos tiene una sola codificación del cero.</p>
+  }
+  }
+</div>

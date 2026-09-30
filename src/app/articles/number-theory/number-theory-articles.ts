@@ -14,6 +14,7 @@ import { DivisionAlgorithmComponent } from './division-algorithm/division-algori
 import { BezoutIdentityComponent } from './bezout-identity/bezout-identity.component';
 import { LinearDiophantineArticleComponent } from './linear-diophantine/linear-diophantine-article.component';
 import { PellArticleComponent } from './pell/pell-article.component';
+import { NumerationArticleComponent } from './numeration/numeration-article.component';
 import { GcdEuclidArticleComponent } from './gcd-euclid/gcd-euclid-article.component';
 import { ModularArithmeticArticleComponent } from './modular-arithmetic/modular-arithmetic-article.component';
 import { DivisibilityRulesArticleComponent } from './divisibility-rules/divisibility-rules-article.component';
@@ -46,6 +47,7 @@ export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
   PellArticleComponent,
   GoldbachArticleComponent,
   DivisionAlgorithmComponent,
+  NumerationArticleComponent,
   GcdEuclidArticleComponent,
   BezoutIdentityComponent,
   LinearDiophantineArticleComponent,

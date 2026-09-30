@@ -1,0 +1,47 @@
+p,
+label,
+.trace {
+  overflow-wrap: anywhere;
+}
+.digit-strip {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.4rem;
+  margin: 1rem 0;
+}
+.digit-strip button,
+.block {
+  flex: 0 0 auto;
+  text-align: center;
+  padding: 0.6rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.digit-strip strong,
+.digit-strip span {
+  display: block;
+}
+.digit-strip span {
+  font-size: 0.8rem;
+}
+.equivalents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 0.6rem;
+}
+.equivalents > div {
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.bit-string {
+  font-family: monospace;
+  letter-spacing: 0.08em;
+}
+.trace {
+  border-left: 2px solid var(--accent2);
+  padding: 0.5rem 1.8rem;
+}

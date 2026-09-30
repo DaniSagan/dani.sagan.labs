@@ -1,0 +1,396 @@
+<h2>Sistemas de numeración y representación de enteros</h2>
+<p class="dropcap">45, (101101)₂ y (2D)₁₆ designan el mismo entero. Cambian los símbolos y la longitud,
+  pero no la cantidad. ¿Por qué podemos escribir cualquier entero con unas pocas cifras? ¿Por qué esa escritura es
+  única?
+  La respuesta está en una operación elemental: dividir y conservar el resto.</p>
+<p>El hilo conductor será distinguir el número de su representación. Desde esa distinción construiremos la escritura
+  en una base arbitraria, justificaremos los algoritmos de conversión y deduciremos cómo sumar, contar cifras y
+  reconocer divisibilidad.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="lenguaje">Número y numeral</a></li>
+    <li><a routerLink="." fragment="laboratorio">Explorar bases</a></li>
+    <li><a routerLink="." fragment="teorema">Existencia y unicidad</a></li>
+    <li><a routerLink="." fragment="conversion">Conversión y Horner</a></li>
+    <li><a routerLink="." fragment="operaciones">Operaciones</a></li>
+    <li><a routerLink="." fragment="divisibilidad">Divisibilidad</a></li>
+    <li><a routerLink="." fragment="longitud">Número de cifras</a></li>
+    <li><a routerLink="." fragment="signos">Enteros negativos</a></li>
+    <li><a routerLink="." fragment="didactica">En el aula</a></li>
+    <li><a routerLink="." fragment="ejercicios">Ejercicios resueltos</a></li>
+  </ul>
+</nav>
+
+<h3 id="lenguaje">1. El número no es su escritura</h3>
+<ul>
+  <li>Un <strong>número</strong> es el objeto matemático: por ejemplo, la cantidad de elementos de un conjunto de cinco
+    objetos.</li>
+  <li>Un <strong>numeral</strong> es una escritura que lo representa: 5, V o (101)₂.</li>
+  <li>Una <strong>cifra o dígito</strong> es un símbolo de la escritura. En 505, la cifra 5 aparece dos veces,
+    con contribuciones distintas: quinientos y cinco.</li>
+  <li>La <strong>base</strong> b de un sistema posicional determina cuántas unidades de una posición forman una unidad
+    de la siguiente.</li>
+</ul>
+<p>Un alfabeto finito puede representar infinitos enteros porque permite cadenas de longitud arbitraria.
+  No significa que un número fijo de cifras permita representar infinitas cantidades.</p>
+<p>Los numerales egipcios jeroglíficos empleaban símbolos de distintos valores repetidos de forma aditiva.
+  Los romanos combinan valores como I, V o X y convenciones de orden como IV y VI:
+  el orden importa, pero no asigna a cada posición una potencia fija de una base.
+  Son ejemplos para contrastar con un sistema posicional
+  (<a href="https://openstax.org/books/contemporary-mathematics/pages/4-2-early-numeration-systems" target="_blank"
+    rel="noopener noreferrer">OpenStax: sistemas históricos</a>).</p>
+<p>La numeración babilónica utilizó posiciones de base 60. El tratamiento de las posiciones vacías y la interpretación
+  de la escala dependían de convenciones y del contexto; no conviene identificarla sin matices con nuestra escritura
+  moderna
+  (<a href="https://mathshistory.st-andrews.ac.uk/HistTopics/Babylonian_numerals/" target="_blank"
+    rel="noopener noreferrer">MacTutor: numerales babilónicos</a>).</p>
+<p>La ventaja matemática del sistema posicional es que el valor de una cifra obedece siempre a la misma regla.
+  Un cero conserva una posición vacía: 507 y 57 son diferentes. Esa regularidad permite algoritmos uniformes de cálculo.
+</p>
+
+<h3>2. La definición posicional</h3>
+<p>Fijamos una <strong>base entera b ≥ 2</strong>. Los valores permitidos de las cifras son 0,1,…,b − 1.
+  La posición cero es la situada a la derecha. Definimos</p>
+<app-formula expression="(a_k a_{k-1}\ldots a_1a_0)_b
+   =\sum_{i=0}^{k}a_i b^i,\qquad 0\le a_i&lt;b."></app-formula>
+<div class="convention">
+  <p>Usamos la escritura canónica: sin ceros iniciales, salvo el cero, que se escribe con una única cifra 0.
+    Los ceros interiores y finales sí importan. El signo se escribe aparte.
+    En el texto, los enteros sin indicación de base están escritos en decimal.</p>
+</div>
+<p>Para bases mayores que 10 necesitamos más símbolos: A = 10, B = 11,…,F = 15 en hexadecimal.
+  El laboratorio extiende esta convención hasta Z = 35 y admite bases de 2 a 36.
+  El teorema matemático no tiene ese límite: para bases mayores se pueden usar cifras etiquetadas y separadores.</p>
+<app-formula expression="\begin{aligned}
+ (101101)_2&=2^5+2^3+2^2+1=45,\\
+ (2431)_5&=2\cdot125+4\cdot25+3\cdot5+1=366,\\
+ (7A3)_{16}&=7\cdot256+10\cdot16+3=1955.
+ \end{aligned}"></app-formula>
+<p>La base no es una cifra adicional: el subíndice indica cómo interpretar toda la cadena.
+  Por ejemplo, (10)ᵦ = 1·b + 0 = b. Escribir «10» no significa siempre diez.</p>
+
+<h3 id="laboratorio">3. Experimenta con el valor de cada posición</h3>
+<p>Convierte 156 a binario y avanza por las divisiones. Después pulsa cada cifra de 2431 en base 5:
+  la cifra 4 aporta 100, no cuatro. Prueba un cero interior y compara la longitud del mismo entero en distintas bases.
+</p>
+<app-numeration-lab></app-numeration-lab>
+<p>Los restos aparecen desde las unidades hacia la izquierda; Horner recorre el camino opuesto.
+  Vamos a demostrar que ambos procedimientos describen necesariamente el mismo entero.</p>
+
+<h3 id="teorema">4. El teorema de representación</h3>
+<p><strong>Teorema.</strong> Para todo entero n ≥ 0 y toda base entera b ≥ 2 existe una única representación
+  canónica finita n = a₀ + a₁b + ⋯ + aₖbᵏ, con 0 ≤ aᵢ &lt; b.
+  Si n &gt; 0, aₖ ≠ 0; si n = 0, la representación es la única cifra 0.</p>
+<p>La condición sobre los ceros iniciales es parte del enunciado:
+  sin ella, 7, 07 y 007 serían sucesiones diferentes que representan el mismo entero.</p>
+<h4>Existencia: las divisiones construyen las cifras</h4>
+<div class="proof">
+  <p>Si n = 0 ya tenemos su representación. Para n &gt; 0, el
+    <a routerLink="/articles/division-algorithm">teorema de la división euclídea</a> da
+  </p>
+  <app-formula expression="n=bq_0+a_0,\quad 0\le a_0&lt;b;\qquad
+  q_0=bq_1+a_1,\quad 0\le a_1&lt;b;\quad\ldots"></app-formula>
+  <p>Cada dividendo positivo se sustituye por su cociente, un entero no negativo estrictamente menor,
+    porque b ≥ 2. No puede existir una sucesión infinita estrictamente decreciente de enteros no negativos:
+    el proceso termina en un cociente cero.</p>
+  <p>Denotemos q₋₁ = n para incluir también el caso de una sola cifra.
+    Si la última división es qₖ₋₁ = b·0 + aₖ, su dividendo era positivo, así que aₖ ≠ 0.
+    Sustituyendo cada cociente en la igualdad anterior obtenemos</p>
+  <app-formula expression="n=a_0+bq_0
+    =a_0+ba_1+b^2q_1=\cdots=a_0+a_1b+\cdots+a_kb^k."></app-formula>
+  <p>Todos los restos están entre 0 y b − 1. Son precisamente las cifras buscadas, con los pesos indicados.
+    Si n &lt; b, la primera división ya tiene cociente cero y basta una cifra.</p>
+</div>
+<h4>Unicidad: cada resto está forzado</h4>
+<div class="proof">
+  <p>Supongamos dos expansiones del mismo entero. Para compararlas podemos completar temporalmente la más corta
+    con coeficientes cero en las posiciones superiores. Reducir módulo b da a₀ ≡ c₀ (mod b).
+    Como ambas cifras están en el intervalo 0,…,b − 1, su diferencia tiene valor absoluto menor que b.
+    El único múltiplo de b posible es cero: a₀ = c₀.</p>
+  <p>Restamos esa cifra común y dividimos la igualdad entre b:</p>
+  <app-formula expression="\frac{n-a_0}{b}=a_1+a_2b+\cdots
+    =c_1+c_2b+\cdots."></app-formula>
+  <p>Repetir el argumento fuerza a₁ = c₁, luego a₂ = c₂ y así sucesivamente.
+    Si una escritura canónica tuviese más cifras, su cifra superior no nula debería coincidir con un cero añadido a la
+    otra,
+    contradicción. Por tanto coinciden tanto las cifras como la longitud.</p>
+</div>
+<p>La existencia permite construir una escritura; la unicidad permite hablar de <em>la</em> escritura canónica.
+  La prueba explica el algoritmo y proporciona una forma de comprobarlo.</p>
+
+<h3 id="conversion">5. Convertir hacia una base y volver</h3>
+<h4>De decimal a otra base</h4>
+<p>Para convertir 156 a base 2, aplicamos exactamente la construcción anterior:</p>
+<app-formula expression="\begin{aligned}
+156&=2\cdot78+0,&78&=2\cdot39+0,\\
+39&=2\cdot19+1,&19&=2\cdot9+1,\\
+9&=2\cdot4+1,&4&=2\cdot2+0,\\
+2&=2\cdot1+0,&1&=2\cdot0+1.
+\end{aligned}"></app-formula>
+<p>Los restos, en orden de obtención, son 0,0,1,1,1,0,0,1.
+  El primero es la cifra de 2⁰, no la de mayor peso. Leídos de abajo arriba dan (10011100)₂ = 156.</p>
+<app-formula expression="\begin{aligned}
+156&=5\cdot31+1,&31&=5\cdot6+1,&6&=5\cdot1+1,&1&=5\cdot0+1,\\
+156&=(1111)_5=(234)_8=(9C)_{16}.
+\end{aligned}"></app-formula>
+<p>En hexadecimal, el resto 12 se escribe C: 156 = 16·9 + 12 y 9 = 16·0 + 9.
+  En octal: 156 = 8·19 + 4, 19 = 8·2 + 3, 2 = 8·0 + 2.</p>
+<pre>Si n = 0: devolver «0».
+Separar el signo y trabajar con |n|.
+Mientras n &gt; 0:
+    dividir n entre b: n = bq + r, 0 ≤ r &lt; b
+    guardar la cifra correspondiente a r
+    sustituir n por q
+Invertir la lista de cifras y recuperar el signo.</pre>
+<h4>De una base al valor decimal: potencias y Horner</h4>
+<app-formula expression="(101101)_2
+ =1\cdot2^5+0\cdot2^4+1\cdot2^3+1\cdot2^2+0\cdot2+1=45."></app-formula>
+<p>También podemos evaluar de izquierda a derecha sin calcular todas las potencias:</p>
+<app-formula expression="(a_k\ldots a_0)_b=
+ (\cdots((a_kb+a_{k-1})b+a_{k-2})b+\cdots)b+a_0."></app-formula>
+<div class="proof">
+  <p>Después de leer un prefijo, el acumulador representa su valor.
+    Añadir una cifra desplaza todas las anteriores una posición, multiplicándolas por b, y suma el nuevo dígito.
+    Por inducción, repetir «multiplicar por b y sumar la siguiente cifra» evalúa el numeral completo.
+    Es la regla de Horner aplicada al polinomio de sus cifras.</p>
+</div>
+<p>Para 2431 en base 5, empezando en cero, los acumuladores son
+  2, 2·5 + 4 = 14, 14·5 + 3 = 73 y 73·5 + 1 = 366.
+  La conversión entre dos bases cualesquiera puede combinar esta evaluación con las divisiones en la base de destino.
+  El entero intermedio no depende de que lo mostremos escrito en decimal.</p>
+
+<h3>6. Cuando una base es potencia de otra</h3>
+<p>Si B = bʳ, agrupamos las cifras de base b en bloques de r comenzando por la derecha.
+  Cada bloque tiene un valor Aⱼ entre 0 y bʳ − 1:</p>
+<app-formula expression="A_j=\sum_{i=0}^{r-1}a_{rj+i}b^i,\qquad
+ n=\sum_j A_j(b^r)^j=\sum_j A_jB^j."></app-formula>
+<div class="proof">
+  <p>La igualdad se obtiene separando el exponente rj + i:
+    bʳʲ⁺ⁱ = (bʳ)ʲbⁱ. Además el máximo valor del bloque es
+    (b − 1)(1 + b + ⋯ + bʳ⁻¹) = bʳ − 1, de modo que Aⱼ es una cifra válida en base B.
+    Por la unicidad, los bloques son exactamente las cifras de esa base.</p>
+</div>
+<p>Como 8 = 2³, cada cifra octal equivale a tres bits. Como 16 = 2⁴, cada cifra hexadecimal equivale a cuatro:</p>
+<app-formula expression="(10011100)_2=(010\;011\;100)_2=(234)_8,\qquad
+ (1001\;1100)_2=(9C)_{16}."></app-formula>
+<p>En sentido inverso, 2,3,4 en octal producen 010,011,100.
+  Los ceros que completan un bloque interior deben conservarse; solo se pueden omitir los ceros iniciales de toda la
+  cadena.
+  Agrupar desde la izquierda sin respetar el extremo derecho cambiaría los pesos.</p>
+
+<h3 id="operaciones">7. Los algoritmos escolares funcionan en cualquier base</h3>
+<h4>Suma: agrupar b unidades</h4>
+<p>En una columna sumamos las dos cifras y el acarreo entrante cᵢ:
+  s = aᵢ + dᵢ + cᵢ. Dividir s = bcᵢ₊₁ + rᵢ, con 0 ≤ rᵢ &lt; b,
+  determina la cifra rᵢ y el acarreo siguiente. Para sumar dos números, el acarreo es 0 o 1.</p>
+<app-formula expression="s b^i=r_i b^i+c_{i+1}b^{i+1}."></app-formula>
+<p>La identidad demuestra que el acarreo no añade valor: lo redistribuye entre posiciones.
+  En base 5, (243)₅ + (134)₅ = (432)₅:
+  unidades 3 + 4 = 5·1 + 2; cincos 4 + 3 + 1 = 5·1 + 3;
+  veinticincos 2 + 1 + 1 = 4. En decimal, 73 + 44 = 117.</p>
+<p>En binario, (1011)₂ + (110)₂ = (10001)₂, porque 11 + 6 = 17.
+  En octal, (7)₈ + (1)₈ = (10)₈: ocho unidades forman la siguiente posición.</p>
+<h4>Resta: un préstamo es un cambio de unidad</h4>
+<p>Para restar una cifra mayor que la disponible, una unidad de la posición i + 1 se convierte en b unidades de la
+  posición i.
+  Se conserva el valor porque bⁱ⁺¹ = b·bⁱ. Si la posición siguiente tiene cero, el préstamo se propaga hasta una cifra
+  no nula.</p>
+<p>En (302)₅ − (134)₅ tomamos una unidad de los veinticincos:
+  quedan 2 veinticincos y 5 cincos. Prestamos uno de esos cincos a las unidades:
+  quedan 4 cincos y 7 unidades. Restamos por columnas: 7 − 4 = 3, 4 − 3 = 1, 2 − 1 = 1.
+  Así (302)₅ − (134)₅ = (113)₅, es decir 77 − 44 = 33.</p>
+<p>Del mismo modo, (1000)₂ − 1 = (111)₂. Si el minuendo es menor, se intercambian los valores absolutos
+  y se añade el signo negativo al resultado.</p>
+<h4>Multiplicación: distribuir y normalizar</h4>
+<app-formula expression="\left(\sum_i a_i b^i\right)\left(\sum_j c_j b^j\right)
+ =\sum_{i,j}a_i c_j b^{i+j}."></app-formula>
+<p>Los productos parciales pueden tener coeficientes mayores que b − 1.
+  Los normalizamos mediante cociente y resto, igual que en la suma.
+  Multiplicar por b desplaza una posición; por bʲ desplaza j posiciones.</p>
+<app-formula expression="(23)_5(14)_5=(202)_5+(230)_5=(432)_5."></app-formula>
+<p>El primer parcial es 4·(23)₅: 4·3 = 12 = 5·2 + 2;
+  después 4·2 + 2 = 10 = 5·2 + 0, dando 202.
+  El otro parcial es (23)₅ desplazado una posición. En decimal, 13·9 = 117.
+  En binario, (101)₂·(11)₂ = (101)₂ + (1010)₂ = (1111)₂.</p>
+<p>Estas explicaciones ayudan a enseñar el algoritmo decimal: «llevar una» significa cambiar b unidades de un orden por
+  una del siguiente,
+  no aplicar una regla exclusiva del diez.</p>
+
+<h3 id="divisibilidad">8. La base explica los criterios de divisibilidad</h3>
+<p>Antes de formalizar, prueba el explorador: el mismo entero tendrá cifras distintas al cambiar la base,
+  pero su divisibilidad por un divisor fijo no cambia.</p>
+<app-divisibility-bases></app-divisibility-bases>
+<p>Sea d un entero positivo. Partimos de n = ∑aᵢbⁱ y reducimos los pesos módulo d:</p>
+<div class="proof">
+  <p><strong>Si d ∣ b:</strong> para i ≥ 1, d divide bⁱ; por tanto n ≡ a₀ (mod d).
+    En decimal explica los criterios de 2 y 5. Más generalmente, si d ∣ bʳ,
+    solo importan las últimas r cifras.</p>
+  <p><strong>Si b ≡ 1 (mod d):</strong> elevar a cualquier potencia mantiene el resto 1, así que</p>
+  <app-formula expression="n\equiv\sum_i a_i\pmod d."></app-formula>
+  <p>En base 10 sirve para 3 y 9. En base 8, sirve para 7: (77)₈ = 63 y 7 + 7 = 14 son múltiplos de 7.</p>
+  <p><strong>Si b ≡ −1 (mod d):</strong> las potencias alternan 1 y −1:</p>
+  <app-formula expression="n\equiv a_0-a_1+a_2-\cdots\pmod d."></app-formula>
+  <p>En decimal sirve para 11. Los signos comienzan por + en la cifra de unidades.
+    Cambiar todos los signos conserva la divisibilidad por d, aunque puede cambiar el resto.</p>
+</div>
+<p>En particular, en toda base b la suma de cifras detecta divisibilidad por b − 1 y la suma alternada por b + 1.
+  Para b = 2, b − 1 = 1 da un criterio trivial. El desarrollo de los criterios de 7,13 y de bloques está en
+  <a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a>; aquí hemos identificado su origen
+  posicional.
+</p>
+
+<h3 id="longitud">9. ¿Cuántas cifras hacen falta?</h3>
+<p><strong>Proposición.</strong> Un entero positivo n tiene k + 1 cifras canónicas en base b si y solo si bᵏ ≤ n &lt;
+  bᵏ⁺¹.</p>
+<div class="proof">
+  <p>La cifra superior satisface aₖ ≥ 1, luego n ≥ bᵏ.
+    La suma máxima con k + 1 cifras se obtiene haciendo todas iguales a b − 1:</p>
+  <app-formula expression="n\le(b-1)(1+b+\cdots+b^k)=b^{k+1}-1&lt;b^{k+1}."></app-formula>
+  <p>Recíprocamente, los intervalos [bʲ,bʲ⁺¹) son disjuntos para distintos j.
+    La longitud de la representación existente debe corresponder al único intervalo que contiene n.
+    Tomando logaritmos, k ≤ logᵦ n &lt; k + 1.</p>
+</div>
+<app-formula expression="\boxed{\ell_b(n)=\lfloor\log_b n\rfloor+1\qquad(n&gt;0).}"></app-formula>
+<p>Para cero adoptamos longitud 1; log 0 no está definido. El signo de un negativo no cuenta como cifra,
+  y aplicamos la fórmula a su valor absoluto. Así, 156 tiene 3 cifras decimales, 8 binarias y 2 hexadecimales.
+  El entero bᵏ tiene k + 1 cifras: 1 seguido de k ceros.</p>
+<p>Aproximadamente, cada cifra decimal de tamaño aporta log₂10 ≈ 3,322 bits.
+  Por ejemplo, 10¹⁰⁰ requiere 101 cifras decimales y 333 binarias, pues ⌊100log₂10⌋ + 1 = 333.
+  La relación exacta depende del número; no basta multiplicar cualquier longitud decimal por 3,322 y redondear siempre
+  igual.</p>
+<p>La fórmula es matemática. Para contar cifras en un programa, los logaritmos de coma flotante pueden fallar cerca de
+  una potencia exacta:
+  las divisiones sucesivas o comparaciones enteras evitan ese problema.</p>
+
+<h3 id="signos">10. El signo matemático y las palabras binarias</h3>
+<p>La representación elemental de un entero negativo escribe el signo seguido de las cifras de su valor absoluto:
+  −45 = −(101101)₂. El signo no es un dígito de la base.
+  En un ordenador, fijar una palabra de w bits obliga a elegir una codificación y un intervalo finito.</p>
+<ul>
+  <li><strong>Signo y magnitud:</strong> el primer bit indica el signo y los w − 1 restantes, el valor absoluto.</li>
+  <li><strong>Complemento a uno:</strong> un negativo se obtiene invirtiendo todos los bits de la magnitud positiva.
+  </li>
+  <li><strong>Complemento a dos:</strong> se usa el residuo del entero módulo 2ʷ, interpretado en el intervalo
+    −2ʷ⁻¹,…,2ʷ⁻¹ − 1.</li>
+</ul>
+<p>Las dos primeras convenciones permiten valores de −(2ʷ⁻¹ − 1) a 2ʷ⁻¹ − 1 y tienen dos ceros.
+  La tercera tiene un solo cero y un valor negativo adicional.
+  Estas convenciones se recogen también en las <a
+    href="https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/numbers.html" target="_blank"
+    rel="noopener noreferrer">notas de representación numérica de Cornell</a>.</p>
+<app-signed-integers></app-signed-integers>
+<h4>Por qué invertir y sumar uno funciona</h4>
+<p>Con 8 bits, 13 = (00001101)₂. Invertir da 11110010, de valor 255 − 13 = 242.
+  Sumar uno da 11110011, de valor sin signo 243 = 256 − 13.</p>
+<app-formula expression="(2^w-1-n)+1=2^w-n\equiv-n\pmod{2^w}."></app-formula>
+<p>En signo y magnitud, −13 sería 10001101; en complemento a uno, 11110010;
+  en complemento a dos, 11110011. La misma cantidad necesita una convención explícita.</p>
+<p>Si los bits son cʷ₋₁,…,c₀, su valor en complemento a dos es</p>
+<app-formula expression="-c_{w-1}2^{w-1}+\sum_{i=0}^{w-2}c_i2^i."></app-formula>
+<p>Cuando el primer bit es 1, esta expresión resta 2ʷ al valor sin signo.
+  Sumar palabras binarias y descartar el acarreo exterior calcula la suma módulo 2ʷ:
+  por ejemplo, 243 + 20 = 263 deja 7 módulo 256, que representa −13 + 20.</p>
+<p>Esto no elimina el desbordamiento. Con 8 bits, 127 + 1 da el patrón 10000000, interpretado como −128,
+  aunque la suma entera verdadera sea 128, fuera del intervalo.
+  La aritmética modular de la palabra y la suma en ℤ deben distinguirse.</p>
+
+<h3>11. Otras formas de representar enteros</h3>
+<p>El teorema anterior corresponde a base positiva y dígitos entre 0 y b − 1. Cambiar esos ingredientes abre otros
+  sistemas:</p>
+<ul>
+  <li><strong>Base negativa:</strong> (11010)₋₂ = 16 − 8 − 2 = 6, usando solo 0 y 1.
+    Las potencias alternan de signo; la prueba de terminación necesita adaptarse.</li>
+  <li><strong>Ternario balanceado:</strong> cifras −1,0,1 y pesos 1,3,9,….
+    Escribiendo la cifra −1 como 1 con una barra, 8 = 1·9 + 0·3 − 1.
+    No es la escritura ordinaria (101)₃, cuyo valor es 10.</li>
+  <li><strong>Pesos factoriales:</strong> 23 = 3·3! + 2·2! + 1·1!.
+    En el peso i! se permiten coeficientes de 0 a i; los pesos ya no son potencias de una base fija.</li>
+  <li><strong>Fibonacci:</strong> usando 1,2,3,5,8,13,…, el <a href="https://arxiv.org/abs/1008.3202" target="_blank"
+      rel="noopener noreferrer">teorema de Zeckendorf</a> da una descomposición única
+    de cada entero positivo como suma de términos no consecutivos. Por ejemplo, 20 = 13 + 5 + 2.
+    La prohibición de consecutivos es esencial: 3 = 2 + 1 produciría otra escritura.
+    Puedes revisar la sucesión en <a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a>.</li>
+</ul>
+<p>Las pruebas de existencia y unicidad para esos sistemas requieren desarrollos propios.
+  No son consecuencias automáticas del teorema de base b; aquí sirven para delimitar sus hipótesis.</p>
+
+<h3>12. Bits, bytes y máscaras</h3>
+<p>Un bit tiene dos estados y una palabra de w bits tiene 2ʷ patrones.
+  Un byte de 8 bits reúne 256 patrones y se representa mediante dos cifras hexadecimales, de 00 a FF.
+  El octal agrupa tres bits; el hexadecimal, cuatro. Son formas compactas de leer información binaria.</p>
+<p>Una dirección de memoria escrita en hexadecimal sigue siendo un índice numérico.
+  Las letras A,…,F no cambian su naturaleza, solo su escritura.
+  Una máscara binaria selecciona posiciones: 10110100 AND 00001111 = 00000100 conserva los cuatro bits bajos.
+  Interpretados sin signo, esos cuatro bits codifican el resto módulo 16.
+  La operación AND compara bits, no equivale a multiplicar los enteros.</p>
+
+<h3 id="didactica">13. Cambiar de base para comprender el cálculo escolar</h3>
+<p>El interés en Secundaria no está en memorizar tablas exóticas, sino en hacer visibles las ideas que la familiaridad
+  con el decimal puede ocultar. Estas actividades permiten observar el razonamiento y detectar dificultades concretas:
+</p>
+<ul>
+  <li><strong>Contar en base 5 con fichas.</strong> Agrupar cinco fichas en una barra y cinco barras en una placa.
+    Escribir 3,4,10,11,…,44,100 relaciona agrupación, potencia y valor posicional.
+    Si aparece una cifra 5, pedir que se cambie por una unidad de la posición siguiente.</li>
+  <li><strong>Inventar una tabla de suma.</strong> Calcular 4 + 4 en base 5 y explicar (13)₅ con material agrupable.
+    Se trabaja acarreo como conservación del valor. El error «8» revela que se ha calculado la cantidad sin cambiar su
+    escritura.</li>
+  <li><strong>Leer y escribir recorridos inversos.</strong> Un alumno obtiene restos por división y otro reconstruye con
+    Horner.
+    Comparar ambos recorridos trabaja división euclídea e invariantes de un algoritmo.
+    Leer los restos en orden directo puede dar una cifra inicial cero: es una señal para revisar su peso.</li>
+  <li><strong>¿Por qué 10ᵦ vale b?</strong> Pedir una explicación mediante potencias y otra mediante agrupaciones.
+    Se evalúa la diferencia entre numeral y cantidad, no la capacidad de repetir «la base».</li>
+  <li><strong>Deduce un criterio en base 8.</strong> Conjeturar que sumar cifras detecta múltiplos de 7,
+    probar ejemplos y demostrarlo con 8 ≡ 1 (mod 7). Se enlazan potencias y congruencias.
+    Aclarar que unos pocos ejemplos no prueban la regla universal.</li>
+  <li><strong>Una base desconocida.</strong> Traducir (132)ᵦ a b² + 3b + 2.
+    Antes de resolver, exigir b entero y b &gt; 3. Esto integra álgebra con restricciones aritméticas;
+    una raíz real de una ecuación no es necesariamente una base válida.</li>
+</ul>
+<p>Para evaluar comprensión, pide justificar una transformación, detectar una cifra imposible o reconstruir una regla
+  olvidada.
+  La actividad puede comenzar con manipulación concreta y terminar con una igualdad que explica por qué funciona.</p>
+
+<h3>14. Errores conceptuales frecuentes</h3>
+<ul>
+  <li><strong>Confundir número y representación:</strong> cambiar 45 por (101101)₂ no cambia la cantidad.</li>
+  <li><strong>Leer (101)₂ como ciento uno:</strong> sus pesos son 4,2,1, y su valor es 5.</li>
+  <li><strong>Usar una cifra ≥ b:</strong> (152)₅ no es una representación válida porque aparece 5.</li>
+  <li><strong>Leer los restos al revés de lo necesario:</strong> el primer resto ocupa las unidades.</li>
+  <li><strong>Olvidar la base:</strong> 10 puede representar cantidades diferentes; indicar el subíndice evita
+    ambigüedad.</li>
+  <li><strong>Afirmar unicidad sin normalizar:</strong> 01 y 1 representan lo mismo; la escritura canónica excluye ceros
+    iniciales.</li>
+  <li><strong>Eliminar ceros interiores:</strong> 1001 y 11 tienen valores distintos en cualquier base b ≥ 2.</li>
+  <li><strong>Creer que llevar o prestar es exclusivo del decimal:</strong> ambas operaciones cambian unidades entre
+    posiciones.</li>
+  <li><strong>Usar logaritmos para cero:</strong> su longitud se define aparte como una cifra.</li>
+  <li><strong>Interpretar bits con signo sin fijar ancho y convenio:</strong> 1111 puede ser 15 sin signo o −1 en
+    complemento a dos de 4 bits.</li>
+</ul>
+
+<h3 id="ejercicios">15. Ejercicios resueltos: del cálculo a la demostración</h3>
+<p>Las ayudas avanzan por dos pistas, estrategia y desarrollo antes de la solución razonada.
+  Los últimos problemas requieren justificar propiedades generales, no solo ejecutar conversiones.</p>
+<app-self-assessment quizId="numeration-quiz" [questions]="exercises"></app-self-assessment>
+
+<h3>16. Conexiones para continuar</h3>
+<ul>
+  <li><a routerLink="/articles/division-algorithm">División euclídea</a>: existencia y unicidad de los restos que son
+    cifras.</li>
+  <li><a routerLink="/articles/gcd-euclid">MCD y algoritmo de Euclides</a>: otro uso de divisiones sucesivas con
+    terminación garantizada.</li>
+  <li><a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a>: deducir reglas a partir de los pesos
+    posicionales.</li>
+  <li><a routerLink="/articles/modular-arithmetic">Congruencias y aritmética modular</a>: cifras finales, residuos y
+    complemento a dos.</li>
+  <li><a routerLink="/articles/fundamental-theorem-arithmetic">Teorema fundamental de la aritmética</a> y
+    <a routerLink="/articles/euclid-infinitely-many-primes">primos</a>: cambiar la escritura no altera la factorización
+    del entero.
+  </li>
+  <li><a routerLink="/articles/fibonacci-numbers">Fibonacci</a>: una puerta a representaciones con pesos distintos de
+    potencias.</li>
+</ul>
+<p>El número permanece; cambian sus símbolos. Las reglas de conversión, cálculo y divisibilidad se reconstruyen
+  a partir de una misma idea: cada posición pesa una potencia de la base.</p>
