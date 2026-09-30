@@ -1,0 +1,101 @@
+<h2>Patrones Hitomezashi: bordar con bits</h2>
+<p class="dropcap">Dibuja una puntada, deja un hueco y vuelve a dibujar una puntada. Repite la regla en cada fila de una
+  cuadrícula y después en cada columna. Solo queda decidir dónde empieza cada línea. Con esas pequeñas decisiones
+  aparecen caminos que giran, lazos y regiones cerradas: un dibujo entero escondido en dos secuencias de ceros y unos.
+</p>
+<p>El modelo se inspira en el hitomezashi, una modalidad del bordado japonés sashiko. Aquí estudiaremos su versión
+  geométrica sobre una cuadrícula: segmentos de longitud uno separados por huecos de la misma longitud. La <a
+    href="https://arxiv.org/abs/2208.12580">descripción matemática mediante secuencias binarias</a> conecta esta
+  práctica textil con simetrías y estructuras discretas.</p>
+<nav class="article-index" aria-label="Contenido del artículo">
+  <ul>
+    <li><a routerLink="." fragment="laboratorio">Experimenta</a></li>
+    <li><a routerLink="." fragment="regla">La regla</a></li>
+    <li><a routerLink="." fragment="caminos">Caminos y regiones</a></li>
+    <li><a routerLink="." fragment="patrones">Patrones</a></li>
+    <li><a routerLink="." fragment="retos">Retos</a></li>
+  </ul>
+</nav>
+
+<h3 id="laboratorio">1. Cambia una decisión</h3>
+<p>Empieza con «Todo ceros». Cambia un solo bit de una fila y observa qué puntadas desaparecen y cuáles ocupan sus
+  huecos. Después prueba «Bandas» y «Aleatorio». ¿Qué propiedades sobreviven aunque el aspecto del dibujo cambie por
+  completo?</p>
+<app-hitomezashi-lab />
+
+<h3 id="regla">2. Dos secuencias describen todo el dibujo</h3>
+<p>Tomemos n × n celdas, con vértices de coordenadas enteras entre 0 y n. Hay n + 1 filas de vértices y n + 1 columnas.
+  Para cada fila j elegimos un bit rⱼ y para cada columna i un bit cᵢ.</p>
+<app-formula expression="r_j,c_i\in\{0,1\},\qquad 0\le i,j\le n" />
+<p>En la fila j dibujamos el segmento de (i,j) a (i+1,j) exactamente cuando i tiene la paridad indicada por rⱼ. En la
+  columna i hacemos lo mismo con la coordenada vertical:</p>
+<app-formula
+  expression="\begin{aligned}(i,j)\longrightarrow(i+1,j)&\iff i\equiv r_j\pmod2,\quad 0\le i&lt;n,\\(i,j)\longrightarrow(i,j+1)&\iff j\equiv c_i\pmod2,\quad 0\le j&lt;n.\end{aligned}" />
+<p>El bit 0 escoge los inicios 0, 2, 4…; el bit 1, los inicios 1, 3, 5… La notación es una aplicación de las <a
+    routerLink="/articles/modular-arithmetic">congruencias</a>: basta saber el resto al dividir por dos. En el dibujo,
+  la coordenada vertical crece hacia abajo.</p>
+<div class="proof">
+  <p><strong>¿Qué cambia al invertir un bit?</strong> Cada posición que satisfacía la condición deja de satisfacerla, y
+    viceversa. Por eso las puntadas de esa línea intercambian su lugar con los huecos. Las demás líneas conservan
+    exactamente sus segmentos. El efecto es local en la regla, aunque puede abrir o cerrar un camino mucho mayor.</p>
+</div>
+<p>Para n par, cualquier fase dibuja n/2 puntadas en cada línea. En 20 × 20 celdas hay 42 líneas y, por tanto, 420
+  segmentos, cualquiera que sea la secuencia. Para n impar, el bit 0 dibuja (n+1)/2 y el bit 1 dibuja (n−1)/2: entonces
+  sí puede cambiar el total.</p>
+
+<h3 id="caminos">3. Por qué aparecen caminos que giran</h3>
+<p>En un vértice interior parecen posibles cuatro direcciones. Pero la alternancia impide que estén presentes las
+  cuatro.</p>
+<div class="proof">
+  <p><strong>Una horizontal y una vertical.</strong> Los dos segmentos horizontales que podrían llegar a (i,j) empiezan
+    en i−1 e i. Como esos enteros tienen distinta paridad, exactamente uno satisface la regla de la fila. Lo mismo
+    ocurre con los segmentos verticales que empiezan en j−1 y j. Llegan, por tanto, exactamente dos puntadas: una
+    horizontal y una vertical.</p>
+</div>
+<p>Cualquier recorrido debe girar un ángulo recto en cada vértice interior; no se bifurca ni se cruza transversalmente
+  con otro. En el recorte finito del laboratorio, los componentes con segmentos son caminos que terminan en el borde o
+  ciclos cerrados. En el borde pueden faltar las puntadas que quedarían fuera de la ventana.</p>
+<p>Una trayectoria abierta podría cerrarse si ampliáramos el dibujo, pero el laboratorio cuenta únicamente las regiones
+  ya cerradas por las puntadas visibles del patrón completo. El marco no se añade al bordado.</p>
+<h4>Contar regiones sin adivinar por el aspecto</h4>
+<p>Consideremos los extremos de las puntadas como vértices de un grafo plano. Sean E sus segmentos, V sus vértices
+  incidentes y C sus componentes conexos. La <a routerLink="/articles/planar-euler">fórmula de Euler para grafos
+    planos</a>, incluyendo la región exterior, da:</p>
+<app-formula expression="V-E+F=1+C\quad\Longrightarrow\quad F_{\text{acotadas}}=E-V+C." />
+<p>Esta es la cuenta del laboratorio. Un camino añade igual número de aristas que de vértices menos uno y no cierra
+  región; un ciclo añade una región acotada. El criterio sigue siendo válido con varios ciclos, incluso anidados.</p>
+
+<h3 id="patrones">4. Periodicidad, azar y simetría</h3>
+<p><strong>Periódico.</strong> Repite «0011» en las filas y «000111» en las columnas. La secuencia dicta qué fase tiene
+  cada línea; la alternancia interna de las puntadas sigue teniendo período dos. En la extensión infinita, una
+  repetición horizontal del dibujo queda garantizada por un desplazamiento que sea múltiplo tanto de dos como del
+  período de la secuencia de columnas. El razonamiento vertical usa el período de las filas.</p>
+<p><strong>Aleatorio.</strong> El modelo ideal elige cada bit independientemente con probabilidad 1/2. El laboratorio lo
+  simula con un generador seudoaleatorio y una semilla: conservarla permite reproducir el resultado con el mismo tamaño.
+  «Generar nuevo patrón» cambia esa semilla; el preset «Aleatorio» vuelve a la semilla 2026.</p>
+<p><strong>Simétrico.</strong> Si filas y columnas comparten la misma secuencia, reflejar el dibujo en su diagonal
+  intercambia las dos reglas sin modificarlas. Eso garantiza una simetría diagonal, aunque la secuencia no sea un
+  palíndromo. El preset muestra precisamente esta construcción.</p>
+<p>Una cuadrícula fija de n × n celdas admite 2(n+1) decisiones binarias y, para n ≥ 1, cada elección determina un
+  dibujo diferente en coordenadas fijas:</p>
+<app-formula expression="\#\text{patrones}=2^{2(n+1)}.\qquad n=20:\quad 2^{42}=4\,398\,046\,511\,104." />
+<p>El conteo distingue dibujos que se obtienen uno de otro por giros o reflejos. Si quisiéramos identificarlos como un
+  mismo diseño, habría que descontar esas simetrías con más cuidado.</p>
+
+<h3 id="retos">5. Del dibujo al argumento</h3>
+<p>Prueba primero tus predicciones en el laboratorio y abre después las pistas. Una observación sugiere una propiedad;
+  explicar por qué se cumple para cualquier secuencia es el siguiente paso.</p>
+<app-self-assessment quizId="hitomezashi" [questions]="exercises" />
+
+<h3>6. Seguir explorando</h3>
+<ul>
+  <li><a routerLink="/articles/numeral-systems">Sistemas de numeración</a>: usar bits para codificar información.</li>
+  <li><a routerLink="/articles/modular-arithmetic">Aritmética modular</a>: paridad y reglas periódicas.</li>
+  <li><a routerLink="/articles/planar-euler">Fórmula de Euler para grafos planos</a>: contar regiones a partir de
+    vértices y aristas.</li>
+  <li><a routerLink="/articles/pick-theorem">Teorema de Pick</a>: estudiar el área encerrada por un polígono sobre la
+    retícula.</li>
+</ul>
+<p>Para profundizar en la investigación matemática de estos lazos, véase <a
+    href="https://arxiv.org/abs/2201.03461"><em>Loops and Regions in Hitomezashi Patterns</em></a>. Las preguntas sobre
+  longitudes y áreas llevan bastante más lejos que la sencilla regla que nos permitió dibujarlos.</p>

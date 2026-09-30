@@ -32,7 +32,10 @@ import { LawOfCosinesArticleComponent } from './law-of-cosines/law-of-cosines-ar
 import { StewartTheoremArticleComponent } from './stewart-theorem/stewart-theorem-article.component';
 import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theorem-article.component';
 
+import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
+
 export const GEOMETRY_ARTICLES = [
+  HitomezashiArticleComponent,
   PtolemyTheoremArticleComponent,
   HeronFormulaArticleComponent,
   TesseractArticleComponent,

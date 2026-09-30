@@ -1,0 +1,115 @@
+<section class="widget" aria-label="Laboratorio de Hitomezashi">
+  <p class="eyebrow">LABORATORIO · DOS ESTADOS, MUCHOS PATRONES</p>
+  <h3>Hitomezashi: bordar con bits</h3>
+  <p>Cada fila y cada columna esconde una decisión binaria: empezar la primera puntada aquí o desplazarla una posición.
+    Cambia los bits y observa cómo reglas de apenas dos estados producen patrones sorprendentemente complejos.</p>
+  <div class="presets" aria-label="Patrones reproducibles">
+    <button (click)="preset('random')">Aleatorio</button><button (click)="preset('alternating')">Alternante</button>
+    <button (click)="preset('zeros')">Todo ceros</button><button (click)="preset('bands')">Bandas</button><button
+      (click)="preset('symmetric')">Simétrico ↘</button>
+  </div>
+  <div class="controls">
+    <label>Celdas por lado<input type="number" min="4" max="40" step="1" [(ngModel)]="size"
+        (ngModelChange)="generate()"></label>
+    <label>Generación<select [(ngModel)]="mode" (change)="generate()">
+        <option value="random">Aleatorio</option>
+        <option value="alternating">Alternante</option>
+        <option value="periodic">Periódico</option>
+        <option value="manual">Manual</option>
+      </select></label>
+    @if (mode === 'random') { <label>Semilla<input type="number" min="0" max="4294967295" step="1" [(ngModel)]="seed"
+        (ngModelChange)="generate()"></label> }
+    @if (mode === 'periodic') {
+    <label>Patrón de filas<input maxlength="64" [(ngModel)]="rowPattern" (input)="generate()"></label>
+    <label>Patrón de columnas<input maxlength="64" [(ngModel)]="columnPattern" (input)="generate()"></label>
+    }
+    <button class="primary" (click)="generate(true)">Generar nuevo patrón</button>
+  </div>
+  <div class="toggles">
+    <label><input type="checkbox" [(ngModel)]="colored"> Colorear regiones</label>
+    <label><input type="checkbox" [(ngModel)]="grid"> Cuadrícula auxiliar</label>
+    <label><input type="checkbox" [(ngModel)]="sequences"> Secuencias binarias</label>
+  </div>
+  @if (error) { <p role="alert">{{ error }}</p> } @else {
+  @if (sequences) {
+  <p class="hint">0: inicio par · 1: inicio impar. Índices desde 0; filas de arriba abajo y columnas de izquierda a
+    derecha.</p>
+  <div class="sequence" aria-label="Bits de las filas"><strong>Filas</strong>
+    <div class="bits">
+      @for (bit of rows; track $index) {
+      <button [attr.aria-label]="'Fila ' + $index + ': ' + bit + '. Cambiar fase'" [attr.aria-pressed]="bit === 1"
+        (mouseenter)="active = {horizontal: true, line: $index}" (mouseleave)="active = null"
+        (focus)="active = {horizontal: true, line: $index}" (blur)="active = null" (click)="flip(true, $index)">{{ bit
+        }}</button>
+      }
+    </div>
+  </div>
+  <div class="sequence" aria-label="Bits de las columnas"><strong>Columnas</strong>
+    <div class="bits">
+      @for (bit of columns; track $index) {
+      <button [attr.aria-label]="'Columna ' + $index + ': ' + bit + '. Cambiar fase'" [attr.aria-pressed]="bit === 1"
+        (mouseenter)="active = {horizontal: false, line: $index}" (mouseleave)="active = null"
+        (focus)="active = {horizontal: false, line: $index}" (blur)="active = null" (click)="flip(false, $index)">{{ bit
+        }}</button>
+      }
+    </div>
+  </div>
+  }
+  <svg [attr.viewBox]="'-1 -1 ' + (size + 2) + ' ' + (size + 2)" role="img"
+    aria-label="Puntadas horizontales y verticales del patrón Hitomezashi">
+    @if (colored && complete) {
+    <g class="region-colors" aria-label="Regiones en azul y terracota">
+      <path class="region-a" [attr.d]="colorPaths[0]" />
+      <path class="region-b" [attr.d]="colorPaths[1]" />
+    </g>
+    }
+    @if (grid) { @for (i of lines; track i) {
+    <path class="grid" [attr.d]="'M 0 ' + i + ' H ' + size + ' M ' + i + ' 0 V ' + size" />
+    } }
+    @if (active) {
+    <path class="guide"
+      [attr.d]="active.horizontal ? 'M 0 ' + active.line + ' H ' + size : 'M ' + active.line + ' 0 V ' + size" />
+    }
+    @for (e of visible; track (e.horizontal ? 'h' : 'v') + e.x + ',' + e.y) {
+    <line class="stitch" [class.selected]="matches(e, active)" [class.changed]="matches(e, changed)" [attr.x1]="e.x"
+      [attr.y1]="e.y" [attr.x2]="e.x + (e.horizontal ? 1 : 0)" [attr.y2]="e.y + (e.horizontal ? 0 : 1)" />
+    }
+  </svg>
+  <div class="controls">
+    <button (click)="play()">{{ timer ? 'Pausar' : complete ? 'Ver cómo se construye' : 'Continuar' }}</button>
+    <button (click)="reset()">Reiniciar</button><button (click)="finish()">Mostrar completo</button>
+  </div>
+  <p role="status">{{ complete ? 'Patrón completo' : progress <= size + 1 ? 'Construyendo las filas'
+      : 'Construyendo las columnas' }} · {{ progress }} / {{ 2 * (size + 1) }} líneas</p>
+      <dl class="stats">
+        <div>
+          <dt>Celdas</dt>
+          <dd>{{ size }} × {{ size }}</dd>
+        </div>
+        <div>
+          <dt>Filas / columnas</dt>
+          <dd>{{ rows.length }} / {{ columns.length }}</dd>
+        </div>
+        <div>
+          <dt>Filas: ceros / unos</dt>
+          <dd>{{ rows.length - onesRows }} / {{ onesRows }}</dd>
+        </div>
+        <div>
+          <dt>Columnas: ceros / unos</dt>
+          <dd>{{ columns.length - onesColumns }} / {{ onesColumns }}</dd>
+        </div>
+        <div>
+          <dt>Segmentos visibles / total</dt>
+          <dd>{{ visible.length }} / {{ edges.length }}</dd>
+        </div>
+        <div>
+          <dt>Regiones cerradas del patrón completo</dt>
+          <dd>{{ regions }}</dd>
+        </div>
+      </dl>
+      <p class="hint">El borde del dibujo no cierra regiones. «Simétrico» usa la misma secuencia en filas y columnas: el
+        patrón se refleja en la diagonal.</p>
+      @if (colored) { <p class="hint">El color cambia al cruzar una puntada y se conserva al atravesar un hueco. Durante
+        la construcción, los colores aparecen al completar el patrón.</p> }
+      }
+</section>
