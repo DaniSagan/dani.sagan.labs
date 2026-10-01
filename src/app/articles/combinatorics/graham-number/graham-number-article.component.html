@@ -1,0 +1,132 @@
+<h2>El número de Graham: del problema a las flechas</h2>
+<p class="dropcap">¿Cómo puede un problema sencillo de describir producir un número que ni siquiera cabe en una torre de
+  potencias que podamos dibujar? Empecemos con dos colores, los vértices de un cubo y una pregunta: ¿cuándo resulta
+  imposible evitar una determinada figura monocromática?</p>
+<nav class="article-index" aria-label="Contenido del artículo">
+  <ul>
+    <li><a routerLink="." fragment="problema">El problema</a></li>
+    <li><a routerLink="." fragment="flechas">Laboratorio de flechas</a></li>
+    <li><a routerLink="." fragment="graham">Definir G</a></li>
+    <li><a routerLink="." fragment="digitos">Últimos dígitos</a></li>
+    <li><a routerLink="." fragment="cotas">Qué sabemos hoy</a></li>
+  </ul>
+</nav>
+
+<h3 id="problema">1. Seis segmentos del mismo color</h3>
+<p>Un hipercubo de dimensión n tiene 2ⁿ vértices: podemos describirlos mediante cadenas de n ceros y unos. Unimos
+  <strong>cada pareja</strong> de vértices y coloreamos cada segmento de rojo o azul. Incluimos las diagonales; no
+  trabajamos únicamente con las aristas exteriores del cubo.</p>
+<p>Buscamos cuatro vértices situados en un mismo plano cuyas <strong>seis conexiones</strong> sean del mismo color: un
+  K₄ monocromático y coplanario. No basta con colorear igual los cuatro lados de un rectángulo. Tampoco exigimos que los
+  cuatro vértices pertenezcan a una cara del hipercubo.</p>
+<div class="configuration">
+  <svg viewBox="0 0 220 180" role="img"
+    [attr.aria-label]="allRed ? 'Cuatro vértices coplanarios con sus seis conexiones rojas' : 'Cinco conexiones rojas y una diagonal azul: no forman un K4 monocromático'">
+    <line x1="25" y1="25" x2="195" y2="25" />
+    <line x1="195" y1="25" x2="195" y2="155" />
+    <line x1="195" y1="155" x2="25" y2="155" />
+    <line x1="25" y1="155" x2="25" y2="25" />
+    <line x1="25" y1="25" x2="195" y2="155" />
+    <line [class.blue]="!allRed" x1="195" y1="25" x2="25" y2="155" />
+    <circle cx="25" cy="25" r="5" />
+    <circle cx="195" cy="25" r="5" />
+    <circle cx="195" cy="155" r="5" />
+    <circle cx="25" cy="155" r="5" />
+  </svg>
+  <div><button (click)="allRed = !allRed">Cambiar el color de una diagonal</button>
+    <p aria-live="polite">{{ allRed ? 'Sí: las seis conexiones son rojas.' : 'No: una diagonal azul impide que el K₄ sea
+      monocromático.' }}</p>
+    <p>Ejemplo en dimensión 2. El cruce central no es un vértice nuevo.</p>
+  </div>
+</div>
+<p>Llamemos N* a la menor dimensión en la que <em>toda</em> coloración obliga a encontrar esa configuración. Un ejemplo
+  favorable no prueba esa inevitabilidad. En cambio, una coloración que la evite en dimensión n demuestra N* &gt; n. Es
+  la distinción entre cotas superior e inferior que aparece en el <a routerLink="/articles/ramsey-theorem">teorema de
+    Ramsey</a>.</p>
+<p>Graham y Rothschild demostraron en <a href="https://doi.org/10.1090/S0002-9947-1971-0284352-8">su trabajo de 1971</a>
+  que existe una dimensión suficiente, como consecuencia de su teorema sobre conjuntos parametrizados. El desafío
+  consistía en acotar ese umbral, no en organizar una competición de números grandes. La <a
+    href="https://arxiv.org/abs/1304.6910">investigación de Lavrov, Lee y Mackey</a> retoma exactamente este problema
+  geométrico.</p>
+
+<h3 id="flechas">2. Una flecha cambia la operación</h3>
+<p>La multiplicación abrevia sumas repetidas y la potencia abrevia productos repetidos. Podemos continuar: una torre de
+  potencias abrevia exponenciaciones repetidas. La notación de Knuth extiende este principio a nuevos niveles de
+  iteración.</p>
+<app-formula expression="3\uparrow3=3^3=27,\qquad 3\uparrow\uparrow3=3^{(3^3)}=3^{27}" />
+<p>Las torres se interpretan desde arriba, o asociando a la derecha. Por eso 3 elevado a (3³) no es (3³) elevado a 3. La
+  tetración, indicada mediante dos flechas, cuenta cuántas copias de la base forman la torre. Tres flechas iteran la
+  tetración; cuatro iteran la operación de tres flechas.</p>
+<p>Explora primero los cinco pasos del laboratorio. Después conserva los operandos y cambia solo el número de flechas:
+  el salto esencial está en la operación.</p>
+<app-graham-lab />
+
+<h3 id="graham">3. El resultado se convierte en cantidad de flechas</h3>
+<p>La definición popular del número de Graham comienza con cuatro flechas. Después utiliza cada resultado para decidir
+  cuántas flechas tendrá la siguiente expresión:</p>
+<app-formula expression="g_1=3\uparrow\uparrow\uparrow\uparrow3,\qquad g_{n+1}=3\uparrow^{g_n}3,\qquad G=g_{64}." />
+<p>El superíndice sobre la flecha indica una cantidad de flechas. En g₂ ya no podemos desplegarlas materialmente: habría
+  que escribir g₁ símbolos. Sin embargo, la regla determina un entero finito y único. Tras g₁ hacemos otras 63
+  aplicaciones, no 64 más.</p>
+<p>Hay que separar la historia de esta definición. La cota del trabajo original de 1971, expresada en notación de
+  flechas, era N = F⁷(12), con F(t) = 2 ↑ᵗ 3; F⁷ significa siete composiciones de F. Lipka reproduce esa fórmula al <a
+    href="https://arxiv.org/abs/1905.05617">revisar el resultado original</a>. El G que Martin Gardner popularizó en <a
+    href="https://doi.org/10.1038/scientificamerican1177-18">Scientific American, en noviembre de 1977</a>, es una cota
+  mayor y más sencilla de describir. No debemos identificar ambas expresiones.</p>
+<p>Una cota superior mayor sigue siendo válida, pero aporta menos precisión. Ni N ni G se presentan como la respuesta
+  exacta al problema. Y G no es infinito: admite operaciones como cualquier entero, aunque escribir su desarrollo
+  decimal resulte materialmente imposible.</p>
+<p>Un googol es 10¹⁰⁰; un googolplex, 10 elevado a un googol. Ambos quedan muy atrás antes de alcanzar g₁. Por eso el
+  laboratorio utiliza una jerarquía de notaciones, sin distancias proporcionales. Tomar logaritmos reduce torres, pero,
+  cuando sus propias alturas son enormes, deja de proporcionar una imagen manejable. <strong>La notación describe el
+    proceso que genera el número.</strong></p>
+
+<h3 id="digitos">4. Podemos conocer el final sin escribir el principio</h3>
+<p>Las últimas d cifras de un entero son su resto módulo 10ᵈ. No necesitamos obtener todos los dígitos para calcular ese
+  resto. El laboratorio combina torres de treses y el <a routerLink="/articles/eulers-theorem">teorema de Euler</a>: en
+  cada nivel reduce el exponente usando un módulo menor.</p>
+<app-graham-digits />
+<p>La reducción es válida porque los módulos sucesivos solo tienen factores primos 2 y 5, y por tanto son coprimos con
+  3. Al llegar al módulo 1, añadir más altura ya no altera el resultado. G puede escribirse como una torre de treses con
+  altura muy superior a la suficiente para las 30 cifras que exploramos.</p>
+<p>Por ejemplo, sus diez últimas cifras son <strong>2464195387</strong>. La <a href="https://oeis.org/A133613">sucesión
+    A133613 de OEIS</a> permite contrastar estas cifras, leídas allí desde las unidades. No afirmamos que una torre
+  finita comparta con G cualquier cantidad imaginable de cifras: aquí trabajamos en un rango cuya estabilización está
+  justificada. Puedes repasar el mecanismo en <a routerLink="/articles/modular-arithmetic">aritmética modular</a>.</p>
+
+<h3>5. No existe el número más grande</h3>
+<p>G + 1 ya supera a G. Ese argumento basta para descartar un máximo entre los enteros, pero hay comparaciones más
+  interesantes. TREE(3) surge de un problema sobre secuencias de árboles finitos con tres etiquetas, restricciones de
+  tamaño y prohibiciones de encaje. <a href="https://fomarchive.ugent.be/2006-March/010290.html">Harvey Friedman</a>
+  explica que sus cotas inferiores superan ampliamente a G.</p>
+<p>Busy Beaver es una <em>función</em>, no un único número: BB(n) maximiza los pasos que dan, antes de detenerse,
+  máquinas de Turing de n estados bajo una convención fijada. Su crecimiento acaba superando cualquier función
+  computable, incluida la sucesión que define los gₙ. Esto no significa que cada BB(n) supere a G. El <a
+    href="https://scottaaronson.com/bb.pdf">estudio de Scott Aaronson</a> explica esa diferencia y su relación con el
+  problema de la parada.</p>
+<p>Inventar un entero mayor, definir un proceso y encontrar una magnitud necesaria para estudiar un problema son tareas
+  distintas. El interés de Graham está en esa tercera conexión, además de en la claridad de su definición recursiva.</p>
+
+<h3 id="cotas">6. Volvamos a los dos colores</h3>
+<p>¿Qué dimensión necesitamos realmente? La cota inferior inicial era 6. <a
+    href="https://doi.org/10.1007/s00454-002-0780-5">Exoo (2003)</a> la elevó a 11; <a
+    href="https://arxiv.org/abs/0811.1055">Barkley (2008)</a>, a 13, construyendo una coloración en dimensión 12 que
+  evita la configuración. Eso prueba N* ≥ 13, no N* = 13.</p>
+<p>Por arriba, <a href="https://doi.org/10.1016/j.ejc.2014.06.003">Lavrov, Lee y Mackey (2014)</a> obtuvieron una cota
+  menor que 2 ↑↑↑ 6. <a href="https://arxiv.org/abs/1905.05617">Lipka (2019; versión revisada en 2020)</a> mejoró la
+  estimación. Para escribir su cota detallada sin una línea interminable, definamos:</p>
+<app-formula
+  expression="T=2\uparrow\uparrow5137,\quad A=2\uparrow\uparrow5138,\quad B=2\uparrow\uparrow5140,\quad U=A\cdot(B\uparrow\uparrow(2T))." />
+<div class="bound">
+  <p><strong>Cotas verificadas en las fuentes consultadas</strong></p>
+  <app-formula expression="\boxed{13\le N^* &lt; U}" />
+  <app-formula expression="U&lt;2\uparrow\uparrow(2\uparrow\uparrow5138)&lt;2\uparrow\uparrow\uparrow5." />
+  <p class="review-date">Revisión bibliográfica: 30 de septiembre de 2026. La mejora más reciente localizada es el
+    preprint de Lipka; no se ha encontrado una mejora posterior en la literatura consultada.</p>
+</div>
+<p>La expresión detallada U procede de la demostración del lema 6 de Lipka; la cota 2 ↑↑↑ 5 es una simplificación
+  cómoda, más débil. No significa que haya disminuido G: G conserva su valor, lo que disminuye es la cota del umbral.
+</p>
+<p>La distancia entre 13 y U sigue siendo extraordinaria. El valor exacto de N* continúa sin determinarse en estos
+  resultados. Después de aprender a definir un número inmenso, regresamos a una pregunta sobre dos colores cuya
+  respuesta exacta todavía no conocemos.</p>

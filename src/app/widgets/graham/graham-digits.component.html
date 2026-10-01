@@ -1,0 +1,44 @@
+<section class="widget" aria-label="Últimos dígitos del número de Graham">
+  <p class="eyebrow">LABORATORIO · CONOCER EL FINAL</p>
+  <h3>Sus últimos dígitos sí caben aquí</h3>
+  <label>Cifras finales (1–30)<input type="number" min="1" max="30" step="1" [(ngModel)]="digits"
+      (ngModelChange)="update()"></label>
+  @if (error) { <p role="alert">{{ error }}</p> } @else {
+  <app-formula [expression]="'G\\bmod 10^{' + digits + '}'" />
+  <p class="suffix" role="status">…{{ result.suffix }}</p>
+  <p>Es un resto calculado con aritmética modular exacta. Los ceros iniciales, si aparecen, forman parte del bloque de
+    {{ digits }} cifras.</p>
+  <h4>Observa cómo se estabiliza una torre</h4>
+  <label>Altura h = {{ height }}<input type="range" min="1" [max]="result.height" step="1" [(ngModel)]="height"></label>
+  <div class="controls"><button (click)="height = height - 1" [disabled]="height <= 1">Anterior</button><button
+      (click)="height = height + 1" [disabled]="height >= result.height">Siguiente</button><button
+      (click)="height = result.height">Altura suficiente</button></div>
+  <app-formula [expression]="'3\\uparrow\\uparrow ' + height + '\\pmod{10^{' + digits + '}}'" />
+  <p class="suffix">{{ towerSuffix }}</p>
+  <div class="table-scroll" tabindex="0" aria-label="Últimas cinco alturas exploradas">
+    <table>
+      <thead>
+        <tr>
+          <th>Altura</th>
+          <th>Últimas {{ digits }} cifras</th>
+        </tr>
+      </thead>
+      <tbody>@for (row of rows; track row.height) { <tr>
+          <td>{{ row.height }}</td>
+          <td>{{ row.suffix }}</td>
+        </tr> }</tbody>
+    </table>
+  </div>
+  <p>A partir de h = {{ result.height }} la estabilización está garantizada por la cadena de módulos; puede ocurrir
+    antes. No se concluye solo por ver dos filas iguales.</p>
+  <details>
+    <summary>Por qué el cálculo termina</summary>
+    <p>Al calcular 3 elevado a un exponente módulo m, basta conocer ese exponente módulo φ(m), porque 3 es coprimo con
+      todos los módulos de esta cadena. Repetimos el proceso hasta llegar a 1:</p>
+    <p class="chain">{{ chainText }}</p>
+    <p>La cadena contiene {{ result.height }} reducciones. A esa profundidad, cualquier exponente da resto cero módulo
+      1. Los niveles adicionales de la torre ya no pueden alterar el resultado. Para estas 30 cifras como máximo, la
+      altura de la torre que representa G supera sobradamente la requerida.</p>
+  </details>
+  }
+</section>

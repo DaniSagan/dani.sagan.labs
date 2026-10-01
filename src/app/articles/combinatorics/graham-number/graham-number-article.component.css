@@ -1,0 +1,55 @@
+.configuration {
+  display: grid;
+  grid-template-columns: minmax(160px, 260px) 1fr;
+  gap: 1.2rem;
+  align-items: center;
+  background: var(--bg2);
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+}
+.configuration svg {
+  width: 100%;
+}
+.configuration line {
+  stroke: #ef857b;
+  stroke-width: 3;
+}
+.configuration line.blue {
+  stroke: #80c7ed;
+  stroke-dasharray: 7 4;
+}
+.configuration circle {
+  fill: var(--ink);
+}
+.configuration button {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  padding: 0.6rem;
+  font: inherit;
+  cursor: pointer;
+}
+.configuration button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.bound {
+  border: 1px solid var(--gold);
+  padding: 1rem;
+  border-radius: 8px;
+  background: var(--bg2);
+}
+.review-date {
+  font-size: 0.85rem;
+}
+@media (max-width: 600px) {
+  .configuration {
+    grid-template-columns: 1fr;
+  }
+  .configuration svg {
+    max-width: 260px;
+    margin: auto;
+  }
+}

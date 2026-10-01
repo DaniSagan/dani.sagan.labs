@@ -1,0 +1,82 @@
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+.result {
+  border-left: 3px solid var(--gold);
+  padding: 0.5rem 1rem;
+  background: var(--paper);
+}
+.result h4 {
+  margin-top: 0.4rem;
+}
+.exact,
+.suffix {
+  overflow-wrap: anywhere;
+  font-family: monospace;
+}
+.suffix {
+  color: var(--gold);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+}
+.levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap: 0.3rem;
+  margin: 1rem 0;
+}
+.levels button {
+  min-height: 40px;
+  padding: 0.3rem;
+}
+button[aria-pressed="true"] {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: var(--bg2);
+}
+.tower {
+  display: grid;
+  gap: 0.25rem;
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+}
+.tower div {
+  font-size: 0.85rem;
+}
+.tower span {
+  display: inline-block;
+  min-width: 2rem;
+  color: var(--gold);
+  font: bold 1.3rem monospace;
+}
+.flow {
+  display: grid;
+  gap: 0.2rem;
+  max-width: 340px;
+  margin: 1rem auto;
+  text-align: center;
+  color: var(--gold);
+  overflow-wrap: anywhere;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+}
+td:last-child {
+  font-family: monospace;
+  overflow-wrap: anywhere;
+}
+.chain {
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,93 @@
+<section class="widget" aria-label="Laboratorio del número de Graham">
+  <p class="eyebrow">LABORATORIO · DESCRIBIR UN PROCESO</p>
+  <h3>De tres factores a 64 pasos</h3>
+  <div class="presets" aria-label="Jerarquía de operaciones">
+    @for (lesson of lessons; track $index) { <button (click)="step = $index" [attr.aria-pressed]="step === $index">{{
+      lesson.title }}</button> }
+  </div>
+  <div class="result">
+    <h4>{{ lessons[step].title }}</h4>
+    <app-formula [expression]="lessons[step].tex" />
+    <p>{{ lessons[step].text }}</p>
+  </div>
+  <div class="controls"><button (click)="step = step - 1" [disabled]="step === 0">Anterior</button><span>{{ step + 1 }}
+      / 5</span><button (click)="step = step + 1" [disabled]="step === 4">Siguiente</button></div>
+
+  <h4>Explorador de flechas de Knuth</h4>
+  <div class="controls">
+    <label>Base (2–10)<input type="number" min="2" max="10" step="1" [(ngModel)]="base"
+        (ngModelChange)="update()"></label>
+    <label>Flechas<select [(ngModel)]="arrows" (ngModelChange)="update()">
+        <option [ngValue]="1">↑</option>
+        <option [ngValue]="2">↑↑</option>
+        <option [ngValue]="3">↑↑↑</option>
+        <option [ngValue]="4">↑↑↑↑</option>
+      </select></label>
+    <label>Segundo operando (0–6)<input type="number" min="0" max="6" step="1" [(ngModel)]="operand"
+        (ngModelChange)="update()"></label>
+  </div>
+  <div class="presets"><button (click)="example(3,2,3)">3 ↑↑ 3</button><button (click)="example(3,2,4)">3 ↑↑
+      4</button><button (click)="example(3,3,3)">3 ↑↑↑ 3</button><button (click)="example(2,4,3)">2 ↑↑↑↑ 3</button>
+  </div>
+  @if (error) { <p role="alert">{{ error }}</p> } @else {
+  <app-formula [expression]="expression + '=' + expansion" />
+  @if (result.value !== null) {
+  <p class="exact" role="status"><strong>Resultado exacto:</strong> {{ result.value.toString() }}</p>
+  } @else {
+  <p role="status">{{ result.limit === 'digits' ? 'Supera las 200 cifras: conservamos su expresión exacta, sin
+    desarrollarla en decimal.' : 'Conservamos la expresión simbólica al alcanzar el límite de cálculo.' }}</p>
+  }
+  @if (arrows === 2 && operand > 0) {
+  <div class="tower" aria-label="Niveles de la torre, desde el exponente superior hasta la base">
+    @for (i of [1,2,3,4,5,6]; track i) { @if (i <= operand) { <div><span>{{ base }}</span> {{ i === 1 ? 'exponente
+      superior' : 'elevar a todo lo anterior' }}</div> } }
+  </div>
+  <p>Altura: {{ operand }}. Cada nivel usa el resultado de todos los niveles superiores como exponente.</p>
+  }
+  @if (arrows > 2 && operand > 1) {
+  <p>Primero se define la expresión interior con {{ arrows }} flechas y operando {{ operand - 1 }}; después su valor se
+    usa como segundo operando de la operación con {{ arrows - 1 }} flechas. La igualdad es recursiva, no una
+    aproximación.</p>
+  }
+  }
+  <details>
+    <summary>La regla que utiliza el explorador</summary>
+    <app-formula expression="a\uparrow^1 b=a^b,\qquad a\uparrow^k0=1" />
+    <app-formula expression="a\uparrow^k(b+1)=a\uparrow^{k-1}(a\uparrow^k b)\quad(k\ge2)" />
+    <p>En este laboratorio a ≥ 2 y b ≥ 0 son enteros. El superíndice k cuenta flechas. Hay un límite fijo de trabajo,
+      además del límite de 200 cifras.</p>
+  </details>
+
+  <h4>Construye G: el resultado anterior cuenta flechas</h4>
+  <div class="flow" aria-label="El resultado de cada paso determina las flechas del siguiente">
+    @for (i of [1,2,3,64]; track i) {
+    @if (i > 1) { <span aria-hidden="true">{{ i === 64 ? '⋮ ↓' : '↓' }}</span> }
+    <button (click)="level = i" [attr.aria-pressed]="level === i">g<sub>{{ i }}</sub> · {{ i === 1 ? '4 flechas' : 'g' +
+      (i - 1) + ' flechas' }}{{ i === 64 ? ' · G' : '' }}</button>
+    }
+  </div>
+  <p>Selecciona cualquiera de los 64 pasos. No se dibujan todas sus flechas.</p>
+  <div class="levels" aria-label="Pasos de la definición de Graham">
+    @for (i of levels; track i) { <button (click)="level = i" [attr.aria-pressed]="level === i"
+      [attr.aria-label]="'Ver la definición de g ' + i">g<sub>{{ i }}</sub></button> }
+  </div>
+  <div class="result">
+    <app-formula [expression]="definition" />
+    <p>{{ level === 1 ? 'Aquí hay cuatro flechas. Este resultado ya es enorme, pero todavía faltan 63 pasos.' :
+      'Cantidad de flechas: g' + (level - 1) + '. Los operandos siguen siendo 3 y 3.' }}</p>
+    @if (level > 1) { <p>El superíndice sobre ↑ indica cuántas flechas hay; no significa elevar la flecha a una
+      potencia.</p> }
+  </div>
+
+  <h4>¿Podemos imaginar su tamaño?</h4>
+  <p>Hasta aquí podemos escribir: cifras → potencias → torres → operaciones de más flechas → recursión.</p>
+  <div class="presets" aria-label="Jerarquía de notaciones">
+    @for (item of scales; track $index) { <button (click)="scale = $index" [attr.aria-pressed]="scale === $index">{{
+      item.title }}</button> }
+  </div>
+  <div class="result"><app-formula [expression]="scales[scale].tex" />
+    <p>{{ scales[scale].text }}</p>
+  </div>
+  <p>Es una jerarquía de notaciones, no una gráfica a escala. Una descripción breve puede determinar un entero que no
+    podemos escribir completo.</p>
+</section>

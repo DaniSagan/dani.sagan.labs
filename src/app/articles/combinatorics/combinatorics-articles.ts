@@ -5,6 +5,7 @@ import { KonigsbergBridgesArticleComponent } from './konigsberg-bridges/konigsbe
 import { PlanarEulerArticleComponent } from './planar-euler/planar-euler-article.component';
 import { RamseyTheoremArticleComponent } from './ramsey-theorem/ramsey-theorem-article.component';
 import { FourColorTheoremArticleComponent } from './four-color-theorem/four-color-theorem-article.component';
+import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
-export const COMBINATORICS_ARTICLES = [PascalTriangleArticleComponent, BinomialTheoremArticleComponent, CatalanNumbersArticleComponent, KonigsbergBridgesArticleComponent, PlanarEulerArticleComponent, RamseyTheoremArticleComponent, FourColorTheoremArticleComponent];
+export const COMBINATORICS_ARTICLES = [PascalTriangleArticleComponent, BinomialTheoremArticleComponent, CatalanNumbersArticleComponent, KonigsbergBridgesArticleComponent, PlanarEulerArticleComponent, RamseyTheoremArticleComponent, GrahamNumberArticleComponent, FourColorTheoremArticleComponent];
 export const COMBINATORICS_NAV_ITEMS = COMBINATORICS_ARTICLES.map(article => ({ name: article.title, route: article.route }));
