@@ -1,0 +1,131 @@
+<h2>Autómatas celulares y la Regla 30: complejidad a partir de reglas simples</h2>
+
+<p class="dropcap">Tenemos una fila de casillas. Cada una puede estar encendida o apagada. Para decidir qué ocurrirá
+  después, solo podemos mirar tres casillas: la propia y sus dos vecinas. Todas se actualizan simultáneamente, siguiendo
+  la misma regla. Nada recuerda el pasado ni conoce el dibujo completo. ¿Cuánta complejidad puede esconderse aquí?</p>
+
+<p>Esta es la idea de un <strong>autómata celular elemental</strong>: espacio unidimensional, dos estados y vecindad de
+  radio uno. Escribimos cada generación debajo de la anterior, de modo que el tiempo avanza hacia abajo. El laboratorio
+  comienza con una sola célula activa. Antes de leer más, contempla el resultado y cambia alguna decisión.</p>
+
+<nav class="article-index" aria-label="Contenido del artículo">
+  <ul>
+    <li><a routerLink="." fragment="laboratorio">Laboratorio</a></li>
+    <li><a routerLink="." fragment="ocho-bits">Ocho decisiones</a></li>
+    <li><a routerLink="." fragment="regla-30">Orden y aparente caos</a></li>
+    <li><a routerLink="." fragment="otros-mundos">Otros mundos</a></li>
+    <li><a routerLink="." fragment="historia">Historia y conexiones</a></li>
+  </ul>
+</nav>
+
+<h3 id="laboratorio">Primero, experimentar</h3>
+<app-cellular-automata-lab></app-cellular-automata-lab>
+
+<h3 id="ocho-bits">Solo existen ocho situaciones</h3>
+<p>Cada vecindario contiene tres bits, así que hay 2³ = 8 posibilidades. Las ordenamos como números binarios, de 111 a
+  000. Para cada una elegimos una salida: apagada o encendida. Son ocho decisiones independientes; por tanto, existen
+  exactamente <strong>2⁸ = 256 reglas elementales</strong>.</p>
+
+<p>En la Regla 30, las salidas correspondientes a 111, 110, 101, 100, 011, 010, 001 y 000 son, respectivamente, 0, 0, 0,
+  1, 1, 1, 1 y 0. Su nombre procede de leer esos resultados en <a routerLink="/articles/numeral-systems">base dos</a>:
+</p>
+<app-formula expression="(00011110)_2=16+8+4+2=30."></app-formula>
+<p>Una regla cabe literalmente en un byte. Pulsa cualquier salida del editor: el número cambia y el dibujo se
+  reconstruye. El atlas permite recorrer las 256 posibilidades con exactamente la misma semilla. ¿Qué reglas parecen
+  parientes?</p>
+
+<h3 id="regla-30">Determinismo que parece azar</h3>
+<p>Recupera la Regla 30 y una célula central. Al principio aparece un pequeño triángulo. Después conviven un borde
+  ordenado, motivos reconocibles y una región interior irregular y asimétrica. <strong>¿Cómo puede una regla que cabe en
+    una sola línea producir algo tan difícil de anticipar?</strong></p>
+
+<p>No hemos introducido azar. Cada célula está completamente determinada por sus tres predecesoras. Reiniciar con el
+  mismo estado, regla y bordes reproduce exactamente el mismo resultado. Incluso podemos expresar la regla mediante dos
+  operaciones lógicas:</p>
+<app-formula
+  expression="s_i(t+1)=s_{i-1}(t)\;\operatorname{XOR}\;\bigl(s_i(t)\operatorname{OR}s_{i+1}(t)\bigr)."></app-formula>
+<p>OR vale 1 si alguna entrada vale 1; XOR vale 1 si las entradas son distintas. Comprueba las ocho posibilidades con el
+  inspector. Una instrucción transparente puede producir un dibujo cuya organización global no resulta evidente al
+  inspeccionar esa instrucción.</p>
+
+<h4>Una columna como secuencia</h4>
+<p>Lee ahora la columna central, de arriba abajo. El laboratorio cuenta ceros, unos y bloques solapados de dos o tres
+  bits. Compara muestras de distintas longitudes. Una proporción cercana al 50 % resulta sugerente, pero la secuencia
+  010101… también está perfectamente equilibrada y es completamente periódica.</p>
+
+<p>La <strong>pseudoaleatoriedad</strong> describe secuencias deterministas que imitan ciertas propiedades estadísticas
+  del azar. Wolfram estudió esta regla como generador de secuencias pseudoaleatorias en su <a
+    href="https://www.sciencedirect.com/science/article/pii/019688588690028X" target="_blank"
+    rel="noopener noreferrer">trabajo de 1986</a>. Nuestros histogramas permiten explorar esa motivación; no certifican
+  independencia, aleatoriedad ni seguridad criptográfica. Tampoco prueban que no exista una forma abreviada de calcular
+  un término lejano.</p>
+
+<h4>Una perturbación y sus límites</h4>
+<p>Activa «Cambiar una sola célula». El mapa turquesa señala dónde difieren dos evoluciones de la misma regla. Una
+  perturbación puede extenderse, aunque su influencia avanza como máximo una posición por generación: ninguna célula
+  recibe información de más lejos en un solo paso. Esto ilustra sensibilidad al inicio; no basta para demostrar caos en
+  un sentido matemático concreto.</p>
+
+<div class="convention"><strong>La pantalla tiene bordes.</strong> El modelo ideal vive sobre una fila infinita. Aquí
+  elegimos exterior fijo a cero o un anillo periódico. Los extremos pueden alterar la evolución cuando su influencia
+  alcanza la región observada. Además, con una anchura fija W solo hay 2<sup>W</sup> estados: cualquier evolución
+  determinista finita acaba repitiéndose. No debemos extrapolar esa periodicidad al sistema infinito.</div>
+
+<h3 id="otros-mundos">La misma maquinaria, otros mundos</h3>
+<h4>Regla 90: un fractal aparece por suma</h4>
+<p>Selecciona la Regla 90 con una semilla central. La célula nueva es el XOR de sus vecinos; el centro anterior no
+  interviene. Equivalentemente, sumamos los vecinos <a routerLink="/articles/modular-arithmetic">módulo 2</a>. Dos
+  contribuciones activas se cancelan:</p>
+<app-formula expression="s_i(t+1)\equiv s_{i-1}(t)+s_{i+1}(t)\pmod 2."></app-formula>
+<p>Al iterar, contamos caminos hacia cada posición, conservando solo su paridad. Es la recurrencia del <a
+    routerLink="/articles/pascal-triangle">triángulo de Pascal</a>, con posiciones intercaladas vacías: sus coeficientes
+  impares dibujan el <a routerLink="/articles/sierpinski-triangle">triángulo de Sierpiński</a>. La misma autosemejanza
+  surge eliminando triángulos geométricos o sumando bits localmente.</p>
+
+<h4>Regla 184: coches en un anillo</h4>
+<p>Prueba un inicio aleatorio y bordes periódicos. Interpreta cada 1 como un coche y cada 0 como un hueco. Todos los
+  coches avanzan una posición a la derecha si la siguiente estaba libre. El número de coches se conserva en el anillo.
+  Es un <a href="https://arxiv.org/abs/adap-org/9705003" target="_blank" rel="noopener noreferrer">modelo elemental de
+    tráfico</a>, útil para observar flujo y atascos, aunque no representa todos los detalles de una carretera real. Con
+  exterior fijo, en cambio, pueden salir coches por el extremo derecho.</p>
+
+<h4>Regla 110: el dibujo puede computar</h4>
+<p>La Regla 110 produce estructuras que pueden interactuar. Su importancia va más allá de su aspecto: Matthew Cook
+  publicó en 2004 una <a href="https://www.complex-systems.com/pdf/15-1-1.pdf" target="_blank"
+    rel="noopener noreferrer">demostración de universalidad computacional</a>, resolviendo una conjetura de Wolfram de
+  1985.</p>
+<p>Con una codificación adecuada, su evolución puede simular computación general. La construcción utiliza
+  configuraciones sobre una fila infinita, con fondos periódicos a ambos lados de una región central; Cook explica esa
+  codificación en <a href="https://arxiv.org/abs/0906.3248" target="_blank" rel="noopener noreferrer">una exposición
+    posterior</a>. Una semilla aislada en nuestra ventana finita no constituye esa simulación. El resultado sorprendente
+  es que dos estados y dos vecinos bastan, con condiciones iniciales apropiadas.</p>
+
+<h4>Cuatro familias para orientarse</h4>
+<p>Wolfram propuso una <a href="https://www.sciencedirect.com/science/article/pii/0167278984902458" target="_blank"
+    rel="noopener noreferrer">clasificación cualitativa</a>: clase I, evolución hacia uniformidad; clase II, estructuras
+  estables o periódicas; clase III, comportamiento irregular; clase IV, estructuras complejas que interactúan. Las
+  reglas 0, 4, 30 y 110 sirven como referencias respectivas. No es una taxonomía formal que pueda decidirse mirando una
+  miniatura: importan el inicio, la escala y lo que observamos.</p>
+
+<p>También hay simetrías. Reflejar izquierda y derecha transforma la Regla 30 en la 86. Si reflejamos igualmente el
+  inicio, obtenemos la imagen especular. Por eso 256 tablas distintas no implican 256 comportamientos esencialmente
+  ajenos entre sí.</p>
+
+<h3 id="historia">De la autorreproducción a la exploración</h3>
+<p>Los autómatas celulares preceden a Wolfram. Entre sus antecedentes están los modelos de autorreproducción de John von
+  Neumann y la aportación de Stanisław Ulam al uso de retículas, en torno a los años cincuenta; estas <a
+    href="https://www.wolframscience.com/nks/notes-2-3--history-of-cellular-automata/" target="_blank"
+    rel="noopener noreferrer">notas históricas</a> describen su desarrollo. Wolfram impulsó el estudio sistemático de
+  reglas sencillas en los ochenta, entre otros en su <a
+    href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.55.601" target="_blank"
+    rel="noopener noreferrer">artículo de 1983</a>. La Regla 30 se convirtió en un ejemplo especialmente visible de
+  irregularidad generada desde un inicio mínimo.</p>
+
+<p>Para seguir explorando, las <a routerLink="/articles/abelian-sandpile">pilas de arena</a> muestran otra relación
+  entre mecanismos locales y organización global; el <a routerLink="/articles/lorenz-attractor">atractor de Lorenz</a>
+  permite estudiar sensibilidad en un sistema continuo. Son conexiones conceptuales, no modelos intercambiables.</p>
+
+<p>Regresa al laboratorio e intenta predecir antes de pulsar. <strong>Dos estados, dos vecinos y ocho decisiones
+    binarias</strong> permiten pasar de uniformidad a periodicidad, fractales, aparente caos y computación universal. La
+  complejidad global no tiene por qué estar escrita explícitamente en las reglas locales: puede surgir al repetirlas.
+</p>

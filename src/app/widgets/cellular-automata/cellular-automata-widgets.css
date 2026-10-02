@@ -1,0 +1,152 @@
+.rule-table {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin: 1rem 0;
+}
+.transition {
+  text-align: center;
+  padding: 0.5rem 0.15rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.transition.applied {
+  border-color: #ff668e;
+}
+.neighbors {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+.cell {
+  display: inline-grid;
+  place-items: center;
+  min-width: 0;
+  width: 1.25rem;
+  height: 1.4rem;
+  background: #12131c;
+  color: #ddd;
+  font: 0.8rem monospace;
+}
+.on {
+  background: #deb868 !important;
+  color: #12131c !important;
+}
+.output {
+  display: block;
+  margin: 0.2rem auto 0;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0.1rem;
+}
+.canvas-scroll {
+  max-height: 640px;
+  overflow: auto;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+}
+.initial-strip {
+  height: 36px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.inspection {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font: 1.8rem monospace;
+}
+.sequence {
+  font: 1rem/1.8 monospace;
+  overflow-wrap: anywhere;
+  max-height: 9rem;
+  overflow: auto;
+  padding: 0.7rem;
+  background: var(--paper);
+}
+.histograms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.stat {
+  display: grid;
+  grid-template-columns: 2rem 1fr 6.6rem;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+}
+meter {
+  width: 100%;
+  min-width: 0;
+  accent-color: var(--gold);
+}
+.comparison {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+figure {
+  margin: 0;
+  flex: 1 1 190px;
+  min-width: 0;
+  max-height: 500px;
+  overflow: auto;
+}
+figcaption {
+  font: 0.9rem monospace;
+  color: var(--gold);
+  margin: 0.6rem 0;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+.checkbox input {
+  width: auto;
+  margin: 0;
+}
+.atlas {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.atlas button {
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+.atlas span {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.playback label {
+  flex: 1 1 170px;
+}
+li details {
+  margin: 0.5rem 0 1rem;
+  padding-top: 0.4rem;
+}
+button[aria-pressed="true"] {
+  border-color: var(--gold);
+}
+@media (max-width: 650px) {
+  .rule-table {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .histograms {
+    grid-template-columns: 1fr;
+  }
+  .atlas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}

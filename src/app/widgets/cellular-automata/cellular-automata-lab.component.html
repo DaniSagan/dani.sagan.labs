@@ -1,0 +1,242 @@
+<section class="widget" aria-label="Laboratorio de autómatas celulares">
+  <span class="eyebrow">OCHO DECISIONES · UN MUNDO ENTERO</span>
+  <h3>Laboratorio de autómatas celulares</h3>
+  <p>Empieza mirando el dibujo. Después cambia una decisión de la regla: ¿puedes anticipar el resultado?</p>
+  <div class="presets" aria-label="Reglas destacadas">
+    @for (preset of presets; track preset.rule) {
+    <button type="button" [class.selected]="rule === preset.rule" [attr.aria-pressed]="rule === preset.rule"
+      (click)="selectRule(preset.rule)">Regla {{ preset.rule }}</button>
+    }
+  </div>
+  <p class="note">{{ description }}</p>
+  <div class="controls">
+    <label>Regla (0–255)<input aria-label="Número de regla" type="number" min="0" max="255" [(ngModel)]="rule"
+        (ngModelChange)="configure()"></label>
+    <label>Anchura<input aria-label="Anchura" type="number" min="3" max="401" [(ngModel)]="width"
+        (ngModelChange)="configure()"></label>
+    <label>Generaciones tras el inicio<input aria-label="Generaciones" type="number" min="1" max="500"
+        [(ngModel)]="generations" (ngModelChange)="configure()"></label>
+    <label>Bordes<select aria-label="Bordes" [(ngModel)]="boundary" (ngModelChange)="configure()">
+        <option value="fixed">Exterior fijo a 0</option>
+        <option value="periodic">Periódicos: un anillo</option>
+      </select></label>
+  </div>
+  @if (error) { <p class="error" role="alert">{{ error }}</p> }
+  @if (!error) {
+  <p class="readout">{{ binary }}₂ = {{ rule }}₁₀</p>
+  <div class="rule-table" aria-label="Tabla de transición: de 111 a 000">
+    @for (n of neighborhoods; track n) {
+    <div class="transition" [class.applied]="inspection?.input === bits(n)">
+      <div class="neighbors" [attr.aria-label]="'Vecindario ' + bits(n)">
+        @for (bit of bits(n).split(''); track $index) { <span class="cell" [class.on]="bit === '1'">{{ bit }}</span> }
+      </div>
+      <span aria-hidden="true">↓</span>
+      <button type="button" class="output" [class.on]="bit(n) === 1"
+        [attr.aria-label]="'Salida de ' + bits(n) + ': ' + bit(n) + '. Cambiar bit'" [attr.aria-pressed]="bit(n) === 1"
+        (click)="toggleBit(n)">{{ bit(n) }}</button>
+    </div>
+    }
+  </div>
+  <p class="note">Pulsa una salida para invertirla. Los ocho bits, de izquierda a derecha, codifican la regla en base 2.
+  </p>
+  <details>
+    <summary>Editar el estado inicial</summary>
+    <div class="presets">
+      <button type="button" (click)="seed('single')">Una célula central</button>
+      <button type="button" (click)="seed('random')">Inicio aleatorio</button>
+      <button type="button" (click)="seed('clear')">Limpiar</button>
+      <button type="button" (click)="seed('invert')">Invertir estados</button>
+    </div>
+    <div class="initial-strip"><app-automaton-canvas [rows]="[initial]" [strip]="true"
+        label="Fila inicial editable. También puedes elegir una posición con el control inferior."
+        (cellPicked)="flipInitial($event.column)"></app-automaton-canvas></div>
+    <div class="controls">
+      <label>Posición a editar (desde 0)<input aria-label="Posición a editar" type="number" min="0" [max]="width - 1"
+          [(ngModel)]="editColumn"></label>
+      <button type="button" (click)="flipInitial(editColumn)">Cambiar esta célula</button>
+    </div>
+    <p class="note">Pulsa sobre la franja o utiliza el control de posición. Cambiar la anchura recupera una semilla
+      central. El azar solo interviene al generar un inicio aleatorio.</p>
+  </details>
+  <div class="controls playback">
+    <button type="button" (click)="play()" [disabled]="running">Iniciar</button>
+    <button type="button" (click)="pause()" [disabled]="!running">Pausar</button>
+    <button type="button" (click)="step()" [disabled]="running || visible === rows.length">Avanzar una
+      generación</button>
+    <button type="button" (click)="reset()">Reiniciar</button>
+    <button type="button" (click)="all()">Ver todas</button>
+    <label>Velocidad: {{ speed }} gen/s<input aria-label="Velocidad" type="range" min="1" max="60" [(ngModel)]="speed"
+        (ngModelChange)="changeSpeed()"></label>
+  </div>
+  <p class="note">Tiempo ↓ · generación 0 a {{ visible - 1 }} · dorado = 1, oscuro = 0 · rosa = célula inspeccionada y
+    sus padres.</p>
+  <div class="canvas-scroll"><app-automaton-canvas [rows]="rows" [visible]="visible" [highlights]="highlights"
+      [label]="'Regla ' + rule + ': ' + visible + ' filas visibles de ' + width + ' células'"
+      (cellPicked)="pick($event)"></app-automaton-canvas></div>
+  <details #inspector>
+    <summary>¿Por qué se encendió esta célula?</summary>
+    <p>Pulsa una célula del dibujo para inspeccionarla; en la fila 0, la pulsación cambia el inicio. También puedes usar
+      estos controles.</p>
+    <div class="controls">
+      <label>Generación<input aria-label="Generación inspeccionada" type="number" min="1" [max]="visible - 1"
+          [(ngModel)]="inspectionRow"></label>
+      <label>Columna<input aria-label="Columna inspeccionada" type="number" min="0" [max]="width - 1"
+          [(ngModel)]="inspectionColumn"></label>
+    </div>
+    @if (inspection; as inspected) {
+    <div class="inspection result"><span>{{ inspected.input }}</span><span>→</span><strong>{{ inspected.output
+        }}</strong></div>
+    <p class="note">Izquierda, centro y derecha en la generación {{ inspectionRow - 1 }} → estado en la generación {{
+      inspectionRow }}. La tarjeta correspondiente queda resaltada. Fuera de los bordes fijos leemos 0; en el anillo
+      leemos el extremo opuesto.</p>
+    } @else { <p class="note">Avanza al menos una generación y elige coordenadas dentro de las filas visibles.</p> }
+  </details>
+  <details>
+    <summary>Leer una columna y explorar sus frecuencias</summary>
+    <div class="controls">
+      <label>Columna (desde 0)<input aria-label="Columna de la secuencia" type="number" min="0" [max]="width - 1"
+          [(ngModel)]="column"></label>
+      <button type="button" (click)="centerColumn()">Columna central</button>
+      <label>Bloques<select aria-label="Longitud de bloques" [(ngModel)]="blockSize">
+          <option [ngValue]="2">Pares: 2 bits</option>
+          <option [ngValue]="3">Tríos: 3 bits</option>
+        </select></label>
+    </div>
+    @if (sequence.length) {
+    <p class="sequence" aria-label="Secuencia de la columna">{{ sequence.join(' ') }}</p>
+    <p class="note">{{ sequence.length }} bits, incluida la fila inicial. Los bloques se solapan; no unimos el final con
+      el principio.</p>
+    <div class="histograms">
+      @for (group of [singleStats, blockStats]; track $index) {
+      <div>
+        @for (stat of group; track stat.block) {
+        <div class="stat"><code>{{ stat.block }}</code><meter min="0" max="100" [value]="stat.percent"
+            [attr.aria-label]="'Frecuencia de ' + stat.block"></meter><span>{{ stat.count }} · {{
+            stat.percent.toFixed(1) }} %</span></div>
+        }
+      </div>
+      }
+    </div>
+    <p class="note">Frecuencias parecidas no demuestran aleatoriedad ni independencia. Cambia la columna, el inicio y la
+      longitud de la muestra.</p>
+    } @else { <p class="error">Elige una columna entre 0 y {{ width - 1 }}.</p> }
+  </details>
+  <div class="presets" aria-label="Experimentos">
+    <button type="button" [attr.aria-pressed]="mode === 'explore'" (click)="setMode('explore')">Una regla</button>
+    <button type="button" [attr.aria-pressed]="mode === 'compare'" (click)="setMode('compare')">Comparar reglas</button>
+    <button type="button" [attr.aria-pressed]="mode === 'difference'" (click)="setMode('difference')">Cambiar una sola
+      célula</button>
+    <button type="button" [attr.aria-pressed]="mode === 'atlas'" (click)="setMode('atlas')">Atlas de 256 reglas</button>
+  </div>
+  @if (mode === 'compare') {
+  <h4>Un mismo inicio, diferentes reglas</h4>
+  <div class="controls">
+    <label>Segunda regla<input aria-label="Segunda regla" type="number" min="0" max="255" [(ngModel)]="compareRule"
+        (ngModelChange)="refreshMode()"></label>
+    <label class="checkbox"><input type="checkbox" [(ngModel)]="showThird" (ngModelChange)="refreshMode()"> Añadir
+      tercera regla</label>
+    @if (showThird) { <label>Tercera regla<input aria-label="Tercera regla" type="number" min="0" max="255"
+        [(ngModel)]="thirdRule" (ngModelChange)="refreshMode()"></label> }
+  </div>
+  @if (validComparison) {
+  <div class="comparison">
+    <figure>
+      <figcaption>Regla {{ rule }}</figcaption><app-automaton-canvas [rows]="rows" [visible]="visible"
+        [label]="'Comparación: regla ' + rule"></app-automaton-canvas>
+    </figure>
+    <figure>
+      <figcaption>Regla {{ compareRule }}</figcaption><app-automaton-canvas [rows]="comparison" [visible]="visible"
+        [label]="'Comparación: regla ' + compareRule"></app-automaton-canvas>
+    </figure>
+    @if (showThird) { <figure>
+      <figcaption>Regla {{ thirdRule }}</figcaption><app-automaton-canvas [rows]="third" [visible]="visible"
+        [label]="'Comparación: regla ' + thirdRule"></app-automaton-canvas>
+    </figure> }
+  </div>
+  <p class="note">Misma fila inicial, anchura, bordes y tiempo. Incluso el inicio aleatorio se comparte exactamente.</p>
+  } @else { <p class="error">Las reglas deben ser enteros entre 0 y 255.</p> }
+  }
+  @if (mode === 'difference') {
+  <h4>La propagación de una perturbación</h4>
+  <label>Célula inicial que invertimos: {{ perturbColumn }}<input aria-label="Célula perturbada" type="range" min="0"
+      [max]="width - 1" [(ngModel)]="perturbColumn" (ngModelChange)="refreshMode()"></label>
+  @if (validPerturbation) {
+  <div class="comparison">
+    <figure>
+      <figcaption>Inicio original</figcaption><app-automaton-canvas [rows]="rows" [visible]="visible"
+        label="Evolución original"></app-automaton-canvas>
+    </figure>
+    <figure>
+      <figcaption>Una célula cambiada</figcaption><app-automaton-canvas [rows]="perturbed" [visible]="visible"
+        label="Evolución perturbada"></app-automaton-canvas>
+    </figure>
+    <figure>
+      <figcaption>Diferencias en turquesa</figcaption><app-automaton-canvas [rows]="differenceRows" [visible]="visible"
+        [difference]="true" label="Mapa de diferencias entre ambos autómatas"></app-automaton-canvas>
+    </figure>
+  </div>
+  <p>{{ differenceCount }} células distintas en la última generación visible.</p>
+  <p class="note">La influencia avanza como máximo una posición por paso (en un anillo puede cruzar el borde). Observar
+    diferencias no demuestra por sí solo caos matemático.</p>
+  }
+  }
+  @if (mode === 'atlas') {
+  <h4>Atlas de reglas</h4>
+  <p class="note">Todas las miniaturas: 65 celdas, una semilla central, 32 pasos y exterior fijo a 0. Se cargan 32 cada
+    vez. Al abrir una, el laboratorio recupera una semilla central con tus dimensiones actuales.</p>
+  <label class="checkbox"><input type="checkbox" [(ngModel)]="featuredOnly" (ngModelChange)="loadAtlas()"> Solo las
+    reglas del artículo</label>
+  @if (!featuredOnly) {
+  <div class="presets"><button type="button" (click)="atlasPage(-1)" [disabled]="page === 0">Página
+      anterior</button><span>Página {{ page + 1 }} de 8</span><button type="button" (click)="atlasPage(1)"
+      [disabled]="page === 7">Página siguiente</button></div>
+  }
+  <div class="atlas">
+    @for (item of atlas; track item.rule) {
+    <button type="button" [class.selected]="rule === item.rule" (click)="openAtlas(item.rule)"><span>Regla {{ item.rule
+        }}</span><app-automaton-canvas [rows]="item.rows"
+        [label]="'Miniatura de la regla ' + item.rule"></app-automaton-canvas></button>
+    }
+  </div>
+  }
+  <details>
+    <summary>Una simetría: mirar desde el otro lado</summary>
+    <p>La reflexión de la Regla {{ rule }} es la Regla {{ mirror }}. Intercambiamos izquierda y derecha en cada
+      vecindario, sin cambiar la salida asociada.</p>
+    <button type="button" (click)="reflect()">Reflejar regla e inicio</button>
+    <p class="note">Reflejamos también el estado inicial para obtener el dibujo especular completo. Pulsar dos veces
+      recupera el original. Intercambiar los nombres 0 y 1 es otra simetría, pero requiere transformar entradas y
+      salidas, no solo invertir los ocho resultados.</p>
+  </details>
+  <details>
+    <summary>Experimenta: seis pequeños desafíos</summary>
+    <ol>
+      <li>¿Puedes encontrar una regla que produzca triángulos?<details>
+          <summary>Una pista</summary>Prueba una salida encendida cuando los dos vecinos sean distintos.
+        </details>
+      </li>
+      <li>¿Una que termine completamente vacía?<details>
+          <summary>Una pista</summary>¿Qué sucede si apagas las ocho salidas?
+        </details>
+      </li>
+      <li>¿Una que produzca líneas periódicas o estables?<details>
+          <summary>Una pista</summary>Conserva solo el vecindario 010: ¿qué hace una célula aislada?
+        </details>
+      </li>
+      <li>¿Una que parezca irregular? ¿Sigue pareciéndolo con un inicio vacío?<details>
+          <summary>Una pista</summary>Compara esos dos inicios en la Regla 30.
+        </details>
+      </li>
+      <li>¿Qué cambia al invertir una sola célula en la Regla 30?<details>
+          <summary>Una pista</summary>Reinicia y avanza: comprueba hasta dónde pueden llegar las diferencias tras cada
+          paso.
+        </details>
+      </li>
+      <li>¿Puedes encontrar dos reglas visualmente relacionadas?<details>
+          <summary>Una pista</summary>Refleja la Regla 30. ¿Qué número aparece? Refleja otra vez.
+        </details>
+      </li>
+    </ol>
+  </details>
+  }
+</section>
