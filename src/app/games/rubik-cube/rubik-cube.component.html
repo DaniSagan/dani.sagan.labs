@@ -1,14 +1,87 @@
-<h2>Cubo de Rubik</h2>
-<div>
-  <canvas #canvas></canvas>
-  <div class="controls">
-    <button (click)="rotateFace('x', 1, 1)">Rotar Cara X+</button>
-    <button (click)="rotateFace('x', 1, -1)">Rotar Cara X-</button>
-    <button (click)="rotateFace('y', 1, 1)">Rotar Cara Y+</button>
-    <button (click)="rotateFace('y', 1, -1)">Rotar Cara Y-</button>
-    <button (click)="rotateFace('z', 1, 1)">Rotar Cara Z+</button>
-    <button (click)="rotateFace('z', 1, -1)">Rotar Cara Z-</button>
+<div class="rubik-lab">
+  <header class="lab-header">
+    <div><span class="eyebrow">LABORATORIO INTERACTIVO / 03 × 03</span>
+      <h2>Seis caras.<br><em>Un universo de giros.</em></h2>
+      <p>El clásico cubo de Rubik, desde todos los ángulos.</p>
+    </div>
+
+  </header>
+  <div class="workspace">
+    <div class="visual-panel">
+      <div class="stage-top"><span class="live-dot"></span> CUBO DE RUBIK <span class="state"
+          [class.solved]="model.solved">{{ model.solved ? 'RESUELTO' : 'EN JUEGO' }}</span></div>
+      <div class="viewport" #viewport>
+        <div class="ground" aria-hidden="true"></div>
+        <canvas #canvas tabindex="0" role="group"
+          aria-label="Cubo de Rubik 3D interactivo. Arrastra para rotar la cámara, usa la rueda o dos dedos para hacer zoom. Teclado: flechas para la cámara, más y menos para zoom, R L U D F B para girar caras, Mayúsculas para el giro inverso."
+          (keydown)="keyboard($event)"></canvas>
+        @if (error) { <div class="webgl-error" role="alert">{{ error }}</div> }
+        <div class="stage-caption" aria-hidden="true">ARRASTRA PARA ROTAR <span>·</span> RUEDA / PELLIZCO PARA ZOOM
+        </div>
+      </div>
+      <div class="view-toolbar">
+        <div class="zoom-controls"><button type="button" (click)="zoom(.85)" [disabled]="!!error"
+            aria-label="Acercar cámara">＋</button><button type="button" (click)="zoom(1.15)" [disabled]="!!error"
+            aria-label="Alejar cámara">−</button><button type="button" (click)="resetCamera()"
+            [disabled]="!!error">Centrar vista</button></div>
+        <button type="button" class="auto-button" [class.enabled]="autoRotate" [attr.aria-pressed]="autoRotate"
+          [disabled]="!!error" (click)="toggleAuto()">{{ autoRotate ? '◼ Detener órbita' : '◎ Órbita automática'
+          }}</button>
+      </div>
+      <div class="status-message" role="status" aria-live="polite">{{ busy ? 'Girando… ' + remaining + ' movimientos
+        pendientes.' : message }}</div>
+    </div>
+    <aside class="control-panel" aria-label="Controles del cubo">
+      <span class="eyebrow">01 / MUEVE LAS PIEZAS</span>
+      <h3>Cada giro cuenta.</h3>
+      <p class="hint">Giros de 90°, vistos de frente a cada cara. ↻ horario · ↺ antihorario.</p>
+      <div class="faces">
+        @for (f of faces; track f.face) {
+        <div class="face-row" [class.selected]="selected === f.face">
+          <button type="button" class="face-select" (click)="selected=f.face" [attr.aria-pressed]="selected === f.face"
+            [attr.aria-label]="'Seleccionar cara ' + f.face + ': ' + f.name"><i
+              [style.background]="f.color"></i><strong>{{ f.face }}</strong><span>{{ f.name }}</span></button>
+          <button type="button" class="turn" (click)="turn(f.face)" [disabled]="busy || !!error"
+            [attr.aria-label]="'Girar cara ' + f.face + ' en sentido horario'">↻</button>
+          <button type="button" class="turn" (click)="turn(f.face,true)" [disabled]="busy || !!error"
+            [attr.aria-label]="'Girar cara ' + f.face + ' en sentido antihorario'">↺</button>
+        </div>
+        }
+      </div>
+      <div class="selected-actions"><span>Cara seleccionada <strong>{{ selected }}</strong></span><button type="button"
+          (click)="turn(selected)" [disabled]="busy || !!error"
+          aria-label="Girar cara seleccionada en sentido horario">↻</button><button type="button"
+          (click)="turn(selected,true)" [disabled]="busy || !!error"
+          aria-label="Girar cara seleccionada en sentido antihorario">↺</button></div>
+      <div class="actions"><button type="button" class="primary" (click)="scramble()" [disabled]="busy || !!error">⤨
+          Mezclar · 20 giros</button><button type="button" (click)="algorithm()" [disabled]="busy || !!error">Probar R U
+          R′ U′</button></div>
+      <label class="speed-label">Duración del giro <span>{{ speed }} ms</span><input type="range" min="100" max="700"
+          step="50" [(ngModel)]="speed" [disabled]="busy" aria-label="Duración de cada giro en milisegundos"></label>
+      <div class="recovery"><button type="button" (click)="undo()" [disabled]="busy || !history.length || !!error">↶
+          Deshacer</button><button type="button" (click)="rewind()"
+          [disabled]="busy || !history.length || !!error">Rebobinar</button><button type="button" (click)="reset()"
+          [disabled]="busy || !!error">Restaurar cubo</button></div>
+    </aside>
   </div>
+  <div class="history-panel">
+    <div><span class="eyebrow">02 / TU RECORRIDO</span>
+      <h3>{{ history.length }} <small>{{ history.length === 1 ? 'movimiento' : 'movimientos' }}</small></h3>
+    </div>
+    <div class="move-list" aria-label="Últimos movimientos">@for (move of history.slice(-24); track $index) { <span>{{
+        notation(move) }}</span> } @empty { <p>Todo empieza con un giro.</p> }</div><span class="sticker-score">{{
+      model.correctStickers }}<small> / 54 pegatinas<br>en su cara</small></span>
+  </div>
+  <details class="instructions">
+    <summary>Cómo explorar el cubo</summary>
+    <p>Arrastra con un dedo o el ratón para mirar desde cualquier ángulo. Acerca y aleja con la rueda, con dos dedos o
+      con los botones. Pulsa una pegatina para seleccionar la cara que ocupa en ese momento; después utiliza sus botones
+      de giro.</p>
+    <p>Las letras nombran caras fijas: U superior blanca, D inferior amarilla, R derecha roja, L izquierda naranja, F
+      frontal verde y B trasera azul. Rotar la cámara no cambia estas referencias. Un apóstrofo indica el giro inverso.
+    </p>
+    <p>Con el visor enfocado, usa las flechas para la cámara, + y − para zoom, Inicio para centrar y R, L, U, D, F, B
+      para las caras; Mayúsculas invierte el giro. «Rebobinar» deshace tu historial completo: no es un solucionador
+      general. La mezcla utiliza 20 giros legales y no pretende generar todos los estados con igual probabilidad.</p>
+  </details>
 </div>
-
-
