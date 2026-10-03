@@ -1,16 +1,18 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
+import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NavbarSubsection } from '../content/navbar-subsection';
 
 @Component({
   selector: 'app-section-navbar',
   standalone: true,
-  imports: [FormsModule, RouterLink, RouterLinkActive],
+  imports: [NgTemplateOutlet, FormsModule, RouterLink, RouterLinkActive],
   templateUrl: './section-navbar.component.html',
   styleUrl: './section-navbar.component.css'
 })
-export class SectionNavbarComponent implements OnChanges {
+export class SectionNavbarComponent implements OnChanges, OnDestroy {
   @Input({ required: true }) title = '';
   @Input({ required: true }) basePath = '';
   @Input({ required: true }) sections: NavbarSubsection[] = [];
@@ -19,7 +21,26 @@ export class SectionNavbarComponent implements OnChanges {
   searchTerm = '';
   private readonly expandedSections = new Set<string>();
 
-  constructor(private readonly router: Router) {}
+  private readonly navigationSubscription: Subscription;
+
+  constructor(private readonly router: Router) {
+    this.navigationSubscription = router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) this.openInitialSection(false);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.navigationSubscription.unsubscribe();
+  }
+
+  sectionKey(parent: string, name: string): string {
+    return parent + '/' + encodeURIComponent(name);
+  }
+
+  countItems(section: NavbarSubsection): number {
+    return section.items.length + (section.subsections ?? []).reduce(
+      (total, child) => total + this.countItems(child), 0);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['sections']) {
@@ -30,22 +51,26 @@ export class SectionNavbarComponent implements OnChanges {
   get filteredSections(): NavbarSubsection[] {
     const query = this.normalize(this.searchTerm);
 
-    return this.sections
-      .map(section => ({
+    return this.filterSections(this.sections, query);
+  }
+
+  private filterSections(sections: NavbarSubsection[], query: string): NavbarSubsection[] {
+    return sections.map(section => {
+      const childQuery = this.normalize(section.name).includes(query) ? '' : query;
+      return {
         ...section,
-        items: query
-          ? section.items.filter(item => this.normalize(item.name).includes(query))
-          : section.items
-      }))
-      .filter(section => section.items.length > 0);
+        items: section.items.filter(item => !childQuery || this.normalize(item.name).includes(childQuery)),
+        subsections: this.filterSections(section.subsections ?? [], childQuery)
+      };
+    }).filter(section => this.countItems(section) > 0);
   }
 
   get totalCount(): number {
-    return this.sections.reduce((total, section) => total + section.items.length, 0);
+    return this.sections.reduce((total, section) => total + this.countItems(section), 0);
   }
 
   get resultCount(): number {
-    return this.filteredSections.reduce((total, section) => total + section.items.length, 0);
+    return this.filteredSections.reduce((total, section) => total + this.countItems(section), 0);
   }
 
   isExpanded(sectionName: string): boolean {
@@ -72,16 +97,22 @@ export class SectionNavbarComponent implements OnChanges {
     }
   }
 
-  private openInitialSection(): void {
-    const currentRoute = this.router.url.split(/[?#]/)[0].split('/').filter(Boolean).pop();
-    const activeSection = this.sections.find(section =>
-      section.items.some(item => item.route === currentRoute)
-    );
-    const fallbackSection = this.sections.find(section => section.items.length > 0);
-    const initialSection = activeSection ?? fallbackSection;
-
-    if (initialSection) {
-      this.expandedSections.add(initialSection.name);
+  private openInitialSection(fallback = true): void {
+    const currentPath = this.router.url.split(/[?#]/)[0];
+    const visit = (sections: NavbarSubsection[], parent: string): boolean => {
+      for (const section of sections) {
+        const key = this.sectionKey(parent, section.name);
+        const activeChild = visit(section.subsections ?? [], key);
+        if (activeChild || section.items.some(item => currentPath === `${this.basePath}/${item.route}`)) {
+          this.expandedSections.add(key);
+          return true;
+        }
+      }
+      return false;
+    };
+    if (!visit(this.sections, '') && fallback) {
+      const first = this.sections.find(section => this.countItems(section) > 0);
+      if (first) this.expandedSections.add(this.sectionKey('', first.name));
     }
   }
 

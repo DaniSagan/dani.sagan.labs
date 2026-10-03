@@ -27,37 +27,8 @@
   </div>
 
   <div class="navigation-groups">
-    @for (section of filteredSections; track section.name) {
-      <section class="navigation-group">
-        <button
-          type="button"
-          class="subsection"
-          [attr.aria-expanded]="isExpanded(section.name)"
-          (click)="toggleSection(section.name)"
-        >
-          <span>{{ section.name }}</span>
-          <span class="section-meta">
-            <span class="item-count">{{ section.items.length }}</span>
-            <span class="chevron" aria-hidden="true">⌄</span>
-          </span>
-        </button>
-
-        @if (isExpanded(section.name)) {
-          <ul>
-            @for (item of section.items; track item.route) {
-              <li class="subsection-item">
-                <a
-                  [routerLink]="[basePath, item.route]"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="closeSidebar()"
-                >{{ item.name }}</a>
-              </li>
-            }
-          </ul>
-        }
-      </section>
-    } @empty {
+    <ng-container *ngTemplateOutlet="groups; context: { $implicit: filteredSections, parent: '' }" />
+    @if (filteredSections.length === 0) {
       <div class="empty-results">
         <span aria-hidden="true">∅</span>
         <p>No hay páginas que coincidan con «{{ searchTerm }}».</p>
@@ -66,3 +37,34 @@
     }
   </div>
 </nav>
+
+<ng-template #groups let-sections let-parent="parent">
+  @for (section of sections; track section.name) {
+    <section class="navigation-group" [class.nested-group]="parent !== ''">
+      <button type="button" class="subsection"
+        [attr.aria-expanded]="isExpanded(sectionKey(parent, section.name))"
+        [attr.aria-controls]="sidebarId + sectionKey(parent, section.name)"
+        (click)="toggleSection(sectionKey(parent, section.name))">
+        <span>{{ section.name }}</span>
+        <span class="section-meta">
+          <span class="item-count">{{ countItems(section) }}</span>
+          <span class="chevron" aria-hidden="true">&#8964;</span>
+        </span>
+      </button>
+      <div [id]="sidebarId + sectionKey(parent, section.name)" [hidden]="!isExpanded(sectionKey(parent, section.name))">
+        @if (section.items.length) {
+          <ul>
+            @for (item of section.items; track item.route) {
+              <li class="subsection-item">
+                <a [routerLink]="[basePath, item.route]" routerLinkActive="active"
+                  ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="closeSidebar()">{{ item.name }}</a>
+              </li>
+            }
+          </ul>
+        }
+        <ng-container *ngTemplateOutlet="groups; context: { $implicit: section.subsections ?? [], parent: sectionKey(parent, section.name) }" />
+      </div>
+    </section>
+  }
+</ng-template>

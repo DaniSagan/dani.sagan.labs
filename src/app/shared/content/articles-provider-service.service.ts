@@ -1,3 +1,4 @@
+import { groupArticleItems } from './article-navigation-groups';
 import { ALGEBRA_NAV_ITEMS } from 'src/app/articles/algebra/algebra-articles';
 import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
 import { GaltonBoardArticleComponent } from 'src/app/articles/probability/galton-board/galton-board-article.component';
@@ -224,10 +225,10 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     result.name = 'Artículos';
     result.subsections = [
       { name: 'Mapa', items: this.map },
-      { name: 'Fractales', items: this.fractals },
+      { name: 'Fractales', items: [], subsections: groupArticleItems(this.fractals, 'fractals') },
       { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },
-      { name: 'Teoría de Números', items: this.numericTheory },
+      { name: 'Teoría de Números', items: [], subsections: groupArticleItems(this.numericTheory, 'numbers') },
       { name: 'Álgebra', items: ALGEBRA_NAV_ITEMS },
       { name: 'Combinatoria', items: COMBINATORICS_NAV_ITEMS },
       { name: 'Análisis Matemático', items: ANALYSIS_NAV_ITEMS },
@@ -235,8 +236,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
       { name: 'Sistemas dinámicos', items: DYNAMICAL_SYSTEMS_NAV_ITEMS },
       { name: 'Topología', items: TOPOLOGY_NAV_ITEMS },
       { name: 'Números complejos', items: COMPLEX_NUMBERS_NAV_ITEMS },
-      { name: 'Geometría', items: this.geometry },
-      { name: 'Curvas', items: this.curves },
+      { name: 'Geometría', items: [], subsections: groupArticleItems(this.geometry, 'geometry') },
+      { name: 'Curvas', items: [], subsections: groupArticleItems(this.curves, 'curves') },
       { name: 'Probabilidad', items: this.probability },
       { name: 'Trigonometría', items: this.trigonometry },
       { name: 'Otros', items: this.others }

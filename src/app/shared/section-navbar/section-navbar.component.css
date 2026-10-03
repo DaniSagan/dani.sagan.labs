@@ -246,3 +246,22 @@
     min-height: 2.4rem;
   }
 }
+
+.nested-group {
+  margin-left: 0.6rem;
+  padding-left: 0.45rem;
+  border-left: 1px solid var(--rule);
+  border-bottom: 0;
+}
+
+.nested-group .subsection {
+  font-size: 0.73rem;
+  color: var(--ink-dim);
+}
+
+.section-meta { flex-shrink: 0; }
+
+.subsection:focus-visible, .subsection-item a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
