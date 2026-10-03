@@ -1,0 +1,269 @@
+<section class="widget">
+  @if (mode === 'converter') {
+  <span class="eyebrow">EXPLORADOR DE SISTEMAS DE NUMERACIÓN</span>
+  <h3>Conversor de bases</h3>
+  <p>Elige una familia y cambia las reglas. El número se conserva; su escritura cambia.</p>
+  <div class="presets" aria-label="Ejemplos preparados">
+    <button type="button" (click)="preset('101101','10','2')">101101₂ → 45</button>
+    <button type="button" (click)="preset('255','16')">255 → FF</button>
+    <button type="button" (click)="preset('42','-2')">42 en −2</button>
+    <button type="button" (click)="preset('-19','balanced')">−19 balanceado</button>
+    <button type="button" (click)="preset('3+2i','2i')">3 + 2i</button>
+    <button type="button" (click)="preset('42','zeckendorf')">Zeckendorf</button>
+    <button type="button" (click)="preset('42','factorial')">Factorial</button>
+    <button type="button" (click)="preset('2','phi')">2 en φ</button>
+  </div>
+  <div class="controls">
+    <label>Número o numeral<input [(ngModel)]="input" (ngModelChange)="update()" maxlength="120" spellcheck="false"
+        aria-describedby="source-help"></label>
+    <label>Base de origen<select [(ngModel)]="source" (ngModelChange)="update()">
+        @for (b of bases; track b) { <option [value]="b">{{ b }}</option> }
+        @for (b of bases; track b) { <option [value]="-b">{{ -b }}</option> }
+        @for (s of specialSources; track s.id) { <option [value]="s.id">{{ s.name }}</option> }
+      </select></label>
+    <label>Familia de destino<select [(ngModel)]="family" (ngModelChange)="changeFamily()">@for (f of familyNames; track
+        f) { <option>{{ f }}</option> }</select></label>
+    <label>Base de destino<select [(ngModel)]="target" (ngModelChange)="update()">
+        @if (family === 'Bases enteras positivas' || family === 'Bases negativas') {
+        @for (b of bases; track b) { <option [value]="family === 'Bases negativas' ? -b : b">{{ family === 'Bases negativas' ? -b : b }}</option> }
+        } @else { @for (s of families[family]; track s.id) { <option [value]="s.id">{{ s.name }}</option> } }
+      </select></label>
+    <label>Cifras fraccionarias<select [(ngModel)]="precision" (ngModelChange)="update()">
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="50">50</option>
+      </select></label>
+  </div>
+  <p id="source-help" class="hint">Punto para decimales; barra para racionales (1/3). Las cifras de ambos lados de la
+    barra pertenecen a la base de origen. Complejos a + bi con origen 10. Balanceado: − 0 +; factorial: cifras separadas
+    por «:». φ, √2, e y π se ofrecen como destinos.</p>
+  @if (error) { <p role="alert" class="error">{{ error }}</p> } @else {
+  <p>Valor exacto: <strong>{{ decoded }}</strong></p>
+  <output class="numeral" aria-live="polite">{{ result.text }} <small>en {{ targetLabel }}</small></output>
+  <p><strong>{{ result.exact ? 'Representación exacta' : 'Representación aproximada' }}</strong> · {{ result.note }}</p>
+  <details>
+    <summary>Ver conversión paso a paso</summary>
+    <p>Las posiciones enteras se obtienen leyendo los restos en orden inverso. Las cifras fraccionarias se leen en el
+      orden en que aparecen.</p>
+    <ol>@for (step of result.steps; track $index) { <li>{{ step }}</li> }</ol>
+  </details>
+  <details>
+    <summary>¿Cómo se interpreta?</summary>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Posición</th>
+            <th>Cifra</th>
+            <th>Peso</th>
+            <th>Contribución</th>
+          </tr>
+        </thead>
+        <tbody>@for (term of result.terms; track $index) { <tr>
+            <td>{{ term.position }}</td>
+            <td>{{ term.digit }}</td>
+            <td>{{ term.weight }}</td>
+            <td>{{ term.contribution }}</td>
+          </tr> }</tbody>
+      </table>
+    </div>
+    <p>Se suman las contribuciones; una expansión truncada representa solo un prefijo y un período entre paréntesis
+      continúa indefinidamente.</p>
+  </details>
+  }
+  }
+  @if (mode === 'negative') {
+  <span class="eyebrow">POTENCIAS CON SIGNOS ALTERNOS</span>
+  <h3>Construye un número en base −2</h3>
+  <div class="controls"><label>Entero decimal<input [(ngModel)]="negativeInput" (ngModelChange)="updateNegative()"
+        maxlength="120"></label></div>
+  @if (negativeError) { <p role="alert" class="error">{{ negativeError }}</p> } @else {
+  <p>Activa y desactiva bits: los pesos dorados suman y los azules restan.</p>
+  <div class="weights">@for (bit of bits; track bit.k; let index = $index) { <button type="button"
+      [class.negative]="bit.weight < 0" [class.active]="bit.on" [attr.aria-pressed]="bit.on"
+      [attr.aria-label]="'Posición ' + bit.k + ', peso ' + bit.weight" (click)="toggleBit(index)"><strong>{{ bit.on ? 1
+        : 0 }}</strong><small>(−2)^{{ bit.k }}</small><small>{{ bit.weight }}</small></button> }</div>
+  <output class="numeral" aria-live="polite">{{ negative.text }}<small>₋₂ = {{ negativeInput }}₁₀</small></output>
+  <details>
+    <summary>Ver conversión paso a paso</summary>
+    <ol>@for (step of negative.steps; track $index) { <li>{{ step }}</li> }</ol>
+  </details>
+  }
+  }
+  @if (mode === 'golden') {
+  <span class="eyebrow">UNA IDENTIDAD CAMBIA LA ESCRITURA</span>
+  <h3>El laboratorio de φ</h3>
+  <button type="button" (click)="goldenIdentity = !goldenIdentity">Cambiar 100φ ↔ 011φ</button>
+  <div class="identity"><strong>{{ goldenIdentity ? '0 · φ² + 1 · φ + 1 · 1' : '1 · φ² + 0 · φ + 0 · 1'
+      }}</strong><span>Ambas sumas valen φ² ≈ 2,618033989.</span></div>
+  <div class="controls"><label>Número decimal o racional<input [(ngModel)]="goldenInput"
+        (ngModelChange)="updateGolden()" maxlength="120"></label><label>Posiciones fraccionarias<select
+        [(ngModel)]="precision" (ngModelChange)="goldenInput === 'φ' ? phiPreset() : updateGolden()">
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="50">50</option>
+      </select></label></div>
+  <div class="presets"><button type="button" (click)="phiPreset()">El número φ en base φ</button><button type="button"
+      (click)="goldenInput='2'; updateGolden()">2 = 10.01φ</button></div>
+  @if (goldenError) { <p role="alert" class="error">{{ goldenError }}</p> } @else {
+  <output class="numeral" aria-live="polite">{{ golden.text }}<small>en base φ</small></output>
+  <p>{{ golden.exact ? 'Exacta' : 'Truncada' }} · {{ golden.note }}</p>
+  <div class="weights">@for (term of golden.terms; track term.position) { <span class="weight"><strong>{{ term.digit
+        }}</strong><small>{{ term.contribution }}</small></span> }</div>
+  <details>
+    <summary>Ver selección voraz paso a paso</summary>
+    <ol>@for (step of golden.steps; track $index) { <li>{{ step }}</li> }</ol>
+  </details>
+  }
+  <h4>Puente hacia √2: dos clases de pesos</h4>
+  <p>Elige una posición: las potencias pares son enteros; las impares contienen un factor √2.</p>
+  <div class="weights">@for (p of sqrtPositions; track p.k) { <button type="button"
+      [class.active]="sqrtPosition === p.k" [attr.aria-pressed]="sqrtPosition === p.k"
+      (click)="sqrtPosition=p.k"><strong>{{ p.k }}</strong><small>{{ p.coefficient }}{{ p.odd ? '√2' : ''
+        }}</small></button> }</div>
+  <output aria-live="polite">(√2)^{{ sqrtPosition }} = {{ sqrtPositions[sqrtPosition].coefficient }}{{
+    sqrtPositions[sqrtPosition].odd ? '√2' : '' }}</output>
+  }
+  @if (mode === 'complex') {
+  <span class="eyebrow">SUMAR VECTORES ES SUMAR CONTRIBUCIONES</span>
+  <h3>3 + 2i, escrito con cifras 0–3</h3>
+  <div class="controls"><label>Entero gaussiano a + bi<input [(ngModel)]="complexInput"
+        (ngModelChange)="updateComplex()" maxlength="120"></label></div>
+  <div class="presets"><button type="button" (click)="complexInput='3+2i'; updateComplex()">3 + 2i</button><button
+      type="button" (click)="complexInput='-5+3i'; updateComplex()">−5 + 3i</button></div>
+  @if (complexError) { <p role="alert" class="error">{{ complexError }}</p> } @else {
+  <output class="numeral" aria-live="polite">{{ complex.text }}<small>₂ᵢ = {{ complexValue }}</small></output>
+  <p>Cada botón recorre las cifras 0, 1, 2, 3. Observa el recorrido de la suma y su extremo.</p>
+  <div class="weights">@for (d of complexDigits; track d.k; let index = $index) { <button type="button"
+      (click)="changeDigit(index)" [attr.aria-label]="'Cambiar cifra de posición ' + d.k"><strong>{{ d.digit
+        }}</strong><small>(2i)^{{ d.k }}</small></button> }</div>
+  <svg viewBox="0 0 360 360" role="img" [attr.aria-label]="'Suma de vectores en base 2i. Extremo ' + endpoint">
+    <defs>
+      <marker id="sum-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5"
+        orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor" />
+      </marker>
+    </defs>
+    <line x1="15" y1="180" x2="345" y2="180" class="axis" />
+    <line x1="180" y1="15" x2="180" y2="345" class="axis" />
+    <text x="320" y="170">Re</text><text x="190" y="25">Im</text><text x="185" y="195">0</text>
+    @for (v of vectors; track $index) { <line [attr.x1]="coordinate(v.x1,extent)"
+      [attr.y1]="360-coordinate(v.y1,extent)" [attr.x2]="coordinate(v.x2,extent)"
+      [attr.y2]="360-coordinate(v.y2,extent)" class="vector" marker-end="url(#sum-arrow)">
+      <title>{{ v.label }}</title>
+    </line> }
+    @if (vectors.length) {
+    <circle [attr.cx]="coordinate(vectors[vectors.length-1].x2,extent)"
+      [attr.cy]="360-coordinate(vectors[vectors.length-1].y2,extent)" r="5" class="endpoint" /> }
+  </svg>
+  <p>Extremo: <strong>{{ endpoint }}</strong>. Escala de cada eje: ±{{ extent.toPrecision(4) }}.</p>
+  <details>
+    <summary>Contribuciones de los vectores</summary>
+    <ul>@for (v of vectors; track $index) { <li>{{ v.label }} → ({{ v.x2-v.x1 }}, {{ v.y2-v.y1 }}); suma parcial ({{
+        v.x2 }}, {{ v.y2 }}).</li> }</ul>
+  </details>
+  <details>
+    <summary>Ver conversión paso a paso</summary>
+    <p>Algoritmo para codificar el valor actual. Si has editado cifras, la conversión puede normalizar la cadena.</p>
+    <ol>@for (step of complex.steps; track $index) { <li>{{ step }}</li> }</ol>
+  </details>
+  }
+  <h4>Bases en el plano complejo: escala y rotación</h4>
+  <div class="controls"><label>Base geométrica<select [(ngModel)]="powerBase" (ngModelChange)="updatePowers()">
+        <option value="2i">2i</option>
+        <option value="-1+i">−1 + i</option>
+        <option value="i">i · módulo 1</option>
+        <option value="spiral">0,8 · exp(iπ/3)</option>
+      </select></label><label>Número de potencias<input type="range" min="2" max="9" [(ngModel)]="powerCount"
+        (ngModelChange)="updatePowers()">{{ powerCount }}</label></div>
+  <svg viewBox="0 0 360 360" role="img" [attr.aria-label]="'Potencias de ' + powerBase">
+    <line x1="15" y1="180" x2="345" y2="180" class="axis" />
+    <line x1="180" y1="15" x2="180" y2="345" class="axis" /><text x="320" y="170">Re</text><text x="190"
+      y="25">Im</text>
+    @for (p of powers; track p.k) {
+    <line x1="180" y1="180" [attr.x2]="coordinate(p.x,powerExtent)" [attr.y2]="360-coordinate(p.y,powerExtent)"
+      class="vector" />
+    <circle [attr.cx]="coordinate(p.x,powerExtent)" [attr.cy]="360-coordinate(p.y,powerExtent)" r="3"
+      class="endpoint" /><text [attr.x]="coordinate(p.x,powerExtent)+5" [attr.y]="355-coordinate(p.y,powerExtent)">{{
+      p.k }}</text> }
+  </svg>
+  <p>βᵏ tiene módulo |β|ᵏ y ángulo k · arg(β). Escala: ±{{ powerExtent.toPrecision(4) }}. Este es un explorador de
+    potencias, independiente del conversor: elegir una base geométrica no define automáticamente un sistema numeral.</p>
+  }
+  @if (mode === 'compare') {
+  <span class="eyebrow">UN NÚMERO, MUCHOS LENGUAJES</span>
+  <h3>Compara las representaciones</h3>
+  <div class="controls"><label>Entero decimal no negativo<input [(ngModel)]="comparisonInput"
+        (ngModelChange)="updateComparison()" maxlength="120"></label></div>
+  @if (comparisonError) { <p role="alert" class="error">{{ comparisonError }}</p> } @else {
+  <div class="comparison">@for (row of comparison; track row.name) { <details>
+      <summary>{{ row.name }} <span class="code">{{ row.result.text }}</span></summary>
+      <p>{{ row.result.note }}</p>
+      <p>{{ row.result.exact ? 'Exacta' : 'Aproximada' }}. Longitud escrita: {{ row.result.text.length }} caracteres
+        (incluye signos y separadores).</p>
+      <p class="decomposition">@for (term of row.result.terms; track $index) { <span>{{ $index ? ' + ' : '' }}({{
+          term.contribution }})</span> }</p>
+    </details> }</div>
+  }
+  <h4>¿Termina o se repite? El mismo racional en cinco bases</h4>
+  <div class="presets">@for (f of ['1/2','1/3','1/7']; track f) { <button type="button"
+      (click)="fraction=f; updateFractions()">{{ f }}</button> }</div>
+  <div class="controls"><label>Racional decimal<input [(ngModel)]="fraction" (ngModelChange)="updateFractions()"
+        maxlength="120"></label><label>Máximo de cifras<select [(ngModel)]="precision"
+        (ngModelChange)="updateFractions(); updateComparison()">
+        <option [ngValue]="10">10</option>
+        <option [ngValue]="20">20</option>
+        <option [ngValue]="50">50</option>
+      </select></label></div>
+  @if (fractionError) { <p role="alert" class="error">{{ fractionError }}</p> } @else { @for (row of fractions; track
+  row.name) { <details>
+    <summary>{{ row.name }} <span class="code">{{ row.result.text }}</span></summary>
+    <p>{{ row.result.note }}</p>
+  </details> } }
+  <p>Los paréntesis representan un período, no cifras que se añaden una sola vez. «…» indica truncamiento sin período
+    completo certificado.</p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Sistema</th>
+          <th>Símbolos</th>
+          <th>Ventaja según el criterio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Binario</td>
+          <td>2</td>
+          <td>Dos estados; fácil traducción a grupos hexadecimales.</td>
+        </tr>
+        <tr>
+          <td>Ternario</td>
+          <td>3</td>
+          <td>1/3 termina.</td>
+        </tr>
+        <tr>
+          <td>Decimal</td>
+          <td>10</td>
+          <td>Familiar; 1/2 y 1/5 terminan.</td>
+        </tr>
+        <tr>
+          <td>Duodecimal</td>
+          <td>12</td>
+          <td>1/2, 1/3 y 1/4 terminan.</td>
+        </tr>
+        <tr>
+          <td>Hexadecimal</td>
+          <td>16</td>
+          <td>Una cifra por cuatro bits.</td>
+        </tr>
+        <tr>
+          <td>Ternario balanceado</td>
+          <td>3</td>
+          <td>Simetría de signos; sin signo externo.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  }
+</section>

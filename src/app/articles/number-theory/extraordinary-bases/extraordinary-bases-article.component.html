@@ -1,0 +1,163 @@
+<h2>Más allá de la base 10: otros lenguajes para los números</h2>
+<p class="dropcap">347 parece contener una cantidad evidente. Pero esa evidencia es una costumbre: estamos leyendo
+  tres centenas, cuatro decenas y siete unidades. La escritura 347₁₀ significa 3·10² + 4·10¹ + 7·10⁰.
+  En binario, 1011₂ significa 1·2³ + 0·2² + 1·2¹ + 1·2⁰ = 11. Las cifras reciben su valor de las posiciones.</p>
+<p>¿Qué significa realmente que un número esté escrito «en una base»? ¿Qué ocurre cuando dejamos de exigir
+  que esa base sea un entero positivo? La regla que conocemos puede expresarse así:</p>
+<app-formula expression="(a_n\ldots a_1a_0)_\beta=\sum_{k=0}^{n}a_k\beta^k."></app-formula>
+<p>En esa suma no aparece una ley universal que obligue a β a ser 10, 2 o 16. ¿Y si fuese negativo, una fracción,
+  φ, π o incluso i? Podemos cambiar la base, los dígitos y hasta los pesos. Cada cambio exige comprobar qué números
+  podemos escribir, con qué reglas y con qué garantías.</p>
+<p>Este recorrido complementa <a routerLink="/articles/numeral-systems">Sistemas de numeración y representación de
+    enteros</a>, donde están las demostraciones y los ejercicios sobre bases enteras convencionales. Aquí iremos
+  retirando restricciones, con el laboratorio como compañero de viaje.</p>
+<nav class="article-index" aria-label="Índice del artículo">
+  <ul>
+    <li><a routerLink="." fragment="conversor">Conversor</a></li>
+    <li><a routerLink="." fragment="negativas">Bases negativas</a></li>
+    <li><a routerLink="." fragment="balanceado">Dígitos balanceados</a></li>
+    <li><a routerLink="." fragment="racionales">Base racional</a></li>
+    <li><a routerLink="." fragment="phi">Base φ</a></li>
+    <li><a routerLink="." fragment="beta">β-expansiones</a></li>
+    <li><a routerLink="." fragment="complejas">Plano complejo</a></li>
+    <li><a routerLink="." fragment="comparar">Comparación</a></li>
+    <li><a routerLink="." fragment="fuentes">Fuentes</a></li>
+  </ul>
+</nav>
+
+<h3 id="conversor">1. Una base es una regla de interpretación</h3>
+<p>En base entera b ≥ 2, las cifras habituales son 0,…,b−1. Dividir sucesivamente un entero entre b separa
+  su última cifra y deja el resto del numeral por construir. Los restos se leen al revés porque primero obtenemos
+  las unidades. En hexadecimal, A,…,F representan 10,…,15: 255₁₀ se convierte en FF₁₆.</p>
+<p>Cambia el origen y el destino del conversor y abre sus pasos. Las entradas racionales se mantienen como fracciones
+  exactas; las limitaciones aparecen junto al resultado. Los presets especiales tienen algoritmos propios y dominios
+  explícitos. Una expresión posicional bien definida no garantiza por sí sola una escritura finita o única.</p>
+<app-bases-lab mode="converter"></app-bases-lab>
+
+<h3 id="negativas">2. El signo puede vivir en las posiciones</h3>
+<p>La base −2 tiene los pesos 1, −2, 4, −8, 16, −32… Basta alternar su signo para que los mismos dígitos 0 y 1
+  describan enteros positivos y negativos. Por ejemplo, 110₋₂ = 4−2 = 2, mientras que 10₋₂ = −2.
+  El número 42 se escribe 1111110₋₂: 64−32+16−8+4−2 = 42.</p>
+<p>El algoritmo conserva restos 0 o 1. Si una división habitual produce un resto negativo, ajustamos el cociente
+  para que n = (−2)q + r con r ≥ 0. No necesitamos añadir un signo externo. Lo mismo funciona en −3 con
+  cifras 0,1,2 o en −10 con cifras 0,…,9. La generalización a bases negativas no enteras es más delicada:
+  <a href="https://www.degruyterbrill.com/document/doi/10.1515/INTEG.2009.023/html" target="_blank"
+    rel="noopener noreferrer">Ito y Sadahiro</a>
+  estudiaron sus propias expansiones y reglas de admisibilidad.
+</p>
+<app-bases-lab mode="negative"></app-bases-lab>
+
+<h3 id="balanceado">3. Tampoco los dígitos tienen que ser positivos</h3>
+<p>En ternario balanceado mantenemos base 3, pero elegimos −1, 0 y +1, escritos −, 0 y +.
+  El numeral +−0 vale 9−3 = 6. Para cambiar de signo basta intercambiar + y − en todas las posiciones.
+  Los pesos siguen siendo positivos; son las cifras las que aportan el signo.</p>
+<p>Durante la conversión, un resto 2 se sustituye por −1 y una unidad de acarreo: 2 = 3−1.
+  Prueba −19 en el conversor y consulta las contribuciones. Las divisiones producen una escritura finita única
+  sin ceros iniciales. Esta simetría invita a imaginar cálculos y dispositivos con tres estados; no implica que
+  cualquier implementación ternaria sea automáticamente más eficiente.</p>
+
+<h3 id="racionales">4. Base 3/2: atención a la convención</h3>
+<p>Una base racional admite varias propuestas. El sistema de
+  <a href="https://www.irif.fr/~cf/publications/AFSwords05.pdf" target="_blank" rel="noopener noreferrer">Akiyama,
+    Frougny y Sakarovitch</a>
+  usa p/q &gt; 1, con p y q coprimos, y cifras 0,…,p−1. Para representar un entero no negativo N,
+  divide qN entre p: qN = pN′ + a. Repite con N′ y lee los restos en orden inverso.
+</p>
+<app-formula expression="N=\sum_{k=0}^{n}\frac{a_k}{q}\left(\frac pq\right)^k."></app-formula>
+<p>El factor 1/q es esencial. En 3/2, el numeral 2 representa 2/2 = 1, y 21 representa
+  (2/2)(3/2)+1/2 = 2. Cada entero no negativo tiene una escritura finita única bajo esta convención;
+  no todas las cadenas representan enteros. Los presets 3/2, 4/3 y 5/2 muestran estos pesos, sin confundirlos
+  con las β-expansiones del apartado siguiente.</p>
+
+<h3 id="phi">5. φ: una base que permite reescribir</h3>
+<p>El número áureo φ = (1+√5)/2 satisface φ² = φ+1. Por eso 100φ y 011φ describen lo mismo:
+  una unidad de peso φ² equivale a una unidad de peso φ y otra de peso 1. La unicidad ya no viene gratis.</p>
+<p>El sistema estudiado por
+  <a href="https://math.berkeley.edu/~gbergman/papers/base_tau.pdf" target="_blank" rel="noopener noreferrer">George
+    Bergman</a>
+  usa cifras 0 y 1. Elegir siempre la mayor potencia disponible produce una expansión voraz, sin unos adyacentes;
+  para fijar la convención también excluimos las colas infinitas alternativas. Aparecen posiciones fraccionarias
+  incluso al escribir enteros: 2 = φ + φ⁻² = 10.01φ. Los enteros no negativos tienen expansiones finitas en este
+  sistema.
+</p>
+<p>El laboratorio calcula en el cuerpo algebraico Q(φ), usando φ² = φ+1, para distinguir una igualdad exacta de
+  una coincidencia decimal. Sus potencias cumplen la recurrencia de
+  <a routerLink="/articles/fibonacci-numbers">Fibonacci</a>; esa conexión no convierte las potencias de φ
+  en números de Fibonacci ni identifica ambos sistemas.
+</p>
+<app-bases-lab mode="golden"></app-bases-lab>
+
+<h3 id="beta">6. Las β-expansiones: existencia no significa finitud</h3>
+<p>Para cualquier β real &gt; 1 podemos construir expansiones de reales no negativos. Normalizamos el número para
+  situarlo en [0,1), multiplicamos el resto por β, tomamos su parte entera como cifra y repetimos.
+  Después restauramos la posición del punto. Las cifras están en 0,…,⌈β⌉−1.
+  <a href="https://static.renyi.hu/renyi_cikkek/1957_representations_for_real_numbers_and_their_ergodic_properties.pdf"
+    target="_blank" rel="noopener noreferrer">Rényi inició esta teoría en 1957</a>;
+  Parry caracterizó las secuencias admisibles en 1960. La elección voraz determina una expansión, pero otras
+  secuencias pueden tener el mismo valor; véase la
+  <a href="https://arxiv.org/abs/0710.3001" target="_blank" rel="noopener noreferrer">caracterización de expansiones
+    voraces y cuasivoraces</a>.
+</p>
+<p>√2 ofrece un puente sencillo: sus potencias pares son 1,2,4,8… y las impares son esos mismos pesos
+  multiplicados por √2. El conversor permite explorar también e y π, bases trascendentes.
+  Poder evaluar una suma no significa que todo número tenga una expansión finita, ni que los racionales
+  conserven la periodicidad propia de las bases enteras.</p>
+<p>En estos presets aproximados, pedir 50 posiciones no crea 50 cifras fiables: la coma flotante limita el cálculo.
+  El laboratorio indica cuántas muestra y no deduce terminación o periodicidad de un resto numéricamente pequeño.
+  Las preguntas sobre admisibilidad, unicidad y periodicidad dependen de la base y siguen conectando numeración,
+  dinámica y teoría algebraica.</p>
+
+<h3 id="complejas">7. Multiplicar puede significar girar</h3>
+<p>Las potencias de i son 1,i,−1,−i y vuelven a empezar. Podemos evaluarlas, pero su módulo 1 impide el crecimiento
+  habitual de los pesos; con cifras acotadas y solo posiciones no negativas, tampoco obtenemos una representación
+  general de todos los complejos. «Base imaginaria» necesita más información.</p>
+<p>El sistema <em>quater-imaginary</em> de
+  <a href="https://doi.org/10.1145/367177.367233" target="_blank" rel="noopener noreferrer">Donald Knuth (1960)</a>
+  utiliza exactamente base 2i y cifras 0,1,2,3. Sus pesos son 1,2i,−4,−8i,16…:
+  crecen y giran un cuarto de vuelta. Así, 13₂ᵢ = 1·2i+3 = 3+2i.
+</p>
+<p>Las posiciones pares forman un sistema en −4 para la parte real; las impares hacen lo mismo para la mitad
+  de la parte imaginaria. Si esta es impar, necesitamos una posición fraccionaria: 2(2i)⁻¹ = −i.
+  El conversor implementa todos los enteros gaussianos, con las restricciones de tamaño del dibujo indicadas en la
+  interfaz.
+  No promete convertir cualquier complejo arbitrario en una cadena finita.</p>
+<app-bases-lab mode="complex"></app-bases-lab>
+<p>Para β = r·exp(iθ), βᵏ tiene longitud rᵏ y ángulo kθ. El segundo plano separa esa geometría
+  de la tarea de construir un sistema numeral: dibujar potencias de una base libre no prueba existencia ni unicidad.</p>
+
+<h3 id="comparar">8. La mejor base depende de la pregunta</h3>
+<p>1/3 tiene expansión periódica en decimal, 0.(3)₁₀, pero termina en ternario: 0.1₃.
+  Para un racional reducido en base entera positiva, la expansión termina exactamente cuando los factores primos
+  del denominador dividen la base. En caso contrario es eventualmente periódica: solo hay un número finito de restos
+  posibles. El laboratorio detecta esa repetición con aritmética exacta.</p>
+<p>El binario usa pocos símbolos; el hexadecimal compacta grupos de cuatro bits; el duodecimal hace terminar
+  fracciones con tercios. Compara longitudes y fracciones antes de declarar un ganador. La familiaridad, los
+  circuitos disponibles y las operaciones que interesan son criterios distintos.</p>
+<app-bases-lab mode="compare"></app-bases-lab>
+
+<h3>9. Podemos abandonar las potencias</h3>
+<p>Los romanos combinan símbolos aditivos y sustractivos, sin pesos posicionales fijos.
+  El sistema factorial cambia los pesos por 0!,1!,2!,3!… y limita cada cifra a su índice;
+  sus cifras se relacionan con la selección sucesiva de elementos de una permutación
+  (<a href="https://arxiv.org/abs/2502.15559" target="_blank" rel="noopener noreferrer">factoradics y
+    permutaciones</a>).
+  En Zeckendorf, los pesos son 1,2,3,5,8… y se prohíben unos consecutivos: 42 = 34+8.</p>
+<p>El <a href="https://arxiv.org/abs/1008.3202" target="_blank" rel="noopener noreferrer">teorema de Zeckendorf</a>
+  garantiza la descomposición única de cada entero positivo. El comparador muestra las sumas para no confundirlo
+  con base φ. La investigación también pregunta cómo se distribuyen estas descomposiciones. En bases racionales,
+  un <a href="https://arxiv.org/abs/2504.13716" target="_blank" rel="noopener noreferrer">trabajo de 2025</a>
+  explora conexiones entre 3/2 y la dinámica de Collatz: una línea de investigación, no una resolución de su conjetura.
+</p>
+
+<h3>El número y su lenguaje</h3>
+<p><strong>Los números no están escritos en decimal. Los números simplemente son números.</strong>
+  Decimal, binario, negabinario y base φ son lenguajes para describirlos. Incluso «base» depende del sistema:
+  347 solo adquiere un valor cuando fijamos los símbolos, sus valores, los pesos y las reglas de validez.
+  El laboratorio permite cambiar esas decisiones y ver inmediatamente sus consecuencias.</p>
+<h3 id="fuentes">Para seguir explorando</h3>
+<p>Las fuentes originales y los trabajos enlazados acompañan las afirmaciones relevantes. Para la teoría elemental,
+  vuelve al <a routerLink="/articles/numeral-systems">artículo formal de numeración</a>; para otras escrituras,
+  visita <a routerLink="/articles/continued-fractions">fracciones continuas</a>, y para la rotación compleja,
+  <a routerLink="/articles/euler-identity">la identidad de Euler</a>.
+  Son sistemas clásicos estudiados; los presets geométricos y los cálculos aproximados tienen un propósito experimental.
+</p>

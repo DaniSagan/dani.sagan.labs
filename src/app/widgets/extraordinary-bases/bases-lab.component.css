@@ -1,0 +1,143 @@
+.numeral {
+  display: block;
+  padding: 1rem;
+  font:
+    1.45rem "Courier Prime",
+    monospace;
+  overflow-wrap: anywhere;
+  border-left: 3px solid var(--gold);
+  margin: 1rem 0;
+}
+.numeral small {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.weights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.weights button,
+.weight {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.7rem;
+  border: 1px solid var(--gold);
+  border-radius: 6px;
+  min-width: 4rem;
+  text-align: center;
+}
+.weights strong {
+  font-size: 1.4rem;
+}
+.weights small {
+  display: block;
+}
+.weights .negative {
+  border-color: var(--accent2);
+}
+.weights .active {
+  background: var(--gold);
+  color: var(--paper);
+}
+.weights .negative.active {
+  background: var(--accent2);
+}
+.identity {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 3px solid var(--gold);
+}
+svg {
+  width: 100%;
+  max-width: 440px;
+  display: block;
+  margin: 1rem auto;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+svg text {
+  fill: var(--ink);
+  font: 12px monospace;
+}
+.axis {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+.vector {
+  stroke: var(--gold);
+  stroke-width: 2;
+  color: var(--gold);
+}
+.endpoint {
+  fill: var(--accent2);
+}
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 0.65rem;
+}
+details {
+  min-width: 0;
+  margin: 0.7rem 0;
+  padding: 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+summary {
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.code {
+  display: block;
+  font:
+    1.1rem "Courier Prime",
+    monospace;
+  color: var(--ink);
+  margin-top: 0.4rem;
+  overflow-wrap: anywhere;
+}
+.decomposition,
+li,
+td {
+  overflow-wrap: anywhere;
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+th,
+td {
+  text-align: left;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.hint {
+  font-size: 0.9rem;
+}
+ol {
+  max-height: 26rem;
+  overflow: auto;
+  padding-left: 1.6rem;
+}
+@media (max-width: 500px) {
+  .controls label {
+    flex-basis: 100%;
+  }
+}

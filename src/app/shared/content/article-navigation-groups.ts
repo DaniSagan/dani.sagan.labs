@@ -33,7 +33,7 @@ const GROUPS = {
   numbers: [
     [
       'Numeración y divisibilidad',
-      'numeral-systems division-algorithm divisibility-rules gcd-euclid bezout-identity',
+      'numeral-systems extraordinary-bases division-algorithm divisibility-rules gcd-euclid bezout-identity',
     ],
     [
       'Primos y factorización',
