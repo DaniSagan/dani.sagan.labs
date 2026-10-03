@@ -2,22 +2,22 @@
   <div class="nav-items">
     <ul>
       <li>
-        <a [routerLink]="['/home']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+        <a [routerLink]="['/home']" (pointerenter)="preloading.warm('home')" (focus)="preloading.warm('home')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
       </li>
       <li>
-        <a [routerLink]="['/articles']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: false}">Artículos</a>
+        <a [routerLink]="['/articles']" (pointerenter)="preloading.warm('articles')" (focus)="preloading.warm('articles')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: false}">Artículos</a>
       </li>
       <li>
-        <a [routerLink]="['/problems']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: false}">Problemas</a>
+        <a [routerLink]="['/problems']" (pointerenter)="preloading.warm('problems')" (focus)="preloading.warm('problems')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: false}">Problemas</a>
       </li>
       <li>
-        <a [routerLink]="['/tools/prime-decomposition']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Herramientas</a>
+        <a [routerLink]="['/tools/prime-decomposition']" (pointerenter)="preloading.warm('tools')" (focus)="preloading.warm('tools')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Herramientas</a>
       </li>
       <li>
-        <a [routerLink]="['/games/tic-tac-toe']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Juegos</a>
+        <a [routerLink]="['/games/tic-tac-toe']" (pointerenter)="preloading.warm('games')" (focus)="preloading.warm('games')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Juegos</a>
       </li>
       <li>
-        <a [routerLink]="['/articles/contact']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Contacto</a>
+        <a [routerLink]="['/articles/contact']" (pointerenter)="preloading.warm('articles')" (focus)="preloading.warm('articles')" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Contacto</a>
       </li>
     </ul>
   </div>

@@ -4,6 +4,7 @@ import { MathjaxModule } from 'mathjax-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavigationFeedbackComponent } from './shared/navigation/navigation-feedback.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -21,6 +22,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     FormsModule,
     HeaderComponent,
     NavbarComponent,
+    NavigationFeedbackComponent,
     FooterComponent,
     ContentComponent,
   ],

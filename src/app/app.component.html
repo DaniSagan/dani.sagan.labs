@@ -1,4 +1,5 @@
 <app-header title="{{title}}"></app-header>
 <app-navbar></app-navbar>
-<app-content></app-content>
+<app-navigation-feedback></app-navigation-feedback>
+<app-content [attr.aria-busy]="navigation.loading()"></app-content>
 <app-footer></app-footer>

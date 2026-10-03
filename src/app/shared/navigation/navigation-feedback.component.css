@@ -1,0 +1,128 @@
+.loading-track {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 10000;
+  overflow: hidden;
+  background: var(--rule, #353544);
+  pointer-events: none;
+}
+.loading-track span {
+  display: block;
+  height: 100%;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold, #e6bb76),
+    var(--accent2, #86bfff)
+  );
+  animation: travel 1.2s ease-in-out infinite;
+  will-change: transform;
+}
+.loading-card,
+.error-card {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+  padding: 16px 20px;
+  border: 1px solid var(--rule, #353544);
+  border-radius: 14px;
+  background: var(--bg2, #151520);
+  color: var(--ink, #f0eee8);
+  box-shadow: 0 12px 40px #0005;
+  font: 14px/1.5 sans-serif;
+}
+.loading-card {
+  pointer-events: none;
+  animation: appear 0.2s ease-out 0.18s both;
+}
+.loading-caption {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+}
+.orbit {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--rule, #353544);
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1.8s linear infinite;
+}
+.orbit i {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: var(--gold, #e6bb76);
+  border-radius: 50%;
+  top: -3px;
+  left: 11px;
+}
+.orbit i:nth-child(2) {
+  top: 20px;
+  left: 0;
+  background: var(--accent2, #86bfff);
+}
+.orbit i:nth-child(3) {
+  top: 20px;
+  left: 23px;
+}
+.error-card button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.error-card button:focus-visible {
+  outline: 2px solid var(--gold, #e6bb76);
+}
+@keyframes travel {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(390%);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 500px) {
+  .loading-card,
+  .error-card {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loading-track span,
+  .orbit,
+  .loading-card {
+    animation: none;
+  }
+  .loading-track span {
+    width: 100%;
+  }
+}

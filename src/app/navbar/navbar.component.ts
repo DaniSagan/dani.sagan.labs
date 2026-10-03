@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { IdlePreloadingStrategy } from '../shared/navigation/idle-preloading.strategy';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -8,8 +9,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
 })
-export class NavbarComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
+export class NavbarComponent {
+  readonly preloading = inject(IdlePreloadingStrategy);
 }

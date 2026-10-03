@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { IdlePreloadingStrategy } from './shared/navigation/idle-preloading.strategy';
 
 const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
@@ -13,6 +14,7 @@ const routes: Routes = [
 const routerOptions: ExtraOptions = {
   useHash: false,
   anchorScrolling: 'enabled',
+  preloadingStrategy: IdlePreloadingStrategy,
 };
 
 @NgModule({
