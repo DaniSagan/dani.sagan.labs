@@ -7,11 +7,15 @@
     </div>
     <button type="button" (click)="exportPng()">Descargar PNG</button>
   </div>
-  <label class="pan-toggle"><input type="checkbox" [(ngModel)]="dragEnabled"> Mover vista arrastrando</label>
-  <canvas #graphCanvas width="600" height="600" [class.panning]="dragEnabled"
+  <div class="interaction-toggles">
+    <label class="pan-toggle"><input type="checkbox" [(ngModel)]="dragEnabled"> Mover vista arrastrando</label>
+    <label class="pan-toggle"><input type="checkbox" [(ngModel)]="wheelZoomEnabled" (ngModelChange)="pointerUp()"> Zoom con rueda o dos dedos</label>
+  </div>
+  <canvas #graphCanvas width="600" height="600" [class.panning]="dragEnabled" [class.touch-zoom]="wheelZoomEnabled"
     aria-label="Gráfica de curvas en el plano cartesiano. Usa los botones para acercar, alejar o restablecer la vista."
-    (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp()"
-    (pointercancel)="pointerUp()" (lostpointercapture)="pointerUp()" (pointerleave)="coordinates = ''">
+    (wheel)="wheelZoom($event)"
+    (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp($event)"
+    (pointercancel)="pointerUp($event)" (lostpointercapture)="pointerUp($event)" (pointerleave)="coordinates = ''">
     Tu navegador no admite el dibujo de la gráfica. Utiliza un navegador compatible con canvas.
   </canvas>
   <div class="graph-readout"><span>{{ coordinates || 'Explora la gráfica con el cursor' }}</span><span>Divisiones: x {{ formatValue(xStep, xStep) }} · y {{ formatValue(yStep, yStep) }}</span></div>

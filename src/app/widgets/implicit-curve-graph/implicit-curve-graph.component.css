@@ -6,8 +6,10 @@
 .implicit-graph button:hover { border-color: var(--accent); }
 canvas { display: block; width: 100%; aspect-ratio: 1; border-radius: 8px; margin-top: 0.6rem; background: #10131d; touch-action: pan-y; }
 canvas.panning { cursor: grab; touch-action: none; }
+canvas.touch-zoom { touch-action: none; }
 canvas.panning:active { cursor: grabbing; }
 .pan-toggle { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem; font-size: 0.85rem; }
+.interaction-toggles { display: flex; flex-wrap: wrap; column-gap: 1.25rem; }
 .graph-readout { margin-top: 0.5rem; color: var(--ink-dim); font: 0.72rem monospace; line-height: 1.6; }
 .graph-error { color: #ffb69a; font-size: 0.9rem; }
 .graph-settings { margin-top: 1rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }

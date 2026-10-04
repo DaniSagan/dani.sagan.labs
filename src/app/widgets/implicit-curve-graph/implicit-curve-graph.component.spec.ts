@@ -58,9 +58,74 @@ describe('ImplicitCurveGraphComponent', () => {
     expect(component.xMax-component.xMin).toBe(2);
     component.resetView(); expect(component.xMin).toBe(-2); expect(component.yMax).toBe(4);
   });
+  it('supports two-finger zoom without enabling drag and ends cancelled gestures', () => {
+    const canvas = component.canvas.nativeElement;
+    spyOn(canvas, 'setPointerCapture');
+    spyOn(canvas, 'getBoundingClientRect').and.returnValue({ left: 10, top: 20, width: 400, height: 400 } as DOMRect);
+    component.setBounds(-2, 2, -4, 4);
+    component.wheelZoomEnabled = true;
+    fixture.detectChanges();
+    expect(getComputedStyle(canvas).touchAction).toBe('none');
+    const touch = (id: number, x: number) => new PointerEvent('pointermove', {
+      pointerId: id, pointerType: 'touch', clientX: x, clientY: 220, button: 0,
+    });
+    component.pointerDown(touch(1, 110));
+    component.pointerDown(touch(2, 310));
+    component.pointerMove(touch(2, 410));
+    expect(component.xMax - component.xMin).toBeCloseTo(4 * 2 / 3);
+    expect(component.xMin + (component.xMax - component.xMin) * 0.625).toBeCloseTo(0);
+    component.pointerMove(touch(2, 210));
+    expect(component.xMax - component.xMin).toBeCloseTo(8);
+    component.pointerUp(touch(2, 210));
+    const bounds = [component.xMin, component.xMax, component.yMin, component.yMax];
+    component.pointerMove(touch(1, 150));
+    expect([component.xMin, component.xMax, component.yMin, component.yMax]).toEqual(bounds);
+    component.pointerUp(touch(1, 150));
+    component.resetView();
+    expect(component.xMin).toBe(-2);
+    component.wheelZoomEnabled = false;
+    fixture.detectChanges();
+    expect(getComputedStyle(canvas).touchAction).toBe('pan-y');
+    component.pointerDown(touch(1, 110));
+    component.pointerDown(touch(2, 310));
+    component.pointerMove(touch(2, 410));
+    expect(component.xMax - component.xMin).toBe(4);
+  });
   it('reports evaluation errors without throwing or losing the controls', () => {
     component.functions=[new GraphableFunction(()=>{throw new Error('bad formula');},'red')];
     expect(()=>component.drawGraph()).not.toThrow();
     expect(component.message).toContain('No se pudo evaluar');
+  });
+  it('leaves page scrolling available until wheel zoom is enabled', () => {
+    const canvas = component.canvas.nativeElement;
+    const wheel = new WheelEvent('wheel', { deltaY: -100, cancelable: true });
+    canvas.dispatchEvent(wheel);
+    expect(wheel.defaultPrevented).toBeFalse();
+    expect(component.xMin).toBe(-10);
+    const toggle = fixture.nativeElement.querySelectorAll('.interaction-toggles input')[1];
+    toggle.click();
+    expect(component.wheelZoomEnabled).toBeTrue();
+  });
+  it('zooms in and out around the cursor and restores the original bounds', () => {
+    component.setBounds(-2, 2, -4, 4);
+    component.wheelZoomEnabled = true;
+    const canvas = component.canvas.nativeElement;
+    spyOn(canvas, 'getBoundingClientRect').and.returnValue({ left: 10, top: 20, width: 400, height: 400 } as DOMRect);
+    const wheel = (deltaY: number, deltaMode = 0) => {
+      const event = new WheelEvent('wheel', { clientX: 110, clientY: 120, deltaY, deltaMode, cancelable: true });
+      canvas.dispatchEvent(event);
+      expect(event.defaultPrevented).toBeTrue();
+      expect(component.xMin + (component.xMax - component.xMin) * 0.25).toBeCloseTo(-1);
+      expect(component.yMax - (component.yMax - component.yMin) * 0.25).toBeCloseTo(2);
+    };
+    wheel(-3, 1);
+    expect(component.xMax - component.xMin).toBeLessThan(4);
+    wheel(48);
+    expect(component.xMax - component.xMin).toBeCloseTo(4);
+    wheel(1, 2);
+    expect(component.xMax - component.xMin).toBeGreaterThan(4);
+    component.resetView();
+    expect(component.xMin).toBe(-2);
+    expect(component.yMax).toBe(4);
   });
 });
