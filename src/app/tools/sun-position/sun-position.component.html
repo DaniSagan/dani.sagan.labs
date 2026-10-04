@@ -23,6 +23,12 @@
     <section class="solar-card map-card"><h3>Ubicación y fachada</h3>
       <p class="hint">Toca el mapa para elegir la ubicación. La línea dorada representa la fachada y la flecha naranja indica hacia dónde mira. Ajusta el ángulo con el control de orientación.</p>
       <div #map class="solar-map" aria-label="Mapa de ubicación con fachada y flecha de orientación"></div>
+      <div class="map-orientation-control">
+        <label for="map-facade-orientation">Orientación de la fachada (°)</label>
+        <input id="map-facade-orientation" type="number" [(ngModel)]="orientation" (ngModelChange)="updateMapOrientation()" min="0" max="360" step="0.1">
+        <input class="time-slider" type="range" [(ngModel)]="orientation" (ngModelChange)="updateMapOrientation()" min="0" max="360" step="0.1" aria-label="Deslizar la orientación de la fachada" [attr.aria-valuetext]="orientation + ' grados'">
+        <div class="time-slider-limits" aria-hidden="true"><span>0° N</span><span>90° E</span><span>180° S</span><span>270° O</span><span>360° N</span></div>
+      </div>
       <div class="actions"><span>Fachada: {{orientation | number:'1.1-1'}}°</span><button type="button" (click)="reverseOrientation()">Invertir fachada</button></div>
       <small>Representación esquemática: la longitud de la línea no indica el tamaño del edificio.</small>
     </section>
@@ -53,6 +59,26 @@
       <div class="time-slider-limits" aria-hidden="true"><span>00:00</span><span>23:59</span></div><p class="status" role="status" *ngIf="timeMessage">{{timeMessage}}</p><label *ngIf="repeatedTime">Hora repetida<select [(ngModel)]="timeOccurrence" (ngModelChange)="updateInstant()"><option [ngValue]="0">Primera vez</option><option [ngValue]="1">Segunda vez</option></select></label><svg viewBox="0 0 200 200" role="img" aria-label="Brújula: el sol indica el azimut y la flecha naranja la orientación de la fachada"><circle class="compass-ring" cx="100" cy="100" r="66"></circle><line class="normal-line" x1="100" y1="100" [attr.x2]="normalX" [attr.y2]="normalY"></line><circle *ngIf="elevation!==null" class="sun-dot" [attr.cx]="sunX" [attr.cy]="sunY" r="8" [class.below-horizon]="elevation!==null && elevation<=0"></circle><text x="100" y="18">N</text><text x="183" y="105">E</text><text x="100" y="192">S</text><text x="17" y="105">O</text><circle class="compass-center" cx="100" cy="100" r="3"></circle></svg><div class="instant-values"><p><strong>{{(elevation | number:'1.1-1') || '—'}}°</strong><span>Elevación</span></p><p><strong>{{(azimuth | number:'1.1-1') || '—'}}°</strong><span>Azimut</span></p></div><p class="hint">{{elevation===null ? 'Sin posición para esta hora' : elevation>0 ? 'Sol sobre el horizonte' : 'Sol bajo el horizonte'}} · flecha naranja: fachada.</p></div></div>
     <div class="facade-chart">
       <h4>Recorrido del sol visto desde la fachada</h4>
+      <div class="facade-controls">
+        <div>
+          <label for="facade-date">Fecha del recorrido</label>
+          <div class="day-navigation">
+            <button type="button" (click)="changeDay(-1)" [disabled]="selectedDay===0" aria-label="Día anterior del recorrido">‹</button>
+            <input id="facade-date" type="date" [(ngModel)]="date" [min]="days[0].date" [max]="days[days.length-1].date" (ngModelChange)="updateDay()">
+            <button type="button" (click)="changeDay(1)" [disabled]="selectedDay===days.length-1" aria-label="Día siguiente del recorrido">›</button>
+          </div>
+        </div>
+        <div>
+          <label for="facade-time">Hora de consulta · {{offsetLabel}}</label>
+          <input id="facade-time" type="time" [(ngModel)]="time" (ngModelChange)="updateInstant()">
+          <input class="time-slider" type="range" min="0" max="1439" step="1" [ngModel]="selectedMinute" (ngModelChange)="selectMinute($event)" aria-label="Deslizar la hora del recorrido solar" [attr.aria-valuetext]="time">
+          <div class="time-slider-limits" aria-hidden="true"><span>00:00</span><span>23:59</span></div>
+          <p class="status" role="status" *ngIf="timeMessage">{{timeMessage}}</p>
+          <label *ngIf="repeatedTime">Hora repetida
+            <select [(ngModel)]="timeOccurrence" (ngModelChange)="updateInstant()"><option [ngValue]="0">Primera vez</option><option [ngValue]="1">Segunda vez</option></select>
+          </label>
+        </div>
+      </div>
       <p class="hint">0°: mirando de frente · ángulos negativos: izquierda · positivos: derecha. La franja central (−90° a 90°) corresponde al frente de la fachada.</p>
       <div class="day-chart"><svg viewBox="-66 0 810 440" role="img" aria-label="Trayectoria solar respecto a la fachada. Eje horizontal de menos 180 a 180 grados; eje vertical de menos 90 a 90 grados de elevación.">
         <rect class="facade-front" x="180" y="20" width="360" height="360"></rect>

@@ -76,3 +76,6 @@ svg text { fill: var(--ink-dim); font: 12px monospace; }
 .facade-current { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
 .time-slider { padding: 0; border: 0; background: transparent; accent-color: var(--accent); cursor: pointer; }
 .time-slider-limits { display: flex; justify-content: space-between; color: var(--ink-dim); font: .7rem monospace; }
+.map-orientation-control { margin-top: 1rem; }
+.facade-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 1rem; margin: 1rem 0; }
+.facade-controls .day-navigation { margin-top: .4rem; }
