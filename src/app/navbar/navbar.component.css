@@ -1,45 +1,184 @@
-.topnav {
-  overflow: hidden;
-  background-color: #333;
+:host {
+  display: block;
+  padding: 1rem clamp(0.75rem, 3vw, 2rem);
+  background: linear-gradient(180deg, #171722, var(--bg));
+  border-bottom: 1px solid #393142;
 }
-
-.nav-items {
-  /* text-align: center; */
-}
-
-.nav-items > ul {
-  list-style-type: none;
-  display: table;
+.primary-nav {
+  position: relative;
+  isolation: isolate;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 6px;
+  border: 1px solid #625044;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #292937, #1c1c29);
+  box-shadow:
+    0 12px 32px rgb(0 0 0 / 35%),
+    0 0 24px rgb(232 100 58 / 8%),
+    inset 0 1px 0 rgb(255 235 210 / 12%);
+}
+.nav-links {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
-
-.nav-items > ul > li {
-  float: left;
+.nav-links li {
+  min-width: 0;
+  margin: 0;
 }
-
-.nav-items a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+.nav-links a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  box-sizing: border-box;
+  padding: 0.6rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  color: var(--ink);
+  font-family: "Courier Prime", monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
   text-decoration: none;
-  font-size: 17px;
-  display: block;
-  min-width: 100px;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-links a:visited {
+  color: var(--ink);
+}
+.nav-links svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+.nav-links .contact-link {
+  border-left: 1px solid var(--rule);
+  padding-left: 5px;
+}
+@media (hover: hover) {
+  .nav-links a:hover {
+    background: rgb(232 228 216 / 10%);
+    border-color: rgb(232 228 216 / 18%);
+    color: var(--link-hover);
+  }
+}
+.nav-links a.active,
+.nav-links a.active:visited {
+  background: transparent;
+  border-color: transparent;
+  color: #21110b;
 }
 
-.nav-items a:hover {
-  background-color: #ddd;
-  color: black;
+.nav-links a.active svg {
+  opacity: 1;
+  animation: selection-pop 360ms ease both;
 }
-
-.nav-items a.active {
-  background-color: #04AA6D;
-  color: white;
+.nav-links a:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 2px;
 }
-
-.nav-items {
-  margin-right: auto;
-  margin-left: auto;
+@media (max-width: 900px) {
+  .nav-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .nav-links a {
+    min-height: 48px;
+    font-size: 0.78rem;
+  }
+  .nav-links .contact-link {
+    border-left: 0;
+    padding-left: 0;
+  }
+}
+@media (max-width: 600px) {
+  .nav-links a {
+    flex-direction: column;
+    gap: 5px;
+    min-height: 62px;
+    padding-inline: 0.2rem;
+  }
+  .nav-links a.active::after {
+    bottom: 3px;
+  }
+}
+@media (max-width: 360px) {
+  :host {
+    padding: 0.75rem 0.5rem;
+  }
+  .primary-nav {
+    padding: 4px;
+  }
+  .nav-links a {
+    flex-direction: column;
+    gap: 5px;
+    min-height: 62px;
+    font-size: 0.7rem;
+    padding: 0.5rem 0.2rem;
+  }
+  .nav-links a.active::after {
+    bottom: 3px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-links a,
+  .primary-nav .selection-indicator {
+    transition: none;
+  }
+  .nav-links a.active svg {
+    animation: none;
+  }
+}
+.selection-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+  box-sizing: border-box;
+  border: 1px solid #ffb48b;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #f7a475, #e87847);
+  box-shadow:
+    0 3px 14px rgb(232 100 58 / 28%),
+    inset 0 1px 0 rgb(255 255 255 / 25%);
+  opacity: 0;
+  transition:
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    width 360ms ease,
+    height 360ms ease,
+    opacity 180ms ease;
+}
+@keyframes selection-pop {
+  0% {
+    transform: scale(0.8);
+  }
+  55% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .selection-indicator {
+    transition: none;
+  }
 }
