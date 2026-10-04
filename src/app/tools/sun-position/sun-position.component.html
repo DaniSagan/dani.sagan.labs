@@ -1,25 +1,53 @@
-<div class="widget-container">
-  <h2>Calculadora Posición Solar</h2>
-  <button (click)="getGeolocation()">Obtener geolocalización</button>
-  <form (ngSubmit)="calculateSunPosition()">
-    <label>Latitud (º):
-      <input type="number" [(ngModel)]="latitude" name="latitude" required>
-    </label>
-    <label>Longitud (º):
-      <input type="number" [(ngModel)]="longitude" name="longitude" required>
-    </label>
-    <label>Orientación (º):
-      <input type="number" [(ngModel)]="orientation" name="orientation" required>
-    </label>
-    <label>Año:
-      <input type="number" [(ngModel)]="year" name="year" required>
-    </label>
-    <br>
-    <button type="submit">Calcular Posición</button>
-  </form>
-  <div id="map"></div>
-  <div *ngIf="angle !== null">
-    <p>Ángulo con respecto al norte: {{ angle | number: '1.2-2' }}°</p>
+<section class="solar-tool">
+  <header class="solar-header"><span class="eyebrow">Luz · orientación · estaciones</span><h2>Calculadora de posición solar</h2><p>Explora cuándo hay luz y en qué momentos el sol queda frente a una fachada durante todo el año.</p></header>
+  <div class="solar-setup">
+    <form class="solar-card" #settings="ngForm" (ngSubmit)="calculateSunPosition()">
+      <h3>Configura tu ubicación</h3>
+      <div class="control-grid">
+        <label>Latitud (°)<input type="number" name="latitude" [(ngModel)]="latitude" min="-90" max="90" step="any" required (change)="syncMap()"></label>
+        <label>Longitud (°)<input type="number" name="longitude" [(ngModel)]="longitude" min="-180" max="180" step="any" required (change)="syncMap()"></label>
+        <label>Orientación de la fachada (°)<input type="number" name="orientation" [(ngModel)]="orientation" min="0" max="360" step="any" required></label>
+        <label>Año<input type="number" name="year" [(ngModel)]="year" min="1900" max="2100" step="1" required></label>
+        <label class="wide">Zona horaria<select name="timeZoneMode" [(ngModel)]="timeZoneMode" (ngModelChange)="detectTimeZone()"><option value="automatic">Automática según la ubicación</option><option value="zone">Elegir una zona horaria</option><option value="fixed">Huso UTC fijo</option></select></label>
+        <div class="wide" *ngIf="timeZoneMode==='automatic'"><p class="hint">{{timeZone || 'Introduce coordenadas válidas'}} · aplica los cambios de horario de cada fecha.</p><small>La detección geográfica es aproximada. Si estás cerca de una frontera horaria, puedes elegir la zona manualmente.</small></div>
+        <label class="wide" *ngIf="timeZoneMode==='zone'">Zona IANA<input name="timeZone" [(ngModel)]="timeZone" list="solar-time-zones" required placeholder="Europe/Madrid"><datalist id="solar-time-zones"><option *ngFor="let zone of timeZones" [value]="zone"></option></datalist><small>Incluye automáticamente el horario de verano de esa zona.</small></label>
+        <label class="wide" *ngIf="timeZoneMode==='fixed'">Huso horario fijo (UTC ± horas)<input type="number" name="utcOffset" [(ngModel)]="utcOffset" min="-12" max="14" step="0.25" required><small>Se mantiene todo el año, sin cambios de horario de verano.</small></label>
+      </div>
+      <div class="orientation-presets" aria-label="Orientaciones cardinales"><button type="button" *ngFor="let p of [{name:'Norte',value:0},{name:'Este',value:90},{name:'Sur',value:180},{name:'Oeste',value:270}]" [class.active]="orientation === p.value" [attr.aria-pressed]="orientation === p.value" (click)="orientation=p.value">{{p.name}}</button></div>
+      <p class="hint">0° norte · 90° este · 180° sur · 270° oeste. La orientación indica hacia dónde mira la fachada, perpendicular a su pared.</p>
+      <div class="actions"><button type="button" (click)="getGeolocation()" [disabled]="locating">{{ locating ? 'Buscando ubicación…' : 'Usar mi ubicación' }}</button><button class="primary" type="submit" [disabled]="settings.invalid || calculating">{{ calculating ? 'Calculando…' : 'Calcular horas de sol' }}</button></div>
+      <p class="status" role="status" *ngIf="locationMessage">{{ locationMessage }}</p>
+      <p class="error" role="alert" *ngIf="error">{{ error }}</p>
+      <div class="calculation-progress" *ngIf="calculating"><label>Calendario anual · {{progress}} %<progress max="100" [value]="progress"></progress></label><button type="button" (click)="cancelCalculation()">Cancelar</button></div>
+    </form>
+    <section class="solar-card map-card"><h3>Selecciona sobre el mapa</h3><div class="segmented"><button type="button" [class.active]="mapMode==='location'" [attr.aria-pressed]="mapMode==='location'" (click)="mapMode='location';clearDirection()">Ubicación</button><button type="button" [class.active]="mapMode==='direction'" [attr.aria-pressed]="mapMode==='direction'" (click)="mapMode='direction';clearDirection()">Orientación</button></div>
+      <p class="hint">{{mapMode==='location' ? 'Toca el mapa para elegir el lugar del cálculo.' : 'Marca dos puntos a lo largo de la pared. La fachada mira a la derecha del recorrido; puedes invertirla.'}}</p>
+      <div #map class="solar-map" aria-label="Mapa para elegir ubicación y orientación"></div>
+      <div class="actions" *ngIf="angle !== null"><span>Pared: {{ angle | number:'1.1-1' }}° · Fachada: {{orientation | number:'1.1-1'}}°</span><button type="button" (click)="reverseOrientation()">Invertir fachada</button></div>
+    </section>
   </div>
-  <canvas #canvas [width]="width" [height]="height"></canvas>
-</div>
+  <div class="empty-state" *ngIf="!result && !calculating"><span aria-hidden="true">☀</span><p>Elige un lugar y una orientación para descubrir su calendario solar.</p></div>
+  <section class="solar-card annual-card" [hidden]="!result">
+    <div class="section-heading"><div><span class="eyebrow">Un año de luz</span><h3>Calendario solar · {{result?.year}}</h3><p class="hint">{{result?.latitude | number:'1.4-4'}}°, {{result?.longitude | number:'1.4-4'}}° · Fachada {{result?.orientation | number:'1.1-1'}}° · {{calendarZoneLabel}}</p></div><button type="button" (click)="exportPng()">Descargar PNG</button></div>
+    <p class="stale" role="status" *ngIf="stale">Los controles han cambiado. Recalcula para actualizar los resultados.</p>
+    <div class="annual-summary"><p><strong>{{duration(averageDaylight)}}</strong><span>Luz al día · media anual</span></p><p><strong>{{duration(averageDirect)}}</strong><span>Sol frente a la fachada · media anual</span></p></div>
+    <div class="legend"><span *ngFor="let label of ['Noche','Sol detrás de la fachada','Sol bajo frente a la fachada (<10°)','Sol frente a la fachada']; let i=index"><i [style.background]="palette[i]"></i>{{label}}</span><span *ngIf="result?.timeZone"><i [style.background]="palette[4]"></i>Hora inexistente por cambio de horario</span></div>
+    <div class="calendar-scroll"><canvas #canvas width="816" height="422" (pointermove)="calendarPointer($event)" (pointerleave)="hover=''" (click)="calendarPointer($any($event),true)" aria-label="Calendario anual de horas de sol. Cada fila es un día y cada columna una hora. Usa el selector de fecha inferior para consultar el detalle."></canvas></div>
+    <p class="calendar-readout" aria-live="off">{{hover || 'Toca un punto del calendario para seleccionar su día y hora. La línea naranja indica el día seleccionado.'}}</p>
+  </section>
+  <section class="solar-card day-card" *ngIf="result">
+    <div class="section-heading"><div><span class="eyebrow">El día al detalle</span><h3>{{dateLabel}}</h3></div><div class="day-navigation"><button type="button" (click)="changeDay(-1)" [disabled]="selectedDay===0" aria-label="Día anterior">‹</button><label class="sr-only" for="solar-date">Fecha del detalle</label><input id="solar-date" type="date" [(ngModel)]="date" [min]="days[0].date" [max]="days[days.length-1].date" (ngModelChange)="updateDay()"><button type="button" (click)="changeDay(1)" [disabled]="selectedDay===days.length-1" aria-label="Día siguiente">›</button></div></div>
+    <div class="day-metrics"><p><strong>{{formatTime(sunrise)}}</strong><span>Salida geométrica</span></p><p><strong>{{formatTime(sunset)}}</strong><span>Puesta geométrica</span></p><p><strong>{{duration(daylight)}}</strong><span>Sol sobre el horizonte</span></p><p><strong>{{duration(direct)}}</strong><span>Sol frente a la fachada</span></p></div>
+    <p class="hint" *ngIf="dayLength>0 && (daylight===0 || daylight===dayLength)">{{daylight===0 ? 'Noche polar: el sol no supera el horizonte este día.' : 'Día polar: el sol permanece sobre el horizonte durante todo el día.'}}</p>
+    <p class="hint" *ngIf="dayLength!==1440">El cambio de horario hace que este día dure {{duration(dayLength)}}. Las horas de luz cuentan el tiempo real, incluidas las horas repetidas.</p>
+    <div class="day-visuals"><div class="day-chart"><h4>Recorrido de la elevación solar</h4><svg viewBox="-38 0 780 242" role="img" aria-label="Elevación solar durante 24 horas; la línea discontinua marca el horizonte">
+      <g class="chart-grid"><line *ngFor="let hour of hours" [attr.x1]="hour/24*720" y1="20" [attr.x2]="hour/24*720" y2="200"></line><line x1="0" y1="50" x2="720" y2="50"></line><line x1="0" y1="170" x2="720" y2="170"></line></g>
+      <line class="horizon" x1="0" y1="110" x2="720" y2="110"></line><text x="-8" y="54" text-anchor="end">60°</text><text x="-8" y="114" text-anchor="end">0°</text><text x="-8" y="174" text-anchor="end">−60°</text>
+      <path class="altitude-line" [attr.d]="altitudePath"></path><line class="time-marker" [attr.x1]="selectedMinute/1440*720" y1="20" [attr.x2]="selectedMinute/1440*720" y2="216"></line>
+      <rect *ngFor="let band of bands" [attr.x]="band.start/1440*720" y="204" [attr.width]="band.duration/1440*720" height="12" [attr.fill]="palette[band.kind]"></rect>
+      <text *ngFor="let hour of hours" [attr.x]="hour/24*720" y="234" text-anchor="middle">{{hour}} h</text>
+    </svg><p class="hint">Máxima elevación: {{maxElevation | number:'1.1-1'}}° a las {{formatTime(solarNoon)}} · {{solarNoonOffsetLabel}}</p></div>
+    <div class="instant-card"><label for="solar-time">Hora de consulta · {{offsetLabel}}</label><input id="solar-time" type="time" [(ngModel)]="time" (ngModelChange)="updateInstant()"><p class="status" role="status" *ngIf="timeMessage">{{timeMessage}}</p><label *ngIf="repeatedTime">Hora repetida<select [(ngModel)]="timeOccurrence" (ngModelChange)="updateInstant()"><option [ngValue]="0">Primera vez</option><option [ngValue]="1">Segunda vez</option></select></label><svg viewBox="0 0 200 200" role="img" aria-label="Brújula: el sol indica el azimut y la flecha naranja la orientación de la fachada"><circle class="compass-ring" cx="100" cy="100" r="66"></circle><line class="normal-line" x1="100" y1="100" [attr.x2]="normalX" [attr.y2]="normalY"></line><circle *ngIf="elevation!==null" class="sun-dot" [attr.cx]="sunX" [attr.cy]="sunY" r="8" [class.below-horizon]="elevation!==null && elevation<=0"></circle><text x="100" y="18">N</text><text x="183" y="105">E</text><text x="100" y="192">S</text><text x="17" y="105">O</text><circle class="compass-center" cx="100" cy="100" r="3"></circle></svg><div class="instant-values"><p><strong>{{(elevation | number:'1.1-1') || '—'}}°</strong><span>Elevación</span></p><p><strong>{{(azimuth | number:'1.1-1') || '—'}}°</strong><span>Azimut</span></p></div><p class="hint">{{elevation===null ? 'Sin posición para esta hora' : elevation>0 ? 'Sol sobre el horizonte' : 'Sol bajo el horizonte'}} · flecha naranja: fachada.</p></div></div>
+  </section>
+  <p class="method-note">Modelo geométrico basado en las <a href="https://gml.noaa.gov/grad/solcalc/calcdetails.html" target="_blank" rel="noopener noreferrer">ecuaciones solares de NOAA / Meeus</a>. Calendario con muestras cada 5 minutos; detalle diario cada minuto. La exposición corresponde a una fachada vertical y un horizonte despejado: no incluye edificios, relieve, nubes ni refracción atmosférica. Las horas usan la zona de la ubicación y sus cambios de horario, salvo en el modo UTC fijo. En horas repetidas, el calendario y la curva muestran la primera vez; el selector permite consultar ambas. Las reglas horarias dependen de la base de zonas del navegador.</p>
+</section>
