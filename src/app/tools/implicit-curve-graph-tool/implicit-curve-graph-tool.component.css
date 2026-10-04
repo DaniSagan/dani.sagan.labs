@@ -1,3 +1,10 @@
-input#formula {
-  min-width: 30em;
-}
+:host { display: block; min-width: 0; }
+input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-box; margin: 0.5rem 0; padding: 0.75rem; font: 0.95rem monospace; }
+.formula-help { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.5; }
+.examples { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.bounds { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
+.bounds label { display: flex; flex-direction: column; font-size: 0.9rem; }
+.bounds input { box-sizing: border-box; min-width: 0; width: 100%; margin: 0.25rem 0; }
+button { border-radius: 5px; }
+.formula-error { color: #ffb69a; }
+form label, .bounds label { width: auto; }

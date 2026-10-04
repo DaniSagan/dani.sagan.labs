@@ -1,23 +1,18 @@
-<h2>Graficador de Curvas Implicitas</h2>
+<h2>Graficador de curvas implícitas</h2>
 <div class="widget-container">
-  <div>
-    <label for="formula">Ecuación (f(x, y) = 0): </label>
-    <input id="formula" [(ngModel)]="formula" placeholder="Ingresa la fórmula (ej. x*x + y*y - 1)" />
-    <div>
-      <label for="xMin">x Min: </label>
-      <input id="xMin" type="number" [(ngModel)]="xMin" />
-
-      <label for="xMax">x Max: </label>
-      <input id="xMax" type="number" [(ngModel)]="xMax" />
+  <form (ngSubmit)="onRedraw()">
+    <label for="formula">Expresión f(x, y) = 0</label>
+    <input id="formula" name="formula" [(ngModel)]="formula" placeholder="x*x + y*y - 1" spellcheck="false" />
+    <p class="formula-help">Usa sintaxis JavaScript: ** para potencias, Math.sin(x), Math.cos(y), Math.sqrt(x)… También puedes usar expresiones de una sola variable.</p>
+    <div class="examples" aria-label="Ejemplos"><button type="button" (click)="example('x*x + y*y - 1')">Círculo</button><button type="button" (click)="example('x*x - y*y - 1')">Hipérbola</button><button type="button" (click)="example('(x*x + y*y)**2 - 2*(x*x - y*y)')">Lemniscata</button><button type="button" (click)="example('Math.sin(x) - y')">Seno</button></div>
+    <div class="bounds">
+      <label>x mín. <input name="xMin" type="number" step="any" [(ngModel)]="xMin" /></label>
+      <label>x máx. <input name="xMax" type="number" step="any" [(ngModel)]="xMax" /></label>
+      <label>y mín. <input name="yMin" type="number" step="any" [(ngModel)]="yMin" /></label>
+      <label>y máx. <input name="yMax" type="number" step="any" [(ngModel)]="yMax" /></label>
     </div>
-    <div>
-      <label for="yMin">y Min: </label>
-      <input id="yMin" type="number" [(ngModel)]="yMin" />
-
-      <label for="yMax">y Max: </label>
-      <input id="yMax" type="number" [(ngModel)]="yMax" />
-    </div>
-    <button (click)="onRedraw()">Redibujar</button>
-  </div>
+    <button type="submit">Dibujar curva</button>
+    <p class="formula-error" role="alert" *ngIf="error">{{ error }}</p>
+  </form>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

@@ -1,28 +1,48 @@
-<div>
-  <!-- <h2>Dibujar gráfica implícita de una ecuación f(x, y) = 0</h2>
-
-  <div>
-    <label for="formula">Ecuación (f(x, y) = 0): </label>
-    <input id="formula" [(ngModel)]="formula" placeholder="Ingresa la fórmula (ej. x*x + y*y - 1)" />
-
-    <label for="xMin">x Min: </label>
-    <input id="xMin" type="number" [(ngModel)]="xMin" />
-
-    <label for="xMax">x Max: </label>
-    <input id="xMax" type="number" [(ngModel)]="xMax" />
-
-    <label for="yMin">y Min: </label>
-    <input id="yMin" type="number" [(ngModel)]="yMin" />
-
-    <label for="yMax">y Max: </label>
-    <input id="yMax" type="number" [(ngModel)]="yMax" />
-
-    <label for="resolution">Resolución: </label>
-    <input id="resolution" type="number" step="0.01" [(ngModel)]="resolution" />
-
-    <button (click)="onRedraw()">Redibujar</button>
-  </div> -->
-
-  <canvas #graphCanvas width="600" height="600"></canvas>
+<div class="implicit-graph">
+  <div class="graph-toolbar" aria-label="Controles de la gráfica">
+    <div class="view-actions">
+      <button type="button" (click)="zoom(0.75)" aria-label="Acercar gráfica">＋</button>
+      <button type="button" (click)="zoom(1.3333333333333333)" aria-label="Alejar gráfica">−</button>
+      <button type="button" (click)="resetView()">Restablecer vista</button>
+    </div>
+    <button type="button" (click)="exportPng()">Descargar PNG</button>
+  </div>
+  <label class="pan-toggle"><input type="checkbox" [(ngModel)]="dragEnabled"> Mover vista arrastrando</label>
+  <canvas #graphCanvas width="600" height="600" [class.panning]="dragEnabled"
+    aria-label="Gráfica de curvas en el plano cartesiano. Usa los botones para acercar, alejar o restablecer la vista."
+    (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp()"
+    (pointercancel)="pointerUp()" (lostpointercapture)="pointerUp()" (pointerleave)="coordinates = ''">
+    Tu navegador no admite el dibujo de la gráfica. Utiliza un navegador compatible con canvas.
+  </canvas>
+  <div class="graph-readout"><span>{{ coordinates || 'Explora la gráfica con el cursor' }}</span><span>Divisiones: x {{ formatValue(xStep, xStep) }} · y {{ formatValue(yStep, yStep) }}</span></div>
+  <p class="graph-error" role="status" *ngIf="message">{{ message }}</p>
+  <details class="graph-settings" *ngIf="showSettings">
+    <summary>Configurar gráfica</summary>
+    <div class="settings-grid">
+      <fieldset><legend>Ejes y cuadrícula</legend>
+        <label><input type="checkbox" [(ngModel)]="showAxes" (ngModelChange)="redraw()"> Mostrar ejes</label>
+        <label><input type="checkbox" [(ngModel)]="showLabels" (ngModelChange)="redraw()"> Valores y divisiones</label>
+        <label><input type="checkbox" [(ngModel)]="showGrid" (ngModelChange)="redraw()"> Cuadrícula principal</label>
+        <label><input type="checkbox" [(ngModel)]="showSubdivisions" (ngModelChange)="redraw()" [disabled]="!showGrid"> Subdivisiones</label>
+        <label>División x <input type="number" min="0" step="any" [(ngModel)]="xDivision" (ngModelChange)="redraw()"></label>
+        <label>División y <input type="number" min="0" step="any" [(ngModel)]="yDivision" (ngModelChange)="redraw()"></label>
+        <small>Usa 0 para ajustar las divisiones automáticamente.</small>
+        <label>Subdivisiones por intervalo <input type="number" min="2" max="10" step="1" [(ngModel)]="subdivisions" (ngModelChange)="redraw()"></label>
+      </fieldset>
+      <fieldset><legend>Colores</legend>
+        <label>Fondo <input type="color" [(ngModel)]="backgroundColor" (ngModelChange)="redraw()"></label>
+        <label>Ejes <input type="color" [(ngModel)]="axesColor" (ngModelChange)="redraw()"></label>
+        <label>Valores <input type="color" [(ngModel)]="labelColor" (ngModelChange)="redraw()"></label>
+        <label>Cuadrícula <input type="color" [(ngModel)]="gridColor" (ngModelChange)="redraw()"></label>
+        <label>Subdivisiones <input type="color" [(ngModel)]="subdivisionColor" (ngModelChange)="redraw()"></label>
+        <label>Curvas implícitas <input type="color" [ngModel]="curveColor || '#ff785e'" (ngModelChange)="curveColor = $event; redraw()"></label>
+        <button type="button" (click)="curveColor = null; redraw()">Colores originales de las curvas</button>
+      </fieldset>
+      <fieldset><legend>Trazado</legend>
+        <label>Grosor de curvas implícitas <input type="number" min="0.5" max="8" step="0.5" [(ngModel)]="lineWidth" (ngModelChange)="redraw()"></label>
+        <label>Detalle de curvas implícitas <select [(ngModel)]="sampleSize" (ngModelChange)="redraw()"><option [ngValue]="4">Rápido</option><option [ngValue]="2">Equilibrado</option><option [ngValue]="1">Fino</option></select></label>
+        <small>El trazado es una aproximación numérica. Las curvas muy pequeñas o que no cambian de signo pueden requerir otra fórmula o más detalle.</small>
+      </fieldset>
+    </div>
+  </details>
 </div>
-

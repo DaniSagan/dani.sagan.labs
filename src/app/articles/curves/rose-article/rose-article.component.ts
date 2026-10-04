@@ -25,7 +25,7 @@ export class RoseArticleComponent extends CurveArticleBaseComponent {
   override kind: 'implicit' | 'parametric' = 'implicit';
 
   override buildEquation(params: Record<string, number>): string {
-    return `$$ r = ${params.a.toFixed(1)}\cos(${params.k}\theta) $$`;
+    return `$$ r = ${params.a.toFixed(1)}\\cos(${params.k}\\theta) $$`;
   }
 
   override evaluateImplicit(x: number, y: number, params: Record<string, number>): number {

@@ -24,7 +24,7 @@ export class ParabolaLikeArticleComponent extends CurveArticleBaseComponent {
   ];
   override kind: 'implicit' | 'parametric' = 'implicit';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 + x^2 $$`;
+    return `$$ \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1 + x^2 $$`;
   }
   override evaluateImplicit(x: number, y: number, params: Record<string, number>): number {
     return (x * x / (params.a * params.a)) + (y * y / (params.b * params.b)) - 1 - x * x;
