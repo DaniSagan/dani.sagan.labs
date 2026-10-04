@@ -5,9 +5,25 @@ footer {
 }
 
 footer p {
-  font-family: 'Courier Prime', monospace;
+  font-family: "Courier Prime", monospace;
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   color: var(--ink-faint);
   text-transform: uppercase;
+}
+footer nav {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+footer nav a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+footer nav a:hover {
+  color: var(--link-hover);
+}
+footer nav a:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 4px;
 }

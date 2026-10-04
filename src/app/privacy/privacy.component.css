@@ -1,0 +1,75 @@
+﻿:host {
+  display: block;
+}
+.privacy-page {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.5rem;
+}
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.7rem);
+  line-height: 1.2;
+}
+h2 {
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+section {
+  margin-top: 2rem;
+}
+.eyebrow,
+.updated {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+}
+.eyebrow {
+  letter-spacing: 0.12em;
+}
+li {
+  margin: 0.75rem 0;
+}
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  color: var(--link-hover);
+}
+.storage-controls {
+  padding: 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--paper);
+}
+button {
+  padding: 0.8rem 1.1rem;
+  max-width: 100%;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+button:hover {
+  background: var(--bg2);
+}
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 4px;
+}
+.storage-message {
+  color: var(--accent3);
+}
+.storage-message:empty {
+  display: none;
+}
