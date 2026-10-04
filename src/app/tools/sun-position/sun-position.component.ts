@@ -6,6 +6,7 @@ import * as L from 'leaflet';
 import { GeolocationService } from 'src/app/shared/physics/geolocation.service';
 import { CelestialCoords, GeographicCoords, SunPositionCalculatorService } from 'src/app/shared/physics/sun-position-calculator-service.service';
 import { CivilDay, SolarTimeService } from './solar-time.service';
+import { facadeAngle, facadeTrajectory } from './solar-facade-path';
 
 type Settings = { latitude: number; longitude: number; orientation: number; year: number; utcOffset: number; timeZone: string | null; timeZoneMode: 'automatic' | 'zone' | 'fixed' };
 type SolarDay = { date: string; daylight: number; direct: number };
@@ -49,6 +50,11 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
   days: SolarDay[] = [];
   bands: Band[] = [];
   altitudePath = '';
+  facadeDayPath = '';
+  facadeNightPath = '';
+  facadeLabels: { x: number; y: number; minute: number }[] = [];
+  readonly horizontalAngles = [-180, -135, -90, -45, 0, 45, 90, 135, 180];
+  readonly verticalAngles = [-90, -60, -30, 0, 30, 60, 90];
   sunrise: number | null = null;
   sunset: number | null = null;
   solarNoon = 0;
@@ -117,6 +123,9 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
     return new Date(this.date + 'T12:00:00Z').toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
   }
   get sunX(): number { return 100 + 66 * Math.sin((this.azimuth ?? 0) * Math.PI / 180); }
+  get relativeSunAngle(): number { return facadeAngle(this.azimuth ?? 0, this.result?.orientation ?? this.orientation); }
+  get facadeSunX(): number { return (this.relativeSunAngle + 180) * 2; }
+  get facadeSunY(): number { return 20 + (90 - (this.elevation ?? 0)) * 2; }
   get sunY(): number { return 100 - 66 * Math.cos((this.azimuth ?? 0) * Math.PI / 180); }
   get normalX(): number { return 100 + 54 * Math.sin((this.result?.orientation ?? 180) * Math.PI / 180); }
   get normalY(): number { return 100 - 54 * Math.cos((this.result?.orientation ?? 180) * Math.PI / 180); }
@@ -239,11 +248,18 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
       }
     }
     this.bands = bands; this.altitudePath = points.join(' ');
+    const trajectory = facadeTrajectory(this.civilDay.occurrences.map(entry => ({ position: positions.get(entry.timestamp)!, minute: entry.minute })), config.orientation);
+    this.facadeDayPath = trajectory.daylight; this.facadeNightPath = trajectory.night; this.facadeLabels = trajectory.labels;
     this.updateInstant(); this.paintCalendar();
   }
   changeDay(delta: number): void {
     const day = this.days[this.selectedDay + delta];
     if (day) { this.date = day.date; this.updateDay(); }
+  }
+  selectMinute(minute: number): void {
+    if (!Number.isFinite(minute)) return;
+    this.time = this.formatTime(Math.max(0, Math.min(1439, Math.round(minute))));
+    this.updateInstant();
   }
   updateInstant(): void {
     if (!this.result || !/^\d{2}:\d{2}$/.test(this.time)) return;

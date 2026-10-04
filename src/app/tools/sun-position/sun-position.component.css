@@ -70,3 +70,9 @@ svg text { fill: var(--ink-dim); font: 12px monospace; }
 .sr-only { position: absolute; width: 1px !important; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 @media(max-width: 900px) { .solar-setup { grid-template-columns: 1fr; } .day-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media(max-width: 600px) { .day-visuals { grid-template-columns: 1fr; } .instant-card { border-left: 0; border-top: 1px solid var(--rule); padding: 1rem 0 0; } .day-chart { overflow-x: auto; } .day-chart svg { min-width: 500px; } .annual-summary { grid-template-columns: 1fr; } .actions button { flex: 1; } }
+.facade-chart { margin-top: 1.5rem; border-top: 1px solid var(--rule); padding-top: .5rem; }
+.facade-front { fill: #f8d56e0d; }
+.facade-night { fill: none; stroke: #7896b1; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.facade-current { fill: var(--accent); stroke: var(--bg); stroke-width: 2; }
+.time-slider { padding: 0; border: 0; background: transparent; accent-color: var(--accent); cursor: pointer; }
+.time-slider-limits { display: flex; justify-content: space-between; color: var(--ink-dim); font: .7rem monospace; }
