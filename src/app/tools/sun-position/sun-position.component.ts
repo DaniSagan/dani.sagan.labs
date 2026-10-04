@@ -39,8 +39,6 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
   time = '12:00';
   elevation: number | null = null;
   azimuth: number | null = null;
-  angle: number | null = null;
-  mapMode: 'location' | 'direction' = 'location';
   locating = false;
   calculating = false;
   progress = 0;
@@ -75,8 +73,7 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
   hover = '';
   private map?: L.Map;
   private locationMarker?: L.CircleMarker;
-  private directionMarkers: L.CircleMarker[] = [];
-  private line?: L.Polyline;
+  private facadeOverlay?: L.LayerGroup;
   private locationSubscription?: Subscription;
   private run = 0;
   private resize?: ResizeObserver;
@@ -90,6 +87,8 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(this.map);
     this.map.on('click', event => this.onMapClick(event));
+    this.facadeOverlay = L.layerGroup().addTo(this.map);
+    this.map.on('zoomend moveend', () => this.updateMapOrientation());
     this.resize = new ResizeObserver(() => this.map?.invalidateSize());
     this.resize.observe(this.mapElement.nativeElement);
     this.syncMap();
@@ -357,38 +356,36 @@ export class SunPositionComponent implements AfterViewInit, OnDestroy {
   syncMap(zoom?: number): void {
     if (!this.map || !Number.isFinite(this.latitude) || !Number.isFinite(this.longitude) || Math.abs(this.latitude) > 90 || Math.abs(this.longitude) > 180) return;
     this.detectTimeZone();
-    this.clearDirection();
     this.locationMarker?.remove();
     this.locationMarker = L.circleMarker([this.latitude, this.longitude], { radius: 7, color: '#ff785d', fillOpacity: 1 }).addTo(this.map);
     if (zoom) this.map.setView([this.latitude, this.longitude], zoom);
+    this.updateMapOrientation();
   }
   private onMapClick(event: L.LeafletMouseEvent): void {
-    if (!this.map) return;
-    if (this.mapMode === 'location') {
-      this.latitude = Number(event.latlng.lat.toFixed(6)); this.longitude = Number(((((event.latlng.lng + 180) % 360 + 360) % 360) - 180).toFixed(6));
-      this.syncMap(); return;
-    }
-    if (this.directionMarkers.length === 2) this.clearDirection();
-    this.directionMarkers.push(L.circleMarker(event.latlng, { radius: 6, color: '#f8d56e', fillOpacity: 1 }).addTo(this.map));
-    if (this.directionMarkers.length !== 2) return;
-    const [a, b] = this.directionMarkers.map(marker => marker.getLatLng());
-    if (a.equals(b)) { this.clearDirection(); return; }
-    const rad = Math.PI / 180, dl = (b.lng - a.lng) * rad;
-    const bearing = Math.atan2(Math.sin(dl) * Math.cos(b.lat * rad), Math.cos(a.lat * rad) * Math.sin(b.lat * rad) - Math.sin(a.lat * rad) * Math.cos(b.lat * rad) * Math.cos(dl));
-    this.angle = (bearing / rad + 360) % 360;
-    this.latitude = Number(a.lat.toFixed(6)); this.longitude = Number(((((a.lng + 180) % 360 + 360) % 360) - 180).toFixed(6));
-    this.orientation = Number(((this.angle + 90) % 360).toFixed(1));
-    this.detectTimeZone();
-    this.line = L.polyline([a, b], { color: '#ff785d', weight: 3 }).addTo(this.map);
-    this.locationMarker?.remove();
-    this.locationMarker = L.circleMarker(a, { radius: 7, color: '#ff785d', fillOpacity: 1 }).addTo(this.map);
+    this.latitude = Number(event.latlng.lat.toFixed(6));
+    this.longitude = Number(((((event.latlng.lng + 180) % 360 + 360) % 360) - 180).toFixed(6));
+    this.syncMap();
+  }
+  updateMapOrientation(): void {
+    this.facadeOverlay?.clearLayers();
+    if (!this.map || !this.facadeOverlay || !Number.isFinite(this.latitude) || !Number.isFinite(this.longitude)
+      || Math.abs(this.latitude) > 90 || Math.abs(this.longitude) > 180 || !Number.isFinite(this.orientation)) return;
+    const center = this.map.latLngToLayerPoint([this.latitude, this.longitude]);
+    const radians = this.orientation * Math.PI / 180;
+    const normal = L.point(Math.sin(radians), -Math.cos(radians));
+    const tangent = L.point(Math.cos(radians), Math.sin(radians));
+    const point = (along: number, across: number) => this.map!.layerPointToLatLng(
+      center.add(normal.multiplyBy(along)).add(tangent.multiplyBy(across)));
+    // Fixed screen lengths keep the schematic legible at every map zoom level.
+    L.polyline([point(0, -46), point(0, 46)], { color: '#f8d56e', weight: 4, interactive: false, className: 'map-facade' }).addTo(this.facadeOverlay);
+    L.polyline([point(0, 0), point(60, 0)], { color: '#ff785d', weight: 3, interactive: false, className: 'map-facade-normal' }).addTo(this.facadeOverlay);
+    L.polyline([point(47, -8), point(60, 0), point(47, 8)], { color: '#ff785d', weight: 3, interactive: false, className: 'map-facade-arrow' }).addTo(this.facadeOverlay);
   }
   detectTimeZone(): void {
     if (this.timeZoneMode !== 'automatic') return;
     try { this.timeZone = this.solarTime.detectZone(this.latitude, this.longitude); }
     catch { this.timeZone = ''; }
   }
-  clearDirection(): void { this.directionMarkers.forEach(marker => marker.remove()); this.directionMarkers = []; this.line?.remove(); this.line = undefined; this.angle = null; }
-  reverseOrientation(): void { this.orientation = (this.orientation + 180) % 360; }
+  reverseOrientation(): void { this.orientation = (this.orientation + 180) % 360; this.updateMapOrientation(); }
   private localDate(date: Date): string { return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`; }
 }

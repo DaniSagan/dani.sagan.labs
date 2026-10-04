@@ -6,24 +6,25 @@
       <div class="control-grid">
         <label>Latitud (°)<input type="number" name="latitude" [(ngModel)]="latitude" min="-90" max="90" step="any" required (change)="syncMap()"></label>
         <label>Longitud (°)<input type="number" name="longitude" [(ngModel)]="longitude" min="-180" max="180" step="any" required (change)="syncMap()"></label>
-        <label>Orientación de la fachada (°)<input type="number" name="orientation" [(ngModel)]="orientation" min="0" max="360" step="any" required></label>
+        <label>Orientación de la fachada (°)<input type="number" name="orientation" [(ngModel)]="orientation" (ngModelChange)="updateMapOrientation()" min="0" max="360" step="any" required></label>
         <label>Año<input type="number" name="year" [(ngModel)]="year" min="1900" max="2100" step="1" required></label>
         <label class="wide">Zona horaria<select name="timeZoneMode" [(ngModel)]="timeZoneMode" (ngModelChange)="detectTimeZone()"><option value="automatic">Automática según la ubicación</option><option value="zone">Elegir una zona horaria</option><option value="fixed">Huso UTC fijo</option></select></label>
         <div class="wide" *ngIf="timeZoneMode==='automatic'"><p class="hint">{{timeZone || 'Introduce coordenadas válidas'}} · aplica los cambios de horario de cada fecha.</p><small>La detección geográfica es aproximada. Si estás cerca de una frontera horaria, puedes elegir la zona manualmente.</small></div>
         <label class="wide" *ngIf="timeZoneMode==='zone'">Zona IANA<input name="timeZone" [(ngModel)]="timeZone" list="solar-time-zones" required placeholder="Europe/Madrid"><datalist id="solar-time-zones"><option *ngFor="let zone of timeZones" [value]="zone"></option></datalist><small>Incluye automáticamente el horario de verano de esa zona.</small></label>
         <label class="wide" *ngIf="timeZoneMode==='fixed'">Huso horario fijo (UTC ± horas)<input type="number" name="utcOffset" [(ngModel)]="utcOffset" min="-12" max="14" step="0.25" required><small>Se mantiene todo el año, sin cambios de horario de verano.</small></label>
       </div>
-      <div class="orientation-presets" aria-label="Orientaciones cardinales"><button type="button" *ngFor="let p of [{name:'Norte',value:0},{name:'Este',value:90},{name:'Sur',value:180},{name:'Oeste',value:270}]" [class.active]="orientation === p.value" [attr.aria-pressed]="orientation === p.value" (click)="orientation=p.value">{{p.name}}</button></div>
+      <div class="orientation-presets" aria-label="Orientaciones cardinales"><button type="button" *ngFor="let p of [{name:'Norte',value:0},{name:'Este',value:90},{name:'Sur',value:180},{name:'Oeste',value:270}]" [class.active]="orientation === p.value" [attr.aria-pressed]="orientation === p.value" (click)="orientation=p.value;updateMapOrientation()">{{p.name}}</button></div>
       <p class="hint">0° norte · 90° este · 180° sur · 270° oeste. La orientación indica hacia dónde mira la fachada, perpendicular a su pared.</p>
       <div class="actions"><button type="button" (click)="getGeolocation()" [disabled]="locating">{{ locating ? 'Buscando ubicación…' : 'Usar mi ubicación' }}</button><button class="primary" type="submit" [disabled]="settings.invalid || calculating">{{ calculating ? 'Calculando…' : 'Calcular horas de sol' }}</button></div>
       <p class="status" role="status" *ngIf="locationMessage">{{ locationMessage }}</p>
       <p class="error" role="alert" *ngIf="error">{{ error }}</p>
       <div class="calculation-progress" *ngIf="calculating"><label>Calendario anual · {{progress}} %<progress max="100" [value]="progress"></progress></label><button type="button" (click)="cancelCalculation()">Cancelar</button></div>
     </form>
-    <section class="solar-card map-card"><h3>Selecciona sobre el mapa</h3><div class="segmented"><button type="button" [class.active]="mapMode==='location'" [attr.aria-pressed]="mapMode==='location'" (click)="mapMode='location';clearDirection()">Ubicación</button><button type="button" [class.active]="mapMode==='direction'" [attr.aria-pressed]="mapMode==='direction'" (click)="mapMode='direction';clearDirection()">Orientación</button></div>
-      <p class="hint">{{mapMode==='location' ? 'Toca el mapa para elegir el lugar del cálculo.' : 'Marca dos puntos a lo largo de la pared. La fachada mira a la derecha del recorrido; puedes invertirla.'}}</p>
-      <div #map class="solar-map" aria-label="Mapa para elegir ubicación y orientación"></div>
-      <div class="actions" *ngIf="angle !== null"><span>Pared: {{ angle | number:'1.1-1' }}° · Fachada: {{orientation | number:'1.1-1'}}°</span><button type="button" (click)="reverseOrientation()">Invertir fachada</button></div>
+    <section class="solar-card map-card"><h3>Ubicación y fachada</h3>
+      <p class="hint">Toca el mapa para elegir la ubicación. La línea dorada representa la fachada y la flecha naranja indica hacia dónde mira. Ajusta el ángulo con el control de orientación.</p>
+      <div #map class="solar-map" aria-label="Mapa de ubicación con fachada y flecha de orientación"></div>
+      <div class="actions"><span>Fachada: {{orientation | number:'1.1-1'}}°</span><button type="button" (click)="reverseOrientation()">Invertir fachada</button></div>
+      <small>Representación esquemática: la longitud de la línea no indica el tamaño del edificio.</small>
     </section>
   </div>
   <div class="empty-state" *ngIf="!result && !calculating"><span aria-hidden="true">☀</span><p>Elige un lugar y una orientación para descubrir su calendario solar.</p></div>

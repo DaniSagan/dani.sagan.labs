@@ -72,4 +72,25 @@ describe('SunPositionComponent', () => {
     expect(component.kind(new CelestialCoords(45, 180), 180)).toBe(3);
     component.orientation = 270; component.reverseOrientation(); expect(component.orientation).toBe(90);
   });
+  it('shows the facade and perpendicular arrow and follows the orientation control', () => {
+    const map = (component as any).map;
+    const points = (index: number) => (component as any).facadeOverlay.getLayers()[index].getLatLngs()
+      .map((point: any) => map.latLngToLayerPoint(point));
+    component.orientation = 0; component.updateMapOrientation();
+    let facade = points(0), normal = points(1);
+    expect(facade[0].y).toBe(facade[1].y);
+    expect(normal[0].x).toBe(normal[1].x);
+    expect(normal[1].y).toBeLessThan(normal[0].y);
+    const input = fixture.nativeElement.querySelector('[name=orientation]');
+    input.value = '90'; input.dispatchEvent(new Event('input')); fixture.detectChanges();
+    facade = points(0); normal = points(1);
+    expect(facade[0].x).toBe(facade[1].x);
+    expect(normal[0].y).toBe(normal[1].y);
+    expect(normal[1].x).toBeGreaterThan(normal[0].x);
+    map.setZoom(15); normal = points(1);
+    expect(normal[0].distanceTo(normal[1])).toBeCloseTo(60, 0);
+    map.fire('click', {latlng: {lat:41, lng:2}});
+    expect(component.latitude).toBe(41); expect(component.longitude).toBe(2);
+    expect((component as any).facadeOverlay.getLayers().length).toBe(3);
+  });
 });
