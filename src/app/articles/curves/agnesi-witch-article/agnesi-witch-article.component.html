@@ -2,7 +2,7 @@
 <p class="dropcap">Bruja de Agnesi es una curva algebraica de ecuación racional con un máximo en el origen y dos ramas que se aproximan al eje horizontal. Su ecuación permite estudiar con precisión cómo varían la altura central y la rapidez con que las ramas se aproximan al eje horizontal.</p>
 
 <h3>Definición y propiedades</h3>
-<p>Para el modelo habitual y = a³/(x²+a²), el parámetro a controla tanto la altura como la anchura. La función es par, por lo que presenta simetría respecto del eje y, y su valor tiende a cero cuando |x| crece. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+<p>Para el modelo habitual <app-formula displayMode="inline" [showCodeButton]="false" expression="y=\dfrac{a^3}{x^2+a^2}"></app-formula>, el parámetro a controla tanto la altura como la anchura. La función es par, por lo que presenta simetría respecto del eje y, y su valor tiende a cero cuando |x| crece. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
 
 <h3>Contexto histórico</h3>
 <p>Maria Gaetana Agnesi la incluyó en sus estudios de análisis del siglo XVIII. El nombre en castellano procede de una traducción errónea de un término italiano, no de una propiedad matemática. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
@@ -15,16 +15,21 @@
 
 <h3>Comprobaciones útiles</h3>
 <p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
-<div class="widget-container">
-  <div class="widget-title">Bruja de Agnesi</div>
-  <div>
-    <label for="a">a: </label>
-    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" min="1" />
+<p>En el widget, a controla la anchura y b la altura máxima. Si <app-formula displayMode="inline" [showCodeButton]="false" expression="b=a"></app-formula>, se recupera el modelo habitual anterior.</p>
+<h3>Ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <div class="curve-parameters">
+  <div class="curve-parameter">
+    <label for="agnesi-witch-a">Anchura (a)</label>
+    <input id="agnesi-witch-a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" step="0.1" min="1" />
   </div>
-  <div>
-    <label for="b">b: </label>
-    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" min="1" />
+  <div class="curve-parameter">
+    <label for="agnesi-witch-b">Altura (b)</label>
+    <input id="agnesi-witch-b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" step="0.1" min="1" />
   </div>
-  <div id="equation" class="formula" [mathjax]="getEquation()"></div>
+  </div>
+  <div class="curve-current-equation"><p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="getEquation()"></app-formula></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

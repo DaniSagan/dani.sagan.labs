@@ -1,30 +1,56 @@
 <h2>Hipérbola</h2>
-<p class="dropcap">Hipérbola es una cónica formada por los puntos para los que la diferencia absoluta de distancias a dos focos es constante. Los focos y las asíntotas ofrecen dos lecturas complementarias: una métrica y otra orientada al comportamiento de las ramas.</p>
+<p class="dropcap">Hipérbola es una cónica formada por los puntos para los que la diferencia absoluta de distancias a
+  dos focos es constante. Los focos y las asíntotas ofrecen dos lecturas complementarias: una métrica y otra orientada
+  al comportamiento de las ramas.</p>
 
 <h3>Definición y propiedades</h3>
-<p>Su ecuación canónica puede escribirse como x²/a² − y²/b² = 1, o con los ejes intercambiados. Posee dos ramas y dos asíntotas, rectas que describen su dirección para valores grandes de las coordenadas. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+<p>Su ecuación canónica puede escribirse como <app-formula displayMode="inline"
+    [showCodeButton]="false" expression="\dfrac{x^2}{a^2}-\dfrac{y^2}{b^2}=1"></app-formula>, o con los ejes intercambiados. Posee dos ramas y dos
+  asíntotas, rectas que describen su dirección para valores grandes de las coordenadas. Estas propiedades permiten
+  distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular,
+  conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores
+  grandes.</p>
 
 <h3>Contexto histórico</h3>
-<p>Fue clasificada por Apolonio y adquirió importancia en la geometría analítica y la mecánica celeste. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+<p>Fue clasificada por Apolonio y adquirió importancia en la geometría analítica y la mecánica celeste. El interés
+  histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento,
+  astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta
+  matemática general.</p>
 
 <h3>Interpretación del modelo</h3>
-<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada.
+  Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría.
+  Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio
+  estructural de la curva.</p>
 
 <h3>Aplicaciones y relaciones</h3>
-<p>Se utiliza en localización por diferencias de tiempo, radioastronomía y descripción de trayectorias de escape. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+<p>Se utiliza en localización por diferencias de tiempo, radioastronomía y descripción de trayectorias de escape.
+  También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica,
+  una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en
+  matemáticas aplicadas.</p>
 
 <h3>Comprobaciones útiles</h3>
-<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
-<div class="widget-container">
-  <div class="widget-title">Hipérbola x^2/a^2 + y^2/b^2 = 1</div>
-  <div>
-    <label for="a">a: </label>
-    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" min="1" />
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la
+  parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que
+  la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno
+  intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen
+  únicamente de la escala o de una configuración concreta.</p>
+<h3>Ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <div class="curve-parameters">
+    <div class="curve-parameter">
+      <label for="hyperbola-a">a: </label>
+      <input id="hyperbola-a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" step="0.1" min="1" />
+    </div>
+    <div class="curve-parameter">
+      <label for="hyperbola-b">b: </label>
+      <input id="hyperbola-b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" step="0.1" min="1" />
+    </div>
   </div>
-  <div>
-    <label for="b">b: </label>
-    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" min="1" />
+  <div class="curve-current-equation">
+    <p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="getEquation()"></app-formula>
   </div>
-  <div id="equation" class="formula" [mathjax]="getEquation()"></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

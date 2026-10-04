@@ -2,7 +2,8 @@ import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MathjaxModule } from 'mathjax-angular';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { curveEquation } from '../curve-equations';
 import { ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
 import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-base.component';
 
@@ -12,24 +13,25 @@ import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-b
   imports: [RouterLink,
     CommonModule,
     FormsModule,
-    MathjaxModule,
+    FormulaComponent,
     ImplicitCurveGraphComponent,
   ],
   templateUrl: './cycloid-article.component.html',
-  styleUrls: ['./cycloid-article.component.css'],
+  styleUrls: ['./cycloid-article.component.css', '../curve-widget.css'],
 })
 export class CycloidArticleComponent extends CurveArticleBaseComponent {
   static title = 'Cicloide';
   static route = 'cycloid';
 
   override title = CycloidArticleComponent.title;
+  override generalEquation = curveEquation('cycloid');
   override bounds: [number, number, number, number] = [-8, 8, -3, 5];
   override paramDefinitions = [
     { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 },
   ];
   override kind: 'implicit' | 'parametric' = 'parametric';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ x = a(t - \\sin t), \\quad y = a(1 - \\cos t) $$`;
+    return curveEquation('cycloid', params);
   }
   protected override paramX = (t: number, params: Record<string, number>) =>
     params.a * (t - Math.sin(t));

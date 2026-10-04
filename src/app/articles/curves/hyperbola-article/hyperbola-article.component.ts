@@ -1,15 +1,16 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MathjaxModule } from 'mathjax-angular';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { curveEquation } from '../curve-equations';
 import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
   selector: 'app-hyperbola-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './hyperbola-article.component.html',
-  styleUrls: ['./hyperbola-article.component.css']
+  styleUrls: ['./hyperbola-article.component.css', '../curve-widget.css']
 })
 export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
@@ -18,6 +19,7 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'hyperbola';
 
   title = HyperbolaArticleComponent.title;
+  generalEquation = curveEquation('hyperbola');
 
   a: number = 1;
   b: number = 1;
@@ -36,22 +38,18 @@ export class HyperbolaArticleComponent implements AfterViewInit, OnInit {
   }
 
   onAChanged(value: number) {
+    if (value === null || !Number.isFinite(value) || value < 1) return;
     this.a = value;
     this.onDraw();
   }
 
   onBChanged(value: number) {
+    if (value === null || !Number.isFinite(value) || value < 1) return;
     this.b = value;
     this.onDraw();
   }
 
   getEquation(): string {
-    let terms = '';
-    if (Math.abs(this.a) !== 1) terms += `\\frac{x^2}{${Math.abs(this.a)}^2}`;
-    else terms += 'x^2';
-    terms += ' - ';
-    if (Math.abs(this.b) !== 1) terms += `\\frac{y^2}{${Math.abs(this.b)}^2}`;
-    else terms += 'y^2';
-    return `$$ ${terms} = 1 $$`;
+    return curveEquation('hyperbola', { a: this.a, b: this.b });
   }
 }

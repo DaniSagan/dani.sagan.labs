@@ -14,15 +14,19 @@
 <p>Se utiliza como ejemplo de lugar geométrico, construcción mecánica y análisis de curvas con ramas. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
 
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="buildEquation(params)"></div>
+<app-formula [expression]="generalEquation"></app-formula>
 
 <h3>Comprobaciones útiles</h3>
 <p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
-<div class="widget-container">
+<div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
-  <div *ngFor="let param of paramDefinitions">
-    <label [for]="param.key">{{ param.label }}:</label>
-    <input [id]="param.key" type="number" [ngModel]="params[param.key]" (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+  <div class="curve-parameters">
+    <div class="curve-parameter" *ngFor="let param of paramDefinitions">
+      <label [for]="'conchoid-' + param.key">{{ param.label }}</label>
+      <input [id]="'conchoid-' + param.key" type="number" [ngModel]="params[param.key]" (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+      <input type="range" [attr.aria-label]="'Variar ' + param.label" [ngModel]="params[param.key]" (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+    </div>
   </div>
+  <div class="curve-current-equation"><p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="buildEquation(params)"></app-formula></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

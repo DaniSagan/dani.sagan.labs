@@ -1,28 +1,55 @@
 <h2>Espiral de Arquímedes</h2>
-<p class="dropcap">Espiral de Arquímedes se define en coordenadas polares mediante una relación lineal entre el radio y el ángulo, por ejemplo r = a + bθ. La representación polar permite seguir el crecimiento del radio vuelta a vuelta y medir directamente la separación entre espiras.</p>
+<p class="dropcap">Espiral de Arquímedes se define en coordenadas polares mediante una relación lineal entre el radio y
+  el ángulo, por ejemplo <app-formula displayMode="inline" [showCodeButton]="false" expression="r=a+b\theta"></app-formula>. La representación
+  polar permite seguir el crecimiento del radio vuelta a vuelta y medir directamente la separación entre espiras.</p>
 
 <h3>Definición y propiedades</h3>
-<p>La separación radial entre dos vueltas consecutivas es constante: al aumentar θ en 2π, el radio aumenta siempre 2πb. Esta propiedad la diferencia de las espirales de crecimiento exponencial. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+<p>La separación radial entre dos vueltas consecutivas es constante: al aumentar θ en 2π, el radio aumenta siempre 2πb.
+  Esta propiedad la diferencia de las espirales de crecimiento exponencial. Estas propiedades permiten distinguir la
+  curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene
+  identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.
+</p>
 
 <h3>Contexto histórico</h3>
-<p>Fue estudiada por Arquímedes en la Antigüedad al investigar problemas de cuadratura y construcción geométrica. Es una referencia histórica de las coordenadas polares. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+<p>Fue estudiada por Arquímedes en la Antigüedad al investigar problemas de cuadratura y construcción geométrica. Es una
+  referencia histórica de las coordenadas polares. El interés histórico de estas curvas está ligado a problemas
+  concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio
+  muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
 
 <h3>Interpretación del modelo</h3>
-<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada.
+  Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría.
+  Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio
+  estructural de la curva.</p>
 
 <h3>Aplicaciones y relaciones</h3>
-<p>Aparece en pistas de mecanismos, escáneres, bobinados y antenas cuando se requiere un avance radial uniforme. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+<p>Aparece en pistas de mecanismos, escáneres, bobinados y antenas cuando se requiere un avance radial uniforme. También
+  tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una
+  ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas
+  aplicadas.</p>
 
 <h3>Ecuación</h3>
-<div class="formula" [mathjax]="buildEquation(params)"></div>
+<app-formula [expression]="generalEquation"></app-formula>
 
 <h3>Comprobaciones útiles</h3>
-<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
-<div class="widget-container">
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la
+  parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que
+  la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno
+  intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen
+  únicamente de la escala o de una configuración concreta.</p>
+<div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
-  <div *ngFor="let param of paramDefinitions">
-    <label [for]="param.key">{{ param.label }}:</label>
-    <input [id]="param.key" type="number" [ngModel]="params[param.key]" (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+  <div class="curve-parameters">
+    <div class="curve-parameter" *ngFor="let param of paramDefinitions">
+      <label [for]="'archimedean-spiral-' + param.key">{{ param.label }}</label>
+      <input [id]="'archimedean-spiral-' + param.key" type="number" [ngModel]="params[param.key]"
+        (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+      <input type="range" [attr.aria-label]="'Variar ' + param.label" [ngModel]="params[param.key]"
+        (ngModelChange)="onParamChanged(param.key, $event)" [min]="param.min" [max]="param.max" [step]="param.step" />
+    </div>
+  </div>
+  <div class="curve-current-equation">
+    <p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="buildEquation(params)"></app-formula>
   </div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

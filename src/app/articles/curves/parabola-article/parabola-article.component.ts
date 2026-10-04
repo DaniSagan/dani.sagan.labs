@@ -1,16 +1,17 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MathjaxModule } from 'mathjax-angular';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { curveEquation } from '../curve-equations';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
   selector: 'app-parabola-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './parabola-article.component.html',
-  styleUrls: ['./parabola-article.component.css']
+  styleUrls: ['./parabola-article.component.css', '../curve-widget.css']
 })
 export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
@@ -19,6 +20,7 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   static route: string = 'parabola';
 
   title = ParabolaArticleComponent.title;
+  generalEquation = curveEquation('parabola');
 
   a: number = 1;
   b: number = 0;
@@ -57,40 +59,25 @@ export class ParabolaArticleComponent implements AfterViewInit, OnInit {
   }
 
   onAChanged(value: number) {
+    if (value === null || !Number.isFinite(value)) return;
     this.a = value;
     this.onDraw();
   }
 
   onBChanged(value: number) {
+    if (value === null || !Number.isFinite(value)) return;
     this.b = value;
     this.onDraw();
   }
 
   onCChanged(value: number) {
+    if (value === null || !Number.isFinite(value)) return;
     this.c = value;
     this.onDraw();
   }
 
   getEquation(): string {
-    let terms = '';
-    if (this.a !== 0) {
-      if (this.a < 0) terms += ' - ';
-      if (Math.abs(this.a) !== 1) terms += `${Math.abs(this.a)}`;
-      terms += 'x^2';
-    }
-    if (this.b !== 0) {
-      if (this.b < 0) terms += ' - ';
-      else if (terms !== '') terms += ' + ';
-      if (Math.abs(this.b) !== 1) terms += `${Math.abs(this.b)}`;
-      terms += 'x';
-    }
-    if (this.c !== 0) {
-      if (this.c < 0) terms += ' - ';
-      else if (terms !== '') terms += ' + ';
-      terms += `${Math.abs(this.c)}`;
-    }
-    if (terms === '') terms = '0';
-    return `$$ ${terms} = 0 $$`;
+    return curveEquation('parabola', { a: this.a, b: this.b, c: this.c });
   }
 
   getFocus(): Vec2 {

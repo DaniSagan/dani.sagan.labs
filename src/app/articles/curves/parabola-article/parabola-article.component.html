@@ -1,34 +1,58 @@
 <h2>Parábola</h2>
-<p class="dropcap">Parábola es una cónica formada por los puntos que están a igual distancia de un foco y de una recta directriz. La relación entre foco, directriz y eje de simetría permite deducir sus propiedades sin depender solo de la expresión cuadrática.</p>
+<p class="dropcap">Parábola es una cónica formada por los puntos que están a igual distancia de un foco y de una recta
+  directriz. La relación entre foco, directriz y eje de simetría permite deducir sus propiedades sin depender solo de la
+  expresión cuadrática.</p>
 
 <h3>Definición y propiedades</h3>
-<p>En la forma y = ax² + bx + c, el signo de a determina la apertura y el vértice corresponde al extremo de la función. Su propiedad reflectante concentra en el foco los rayos paralelos al eje de simetría. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+<p>En la forma <app-formula displayMode="inline" [showCodeButton]="false" expression="y=ax^2+bx+c"></app-formula>, el signo de a determina la
+  apertura y el vértice corresponde al extremo de la función. Su propiedad reflectante concentra en el foco los rayos
+  paralelos al eje de simetría. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la
+  forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y
+  comportamiento cuando las variables toman valores grandes.</p>
 
 <h3>Contexto histórico</h3>
-<p>Fue estudiada por los geómetras griegos y se integró en la mecánica moderna al modelar idealmente el movimiento de proyectiles. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
+<p>Fue estudiada por los geómetras griegos y se integró en la mecánica moderna al modelar idealmente el movimiento de
+  proyectiles. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas,
+  descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede
+  conducir a una herramienta matemática general.</p>
 
 <h3>Interpretación del modelo</h3>
-<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
+<p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada.
+  Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría.
+  Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio
+  estructural de la curva.</p>
 
 <h3>Aplicaciones y relaciones</h3>
-<p>Es fundamental en antenas, faros, telescopios, concentradores solares y balística. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+<p>Es fundamental en antenas, faros, telescopios, concentradores solares y balística. También tiene valor didáctico
+  porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una
+  parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
 
 <h3>Comprobaciones útiles</h3>
-<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
-<div class="widget-container">
-  <div class="widget-title">Parábola ax^2+bx+c = 0</div>
-  <div>
-    <label for="a">a: </label>
-    <input id="a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" placeholder="a" />
+<p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la
+  parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que
+  la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno
+  intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen
+  únicamente de la escala o de una configuración concreta.</p>
+<h3>Ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <div class="curve-parameters">
+    <div class="curve-parameter">
+      <label for="parabola-a">a: </label>
+      <input id="parabola-a" type="number" [ngModel]="a" (ngModelChange)="onAChanged($event)" step="0.1" />
+    </div>
+    <div class="curve-parameter">
+      <label for="parabola-b">b: </label>
+      <input id="parabola-b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" step="0.1" />
+    </div>
+    <div class="curve-parameter">
+      <label for="parabola-c">c: </label>
+      <input id="parabola-c" type="number" [ngModel]="c" (ngModelChange)="onCChanged($event)" step="0.1" />
+    </div>
   </div>
-  <div>
-    <label for="b">b: </label>
-    <input id="b" type="number" [ngModel]="b" (ngModelChange)="onBChanged($event)" placeholder="b" />
+  <div class="curve-current-equation">
+    <p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="getEquation()"></app-formula>
   </div>
-  <div>
-    <label for="c">c: </label>
-    <input id="c" type="number" [ngModel]="c" (ngModelChange)="onCChanged($event)" placeholder="c" />
-  </div>
-  <div id="equation" class="formula" [mathjax]="getEquation()"></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

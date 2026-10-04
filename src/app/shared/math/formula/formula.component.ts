@@ -16,6 +16,7 @@ export class FormulaComponent implements OnInit, OnDestroy {
   isMathJaxReady = false;
 
   @Input() showCode = false;
+  @Input() showCodeButton = true;
 
   @Input()
   set displayMode(value: 'block' | 'inline') {

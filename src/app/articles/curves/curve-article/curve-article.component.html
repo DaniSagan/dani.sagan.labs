@@ -1,8 +1,11 @@
 <h2>{{ curve.title }}</h2>
 <p class="dropcap">{{ curve.description }}</p>
-<div class="widget-container">
+<h3>Ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<div class="widget-container curve-widget">
   <div class="widget-title">Parámetros</div>
-  <div *ngFor="let param of curve.params">
+  <div class="curve-parameters">
+  <div class="curve-parameter" *ngFor="let param of curve.params">
     <label [for]="param.key">{{ param.label }}: </label>
     <input
       [id]="param.key"
@@ -14,6 +17,7 @@
       [step]="param.step"
     />
   </div>
-  <div id="equation" class="formula" [mathjax]="equation"></div>
+  </div>
+  <div class="curve-current-equation"><p>Ecuación con los parámetros seleccionados</p><app-formula [expression]="equation"></app-formula></div>
   <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
 </div>

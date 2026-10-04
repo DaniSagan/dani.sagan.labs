@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MathjaxModule } from 'mathjax-angular';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { curveEquation } from '../curve-equations';
 import { ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
 import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-base.component';
 
 @Component({
   selector: 'app-hypocycloid-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './hypocycloid-article.component.html',
-  styleUrls: ['./hypocycloid-article.component.css']
+  styleUrls: ['./hypocycloid-article.component.css', '../curve-widget.css']
 })
 export class HypocycloidArticleComponent extends CurveArticleBaseComponent {
   static title = 'Hipocicloide';
   static route = 'hypocycloid';
 
   override title = HypocycloidArticleComponent.title;
+  override generalEquation = curveEquation('hypocycloid');
   override bounds: [number, number, number, number] = [-8, 8, -8, 8];
   override paramDefinitions = [
     { key: 'R', label: 'R', min: 2, max: 8, step: 0.5, value: 5 },
@@ -24,7 +26,7 @@ export class HypocycloidArticleComponent extends CurveArticleBaseComponent {
   ];
   override kind: 'implicit' | 'parametric' = 'parametric';
   override buildEquation(params: Record<string, number>): string {
-    return `$$ x = (R-r)\\cos t + r\\cos\\left(\\frac{R-r}{r}t\\right), \\quad y = (R-r)\\sin t - r\\sin\\left(\\frac{R-r}{r}t\\right) $$`;
+    return curveEquation('hypocycloid', params);
   }
   protected override paramX = (t: number, params: Record<string, number>) => (params.R - params.r) * Math.cos(t) + params.r * Math.cos(((params.R - params.r) / params.r) * t);
   protected override paramY = (t: number, params: Record<string, number>) => (params.R - params.r) * Math.sin(t) - params.r * Math.sin(((params.R - params.r) / params.r) * t);

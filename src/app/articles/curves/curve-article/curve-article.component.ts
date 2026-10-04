@@ -2,7 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { MathjaxModule } from 'mathjax-angular';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { curveEquation } from '../curve-equations';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/implicit-curve-graph/implicit-curve-graph.component';
 
@@ -34,11 +35,11 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     key: 'cardioid',
     title: 'Cardioide',
     route: 'cardioid',
-    description: 'Una cardioide es una curva con forma de corazón que aparece en mecánica y óptica. Su ecuación polar es r = a(1 + cos θ).',
+    description: 'Una cardioide es una curva con forma de corazón que aparece en mecánica y óptica. Su ecuación polar relaciona el radio y el ángulo.',
     bounds: [-4, 4, -3, 3],
     kind: 'implicit',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1 }],
-    equation: (params) => `$$ r = ${params.a.toFixed(1)}(1 + \cos\theta) $$`,
+    equation: (params) => curveEquation('cardioid', params),
     fn: (x, y, params) => {
       const r = Math.hypot(x, y);
       const theta = Math.atan2(y, x);
@@ -49,14 +50,14 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     key: 'rose',
     title: 'Rosa polar',
     route: 'rose',
-    description: 'La rosa polar es una familia de curvas con pétalos simétricos, definidas por r = a cos(kθ) o r = a sin(kθ).',
+    description: 'La rosa polar es una familia de curvas con pétalos simétricos, definidas mediante funciones trigonométricas del ángulo.',
     bounds: [-4, 4, -4, 4],
     kind: 'implicit',
     params: [
       { key: 'a', label: 'a', min: 0.5, max: 4, step: 0.1, value: 2 },
       { key: 'k', label: 'k', min: 1, max: 8, step: 1, value: 3 }
     ],
-    equation: (params) => `$$ r = ${params.a.toFixed(1)}\cos(${params.k}\theta) $$`,
+    equation: (params) => curveEquation('rose', params),
     fn: (x, y, params) => {
       const r = Math.hypot(x, y);
       const theta = Math.atan2(y, x);
@@ -71,7 +72,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-4, 4, -3, 3],
     kind: 'implicit',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }],
-    equation: (params) => `$$ (x^2 + y^2)^2 = 2${params.a.toFixed(1)}^2(x^2 - y^2) $$`,
+    equation: (params) => curveEquation('lemniscate', params),
     fn: (x, y, params) => (x * x + y * y) ** 2 - 2 * params.a * params.a * (x * x - y * y)
   },
   {
@@ -85,7 +86,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.7 },
       { key: 'b', label: 'b', min: 0.5, max: 4, step: 0.1, value: 2.5 }
     ],
-    equation: (params) => `$$ \sqrt{(x-a)^2+y^2}\sqrt{(x+a)^2+y^2} = ${params.b.toFixed(1)}^2 $$`,
+    equation: (params) => curveEquation('cassini', params),
     fn: (x, y, params) => (Math.hypot(x - params.a, y) * Math.hypot(x + params.a, y)) - params.b * params.b
   },
   {
@@ -99,7 +100,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'a', label: 'a', min: 0.2, max: 3, step: 0.1, value: 0.6 },
       { key: 'b', label: 'b', min: 0.2, max: 2, step: 0.1, value: 0.7 }
     ],
-    equation: (params) => `$$ r = ${params.a.toFixed(1)} + ${params.b.toFixed(1)}\theta $$`,
+    equation: (params) => curveEquation('archimedean-spiral', params),
     paramX: (t, params) => (params.a + params.b * t) * Math.cos(t),
     paramY: (t, params) => (params.a + params.b * t) * Math.sin(t)
   },
@@ -114,7 +115,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'a', label: 'a', min: 0.2, max: 2, step: 0.1, value: 0.8 },
       { key: 'b', label: 'b', min: 0.2, max: 1, step: 0.05, value: 0.35 }
     ],
-    equation: (params) => `$$ r = ${params.a.toFixed(1)}e^{${params.b.toFixed(2)}\theta} $$`,
+    equation: (params) => curveEquation('logarithmic-spiral', params),
     paramX: (t, params) => params.a * Math.exp(params.b * t) * Math.cos(t),
     paramY: (t, params) => params.a * Math.exp(params.b * t) * Math.sin(t)
   },
@@ -126,7 +127,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-3, 3, -3, 3],
     kind: 'implicit',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.8 }],
-    equation: (params) => `$$ x^{2/3} + y^{2/3} = ${params.a.toFixed(1)}^{2/3} $$`,
+    equation: (params) => curveEquation('astroid', params),
     fn: (x, y, params) => Math.pow(Math.abs(x), 2 / 3) + Math.pow(Math.abs(y), 2 / 3) - Math.pow(params.a, 2 / 3)
   },
   {
@@ -137,7 +138,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-4, 4, -4, 4],
     kind: 'parametric',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.4 }],
-    equation: (params) => `$$ x = 2a\cos t + a\cos 2t, \quad y = 2a\sin t - a\sin 2t $$`,
+    equation: (params) => curveEquation('deltoid', params),
     paramX: (t, params) => 2 * params.a * Math.cos(t) + params.a * Math.cos(2 * t),
     paramY: (t, params) => 2 * params.a * Math.sin(t) - params.a * Math.sin(2 * t)
   },
@@ -149,7 +150,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-3, 3, -3, 3],
     kind: 'implicit',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }],
-    equation: (params) => `$$ r = ${params.a.toFixed(1)}\cos(3\theta) $$`,
+    equation: (params) => curveEquation('trifolium', params),
     fn: (x, y, params) => {
       const r = Math.hypot(x, y);
       const theta = Math.atan2(y, x);
@@ -167,7 +168,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'R', label: 'R', min: 1, max: 6, step: 0.5, value: 3 },
       { key: 'r', label: 'r', min: 0.5, max: 4, step: 0.1, value: 1.2 }
     ],
-    equation: (params) => `$$ x = (R+r)\cos t - r\cos\left(\frac{R+r}{r}t\right) $$`,
+    equation: (params) => curveEquation('epicycloid', params),
     paramX: (t, params) => (params.R + params.r) * Math.cos(t) - params.r * Math.cos(((params.R + params.r) / params.r) * t),
     paramY: (t, params) => (params.R + params.r) * Math.sin(t) - params.r * Math.sin(((params.R + params.r) / params.r) * t)
   },
@@ -182,7 +183,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'R', label: 'R', min: 2, max: 8, step: 0.5, value: 5 },
       { key: 'r', label: 'r', min: 0.5, max: 3, step: 0.1, value: 1.5 }
     ],
-    equation: (params) => `$$ x = (R-r)\cos t + r\cos\left(\frac{R-r}{r}t\right) $$`,
+    equation: (params) => curveEquation('hypocycloid', params),
     paramX: (t, params) => (params.R - params.r) * Math.cos(t) + params.r * Math.cos(((params.R - params.r) / params.r) * t),
     paramY: (t, params) => (params.R - params.r) * Math.sin(t) - params.r * Math.sin(((params.R - params.r) / params.r) * t)
   },
@@ -194,7 +195,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-8, 8, -3, 5],
     kind: 'parametric',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 }],
-    equation: (params) => `$$ x = a(t - \sin t), \quad y = a(1 - \cos t) $$`,
+    equation: (params) => curveEquation('cycloid', params),
     paramX: (t, params) => params.a * (t - Math.sin(t)),
     paramY: (t, params) => params.a * (1 - Math.cos(t))
   },
@@ -210,7 +211,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'b', label: 'b', min: 1, max: 5, step: 0.2, value: 3 },
       { key: 'd', label: 'd', min: 0, max: 2, step: 0.1, value: 0.5 }
     ],
-    equation: (params) => `$$ x = \sin(${params.a.toFixed(1)}t + ${params.d.toFixed(1)}), \quad y = \sin(${params.b.toFixed(1)}t) $$`,
+    equation: (params) => curveEquation('lissajous', params),
     paramX: (t, params) => Math.sin(params.a * t + params.d),
     paramY: (t, params) => Math.sin(params.b * t)
   },
@@ -225,7 +226,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'a', label: 'a', min: 0.5, max: 4, step: 0.1, value: 1.5 },
       { key: 'b', label: 'b', min: 0.5, max: 4, step: 0.1, value: 2 }
     ],
-    equation: (params) => `$$ (x^2+y^2)(x-a)^2 = b^2x^2 $$`,
+    equation: (params) => curveEquation('conchoid', params),
     fn: (x, y, params) => (x * x + y * y) * (x - params.a) * (x - params.a) - params.b * params.b * x * x
   },
   {
@@ -236,7 +237,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
     bounds: [-6, 6, -6, 6],
     kind: 'implicit',
     params: [{ key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.4 }],
-    equation: (params) => `$$ y^2 = x^3 /(2a - x) $$`,
+    equation: (params) => curveEquation('cissoid', params),
     fn: (x, y, params) => y * y - (x * x * x / (2 * params.a - x))
   },
   {
@@ -250,7 +251,7 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
       { key: 'a', label: 'a', min: 0.5, max: 3, step: 0.1, value: 1.5 },
       { key: 'b', label: 'b', min: 0.5, max: 3, step: 0.1, value: 1.2 }
     ],
-    equation: (params) => `$$ x^2/a^2 + y^2/b^2 = 1 + x^2 $$`,
+    equation: (params) => curveEquation('parabola-like', params),
     fn: (x, y, params) => (x * x / (params.a * params.a)) + (y * y / (params.b * params.b)) - 1 - x * x
   }
 ];
@@ -258,9 +259,9 @@ const CURVE_DEFINITIONS: CurveDefinition[] = [
 @Component({
   selector: 'app-curve-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, MathjaxModule, ImplicitCurveGraphComponent],
+  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './curve-article.component.html',
-  styleUrls: ['./curve-article.component.css']
+  styleUrls: ['./curve-article.component.css', '../curve-widget.css']
 })
 export class CurveArticleComponent implements OnInit, AfterViewInit {
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
@@ -268,7 +269,8 @@ export class CurveArticleComponent implements OnInit, AfterViewInit {
   curves = CURVE_DEFINITIONS;
   curve!: CurveDefinition;
   params: Record<string, number> = {};
-  equation = '$$ x = y $$';
+  equation = 'x = y';
+  get generalEquation(): string { return curveEquation(this.curve?.key ?? ''); }
 
   constructor(private route: ActivatedRoute) {}
 
@@ -285,7 +287,9 @@ export class CurveArticleComponent implements OnInit, AfterViewInit {
   }
 
   onParamChanged(key: string, value: number): void {
-    this.params[key] = value;
+    const definition = this.curve.params.find(param => param.key === key);
+    if (!definition || value === null || !Number.isFinite(value)) return;
+    this.params[key] = Math.max(definition.min, Math.min(definition.max, value));
     this.equation = this.curve.equation(this.params);
     this.onDraw();
   }

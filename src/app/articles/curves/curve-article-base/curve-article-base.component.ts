@@ -16,6 +16,7 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
 
   title = '';
+  generalEquation = '';
   bounds: [number, number, number, number] = [-4, 4, -4, 4];
   kind: 'implicit' | 'parametric' = 'implicit';
   paramDefinitions: CurveParamDefinition[] = [];
@@ -40,7 +41,10 @@ export abstract class CurveArticleBaseComponent implements OnInit, AfterViewInit
   }
 
   onParamChanged(key: string, value: number): void {
-    this.params[key] = value;
+    const definition = this.paramDefinitions.find(param => param.key === key);
+    if (!definition || value === null || !Number.isFinite(value)) return;
+    const bounded = Math.max(definition.min, Math.min(definition.max, value));
+    this.params[key] = Number((definition.min + Math.round((bounded - definition.min) / definition.step) * definition.step).toPrecision(12));
     this.onDraw();
   }
 
