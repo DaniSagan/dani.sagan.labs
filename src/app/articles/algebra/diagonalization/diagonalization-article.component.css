@@ -1,0 +1,70 @@
+﻿:host {
+  display: block;
+  min-width: 0;
+}
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1.3rem 0;
+}
+.theorem,
+.experiment,
+.proof {
+  padding: 1.3rem 1.5rem;
+  margin: 1.8rem 0;
+  background: #142c36;
+  border-left: 3px solid #8bdcc5;
+  border-radius: 0 12px 12px 0;
+}
+.proof {
+  background: #16232d;
+  border-color: #f6cc80;
+}
+.theorem p,
+.experiment p,
+.proof p {
+  color: #d5e4ed;
+}
+.section-label {
+  color: #8bdcc5;
+  font: 700 0.7rem system-ui;
+  letter-spacing: 0.14em;
+}
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.2rem;
+  margin: 1.5rem 0;
+}
+.contents a {
+  padding: 0.4rem 0;
+}
+h3 {
+  scroll-margin-top: 90px;
+}
+.scroll {
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.7rem;
+  border-bottom: 1px solid #46616e;
+  text-align: left;
+}
+details {
+  margin: 1rem 0;
+}
+summary {
+  cursor: pointer;
+  min-height: 42px;
+}
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #f6cc80;
+  outline-offset: 3px;
+}

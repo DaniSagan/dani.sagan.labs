@@ -1,0 +1,357 @@
+﻿<h2>Diagonalización de matrices y valores propios</h2>
+<p class="dropcap">Una transformación puede parecer complicada porque la observamos desde unos ejes poco adecuados.
+  Una cuadrícula se inclina, unos vectores giran y otros se estiran. Pero ¿existe una base desde la que esta
+  transformación lineal parezca simplemente un escalado independiente de cada coordenada? Diagonalizar es encontrar esa base.</p>
+<nav class="contents" aria-label="Índice del artículo">
+  <a routerLink="." fragment="directions">Direcciones propias</a><a routerLink="." fragment="calculation">Cálculo y autoespacios</a>
+  <a routerLink="." fragment="basis">Base y diagonalización</a><a routerLink="." fragment="multiplicities">Multiplicidades</a>
+  <a routerLink="." fragment="spectral">Teorema espectral</a><a routerLink="." fragment="applications">Aplicaciones</a>
+  <a routerLink="." fragment="mistakes">Errores frecuentes</a><a routerLink="." fragment="assessment">Autoevaluación</a>
+  <a routerLink="." fragment="connections">Conexiones</a>
+</nav>
+
+<h3 id="directions">1. Una transformación, muchas direcciones</h3>
+<p>Una aplicación T es <strong>lineal</strong> cuando T(αu + βv) = αT(u) + βT(v). Sus imágenes de los vectores
+  de una base determinan todas las demás imágenes. En la base estándar de ℝ², las columnas de su matriz A
+  son T(1, 0) y T(0, 1). Multiplicamos A por vectores columna.</p>
+<app-formula expression="T:\mathbb R^2\longrightarrow\mathbb R^2,\quad T(v)=Av,\qquad A=\begin{pmatrix}2&1\\1&2\end{pmatrix}"/>
+<p>El vector (1, 0) pasa a (2, 1): cambia de longitud y de dirección. En cambio, (1, 1) pasa a (3, 3)
+  y (1, −1) queda fijo. Sus rectas por el origen no cambian. Antes de buscar ningún determinante,
+  prueba muchas direcciones en el plano: ¿puedes descubrir estas dos rectas especiales?</p>
+<app-diagonalization-lab mode="explorer"/>
+<aside class="experiment"><p>Oculta las direcciones propias, recorre el ángulo del vector y busca cuándo la flecha verde
+  cae sobre la recta de la dorada. Después compara la reflexión, la proyección y la cizalla.
+  Conservar la recta no exige conservar el sentido. Si una dirección colapsa al origen, la recta es invariante
+  porque su imagen está contenida en ella.</p></aside>
+
+<h3>2. Autovalores y autovectores: poner nombre a la observación</h3>
+<p>Sea A una matriz cuadrada de orden n sobre un cuerpo 𝕂, normalmente ℝ o ℂ. Un escalar λ de ese cuerpo
+  es un <strong>autovalor</strong> si existe un vector no nulo v tal que:</p>
+<app-formula expression="A\in M_n(\mathbb K),\qquad v\in\mathbb K^n\setminus\{0\},\qquad \boxed{Av=\lambda v}"/>
+<p>Ese v es un <strong>autovector</strong> asociado a λ. También se llaman <em>valor propio</em> y <em>vector propio</em>;
+  en inglés, <em>eigenvalue</em> y <em>eigenvector</em>. Usaremos autovalor y autovector.</p>
+<p>La condición v ≠ 0 es esencial: A0 = λ0 para cualquier λ. Permitir el cero haría que todo escalar fuese
+  un autovalor de cualquier matriz. Si v es un autovector, cualquier múltiplo no nulo αv también lo es,
+  con el mismo autovalor. Hablamos de una dirección, no de un representante único.</p>
+
+<h3>3. Qué nos dice el número λ</h3>
+<p>Para autovectores reales, la longitud se multiplica por |λ|. Un λ positivo conserva el sentido;
+  uno negativo lo invierte. Estas afirmaciones sobre sentido se refieren a vectores reales y autovalores reales.</p>
+<div class="scroll"><table><caption>Interpreta Av = λv en el explorador</caption><thead><tr><th>Autovalor</th><th>Efecto</th><th>Prueba visual</th></tr></thead><tbody>
+  <tr><td>λ &gt; 1</td><td>Alarga y conserva el sentido.</td><td>Simétrica: dirección (1, 1), λ = 3.</td></tr>
+  <tr><td>0 &lt; λ &lt; 1</td><td>Contrae y conserva el sentido.</td><td>Diagonal: eje vertical, λ = 1/2.</td></tr>
+  <tr><td>λ = 1</td><td>Deja fijo el vector.</td><td>Identidad: cualquier vector.</td></tr>
+  <tr><td>λ = 0</td><td>Envía el vector al origen.</td><td>Proyección: eje vertical.</td></tr>
+  <tr><td>λ &lt; 0</td><td>Invierte el sentido; |λ| decide la longitud.</td><td>Reflexión: eje vertical, λ = −1.</td></tr>
+</tbody></table></div>
+<p>El <strong>núcleo</strong> de T es el conjunto de vectores que van a cero: ker A = &#123;v: Av = 0&#125;.
+  Por tanto, 0 es autovalor exactamente cuando el núcleo contiene algún vector no nulo, es decir, cuando A es singular.</p>
+
+<h3 id="calculation">4. Encontrar las direcciones sin inspeccionar el dibujo</h3>
+<p>La pregunta geométrica conduce a un sistema homogéneo. La matriz identidad I cumple Iv = v, así que:</p>
+<app-formula expression="Av=\lambda v\quad\Longleftrightarrow\quad(A-\lambda I)v=0"/>
+<aside class="proof"><span class="section-label">POR QUÉ APARECE EL DETERMINANTE</span>
+  <p>Una matriz cuadrada invertible solo envía al cero el vector cero: basta multiplicar por su inversa.
+    Una matriz singular tiene columnas dependientes; sus coeficientes de dependencia proporcionan un vector
+    no nulo del núcleo. Como una matriz cuadrada es singular si y solo si su determinante es cero:</p>
+  <app-formula expression="\boxed{\lambda\text{ es autovalor de }A\iff\det(A-\lambda I)=0}"/>
+</aside>
+<p>Definimos el <strong>polinomio característico</strong> usando la convención del artículo de
+  <a routerLink="/articles/matrix-determinant">determinantes</a>:</p>
+<app-formula expression="p_A(t)=\det(A-tI),\qquad \deg p_A=n,\qquad \text{coeficiente principal}=(-1)^n"/>
+<p>Los autovalores son sus raíces que pertenecen al cuerpo de trabajo. La otra convención, det(tI − A),
+  cambia el polinomio por el factor (−1)ⁿ; las raíces y sus multiplicidades no cambian.
+  El determinante responde al problema de encontrar una dirección propia.</p>
+
+<h3>5. Un ejemplo completo en el plano</h3>
+<app-formula expression="A=\begin{pmatrix}2&1\\1&2\end{pmatrix},\quad A-tI=\begin{pmatrix}2-t&1\\1&2-t\end{pmatrix}"/>
+<app-formula expression="p_A(t)=(2-t)^2-1=t^2-4t+3=(t-3)(t-1)"/>
+<p>Los autovalores son 3 y 1. Para λ = 3, el sistema exige −x + y = 0; para λ = 1, exige x + y = 0:</p>
+<app-formula expression="E_3=\ker\begin{pmatrix}-1&1\\1&-1\end{pmatrix}=\operatorname{span}\{(1,1)\},\qquad E_1=\ker\begin{pmatrix}1&1\\1&1\end{pmatrix}=\operatorname{span}\{(1,-1)\}"/>
+<p>Elegimos v₁ = (1, 1) y v₂ = (1, −1). No son paralelos, por lo que forman una base de ℝ².
+  Comprobamos las imágenes sin depender del polinomio:</p>
+<app-formula expression="\begin{pmatrix}2&1\\1&2\end{pmatrix}\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}3\\3\end{pmatrix}=3v_1,\qquad \begin{pmatrix}2&1\\1&2\end{pmatrix}\begin{pmatrix}1\\-1\end{pmatrix}=\begin{pmatrix}1\\-1\end{pmatrix}=v_2"/>
+<p>Son las dos rectas del primer dibujo: la diagonal se estira y la antidiagonal queda fija.</p>
+
+<h3>6. Autoespacios: incluir el cero para obtener un subespacio</h3>
+<app-formula expression="E_\lambda=\ker(A-\lambda I),\qquad \text{autovectores asociados a }\lambda=E_\lambda\setminus\{0\}"/>
+<p>El autoespacio contiene al cero. Si u y v pertenecen a él, entonces
+  (A − λI)(αu + βv) = α(A − λI)u + β(A − λI)v = 0. Es, por tanto, un subespacio vectorial:
+  está cerrado bajo combinaciones lineales. El conjunto de autovectores, que excluye el cero, no es un subespacio.</p>
+<p>Una <strong>base</strong> es una familia de vectores independientes que genera el espacio; su número de elementos
+  es la dimensión. En ℝ², un autoespacio de dimensión uno es una recta por el origen. Si A = λI,
+  el autoespacio Eλ es el plano completo. El teorema rango–nulidad permite calcular:</p>
+<app-formula expression="\dim E_\lambda=n-\operatorname{rg}(A-\lambda I)"/>
+<app-diagonalization-lab mode="algebra"/>
+
+<h3>7. Autovalores distintos producen independencia</h3>
+<aside class="theorem"><p>Autovectores asociados a autovalores distintos son linealmente independientes.</p></aside>
+<div class="proof"><p><strong>Primero, dos vectores.</strong> Si c₁v₁ + c₂v₂ = 0, aplicamos A y restamos
+  λ₂ veces la relación original. Queda c₁(λ₁ − λ₂)v₁ = 0. Como λ₁ ≠ λ₂ y v₁ ≠ 0, c₁ = 0;
+  la relación inicial da c₂ = 0.</p>
+  <p><strong>En general, por inducción.</strong> Supongamos independientes los primeros r − 1 autovectores.
+    Aplicamos A − λᵣI a una relación entre r vectores:</p>
+  <app-formula expression="\sum_{j=1}^r c_jv_j=0\quad\Longrightarrow\quad \sum_{j=1}^{r-1}c_j(\lambda_j-\lambda_r)v_j=0"/>
+  <p>La hipótesis inductiva obliga a que todos esos coeficientes sean cero. Los factores λⱼ − λᵣ no se anulan,
+    de modo que c₁, …, cᵣ₋₁ son cero. Finalmente cᵣvᵣ = 0 implica cᵣ = 0.</p>
+</div>
+<p>También los autoespacios de autovalores diferentes forman una <strong>suma directa</strong>:
+  si una suma de vectores, uno de cada autoespacio, es cero, todos son cero. Lo prueba el mismo argumento.
+  Al juntar bases de autoespacios distintos, obtenemos una familia independiente, incluso cuando cada base tiene varios vectores.</p>
+
+<h3 id="basis">8. Diagonalizar es encontrar una base de autovectores</h3>
+<p>A es <strong>diagonalizable sobre 𝕂</strong> si existe una matriz invertible P con entradas en 𝕂
+  que hace diagonal su representación:</p>
+<app-formula expression="\boxed{P^{-1}AP=D}\qquad\Longleftrightarrow\qquad\boxed{A=PDP^{-1}}"/>
+<aside class="theorem"><span class="section-label">CRITERIO FUNDAMENTAL</span>
+  <p>A es diagonalizable si y solo si existe una base del espacio formada por autovectores de A.</p></aside>
+<div class="proof"><p><strong>De la base a la diagonal.</strong> Sean v₁, …, vₙ una base de autovectores,
+  con Avᵢ = λᵢvᵢ. Colocamos estos vectores como columnas, en el mismo orden que sus autovalores:</p>
+  <app-formula expression="P=(v_1\ \cdots\ v_n),\qquad D=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)"/>
+  <app-formula expression="AP=(Av_1\ \cdots\ Av_n)=(\lambda_1v_1\ \cdots\ \lambda_nv_n)=PD"/>
+  <p>P es invertible porque sus columnas forman una base. Multiplicando a la izquierda por P⁻¹ obtenemos P⁻¹AP = D.</p>
+  <p><strong>De la diagonal a la base.</strong> Si P⁻¹AP = D, entonces AP = PD. La columna i de esta igualdad
+    dice Avᵢ = dᵢᵢvᵢ. Las columnas de P son independientes y no nulas porque P es invertible:
+    son, por tanto, una base de autovectores.</p>
+</div>
+<p>En nuestro ejemplo, escogiendo el orden 3, 1:</p>
+<app-formula expression="P=\begin{pmatrix}1&1\\1&-1\end{pmatrix},\quad P^{-1}=\frac12\begin{pmatrix}1&1\\1&-1\end{pmatrix},\quad D=\begin{pmatrix}3&0\\0&1\end{pmatrix}"/>
+<app-formula expression="AP=\begin{pmatrix}3&1\\3&-1\end{pmatrix}=PD,\qquad P^{-1}AP=\begin{pmatrix}3&0\\0&1\end{pmatrix}"/>
+
+<h3>9. Qué hace cada cambio de coordenadas</h3>
+<p>Una base proporciona coordenadas únicas: x = y₁v₁ + ⋯ + yₙvₙ se escribe x = Py.
+  P convierte coordenadas propias y en coordenadas originales x; P⁻¹ hace el recorrido contrario.</p>
+<app-formula expression="y=P^{-1}x,\qquad P^{-1}(Ax)=P^{-1}APy=Dy"/>
+<p>En D = P⁻¹AP se actúa de derecha a izquierda: P lleva las coordenadas nuevas a las originales,
+  A transforma y P⁻¹ expresa la salida en la base nueva. Para transformar un vector cuyas coordenadas ya están en
+  la base original, la descomposición A = PDP⁻¹ hace el recorrido inverso:</p>
+<app-formula expression="\boxed{x\xrightarrow{\ P^{-1}\ }y\xrightarrow{\ D\ }Dy\xrightarrow{\ P\ }Ax}"/>
+<p>Por ejemplo, x = (2, 0) tiene coordenadas propias y = (1, 1). D las convierte en (3, 1),
+  y P devuelve (4, 2), que es exactamente Ax. Cambian las coordenadas, no la transformación.</p>
+<app-diagonalization-lab mode="basis"/>
+<p>La diagonalización no es única: podemos reordenar los autovectores si reordenamos simultáneamente D,
+  multiplicarlos por escalares no nulos o elegir otra base dentro de un mismo autoespacio.</p>
+
+<h3 id="multiplicities">10. Dos multiplicidades, dos preguntas</h3>
+<p>La <strong>multiplicidad algebraica</strong> mₐ(λ) es el número de veces que λ aparece como raíz del
+  polinomio característico. La <strong>multiplicidad geométrica</strong> mᵍ(λ) es la dimensión de su autoespacio.</p>
+<app-formula expression="m_g(\lambda)=\dim\ker(A-\lambda I),\qquad p_A(t)=-(t-2)^2(t+1)\ \Longrightarrow\ m_a(2)=2,\ m_a(-1)=1"/>
+<p>El signo menos respeta nuestra convención en dimensión tres. No afecta a las multiplicidades.
+  La algebraica pregunta cuántas veces aparece una raíz; la geométrica, cuántas direcciones independientes podemos obtener con ella.</p>
+<aside class="theorem"><app-formula expression="1\le m_g(\lambda)\le m_a(\lambda)"/></aside>
+<div class="proof"><p>La primera desigualdad sigue de que λ es autovalor. Para la segunda, toma una base de Eλ
+  con r = mᵍ(λ) vectores y complétala hasta una base del espacio. En esa base, la matriz tiene la forma:</p>
+  <app-formula expression="B=\begin{pmatrix}\lambda I_r&C\\0&H\end{pmatrix},\qquad p_B(t)=(\lambda-t)^r\det(H-tI)"/>
+  <p>El bloque inferior izquierdo es cero porque A conserva Eλ. Las matrices semejantes tienen el mismo polinomio:
+    det(P⁻¹(A − tI)P) = det(A − tI). Así, (λ − t)ʳ divide pA(t), y r ≤ mₐ(λ).</p>
+</div>
+
+<h3>11. El criterio general: tener suficientes direcciones</h3>
+<aside class="theorem"><p>A ∈ Mₙ(𝕂) es diagonalizable sobre 𝕂 si y solo si su polinomio característico
+  se descompone completamente en factores lineales sobre 𝕂 y, para cada autovalor, mᵍ(λ) = mₐ(λ).</p>
+  <app-formula expression="\boxed{\mathbb K^n=\bigoplus_\lambda E_\lambda}\qquad\Longleftrightarrow\qquad\boxed{\sum_{\lambda\in\mathbb K}\dim E_\lambda=n}"/>
+</aside>
+<div class="proof"><p>Si el polinomio se descompone y todas las multiplicidades coinciden, la suma de las
+  dimensiones es la suma de las multiplicidades algebraicas: n. La suma directa de autoespacios permite
+  juntar sus bases para formar una base de autovectores.</p>
+  <p>A la inversa, una diagonalización da pA(t) = ∏ᵢ(λᵢ − t), que se descompone sobre 𝕂.
+    En la matriz diagonal, el núcleo de D − λI tiene dimensión igual al número de entradas λ;
+    la semejanza lleva ese núcleo al de A − λI. Por tanto mᵍ = mₐ para cada raíz.</p>
+  <p>Si ya sabemos que la suma de dimensiones es n, la base resultante da una diagonalización y garantiza
+    también la descomposición del polinomio. Esa formulación no necesita añadir otra hipótesis.</p>
+</div>
+<p><strong>Corolario.</strong> n autovalores distintos <em>en 𝕂</em> dan n autovectores independientes,
+  luego A es diagonalizable en 𝕂. Es una condición suficiente, pero no necesaria: Iₙ es diagonal y solo tiene
+  el autovalor 1, con mₐ(1) = mᵍ(1) = n. Un autovalor repetido no decide por sí solo.</p>
+
+<h3>12. La cizalla: una raíz doble, una sola dirección</h3>
+<app-formula expression="J=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad p_J(t)=(1-t)^2,\qquad J-I=\begin{pmatrix}0&1\\0&0\end{pmatrix}"/>
+<p>El sistema (J − I)v = 0 exige y = 0. Por tanto E₁ = span&#123;(1, 0)&#125;:
+  mₐ(1) = 2 y mᵍ(1) = 1. No hay una base de dos autovectores, ni sobre ℝ ni sobre ℂ.</p>
+<p>En el explorador selecciona «Jordan / cizallamiento». El vector (x, y) pasa a (x + y, y).
+  La recta horizontal queda fija; cualquier vector con y ≠ 0 cambia su dirección.
+  La forma de Jordan generaliza la diagonalización permitiendo bloques con unos sobre la diagonal;
+  aquí basta reconocer la dirección que falta.</p>
+<app-formula expression="J^n=\begin{pmatrix}1&n\\0&1\end{pmatrix}"/>
+<p>Aunque todos sus autovalores tienen módulo uno, sus potencias pueden crecer. La hipótesis de diagonalizabilidad
+  importa al interpretar la dinámica solo a partir de los módulos.</p>
+
+<h3>13. El cuerpo de trabajo cambia la respuesta</h3>
+<app-formula expression="R=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad p_R(t)=t^2+1"/>
+<p>Un giro de 90° no conserva ninguna recta real. El polinomio no tiene raíces reales:
+  R no tiene autovectores reales y no se diagonaliza sobre ℝ. Sobre ℂ las raíces son i y −i, distintas:</p>
+<app-formula expression="R\begin{pmatrix}1\\-i\end{pmatrix}=i\begin{pmatrix}1\\-i\end{pmatrix},\qquad R\begin{pmatrix}1\\i\end{pmatrix}=-i\begin{pmatrix}1\\i\end{pmatrix}"/>
+<app-formula expression="P=\begin{pmatrix}1&1\\-i&i\end{pmatrix},\quad \det P=2i\ne0,\quad P^{-1}RP=\operatorname{diag}(i,-i)"/>
+<p>Los vectores complejos no son rectas del plano real del dibujo. Sobre ℂ todo polinomio característico
+  se descompone, pero todavía pueden faltar autovectores: la cizalla lo demuestra.
+  Especificar el cuerpo evita confundir dos obstrucciones diferentes.</p>
+
+<h3 id="spectral">14. Matrices simétricas y teorema espectral</h3>
+<aside class="theorem"><span class="section-label">TEOREMA ESPECTRAL REAL</span>
+  <p>Toda matriz real simétrica A = Aᵀ tiene autovalores reales y una base ortonormal de autovectores.
+    Si Q tiene esas columnas, es ortogonal y:</p>
+  <app-formula expression="Q^TQ=I,\qquad Q^{-1}=Q^T,\qquad \boxed{Q^TAQ=D},\qquad A=QDQ^T"/>
+</aside>
+<div class="proof"><p><strong>Ortogonalidad de autoespacios distintos.</strong> Si Au = λu y Av = μv,
+  la simetría permite trasladar A de un lado del producto escalar al otro:</p>
+  <app-formula expression="\lambda\langle u,v\rangle=\langle Au,v\rangle=\langle u,Av\rangle=\mu\langle u,v\rangle"/>
+  <p>Como λ ≠ μ, el producto escalar es cero. Dentro de un autoespacio de dimensión mayor que uno,
+    Gram–Schmidt produce una base ortonormal sin salir de él: todas sus combinaciones siguen siendo propias.</p>
+  <p><strong>Por qué todos los autovalores son reales.</strong> Si Az = λz con z complejo no nulo,
+    A real simétrica también es hermítica: A* = A. El número z*Az es real, y z*z es real positivo.
+    Por tanto λ = (z*Az)/(z*z) es real.</p>
+</div>
+<details class="proof"><summary>Una demostración de la existencia de una base ortonormal</summary>
+  <p>La función real q(x) = xᵀAx alcanza un máximo en la esfera unidad, que es compacta.
+    Sea u un punto donde lo alcanza. Para cualquier w perpendicular a u, deriva q((u + sw)/‖u + sw‖)
+    en s = 0. La derivada es 2wᵀAu y debe ser cero. Así, Au es perpendicular a todo u⊥,
+    luego Au = λu, con λ = uᵀAu real.</p>
+  <p>Además, u⊥ es invariante: si w ⊥ u, entonces ⟨Aw, u⟩ = ⟨w, Au⟩ = λ⟨w, u⟩ = 0.
+    La restricción de A a u⊥ sigue siendo simétrica. Aplicamos inducción en la dimensión,
+    empezando por dimensión uno. La base ortonormal obtenida en u⊥, junto con u,
+    es una base ortonormal de autovectores del espacio completo.</p>
+</details>
+
+<h3>15. Ver A = QDQᵀ: cambiar los ejes, escalar y volver</h3>
+<p>Para A = ((2, 1), (1, 2)), normalizamos los vectores del ejemplo:</p>
+<app-formula expression="q_1=\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix},\quad q_2=\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix},\quad Q=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix},\quad D=\operatorname{diag}(3,1)"/>
+<p>Qᵀ expresa el vector en ejes propios perpendiculares. D triplica una coordenada y conserva la otra.
+  Q devuelve el resultado a los ejes originales. Una matriz ortogonal puede rotar o reflejar;
+  en este ejemplo det Q = −1, de modo que el cambio incluye una reflexión.</p>
+<app-diagonalization-lab mode="spectral"/>
+<p>Recíprocamente, si A = QDQᵀ con Q real ortogonal y D real diagonal, Aᵀ = QDᵀQᵀ = A.
+  La diagonalización general permite bases oblicuas; la ortogonal conserva ángulos y longitudes al cambiar coordenadas.</p>
+
+<h3 id="applications">16. Potencias: repetir sin perder la estructura</h3>
+<div class="proof"><p>Si A = PDP⁻¹, los cambios de base intermedios se cancelan:</p>
+  <app-formula expression="A^2=(PDP^{-1})(PDP^{-1})=PD^2P^{-1}"/>
+  <p>Por inducción, si Aᵏ = PDᵏP⁻¹, multiplicar por A da Aᵏ⁺¹ = PDᵏ⁺¹P⁻¹.
+    El caso n = 0 da I = PIP⁻¹. Por tanto:</p>
+  <app-formula expression="\boxed{A^n=PD^nP^{-1}},\qquad D^n=\operatorname{diag}(\lambda_1^n,\ldots,\lambda_n^n),\quad n\in\mathbb N_0"/>
+</div>
+<p>Para exponentes negativos hace falta que A sea invertible, o equivalentemente, que ningún autovalor sea cero.</p>
+<p>En el ejemplo simétrico, basta elevar 3 y 1. Multiplicando P, Dⁿ y P⁻¹ obtenemos la fórmula exacta:</p>
+<app-formula expression="A^n=\frac12\begin{pmatrix}3^n+1&3^n-1\\3^n-1&3^n+1\end{pmatrix},\qquad A^{100}=\frac12\begin{pmatrix}3^{100}+1&3^{100}-1\\3^{100}-1&3^{100}+1\end{pmatrix}"/>
+<p>No necesitamos escribir todos los dígitos para conocer exactamente el resultado. La factorización revela
+  además qué crece y qué queda fijo. Los productos directos pueden acelerarse con exponenciación binaria;
+  el beneficio conceptual de diagonalizar sigue siendo separar las direcciones.</p>
+<app-diagonalization-lab mode="powers"/>
+
+<h3>17. Fibonacci: de una recurrencia a dos escalados</h3>
+<p>La regla Fₙ₊₂ = Fₙ₊₁ + Fₙ, con F₀ = 0 y F₁ = 1, se convierte en una transformación lineal
+  si guardamos dos términos consecutivos. El artículo de <a routerLink="/articles/fibonacci-numbers">Fibonacci</a>
+  explora su recuento y su geometría; aquí explicamos el origen matricial de Binet.</p>
+<app-formula expression="\begin{pmatrix}F_{n+1}\\F_n\end{pmatrix}=B^n\begin{pmatrix}1\\0\end{pmatrix},\qquad B=\begin{pmatrix}1&1\\1&0\end{pmatrix}"/>
+<app-formula expression="p_B(t)=t^2-t-1,\quad \varphi=\frac{1+\sqrt5}{2},\quad \psi=\frac{1-\sqrt5}{2}"/>
+<p>Como λ² = λ + 1, el vector (λ, 1) es propio: B(λ, 1) = (λ + 1, λ) = λ(λ, 1).
+  Las dos raíces son distintas, y por tanto:</p>
+<app-formula expression="P=\begin{pmatrix}\varphi&\psi\\1&1\end{pmatrix},\quad D=\operatorname{diag}(\varphi,\psi),\quad P^{-1}=\frac1{\sqrt5}\begin{pmatrix}1&-\psi\\-1&\varphi\end{pmatrix}"/>
+<app-formula expression="P^{-1}\begin{pmatrix}1\\0\end{pmatrix}=\frac1{\sqrt5}\begin{pmatrix}1\\-1\end{pmatrix},\qquad B^n\begin{pmatrix}1\\0\end{pmatrix}=\frac1{\sqrt5}\begin{pmatrix}\varphi^{n+1}-\psi^{n+1}\\\varphi^n-\psi^n\end{pmatrix}"/>
+<app-formula expression="\boxed{F_n=\frac{\varphi^n-\psi^n}{\sqrt5}}"/>
+<p>La segunda coordenada es Binet. La igualdad es exacta. Como |ψ| &lt; 1 &lt; φ, el componente φ domina a largo plazo.
+  Selecciona Fibonacci en el explorador de potencias para ver cómo emerge su dirección propia.</p>
+
+<h3>18. Sistemas dinámicos discretos</h3>
+<app-formula expression="x_{n+1}=Ax_n,\qquad x_n=A^nx_0=PD^nP^{-1}x_0"/>
+<p>Si x₀ = ∑cᵢvᵢ en una base propia, cada modo evoluciona de forma independiente:</p>
+<app-formula expression="x_n=\sum_i c_i\lambda_i^n v_i"/>
+<ul>
+  <li>|λᵢ| &lt; 1: la componente tiende a cero; un autovalor negativo alterna el sentido.</li>
+  <li>|λᵢ| &gt; 1: la componente crece en módulo si cᵢ ≠ 0.</li>
+  <li>|λᵢ| = 1: persiste. λ = 1 fija, λ = −1 alterna y autovalores complejos pueden producir oscilaciones.</li>
+</ul>
+<p>Si hay un único autovalor de módulo estrictamente mayor que los demás y su coeficiente inicial no es cero,
+  la órbita se aproxima a su recta en términos de dirección. Con autovalor negativo alternará de sentido.
+  Un empate en módulos puede impedir que haya una única dirección dominante.</p>
+<p>Para A diagonalizable, todos los módulos menores que uno equivalen a Aⁿ → 0; si alguno es mayor que uno,
+  hay condiciones iniciales que crecen. No todas las órbitas deben hacerlo: x₀ puede no tener componente en ese modo.
+  La cizalla recuerda lo que puede fallar sin diagonalizabilidad.</p>
+<p>En las <a routerLink="/articles/markov-chains">cadenas de Markov</a> se usan vectores fila y μₙ₊₁ = μₙP.
+  Para nuestra convención de columnas estudiamos Pᵀ: la distribución estacionaria satisface Pᵀπᵀ = πᵀ.
+  En dos estados, el segundo autovalor 1 − α − β explica el factor de mezcla que aparece en ese artículo.</p>
+
+<h3>19. Sistemas diferenciales: exponenciar cada modo</h3>
+<p>Para un sistema lineal con matriz constante x′(t) = Ax(t), la exponencial matricial proporciona la solución
+  x(t) = eᴬᵗx(0). Se define por una serie convergente; sustituir Aᵏ = PDᵏP⁻¹ en esa serie da:</p>
+<app-formula expression="e^{At}=\sum_{k=0}^\infty\frac{t^kA^k}{k!}=Pe^{Dt}P^{-1},\qquad e^{Dt}=\operatorname{diag}(e^{\lambda_1t},\ldots,e^{\lambda_nt})"/>
+<p>En coordenadas propias las ecuaciones se desacoplan: yᵢ′ = λᵢyᵢ. En tiempo continuo importa el signo
+  de la parte real de λ, mientras que en tiempo discreto importa su módulo. Una parte real negativa amortigua,
+  y una positiva produce crecimiento en el modo correspondiente.</p>
+
+<h3>20. Formas cuadráticas y ejes principales</h3>
+<p>Una forma cuadrática real puede escribirse q(x) = xᵀAx con A simétrica; para una matriz cualquiera,
+  su parte antisimétrica no contribuye. Si x = Qy, los términos cruzados desaparecen:</p>
+<app-formula expression="A=QDQ^T,\quad x=Qy\quad\Longrightarrow\quad q(x)=y^TDy=\lambda_1y_1^2+\cdots+\lambda_ny_n^2"/>
+<p>En nuestro ejemplo q(x, y) = 2x² + 2xy + 2y². Usamos nuevas coordenadas u = (x + y)/√2,
+  v = (x − y)/√2; entonces q = 3u² + v². La curva q = 1 es una elipse con ejes en las direcciones
+  (1, 1) y (1, −1), y semiejes 1/√3 y 1.</p>
+<app-formula expression="2x^2+2xy+2y^2=1\quad\Longleftrightarrow\quad\frac{u^2}{(1/\sqrt3)^2}+\frac{v^2}{1^2}=1"/>
+<p>Con autovalores de signos opuestos, un nivel no nulo puede dar una hipérbola; con todos positivos,
+  una forma definida positiva. Un autovalor cero señala una dirección que no aparece en la parte cuadrática.
+  La clasificación completa de cónicas y cuádricas también considera términos lineales, constantes y traslaciones:
+  una parábola no se decide mirando solo una matriz cuadrática.</p>
+<p>Los ejes principales conectan con la <a routerLink="/articles/ellipse">elipse</a>,
+  la <a routerLink="/articles/hyperbola">hipérbola</a> y la <a routerLink="/articles/parabola">parábola</a>.</p>
+
+<h3>21. Un ejemplo en dimensión tres</h3>
+<app-formula expression="A=\begin{pmatrix}2&0&0\\0&2&0\\0&0&-1\end{pmatrix},\quad p_A(t)=(2-t)^2(-1-t),\quad E_2=\operatorname{span}\{e_1,e_2\},\quad E_{-1}=\operatorname{span}\{e_3\}"/>
+<p>Tenemos mₐ(2) = mᵍ(2) = 2 y mₐ(−1) = mᵍ(−1) = 1: la suma de dimensiones es tres.
+  La matriz ya es diagonal y P = I sirve. Si sustituimos la entrada (1, 2) por 1, el polinomio no cambia,
+  pero E₂ pasa a estar generado solo por e₁. La suma de dimensiones cae a dos, y la diagonalización es imposible.
+  Compara ambos casos con los botones 3D del laboratorio algebraico.</p>
+
+<h3 id="mistakes">22. Errores frecuentes y contraejemplos</h3>
+<ul>
+  <li><strong>Admitir v = 0.</strong> Cumple A0 = λ0 para todo λ; por eso nunca es autovector.</li>
+  <li><strong>Confundir λ con v.</strong> λ es un escalar; v es un vector. En el ejemplo, 3 es autovalor y (1, 1) es autovector.</li>
+  <li><strong>Asignar un solo autovector a cada raíz.</strong> (1, 1), (2, 2) y (−1, −1) son propios de λ = 3; cualquier múltiplo no nulo sirve.</li>
+  <li><strong>Confundir autoespacio con autovectores.</strong> El primero incluye el cero; los segundos lo excluyen.</li>
+  <li><strong>Creer que toda matriz se diagonaliza.</strong> La cizalla J solo aporta una dirección independiente.</li>
+  <li><strong>Descartar una raíz repetida.</strong> I₂ tiene raíz doble y dos vectores propios independientes.</li>
+  <li><strong>Exigir raíces distintas.</strong> Son suficientes, pero Iₙ muestra que no son necesarias.</li>
+  <li><strong>Identificar las dos multiplicidades.</strong> J tiene mₐ(1) = 2 y mᵍ(1) = 1.</li>
+  <li><strong>Construir P sin una base.</strong> Las columnas (1, 1) y (2, 2) son propias, pero P es singular.</li>
+  <li><strong>Desordenar P y D.</strong> Si la primera columna es (1, −1), la primera entrada de D debe ser 1, no 3.</li>
+  <li><strong>Invertir el cambio de base.</strong> P⁻¹AP es la matriz en la base cuyas columnas son P. PAP⁻¹ corresponde a otro cambio.
+    Para A = ((2, 1), (0, 1)) y P = ((2, 1), (0, −1)), P⁻¹AP = diag(2, 1),
+    pero PAP⁻¹ = ((2, −1), (0, 1)), que no es diagonal.</li>
+  <li><strong>Omitir ℝ o ℂ.</strong> El giro de 90° se diagonaliza sobre ℂ y no sobre ℝ; carecer de raíces reales no significa carecer de complejas.</li>
+  <li><strong>Pensar que diagonalizar cambia la transformación.</strong> PDP⁻¹ produce exactamente el mismo Ax; cambia su representación.</li>
+  <li><strong>Usar una aproximación como certificado.</strong> Una raíz doble o un núcleo se decide algebraicamente;
+    que dos flechas parezcan alineadas en pantalla no es una demostración.</li>
+</ul>
+
+<h3 id="assessment">23. Autoevaluación: del cálculo al argumento</h3>
+<p>Escribe primero tu razonamiento. Las ayudas avanzan de una observación a otra: pista 1, pista 2,
+  estrategia y desarrollo. Después puedes revelar la solución razonada. Los problemas de demostración
+  se revisan comparando argumentos, sin reducirlos a una respuesta numérica.</p>
+<app-self-assessment quizId="diagonalization-basic" title="Nivel básico · ecuación propia y núcleos" [questions]="exercises.basic"/>
+<app-self-assessment quizId="diagonalization-intermediate" title="Nivel intermedio · bases, multiplicidades y potencias" [questions]="exercises.intermediate"/>
+<app-self-assessment quizId="diagonalization-advanced" title="Nivel avanzado · parámetros, demostraciones y dinámica" [questions]="exercises.advanced"/>
+
+<h3>24. Qué conviene saber reconstruir</h3>
+<p><strong>Definiciones.</strong> Autovalor, autovector no nulo, autoespacio, polinomio característico,
+  multiplicidades algebraica y geométrica, diagonalización y diagonalización ortogonal.
+  Puedes comprobar que las dominas explicando cada una sin recurrir a un algoritmo de cálculo.</p>
+<p><strong>Enunciados.</strong> Caracterización por el determinante; independencia para autovalores distintos;
+  equivalencia entre diagonalización y base propia; criterio de descomposición y multiplicidades;
+  corolario de n autovalores distintos; teorema espectral real y fórmula de potencias.</p>
+<p><strong>Demostraciones.</strong> Reconstruye las secciones 4, 7, 8, 10, 11, 14 y 16.
+  Presta atención a qué hipótesis usa cada paso: matriz cuadrada, cuerpo de trabajo, independencia,
+  simetría e invertibilidad. Un dibujo sugiere una idea; AP = PD explica por qué funciona.</p>
+<aside class="theorem"><p>Transformación → direcciones invariantes → Av = λv → autoespacios →
+  base de autovectores → P⁻¹AP = D → escalados independientes. Esa es la estructura que permite
+  recordar el tema y volver a deducir sus cálculos.</p></aside>
+
+<h3 id="connections">25. Conexiones para continuar</h3>
+<ul>
+  <li><a routerLink="/articles/matrix-determinant">Determinantes</a>: singularidad, orientación y el polinomio característico.</li>
+  <li><a routerLink="/articles/fibonacci-numbers">Fibonacci</a>: recuento, número áureo y la recurrencia que acabamos de desacoplar.</li>
+  <li><a routerLink="/articles/markov-chains">Cadenas de Markov</a>: autovalor 1, distribuciones estacionarias y modos de mezcla.</li>
+  <li><a routerLink="/articles/double-pendulum">El péndulo doble</a>: modos normales y un problema de autovalores generalizado en pequeñas oscilaciones.</li>
+  <li><a routerLink="/articles/ellipse">Elipse</a>, <a routerLink="/articles/hyperbola">hipérbola</a> y <a routerLink="/articles/parabola">parábola</a>: ejes principales y clasificación de cónicas.</li>
+  <li><a routerLink="/articles/euler-identity">La identidad de Euler</a>: números complejos y giros, útiles para interpretar autovalores no reales.</li>
+</ul>
+<p>Para profundizar: <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/least-squares-determinants-and-eigenvalues/diagonalization-and-powers-of-a/" target="_blank" rel="noopener noreferrer">diagonalización y potencias en MIT OpenCourseWare</a>
+  y <a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/positive-definite-matrices-and-applications/" target="_blank" rel="noopener noreferrer">matrices simétricas y aplicaciones</a>.</p>
+

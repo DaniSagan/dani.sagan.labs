@@ -18,7 +18,8 @@ export class GamesNavbarComponent {
       { name: 'Cuatro en Raya', route: 'four-in-a-row' },
       { name: 'Juego de la Vida de Conway', route: 'game-of-life' },
       { name: 'Cubo de Rubik', route: 'rubik-cube' },
-      { name: 'Sudoku', route: 'sudoku' }
+      { name: 'Sudoku', route: 'sudoku' },
+      { name: 'Universos en movimiento', route: 'gravity' }
     ]
   }];
 }

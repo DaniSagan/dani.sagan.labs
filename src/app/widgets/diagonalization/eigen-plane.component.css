@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0a141c;
+  border-radius: 12px;
+  touch-action: pan-y;
+  overflow: hidden;
+}

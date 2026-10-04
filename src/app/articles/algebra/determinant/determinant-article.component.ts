@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+﻿import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { DeterminantPlaneComponent } from '../../../widgets/determinant/determinant-plane.component';
 import { DeterminantVolumeComponent } from '../../../widgets/determinant/determinant-volume.component';
@@ -9,6 +10,7 @@ import { DeterminantEliminationComponent } from '../../../widgets/determinant/de
   selector: 'app-determinant-article',
   standalone: true,
   imports: [
+    RouterLink,
     FormulaComponent,
     DeterminantPlaneComponent,
     DeterminantVolumeComponent,

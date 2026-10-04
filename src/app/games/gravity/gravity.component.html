@@ -1,0 +1,148 @@
+﻿<section class="gravity-lab">
+  <header>
+    <div><span class="eyebrow">LABORATORIO DE MECÁNICA CELESTE</span>
+      <h2>Universos en movimiento<span>.</span></h2>
+      <p>Construye, observa y pilota un sistema gobernado por la gravedad.</p>
+    </div><span class="badge">N-BODY · 3D</span>
+  </header>
+  <div class="toolbar">
+    <label>Escenario<select [(ngModel)]="scenario" (change)="load()">
+        <option *ngFor="let s of scenarios" [value]="s.id">{{s.name}}</option>
+      </select></label>
+    <button (click)="paused = !paused">{{paused ? '▶ Reanudar' : 'Ⅱ Pausar'}}</button><button
+      (click)="load(true)">Reiniciar</button><button (click)="overview()">Vista general</button><button class="accent"
+      (click)="toggleShip()">{{shipMode ? 'Salir de la nave' : 'Pilotar nave'}}</button>
+  </div>
+  <p class="description">{{description}}</p>
+  <div class="workspace">
+    <div class="visual">
+      <div #viewport class="viewport">
+        <canvas #canvas tabindex="0"
+          aria-label="Simulación gravitatoria 3D. Pulsa un cuerpo para centrarlo. Arrastra para rotar, rueda para acercar y botón derecho para trasladar en vista general."></canvas>
+        <div class="hud"><span>{{shipMode ? 'NAVE · VUELO NEWTONIANO' : 'OBSERVATORIO · CÁMARA LIBRE'}}</span><time
+            class="simulation-date" [attr.datetime]="simulationIso">{{simulationDateUtc}}</time><strong>{{days |
+            number:'1.1-1'}} <small>días desde la fecha inicial</small></strong></div>
+        <ng-container *ngIf="labels"><button *ngFor="let label of labelPositions" class="body-label"
+            [hidden]="!label.visible" [style.left.px]="label.x" [style.top.px]="label.y" (click)="focus(label.id)"
+            [attr.aria-label]="'Centrar vista en ' + label.name">{{label.name}}</button></ng-container>
+        <div class="crosshair" *ngIf="shipMode">+</div>
+        <div class="error" *ngIf="error" role="alert">{{error}}</div>
+        <div class="legend">{{shipMode ? 'Arrastra para orientar · W/S avance · A/D lateral · Q/E vertical' : 'Pulsa un
+          cuerpo para centrarlo · Arrastra para rotar · Rueda / pellizco para zoom'}}</div>
+      </div>
+      <div class="time-controls"><label>Velocidad de simulación<select [ngModel]="speed"
+            (ngModelChange)="setSpeed($event)" aria-label="Velocidad de simulación">
+            <option *ngFor="let rate of timeRates" [ngValue]="rate.value">{{rate.label}}</option>
+          </select></label><span>Ritmo efectivo: {{actualSpeed * 86400 | number:'1.0-3'}} segundos simulados por
+          segundo</span></div>
+      <form class="date-controls" (ngSubmit)="applyDate()"><label for="simulation-date-utc">Seleccionar fecha y hora
+          (UTC)<input id="simulation-date-utc" type="datetime-local" name="simulationDateUtc" [(ngModel)]="dateInput"
+            min="0001-01-01T00:00:00" max="9999-12-31T23:59:59.999" step="0.001" required
+            aria-describedby="simulation-date-note"></label>
+        <div><button type="submit">Ir a la fecha</button><button type="button" (click)="useNow()">Ahora (UTC)</button>
+        </div>
+        <p id="simulation-date-note">La fecha y hora se interpretan en UTC. Cambiar la fecha pausa la simulación y
+          reinicia las posiciones aproximadas de los escenarios. En un sistema propio asigna la fecha al estado actual.
+        </p>
+        <p class="date-error" *ngIf="dateError" role="alert">{{dateError}}</p>
+      </form>
+      <div class="options"><label><input type="checkbox" [(ngModel)]="orbits"> Órbitas de
+          referencia</label><label><input type="checkbox" [(ngModel)]="trails"> Trayectorias</label><label><input
+            type="checkbox" [(ngModel)]="markers"> Marcadores de posición</label><label><input type="checkbox"
+            [(ngModel)]="labels"> Etiquetas</label><label><input type="checkbox" [(ngModel)]="bloom">
+          Resplandor</label><label><input type="checkbox" [(ngModel)]="showAsteroids"
+            (ngModelChange)="toggleAsteroids()"> Asteroides</label></div>
+      <div class="flight" *ngIf="shipMode"><label>Empuje (UA/día²)<input type="number" min="0" step="0.00001"
+            [(ngModel)]="thrust"></label>
+        <div class="flight-buttons"><button
+            *ngFor="let control of [{key:'KeyW',name:'Avanzar'},{key:'KeyS',name:'Retroceder'},{key:'KeyA',name:'Izquierda'},{key:'KeyD',name:'Derecha'},{key:'KeyQ',name:'Bajar'},{key:'KeyE',name:'Subir'}]"
+            (pointerdown)="press(control.key)" (pointerup)="release()" (pointerleave)="release()"
+            (pointercancel)="release()">{{control.name}}</button></div>
+        <p>Sin fricción: al soltar el empuje la nave sigue moviéndose. La gravedad y el empuje avanzan con el tiempo
+          simulado; al pausar se detienen.</p>
+      </div>
+    </div>
+    <aside><span class="eyebrow">EXPLORA EL SISTEMA</span>
+      <h3>Cuerpos celestes <small>{{model.bodies.length}} / {{maxBodies}}</small></h3>
+      <div class="catalog-filters"><input type="search" [(ngModel)]="search"
+          placeholder="Buscar cuerpo o planeta central" aria-label="Buscar cuerpos celestes"><select
+          [(ngModel)]="kindFilter" aria-label="Filtrar por tipo">
+          <option value="">Todos los tipos</option>
+          <option *ngFor="let entry of kindNames | keyvalue" [value]="entry.key">{{entry.value}}</option>
+        </select><small>{{listedBodies.length}} resultados</small></div>
+      <div class="body-list">
+        <div *ngFor="let body of listedBodies"><button (click)="focus(body.id)"
+            [attr.aria-label]="'Centrar vista en ' + body.name" [class.active]="selected === body.id"><i
+              [style.background]="body.color"></i>{{body.name}}<small>{{kindNames[kind(body)]}}</small></button><button
+            class="delete" (click)="remove(body.id)" [attr.aria-label]="'Eliminar ' + body.name">×</button></div>
+      </div>
+      <div class="details" *ngIf="focused as body"><strong>{{body.name}}</strong>
+        <p *ngIf="parent(body) as host">Orbita alrededor de {{host.name}}</p>
+        <p>Masa: {{body.mass ? (body.mass.toExponential(4) + ' M☉') : 'Sin dato publicado; partícula de prueba'}}</p>
+        <p>Radio: {{body.radius ? ((radiusKm(body) | number:'1.0-3') + ' km') : 'Sin dato publicado; solo marcador'}}
+        </p>
+        <p>Distancia al origen: {{distance(body) | number:'1.0-6'}} UA</p>
+        <p *ngIf="body.orbit as orbit">Periodo de referencia: {{orbit.period | number:'1.2-2'}} días</p>
+        <p *ngIf="body.note">{{body.note}}</p>
+        <p>La cámara sigue este cuerpo al rotar y hacer zoom. «Vista general» libera el seguimiento y permite
+          trasladarse.</p>
+      </div>
+      <details>
+        <summary>Crear un cuerpo celeste</summary>
+        <form (ngSubmit)="addBody()"><label>Nombre<input name="name" [(ngModel)]="draft.name" required
+              maxlength="40"></label>
+          <div class="pair"><label>Masa (M☉)<input name="mass" type="number" min="0.000000000001" step="any"
+                [(ngModel)]="draft.mass" required></label><label>Radio (UA)<input name="radius" type="number"
+                min="0.000000001" step="any" [(ngModel)]="draft.radius" required></label></div>
+          <div class="pair"><label>Color<input name="color" type="color" [(ngModel)]="draft.color"></label><label><input
+                name="star" type="checkbox" [(ngModel)]="draft.star"> Estrella</label></div><span>Posición (UA)</span>
+          <div class="triple"><label>X<input name="x" type="number" step="any" [(ngModel)]="draft.x"
+                required></label><label>Y<input name="y" type="number" step="any" [(ngModel)]="draft.y"
+                required></label><label>Z<input name="z" type="number" step="any" [(ngModel)]="draft.z"
+                required></label></div><span>Velocidad (UA/día)</span>
+          <div class="triple"><label>X<input name="vx" type="number" step="any" [(ngModel)]="draft.vx"
+                required></label><label>Y<input name="vy" type="number" step="any" [(ngModel)]="draft.vy"
+                required></label><label>Z<input name="vz" type="number" step="any" [(ngModel)]="draft.vz"
+                required></label></div><button type="button" (click)="circularVelocity()">Calcular velocidad
+            circular</button><button class="accent" type="submit">Añadir al sistema</button>
+        </form>
+      </details>
+      <div class="storage"><button (click)="save()">Guardar sistema</button><button
+          (click)="restore()">Recuperar</button></div>
+      <p class="message" role="status">{{message}}</p>
+    </aside>
+  </div>
+  <details class="science">
+    <summary>Cómo funciona este universo</summary>
+    <p>Gravedad newtoniana entre todos los cuerpos: F = G m₁m₂/r². Integración leapfrog con pasos adaptados a la escala
+      orbital y un máximo de 400 pasos y un presupuesto de cálculo de 12 ms por fotograma. Con muchas lunas o encuentros
+      cercanos, el ritmo efectivo puede disminuir para mantener la respuesta de los controles. Se usa un suavizado de
+      10⁻⁶ UA para evitar singularidades; los cuerpos no se fusionan.</p>
+    <p>Las distancias y los radios de los cuerpos se muestran a la misma escala real. En la vista general, los planetas
+      pueden resultar demasiado pequeños para distinguirlos; pulsa su etiqueta o su nombre en la lista para acercarte.
+      Las superficies y los anillos son ilustraciones procedurales. La nave es una partícula de prueba: recibe gravedad
+      y no altera las órbitas. Los planetas principales parten de órbitas circulares aproximadas. Las lunas y los
+      cuerpos menores parten de elementos orbitales elípticos publicados, transformados a un marco común. Es una
+      simulación educativa, sin reproducir una efeméride ni incluir relatividad.</p>
+    <p>Unidades: UA, días y masas solares. Una masa terrestre ≈ 0,000003003 M☉. Las trayectorias conservan las últimas
+      700 muestras (160 para lunas). Las líneas orbitales representan elipses de referencia iniciales centradas en el
+      cuerpo anfitrión; la trayectoria integrada puede desviarse por perturbaciones. Guardar conserva el estado actual y
+      su fecha UTC en este navegador. El reloj parte del 1 de enero de 2000 a las 12:00 UTC como referencia educativa;
+      la selección de fecha propaga los elementos orbitales aproximados, sin convertir UTC a las escalas temporales de
+      las efemérides ni modelar segundos intercalares.</p>
+    <p>El catálogo incluye las 460 lunas de la tabla de elementos medios de JPL descargada el 3 de octubre de 2026, más
+      Hiʻiaka, Namaka, Dysnomia y MK 2. Las lunas de los candidatos a planeta enano y los satélites de asteroides quedan
+      fuera de este catálogo. Los cinco planetas enanos reconocidos se distinguen de Quaoar, Orcus, Gonggong y Sedna,
+      incluidos como candidatos. Los cuerpos sin masa publicada reciben gravedad como partículas de prueba, sin
+      ejercerla. Sin radio publicado se muestra únicamente un marcador; los marcadores son ayudas de selección, no
+      representan tamaños físicos.</p>
+    <p>Referencias: <a href="https://ssd.jpl.nasa.gov/sats/elem/" target="_blank" rel="noopener">Lunas · JPL</a> · <a
+        href="https://ssd-api.jpl.nasa.gov/doc/sbdb.html" target="_blank" rel="noopener">Cuerpos menores · JPL</a> · <a
+        href="https://arxiv.org/abs/0903.4213" target="_blank" rel="noopener">Lunas de Haumea</a> · <a
+        href="https://arxiv.org/abs/2009.13733" target="_blank" rel="noopener">Dysnomia</a> · <a
+        href="https://arxiv.org/abs/2509.05880" target="_blank" rel="noopener">MK 2</a> · <a
+        href="https://science.nasa.gov/exoplanets/trappist1/" target="_blank" rel="noopener">TRAPPIST-1 · NASA</a> · <a
+        href="https://science.nasa.gov/exoplanet-catalog/kepler-16b/" target="_blank" rel="noopener">Kepler-16 b ·
+        NASA</a>.</p>
+  </details>
+</section>

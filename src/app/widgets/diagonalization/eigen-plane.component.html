@@ -1,0 +1,104 @@
+<svg
+  viewBox="0 0 520 520"
+  role="img"
+  [attr.aria-label]="label"
+  (pointerdown)="select($event)"
+>
+  <title>{{ label }}</title>
+  <defs>
+    <marker
+      [id]="markerId"
+      markerWidth="8"
+      markerHeight="8"
+      refX="6"
+      refY="3"
+      orient="auto"
+    >
+      <path d="M0,0 L0,6 L7,3 z" fill="context-stroke" />
+    </marker>
+  </defs>
+  <g stroke="#334652" stroke-width="1">
+    <ng-container *ngFor="let k of grid">
+      <line
+        [attr.x1]="sx(k)"
+        [attr.y1]="sy(-2)"
+        [attr.x2]="sx(k)"
+        [attr.y2]="sy(2)"
+      />
+      <line
+        [attr.x1]="sx(-2)"
+        [attr.y1]="sy(k)"
+        [attr.x2]="sx(2)"
+        [attr.y2]="sy(k)"
+      />
+    </ng-container>
+  </g>
+  <g stroke="#82e3cc" stroke-width="1.2" opacity="0.65">
+    <ng-container *ngFor="let k of grid">
+      <line
+        [attr.x1]="px(k, -2)"
+        [attr.y1]="py(k, -2)"
+        [attr.x2]="px(k, 2)"
+        [attr.y2]="py(k, 2)"
+      />
+      <line
+        [attr.x1]="px(-2, k)"
+        [attr.y1]="py(-2, k)"
+        [attr.x2]="px(2, k)"
+        [attr.y2]="py(2, k)"
+      />
+    </ng-container>
+  </g>
+  <g stroke="#99b0bd">
+    <line x1="20" y1="260" x2="500" y2="260" />
+    <line x1="260" y1="20" x2="260" y2="500" />
+  </g>
+  <g
+    *ngIf="samples"
+    stroke="#82e3cc"
+    opacity="0.45"
+    [attr.marker-end]="marker"
+  >
+    <line
+      *ngFor="let v of rays"
+      x1="260"
+      y1="260"
+      [attr.x2]="px(v[0], v[1])"
+      [attr.y2]="py(v[0], v[1])"
+    />
+  </g>
+  <g stroke="#ff9eae" stroke-width="2" stroke-dasharray="8 6">
+    <line
+      *ngFor="let v of directions"
+      [attr.x1]="sx(-v[0] * extent)"
+      [attr.y1]="sy(-v[1] * extent)"
+      [attr.x2]="sx(v[0] * extent)"
+      [attr.y2]="sy(v[1] * extent)"
+    />
+  </g>
+  <line
+    x1="260"
+    y1="260"
+    [attr.x2]="sx(vector[0])"
+    [attr.y2]="sy(vector[1])"
+    stroke="#f6cc80"
+    stroke-width="4"
+    [attr.marker-end]="marker"
+  />
+  <line
+    x1="260"
+    y1="260"
+    [attr.x2]="px(vector[0], vector[1])"
+    [attr.y2]="py(vector[0], vector[1])"
+    stroke="#82e3cc"
+    stroke-width="3"
+    [attr.marker-end]="marker"
+  />
+  <circle
+    [attr.cx]="sx(vector[0])"
+    [attr.cy]="sy(vector[1])"
+    r="6"
+    fill="#f6cc80"
+  />
+  <text x="280" y="505" fill="#bed0da" font-size="12">{{ extentLabel }}</text>
+</svg>

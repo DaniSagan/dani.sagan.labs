@@ -6,6 +6,7 @@ import { GameOfLifeComponent } from './game-of-life/game-of-life.component';
 import { GamesContentComponent } from './games-content/games-content.component';
 import { RubikCubeComponent } from './rubik-cube/rubik-cube.component';
 import { SudokuComponent } from './sudoku/sudoku.component';
+import { GravityComponent } from './gravity/gravity.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
       {path: 'four-in-a-row', component: FourInARowComponent},
       {path: 'game-of-life', component: GameOfLifeComponent},
       {path: 'rubik-cube', component: RubikCubeComponent},
-      {path: 'sudoku', component: SudokuComponent}
+      {path: 'sudoku', component: SudokuComponent},
+      {path: 'gravity', component: GravityComponent}
     ]
   }
 ];

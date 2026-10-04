@@ -1,0 +1,180 @@
+<section class="lab" [attr.aria-label]="titles[mode]">
+  <p class="eyebrow">LABORATORIO · {{ mode === 'explorer' ? 'GEOMETRÍA ANTES DEL CÁLCULO' : 'EXACTITUD Y SIGNIFICADO' }}
+  </p>
+  <h4>{{titles[mode]}}</h4>
+  <label>Compara transformaciones
+    <select [ngModel]="selected" (ngModelChange)="choose($event)">
+      <option *ngFor="let preset of presets" [value]="preset.id">{{preset.name}}</option>
+    </select>
+  </label>
+  <p>{{interpretation}}</p>
+  <app-determinant-matrix-input *ngIf="matrix.length === 2" [matrix]="matrix"
+    (matrixChange)="selected = ''; update($event)" [step]="0.1" [limit]="5" />
+  <p class="caption">Entradas decimales finitas entre −5 y 5. Se interpretan como fracciones exactas. Raíces y núcleos
+    se calculan sin tolerancias numéricas.</p>
+  <p *ngIf="error" role="alert">{{error}}</p>
+  <ng-container *ngIf="!error">
+    <ng-container *ngIf="mode === 'explorer'">
+      <p>Haz clic en el plano o usa los controles para elegir v. Dorado: v y cuadrícula inicial. Verde: Av y cuadrícula
+        transformada. Las flechas tenues son imágenes de vectores de muchas direcciones.</p>
+      <div class="controls">
+        <label>x<input type="number" aria-label="Coordenada x del vector" min="-3" max="3" step="0.1"
+            [ngModel]="vector[0]" (ngModelChange)="setCoordinate(0,$event)" /></label>
+        <label>y<input type="number" aria-label="Coordenada y del vector" min="-3" max="3" step="0.1"
+            [ngModel]="vector[1]" (ngModelChange)="setCoordinate(1,$event)" /></label>
+        <label>Dirección: {{angle}}°<input type="range" aria-label="Ángulo del vector" min="0" max="360" step="1"
+            [ngModel]="angle" (ngModelChange)="setAngle($event)" /></label>
+      </div>
+      <app-eigen-plane [matrix]="matrix" [vector]="vector" [directions]="directions" [samples]="true"
+        [interactive]="true" (vectorChange)="vector = $event" />
+      <p role="status">v = ({{fmt(vector[0])}}, {{fmt(vector[1])}}); Av = ({{fmt(image[0])}}, {{fmt(image[1])}}).
+        {{collinearity}}</p>
+      <button type="button" (click)="showDirections = !showDirections"
+        [attr.aria-pressed]="showDirections">{{showDirections ? 'Ocultar' : 'Revelar'}} direcciones propias</button>
+      <ng-container *ngIf="showDirections">
+        <p *ngIf="allDirections">Todas las rectas por el origen son propias: el plano completo es un autoespacio. Las
+          líneas rosas solo muestran una base.</p>
+        <p *ngIf="!realSpaces.length">No hay direcciones propias reales: ninguna recta por el origen queda sobre sí
+          misma.</p>
+        <div class="buttons"><button type="button" *ngFor="let v of directions; let i = index" (click)="snap(i)">Elegir
+            dirección {{i+1}}</button></div>
+        <app-formula *ngFor="let s of realSpaces"
+          [expression]="'Av=('+s.value.tex()+')v,\\quad v\\in E_{'+s.value.tex()+'}\\setminus\\{0\\}'" />
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="mode === 'algebra'">
+      <div class="buttons"><button type="button" (click)="choose3(0)">{{examples3[0].name}}</button><button
+          type="button" (click)="choose3(1)">{{examples3[1].name}}</button></div>
+      <p>Revela el cálculo en el orden que responde a la pregunta geométrica. Los ejemplos 3D utilizan un espectro
+        racional verificado exactamente.</p>
+      <app-formula [expression]="shifted" />
+      <div class="buttons"><button type="button" (click)="step = step + 1" [disabled]="step >= 4">Siguiente paso
+          ({{step}}/4)</button><button type="button" (click)="step = 0">Reiniciar pasos</button></div>
+      <app-formula *ngIf="step >= 1 && matrix.length === 2" [expression]="determinantExpansion" />
+      <app-formula *ngIf="step >= 1" [expression]="polynomial" />
+      <app-formula *ngIf="step >= 2 && spectrum.discriminant"
+        [expression]="'\\Delta='+spectrum.discriminant.toString()+',\\qquad t=\\frac{\\operatorname{tr}A\\pm\\sqrt{\\Delta}}2'" />
+      <ng-container *ngIf="step >= 2">
+        <article *ngFor="let s of spectrum.spaces">
+          <app-formula [expression]="'\\lambda='+s.value.tex()+',\\qquad m_a='+s.algebraic" />
+          <p>Resuelve este sistema homogéneo:</p><app-formula [expression]="tex(s.system)+'v=0'" />
+          <ng-container *ngIf="step >= 3">
+            <p>Forma reducida por filas. Cada variable libre aporta un vector de la base:</p><app-formula
+              [expression]="tex(s.reduced)+'v=0'" />
+            <app-formula *ngFor="let v of s.basis" [expression]="'v='+vectorTex(v)+',\\quad Av=('+s.value.tex()+')v'" />
+            <p>El autoespacio es el conjunto de combinaciones lineales de estos {{s.geometric}} vectores. Multiplicidad
+              geométrica: {{s.geometric}}.</p>
+          </ng-container>
+        </article>
+      </ng-container>
+      <aside *ngIf="step >= 4" class="result" role="status">
+        <p>{{spectrum.count}} autovectores independientes sobre ℂ, de {{matrix.length}} necesarios.</p>
+        <p>Diagonalizable sobre ℝ: <strong>{{spectrum.realDiagonalizable ? 'sí' : 'no'}}</strong>. Sobre ℂ:
+          <strong>{{spectrum.complexDiagonalizable ? 'sí' : 'no'}}</strong>.</p>
+        <p *ngIf="!spectrum.realDiagonalizable && spectrum.complexDiagonalizable">Las raíces complejas dan una base en
+          ℂ, pero no direcciones dibujables como rectas reales.</p>
+      </aside>
+    </ng-container>
+
+    <ng-container *ngIf="mode === 'basis' || mode === 'spectral' || mode === 'powers'">
+      <p *ngIf="!spectrum.realDiagonalizable" role="status">No existe una base de autovectores reales.
+        {{spectrum.complexDiagonalizable ? 'Hay diagonalización sobre ℂ; explórala en el laboratorio algebraico.' :
+        'Faltan autovectores independientes incluso sobre ℂ.'}}</p>
+      <ng-container *ngIf="spectrum.realDiagonalizable && decomposition as dec">
+        <button type="button" (click)="reverse = !reverse" [attr.aria-pressed]="reverse">Invertir el orden de los
+          autovectores</button>
+        <app-formula [expression]="'P='+tex(dec.p)+',\\quad D='+tex(dec.d)+',\\quad P^{-1}='+tex(dec.inverse)" />
+        <ng-container *ngIf="mode === 'basis'">
+          <app-formula [expression]="'AP='+tex(productForTemplate(spectrum.matrix,dec.p))+'=PD'" />
+          <app-formula [expression]="'P^{-1}AP='+tex(dec.d)+'=D'" />
+          <p role="status">Comprobaciones exactas AP = PD y A = PDP⁻¹: {{verified ? 'verificadas' : 'fallo'}}. Al
+            invertir el orden cambian juntas las columnas de P y las entradas de D.</p>
+          <div class="controls"><label>Vector inicial x<input type="number" min="-3" max="3" step="0.1"
+                [ngModel]="vector[0]" (ngModelChange)="setCoordinate(0,$event)" /></label><label>Vector inicial y<input
+                type="number" min="-3" max="3" step="0.1" [ngModel]="vector[1]"
+                (ngModelChange)="setCoordinate(1,$event)" /></label></div>
+          <div class="buttons"><button *ngFor="let i of [0,1,2]" type="button" (click)="stage = i"
+              [attr.aria-pressed]="stage === i">Etapa {{i+1}}</button></div>
+          <h5>{{stageData.title}}</h5>
+          <div class="split">
+            <div>
+              <p>Coordenadas en esta etapa</p><app-eigen-plane [matrix]="numeric(stageData.matrix)"
+                [vector]="stageData.input" [label]="stageData.title" />
+            </div>
+            <div>
+              <p>Comparación: aplicar A directamente</p><app-eigen-plane [matrix]="matrix" [vector]="vector"
+                label="Resultado directo Av en la base estándar" />
+            </div>
+          </div>
+          <app-formula [expression]="'\\text{Salida de la etapa: }'+tex(stageData.output)" />
+          <p>Las coordenadas del panel izquierdo se refieren a la base de cada etapa; no son posiciones del mismo vector
+            físico en un único plano. En la etapa 3, ambas salidas coinciden en la base estándar.</p>
+        </ng-container>
+        <ng-container *ngIf="mode === 'spectral'">
+          <p *ngIf="!symmetric">Esta matriz no es simétrica: la base propia no tiene por qué ser ortogonal. Selecciona
+            «Simétrica», «Reflexión» o «Proyección».</p>
+          <ng-container *ngIf="symmetric">
+            <p>Normalizamos las columnas de P para formar Q. Los ejes son perpendiculares; Qᵀ cambia las coordenadas, D
+              escala y Q regresa.</p>
+            <app-formula [expression]="'Q\\approx'+texNumeric(orthogonal)+',\\qquad Q^TAQ=D'" />
+            <div class="spectral-grid">
+              <div *ngFor="let s of orthogonalStages">
+                <h5>{{s.title}}</h5><app-eigen-plane [matrix]="s.matrix" [vector]="s.vector" [label]="s.title" />
+              </div>
+            </div>
+            <p>Las entradas de Q se muestran en decimal para dibujar. La diagonalización y los autovalores anteriores
+              son exactos. La cuadrícula gris muestra los ejes de entrada de cada etapa, y la verde sus imágenes.</p>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="mode === 'powers'">
+          <div class="controls"><label>Exponente n = {{exponent}}<input type="range" min="0" max="100" step="1"
+                [(ngModel)]="exponent" /></label><label>Vector inicial x<input type="number" min="-3" max="3" step="0.1"
+                [ngModel]="vector[0]" (ngModelChange)="setCoordinate(0,$event)" /></label><label>Vector inicial y<input
+                type="number" min="-3" max="3" step="0.1" [ngModel]="vector[1]"
+                (ngModelChange)="setCoordinate(1,$event)" /></label></div>
+          <details>
+            <summary>Comparar las dos matrices exactas</summary><app-formula
+              [expression]="'A^{'+exponent+'}='+tex(powered)" /><app-formula
+              [expression]="'PD^{'+exponent+'}P^{-1}='+tex(spectralPower)" />
+          </details>
+          <p role="status">Igualdad comprobada con aritmética exacta: {{powerVerified ? 'sí' : 'no'}}.</p>
+          <app-formula [expression]="'A^{'+exponent+'}v='+tex(productForTemplate(powered,vectorMatrix))" />
+          <svg viewBox="0 0 520 520" role="img" aria-label="Órbita discreta del vector inicial">
+            <title>Órbita: Aⁿv, primeros veinte pasos</title>
+            <path d="M20 260H500 M260 20V500" stroke="#617984" />
+            <polyline [attr.points]="orbitPath" fill="none" stroke="#82e3cc" stroke-width="2" />
+            <circle *ngFor="let p of orbit" [attr.cx]="260+p.v[0]*230/orbitExtent"
+              [attr.cy]="260-p.v[1]*230/orbitExtent" r="4" fill="#f6cc80">
+              <title>Paso {{p.n}}: ({{fmt(p.v[0])}}, {{fmt(p.v[1])}})</title>
+            </circle>
+          </svg>
+          <p>Órbita hasta el paso {{exponent < 20 ? exponent : 20}}; el resultado algebraico usa n={{exponent}}. Ventana
+              común ±{{fmt(orbitExtent)}}; se reajusta al cambiar n.</p>
+              <div class="scroll">
+                <table>
+                  <caption>Trayectoria (aproximaciones decimales)</caption>
+                  <thead>
+                    <tr>
+                      <th>n</th>
+                      <th>x</th>
+                      <th>y</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let p of orbit">
+                      <td>{{p.n}}</td>
+                      <td>{{fmt(p.v[0])}}</td>
+                      <td>{{fmt(p.v[1])}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>El cálculo directo usa productos de matrices por exponenciación binaria. La vía diagonal eleva
+                escalares y, además, explica el crecimiento. La dirección dominante solo aparece si el vector inicial
+                tiene componente no nula en ella.</p>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</section>

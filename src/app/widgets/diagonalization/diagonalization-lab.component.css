@@ -1,0 +1,151 @@
+:host {
+  display: block;
+  min-width: 0;
+  margin: 2rem 0;
+  color: #deeaef;
+}
+.lab {
+  padding: clamp(1rem, 3vw, 2rem);
+  background: linear-gradient(145deg, #13262f, #101820);
+  border: 1px solid #35505b;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.eyebrow {
+  font: 700 0.72rem system-ui;
+  letter-spacing: 0.13em;
+  color: #82e3cc;
+}
+h4,
+h5 {
+  color: #f1f7fa;
+}
+h4 {
+  font-size: 1.5rem;
+}
+p {
+  line-height: 1.7;
+}
+.buttons,
+.controls {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.controls {
+  align-items: end;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+  margin: 0.8rem 0;
+}
+.controls label {
+  flex: 1 1 120px;
+}
+input,
+select,
+button {
+  font: inherit;
+  color: #e4f0f4;
+  background: #1c323c;
+  border: 1px solid #58717c;
+  border-radius: 7px;
+  padding: 0.5rem;
+  min-height: 42px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+input[type="range"] {
+  width: 100%;
+  accent-color: #82e3cc;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.45;
+}
+button:hover:not(:disabled),
+button[aria-pressed="true"] {
+  background: #295346;
+  border-color: #82e3cc;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #f6cc80;
+  outline-offset: 3px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.spectral-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+.spectral-grid h5 {
+  font-size: 1rem;
+}
+.caption {
+  font-size: 0.8rem;
+  color: #bed0da;
+}
+.result {
+  padding: 1rem;
+  border-left: 3px solid #82e3cc;
+  background: #142c36;
+}
+app-formula {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #0a141c;
+  border-radius: 12px;
+}
+.scroll {
+  max-height: 240px;
+  overflow: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th,
+td {
+  padding: 0.5rem;
+  text-align: right;
+  border-bottom: 1px solid #35505b;
+}
+caption {
+  color: #bed0da;
+}
+details {
+  margin: 1rem 0;
+}
+summary {
+  cursor: pointer;
+  min-height: 42px;
+}
+@media (max-width: 650px) {
+  .split,
+  .spectral-grid {
+    grid-template-columns: 1fr;
+  }
+  .buttons button {
+    flex-grow: 1;
+  }
+}
