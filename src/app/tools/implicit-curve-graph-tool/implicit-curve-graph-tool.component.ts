@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EXTRA_CONSTANTS, EXTRA_FUNCTIONS, mathCategory } from './math-catalog';
+import { CURVE_EXAMPLES, CurveExample, FEATURED_EXAMPLE_IDS } from './curve-examples';
 import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
@@ -14,12 +15,36 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/im
 })
 export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
+  @ViewChild('graphResult', { static: true }) graphResult!: ElementRef<HTMLElement>;
   formula = 'x*x + y*y - 1';
   xMin = -3; xMax = 3; yMin = -3; yMax = 3;
   error = '';
   buttonDescription = 'Pasa el cursor, enfoca o toca un botón para consultar su descripción.';
   describedButton = '';
   catalogSearch = '';
+  readonly examples = CURVE_EXAMPLES;
+  readonly exampleCategories = ['Destacados', 'Todos', ...new Set(CURVE_EXAMPLES.map(example => example.category))];
+  exampleSearch = '';
+  exampleCategory = 'Destacados';
+  selectedExample: CurveExample | null = null;
+
+  get visibleExamples(): CurveExample[] {
+    const normalize = (value: string): string => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    const words = normalize(this.exampleSearch.trim()).split(/\s+/).filter(Boolean);
+    return this.examples.filter(example =>
+      (this.exampleCategory === 'Todos' ||
+        (this.exampleCategory === 'Destacados' ? FEATURED_EXAMPLE_IDS.has(example.id) : example.category === this.exampleCategory)) &&
+      words.every(word => normalize(`${example.name} ${example.category} ${example.description} ${example.formula}`).includes(word)));
+  }
+
+  selectExample(example: CurveExample): void {
+    this.selectedExample = example;
+    this.formula = example.formula;
+    [this.xMin, this.xMax, this.yMin, this.yMax] = example.bounds;
+    this.onRedraw();
+    this.graphResult.nativeElement.focus({ preventScroll: true });
+    this.graphResult.nativeElement.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
 
   private readonly expressionFunctions: Record<string, (...args: number[]) => number> =
     { ...Object.fromEntries(

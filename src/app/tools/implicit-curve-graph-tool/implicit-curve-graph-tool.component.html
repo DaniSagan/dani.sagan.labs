@@ -2,48 +2,75 @@
 <div class="widget-container">
   <form (ngSubmit)="onRedraw()">
     <label for="formula">Expresión f(x, y) = 0</label>
-    <input #formulaInput id="formula" name="formula" [(ngModel)]="formula" placeholder="x*x + y*y - 1" spellcheck="false" />
-    <p class="formula-help" id="function-help">Funciones: pasa el cursor, enfoca un botón o mantenlo pulsado en el móvil para ver su descripción.</p>
+    <input #formulaInput id="formula" name="formula" [(ngModel)]="formula" placeholder="x*x + y*y - 1"
+      spellcheck="false" />
+    <p class="formula-help" id="function-help">Funciones: pasa el cursor, enfoca un botón o mantenlo pulsado en el móvil
+      para ver su descripción.</p>
     <div class="math-keyboard">
-    <div class="catalog-search">
-      <label for="catalog-search">Buscar en el teclado</label>
-      <input id="catalog-search" name="catalogSearch" type="search" [(ngModel)]="catalogSearch"
-        (ngModelChange)="resetDescription()" placeholder="Nombre o descripción: Jacobi, raíz, media…" />
-      <span class="catalog-count">{{ names.length }} funciones · {{ constantNames.length }} constantes</span>
+      <div class="catalog-search">
+        <label for="catalog-search">Buscar en el teclado</label>
+        <input id="catalog-search" name="catalogSearch" type="search" [(ngModel)]="catalogSearch"
+          (ngModelChange)="resetDescription()" placeholder="Nombre o descripción: Jacobi, raíz, media…" />
+        <span class="catalog-count">{{ names.length }} funciones · {{ constantNames.length }} constantes</span>
+      </div>
+      <mat-tab-group class="math-tabs" [dynamicHeight]="true" [mat-stretch-tabs]="false" animationDuration="0ms"
+        (selectedTabChange)="resetDescription()">
+        <mat-tab *ngFor="let group of visibleFunctionGroups; trackBy: trackGroup" [label]="group.label">
+          <div class="function-grid" role="group" [attr.aria-label]="group.label" aria-describedby="function-help">
+            <button *ngFor="let name of group.names" type="button"
+              [class.description-active]="describedButton === name + '()'" (pointerenter)="showDescription(name)"
+              (pointerdown)="showDescription(name)" (focus)="showDescription(name)"
+              [attr.aria-label]="'Insertar ' + name + '()'" (click)="insertFunction(formulaInput, name)">{{ name
+              }}()</button>
+          </div>
+        </mat-tab>
+        <mat-tab label="Constantes">
+          <p class="formula-help" id="constant-help">Pulsa una constante para insertar su nombre o sustituir el texto
+            seleccionado.</p>
+          <div class="function-grid" role="group" aria-label="Constantes matemáticas" aria-describedby="constant-help">
+            <button *ngFor="let name of visibleConstantNames" type="button"
+              [class.description-active]="describedButton === name" (pointerenter)="showDescription(name, true)"
+              (pointerdown)="showDescription(name, true)" (focus)="showDescription(name, true)"
+              [attr.aria-label]="'Insertar ' + name" (click)="insertConstant(formulaInput, name)">{{ name }}</button>
+          </div>
+          <p class="formula-help" *ngIf="!visibleConstantNames.length">No hay constantes que coincidan con la búsqueda.
+          </p>
+        </mat-tab>
+      </mat-tab-group>
+      <div class="keyboard-help" role="status" aria-live="polite" aria-atomic="true">
+        <span class="keyboard-help-key">{{ describedButton || 'Ayuda' }}</span>
+        <p class="button-description">{{ buttonDescription }}</p>
+      </div>
     </div>
-    <mat-tab-group class="math-tabs" [dynamicHeight]="true" [mat-stretch-tabs]="false" animationDuration="0ms" (selectedTabChange)="resetDescription()">
-      <mat-tab *ngFor="let group of visibleFunctionGroups; trackBy: trackGroup" [label]="group.label">
-        <div class="function-grid" role="group" [attr.aria-label]="group.label" aria-describedby="function-help">
-          <button *ngFor="let name of group.names" type="button"
-            [class.description-active]="describedButton === name + '()'"
-            (pointerenter)="showDescription(name)"
-            (pointerdown)="showDescription(name)"
-            (focus)="showDescription(name)"
-            [attr.aria-label]="'Insertar ' + name + '()'"
-            (click)="insertFunction(formulaInput, name)">{{ name }}()</button>
-        </div>
-      </mat-tab>
-      <mat-tab label="Constantes">
-        <p class="formula-help" id="constant-help">Pulsa una constante para insertar su nombre o sustituir el texto seleccionado.</p>
-        <div class="function-grid" role="group" aria-label="Constantes matemáticas" aria-describedby="constant-help">
-          <button *ngFor="let name of visibleConstantNames" type="button"
-            [class.description-active]="describedButton === name"
-            (pointerenter)="showDescription(name, true)"
-            (pointerdown)="showDescription(name, true)"
-            (focus)="showDescription(name, true)"
-            [attr.aria-label]="'Insertar ' + name"
-            (click)="insertConstant(formulaInput, name)">{{ name }}</button>
-        </div>
-        <p class="formula-help" *ngIf="!visibleConstantNames.length">No hay constantes que coincidan con la búsqueda.</p>
-      </mat-tab>
-    </mat-tab-group>
-    <div class="keyboard-help" role="status" aria-live="polite" aria-atomic="true">
-      <span class="keyboard-help-key">{{ describedButton || 'Ayuda' }}</span>
-      <p class="button-description">{{ buttonDescription }}</p>
-    </div>
-    </div>
-    <p class="formula-help">Usa sintaxis JavaScript: ** para potencias, sin(x), cos(y), sqrt(x), gamma(x), PI, PHI… También puedes usar expresiones de una sola variable.</p>
-    <div class="examples" aria-label="Ejemplos"><button type="button" (click)="example('x*x + y*y - 1')">Círculo</button><button type="button" (click)="example('x*x - y*y - 1')">Hipérbola</button><button type="button" (click)="example('(x*x + y*y)**2 - 2*(x*x - y*y)')">Lemniscata</button><button type="button" (click)="example('Math.sin(x) - y')">Seno</button></div>
+    <p class="formula-help">Usa sintaxis JavaScript: ** para potencias, sin(x), cos(y), sqrt(x), gamma(x), PI, PHI…
+      También puedes usar expresiones de una sola variable.</p>
+    <details class="examples" open>
+      <summary>Galería de curvas <span class="catalog-count">{{ examples.length }} ejemplos</span></summary>
+      <div class="catalog-search">
+        <label for="example-search">Buscar ejemplos</label>
+        <input id="example-search" name="exampleSearch" type="search" [(ngModel)]="exampleSearch" (ngModelChange)="exampleCategory = 'Todos'"
+          placeholder="Corazón, espiral, mandala, ondas…" />
+      </div>
+      <div class="example-categories" role="group" aria-label="Categorías de ejemplos">
+        <button *ngFor="let category of exampleCategories" type="button"
+          [attr.aria-pressed]="exampleCategory === category" (click)="exampleCategory = category">{{ category }}</button>
+      </div>
+      <p class="example-count" role="status">{{ visibleExamples.length }} ejemplos disponibles. Selecciona una miniatura para dibujarla con su encuadre.</p>
+      <div class="example-gallery" role="group" aria-label="Ejemplos de curvas">
+        <button *ngFor="let preset of visibleExamples" type="button" class="example-card"
+          [attr.aria-pressed]="selectedExample?.id === preset.id && formula === preset.formula"
+          (click)="selectExample(preset)">
+          <img [src]="'assets/implicit-curve-examples/' + preset.id + '.svg'" alt="" loading="lazy" width="160" height="120" />
+          <span class="example-name">{{ preset.name }}</span>
+          <span class="example-category">{{ preset.category }}</span>
+          <span class="example-description">{{ preset.description }}</span>
+        </button>
+      </div>
+      <div class="example-empty" *ngIf="!visibleExamples.length">
+        <p>No se han encontrado ejemplos. Prueba otra palabra o categoría.</p>
+        <button type="button" (click)="exampleSearch = ''; exampleCategory = 'Todos'">Mostrar todos</button>
+      </div>
+    </details>
     <div class="bounds">
       <label>x mín. <input name="xMin" type="number" step="any" [(ngModel)]="xMin" /></label>
       <label>x máx. <input name="xMax" type="number" step="any" [(ngModel)]="xMax" /></label>
@@ -53,5 +80,10 @@
     <button type="submit">Dibujar curva</button>
     <p class="formula-error" role="alert" *ngIf="error">{{ error }}</p>
   </form>
-  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+  <div #graphResult class="graph-result" tabindex="-1" aria-label="Resultado de la curva">
+    <p *ngIf="selectedExample && formula === selectedExample.formula" class="selected-example">
+      <strong>{{ selectedExample.name }}</strong> · {{ selectedExample.description }}
+    </p>
+    <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+  </div>
 </div>
