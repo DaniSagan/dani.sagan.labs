@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
   selector: 'app-implicit-curve-graph-tool',
   standalone: true,
-  imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule],
+  imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule, MatTooltipModule],
   templateUrl: './implicit-curve-graph-tool.component.html',
   styleUrl: './implicit-curve-graph-tool.component.css'
 })
@@ -16,12 +17,106 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   xMin = -3; xMax = 3; yMin = -3; yMax = 3;
   error = '';
 
+  private readonly expressionFunctions: Record<string, (...args: number[]) => number> =
+    Object.fromEntries(
+      Object.getOwnPropertyNames(Math)
+        .filter(name => typeof Math[name as keyof Math] === 'function')
+        .map(name => [name, (Math[name as keyof Math] as (...args: number[]) => number).bind(Math)])
+    );
+
+  readonly names = Object.keys(this.expressionFunctions).sort();
+  private readonly expressionConstants: Record<string, number> = Object.fromEntries(
+    Object.getOwnPropertyNames(Math)
+      .filter(name => typeof Math[name as keyof Math] === 'number')
+      .map(name => [name, Math[name as keyof Math] as number])
+  );
+  readonly constantNames = Object.keys(this.expressionConstants).sort();
+  readonly constantDescriptions: Record<string, string> = {
+    E: 'E ≈ 2,71828: número de Euler, base de los logaritmos naturales.',
+    PI: 'PI ≈ 3,14159: razón entre la longitud de una circunferencia y su diámetro.',
+    LN2: 'LN2 ≈ 0,69315: logaritmo natural de 2.',
+    LN10: 'LN10 ≈ 2,30259: logaritmo natural de 10.',
+    LOG2E: 'LOG2E ≈ 1,44270: logaritmo en base 2 de E.',
+    LOG10E: 'LOG10E ≈ 0,43429: logaritmo en base 10 de E.',
+    SQRT1_2: 'SQRT1_2 ≈ 0,70711: raíz cuadrada de 1/2.',
+    SQRT2: 'SQRT2 ≈ 1,41421: raíz cuadrada de 2.',
+  };
+  readonly functionDescriptions: Record<string, string> = {
+    abs: 'abs(x): valor absoluto de x.',
+    acos: 'acos(x): arco coseno en radianes; x debe estar entre -1 y 1.',
+    acosh: 'acosh(x): arco coseno hiperbólico; x debe ser mayor o igual que 1.',
+    asin: 'asin(x): arco seno en radianes; x debe estar entre -1 y 1.',
+    asinh: 'asinh(x): arco seno hiperbólico.',
+    atan: 'atan(x): arco tangente en radianes.',
+    atan2: 'atan2(y, x): ángulo en radianes del punto (x, y), teniendo en cuenta el cuadrante.',
+    atanh: 'atanh(x): arco tangente hiperbólico; para un resultado finito, -1 < x < 1.',
+    cbrt: 'cbrt(x): raíz cúbica de x, incluidos los valores negativos.',
+    ceil: 'ceil(x): redondea al entero mayor o igual que x más próximo.',
+    clz32: 'clz32(x): número de ceros iniciales de x como entero sin signo de 32 bits.',
+    cos: 'cos(x): coseno de un ángulo en radianes.',
+    cosh: 'cosh(x): coseno hiperbólico.',
+    exp: 'exp(x): e elevado a x.',
+    expm1: 'expm1(x): e elevado a x menos 1, con mayor precisión cerca de cero.',
+    floor: 'floor(x): redondea al entero menor o igual que x más próximo.',
+    fround: 'fround(x): aproxima x a un número de coma flotante de 32 bits.',
+    f16round: 'f16round(x): aproxima x a un número de coma flotante de 16 bits.',
+    hypot: 'hypot(x, y, …): raíz cuadrada de la suma de los cuadrados de los argumentos.',
+    imul: 'imul(a, b): multiplicación de enteros de 32 bits, con resultado de 32 bits con signo.',
+    log: 'log(x): logaritmo natural (base e); x debe ser positivo.',
+    log10: 'log10(x): logaritmo en base 10; x debe ser positivo.',
+    log1p: 'log1p(x): logaritmo natural de 1 + x, con mayor precisión cerca de cero.',
+    log2: 'log2(x): logaritmo en base 2; x debe ser positivo.',
+    max: 'max(a, b, …): devuelve el mayor de los argumentos.',
+    min: 'min(a, b, …): devuelve el menor de los argumentos.',
+    pow: 'pow(base, exponente): eleva la base al exponente.',
+    random: 'random(): número aleatorio entre 0 (incluido) y 1 (excluido); cambia en cada evaluación.',
+    round: 'round(x): redondea al entero más próximo; los empates se resuelven hacia +∞.',
+    sign: 'sign(x): devuelve 1 si x es positivo, -1 si es negativo y conserva el cero.',
+    sin: 'sin(x): seno de un ángulo en radianes.',
+    sinh: 'sinh(x): seno hiperbólico.',
+    sqrt: 'sqrt(x): raíz cuadrada; x debe ser mayor o igual que cero.',
+    tan: 'tan(x): tangente de un ángulo en radianes.',
+    tanh: 'tanh(x): tangente hiperbólica.',
+    trunc: 'trunc(x): elimina la parte decimal, truncando hacia cero.',
+  };
+
+  insertFunction(input: HTMLInputElement, name: string): void {
+    const start = input.selectionStart ?? input.value.length;
+    const end = input.selectionEnd ?? start;
+    const selectedText = input.value.slice(start, end);
+    const insertion = `${name}(${selectedText})`;
+    input.setRangeText(insertion, start, end, 'end');
+    this.formula = input.value;
+    this.error = '';
+    input.focus();
+    const cursor = start + name.length + 1;
+    input.setSelectionRange(cursor, cursor);
+  }
+
+  insertConstant(input: HTMLInputElement, name: string): void {
+    const start = input.selectionStart ?? input.value.length;
+    const end = input.selectionEnd ?? start;
+    input.setRangeText(name, start, end, 'end');
+    this.formula = input.value;
+    this.error = '';
+    input.focus();
+    const cursor = start + name.length;
+    input.setSelectionRange(cursor, cursor);
+  }
+
   ngAfterViewInit(): void { this.onRedraw(); }
   onRedraw(): void {
     this.error = '';
     try {
       if (!this.formula.trim()) throw new Error('Introduce una expresión.');
-      const fn = new Function('x', 'y', `"use strict"; return (${this.formula});`);
+      const functions = this.names.map(name => this.expressionFunctions[name]);
+      const createFunction = new Function(
+        ...this.names,
+        ...this.constantNames,
+        `"use strict"; return (x, y) => (${this.formula});`
+      );
+      const constants = this.constantNames.map(name => this.expressionConstants[name]);
+      const fn = createFunction(...functions, ...constants) as (x: number, y: number) => number;
       if (typeof fn(0.123, 0.456) !== 'number') throw new Error('La expresión debe devolver un número.');
       this.curveGraph.setBounds(this.xMin, this.xMax, this.yMin, this.yMax);
       this.curveGraph.functions = [new GraphableFunction(fn, '#ff785e')];
