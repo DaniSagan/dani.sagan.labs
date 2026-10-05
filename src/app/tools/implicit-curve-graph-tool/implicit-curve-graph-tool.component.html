@@ -5,8 +5,14 @@
     <input #formulaInput id="formula" name="formula" [(ngModel)]="formula" placeholder="x*x + y*y - 1" spellcheck="false" />
     <p class="formula-help" id="function-help">Funciones: pasa el cursor, enfoca un botón o mantenlo pulsado en el móvil para ver su descripción.</p>
     <div class="math-keyboard">
+    <div class="catalog-search">
+      <label for="catalog-search">Buscar en el teclado</label>
+      <input id="catalog-search" name="catalogSearch" type="search" [(ngModel)]="catalogSearch"
+        (ngModelChange)="resetDescription()" placeholder="Nombre o descripción: Jacobi, raíz, media…" />
+      <span class="catalog-count">{{ names.length }} funciones · {{ constantNames.length }} constantes</span>
+    </div>
     <mat-tab-group class="math-tabs" [dynamicHeight]="true" [mat-stretch-tabs]="false" animationDuration="0ms" (selectedTabChange)="resetDescription()">
-      <mat-tab *ngFor="let group of functionGroups" [label]="group.label">
+      <mat-tab *ngFor="let group of visibleFunctionGroups; trackBy: trackGroup" [label]="group.label">
         <div class="function-grid" role="group" [attr.aria-label]="group.label" aria-describedby="function-help">
           <button *ngFor="let name of group.names" type="button"
             [class.description-active]="describedButton === name + '()'"
@@ -20,7 +26,7 @@
       <mat-tab label="Constantes">
         <p class="formula-help" id="constant-help">Pulsa una constante para insertar su nombre o sustituir el texto seleccionado.</p>
         <div class="function-grid" role="group" aria-label="Constantes matemáticas" aria-describedby="constant-help">
-          <button *ngFor="let name of constantNames" type="button"
+          <button *ngFor="let name of visibleConstantNames" type="button"
             [class.description-active]="describedButton === name"
             (pointerenter)="showDescription(name, true)"
             (pointerdown)="showDescription(name, true)"
@@ -28,6 +34,7 @@
             [attr.aria-label]="'Insertar ' + name"
             (click)="insertConstant(formulaInput, name)">{{ name }}</button>
         </div>
+        <p class="formula-help" *ngIf="!visibleConstantNames.length">No hay constantes que coincidan con la búsqueda.</p>
       </mat-tab>
     </mat-tab-group>
     <div class="keyboard-help" role="status" aria-live="polite" aria-atomic="true">

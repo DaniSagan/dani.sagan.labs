@@ -1,3 +1,5 @@
+import { SPECIAL_CONSTANTS, SPECIAL_FUNCTIONS } from './special-math-catalog';
+
 export type NumericFunction = (...args: number[]) => number;
 export interface FunctionEntry { name: string; category: string; description: string; fn: NumericFunction; }
 export interface ConstantEntry { name: string; description: string; value: number; }
@@ -77,6 +79,7 @@ const entry = (category: string, name: string, description: string, fn: NumericF
   ({ category, name, description, fn });
 
 export const EXTRA_FUNCTIONS: FunctionEntry[] = [
+  ...SPECIAL_FUNCTIONS,
   entry('Álgebra', 'square', 'square(x): x al cuadrado.', x => x * x),
   entry('Álgebra', 'cube', 'cube(x): x al cubo.', x => x * x * x),
   entry('Álgebra', 'root', 'root(x, n): raíz real n-ésima; n entero positivo. Permite x negativo si n es impar.', (x, n) => Number.isInteger(n) && n > 0 ? x < 0 && n % 2 ? -Math.pow(-x, 1 / n) : Math.pow(x, 1 / n) : NaN),
@@ -169,6 +172,7 @@ export const EXTRA_FUNCTIONS: FunctionEntry[] = [
 const constant = (name: string, value: number, meaning: string): ConstantEntry =>
   ({ name, value, description: `${name} ≈ ${value}: ${meaning}` });
 export const EXTRA_CONSTANTS: ConstantEntry[] = [
+  ...SPECIAL_CONSTANTS,
   constant('TAU', 2 * Math.PI, 'una vuelta completa en radianes, 2π.'),
   constant('HALF_PI', Math.PI / 2, 'un ángulo recto en radianes.'),
   constant('QUARTER_PI', Math.PI / 4, '45 grados en radianes.'),

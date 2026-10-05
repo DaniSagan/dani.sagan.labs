@@ -19,6 +19,7 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   error = '';
   buttonDescription = 'Pasa el cursor, enfoca o toca un botón para consultar su descripción.';
   describedButton = '';
+  catalogSearch = '';
 
   private readonly expressionFunctions: Record<string, (...args: number[]) => number> =
     { ...Object.fromEntries(
@@ -27,13 +28,13 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
         .map(name => [name, (Math[name as keyof Math] as (...args: number[]) => number).bind(Math)])
     ), ...Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.fn])) };
 
-  readonly names = Object.keys(this.expressionFunctions).sort();
+  readonly names = Object.keys(this.expressionFunctions).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
   private readonly expressionConstants: Record<string, number> = { ...Object.fromEntries(
     Object.getOwnPropertyNames(Math)
       .filter(name => typeof Math[name as keyof Math] === 'number')
       .map(name => [name, Math[name as keyof Math] as number])
   ), ...Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.value])) };
-  readonly constantNames = Object.keys(this.expressionConstants).sort();
+  readonly constantNames = Object.keys(this.expressionConstants).sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
   readonly constantDescriptions: Record<string, string> = {
     ...Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.description])),
     E: 'E ≈ 2,71828: número de Euler, base de los logaritmos naturales.',
@@ -85,13 +86,33 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     trunc: 'trunc(x): elimina la parte decimal, truncando hacia cero.',
   };
 
-  readonly functionGroups = [
-    'Álgebra', 'Trigonometría', 'Hiperbólicas', 'Geometría', 'Enteros', 'Ondas y ajustes', 'Estadística', 'Especiales'
-  ].map(label => ({
+  private readonly functionCategories = Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.category]));
+  readonly functionGroups = [...new Set([
+    'Álgebra', 'Trigonometría', 'Hiperbólicas', 'Geometría', 'Enteros', 'Ondas y ajustes', 'Estadística', 'Especiales',
+    ...EXTRA_FUNCTIONS.map(entry => entry.category)
+  ])].map(label => ({
     label,
     names: this.names.filter(name =>
-      (EXTRA_FUNCTIONS.find(entry => entry.name === name)?.category ?? mathCategory(name)) === label)
+      (this.functionCategories[name] ?? mathCategory(name)) === label)
   }));
+
+  private matchesSearch(text: string): boolean {
+    const normalize = (value: string): string => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    return normalize(text).includes(normalize(this.catalogSearch.trim()));
+  }
+
+  get visibleFunctionGroups(): { label: string; names: string[] }[] {
+    return this.functionGroups.map(group => ({
+      label: group.label,
+      names: group.names.filter(name => this.matchesSearch(`${name} ${group.label} ${this.functionDescriptions[name]}`))
+    })).filter(group => group.names.length > 0);
+  }
+
+  get visibleConstantNames(): string[] {
+    return this.constantNames.filter(name => this.matchesSearch(`${name} constantes ${this.constantDescriptions[name]}`));
+  }
+
+  trackGroup(_index: number, group: { label: string }): string { return group.label; }
 
   showDescription(name: string, constant = false): void {
     this.describedButton = constant ? name : `${name}()`;
