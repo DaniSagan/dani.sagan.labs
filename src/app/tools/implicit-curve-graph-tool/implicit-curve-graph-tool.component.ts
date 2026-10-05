@@ -1,13 +1,14 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
+import { EXTRA_CONSTANTS, EXTRA_FUNCTIONS, mathCategory } from './math-catalog';
 import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
   selector: 'app-implicit-curve-graph-tool',
   standalone: true,
-  imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule, MatTooltipModule],
+  imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule, MatTabsModule],
   templateUrl: './implicit-curve-graph-tool.component.html',
   styleUrl: './implicit-curve-graph-tool.component.css'
 })
@@ -16,22 +17,25 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   formula = 'x*x + y*y - 1';
   xMin = -3; xMax = 3; yMin = -3; yMax = 3;
   error = '';
+  buttonDescription = 'Pasa el cursor, enfoca o toca un botón para consultar su descripción.';
+  describedButton = '';
 
   private readonly expressionFunctions: Record<string, (...args: number[]) => number> =
-    Object.fromEntries(
+    { ...Object.fromEntries(
       Object.getOwnPropertyNames(Math)
         .filter(name => typeof Math[name as keyof Math] === 'function')
         .map(name => [name, (Math[name as keyof Math] as (...args: number[]) => number).bind(Math)])
-    );
+    ), ...Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.fn])) };
 
   readonly names = Object.keys(this.expressionFunctions).sort();
-  private readonly expressionConstants: Record<string, number> = Object.fromEntries(
+  private readonly expressionConstants: Record<string, number> = { ...Object.fromEntries(
     Object.getOwnPropertyNames(Math)
       .filter(name => typeof Math[name as keyof Math] === 'number')
       .map(name => [name, Math[name as keyof Math] as number])
-  );
+  ), ...Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.value])) };
   readonly constantNames = Object.keys(this.expressionConstants).sort();
   readonly constantDescriptions: Record<string, string> = {
+    ...Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.description])),
     E: 'E ≈ 2,71828: número de Euler, base de los logaritmos naturales.',
     PI: 'PI ≈ 3,14159: razón entre la longitud de una circunferencia y su diámetro.',
     LN2: 'LN2 ≈ 0,69315: logaritmo natural de 2.',
@@ -42,6 +46,7 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     SQRT2: 'SQRT2 ≈ 1,41421: raíz cuadrada de 2.',
   };
   readonly functionDescriptions: Record<string, string> = {
+    ...Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.description])),
     abs: 'abs(x): valor absoluto de x.',
     acos: 'acos(x): arco coseno en radianes; x debe estar entre -1 y 1.',
     acosh: 'acosh(x): arco coseno hiperbólico; x debe ser mayor o igual que 1.',
@@ -80,7 +85,27 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     trunc: 'trunc(x): elimina la parte decimal, truncando hacia cero.',
   };
 
+  readonly functionGroups = [
+    'Álgebra', 'Trigonometría', 'Hiperbólicas', 'Geometría', 'Enteros', 'Ondas y ajustes', 'Estadística', 'Especiales'
+  ].map(label => ({
+    label,
+    names: this.names.filter(name =>
+      (EXTRA_FUNCTIONS.find(entry => entry.name === name)?.category ?? mathCategory(name)) === label)
+  }));
+
+  showDescription(name: string, constant = false): void {
+    this.describedButton = constant ? name : `${name}()`;
+    const descriptions = constant ? this.constantDescriptions : this.functionDescriptions;
+    this.buttonDescription = descriptions[name] ?? `${constant ? 'Constante' : 'Función'} matemática ${name}.`;
+  }
+
+  resetDescription(): void {
+    this.describedButton = '';
+    this.buttonDescription = 'Pasa el cursor, enfoca o toca un botón para consultar su descripción.';
+  }
+
   insertFunction(input: HTMLInputElement, name: string): void {
+    this.showDescription(name);
     const start = input.selectionStart ?? input.value.length;
     const end = input.selectionEnd ?? start;
     const selectedText = input.value.slice(start, end);
@@ -94,6 +119,7 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   }
 
   insertConstant(input: HTMLInputElement, name: string): void {
+    this.showDescription(name, true);
     const start = input.selectionStart ?? input.value.length;
     const end = input.selectionEnd ?? start;
     input.setRangeText(name, start, end, 'end');

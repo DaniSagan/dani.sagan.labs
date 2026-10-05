@@ -5,6 +5,42 @@ input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-bo
 .function-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr)); gap: 0.5rem; margin: 0.5rem 0 1rem; }
 .function-grid button { min-width: 0; min-height: 44px; margin: 0; padding: 0.5rem 0.25rem; font: 0.9rem monospace; touch-action: manipulation; }
 .function-grid button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.math-tabs { min-width: 0; max-width: 100%; }
+.math-keyboard { min-width: 0; margin-bottom: 1rem; background: var(--bg2); border: 1px solid var(--rule); border-radius: 8px; }
+:host .math-tabs {
+  --mat-tab-header-inactive-label-text-color: var(--ink-dim);
+  --mat-tab-header-inactive-hover-label-text-color: var(--ink);
+  --mat-tab-header-inactive-focus-label-text-color: var(--ink);
+  --mat-tab-header-active-label-text-color: var(--accent);
+  --mat-tab-header-active-hover-label-text-color: var(--accent);
+  --mat-tab-header-active-focus-label-text-color: var(--accent);
+  --mdc-tab-indicator-active-indicator-color: var(--accent);
+  --mat-tab-header-active-hover-indicator-color: var(--accent);
+  --mat-tab-header-active-focus-indicator-color: var(--accent);
+  --mat-tab-header-active-ripple-color: var(--accent);
+  --mat-tab-header-inactive-ripple-color: var(--ink);
+  --mat-tab-header-pagination-icon-color: var(--ink);
+  --mat-tab-header-divider-color: var(--rule);
+  --mat-tab-header-divider-height: 1px;
+  --mat-tab-header-label-text-font: 'Courier Prime', monospace;
+  --mat-tab-header-label-text-size: 0.85rem;
+  --mat-tab-header-label-text-weight: 600;
+  --mat-tab-header-label-text-tracking: 0.02em;
+  --mdc-tab-indicator-active-indicator-height: 3px;
+  background: var(--bg2);
+  border-radius: 8px 8px 0 0;
+  padding: 0.25rem;
+}
+.math-tabs .function-grid { padding: 0.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); }
+.math-tabs .function-grid button { overflow-wrap: anywhere; }
+.math-tabs .function-grid button.description-active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); color: var(--accent); background: var(--paper); }
+.keyboard-help { display: flex; align-items: flex-start; gap: 0.75rem; min-height: 4.5rem; box-sizing: border-box; padding: 0.75rem; border-top: 1px solid var(--rule); border-radius: 0 0 8px 8px; background: var(--paper); }
+.keyboard-help-key { flex: 0 0 auto; max-width: 40%; padding: 0.2rem 0.4rem; border: 1px solid var(--accent); border-radius: 4px; color: var(--accent); font: 0.8rem/1.5 'Courier Prime', monospace; overflow-wrap: anywhere; }
+.button-description { min-width: 0; margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .keyboard-help { flex-direction: column; gap: 0.4rem; }
+  .keyboard-help-key { max-width: 100%; }
+}
 .bounds { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
 .bounds label { display: flex; flex-direction: column; font-size: 0.9rem; }
 .bounds input { box-sizing: border-box; min-width: 0; width: 100%; margin: 0.25rem 0; }
