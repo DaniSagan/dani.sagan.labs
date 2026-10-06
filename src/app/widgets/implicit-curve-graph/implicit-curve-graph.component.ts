@@ -2,10 +2,12 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnChanges,
   OnDestroy,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -46,6 +48,7 @@ export class ImplicitCurveGraphComponent
   @Input() lineWidth = 2;
   @Input() sampleSize = 2;
   @Input() curveColor: string | null = null;
+  @Output() readonly boundsChange = new EventEmitter<[number, number, number, number]>();
   xMin = -10;
   xMax = 10;
   yMin = -10;
@@ -420,10 +423,12 @@ export class ImplicitCurveGraphComponent
     ];
     if (!this.validBounds(bounds)) return;
     [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
+    this.boundsChange.emit(this.bounds);
     this.redraw();
   }
   resetView(): void {
     [this.xMin, this.xMax, this.yMin, this.yMax] = this.initialBounds;
+    this.boundsChange.emit(this.bounds);
     this.redraw();
   }
   wheelZoom(event: WheelEvent): void {
@@ -445,6 +450,7 @@ export class ImplicitCurveGraphComponent
     if (!this.validBounds(bounds)) return;
     [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
     this.coordinates = '';
+    this.boundsChange.emit(this.bounds);
     this.scheduleRedraw();
   }
   pointerDown(event: PointerEvent): void {
@@ -484,6 +490,7 @@ export class ImplicitCurveGraphComponent
         if (this.validBounds(bounds)) {
           [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
           this.coordinates = '';
+          this.boundsChange.emit(this.bounds);
           this.scheduleRedraw();
         }
         return;
@@ -502,6 +509,7 @@ export class ImplicitCurveGraphComponent
     ];
     if (this.validBounds(bounds)) {
       [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
+      this.boundsChange.emit(this.bounds);
       this.scheduleRedraw();
     }
   }

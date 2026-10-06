@@ -58,6 +58,20 @@ describe('ImplicitCurveGraphComponent', () => {
     expect(component.xMax-component.xMin).toBe(2);
     component.resetView(); expect(component.xMin).toBe(-2); expect(component.yMax).toBe(4);
   });
+  it('emits valid navigation limits without changing the reset framing', () => {
+    const changed = jasmine.createSpy('boundsChange');
+    component.boundsChange.subscribe(changed);
+    component.setBounds(-2, 2, -4, 4);
+    expect(changed).not.toHaveBeenCalled();
+    component.zoom(0);
+    component.zoom(NaN);
+    expect(changed).not.toHaveBeenCalled();
+    component.zoom(0.5);
+    expect(changed).toHaveBeenCalledOnceWith([-1, 1, -2, 2]);
+    component.resetView();
+    expect(changed).toHaveBeenCalledWith([-2, 2, -4, 4]);
+    expect(changed).toHaveBeenCalledTimes(2);
+  });
   it('supports two-finger zoom without enabling drag and ends cancelled gestures', () => {
     const canvas = component.canvas.nativeElement;
     spyOn(canvas, 'setPointerCapture');

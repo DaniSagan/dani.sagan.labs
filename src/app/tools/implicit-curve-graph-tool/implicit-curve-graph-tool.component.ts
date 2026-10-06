@@ -201,6 +201,9 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     // The initial framing changes the child's axis labels after its first check.
     this.changeDetector.detectChanges();
   }
+  onBoundsChange(bounds: [number, number, number, number]): void {
+    [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
+  }
   onRedraw(): void {
     this.error = '';
     try {

@@ -100,6 +100,6 @@
     <p class="example-source" *ngIf="selectedExample?.source && formula === selectedExample?.formula">
       <a [href]="selectedExample?.source" target="_blank" rel="noopener noreferrer">Consultar la fuente de esta curva o familia ↗</a>
     </p>
-    <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+    <app-implicit-curve-graph #curveGraph (boundsChange)="onBoundsChange($event)"></app-implicit-curve-graph>
   </div>
 </div>
