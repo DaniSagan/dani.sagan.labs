@@ -1,6 +1,8 @@
 import { createExtendedExamples } from './extended-curve-examples';
+import type { CurveParameterPreset } from './curve-parameters';
 
 export interface CurveExample {
+  parameters?: CurveParameterPreset[];
   id: string;
   name: string;
   category: string;
@@ -39,8 +41,6 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('lemniscate', 'Lemniscata', 'Clásicas', 'Un lazo horizontal con forma de infinito.', '(x*x+y*y)**2-2*(x*x-y*y)', 1.8),
   example('vertical-infinity', 'Infinito vertical', 'Clásicas', 'Una lemniscata que se sostiene en vertical.', '(x*x+y*y)**2-2*(y*y-x*x)', 1.8),
   example('diagonal-infinity', 'Infinito inclinado', 'Clásicas', 'Dos lóbulos enlazados en diagonal.', '(x*x+y*y)**2-4*x*y', 1.8),
-  example('cassini', 'Óvalo de Cassini', 'Clásicas', 'Un óvalo estrangulado en el centro.', '((x-1)**2+y*y)*((x+1)**2+y*y)-1.5', 2),
-  example('cassini-twins', 'Gemelos de Cassini', 'Clásicas', 'Dos pequeños óvalos separados.', '((x-1)**2+y*y)*((x+1)**2+y*y)-0.5', 1.8),
   example('folium', 'Folium de Descartes', 'Clásicas', 'Un lazo con ramas que escapan en diagonal.', 'x**3+y**3-3*x*y', 3),
   example('witch', 'Bruja de Agnesi', 'Clásicas', 'Una campana racional suave.', 'y*(1+x*x)-1', 3),
   example('catenary', 'Catenaria', 'Clásicas', 'La silueta de una cadena suspendida.', 'y-cosh(x)+1', 2),
@@ -60,13 +60,6 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('lens', 'Lente', 'Siluetas', 'Dos arcos forman una lente puntiaguda.', 'max((x-0.65)**2+y*y,(x+0.65)**2+y*y)-1.4', 1.6),
   example('crescent', 'Luna creciente', 'Siluetas', 'Un círculo recortado por otro círculo desplazado.', 'max(x*x+y*y-1,-((x-0.45)**2+y*y-0.85))', 1.4),
   example('yin-yang', 'Doble remolino', 'Siluetas', 'Círculo exterior y dos medias espirales interiores.', '(r-1)*(x-0.32*sin(PI*y))', 1.4),
-  example('clover3', 'Trébol de tres hojas', 'Flores', 'Tres pétalos redondos alrededor del centro.', 'r-1-0.55*cos(3*t)', 1.9),
-  example('clover4', 'Trébol de cuatro hojas', 'Flores', 'Cuatro hojas amplias y simétricas.', 'r-1-0.55*cos(4*t)', 1.9),
-  example('rose3', 'Rosa de tres pétalos', 'Flores', 'Tres pétalos se encuentran en el origen.', 'r-cos(3*t)', 1.3),
-  example('rose4', 'Rosa de cuatro pétalos', 'Flores', 'Una rosa polar de cuatro pétalos.', 'r-abs(cos(2*t))', 1.3),
-  example('rose5', 'Rosa de cinco pétalos', 'Flores', 'Cinco pétalos con un centro común.', 'r-cos(5*t)', 1.3),
-  example('rose8', 'Rosa de ocho pétalos', 'Flores', 'Ocho pétalos finos formando una rueda.', 'r-abs(cos(4*t))', 1.3),
-  example('rose12', 'Rosa de doce pétalos', 'Flores', 'Una roseta densa y delicada.', 'r-abs(cos(6*t))', 1.3),
   example('sunflower', 'Girasol', 'Flores', 'Una corona de dieciséis ondulaciones.', 'r-1.15-0.25*cos(16*t)', 1.7),
   example('daisy', 'Margarita', 'Flores', 'Diez pétalos anchos y un disco central.', '(r-1-0.3*cos(10*t))*(r-0.28)', 1.65),
   example('lotus', 'Loto', 'Flores', 'Dos coronas de pétalos superpuestas.', '(r-0.9-0.4*cos(6*t))*(r-0.65-0.2*sin(6*t))', 1.65),
@@ -74,18 +67,12 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('orchid', 'Orquídea', 'Flores', 'Cinco pétalos modulados con ondas secundarias.', 'r-1-0.35*cos(5*t)-0.12*sin(10*t)', 1.8),
   example('petal-weave', 'Pétalos entrelazados', 'Flores', 'Dos rosas giradas que se cruzan.', '(r-abs(cos(4*t)))*(r-abs(sin(4*t)))', 1.3),
   example('flower-rings', 'Flor de agua', 'Flores', 'Tres contornos florales concéntricos.', 'sin(9*(r-0.12*cos(6*t)))', 1.6),
-  example('star5', 'Estrella de cinco puntas', 'Estrellas', 'Cinco puntas suaves y profundas.', 'r-1-0.55*cos(5*t)', 1.9),
-  example('star6', 'Estrella de seis puntas', 'Estrellas', 'Una estrella de seis brazos.', 'r-1-0.6*cos(6*t)', 1.9),
   example('star8', 'Estrella de ocho puntas', 'Estrellas', 'Ocho brazos largos y estrechos.', 'r-0.7-0.6*abs(cos(4*t))**6', 1.6),
   example('compass', 'Rosa de los vientos', 'Estrellas', 'Cuatro puntas principales y cuatro secundarias.', 'r-0.75-0.4*cos(4*t)-0.2*cos(8*t)', 1.75),
   example('snowflake', 'Copo de nieve', 'Estrellas', 'Seis brazos con pequeñas ramificaciones.', 'r-0.9-0.35*cos(6*t)-0.12*cos(18*t)', 1.7),
   example('gear', 'Engranaje', 'Estrellas', 'Doce dientes y un agujero central.', '(r-1-0.18*cos(12*t))*(r-0.35)', 1.5),
   example('saw-star', 'Estrella afilada', 'Estrellas', 'Un perfil estrellado con puntas de alta curvatura.', 'r-0.55-0.75*abs(cos(5*t))**8', 1.6),
   example('star-shells', 'Estrella estratificada', 'Estrellas', 'Capas concéntricas con ocho puntas.', 'sin(10*r-2*cos(8*t))', 1.65),
-  example('spiral', 'Espiral de Arquímedes', 'Espirales', 'Una espiral continua expresada mediante una fase periódica.', 'sin(5*r-t)', 3),
-  example('double-spiral', 'Espiral doble', 'Espirales', 'Dos brazos que giran desde el centro.', 'sin(4*r-2*t)', 3),
-  example('triple-spiral', 'Espiral triple', 'Espirales', 'Tres brazos en rotación.', 'sin(4*r-3*t)', 3),
-  example('galaxy', 'Galaxia', 'Espirales', 'Cinco brazos curvos que se abren hacia el exterior.', 'sin(2.6*r-5*t)', 3.5),
   example('spiral-flower', 'Flor en espiral', 'Espirales', 'Un remolino modulado por seis pétalos.', 'sin(6*r-3*t+0.8*cos(6*t))', 3),
   example('log-spiral', 'Espiral logarítmica', 'Espirales', 'Las vueltas se separan de forma progresiva.', 'sin(5*log(r+0.08)-2*t)', 3),
   example('vortex', 'Vórtice', 'Espirales', 'Las vueltas se comprimen al alejarse del centro.', 'sin(1.8*r*r-3*t)', 3),
@@ -115,9 +102,6 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('braid', 'Trenza', 'Tramas', 'Tres hebras oscilantes se cruzan.', '(y-sin(2*x))*(y-sin(2*x+TAU/3))*(y-sin(2*x+2*TAU/3))', 3),
   example('ribbon', 'Cinta sinusoidal', 'Tramas', 'Dos curvas paralelas delimitan una cinta.', '(y-sin(2*x))**2-0.08', 3),
   example('woven-ribbon', 'Cintas cruzadas', 'Tramas', 'Cintas horizontales y verticales forman un tejido.', '((y-sin(2*x))**2-0.05)*((x-sin(2*y))**2-0.05)', 3),
-  example('lissajous22', 'Lazos de Chebyshev', 'Tramas', 'Una curva algebraica de aspecto entrelazado.', 'chebyshevT(3,x)-chebyshevT(4,y)', 1.15),
-  example('lissajous35', 'Nudo de cinco vueltas', 'Tramas', 'Los polinomios de órdenes 3 y 5 generan lazos.', 'chebyshevT(3,x)-chebyshevT(5,y)', 1.15),
-  example('lissajous57', 'Encaje de siete vueltas', 'Tramas', 'Una malla fina de curvas algebraicas.', 'chebyshevT(5,x)-chebyshevT(7,y)', 1.1),
   example('legendre-net', 'Red de Legendre', 'Tramas', 'Dos polinomios generan un entramado ondulado.', 'legendre(6,x)-legendre(6,y)', 1.1),
   example('jacobi-net', 'Tapiz de Jacobi', 'Tramas', 'Una trama asimétrica de polinomios ortogonales.', 'jacobi(5,x,1,2)-jacobi(6,y,2,1)', 1.1),
   example('harmonic-lace', 'Encaje armónico', 'Tramas', 'Un patrón que mezcla ondas de escalas distintas.', 'sin(5*x)*cos(3*y)+sin(3*x)*cos(5*y)', 3),
@@ -126,7 +110,6 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('mandala-lotus', 'Mandala de loto', 'Mandalas', 'Capas de flores con ocho lóbulos.', 'cos(10*r)+0.65*cos(8*t)', 2.5),
   example('mandala-sun', 'Sol ornamental', 'Mandalas', 'Una trama de círculos y veinticuatro brazos.', 'sin(8*r)+0.4*cos(12*t)', 2.5),
   example('mandala-diamond', 'Mandala de diamantes', 'Mandalas', 'Rombos curvos en una retícula polar.', 'cos(8*r)*cos(8*t)-0.35', 2.5),
-  example('mandala-pearl', 'Collar de perlas', 'Mandalas', 'Pequeños óvalos se distribuyen en anillos.', 'sin(7*r)**2+sin(6*t)**2-0.35', 2.5),
   example('mandala-woven', 'Mandala tejido', 'Mandalas', 'Dos ondas polares se cruzan en diagonal.', 'sin(7*r+5*t)*sin(7*r-5*t)-0.2', 2.5),
   example('mandala-eye', 'Ojo radial', 'Mandalas', 'Un centro circular y coronas de pétalos.', '(r-0.3)*(r-0.8-0.12*cos(10*t))*(r-1.3-0.18*cos(10*t))', 1.8),
   example('mandala-shell', 'Concha ornamental', 'Mandalas', 'Anillos que se ondulan en veinte direcciones.', 'sin(11*r-0.7*cos(10*t))', 2.3),

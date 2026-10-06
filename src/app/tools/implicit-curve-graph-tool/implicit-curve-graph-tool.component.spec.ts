@@ -23,6 +23,26 @@ describe('ImplicitCurveGraphToolComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('loads each family defaults independently of previous parameter settings', () => {
+    for (const example of component.examples.filter(e => e.parameters?.length)) {
+      component.selectExample(example);
+      expect(component.error).withContext(example.id).toBe('');
+      for (const preset of example.parameters!) {
+        const parameter = component.parameters.find(p => p.name === preset.name)!;
+        expect(parameter).withContext(example.id).toEqual({ ...preset, error: '' });
+      }
+    }
+    const multibrot = component.examples.find(e => e.id === 'multibrot')!;
+    component.selectExample(multibrot);
+    const n = component.parameters.find(p => p.name === 'n')!;
+    n.value = 3.5;
+    component.updateParameter(n);
+    expect(n.error).toContain('enteros');
+    component.selectExample(multibrot);
+    expect(component.parameters.find(p => p.name === 'n')!.value).toBe(4);
+    expect(component.error).toBe('');
+  });
+
   it('evaluates parameters, preserves settings and leaves the explored view intact', () => {
     component.formula = 'a*x*x+b_10*y*y-r_t';
     component.onRedraw();
@@ -151,7 +171,7 @@ describe('ImplicitCurveGraphToolComponent', () => {
     expect(component.pagedExamples[0].id).not.toBe(firstId);
     component.exampleSearch = 'gielis petalo';
     component.resetExamplePage();
-    expect(component.visibleExamples.length).toBe(13);
+    expect(component.visibleExamples.length).toBe(1);
     expect(component.currentExamplePage).toBe(0);
     component.exampleKind = 'Composición';
     expect(component.visibleExamples.length).toBe(0);

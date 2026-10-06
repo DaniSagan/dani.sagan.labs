@@ -4,6 +4,25 @@ describe('Extended mathematical catalog', () => {
   const fn = Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.fn]));
   const constants = Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.value]));
 
+  it('reproduces the expanded wave sums and rejects unsupported source counts', () => {
+    for (const n of [3,7,16]) {
+      const x = 0.37, y = -0.81, f = 5;
+      let crystal = 0, circular = 0;
+      for (let k = 0; k < n; k++) {
+        crystal += Math.cos(f*(Math.cos(Math.PI*k/n)*x+Math.sin(Math.PI*k/n)*y));
+        circular += Math.cos(f*Math.hypot(x-Math.cos(2*Math.PI*k/n),y-Math.sin(2*Math.PI*k/n)));
+      }
+      expect(fn['waveCrystal'](x,y,n,f)).toBeCloseTo(crystal,12);
+      expect(fn['circularWaves'](x,y,n,f)).toBeCloseTo(circular,12);
+    }
+    for (const name of ['waveCrystal','circularWaves']) {
+      expect(fn[name](0,0,2.5,4)).toBeNaN();
+      expect(fn[name](0,0,0,4)).toBeNaN();
+      expect(fn[name](0,0,65,4)).toBeNaN();
+      expect(fn[name](Infinity,0,5,4)).toBeNaN();
+    }
+  });
+
   it('evaluates Gielis radii and complex iterations with documented domains', () => {
     for (const t of [0,0.2,1,Math.PI,2*Math.PI]) {
       expect(fn['superformula'](t,4,2,2,2)).toBeCloseTo(1, 12);

@@ -63,6 +63,9 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   selectExample(example: CurveExample): void {
     this.selectedExample = example;
     this.formula = example.formula;
+    for (const preset of example.parameters ?? []) {
+      this.parameterSettings.set(preset.name, { ...preset, error: '' });
+    }
     [this.xMin, this.xMax, this.yMin, this.yMax] = example.bounds;
     this.onRedraw();
     this.graphResult.nativeElement.focus({ preventScroll: true });
@@ -232,6 +235,8 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
       : !Number.isFinite(parameter.max - parameter.min) ? 'El intervalo es demasiado grande.'
       : parameter.step <= 0 ? 'El paso debe ser mayor que cero.'
       : !Number.isFinite(parameter.value) ? 'Introduce un valor finito.'
+      : parameter.integer && ![parameter.value, parameter.min, parameter.max, parameter.step].every(Number.isInteger)
+        ? 'Esta familia requiere valores, límites y pasos enteros.'
       : parameter.value < parameter.min || parameter.value > parameter.max ? 'El valor debe estar entre el mínimo y el máximo.'
       : '';
     return !parameter.error;

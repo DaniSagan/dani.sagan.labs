@@ -1,5 +1,9 @@
-:host { display: block; min-width: 0; }
-.widget-container input, .widget-container select {
+:host {
+  display: block;
+  min-width: 0;
+}
+.widget-container input,
+.widget-container select {
   box-sizing: border-box;
   min-width: 0;
   max-width: 100%;
@@ -12,49 +16,216 @@
   font: inherit;
   color-scheme: dark;
 }
-.widget-container input::placeholder { color: var(--ink-dim); opacity: 1; }
-.widget-container input:focus-visible, .widget-container select:focus-visible {
+.widget-container input::placeholder {
+  color: var(--ink-dim);
+  opacity: 1;
+}
+.widget-container input:focus-visible,
+.widget-container select:focus-visible {
   outline: 2px solid var(--accent2);
   outline-offset: 3px;
 }
-.catalog-search select { margin: 0; }
-input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-box; margin: 0.5rem 0; padding: 0.75rem; font: 0.95rem monospace; }
-.formula-help { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.5; }
-.examples { margin: 1rem 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg2); }
-.examples summary { padding: 0.75rem; color: var(--ink); cursor: pointer; }
-.examples summary .catalog-count { margin-left: 0.5rem; }
-.example-categories { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.75rem; }
-.example-categories button { min-height: 44px; margin: 0; font-size: 0.8rem; }
-.example-categories button[aria-pressed="true"], .example-card[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-.example-count, .example-empty { padding: 0 0.75rem; font-size: 0.85rem; }
-.example-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.5rem; font-size: 0.85rem; }
-.example-pagination button { min-height: 44px; margin: 0; }
-.example-kind { color: var(--ink-dim); font-size: 0.7rem; }
-.example-source { font-size: 0.85rem; }
-.example-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr)); gap: 0.6rem; max-height: 32rem; overflow-y: auto; padding: 0.75rem; scrollbar-color: var(--ink-dim) var(--bg2); }
-.example-card { display: flex; flex-direction: column; align-items: stretch; min-width: 0; padding: 0.5rem; margin: 0; text-align: left; background: var(--paper); color: var(--ink); }
-.example-card img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; border-radius: 4px; background: var(--bg); }
-.example-name { margin-top: 0.4rem; font-size: 0.95rem; font-weight: 600; }
-.example-category { color: var(--accent); font: 0.7rem/1.5 'Courier Prime', monospace; }
-.example-description { color: var(--ink-dim); font-size: 0.8rem; line-height: 1.4; }
-.example-card:hover { border-color: var(--accent); }
-.examples button:focus-visible, .examples summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.graph-result { scroll-margin-top: 5rem; }
-.graph-result:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.selected-example { color: var(--ink-dim); font-size: 0.9rem; }
-@media (max-width: 600px) {
-  .example-categories { flex-wrap: nowrap; overflow-x: auto; scrollbar-color: var(--ink-dim) var(--bg2); }
-  .example-categories button { flex: 0 0 auto; white-space: nowrap; }
+.catalog-search select {
+  margin: 0;
 }
-.function-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr)); gap: 0.5rem; margin: 0.5rem 0 1rem; }
-.function-grid button { min-width: 0; min-height: 44px; margin: 0; padding: 0.5rem 0.25rem; font: 0.9rem monospace; touch-action: manipulation; }
-.function-grid button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-.math-tabs { min-width: 0; max-width: 100%; }
-.math-keyboard { min-width: 0; margin-bottom: 1rem; background: var(--bg2); border: 1px solid var(--rule); border-radius: 8px; }
-.catalog-search { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; padding: 0.75rem; border-bottom: 1px solid var(--rule); }
-.catalog-search label { font-size: 0.85rem; color: var(--ink); }
-.catalog-search input { flex: 1 1 14rem; min-width: 0; width: 100%; box-sizing: border-box; margin: 0; padding: 0.5rem; }
-.catalog-count { color: var(--ink-dim); font: 0.75rem/1.5 'Courier Prime', monospace; }
+input#formula {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
+  font: 0.95rem monospace;
+}
+.formula-help {
+  color: var(--ink-dim);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+.examples {
+  margin: 1rem 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg2);
+}
+.examples summary {
+  padding: 0.75rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+.examples summary .catalog-count {
+  margin-left: 0.5rem;
+}
+.example-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0.75rem;
+}
+.example-categories button {
+  min-height: 44px;
+  margin: 0;
+  font-size: 0.8rem;
+}
+.example-categories button[aria-pressed="true"],
+.example-card[aria-pressed="true"] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+.example-count,
+.example-empty {
+  padding: 0 0.75rem;
+  font-size: 0.85rem;
+}
+.example-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+}
+.example-pagination button {
+  min-height: 44px;
+  margin: 0;
+}
+.example-kind {
+  color: var(--ink-dim);
+  font-size: 0.7rem;
+}
+.example-source {
+  font-size: 0.85rem;
+}
+.example-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr));
+  gap: 0.6rem;
+  max-height: 32rem;
+  overflow-y: auto;
+  padding: 0.75rem;
+  scrollbar-color: var(--ink-dim) var(--bg2);
+}
+.example-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 0;
+  padding: 0.5rem;
+  margin: 0;
+  text-align: left;
+  background: var(--paper);
+  color: var(--ink);
+}
+.example-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  border-radius: 4px;
+  background: var(--bg);
+}
+.example-name {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.example-category {
+  color: var(--accent);
+  font:
+    0.7rem/1.5 "Courier Prime",
+    monospace;
+}
+.example-description {
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+.example-card:hover {
+  border-color: var(--accent);
+}
+.examples button:focus-visible,
+.examples summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.graph-result {
+  scroll-margin-top: 5rem;
+}
+.graph-result:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+.selected-example {
+  color: var(--ink-dim);
+  font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+  .example-categories {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-color: var(--ink-dim) var(--bg2);
+  }
+  .example-categories button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
+.function-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 6rem), 1fr));
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+.function-grid button {
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0.5rem 0.25rem;
+  font: 0.9rem monospace;
+  touch-action: manipulation;
+}
+.function-grid button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+.math-tabs {
+  min-width: 0;
+  max-width: 100%;
+}
+.math-keyboard {
+  min-width: 0;
+  margin-bottom: 1rem;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+}
+.catalog-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.catalog-search label {
+  font-size: 0.85rem;
+  color: var(--ink);
+}
+.catalog-search input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5rem;
+}
+.catalog-count {
+  color: var(--ink-dim);
+  font:
+    0.75rem/1.5 "Courier Prime",
+    monospace;
+}
 :host .math-tabs {
   --mat-tab-header-inactive-label-text-color: var(--ink-dim);
   --mat-tab-header-inactive-hover-label-text-color: var(--ink);
@@ -70,7 +241,7 @@ input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-bo
   --mat-tab-header-pagination-icon-color: var(--ink);
   --mat-tab-header-divider-color: var(--rule);
   --mat-tab-header-divider-height: 1px;
-  --mat-tab-header-label-text-font: 'Courier Prime', monospace;
+  --mat-tab-header-label-text-font: "Courier Prime", monospace;
   --mat-tab-header-label-text-size: 0.85rem;
   --mat-tab-header-label-text-weight: 600;
   --mat-tab-header-label-text-tracking: 0.02em;
@@ -79,19 +250,87 @@ input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-bo
   border-radius: 8px 8px 0 0;
   padding: 0.25rem;
 }
-.math-tabs .function-grid { padding: 0.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); max-height: 24rem; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-color: var(--ink-dim) var(--bg2); }
-.math-tabs .function-grid button { overflow-wrap: anywhere; }
-.math-tabs .function-grid button.description-active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); color: var(--accent); background: var(--paper); }
-.keyboard-help { display: flex; align-items: flex-start; gap: 0.75rem; min-height: 4.5rem; box-sizing: border-box; padding: 0.75rem; border-top: 1px solid var(--rule); border-radius: 0 0 8px 8px; background: var(--paper); }
-.keyboard-help-key { flex: 0 0 auto; max-width: 40%; padding: 0.2rem 0.4rem; border: 1px solid var(--accent); border-radius: 4px; color: var(--accent); font: 0.8rem/1.5 'Courier Prime', monospace; overflow-wrap: anywhere; }
-.button-description { min-width: 0; margin: 0; color: var(--ink); font-size: 0.9rem; line-height: 1.5; overflow-wrap: anywhere; }
-@media (max-width: 480px) {
-  .keyboard-help { flex-direction: column; gap: 0.4rem; }
-  .keyboard-help-key { max-width: 100%; }
+.math-tabs .function-grid {
+  padding: 0.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+  max-height: 24rem;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-color: var(--ink-dim) var(--bg2);
 }
-.bounds { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin: 1rem 0; }
-.bounds label { display: flex; flex-direction: column; font-size: 0.9rem; }
-.bounds input { box-sizing: border-box; min-width: 0; width: 100%; margin: 0.25rem 0; }
-button { border-radius: 5px; }
-.formula-error { color: #ffb69a; }
-form label, .bounds label { width: auto; }
+.math-tabs .function-grid button {
+  overflow-wrap: anywhere;
+}
+.math-tabs .function-grid button.description-active {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+  color: var(--accent);
+  background: var(--paper);
+}
+.keyboard-help {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  min-height: 4.5rem;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border-top: 1px solid var(--rule);
+  border-radius: 0 0 8px 8px;
+  background: var(--paper);
+}
+.keyboard-help-key {
+  flex: 0 0 auto;
+  max-width: 40%;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  color: var(--accent);
+  font:
+    0.8rem/1.5 "Courier Prime",
+    monospace;
+  overflow-wrap: anywhere;
+}
+.button-description {
+  min-width: 0;
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  .keyboard-help {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .keyboard-help-key {
+    max-width: 100%;
+  }
+}
+.bounds {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.bounds label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+.bounds input {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+button {
+  border-radius: 5px;
+}
+.formula-error {
+  color: #ffb69a;
+}
+form label,
+.bounds label {
+  width: auto;
+}

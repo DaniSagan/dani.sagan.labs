@@ -15,9 +15,19 @@ describe('Curve parameter detection', () => {
     expect(detectCurveParameters('1e-3*x + 2E+4*y + 0xff + .5e2 + Math.E + obj.a + a /* b */ + "c" + \'d\' // z', reserved))
       .toEqual(['a']);
   });
-  it('keeps every existing gallery preset free of automatic parameters', () => {
+  it('provides defaults for exactly the detected parameters in every gallery family', () => {
     for (const example of CURVE_EXAMPLES) {
-      expect(detectCurveParameters(example.formula, reserved)).withContext(example.id).toEqual([]);
+      const parameters = example.parameters ?? [];
+      expect(detectCurveParameters(example.formula, reserved).sort()).withContext(example.id)
+        .toEqual(parameters.map(p => p.name).sort());
+      for (const p of parameters) {
+        expect([p.min,p.max,p.step,p.value].every(Number.isFinite)).toBeTrue();
+        expect(p.min).toBeLessThan(p.max);
+        expect(p.value).toBeGreaterThanOrEqual(p.min);
+        expect(p.value).toBeLessThanOrEqual(p.max);
+        expect(p.step).toBeGreaterThan(0);
+        if (p.integer) expect([p.min,p.max,p.value,p.step].every(Number.isInteger)).toBeTrue();
+      }
     }
   });
 });

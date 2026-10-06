@@ -10,7 +10,9 @@ describe('Visual curve examples', () => {
   };
 
   it('has unique asset names, searchable descriptions and valid featured entries', () => {
-    expect(CURVE_EXAMPLES.length).toBeGreaterThan(800);
+    expect(CURVE_EXAMPLES.length).toBeGreaterThan(100);
+    expect(CURVE_EXAMPLES.length).toBeLessThan(200);
+    expect(CURVE_EXAMPLES.filter(example => example.parameters?.length).length).toBeGreaterThan(25);
     expect(new Set(CURVE_EXAMPLES.map(example => example.id)).size).toBe(CURVE_EXAMPLES.length);
     for (const example of CURVE_EXAMPLES) {
       expect(example.id).toMatch(/^[a-z0-9-]+$/);
@@ -45,7 +47,9 @@ describe('Visual curve examples', () => {
       expect(example.bounds.every(Number.isFinite)).toBeTrue();
       expect(xmax).toBeGreaterThan(xmin);
       expect(ymax).toBeGreaterThan(ymin);
-      const fn = new Function(...Object.keys(bindings), `return (x,y)=>(${example.formula});`)(...Object.values(bindings));
+      const parameters = example.parameters ?? [];
+      const fn = new Function(...Object.keys(bindings), ...parameters.map(p => p.name), `return (x,y)=>(${example.formula});`)
+        (...Object.values(bindings), ...parameters.map(p => p.value));
       const segments = traceContours(fn, example.bounds, 96, 96);
       expect(segments.length).withContext(example.name).toBeGreaterThan(8);
       expect(segments.every(segment => segment.every(point => Number.isFinite(point.x) && Number.isFinite(point.y))))

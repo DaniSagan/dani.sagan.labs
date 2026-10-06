@@ -4,8 +4,6 @@ type MakeExample = (id: string, name: string, category: string, description: str
   formula: string, radius?: number, bounds?: CurveExample['bounds']) => CurveExample;
 const wolfram = (page: string): string => `https://mathworld.wolfram.com/${page}.html`;
 const macTutor = (page: string): string => `https://mathshistory.st-andrews.ac.uk/Curves/${page}/`;
-const label = (n: number): string => String(n).replace('.', ',');
-const key = (n: number): string => String(n).replace('.', '-');
 
 /** Finite, reproducible selections of families, rather than random formula permutations.
  * Sources describe the underlying family; parameters and compositions are our selections.
@@ -99,193 +97,75 @@ export function createExtendedExamples(make: MakeExample): CurveExample[] {
     'y*y-x*(x-1)**2', 2.5, macTutor('Newtons'));
   add('newton-punctate', 'Cúbica con punto aislado', 'Históricas', 'Una rama abierta y un punto aislado en el origen; la miniatura muestra la rama.',
     'y*y-x*x*(x-1)', 2.5, macTutor('Newtons'));
-  for (let m = 1; m <= 7; m++) {
-    add(`teardrop-${m}`, `Lágrima · orden ${m}`, 'Folios y lazos',
-      'Una gota de extremo estrecho: ecuación cartesiana obtenida de la parametrización trigonométrica.',
-      `y*y-(1-x*x)*((1-x)/2)**${m}`, 1.3, wolfram('TeardropCurve'), 'Variante', 'Lágrimas');
+  // One representative per family; the controls expose the former numeric variants.
+  const param = (name: string, value: number, min: number, max: number, step = 0.1, integer = false) =>
+    ({ name, value, min, max, step, integer });
+  const family = (id: string, name: string, category: string, description: string, formula: string,
+    radius: number, parameters: NonNullable<CurveExample['parameters']>, source?: string,
+    kind: CurveExample['kind'] = 'Variante', bounds?: CurveExample['bounds']) => {
+    add(id, name, category, description, formula, radius, source, kind, name, bounds);
+    curves[curves.length - 1].parameters = parameters;
+  };
+  family('teardrop', 'Lágrimas', 'Folios y lazos', 'El orden m estrecha la punta y cambia el perfil de la gota.',
+    'y*y-(1-x*x)*((1-x)/2)**m', 1.3, [param('m',3,1,7,1,true)], wolfram('TeardropCurve'));
+  family('spiric', 'Secciones espíricas de Perseo', 'Secciones del toro', 'El desplazamiento c del plano de corte transforma dos óvalos en una sola figura.',
+    '(x*x+y*y+2.25-0.64+c*c)**2-9*(x*x+c*c)', 2.7, [param('c',1.3,0.3,2.2)], macTutor('Spiric'));
+  family('watt', 'Mecanismo de Watt', 'Mecanismos', 'La longitud c modifica cinturas, cruces y componentes del recorrido de una biela.',
+    '((x*x+y*y)*(x*x+y*y-2.25+c*c)+y*y-x*x)**2-4*y*y*(c*c*(x*x+y*y)-x*x)', 2, [param('c',1,0.6,1.4)], macTutor('Watts'));
+  family('multibrot', 'Lemniscatas Multibrot', 'Lemniscatas fractales', 'Ajusta las iteraciones n y la potencia p de z→z^p+c. Nivel |zₙ|=2: aproximación finita, no la frontera fractal exacta.',
+    'mandelbrotRadius(x,y,n,p)-2', 2.2, [param('n',4,2,8,1,true),param('p',2,2,6,1,true)], wolfram('MandelbrotSetLemniscate'));
+  family('nicomedes', 'Concoide de Nicomedes', 'Concoides', 'b<1 separa las ramas; b=1 produce una cúspide y b>1 abre un lazo.',
+    '(x-1)**2*(x*x+y*y)-b*b*x*x', 4.5, [param('b',1.4,0.4,2.8)], wolfram('ConchoidofNicomedes'));
+  family('pascal', 'Limaçon de Pascal', 'Concoides', 'Varía b para explorar el lazo interior, la cardioide b=1, la hendidura y el óvalo convexo.',
+    '(x*x+y*y-x)**2-b*b*(x*x+y*y)', 4.4, [param('b',1.25,0.35,3,0.05)], wolfram('Limacon'));
+  family('kepler', 'Hojas de Kepler', 'Folios y lazos', 'b modifica las proporciones de las hojas de una misma cuártica.',
+    '(x*x+y*y)*(x*(x+b)+y*y)-4*x*y*y', 5, [param('b',1.5,0.2,4.5)], wolfram('KeplersFolium'));
+  family('cassini', 'óvalos de Cassini', 'Óvalos y multifocales', 'b<1 crea dos islas, b=1 la lemniscata de Bernoulli y b>1 un óvalo unido.',
+    '((x-1)**2+y*y)*((x+1)**2+y*y)-b**4', 2.6, [param('b',1.2,0.35,2,0.05)], wolfram('CassiniOvals'));
+  family('hippopede', 'Hipopeda de Proclo', 'Folios y lazos', 'El parámetro b transforma el óvalo en dos lóbulos con un cruce central.',
+    '(x*x+y*y)**2-4*b*(x*x+y*y)+4*b*b*y*y', 4.4, [param('b',1.7,0.3,4)], wolfram('Hippopede'));
+  family('cartesian', 'óvalos de Descartes', 'Óvalos y multifocales', 'm regula el peso de la distancia a uno de los dos focos del óvalo óptico.',
+    'hypot(x+0.8,y)+m*hypot(x-0.8,y)-(1.6*m+1.2)', 3.5, [param('m',1.5,0.5,3,0.05)], macTutor('Cartesian'));
+  family('multifocal-5-estrella', 'Cassini multifocal', 'Óvalos y multifocales', 'n focos en un polígono regular: b cambia las islas, el collar, la estrella y el óvalo.',
+    'r**(2*n)-2*r**n*cos(n*t)+1-b*b', 1.5, [param('n',5,3,12,1,true),param('b',1.08,0.55,1.65,0.01)], 'https://mathcurve.com/courbes2d/cassinienne/cassinienne.shtml');
+  family('lame', 'Superelipses de Lamé', 'Superelipses', 'p y q regulan los exponentes de cada eje; a y b sus semianchos. Incluye las superelipses mixtas.',
+    'abs(x/a)**p+abs(y/b)**q-1', 2.3, [param('a',1.5,0.5,2),param('p',3,0.35,12,0.05),param('b',1,0.5,2),param('q',3,0.35,12,0.05)], wolfram('Superellipse'));
+  family('rose12', 'Rosas de Grandi', 'Rosáceas', 'La frecuencia entera n da n pétalos si es impar y 2n si es par.',
+    'r-(n%2 ? cos(n*t) : abs(cos(n*t)))', 1.3, [param('n',6,2,24,1,true)], wolfram('RoseCurve'));
+  family('rose-power', 'Rosas de potencia', 'Rosáceas', 'n regula el número de hojas y p abre o afila su perfil.',
+    'r-abs(cos(n*t))**p', 1.2, [param('n',5,2,24,1,true),param('p',2,0.5,4)], wolfram('RoseCurve'), 'Composición');
+  family('gielis-6-petalo', 'Superfórmula de Gielis', 'Superfórmula de Gielis', 'Explora pétalo, estrella, polígono, trébol, aguja, almohadilla, corola y escudo con m, n_1 y n_2. Exponentes iguales en ambos términos garantizan el cierre.',
+    'r-superformula(t,m,n_1,n_2,n_2)', 1.6, [param('m',6,3,20,1,true),param('n_1',0.35,0.15,8,0.05),param('n_2',1.7,0.5,8)], wolfram('Superellipse'));
+  family('lissajous57', 'Lazos de Chebyshev', 'Lazos polinómicos', 'p y q ajustan los grados de la malla algebraica. Los grados coprimos producen lazos de Lissajous.',
+    'chebyshevT(p,x)-chebyshevT(q,y)', 1.1, [param('p',5,2,12,1,true),param('q',7,3,15,1,true)], macTutor('Lissajous'));
+  for (const [name, fn] of [['Legendre','legendre'], ['Chebyshev U','chebyshevU'], ['Gegenbauer','gegenbauer']] as const) {
+    family(`orthogonal-${fn}`, `Tapiz de ${name}`, 'Lazos polinómicos', 'n ajusta el primer grado; el segundo siempre es n+1.',
+      `${fn}(n,x)-${fn}(n+1,y)`, 1.1, [param('n',5,3,10,1,true)], undefined, 'Composición');
   }
-  for (const c of [0.3,0.8,1.3,1.5,1.8,2.2]) {
-    add(`spiric-${key(c)}`, `Sección espírica de Perseo · corte ${label(c)}`, 'Secciones del toro',
-      'La sección de un toro pasa de dos óvalos a una sola figura al desplazar el plano de corte.',
-      `(x*x+y*y+${2.25-0.64+c*c})**2-9*(x*x+${c*c})`, 2.7, macTutor('Spiric'), 'Variante', 'Secciones espíricas');
-  }
-  for (const c of [0.6,0.8,1,1.2,1.4]) {
-    // Eliminate the two signs of the polar square root; no lost angular branches.
-    add(`watt-${key(c)}`, `Mecanismo de Watt · c=${label(c)}`, 'Mecanismos',
-      'El punto medio de una biela dibuja la curva; aparecen cinturas, cruces y componentes separados.',
-      `((x*x+y*y)*(x*x+y*y-2.25+${c*c})+y*y-x*x)**2-4*y*y*(${c*c}*(x*x+y*y)-x*x)`,
-      2, macTutor('Watts'), 'Variante', 'Curva de Watt');
-  }
-  for (const n of [2,3,4,5,6,7,8]) {
-    for (const power of [2,3,4,5,6]) {
-      add(`multibrot-${power}-${n}`, `Lemniscata Multibrot · potencia ${power} · iteración ${n}`, 'Lemniscatas fractales',
-        `Nivel |zₙ|=2 de z→z^${power}+c, empezando en cero. Es una aproximación finita por curvas de nivel, no la frontera fractal exacta.`,
-        `mandelbrotRadius(x,y,${n},${power})-2`, 2.2, wolfram('MandelbrotSetLemniscate'), 'Variante', 'Lemniscatas Multibrot');
-    }
-  }
-
-  for (const b of [0.4, 0.7, 1, 1.4, 2, 2.8]) {
-    add(`nicomedes-${key(b)}`, `Concoide de Nicomedes · b=${label(b)}`, 'Concoides',
-      b > 1 ? 'Un lazo aparece al superar la distancia a la recta base.' : b === 1 ? 'El caso límite presenta una cúspide en el origen.' : 'Dos ramas onduladas a ambos lados de la recta base.',
-      `(x-1)**2*(x*x+y*y)-${b*b}*x*x`, 4.5, wolfram('ConchoidofNicomedes'), 'Variante', 'Concoide de Nicomedes');
-  }
-  for (const b of [0.35, 0.65, 1.25, 1.6, 2.2, 3]) {
-    add(`pascal-${key(b)}`, `Limaçon de Pascal · a=${label(b)}`, 'Concoides',
-      b < 1 ? 'Un caracol con lazo interior: una concoide del círculo.' : b < 2 ? 'Un óvalo con una hendidura que se suaviza al crecer a.' : 'Un óvalo convexo de la familia del caracol de Pascal.',
-      `(x*x+y*y-x)**2-${b*b}*(x*x+y*y)`, b+1.4, wolfram('Limacon'), 'Variante', 'Limaçon de Pascal');
-  }
-  for (const b of [0.2, 0.5, 1.5, 2.5, 3, 3.8, 4.5]) {
-    add(`kepler-${key(b)}`, `Hojas de Kepler · b=${label(b)}`, 'Folios y lazos',
-      'El parámetro modifica las proporciones de las hojas de una misma cuártica.',
-      `(x*x+y*y)*(x*(x+${b})+y*y)-4*x*y*y`, Math.max(2, b+0.5), wolfram('KeplersFolium'), 'Variante', 'Folium de Kepler');
-  }
-  for (const b of [0.35, 0.65, 0.9, 1.05, 1.2, 1.6, 2]) {
-    add(`cassini-${key(b)}`, `Cassini · producto=${label(b*b)}`, 'Óvalos y multifocales',
-      b < 1 ? 'Dos islas separadas por el origen: el producto de distancias es pequeño.' : 'Un solo óvalo: los dos componentes de Cassini ya se han unido.',
-      `((x-1)**2+y*y)*((x+1)**2+y*y)-${b**4}`, Math.sqrt(1+b*b)+0.3, wolfram('CassiniOvals'), 'Variante', 'Cassini');
-  }
-  for (const b of [0.3, 0.7, 1.1, 1.7, 2.5, 4]) {
-    add(`hippopede-${key(b)}`, `Hipopeda de Proclo · b=${label(b)}`, 'Folios y lazos',
-      b < 1 ? 'Una sección esférica de contorno ovalado.' : 'La sección adquiere dos lóbulos y un cruce central.',
-      `(x*x+y*y)**2-4*${b}*(x*x+y*y)+4*${b*b}*y*y`, Math.sqrt(4*b)+0.4, wolfram('Hippopede'), 'Variante', 'Hipopeda');
-  }
-  for (const m of [0.5, 0.75, 1.25, 1.5, 2, 3]) {
-    add(`cartesian-${key(m)}`, `Óvalo de Descartes · peso=${label(m)}`, 'Óvalos y multifocales',
-      'Un óvalo óptico: la suma ponderada de las distancias a dos focos es constante.',
-      `hypot(x+0.8,y)+${m}*hypot(x-0.8,y)-${1.6*m+1.2}`, 3.5, macTutor('Cartesian'), 'Variante', 'Óvalo de Descartes');
-  }
-  // Product of distances to n roots of unity: |z^n-1| = level.
-  for (let n = 3; n <= 12; n++) {
-    for (const [level, shape] of [[0.55, 'islas'], [0.92, 'collar'], [1.08, 'estrella'], [1.65, 'óvalo']] as const) {
-      add(`multifocal-${n}-${shape}`, `Cassini multifocal · ${n} focos · ${shape}`, 'Óvalos y multifocales',
-        `Producto constante de distancias a ${n} focos situados en un polígono regular; nivel ${label(level)}.`,
-        `r**${2*n}-2*r**${n}*cos(${n}*t)+1-${level*level}`, 1.5,
-        'https://mathcurve.com/courbes2d/cassinienne/cassinienne.shtml', 'Variante', 'Cassini multifocal');
-    }
-  }
-  // Genuine changes of exponent/aspect, not translations or recolourings.
-  for (const p of [0.35, 0.5, 0.75, 1.25, 1.5, 2.5, 3, 5, 8, 12]) {
-    for (const a of [1, 1.5, 2]) {
-      add(`lame-${key(p)}-${key(a)}`, `Lamé · exponente ${label(p)} · ancho ${label(a)}`, 'Superelipses',
-        p < 1 ? 'Cuatro puntas y lados hundidos; la concavidad crece al reducir el exponente.' : 'Del óvalo al rectángulo: el exponente regula cómo se redondean los lados.',
-        `abs(x/${a})**${p}+abs(y)**${p}-1`, a+0.3, wolfram('Superellipse'), 'Variante', 'Superelipse de Lamé');
-    }
-  }
-  for (const p of [0.5, 0.75, 1, 1.5, 2, 3, 4, 6]) {
-    for (const q of [0.5, 0.75, 1, 1.5, 2, 3, 4, 6]) {
-      if (p >= q) continue;
-      add(`mixed-lame-${key(p)}-${key(q)}`, `Superelipse mixta · ${label(p)} / ${label(q)}`, 'Superelipses',
-        'Los ejes tienen exponentes distintos: puntas, laterales planos y extremos redondos se combinan.',
-        `abs(x)**${p}+abs(y)**${q}-1`, 1.3, wolfram('Superellipse'), 'Variante', 'Superelipse mixta');
-    }
-  }
-  for (let n = 2; n <= 24; n++) {
-    const petals = n % 2 ? n : 2*n;
-    if (![2, 3, 4, 5, 6].includes(n)) {
-      add(`rhodonea-${n}`, `Rodonea · ${petals} pétalos`, 'Rosáceas',
-        `Rosa de Grandi de frecuencia ${n}; todos sus pétalos se reúnen en el origen.`,
-        n % 2 ? `r-cos(${n}*t)` : `r-abs(cos(${n}*t))`, 1.2, wolfram('RoseCurve'), 'Variante', 'Rodonea');
-    }
-    for (const power of [0.5, 2, 4]) {
-      add(`rose-power-${n}-${key(power)}`, `Rosa de ${2*n} hojas · perfil ${label(power)}`, 'Rosáceas',
-        'Composición polar: el exponente abre o afila las hojas de una rosa de valor absoluto.',
-        `r-abs(cos(${n}*t))**${power}`, 1.2, wolfram('RoseCurve'), 'Composición', 'Rosas de potencia');
-    }
-  }
-  const profiles: [string, number, number, number][] = [
-    ['pétalo', 0.35, 1.7, 1.7], ['estrella', 0.25, 0.7, 0.7],
-    ['polígono', 8, 8, 8], ['trébol', 1, 3, 3], ['aguja', 0.18, 0.5, 0.5],
-    ['almohadilla', 3, 2, 2], ['corola', 0.6, 4, 4], ['escudo', 1.5, 0.8, 0.8]
-  ];
-  for (const m of [3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20]) {
-    for (const [shape, n1, n2, n3] of profiles) {
-      // n2=n3 makes the radius 2π-periodic even for odd m.
-      add(`gielis-${m}-${shape.normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`, `Gielis · ${m} sectores · ${shape}`, 'Superfórmula de Gielis',
-        `Superfórmula con m=${m}, n₁=${label(n1)} y n₂=n₃=${label(n2)}: un contorno de simetría radial.`,
-        `r-superformula(t,${m},${n1},${n2},${n3})`, shape === 'polígono' ? 1.6 : 1.35,
-        wolfram('Superellipse'), 'Variante', 'Superfórmula de Gielis');
-    }
-  }
-  const gcd = (a: number, b: number): number => b ? gcd(b, a%b) : a;
-  for (let p = 2; p <= 12; p++) {
-    for (let q = p+1; q <= 15; q++) {
-      if (gcd(p,q) !== 1 || (p===3 && [4,5].includes(q)) || (p===5 && q===7)) continue;
-      add(`chebyshev-${p}-${q}`, `Lazos de Chebyshev · ${p}:${q}`, 'Lazos polinómicos',
-        `Una malla algebraica de frecuencias coprimas ${p} y ${q}, emparentada con las figuras de Lissajous.`,
-        `chebyshevT(${p},x)-chebyshevT(${q},y)`, 1.08, macTutor('Lissajous'), 'Variante', 'Lazos de Chebyshev');
-    }
-  }
-  for (let n = 3; n <= 10; n++) {
-    for (const [family, fn] of [['Legendre','legendre'], ['Chebyshev U','chebyshevU'], ['Gegenbauer','gegenbauer']] as const) {
-      add(`orthogonal-${fn}-${n}`, `Tapiz de ${family} · ${n}:${n+1}`, 'Lazos polinómicos',
-        'Curva de igualdad de dos polinomios ortogonales de grados consecutivos.',
-        `${fn}(${n},x)-${fn}(${n+1},y)`, 1.1, undefined, 'Composición', `Tapices de ${family}`);
-    }
-  }
-  for (const n of [2,4,6]) {
-    for (const m of [1,2,3,4,5]) {
-      for (const p of [1,2,3,4,5]) {
-        add(`sluze-${n}-${m}-${p}`, `Perla de Sluze · ${n}/${m}/${p}`, 'Perlas de Sluze',
-          `Familia histórica yⁿ=k(1−x)ᵖxᵐ; n=${n}, m=${m}, p=${p}. El arco entre 0 y 1 está normalizado a altura 1.`,
-          `y**${n}-${(m+p)**(m+p)/(m**m*p**p)}*x**${m}*(1-x)**${p}`, 1.3,
-          macTutor('Pearls'), 'Variante', 'Perlas de Sluze', [-0.15,1.15,-1.2,1.2]);
-      }
-    }
-  }
-  for (const a of [-1.5,-0.5,0.5,1.5,2.5]) {
-    for (const b of [-1,-0.3,0.3,1]) {
-      add(`elliptic-${key(a).replace('-', 'n')}-${key(b).replace('-', 'n')}`, `Cúbica elíptica · a=${label(a)}, b=${label(b)}`, 'Cúbicas elípticas',
-        'Una cúbica de Weierstrass: los parámetros cambian el número de componentes reales.',
-        `y*y-(x**3+(${a})*x+(${b}))`, 3, wolfram('EllipticCurve'), 'Variante', 'Cúbicas de Weierstrass');
-    }
-  }
-  for (const a of [-0.8,-0.5,0,0.5,1.5]) {
-    for (const b of [-0.8,-0.3,0.3,0.8]) {
-      add(`goursat-${key(a).replace('-', 'n')}-${key(b).replace('-', 'n')}`, `Cuártica de Goursat · a=${label(a)}, b=${label(b)}`, 'Cuárticas simétricas',
-        'Una familia de simetría cuadrada que alterna óvalos, cruces e islas.',
-        `x**4+y**4+(${a})*(x*x+y*y)**2+(${b})*(x*x+y*y)-1`, 2.5,
-        'https://mathcurve.com/courbes2d/goursat/goursat.shtml', 'Variante', 'Cuárticas de Goursat');
-    }
-  }
-  // Original artistic presets: explicitly marked as compositions.
-  for (let n = 3; n <= 16; n++) {
-    add(`lace-mandala-${n}`, `Encaje polar · ${n} radios`, 'Mandalas',
-      'Composición de ondas radiales y angulares: pequeños lazos se ordenan en coronas.',
-      `sin(8*r)*cos(${n}*t)-0.28`, 2.4, undefined, 'Composición', 'Encajes polares');
-    add(`braided-mandala-${n}`, `Mandala trenzado · ${n} hebras`, 'Mandalas',
-      'Dos fases polares contrapuestas producen una trama de rombos curvos.',
-      `sin(6*r+${n}*t)*sin(6*r-${n}*t)-0.3`, 2.4, undefined, 'Composición', 'Mandalas trenzados');
-    add(`petal-crown-${n}`, `Corona floral · ${n} lóbulos`, 'Flores',
-      'Tres bordes florales anidados alternan sus valles y sus cimas.',
-      `(r-0.45-0.1*cos(${n}*t))*(r-0.9-0.2*cos(${n}*t))*(r-1.35+0.18*cos(${n}*t))`, 1.8, undefined, 'Composición', 'Coronas florales');
-    add(`spiral-lace-${n}`, `Remolino de encaje · ${n} brazos`, 'Espirales',
-      'Familia de niveles de una fase espiral modulada con una onda angular.',
-      `sin(5*r-${n}*t+0.65*sin(${2*n}*t))`, 3, undefined, 'Composición', 'Remolinos de encaje');
-    const waves = Array.from({length:n}, (_, k) => {
-      const angle = Math.PI*k/n;
-      return `cos(4*(${Number(Math.cos(angle).toFixed(8))}*x+(${Number(Math.sin(angle).toFixed(8))})*y))`;
-    }).join('+');
-    add(`wave-crystal-${n}`, `Cristal de ondas · ${n} direcciones`, 'Interferencias',
-      `Superposición de ${n} ondas planas equiespaciadas. Las curvas de nivel revelan su simetría.`,
-      waves+'-0.5', 3, undefined, 'Composición', 'Cristales de ondas');
-  }
-  for (const frequency of [3,5,8]) {
-    for (const n of [3,4,5,6,7,8,10,12]) {
-      const sources = Array.from({length:n}, (_, k) => {
-        const angle = 2*Math.PI*k/n;
-        return `cos(${frequency}*hypot(x-(${Number(Math.cos(angle).toFixed(8))}),y-(${Number(Math.sin(angle).toFixed(8))})))`;
-      }).join('+');
-      add(`circular-sources-${n}-${frequency}`, `${n} emisores · frecuencia ${frequency}`, 'Interferencias',
-        'Focos circulares en un polígono crean islas de interferencia y corredores ondulados.',
-        sources, 3, undefined, 'Composición', 'Emisores circulares');
-    }
-  }
-  for (const n of [3,4,5,6,8,10,12]) {
-    for (const thickness of [0.12,0.3,0.55]) {
-      add(`radial-bubbles-${n}-${key(thickness)}`, `Burbujas radiales · ${n} sectores · ${label(thickness)}`, 'Mandalas',
-        'Una red de burbujas polares cambia de islas separadas a corredores conectados.',
-        `sin(7*r)**2+sin(${n}*t)**2-${thickness}`, 2.5, undefined, 'Composición', 'Burbujas radiales');
-    }
-  }
+  family('sluze', 'Perlas de Sluze', 'Perlas de Sluze', 'El exponente de y es 2n; m y p cambian el perfil. El arco entre 0 y 1 está normalizado a altura 1.',
+    'y**(2*n)-((m+p)**(m+p)/(m**m*p**p))*x**m*(1-x)**p', 1.3,
+    [param('n',2,1,3,1,true),param('m',3,1,5,1,true),param('p',3,1,5,1,true)], macTutor('Pearls'), 'Variante', [-0.15,1.15,-1.2,1.2]);
+  family('elliptic', 'Cúbicas elípticas', 'Cúbicas elípticas', 'Los coeficientes a y b de Weierstrass cambian el número de componentes reales.',
+    'y*y-(x**3+a*x+b)', 3, [param('a',-0.5,-1.5,2.5),param('b',0.3,-1,1)], wolfram('EllipticCurve'));
+  family('goursat', 'Cuárticas de Goursat', 'Cuárticas simétricas', 'a y b cambian los óvalos, cruces e islas de esta familia de simetría cuadrada.',
+    'x**4+y**4+a*(x*x+y*y)**2+b*(x*x+y*y)-1', 2.5, [param('a',-0.5,-0.8,1.5),param('b',0.3,-0.8,0.8)], 'https://mathcurve.com/courbes2d/goursat/goursat.shtml');
+  family('lace-mandala', 'Encajes polares', 'Mandalas', 'n controla los radios de pequeños lazos ordenados en coronas.',
+    'sin(8*r)*cos(n*t)-0.28', 2.4, [param('n',8,3,16,1,true)], undefined, 'Composición');
+  family('braided-mandala', 'Mandalas trenzados', 'Mandalas', 'n controla las hebras de dos fases contrapuestas que dibujan rombos curvos.',
+    'sin(6*r+n*t)*sin(6*r-n*t)-0.3', 2.4, [param('n',8,3,16,1,true)], undefined, 'Composición');
+  family('petal-crown', 'Coronas florales', 'Flores', 'n controla los lóbulos de tres bordes florales anidados.',
+    '(r-0.45-0.1*cos(n*t))*(r-0.9-0.2*cos(n*t))*(r-1.35+0.18*cos(n*t))', 1.8, [param('n',8,3,16,1,true)], undefined, 'Composición');
+  family('spiral-lace', 'Remolinos de encaje', 'Espirales', 'n controla los brazos de una fase espiral modulada por una onda angular.',
+    'sin(5*r-n*t+0.65*sin(2*n*t))', 3, [param('n',8,3,16,1,true)], undefined, 'Composición');
+  family('wave-crystal', 'Cristales de ondas', 'Interferencias', 'n direcciones equiespaciadas de ondas planas; f controla la frecuencia.',
+    'waveCrystal(x,y,n,f)-0.5', 3, [param('n',7,3,16,1,true),param('f',4,1,8)], undefined, 'Composición');
+  family('circular-sources', 'Emisores circulares', 'Interferencias', 'n focos en un polígono generan interferencias; f controla la frecuencia.',
+    'circularWaves(x,y,n,f)', 3, [param('n',5,3,12,1,true),param('f',5,3,8)], undefined, 'Composición');
+  family('mandala-pearl', 'Burbujas radiales', 'Mandalas', 'n controla los sectores del collar de perlas y b conecta o separa las burbujas.',
+    'sin(7*r)**2+sin(n*t)**2-b', 2.5, [param('n',6,3,12,1,true),param('b',0.35,0.12,0.55,0.01)], undefined, 'Composición');
+  family('clover', 'Tréboles y estrellas polares', 'Estrellas', 'n regula las hojas o puntas; a cambia la profundidad de sus valles.',
+    'r-1-a*cos(n*t)', 1.9, [param('a',0.55,0.1,0.8,0.05),param('n',5,3,16,1,true)], undefined, 'Composición');
+  family('galaxy', 'Galaxia y espirales de fase', 'Espirales', 'n controla los brazos y f la separación entre vueltas. Incluye las variantes simple, doble y triple.',
+    'sin(f*r-n*t)', 3.5, [param('f',2.6,1,8),param('n',5,1,16,1,true)], undefined, 'Composición');
   return curves;
 }

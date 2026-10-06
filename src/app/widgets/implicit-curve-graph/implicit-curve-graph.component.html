@@ -18,6 +18,7 @@
     (pointercancel)="pointerUp($event)" (lostpointercapture)="pointerUp($event)" (pointerleave)="coordinates = ''">
     Tu navegador no admite el dibujo de la gráfica. Utiliza un navegador compatible con canvas.
   </canvas>
+  <ng-content select="[graphParameters]"></ng-content>
   <div class="graph-readout"><span>{{ coordinates || 'Explora la gráfica con el cursor' }}</span><span>Divisiones: x {{ formatValue(xStep, xStep) }} · y {{ formatValue(yStep, yStep) }}</span></div>
   <p class="graph-error" role="status" *ngIf="message">{{ message }}</p>
   <details class="graph-settings" *ngIf="showSettings">

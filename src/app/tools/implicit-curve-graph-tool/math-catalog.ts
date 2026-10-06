@@ -79,6 +79,20 @@ const entry = (category: string, name: string, description: string, fn: NumericF
   ({ category, name, description, fn });
 
 export const EXTRA_FUNCTIONS: FunctionEntry[] = [
+  entry('Geometría', 'waveCrystal', 'waveCrystal(x,y,n=7,f=4): suma de n ondas planas de frecuencia f, en direcciones equiespaciadas entre 0 y PI. n entero entre 1 y 64; argumentos finitos.',
+    (x, y, n = 7, f = 4) => {
+      if (![x,y,f].every(Number.isFinite) || !natural(n,64) || n < 1) return NaN;
+      let sum = 0;
+      for (let k = 0; k < n; k++) sum += Math.cos(f*(Math.cos(Math.PI*k/n)*x+Math.sin(Math.PI*k/n)*y));
+      return sum;
+    }),
+  entry('Geometría', 'circularWaves', 'circularWaves(x,y,n=5,f=5): suma de ondas de frecuencia f emitidas por n focos en el círculo unidad. n entero entre 1 y 64; argumentos finitos.',
+    (x, y, n = 5, f = 5) => {
+      if (![x,y,f].every(Number.isFinite) || !natural(n,64) || n < 1) return NaN;
+      let sum = 0;
+      for (let k = 0; k < n; k++) sum += Math.cos(f*Math.hypot(x-Math.cos(2*Math.PI*k/n),y-Math.sin(2*Math.PI*k/n)));
+      return sum;
+    }),
   entry('Geometría', 'mandelbrotRadius', 'mandelbrotRadius(x,y,n=3,p=2): módulo de z tras n iteraciones z→z^p+(x+iy), z inicial 0. Enteros 1≤n≤12, 2≤p≤8; x,y finitos. Puede desbordar a Infinity. Los niveles =2 son lemniscatas de aproximación finita a Mandelbrot/Multibrot.',
     (x, y, n = 3, p = 2) => {
       if (![x,y].every(Number.isFinite) || !Number.isInteger(n) || n < 1 || n > 12 ||

@@ -1,9 +1,13 @@
-export interface CurveParameter {
+export interface CurveParameterPreset {
   name: string;
   value: number;
   min: number;
   max: number;
   step: number;
+  integer?: boolean;
+}
+
+export interface CurveParameter extends CurveParameterPreset {
   error: string;
 }
 

@@ -1,9 +1,15 @@
-.curve-parameters { margin: 1rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--rule); }
-.curve-parameters h3 { margin: 0; font-size: 1.3rem; }
-.curve-parameters fieldset { min-width: 0; margin: 1rem 0; padding: 0.75rem; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg2); }
-.curve-parameters legend { padding: 0 0.4rem; color: var(--accent); font: 1rem 'Courier Prime', monospace; }
-.parameter-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 8rem), 1fr)); gap: 0.75rem; }
-.parameter-fields label { display: flex; flex-direction: column; width: auto; margin: 0; font-size: 0.85rem; }
-.parameter-fields input { width: 100%; margin: 0.25rem 0; }
-.widget-container .parameter-slider { display: block; width: 100%; margin: 0.5rem 0 0; padding: 0; border: 0; background: transparent; accent-color: var(--accent); cursor: pointer; }
+.curve-parameters { margin: 0.5rem 0; padding: 0; }
+.curve-parameters h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.parameter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 0.4rem; }
+.curve-parameters fieldset { position: relative; min-width: 0; margin: 0; padding: 0.35rem 0.5rem 0.5rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg2); }
+.curve-parameters legend { padding: 0 0.25rem; color: var(--accent); font: 0.9rem 'Courier Prime', monospace; }
+.curve-parameters legend small { color: var(--ink-dim); font-size: 0.7rem; }
+.parameter-main { display: grid; grid-template-columns: 5rem minmax(0, 1fr); align-items: center; gap: 0.5rem; }
+.widget-container .parameter-main input[type=number], .widget-container .parameter-fields input { box-sizing: border-box; min-width: 0; width: 100%; min-height: 34px; padding: 0.25rem 0.4rem; margin: 0; font-size: 0.85rem; }
+.widget-container .parameter-slider { display: block; min-width: 0; width: 100%; min-height: 34px; margin: 0; padding: 0; border: 0; background: transparent; accent-color: var(--accent); cursor: pointer; }
 .parameter-slider:disabled { cursor: default; opacity: 0.5; }
+.parameter-settings summary { position: absolute; top: -0.85rem; right: 0.5rem; padding: 0 0.25rem; background: var(--bg2); color: var(--ink-dim); font-size: 0.75rem; cursor: pointer; }
+.parameter-settings summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.parameter-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; padding-top: 0.5rem; }
+.parameter-fields label { display: flex; flex-direction: column; gap: 0.2rem; width: auto; margin: 0; font-size: 0.75rem; }
+.curve-parameters .formula-error { margin: 0.35rem 0 0; font-size: 0.8rem; }
