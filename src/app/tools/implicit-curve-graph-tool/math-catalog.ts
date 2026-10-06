@@ -79,6 +79,27 @@ const entry = (category: string, name: string, description: string, fn: NumericF
   ({ category, name, description, fn });
 
 export const EXTRA_FUNCTIONS: FunctionEntry[] = [
+  entry('Geometría', 'mandelbrotRadius', 'mandelbrotRadius(x,y,n=3,p=2): módulo de z tras n iteraciones z→z^p+(x+iy), z inicial 0. Enteros 1≤n≤12, 2≤p≤8; x,y finitos. Puede desbordar a Infinity. Los niveles =2 son lemniscatas de aproximación finita a Mandelbrot/Multibrot.',
+    (x, y, n = 3, p = 2) => {
+      if (![x,y].every(Number.isFinite) || !Number.isInteger(n) || n < 1 || n > 12 ||
+        !Number.isInteger(p) || p < 2 || p > 8) return NaN;
+      let re = 0, im = 0;
+      for (let i = 0; i < n; i++) {
+        let powerRe = 1, powerIm = 0;
+        for (let j = 0; j < p; j++) {
+          [powerRe, powerIm] = [powerRe*re-powerIm*im, powerRe*im+powerIm*re];
+        }
+        re = powerRe+x; im = powerIm+y;
+        if (!Number.isFinite(re) || !Number.isFinite(im)) return Infinity;
+      }
+      return Math.hypot(re, im);
+    }),
+  entry('Geometría', 'superformula', 'superformula(t,m,n1,n2,n3,a=1,b=1): radio de Gielis (|cos(m·t/4)/a|^n2+|sin(m·t/4)/b|^n3)^(-1/n1). Ángulo en radianes; parámetros finitos, n1,n2,n3,a,b > 0. Usa hypot(x,y)-superformula(atan2(y,x),…) para dibujar. Con m impar, usa a=b y n2=n3 para cerrar el contorno en una vuelta.',
+    (t, m, n1, n2, n3, a = 1, b = 1) => {
+      if (![t, m, n1, n2, n3, a, b].every(Number.isFinite) ||
+        ![n1, n2, n3, a, b].every(value => value > 0)) return NaN;
+      return (Math.abs(Math.cos(m*t/4)/a)**n2 + Math.abs(Math.sin(m*t/4)/b)**n3)**(-1/n1);
+    }),
   ...SPECIAL_FUNCTIONS,
   entry('Álgebra', 'square', 'square(x): x al cuadrado.', x => x * x),
   entry('Álgebra', 'cube', 'cube(x): x al cubo.', x => x * x * x),

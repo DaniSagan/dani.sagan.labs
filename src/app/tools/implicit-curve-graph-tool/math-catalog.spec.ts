@@ -4,6 +4,23 @@ describe('Extended mathematical catalog', () => {
   const fn = Object.fromEntries(EXTRA_FUNCTIONS.map(entry => [entry.name, entry.fn]));
   const constants = Object.fromEntries(EXTRA_CONSTANTS.map(entry => [entry.name, entry.value]));
 
+  it('evaluates Gielis radii and complex iterations with documented domains', () => {
+    for (const t of [0,0.2,1,Math.PI,2*Math.PI]) {
+      expect(fn['superformula'](t,4,2,2,2)).toBeCloseTo(1, 12);
+      expect(fn['superformula'](t,5,0.35,1.7,1.7)).toBeCloseTo(fn['superformula'](t+2*Math.PI,5,0.35,1.7,1.7), 12);
+    }
+    expect(fn['superformula'](0,6,0,2,2)).toBeNaN();
+    expect(fn['superformula'](NaN,6,1,2,2)).toBeNaN();
+    expect(fn['superformula'](0,4,2,2,2,0,1)).toBeNaN();
+    expect(fn['mandelbrotRadius'](1,0,3)).toBe(5);
+    expect(fn['mandelbrotRadius'](0,1,2)).toBeCloseTo(Math.sqrt(2), 12);
+    expect(fn['mandelbrotRadius'](0,1,2,3)).toBe(0);
+    expect(fn['mandelbrotRadius'](0,0,12,8)).toBe(0);
+    expect(fn['mandelbrotRadius'](3,3,12,8)).toBe(Infinity);
+    expect(fn['mandelbrotRadius'](0,0,0)).toBeNaN();
+    expect(fn['mandelbrotRadius'](0,0,2,2.5)).toBeNaN();
+  });
+
   it('provides unique identifiers and help for every entry', () => {
     const entries = [...EXTRA_FUNCTIONS, ...EXTRA_CONSTANTS];
     expect(new Set(entries.map(entry => entry.name)).size).toBe(entries.length);

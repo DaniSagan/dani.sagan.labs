@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -14,6 +14,7 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/im
   styleUrl: './implicit-curve-graph-tool.component.css'
 })
 export class ImplicitCurveGraphToolComponent implements AfterViewInit {
+  constructor(private readonly changeDetector: ChangeDetectorRef) {}
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
   @ViewChild('graphResult', { static: true }) graphResult!: ElementRef<HTMLElement>;
   formula = 'x*x + y*y - 1';
@@ -27,6 +28,10 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   exampleSearch = '';
   exampleCategory = 'Destacados';
   selectedExample: CurveExample | null = null;
+  readonly examplePageSize = 48;
+  examplePage = 0;
+  exampleKind = 'Todos';
+  readonly exampleKinds = ['Todos', 'Clásica', 'Variante', 'Composición'];
 
   get visibleExamples(): CurveExample[] {
     const normalize = (value: string): string => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -34,8 +39,23 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     return this.examples.filter(example =>
       (this.exampleCategory === 'Todos' ||
         (this.exampleCategory === 'Destacados' ? FEATURED_EXAMPLE_IDS.has(example.id) : example.category === this.exampleCategory)) &&
-      words.every(word => normalize(`${example.name} ${example.category} ${example.description} ${example.formula}`).includes(word)));
+      (this.exampleKind === 'Todos' || example.kind === this.exampleKind) &&
+      words.every(word => normalize(`${example.name} ${example.category} ${example.family ?? ''} ${example.description} ${example.formula}`).includes(word)));
   }
+
+  get examplePageCount(): number { return Math.max(1, Math.ceil(this.visibleExamples.length / this.examplePageSize)); }
+  get currentExamplePage(): number { return Math.min(this.examplePage, this.examplePageCount - 1); }
+  get pagedExamples(): CurveExample[] {
+    const start = this.currentExamplePage * this.examplePageSize;
+    return this.visibleExamples.slice(start, start + this.examplePageSize);
+  }
+  resetExamplePage(): void { this.examplePage = 0; }
+  changeExamplePage(delta: number): void {
+    this.examplePage = Math.max(0, Math.min(this.examplePageCount - 1, this.currentExamplePage + delta));
+    const gallery = this.graphResult.nativeElement.parentElement?.querySelector('.example-gallery');
+    if (gallery) gallery.scrollTop = 0;
+  }
+  trackExample(_index: number, example: CurveExample): string { return example.id; }
 
   selectExample(example: CurveExample): void {
     this.selectedExample = example;
@@ -176,7 +196,11 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     input.setSelectionRange(cursor, cursor);
   }
 
-  ngAfterViewInit(): void { this.onRedraw(); }
+  ngAfterViewInit(): void {
+    this.onRedraw();
+    // The initial framing changes the child's axis labels after its first check.
+    this.changeDetector.detectChanges();
+  }
   onRedraw(): void {
     this.error = '';
     try {

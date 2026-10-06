@@ -1,3 +1,5 @@
+import { createExtendedExamples } from './extended-curve-examples';
+
 export interface CurveExample {
   id: string;
   name: string;
@@ -5,17 +7,24 @@ export interface CurveExample {
   description: string;
   formula: string;
   bounds: [number, number, number, number];
+  source?: string;
+  kind?: 'Clásica' | 'Variante' | 'Composición';
+  family?: string;
 }
 
 export const FEATURED_EXAMPLE_IDS = new Set([
   'heart', 'butterfly', 'rose12', 'lotus', 'snowflake', 'galaxy', 'counter-spirals',
   'two-sources', 'quasicrystal', 'moire', 'lissajous57', 'mandala-lotus',
-  'mandala-pearl', 'coral', 'fingerprint', 'topography'
+  'mandala-pearl', 'coral', 'fingerprint', 'topography',
+  'bicorn', 'nephroid', 'deltoid', 'ampersand', 'bean', 'butterfly-algebraic',
+  'gielis-6-petalo', 'multifocal-5-estrella'
 ]);
 
 function example(id: string, name: string, category: string, description: string, formula: string,
   radius = 3, bounds?: CurveExample['bounds']): CurveExample {
   return { id, name, category, description,
+    kind: category === 'Clásicas' || ['heart', 'fish', 'bowtie', 'fermat'].includes(id) ? 'Clásica'
+      : category === 'Especiales' ? 'Variante' : 'Composición',
     formula: formula.replace(/\br\b/g, 'hypot(x,y)').replace(/\bt\b/g, 'atan2(y,x)'),
     bounds: bounds ?? [-radius, radius, -radius, radius] };
 }
@@ -147,4 +156,5 @@ export const CURVE_EXAMPLES: CurveExample[] = [
   example('chebyshev-wave', 'Onda de Chebyshev', 'Especiales', 'Oscilaciones polinómicas concentradas en los extremos.', 'y-chebyshevT(12,x)', 1.3),
   example('hermite-curve', 'Hermite suavizado', 'Especiales', 'Un polinomio recortado por una campana gaussiana.', 'y-hermiteHe(5,x)*exp(-x*x/2)/3', 3),
   example('beta-arches', 'Arco de Bernstein', 'Especiales', 'Un arco asimétrico de una base polinómica.', 'y-5*bernstein(8,3,x)', 1, [-0.1, 1.1, -0.2, 1.8]),
+  ...createExtendedExamples(example),
 ];

@@ -48,27 +48,40 @@
       <summary>Galería de curvas <span class="catalog-count">{{ examples.length }} ejemplos</span></summary>
       <div class="catalog-search">
         <label for="example-search">Buscar ejemplos</label>
-        <input id="example-search" name="exampleSearch" type="search" [(ngModel)]="exampleSearch" (ngModelChange)="exampleCategory = 'Todos'"
+        <input id="example-search" name="exampleSearch" type="search" [(ngModel)]="exampleSearch" (ngModelChange)="exampleCategory = 'Todos'; resetExamplePage()"
           placeholder="Corazón, espiral, mandala, ondas…" />
       </div>
       <div class="example-categories" role="group" aria-label="Categorías de ejemplos">
         <button *ngFor="let category of exampleCategories" type="button"
-          [attr.aria-pressed]="exampleCategory === category" (click)="exampleCategory = category">{{ category }}</button>
+          [attr.aria-pressed]="exampleCategory === category" (click)="exampleCategory = category; resetExamplePage()">{{ category }}</button>
+      </div>
+      <div class="catalog-search">
+        <label for="example-kind">Tipo de ejemplo</label>
+        <select id="example-kind" name="exampleKind" [(ngModel)]="exampleKind" (ngModelChange)="resetExamplePage()">
+          <option *ngFor="let kind of exampleKinds" [value]="kind">{{ kind }}</option>
+        </select>
+        <span class="catalog-count">Las variantes exploran una familia; las composiciones combinan curvas y ondas.</span>
       </div>
       <p class="example-count" role="status">{{ visibleExamples.length }} ejemplos disponibles. Selecciona una miniatura para dibujarla con su encuadre.</p>
+      <nav class="example-pagination" *ngIf="examplePageCount > 1" aria-label="Páginas de la galería">
+        <button type="button" (click)="changeExamplePage(-1)" [disabled]="currentExamplePage === 0">Anterior</button>
+        <span role="status" aria-live="polite">Página {{ currentExamplePage + 1 }} de {{ examplePageCount }}</span>
+        <button type="button" (click)="changeExamplePage(1)" [disabled]="currentExamplePage + 1 >= examplePageCount">Siguiente</button>
+      </nav>
       <div class="example-gallery" role="group" aria-label="Ejemplos de curvas">
-        <button *ngFor="let preset of visibleExamples" type="button" class="example-card"
+        <button *ngFor="let preset of pagedExamples; trackBy: trackExample" type="button" class="example-card"
           [attr.aria-pressed]="selectedExample?.id === preset.id && formula === preset.formula"
           (click)="selectExample(preset)">
           <img [src]="'assets/implicit-curve-examples/' + preset.id + '.svg'" alt="" loading="lazy" width="160" height="120" />
           <span class="example-name">{{ preset.name }}</span>
           <span class="example-category">{{ preset.category }}</span>
+          <span class="example-kind" *ngIf="preset.kind">{{ preset.kind }}</span>
           <span class="example-description">{{ preset.description }}</span>
         </button>
       </div>
       <div class="example-empty" *ngIf="!visibleExamples.length">
         <p>No se han encontrado ejemplos. Prueba otra palabra o categoría.</p>
-        <button type="button" (click)="exampleSearch = ''; exampleCategory = 'Todos'">Mostrar todos</button>
+        <button type="button" (click)="exampleSearch = ''; exampleCategory = 'Todos'; exampleKind = 'Todos'; resetExamplePage()">Mostrar todos</button>
       </div>
     </details>
     <div class="bounds">
@@ -83,6 +96,9 @@
   <div #graphResult class="graph-result" tabindex="-1" aria-label="Resultado de la curva">
     <p *ngIf="selectedExample && formula === selectedExample.formula" class="selected-example">
       <strong>{{ selectedExample.name }}</strong> · {{ selectedExample.description }}
+    </p>
+    <p class="example-source" *ngIf="selectedExample?.source && formula === selectedExample?.formula">
+      <a [href]="selectedExample?.source" target="_blank" rel="noopener noreferrer">Consultar la fuente de esta curva o familia ↗</a>
     </p>
     <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
   </div>

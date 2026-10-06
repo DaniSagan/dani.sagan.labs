@@ -10,14 +10,33 @@ describe('Visual curve examples', () => {
   };
 
   it('has unique asset names, searchable descriptions and valid featured entries', () => {
-    expect(CURVE_EXAMPLES.length).toBeGreaterThan(100);
+    expect(CURVE_EXAMPLES.length).toBeGreaterThan(800);
     expect(new Set(CURVE_EXAMPLES.map(example => example.id)).size).toBe(CURVE_EXAMPLES.length);
     for (const example of CURVE_EXAMPLES) {
       expect(example.id).toMatch(/^[a-z0-9-]+$/);
       expect(example.name.length).toBeGreaterThan(0);
       expect(example.description.length).toBeGreaterThan(10);
+      expect(['Clásica', 'Variante', 'Composición']).toContain(example.kind!);
+      if (example.source) expect(example.source).toMatch(/^https:\/\//);
     }
     for (const id of FEATURED_EXAMPLE_IDS) expect(CURVE_EXAMPLES.some(example => example.id === id)).toBeTrue();
+  });
+
+  it('matches historical parametrizations without adding spurious algebraic branches', () => {
+    const evaluate = (id: string, x: number, y: number): number => {
+      const example = CURVE_EXAMPLES.find(curve => curve.id === id)!;
+      return new Function(...Object.keys(bindings), `return (x,y)=>(${example.formula});`)(...Object.values(bindings))(x,y);
+    };
+    for (const t of [0.15,0.5,1.2,2,3,4.8]) {
+      expect(evaluate('deltoid', 2*Math.cos(t)+Math.cos(2*t), 2*Math.sin(t)-Math.sin(2*t)))
+        .toBeCloseTo(0, 8);
+      expect(evaluate('nephroid', (3*Math.cos(t)-Math.cos(3*t))/2, (3*Math.sin(t)-Math.sin(3*t))/2))
+        .toBeCloseTo(0, 8);
+      expect(evaluate('bicorn', Math.sin(t), Math.cos(t)**2*(2+Math.cos(t))/(3+Math.sin(t)**2)))
+        .toBeCloseTo(0, 8);
+      const r = 4*Math.cos(t/3)**3;
+      expect(evaluate('cayley-sextic', r*Math.cos(t), r*Math.sin(t))).toBeCloseTo(0, 7);
+    }
   });
 
   it('produces visible finite contours for every preset in its own framing', () => {
