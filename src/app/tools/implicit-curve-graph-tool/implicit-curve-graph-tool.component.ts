@@ -12,7 +12,7 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/im
   standalone: true,
   imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule, MatTabsModule],
   templateUrl: './implicit-curve-graph-tool.component.html',
-  styleUrls: ['./implicit-curve-graph-tool.component.css', './curve-parameters.css']
+  styleUrls: ['./implicit-curve-graph-tool.component.css', './curve-parameters.css', './curve-buttons.css']
 })
 export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   constructor(private readonly changeDetector: ChangeDetectorRef) {}

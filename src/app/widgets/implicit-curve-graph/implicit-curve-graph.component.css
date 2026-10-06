@@ -2,8 +2,9 @@
 .implicit-graph { max-width: 850px; margin: 1.25rem auto; }
 .graph-toolbar, .view-actions, .graph-readout { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 .graph-toolbar, .graph-readout { justify-content: space-between; }
-.implicit-graph button { min-height: 40px; margin: 0; padding: 0.5rem 0.75rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg2); color: var(--ink); font: inherit; font-size: 0.85rem; cursor: pointer; }
-.implicit-graph button:hover { border-color: var(--accent); }
+.implicit-graph button { min-height: 44px; margin: 0; padding: 0.6rem 0.85rem; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); color: var(--ink); font: 0.8rem 'Courier Prime', monospace; cursor: pointer; touch-action: manipulation; }
+.implicit-graph button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); background: #ff785d10; }
+.implicit-graph button:disabled { opacity: 0.5; cursor: default; }
 canvas { display: block; width: 100%; aspect-ratio: 1; border-radius: 8px; margin-top: 0.6rem; background: #10131d; touch-action: pan-y; }
 canvas.panning { cursor: grab; touch-action: none; }
 canvas.touch-zoom { touch-action: none; }
