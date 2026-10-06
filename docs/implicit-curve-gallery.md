@@ -32,7 +32,15 @@ Funciones nuevas del teclado:
 
 Las expresiones polares expanden radio y ángulo a `hypot(x,y)` y `atan2(y,x)`. Las curvas históricas de múltiples ramas usan ecuaciones cartesianas para conservarlas. Los detalles menores que una celda y los puntos aislados no se garantizan con marching squares; el ejemplo con punto aislado lo explica.
 
-## Validación
+## Parámetros de la fórmula
+
+Al escribir una letra distinta de `x` e `y`, o una letra seguida de un subíndice como `a_1`, `b_10` o `r_t`, aparecen controles debajo de la gráfica. Se excluyen los nombres del teclado matemático y las constantes, así como los identificadores dentro de textos, comentarios y accesos a propiedades. La notación científica, por ejemplo `1e-3`, no crea un parámetro `e`.
+
+Cada parámetro comienza con valor 1, intervalo [−5, 5] y paso 0,1. El valor numérico y el deslizador están sincronizados; mínimo, máximo y paso son editables. Un intervalo reducido ajusta el valor para mantenerlo dentro de los nuevos límites. Los valores vacíos o inválidos muestran un error y mantienen el último dibujo válido. Cambiar parámetros conserva la vista explorada y el encuadre de restauración. Las configuraciones se conservan por nombre durante la sesión del componente, incluso si el parámetro se elimina de la fórmula y luego se reintroduce.
+
+Ejemplo: `a*x*x+b_10*y*y-r_t`. Escribe la fórmula, pulsa «Dibujar curva» y ajusta los tres parámetros debajo del lienzo.
+
+## Validación de la galería
 
 `npm run generate:curve-previews` reconstruye todos los SVG y rechaza ejemplos sin suficientes contornos a resolución 96×96. Las pruebas de `curve-examples.spec.ts` comprueban identificadores, tipos, encuadres y contornos finitos en todo el catálogo, además de comparar bicorne, deltoide, nefroide y Cayley con sus parametrizaciones. Las pruebas del catálogo comprueban identidades y dominios de las funciones nuevas; las del componente verifican búsqueda, tipo y paginación.
 

@@ -23,6 +23,71 @@ describe('ImplicitCurveGraphToolComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('evaluates parameters, preserves settings and leaves the explored view intact', () => {
+    component.formula = 'a*x*x+b_10*y*y-r_t';
+    component.onRedraw();
+    expect(component.error).toBe('');
+    expect(component.parameters.map(parameter => parameter.name)).toEqual(['a', 'b_10', 'r_t']);
+    const a = component.parameters[0];
+    a.value = 2;
+    a.min = 0; a.max = 10; a.step = 0.25;
+    component.curveGraph.zoom(0.5);
+    component.updateParameter(a);
+    expect(component.curveGraph.functions[0].fn(2, 0)).toBe(7);
+    expect(component.curveGraph.xMax).toBe(1.5);
+    component.curveGraph.resetView();
+    expect(component.xMax).toBe(3);
+    component.formula = 'b_10*x';
+    component.syncParameters();
+    expect(component.parameters.map(parameter => parameter.name)).toEqual(['b_10']);
+    component.formula = 'a*x';
+    component.syncParameters();
+    expect(component.parameters[0]).toBe(a);
+    expect([a.value, a.min, a.max, a.step]).toEqual([2, 0, 10, 0.25]);
+  });
+
+  it('validates parameter ranges and clamps values when the interval shrinks', () => {
+    component.formula = 'x*x+y*y-a';
+    component.onRedraw();
+    const a = component.parameters[0];
+    const draw = spyOn(component.curveGraph, 'drawGraph');
+    a.step = 0;
+    component.updateParameter(a);
+    expect(a.error).toContain('paso');
+    expect(component.parameterRangeValid(a)).toBeFalse();
+    expect(draw).not.toHaveBeenCalled();
+    a.step = 0.1; a.min = 5; a.max = 5;
+    component.updateParameter(a, true);
+    expect(a.error).toContain('mínimo');
+    a.min = -1; a.max = 0.5;
+    component.updateParameter(a, true);
+    expect(a.value).toBe(0.5);
+    expect(a.error).toBe('');
+    expect(draw).toHaveBeenCalled();
+    draw.calls.reset();
+    a.value = NaN;
+    component.updateParameter(a);
+    expect(a.error).toContain('finito');
+    expect(draw).not.toHaveBeenCalled();
+  });
+
+  it('synchronizes numeric inputs and sliders below the graph', fakeAsync(() => {
+    component.formula = 'a*x+y';
+    component.onRedraw();
+    fixture.detectChanges(); tick(20); fixture.detectChanges();
+    const slider: HTMLInputElement = fixture.nativeElement.querySelector('.parameter-slider');
+    const value: HTMLInputElement = fixture.nativeElement.querySelector('#parameter-value-a');
+    slider.value = '2.5'; slider.dispatchEvent(new Event('input', { bubbles: true }));
+    fixture.detectChanges(); tick(20); fixture.detectChanges();
+    expect(component.parameters[0].value).toBe(2.5);
+    expect(Number(value.value)).toBe(2.5);
+    expect(component.curveGraph.functions[0].fn(2, 0)).toBe(5);
+    value.value = '-2'; value.dispatchEvent(new Event('input', { bubbles: true }));
+    fixture.detectChanges(); tick(20); fixture.detectChanges();
+    expect(Number(slider.value)).toBe(-2);
+    expect(component.curveGraph.functions[0].fn(2, 0)).toBe(-4);
+  }));
+
   it('keeps bound inputs in sync with zoom, wheel, dragging, pinch and reset', fakeAsync(() => {
     const graph = component.curveGraph;
     const canvas = graph.canvas.nativeElement;

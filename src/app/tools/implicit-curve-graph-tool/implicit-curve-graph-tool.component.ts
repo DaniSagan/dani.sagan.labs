@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { EXTRA_CONSTANTS, EXTRA_FUNCTIONS, mathCategory } from './math-catalog';
 import { CURVE_EXAMPLES, CurveExample, FEATURED_EXAMPLE_IDS } from './curve-examples';
+import { CurveParameter, detectCurveParameters } from './curve-parameters';
 import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/implicit-curve-graph/implicit-curve-graph.component';
 
 @Component({
@@ -11,13 +12,15 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from '../../widgets/im
   standalone: true,
   imports: [CommonModule, ImplicitCurveGraphComponent, FormsModule, MatTabsModule],
   templateUrl: './implicit-curve-graph-tool.component.html',
-  styleUrl: './implicit-curve-graph-tool.component.css'
+  styleUrls: ['./implicit-curve-graph-tool.component.css', './curve-parameters.css']
 })
 export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   constructor(private readonly changeDetector: ChangeDetectorRef) {}
   @ViewChild('curveGraph', { static: true }) curveGraph!: ImplicitCurveGraphComponent;
   @ViewChild('graphResult', { static: true }) graphResult!: ElementRef<HTMLElement>;
   formula = 'x*x + y*y - 1';
+  parameters: CurveParameter[] = [];
+  private readonly parameterSettings = new Map<string, CurveParameter>();
   xMin = -3; xMax = 3; yMin = -3; yMax = 3;
   error = '';
   buttonDescription = 'Pasa el cursor, enfoca o toca un botón para consultar su descripción.';
@@ -178,6 +181,7 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     const insertion = `${name}(${selectedText})`;
     input.setRangeText(insertion, start, end, 'end');
     this.formula = input.value;
+    this.syncParameters();
     this.error = '';
     input.focus();
     const cursor = start + name.length + 1;
@@ -190,6 +194,7 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
     const end = input.selectionEnd ?? start;
     input.setRangeText(name, start, end, 'end');
     this.formula = input.value;
+    this.syncParameters();
     this.error = '';
     input.focus();
     const cursor = start + name.length;
@@ -204,20 +209,58 @@ export class ImplicitCurveGraphToolComponent implements AfterViewInit {
   onBoundsChange(bounds: [number, number, number, number]): void {
     [this.xMin, this.xMax, this.yMin, this.yMax] = bounds;
   }
-  onRedraw(): void {
+  syncParameters(): void {
+    const reserved = new Set(['x', 'y', ...this.names, ...this.constantNames]);
+    this.parameters = detectCurveParameters(this.formula, reserved).map(name => {
+      let parameter = this.parameterSettings.get(name);
+      if (!parameter) {
+        parameter = { name, value: 1, min: -5, max: 5, step: 0.1, error: '' };
+        this.parameterSettings.set(name, parameter);
+      }
+      return parameter;
+    });
+  }
+  trackParameter(_index: number, parameter: CurveParameter): string { return parameter.name; }
+  parameterRangeValid(parameter: CurveParameter): boolean {
+    return [parameter.min, parameter.max, parameter.step].every(Number.isFinite) &&
+      parameter.min < parameter.max && Number.isFinite(parameter.max - parameter.min) && parameter.step > 0;
+  }
+  private validateParameter(parameter: CurveParameter): boolean {
+    parameter.error = ![parameter.min, parameter.max, parameter.step].every(Number.isFinite)
+      ? 'Introduce un mínimo, máximo y paso finitos.'
+      : parameter.min >= parameter.max ? 'El mínimo debe ser menor que el máximo.'
+      : !Number.isFinite(parameter.max - parameter.min) ? 'El intervalo es demasiado grande.'
+      : parameter.step <= 0 ? 'El paso debe ser mayor que cero.'
+      : !Number.isFinite(parameter.value) ? 'Introduce un valor finito.'
+      : parameter.value < parameter.min || parameter.value > parameter.max ? 'El valor debe estar entre el mínimo y el máximo.'
+      : '';
+    return !parameter.error;
+  }
+  updateParameter(parameter: CurveParameter, rangeChanged = false): void {
+    if (rangeChanged && [parameter.min, parameter.max, parameter.value].every(Number.isFinite) && parameter.min < parameter.max) {
+      parameter.value = Math.max(parameter.min, Math.min(parameter.max, parameter.value));
+    }
+    if (this.validateParameter(parameter)) this.onRedraw(true);
+  }
+  onRedraw(preserveView = false): void {
     this.error = '';
     try {
+      this.syncParameters();
+      if (this.parameters.some(parameter => !this.validateParameter(parameter))) {
+        throw new Error('Revisa los valores y los límites de los parámetros.');
+      }
       if (!this.formula.trim()) throw new Error('Introduce una expresión.');
       const functions = this.names.map(name => this.expressionFunctions[name]);
       const createFunction = new Function(
         ...this.names,
         ...this.constantNames,
+        ...this.parameters.map(parameter => parameter.name),
         `"use strict"; return (x, y) => (${this.formula});`
       );
       const constants = this.constantNames.map(name => this.expressionConstants[name]);
-      const fn = createFunction(...functions, ...constants) as (x: number, y: number) => number;
+      const fn = createFunction(...functions, ...constants, ...this.parameters.map(parameter => parameter.value)) as (x: number, y: number) => number;
       if (typeof fn(0.123, 0.456) !== 'number') throw new Error('La expresión debe devolver un número.');
-      this.curveGraph.setBounds(this.xMin, this.xMax, this.yMin, this.yMax);
+      if (!preserveView) this.curveGraph.setBounds(this.xMin, this.xMax, this.yMin, this.yMax);
       this.curveGraph.functions = [new GraphableFunction(fn, '#ff785e')];
       this.curveGraph.drawGraph();
     } catch (error) {

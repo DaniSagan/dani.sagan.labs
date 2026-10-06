@@ -2,7 +2,7 @@
 <div class="widget-container">
   <form (ngSubmit)="onRedraw()">
     <label for="formula">Expresión f(x, y) = 0</label>
-    <input #formulaInput id="formula" name="formula" [(ngModel)]="formula" placeholder="x*x + y*y - 1"
+    <input #formulaInput id="formula" name="formula" [(ngModel)]="formula" (ngModelChange)="syncParameters()" placeholder="x*x + y*y - 1"
       spellcheck="false" />
     <p class="formula-help" id="function-help">Funciones: pasa el cursor, enfoca un botón o mantenlo pulsado en el móvil
       para ver su descripción.</p>
@@ -44,6 +44,7 @@
     </div>
     <p class="formula-help">Usa sintaxis JavaScript: ** para potencias, sin(x), cos(y), sqrt(x), gamma(x), PI, PHI…
       También puedes usar expresiones de una sola variable.</p>
+    <p class="formula-help">Añade parámetros como a, b, a_1 o r_t. Sus controles aparecen debajo de la gráfica.</p>
     <details class="examples" open>
       <summary>Galería de curvas <span class="catalog-count">{{ examples.length }} ejemplos</span></summary>
       <div class="catalog-search">
@@ -102,4 +103,24 @@
     </p>
     <app-implicit-curve-graph #curveGraph (boundsChange)="onBoundsChange($event)"></app-implicit-curve-graph>
   </div>
+  <section class="curve-parameters" *ngIf="parameters.length" aria-label="Parámetros de la curva">
+    <h3>Parámetros</h3>
+    <p class="formula-help">Cambia el valor para actualizar la curva. Puedes configurar el intervalo y el paso del deslizador.</p>
+    <fieldset *ngFor="let parameter of parameters; trackBy: trackParameter">
+      <legend>{{ parameter.name }}</legend>
+      <div class="parameter-fields">
+        <label [for]="'parameter-value-' + parameter.name">Valor
+          <input [id]="'parameter-value-' + parameter.name" type="number" [min]="parameter.min" [max]="parameter.max" [step]="parameter.step"
+            [(ngModel)]="parameter.value" (ngModelChange)="updateParameter(parameter)" [attr.aria-describedby]="parameter.error ? 'parameter-error-' + parameter.name : null" />
+        </label>
+        <label>Mínimo <input type="number" step="any" [(ngModel)]="parameter.min" (ngModelChange)="updateParameter(parameter, true)" /></label>
+        <label>Máximo <input type="number" step="any" [(ngModel)]="parameter.max" (ngModelChange)="updateParameter(parameter, true)" /></label>
+        <label>Paso <input type="number" step="any" [(ngModel)]="parameter.step" (ngModelChange)="updateParameter(parameter)" /></label>
+      </div>
+      <input class="parameter-slider" type="range" [attr.aria-label]="'Valor de ' + parameter.name"
+        [min]="parameter.min" [max]="parameter.max" [step]="parameter.step" [(ngModel)]="parameter.value"
+        [disabled]="!parameterRangeValid(parameter)" (ngModelChange)="updateParameter(parameter)" />
+      <p class="formula-error" role="alert" *ngIf="parameter.error" [id]="'parameter-error-' + parameter.name">{{ parameter.error }}</p>
+    </fieldset>
+  </section>
 </div>
