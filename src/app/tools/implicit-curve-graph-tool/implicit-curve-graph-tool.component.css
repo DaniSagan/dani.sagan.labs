@@ -1,4 +1,23 @@
 :host { display: block; min-width: 0; }
+.widget-container input, .widget-container select {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #596077;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  color-scheme: dark;
+}
+.widget-container input::placeholder { color: var(--ink-dim); opacity: 1; }
+.widget-container input:focus-visible, .widget-container select:focus-visible {
+  outline: 2px solid var(--accent2);
+  outline-offset: 3px;
+}
+.catalog-search select { margin: 0; }
 input#formula { display: block; width: 100%; min-width: 0; box-sizing: border-box; margin: 0.5rem 0; padding: 0.75rem; font: 0.95rem monospace; }
 .formula-help { color: var(--ink-dim); font-size: 0.85rem; line-height: 1.5; }
 .examples { margin: 1rem 0; border: 1px solid var(--rule); border-radius: 8px; background: var(--bg2); }
