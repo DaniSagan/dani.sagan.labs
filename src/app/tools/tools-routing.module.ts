@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'prime-decomposition', component: PrimeDecompositionArticleComponent },
       { path: 'pi-decimals', component: PiDecimalComponent },
       { path: 'implicit-curve-graph', component: ImplicitCurveGraphToolComponent },
+      { path: 'vector-field', loadComponent: () => import('./vector-field/vector-field.component').then(m => m.VectorFieldComponent) },
       { path: 'sun-position', component: SunPositionComponent },
       { path: 'travel-planner', component: TravelPlannerComponent }
     ]

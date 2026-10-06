@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "generate:curve-previews": "node scripts/generate-curve-previews.cjs",
+    "generate:vector-previews": "node scripts/generate-vector-previews.cjs",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

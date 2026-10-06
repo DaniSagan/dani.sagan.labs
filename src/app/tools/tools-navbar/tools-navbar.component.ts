@@ -18,6 +18,7 @@ export class ToolsNavbarComponent {
       { name: 'Graficador de funciones', route: 'graph-plotter' },
       { name: 'Calculadora de decimales de pi', route: 'pi-decimals' },
       { name: 'Graficador de curvas implícitas', route: 'implicit-curve-graph' },
+      { name: 'Campos vectoriales y dinámica', route: 'vector-field' },
       { name: 'Calculadora de posición solar', route: 'sun-position' },
       { name: 'Planificador de viajes', route: 'travel-planner' }
     ]

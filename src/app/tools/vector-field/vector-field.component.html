@@ -1,0 +1,145 @@
+<header class="explorer-heading">
+  <p class="eyebrow">Laboratorio de dinámica</p>
+  <h2>Campos vectoriales y sistemas dinámicos</h2>
+  <p>Descubre órbitas, remolinos y ciclos límite. Pulsa en el plano para lanzar una trayectoria y transforma el flujo con sus parámetros.</p>
+</header>
+
+<details class="gallery" open>
+  <summary>Galería de sistemas <span>{{ examples.length }} familias</span></summary>
+  <div class="gallery-filters">
+    <label>Buscar ejemplos <input type="search" [(ngModel)]="search" (ngModelChange)="page=0" placeholder="Péndulo, neurona, vórtice, Hopf…" /></label>
+    <label>Familia <select [(ngModel)]="category" (ngModelChange)="page=0"><option *ngFor="let c of categories">{{ c }}</option></select></label>
+  </div>
+  <div class="gallery-grid">
+    <button type="button" class="example-card" *ngFor="let example of visibleExamples" (click)="choose(example)"
+      [attr.aria-pressed]="selected.id===example.id && dx===example.dx && dy===example.dy">
+      <img [src]="'assets/vector-field-examples/'+example.id+'.svg'" alt="" loading="lazy" width="180" height="110" />
+      <strong>{{ example.name }}</strong><span class="category">{{ example.category }}</span>
+      <span>{{ example.description }}</span><small *ngIf="example.parameters.length">{{ example.parameters.length }} parámetros</small>
+    </button>
+  </div>
+  <div class="pagination">
+    <span role="status">{{ filtered.length }} ejemplos · Página {{ page+1 }} de {{ pages }}</span>
+    <button type="button" (click)="page=page-1" [disabled]="page===0">Anterior</button>
+    <button type="button" (click)="page=page+1" [disabled]="page+1>=pages">Siguiente</button>
+  </div>
+  <p *ngIf="!filtered.length" class="muted">No hay resultados. Prueba otra palabra o familia.</p>
+</details>
+
+<form class="equation-editor" (ngSubmit)="apply()">
+  <label for="field-dx">dx/dt = <input id="field-dx" name="dx" [(ngModel)]="dx" (ngModelChange)="syncParameters()" spellcheck="false" maxlength="2000" /></label>
+  <label for="field-dy">dy/dt = <input id="field-dy" name="dy" [(ngModel)]="dy" (ngModelChange)="syncParameters()" spellcheck="false" maxlength="2000" /></label>
+  <button class="primary" type="submit">Aplicar sistema</button>
+  <p class="editor-help">Variables x, y y tiempo t. Funciones: sin, cos, exp, tanh, hypot, atan2… Constantes: PI, E, PHI… Potencias: **. Añade parámetros como a, b_1 o r_t.</p>
+</form>
+<p class="error" role="alert" *ngIf="error">{{ error }}</p>
+
+<section #result class="result" tabindex="-1" aria-label="Explorador interactivo">
+  <div class="result-heading">
+    <div><span class="eyebrow">{{ timeDependent ? 'Campo dependiente del tiempo' : 'Plano de fase autónomo' }}</span>
+      <h3>{{ dx===selected.dx && dy===selected.dy ? selected.name : 'Sistema personalizado' }}</h3></div>
+    <span class="clock">t = {{ time | number:'1.2-2' }}</span>
+  </div>
+  <div class="toolbar">
+    <button type="button" class="primary" (click)="toggleRun()" [attr.aria-pressed]="running">{{ running ? 'Pausar' : 'Animar' }}</button>
+    <button type="button" (click)="restart()">Reiniciar tiempo</button>
+    <div class="mode-switch" role="group" aria-label="Interacción con el plano">
+      <button type="button" (click)="mode='seed'" [attr.aria-pressed]="mode==='seed'">Lanzar órbita</button>
+      <button type="button" (click)="mode='pan'" [attr.aria-pressed]="mode==='pan'">Mover vista</button>
+    </div>
+    <button type="button" (click)="zoom(0.75)" aria-label="Acercar gráfica">＋</button>
+    <button type="button" (click)="zoom(1.333333333)" aria-label="Alejar gráfica">−</button>
+    <button type="button" (click)="resetView()">Restablecer vista</button>
+  </div>
+  <div class="viewport">
+    <canvas #canvas class="phase-canvas" width="900" height="612" [class.panning]="mode==='pan'"
+      [class.touch-zoom]="wheelEnabled || mode==='pan'" aria-label="Campo vectorial. Pulsa para añadir una órbita; los controles también permiten añadir una malla de puntos."
+      (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp($event)"
+      (pointercancel)="pointerUp($event,true)" (lostpointercapture)="pointerUp($event,true)" (wheel)="wheel($event)">
+      Tu navegador debe admitir canvas para visualizar el campo.
+    </canvas>
+    <span class="canvas-caption">{{ mode==='seed' ? 'Pulsa para lanzar una órbita' : 'Arrastra para mover el plano' }}</span>
+  </div>
+  <section class="parameters" *ngIf="parameters.length" aria-label="Parámetros del sistema">
+    <fieldset *ngFor="let p of parameters">
+      <legend>{{ p.name }}<small *ngIf="p.integer"> · entero</small></legend>
+      <div class="parameter-value">
+        <input type="number" [attr.aria-label]="'Valor de '+p.name" [min]="p.min" [max]="p.max" [step]="p.step" [(ngModel)]="p.value" (ngModelChange)="changeParameter(p)" />
+        <input type="range" [attr.aria-label]="'Deslizador de '+p.name" [min]="p.min" [max]="p.max" [step]="p.step" [(ngModel)]="p.value" (ngModelChange)="changeParameter(p)" />
+      </div>
+      <details><summary>Ajustes</summary><div class="range-fields">
+        <label>Mín. <input type="number" step="any" [(ngModel)]="p.min" (ngModelChange)="changeParameter(p,true)" /></label>
+        <label>Máx. <input type="number" step="any" [(ngModel)]="p.max" (ngModelChange)="changeParameter(p,true)" /></label>
+        <label>Paso <input type="number" step="any" [(ngModel)]="p.step" (ngModelChange)="changeParameter(p)" /></label>
+      </div></details>
+      <p *ngIf="p.error" class="error" role="alert">{{ p.error }}</p>
+    </fieldset>
+  </section>
+  <div class="readout"><span>{{ coordinates || 'El color revela la dinámica del flujo' }}</span><span>{{ status }}</span></div>
+  <p class="legend" *ngIf="showNullclines"><span class="pink">— dx/dt = 0</span> · <span class="mint">— dy/dt = 0</span> · Cruces: candidatos a equilibrio</p>
+  <p class="legend">Órbitas: trazo continuo hacia adelante, discontinuo hacia atrás. Partículas: evolución temporal desde puntos distribuidos en el plano.</p>
+  <div class="toolbar">
+    <label class="seed-input">x₀ <input type="number" step="any" [(ngModel)]="seedX" /></label>
+    <label class="seed-input">y₀ <input type="number" step="any" [(ngModel)]="seedY" /></label>
+    <button type="button" (click)="addSeed([seedX,seedY])">Lanzar punto</button>
+    <button type="button" (click)="seedGrid()">Sembrar 25 puntos</button>
+    <button type="button" (click)="undo()" [disabled]="!seeds.length">Deshacer punto</button>
+    <button type="button" (click)="clear()" [disabled]="!seeds.length">Borrar órbitas</button>
+    <button type="button" (click)="exportPng()">Guardar PNG</button>
+    <button type="button" (click)="exportCsv()" [disabled]="!seeds.length">Exportar CSV</button>
+    <button type="button" (click)="share()">Copiar enlace</button>
+  </div>
+  <p class="muted" role="status" *ngIf="notice">{{ notice }}</p>
+
+  <details class="settings" open>
+    <summary>Visualización y simulación</summary>
+    <div class="settings-grid">
+      <fieldset><legend>Capas del campo</legend>
+        <label><input type="checkbox" [(ngModel)]="showArrows" (ngModelChange)="paintBackground()" /> Flechas de dirección</label>
+        <label><input type="checkbox" [(ngModel)]="showParticles" (ngModelChange)="resetParticles()" /> Partículas animadas</label>
+        <label><input type="checkbox" [(ngModel)]="glow" (ngModelChange)="paintBackground()" /> Resplandor</label>
+        <label><input type="checkbox" [(ngModel)]="showGrid" (ngModelChange)="paintBackground()" /> Ejes y cuadrícula</label>
+        <label><input type="checkbox" [(ngModel)]="showNullclines" (ngModelChange)="paintBackground()" /> Nulclinas</label>
+        <label><input type="checkbox" [(ngModel)]="showEquilibria" (ngModelChange)="rebuild()" /> Equilibrios</label>
+        <label>Color <select [(ngModel)]="colorMode" (ngModelChange)="paintBackground()"><option value="speed">Rapidez: azul → naranja</option><option value="direction">Dirección: rueda de color</option><option value="divergence">Divergencia: azul − / naranja +</option><option value="curl">Vorticidad: azul − / naranja +</option></select></label>
+        <label>Densidad de flechas <input type="range" min="8" max="40" step="1" [(ngModel)]="density" (ngModelChange)="paintBackground()" /></label>
+        <label>Partículas: {{ particleCount }} <input type="range" min="50" max="1000" step="50" [(ngModel)]="particleCount" (ngModelChange)="resetParticles()" /></label>
+      </fieldset>
+      <fieldset><legend>Tiempo y precisión</legend>
+        <label>Velocidad: {{ speed }}× <input type="range" min="0.1" max="3" step="0.1" [(ngModel)]="speed" /></label>
+        <label>Duración de órbitas <input type="number" min="0.1" max="200" step="1" [(ngModel)]="duration" (change)="apply()" /></label>
+        <label>Tiempo de lanzamiento <input type="number" step="any" [(ngModel)]="launchTime" (change)="restart()" /></label>
+        <label>Precisión <select [(ngModel)]="tolerance" (ngModelChange)="apply()"><option [ngValue]="0.0001">Rápida · 10⁻⁴</option><option [ngValue]="0.000001">Alta · 10⁻⁶</option><option [ngValue]="0.00000001">Muy alta · 10⁻⁸</option></select></label>
+        <label><input type="checkbox" [(ngModel)]="backwards" (ngModelChange)="rebuild()" /> Integrar también hacia atrás</label>
+        <label><input type="checkbox" [(ngModel)]="showStrobe" /> Muestreo estroboscópico</label>
+        <label *ngIf="showStrobe">Periodo de muestreo <input type="number" min="0.01" step="any" [(ngModel)]="strobePeriod" /></label>
+        <p *ngIf="showStrobe" class="muted">Puntos dorados en t₀ + k·periodo, interpolados sobre la órbita. En sistemas forzados elige el periodo de la fuerza; no es una sección espacial de Poincaré.</p>
+        <p class="muted">Integración adaptativa Dormand–Prince 5(4). Las órbitas terminan al salir del encuadre, alcanzar el tiempo o encontrar una dificultad numérica.</p>
+      </fieldset>
+      <fieldset><legend>Encuadre</legend>
+        <div class="bounds-grid">
+          <label>x mín. <input type="number" step="any" [(ngModel)]="bounds[0]" (change)="apply()" /></label>
+          <label>x máx. <input type="number" step="any" [(ngModel)]="bounds[1]" (change)="apply()" /></label>
+          <label>y mín. <input type="number" step="any" [(ngModel)]="bounds[2]" (change)="apply()" /></label>
+          <label>y máx. <input type="number" step="any" [(ngModel)]="bounds[3]" (change)="apply()" /></label>
+        </div>
+        <label><input type="checkbox" [(ngModel)]="wheelEnabled" /> Zoom con rueda y dos dedos</label>
+        <p class="muted">También puedes usar Ctrl + rueda. En «Mover vista», arrastra o pellizca con dos dedos.</p>
+      </fieldset>
+    </div>
+  </details>
+  <details class="analysis" open>
+    <summary>Qué está pasando en el sistema</summary>
+    <p *ngIf="timeDependent" class="muted">El campo y las nulclinas representan el instante t mostrado. Las órbitas siguen la fuerza a lo largo del tiempo. Los ceros instantáneos no se clasifican como equilibrios autónomos.</p>
+    <div class="equilibria" *ngIf="!timeDependent && showEquilibria">
+      <p class="muted">Equilibrios encontrados numéricamente en el encuadre. La búsqueda puede omitir raíces; la linealización no decide la estabilidad de los casos no hiperbólicos.</p>
+      <ul><li *ngFor="let e of fixedPoints">({{ e.point[0] | number:'1.0-4' }}, {{ e.point[1] | number:'1.0-4' }}) · {{ e.kind }}</li></ul>
+      <p *ngIf="!fixedPoints.length" class="muted">No se han localizado equilibrios aislados en este encuadre.</p>
+    </div>
+    <h4>Última trayectoria · <span class="cyan">x(t)</span> y <span class="pink">y(t)</span></h4>
+    <canvas #series class="series-canvas" width="900" height="190" aria-label="Series temporales x e y de la última trayectoria"></canvas>
+    <p *ngIf="orbits.length" class="muted">{{ orbits[orbits.length-1].forward.reason }}. {{ orbits[orbits.length-1].forward.points.length }} muestras hacia adelante.</p>
+    <p class="muted">Un sistema autónomo suave en el plano no produce un atractor caótico; los ejemplos forzados incorporan tiempo explícito y pueden tener dinámica más compleja.</p>
+  </details>
+  <p *ngIf="selected.source && dx===selected.dx && dy===selected.dy"><a [href]="selected.source" target="_blank" rel="noopener noreferrer">Referencia del modelo ↗</a></p>
+</section>
