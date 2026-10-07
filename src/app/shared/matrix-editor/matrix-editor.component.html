@@ -1,0 +1,17 @@
+<div class="dimensions">
+  <label>Ecuaciones<select [(ngModel)]="rows" (ngModelChange)="resize()"><option *ngFor="let size of sizes" [ngValue]="size">{{size}}</option></select></label>
+  <span aria-hidden="true">×</span>
+  <label>Incógnitas<select [(ngModel)]="columns" (ngModelChange)="resize()"><option *ngFor="let size of sizes" [ngValue]="size">{{size}}</option></select></label>
+</div>
+<div class="scroll" tabindex="0" aria-label="Editor de matriz ampliada; desplaza horizontalmente para ver todas las columnas">
+  <table>
+    <caption>Matriz ampliada [A | b]</caption>
+    <thead><tr><th scope="col" class="row-heading">Fila</th><th scope="col" *ngFor="let cell of cells[0];let j=index;trackBy:trackIndex" [class.rhs]="j===columns">{{j===columns?'b':'x'+(j+1)}}</th></tr></thead>
+    <tbody><tr *ngFor="let row of cells;let i=index;trackBy:trackIndex"><th scope="row" class="row-heading">F{{i+1}}</th><td *ngFor="let cell of row;let j=index;trackBy:trackIndex" [class.rhs]="j===columns">
+      <input type="text" [ngModel]="cell" (ngModelChange)="edit(i,j,$event)" [style.width]="columnWidth(j)" [attr.aria-label]="j===columns?'Término independiente, fila '+(i+1):'Coeficiente de x'+(j+1)+', fila '+(i+1)" [attr.data-row]="i" [attr.data-column]="j" (keydown)="navigate($event,i,j)" (paste)="paste($event)" maxlength="160" spellcheck="false" autocomplete="off" />
+    </td></tr></tbody>
+  </table>
+</div>
+<p class="help">Fracciones, decimales y expresiones con t. Intro avanza a la siguiente celda; ↑ y ↓ cambian de fila.</p>
+<details><summary>Pegar o editar como texto</summary><label>Una fila por línea, incluida la columna b<textarea rows="4" [(ngModel)]="importText" spellcheck="false"></textarea></label><button type="button" (click)="load(importText)">Importar matriz</button><p class="help">Separa columnas con espacios, comas o tabulaciones. También puedes pegar una matriz completa en cualquier celda.</p></details>
+<p class="error" role="alert" *ngIf="error">{{error}}</p>

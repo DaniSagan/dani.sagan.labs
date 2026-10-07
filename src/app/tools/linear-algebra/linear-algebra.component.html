@@ -1,0 +1,83 @@
+<header class="explorer-heading">
+  <p class="eyebrow">Álgebra · geometría · experimentación</p>
+  <h2>Laboratorio de álgebra lineal</h2>
+  <p>Explora el vínculo entre ecuaciones y geometría. Calcula con fracciones exactas, transforma el plano y aprende a justificar cada operación.</p>
+</header>
+<details class="gallery" open>
+  <summary>Galería de experimentos <span>{{ examples.length }} ejemplos</span></summary>
+  <div class="gallery-filters">
+    <label>Buscar ejemplos<input type="search" [(ngModel)]="search" (ngModelChange)="page=0" placeholder="Markov, planos, proyección, parámetros…" /></label>
+    <label>Familia<select [(ngModel)]="category" (ngModelChange)="page=0"><option *ngFor="let c of categories">{{c}}</option></select></label>
+  </div>
+  <div class="gallery-grid">
+    <button class="example-card" *ngFor="let e of visible" (click)="choose(e)" [attr.aria-pressed]="selected.id===e.id">
+      <svg viewBox="0 0 160 100" aria-hidden="true"><path d="M0 50H160M80 0V100" stroke="#253049"/><polyline *ngIf="e.view==='transform'" [attr.points]="preview(e)" fill="none" stroke="#7bffc6" stroke-width="1.7"/><ng-container *ngIf="e.view==='system'"><polyline *ngFor="let points of systemPreview(e);let i=index" [attr.points]="points" [attr.fill]="e.matrix.split(';')[0].trim().split(' ').length===4?colors[i]+'20':'none'" [attr.stroke]="colors[i]" stroke-width="1.4" /></ng-container></svg>
+      <span class="category">{{e.category}}</span><strong>{{e.name}}</strong><small>{{e.description}}</small>
+    </button>
+  </div>
+  <p class="muted empty" *ngIf="!filtered.length">No hay ejemplos con estos filtros.</p>
+  <div class="pagination"><button (click)="page=page-1" [disabled]="page===0">Anterior</button><span>{{page+1}} / {{pages}} · {{filtered.length}} resultados</span><button (click)="page=page+1" [disabled]="page+1>=pages">Siguiente</button></div>
+</details>
+<h3>{{selected.name}}</h3><p class="muted">{{selected.description}} <a [href]="selected.source" target="_blank" rel="noopener">Referencia matemática</a></p>
+<div class="lab-editor">
+  <app-matrix-editor [(value)]="text" />
+  <div><p id="matrix-help" class="editor-help">Edita cada coeficiente en su celda. La columna b contiene los términos independientes. Hasta 6 ecuaciones y 6 incógnitas. Admite fracciones, decimales, t, + − * / ^ y paréntesis.</p>
+    <label>Parámetro t (valor exacto)<input [(ngModel)]="t" (change)="apply()" /></label>
+    <button class="primary" (click)="apply()">Calcular y visualizar</button>
+  </div>
+</div>
+<p class="error" role="alert" *ngIf="error">{{error}} Se conserva el último cálculo válido.</p>
+<div class="toolbar">
+  <button (click)="view='system';paint()" [attr.aria-pressed]="view==='system'">Rectas y planos</button>
+  <button (click)="view='transform';paint()" [disabled]="!spectral" [attr.aria-pressed]="view==='transform'">Transformación 2 × 2</button>
+  <label class="check"><input type="checkbox" [(ngModel)]="practice" (ngModelChange)="reveal=false;paint()" />Modo práctica</label>
+  <button *ngIf="practice" (click)="reveal=!reveal;paint()">{{reveal?'Ocultar':'Mostrar'}} resultados</button>
+</div>
+<div class="viewport"><canvas #canvas class="phase-canvas" [class.space]="n===3 && view==='system'" (pointerdown)="startDrag($event)" (pointermove)="moveDrag($event)" (pointerup)="endDrag($event)" (pointercancel)="endDrag($event)" (lostpointercapture)="endDrag($event)" (wheel)="wheelZoom($event)" role="img" [attr.aria-label]="view==='system'?'Representación geométrica del sistema. Consulta los rangos y soluciones debajo.':'Cuadrícula, círculo y figura transformados por A. Consulta el espectro debajo.'"></canvas></div>
+<p class="legend" *ngIf="view==='system'">Ecuaciones en colores · solución exacta en blanco · ajuste de mínimos cuadrados en amarillo. {{n===3?'Intersecciones entre planos en líneas discontinuas con los colores de ambos planos. Arrastra para girar la vista espacial. Los planos se recortan contra el cubo del encuadre.':''}}</p>
+<p class="legend" *ngIf="view==='transform'">Original en gris · círculo transformado en verde · figura en rosa · área unidad en amarillo · direcciones propias en violeta · iteraciones en colores.</p>
+<div class="parameters" *ngIf="parameterized"><fieldset><legend>Parámetro t</legend><div class="parameter-value"><input type="number" [ngModel]="numericT" (ngModelChange)="parameterInput($event)" step="0.1" aria-label="Valor numérico de t"/><input type="range" min="-4" max="4" step="0.01" [ngModel]="numericT" (ngModelChange)="parameterInput($event)" aria-label="Explorar parámetro t" /></div><small>El deslizador explora [−4, 4]; el campo exacto admite otros valores.</small></fieldset></div>
+<details class="settings" open><summary>Controles de la vista y exportación</summary><div class="settings-grid">
+  <label>Amplitud del encuadre: ±{{extent}}<input type="range" min="1" max="30" step="0.5" [(ngModel)]="extent" (ngModelChange)="paint()" /><small *ngIf="n===3 && view==='system' && grid">Cuadrícula cada {{spatialGridStep}} unidades</small></label>
+  <label *ngIf="n===3 && view==='system'">Profundidad de perspectiva<input type="range" min="0" max="1" step="0.05" [(ngModel)]="perspective" (ngModelChange)="paint()" /><small>{{perspective===0?'Proyección ortogonal':'Los elementos cercanos se ven más grandes'}}</small></label>
+  <label *ngIf="n===3 && view==='system'">Zoom: {{fmt(zoom)}}×<input type="range" min="0.2" max="5" step="0.05" [(ngModel)]="zoom" (ngModelChange)="paint()" /><small>Arrastra para girar; usa la rueda o pellizca para acercar y alejar.</small><button (click)="zoom=1;paint()">Restablecer zoom</button></label>
+  <label class="check"><input type="checkbox" [(ngModel)]="grid" (ngModelChange)="paint()"/>Cuadrícula</label>
+  <ng-container *ngIf="view==='transform'">
+    <label>Interpolación I → A<input type="range" min="0" max="1" step="0.01" [(ngModel)]="blend" (ngModelChange)="paint()" /></label>
+    <label>Iteraciones de A<input type="number" min="0" max="40" [(ngModel)]="iterations" (change)="iterations=iterations<0?0:iterations>40?40:iterations;paint()"/></label>
+    <label>Figura<select [(ngModel)]="pattern" (ngModelChange)="paint()"><option value="flower">Flor de siete pétalos</option><option value="star">Estrella radial</option><option value="circle">Círculo</option></select></label>
+    <label class="check"><input type="checkbox" [(ngModel)]="eigen" (ngModelChange)="paint()"/>Direcciones propias reales</label>
+    <label class="check"><input type="checkbox" [(ngModel)]="quadratic" (ngModelChange)="paint()"/>Forma cuadrática xᵀAx: niveles ±1, ±4</label>
+    <label class="check"><input type="checkbox" [(ngModel)]="modulo" (ngModelChange)="paint()"/>Iteraciones módulo 1 (toro)</label>
+    <button (click)="animate()">{{running?'Pausar':'Animar'}} transformación</button>
+  </ng-container>
+  <div class="toolbar"><button (click)="download('png')">Exportar PNG</button><button (click)="download('json')">Informe JSON</button><button (click)="share()">Copiar enlace</button></div>
+</div><p class="muted empty" role="status">{{notice}}</p><p class="muted empty" *ngIf="view==='transform'">La interpolación (1 − s)I + sA no siempre conserva las propiedades de A. El modo toro aplica A y reduce coordenadas módulo 1; solo matrices enteras definen una aplicación independiente del representante del toro.</p></details>
+<section class="lab-analysis" *ngIf="!practice || reveal">
+  <h3>Diagnóstico exacto</h3><div class="metrics"><div><small>Rango A / [A | b]</small><strong>{{analysis.rank}} / {{analysis.augmentedRank}}</strong></div><div><small>Clasificación</small><strong>{{analysis.kind}}</strong></div><div><small>Determinante A</small><strong>{{det}}</strong></div><div><small>Dimensión del núcleo</small><strong>{{analysis.kernel.length}}</strong></div></div>
+  <p class="formula">{{solution}}</p><p class="muted">Rouché–Frobenius: existe solución si y solo si ambos rangos coinciden; es única cuando ese rango es {{n}}. Los parámetros libres s₁, s₂… recorren ℝ.</p>
+  <details><summary>Base del núcleo e inversa</summary><p class="formula" *ngFor="let v of analysis.kernel">({{v.join(', ')}})</p><p class="muted" *ngIf="!analysis.kernel.length">El núcleo solo contiene el vector cero.</p><div class="matrix-scroll" *ngIf="inv"><table class="matrix"><caption>A⁻¹</caption><tbody><tr *ngFor="let row of inv"><td *ngFor="let q of row">{{q}}</td></tr></tbody></table></div><p class="muted" *ngIf="!inv">No hay inversa: A es singular o rectangular.</p></details>
+  <details *ngIf="spectral"><summary>Espectro, valores singulares y condicionamiento (aproximados)</summary>
+    <p class="formula" *ngIf="spectral.real">λ₁ = {{fmt(spectral.values[0])}} · λ₂ = {{fmt(spectral.values[1])}}</p>
+    <p class="formula" *ngIf="!spectral.real">λ = {{fmt(spectral.values[0])}} ± {{fmt(spectral.values[1])}} i</p>
+    <p class="formula">σ₁ = {{fmt(spectral.singular[0])}} · σ₂ = {{fmt(spectral.singular[1])}} · κ₂(A) = {{fmt(spectral.condition)}}</p><p class="muted">Los valores singulares son los semiejes de la imagen del círculo unidad. κ₂ mide sensibilidad al resolver el sistema. Un autovalor repetido puede tener una sola dirección propia; una matriz escalar tiene todas las direcciones propias.</p>
+  </details>
+  <details *ngIf="fit"><summary>Mínimos cuadrados exactos: AᵀAx = Aᵀb</summary><p class="formula">x̂ = ({{fit.particular.join(', ')}})</p><p class="formula">Residuo Ax̂ − b = ({{residual}})</p><p class="muted">{{fit.kernel.length?'El mínimo no es único: puedes añadir cualquier vector del núcleo de A. Se muestra un representante, no necesariamente el de norma mínima.':'El mínimo es único porque las columnas de A son independientes.'}} Este cálculo usa ecuaciones normales con fracciones exactas.</p></details>
+  <details *ngIf="n===2 || n===3"><summary>Distancias, proyecciones ortogonales y ángulos (aproximados)</summary><div class="row-controls"><label>Punto: x<input type="number" [(ngModel)]="probeX" /></label><label>y<input type="number" [(ngModel)]="probeY" /></label><label *ngIf="n===3">z<input type="number" [(ngModel)]="probeZ" /></label></div><p class="muted" *ngFor="let d of distances">Ecuación {{d.equation}} · distancia = {{fmt(d.distance)}} · proyección = ({{d.projection.join(', ')}})</p><p class="muted" *ngFor="let pair of angles">Ecuaciones {{pair.pair}} · ángulo agudo = {{fmt(pair.angle)}}°<span *ngIf="pair.distance!==null"> · distancia entre paralelas = {{fmt(pair.distance)}}</span></p><p class="muted">Se usa |n·p − b| / ‖n‖. Las filas sin normal no describen rectas ni planos y se omiten.</p></details>
+</section>
+<section class="lab-analysis">
+  <h3>Mesa de Gauss</h3><p class="muted">Opera tú mismo sobre las filas. Cada operación conserva el conjunto de soluciones. La columna separada por la línea es b.</p>
+  <div class="matrix-scroll"><table class="matrix"><caption>Matriz de trabajo</caption><tbody><tr *ngFor="let row of work"><td *ngFor="let q of row;let j=index" [class.rhs]="j===n">{{q}}</td></tr></tbody></table></div>
+  <div class="row-controls"><label>Operación<select [(ngModel)]="operation"><option value="add">Sumar múltiplo de otra fila</option><option value="swap">Intercambiar filas</option><option value="scale">Multiplicar fila</option></select></label><label>Fila destino<select [(ngModel)]="target"><option *ngFor="let row of work;let i=index" [ngValue]="i+1">F{{i+1}}</option></select></label><label *ngIf="operation!=='scale'">Fila origen<select [(ngModel)]="source"><option *ngFor="let row of work;let i=index" [ngValue]="i+1">F{{i+1}}</option></select></label><label *ngIf="operation!=='swap'">Factor exacto<input [(ngModel)]="factor" /></label><button class="primary" (click)="rowOperation()">Aplicar operación</button></div>
+  <div class="toolbar"><button (click)="undo()" [disabled]="history.length<2">Deshacer</button><button (click)="restart()">Reiniciar mesa</button><button (click)="notice=hint()">Pedir una pista</button></div>
+  <ol class="history"><li *ngFor="let item of history">{{item.label}}</li></ol>
+  <details *ngIf="!practice || reveal"><summary>Solución guiada de Gauss–Jordan · {{analysis.steps.length-1}} operaciones</summary><div class="toolbar"><button (click)="step=step-1" [disabled]="step===0">Anterior</button><strong>{{step+1}} / {{analysis.steps.length}} · {{analysis.steps[step].label}}</strong><button (click)="step=step+1" [disabled]="step+1>=analysis.steps.length">Siguiente</button><button (click)="useStep()">Llevar a la mesa</button></div><div class="matrix-scroll"><table class="matrix"><tbody><tr *ngFor="let row of currentStep"><td *ngFor="let q of row;let j=index" [class.rhs]="j===n">{{q}}</td></tr></tbody></table></div></details>
+</section>
+<section class="lab-analysis" *ngIf="parameterized">
+  <h3>Discusión del parámetro</h3><p class="muted">Los valores excepcionales de los ejemplos están seleccionados analíticamente. El barrido es una exploración de muestras; puede saltarse singularidades y no sustituye una discusión simbólica.</p>
+  <ng-container *ngIf="parameterStudy && (!practice || reveal)"><p class="formula" *ngIf="parameterStudy.formula">det A(t) = {{parameterStudy.formula}}</p><p class="muted">{{parameterStudy.note}}</p><p class="formula" *ngFor="let root of parameterStudy.roots">Raíz {{root.exact?'exacta: '+root.exact:'aproximada: '+fmt(root.approx)}}</p></ng-container>
+  <div class="toolbar"><button *ngFor="let c of cases" (click)="t=c.t;apply()">t = {{c.t}} · {{practice&&!reveal?'Examinar':c.kind}}</button></div>
+  <div class="row-controls"><label>Desde<input type="number" [(ngModel)]="scanMin" /></label><label>Hasta<input type="number" [(ngModel)]="scanMax" /></label><label>Paso<input type="number" [(ngModel)]="scanStep" /></label><button (click)="scanParameters()">Explorar intervalo</button></div>
+  <div class="scan"><button *ngFor="let c of scan" (click)="t=c.t;apply()" [title]="practice&&!reveal?'Examinar muestra':c.kind+' · rangos '+c.rank" [class.incompatible]="(!practice||reveal)&&c.kind==='Incompatible'">{{c.t}}<small *ngIf="!practice||reveal">{{c.rank}}</small></button></div>
+</section>
+<section class="lab-analysis"><h3>Reto y conexiones</h3><p>{{selected.challenge}}</p><p class="muted">Antes de calcular, predice el rango, la dimensión del conjunto solución o el signo del determinante. Después escribe qué teorema justifica tu respuesta y comprueba el resultado sustituyendo.</p><div class="toolbar"><a routerLink="/tools/implicit-curve-graph">Explorar curvas implícitas</a><a routerLink="/tools/vector-field" [queryParams]="dynamicQuery">{{spectral?'Abrir x′ = Ax en sistemas dinámicos':'Explorar sistemas dinámicos'}}</a><a routerLink="/tools/graph-plotter">Graficar funciones</a></div><details><summary>Fuentes y alcance</summary><p class="muted">Ejemplos originales y variantes didácticas basados en las familias descritas en estas referencias. Álgebra racional exacta para matrices de hasta 6 × 6; espectro aproximado para 2 × 2; geometría para 2 o 3 incógnitas. Las vistas usan muestras y un encuadre finito.</p><ul><li><a [href]="sources.geometry">Georgia Tech: sistemas y geometría</a></li><li><a [href]="sources.transform">Georgia Tech: transformaciones lineales</a></li><li><a [href]="sources.markov">Georgia Tech: matrices estocásticas</a></li><li><a [href]="sources.least">TU Delft: mínimos cuadrados</a></li><li><a [href]="sources.svd">MIT / Gilbert Strang: descomposición singular</a></li><li><a [href]="sources.cat">Wolfram MathWorld: gato de Arnold</a></li><li><a [href]="sources.hilbert">Wolfram MathWorld: matriz de Hilbert</a></li></ul></details></section>

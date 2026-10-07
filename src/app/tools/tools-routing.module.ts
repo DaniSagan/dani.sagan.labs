@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'pi-decimals', component: PiDecimalComponent },
       { path: 'implicit-curve-graph', component: ImplicitCurveGraphToolComponent },
       { path: 'vector-field', loadComponent: () => import('./vector-field/vector-field.component').then(m => m.VectorFieldComponent) },
+      { path: 'linear-algebra', loadComponent: () => import('./linear-algebra/linear-algebra.component').then(m => m.LinearAlgebraComponent) },
       { path: 'sun-position', component: SunPositionComponent },
       { path: 'travel-planner', component: TravelPlannerComponent }
     ]

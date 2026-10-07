@@ -20,7 +20,8 @@ export class ToolsNavbarComponent {
       { name: 'Graficador de curvas implícitas', route: 'implicit-curve-graph' },
       { name: 'Campos vectoriales y dinámica', route: 'vector-field' },
       { name: 'Calculadora de posición solar', route: 'sun-position' },
-      { name: 'Planificador de viajes', route: 'travel-planner' }
+      { name: 'Planificador de viajes', route: 'travel-planner' },
+      { name: 'Laboratorio de álgebra lineal', route: 'linear-algebra' }
     ]
   }];
 }
