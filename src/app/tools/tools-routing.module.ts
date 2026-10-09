@@ -16,6 +16,7 @@ const routes: Routes = [
       { path: 'implicit-curve-graph', component: ImplicitCurveGraphToolComponent },
       { path: 'vector-field', loadComponent: () => import('./vector-field/vector-field.component').then(m => m.VectorFieldComponent) },
       { path: 'linear-algebra', loadComponent: () => import('./linear-algebra/linear-algebra.component').then(m => m.LinearAlgebraComponent) },
+      { path: 'probability-lab', loadComponent: () => import('./probability-lab/probability-lab.component').then(m => m.ProbabilityLabComponent) },
       { path: 'sun-position', component: SunPositionComponent },
       { path: 'travel-planner', component: TravelPlannerComponent }
     ]

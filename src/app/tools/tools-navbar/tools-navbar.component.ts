@@ -21,7 +21,8 @@ export class ToolsNavbarComponent {
       { name: 'Campos vectoriales y dinámica', route: 'vector-field' },
       { name: 'Calculadora de posición solar', route: 'sun-position' },
       { name: 'Planificador de viajes', route: 'travel-planner' },
-      { name: 'Laboratorio de álgebra lineal', route: 'linear-algebra' }
+      { name: 'Laboratorio de álgebra lineal', route: 'linear-algebra' },
+      { name: 'Laboratorio de probabilidad y estadística', route: 'probability-lab' }
     ]
   }];
 }
