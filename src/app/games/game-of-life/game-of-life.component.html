@@ -1,26 +1,204 @@
-<h2>Juego de la Vida de Conway</h2>
-<div class="controls">
-  <label for="rows">Filas:</label>
-  <input id="rows" type="number" [(ngModel)]="rows" (change)="resizeBoard()">
+<section class="life-hero" aria-labelledby="life-title">
+  <span class="eyebrow">VIDA ARTIFICIAL · CONWAY · B3/S23</span>
+  <h2 id="life-title">Juego de la vida</h2>
+  <p class="lead">Dibuja unas células y deja que aparezcan osciladores, naves y máquinas. Explora un plano sin bordes:
+    la vida continúa más allá de lo que ves en pantalla.</p>
+  <div class="rule-strip" aria-label="Reglas del juego de la vida">
+    <span><b>3</b> vecinas: nace</span><span><b>2 o 3</b> vecinas: sobrevive</span><span><b>0 o 1</b> vecinas:
+      muere</span><span><b>4 o más</b> vecinas: muere</span>
+  </div>
+</section>
 
-  <label for="cols">Columnas:</label>
-  <input id="cols" type="number" [(ngModel)]="cols" (change)="resizeBoard()">
+<section class="life-lab" aria-label="Simulador del juego de la vida">
+  <div class="transport">
+    <div class="play-controls">
+      @if (running) { <button class="primary" (click)="pauseGame()">Ⅱ Pausar</button> }
+      @else { <button class="primary" (click)="startGame()" [disabled]="running || busy || loading || !population">▶
+        Iniciar</button> }
+      <button (click)="nextGeneration()" [disabled]="running || busy || loading"
+        title="Avanza exactamente una generación">Paso +1</button>
+      <button (click)="jump()" [disabled]="running || busy || loading">Saltar +{{ generationsPerTick | number
+        }}</button>
+      <button (click)="resetBoard()" [disabled]="!patterns.length">{{ busy && !running ? 'Interrumpir y volver al
+        inicio' : 'Volver al inicio' }}</button>
+    </div>
+    <div class="tempo-controls">
+      <label>Ritmo <input type="range" min="1" max="60" [(ngModel)]="rate" (ngModelChange)="changeSpeed()"><small>{{
+          rate }} pasos/s</small></label>
+      <label>Generaciones por paso<select [(ngModel)]="exponent">
+          <option [ngValue]="0">1 · observar</option>
+          <option [ngValue]="1">2</option>
+          <option [ngValue]="2">4</option>
+          <option [ngValue]="4">16</option>
+          <option [ngValue]="6">64</option>
+          <option [ngValue]="8">256</option>
+          <option [ngValue]="10">1 024</option>
+          <option [ngValue]="12">4 096</option>
+          <option [ngValue]="16">65 536</option>
+          <option [ngValue]="20">1 048 576</option>
+          <option [ngValue]="24">16 777 216</option>
+          <option [ngValue]="30">1 073 741 824</option>
+        </select></label>
+    </div>
+  </div>
+  <div #viewport class="viewport" [class.drawing]="tool === 'draw'" [class.erasing]="tool === 'erase'">
+    <canvas #board tabindex="0" role="img"
+      aria-label="Universo del juego de la vida. Enter inicia o pausa; punto avanza una generación; flechas desplazan; más y menos cambian el zoom."
+      (wheel)="wheel($event)" (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)"
+      (pointerup)="pointerUp($event)" (pointercancel)="pointerUp($event)" (lostpointercapture)="pointerUp($event)"
+      (keydown)="keyboard($event)" (keyup)="releaseKey($event)" (blur)="clearPointers()"
+      (contextmenu)="$event.preventDefault()"></canvas>
+    <div class="canvas-label"><span class="status-dot" [class.running]="running"></span>{{ loading ? 'Cargando patrón' :
+      running ? 'En evolución' : busy ? 'Calculando' : 'En pausa' }}<span class="canvas-title">{{ activeTitle }}</span>
+    </div>
+    <div class="zoom-controls"><button (click)="zoom(1.5)" aria-label="Acercar">＋</button><button
+        (click)="zoom(1 / 1.5)" aria-label="Alejar">−</button><button (click)="fitPattern()">Encuadrar</button><button
+        (click)="fullscreen()" aria-label="Alternar pantalla completa">⛶</button></div>
+    <div class="coordinates">{{ cursor }} <span>· {{ zoomLabel }}</span></div>
+  </div>
+  <div class="canvas-toolbar">
+    <div class="tools" role="group" aria-label="Herramienta de edición">
+      <button [class.active]="tool === 'pan'" [attr.aria-pressed]="tool === 'pan'" (click)="tool = 'pan'">✥
+        Mover</button>
+      <button [class.active]="tool === 'draw'" [attr.aria-pressed]="tool === 'draw'" (click)="tool = 'draw'">＋
+        Dibujar</button>
+      <button [class.active]="tool === 'erase'" [attr.aria-pressed]="tool === 'erase'" (click)="tool = 'erase'">−
+        Borrar</button>
+      <button (click)="clearBoard()" [disabled]="running || busy || loading">Vaciar</button>
+    </div>
+    <div class="display-options"><label><input type="checkbox" [(ngModel)]="grid" (change)="updateView()">
+        Cuadrícula</label><label><input type="checkbox" [(ngModel)]="trails" (change)="updateView()"> Estela del paso
+        anterior</label></div>
+  </div>
+  <div class="metrics" aria-label="Estado del universo">
+    <div><span>Generación</span><strong id="life-generation">{{ generation | number:'1.0-0' }}</strong></div>
+    <div><span>Células vivas</span><strong id="life-population">{{ population > maxSafePopulation ? '≈ ' : '' }}{{
+        population | number:'1.0-0' }}</strong></div>
+    <div><span>Región ocupada</span><strong>{{ occupiedWidth | number:'1.0-0' }} × {{ occupiedHeight | number:'1.0-0'
+        }}</strong></div>
+    <div><span>Último paso</span><strong>{{ elapsed | number:'1.1-1' }} ms</strong></div>
+  </div>
+  <p class="interaction-help">Rueda para acercar · arrastra con «Mover» o mantén espacio · dos dedos para mover y
+    ampliar · Enter para iniciar o pausar · punto para avanzar · F para encuadrar.</p>
+  @if (error) { <p class="message error" role="alert">{{ error }}</p> }
+  @if (notice) { <p class="message" role="status">{{ notice }}</p> }
+</section>
 
-  <label for="speed">Velocidad (ms):</label>
-  <input id="speed" type="number" [(ngModel)]="speed" (change)="changeSpeed(speed)">
+<section class="pattern-library" aria-labelledby="patterns-title">
+  <div class="section-heading">
+    <div><span class="eyebrow">EL ATLAS DE LA VIDA</span>
+      <h3 id="patterns-title">Pequeñas semillas, grandes sorpresas</h3>
+    </div><span class="count">{{ patterns.length | number }} patrones</span>
+  </div>
+  <p>Empieza por los {{ featuredCount }} ejemplos comentados o abre el archivo completo. Busca por nombre, autor o
+    descripción y observa qué cambia cuando avanzas una generación.</p>
+  <div class="library-filters">
+    <label>Buscar<input type="search" [(ngModel)]="query" placeholder="Planeador, Gosper, pulsar, Turing…"></label>
+    <label>Familia<select [(ngModel)]="category">
+        <option value="">Todas las familias</option>@for (name of categories; track name) { <option [value]="name">{{
+          name }}</option> }
+      </select></label>
+    <label class="check"><input type="checkbox" [(ngModel)]="featuredOnly"> Solo ejemplos comentados</label>
+  </div>
+  <div class="library-body">
+    <div class="pattern-picker"><label for="life-pattern-select">Selecciona un patrón · {{ filteredPatterns.length |
+        number }} resultados</label>
+      <select id="life-pattern-select" size="9" [ngModel]="selectedId" (ngModelChange)="selectPattern($event)"
+        [disabled]="running || busy || !patterns.length">
+        @for (group of patternGroups; track group.category) { <optgroup [label]="group.category">@for (pattern of
+          group.patterns; track pattern.id) { <option [value]="pattern.id">{{ pattern.title }}</option> }</optgroup> }
+      </select>
+      @if (!filteredPatterns.length && patterns.length) { <p>No hay coincidencias. Prueba otra búsqueda o abre el
+        archivo completo.</p> }
+    </div>
+    @if (selectedPattern; as pattern) {
+    <article class="pattern-card"><span class="eyebrow">{{ pattern.category }}</span>
+      <h4>{{ pattern.title }}</h4>
+      <p>{{ pattern.description }}</p>
+      <dl>
+        <div>
+          <dt>Semilla</dt>
+          <dd>{{ pattern.width | number }} × {{ pattern.height | number }}</dd>
+        </div>
+        <div>
+          <dt>Población inicial</dt>
+          <dd>{{ pattern.population | number }}</dd>
+        </div>@if (pattern.author) { <div>
+          <dt>Autoría del archivo</dt>
+          <dd>{{ pattern.author }}</dd>
+        </div> }
+      </dl>
+      <a [href]="pattern.source" target="_blank" rel="noopener noreferrer">Archivo original y créditos ↗</a>
+      <button (click)="selectPattern(pattern.id)" [disabled]="running || busy || loading">Cargar de nuevo</button>
+    </article>
+    }
+  </div>
+  <p class="archive-note">El archivo reúne patrones compatibles con Conway de una copia de LifeWiki archivada en 2023 y
+    ejemplos de copy/life. Conserva los nombres y las descripciones originales en el archivo completo; la selección
+    comentada está en español. El catálogo sigue creciendo en <a href="https://conwaylife.com/wiki/Main_Page"
+      target="_blank" rel="noopener noreferrer">LifeWiki ↗</a>.</p>
+</section>
 
-  <button (click)="startGame()" [disabled]="running">Iniciar</button>
-  <button (click)="pauseGame()" [disabled]="!running">Pausar</button>
-  <button (click)="resetBoard()">Reiniciar</button>
-</div>
-
-<div class="board">
-  <table>
-    <tr *ngFor="let row of board; let rowIndex = index">
-      <td *ngFor="let cell of row; let colIndex = index"
-          [class.alive]="cell"
-          (click)="toggleCell(rowIndex, colIndex)">
-      </td>
-    </tr>
-  </table>
-</div>
+<section class="workbench" aria-labelledby="workbench-title">
+  <span class="eyebrow">TU PROPIO EXPERIMENTO</span>
+  <h3 id="workbench-title">Explora, siembra y comparte</h3>
+  <div class="workbench-grid">
+    <details>
+      <summary>Vista y coordenadas</summary>
+      <p>El universo no tiene bordes. Estas dimensiones cambian el área visible; las células fuera de ella continúan
+        evolucionando.</p>
+      <div class="field-pair"><label>Columnas visibles<input type="number" id="life-view-columns" min="1" step="1"
+            [(ngModel)]="viewColumns"></label><label>Filas visibles<input type="number" id="life-view-rows" min="1"
+            step="1" [(ngModel)]="viewRows"></label></div>
+      <button (click)="applyViewSize()">Aplicar vista</button>
+      <div class="field-pair"><label>Coordenada X<input type="number" id="life-target-x" step="1"
+            [(ngModel)]="targetX"></label><label>Coordenada Y<input type="number" id="life-target-y" step="1"
+            [(ngModel)]="targetY"></label></div><button (click)="goTo()">Ir a la coordenada</button>
+      <div class="export-actions"><button (click)="setTargetCell(true)" [disabled]="running || busy || loading">Crear
+          célula aquí</button><button (click)="setTargetCell(false)" [disabled]="running || busy || loading">Borrar
+          célula aquí</button></div>
+      <p class="small">No se reserva memoria para las casillas vacías. Los límites prácticos son la memoria del
+        dispositivo, el tiempo de cálculo y la precisión numérica: coordenadas y dimensiones hasta 2⁵⁰, aproximadamente
+        mil billones de celdas por eje.</p>
+    </details>
+    <details>
+      <summary>Semilla aleatoria</summary>
+      <p>Un campo de células al azar permite explorar cómo surge el orden después de la actividad inicial.</p>
+      <div class="field-pair"><label>Columnas<input type="number" min="1"
+            [(ngModel)]="randomWidth"></label><label>Filas<input type="number" min="1"
+            [(ngModel)]="randomHeight"></label></div>
+      <label>Densidad · {{ density }} %<input type="range" min="0" max="100" [(ngModel)]="density"></label><button
+        (click)="randomize()" [disabled]="running || busy || loading">Sembrar al azar</button>
+      <p class="small">La siembra admite un millón de casillas iniciales; la evolución puede expandirse fuera de esa
+        región.</p>
+    </details>
+    <details>
+      <summary>Importar y exportar</summary>
+      <p>Abre un patrón RLE o macrocell de Golly, o pega su contenido. La regla debe ser B3/S23.</p>
+      <label class="file-label">Abrir archivo<input type="file" accept=".rle,.mc,.txt" (change)="importFile($event)"
+          [disabled]="running || busy || loading"></label>
+      <label>Contenido del patrón<textarea rows="5" [(ngModel)]="importText"
+          placeholder="x = 3, y = 3, rule = B3/S23&#10;bo$2bo$3o!"></textarea></label>
+      <button (click)="importPattern()" [disabled]="running || busy || loading || !importText.trim()">Importar</button>
+      <div class="export-actions"><button (click)="exportPattern('rle')"
+          [disabled]="running || busy || loading">Descargar RLE</button><button (click)="exportPattern('mc')"
+          [disabled]="running || busy || loading">Descargar macrocell</button></div>
+      <p class="small">RLE conserva la posición y la generación. Macrocell guarda la estructura comprimida y permite
+        compartir patrones con grandes poblaciones.</p>
+    </details>
+  </div>
+</section>
+<section class="reading" aria-labelledby="reading-title">
+  <h3 id="reading-title">De las reglas a las máquinas</h3>
+  <p>Las ocho vecinas se cuentan en el estado anterior y todas las células cambian a la vez. La regla no mueve ninguna
+    célula: las naves avanzan porque nacen células delante y desaparecen detrás.</p>
+  <div class="reading-links"><a routerLink="/articles/cellular-automata">Artículo sobre autómatas celulares →</a><a
+      routerLink="/problems/problema-096">Problema: un oscilador celular →</a></div>
+  <p class="small">Motor HashLife de <a href="https://github.com/copy/life" target="_blank"
+      rel="noopener noreferrer">Fabian Hemmer</a>, distribuido con su <a href="assets/game-of-life/vendor/LICENSE"
+      target="_blank" rel="noopener noreferrer">licencia BSD</a>. Patrones y créditos: <a
+      href="https://github.com/cobyj33/llcacodec-test-data" target="_blank" rel="noopener noreferrer">archivo de
+      LifeWiki</a> y <a href="https://copy.sh/life/examples/" target="_blank" rel="noopener noreferrer">copy/life</a>.
+    Para profundizar, consulta <a href="https://golly.sourceforge.io/Help/Algorithms/HashLife.html" target="_blank"
+      rel="noopener noreferrer">HashLife en Golly</a>.</p>
+</section>

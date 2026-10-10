@@ -1,0 +1,196 @@
+h3 {
+  margin: 0.5rem 0 1rem;
+}
+.section-heading {
+  justify-content: space-between;
+  align-items: start;
+}
+.section-heading h3 {
+  margin: 0.4rem 0;
+}
+.count {
+  font:
+    0.7rem/1.5 system-ui,
+    sans-serif;
+  color: var(--gold);
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 0.4rem 0.7rem;
+}
+.library-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.check {
+  grid-column: 1/-1;
+}
+.library-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.2rem;
+}
+.pattern-picker label {
+  font:
+    0.75rem/1.4 system-ui,
+    sans-serif;
+  color: var(--ink-dim);
+}
+.pattern-picker select {
+  width: 100%;
+  height: 295px;
+  margin-top: 0.6rem;
+  padding: 0.35rem;
+}
+.pattern-picker option {
+  padding: 0.45rem 0.6rem;
+}
+.pattern-picker optgroup {
+  font-weight: 600;
+  color: var(--gold);
+}
+.pattern-picker option {
+  color: var(--ink);
+  font-weight: 400;
+}
+.pattern-card {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.2rem;
+  min-width: 0;
+}
+.pattern-card h4 {
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin: 0.7rem 0;
+}
+.pattern-card p {
+  font-size: 0.95rem;
+}
+.pattern-card dl {
+  font:
+    0.75rem/1.6 system-ui,
+    sans-serif;
+}
+.pattern-card dl div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  border-top: 1px solid var(--rule);
+  padding: 0.4rem 0;
+}
+.pattern-card dt {
+  color: var(--ink-dim);
+}
+.pattern-card dd {
+  margin: 0;
+  text-align: right;
+}
+.pattern-card > a {
+  font-size: 0.8rem;
+  display: block;
+  margin: 0.9rem 0;
+}
+.archive-note {
+  margin-top: 1rem;
+}
+.workbench-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+.workbench-grid details {
+  border: 1px solid var(--rule);
+  background: var(--bg2);
+  border-radius: 10px;
+  padding: 1rem;
+}
+.workbench-grid details:last-child {
+  grid-column: 1/-1;
+}
+summary {
+  cursor: pointer;
+  color: var(--gold);
+  font:
+    0.85rem/1.5 system-ui,
+    sans-serif;
+}
+.workbench-grid p {
+  font-size: 0.9rem;
+}
+.field-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+.field-pair input {
+  width: 100%;
+  min-width: 0;
+}
+.workbench textarea {
+  resize: vertical;
+  width: 100%;
+  font-family: monospace;
+}
+.export-actions {
+  margin: 1rem 0;
+}
+.reading-links a {
+  font-size: 0.88rem;
+}
+.reading p {
+  margin: 1rem 0;
+}
+@media (max-width: 650px) {
+  .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .library-body,
+  .workbench-grid,
+  .library-filters {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tempo-controls {
+    width: 100%;
+  }
+  .tempo-controls label {
+    flex: 1;
+  }
+  .coordinates {
+    bottom: 3.5rem;
+    max-width: calc(100% - 2rem);
+  }
+  .viewport {
+    height: 400px;
+  }
+  .pattern-card {
+    padding: 1rem;
+  }
+  .canvas-toolbar {
+    gap: 1rem;
+  }
+  .transport {
+    padding: 0.8rem;
+  }
+  .play-controls button {
+    padding: 0.5rem 0.6rem;
+  }
+}
+/* Keep native pattern options legible both focused and unfocused. */
+.pattern-picker select {
+  color-scheme: dark;
+  background: var(--bg2);
+  color: var(--ink);
+}
+.pattern-picker optgroup,
+.pattern-picker option {
+  background: var(--bg2);
+}
+.pattern-picker select option:checked {
+  background: var(--gold) linear-gradient(var(--gold), var(--gold));
+  color: var(--bg);
+  font-weight: 600;
+}

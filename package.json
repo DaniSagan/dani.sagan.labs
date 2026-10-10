@@ -9,7 +9,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage=false"
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage=false",
+    "test:life-engine": "node scripts/test-life-engine.cjs",
+    "generate:life-catalog": "node scripts/generate-life-catalog.cjs"
   },
   "private": true,
   "dependencies": {

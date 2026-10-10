@@ -7,23 +7,41 @@
   <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3>
-    <p>En el Juego de la vida sobre una cuadrícula infinita, parte de las células vivas <span class="math-part"><app-formula expression="(-1,0),(0,0),(1,0)" displayMode="inline" [showCodeButton]="false" /></span>. Determina las dos generaciones siguientes con las reglas <span class="math-part"><app-formula expression="B3/S23" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <p>En el Juego de la vida sobre una cuadrícula infinita, parte de las células vivas <span
+        class="math-part"><app-formula expression="(-1,0),(0,0),(1,0)" displayMode="inline"
+          [showCodeButton]="false" /></span>. Determina las dos generaciones siguientes con las reglas <span
+        class="math-part"><app-formula expression="B3/S23" displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>En el juego de la vida, cada celda tiene ocho vecinas. La regla B3/S23 hace nacer una celda muerta con tres vecinas vivas y mantiene una viva con dos o tres. La actualización es simultánea: contamos todas las vecindades en la configuración anterior, sin utilizar cambios recién calculados.</li>
-      <li>La célula central tiene dos vecinas vivas y sobrevive; los extremos solo una y mueren. B3 significa nacimiento con tres vecinas; S23, supervivencia con dos o tres. Se cuentan siempre las ocho posiciones adyacentes en la generación original.</li>
-      <li>Las células <span class="math-part"><app-formula expression="(0,1)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(0,-1)" displayMode="inline" [showCodeButton]="false" /></span> tienen tres vecinas vivas y nacen; ninguna otra muerta alcanza tres. Las candidatas fuera de esa franja tienen como máximo dos vecinas vivas. En (0,±1) están las tres originales, dando los únicos nacimientos.</li>
-      <li>La primera generación es <span class="math-part"><app-formula expression="{(0,-1),(0,0),(0,1)}" displayMode="inline" [showCodeButton]="false" /></span>. La actualización se hace simultáneamente: las muertes de los extremos no se usan al contar vecinas para los nacimientos.</li>
-      <li>Por simetría, la siguiente vuelve al trío horizontal inicial: es un oscilador de período 2. Intercambiar los ejes transforma el análisis horizontal en el vertical. Como las dos generaciones son distintas y la segunda vuelve a la inicial, el período es exactamente 2.</li>
+      <li>En el juego de la vida, cada celda tiene ocho vecinas. La regla B3/S23 hace nacer una celda muerta con tres
+        vecinas vivas y mantiene una viva con dos o tres. La actualización es simultánea: contamos todas las vecindades
+        en la configuración anterior, sin utilizar cambios recién calculados.</li>
+      <li>La célula central tiene dos vecinas vivas y sobrevive; los extremos solo una y mueren. B3 significa nacimiento
+        con tres vecinas; S23, supervivencia con dos o tres. Se cuentan siempre las ocho posiciones adyacentes en la
+        generación original.</li>
+      <li>Las células <span class="math-part"><app-formula expression="(0,1)" displayMode="inline"
+            [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(0,-1)"
+            displayMode="inline" [showCodeButton]="false" /></span> tienen tres vecinas vivas y nacen; ninguna otra
+        muerta alcanza tres. Las candidatas fuera de esa franja tienen como máximo dos vecinas vivas. En (0,±1) están
+        las tres originales, dando los únicos nacimientos.</li>
+      <li>La primera generación es <span class="math-part"><app-formula expression="{(0,-1),(0,0),(0,1)}"
+            displayMode="inline" [showCodeButton]="false" /></span>. La actualización se hace simultáneamente: las
+        muertes de los extremos no se usan al contar vecinas para los nacimientos.</li>
+      <li>Por simetría, la siguiente vuelve al trío horizontal inicial: es un oscilador de período 2. Intercambiar los
+        ejes transforma el análisis horizontal en el vertical. Como las dos generaciones son distintas y la segunda
+        vuelve a la inicial, el período es exactamente 2.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Vertical en la primera generación; horizontal en la segunda; período 2.</p>
-    <aside class="pitfall"><strong>Error frecuente.</strong> Actualizar una célula antes de contar las demás altera la regla: la actualización debe ser simultánea.</aside>
+    <p class="answer"><strong>Resultado.</strong> Vertical en la primera generación; horizontal en la segunda; período
+      2.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Actualizar una célula antes de contar las demás altera la
+      regla: la actualización debe ser simultánea.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Lecturas y recursos complementarios</h3>
-    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o
+      comprobar los resultados.</p>
     <div class="resource">
       <a routerLink="/articles/cellular-automata">Autómatas celulares ↗</a>
       <p>Estados discretos, reglas locales y evolución simultánea de una configuración.</p>

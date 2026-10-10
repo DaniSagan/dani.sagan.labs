@@ -1,0 +1,60 @@
+﻿block|Bloque|Naturalezas muertas|Cuatro células forman el ejemplo más pequeño de estabilidad. Cada célula tiene exactamente tres vecinas.|0
+beehive|Colmena|Naturalezas muertas|Seis células permanecen inmóviles. Compara las vecindades de las células vivas y de los huecos interiores.|0
+loaf|Hogaza|Naturalezas muertas|Una forma asimétrica de siete células que conserva su contorno generación tras generación.|0
+boat|Barca|Naturalezas muertas|Cinco células bastan para construir otra estructura estable. Prueba a añadir una célula en su hueco.|0
+tub|Tina|Naturalezas muertas|Un rombo de cuatro células: estabilidad sin un bloque compacto de 2 × 2.|0
+pond|Estanque|Naturalezas muertas|Un anillo estable con un hueco central. Las células muertas interiores no alcanzan las tres vecinas necesarias para nacer.|0
+eater1|Devorador de planeadores|Naturalezas muertas|Una estructura estable que puede absorber ciertos impactos y recuperar su forma. Su comportamiento depende de cómo llegue la nave.|0
+blinker|Parpadeador|Osciladores|Tres células alternan entre una línea horizontal y una vertical. Su período es dos; avanza una generación cada vez.|0
+toad|Sapo|Osciladores|Dos filas desplazadas se transforman y regresan a su posición después de dos generaciones.|0
+beacon|Faro|Osciladores|Dos bloques cercanos en diagonal hacen parpadear las células que quedan junto al centro.|0
+pulsar|Púlsar|Osciladores|Un oscilador de período tres con cuatro regiones simétricas. Activa la estela para distinguir sus fases.|0
+pentadecathlon|Pentadecátlon|Osciladores|La figura completa se repite cada quince generaciones. El nombre recuerda precisamente ese período.|0
+clock|Reloj|Osciladores|Una pequeña configuración de período dos con un movimiento visual diferente del parpadeador.|0
+figureeight|Figura de ocho|Osciladores|Dos regiones conectadas producen un ciclo de ocho generaciones. Observa cómo cambia la cintura de la figura.|0
+tumbler|Volteador|Osciladores|Este oscilador parece dar tumbos, pero regresa a su estado inicial después de catorce generaciones.|0
+koksgalaxy|Galaxia de Kok|Osciladores|Un oscilador de período ocho cuya rotación visual surge únicamente de nacimientos y muertes locales.|0
+octagon2|Octágono II|Osciladores|Un contorno de ocho lados recorre cinco fases antes de repetir su estado.|0
+dinnertable|Mesa de comedor|Osciladores|Un oscilador de período doce; compara la actividad central con las zonas que permanecen estables.|0
+queenbeeshuttle|Lanzadera de la reina|Osciladores|Un mecanismo periódico de treinta generaciones. Las estructuras laterales permiten que la actividad central vuelva sobre sí misma.|0
+trafficlight|Semáforo|Osciladores|Una constelación de parpadeadores. Varias piezas pueden oscilar juntas sin constituir una única célula o una nave.|0
+glider|Planeador|Naves|Cinco células regresan a su forma tras cuatro generaciones, desplazadas una casilla en diagonal. Ajusta la vista para seguir su recorrido.|0
+lwss|Nave ligera · LWSS|Naves|Una nave que se desplaza horizontalmente. Tras cuatro generaciones avanza dos casillas.|0
+mwss|Nave mediana · MWSS|Naves|Una nave ortogonal emparentada con la ligera; compara sus fases y el número de células que utiliza.|0
+hwss|Nave pesada · HWSS|Naves|La mayor de las tres naves ortogonales clásicas. Su velocidad de desplazamiento coincide con la de las otras dos.|0
+copperhead|Copperhead|Naves|Una nave ortogonal de período diez que avanza una casilla por ciclo. Su cabeza y su cola intercambian actividad.|0
+loafer|Loafer|Naves|Una nave lenta que avanza una casilla cada siete generaciones. Su movimiento no necesita un bloque de células permanente.|0
+sirrobin|Sir Robin|Naves|Una nave oblicua: se desplaza en una dirección distinta de la horizontal, vertical o diagonal de 45 grados.|2
+3enginecordership|Cordership de tres motores|Naves|Varios motores de conmutación cooperan para formar una nave diagonal. Amplía la vista y compara sus componentes.|2
+rpentomino|Pentominó R|Matusalenes|Solo cinco células desencadenan una evolución de 1 103 generaciones antes de dejar restos estables, osciladores y planeadores que se alejan.|0
+acorn|Bellota · Acorn|Matusalenes|Siete células tardan 5 206 generaciones en completar su evolución transitoria. Alterna pasos pequeños con saltos para ver el crecimiento.|2
+diehard|Diehard|Matusalenes|Un patrón de siete células que desaparece por completo en la generación 130. Su nombre alude a lo mucho que tarda en extinguirse.|0
+rabbits|Conejos · Rabbits|Matusalenes|Una semilla diminuta produce un transitorio prolongado y abundantes restos. El aspecto inicial no predice fácilmente su destino.|2
+lidka|Lidka|Matusalenes|Una pequeña semilla cuya actividad persiste durante miles de generaciones. Observa la población mientras ajustas el encuadre.|3
+piheptomino|Heptominó π|Matusalenes|Siete células en forma de π generan una secuencia de reacciones. Esta semilla aparece en numerosos mecanismos mayores.|0
+bheptomino|Heptominó B|Matusalenes|Una configuración elemental que produce actividad compleja y que se utiliza en conductos y otras construcciones.|0
+herschel|Herschel|Matusalenes|Una configuración de siete células importante en los circuitos de Life. Carga otros ejemplos del archivo buscando su nombre.|0
+gosperglidergun|Cañón de planeadores de Gosper|Cañones|Un núcleo periódico emite un planeador cada treinta generaciones. El núcleo se repite, pero el patrón completo crece al acumular naves.|0
+simkinglidergun|Cañón de Simkin|Cañones|Un diseño compacto de cañón que emite planeadores. Compara la organización de su núcleo con el cañón de Gosper.|0
+gunstar|Gunstar|Cañones|Una construcción de emisores con simetría visual. La vista alejada permite apreciar la organización de los flujos de naves.|2
+3enginecordershipgun|Cañón de Corderships|Cañones|Un mecanismo mayor construye y emite naves compuestas. Utiliza saltos de generaciones para observar el ciclo de producción.|5
+puffer1|Puffer 1|Rastrillos y locomotoras|Una estructura que avanza dejando residuos. A diferencia de una nave limpia, su recorrido queda marcado por nuevas células.|1
+puffer2|Puffer 2|Rastrillos y locomotoras|Otra locomotora que deja un rastro de estructuras. Observa a la vez el frente móvil y los restos de generaciones anteriores.|1
+spacerake|Rastrillo espacial|Rastrillos y locomotoras|Un mecanismo móvil emite planeadores mientras se desplaza. Combina la idea de una nave con la de un cañón.|1
+schickengine|Motor de Schick|Rastrillos y locomotoras|Una locomotora clásica: las naves y la actividad que las acompaña cooperan para dejar una estela persistente.|1
+tetheredrake|Rastrillo anclado|Rastrillos y locomotoras|Un ejemplo de emisión móvil con componentes conectados por actividad periódica. Prueba una vista amplia para seguir el rastro.|3
+switchengine|Motor de conmutación|Crecimiento|Una semilla con evolución compleja que interviene en construcciones de crecimiento ilimitado. Sigue las estructuras que se separan del origen.|2
+blocklayingswitchengine|Motor que deposita bloques|Crecimiento|El frente móvil va dejando bloques estables detrás. La población aumenta porque el rastro no se destruye.|3
+10cellinfinitegrowth|Crecimiento infinito con diez células|Crecimiento|Diez células iniciales bastan para producir crecimiento sin cota. Una semilla pequeña puede generar un universo cada vez más poblado.|4
+2x12infinitegrowth|Crecimiento desde una franja de 2 × 12|Crecimiento|Un patrón de crecimiento ilimitado cabe inicialmente en una franja muy estrecha. El tamaño de la semilla no limita su expansión futura.|4
+breeder1|Breeder 1|Crecimiento|Una construcción que fabrica nuevos emisores: no solo produce naves, sino también mecanismos que continúan produciéndolas.|5
+spacefiller1|Llenador de espacio|Crecimiento|Una construcción que extiende una región cada vez mayor. Al alejar el zoom, el lienzo representa los bloques densos de forma agregada.|4
+smallspacefiller|Llenador de espacio compacto|Crecimiento|Una semilla más compacta del tipo llenador de espacio. Compara el crecimiento de su superficie ocupada y su población.|4
+sawtooth1|Diente de sierra|Crecimiento|La población alterna fases de crecimiento y caídas pronunciadas. El nombre describe ese comportamiento de la población, no una forma geométrica fija.|5
+infinitegliderhotel|Hotel infinito de planeadores|Crecimiento|Una construcción que ilustra cómo reorganizar flujos de planeadores. Inspira una analogía visual con el hotel infinito de Hilbert.|5
+infinitelwsshotel|Hotel infinito de naves ligeras|Crecimiento|Una variante del hotel infinito con naves ortogonales. Utiliza una vista amplia y saltos para apreciar el mecanismo.|5
+snark|Snark · reflector|Lógica y construcciones|Un reflector estable de planeadores. La estructura aislada es estable; su función aparece al recibir un planeador en la trayectoria adecuada.|0
+buckaroo|Buckaroo · reflector|Lógica y construcciones|Un mecanismo de reflexión basado en un oscilador. Busca en el archivo sus reacciones para explorar cómo redirige las naves.|0
+turingmachine|Máquina de Turing|Lógica y construcciones|Una construcción que implementa una máquina de Turing dentro de Life. La actividad visible depende del estado inicial de su cinta y de sus componentes.|5
+universalturingmachine|Máquina de Turing universal|Lógica y construcciones|Una construcción computacional de gran escala. El patrón completo necesita un encuadre amplio; acerca el zoom para observar sus mecanismos locales.|5
+primer|Primer|Lógica y construcciones|Un mecanismo cuyo flujo de salida está relacionado con los números primos. Se necesita observar muchas generaciones para reconocer su comportamiento.|5
