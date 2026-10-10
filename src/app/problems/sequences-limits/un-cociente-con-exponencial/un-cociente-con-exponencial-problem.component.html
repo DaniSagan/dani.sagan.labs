@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un cociente con exponencial</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\lim_{n\to\infty}\frac{n^2}{2^n}" displayMode="inline" [showCodeButton]="false" /></span> y justifica la convergencia.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Comparar términos consecutivos permite justificar que una exponencial vence a un polinomio. Si <span class="math-part"><app-formula expression="a_{n+1}/a_n\le q&lt;1" displayMode="inline" [showCodeButton]="false" /></span> desde cierto índice N, entonces <span class="math-part"><app-formula expression="0\le a_n\le a_Nq^{n-N}" displayMode="inline" [showCodeButton]="false" /></span> por repetición. La progresión geométrica de la derecha tiende a cero y el teorema del encaje concluye.</li>
+      <li>Para <span class="math-part"><app-formula expression="b_{n}=n^{2}/2^{n}" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="b_{n+1}/b_{n}=(1+1/n)^{2}/2" displayMode="inline" [showCodeButton]="false" /></span>. El cociente permite comparar el crecimiento de los términos consecutivos sin recurrir a tratar n como variable continua.</li>
+      <li>Si <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>, el cociente es como máximo <span class="math-part"><app-formula expression="(\frac{6}{5})^{2}/2=\frac{18}{25}&lt;1" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="1+1/n\le \frac{6}{5}" displayMode="inline" [showCodeButton]="false" /></span>. La cota <span class="math-part"><app-formula expression="\frac{18}{25}" displayMode="inline" [showCodeButton]="false" /></span> es fija y estrictamente menor que 1.</li>
+      <li>Por inducción <span class="math-part"><app-formula expression="b_{n}\le b_{5}(\frac{18}{25})^{n-5}" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>. Aplicar la cota repetidamente da b₆≤qb₅, <span class="math-part"><app-formula expression="b_{7}\le q^{2}b_{5}" displayMode="inline" [showCodeButton]="false" /></span> y, por inducción, la expresión general, con <span class="math-part"><app-formula expression="q=\frac{18}{25}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La cota geométrica tiende a 0 y <span class="math-part"><app-formula expression="b_{n}\ge 0" displayMode="inline" [showCodeButton]="false" /></span>; el encaje da el límite. Una sucesión geométrica con razón de módulo menor que 1 tiende a cero. El encaje entre cero y esa cota prueba el límite.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 0.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Que el denominador crezca no basta sin comparar velocidades.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/stirling">Fórmula de Stirling ↗</a>
+      <p>Comparación de velocidades de crecimiento mediante una aproximación asintótica del factorial.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-042" />
+</article>

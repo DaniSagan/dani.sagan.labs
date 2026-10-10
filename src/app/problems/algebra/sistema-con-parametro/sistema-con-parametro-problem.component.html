@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Sistema con parámetro</h2>
+  <p class="topic">Álgebra y álgebra lineal · Matrices y sistemas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Clasifica y resuelve <span class="math-part"><app-formula expression="x+y+z=1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x+ay+z=1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x+y+az=1" displayMode="inline" [showCodeButton]="false" /></span> según el parámetro real a.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un sistema es compatible si tiene alguna solución, determinado si esta es única e indeterminado si tiene infinitas. Restar a una ecuación otra del sistema es reversible, así que no modifica las soluciones. Cuando aparece un factor dependiente del parámetro, distinguimos si es cero antes de dividir por él.</li>
+      <li>La reducción da <span class="math-part"><app-formula expression="(a-1)y=0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(a-1)z=0" displayMode="inline" [showCodeButton]="false" /></span>. Restar ecuaciones es reversible y conserva las soluciones. Permite eliminar las variables comunes y aislar los términos con <span class="math-part"><app-formula expression="a-1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Si a≠1, <span class="math-part"><app-formula expression="y=z=0" displayMode="inline" [showCodeButton]="false" /></span> y la primera ecuación impone <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>. Solo en este caso se puede dividir por <span class="math-part"><app-formula expression="a-1" displayMode="inline" [showCodeButton]="false" /></span>. Las dos coordenadas anuladas dejan <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span> en la primera ecuación.</li>
+      <li>Si <span class="math-part"><app-formula expression="a=1" displayMode="inline" [showCodeButton]="false" /></span>, las tres ecuaciones coinciden; toma <span class="math-part"><app-formula expression="y=s,z=t" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=1-s-t" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="a=1" displayMode="inline" [showCodeButton]="false" /></span> las ecuaciones reducidas son <span class="math-part"><app-formula expression="0=0" displayMode="inline" [showCodeButton]="false" /></span>. Quedan dos coordenadas libres y la condición <span class="math-part"><app-formula expression="x=1-y-z" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El sistema siempre es compatible, y es determinado solo si a≠1. La solución <span class="math-part"><app-formula expression="(1,0,0)" displayMode="inline" [showCodeButton]="false" /></span> existe para cualquier a. El parámetro cambia la unicidad, no la existencia.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> a≠1: <span class="math-part"><app-formula expression="(1,0,0)" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="a=1" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="(1-s-t,s,t)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No dividas entre <span class="math-part"><app-formula expression="a-1" displayMode="inline" [showCodeButton]="false" /></span> sin tratar antes <span class="math-part"><app-formula expression="a=1" displayMode="inline" [showCodeButton]="false" /></span>.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
+      <p>Propiedades algebraicas y significado geométrico de los determinantes.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-016" />
+</article>

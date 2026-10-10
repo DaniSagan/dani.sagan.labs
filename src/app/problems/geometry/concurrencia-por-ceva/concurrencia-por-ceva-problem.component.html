@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Concurrencia por Ceva</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En ABC, D∈BC, E∈CA, F∈AB son interiores. Si <span class="math-part"><app-formula expression="BD/DC=2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="CE/EA=3" displayMode="inline" [showCodeButton]="false" /></span>, determina <span class="math-part"><app-formula expression="AF/FB" displayMode="inline" [showCodeButton]="false" /></span> para que <span class="math-part"><app-formula expression="AD,BE,CF" displayMode="inline" [showCodeButton]="false" /></span> concurran.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para puntos D, E y F interiores a los lados BC, CA y AB, Ceva afirma que AD, BE y CF concurren si y solo si <span class="math-part"><app-formula expression="(BD/DC)(CE/EA)(AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Los cocientes corresponden a áreas de triángulos con la misma altura; al comparar esas áreas alrededor del punto común los factores se cancelan. Usamos los cocientes en ese orden para no invertir uno de ellos.</li>
+      <li>Para puntos interiores, Ceva dice <span class="math-part"><app-formula expression="(BD/DC)(CE/EA)(AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Las tres razones recorren el borde en el mismo sentido: <span class="math-part"><app-formula expression="BD/DC" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="CE/EA" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="AF/FB" displayMode="inline" [showCodeButton]="false" /></span>. Esto fija qué cocientes se multiplican.</li>
+      <li>Sustituye las dos razones: <span class="math-part"><app-formula expression="2\cdot 3\cdot (AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Ceva es una condición necesaria y suficiente para puntos interiores. No hacen falta longitudes absolutas del triángulo.</li>
+      <li>Despeja <span class="math-part"><app-formula expression="AF/FB=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>. Llamando r al cociente desconocido se obtiene <span class="math-part"><app-formula expression="6r=1" displayMode="inline" [showCodeButton]="false" /></span>; de ahí <span class="math-part"><app-formula expression="r=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Las tres razones positivas satisfacen la condición suficiente, por lo que hay concurrencia. La razón positiva determina un único F interior. El recíproco de Ceva prueba que esa elección sí produce concurrencia.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="AF/FB=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Invertir una sola razón cambia la condición de Ceva.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/ceva-theorem">Teorema de Ceva ↗</a>
+      <p>La condición de concurrencia expresada como producto de razones de segmentos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-023" />
+</article>

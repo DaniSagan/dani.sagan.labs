@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un límite con seno</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\lim_{x\to0}\frac{\sin(3x)-3x}{x^3}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El desarrollo local <span class="math-part"><app-formula expression="\sin t=t-t^3/6+O(t^5)" displayMode="inline" [showCodeButton]="false" /></span> incluye un resto cuyo valor absoluto está acotado por una constante multiplicada por <span class="math-part"><app-formula expression="\lvert t\rvert^5" displayMode="inline" [showCodeButton]="false" /></span> cerca de cero. Al sustituir <span class="math-part"><app-formula expression="t=3x" displayMode="inline" [showCodeButton]="false" /></span>, el término lineal se cancela. Tras dividir entre <span class="math-part"><app-formula expression="x^3" displayMode="inline" [showCodeButton]="false" /></span>, el resto queda acotado por una constante por <span class="math-part"><app-formula expression="x^2" displayMode="inline" [showCodeButton]="false" /></span> y tiende a cero.</li>
+      <li>La expansión es <span class="math-part"><app-formula expression="\sin t=t-t^{3}/6+O(t^{5})" displayMode="inline" [showCodeButton]="false" /></span> cerca de 0. El resto <span class="math-part"><app-formula expression="O(t^{5})" displayMode="inline" [showCodeButton]="false" /></span> significa que su valor absoluto está acotado por una constante por <span class="math-part"><app-formula expression="\lvert t\rvert ^{5}" displayMode="inline" [showCodeButton]="false" /></span> cerca de cero.</li>
+      <li>Con <span class="math-part"><app-formula expression="t=3x" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="\sin(3x)=3x-27x^{3}/6+O(x^{5})" displayMode="inline" [showCodeButton]="false" /></span>. El término cúbico incorpora el factor <span class="math-part"><app-formula expression="3^{3}=27" displayMode="inline" [showCodeButton]="false" /></span>, no solo un factor 3. El resto continúa siendo de orden <span class="math-part"><app-formula expression="x^{5}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Resta <span class="math-part"><app-formula expression="3x" displayMode="inline" [showCodeButton]="false" /></span> y divide por <span class="math-part"><app-formula expression="x^{3}" displayMode="inline" [showCodeButton]="false" /></span>, para x≠0: <span class="math-part"><app-formula expression="-\frac{27}{6}+O(x^{2})" displayMode="inline" [showCodeButton]="false" /></span>. La cancelación de los términos lineales hace que el primer término relevante sea cúbico. Dividir el resto por <span class="math-part"><app-formula expression="x^{3}" displayMode="inline" [showCodeButton]="false" /></span> deja orden <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El término de error tiende a 0. Como <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> tiende a cero desde ambos lados, el resto no afecta al límite <span class="math-part"><app-formula expression="y -\frac{27}{6}" displayMode="inline" [showCodeButton]="false" /></span> se reduce <span class="math-part"><app-formula expression="a -\frac{9}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="-\frac{9}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No sustituyas <span class="math-part"><app-formula expression="\sin(3x)" displayMode="inline" [showCodeButton]="false" /></span> por <span class="math-part"><app-formula expression="3x" displayMode="inline" [showCodeButton]="false" /></span> cuando los términos lineales se cancelan.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
+      <p>Aproximaciones locales, derivadas y términos de error en desarrollos de funciones.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-046" />
+</article>

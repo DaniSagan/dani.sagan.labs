@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Líneas ganadoras en dos juegos</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Cuenta las líneas ganadoras de tres en raya en un tablero 3×3 y los segmentos de cuatro casillas consecutivas en un tablero de cuatro en raya de 6 filas y 7 columnas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Contamos segmentos ganadores por dirección para evitar duplicados. En una cuadrícula de R filas y C columnas, un segmento de longitud k tiene <span class="math-part"><app-formula expression="R(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> posiciones horizontales y <span class="math-part"><app-formula expression="C(R-k+1)" displayMode="inline" [showCodeButton]="false" /></span> verticales. Cada una de las dos diagonales tiene <span class="math-part"><app-formula expression="(R-k+1)(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> posiciones cuando ambas dimensiones alcanzan k.</li>
+      <li>En tres en raya hay 3 filas, 3 columnas y 2 diagonales: 8 líneas. En 3×3 una línea de tres ocupa una fila o columna completa, o una de las dos diagonales principales.</li>
+      <li>En cuatro en raya, horizontales: <span class="math-part"><app-formula expression="6(7-4+1)=24" displayMode="inline" [showCodeButton]="false" /></span>; verticales: <span class="math-part"><app-formula expression="7(6-4+1)=21" displayMode="inline" [showCodeButton]="false" /></span>. Un segmento horizontal de cuatro puede empezar en cuatro columnas de cada fila; uno vertical, en tres filas de cada columna.</li>
+      <li>En cada pendiente diagonal hay <span class="math-part"><app-formula expression="(6-4+1)(7-4+1)=12" displayMode="inline" [showCodeButton]="false" /></span> segmentos; las dos pendientes aportan 24. Para una diagonal ascendente o descendente hay tres posiciones iniciales de fila y cuatro de columna que dejan espacio para cuatro casillas.</li>
+      <li>El total es <span class="math-part"><app-formula expression="24+21+24=69" displayMode="inline" [showCodeButton]="false" /></span>, sin considerar todavía la gravedad ni el orden de juego. Las direcciones son diferentes, por lo que sus segmentos no se duplican al sumar. Se cuentan líneas potenciales, no estados de juego legales.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 8 y 69, respectivamente.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Contar segmentos geométricos no cuenta partidas legales ni posiciones alcanzables.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
+      <p>El principio de conteo del ejercicio se puede comparar con el recuento de elecciones que origina los coeficientes binomiales.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/games/tic-tac-toe">Tres en raya ↗</a>
+      <p>Comprueba en el tablero las dos clases de líneas del ejercicio «Líneas ganadoras en dos juegos».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/games/four-in-a-row">Cuatro en raya ↗</a>
+      <p>Localiza ejemplos de las líneas horizontales, verticales y diagonales contadas en el ejercicio «Líneas ganadoras en dos juegos».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-093" />
+</article>

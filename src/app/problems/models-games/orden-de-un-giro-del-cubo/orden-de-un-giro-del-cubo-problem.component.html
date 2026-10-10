@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Orden de un giro del cubo</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Modela un giro de 90° de una cara exterior del cubo de Rubik como permutación de pegatinas. Determina su orden y la inversa, sin confundirlo con un algoritmo de varias caras.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El orden de una transformación es el menor entero positivo m para el que repetirla m veces da la identidad. Un giro de cara de noventa grados repite su orientación tras cuatro giros y mueve sus piezas en ciclos compatibles con ese período. Su inverso debe deshacer el giro: tres giros del mismo sentido completan una vuelta.</li>
+      <li>Un giro lleva esa pegatina a la esquina siguiente; tras 2 y 3 giros no ha vuelto al lugar original. Seguir una pegatina que no esté en el centro muestra que el movimiento no es la identidad tras uno, dos o tres giros.</li>
+      <li>Cuatro giros de 90° completan 360° y restauran todas las pegatinas de la cara y las bandas adyacentes. Cada pegatina afectada recorre un ciclo cuya longitud divide cuatro. Cuatro aplicaciones devuelven simultáneamente todas a su lugar.</li>
+      <li>El menor entero positivo con <span class="math-part"><app-formula expression="R^{k}=I" displayMode="inline" [showCodeButton]="false" /></span> es por tanto 4. Que cuatro giros basten y que los tres menores no basten prueba el orden exacto, no solo una cota superior.</li>
+      <li><span class="math-part"><app-formula expression="R^{-1}=R^{3}" displayMode="inline" [showCodeButton]="false" /></span>; también es el giro de <span class="math-part"><app-formula expression="-90" displayMode="inline" [showCodeButton]="false" /></span>° de la misma cara. La identidad <span class="math-part"><app-formula expression="R\cdot R^{3}=R^{4}=I" displayMode="inline" [showCodeButton]="false" /></span> verifica la inversa. Tres cuartos de vuelta en un sentido equivalen a un cuarto en sentido contrario.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Orden 4; inversa <span class="math-part"><app-formula expression="R^{3}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El orden de un giro simple no determina el de una composición de distintas caras.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
+      <p>Un ciclo de cuatro posiciones tiene autovalores entre las raíces cuartas de la unidad. La lectura sobre polinomios ciclotómicos amplía esta conexión entre orden y raíces de la unidad.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/games/rubik-cube">Cubo de Rubik ↗</a>
+      <p>Repite cuatro veces un mismo giro exterior para comprobar el orden del movimiento en el ejercicio «Orden de un giro del cubo».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-095" />
+</article>

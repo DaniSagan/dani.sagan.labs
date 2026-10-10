@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una divisibilidad universal</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Demuestra que <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span> es divisible entre 30 para todo entero n.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Es suficiente probar divisibilidad por los primos distintos 2, 3 y 5. Para el paso módulo 5 puede evitarse citar Fermat: las clases son <span class="math-part"><app-formula expression="0,1,-1,2,-2" displayMode="inline" [showCodeButton]="false" /></span>, y <span class="math-part"><app-formula expression="2^5-2=30" displayMode="inline" [showCodeButton]="false" /></span>; las clases negativas dan el opuesto de la misma diferencia. En todas las clases, la quinta potencia menos la base es múltiplo de 5.</li>
+      <li>Módulo 2 se tiene <span class="math-part"><app-formula expression="n^{5}\equiv n" displayMode="inline" [showCodeButton]="false" /></span>, tanto para n par como impar. Tanto un entero como su quinta potencia tienen la misma paridad. Su diferencia siempre es par.</li>
+      <li>Módulo 3, las clases <span class="math-part"><app-formula expression="0,1,-1" displayMode="inline" [showCodeButton]="false" /></span> satisfacen <span class="math-part"><app-formula expression="n^{5}\equiv n" displayMode="inline" [showCodeButton]="false" /></span>. En módulo 3 las clases son <span class="math-part"><app-formula expression="0,1,-1" displayMode="inline" [showCodeButton]="false" /></span>; una quinta potencia conserva cada una de ellas.</li>
+      <li>Módulo 5, si 5 no divide n, Fermat da <span class="math-part"><app-formula expression="n^{4}\equiv 1" displayMode="inline" [showCodeButton]="false" /></span>; si lo divide, la conclusión es inmediata. Fermat se usa solo si n es coprimo con 5. Si 5 divide n, divide directamente los dos términos.</li>
+      <li>Como <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span> son coprimos dos a dos, su producto divide <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span>. En la factorización de la diferencia aparecen los tres primos distintos <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span>. Por tanto también aparece su producto 30.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 30 divide <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span> para todo n entero.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La divisibilidad entre factores no coprimos no garantiza la divisibilidad entre su producto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat ↗</a>
+      <p>La congruencia de potencias usada en la prueba de divisibilidad por un primo.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-008" />
+</article>

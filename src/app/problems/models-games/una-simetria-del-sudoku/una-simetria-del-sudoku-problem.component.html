@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una simetría del sudoku</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En un sudoku 9×9 resuelto, intercambia globalmente los símbolos 1 y 9. Demuestra que el resultado sigue siendo válido. ¿Qué ocurre si solo cambias una casilla con 1 por 9?</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las reglas del sudoku exigen que cada fila, columna y caja contenga los nueve símbolos una sola vez. Una permutación global de los símbolos conserva esa propiedad porque transforma nueve símbolos distintos en otros nueve distintos. Para preservar el mismo problema transformado, hay que aplicar también la permutación a todas las pistas.</li>
+      <li>Cada fila, columna y bloque contiene exactamente una vez cada símbolo del 1 al 9. La validez de un sudoku depende de que no se repita un símbolo en fila, columna o bloque. Cada grupo completo contiene los nueve símbolos.</li>
+      <li>Una permutación global de símbolos es biyectiva y mantiene esa propiedad en todos los grupos. Una biyección de símbolos envía valores distintos a valores distintos y conserva la cantidad de apariciones de cada uno.</li>
+      <li>En particular, intercambiar 1 y 9 globalmente da otra solución válida para pistas también transformadas. Para conservar también la condición de resolver las pistas, esas pistas deben transformarse con la misma permutación global.</li>
+      <li>Si cambias una sola casilla de 1 a 9, su fila ya contiene otro 9: se repite 9 y falta 1. En un tablero resuelto, la fila de la casilla modificada ya contiene un 9 en otra posición. El cambio aislado crea una repetición inmediata.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El intercambio global conserva validez; el cambio aislado la destruye.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Si no transformas las pistas originales, la nueva solución puede no resolver el mismo sudoku.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/four-color-theorem">Teorema de los cuatro colores ↗</a>
+      <p>Un sudoku se puede modelar como un grafo de incompatibilidades entre casillas. Renombrar globalmente sus colores conserva las restricciones, aunque el teorema de cuatro colores no sea un resultado sobre sudokus.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/games/sudoku">Sudoku ↗</a>
+      <p>Aplica el argumento de invariancia del ejercicio «Una simetría del sudoku» a un tablero completo.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-094" />
+</article>

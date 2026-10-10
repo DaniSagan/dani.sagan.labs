@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Totiente y coprimalidad</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\varphi (360)" displayMode="inline" [showCodeButton]="false" /></span> y la probabilidad de que un entero elegido uniformemente entre 1 y 360 sea coprimo con 360.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Dos enteros son coprimos si no comparten ningún primo. Para contar los coprimos con 360 se excluyen los múltiplos de 2, 3 y 5. Inclusión y exclusión da <span class="math-part"><app-formula expression="360-180-120-72+60+36+24-12=96" displayMode="inline" [showCodeButton]="false" /></span>: se restan las tres exclusiones, se devuelven sus intersecciones por parejas y se resta la triple.</li>
+      <li><span class="math-part"><app-formula expression="360=2^{3}\cdot 3^{2}\cdot 5" displayMode="inline" [showCodeButton]="false" /></span>. Los únicos primos que impiden la coprimalidad son <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span>. Sus potencias no añaden otras exclusiones.</li>
+      <li>La fórmula del totiente da <span class="math-part"><app-formula expression="\varphi (360)=360(1-\frac{1}{2})(1-\frac{1}{3})(1-\frac{1}{5})" displayMode="inline" [showCodeButton]="false" /></span>. Cada factor <span class="math-part"><app-formula expression="1-1/p" displayMode="inline" [showCodeButton]="false" /></span> elimina los múltiplos de p; el producto incorpora sus intersecciones por inclusión y exclusión.</li>
+      <li>Opera: <span class="math-part"><app-formula expression="360\cdot (\frac{1}{2})\cdot (\frac{2}{3})\cdot (\frac{4}{5})=96" displayMode="inline" [showCodeButton]="false" /></span>. Operando por etapas: <span class="math-part"><app-formula expression="\frac{360}{2}=180" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="180\cdot \frac{2}{3}=120" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="120\cdot \frac{4}{5}=96" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Hay 96 resultados favorables entre 360 equiprobables; simplifica <span class="math-part"><app-formula expression="\frac{96}{360}" displayMode="inline" [showCodeButton]="false" /></span>. La selección uniforme asigna probabilidad <span class="math-part"><app-formula expression="\frac{1}{360}" displayMode="inline" [showCodeButton]="false" /></span> a cada entero. Se simplifica <span class="math-part"><app-formula expression="\frac{96}{360}" displayMode="inline" [showCodeButton]="false" /></span> dividiendo entre 24.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\varphi (360)=96" displayMode="inline" [showCodeButton]="false" /></span>; probabilidad <span class="math-part"><app-formula expression="\frac{4}{15}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El 1 es coprimo con 360 y debe contarse.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/euler-totient-formula">Función totiente de Euler ↗</a>
+      <p>La fórmula que cuenta los enteros coprimos a partir de los divisores primos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-005" />
+</article>

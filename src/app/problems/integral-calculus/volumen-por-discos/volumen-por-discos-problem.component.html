@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Volumen por discos</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Gira alrededor del eje x la región <span class="math-part"><app-formula expression="0\le x\le 1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="0\le y\le \sqrt{x}" displayMode="inline" [showCodeButton]="false" /></span>. Calcula el volumen.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Al girar la región alrededor del eje x, una sección perpendicular al eje es un disco de radio <span class="math-part"><app-formula expression="y=\sqrt x" displayMode="inline" [showCodeButton]="false" /></span>. Su área es <span class="math-part"><app-formula expression="\pi y^2=\pi x" displayMode="inline" [showCodeButton]="false" /></span>. El volumen suma estas áreas mediante la integral en x; no se integra directamente el radio.</li>
+      <li>El área de sección es <span class="math-part"><app-formula expression="\pi (\sqrt{x})^{2}=\pi x" displayMode="inline" [showCodeButton]="false" /></span>. Al girar un segmento vertical desde <span class="math-part"><app-formula expression="y=0" displayMode="inline" [showCodeButton]="false" /></span> hasta <span class="math-part"><app-formula expression="\sqrt{x}" displayMode="inline" [showCodeButton]="false" /></span>, se llena un disco y no una arandela, porque el radio interior es cero.</li>
+      <li>El volumen es <span class="math-part"><app-formula expression="\int _{0}^{1}\pi x dx" displayMode="inline" [showCodeButton]="false" /></span>. La fórmula <span class="math-part"><app-formula expression="V=\int" displayMode="inline" [showCodeButton]="false" /></span>área de sección dx suma discos perpendiculares al eje de giro. El radio depende de x.</li>
+      <li>Evalúa <span class="math-part"><app-formula expression="\pi [x^{2}/2]_{0}^{1}=\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>. La constante <span class="math-part"><app-formula expression="\pi" displayMode="inline" [showCodeButton]="false" /></span> sale de la integral y la primitiva de x es <span class="math-part"><app-formula expression="x^{2}/2" displayMode="inline" [showCodeButton]="false" /></span>. Los extremos son 0 y 1.</li>
+      <li>Las unidades son cúbicas, porque se integra un área respecto a una longitud. Si las coordenadas están en una unidad de longitud, <span class="math-part"><app-formula expression="\pi x" displayMode="inline" [showCodeButton]="false" /></span> representa un área en la escala geométrica del problema, y la integración da volumen.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span> unidades cúbicas.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La fórmula usa el cuadrado del radio.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/pi-decimals">Decimales de π ↗</a>
+      <p>Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-067" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Intervalo para una media normal</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Una población normal tiene desviación típica conocida <span class="math-part"><app-formula expression="\sigma =10" displayMode="inline" [showCodeButton]="false" /></span>. Una muestra independiente de <span class="math-part"><app-formula expression="n=100" displayMode="inline" [showCodeButton]="false" /></span> da media 50. Usando <span class="math-part"><app-formula expression="z_{0},_{975}=1,96" displayMode="inline" [showCodeButton]="false" /></span>, calcula el intervalo de confianza del 95% para la media e interpreta su cobertura.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Con datos independientes de una población normal y desviación poblacional conocida, <span class="math-part"><app-formula expression="Z=(\overline X-\mu)/(\sigma/\sqrt n)" displayMode="inline" [showCodeButton]="false" /></span> es normal estándar. El 95 % central está entre aproximadamente <span class="math-part"><app-formula expression="-1{,}96" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="1{,}96" displayMode="inline" [showCodeButton]="false" /></span>. Despejar <span class="math-part"><app-formula expression="\mu" displayMode="inline" [showCodeButton]="false" /></span> proporciona el intervalo; el 95 % describe la cobertura del procedimiento al repetir muestras.</li>
+      <li>El error estándar es <span class="math-part"><app-formula expression="\frac{10}{10}=1" displayMode="inline" [showCodeButton]="false" /></span>. Para observaciones normales independientes con σ conocida, la media muestral es normal con desviación <span class="math-part"><app-formula expression="\sigma /\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span>. No se estima σ con estos datos.</li>
+      <li>El margen es <span class="math-part"><app-formula expression="1,96\cdot 1=1,96" displayMode="inline" [showCodeButton]="false" /></span>. El cuantil dado deja <span class="math-part"><app-formula expression="2,5" displayMode="inline" [showCodeButton]="false" /></span>% en cada cola de la normal estándar, formando una probabilidad central del 95%.</li>
+      <li>El intervalo es <span class="math-part"><app-formula expression="[50-1,96,50+1,96]=[48,04,51,96]" displayMode="inline" [showCodeButton]="false" /></span>. Se suma y resta el margen a la media observada. Los extremos son <span class="math-part"><app-formula expression="50-1,96" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="50+1,96" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Si se repite el procedimiento de muestreo, el 95% de los intervalos así construidos contienen la media fija de la población. La media poblacional permanece fija en las repeticiones; son los intervalos los que varían. Esa distinción explica la interpretación frecuentista.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="[48,04,51,96]" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El 95% describe el procedimiento, no una probabilidad posterior para la media fija.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-087" />
+</article>

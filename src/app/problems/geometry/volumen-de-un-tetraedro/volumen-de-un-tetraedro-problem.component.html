@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Volumen de un tetraedro</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula el volumen del tetraedro con vértices <span class="math-part"><app-formula expression="O=(0,0,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="A=(2,0,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="B=(0,3,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="C=(1,1,4)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El valor absoluto del producto mixto <span class="math-part"><app-formula expression="\det(A,B,C)" displayMode="inline" [showCodeButton]="false" /></span> es el volumen del paralelepípedo con esas aristas desde el origen. El tetraedro ocupa la sexta parte: su base triangular tiene la mitad del área de la base del paralelepípedo y una pirámide tiene un tercio del volumen del prisma de igual base y altura.</li>
+      <li>Los vectores <span class="math-part"><app-formula expression="OA,OB,OC" displayMode="inline" [showCodeButton]="false" /></span> forman las columnas de una matriz triangular. Tomar O como origen deja las coordenadas de <span class="math-part"><app-formula expression="A,B,C" displayMode="inline" [showCodeButton]="false" /></span> como vectores generadores. El producto mixto mide el volumen asociado.</li>
+      <li>Su determinante es <span class="math-part"><app-formula expression="2\cdot 3\cdot 4=24" displayMode="inline" [showCodeButton]="false" /></span>. La matriz es triangular con diagonal <span class="math-part"><app-formula expression="2,3,4" displayMode="inline" [showCodeButton]="false" /></span>. Su determinante es el producto de esas entradas.</li>
+      <li>El volumen de un tetraedro es el valor absoluto del producto mixto dividido entre 6. Un paralelepípedo se descompone en seis tetraedros de igual volumen. Esa es la razón del divisor 6.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="V=\frac{24}{6}=4" displayMode="inline" [showCodeButton]="false" /></span>; también se obtiene con base de área 3 y altura 4. La base OAB tiene área <span class="math-part"><app-formula expression="2\cdot \frac{3}{2}=3" displayMode="inline" [showCodeButton]="false" /></span> y C está a altura 4 sobre <span class="math-part"><app-formula expression="z=0" displayMode="inline" [showCodeButton]="false" /></span>. La fórmula base·altura/3 también produce 4.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Volumen 4 unidades cúbicas.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Dividir entre 3 solo es correcto si se parte del área de la base y la altura.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
+      <p>Propiedades algebraicas y significado geométrico de los determinantes.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-030" />
+</article>

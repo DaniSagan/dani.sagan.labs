@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Independencia de sucesos</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En un dado equilibrado, <span class="math-part"><app-formula expression="A={2,4,6}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="B={3,6}" displayMode="inline" [showCodeButton]="false" /></span>. Decide si son independientes. Repite con <span class="math-part"><app-formula expression="C={4,5,6}" displayMode="inline" [showCodeButton]="false" /></span> en lugar de B.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Dos sucesos son independientes cuando <span class="math-part"><app-formula expression="P(A\cap B)=P(A)P(B)" displayMode="inline" [showCodeButton]="false" /></span>. Esto equivale a que conocer uno no cambie la probabilidad del otro, si el condicionante tiene probabilidad positiva. No significa que sean disjuntos: dos sucesos disjuntos con probabilidades positivas no son independientes.</li>
+      <li><span class="math-part"><app-formula expression="P(A)=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="P(B)=\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>. Las cardinalidades de A y B son 3 y 2 entre 6 valores equiprobables. De ahí las probabilidades <span class="math-part"><app-formula expression="\frac{3}{6}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\frac{2}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="A\cap B={6}" displayMode="inline" [showCodeButton]="false" /></span>, de probabilidad <span class="math-part"><app-formula expression="\frac{1}{6}=(\frac{1}{2})(\frac{1}{3})" displayMode="inline" [showCodeButton]="false" /></span>; A y B son independientes. La independencia se define por <span class="math-part"><app-formula expression="P(A\cap B)=P(A)P(B)" displayMode="inline" [showCodeButton]="false" /></span>. Aquí el único elemento de la intersección es 6.</li>
+      <li><span class="math-part"><app-formula expression="P(C)=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="A\cap C={4,6}" displayMode="inline" [showCodeButton]="false" /></span>, de probabilidad <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>. Al sustituir B por C, hay tres elementos en C y dos en su intersección con A.</li>
+      <li>Como <span class="math-part"><app-formula expression="\frac{1}{3}\ne \frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>, A y C no son independientes. El producto de probabilidades marginales sería <span class="math-part"><app-formula expression="\frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>, diferente de la intersección real <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>. La comparación prueba dependencia.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="A,B" displayMode="inline" [showCodeButton]="false" /></span> independientes; <span class="math-part"><app-formula expression="A,C" displayMode="inline" [showCodeButton]="false" /></span> dependientes.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Tener elementos comunes no implica dependencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a>
+      <p>Probabilidades condicionadas, probabilidades totales e inversión de la condición.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-074" />
+</article>

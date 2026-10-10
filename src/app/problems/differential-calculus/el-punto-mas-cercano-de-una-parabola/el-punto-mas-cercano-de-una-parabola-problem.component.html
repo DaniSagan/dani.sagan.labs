@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">El punto más cercano de una parábola</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Halla los puntos de <span class="math-part"><app-formula expression="y=x^{2}" displayMode="inline" [showCodeButton]="false" /></span> más próximos a <span class="math-part"><app-formula expression="P=(0,3)" displayMode="inline" [showCodeButton]="false" /></span> y su distancia.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El punto de la parábola es <span class="math-part"><app-formula expression="(x,x^2)" displayMode="inline" [showCodeButton]="false" /></span>. Su distancia al punto dado es una raíz cuadrada, pero podemos minimizar el cuadrado de la distancia porque la raíz es creciente. Así estudiamos el polinomio <span class="math-part"><app-formula expression="D(x)=x^2+(x^2-3)^2" displayMode="inline" [showCodeButton]="false" /></span>, sin radicales ni restricciones de signo sobre x.</li>
+      <li><span class="math-part"><app-formula expression="D^{2}(x)=x^{2}+(x^{2}-3)^{2}=x^{4}-5x^{2}+9" displayMode="inline" [showCodeButton]="false" /></span>. La distancia al cuadrado se obtiene restando coordenadas: <span class="math-part"><app-formula expression="x-0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x^{2}-3" displayMode="inline" [showCodeButton]="false" /></span>. Minimizarla equivale a minimizar la distancia porque la raíz es creciente.</li>
+      <li>Su derivada es <span class="math-part"><app-formula expression="2x(2x^{2}-5)" displayMode="inline" [showCodeButton]="false" /></span>; los críticos son 0 y ±<span class="math-part"><app-formula expression="\sqrt{\frac{5}{2}}" displayMode="inline" [showCodeButton]="false" /></span>. Derivar <span class="math-part"><app-formula expression="x^{4}-5x^{2}+9" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="4x^{3}-10x" displayMode="inline" [showCodeButton]="false" /></span>. El factor <span class="math-part"><app-formula expression="x=0" displayMode="inline" [showCodeButton]="false" /></span> no debe perderse al buscar los puntos críticos.</li>
+      <li><span class="math-part"><app-formula expression="D^{2}(0)=9" displayMode="inline" [showCodeButton]="false" /></span>, mientras <span class="math-part"><app-formula expression="D^2\left(\pm\sqrt{\frac52}\right)=\frac{11}{4}" displayMode="inline" [showCodeButton]="false" /></span>; además <span class="math-part"><app-formula expression="D^{2}\to \infty" displayMode="inline" [showCodeButton]="false" /></span> cuando <span class="math-part"><app-formula expression="\lvert x\rvert \to \infty" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="x^{2}=\frac{5}{2}" displayMode="inline" [showCodeButton]="false" /></span>, sustituir da <span class="math-part"><app-formula expression="\frac{25}{4}-\frac{25}{2}+9=\frac{11}{4}" displayMode="inline" [showCodeButton]="false" /></span>. El valor es menor que 9 y la función no puede minimizarse en el infinito.</li>
+      <li>Los puntos minimizadores tienen <span class="math-part"><app-formula expression="y=\frac{5}{2}" displayMode="inline" [showCodeButton]="false" /></span> y distancia <span class="math-part"><app-formula expression="\frac{\sqrt{11}}2" displayMode="inline" [showCodeButton]="false" /></span>. Ambas abscisas tienen el mismo cuadrado y la misma ordenada. La distancia es <span class="math-part"><app-formula expression="\sqrt{\frac{11}{4}}=\frac{\sqrt{11}}2" displayMode="inline" [showCodeButton]="false" /></span>, positiva.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\left(\pm\sqrt{\frac52},\frac52\right)" displayMode="inline" [showCodeButton]="false" /></span>; distancia <span class="math-part"><app-formula expression="\frac{\sqrt{11}}2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La simetría permite dos mínimos; no descartes la raíz negativa.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/parabola">Parábola ↗</a>
+      <p>Propiedades geométricas de la curva que aparece en el cálculo del ejercicio.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-058" />
+</article>

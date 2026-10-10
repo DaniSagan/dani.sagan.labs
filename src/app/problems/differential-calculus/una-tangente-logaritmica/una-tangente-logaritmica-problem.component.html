@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una tangente logarítmica</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Halla la recta tangente a <span class="math-part"><app-formula expression="f(x)=\ln x" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="x=e" displayMode="inline" [showCodeButton]="false" /></span> y el punto donde corta el eje x.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La derivada <span class="math-part"><app-formula expression="f&#39;(a)" displayMode="inline" [showCodeButton]="false" /></span> es la pendiente de la recta tangente en <span class="math-part"><app-formula expression="(a,f(a))" displayMode="inline" [showCodeButton]="false" /></span>. Su ecuación es <span class="math-part"><app-formula expression="y=f(a)+f&#39;(a)(x-a)" displayMode="inline" [showCodeButton]="false" /></span>. Para el logaritmo natural usamos <span class="math-part"><app-formula expression="f&#39;(x)=1/x" displayMode="inline" [showCodeButton]="false" /></span>, válido en su dominio <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, y sustituimos el punto de tangencia indicado.</li>
+      <li>El punto de tangencia es <span class="math-part"><app-formula expression="(e,1)" displayMode="inline" [showCodeButton]="false" /></span>. El punto se obtiene sustituyendo e en la función: <span class="math-part"><app-formula expression="\ln e=1" displayMode="inline" [showCodeButton]="false" /></span>. No se usa <span class="math-part"><app-formula expression="(e,e)" displayMode="inline" [showCodeButton]="false" /></span> como punto de contacto.</li>
+      <li><span class="math-part"><app-formula expression="f&#39;(x)=1/x" displayMode="inline" [showCodeButton]="false" /></span>, de modo que la pendiente es <span class="math-part"><app-formula expression="1/e" displayMode="inline" [showCodeButton]="false" /></span>. La derivada del logaritmo es válida para <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span>. Como e pertenece al dominio, la pendiente está bien definida.</li>
+      <li>La recta es <span class="math-part"><app-formula expression="y-1=(x-e)/e" displayMode="inline" [showCodeButton]="false" /></span>, que se simplifica a <span class="math-part"><app-formula expression="y=x/e" displayMode="inline" [showCodeButton]="false" /></span>. La forma punto-pendiente garantiza que la recta pasa por <span class="math-part"><app-formula expression="(e,1)" displayMode="inline" [showCodeButton]="false" /></span>. Distribuir <span class="math-part"><app-formula expression="(x-e)/e=x/e-1" displayMode="inline" [showCodeButton]="false" /></span> cancela el término constante.</li>
+      <li>Al imponer <span class="math-part"><app-formula expression="y=0" displayMode="inline" [showCodeButton]="false" /></span> se obtiene <span class="math-part"><app-formula expression="x=0" displayMode="inline" [showCodeButton]="false" /></span>; el corte con el eje x es el origen. El origen pertenece a la recta tangente aunque no al dominio del logaritmo. Eso no limita la validez de la recta.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="y=x/e" displayMode="inline" [showCodeButton]="false" /></span>; corta en <span class="math-part"><app-formula expression="(0,0)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La tangente puede pasar por puntos donde la función original no está definida.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>La derivada de una primitiva recupera el integrando. La identidad ∫dx/x=ln∣x∣+C conecta la integración clásica con la pendiente usada aquí.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-051" />
+</article>

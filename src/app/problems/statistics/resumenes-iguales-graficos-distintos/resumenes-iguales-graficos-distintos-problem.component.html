@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Resúmenes iguales, gráficos distintos</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Dos conjuntos tienen la misma media y varianza de x e y y la misma correlación. ¿Implica que sus diagramas de dispersión son iguales o que el mismo modelo lineal es adecuado? Explica cómo lo comprobarías con Datasaurus.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Media, varianza y correlación son resúmenes de ciertas sumas, no una descripción completa de cada punto. Muchos conjuntos pueden compartir esas sumas y distribuirse de forma distinta: curvas, agrupaciones o puntos atípicos. Un diagrama de dispersión permite detectar propiedades que los resúmenes numéricos no identifican.</li>
+      <li>Media, varianza y correlación resumen momentos y no fijan cada punto. Los resúmenes dependen de sumas y productos agregados. Unas pocas igualdades de momentos no determinan todas las coordenadas de un conjunto grande.</li>
+      <li>Muchas configuraciones pueden cumplir esos mismos resúmenes; patrones curvos, grupos y atípicos pueden pasar inadvertidos. La misma covariación lineal puede aparecer en formas geométricas muy distintas. Por eso los resúmenes no certifican una relación lineal.</li>
+      <li>En el laboratorio carga Datasaurus, compara los conjuntos y dibuja sus diagramas con la misma escala. La comparación debe mantener escalas y ejes comunes para que la forma no cambie artificialmente entre gráficos.</li>
+      <li>Inspecciona forma, grupos, atípicos y residuos antes de aceptar un modelo; pequeñas diferencias por redondeo no invalidan la enseñanza. Los residuos son las diferencias entre datos y predicciones. Patrones en ellos revelan estructura que una recta y sus resúmenes pueden ocultar.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> No; hay que inspeccionar gráficos y residuos, además de resúmenes.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Correlación similar no implica forma similar ni causalidad.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/galton-board">Tablero de Galton ↗</a>
+      <p>La representación de la distribución en el tablero de Galton sirve como contraste entre forma gráfica y medidas resumen; no sustituye la inspección de los datos de Datasaurus.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-085" />
+</article>

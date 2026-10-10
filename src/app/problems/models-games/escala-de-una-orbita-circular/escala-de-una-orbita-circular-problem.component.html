@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Escala de una órbita circular</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En el modelo newtoniano de masa central M fija y satélite despreciable, deduce el período de una órbita circular de radio r. ¿Cómo cambia al duplicar r?</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En una órbita circular ideal, la aceleración centrípeta <span class="math-part"><app-formula expression="v^2/r" displayMode="inline" [showCodeButton]="false" /></span> iguala la gravitatoria <span class="math-part"><app-formula expression="GM/r^2" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="v=2\pi r/T" displayMode="inline" [showCodeButton]="false" /></span> y despejar da <span class="math-part"><app-formula expression="T=2\pi\sqrt{r^3/(GM)}" displayMode="inline" [showCodeButton]="false" /></span>. Comparar radios manteniendo G y M constantes permite obtener la razón de períodos sin conocer sus valores numéricos.</li>
+      <li><span class="math-part"><app-formula expression="GM/r^{2}=v^{2}/r" displayMode="inline" [showCodeButton]="false" /></span>, por lo que <span class="math-part"><app-formula expression="v=\sqrt{GM/r}" displayMode="inline" [showCodeButton]="false" /></span>. La gravedad central proporciona toda la aceleración centrípeta. La masa del satélite se cancela al igualar las fuerzas, bajo el modelo indicado.</li>
+      <li>El período es longitud de circunferencia dividida por velocidad: <span class="math-part"><app-formula expression="T=2\pi r/v" displayMode="inline" [showCodeButton]="false" /></span>. La rapidez es constante en la órbita circular. Recorrer una circunferencia de longitud <span class="math-part"><app-formula expression="2\pi r" displayMode="inline" [showCodeButton]="false" /></span> a velocidad v requiere tiempo longitud dividido entre rapidez.</li>
+      <li>Sustituye v para obtener <span class="math-part"><app-formula expression="T=2\pi \sqrt{r^{3}/(GM)}" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="\sqrt{GM/r}" displayMode="inline" [showCodeButton]="false" /></span> en el denominador produce <span class="math-part"><app-formula expression="r\sqrt{r}/\sqrt{GM}=\sqrt{r^{3}/(GM)}" displayMode="inline" [showCodeButton]="false" /></span>. Se supone <span class="math-part"><app-formula expression="G&gt;0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="M&gt;0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Duplicar r multiplica T por <span class="math-part"><app-formula expression="\sqrt{2^{3}}=2\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>, manteniendo M fija y la órbita circular. El cociente <span class="math-part"><app-formula expression="T(2r)/T(r)" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="\sqrt{(2r)^{3}/r^{3}}=\sqrt{8}" displayMode="inline" [showCodeButton]="false" /></span>. No se duplica el período al duplicar el radio.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="T=2\pi \sqrt{r^{3}/(GM)}" displayMode="inline" [showCodeButton]="false" /></span>; factor <span class="math-part"><app-formula expression="2\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La simulación puede usar unidades y condiciones distintas; la fórmula depende de las hipótesis dadas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/double-pendulum">Péndulo doble ↗</a>
+      <p>Otra aplicación de las leyes de Newton a un sistema dinámico; permite comparar modelos físicos con distintas hipótesis.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/games/gravity">Gravedad ↗</a>
+      <p>Explora cualitativamente cómo cambia una órbita al modificar la distancia; contrasta con el ejercicio «Escala de una órbita circular».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-097" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Transformación de medidas</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Un conjunto de temperaturas en °C tiene media 20 y desviación típica 3. Convierte su media, desviación típica y varianza a °F, usando <span class="math-part"><app-formula expression="F=1,8C+32" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una transformación <span class="math-part"><app-formula expression="Y=aX+b" displayMode="inline" [showCodeButton]="false" /></span> cambia la media a <span class="math-part"><app-formula expression="aE(X)+b" displayMode="inline" [showCodeButton]="false" /></span>. Las desviaciones respecto a la nueva media son a veces las originales, de modo que <span class="math-part"><app-formula expression="\operatorname{Var}(Y)=a^2\operatorname{Var}(X)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\sigma_Y=\lvert a\rvert\sigma_X" displayMode="inline" [showCodeButton]="false" /></span>. La constante b cambia el origen de la escala, pero no la dispersión.</li>
+      <li>La media transformada es <span class="math-part"><app-formula expression="1,8\cdot 20+32=68" displayMode="inline" [showCodeButton]="false" /></span> °F. La esperanza de una transformación afín aC+b es aE(C)+b. Por eso el desplazamiento 32 sí interviene en la media.</li>
+      <li>La desviación típica se multiplica por <span class="math-part"><app-formula expression="\lvert 1,8\rvert" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="5,4" displayMode="inline" [showCodeButton]="false" /></span> °F. Las distancias a la media se multiplican por <span class="math-part"><app-formula expression="1,8" displayMode="inline" [showCodeButton]="false" /></span>; al tomar su raíz cuadrática se obtiene el factor absoluto <span class="math-part"><app-formula expression="1,8" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La varianza original es <span class="math-part"><app-formula expression="3^{2}=9" displayMode="inline" [showCodeButton]="false" /></span> (°C)². La varianza es el cuadrado de la desviación típica, de modo que sus unidades son grados al cuadrado.</li>
+      <li>La varianza transformada es <span class="math-part"><app-formula expression="1,8^{2}\cdot 9=29,16" displayMode="inline" [showCodeButton]="false" /></span> (°F)². El término 32 desaparece al restar la media. Solo el factor <span class="math-part"><app-formula expression="1,8^{2}" displayMode="inline" [showCodeButton]="false" /></span> afecta a los cuadrados de las desviaciones.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Media 68 °F; desviación <span class="math-part"><app-formula expression="5,4" displayMode="inline" [showCodeButton]="false" /></span> °F; varianza <span class="math-part"><app-formula expression="29,16" displayMode="inline" [showCodeButton]="false" /></span> (°F)².</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Sumar 32 no aumenta la desviación típica.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>Los cambios de escala de la media y de su dispersión también aparecen al estandarizar variables para estudiar medias muestrales.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-082" />
+</article>

@@ -1,0 +1,45 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Área entre dos curvas</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula el área encerrada entre <span class="math-part"><app-formula expression="y=x" displayMode="inline" [showCodeButton]="false" /></span> e <span class="math-part"><app-formula expression="y=x^{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El área entre dos curvas se obtiene integrando la función superior menos la inferior entre sus intersecciones. Primero resolvemos <span class="math-part"><app-formula expression="x=x^2" displayMode="inline" [showCodeButton]="false" /></span> para fijar los extremos. En <span class="math-part"><app-formula expression="[0,1]" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x-x^2=x(1-x)\ge0" displayMode="inline" [showCodeButton]="false" /></span>, lo que determina el orden de la resta y garantiza un área positiva.</li>
+      <li><span class="math-part"><app-formula expression="x=x^{2}" displayMode="inline" [showCodeButton]="false" /></span> equivale a <span class="math-part"><app-formula expression="x(x-1)=0" displayMode="inline" [showCodeButton]="false" /></span>; los cortes son <span class="math-part"><app-formula expression="x=0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>. Los puntos de corte delimitan el único recinto acotado. Las abscisas de esos puntos fijan los límites de integración.</li>
+      <li>En <span class="math-part"><app-formula expression="(0,1)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x&gt;x^{2}" displayMode="inline" [showCodeButton]="false" /></span>, así que la recta es la curva superior. En <span class="math-part"><app-formula expression="0&lt;x&lt;1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x-x^{2}=x(1-x)&gt;0" displayMode="inline" [showCodeButton]="false" /></span>. Esa desigualdad determina qué función debe restarse de cuál.</li>
+      <li>El área es <span class="math-part"><app-formula expression="\int _{0}^{1}(x-x^{2})dx" displayMode="inline" [showCodeButton]="false" /></span>. Cada sección vertical tiene altura <span class="math-part"><app-formula expression="x-x^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Integrar esa altura acumula las áreas de las franjas del recinto.</li>
+      <li>Evalúa <span class="math-part"><app-formula expression="[x^{2}/2-x^{3}/3]_{0}^{1}=\frac{1}{2}-\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>. El valor superior es <span class="math-part"><app-formula expression="\frac{1}{2}-\frac{1}{3}=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span> y el inferior cero. No se precisa valor absoluto porque el orden de las curvas ya se comprobó.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span> unidades cuadradas.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Integrar en el orden inverso produce área con signo negativo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/parabola">Parábola ↗</a>
+      <p>Propiedades geométricas de la curva que aparece en el cálculo del ejercicio.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/pi-decimals">Decimales de π ↗</a>
+      <p>Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-066" />
+</article>

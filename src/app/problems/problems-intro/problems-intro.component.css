@@ -1,0 +1,25 @@
+﻿:host { display: block; min-width: 0; }
+.eyebrow, .card-topic, .level, .result-count { font-family: system-ui, sans-serif; }
+.eyebrow { display: block; color: var(--accent3); font-size: .72rem; letter-spacing: .14em; margin-bottom: 1rem; }
+.overview { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; margin: 2rem 0; clear: both; padding: 1.2rem; background: var(--bg2); border: 1px solid var(--rule); border-radius: 12px; }
+.overview strong { color: var(--gold); font-size: 1.7rem; margin-right: .3rem; }
+.guidance { background: var(--bg2); border-left: 3px solid var(--gold); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; }
+.filters { display: flex; flex-wrap: wrap; gap: .8rem; align-items: end; padding: 1.25rem; border: 1px solid var(--rule); background: var(--paper); border-radius: 12px; }
+.filters label { display: flex; flex-direction: column; gap: .3rem; font: .8rem/1.4 system-ui,sans-serif; flex: 1 1 160px; min-width: 0; }
+.filters .search-label { flex-basis: 100%; }
+input, select, button { font: .85rem/1.4 system-ui,sans-serif; color: var(--ink); background: var(--bg2); border: 1px solid var(--rule); border-radius: 6px; padding: .65rem .8rem; max-width: 100%; }
+select { width: 100%; }
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+button { cursor: pointer; }
+button:hover { border-color: var(--gold); }
+.result-count { font-size: .8rem; margin: 1.2rem 0; }
+.problem-list { display: grid; gap: .6rem; }
+.problem-card { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 1rem; align-items: center; padding: 1.15rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--bg2); text-decoration: none; }
+.problem-card:hover { border-color: var(--gold); background: var(--paper); }
+.card-topic { color: var(--ink-dim); font-size: .7rem; }
+.problem-card h3 { margin: .3rem 0; font-size: 1.3rem; }
+.level { font-size: .7rem; color: var(--ink); }
+.card-arrow { color: var(--gold); }
+section { padding: 1.5rem 0; }
+section h3 { margin: 0 0 1rem; }
+@media(max-width: 640px) { .problem-card { gap: .6rem; padding: .9rem; grid-template-columns: minmax(0,1fr); } .card-arrow { display: none; } }

@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Órbitas de un campo vectorial</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para el sistema <span class="math-part"><app-formula expression="x&#39;=-y" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="y&#39;=x" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="(x(0),y(0))=(2,0)" displayMode="inline" [showCodeButton]="false" /></span>, halla la trayectoria, el sentido y el período.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El sistema da la velocidad del punto en cada instante. Derivar <span class="math-part"><app-formula expression="x^2+y^2" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="2xx&#39;+2yy&#39;=0" displayMode="inline" [showCodeButton]="false" /></span>, así que el radio permanece constante. Además, derivar otra vez da <span class="math-part"><app-formula expression="x&#39;&#39;=-x" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="y&#39;&#39;=-y" displayMode="inline" [showCodeButton]="false" /></span>; seno y coseno satisfacen estas ecuaciones y permiten incorporar la posición inicial.</li>
+      <li><span class="math-part"><app-formula expression="\frac{d}{dt}(x^2+y^2)=2x(-y)+2yx=0" displayMode="inline" [showCodeButton]="false" /></span>; el radio permanece igual a 2. La derivada de la suma de cuadrados se calcula con la regla de la cadena. Los dos términos se cancelan, conservando <span class="math-part"><app-formula expression="x^{2}+y^{2}=4" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La solución <span class="math-part"><app-formula expression="x=2\cos t" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="y=2\sin t" displayMode="inline" [showCodeButton]="false" /></span> satisface el sistema y el dato inicial. Derivar <span class="math-part"><app-formula expression="2\cos t" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="-2\sin t=-y" displayMode="inline" [showCodeButton]="false" /></span> y derivar <span class="math-part"><app-formula expression="2\sin t" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="2\cos t=x" displayMode="inline" [showCodeButton]="false" /></span>. En <span class="math-part"><app-formula expression="t=0" displayMode="inline" [showCodeButton]="false" /></span> se recupera el dato inicial.</li>
+      <li>En <span class="math-part"><app-formula expression="(2,0)" displayMode="inline" [showCodeButton]="false" /></span>, la velocidad es <span class="math-part"><app-formula expression="(0,2)" displayMode="inline" [showCodeButton]="false" /></span>, dirigida hacia arriba; el movimiento es antihorario. En el punto derecho de la circunferencia, una velocidad vertical positiva inicia un recorrido antihorario.</li>
+      <li>Las dos coordenadas recuperan su valor tras <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span> y no antes conjuntamente. El par <span class="math-part"><app-formula expression="(\cos t,\sin t)" displayMode="inline" [showCodeButton]="false" /></span> vuelve al valor inicial exactamente cuando t es múltiplo de <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. El menor período positivo es <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Circunferencia <span class="math-part"><app-formula expression="x^{2}+y^{2}=4" displayMode="inline" [showCodeButton]="false" /></span>, sentido antihorario, período <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las flechas son velocidades; no son los puntos de la trayectoria.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cellular-automata">Autómatas celulares ↗</a>
+      <p>Este ejercicio usa un sistema diferencial continuo. El artículo permite contrastarlo con la evolución por pasos discretos de un autómata.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-060" />
+</article>

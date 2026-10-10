@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una sucesión radical</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Sea <span class="math-part"><app-formula expression="a_{1}=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="a_{n+1}=\sqrt{2+a_{n}}" displayMode="inline" [showCodeButton]="false" /></span>. Demuestra que converge y calcula su límite.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una sucesión creciente y acotada superiormente converge a su supremo. Para usar este hecho debemos demostrar ambas propiedades, normalmente por inducción. Solo después de asegurar la convergencia podemos pasar al límite en la recurrencia, usando la continuidad de la raíz cuadrada.</li>
+      <li>Si <span class="math-part"><app-formula expression="1\le a_{n}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>, entonces <span class="math-part"><app-formula expression="1&lt;\sqrt{2+a_{n}}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>; la cota se conserva desde <span class="math-part"><app-formula expression="a_{1}" displayMode="inline" [showCodeButton]="false" /></span>. La base de la inducción es <span class="math-part"><app-formula expression="a_{1}=1" displayMode="inline" [showCodeButton]="false" /></span>. La función raíz es creciente, y <span class="math-part"><app-formula expression="2+a_{n}&lt;4" displayMode="inline" [showCodeButton]="false" /></span> conserva la cota superior estricta.</li>
+      <li>Para <span class="math-part"><app-formula expression="1\le t&lt;2" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="2+t-t^{2}=(2-t)(t+1)&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="\sqrt{2+t}&gt;t" displayMode="inline" [showCodeButton]="false" /></span>. Como <span class="math-part"><app-formula expression="t\ge 1" displayMode="inline" [showCodeButton]="false" /></span>, ambos lados de <span class="math-part"><app-formula expression="\sqrt{2+t}&gt;t" displayMode="inline" [showCodeButton]="false" /></span> son no negativos. Se puede elevar al cuadrado y verificar el producto positivo.</li>
+      <li>La sucesión es creciente y acotada, así que converge a <span class="math-part"><app-formula expression="L\in [1,2]" displayMode="inline" [showCodeButton]="false" /></span>. El teorema de convergencia monótona garantiza un límite finito. Solo después es legítimo trasladar el límite a la recurrencia.</li>
+      <li>Por continuidad <span class="math-part"><app-formula expression="L=\sqrt{2+L}" displayMode="inline" [showCodeButton]="false" /></span>, es decir <span class="math-part"><app-formula expression="(L-2)(L+1)=0" displayMode="inline" [showCodeButton]="false" /></span>; la cota excluye <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>. La ecuación da candidatos 2 <span class="math-part"><app-formula expression="y -1" displayMode="inline" [showCodeButton]="false" /></span>, pero el límite pertenece a <span class="math-part"><app-formula expression="[1,2]" displayMode="inline" [showCodeButton]="false" /></span>. El candidato negativo no satisface esa restricción.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="L=2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Resolver la ecuación del límite no demuestra por sí solo la convergencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/basel">Problema de Basilea ↗</a>
+      <p>Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-041" />
+</article>

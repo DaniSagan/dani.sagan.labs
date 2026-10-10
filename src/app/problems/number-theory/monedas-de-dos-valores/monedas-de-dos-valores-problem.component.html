@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Monedas de dos valores</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="7x+11y=100" displayMode="inline" [showCodeButton]="false" /></span> en enteros no negativos e interpreta <span class="math-part"><app-formula expression="x,y" displayMode="inline" [showCodeButton]="false" /></span> como cantidades de monedas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La ecuación es diofántica porque solo admite cantidades enteras. Primero se describe toda la familia entera mediante una congruencia; después se imponen las restricciones de cantidades no negativas. Resolver solamente sobre los reales daría una recta con muchos puntos que no representan monedas.</li>
+      <li><span class="math-part"><app-formula expression="11y\equiv 100 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>, es decir <span class="math-part"><app-formula expression="4y\equiv 2" displayMode="inline" [showCodeButton]="false" /></span>; luego <span class="math-part"><app-formula expression="y\equiv 4 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>. Módulo 7 desaparece <span class="math-part"><app-formula expression="7x" displayMode="inline" [showCodeButton]="false" /></span> y 11 se reduce a 4. El inverso de 4 es 2, que transforma <span class="math-part"><app-formula expression="4y\equiv 2" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="y\equiv 4" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Escribe <span class="math-part"><app-formula expression="y=4+7t" displayMode="inline" [showCodeButton]="false" /></span> y sustituye: <span class="math-part"><app-formula expression="x=8-11t" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="y=4+7t" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="7x+44+77t=100" displayMode="inline" [showCodeButton]="false" /></span>, por lo que <span class="math-part"><app-formula expression="x=8-11t" displayMode="inline" [showCodeButton]="false" /></span>. La familia contiene todas las soluciones enteras.</li>
+      <li>La condición <span class="math-part"><app-formula expression="y\ge 0" displayMode="inline" [showCodeButton]="false" /></span> obliga <span class="math-part"><app-formula expression="t\ge 0" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="x\ge 0" displayMode="inline" [showCodeButton]="false" /></span> obliga <span class="math-part"><app-formula expression="t\le 0" displayMode="inline" [showCodeButton]="false" /></span> para t entero. Las desigualdades dan <span class="math-part"><app-formula expression="t\ge -\frac{4}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="t\le \frac{8}{11}" displayMode="inline" [showCodeButton]="false" /></span>. El único entero en ese intervalo es cero.</li>
+      <li>Solo <span class="math-part"><app-formula expression="t=0" displayMode="inline" [showCodeButton]="false" /></span> cumple ambas; verifica <span class="math-part"><app-formula expression="7\cdot 8+11\cdot 4=100" displayMode="inline" [showCodeButton]="false" /></span>. La restricción de no negatividad es necesaria para interpretar las soluciones como cantidades de monedas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="x=8" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="y=4" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una solución entera negativa no representa una cantidad de monedas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/linear-diophantine-equations">Ecuaciones diofánticas lineales ↗</a>
+      <p>Familias de soluciones enteras y su relación con divisibilidad y Bézout.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-006" />
+</article>

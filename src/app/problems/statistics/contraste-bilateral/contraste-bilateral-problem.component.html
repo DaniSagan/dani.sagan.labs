@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Contraste bilateral</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Con población normal y <span class="math-part"><app-formula expression="\sigma =10" displayMode="inline" [showCodeButton]="false" /></span> conocida, contrasta <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span>:<span class="math-part"><app-formula expression="\mu =50" displayMode="inline" [showCodeButton]="false" /></span> frente a <span class="math-part"><app-formula expression="H_{1}" displayMode="inline" [showCodeButton]="false" /></span>:<span class="math-part"><app-formula expression="\mu \ne 50" displayMode="inline" [showCodeButton]="false" /></span>. Una muestra de <span class="math-part"><app-formula expression="n=100" displayMode="inline" [showCodeButton]="false" /></span> da media 52. Usa nivel 5% y valor crítico <span class="math-part"><app-formula expression="1,96" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un contraste fija una hipótesis nula y mide si el resultado observado es excepcional suponiéndola cierta. En el contraste bilateral se consideran desviaciones en ambos sentidos. Con normalidad y desviación conocida, estandarizamos la media y rechazamos al 5 % si <span class="math-part"><app-formula expression="\lvert Z\rvert&gt;1{,}96" displayMode="inline" [showCodeButton]="false" /></span>; rechazar no cuantifica el tamaño práctico del efecto.</li>
+      <li>El estadístico es <span class="math-part"><app-formula expression="Z=(52-50)/(10/\sqrt{100})=2" displayMode="inline" [showCodeButton]="false" /></span>. El denominador <span class="math-part"><app-formula expression="10/\sqrt{100}=1" displayMode="inline" [showCodeButton]="false" /></span> es el error estándar bajo <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia observada respecto a 50 equivale a dos errores estándar.</li>
+      <li>Bajo <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span>, Z tiene distribución normal estándar. La normalidad y la desviación conocida permiten usar exactamente el estadístico Z, en lugar de uno basado en desviación estimada.</li>
+      <li>La región crítica bilateral al 5% es <span class="math-part"><app-formula expression="\lvert Z\rvert &gt;1,96" displayMode="inline" [showCodeButton]="false" /></span>. La alternativa <span class="math-part"><app-formula expression="\mu \ne 50" displayMode="inline" [showCodeButton]="false" /></span> reparte el nivel en las dos colas. Por eso la regla usa el valor absoluto y no una sola cola.</li>
+      <li>Como <span class="math-part"><app-formula expression="2&gt;1,96" displayMode="inline" [showCodeButton]="false" /></span>, se rechaza <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span> al nivel indicado; esto expresa evidencia contra <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span> bajo el modelo, no certeza de <span class="math-part"><app-formula expression="H_{1}" displayMode="inline" [showCodeButton]="false" /></span>. Rechazar significa que el dato cae en la región crítica diseñada. No prueba una probabilidad del 95% para la verdad de la alternativa.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Se rechaza <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span> al 5%.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El nivel 5% no es la probabilidad de que <span class="math-part"><app-formula expression="H_{0}" displayMode="inline" [showCodeButton]="false" /></span> sea verdadera.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-088" />
+</article>

@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Caja sin tapa</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>De una cartulina cuadrada de 12 cm de lado se recortan cuadrados iguales de lado x en las esquinas y se pliegan las paredes. Maximiza el volumen de la caja sin tapa.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Al recortar cuadrados de lado x, la altura de la caja es x y ambos lados de la base son <span class="math-part"><app-formula expression="12-2x" displayMode="inline" [showCodeButton]="false" /></span>. Por eso <span class="math-part"><app-formula expression="V(x)=x(12-2x)^2" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0&lt;x&lt;6" displayMode="inline" [showCodeButton]="false" /></span>. Las raíces de la derivada son candidatos; las restricciones y los volúmenes nulos de los extremos deciden cuál da el máximo.</li>
+      <li><span class="math-part"><app-formula expression="V(x)=x(12-2x)^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Al recortar x por ambos extremos de cada lado queda una base de <span class="math-part"><app-formula expression="12-2x" displayMode="inline" [showCodeButton]="false" /></span> y altura x. Para una caja real se necesita <span class="math-part"><app-formula expression="0&lt;x&lt;6" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Deriva: <span class="math-part"><app-formula expression="V&#39;(x)=(12-2x)(12-6x)" displayMode="inline" [showCodeButton]="false" /></span>. Por producto y cadena, <span class="math-part"><app-formula expression="V&#39;=(12-2x)^{2}-4x(12-2x)" displayMode="inline" [showCodeButton]="false" /></span>. Factorizar da <span class="math-part"><app-formula expression="(12-2x)(12-6x)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>En el dominio, el único punto crítico es <span class="math-part"><app-formula expression="x=2" displayMode="inline" [showCodeButton]="false" /></span>; V crece antes y decrece después. El primer factor es positivo en el dominio; el segundo cambia de positivo a negativo en 2, por lo que allí está el máximo.</li>
+      <li>En los extremos degenerados el volumen tiende a 0; <span class="math-part"><app-formula expression="V(2)=2\cdot 8^{2}=128" displayMode="inline" [showCodeButton]="false" /></span>. El volumen tiende a cero en x→0 y x→6. Comparar con 128 asegura que el máximo interior también es global.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Recorte de 2 cm; volumen máximo 128 cm³.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El valor <span class="math-part"><app-formula expression="x=6" displayMode="inline" [showCodeButton]="false" /></span> anula la base y no da una caja válida.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Como ampliación, compara el volumen obtenido por dimensiones de una caja con los métodos de volumen por secciones en integración clásica.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-057" />
+</article>

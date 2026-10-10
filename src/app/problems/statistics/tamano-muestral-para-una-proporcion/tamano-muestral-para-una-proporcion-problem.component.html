@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Tamaño muestral para una proporción</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Usando la aproximación normal, busca n para estimar una proporción con margen máximo <span class="math-part"><app-formula expression="0,05" displayMode="inline" [showCodeButton]="false" /></span> al 95 %, sin conocer previamente p. Usa <span class="math-part"><app-formula expression="z=1,96" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La proporción muestral es una media de indicadores de éxito, por lo que su varianza es <span class="math-part"><app-formula expression="p(1-p)/n" displayMode="inline" [showCodeButton]="false" /></span>. Bajo la aproximación normal, el margen al 95 % es <span class="math-part"><app-formula expression="1{,}96\sqrt{p(1-p)/n}" displayMode="inline" [showCodeButton]="false" /></span>. Si p se desconoce, <span class="math-part"><app-formula expression="p(1-p)=1/4-(p-1/2)^2\le1/4" displayMode="inline" [showCodeButton]="false" /></span> proporciona la elección conservadora.</li>
+      <li>El margen aproximado es <span class="math-part"><app-formula expression="1,96\sqrt{p(1-p)/n}" displayMode="inline" [showCodeButton]="false" /></span>. El error estándar aproximado de una proporción es <span class="math-part"><app-formula expression="\sqrt{p(1-p)/n}" displayMode="inline" [showCodeButton]="false" /></span>. El factor <span class="math-part"><app-formula expression="1,96" displayMode="inline" [showCodeButton]="false" /></span> fija el margen bilateral considerado.</li>
+      <li>Como <span class="math-part"><app-formula expression="p(1-p)=\frac{1}{4}-(p-\frac{1}{2})^{2}\le \frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>, basta <span class="math-part"><app-formula expression="1,96/(2\sqrt{n})\le 0,05" displayMode="inline" [showCodeButton]="false" /></span>. La expresión cuadrática muestra que el máximo se alcanza en <span class="math-part"><app-formula expression="p=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Usarlo protege frente a cualquier proporción desconocida en esta planificación.</li>
+      <li>Al elevar al cuadrado: <span class="math-part"><app-formula expression="n\ge 1,96^{2}/(4\cdot 0,05^{2})=384,16" displayMode="inline" [showCodeButton]="false" /></span>. Despejar n requiere cuadrar después de comprobar que los dos miembros son no negativos. El cálculo produce <span class="math-part"><app-formula expression="384,16" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Redondea hacia arriba: <span class="math-part"><app-formula expression="n=385" displayMode="inline" [showCodeButton]="false" /></span>; es una planificación aproximada bajo muestreo independiente, no una garantía exacta de cobertura. El tamaño debe ser entero y cumplir la cota, así que se toma el techo 385. La fórmula sigue siendo una aproximación normal de planificación.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="n=385" displayMode="inline" [showCodeButton]="false" /></span>, con la aproximación normal indicada.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Redondear a 384 incumple la desigualdad de planificación.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>Una proporción muestral es una media de indicadores Bernoulli. Su aproximación normal conecta con la distribución de medias muestrales.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-089" />
+</article>

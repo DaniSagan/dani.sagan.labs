@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavbarSubsection } from 'src/app/shared/content/navbar-subsection';
+import { PROBLEM_NAVIGATION } from '../problems.data';
 import { SectionNavbarComponent } from 'src/app/shared/section-navbar/section-navbar.component';
 
 @Component({
@@ -11,8 +11,5 @@ import { SectionNavbarComponent } from 'src/app/shared/section-navbar/section-na
 })
 export class ProblemsNavbarComponent {
   readonly sidebarId = 'sidebar-toggle-problems';
-  readonly sections: NavbarSubsection[] = [{
-    name: 'Otros',
-    items: [{ name: 'Problema 1', route: 'test-problem' }]
-  }];
+  readonly sections = PROBLEM_NAVIGATION;
 }

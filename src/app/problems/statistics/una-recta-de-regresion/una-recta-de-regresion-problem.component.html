@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una recta de regresión</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para los puntos <span class="math-part"><app-formula expression="(1,2),(2,2),(3,5)" displayMode="inline" [showCodeButton]="false" /></span>, halla la recta de mínimos cuadrados y el coeficiente de correlación de Pearson.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La recta de mínimos cuadrados <span class="math-part"><app-formula expression="\widehat y=\alpha+\beta x" displayMode="inline" [showCodeButton]="false" /></span> minimiza la suma de errores verticales al cuadrado. Sus coeficientes cumplen <span class="math-part"><app-formula expression="\beta=S_{xy}/S_{xx}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\alpha=\overline y-\beta\overline x" displayMode="inline" [showCodeButton]="false" /></span>, donde las S son sumas de desviaciones centradas. La correlación <span class="math-part"><app-formula expression="r=S_{xy}/\sqrt{S_{xx}S_{yy}}" displayMode="inline" [showCodeButton]="false" /></span> mide asociación lineal, no causalidad.</li>
+      <li><span class="math-part"><app-formula expression="\bar{x}=2" displayMode="inline" [showCodeButton]="false" /></span> e <span class="math-part"><app-formula expression="\bar y=3" displayMode="inline" [showCodeButton]="false" /></span>. <span class="math-part"><app-formula expression="S_{xx}=1+0+1=2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="S_{yy}=1+1+4=6" displayMode="inline" [showCodeButton]="false" /></span>. Las medias son <span class="math-part"><app-formula expression="(1+2+3)/3=2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(2+2+5)/3=3" displayMode="inline" [showCodeButton]="false" /></span>. Las sumas centradas usan desviaciones respecto a esos valores.</li>
+      <li><span class="math-part"><app-formula expression="S_{xy}=(-1)(-1)+0(-1)+1\cdot 2=3" displayMode="inline" [showCodeButton]="false" /></span>. Los productos son <span class="math-part"><app-formula expression="1,0,2" displayMode="inline" [showCodeButton]="false" /></span> y suman 3. No se usan productos de coordenadas sin centrar.</li>
+      <li>La pendiente es <span class="math-part"><app-formula expression="\frac{S_{xy}}{S_{xx}}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span> y la ordenada <span class="math-part"><app-formula expression="\bar y-\frac32\bar x=0" displayMode="inline" [showCodeButton]="false" /></span>. La minimización de la suma de cuadrados de residuos produce <span class="math-part"><app-formula expression="b=\frac{S_{xy}}{S_{xx}}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="a=\bar y-b\bar x" displayMode="inline" [showCodeButton]="false" /></span>, aquí <span class="math-part"><app-formula expression="a=0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="r=\frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}=\frac3{\sqrt{12}}=\frac{\sqrt3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. La correlación normaliza la covariación: <span class="math-part"><app-formula expression="\frac3{\sqrt{12}}=\frac3{2\sqrt3}=\frac{\sqrt3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Su valor está entre <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span> y 1.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Recta <span class="math-part"><app-formula expression="\hat y=1{,}5x" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="r=\frac{\sqrt3}2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La recta no tiene por qué pasar por cada dato, pero sí por (x̄,<span class="math-part"><app-formula expression="\bar y" displayMode="inline" [showCodeButton]="false" /></span>).</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>Lectura de ampliación sobre variabilidad muestral. La recta y la correlación de este ejercicio se calculan directamente con sumas centradas, sin usar el teorema central del límite.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-083" />
+</article>

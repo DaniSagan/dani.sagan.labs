@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una mediana medida</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En un triángulo, <span class="math-part"><app-formula expression="AB=7" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="AC=5" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="BC=6" displayMode="inline" [showCodeButton]="false" /></span>. Calcula la longitud de la mediana desde A.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La mediana une un vértice con el punto medio del lado opuesto. Si ese lado mide a y los otros b y c, <span class="math-part"><app-formula expression="m_a^2=(2b^2+2c^2-a^2)/4" displayMode="inline" [showCodeButton]="false" /></span>. Se puede deducir situando los extremos de la base en <span class="math-part"><app-formula expression="(-a/2,0)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(a/2,0)" displayMode="inline" [showCodeButton]="false" /></span>: sumar los cuadrados de sus distancias al vértice da <span class="math-part"><app-formula expression="b^2+c^2=2m_a^2+a^2/2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Si M es el punto medio de BC, <span class="math-part"><app-formula expression="BM=CM=3" displayMode="inline" [showCodeButton]="false" /></span>. La definición de mediana determina el punto medio, pero no obliga a que AM sea perpendicular a BC.</li>
+      <li>Apolonio establece <span class="math-part"><app-formula expression="AB^{2}+AC^{2}=2(AM^{2}+BM^{2})" displayMode="inline" [showCodeButton]="false" /></span>. Apolonio es el caso de Stewart con los dos segmentos de base iguales. Relaciona los cuadrados de lados y mediana.</li>
+      <li>Sustituye: <span class="math-part"><app-formula expression="49+25=2AM^{2}+18" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="AM^{2}=28" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="BM^{2}=9" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="74=2AM^{2}+18" displayMode="inline" [showCodeButton]="false" /></span>. Restar 18 y dividir entre 2 produce <span class="math-part"><app-formula expression="AM^{2}=28" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Como una longitud es positiva, <span class="math-part"><app-formula expression="AM=\sqrt{28}=2\sqrt{7}" displayMode="inline" [showCodeButton]="false" /></span>. Se toma la raíz positiva por ser longitud. Extraer el factor cuadrado 4 simplifica <span class="math-part"><app-formula expression="\sqrt{28}" displayMode="inline" [showCodeButton]="false" /></span> a <span class="math-part"><app-formula expression="2\sqrt{7}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="2\sqrt{7}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La mediana no es necesariamente perpendicular al lado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/stewart-theorem">Teorema de Stewart ↗</a>
+      <p>Relaciones métricas para cevianas; la mediana proporciona un caso particular.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-022" />
+</article>

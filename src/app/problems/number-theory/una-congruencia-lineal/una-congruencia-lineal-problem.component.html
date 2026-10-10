@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una congruencia lineal</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="18x\equiv 30 \pmod{42}" displayMode="inline" [showCodeButton]="false" /></span> y da todas las clases de soluciones módulo 42.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una congruencia <span class="math-part"><app-formula expression="ax\equiv b\pmod m" displayMode="inline" [showCodeButton]="false" /></span> significa <span class="math-part"><app-formula expression="ax-b=mk" displayMode="inline" [showCodeButton]="false" /></span> para algún entero k. Si <span class="math-part"><app-formula expression="d=\operatorname{mcd}(a,m)" displayMode="inline" [showCodeButton]="false" /></span>, necesariamente d divide b. Cuando lo divide, reducir entre d deja un coeficiente coprimo con el nuevo módulo, que tiene inverso y permite despejar x.</li>
+      <li>El mcd es 6 y divide 30, así que hay soluciones. La congruencia significa que 42 divide <span class="math-part"><app-formula expression="18x-30" displayMode="inline" [showCodeButton]="false" /></span>. La existencia requiere que <span class="math-part"><app-formula expression="\operatorname{mcd}(18,42)" displayMode="inline" [showCodeButton]="false" /></span> divida 30, condición que aquí se cumple.</li>
+      <li>Divide la congruencia por 6, reduciendo también el módulo: <span class="math-part"><app-formula expression="3x\equiv 5 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>. Dividir <span class="math-part"><app-formula expression="18x-30=42k" displayMode="inline" [showCodeButton]="false" /></span> entre 6 da <span class="math-part"><app-formula expression="3x-5=7k" displayMode="inline" [showCodeButton]="false" /></span>. Esto explica que también cambie el módulo.</li>
+      <li>El inverso de 3 módulo 7 es 5: <span class="math-part"><app-formula expression="x\equiv 25\equiv 4 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>. El inverso funciona porque <span class="math-part"><app-formula expression="3\cdot 5=15=2\cdot 7+1" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar por 5 da <span class="math-part"><app-formula expression="x\equiv 25" displayMode="inline" [showCodeButton]="false" /></span>, que se reduce restando 21.</li>
+      <li>En módulo 42 aparecen <span class="math-part"><app-formula expression="4,11,18,25,32,39" displayMode="inline" [showCodeButton]="false" /></span>; cada una produce resto 30 al multiplicar por 18. Se toma <span class="math-part"><app-formula expression="x=4+7t" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="t=0" displayMode="inline" [showCodeButton]="false" /></span>,…<span class="math-part"><app-formula expression=",5" displayMode="inline" [showCodeButton]="false" /></span>. El siguiente valor, 46, ya repite la clase 4 módulo 42.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="x\equiv 4,11,18,25,32,39 \pmod{42}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No conserves el módulo 42 tras dividir por 6.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/linear-congruence-theorem">Teorema de la congruencia lineal ↗</a>
+      <p>Condiciones de existencia y número de soluciones de una congruencia lineal.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-002" />
+</article>

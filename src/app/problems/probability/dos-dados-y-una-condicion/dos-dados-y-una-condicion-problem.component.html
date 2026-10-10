@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Dos dados y una condición</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Se lanzan dos dados equilibrados. Sea S la suma y A el suceso «el primer dado es par». Calcula <span class="math-part"><app-formula expression="P(S=8)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="P(S=8\mid A)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Con dos dados equilibrados, los 36 pares ordenados tienen la misma probabilidad. Condicionar a un suceso A restringe el espacio a los resultados que cumplen A: <span class="math-part"><app-formula expression="P(S\mid A)=P(S\cap A)/P(A)" displayMode="inline" [showCodeButton]="false" /></span>. Hay que contar los casos favorables dentro de ese espacio reducido, no conservar automáticamente el denominador 36.</li>
+      <li>Hay 36 pares ordenados; suman 8 los pares <span class="math-part"><app-formula expression="(2,6),(3,5),(4,4),(5,3),(6,2)" displayMode="inline" [showCodeButton]="false" /></span>. El espacio muestral tiene <span class="math-part"><app-formula expression="6\cdot 6" displayMode="inline" [showCodeButton]="false" /></span> resultados porque importa cuál es el primer dado. Los cinco pares enumerados agotan la suma 8.</li>
+      <li>La probabilidad sin condición es <span class="math-part"><app-formula expression="\frac{5}{36}" displayMode="inline" [showCodeButton]="false" /></span>. Cada par tiene probabilidad <span class="math-part"><app-formula expression="\frac{1}{36}" displayMode="inline" [showCodeButton]="false" /></span>; sumar las cinco probabilidades da <span class="math-part"><app-formula expression="\frac{5}{36}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Si el primero es par, quedan 18 pares posibles y todos siguen siendo equiprobables. Condicionar a que el primero sea par deja tres valores para él y seis para el segundo: <span class="math-part"><app-formula expression="3\cdot 6=18" displayMode="inline" [showCodeButton]="false" /></span> resultados.</li>
+      <li>De los cinco favorables, cumplen la condición <span class="math-part"><app-formula expression="(2,6),(4,4),(6,2)" displayMode="inline" [showCodeButton]="false" /></span>: probabilidad <span class="math-part"><app-formula expression="\frac{3}{18}=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>. Solo los pares con primer valor <span class="math-part"><app-formula expression="2,4,6" displayMode="inline" [showCodeButton]="false" /></span> permanecen favorables. Dividir 3 entre 18 equivale a aplicar <span class="math-part"><app-formula expression="P(A\mid B)=\frac{P(A\cap B)}{P(B)}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{5}{36}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las parejas <span class="math-part"><app-formula expression="(2,6)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(6,2)" displayMode="inline" [showCodeButton]="false" /></span> son resultados distintos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
+      <p>Coeficientes combinatorios y expansión de potencias de una suma.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-071" />
+</article>

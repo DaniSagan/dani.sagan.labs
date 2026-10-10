@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Normalizar una densidad</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Sea <span class="math-part"><app-formula expression="f(x)=cx" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="0\le x\le 2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="f(x)=0" displayMode="inline" [showCodeButton]="false" /></span> fuera. Halla c, <span class="math-part"><app-formula expression="P(X\le 1)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="E(X)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\operatorname{Var}(X)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una densidad debe ser no negativa y tener integral total 1. La probabilidad de un intervalo es el área de la densidad sobre él. Los momentos son <span class="math-part"><app-formula expression="E(X)=\int xf(x)\,dx" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="E(X^2)=\int x^2f(x)\,dx" displayMode="inline" [showCodeButton]="false" /></span>; la varianza se calcula como <span class="math-part"><app-formula expression="E(X^2)-E(X)^2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="\int _{0}^{2}" displayMode="inline" [showCodeButton]="false" /></span>cx <span class="math-part"><app-formula expression="dx=2c=1" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="c=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Una densidad debe ser no negativa e integrar 1. La normalización da <span class="math-part"><app-formula expression="c=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>, que satisface también la no negatividad.</li>
+      <li><span class="math-part"><app-formula expression="P(X\le 1)=\int _{0}^{1}x/2 dx=\frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>. La probabilidad se obtiene integrando la densidad entre los límites pedidos; no evaluando <span class="math-part"><app-formula expression="f(1)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="E(X)=\int _{0}^{2}x^{2}/2 dx=\frac{4}{3}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="E(X^{2})=\int _{0}^{2}x^{3}/2 dx=2" displayMode="inline" [showCodeButton]="false" /></span>. La esperanza integra x por la densidad y el segundo momento <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> por ella. Esto explica los integrandos <span class="math-part"><app-formula expression="x^{2}/2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x^{3}/2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="\operatorname{Var}(X)=E(X^{2})-E(X)^{2}=2-\frac{16}{9}=\frac{2}{9}" displayMode="inline" [showCodeButton]="false" /></span>. Restar el cuadrado de la media al segundo momento da la varianza, siempre no negativa; aquí <span class="math-part"><app-formula expression="2-\frac{16}{9}=\frac{2}{9}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="c=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="P=\frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="E=\frac{4}{3}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="\operatorname{Var}=\frac{2}{9}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La densidad no es la probabilidad de un valor puntual.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-078" />
+</article>

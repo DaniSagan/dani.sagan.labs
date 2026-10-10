@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Últimas cifras de una potencia</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula las dos últimas cifras de <span class="math-part"><app-formula expression="7^{2026}" displayMode="inline" [showCodeButton]="false" /></span> sin calcular la potencia completa.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las dos últimas cifras son el resto de la división entre 100. Si encontramos <span class="math-part"><app-formula expression="7^r\equiv1\pmod{100}" displayMode="inline" [showCodeButton]="false" /></span>, escribir el exponente como <span class="math-part"><app-formula expression="rq+s" displayMode="inline" [showCodeButton]="false" /></span> transforma la potencia en <span class="math-part"><app-formula expression="(7^r)^q7^s" displayMode="inline" [showCodeButton]="false" /></span>, cuyo resto coincide con el de <span class="math-part"><app-formula expression="7^s" displayMode="inline" [showCodeButton]="false" /></span>. Aquí basta comprobar directamente un período de cuatro.</li>
+      <li><span class="math-part"><app-formula expression="7^{2}=49" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="7^{4}=2401\equiv 1 \pmod{100}" displayMode="inline" [showCodeButton]="false" /></span>. Una potencia congruente con 1 permite reducir el exponente. Aquí <span class="math-part"><app-formula expression="2401-1" displayMode="inline" [showCodeButton]="false" /></span> es múltiplo de 100.</li>
+      <li><span class="math-part"><app-formula expression="2026=4\cdot 506+2" displayMode="inline" [showCodeButton]="false" /></span>. La división euclídea del exponente entre 4 deja resto 2; se separan 506 bloques de cuatro factores.</li>
+      <li>Así <span class="math-part"><app-formula expression="7^{2026}\equiv (7^{4})^{506}\cdot 7^{2}\equiv 49 \pmod{100}" displayMode="inline" [showCodeButton]="false" /></span>. Las congruencias se conservan al multiplicar: cada bloque aporta resto 1 y solo queda el factor <span class="math-part"><app-formula expression="7^{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El resultado es un resto de dos cifras, no una aproximación de la potencia. Los enteros congruentes módulo 100 tienen las mismas unidades y decenas. Por tanto el resto determina las dos cifras pedidas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 49.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un ciclo módulo 10 no determina las dos últimas cifras.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/orders-theorem">Orden multiplicativo ↗</a>
+      <p>El papel de los ciclos de potencias al reducir exponentes en aritmética modular.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-004" />
+</article>

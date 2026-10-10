@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una hipérbola trasladada</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Identifica la cónica <span class="math-part"><app-formula expression="4x^{2}-9y^{2}-8x-18y-41=0" displayMode="inline" [showCodeButton]="false" /></span>, su centro y sus asíntotas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Completar cuadrados transforma la ecuación a la forma <span class="math-part"><app-formula expression="(x-h)^2/a^2-(y-k)^2/b^2=1" displayMode="inline" [showCodeButton]="false" /></span>. Esta forma identifica centro <span class="math-part"><app-formula expression="(h,k)" displayMode="inline" [showCodeButton]="false" /></span>, eje transversal horizontal y vértices <span class="math-part"><app-formula expression="(h\pm a,k)" displayMode="inline" [showCodeButton]="false" /></span>. Las asíntotas se obtienen anulando la parte cuadrática: <span class="math-part"><app-formula expression="y-k=\pm(b/a)(x-h)" displayMode="inline" [showCodeButton]="false" /></span>, que describe las direcciones de las ramas lejanas.</li>
+      <li>Agrupa: <span class="math-part"><app-formula expression="4[(x-1)^{2}-1]-9[(y+1)^{2}-1]-41=0" displayMode="inline" [showCodeButton]="false" /></span>. Se usan <span class="math-part"><app-formula expression="x^{2}-2x=(x-1)^{2}-1" displayMode="inline" [showCodeButton]="false" /></span> e <span class="math-part"><app-formula expression="y^{2}+2y=(y+1)^{2}-1" displayMode="inline" [showCodeButton]="false" /></span>. Es necesario distribuir también el coeficiente negativo <span class="math-part"><app-formula expression="-9" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Queda <span class="math-part"><app-formula expression="4(x-1)^{2}-9(y+1)^{2}=36" displayMode="inline" [showCodeButton]="false" /></span>. Los términos constantes suman <span class="math-part"><app-formula expression="-4+9-41=-36" displayMode="inline" [showCodeButton]="false" /></span>. Pasarlos al otro lado da el 36 de la ecuación centrada.</li>
+      <li>La forma canónica es <span class="math-part"><app-formula expression="\frac{(x-1)^2}9-\frac{(y+1)^2}4=1" displayMode="inline" [showCodeButton]="false" /></span>, hipérbola horizontal centrada en <span class="math-part"><app-formula expression="(1,-1)" displayMode="inline" [showCodeButton]="false" /></span>. Dividir entre 36 revela <span class="math-part"><app-formula expression="a^{2}=9" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="b^{2}=4" displayMode="inline" [showCodeButton]="false" /></span>. El signo positivo del término en x identifica el eje transversal horizontal.</li>
+      <li>Las asíntotas satisfacen <span class="math-part"><app-formula expression="y+1=\pm\frac23(x-1)" displayMode="inline" [showCodeButton]="false" /></span>. Igualar la parte cuadrática a cero da <span class="math-part"><app-formula expression="(y+1)^{2}/4=(x-1)^{2}/9" displayMode="inline" [showCodeButton]="false" /></span>. Sus dos raíces producen las pendientes ±<span class="math-part"><app-formula expression="\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Centro <span class="math-part"><app-formula expression="(1,-1)" displayMode="inline" [showCodeButton]="false" /></span>; asíntotas <span class="math-part"><app-formula expression="y+1=\pm\frac23(x-1)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El signo de la coordenada del centro se invierte respecto al término dentro del cuadrado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/hyperbola">Hipérbola ↗</a>
+      <p>Lectura sobre la forma de la cónica, sus ejes y sus asíntotas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-027" />
+</article>

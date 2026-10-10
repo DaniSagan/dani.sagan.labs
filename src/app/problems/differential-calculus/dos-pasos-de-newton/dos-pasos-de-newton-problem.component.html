@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Dos pasos de Newton</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Aplica dos iteraciones de Newton a <span class="math-part"><app-formula expression="x^{2}-2=0" displayMode="inline" [showCodeButton]="false" /></span> desde <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span>, con aritmética exacta.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Newton aproxima un cero reemplazando la curva por su tangente en el punto actual. Resolver <span class="math-part"><app-formula expression="0=f(x_n)+f&#39;(x_n)(x_{n+1}-x_n)" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="x_{n+1}=x_n-f(x_n)/f&#39;(x_n)" displayMode="inline" [showCodeButton]="false" /></span>, siempre que la derivada no sea cero. El residuo <span class="math-part"><app-formula expression="f(x_{n+1})" displayMode="inline" [showCodeButton]="false" /></span> comprueba cuánto falta para satisfacer la ecuación.</li>
+      <li>Newton da <span class="math-part"><app-formula expression="x_{n+1}=x_{n}-(x_{n}^{2}-2)/(2x_{n})=(x_{n}+2/x_{n})/2" displayMode="inline" [showCodeButton]="false" /></span>. Newton usa la tangente: x nuevo es x anterior menos el cociente <span class="math-part"><app-formula expression="f/f&#39;" displayMode="inline" [showCodeButton]="false" /></span>. Aquí <span class="math-part"><app-formula expression="f&#39;=2x" displayMode="inline" [showCodeButton]="false" /></span>, que no se anula en las aproximaciones usadas.</li>
+      <li>Desde <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span> se obtiene <span class="math-part"><app-formula expression="x_{1}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="(1+2)/2=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Se conservan fracciones para evitar errores de redondeo.</li>
+      <li>Luego <span class="math-part"><app-formula expression="x_{2}=(\frac{3}{2}+\frac{4}{3})/2=\frac{17}{12}" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="x_{1}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span> se tiene <span class="math-part"><app-formula expression="2/x_{1}=\frac{4}{3}" displayMode="inline" [showCodeButton]="false" /></span>. La suma común es <span class="math-part"><app-formula expression="\frac{9}{6}+\frac{8}{6}=\frac{17}{6}" displayMode="inline" [showCodeButton]="false" /></span>; dividir entre 2 da <span class="math-part"><app-formula expression="\frac{17}{12}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El residuo <span class="math-part"><app-formula expression="x_{2}^{2}-2=\frac{289}{144}-\frac{288}{144}=\frac{1}{144}" displayMode="inline" [showCodeButton]="false" /></span> comprueba que aún no es la raíz exacta. El residuo positivo indica una aproximación por encima de <span class="math-part"><app-formula expression="\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>, pues <span class="math-part"><app-formula expression="x_{2}" displayMode="inline" [showCodeButton]="false" /></span> es positivo. No se confunde residuo con error en x.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="x_{1}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="x_{2}=\frac{17}{12}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una aproximación con residuo pequeño sigue sin ser una igualdad exacta.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/newton-raphson">Newton–Raphson ↗</a>
+      <p>Búsqueda de raíces mediante rectas tangentes e iteraciones sucesivas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-054" />
+</article>

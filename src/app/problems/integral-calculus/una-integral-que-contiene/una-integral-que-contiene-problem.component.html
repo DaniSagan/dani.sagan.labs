@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Una integral que contiene π</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Demuestra que <span class="math-part"><app-formula expression="\int_0^1\sqrt{1-x^2}\,dx=\frac\pi4" displayMode="inline" [showCodeButton]="false" /></span> y deduce <span class="math-part"><app-formula expression="2&lt;\pi&lt;4" displayMode="inline" [showCodeButton]="false" /></span> sin usar decimales.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La gráfica <span class="math-part"><app-formula expression="y=\sqrt{1-x^2}" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="[0,1]" displayMode="inline" [showCodeButton]="false" /></span> es el cuarto superior derecho de la circunferencia unidad. Su integral es por tanto un cuarto del área del disco. Para acotar su valor, comparamos la curva con la recta <span class="math-part"><app-formula expression="1-x" displayMode="inline" [showCodeButton]="false" /></span> y con la constante 1 en ese intervalo.</li>
+      <li>La gráfica positiva de <span class="math-part"><app-formula expression="x^{2}+y^{2}=1" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="[0,1]" displayMode="inline" [showCodeButton]="false" /></span> limita un cuarto de disco de radio 1, de área <span class="math-part"><app-formula expression="\frac{\pi}{4}" displayMode="inline" [showCodeButton]="false" /></span>. La circunferencia unidad tiene área <span class="math-part"><app-formula expression="\pi" displayMode="inline" [showCodeButton]="false" /></span>; la simetría entre sus cuatro cuadrantes deja área <span class="math-part"><app-formula expression="\frac{\pi}{4}" displayMode="inline" [showCodeButton]="false" /></span> bajo la rama positiva en <span class="math-part"><app-formula expression="[0,1]" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Para <span class="math-part"><app-formula expression="0&lt;x&lt;1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="1-x&lt;\sqrt{1-x^{2}}&lt;1" displayMode="inline" [showCodeButton]="false" /></span>; la primera desigualdad se verifica elevando al cuadrado. La comparación inferior se verifica con <span class="math-part"><app-formula expression="1-x^{2}-(1-x)^{2}=2x(1-x)&gt;0" displayMode="inline" [showCodeButton]="false" /></span>. Ambos lados que se comparan son no negativos.</li>
+      <li>Integra: <span class="math-part"><app-formula expression="\int _{0}^{1}(1-x)dx=\frac{1}{2}&lt;\frac{\pi}{4}&lt;\int _{0}^{1}1dx=1" displayMode="inline" [showCodeButton]="false" /></span>. Las desigualdades son estrictas en todo el intervalo abierto, de longitud positiva. Sus integrales también quedan estrictamente ordenadas.</li>
+      <li>Multiplica por 4 para obtener <span class="math-part"><app-formula expression="2&lt;\pi &lt;4" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar la cadena <span class="math-part"><app-formula expression="\frac{1}{2}&lt;\frac{\pi}{4}&lt;1" displayMode="inline" [showCodeButton]="false" /></span> por el número positivo 4 conserva los signos de las desigualdades.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Integral <span class="math-part"><app-formula expression="\frac{\pi}{4}" displayMode="inline" [showCodeButton]="false" /></span> y cota estricta <span class="math-part"><app-formula expression="2&lt;\pi &lt;4" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una aproximación decimal no demuestra las desigualdades.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/pi-decimals">Decimales de π ↗</a>
+      <p>Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-070" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Dos relojes y un resto</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Encuentra el menor entero positivo que deja resto 2 al dividir entre 7 y resto 3 al dividir entre 11.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Buscamos un número que satisfaga las dos condiciones simultáneamente. La primera equivale a <span class="math-part"><app-formula expression="x=2+7k" displayMode="inline" [showCodeButton]="false" /></span>, con k entero: incluye todos los candidatos y no solo algunos ejemplos. Al imponer la segunda se obtiene una congruencia para k; sustituir su solución proporciona la familia completa para x.</li>
+      <li>Sustituye en la segunda condición: <span class="math-part"><app-formula expression="7k\equiv 1 \pmod{11}" displayMode="inline" [showCodeButton]="false" /></span>. Esta forma recoge todos los enteros de la primera condición. La segunda exige <span class="math-part"><app-formula expression="2+7k\equiv 3" displayMode="inline" [showCodeButton]="false" /></span>, equivalente a <span class="math-part"><app-formula expression="7k\equiv 1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Como <span class="math-part"><app-formula expression="7\cdot 8\equiv 1" displayMode="inline" [showCodeButton]="false" /></span>, se obtiene <span class="math-part"><app-formula expression="k\equiv 8 \pmod{11}" displayMode="inline" [showCodeButton]="false" /></span>. El inverso se comprueba con <span class="math-part"><app-formula expression="7\cdot 8=56=5\cdot 11+1" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar por 8 permite despejar k.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="x=58+77t" displayMode="inline" [showCodeButton]="false" /></span>, con t entero. Sustituir <span class="math-part"><app-formula expression="k=8+11t" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="x=2+7(8+11t)=58+77t" displayMode="inline" [showCodeButton]="false" /></span>. El período 77 es el producto de los módulos coprimos.</li>
+      <li>58 es positivo y <span class="math-part"><app-formula expression="58-77&lt;0" displayMode="inline" [showCodeButton]="false" /></span>; verifica <span class="math-part"><app-formula expression="58=8\cdot 7+2=5\cdot 11+3" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="t\ge 1" displayMode="inline" [showCodeButton]="false" /></span> los valores son mayores que 58; para <span class="math-part"><app-formula expression="t\le -1" displayMode="inline" [showCodeButton]="false" /></span> son negativos. Esto demuestra la minimalidad.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 58; todas las soluciones son <span class="math-part"><app-formula expression="x\equiv 58 \pmod{77}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El menor k positivo no siempre implica el menor x positivo sin comprobarlo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/chinese-remainder-theorem">Teorema chino del resto ↗</a>
+      <p>Compatibilidad y unicidad modular de sistemas de congruencias con módulos coprimos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-003" />
+</article>

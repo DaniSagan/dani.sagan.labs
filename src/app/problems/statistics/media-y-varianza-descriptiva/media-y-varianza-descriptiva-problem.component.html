@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Media y varianza descriptiva</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para los datos <span class="math-part"><app-formula expression="2,4,4,6" displayMode="inline" [showCodeButton]="false" /></span>, calcula media, mediana, varianza descriptiva con divisor n y varianza muestral con divisor <span class="math-part"><app-formula expression="n-1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La media suma los datos y divide entre su número; la mediana ordena y toma el valor central, o la media de los dos centrales. La varianza descriptiva divide la suma de desviaciones cuadráticas entre n. La varianza muestral corregida divide entre <span class="math-part"><app-formula expression="n-1" displayMode="inline" [showCodeButton]="false" /></span>, por lo que hay que distinguir las dos convenciones.</li>
+      <li>La media es <span class="math-part"><app-formula expression="(2+4+4+6)/4=4" displayMode="inline" [showCodeButton]="false" /></span>; la mediana promedia los dos valores centrales y también es 4. La media usa la suma de datos dividida entre cuatro. En la lista ordenada, los centrales son 4 y 4, cuya media da la mediana.</li>
+      <li>Las desviaciones son <span class="math-part"><app-formula expression="-2,0,0,2" displayMode="inline" [showCodeButton]="false" /></span> y sus cuadrados suman 8. Las desviaciones respecto a 4 son <span class="math-part"><app-formula expression="-2,0,0,2" displayMode="inline" [showCodeButton]="false" /></span>. Sus cuadrados evitan que las diferencias positivas y negativas se cancelen.</li>
+      <li>La varianza descriptiva es <span class="math-part"><app-formula expression="\frac{8}{4}=2" displayMode="inline" [showCodeButton]="false" /></span>. El divisor <span class="math-part"><app-formula expression="n=4" displayMode="inline" [showCodeButton]="false" /></span> describe la dispersión de estos cuatro datos considerados como conjunto completo.</li>
+      <li>La varianza muestral corregida es <span class="math-part"><app-formula expression="\frac{8}{3}" displayMode="inline" [showCodeButton]="false" /></span>; no se deben confundir ambas convenciones. El divisor <span class="math-part"><app-formula expression="n-1=3" displayMode="inline" [showCodeButton]="false" /></span> corresponde al estimador corregido habitual de varianza poblacional a partir de una muestra. Ambas convenciones deben identificarse.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Media y mediana: 4; varianza descriptiva 2; muestral <span class="math-part"><app-formula expression="\frac{8}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Especifica el divisor antes de comparar varianzas de distintas herramientas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>La media y la varianza descriptivas son el punto de partida para estudiar cómo varían las medias de muestras repetidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-081" />
+</article>

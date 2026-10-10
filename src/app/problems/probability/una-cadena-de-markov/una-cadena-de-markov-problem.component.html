@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Una cadena de Markov</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Una máquina pasa de operativa a averiada con probabilidad <span class="math-part"><app-formula expression="\frac{1}{10}" displayMode="inline" [showCodeButton]="false" /></span> por día y de averiada a operativa con probabilidad <span class="math-part"><app-formula expression="\frac{3}{5}" displayMode="inline" [showCodeButton]="false" /></span>. Halla la distribución estacionaria y la probabilidad de estar operativa dentro de dos días si hoy lo está.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una cadena de Markov usa probabilidades de transición que dependen solo del estado actual. Una distribución estacionaria permanece igual tras una transición. Para dos pasos se suman las probabilidades de todos los caminos intermedios: cada camino multiplica sus dos transiciones y los caminos alternativos se suman.</li>
+      <li><span class="math-part"><app-formula expression="P=\begin{pmatrix}\frac{9}{10}&amp;\frac{1}{10}\\\frac{3}{5}&amp;\frac{2}{5}\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span>. Para estacionariedad, <span class="math-part"><app-formula expression="\pi _A=\pi _O/6" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\pi _O+\pi _A=1" displayMode="inline" [showCodeButton]="false" /></span>. Cada fila de P contiene probabilidades de salir del estado indicado y suma 1. El balance estacionario cumple <span class="math-part"><app-formula expression="\pi _OP(O,A)=\pi _AP(A,O)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Se obtiene <span class="math-part"><app-formula expression="\pi _O=\frac{6}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\pi _A=\frac{1}{7}" displayMode="inline" [showCodeButton]="false" /></span>. De <span class="math-part"><app-formula expression="\pi _O/10=3\pi _A/5" displayMode="inline" [showCodeButton]="false" /></span> sale <span class="math-part"><app-formula expression="\pi _O=6\pi _A" displayMode="inline" [showCodeButton]="false" /></span>. Junto con la suma 1 se obtienen <span class="math-part"><app-formula expression="\frac{6}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\frac{1}{7}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Desde O, estar en O tras dos días puede seguir O→O→O o O→A→O. Para terminar operativa a los dos días hay dos estados intermedios posibles, O o A. Se enumeran ambos caminos.</li>
+      <li>La suma es <span class="math-part"><app-formula expression="(\frac{9}{10})^{2}+(\frac{1}{10})(\frac{3}{5})=\frac{81}{100}+\frac{6}{100}=\frac{87}{100}" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar las transiciones de cada camino y sumar sus probabilidades equivale a calcular la entrada <span class="math-part"><app-formula expression="(O,O)" displayMode="inline" [showCodeButton]="false" /></span> de <span class="math-part"><app-formula expression="P^{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Estacionaria <span class="math-part"><app-formula expression="(\frac{6}{7},\frac{1}{7})" displayMode="inline" [showCodeButton]="false" /></span>; probabilidad a dos días <span class="math-part"><app-formula expression="\frac{87}{100}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La distribución estacionaria no es la distribución tras solo dos pasos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/markov-chains">Cadenas de Markov ↗</a>
+      <p>Estados, transiciones y evolución de distribuciones en procesos discretos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-080" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Tiempo hasta el primer éxito</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Ensayos independientes tienen éxito con probabilidad <span class="math-part"><app-formula expression="\frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>. Sea X el número de ensayos hasta el primer éxito, incluido este. Calcula <span class="math-part"><app-formula expression="P(X&gt;3)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="E(X)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La variable geométrica cuenta ensayos hasta el primer éxito, incluido ese éxito. El evento <span class="math-part"><app-formula expression="X&gt;k" displayMode="inline" [showCodeButton]="false" /></span> equivale a k fracasos consecutivos, con probabilidad <span class="math-part"><app-formula expression="(1-p)^k" displayMode="inline" [showCodeButton]="false" /></span>. Su media se deduce de <span class="math-part"><app-formula expression="E(X)=\sum_{k=0}^\infty P(X&gt;k)=\sum_{k=0}^\infty(1-p)^k=1/p" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="P(X=k)=(\frac{3}{4})^{k-1}(\frac{1}{4})" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="k\ge 1" displayMode="inline" [showCodeButton]="false" /></span>. El evento <span class="math-part"><app-formula expression="X=k" displayMode="inline" [showCodeButton]="false" /></span> requiere <span class="math-part"><app-formula expression="k-1" displayMode="inline" [showCodeButton]="false" /></span> fallos consecutivos y después un éxito. Se multiplican sus probabilidades por independencia.</li>
+      <li>Por independencia, <span class="math-part"><app-formula expression="P(X&gt;3)=(\frac{3}{4})^{3}=\frac{27}{64}" displayMode="inline" [showCodeButton]="false" /></span>. <span class="math-part"><app-formula expression="X&gt;3" displayMode="inline" [showCodeButton]="false" /></span> significa que todavía no hubo éxito en ninguno de los tres primeros ensayos; no impone qué ocurrirá después.</li>
+      <li>La fórmula de colas da <span class="math-part"><app-formula expression="E(X)=\sum" displayMode="inline" [showCodeButton]="false" /></span> desde <span class="math-part"><app-formula expression="k=0" displayMode="inline" [showCodeButton]="false" /></span> hasta <span class="math-part"><app-formula expression="\infty" displayMode="inline" [showCodeButton]="false" /></span> de <span class="math-part"><app-formula expression="P(X&gt;k)" displayMode="inline" [showCodeButton]="false" /></span>. Para una variable entera positiva, X se expresa como suma de indicadores de <span class="math-part"><app-formula expression="X&gt;k" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="k\ge 0" displayMode="inline" [showCodeButton]="false" /></span>. Tomar esperanzas produce la fórmula de colas.</li>
+      <li>Esta suma es <span class="math-part"><app-formula expression="\sum (\frac{3}{4})^{k}=1/(1-\frac{3}{4})=4" displayMode="inline" [showCodeButton]="false" /></span>. Las colas forman una progresión geométrica de razón <span class="math-part"><app-formula expression="\frac{3}{4}" displayMode="inline" [showCodeButton]="false" /></span>. La esperanza 4 incluye el ensayo exitoso.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="P(X&gt;3)=\frac{27}{64}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="E(X)=4" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Si X contara solo fallos, su esperanza sería 3 y su soporte empezaría en 0.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/markov-chains">Cadenas de Markov ↗</a>
+      <p>Estados, transiciones y evolución de distribuciones en procesos discretos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-077" />
+</article>

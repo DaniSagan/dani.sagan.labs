@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Recta y circunferencia</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Encuentra las intersecciones de <span class="math-part"><app-formula expression="x^{2}+y^{2}=25" displayMode="inline" [showCodeButton]="false" /></span> con <span class="math-part"><app-formula expression="y=x+1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una intersección debe satisfacer simultáneamente las ecuaciones de la recta y la circunferencia. Sustituir <span class="math-part"><app-formula expression="y=x+1" displayMode="inline" [showCodeButton]="false" /></span> reduce el sistema a una ecuación en x. Cada raíz debe acompañarse de su coordenada y, calculada con la recta; comprobar ambas ecuaciones evita aceptar puntos que solo cumplan una.</li>
+      <li><span class="math-part"><app-formula expression="x^{2}+(x+1)^{2}=25" displayMode="inline" [showCodeButton]="false" /></span>. Un punto de la recta tiene forma <span class="math-part"><app-formula expression="(x,x+1)" displayMode="inline" [showCodeButton]="false" /></span>. Pertenecer también a la circunferencia impone la ecuación tras sustituir.</li>
+      <li>Reduce: <span class="math-part"><app-formula expression="2x^{2}+2x-24=0" displayMode="inline" [showCodeButton]="false" /></span>, o <span class="math-part"><app-formula expression="x^{2}+x-12=0" displayMode="inline" [showCodeButton]="false" /></span>. La expansión es <span class="math-part"><app-formula expression="(x+1)^{2}=x^{2}+2x+1" displayMode="inline" [showCodeButton]="false" /></span>. Al sumar el otro <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> y restar 25 aparece el polinomio <span class="math-part"><app-formula expression="2x^{2}+2x-24" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Factoriza <span class="math-part"><app-formula expression="(x+4)(x-3)=0" displayMode="inline" [showCodeButton]="false" /></span>, de donde <span class="math-part"><app-formula expression="x=-4" displayMode="inline" [showCodeButton]="false" /></span> o 3. Los números 4 <span class="math-part"><app-formula expression="y -3" displayMode="inline" [showCodeButton]="false" /></span> tienen producto <span class="math-part"><app-formula expression="-12" displayMode="inline" [showCodeButton]="false" /></span> y suma 1, justificando la factorización del cuadrático.</li>
+      <li>Calcula <span class="math-part"><app-formula expression="y=x+1" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="y=-3" displayMode="inline" [showCodeButton]="false" /></span> o 4; verifica que ambas normas al cuadrado valen 25. En el primer punto, <span class="math-part"><app-formula expression="16+9=25" displayMode="inline" [showCodeButton]="false" /></span>; en el segundo, <span class="math-part"><app-formula expression="9+16=25" displayMode="inline" [showCodeButton]="false" /></span>. Ambos cumplen además <span class="math-part"><app-formula expression="y=x+1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="(-4,-3)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(3,4)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Resolver solo x deja incompletos los puntos de intersección.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/power-of-point">Potencia de un punto ↗</a>
+      <p>Relaciones entre secantes y tangentes a una circunferencia.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-026" />
+</article>

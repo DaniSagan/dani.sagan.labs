@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Enfriamiento exponencial</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Una bebida pasa de 90 °C a 60 °C en 10 minutos, en una habitación a 20 °C. Con <span class="math-part"><app-formula expression="T&#39;=-k(T-20)" displayMode="inline" [showCodeButton]="false" /></span>, halla <span class="math-part"><app-formula expression="T(t)" displayMode="inline" [showCodeButton]="false" /></span> y cuándo alcanza 40 °C.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La ley de enfriamiento propone <span class="math-part"><app-formula expression="T&#39;(t)=-k(T(t)-20)" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="k&gt;0" displayMode="inline" [showCodeButton]="false" /></span> y ambiente constante. La diferencia <span class="math-part"><app-formula expression="U=T-20" displayMode="inline" [showCodeButton]="false" /></span> cumple <span class="math-part"><app-formula expression="U&#39;=-kU" displayMode="inline" [showCodeButton]="false" /></span>, cuya solución es <span class="math-part"><app-formula expression="U(t)=U(0)e^{-kt}" displayMode="inline" [showCodeButton]="false" /></span>, como se comprueba derivando. La observación a los diez minutos determina k.</li>
+      <li>Separar variables da <span class="math-part"><app-formula expression="T(t)-20=Ce^{-kt}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="T(0)=90" displayMode="inline" [showCodeButton]="false" /></span> impone <span class="math-part"><app-formula expression="C=70" displayMode="inline" [showCodeButton]="false" /></span>. Definir <span class="math-part"><app-formula expression="U=T-20" displayMode="inline" [showCodeButton]="false" /></span> transforma la ecuación en <span class="math-part"><app-formula expression="U&#39;=-kU" displayMode="inline" [showCodeButton]="false" /></span>. Integrar <span class="math-part"><app-formula expression="U&#39;/U=-k" displayMode="inline" [showCodeButton]="false" /></span> da una exponencial; <span class="math-part"><app-formula expression="U(0)=70" displayMode="inline" [showCodeButton]="false" /></span> fija la constante.</li>
+      <li><span class="math-part"><app-formula expression="T(10)=60" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="e^{-10k}=\frac{40}{70}=\frac{4}{7}" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="k=\ln(\frac{7}{4})/10" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia a los 10 minutos es <span class="math-part"><app-formula expression="60-20=40" displayMode="inline" [showCodeButton]="false" /></span>. Tomar logaritmos de <span class="math-part"><app-formula expression="e^{-10k}=\frac{4}{7}" displayMode="inline" [showCodeButton]="false" /></span> determina una constante k positiva.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="T(t)=20+70(\frac{4}{7})^{t/10}" displayMode="inline" [showCodeButton]="false" /></span>. La ley obtenida recupera <span class="math-part"><app-formula expression="T(0)=90" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="T(10)=60" displayMode="inline" [showCodeButton]="false" /></span>. Para t creciente se acerca a 20 sin alcanzarla en un tiempo finito.</li>
+      <li>Para 40 °C, <span class="math-part"><app-formula expression="(\frac{4}{7})^{t/10}=\frac{2}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="t=\frac{10\ln(7/2)}{\ln(7/4)}" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="T=40" displayMode="inline" [showCodeButton]="false" /></span> se pide <span class="math-part"><app-formula expression="U=20" displayMode="inline" [showCodeButton]="false" /></span>, así que <span class="math-part"><app-formula expression="U/U(0)=\frac{2}{7}" displayMode="inline" [showCodeButton]="false" /></span>. Despejar con logaritmos da un tiempo positivo mayor que 10 minutos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="T(t)=20+70(\frac{4}{7})^{t/10}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="t=\frac{10\ln(7/2)}{\ln(7/4)}" displayMode="inline" [showCodeButton]="false" /></span> minutos.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La exponencial describe <span class="math-part"><app-formula expression="T-20" displayMode="inline" [showCodeButton]="false" /></span>, no la temperatura T sola.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>La integración de dU/U=−k dt es el paso que produce la ley exponencial de enfriamiento.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-059" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un resto sin dividir</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Halla el resto de dividir <span class="math-part"><app-formula expression="x^{2026}+3x+1" displayMode="inline" [showCodeButton]="false" /></span> entre <span class="math-part"><app-formula expression="x^{2}-1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La división polinómica escribe <span class="math-part"><app-formula expression="P=DQ+R" displayMode="inline" [showCodeButton]="false" /></span>, con grado de R menor que el de D. Trabajar módulo <span class="math-part"><app-formula expression="x^2-1" displayMode="inline" [showCodeButton]="false" /></span> significa que podemos cambiar un polinomio por otro si su diferencia es múltiplo de ese divisor. En particular, <span class="math-part"><app-formula expression="x^2" displayMode="inline" [showCodeButton]="false" /></span> y 1 tienen el mismo resto, lo que reduce todas las potencias pares.</li>
+      <li>Todo resto tiene forma <span class="math-part"><app-formula expression="r(x)=ax+b" displayMode="inline" [showCodeButton]="false" /></span>. El resto de dividir por un cuadrático tiene grado menor que 2. Por eso se escribe como <span class="math-part"><app-formula expression="ax+b" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Como la potencia es par, <span class="math-part"><app-formula expression="x^{2026}\equiv 1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="\pmod{x^2-1}" displayMode="inline" [showCodeButton]="false" /></span>. Como 2026 es par, <span class="math-part"><app-formula expression="x^{2026}=(x^{2})^{1013}" displayMode="inline" [showCodeButton]="false" /></span>. Cada factor <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> puede sustituirse por 1 al calcular el resto.</li>
+      <li>Entonces <span class="math-part"><app-formula expression="r(x)=3x+2" displayMode="inline" [showCodeButton]="false" /></span>. Los términos <span class="math-part"><app-formula expression="3x" displayMode="inline" [showCodeButton]="false" /></span> y 1 ya tienen grado menor que 2. Se suman al resto 1 de la potencia.</li>
+      <li>Comprueba <span class="math-part"><app-formula expression="r(1)=5=P(1)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="r(-1)=-1=P(-1)" displayMode="inline" [showCodeButton]="false" /></span>. También <span class="math-part"><app-formula expression="P-r=x^{2026}-1" displayMode="inline" [showCodeButton]="false" /></span> es divisible por <span class="math-part"><app-formula expression="x^{2}-1" displayMode="inline" [showCodeButton]="false" /></span> como diferencia de potencias de <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span>, confirmando el resto.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Resto <span class="math-part"><app-formula expression="3x+2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El resto al dividir por un polinomio cuadrático puede ser lineal.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
+      <p>Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-013" />
+</article>

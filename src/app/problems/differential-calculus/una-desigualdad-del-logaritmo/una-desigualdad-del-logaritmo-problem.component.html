@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una desigualdad del logaritmo</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Demuestra <span class="math-part"><app-formula expression="\ln x\le x-1" displayMode="inline" [showCodeButton]="false" /></span> para todo <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span> e identifica el caso de igualdad.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para demostrar una desigualdad funcional podemos estudiar la diferencia de los dos miembros. Definimos <span class="math-part"><app-formula expression="g(x)=x-1-\ln x" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span> y buscamos su mínimo. Si el mínimo vale cero, entonces g es no negativa en todo el dominio y sabemos también dónde se alcanza la igualdad.</li>
+      <li><span class="math-part"><app-formula expression="g&#39;(x)=1-1/x=(x-1)/x" displayMode="inline" [showCodeButton]="false" /></span>. La derivada se calcula solo en <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, el dominio de la función auxiliar. El denominador positivo deja el signo determinado por <span class="math-part"><app-formula expression="x-1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>En <span class="math-part"><app-formula expression="(0,1)" displayMode="inline" [showCodeButton]="false" /></span>, g decrece, y en <span class="math-part"><app-formula expression="(1,\infty )" displayMode="inline" [showCodeButton]="false" /></span>, crece. Para <span class="math-part"><app-formula expression="x&lt;1" displayMode="inline" [showCodeButton]="false" /></span> la derivada es negativa y para <span class="math-part"><app-formula expression="x&gt;1" displayMode="inline" [showCodeButton]="false" /></span> es positiva. Por eso los valores se acercan al mínimo por ambos lados.</li>
+      <li>Su mínimo global está en <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span> y vale <span class="math-part"><app-formula expression="g(1)=0" displayMode="inline" [showCodeButton]="false" /></span>. Evaluar <span class="math-part"><app-formula expression="g(1)=1-1-\ln1=0" displayMode="inline" [showCodeButton]="false" /></span> fija el valor mínimo exacto, no solo la posición del extremo.</li>
+      <li>Así <span class="math-part"><app-formula expression="g(x)\ge 0" displayMode="inline" [showCodeButton]="false" /></span>, lo que equivale a la desigualdad; la monotonicidad estricta excluye otras igualdades. Reordenar <span class="math-part"><app-formula expression="g(x)\ge 0" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="\ln x\le x-1" displayMode="inline" [showCodeButton]="false" /></span>. Como el crecimiento y decrecimiento son estrictos, la igualdad solo ocurre en 1.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\ln x\le x-1" displayMode="inline" [showCodeButton]="false" /></span>, igualdad solo en <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El logaritmo real exige <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span>.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>La relación entre la primitiva logarítmica y el integrando 1/x explica la derivada utilizada en la función auxiliar.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-053" />
+</article>

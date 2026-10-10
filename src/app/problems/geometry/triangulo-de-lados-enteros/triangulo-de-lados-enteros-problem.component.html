@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Triángulo de lados enteros</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula el área, el inradio y la altura sobre el lado 14 de un triángulo de lados <span class="math-part"><app-formula expression="13,14,15" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para lados a, b y c que satisfacen las desigualdades del triángulo, Herón da <span class="math-part"><app-formula expression="K=\sqrt{s(s-a)(s-b)(s-c)}" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="s=(a+b+c)/2" displayMode="inline" [showCodeButton]="false" /></span>. Además, unir el incentro a los vértices divide el triángulo en tres con altura r, de modo que <span class="math-part"><app-formula expression="K=r(a+b+c)/2=rs" displayMode="inline" [showCodeButton]="false" /></span>. La altura sobre una base b cumple <span class="math-part"><app-formula expression="K=bh/2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El semiperímetro es <span class="math-part"><app-formula expression="s=(13+14+15)/2=21" displayMode="inline" [showCodeButton]="false" /></span>. Los lados cumplen las desigualdades estrictas del triángulo. Herón usa la mitad de su suma, no la suma completa.</li>
+      <li>Herón da <span class="math-part"><app-formula expression="\Delta =\sqrt{21\cdot 8\cdot 7\cdot 6}=\sqrt{7056}=84" displayMode="inline" [showCodeButton]="false" /></span>. Los factores son <span class="math-part"><app-formula expression="s-13=8" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="s-14=7" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="s-15=6" displayMode="inline" [showCodeButton]="false" /></span>. El producto total 7056 tiene raíz 84.</li>
+      <li>Como <span class="math-part"><app-formula expression="\Delta =rs" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="r=\frac{84}{21}=4" displayMode="inline" [showCodeButton]="false" /></span>. El incentro divide el triángulo en tres con altura común r. Sus áreas suman <span class="math-part"><app-formula expression="r(13+14+15)/2=rs" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La altura sobre 14 cumple <span class="math-part"><app-formula expression="\Delta =14h/2" displayMode="inline" [showCodeButton]="false" /></span>, de modo que <span class="math-part"><app-formula expression="h=12" displayMode="inline" [showCodeButton]="false" /></span>. Despejar de base por altura da <span class="math-part"><app-formula expression="h=2\Delta /14=\frac{168}{14}=12" displayMode="inline" [showCodeButton]="false" /></span>. El área y la altura tienen unidades distintas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Área 84; inradio 4; altura 12.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El semiperímetro no es el perímetro completo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/heron-formula">Fórmula de Herón ↗</a>
+      <p>El cálculo del área de un triángulo a partir de sus tres lados.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-021" />
+</article>

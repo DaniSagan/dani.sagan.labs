@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Esperanza y premio justo</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Un juego cuesta 4 € y paga, antes de descontar la entrada, 10 € si un dado da 6, 5 € si da 5 y 0 € en otro caso. Calcula la ganancia esperada y la entrada justa.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La esperanza es la media de las ganancias ponderadas por sus probabilidades. El premio bruto es lo recibido; la ganancia neta resta el precio pagado, incluso cuando no hay premio. Una entrada es justa en términos de esperanza si su coste coincide con el premio bruto esperado, aunque cada partida individual pueda ganar o perder.</li>
+      <li>El pago bruto Y vale 10 con probabilidad <span class="math-part"><app-formula expression="\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>, 5 con <span class="math-part"><app-formula expression="\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span> y 0 con <span class="math-part"><app-formula expression="\frac{4}{6}" displayMode="inline" [showCodeButton]="false" /></span>. Los sucesos de dado 6, dado 5 y otros valores son excluyentes y cubren todas las posibilidades.</li>
+      <li><span class="math-part"><app-formula expression="E(Y)=(10+5)/6=\frac{5}{2}" displayMode="inline" [showCodeButton]="false" /></span> €. La esperanza pondera cada pago por su probabilidad: <span class="math-part"><app-formula expression="\frac{10}{6}+\frac{5}{6}+0\cdot \frac{4}{6}=\frac{15}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La ganancia neta es <span class="math-part"><app-formula expression="Y-4" displayMode="inline" [showCodeButton]="false" /></span>, cuya esperanza es <span class="math-part"><app-formula expression="\frac{5}{2}-4=-\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span> €. Una entrada fija se resta en cada partida. Por linealidad, su resta en la esperanza es exactamente 4.</li>
+      <li>Una entrada justa deja esperanza neta 0, por lo que debe ser igual a <span class="math-part"><app-formula expression="E(Y)" displayMode="inline" [showCodeButton]="false" /></span>. Para obtener esperanza cero, la entrada c debe cumplir <span class="math-part"><app-formula expression="E(Y)-c=0" displayMode="inline" [showCodeButton]="false" /></span>. Esto da <span class="math-part"><app-formula expression="c=2,50" displayMode="inline" [showCodeButton]="false" /></span> € sin afirmar que cada partida sea equilibrada.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Ganancia esperada <span class="math-part"><app-formula expression="-1,50" displayMode="inline" [showCodeButton]="false" /></span> €; entrada justa <span class="math-part"><app-formula expression="2,50" displayMode="inline" [showCodeButton]="false" /></span> €.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una esperanza negativa no significa que se pierda en cada partida.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/galton-board">Tablero de Galton ↗</a>
+      <p>La distribución de resultados de una sucesión de decisiones aleatorias y su representación.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-079" />
+</article>

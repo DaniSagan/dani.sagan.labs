@@ -1,0 +1,33 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Un recorrido euleriano</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Un grafo tiene vértices <span class="math-part"><app-formula expression="A,B,C,D" displayMode="inline" [showCodeButton]="false" /></span> y aristas <span class="math-part"><app-formula expression="AB,BC,CD,DA,AC" displayMode="inline" [showCodeButton]="false" /></span>. Decide si admite circuito euleriano o recorrido euleriano abierto, y da uno si existe.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El grado de un vértice es el número de aristas incidentes. En un recorrido que usa cada arista una vez, cada llegada intermedia requiere una salida, de modo que los grados son pares salvo en los extremos. En un grafo conexo, cero vértices impares permite circuito; exactamente dos permite recorrido abierto entre ellos, que se construye enlazando recorridos hasta agotar las aristas.</li>
+      <li>Los grados son <span class="math-part"><app-formula expression="d(A)=3,d(B)=2,d(C)=3,d(D)=2" displayMode="inline" [showCodeButton]="false" /></span>. Cada arista aporta uno al grado de cada extremo. La diagonal AC añade un grado a A y otro a C.</li>
+      <li>El grafo es conexo y tiene exactamente dos vértices impares, A y C. El criterio de Euler para un grafo conexo dice que un recorrido abierto existe exactamente cuando hay dos vértices de grado impar.</li>
+      <li>Admite recorrido euleriano abierto con extremos <span class="math-part"><app-formula expression="A,C" displayMode="inline" [showCodeButton]="false" /></span>, pero no circuito euleriano. Un circuito requeriría todos los grados pares, porque cada llegada a un vértice se empareja con una salida.</li>
+      <li>El recorrido A→B→C→D→A→C usa cada una de las cinco aristas una sola vez. El ejemplo usa <span class="math-part"><app-formula expression="AB,BC,CD,DA,AC" displayMode="inline" [showCodeButton]="false" /></span> en ese orden. Termina en C después de recorrer cada arista una vez, empezando en A.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Recorrido abierto sí; circuito no; ejemplo A-B-C-D-A-C.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un recorrido euleriano recorre aristas; no exige visitar cada vértice solo una vez.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/konigsberg-bridges">Puentes de Königsberg ↗</a>
+      <p>Grados de vértices y condiciones de existencia de recorridos eulerianos.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-092" />
+</article>

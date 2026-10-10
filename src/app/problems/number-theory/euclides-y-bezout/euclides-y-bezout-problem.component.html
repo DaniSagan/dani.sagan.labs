@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Euclides y Bézout</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\operatorname{mcd}(252,198)" displayMode="inline" [showCodeButton]="false" /></span> y encuentra enteros <span class="math-part"><app-formula expression="u,v" displayMode="inline" [showCodeButton]="false" /></span> tales que <span class="math-part"><app-formula expression="252u+198v=\operatorname{mcd}(252,198)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El máximo común divisor es el mayor entero positivo que divide ambos números. La igualdad <span class="math-part"><app-formula expression="a=bq+r" displayMode="inline" [showCodeButton]="false" /></span> permite sustituir el par <span class="math-part"><app-formula expression="(a,b)" displayMode="inline" [showCodeButton]="false" /></span> por <span class="math-part"><app-formula expression="(b,r)" displayMode="inline" [showCodeButton]="false" /></span>: los divisores comunes de ambos pares coinciden porque <span class="math-part"><app-formula expression="r=a-bq" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="a=bq+r" displayMode="inline" [showCodeButton]="false" /></span>. Revertir estas igualdades expresa el mcd como combinación entera de los datos.</li>
+      <li><span class="math-part"><app-formula expression="252=198+54" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="198=3\cdot 54+36" displayMode="inline" [showCodeButton]="false" /></span>. En cada división se conserva el máximo común divisor: un divisor común divide también el resto obtenido al restar un múltiplo.</li>
+      <li><span class="math-part"><app-formula expression="54=36+18" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="36=2\cdot 18" displayMode="inline" [showCodeButton]="false" /></span>; el último resto no nulo es 18. Cuando aparece resto cero, el divisor de la última división es el mcd; por eso se toma 18 y no 36.</li>
+      <li>Sustituye: <span class="math-part"><app-formula expression="18=54-36=4\cdot 54-198=4\cdot 252-5\cdot 198" displayMode="inline" [showCodeButton]="false" /></span>. Se despejan <span class="math-part"><app-formula expression="36=198-3\cdot 54" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="54=252-198" displayMode="inline" [showCodeButton]="false" /></span>. Las sustituciones producen <span class="math-part"><app-formula expression="18=54-(198-3\cdot 54)=4\cdot 54-198" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Comprueba <span class="math-part"><app-formula expression="1008-990=18" displayMode="inline" [showCodeButton]="false" /></span>; los coeficientes son enteros. Los coeficientes de Bézout pueden ser negativos. La sustitución final verifica sus signos y la combinación pedida.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\operatorname{mcd}=18" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="u=4" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="v=-5" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El último divisor no es necesariamente el primer resto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/gcd-euclid">Algoritmo de Euclides ↗</a>
+      <p>Desarrollo del algoritmo de divisiones sucesivas para calcular el máximo común divisor.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/bezout-identity">Identidad de Bézout ↗</a>
+      <p>La expresión del máximo común divisor como combinación lineal de dos enteros.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-001" />
+</article>

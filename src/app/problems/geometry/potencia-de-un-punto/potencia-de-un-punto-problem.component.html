@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Potencia de un punto</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Desde P exterior a una circunferencia, una secante corta primero en A y después en B, con <span class="math-part"><app-formula expression="PA=4" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="PB=9" displayMode="inline" [showCodeButton]="false" /></span>. Calcula la tangente PT.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La potencia de un punto exterior a una circunferencia es <span class="math-part"><app-formula expression="PA\,PB" displayMode="inline" [showCodeButton]="false" /></span>, donde A y B son las intersecciones de una secante y las longitudes parten siempre de P. Es independiente de la secante. Para una tangente el valor es <span class="math-part"><app-formula expression="PT^2" displayMode="inline" [showCodeButton]="false" /></span>: la relación <span class="math-part"><app-formula expression="PA\,PB=PT^2" displayMode="inline" [showCodeButton]="false" /></span> se obtiene de la semejanza de los triángulos determinados por la secante y la tangente.</li>
+      <li>Ambas distancias se miden desde el mismo punto P. Las distancias de la secante se miden desde P: <span class="math-part"><app-formula expression="PA=4" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="PB=9" displayMode="inline" [showCodeButton]="false" /></span>. El segmento AB tendría longitud 5 y no sustituye a PB.</li>
+      <li>La potencia vale <span class="math-part"><app-formula expression="4\cdot 9=36" displayMode="inline" [showCodeButton]="false" /></span>. El teorema de potencia permite expresar el mismo valor por una secante y por una tangente desde P.</li>
+      <li>Para la tangente, <span class="math-part"><app-formula expression="PT^{2}=36" displayMode="inline" [showCodeButton]="false" /></span>. La longitud de tangente es la raíz cuadrada de la potencia, que aquí vale 36.</li>
+      <li>Escoge la raíz positiva, porque PT es longitud. El punto de contacto de una tangente es doble en la expresión de secante; por eso aparece el cuadrado de la misma distancia.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="PT=6" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> PB es la distancia total desde P, no solo AB.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/power-of-point">Potencia de un punto ↗</a>
+      <p>Relaciones entre secantes y tangentes a una circunferencia.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-024" />
+</article>

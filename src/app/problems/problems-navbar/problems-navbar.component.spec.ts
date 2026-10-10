@@ -1,11 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { ProblemsNavbarComponent } from './problems-navbar.component';
-
-const fakeActivatedRoute = {
-  snapshot: { data: {} }
-} as ActivatedRoute;
 
 describe('ProblemsNavbarComponent', () => {
   let component: ProblemsNavbarComponent;
@@ -14,7 +10,7 @@ describe('ProblemsNavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ProblemsNavbarComponent],
-      providers: [{ provide: ActivatedRoute, useValue: fakeActivatedRoute }]
+      providers: [provideRouter([])]
     })
     .compileComponents();
 

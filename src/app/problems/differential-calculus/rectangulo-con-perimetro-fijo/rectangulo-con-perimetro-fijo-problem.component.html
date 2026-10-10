@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Rectángulo con perímetro fijo</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Entre los rectángulos de perímetro 40 cm, determina el de área máxima.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La restricción del perímetro permite eliminar una variable: si los lados son x e y, <span class="math-part"><app-formula expression="2x+2y=40" displayMode="inline" [showCodeButton]="false" /></span> implica <span class="math-part"><app-formula expression="y=20-x" displayMode="inline" [showCodeButton]="false" /></span>. El área se convierte en <span class="math-part"><app-formula expression="A(x)=x(20-x)" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0&lt;x&lt;20" displayMode="inline" [showCodeButton]="false" /></span>. Debemos maximizar esta función sobre las longitudes admisibles y comprobar el comportamiento en los extremos.</li>
+      <li>Si los lados son <span class="math-part"><app-formula expression="x,y&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="2(x+y)=40" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="y=20-x" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0&lt;x&lt;20" displayMode="inline" [showCodeButton]="false" /></span>. El perímetro fija la suma de lados en 20. La condición <span class="math-part"><app-formula expression="y&gt;0" displayMode="inline" [showCodeButton]="false" /></span> impone <span class="math-part"><app-formula expression="x&lt;20" displayMode="inline" [showCodeButton]="false" /></span>, además de <span class="math-part"><app-formula expression="x&gt;0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El área es <span class="math-part"><app-formula expression="A(x)=x(20-x)" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir y en <span class="math-part"><app-formula expression="A=xy" displayMode="inline" [showCodeButton]="false" /></span> reduce el problema a una sola variable dentro del intervalo permitido.</li>
+      <li><span class="math-part"><app-formula expression="A&#39;(x)=20-2x" displayMode="inline" [showCodeButton]="false" /></span> se anula en <span class="math-part"><app-formula expression="x=10" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="A&#39;&#39;=-2&lt;0" displayMode="inline" [showCodeButton]="false" /></span>. El punto crítico es <span class="math-part"><app-formula expression="x=10" displayMode="inline" [showCodeButton]="false" /></span>. La derivada es positiva antes y negativa después, comprobando que el área aumenta y luego disminuye.</li>
+      <li>También <span class="math-part"><app-formula expression="A=100-(x-10)^{2}\le 100" displayMode="inline" [showCodeButton]="false" /></span>, confirmando el máximo global. La expresión cuadrática muestra que ningún valor del dominio supera 100. La igualdad se alcanza solo cuando ambos lados valen 10.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Cuadrado de lado 10 cm; área máxima 100 cm².</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El dominio excluye longitudes negativas o nulas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>La integración clásica amplía el cálculo de áreas a regiones curvas. En este ejercicio el área rectangular se obtiene directamente como producto de lados.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-056" />
+</article>

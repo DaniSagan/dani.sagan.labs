@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Distancia a un plano</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula la distancia de <span class="math-part"><app-formula expression="P=(1,2,3)" displayMode="inline" [showCodeButton]="false" /></span> al plano <span class="math-part"><app-formula expression="2x-y+2z-4=0" displayMode="inline" [showCodeButton]="false" /></span> y su proyección ortogonal.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para un plano <span class="math-part"><app-formula expression="n\cdot X=d" displayMode="inline" [showCodeButton]="false" /></span>, la proyección de P es <span class="math-part"><app-formula expression="Q=P-\alpha n" displayMode="inline" [showCodeButton]="false" /></span>. Imponer que Q esté en el plano da <span class="math-part"><app-formula expression="\alpha=(n\cdot P-d)/(n\cdot n)" displayMode="inline" [showCodeButton]="false" /></span>. La distancia es <span class="math-part"><app-formula expression="\lVert P-Q\rVert=\lvert n\cdot P-d\rvert/\lVert n\rVert" displayMode="inline" [showCodeButton]="false" /></span>; el segmento normal es el más corto por la descomposición ortogonal y Pitágoras.</li>
+      <li>El valor de la expresión del plano en P es <span class="math-part"><app-formula expression="2-2+6-4=2" displayMode="inline" [showCodeButton]="false" /></span>. Los coeficientes de las coordenadas forman el vector normal. Evaluar el plano en P mide su desviación algebraica.</li>
+      <li>La norma del normal es <span class="math-part"><app-formula expression="\sqrt{4+1+4}=3" displayMode="inline" [showCodeButton]="false" /></span>, así que <span class="math-part"><app-formula expression="d=\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span>. Para convertir esa desviación en distancia se divide su valor absoluto por <span class="math-part"><app-formula expression="\sqrt{2^{2}+(-1)^{2}+2^{2}}=3" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La proyección es <span class="math-part"><app-formula expression="Q=P-(\frac{2}{9})n=(\frac{5}{9},\frac{20}{9},\frac{23}{9})" displayMode="inline" [showCodeButton]="false" /></span>. Escribimos <span class="math-part"><app-formula expression="Q=P-\lambda n" displayMode="inline" [showCodeButton]="false" /></span>. Al imponer que Q esté en el plano resulta <span class="math-part"><app-formula expression="2-9\lambda =0" displayMode="inline" [showCodeButton]="false" /></span>, de donde <span class="math-part"><app-formula expression="\lambda =\frac{2}{9}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Sustituye Q en el plano: <span class="math-part"><app-formula expression="(10-20+46)/9-4=0" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia <span class="math-part"><app-formula expression="P-Q" displayMode="inline" [showCodeButton]="false" /></span> es paralela al normal. Junto con la pertenencia de Q al plano, esto caracteriza la proyección ortogonal.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="d=\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="Q=(\frac{5}{9},\frac{20}{9},\frac{23}{9})" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La distancia divide por la norma; la proyección divide por su cuadrado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
+      <p>Propiedades algebraicas y significado geométrico de los determinantes.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-028" />
+</article>

@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Raíces cuartas de −1</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="z^{4}=-1" displayMode="inline" [showCodeButton]="false" /></span> en los complejos y sitúa las raíces en el plano.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Escribimos <span class="math-part"><app-formula expression="-1=e^{i(\pi+2k\pi)}" displayMode="inline" [showCodeButton]="false" /></span>. Al elevar un complejo a la cuarta potencia, su módulo se eleva a cuatro y su argumento se multiplica por cuatro. Por tanto las raíces tienen módulo 1 y argumentos <span class="math-part"><app-formula expression="(\pi+2k\pi)/4" displayMode="inline" [showCodeButton]="false" /></span>; cuatro valores consecutivos de k dan todas las raíces distintas.</li>
+      <li>Toda raíz tiene módulo 1 porque su cuarta potencia tiene módulo 1. Si z tiene módulo r, <span class="math-part"><app-formula expression="z^{4}" displayMode="inline" [showCodeButton]="false" /></span> tiene módulo <span class="math-part"><app-formula expression="r^{4}" displayMode="inline" [showCodeButton]="false" /></span>. De <span class="math-part"><app-formula expression="r^{4}=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="r\ge 0" displayMode="inline" [showCodeButton]="false" /></span> se deduce <span class="math-part"><app-formula expression="r=1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Sus argumentos son <span class="math-part"><app-formula expression="\frac{\pi+2k\pi}{4}=\frac\pi4+\frac{k\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>. El argumento de una cuarta potencia es cuatro veces el de la base, considerado módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. Se divide <span class="math-part"><app-formula expression="\pi+2k\pi" displayMode="inline" [showCodeButton]="false" /></span> entre 4.</li>
+      <li>Para <span class="math-part"><app-formula expression="k=0,1,2,3" displayMode="inline" [showCodeButton]="false" /></span> se obtienen cuatro argumentos distintos módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. Los argumentos son <span class="math-part"><app-formula expression="\frac{\pi}{4},3\frac{\pi}{4},5\frac{\pi}{4},7\frac{\pi}{4}" displayMode="inline" [showCodeButton]="false" /></span>. Un quinto valor repetiría el primero al añadir <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Las coordenadas son <span class="math-part"><app-formula expression="\left(\pm\frac1{\sqrt2},\pm\frac1{\sqrt2}\right)" displayMode="inline" [showCodeButton]="false" /></span>; forman un cuadrado centrado en el origen. En cada ángulo los valores absolutos de seno y coseno son <span class="math-part"><app-formula expression="\sqrt{2}/2" displayMode="inline" [showCodeButton]="false" /></span>. Cada raíz tiene módulo 1 y su cuarta potencia recupera <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="z=e^{i(\frac{\pi}{4}+k\frac{\pi}{2})}" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="k=0,1,2,3" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Usar solo el argumento principal pierde tres raíces.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/euler-identity">Identidad de Euler ↗</a>
+      <p>La conexión entre forma polar, exponencial compleja, seno y coseno.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
+      <p>Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-036" />
+</article>

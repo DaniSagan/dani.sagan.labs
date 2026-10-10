@@ -1,0 +1,22 @@
+<article aria-labelledby="collection-title">
+    <span class="eyebrow">PLANTEA · JUSTIFICA · COMPRUEBA</span>
+    <h2 id="collection-title">Problemas de matemáticas</h2>
+    <p class="dropcap">Una colección original de problemas de matemáticas organizados por bloques y subtemas, con soluciones razonadas para practicar con papel, explorar con herramientas y aprender de los errores.</p>
+    <div class="overview"><span><strong>{{ problems.length }}</strong> problemas</span><span><strong>{{ blocks.length }}</strong> bloques</span><span><strong>{{ topicCount }}</strong> subtemas</span></div>
+    <aside class="guidance"><strong>Cómo estudiar.</strong> Empieza por «Repaso» para afianzar técnicas, continúa con «Profundización» y reserva «Reto» para profundizar. Son niveles orientativos de esta colección. Usa los submenús para elegir un tema: cada problema presenta su enunciado seguido de la solución detallada y las referencias a artículos.</aside>
+    <div class="filters" role="search" aria-label="Filtrar la colección">
+      <label class="search-label">Buscar problema<input type="search" [(ngModel)]="query" placeholder="Título o idea…"></label>
+      <label>Bloque<select [(ngModel)]="category"><option value="">Todos los bloques</option>@for (group of blocks; track group.name) { <option [value]="group.name">{{ group.name }}</option> }</select></label>
+      <label>Nivel<select [(ngModel)]="level"><option value="">Todos los niveles</option><option>Repaso</option><option value="Oposición">Profundización</option><option>Reto</option></select></label>
+      <button type="button" (click)="clearFilters()">Limpiar filtros</button>
+    </div>
+    <p aria-live="polite" class="result-count">{{ filtered.length }} de {{ problems.length }} problemas</p>
+    <div class="problem-list">
+      @for (problem of filtered; track problem.id) {
+        <a class="problem-card" [routerLink]="['/problems', problem.id]">
+          <div><span class="card-topic">{{ problem.category }} · {{ problem.topic }}</span><h3>{{ problem.title }}</h3><span class="level">{{ problem.level === 'Oposición' ? 'Profundización' : problem.level }}</span></div>
+          <span class="card-arrow" aria-hidden="true">→</span>
+        </a>
+      } @empty { <p>No hay problemas con estos filtros. Prueba otra búsqueda o pulsa «Limpiar filtros».</p> }
+    </div>
+  </article>

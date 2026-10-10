@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Una desigualdad con igualdad</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Demuestra que <span class="math-part"><app-formula expression="(a+b+c)(1/a+1/b+1/c)\ge 9" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="a,b,c&gt;0" displayMode="inline" [showCodeButton]="false" /></span> e identifica cuándo hay igualdad.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>También podemos demostrar la desigualdad sin dar por conocido Cauchy. Al desarrollar el producto se obtiene 3 más las tres parejas <span class="math-part"><app-formula expression="a/b+b/a" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="a/c+c/a" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="b/c+c/b" displayMode="inline" [showCodeButton]="false" /></span>. Cada pareja satisface <span class="math-part"><app-formula expression="u/v+v/u-2=(u-v)^2/(uv)\ge0" displayMode="inline" [showCodeButton]="false" /></span>. La suma es al menos 9 y solo hay igualdad si las tres diferencias se anulan.</li>
+      <li>Cauchy da <span class="math-part"><app-formula expression="(\sum a)(\sum 1/a)\ge (\sqrt{a}/\sqrt{a}+\sqrt{b}/\sqrt{b}+\sqrt{c}/\sqrt{c})^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Cauchy–Schwarz dice <span class="math-part"><app-formula expression="(\sum u_{i}^{2})(\sum v_{i}^{2})\ge (\sum u_{i}v_{i})^{2}" displayMode="inline" [showCodeButton]="false" /></span>. La positividad permite tomar <span class="math-part"><app-formula expression="u_{i}=\sqrt{a}_{i}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="v_{i}=1/\sqrt{a}_{i}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La suma dentro del cuadrado vale 3, así que el límite inferior es 9. Cada producto <span class="math-part"><app-formula expression="u_{i}v_{i}" displayMode="inline" [showCodeButton]="false" /></span> vale 1. Al haber tres términos, su suma al cuadrado es <span class="math-part"><app-formula expression="3^{2}=9" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La igualdad requiere proporcionalidad: <span class="math-part"><app-formula expression="\sqrt{a}=k/\sqrt{a}" displayMode="inline" [showCodeButton]="false" /></span> y análogamente. La misma constante de proporcionalidad debe valer en las tres coordenadas. Multiplicar por <span class="math-part"><app-formula expression="\sqrt{a}_{i}" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="a_{i}=k" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="a=b=c" displayMode="inline" [showCodeButton]="false" /></span>; cualquier terna positiva igual alcanza 9. Si <span class="math-part"><app-formula expression="a=b=c=t&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, el producto es <span class="math-part"><app-formula expression="(3t)(3/t)=9" displayMode="inline" [showCodeButton]="false" /></span>. Esto verifica que la condición de igualdad también es suficiente.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Mínimo 9, alcanzado exactamente cuando <span class="math-part"><app-formula expression="a=b=c" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La positividad es necesaria para los recíprocos y raíces usados.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
+      <p>Conexión con determinantes: los dos vectores de Cauchy tienen matriz de Gram ((a+b+c,3),(3,1/a+1/b+1/c)); su determinante no negativo equivale a la desigualdad.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-014" />
+</article>

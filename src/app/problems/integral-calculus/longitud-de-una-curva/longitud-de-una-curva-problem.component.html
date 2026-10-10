@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Longitud de una curva</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula la longitud del arco <span class="math-part"><app-formula expression="y=(\frac{2}{3})x^{\frac{3}{2}}" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="0\le x\le 3" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La longitud de la gráfica de una función derivable es <span class="math-part"><app-formula expression="\int_a^b\sqrt{1+(y&#39;)^2}\,dx" displayMode="inline" [showCodeButton]="false" /></span>. El integrando procede de Pitágoras para los incrementos horizontal y vertical. En esta curva la derivada es <span class="math-part"><app-formula expression="\sqrt x" displayMode="inline" [showCodeButton]="false" /></span>, por lo que el radical se simplifica a <span class="math-part"><app-formula expression="\sqrt{1+x}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="y&#39;(x)=\sqrt{x}" displayMode="inline" [showCodeButton]="false" /></span>, incluida la derivada lateral en el extremo 0. La regla de la potencia da <span class="math-part"><app-formula expression="(\frac{2}{3})(\frac{3}{2})x^{\frac{1}{2}}=\sqrt{x}" displayMode="inline" [showCodeButton]="false" /></span>. En el extremo cero, el cociente lateral <span class="math-part"><app-formula expression="(\frac{2}{3})\sqrt{h}" displayMode="inline" [showCodeButton]="false" /></span> también tiende a cero.</li>
+      <li>La longitud es <span class="math-part"><app-formula expression="L=\int _{0}^{3}\sqrt{1+x}dx" displayMode="inline" [showCodeButton]="false" /></span>. La fórmula de arco procede de <span class="math-part"><app-formula expression="ds=\sqrt{dx^2+dy^2}=\sqrt{1+(y&#39;)^2}\,dx" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir la derivada deja <span class="math-part"><app-formula expression="\sqrt{1+x}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Una primitiva es <span class="math-part"><app-formula expression="(\frac{2}{3})(1+x)^{\frac{3}{2}}" displayMode="inline" [showCodeButton]="false" /></span>. La primitiva se obtiene con <span class="math-part"><app-formula expression="u=1+x" displayMode="inline" [showCodeButton]="false" /></span> y la regla de potencia de exponente <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Evalúa <span class="math-part"><app-formula expression="(\frac{2}{3})(4^{\frac{3}{2}}-1)=(\frac{2}{3})(8-1)=\frac{14}{3}" displayMode="inline" [showCodeButton]="false" /></span>. En <span class="math-part"><app-formula expression="x=3" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="1+x=4" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="4^{\frac{3}{2}}=8" displayMode="inline" [showCodeButton]="false" /></span>. En <span class="math-part"><app-formula expression="x=0" displayMode="inline" [showCodeButton]="false" /></span> el término correspondiente vale 1, que también debe restarse.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{14}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La longitud de arco no coincide con el área bajo la curva.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/pi-decimals">Decimales de π ↗</a>
+      <p>Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-068" />
+</article>

@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Altura desde dos posiciones</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En terreno horizontal, la cima de una torre se ve con elevación 30°. Tras acercarse 20 m hacia su base, la elevación es 60°. Calcula su altura, despreciando la altura del observador.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En cada posición, la tangente del ángulo de elevación es altura entre distancia horizontal. Suponemos terreno horizontal y la misma base del objeto. Si la distancia inicial es d y nos acercamos 20 metros, las dos ecuaciones son <span class="math-part"><app-formula expression="h=d\tan30^\circ" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="h=(d-20)\tan60^\circ" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="d&gt;20" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La distancia inicial es <span class="math-part"><app-formula expression="d+20" displayMode="inline" [showCodeButton]="false" /></span> y la altura h es la misma en ambas posiciones. El desplazamiento de 20 m reduce la distancia horizontal, sin modificar la altura ni la posición de la torre.</li>
+      <li><span class="math-part"><app-formula expression="\tan 30" displayMode="inline" [showCodeButton]="false" /></span>°<span class="math-part"><app-formula expression="=h/(d+20)=1/\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> y tan 60°<span class="math-part"><app-formula expression="=h/d=\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span>. En cada triángulo rectángulo, tangente es cateto opuesto dividido entre adyacente. Los valores exactos corresponden a 30° y 60°.</li>
+      <li>Iguala h: <span class="math-part"><app-formula expression="(d+20)/\sqrt{3}=d\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="d+20=3d" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="d=10" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar por <span class="math-part"><app-formula expression="\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> convierte la igualdad de alturas en <span class="math-part"><app-formula expression="d+20=3d" displayMode="inline" [showCodeButton]="false" /></span>. Restar d y dividir entre 2 da <span class="math-part"><app-formula expression="d=10" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Sustituye <span class="math-part"><app-formula expression="h=10\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> m; la distancia inicial es 30 m. La comprobación usa <span class="math-part"><app-formula expression="h/30=1/\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="h/10=\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span>. Ambas razones recuperan los ángulos de observación.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Altura <span class="math-part"><app-formula expression="10\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> m.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las dos distancias horizontales no son ambas 20 m.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/trig-n-functions">Ángulos múltiples y ángulo mitad ↗</a>
+      <p>Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/thales-theorem">Teorema de Tales ↗</a>
+      <p>Semejanza y proporcionalidad de segmentos como base de medidas indirectas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-032" />
+</article>

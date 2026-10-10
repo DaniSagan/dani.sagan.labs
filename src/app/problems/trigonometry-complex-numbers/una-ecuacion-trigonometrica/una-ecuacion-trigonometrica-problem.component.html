@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una ecuación trigonométrica</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="\sin x=\cos(2x)" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="0\le x&lt;2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La identidad <span class="math-part"><app-formula expression="\cos(2x)=1-2\sin^2x" displayMode="inline" [showCodeButton]="false" /></span> permite expresar ambos lados en función de <span class="math-part"><app-formula expression="s=\sin x" displayMode="inline" [showCodeButton]="false" /></span>. Resolvemos una cuadrática, conservamos solo valores de s en <span class="math-part"><app-formula expression="[-1,1]" displayMode="inline" [showCodeButton]="false" /></span> y buscamos todos sus ángulos en el intervalo pedido. Un valor de seno puede corresponder a varios ángulos.</li>
+      <li>La identidad <span class="math-part"><app-formula expression="\cos(2x)=1-2\sin^{2}x" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="2\sin^{2}x+\sin x-1=0" displayMode="inline" [showCodeButton]="false" /></span>. Se usa la identidad de ángulo doble <span class="math-part"><app-formula expression="\cos(2x)=1-2\sin^{2}x" displayMode="inline" [showCodeButton]="false" /></span> para convertir la ecuación trigonométrica en una cuadrática en <span class="math-part"><app-formula expression="\sin x" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Factoriza <span class="math-part"><app-formula expression="(2\sin x-1)(\sin x+1)=0" displayMode="inline" [showCodeButton]="false" /></span>. Con <span class="math-part"><app-formula expression="s=\sin x" displayMode="inline" [showCodeButton]="false" /></span>, las raíces de <span class="math-part"><app-formula expression="2s^{2}+s-1" displayMode="inline" [showCodeButton]="false" /></span> son <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y -1" displayMode="inline" [showCodeButton]="false" /></span>. Ambas pertenecen al rango <span class="math-part"><app-formula expression="[-1,1]" displayMode="inline" [showCodeButton]="false" /></span> del seno.</li>
+      <li>Si <span class="math-part"><app-formula expression="\sin x=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x=\frac{\pi}{6}" displayMode="inline" [showCodeButton]="false" /></span> o <span class="math-part"><app-formula expression="5\frac{\pi}{6}" displayMode="inline" [showCodeButton]="false" /></span> en el intervalo. El seno positivo aparece en los cuadrantes primero y segundo. Los ángulos con seno <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> en el intervalo son <span class="math-part"><app-formula expression="\frac{\pi}{6}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\pi -\frac{\pi}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Si <span class="math-part"><app-formula expression="\sin x=-1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x=3\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>; las tres soluciones satisfacen la ecuación inicial. El seno alcanza <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span> solo en <span class="math-part"><app-formula expression="3\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span> dentro del intervalo. Allí <span class="math-part"><app-formula expression="\cos(3\pi )=-1" displayMode="inline" [showCodeButton]="false" /></span>, que confirma la ecuación inicial.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{\pi}{6},5\frac{\pi}{6},3\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una misma razón trigonométrica puede corresponder a varios ángulos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/trig-n-functions">Ángulos múltiples y ángulo mitad ↗</a>
+      <p>Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-031" />
+</article>

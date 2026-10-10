@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Convergencia absoluta o condicional</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Estudia <span class="math-part"><app-formula expression="\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{\sqrt n}" displayMode="inline" [showCodeButton]="false" /></span> y su convergencia absoluta.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El criterio de Leibniz afirma que una serie alternada converge cuando las magnitudes de sus términos decrecen hacia cero; el resto queda acotado por el primer término omitido. Convergencia absoluta significa además que converge la serie de valores absolutos. Aquí debemos examinar por separado ambas condiciones.</li>
+      <li><span class="math-part"><app-formula expression="1/\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> es decreciente y tiende a 0. Los términos positivos <span class="math-part"><app-formula expression="1/\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> disminuyen porque <span class="math-part"><app-formula expression="\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> aumenta, y su límite es cero. Son las dos condiciones de Leibniz.</li>
+      <li>Por Leibniz, la serie alternada converge. El criterio de Leibniz asegura convergencia de la serie con signos alternos, aunque todavía no decide la absoluta.</li>
+      <li>La serie de valores absolutos es <span class="math-part"><app-formula expression="\sum n^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span>; la integral de <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> entre 1 y R vale <span class="math-part"><app-formula expression="2(\sqrt{R}-1)" displayMode="inline" [showCodeButton]="false" /></span>. La función <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> es positiva y decreciente en [1,∞), permitiendo la comparación integral con la serie de valores absolutos.</li>
+      <li>Esta integral diverge al crecer R, por lo que la serie positiva diverge. La integral crece sin cota. Por el criterio integral, la serie positiva diverge y la convergencia original es condicional.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Convergencia condicional, no absoluta.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La alternancia de signos sola no garantiza convergencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/basel">Problema de Basilea ↗</a>
+      <p>Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-045" />
+</article>

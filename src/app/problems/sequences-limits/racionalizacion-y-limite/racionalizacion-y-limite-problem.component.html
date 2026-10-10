@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Racionalización y límite</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}" displayMode="inline" [showCodeButton]="false" /></span> e indica el dominio real cerca de cero.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para eliminar una resta de raíces multiplicamos numerador y denominador por el conjugado. La identidad <span class="math-part"><app-formula expression="(\sqrt{1+x}-1)(\sqrt{1+x}+1)=x" displayMode="inline" [showCodeButton]="false" /></span> da una expresión equivalente para <span class="math-part"><app-formula expression="x\ne0" displayMode="inline" [showCodeButton]="false" /></span>. La nueva expresión sí es continua en cero, de modo que podemos calcular el límite por sustitución.</li>
+      <li>La raíz requiere <span class="math-part"><app-formula expression="x\ge -1" displayMode="inline" [showCodeButton]="false" /></span> y el cociente exige x≠0. Cerca de cero se puede tomar un entorno con <span class="math-part"><app-formula expression="x&gt;-1" displayMode="inline" [showCodeButton]="false" /></span>, donde la raíz es continua. El punto cero queda excluido del cociente original.</li>
+      <li>Multiplica numerador y denominador por <span class="math-part"><app-formula expression="\sqrt{1+x}+1" displayMode="inline" [showCodeButton]="false" /></span>. El producto de conjugados es <span class="math-part"><app-formula expression="(\sqrt{1+x}-1)(\sqrt{1+x}+1)=(1+x)-1=x" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Para x≠0 queda <span class="math-part"><app-formula expression="\frac1{\sqrt{1+x}+1}" displayMode="inline" [showCodeButton]="false" /></span>. Se cancela x únicamente cuando x≠0, que es suficiente para estudiar el límite en un entorno perforado.</li>
+      <li>Por continuidad del denominador, el límite es <span class="math-part"><app-formula expression="1/(1+1)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador tiende a 2 y no se anula cerca del punto. La regla del límite de un cociente se puede aplicar.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La simplificación vale en un entorno perforado, no define automáticamente el valor original en 0.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
+      <p>El desarrollo √(1+x)=1+x/2+O(x²) ofrece una comprobación alternativa del límite calculado aquí por racionalización.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-047" />
+</article>

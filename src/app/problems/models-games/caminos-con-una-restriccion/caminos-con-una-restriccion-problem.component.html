@@ -1,0 +1,33 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Caminos con una restricción</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Cuenta los caminos de <span class="math-part"><app-formula expression="(0,0)" displayMode="inline" [showCodeButton]="false" /></span> a <span class="math-part"><app-formula expression="(4,4)" displayMode="inline" [showCodeButton]="false" /></span> con pasos <span class="math-part"><app-formula expression="(1,0)" displayMode="inline" [showCodeButton]="false" /></span> o <span class="math-part"><app-formula expression="(0,1)" displayMode="inline" [showCodeButton]="false" /></span>. ¿Cuántos no pasan nunca por encima de <span class="math-part"><app-formula expression="y=x" displayMode="inline" [showCodeButton]="false" /></span>?</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un camino monótono de cuatro pasos horizontales y cuatro verticales se codifica con una palabra de ocho letras. Para contar los que no superan la diagonal, restamos los que la cruzan: reflejar el tramo hasta el primer cruce establece una correspondencia con caminos de tres pasos horizontales y cinco verticales. Así se obtiene <span class="math-part"><app-formula expression="\binom84-\binom83" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Un camino sin restricción tiene 8 pasos, de los que 4 son verticales: <span class="math-part"><app-formula expression="C(8,4)=70" displayMode="inline" [showCodeButton]="false" /></span>. Cada camino es una secuencia de cuatro pasos horizontales y cuatro verticales. Elegir las posiciones de los verticales determina el camino completo.</li>
+      <li>Reflejar el prefijo hasta el primer paso que llega a <span class="math-part"><app-formula expression="y=x+1" displayMode="inline" [showCodeButton]="false" /></span> establece una biyección entre caminos prohibidos y caminos de <span class="math-part"><app-formula expression="(0,0)" displayMode="inline" [showCodeButton]="false" /></span> a <span class="math-part"><app-formula expression="(5,3)" displayMode="inline" [showCodeButton]="false" /></span>. Al reflejar el prefijo del primer cruce se intercambia un paso vertical excedente por uno horizontal. El total cambia de cuatro y cuatro a cinco horizontales y tres verticales.</li>
+      <li>Estos últimos son <span class="math-part"><app-formula expression="C(8,3)=56" displayMode="inline" [showCodeButton]="false" /></span>. La reflexión es reversible: un camino a <span class="math-part"><app-formula expression="(5,3)" displayMode="inline" [showCodeButton]="false" /></span> tiene un primer paso por debajo de la diagonal cuyo prefijo se puede reflejar. Esto justifica la biyección.</li>
+      <li>Resta para obtener <span class="math-part"><app-formula expression="70-56=14" displayMode="inline" [showCodeButton]="false" /></span>, el cuarto número de Catalan. Todos los caminos quedan clasificados en permitidos y prohibidos. Restar sus cantidades produce el resultado sin contar dos veces ningún camino.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 70 caminos totales; 14 no superan la diagonal.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Contar solo los caminos que terminan en la diagonal no impone la restricción intermedia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/catalan-numbers">Números de Catalan ↗</a>
+      <p>Recuentos de caminos sujetos a una restricción y otras interpretaciones combinatorias.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-091" />
+</article>

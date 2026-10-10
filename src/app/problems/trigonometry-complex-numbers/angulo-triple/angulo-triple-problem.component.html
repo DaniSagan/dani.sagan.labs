@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Ángulo triple</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="\cos(3x)=\cos x" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="0\le x&lt;2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La igualdad <span class="math-part"><app-formula expression="\cos u=\cos v" displayMode="inline" [showCodeButton]="false" /></span> equivale a <span class="math-part"><app-formula expression="u=2k\pi+v" displayMode="inline" [showCodeButton]="false" /></span> o <span class="math-part"><app-formula expression="u=2k\pi-v" displayMode="inline" [showCodeButton]="false" /></span>, con k entero; también se deduce de <span class="math-part"><app-formula expression="\cos u-\cos v=-2\sin((u+v)/2)\sin((u-v)/2)" displayMode="inline" [showCodeButton]="false" /></span>. Aplicar esta identidad a 3x y x evita perder alguna de las familias de soluciones.</li>
+      <li>La ecuación equivale <span class="math-part"><app-formula expression="a -2\sin(2x)\sin x=0" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="A=3x" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="B=x" displayMode="inline" [showCodeButton]="false" /></span>, las semisumas son <span class="math-part"><app-formula expression="2x" displayMode="inline" [showCodeButton]="false" /></span> y x. Igualar los cosenos equivale a anular su diferencia.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="\sin(2x)=0" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="o \sin x=0" displayMode="inline" [showCodeButton]="false" /></span>. Un producto real nulo requiere que al menos uno de sus factores sea cero; no se divide entre <span class="math-part"><app-formula expression="\sin x" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La primera condición da <span class="math-part"><app-formula expression="x=\frac{k\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>; la segunda <span class="math-part"><app-formula expression="x=k\pi" displayMode="inline" [showCodeButton]="false" /></span> y ya está incluida. Los ceros de <span class="math-part"><app-formula expression="\sin(2x)" displayMode="inline" [showCodeButton]="false" /></span> cumplen 2<span class="math-part"><app-formula expression="x=k\pi" displayMode="inline" [showCodeButton]="false" /></span> y por tanto <span class="math-part"><app-formula expression="x=\frac{k\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Los de <span class="math-part"><app-formula expression="\sin x" displayMode="inline" [showCodeButton]="false" /></span> son un subconjunto de ellos.</li>
+      <li>En el intervalo quedan <span class="math-part"><app-formula expression="0,\frac{\pi}{2},\pi ,3\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Los enteros <span class="math-part"><app-formula expression="k=0,1,2,3" displayMode="inline" [showCodeButton]="false" /></span> dan los cuatro valores incluidos; <span class="math-part"><app-formula expression="k=4" displayMode="inline" [showCodeButton]="false" /></span> produce el extremo excluido <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="0,\frac{\pi}{2},\pi ,3\frac{\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El extremo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span> no pertenece al intervalo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/trig-n-functions">Ángulos múltiples y ángulo mitad ↗</a>
+      <p>Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-033" />
+</article>

@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Taylor con control del error</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Aproxima <span class="math-part"><app-formula expression="e^{\frac{1}{10}}" displayMode="inline" [showCodeButton]="false" /></span> mediante el polinomio de Taylor de grado 2 en 0 y acota el error usando <span class="math-part"><app-formula expression="e^{\frac{1}{10}}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Taylor de grado dos aproxima <span class="math-part"><app-formula expression="f(x)" displayMode="inline" [showCodeButton]="false" /></span> cerca de cero mediante <span class="math-part"><app-formula expression="f(0)+f&#39;(0)x+f&#39;&#39;(0)x^2/2" displayMode="inline" [showCodeButton]="false" /></span>. Su resto es <span class="math-part"><app-formula expression="f&#39;&#39;&#39;(\xi)x^3/6" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="\xi" displayMode="inline" [showCodeButton]="false" /></span> entre cero y x. Para la exponencial todas las derivadas son la propia función; una cota para <span class="math-part"><app-formula expression="e^\xi" displayMode="inline" [showCodeButton]="false" /></span> controla el error numérico.</li>
+      <li><span class="math-part"><app-formula expression="P_{2}(x)=1+x+x^{2}/2" displayMode="inline" [showCodeButton]="false" /></span>. Taylor en cero usa <span class="math-part"><app-formula expression="f(0)=f&#39;(0)=f&#39;&#39;(0)=1" displayMode="inline" [showCodeButton]="false" /></span> y divide la segunda derivada entre 2!<span class="math-part"><app-formula expression="=2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>En <span class="math-part"><app-formula expression="x=\frac{1}{10}" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="P_{2}=1+\frac{1}{10}+\frac{1}{200}=\frac{221}{200}=1,105" displayMode="inline" [showCodeButton]="false" /></span>. El término cuadrático es <span class="math-part"><app-formula expression="(\frac{1}{10})^{2}/2=\frac{1}{200}" displayMode="inline" [showCodeButton]="false" /></span>. Expresar todos los sumandos con denominador 200 da <span class="math-part"><app-formula expression="\frac{221}{200}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El resto es <span class="math-part"><app-formula expression="e^{c}(\frac{1}{10})^{3}/6" displayMode="inline" [showCodeButton]="false" /></span> para algún <span class="math-part"><app-formula expression="c\in (0,\frac{1}{10})" displayMode="inline" [showCodeButton]="false" /></span>. El resto de grado 2 depende de la tercera derivada en algún punto intermedio y se divide entre 3!<span class="math-part"><app-formula expression="=6" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Como <span class="math-part"><app-formula expression="e^{c}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>, el error es positivo y menor que <span class="math-part"><app-formula expression="2/(6\cdot 1000)=\frac{1}{3000}" displayMode="inline" [showCodeButton]="false" /></span>. La exponencial es positiva y creciente. De <span class="math-part"><app-formula expression="0&lt;c&lt;\frac{1}{10}" displayMode="inline" [showCodeButton]="false" /></span> y la cota dada se obtiene <span class="math-part"><app-formula expression="0&lt;e^{c}&lt;2" displayMode="inline" [showCodeButton]="false" /></span> y, por tanto, el margen de error indicado.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Aproximación <span class="math-part"><app-formula expression="1,105" displayMode="inline" [showCodeButton]="false" /></span>; 0&lt;error&lt;<span class="math-part"><app-formula expression="\frac{1}{3000}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El resto debe evaluarse con el mismo punto y grado que la aproximación.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
+      <p>Aproximaciones locales, derivadas y términos de error en desarrollos de funciones.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-055" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Cambiar de puerta</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En Monty Hall hay 3 puertas y un premio uniforme. El presentador conoce el premio, siempre abre una puerta vacía distinta de la elegida y siempre permite cambiar. Calcula la probabilidad de ganar cambiando.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En el problema de las puertas, el presentador conoce el premio, siempre abre una puerta sin premio distinta de la elegida y siempre ofrece cambiar. Cambiar gana exactamente cuando la primera elección fue incorrecta. Esa elección inicial falla con probabilidad <span class="math-part"><app-formula expression="2/3" displayMode="inline" [showCodeButton]="false" /></span>; la apertura informada concentra esos casos en la otra puerta disponible.</li>
+      <li>La elección inicial acierta con probabilidad <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span> y falla con <span class="math-part"><app-formula expression="\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span>. Antes de cualquier apertura, la puerta elegida contiene el premio en uno de los tres casos equiprobables. Los otros dos están agrupados como fallo inicial.</li>
+      <li>Si acierta, cambiar lleva a la otra puerta vacía y pierde. Si la elección inicial acierta, las otras dos puertas están vacías; cualquiera que quede tras abrir una estará vacía.</li>
+      <li>Si falla, el presentador debe abrir la única puerta vacía disponible, dejando cerrada la premiada. Si la elección inicial falla, entre las otras dos puertas hay una vacía y una premiada. El protocolo obliga a abrir la vacía.</li>
+      <li>Cambiar gana exactamente cuando la elección inicial falló. Los casos cubren todo el espacio muestral. Cambiar transforma cada fallo inicial en victoria, por lo que conserva exactamente la probabilidad <span class="math-part"><app-formula expression="\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{2}{3}" displayMode="inline" [showCodeButton]="false" /></span> al cambiar; <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span> al mantener.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El protocolo del presentador forma parte esencial de las hipótesis.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/monty-hall">Problema de Monty Hall ↗</a>
+      <p>La influencia del protocolo del presentador en la probabilidad de ganar.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-075" />
+</article>

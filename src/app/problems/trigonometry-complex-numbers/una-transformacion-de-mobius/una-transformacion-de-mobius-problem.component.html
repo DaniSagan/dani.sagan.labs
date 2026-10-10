@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Una transformación de Möbius</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para <span class="math-part"><app-formula expression="z=iy" displayMode="inline" [showCodeButton]="false" /></span>, y real, estudia <span class="math-part"><app-formula expression="w=(z-1)/(z+1)" displayMode="inline" [showCodeButton]="false" /></span>. Demuestra que <span class="math-part"><app-formula expression="\lvert w\rvert =1" displayMode="inline" [showCodeButton]="false" /></span> y determina qué punto de la circunferencia no aparece.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una transformación fraccionaria <span class="math-part"><app-formula expression="w=(az+b)/(cz+d)" displayMode="inline" [showCodeButton]="false" /></span> solo está definida cuando su denominador no se anula. Para demostrar cuál es su imagen no basta probar que todos los valores caen en una circunferencia: hay que despejar z en función de w y verificar qué puntos de esa circunferencia tienen una preimagen admisible.</li>
+      <li>El denominador no se anula para y real. Un imaginario puro no puede ser <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>, así que <span class="math-part"><app-formula expression="z+1" displayMode="inline" [showCodeButton]="false" /></span> nunca es cero en el dominio indicado.</li>
+      <li>Ambos módulos al cuadrado valen <span class="math-part"><app-formula expression="y^{2}+1" displayMode="inline" [showCodeButton]="false" /></span>, por lo que <span class="math-part"><app-formula expression="\lvert w\rvert =1" displayMode="inline" [showCodeButton]="false" /></span>. La razón de módulos es <span class="math-part"><app-formula expression="\sqrt{y^{2}+1}/\sqrt{y^{2}+1}=1" displayMode="inline" [showCodeButton]="false" /></span>. Esto sitúa toda imagen en la circunferencia unidad.</li>
+      <li><span class="math-part"><app-formula expression="w=1" displayMode="inline" [showCodeButton]="false" /></span> exigiría <span class="math-part"><app-formula expression="iy-1=iy+1" displayMode="inline" [showCodeButton]="false" /></span>, imposible. Igualar el cociente a 1 permite multiplicar por el denominador no nulo y llega <span class="math-part"><app-formula expression="a -1=1" displayMode="inline" [showCodeButton]="false" /></span>, una contradicción.</li>
+      <li>Para cualquier w de módulo 1 distinto de 1, <span class="math-part"><app-formula expression="z=(1+w)/(1-w)" displayMode="inline" [showCodeButton]="false" /></span> cumple <span class="math-part"><app-formula expression="\bar{z}=-z" displayMode="inline" [showCodeButton]="false" /></span> y es imaginario puro; por tanto todos los demás puntos aparecen. Para <span class="math-part"><app-formula expression="\lvert w\rvert =1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="\bar{w}=1/w" displayMode="inline" [showCodeButton]="false" /></span>. Sustituirlo en la conjugada de <span class="math-part"><app-formula expression="(1+w)/(1-w)" displayMode="inline" [showCodeButton]="false" /></span> da su negativo, lo que prueba que el inverso tiene parte real cero.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Imagen: circunferencia unidad sin el punto 1.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La imagen puede omitir un punto aunque se acerque a él cuando <span class="math-part"><app-formula expression="\lvert y\rvert" displayMode="inline" [showCodeButton]="false" /></span> crece.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/mobius-transformations">Transformaciones de Möbius ↗</a>
+      <p>Transformaciones fraccionarias del plano complejo y sus imágenes geométricas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-039" />
+</article>

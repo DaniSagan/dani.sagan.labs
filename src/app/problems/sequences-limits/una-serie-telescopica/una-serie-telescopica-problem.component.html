@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una serie telescópica</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="\sum_{n=1}^{\infty}\frac{1}{n(n+1)}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una serie converge si sus sumas parciales tienen límite finito. La identidad <span class="math-part"><app-formula expression="1/(n(n+1))=1/n-1/(n+1)" displayMode="inline" [showCodeButton]="false" /></span> provoca cancelaciones al sumar hasta N. Calculamos primero esa suma finita; después hacemos tender N a infinito, evitando operar directamente con una suma infinita no justificada.</li>
+      <li><span class="math-part"><app-formula expression="1/(n(n+1))=1/n-1/(n+1)" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia de fracciones tiene numerador <span class="math-part"><app-formula expression="(n+1)-n=1" displayMode="inline" [showCodeButton]="false" /></span> y denominador <span class="math-part"><app-formula expression="n(n+1)" displayMode="inline" [showCodeButton]="false" /></span>, verificando la descomposición.</li>
+      <li>La suma parcial <span class="math-part"><app-formula expression="S_N=1-1/(N+1)" displayMode="inline" [showCodeButton]="false" /></span>, porque se cancelan los términos intermedios. Al escribir los primeros términos, 1−1/2+1/2−1/3+⋯<span class="math-part"><app-formula expression="+1/N-1/(N+1)" displayMode="inline" [showCodeButton]="false" /></span>, solo quedan los dos extremos.</li>
+      <li>La serie converge al límite de sus sumas parciales. La suma infinita no se obtiene sustituyendo n por infinito en un sumando. Se estudia la sucesión S_N de sumas finitas.</li>
+      <li>Al hacer <span class="math-part"><app-formula expression="N\to \infty" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="1/(N+1)\to 0" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia entre la suma 1 y S_N es exactamente <span class="math-part"><app-formula expression="1/(N+1)" displayMode="inline" [showCodeButton]="false" /></span>, una cota explícita del error de truncamiento.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Suma 1.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una serie se define por el límite de sumas parciales, no por el límite del sumando.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/basel">Problema de Basilea ↗</a>
+      <p>Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-044" />
+</article>

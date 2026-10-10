@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una potencia en forma polar</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula <span class="math-part"><app-formula expression="(1+i)^{12}" displayMode="inline" [showCodeButton]="false" /></span> en forma binómica.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La forma polar <span class="math-part"><app-formula expression="z=r(\cos\theta+i\sin\theta)" displayMode="inline" [showCodeButton]="false" /></span> permite usar la fórmula de De Moivre: <span class="math-part"><app-formula expression="z^n=r^n(\cos n\theta+i\sin n\theta)" displayMode="inline" [showCodeButton]="false" /></span>. Primero obtenemos módulo y argumento de <span class="math-part"><app-formula expression="1+i" displayMode="inline" [showCodeButton]="false" /></span>; después elevamos el módulo y reducimos el nuevo ángulo módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Escribe <span class="math-part"><app-formula expression="1+i=\sqrt{2}(\cos(\frac{\pi}{4})+i \sin(\frac{\pi}{4}))" displayMode="inline" [showCodeButton]="false" /></span>. El módulo es <span class="math-part"><app-formula expression="\sqrt{1^{2}+1^{2}}=\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span> y ambas partes son positivas, situando el argumento en el primer cuadrante.</li>
+      <li>De Moivre da módulo <span class="math-part"><app-formula expression="(\sqrt{2})^{12}=64" displayMode="inline" [showCodeButton]="false" /></span> y argumento <span class="math-part"><app-formula expression="12\frac{\pi}{4}=3\pi" displayMode="inline" [showCodeButton]="false" /></span>. De Moivre eleva el módulo y multiplica el argumento, sin elevar por separado las coordenadas real e imaginaria.</li>
+      <li><span class="math-part"><app-formula expression="\cos3\pi =-1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y \sin3\pi =0" displayMode="inline" [showCodeButton]="false" /></span>. El ángulo <span class="math-part"><app-formula expression="3\pi" displayMode="inline" [showCodeButton]="false" /></span> es congruente con <span class="math-part"><app-formula expression="\pi" displayMode="inline" [showCodeButton]="false" /></span> módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. Corresponde al eje real negativo.</li>
+      <li>El resultado es real negativo; también <span class="math-part"><app-formula expression="(1+i)^{2}=2i" displayMode="inline" [showCodeButton]="false" /></span> permite comprobarlo. Como <span class="math-part"><app-formula expression="(2i)^{6}=64i^{6}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="i^{6}=-1" displayMode="inline" [showCodeButton]="false" /></span>, la potencia binómica alternativa confirma el valor <span class="math-part"><app-formula expression="-64" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="-64" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El módulo <span class="math-part"><app-formula expression="\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span> también debe elevarse a la potencia 12.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/euler-identity">Identidad de Euler ↗</a>
+      <p>La conexión entre forma polar, exponencial compleja, seno y coseno.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-038" />
+</article>

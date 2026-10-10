@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Suma de raíces de la unidad</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Sean <span class="math-part"><app-formula expression="\zeta =e^{\frac{2\pi i}{5}}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="S=1+\zeta +\zeta ^{2}+\zeta ^{3}+\zeta ^{4}" displayMode="inline" [showCodeButton]="false" /></span>. Calcula S y deduce la suma de los cosenos de sus argumentos.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Si <span class="math-part"><app-formula expression="\zeta^5=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\zeta\ne1" displayMode="inline" [showCodeButton]="false" /></span>, la identidad <span class="math-part"><app-formula expression="(\zeta-1)(1+\zeta+\zeta^2+\zeta^3+\zeta^4)=\zeta^5-1" displayMode="inline" [showCodeButton]="false" /></span> demuestra que la suma es cero. Tomar partes reales transforma cada potencia en el coseno de su argumento, sin cambiar la igualdad.</li>
+      <li><span class="math-part"><app-formula expression="\zeta ^{5}=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\zeta \ne 1" displayMode="inline" [showCodeButton]="false" /></span>. La quinta potencia de ζ es <span class="math-part"><app-formula expression="e^{2\pi i}=1" displayMode="inline" [showCodeButton]="false" /></span>. Como su argumento <span class="math-part"><app-formula expression="2\frac{\pi}{5}" displayMode="inline" [showCodeButton]="false" /></span> no es múltiplo de <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>, ζ no vale 1.</li>
+      <li>Multiplica S por <span class="math-part"><app-formula expression="\zeta -1" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="(\zeta -1)S=\zeta ^{5}-1=0" displayMode="inline" [showCodeButton]="false" /></span>. Al multiplicar la suma geométrica por ζ y restarle la suma original, los términos intermedios se cancelan.</li>
+      <li>Como <span class="math-part"><app-formula expression="\zeta -1\ne 0" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="S=0" displayMode="inline" [showCodeButton]="false" /></span>. La ecuación <span class="math-part"><app-formula expression="(\zeta -1)S=0" displayMode="inline" [showCodeButton]="false" /></span> y el factor no nulo obligan a <span class="math-part"><app-formula expression="S=0" displayMode="inline" [showCodeButton]="false" /></span>; no es una aproximación numérica.</li>
+      <li>Tomando partes reales: <span class="math-part"><app-formula expression="1+\cos(2\frac{\pi}{5})+\cos(4\frac{\pi}{5})+\cos(6\frac{\pi}{5})+\cos(8\frac{\pi}{5})=0" displayMode="inline" [showCodeButton]="false" /></span>. La parte real de <span class="math-part"><app-formula expression="e^{i}θ" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="\cos θ" displayMode="inline" [showCodeButton]="false" /></span>. Tomar partes reales de la igualdad compleja produce la identidad de cosenos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="S=0" displayMode="inline" [showCodeButton]="false" /></span>; suma de los cinco cosenos 0.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No se puede dividir por <span class="math-part"><app-formula expression="\zeta -1" displayMode="inline" [showCodeButton]="false" /></span> cuando <span class="math-part"><app-formula expression="\zeta =1" displayMode="inline" [showCodeButton]="false" /></span>; aquí queda excluido.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
+      <p>Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/euler-identity">Identidad de Euler ↗</a>
+      <p>La conexión entre forma polar, exponencial compleja, seno y coseno.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-040" />
+</article>

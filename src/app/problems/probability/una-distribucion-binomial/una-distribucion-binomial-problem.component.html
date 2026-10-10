@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una distribución binomial</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Se lanzan 5 monedas equilibradas e independientes. Si X es el número de caras, calcula <span class="math-part"><app-formula expression="P(X=3)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="E(X)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\operatorname{Var}(X)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La binomial cuenta éxitos en n ensayos independientes con la misma probabilidad p. Para exactamente k éxitos, cada secuencia tiene probabilidad <span class="math-part"><app-formula expression="p^k(1-p)^{n-k}" displayMode="inline" [showCodeButton]="false" /></span>, y hay <span class="math-part"><app-formula expression="\binom nk" displayMode="inline" [showCodeButton]="false" /></span> posiciones posibles. Como suma de indicadores independientes, su esperanza es np y su varianza <span class="math-part"><app-formula expression="np(1-p)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="P(X=k)=C(5,k)(\frac{1}{2})^{5}" displayMode="inline" [showCodeButton]="false" /></span>. Las cinco variables indicadoras de cara son Bernoulli independientes. Su suma tiene la distribución binomial indicada.</li>
+      <li>Para <span class="math-part"><app-formula expression="k=3" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="C(5,3)=10" displayMode="inline" [showCodeButton]="false" /></span>, así que <span class="math-part"><app-formula expression="P(X=3)=\frac{10}{32}=\frac{5}{16}" displayMode="inline" [showCodeButton]="false" /></span>. Hay <span class="math-part"><app-formula expression="C(5,3)" displayMode="inline" [showCodeButton]="false" /></span> formas de situar las tres caras en los cinco lanzamientos. Cada secuencia concreta tiene probabilidad <span class="math-part"><app-formula expression="(\frac{1}{2})^{5}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La esperanza de una binomial es <span class="math-part"><app-formula expression="np=\frac{5}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Por linealidad de la esperanza, se suman cinco medias <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Esta identidad no requiere que el resultado esperado sea entero.</li>
+      <li>La varianza es <span class="math-part"><app-formula expression="np(1-p)=\frac{5}{4}" displayMode="inline" [showCodeButton]="false" /></span>, y la desviación típica es <span class="math-part"><app-formula expression="\sqrt{5}/2" displayMode="inline" [showCodeButton]="false" /></span>. Cada indicador tiene varianza <span class="math-part"><app-formula expression="(\frac{1}{2})(\frac{1}{2})=\frac{1}{4}" displayMode="inline" [showCodeButton]="false" /></span>. La independencia permite sumar las cinco varianzas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="P=\frac{5}{16}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="E=\frac{5}{2}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="\operatorname{Var}=\frac{5}{4}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La esperanza no tiene por qué ser un valor entero observable.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/galton-board">Tablero de Galton ↗</a>
+      <p>La distribución de resultados de una sucesión de decisiones aleatorias y su representación.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
+      <p>Coeficientes combinatorios y expansión de potencias de una suma.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-076" />
+</article>

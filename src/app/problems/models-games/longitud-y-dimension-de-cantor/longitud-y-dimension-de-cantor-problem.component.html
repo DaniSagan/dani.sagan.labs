@@ -1,0 +1,64 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Longitud y dimensión de Cantor</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En el conjunto ternario de Cantor, calcula la longitud total restante tras n etapas, la longitud total eliminada
+      en el límite y la dimensión de autosimilitud.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En cada etapa de Cantor se retira el tercio central de todos los intervalos restantes. Hay dos copias del
+        conjunto a escala <span class="math-part"><app-formula expression="1/3" displayMode="inline"
+            [showCodeButton]="false" /></span>, separadas entre sí. La dimensión de autosimilitud se define por <span
+          class="math-part"><app-formula expression="2(1/3)^d=1" displayMode="inline"
+            [showCodeButton]="false" /></span>; para esta construcción coincide con la dimensión de Hausdorff. Esta
+        dimensión y la longitud ordinaria son magnitudes distintas.</li>
+      <li>Tras n etapas hay <span class="math-part"><app-formula expression="2^{n}" displayMode="inline"
+            [showCodeButton]="false" /></span> intervalos de longitud <span class="math-part"><app-formula
+            expression="3^{-n}" displayMode="inline" [showCodeButton]="false" /></span>, por lo que <span
+          class="math-part"><app-formula expression="L_{n}=\left(\dfrac{2}{3}\right)^{n}" displayMode="inline"
+            [showCodeButton]="false" /></span>. Cada etapa duplica el número de intervalos y divide su longitud por 3.
+        Para <span class="math-part"><app-formula expression="n=0" displayMode="inline"
+            [showCodeButton]="false" /></span> se recuperan un intervalo y longitud total 1.</li>
+      <li><span class="math-part"><app-formula expression="L_{n}\to 0" displayMode="inline"
+            [showCodeButton]="false" /></span>; la suma de longitudes eliminadas es <span class="math-part"><app-formula
+            expression="1-\lim_{n\to\infty}L_n=1" displayMode="inline" [showCodeButton]="false" /></span>. La longitud
+        retirada hasta n es <span class="math-part"><app-formula expression="1-\left(\dfrac{2}{3}\right)^{n}" displayMode="inline"
+            [showCodeButton]="false" /></span>. Su límite es 1, aunque la intersección de los conjuntos restantes no
+        esté vacía.</li>
+      <li>Hay dos copias semejantes a escala <span class="math-part"><app-formula expression="\dfrac{1}{3}"
+            displayMode="inline" [showCodeButton]="false" /></span>; la dimensión d cumple <span
+          class="math-part"><app-formula expression="2\left(\dfrac{1}{3}\right)^{d}=1" displayMode="inline"
+            [showCodeButton]="false" /></span>. La ecuación de autosimilitud suma las contribuciones de las dos copias a
+        escala <span class="math-part"><app-formula expression="\dfrac{1}{3}" displayMode="inline"
+            [showCodeButton]="false" /></span>. No se usa la fórmula de longitud ordinaria para calcular d.</li>
+      <li>Despeja <span class="math-part"><app-formula expression="d=\dfrac{\ln2}{\ln3}" displayMode="inline"
+            [showCodeButton]="false" /></span>; longitud cero no implica ausencia de puntos, pues al menos 0 y 1
+        permanecen y el conjunto es mucho más amplio. Tomar logaritmos da <span class="math-part"><app-formula
+            expression="\ln2-d \ln3=0" displayMode="inline" [showCodeButton]="false" /></span>. Además <span
+          class="math-part"><app-formula expression="0&lt;\ln2/\ln3&lt;1" displayMode="inline"
+            [showCodeButton]="false" /></span>, coherente con una dimensión menor que la de un intervalo.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula
+          expression="L_{n}=\left(\dfrac{2}{3}\right)^{n}" displayMode="inline" [showCodeButton]="false" /></span>; longitud
+      eliminada 1; <span class="math-part"><app-formula expression="d=\dfrac{\ln2}{\ln3}" displayMode="inline"
+          [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Longitud cero no significa conjunto vacío.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o
+      comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cantor-set">Conjunto de Cantor ↗</a>
+      <p>La construcción por etapas y la autosimilitud del conjunto ternario.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-100" />
+</article>

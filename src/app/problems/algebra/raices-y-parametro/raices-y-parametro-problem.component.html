@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Raíces y parámetro</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Determina los valores reales de a para los que <span class="math-part"><app-formula expression="x^{2}-2ax+a+2" displayMode="inline" [showCodeButton]="false" /></span> tiene dos raíces reales distintas y positivas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En una cuadrática <span class="math-part"><app-formula expression="x^2-Sx+P" displayMode="inline" [showCodeButton]="false" /></span>, las raíces reales tienen suma S y producto P, como se comprueba desarrollando <span class="math-part"><app-formula expression="(x-r_1)(x-r_2)" displayMode="inline" [showCodeButton]="false" /></span>. La realidad y distinción se controlan con el discriminante; el signo se controla después con suma y producto. Son condiciones distintas que deben cumplirse simultáneamente.</li>
+      <li>El discriminante es <span class="math-part"><app-formula expression="\Delta =4(a^{2}-a-2)=4(a-2)(a+1)" displayMode="inline" [showCodeButton]="false" /></span>; debe ser positivo. <span class="math-part"><app-formula expression="\Delta =0" displayMode="inline" [showCodeButton]="false" /></span> no sirve porque daría una raíz doble. El producto <span class="math-part"><app-formula expression="(a-2)(a+1)" displayMode="inline" [showCodeButton]="false" /></span> es positivo si <span class="math-part"><app-formula expression="a&lt;-1" displayMode="inline" [showCodeButton]="false" /></span> o <span class="math-part"><app-formula expression="a&gt;2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Por Viète, la suma es <span class="math-part"><app-formula expression="2a" displayMode="inline" [showCodeButton]="false" /></span> y el producto <span class="math-part"><app-formula expression="a+2" displayMode="inline" [showCodeButton]="false" /></span>. Viète relaciona la suma con el coeficiente de x cambiado de signo y el producto con el término independiente.</li>
+      <li>Dos raíces reales son positivas si su suma y su producto son positivos: <span class="math-part"><app-formula expression="a&gt;0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="a&gt;-2" displayMode="inline" [showCodeButton]="false" /></span>. Un producto positivo obliga a que las dos raíces tengan el mismo signo. La suma positiva excluye el caso de dos raíces negativas.</li>
+      <li>La intersección con <span class="math-part"><app-formula expression="\Delta &gt;0" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="a&gt;2" displayMode="inline" [showCodeButton]="false" /></span>; en <span class="math-part"><app-formula expression="a=2" displayMode="inline" [showCodeButton]="false" /></span> hay raíz doble. Al intersectar <span class="math-part"><app-formula expression="a&gt;0" displayMode="inline" [showCodeButton]="false" /></span> con los intervalos del discriminante solo queda <span class="math-part"><app-formula expression="a&gt;2" displayMode="inline" [showCodeButton]="false" /></span>. En ese intervalo también <span class="math-part"><app-formula expression="a+2&gt;0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="a&gt;2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> <span class="math-part"><app-formula expression="\Delta &gt;0" displayMode="inline" [showCodeButton]="false" /></span> solo garantiza realidad y separación, no positividad.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cubic-equation">La ecuación cúbica ↗</a>
+      <p>Compara el papel de las raíces y los parámetros en una ecuación cúbica con la clasificación cuadrática de este ejercicio; las fórmulas de los discriminantes son distintas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-012" />
+</article>

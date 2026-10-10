@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una cúbica con tres raíces</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="x^{3}-6x^{2}+11x-6=0" displayMode="inline" [showCodeButton]="false" /></span> y justifica que no hay más raíces reales.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El teorema del factor dice que <span class="math-part"><app-formula expression="P(r)=0" displayMode="inline" [showCodeButton]="false" /></span> equivale a que <span class="math-part"><app-formula expression="x-r" displayMode="inline" [showCodeButton]="false" /></span> divide P: el resto de dividir por <span class="math-part"><app-formula expression="x-r" displayMode="inline" [showCodeButton]="false" /></span> es precisamente <span class="math-part"><app-formula expression="P(r)" displayMode="inline" [showCodeButton]="false" /></span>. Para un polinomio mónico con coeficientes enteros, una raíz entera debe dividir el término independiente; esto orienta la búsqueda inicial.</li>
+      <li>Sustituir <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span> anula el polinomio. Los divisores de 6 son candidatos a raíces enteras. Sustituir 1 da <span class="math-part"><app-formula expression="1-6+11-6=0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Divide entre <span class="math-part"><app-formula expression="x-1" displayMode="inline" [showCodeButton]="false" /></span>: el cociente es <span class="math-part"><app-formula expression="x^{2}-5x+6" displayMode="inline" [showCodeButton]="false" /></span>. Ruffini con 1 transforma los coeficientes <span class="math-part"><app-formula expression="1,-6,11,-6" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="1,-5,6" displayMode="inline" [showCodeButton]="false" /></span> y resto cero, garantizando el factor <span class="math-part"><app-formula expression="x-1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Factoriza el cociente como <span class="math-part"><app-formula expression="(x-2)(x-3)" displayMode="inline" [showCodeButton]="false" /></span>. Los números 2 y 3 tienen suma 5 y producto 6. Por eso el cuadrático se descompone en esos factores.</li>
+      <li>El producto es cero exactamente cuando uno de los tres factores es cero. Un producto real se anula exactamente cuando algún factor se anula. La factorización completa descarta otras raíces.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="x=1,2,3" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Encontrar una raíz no resuelve toda la ecuación.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/cubic-equation">La ecuación cúbica ↗</a>
+      <p>Lectura complementaria sobre raíces, factorización y resolución de ecuaciones polinómicas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-011" />
+</article>

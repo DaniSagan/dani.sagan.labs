@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Una matriz no diagonalizable</h2>
+  <p class="topic">Álgebra y álgebra lineal · Matrices y sistemas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para <span class="math-part"><app-formula expression="A=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span>, demuestra que no es diagonalizable y calcula <span class="math-part"><app-formula expression="A^{n}" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="n\ge 0" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Diagonalizar exige una base de autovectores, no basta con conocer los autovalores. Una matriz de orden dos necesita dos autovectores independientes. Si no los tiene, todavía podemos calcular potencias: separar <span class="math-part"><app-formula expression="A=I+N" displayMode="inline" [showCodeButton]="false" /></span> resulta útil cuando N es nilpotente, es decir, alguna potencia de N es la matriz cero.</li>
+      <li>El polinomio característico es <span class="math-part"><app-formula expression="(\lambda -1)^{2}" displayMode="inline" [showCodeButton]="false" /></span>. El determinante de <span class="math-part"><app-formula expression="A-\lambda I" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="(1-\lambda )^{2}" displayMode="inline" [showCodeButton]="false" /></span>, pues la matriz es triangular. El único autovalor tiene multiplicidad algebraica 2.</li>
+      <li>El núcleo de <span class="math-part"><app-formula expression="A-I" displayMode="inline" [showCodeButton]="false" /></span> exige <span class="math-part"><app-formula expression="y=0" displayMode="inline" [showCodeButton]="false" /></span>; el autoespacio tiene dimensión 1, insuficiente para una base de dos autovectores. Resolver <span class="math-part"><app-formula expression="(A-I)(x,y)=0" displayMode="inline" [showCodeButton]="false" /></span> exige <span class="math-part"><app-formula expression="y=0" displayMode="inline" [showCodeButton]="false" /></span>. Solo hay una dirección propia, insuficiente para diagonalizar una matriz 2×2.</li>
+      <li><span class="math-part"><app-formula expression="N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span> satisface <span class="math-part"><app-formula expression="N^{2}=0" displayMode="inline" [showCodeButton]="false" /></span>. N lleva <span class="math-part"><app-formula expression="(x,y)" displayMode="inline" [showCodeButton]="false" /></span> a <span class="math-part"><app-formula expression="(y,0)" displayMode="inline" [showCodeButton]="false" /></span>; aplicarlo otra vez da <span class="math-part"><app-formula expression="(0,0)" displayMode="inline" [showCodeButton]="false" /></span>. Así se verifica directamente <span class="math-part"><app-formula expression="N^{2}=0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El binomio matricial da <span class="math-part"><app-formula expression="(I+N)^n=I+nN" displayMode="inline" [showCodeButton]="false" /></span>, pues los demás términos se anulan. I conmuta con N y permite el binomio matricial. Todos los términos con <span class="math-part"><app-formula expression="N^{2}" displayMode="inline" [showCodeButton]="false" /></span> o potencias mayores desaparecen.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> No diagonalizable; <span class="math-part"><app-formula expression="A^{n}=\begin{pmatrix}1&amp;n\\0&amp;1\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un autovalor doble no garantiza dos autovectores independientes.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-diagonalization">Diagonalización de matrices ↗</a>
+      <p>Autovalores, bases de autovectores y cálculo de potencias de una matriz.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
+      <p>Coeficientes combinatorios y expansión de potencias de una suma.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-020" />
+</article>

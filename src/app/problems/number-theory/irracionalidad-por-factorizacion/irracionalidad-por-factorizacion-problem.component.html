@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Irracionalidad por factorización</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Demuestra que <span class="math-part"><app-formula expression="\sqrt{6}" displayMode="inline" [showCodeButton]="false" /></span> es irracional usando la unicidad de la factorización prima.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Demostrar irracionalidad exige descartar cualquier cociente de enteros, no solo raíces enteras. Suponemos <span class="math-part"><app-formula expression="\sqrt6=a/b" displayMode="inline" [showCodeButton]="false" /></span>, con enteros a y b y <span class="math-part"><app-formula expression="b\ne0" displayMode="inline" [showCodeButton]="false" /></span>, y buscamos una contradicción. La unicidad de la factorización prima obliga a que dos enteros positivos iguales tengan el mismo exponente para cada primo.</li>
+      <li>Al elevar al cuadrado resulta <span class="math-part"><app-formula expression="a^{2}=6b^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Una representación racional tendría b distinto de cero. Cuadrar y multiplicar por <span class="math-part"><app-formula expression="b^{2}" displayMode="inline" [showCodeButton]="false" /></span> da una igualdad entre enteros.</li>
+      <li>En <span class="math-part"><app-formula expression="a^{2}" displayMode="inline" [showCodeButton]="false" /></span>, el exponente del primo 2 es par. Si a tiene r factores 2, su cuadrado tiene <span class="math-part"><app-formula expression="2r" displayMode="inline" [showCodeButton]="false" /></span>, un número par de factores 2.</li>
+      <li>En <span class="math-part"><app-formula expression="6b^{2}" displayMode="inline" [showCodeButton]="false" /></span>, ese exponente es 1 más un número par, luego es impar. Si b tiene s factores 2, el producto <span class="math-part"><app-formula expression="6b^{2}" displayMode="inline" [showCodeButton]="false" /></span> tiene <span class="math-part"><app-formula expression="1+2s" displayMode="inline" [showCodeButton]="false" /></span>, un número impar de factores 2.</li>
+      <li>La unicidad de factorización impide que ambos enteros sean iguales; la suposición racional es falsa. La unicidad de la factorización prima impide esa igualdad. La contradicción descarta todas las representaciones racionales.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\sqrt{6}" displayMode="inline" [showCodeButton]="false" /></span> es irracional.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No basta con decir que 6 no es un cuadrado: hay que excluir cocientes de enteros.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/fundamental-theorem-arithmetic">Teorema fundamental de la aritmética ↗</a>
+      <p>La unicidad de la factorización prima que fundamenta la contradicción de paridades.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-010" />
+</article>

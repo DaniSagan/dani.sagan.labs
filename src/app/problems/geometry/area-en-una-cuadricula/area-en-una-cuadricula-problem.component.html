@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Área en una cuadrícula</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Calcula el área del polígono de vértices <span class="math-part"><app-formula expression="(0,0),(4,0),(4,3),(0,1)" displayMode="inline" [showCodeButton]="false" /></span> y sus cantidades de puntos de borde e interiores.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El área de un polígono ordenado se calcula con <span class="math-part"><app-formula expression="K=\tfrac12\lvert\sum(x_i y_{i+1}-y_i x_{i+1})\rvert" displayMode="inline" [showCodeButton]="false" /></span>, cerrando el recorrido con el primer vértice. Si es simple y sus vértices tienen coordenadas enteras, Pick relaciona área y puntos de la cuadrícula mediante <span class="math-part"><app-formula expression="K=I+B/2-1" displayMode="inline" [showCodeButton]="false" /></span>. Primero calculamos K y contamos el borde B; así obtenemos los puntos interiores I.</li>
+      <li>La suma cruzada positiva es <span class="math-part"><app-formula expression="0+12+4+0=16" displayMode="inline" [showCodeButton]="false" /></span> y la negativa es 0; el área es 8. Los vértices deben mantenerse en orden alrededor del borde. El cordón divide entre 2 el valor absoluto de la diferencia de sumas.</li>
+      <li>Los puntos de borde suman <span class="math-part"><app-formula expression="\operatorname{mcd}(4,0)+\operatorname{mcd}(0,3)+\operatorname{mcd}(4,2)+\operatorname{mcd}(0,1)=4+3+2+1=10" displayMode="inline" [showCodeButton]="false" /></span>. En un segmento de vector entero <span class="math-part"><app-formula expression="(u,v)" displayMode="inline" [showCodeButton]="false" /></span>, el aporte al recuento cíclico es <span class="math-part"><app-formula expression="\operatorname{mcd}(\lvert u\rvert ,\lvert v\rvert )" displayMode="inline" [showCodeButton]="false" /></span>. Así se evitan duplicaciones de vértices.</li>
+      <li>Pick da <span class="math-part"><app-formula expression="A=I+B/2-1" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="I=8-5+1=4" displayMode="inline" [showCodeButton]="false" /></span>. Pick se aplica porque el polígono es simple y tiene vértices enteros. Despejamos <span class="math-part"><app-formula expression="I=A-B/2+1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La igualdad <span class="math-part"><app-formula expression="4+\frac{10}{2}-1=8" displayMode="inline" [showCodeButton]="false" /></span> verifica ambos recuentos. Los interiores son <span class="math-part"><app-formula expression="(1,1),(2,1),(3,1),(3,2)" displayMode="inline" [showCodeButton]="false" /></span>. Contarlos directamente confirma el resultado del teorema.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Área 8; <span class="math-part"><app-formula expression="B=10" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="I=4" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Al sumar los mcd se cuentan los vértices una vez; no sumes otro punto por arista.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/pick-theorem">Teorema de Pick ↗</a>
+      <p>La relación entre área, puntos interiores y puntos de borde de un polígono reticular.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/articles/shoelace-formula">Fórmula del cordón ↗</a>
+      <p>El cálculo de áreas mediante sumas cruzadas de coordenadas ordenadas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-025" />
+</article>

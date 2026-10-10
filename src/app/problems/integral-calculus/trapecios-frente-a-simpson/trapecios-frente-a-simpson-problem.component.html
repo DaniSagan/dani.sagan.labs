@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Trapecios frente a Simpson</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Aproxima <span class="math-part"><app-formula expression="\int_0^1x^2\,dx" displayMode="inline" [showCodeButton]="false" /></span> usando dos subintervalos iguales con trapecios y Simpson. Compara con el valor exacto.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Con dos subintervalos de anchura h, trapecios aproxima el área con segmentos rectos: <span class="math-part"><app-formula expression="T=h(f_0+2f_1+f_2)/2" displayMode="inline" [showCodeButton]="false" /></span>. Simpson interpola una parábola y usa <span class="math-part"><app-formula expression="S=h(f_0+4f_1+f_2)/3" displayMode="inline" [showCodeButton]="false" /></span>. Para una función cuadrática esa interpolación coincide con la propia función, por lo que Simpson es exacto.</li>
+      <li>Los valores son <span class="math-part"><app-formula expression="f_{0}=0,f_{1}=\frac{1}{4},f_{2}=1" displayMode="inline" [showCodeButton]="false" /></span>. Dividir la longitud del intervalo, 1, entre dos subintervalos da <span class="math-part"><app-formula expression="h=\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Se evalúa la función en los tres nodos, incluido el central.</li>
+      <li>Trapecios: <span class="math-part"><app-formula expression="T=(h/2)(f_{0}+2f_{1}+f_{2})=\frac{3}{8}" displayMode="inline" [showCodeButton]="false" /></span>. La regla compuesta de trapecios cuenta los extremos una vez y el nodo interior dos veces. Esto da <span class="math-part"><app-formula expression="(\frac{1}{4})(0+\frac{1}{2}+1)=\frac{3}{8}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Simpson: <span class="math-part"><app-formula expression="S=(h/3)(f_{0}+4f_{1}+f_{2})=\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>. Simpson con dos subintervalos tiene pesos <span class="math-part"><app-formula expression="1,4,1" displayMode="inline" [showCodeButton]="false" /></span>. El factor <span class="math-part"><app-formula expression="h/3=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="(\frac{1}{6})(0+1+1)=\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>El valor exacto es <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>; trapecios sobreestima en <span class="math-part"><app-formula expression="\frac{1}{24}" displayMode="inline" [showCodeButton]="false" /></span> y Simpson es exacto para esta cuadrática. El error de trapecios es <span class="math-part"><app-formula expression="\frac{3}{8}-\frac{1}{3}=\frac{1}{24}" displayMode="inline" [showCodeButton]="false" /></span>. Simpson integra exactamente polinomios de grado a lo sumo 3, incluyendo esta cuadrática.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="T=\frac{3}{8}" displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula expression="S=\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>; integral exacta <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La exactitud en una cuadrática no implica que Simpson sea exacto para cualquier función.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-numerical">Integración numérica ↗</a>
+      <p>Aproximaciones por trapecios y Simpson y su comparación con integrales exactas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/pi-decimals">Decimales de π ↗</a>
+      <p>Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-069" />
+</article>

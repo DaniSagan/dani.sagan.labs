@@ -1,0 +1,41 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Estudio global de una función</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Estudia crecimiento, extremos, concavidad y límites de <span class="math-part"><app-formula expression="f(x)=xe^{-x}" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="\mathbb{R}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En el estudio de una función, el signo de la primera derivada determina crecimiento y decrecimiento; un cambio de positivo a negativo identifica un máximo. La segunda derivada determina la concavidad. Un punto de inflexión exige cambio de concavidad, no simplemente que la segunda derivada se anule.</li>
+      <li><span class="math-part"><app-formula expression="f&#39;(x)=e^{-x}(1-x)" displayMode="inline" [showCodeButton]="false" /></span>, positivo para <span class="math-part"><app-formula expression="x&lt;1" displayMode="inline" [showCodeButton]="false" /></span> y negativo para <span class="math-part"><app-formula expression="x&gt;1" displayMode="inline" [showCodeButton]="false" /></span>. La regla del producto da <span class="math-part"><app-formula expression="e^{-x}+x(-e^{-x})" displayMode="inline" [showCodeButton]="false" /></span>. Al factorizar, el signo depende solo de <span class="math-part"><app-formula expression="1-x" displayMode="inline" [showCodeButton]="false" /></span> porque la exponencial es positiva.</li>
+      <li>Hay máximo global en <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="f(1)=1/e" displayMode="inline" [showCodeButton]="false" /></span>. El cambio de crecimiento a decrecimiento prueba un máximo. Además la función crece en todo <span class="math-part"><app-formula expression="(-\infty ,1)" displayMode="inline" [showCodeButton]="false" /></span> y decrece en todo <span class="math-part"><app-formula expression="(1,\infty )" displayMode="inline" [showCodeButton]="false" /></span>, así que es global.</li>
+      <li><span class="math-part"><app-formula expression="f&#39;&#39;(x)=e^{-x}(x-2)" displayMode="inline" [showCodeButton]="false" /></span>; es cóncava hacia abajo para <span class="math-part"><app-formula expression="x&lt;2" displayMode="inline" [showCodeButton]="false" /></span> y hacia arriba para <span class="math-part"><app-formula expression="x&gt;2" displayMode="inline" [showCodeButton]="false" /></span>, con inflexión en <span class="math-part"><app-formula expression="(2,2/e^{2})" displayMode="inline" [showCodeButton]="false" /></span>. Derivando otra vez se obtiene <span class="math-part"><app-formula expression="-e^{-x}(1-x)-e^{-x}=e^{-x}(x-2)" displayMode="inline" [showCodeButton]="false" /></span>. El cambio de signo confirma la inflexión.</li>
+      <li>Al tender x a <span class="math-part"><app-formula expression="+\infty" displayMode="inline" [showCodeButton]="false" /></span>, f→0; al tender a <span class="math-part"><app-formula expression="-\infty" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="f\to -\infty" displayMode="inline" [showCodeButton]="false" /></span>; no tiene mínimo global. En <span class="math-part"><app-formula expression="+\infty" displayMode="inline" [showCodeButton]="false" /></span> la exponencial del denominador domina al factor lineal. En <span class="math-part"><app-formula expression="-\infty" displayMode="inline" [showCodeButton]="false" /></span>, tanto el módulo de x como <span class="math-part"><app-formula expression="e^{-x}" displayMode="inline" [showCodeButton]="false" /></span> crecen, y el producto mantiene signo negativo.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Máximo <span class="math-part"><app-formula expression="1/e" displayMode="inline" [showCodeButton]="false" /></span> en <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>; inflexión en <span class="math-part"><app-formula expression="x=2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El límite 0 en <span class="math-part"><app-formula expression="+\infty" displayMode="inline" [showCodeButton]="false" /></span> no es un mínimo alcanzado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
+      <p>Los desarrollos de la exponencial ofrecen otra descripción local de la función; el estudio global del ejercicio usa además signos de derivadas y límites.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
+      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-052" />
+</article>

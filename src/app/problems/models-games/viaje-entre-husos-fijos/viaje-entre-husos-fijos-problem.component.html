@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Viaje entre husos fijos</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Un vuelo sale a las 22:30 del 10 de enero desde una ciudad con <span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> y llega a las 06:15 del 11 de enero a otra con <span class="math-part"><app-formula expression="UTC+3" displayMode="inline" [showCodeButton]="false" /></span>. Suponiendo esos offsets constantes, calcula la duración.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un huso fijo expresa la hora local como UTC más un desplazamiento. Antes de restar dos instantes, los convertimos a la misma referencia y conservamos sus fechas. La duración es la diferencia en esa línea temporal común; cruzar medianoche exige incluir las horas de ambos días.</li>
+      <li>La salida en UTC es 21:30 del 10 de enero. <span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> significa hora local=<span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> h. Para recuperar UTC se resta una hora a la salida.</li>
+      <li>La llegada en UTC es 03:15 del 11 de enero. En la llegada <span class="math-part"><app-formula expression="UTC+3" displayMode="inline" [showCodeButton]="false" /></span> se restan tres horas, obteniendo 03:15 sin cambiar todavía el día 11.</li>
+      <li>Desde 21:30 hasta medianoche pasan 2 h 30 min; desde medianoche hasta 03:15 pasan 3 h 15 min. Hay que sumar los intervalos separados por la medianoche, o trabajar con una misma línea temporal completa.</li>
+      <li>La duración total es 5 h 45 min; los offsets fijos forman parte del enunciado. Sumar 2 h 30 min y 3 h 15 min da 5 h 45 min. Si cambiasen los offsets durante el viaje, habría que incorporar ese dato.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 5 h 45 min.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Restar las horas locales mezcla dos referencias distintas y puede ignorar el cambio de fecha.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/division-algorithm">Algoritmo de la división ↗</a>
+      <p>Cociente y resto, útiles al convertir unidades y normalizar horas respecto al ciclo de 24 horas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/travel-planner">Planificador de viajes ↗</a>
+      <p>Utiliza las diferencias horarias para verificar la conversión UTC del ejercicio «Viaje entre husos fijos».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-099" />
+</article>

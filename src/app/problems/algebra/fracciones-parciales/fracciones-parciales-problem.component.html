@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Fracciones parciales</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Descompón <span class="math-part"><app-formula expression="\frac{3x+5}{(x+1)(x+2)}" displayMode="inline" [showCodeButton]="false" /></span> en fracciones simples e indica su dominio.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una fracción con denominador producto de dos factores lineales distintos puede buscarse como suma de dos fracciones con numeradores constantes. Multiplicar por el denominador común convierte la igualdad de fracciones en una identidad polinómica. Comparar sus coeficientes determina las constantes, manteniendo excluidos los ceros del denominador original.</li>
+      <li>El dominio excluye <span class="math-part"><app-formula expression="x=-1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=-2" displayMode="inline" [showCodeButton]="false" /></span>. El denominador se anula precisamente en <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y -2" displayMode="inline" [showCodeButton]="false" /></span>. La descomposición se usa fuera de esos puntos.</li>
+      <li>Igualar numeradores da <span class="math-part"><app-formula expression="3x+5=A(x+2)+B(x+1)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador común produce el numerador <span class="math-part"><app-formula expression="A(x+2)+B(x+1)" displayMode="inline" [showCodeButton]="false" /></span>, que debe coincidir con <span class="math-part"><app-formula expression="3x+5" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Comparando coeficientes: <span class="math-part"><app-formula expression="A+B=3" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="2A+B=5" displayMode="inline" [showCodeButton]="false" /></span>; luego <span class="math-part"><app-formula expression="A=2,B=1" displayMode="inline" [showCodeButton]="false" /></span>. Restar <span class="math-part"><app-formula expression="A+B=3" displayMode="inline" [showCodeButton]="false" /></span> de <span class="math-part"><app-formula expression="2A+B=5" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="A=2" displayMode="inline" [showCodeButton]="false" /></span>. Después <span class="math-part"><app-formula expression="B=3-2=1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La identidad se comprueba recombinando los dos términos en el mismo denominador. Recombinar las fracciones da <span class="math-part"><app-formula expression="2(x+2)+(x+1)=3x+5" displayMode="inline" [showCodeButton]="false" /></span>, comprobando la identidad en su dominio.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac2{x+1}+\frac1{x+2}" displayMode="inline" [showCodeButton]="false" /></span>, para <span class="math-part"><app-formula expression="x\ne -1,-2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La identidad no amplía el dominio original.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
+      <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
+      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-015" />
+</article>

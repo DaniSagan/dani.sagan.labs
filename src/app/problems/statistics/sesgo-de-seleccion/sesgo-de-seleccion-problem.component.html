@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Sesgo de selección</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Para estimar las horas de estudio del alumnado de un instituto, se encuesta solo a quienes están en la biblioteca a las 18:00. ¿Aumentar a 1000 respuestas corrige el problema? Propón un diseño mejor.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El sesgo de selección aparece cuando el mecanismo de participación cambia la composición de la muestra respecto a la población objetivo. Aumentar respuestas del mismo grupo reduce variabilidad, pero conserva el sesgo. Una selección aleatoria desde un listado de todo el alumnado, con estratos bien definidos, mejora la representación.</li>
+      <li>La muestra excluye a quienes no usan la biblioteca y favorece perfiles con determinados hábitos. La población objetivo es todo el instituto, pero el marco efectivo son las personas presentes en un lugar y una hora concretos.</li>
+      <li>Más respuestas dentro del mismo grupo reducen variabilidad, pero no garantizan corregir el sesgo. El sesgo de selección afecta a qué personas pueden entrar en la muestra. Aumentar el número dentro del mismo marco no corrige esa exclusión.</li>
+      <li>Construye un marco con todo el alumnado y selecciona aleatoriamente, por ejemplo estratificando por curso con pesos adecuados. El muestreo por estratos puede asegurar representación de cada curso. Para una estimación global se ponderan los estratos según su tamaño poblacional.</li>
+      <li>Recoge ausencias y no respuestas, y emplea la misma pregunta y período de referencia para todas las personas. La no respuesta puede reintroducir sesgo incluso tras una selección aleatoria. Registrar quién no responde ayuda a valorar esa limitación.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> No; se necesita un diseño con cobertura de la población y selección aleatoria.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una muestra grande no es automáticamente representativa.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a>
+      <p>Seleccionar solo personas de la biblioteca introduce una condición sobre la población. La probabilidad condicionada ayuda a expresar por qué esa muestra puede diferir del conjunto del instituto.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
+      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-090" />
+</article>

@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Continuidad y derivabilidad a trozos</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Sea <span class="math-part"><app-formula expression="f(x)=ax+b" displayMode="inline" [showCodeButton]="false" /></span> si <span class="math-part"><app-formula expression="x\le 1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="f(x)=x^{2}" displayMode="inline" [showCodeButton]="false" /></span> si <span class="math-part"><app-formula expression="x&gt;1" displayMode="inline" [showCodeButton]="false" /></span>. Halla <span class="math-part"><app-formula expression="a,b" displayMode="inline" [showCodeButton]="false" /></span> para que sea derivable en <span class="math-part"><app-formula expression="x=1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Ser continua en un punto de unión exige que los dos límites laterales coincidan con el valor de la función. Ser derivable exige, además, que las derivadas laterales coincidan. Primero imponemos continuidad: igualar solo las pendientes no impediría que la función tuviera un salto.</li>
+      <li>La continuidad exige <span class="math-part"><app-formula expression="a+b=1" displayMode="inline" [showCodeButton]="false" /></span>, igualando <span class="math-part"><app-formula expression="f(1)" displayMode="inline" [showCodeButton]="false" /></span> con el límite derecho. Una función derivable es necesariamente continua. Aquí <span class="math-part"><app-formula expression="f(1)=a+b" displayMode="inline" [showCodeButton]="false" /></span>, y el límite por la rama derecha es 1.</li>
+      <li>La derivada izquierda es a. El cociente incremental de la rama lineal tiene pendiente constante a, independientemente de b.</li>
+      <li>La derivada derecha de <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> en 1 es 2, luego <span class="math-part"><app-formula expression="a=2" displayMode="inline" [showCodeButton]="false" /></span>. Para la rama derecha, <span class="math-part"><app-formula expression="((1+h)^{2}-1)/h=2+h" displayMode="inline" [showCodeButton]="false" /></span> cuando la continuidad ya está impuesta. Su límite es 2.</li>
+      <li>De <span class="math-part"><app-formula expression="a+b=1" displayMode="inline" [showCodeButton]="false" /></span> resulta <span class="math-part"><app-formula expression="b=-1" displayMode="inline" [showCodeButton]="false" /></span>; así ambas derivadas laterales coinciden. Con <span class="math-part"><app-formula expression="a=2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="b=-1" displayMode="inline" [showCodeButton]="false" /></span>, ambas ramas coinciden en valor y pendiente. Estas dos comprobaciones prueban la derivabilidad.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="a=2" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="b=-1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La igualdad de derivadas de las ramas no basta si la función es discontinua.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
+      <p>Los desarrollos locales ayudan a distinguir el valor de una función y su pendiente; compara esas dos condiciones con la unión de las ramas del ejercicio.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-048" />
+</article>

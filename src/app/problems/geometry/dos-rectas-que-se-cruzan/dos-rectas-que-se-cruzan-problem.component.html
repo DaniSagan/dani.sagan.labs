@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Reto</span>
+  <h2 id="problem-title">Dos rectas que se cruzan</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Sean <span class="math-part"><app-formula expression="r=(t,0,0)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="s=(0,1,1)+u(0,1,0)" displayMode="inline" [showCodeButton]="false" /></span>. Demuestra que son alabeadas y calcula su distancia.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Dos rectas del espacio pueden no ser paralelas y aun así no cortarse: son rectas cruzadas. La distancia mínima entre ellas se mide en una dirección perpendicular a ambos vectores directores. Aquí esos directores son los ejes x e y; su perpendicular común es el eje z, cuya separación podemos comprobar y alcanzar.</li>
+      <li>Todo punto de r tiene <span class="math-part"><app-formula expression="z=0" displayMode="inline" [showCodeButton]="false" /></span> y todo punto de s tiene <span class="math-part"><app-formula expression="z=1" displayMode="inline" [showCodeButton]="false" /></span>, así que no se cortan. La distinta coordenada z impide que un punto de una recta coincida con uno de la otra, para todos los parámetros.</li>
+      <li>Sus direcciones <span class="math-part"><app-formula expression="(1,0,0)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(0,1,0)" displayMode="inline" [showCodeButton]="false" /></span> no son paralelas; por tanto son alabeadas. Rectas coplanarias no paralelas se cortan. Al tener direcciones distintas y no cortarse, estas no son coplanarias.</li>
+      <li>La distancia entre puntos cualesquiera al cuadrado es <span class="math-part"><app-formula expression="t^{2}+(1+u)^{2}+1" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia entre puntos es <span class="math-part"><app-formula expression="(t,-1-u,-1)" displayMode="inline" [showCodeButton]="false" /></span>. Su norma cuadrada es al menos 1, porque los otros cuadrados son no negativos.</li>
+      <li>El mínimo es 1 para <span class="math-part"><app-formula expression="t=0,u=-1" displayMode="inline" [showCodeButton]="false" /></span>; el segmento une <span class="math-part"><app-formula expression="(0,0,0)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(0,0,1)" displayMode="inline" [showCodeButton]="false" /></span>. El mínimo se alcanza anulando los primeros dos cuadrados. El segmento resultante es perpendicular a las dos direcciones y tiene longitud 1.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Son alabeadas; distancia 1.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> No todas las rectas que no se cortan son paralelas en el espacio.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
+      <p>El producto mixto permite comprobar coplanaridad de dos direcciones y un vector que una sus rectas. Es una aplicación geométrica de los determinantes.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
+      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-029" />
+</article>

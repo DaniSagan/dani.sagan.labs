@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Bayes y tasa base</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Un detector marca el 90% de las piezas defectuosas y el 5% de las correctas. El 2% de las piezas son defectuosas. Si marca una pieza, ¿qué probabilidad hay de que sea defectuosa?</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Bayes actualiza la probabilidad de enfermedad cuando conocemos el resultado positivo: <span class="math-part"><app-formula expression="P(E\mid+) = P(+\mid E)P(E)/P(+)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador incluye positivos verdaderos y falsos. En 1000 personas, las tasas del enunciado corresponden a 18 positivos enfermos y 49 positivos sanos, lo que explica la fracción final.</li>
+      <li>Sea D defecto y M marca. <span class="math-part"><app-formula expression="P(D)=0,02" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="P(M\mid D)=0,90" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="P(M\mid D^{c})=0,05" displayMode="inline" [showCodeButton]="false" /></span>. Los datos diferencian probabilidad de defecto y probabilidades de marca condicionadas al estado. La proporción correcta es <span class="math-part"><app-formula expression="P(D^{c})=0,98" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li><span class="math-part"><app-formula expression="P(M)=0,90\cdot 0,02+0,05\cdot 0,98=0,067" displayMode="inline" [showCodeButton]="false" /></span>. La probabilidad total suma dos casos excluyentes: pieza defectuosa marcada y pieza correcta marcada. Sus aportes son <span class="math-part"><app-formula expression="0,018" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0,049" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Bayes da <span class="math-part"><app-formula expression="P(D\mid M)=0,\frac{018}{0},067=\frac{18}{67}" displayMode="inline" [showCodeButton]="false" /></span>. Bayes divide el aporte del defecto al total de marcas entre la probabilidad de cualquier marca. Así invierte correctamente la condición.</li>
+      <li>El resultado es aproximadamente <span class="math-part"><app-formula expression="26,87" displayMode="inline" [showCodeButton]="false" /></span>%; la mayoría de marcas proceden de piezas correctas porque son mucho más numerosas. Entre 1000 piezas esperadas, habría unas 18 defectuosas marcadas y 49 correctas marcadas. La fracción <span class="math-part"><app-formula expression="\frac{18}{67}" displayMode="inline" [showCodeButton]="false" /></span> interpreta el resultado.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{18}{67}" displayMode="inline" [showCodeButton]="false" /></span>≈<span class="math-part"><app-formula expression="26,87" displayMode="inline" [showCodeButton]="false" /></span>%.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> <span class="math-part"><app-formula expression="P(M\mid D)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="P(D\mid M)" displayMode="inline" [showCodeButton]="false" /></span> no son intercambiables.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a>
+      <p>Probabilidades condicionadas, probabilidades totales e inversión de la condición.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-073" />
+</article>

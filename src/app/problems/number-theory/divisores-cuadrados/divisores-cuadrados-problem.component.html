@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Divisores cuadrados</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>¿Cuántos divisores positivos de 360 son cuadrados perfectos? Enuméralos.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La factorización prima de un divisor se obtiene eligiendo para cada primo un exponente entre cero y el de 360. Un cuadrado tiene exponentes pares porque al elevar al cuadrado se duplican. Recíprocamente, si todos son pares, dividir cada exponente entre dos construye una raíz cuadrada entera.</li>
+      <li><span class="math-part"><app-formula expression="360=2^{3}\cdot 3^{2}\cdot 5^{1}" displayMode="inline" [showCodeButton]="false" /></span>. Cada divisor tiene forma <span class="math-part"><app-formula expression="2^{a}3^{b}5^{c}" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0\le a\le 3" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="0\le b\le 2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0\le c\le 1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Un divisor cuadrado tiene exponentes de 2 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span>, de 3 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span> y de 5 solo 0. Ser cuadrado equivale a tener exponentes pares en todos los primos. Por eso el exponente de 5 debe ser cero.</li>
+      <li>El principio multiplicativo da <span class="math-part"><app-formula expression="2\cdot 2\cdot 1=4" displayMode="inline" [showCodeButton]="false" /></span>. Cada combinación permitida de exponentes determina un divisor distinto, lo que justifica multiplicar los números de opciones.</li>
+      <li>Combina los exponentes: <span class="math-part"><app-formula expression="1,4,9,36" displayMode="inline" [showCodeButton]="false" /></span>, que dividen 360. Los valores corresponden a las parejas <span class="math-part"><app-formula expression="(a,b)=(0,0),(2,0),(0,2),(2,2)" displayMode="inline" [showCodeButton]="false" /></span>. El 1 corresponde a todos los exponentes cero.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 4 divisores: <span class="math-part"><app-formula expression="1,4,9,36" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El número 1 es un cuadrado perfecto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/divisor-sum-theorem">Divisores y suma de divisores ↗</a>
+      <p>El recuento de divisores mediante las elecciones de exponentes en la factorización prima.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
+      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-009" />
+</article>

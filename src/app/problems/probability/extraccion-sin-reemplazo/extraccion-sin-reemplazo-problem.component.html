@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Extracción sin reemplazo</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Una urna contiene 5 bolas rojas y 3 azules. Se extraen 3 sin reemplazo. Calcula la probabilidad de obtener exactamente 2 rojas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Al extraer sin reemplazo, todas las selecciones de tres bolas son equiprobables si la extracción es uniforme. El número de selecciones de k elementos entre n es <span class="math-part"><app-formula expression="\binom nk=n!/(k!(n-k)!)" displayMode="inline" [showCodeButton]="false" /></span>. Elegir dos rojas y una azul combina elecciones independientes de grupos, aunque las extracciones sucesivas no sean independientes.</li>
+      <li>Hay <span class="math-part"><app-formula expression="C(8,3)=56" displayMode="inline" [showCodeButton]="false" /></span> muestras no ordenadas equiprobables. El número combinatorio <span class="math-part"><app-formula expression="C(8,3)=8\cdot 7\cdot 6/(3\cdot 2\cdot 1)" displayMode="inline" [showCodeButton]="false" /></span> ignora el orden. Es válido porque todas las selecciones de tres bolas individuales son equiprobables.</li>
+      <li>Las favorables se forman escogiendo 2 de las 5 rojas y 1 de las 3 azules. Elegir dos rojas y una azul determina exactamente el evento pedido. No se suman los casos de tres rojas.</li>
+      <li>Su número es <span class="math-part"><app-formula expression="C(5,2)C(3,1)=10\cdot 3=30" displayMode="inline" [showCodeButton]="false" /></span>. <span class="math-part"><app-formula expression="C(5,2)=5\cdot \frac{4}{2}=10" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="C(3,1)=3" displayMode="inline" [showCodeButton]="false" /></span>. Cada elección de rojas combina con cada elección de azul.</li>
+      <li>La probabilidad es <span class="math-part"><app-formula expression="\frac{30}{56}=\frac{15}{28}" displayMode="inline" [showCodeButton]="false" /></span>. La fracción <span class="math-part"><app-formula expression="\frac{30}{56}" displayMode="inline" [showCodeButton]="false" /></span> se simplifica dividiendo entre 2. El modelo es hipergeométrico, no binomial, por la extracción sin reemplazo.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\frac{15}{28}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Sin reemplazo las extracciones no son independientes.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
+      <p>Coeficientes combinatorios y expansión de potencias de una suma.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
+      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-072" />
+</article>

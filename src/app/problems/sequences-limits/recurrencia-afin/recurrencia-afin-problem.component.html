@@ -1,0 +1,37 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Recurrencia afín</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>Resuelve <span class="math-part"><app-formula expression="a_{0}=5" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="a_{n+1}=\frac{a_n+6}3" displayMode="inline" [showCodeButton]="false" /></span> y calcula su límite.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una recurrencia afín se simplifica restando su punto fijo L, que satisface la misma relación sin cambiar de valor. Para <span class="math-part"><app-formula expression="a_{n+1}=(a_n+6)/3" displayMode="inline" [showCodeButton]="false" /></span>, resolvemos <span class="math-part"><app-formula expression="L=(L+6)/3" displayMode="inline" [showCodeButton]="false" /></span>. La diferencia <span class="math-part"><app-formula expression="a_n-L" displayMode="inline" [showCodeButton]="false" /></span> se convierte entonces en una progresión geométrica y permite obtener una fórmula explícita.</li>
+      <li>El punto fijo L satisface <span class="math-part"><app-formula expression="L=(L+6)/3" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="L=3" displayMode="inline" [showCodeButton]="false" /></span>. La constante que permanece igual tras aplicar la recurrencia cumple <span class="math-part"><app-formula expression="3L=L+6" displayMode="inline" [showCodeButton]="false" /></span>. Despejar da <span class="math-part"><app-formula expression="L=3" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Define <span class="math-part"><app-formula expression="b_{n}=a_{n}-3" displayMode="inline" [showCodeButton]="false" /></span>; entonces <span class="math-part"><app-formula expression="b_{n+1}=b_{n}/3" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="b_{0}=2" displayMode="inline" [showCodeButton]="false" /></span>. Restar 3 transforma una recurrencia afín en una geométrica: <span class="math-part"><app-formula expression="\frac{a_n+6}3-3=\frac{a_n-3}3" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>Por inducción <span class="math-part"><app-formula expression="b_{n}=\frac{2}{3^{n}}" displayMode="inline" [showCodeButton]="false" /></span>, así que <span class="math-part"><app-formula expression="a_{n}=3+\frac{2}{3^{n}}" displayMode="inline" [showCodeButton]="false" /></span>. Desde <span class="math-part"><app-formula expression="b_{0}=2" displayMode="inline" [showCodeButton]="false" /></span>, multiplicar por <span class="math-part"><app-formula expression="\frac{1}{3}" displayMode="inline" [showCodeButton]="false" /></span> en cada paso produce <span class="math-part"><app-formula expression="b_{n}=2(\frac{1}{3})^{n}" displayMode="inline" [showCodeButton]="false" /></span>. Se recupera <span class="math-part"><app-formula expression="a_{n}" displayMode="inline" [showCodeButton]="false" /></span> sumando 3.</li>
+      <li>Como <span class="math-part"><app-formula expression="3^{-n}\to 0" displayMode="inline" [showCodeButton]="false" /></span>, el límite es 3. Además <span class="math-part"><app-formula expression="a_{n}&gt;3" displayMode="inline" [showCodeButton]="false" /></span> para todo n y los términos decrecen, coherente con que se acerquen al punto fijo desde arriba.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="a_{n}=3+\frac{2}{3^{n}}" displayMode="inline" [showCodeButton]="false" /></span>; límite 3.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La solución constante no cumple <span class="math-part"><app-formula expression="a_{0}=5" displayMode="inline" [showCodeButton]="false" /></span>.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
+      <p>La recurrencia de este problema es determinista. Como ampliación, el artículo muestra procesos probabilísticos en los que también se estudian estados estacionarios y límites.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
+      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-043" />
+</article>

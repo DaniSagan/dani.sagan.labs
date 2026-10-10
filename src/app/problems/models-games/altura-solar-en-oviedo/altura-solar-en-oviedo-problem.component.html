@@ -1,0 +1,74 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas">
+    <a routerLink="/problems">← Colección completa</a>
+  </nav>
+  <span class="eyebrow">Oposición</span>
+  <h2 id="problem-title">Altura solar en Oviedo</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3>
+    <p>En un modelo ideal sin refracción, Oviedo tiene latitud <span class="math-part"><app-formula
+          expression="\varphi =43{,}36^\circ N" displayMode="inline" [showCodeButton]="false" /></span>. Calcula la
+      altura del Sol al mediodía solar para declinaciones <span class="math-part"><app-formula
+          expression="\delta =0^\circ" displayMode="inline" [showCodeButton]="false" /></span>, <span
+        class="math-part"><app-formula expression="\delta =+23{,}44^\circ" displayMode="inline"
+          [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\delta =-23{,}44^\circ"
+          displayMode="inline" [showCodeButton]="false" /></span>.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La latitud sitúa el cénit respecto al ecuador celeste; la declinación sitúa el Sol respecto al mismo ecuador.
+        Al cruzar el meridiano al mediodía solar, su separación angular del cénit es <span
+          class="math-part"><app-formula expression="\lvert\varphi-\delta\rvert" displayMode="inline"
+            [showCodeButton]="false" /></span>. La altura sobre el horizonte es el complemento: <span
+          class="math-part"><app-formula expression="h=90^\circ-\lvert\varphi-\delta\rvert" displayMode="inline"
+            [showCodeButton]="false" /></span>.</li>
+      <li>Para <span class="math-part"><app-formula expression="\delta =0^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span>, <span class="math-part"><app-formula
+            expression="h=90^\circ-43{,}36^\circ=46{,}64^\circ" displayMode="inline" [showCodeButton]="false" /></span>.
+        En el mediodía solar el Sol cruza el meridiano local. Su distancia angular al cénit es <span
+          class="math-part"><app-formula expression="\lvert \varphi -\delta \rvert" displayMode="inline"
+            [showCodeButton]="false" /></span>, y la altura es su complemento.</li>
+      <li>Para <span class="math-part"><app-formula expression="\delta =23{,}44^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span>, <span class="math-part"><app-formula
+            expression="h=90^\circ-19{,}92^\circ=70{,}08^\circ" displayMode="inline" [showCodeButton]="false" /></span>.
+        Con declinación positiva, la diferencia de latitud y declinación es <span class="math-part"><app-formula
+            expression="43{,}36^\circ-23{,}44^\circ=19{,}92^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span>, por lo que aumenta la altura.</li>
+      <li>Para <span class="math-part"><app-formula expression="\delta =-23{,}44^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span>, <span class="math-part"><app-formula
+            expression="h=90^\circ-66{,}80^\circ=23{,}20^\circ" displayMode="inline" [showCodeButton]="false" /></span>.
+        Con declinación negativa se suman los valores absolutos: <span class="math-part"><app-formula
+            expression="43{,}36^\circ+23{,}44^\circ=66{,}80^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span>. Su complemento reduce la altura.</li>
+      <li>Estas declinaciones representan equinoccios y solsticios ideales; el mediodía solar se define por el tránsito,
+        no por las 12:00 civiles. La fórmula usa ángulos en grados y desprecia refracción. La hora del tránsito depende
+        de longitud y fecha y no se fija por el reloj civil.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="46{,}64^\circ"
+          displayMode="inline" [showCodeButton]="false" /></span>; <span class="math-part"><app-formula
+          expression="70{,}08^\circ" displayMode="inline" [showCodeButton]="false" /></span>; <span
+        class="math-part"><app-formula expression="23{,}20^\circ" displayMode="inline"
+          [showCodeButton]="false" /></span>.</p>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La hora civil y el mediodía solar no coinciden en general.
+    </aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Lecturas y recursos complementarios</h3>
+    <p>La resolución anterior incluye el método y sus justificaciones. Estos recursos permiten ampliar el tema o
+      comprobar los resultados.</p>
+    <div class="resource">
+      <a routerLink="/articles/trig-n-functions">Ángulos múltiples y ángulo mitad ↗</a>
+      <p>La altura y la distancia al cénit son ángulos complementarios. El artículo repasa las identidades
+        trigonométricas que permiten relacionar seno y coseno de esos ángulos.</p>
+    </div>
+    <div class="resource">
+      <a routerLink="/tools/sun-position">Posición del Sol ↗</a>
+      <p>Consulta latitud <span class="math-part"><app-formula expression="43{,}36^\circ" displayMode="inline"
+            [showCodeButton]="false" /></span> N en torno a los equinoccios y compara la altura con el modelo ideal del
+        ejercicio «Altura solar en Oviedo».</p>
+    </div>
+  </section>
+  <app-problem-navigation currentId="problema-098" />
+</article>
