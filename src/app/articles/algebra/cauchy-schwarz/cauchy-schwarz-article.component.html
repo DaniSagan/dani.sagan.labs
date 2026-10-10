@@ -1,0 +1,27 @@
+<h2>Cauchy–Schwarz: cuánto pueden alinearse dos vectores</h2>
+<p class="dropcap">Dos flechas de la misma longitud pueden apuntar juntas, formar un ángulo recto o mirar en sentidos opuestos. Su producto escalar distingue esas situaciones. Cauchy–Schwarz pone un límite a ese producto y transforma una idea geométrica en una herramienta para demostrar desigualdades, controlar errores y entender la correlación.</p>
+<aside class="theorem"><span class="section-label">EL TEOREMA · VECTORES REALES</span><p>Para cualesquiera u, v de un espacio euclídeo:</p>
+<app-formula expression="|\langle u,v\rangle|^2\le\|u\|^2\|v\|^2,\qquad (\sum u_iv_i)^2\le(\sum u_i^2)(\sum v_i^2)" />
+<p>Hay igualdad exactamente cuando los vectores son linealmente dependientes. Esto incluye que uno de ellos sea cero.</p></aside>
+<h3>1. Una demostración con un cuadrado</h3>
+<p>Si v no es cero, restamos a u su componente paralela a v. La norma del residuo es no negativa. Desarrollarla da la desigualdad; que valga cero equivale a que u sea un múltiplo de v.</p>
+<app-formula expression="0\le\left\|u-\frac{\langle u,v\rangle}{\|v\|^2}v\right\|^2=\|u\|^2-\frac{\langle u,v\rangle^2}{\|v\|^2}" />
+<p>Si v es cero, el producto escalar es cero y no hace falta dividir. La prueba explica las <a routerLink="/articles/orthogonal-projections">proyecciones ortogonales</a>: el residuo perpendicular es lo que falta para alcanzar la igualdad.</p>
+<h3>2. Mover el ángulo, conservar las longitudes</h3>
+<app-formula expression="\langle u,v\rangle=\|u\|\|v\|\cos\theta" />
+<div class="explorer" aria-labelledby="cauchy-lab"><h4 id="cauchy-lab">Dos vectores unitarios</h4><label for="cauchy-angle">Ángulo θ: {{ angle }}°</label><input id="cauchy-angle" type="range" min="0" max="180" step="1" [(ngModel)]="angle" />
+<svg viewBox="0 0 520 260" role="img" aria-label="Vector u horizontal y vector v en azul formando el ángulo elegido"><line class="axis" x1="40" y1="210" x2="480" y2="210" /><line class="vector-a" x1="260" y1="210" x2="430" y2="210" /><line class="vector-b" x1="260" y1="210" [attr.x2]="260+170*cosine" [attr.y2]="210-170*sine" /><circle class="point" [attr.cx]="260+170*cosine" [attr.cy]="210-170*sine" r="5" /><text x="440" y="205">u</text><text x="40" y="30">θ = {{ angle }}° · v en azul</text></svg>
+<div class="metrics" aria-live="polite"><p>Producto escalar <strong>{{ cosine | number:'1.4-4' }}</strong></p><p>Holgura 1 − cos² θ <strong>{{ gap | number:'1.4-4' }}</strong></p></div><p class="hint">Prueba 0°, 90° y 180°. Tanto la alineación como la oposición producen igualdad; la perpendicularidad anula el producto.</p></div>
+<h3>3. Una desigualdad de recíprocos</h3>
+<p>Con a, b, c positivos, elegimos u = (√a, √b, √c) y v = (1/√a, 1/√b, 1/√c). Los productos de coordenadas suman tres. Las normas al cuadrado dan los dos factores del problema.</p>
+<app-formula expression="(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)\ge(1+1+1)^2=9" />
+<p>La igualdad exige una misma constante de proporcionalidad en las tres coordenadas, por lo que a = b = c. La positividad justifica raíces y recíprocos. Es el mecanismo del <a routerLink="/problems/problema-014">problema 014</a>.</p>
+<h3>4. Gram, integrales y espacios complejos</h3>
+<p>La matriz de Gram contiene los productos escalares de una familia. Para dos vectores su determinante es la holgura de Cauchy–Schwarz; en el plano representa el área del paralelogramo al cuadrado.</p>
+<app-formula expression="\det\begin{pmatrix}\langle u,u\rangle&amp;\langle u,v\rangle\\\langle v,u\rangle&amp;\langle v,v\rangle\end{pmatrix}=\|u\|^2\|v\|^2-|\langle u,v\rangle|^2\ge0" />
+<p>En espacios complejos el producto escalar usa conjugación. Para funciones cuadrado integrables las sumas se convierten en integrales; la igualdad significa proporcionalidad casi en todas partes. Estas versiones sostienen la geometría de los espacios de Hilbert y las series de Fourier.</p>
+<app-formula expression="\left|\int_a^b f(x)\overline{g(x)}\,dx\right|^2\le\left(\int_a^b|f(x)|^2\,dx\right)\left(\int_a^b|g(x)|^2\,dx\right)" />
+<h3>5. De la geometría a la correlación</h3>
+<p>Al centrar dos columnas de datos, Pearson es el coseno del ángulo entre ellas. Cauchy–Schwarz garantiza que pertenece a [−1, 1] si ambas varianzas son positivas. Si una columna es constante, la correlación no está definida. Esta conexión se desarrolla en <a routerLink="/articles/linear-regression">regresión y correlación</a>.</p>
+<aside class="caution"><strong>Para comprobar.</strong> Con a = 1, b = 2, c = 3 el producto vale 11. Con tres valores positivos iguales vale 9. Comprueba también que igualdad no significa necesariamente que ambos vectores sean idénticos.</aside>
+<h3>Referencias y lecturas</h3><ul class="references"><li><a href="https://math.mit.edu/~djk/18_022/chapter15/contents.html" target="_blank" rel="noopener noreferrer">MIT · Sistemas de ecuaciones, ortogonalidad y eliminación de Gauss</a></li></ul>

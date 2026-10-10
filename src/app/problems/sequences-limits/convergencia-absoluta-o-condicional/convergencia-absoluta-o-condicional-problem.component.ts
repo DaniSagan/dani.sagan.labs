@@ -24,6 +24,11 @@ export class ConvergenciaAbsolutaOCondicionalProblemComponent {
     "statement": "Estudia \\(\\sum_{n=1}^{\\infty}\\frac{(-1)^{n-1}}{\\sqrt n}\\) y su convergencia absoluta.",
     "resources": [
       {
+        "label": "Convergencia absoluta, condicional y criterio de Leibniz",
+        "route": "/articles/series-convergence",
+        "activity": "Aplica Leibniz, distingue convergencia absoluta y condicional y acota el error de la suma parcial."
+      },
+      {
         "label": "Problema de Basilea",
         "route": "/articles/basel",
         "activity": "Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor."

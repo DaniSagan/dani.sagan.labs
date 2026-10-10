@@ -24,6 +24,11 @@ export class UnaRectaDeRegresionProblemComponent {
     "statement": "Para los puntos \\((1,2),(2,2),(3,5)\\), halla la recta de mínimos cuadrados y el coeficiente de correlación de Pearson.",
     "resources": [
       {
+        "label": "Regresión lineal y correlación de Pearson",
+        "route": "/articles/linear-regression",
+        "activity": "Calcula mínimos cuadrados y Pearson, inspecciona los residuos y compara nubes con resúmenes similares."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "Lectura de ampliación sobre variabilidad muestral. La recta y la correlación de este ejercicio se calculan directamente con sumas centradas, sin usar el teorema central del límite."

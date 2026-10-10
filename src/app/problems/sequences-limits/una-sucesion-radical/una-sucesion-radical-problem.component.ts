@@ -24,6 +24,11 @@ export class UnaSucesionRadicalProblemComponent {
     "statement": "Sea \\(a_{1}=1\\) y \\(a_{n+1}=\\sqrt{2+a_{n}}\\). Demuestra que converge y calcula su límite.",
     "resources": [
       {
+        "label": "Sucesiones recurrentes y puntos fijos",
+        "route": "/articles/recurrent-sequences",
+        "activity": "Distingue candidatos a límite de pruebas de convergencia mediante monotonía, acotación y contracciones."
+      },
+      {
         "label": "Problema de Basilea",
         "route": "/articles/basel",
         "activity": "Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor."

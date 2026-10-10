@@ -24,6 +24,11 @@ export class UnaParadojaDeAgregacionProblemComponent {
     "statement": "El tratamiento A cura 9 de 10 casos leves y 30 de 100 graves. B cura 80 de 100 leves y 2 de 10 graves. Compara las tasas por gravedad y globales.",
     "resources": [
       {
+        "label": "Paradoja de Simpson",
+        "route": "/articles/simpson-paradox",
+        "activity": "Explica la inversión de tasas al agregar grupos y compara las alternativas con pesos de población comunes."
+      },
+      {
         "label": "Teorema de Bayes",
         "route": "/articles/bayes-theorem",
         "activity": "Condicionar por gravedad modifica las proporciones de los grupos; el teorema de probabilidad total ayuda a entender las ponderaciones de las tasas agregadas."

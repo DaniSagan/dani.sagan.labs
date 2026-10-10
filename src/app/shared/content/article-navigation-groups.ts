@@ -83,7 +83,7 @@ const GROUPS = {
     ],
     [
       'Espacio y dimensiones',
-      'tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
+      'orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
     ],
     ['Patrones geométricos', 'hitomezashi'],
   ],

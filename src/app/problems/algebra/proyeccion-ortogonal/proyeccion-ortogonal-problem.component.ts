@@ -24,6 +24,11 @@ export class ProyeccionOrtogonalProblemComponent {
     "statement": "Proyecta \\(v=(2,1,3)\\) sobre el plano \\(x+y+z=0\\) y calcula la distancia de v al plano.",
     "resources": [
       {
+        "label": "Proyecciones ortogonales y distancias en el espacio",
+        "route": "/articles/orthogonal-projections",
+        "activity": "Calcula el pie de la perpendicular y las distancias a planos o entre rectas, y verifica la ortogonalidad del residuo."
+      },
+      {
         "label": "Determinantes",
         "route": "/articles/matrix-determinant",
         "activity": "La condición de ortogonalidad usada en la proyección está vinculada con la geometría vectorial; el artículo de determinantes ofrece otro enfoque para medir independencia y volumen."

@@ -24,6 +24,11 @@ export class UnaSerieTelescopicaProblemComponent {
     "statement": "Calcula \\(\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}\\).",
     "resources": [
       {
+        "label": "Series telescópicas",
+        "route": "/articles/telescoping-series",
+        "activity": "Descompón los términos en diferencias y controla las sumas parciales, la frontera y el error restante."
+      },
+      {
         "label": "Problema de Basilea",
         "route": "/articles/basel",
         "activity": "Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor."

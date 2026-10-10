@@ -1,3 +1,6 @@
+import { LinearRegressionArticleComponent } from './linear-regression/linear-regression-article.component';
+import { SimpsonParadoxArticleComponent } from './simpson-paradox/simpson-paradox-article.component';
+import { SamplingBiasArticleComponent } from './sampling-bias/sampling-bias-article.component';
 import { BayesTheoremArticleComponent } from './bayes-theorem/bayes-theorem-article.component';
 import { GaltonBoardArticleComponent } from './galton-board/galton-board-article.component';
 import { BirthdayParadoxArticleComponent } from './birthday-paradox/birthday-paradox-article.component';
@@ -8,6 +11,9 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  LinearRegressionArticleComponent,
+  SimpsonParadoxArticleComponent,
+  SamplingBiasArticleComponent,
   GaltonBoardArticleComponent,
   CentralLimitTheoremArticleComponent,
   MarkovChainsArticleComponent,

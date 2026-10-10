@@ -24,6 +24,11 @@ export class DosRectasQueSeCruzanProblemComponent {
     "statement": "Sean \\(r=(t,0,0)\\) y \\(s=(0,1,1)+u(0,1,0)\\). Demuestra que son alabeadas y calcula su distancia.",
     "resources": [
       {
+        "label": "Proyecciones ortogonales y distancias en el espacio",
+        "route": "/articles/orthogonal-projections",
+        "activity": "Calcula el pie de la perpendicular y las distancias a planos o entre rectas, y verifica la ortogonalidad del residuo."
+      },
+      {
         "label": "Determinantes",
         "route": "/articles/matrix-determinant",
         "activity": "El producto mixto permite comprobar coplanaridad de dos direcciones y un vector que una sus rectas. Es una aplicación geométrica de los determinantes."

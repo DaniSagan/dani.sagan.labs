@@ -24,6 +24,11 @@ export class UnaDesigualdadConIgualdadProblemComponent {
     "statement": "Demuestra que \\((a+b+c)(1/a+1/b+1/c)\\ge 9\\) para \\(a,b,c>0\\) e identifica cuándo hay igualdad.",
     "resources": [
       {
+        "label": "Desigualdad de Cauchy–Schwarz",
+        "route": "/articles/cauchy-schwarz",
+        "activity": "Demuestra la desigualdad de recíprocos con Cauchy–Schwarz y comprueba cuándo se alcanza la igualdad."
+      },
+      {
         "label": "Determinantes",
         "route": "/articles/matrix-determinant",
         "activity": "Conexión con determinantes: los dos vectores de Cauchy tienen matriz de Gram ((a+b+c,3),(3,1/a+1/b+1/c)); su determinante no negativo equivale a la desigualdad."

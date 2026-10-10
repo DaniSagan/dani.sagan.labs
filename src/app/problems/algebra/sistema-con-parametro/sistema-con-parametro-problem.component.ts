@@ -24,6 +24,11 @@ export class SistemaConParametroProblemComponent {
     "statement": "Clasifica y resuelve \\(x+y+z=1\\), \\(x+ay+z=1\\), \\(x+y+az=1\\) según el parámetro real a.",
     "resources": [
       {
+        "label": "Eliminación de Gauss y teorema de Rouché–Capelli",
+        "route": "/articles/gaussian-elimination",
+        "activity": "Clasifica el sistema con parámetro mediante Gauss y compara los rangos de la matriz y de la ampliada."
+      },
+      {
         "label": "Determinantes",
         "route": "/articles/matrix-determinant",
         "activity": "Propiedades algebraicas y significado geométrico de los determinantes."

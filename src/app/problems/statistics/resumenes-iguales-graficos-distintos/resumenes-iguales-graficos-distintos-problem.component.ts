@@ -24,6 +24,11 @@ export class ResumenesIgualesGraficosDistintosProblemComponent {
     "statement": "Dos conjuntos tienen la misma media y varianza de x e y y la misma correlación. ¿Implica que sus diagramas de dispersión son iguales o que el mismo modelo lineal es adecuado? Explica cómo lo comprobarías con Datasaurus.",
     "resources": [
       {
+        "label": "Regresión lineal y correlación de Pearson",
+        "route": "/articles/linear-regression",
+        "activity": "Calcula mínimos cuadrados y Pearson, inspecciona los residuos y compara nubes con resúmenes similares."
+      },
+      {
         "label": "Tablero de Galton",
         "route": "/articles/galton-board",
         "activity": "La representación de la distribución en el tablero de Galton sirve como contraste entre forma gráfica y medidas resumen; no sustituye la inspección de los datos de Datasaurus."

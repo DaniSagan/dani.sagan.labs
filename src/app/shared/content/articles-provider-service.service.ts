@@ -1,3 +1,6 @@
+import { LinearRegressionArticleComponent } from 'src/app/articles/probability/linear-regression/linear-regression-article.component';
+import { SimpsonParadoxArticleComponent } from 'src/app/articles/probability/simpson-paradox/simpson-paradox-article.component';
+import { SamplingBiasArticleComponent } from 'src/app/articles/probability/sampling-bias/sampling-bias-article.component';
 import { groupArticleItems } from './article-navigation-groups';
 import { ALGEBRA_NAV_ITEMS } from 'src/app/articles/algebra/algebra-articles';
 import { COMPLEX_NUMBERS_NAV_ITEMS } from 'src/app/articles/complex-numbers/complex-numbers-articles';
@@ -200,6 +203,9 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: LinearRegressionArticleComponent.title, route: LinearRegressionArticleComponent.route },
+    { name: SimpsonParadoxArticleComponent.title, route: SimpsonParadoxArticleComponent.route },
+    { name: SamplingBiasArticleComponent.title, route: SamplingBiasArticleComponent.route },
     { name: GaltonBoardArticleComponent.title, route: GaltonBoardArticleComponent.route },
     { name: CentralLimitTheoremArticleComponent.title, route: CentralLimitTheoremArticleComponent.route },
     { name: MarkovChainsArticleComponent.title, route: MarkovChainsArticleComponent.route },

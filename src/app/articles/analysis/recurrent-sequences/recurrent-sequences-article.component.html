@@ -1,0 +1,24 @@
+<h2>Sucesiones recurrentes: alcanzar un punto fijo</h2>
+<p class="dropcap">Una regla aplicada una y otra vez puede acercarnos a un equilibrio, alejarnos de él o encerrarnos en un ciclo. La ecuación del equilibrio es solo el comienzo. Para demostrar convergencia hay que controlar todo el recorrido: dónde permanece, en qué dirección avanza y cuánto reduce cada paso la distancia.</p>
+<h3>1. El límite debe respetar la regla</h3>
+<p>Si aₙ₊₁ = f(aₙ), la sucesión converge a L y f es continua en L, entonces L = f(L). Resolver esa ecuación produce candidatos; no demuestra que se alcance alguno.</p>
+<app-formula expression="a_{n+1}=f(a_n),\quad a_n\longrightarrow L,\quad f\text{ continua en }L\quad\Longrightarrow\quad L=f(L)" />
+<aside class="caution"><strong>Un contraejemplo.</strong> aₙ₊₁ = 1 − aₙ tiene punto fijo 1/2. Desde a₀ = 1 alterna entre 1 y 0 y no converge.</aside>
+<h3>2. La sucesión radical: encerrar y avanzar</h3>
+<p>Con a₁ = 1 y aₙ₊₁ = √(2 + aₙ), el intervalo [1, 2] es invariante: si un término está dentro, el siguiente también. Para 1 ≤ x ≤ 2, √(2 + x) ≥ x porque (2 − x)(x + 1) ≥ 0.</p>
+<p>La sucesión es creciente y acotada. El teorema de convergencia monótona garantiza un límite. Solo ahora usamos su ecuación:</p>
+<app-formula expression="L=\sqrt{2+L}\quad\Longrightarrow\quad (L-2)(L+1)=0,\qquad L\in[1,2]\quad\Longrightarrow\quad L=2" />
+<p>−1 no satisface la ecuación original. El <a routerLink="/problems/problema-041">problema 041</a> permite practicar sin confundir una conjetura con una demostración.</p>
+<h3>3. Una recurrencia afín se vuelve geométrica</h3>
+<p>Para aₙ₊₁ = αaₙ + β, con α ≠ 1, restar el punto fijo elimina la constante.</p>
+<app-formula expression="L=\frac\beta{1-\alpha},\qquad a_n=L+\alpha^n(a_0-L)" />
+<p>Si |α| &lt; 1, cualquier inicio converge; α negativo produce oscilaciones amortiguadas. Si |α| &gt; 1, cualquier inicio distinto de L se aleja. Para α = 1, aₙ = a₀ + nβ. Para α = −1 aparece generalmente un ciclo de dos términos.</p>
+<p>En el <a routerLink="/problems/problema-043">problema 043</a>, α = 1/3, β = 2 y a₀ = 5. Así, aₙ = 3 + 2/3ⁿ.</p>
+<div class="explorer" aria-labelledby="recurrence-lab"><h4 id="recurrence-lab">Un equilibrio no garantiza una llegada</h4><div class="controls"><label for="recurrence-mode">Regla<select id="recurrence-mode" [(ngModel)]="mode"><option value="radical">√(2 + x), inicio 1</option><option value="affine">(x + 6)/3, inicio 5</option><option value="cycle">1 − x, inicio 1</option></select></label><label for="recurrence-n">Pasos: {{ count }}<input id="recurrence-n" type="range" min="2" max="40" [(ngModel)]="count" /></label></div><svg viewBox="0 0 520 260" role="img" aria-label="Términos sucesivos y punto fijo"><line class="axis" x1="40" y1="220" x2="480" y2="220" /><line class="reference" x1="40" [attr.y1]="220-34*target" x2="480" [attr.y2]="220-34*target" /><polyline class="curve" [attr.points]="points" /><text x="40" y="250">Pasos → · línea verde: punto fijo {{ target }}</text></svg><p class="result" aria-live="polite">Último término: {{ terms[terms.length-1] | number:'1.8-8' }} · distancia al punto fijo: {{ error | number:'1.8-8' }}</p><p class="hint">Un gráfico finito sugiere un comportamiento; las condiciones anteriores lo demuestran.</p></div>
+<h3>4. Contracciones y una cota de error</h3>
+<p>En un intervalo cerrado invariante, si |f(x) − f(y)| ≤ q|x − y| con 0 ≤ q &lt; 1, el teorema de Banach garantiza un único punto fijo y convergencia desde cualquier inicio del intervalo. También convierte una diferencia entre iteraciones en una cota del error restante.</p>
+<app-formula expression="|a_n-L|\le q^n|a_0-L|,\qquad |a_n-L|\le\frac q{1-q}|a_n-a_{n-1}|" />
+<p>Para la raíz en [1, 2], f′(x) ≤ 1/(2√3). Para una función con derivada continua cerca de L, |f′(L)| &lt; 1 asegura atracción local, no convergencia desde cualquier punto lejano.</p>
+<h3>5. Iteraciones en un ordenador</h3>
+<p>Se necesita una tolerancia y un máximo de pasos. Dos términos redondeados iguales no prueban error cero. En varias variables, los valores propios describen la estabilidad lineal local; cerca de fronteras de estabilidad hace falta estudiar órdenes superiores.</p>
+<h3>Referencias y lecturas</h3><ul class="references"><li><a href="https://openstax.org/books/calculus-volume-2/pages/5-1-sequences" target="_blank" rel="noopener noreferrer">OpenStax · Sucesiones y convergencia</a></li><li><a href="https://ocw.mit.edu/courses/18-100a-real-analysis-fall-2020/pages/lecture-notes/" target="_blank" rel="noopener noreferrer">MIT OpenCourseWare · Análisis real y completitud</a></li></ul>

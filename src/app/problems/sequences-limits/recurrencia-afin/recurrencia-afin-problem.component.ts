@@ -24,6 +24,11 @@ export class RecurrenciaAfinProblemComponent {
     "statement": "Resuelve \\(a_{0}=5\\), \\(a_{n+1}=\\frac{a_n+6}3\\) y calcula su límite.",
     "resources": [
       {
+        "label": "Sucesiones recurrentes y puntos fijos",
+        "route": "/articles/recurrent-sequences",
+        "activity": "Distingue candidatos a límite de pruebas de convergencia mediante monotonía, acotación y contracciones."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "La recurrencia de este problema es determinista. Como ampliación, el artículo muestra procesos probabilísticos en los que también se estudian estados estacionarios y límites."

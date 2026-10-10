@@ -24,6 +24,11 @@ export class SesgoDeSeleccionProblemComponent {
     "statement": "Para estimar las horas de estudio del alumnado de un instituto, se encuesta solo a quienes están en la biblioteca a las 18:00. ¿Aumentar a 1000 respuestas corrige el problema? Propón un diseño mejor.",
     "resources": [
       {
+        "label": "Muestreo y sesgo de selección",
+        "route": "/articles/sampling-bias",
+        "activity": "Distingue precisión y sesgo, diseña una muestra representativa y reconoce las condiciones de la ponderación."
+      },
+      {
         "label": "Teorema de Bayes",
         "route": "/articles/bayes-theorem",
         "activity": "Seleccionar solo personas de la biblioteca introduce una condición sobre la población. La probabilidad condicionada ayuda a expresar por qué esa muestra puede diferir del conjunto del instituto."

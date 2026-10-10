@@ -1,3 +1,4 @@
+import { OrthogonalProjectionsArticleComponent } from './orthogonal-projections/orthogonal-projections-article.component';
 import { HeronFormulaArticleComponent } from './heron-formula/heron-formula-article.component';
 import { PtolemyTheoremArticleComponent } from './ptolemy-theorem/ptolemy-theorem-article.component';
 import { CevaTheoremArticleComponent } from './ceva-theorem/ceva-theorem-article.component';
@@ -35,6 +36,7 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  OrthogonalProjectionsArticleComponent,
   HitomezashiArticleComponent,
   PtolemyTheoremArticleComponent,
   HeronFormulaArticleComponent,
