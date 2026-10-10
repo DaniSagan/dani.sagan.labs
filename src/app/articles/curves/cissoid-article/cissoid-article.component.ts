@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +11,7 @@ import { A11yModule } from '@angular/cdk/a11y';
 @Component({
   selector: 'app-cissoid-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     CommonModule,
     FormsModule,
     FormulaComponent,

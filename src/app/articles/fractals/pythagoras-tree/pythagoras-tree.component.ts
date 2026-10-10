@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import {
@@ -7,7 +8,7 @@ import {
 @Component({
   selector: 'app-pythagoras-tree',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './pythagoras-tree.component.html',
   styleUrl: './pythagoras-tree.component.css',
 })

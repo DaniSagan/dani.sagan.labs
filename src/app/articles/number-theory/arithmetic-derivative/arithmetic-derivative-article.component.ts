@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { ArithmeticDerivativeComponent } from '../../../widgets/arithmetic-derivative/arithmetic-derivative.component';
 
@@ -6,7 +7,7 @@ import { ArithmeticDerivativeComponent } from '../../../widgets/arithmetic-deriv
   templateUrl: './arithmetic-derivative-article.component.html',
   styleUrl: './arithmetic-derivative-article.component.css',
   standalone: true,
-  imports: [ArithmeticDerivativeComponent],
+  imports: [RouterLink, ArithmeticDerivativeComponent],
 })
 export class ArithmeticDerivativeArticleComponent {
   static title: string = 'Derivada Aritmética';

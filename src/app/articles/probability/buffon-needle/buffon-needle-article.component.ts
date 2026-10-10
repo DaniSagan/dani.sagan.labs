@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { BuffonExplorerComponent } from '../../../widgets/buffon-needle/buffon-explorer.component';
 
 @Component({
   selector: 'app-buffon-needle-article', standalone: true,
-  imports: [FormulaComponent, BuffonExplorerComponent],
+  imports: [RouterLink, FormulaComponent, BuffonExplorerComponent],
   templateUrl: './buffon-needle-article.component.html'
 })
 export class BuffonNeedleArticleComponent {

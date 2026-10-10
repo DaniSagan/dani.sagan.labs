@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 
 @Component({
   selector: 'app-heron-formula-article',
   standalone: true,
-  imports: [FormulaComponent],
+  imports: [RouterLink, FormulaComponent],
   templateUrl: './heron-formula-article.component.html',
   styleUrl: './heron-formula-article.component.css'
 })

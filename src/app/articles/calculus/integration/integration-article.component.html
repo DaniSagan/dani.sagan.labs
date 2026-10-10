@@ -85,6 +85,33 @@
     }
   }
 </section>
+
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+@switch (chapter.route) {
+  @case ('integration-classical') {
+<ul>
+  <li><a routerLink="/problems/problema-061">Problema 061 · Cambio de variable</a>. Identifica la derivada interior y transforma también los límites.</li>
+  <li><a routerLink="/problems/problema-062">Problema 062 · Integración por partes</a>. Elige qué derivar y qué integrar para simplificar el producto.</li>
+  <li><a routerLink="/problems/problema-063">Problema 063 · Fracciones simples</a>. Descompón una función racional antes de buscar su primitiva.</li>
+  <li><a routerLink="/problems/problema-066">Problema 066 · Área entre curvas</a>. Determina las intersecciones y el orden de las curvas antes de integrar.</li>
+  <li><a routerLink="/problems/problema-067">Problema 067 · Volumen de revolución</a>. Relaciona las secciones transversales con el volumen.</li>
+  <li><a routerLink="/problems/problema-068">Problema 068 · Longitud de una curva</a>. Aplica la integral de longitud de arco y revisa sus límites.</li>
+</ul>
+  }
+  @case ('integration-advanced') {
+<ul>
+  <li><a routerLink="/problems/problema-065">Problema 065 · Una integral impropia</a>. Analiza por separado los extremos antes de calcular un valor.</li>
+  <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Compara e^(-x) y 1/(1+x^2) para explorar cómo decaen integrandos en un intervalo no acotado; una gráfica no demuestra su convergencia.</li>
+</ul>
+  }
+  @case ('integration-numerical') {
+<ul>
+  <li><a routerLink="/problems/problema-069">Problema 069 · Regla de Simpson</a>. Aproxima una integral y utiliza la cota de error para decidir qué precisión puedes garantizar.</li>
+</ul>
+  }
+}
+</div>
 <nav class="series-nav" aria-label="Continuar la serie">
   @for (item of chapters; track item.route) {
     @if (item.route !== chapter.route) { <a [routerLink]="['/articles', item.route]">{{ item.title }} →</a> }

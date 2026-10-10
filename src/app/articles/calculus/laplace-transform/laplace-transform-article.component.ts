@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { LaplaceConvergenceComponent } from '../../../widgets/laplace/laplace-convergence.component';
@@ -7,7 +8,7 @@ import { LaplaceConvolutionComponent } from '../../../widgets/laplace/laplace-co
 @Component({
   selector: 'app-laplace-transform-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     FormulaComponent,
     LaplaceConvergenceComponent,
     LaplacePolesComponent,

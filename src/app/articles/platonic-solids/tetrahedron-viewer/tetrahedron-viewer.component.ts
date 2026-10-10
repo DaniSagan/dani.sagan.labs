@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { GeometryViewer } from '../geometry-viewer';
 import * as THREE from 'three';
@@ -7,6 +8,7 @@ import * as THREE from 'three';
   templateUrl: './tetrahedron-viewer.component.html',
   styleUrl: './tetrahedron-viewer.component.css',
   standalone: true,
+  imports: [RouterLink],
 })
 export class TetrahedronViewerComponent extends GeometryViewer {
   @ViewChild('rendererContainer', { static: true })

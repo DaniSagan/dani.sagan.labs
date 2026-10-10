@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -7,7 +8,7 @@ import {
 @Component({
   selector: 'app-vicsek-fractal',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './vicsek-fractal.component.html',
   styleUrl: './vicsek-fractal.component.css',
 })

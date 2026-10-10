@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,7 +7,7 @@ import { UlamExplorerComponent } from '../../../widgets/ulam-explorer/ulam-explo
 
 @Component({
   selector: 'app-ulam-spiral-article', standalone: true,
-  imports: [CommonModule, FormsModule, FormulaComponent, UlamExplorerComponent],
+  imports: [RouterLink, CommonModule, FormsModule, FormulaComponent, UlamExplorerComponent],
   templateUrl: './ulam-spiral-article.component.html',
   styles: ['.diagonals { overflow-x: auto; } th, td { padding: .5rem .8rem; border-bottom: 1px solid #666; } input { display: block; width: 100%; margin: 1rem 0; }']
 })

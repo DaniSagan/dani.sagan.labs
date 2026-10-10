@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild, effect, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,7 @@ import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
   standalone: true,
   templateUrl: './percolation-diagram.component.html',
   styleUrl: './percolation-diagram.component.css',
-  imports: [FormsModule, CommonModule, Move2DComponent]
+  imports: [RouterLink, FormsModule, CommonModule, Move2DComponent]
 })
 export class PercolationDiagramComponent {
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;

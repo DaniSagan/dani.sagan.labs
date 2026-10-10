@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import {
   Component,
   ElementRef,
@@ -13,6 +14,7 @@ import * as THREE from 'three';
   templateUrl: './hexahedron-viewer.component.html',
   styleUrl: './hexahedron-viewer.component.css',
   standalone: true,
+  imports: [RouterLink],
 })
 export class HexahedronViewerComponent
   extends GeometryViewer

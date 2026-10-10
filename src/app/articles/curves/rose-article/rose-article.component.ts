@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -9,7 +10,7 @@ import { CurveArticleBaseComponent } from '../curve-article-base/curve-article-b
 @Component({
   selector: 'app-rose-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
+  imports: [RouterLink, CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './rose-article.component.html',
   styleUrls: ['./rose-article.component.css', '../curve-widget.css']
 })

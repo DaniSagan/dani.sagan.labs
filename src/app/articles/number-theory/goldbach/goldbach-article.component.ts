@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { GoldbachPairsComponent } from '../../../widgets/goldbach/goldbach-pairs.component';
@@ -7,7 +8,7 @@ import { GoldbachSieveComponent } from '../../../widgets/goldbach/goldbach-sieve
 @Component({
   selector: 'app-goldbach-article',
   standalone: true,
-  imports: [
+  imports: [RouterLink,
     FormulaComponent,
     GoldbachPairsComponent,
     GoldbachCometComponent,

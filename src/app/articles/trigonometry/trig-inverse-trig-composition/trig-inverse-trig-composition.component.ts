@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { MathjaxModule } from 'mathjax-angular';
 
 @Component({
   selector: 'app-trig-inverse-trig-composition',
   standalone: true,
-  imports: [MathjaxModule],
+  imports: [RouterLink, MathjaxModule],
   templateUrl: './trig-inverse-trig-composition.component.html',
   styleUrl: './trig-inverse-trig-composition.component.css'
 })

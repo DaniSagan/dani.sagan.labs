@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,7 @@ import { GraphableFunction, ImplicitCurveGraphComponent } from 'src/app/widgets/
 @Component({
   selector: 'app-ellipse-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
+  imports: [RouterLink, CommonModule, FormsModule, FormulaComponent, ImplicitCurveGraphComponent],
   templateUrl: './ellipse-article.component.html',
   styleUrls: ['./ellipse-article.component.css', '../curve-widget.css']
 })

@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -7,7 +8,7 @@ interface Preset extends Viewport { label: string; r: number; }
 @Component({
   selector: 'app-bifurcation-diagram',
   standalone: true,
-  imports: [FormsModule],
+  imports: [RouterLink, FormsModule],
   templateUrl: './bifurcation-diagram.component.html',
   styleUrl: './bifurcation-diagram.component.css'
 })
