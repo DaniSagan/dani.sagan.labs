@@ -1,0 +1,173 @@
+{
+  "included": 4009,
+  "featured": 60,
+  "archiveRleFiles": 4050,
+  "excluded": [
+    {
+      "id": "10x10maxdensity",
+      "reason": "El patrón supera sus dimensiones declaradas."
+    },
+    {
+      "id": "13x13maxdensity",
+      "reason": "El patrón supera sus dimensiones declaradas."
+    },
+    {
+      "id": "29bitstilllifeno1_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "achimsp11_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "againstthegrain",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "ariesbetwixttwoblocks_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "bookendssiamesetables_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "chacha_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "clips_synth",
+      "reason": "Símbolo RLE no válido: y"
+    },
+    {
+      "id": "crosssurface",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "cylinder",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "eaterbridgeeater_synth",
+      "reason": "Símbolo RLE no válido: y"
+    },
+    {
+      "id": "empty",
+      "reason": "El patrón supera sus dimensiones declaradas."
+    },
+    {
+      "id": "extensible28p7.3",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "finiteplane",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "foureatershasslingfourbookends_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "heartmonomer",
+      "reason": "El patrón supera sus dimensiones declaradas."
+    },
+    {
+      "id": "honeyfarmgenerator",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "houndstooth",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "inflected30greatsym_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "kleinbottle",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "lifehistoryexample",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "loaftieeaterwithtail_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "longhorn_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "longlivedsparks",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "negativespaceship",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "negativespaceships",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "nontnosedp15",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "nontnosedp8",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "p24shuttle_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "pishipblockpuffer",
+      "reason": "El cierre RLE debe ser el último símbolo."
+    },
+    {
+      "id": "semitnosedp16",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "semitnosedp8",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "shuriken_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "sphere",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "torus",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "uniquefatherproblemsolved",
+      "reason": "Este laboratorio utiliza la regla de Conway B3/S23."
+    },
+    {
+      "id": "updoveondove_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "vasesiamesehat_synth",
+      "reason": "Símbolo RLE no válido: x"
+    },
+    {
+      "id": "vex",
+      "reason": "La cabecera RLE no es válida."
+    },
+    {
+      "id": "waltz",
+      "reason": "La cabecera RLE no es válida."
+    }
+  ],
+  "missingFeatured": [],
+  "sha256": "c8022f052045f3668a30cf34687ffacfda1c70ae1b5dbad582a44b302aec36f3"
+}

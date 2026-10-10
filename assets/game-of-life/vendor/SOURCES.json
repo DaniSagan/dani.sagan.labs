@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/copy/life",
+  "retrieved": "2026-10-10",
+  "license": "BSD-2-Clause",
+  "sha256": {
+    "life.js": "638cabc197b4b36601a08bb24a10f1b68431f3443d59648f742b4a829996da43",
+    "formats.js": "537d15b7bb3c64c0b3423ad8b610fbdd3b1a5f4bc1d3414728eeddb15f584819",
+    "macrocell.js": "c3e1c1d6c968d6cbbf53ef22ccd71b134066394331919886a9f4e063a1817ad8",
+    "LICENSE": "4c9ac2c3a21c80e5080539feff5c2fa2a4cb46aff8a230ee476d415fea2c23d1"
+  }
+}
