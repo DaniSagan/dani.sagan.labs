@@ -24,6 +24,11 @@ export class EnfriamientoExponencialProblemComponent {
     "statement": "Una bebida pasa de 90 °C a 60 °C en 10 minutos, en una habitación a 20 °C. Con \\(T'=-k(T-20)\\), halla \\(T(t)\\) y cuándo alcanza 40 °C.",
     "resources": [
       {
+        "label": "Ecuaciones diferenciales y enfriamiento",
+        "route": "/articles/first-order-odes",
+        "activity": "Resuelve el problema inicial, estima la constante de enfriamiento y compara la solución exacta con la aproximación de Euler."
+      },
+      {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",
         "activity": "La integración de dU/U=−k dt es el paso que produce la ley exponencial de enfriamiento."

@@ -1,0 +1,76 @@
+<span class="article-kicker">Dinámica / gravedad y escala</span>
+<h2>Una órbita más grande tarda mucho más</h2>
+<p class="dropcap">Duplicar el radio de una órbita circular no duplica su período: lo multiplica por 2√2. La razón combina dos cambios simultáneos: la distancia a recorrer aumenta y la velocidad necesaria disminuye. La tercera ley de Kepler conecta tamaño y tiempo con una potencia que emerge directamente de la gravedad newtoniana. Comprender esa derivación permite distinguir radio, semieje mayor, velocidad y período, y reconocer qué permanece cuando pasamos de un círculo a una elipse.</p>
+<h3>La gravedad aporta la aceleración centrípeta</h3>
+<p>Una masa pequeña m orbita alrededor de una masa central M que tratamos como fija. La fuerza gravitatoria tiene magnitud GMm/r². Para una trayectoria circular uniforme, la aceleración centrípeta es v²/r y apunta al centro. Igualar las fuerzas hace desaparecer m: la velocidad orbital no depende de la masa del satélite dentro de esta aproximación.</p>
+<app-formula expression="\frac{GMm}{r^2}=m\frac{v^2}{r}\quad\Longrightarrow\quad v=\sqrt{\frac{GM}{r}}">
+</app-formula>
+<p>La aceleración centrípeta no es una segunda fuerza añadida a la gravedad: es la aceleración que la fuerza gravitatoria produce en el caso circular. La velocidad es tangente y la aceleración radial, así que la rapidez permanece constante mientras cambia continuamente la dirección del movimiento.</p>
+<h3>Derivar el período</h3>
+<p>Una vuelta recorre 2πr. Dividir por la rapidez y sustituir v da el período. Al elevar al cuadrado aparece una relación proporcional entre T² y r³.</p>
+<app-formula expression="T=\frac{2\pi r}{v}=2\pi\sqrt{\frac{r^3}{GM}},\qquad \boxed{T^2=\frac{4\pi^2}{GM}r^3}">
+</app-formula>
+<p>Las unidades verifican la expresión: GM tiene dimensiones de longitud³/tiempo², de modo que r³/(GM) tiene dimensiones de tiempo². Si r se multiplica por λ con M fija, v se divide por √λ y T se multiplica por λ³ᐟ². Duplicar r da v nuevo = v/√2 y T nuevo = 2√2 T, aproximadamente 2,828 T.</p>
+<h3>Comparar órbitas sin conocer G ni M</h3>
+<p>Dos satélites que orbitan la misma masa central en el modelo circular satisfacen T₂/T₁ = (r₂/r₁)³ᐟ². Esa razón permite resolver muchos problemas sin sustituir constantes físicas. Si cambia la masa central, hay un factor adicional √(M₁/M₂). Una masa cuatro veces mayor reduce a la mitad el período para el mismo radio.</p>
+<app-formula expression="\frac{T_2}{T_1}=\left(\frac{r_2}{r_1}\right)^{3/2}\sqrt{\frac{M_1}{M_2}}">
+</app-formula>
+<div class="math-lab">
+<h4>Laboratorio / del círculo a la elipse</h4>
+<p>La masa central está en un foco. Los puntos marcan posiciones separadas por intervalos de tiempo iguales: se agrupan donde el movimiento es más lento. La animación comprime una vuelta a unos diez segundos; no representa tiempo real. Con movimiento reducido, el botón avanza un paso.</p>
+<div class="controls">
+<label>M = {{mass}} masas solares<input type="range" min="0.2" max="3" step="0.1" [(ngModel)]="mass" (ngModelChange)="update()">
+</label>
+<label>Semieje a = {{radius}} AU<input type="range" min="0.2" max="5" step="0.1" [(ngModel)]="radius" (ngModelChange)="update()">
+</label>
+<label>Excentricidad e = {{eccentricity}}<input type="range" min="0" max="0.8" step="0.05" [(ngModel)]="eccentricity" (ngModelChange)="update()">
+</label>
+<button type="button" (click)="toggle()">{{playing?'Pausar':'Animar / avanzar'}}</button>
+<button type="button" (click)="step()">Avanzar T/16</button>
+<label>Fracción de período = {{phase | number:'1.0-3'}}<input type="range" min="0" max="1" step="0.001" [(ngModel)]="phase" (pointerdown)="pause()" (keydown)="pause()">
+</label>
+</div>
+<svg class="orbit" viewBox="0 0 660 500" role="img" aria-label="Órbita elíptica con la estrella en un foco y posiciones a intervalos de tiempo iguales">
+<ellipse cx="330" cy="250" [attr.rx]="a" [attr.ry]="b" fill="#4a9eff08" stroke="#4a9eff" stroke-width="1.5"/>
+<line [attr.x1]="focusX" y1="250" [attr.x2]="position.x" [attr.y2]="position.y" stroke="#e8c777" stroke-dasharray="5 4"/>
+<circle [attr.cx]="focusX" cy="250" r="10" fill="#e8c777"/>
+<circle cx="330" cy="250" r="2" fill="#9aa3b0"/>@for(p of equalTimePoints;track $index){<circle [attr.cx]="p.x" [attr.cy]="p.y" r="3" fill="#c5a1ea"/>}<circle [attr.cx]="position.x" [attr.cy]="position.y" r="6" fill="#a8e6a0"/>
+<text x="20" y="30">Periastro a(1 − e) / Apoastro a(1 + e)</text>
+<text [attr.x]="330+a" y="280" text-anchor="middle">Periastro</text>
+<text [attr.x]="330-a" y="280" text-anchor="middle">Apoastro</text>
+</svg>
+<div class="readouts">
+<span>Período<b>{{period | number:'1.0-3'}} días</b>
+</span>
+<span>Distancia instantánea<b>{{distanceAU | number:'1.0-3'}} AU</b>
+</span>
+<span>Rapidez instantánea<b>{{speed | number:'1.0-3'}} km/s</b>
+</span>
+<span>Tiempo orbital mostrado<b>{{phase*period | number:'1.0-3'}} días</b>
+</span>
+</div>
+<app-learning-plot description="Período frente al semieje mayor para la masa elegida: la excentricidad no cambia el período." [series]="series" [markers]="[{x:radius,y:period,label:'Órbita seleccionada'}]" [xmin]="0.2" [xmax]="5" [ymin]="0" [ymax]="365.26*12/Math.sqrt(mass)" xLabel="Semieje mayor (AU)" yLabel="Período (días)" />
+</div>
+<h3>Las tres leyes de Kepler</h3>
+<p>La primera ley describe elipses con la masa central en un foco, no en el centro. La segunda dice que el radio vector barre áreas iguales en tiempos iguales. La tercera afirma T² proporcional a a³ para órbitas ligadas alrededor de la misma masa, donde a es el semieje mayor. El círculo es el caso e = 0, con a = r; para una elipse no se debe sustituir r por la distancia instantánea.</p>
+<p>La ley de áreas se deduce del momento angular: una fuerza central no ejerce torque respecto al centro y conserva h = r² dθ/dt por unidad de masa. La velocidad areolar es h/2. Cerca del periastro el radio es menor y el ángulo debe cambiar más deprisa. Por eso mover un punto con ángulo uniforme por una elipse no reproduce una órbita kepleriana.</p>
+<h3>Cómo se calcula la animación</h3>
+<p>La anomalía media M = 2πt/T crece uniformemente. La anomalía excéntrica E se obtiene resolviendo M = E − e sin E. Después se parametriza la elipse como x = a cos E, y = b sin E respecto a su centro, con b = a√(1 − e²). La estrella se desplaza un foco, una distancia ae desde el centro. El laboratorio resuelve la ecuación de Kepler por iteraciones de Newton y restringe e ≤ 0,8; no usa velocidad angular constante.</p>
+<app-formula expression="M=E-e\sin E,\qquad r=a(1-e\cos E),\qquad b=a\sqrt{1-e^2}">
+</app-formula>
+<h3>Energía y velocidad de escape</h3>
+<p>La energía específica es ε = v²/2 − GM/r. En una órbita circular vale −GM/(2r), negativa. Para una elipse ligada es −GM/(2a), y reorganizar da la ecuación vis-viva: v² = GM(2/r − 1/a). Esa relación calcula las velocidades instantáneas del laboratorio. En el caso límite ε = 0 aparece la rapidez de escape √(2GM/r), √2 veces la circular a esa distancia, bajo el modelo ideal sin otras fuerzas.</p>
+<h3>Cuando ambos cuerpos tienen masa apreciable</h3>
+<p>En el problema de dos cuerpos, ambos orbitan su centro de masas. La ecuación de la posición relativa usa G(M + m), y la tercera ley exacta de ese modelo es T² = 4π²a³/(G(M + m)), con a como semieje de la separación relativa. Reemplazar M + m por M es la aproximación de satélite despreciable. Otros cuerpos, resistencia, achatamiento y relatividad introducen desviaciones que este laboratorio no modela.</p>
+<p>Las lecturas físicas usan G = 6,67430·10⁻¹¹ SI, una masa solar de referencia aproximada y 1 AU = 149 597 870 700 m. Son ilustraciones del modelo, no efemérides. La forma de la gráfica y las razones de escala son más robustas pedagógicamente que sus últimos decimales.</p>
+<ul>
+<li>Predice el período al cuadruplicar el semieje antes de mover el control.</li>
+<li>Mantén a fija y cambia e: ¿qué cambia en la velocidad y qué permanece?</li>
+<li>Explica por qué la rapidez de escape no depende de la masa pequeña.</li>
+</ul>
+<p>Lectura complementaria: <a href="https://openstax.org/books/university-physics-volume-1/pages/13-5-keplers-laws-of-planetary-motion">OpenStax, leyes de Kepler</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-097">Problema 097 · Escala de una órbita circular</a>. Explora interacciones de varios cuerpos en <a routerLink="/games/gravity">el simulador de gravedad</a> y contrasta con <a routerLink="/articles/double-pendulum">el péndulo doble</a>.</p>
+</div>

@@ -1,3 +1,5 @@
+import { PolynomialDivisionArticleComponent } from './polynomial-division/polynomial-division-article.component';
+import { QuadraticEquationsArticleComponent } from './quadratic-equations/quadratic-equations-article.component';
 import { CauchySchwarzArticleComponent } from './cauchy-schwarz/cauchy-schwarz-article.component';
 import { GaussianEliminationArticleComponent } from './gaussian-elimination/gaussian-elimination-article.component';
 ﻿import { CubicEquationArticleComponent } from './cubic-equation/cubic-equation-article.component';
@@ -6,6 +8,8 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  PolynomialDivisionArticleComponent,
+  QuadraticEquationsArticleComponent,
   CauchySchwarzArticleComponent,
   GaussianEliminationArticleComponent,
   CubicEquationArticleComponent,

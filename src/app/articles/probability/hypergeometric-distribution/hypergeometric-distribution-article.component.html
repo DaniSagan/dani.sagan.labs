@@ -1,0 +1,64 @@
+<span class="article-kicker">Probabilidad / una población finita</span>
+<h2>Extraer cambia lo que queda</h2>
+<p class="dropcap">En una urna con bolas rojas y azules, sacar una bola roja reduce la proporción de rojas disponibles para la siguiente extracción. Cada selección cambia el experimento posterior. La distribución hipergeométrica describe el número de elementos de una categoría en una muestra uniforme sin reemplazo. Se parece a la binomial, pero la dependencia entre extracciones cambia su dispersión y puede hacer imposibles resultados que la binomial todavía considera posibles.</p>
+<h3>Definir población, muestra y variable</h3>
+<p>Tenemos N objetos, K de ellos etiquetados como éxitos y N − K como fracasos. Elegimos uniformemente una muestra de n objetos distintos y llamamos X al número de éxitos. «Éxito» es solo una etiqueta: puede significar pieza defectuosa, persona con cierta característica o bola roja. Los parámetros son enteros y cumplen 0 ≤ K ≤ N y 0 ≤ n ≤ N.</p>
+<p>El soporte no es siempre todo 0,…,n. No podemos sacar más éxitos que K ni más fracasos que N − K. Por eso el mínimo es max(0,n − (N − K)) y el máximo min(n,K). Estas restricciones deben comprobarse antes de calcular factoriales.</p>
+<app-formula expression="\max(0,n-N+K)\le X\le\min(n,K)">
+</app-formula>
+<h3>Contar muestras, no secuencias</h3>
+<p>Hay C(N,n) subconjuntos de tamaño n, equiprobables bajo el muestreo uniforme. Para obtener exactamente k éxitos escogemos k entre los K disponibles y n − k entre los N − K fracasos. Multiplicar los dos recuentos y dividir por el total da la función de probabilidad.</p>
+<app-formula expression="P(X=k)=\frac{\binom Kk\binom{N-K}{n-k}}{\binom Nn}">
+</app-formula>
+<p>La suma de los numeradores sobre todos los k válidos es C(N,n): estamos clasificando todas las muestras según el número de éxitos. Es una interpretación combinatoria de la identidad de Vandermonde y prueba que las probabilidades suman uno. Si prefiriéramos secuencias ordenadas, habría que contar orden en numerador y denominador; no se puede mezclar un recuento ordenado con otro no ordenado.</p>
+<h3>La urna de cinco rojas y tres azules</h3>
+<p>Para N = 8, K = 5 y n = 3, el total es C(8,3) = 56. Exactamente dos rojas corresponde a C(5,2)C(3,1) = 30 muestras: P(X = 2) = 15/28. Si contamos secuencias, RRA tiene probabilidad (5/8)(4/7)(3/6) = 5/28; hay tres posiciones posibles para la azul y se suman tres probabilidades iguales. Ambos enfoques dan el mismo resultado.</p>
+<div class="math-lab">
+<h4>Laboratorio / con y sin reemplazo</h4>
+<p>Cada pulsación genera 200 muestras uniformes independientes entre sí; dentro de cada muestra las extracciones son sin reemplazo. Cambiar el modelo borra las frecuencias anteriores.</p>
+<div class="controls">
+<label>Población N = {{N}}<input type="range" min="2" max="60" [(ngModel)]="N" (ngModelChange)="update()">
+</label>
+<label>Éxitos K = {{K}}<input type="range" min="0" [max]="N" [(ngModel)]="K" (ngModelChange)="update()">
+</label>
+<label>Muestra n = {{n}}<input type="range" min="1" [max]="N" [(ngModel)]="n" (ngModelChange)="update()">
+</label>
+<label>Consultar k = {{selected}}<input type="range" min="0" [max]="n" [(ngModel)]="selected">
+</label>
+<button type="button" (click)="sample()">Simular 200 muestras</button>
+<button type="button" (click)="reset()">Reiniciar</button>
+</div>
+<div class="readouts">
+<span>Soporte<b>{{lower}} … {{upper}}</b>
+</span>
+<span>P(X = {{selected}})<b>{{probabilities[selected] | number:'1.0-6'}}</b>
+</span>
+<span>Media / varianza exactas<b>{{mean | number:'1.0-4'}} / {{variance | number:'1.0-4'}}</b>
+</span>
+<span>{{trials}} muestras: media observada<b>{{trials ? (empiricalMean | number:'1.0-4') : 'Sin muestras'}}</b>
+</span>
+</div>
+<app-learning-plot description="Distribución sin reemplazo, comparación binomial y frecuencias de la simulación. Ambas leyes tienen la misma media." [series]="series" [xmin]="-0.5" [xmax]="n+0.5" [ymin]="0" [ymax]="1" [barWidth]="400/(n+1)" xLabel="Número de éxitos k" yLabel="Probabilidad" />
+@if(last.length){<p>Última muestra, en orden de extracción: @for(ball of last;track $index){<span [style.color]="ball ? 'var(--accent)' : 'var(--accent2)'">{{ball ? '●' : '○'}} </span>}</p>}
+</div>
+<h3>La media no necesita independencia</h3>
+<p>Escribimos X = I₁ + … + Iₙ, donde Iⱼ vale uno si la posición j contiene un éxito. Por simetría, cada posición tiene probabilidad p = K/N, aunque las posiciones sean dependientes. La linealidad de la esperanza da E(X) = np sin exigir independencia.</p>
+<h3>La dependencia reduce la varianza</h3>
+<p>Para dos posiciones distintas, E(IᵢIⱼ) = K(K − 1)/(N(N − 1)). Restar p² da covarianza −p(1 − p)/(N − 1). Es negativa: observar un éxito disminuye la probabilidad de otro. Sumar las varianzas individuales y las covarianzas de los pares produce la corrección por población finita.</p>
+<app-formula expression="E(X)=np,\qquad \operatorname{Var}(X)=np(1-p)\frac{N-n}{N-1},\qquad p=\frac KN">
+</app-formula>
+<p>La binomial tiene varianza np(1 − p). La hipergeométrica la multiplica por (N − n)/(N − 1), un factor entre cero y uno para n ≥ 1. Si muestreamos toda la población, X = K con certeza y la varianza desaparece. Para N = 1 la fórmula tiene un denominador nulo, pero el modelo sigue siendo sencillo y determinista; el laboratorio usa N ≥ 2.</p>
+<h3>Cuándo aproximar por una binomial</h3>
+<p>Cuando la fracción n/N es pequeña, cada extracción altera poco la composición y la binomial puede ser una aproximación útil. No existe un umbral universal que garantice cualquier precisión para todas las colas. El factor de corrección y la comparación de probabilidades del laboratorio muestran qué se pierde. Si n es comparable a N, ignorar la dependencia suele exagerar la dispersión; si n = N, la diferencia es extrema.</p>
+<p>La aproximación supone muestreo uniforme. Una extracción que favorece ciertos objetos puede requerir otro modelo; «sin reemplazo» por sí solo no basta para justificar la fórmula. En poblaciones grandes conviene evaluar probabilidades con productos, recurrencias o logaritmos para evitar el desbordamiento de factoriales.</p>
+<ul>
+<li>Elige n = N y explica por qué queda una sola barra.</li>
+<li>Comprueba que intercambiar éxitos y fracasos refleja la distribución.</li>
+<li>Mantén K/N aproximadamente fijo y aumenta N con n constante.</li>
+</ul>
+<p>Lectura complementaria: <a href="https://openstax.org/books/introductory-statistics-2e/pages/4-5-hypergeometric-distribution">OpenStax, distribución hipergeométrica</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-072">Problema 072 · Extracción sin reemplazo</a>. Contrasta con <a routerLink="/problems/problema-076">076 · Una distribución binomial</a> y con <a routerLink="/articles/galton-board">el tablero de Galton</a>.</p>
+</div>

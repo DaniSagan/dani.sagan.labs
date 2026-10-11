@@ -24,6 +24,11 @@ export class NormalizarUnaDensidadProblemComponent {
     "statement": "Sea \\(f(x)=cx\\) para \\(0\\le x\\le 2\\) y \\(f(x)=0\\) fuera. Halla c, \\(P(X\\le 1)\\), \\(E(X)\\) y \\(\\operatorname{Var}(X)\\).",
     "resources": [
       {
+        "label": "Densidad, esperanza y varianza",
+        "route": "/articles/continuous-random-variables",
+        "activity": "Normaliza la densidad, calcula áreas y momentos, y observa cómo los cambios de escala transforman media y varianza."
+      },
+      {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",
         "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."

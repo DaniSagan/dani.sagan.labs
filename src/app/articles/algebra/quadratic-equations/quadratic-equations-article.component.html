@@ -1,0 +1,72 @@
+<span class="article-kicker">Álgebra / raíces y parámetros</span>
+<h2>Una parábola, tres paisajes de raíces</h2>
+<p class="dropcap">Una ecuación cuadrática parece un problema de sustitución en una fórmula. Sin embargo, su estructura contiene más información que dos números: podemos saber cuántas raíces hay, dónde se sitúan, qué signos tienen y cómo cambian al mover un parámetro. El discriminante resume una transición geométrica; las relaciones de Viète permiten razonar sobre las raíces sin calcularlas. Combinar ambas miradas evita muchos cálculos y distingue una solución de una clasificación completa.</p>
+<h3>Completar el cuadrado explica la fórmula</h3>
+<p>Consideremos ax² + bx + c = 0 con coeficientes reales y a distinto de cero. Dividir por a no altera las soluciones. Añadir y restar el cuadrado de b/(2a) transforma la expresión en un cuadrado más una constante. Estamos trasladando el origen horizontal hasta el eje de simetría de la parábola.</p>
+<app-formula expression="ax^2+bx+c=a\left(x+\frac{b}{2a}\right)^2-\frac{b^2-4ac}{4a}">
+</app-formula>
+<p>Al igualar a cero, queda un cuadrado igual a Δ/(4a²), donde Δ = b² − 4ac. El denominador es positivo, de modo que el signo de Δ decide si ese cuadrado puede existir en los reales. Extraer la raíz produce dos signos, no solo el positivo.</p>
+<app-formula expression="\Delta=b^2-4ac,\qquad x_{1,2}=\frac{-b\pm\sqrt{\Delta}}{2a}">
+</app-formula>
+<h3>El discriminante visto en la gráfica</h3>
+<p>Si Δ &gt; 0, la parábola corta el eje horizontal dos veces. Si Δ = 0, el vértice toca el eje: hay una raíz doble, no dos distintas. Si Δ &lt; 0, no hay cortes reales. El vértice tiene abscisa −b/(2a) y ordenada −Δ/(4a). Para a positivo abre hacia arriba; para a negativo hacia abajo. Cambiar el signo de todos los coeficientes invierte la gráfica, pero conserva las raíces.</p>
+<div class="math-lab">
+<h4>Laboratorio 01 / mover la parábola</h4>
+<p>Prueba c = 4 con a = 1 y b = −4; después aumenta c. Los puntos dorados señalan raíces reales y el azul marca el vértice.</p>
+<div class="controls">
+<label>a = {{ a }}<input type="range" min="-3" max="3" step="0.25" [(ngModel)]="a" (ngModelChange)="update()">
+</label>
+<label>b = {{ b }}<input type="range" min="-8" max="8" step="0.25" [(ngModel)]="b" (ngModelChange)="update()">
+</label>
+<label>c = {{ c }}<input type="range" min="-8" max="8" step="0.25" [(ngModel)]="c" (ngModelChange)="update()">
+</label>
+</div>
+<div class="readouts">
+<span>Discriminante<b>{{ result.discriminant | number:'1.0-4' }}</b>
+</span>
+<span>Clasificación<b>{{ result.kind }}</b>
+</span>
+<span>Soluciones reales<b>{{ rootsText }}</b>
+</span>
+</div>
+<app-learning-plot description="Parábola en una ventana fija; las raíces fuera de ella siguen en la lectura numérica." [series]="series" [markers]="markers" [xmin]="-6" [xmax]="6" [ymin]="-12" [ymax]="12" />
+</div>
+<h3>Las raíces complejas no son un fracaso</h3>
+<p>Cuando Δ &lt; 0, escribimos √Δ = i√(−Δ). Las raíces son conjugadas porque los coeficientes son reales: comparten parte real −b/(2a) y tienen partes imaginarias opuestas. Por ejemplo, x² − 2x + 5 = 0 da 1 ± 2i. La parábola real no corta el eje, pero el polinomio se factoriza sobre los complejos. El discriminante decide la naturaleza de las raíces dentro del universo que estamos usando.</p>
+<h3>Viète: sumar y multiplicar sin resolver</h3>
+<p>Si las raíces son r y s, a(x − r)(x − s) tiene coeficiente lineal −a(r + s) y término independiente ars. Comparar coeficientes da las relaciones de Viète.</p>
+<app-formula expression="r+s=-\frac ba,\qquad rs=\frac ca">
+</app-formula>
+<p>Para raíces reales, un producto negativo implica signos opuestos. Si el producto es positivo, tienen el mismo signo, que determina la suma. Dos raíces reales distintas y positivas requieren simultáneamente Δ &gt; 0, −b/a &gt; 0 y c/a &gt; 0. Ninguna condición sobra: una suma positiva puede acompañar a una raíz negativa, y un producto positivo puede corresponder a dos raíces complejas.</p>
+<h3>Resolver un problema con parámetro</h3>
+<p>En x² − 2αx + α + 2 = 0 buscamos dos raíces reales distintas y positivas. Su discriminante es 4(α − 2)(α + 1), positivo para α &lt; −1 o α &gt; 2. Viète da suma 2α y producto α + 2. La suma positiva exige α &gt; 0; al intersectar todas las condiciones queda α &gt; 2. En α = 2 las raíces son ambas 2: el extremo debe excluirse.</p>
+<div class="math-lab">
+<h4>Laboratorio 02 / cruzar el umbral</h4>
+<div class="controls">
+<label>Parámetro α = {{ parameter }}<input type="range" min="-3" max="5" step="0.05" [(ngModel)]="parameter" (ngModelChange)="updateFamily()">
+</label>
+</div>
+<div class="readouts">
+<span>Dos raíces distintas positivas<b>{{ parameter > 2 ? 'Sí: α > 2' : 'No' }}</b>
+</span>
+<span>Δ = 4(α − 2)(α + 1)<b>{{ 4*(parameter-2)*(parameter+1) | number:'1.0-3' }}</b>
+</span>
+</div>
+<app-learning-plot description="Familia del problema 012. Observa el contacto doble en α = 2." [series]="familySeries" [xmin]="-4" [xmax]="10" [ymin]="-12" [ymax]="20" />
+</div>
+<h3>Degeneraciones y estabilidad numérica</h3>
+<p>Si a = 0, ya no hay una cuadrática. Si b ≠ 0 queda una ecuación lineal; si a = b = 0, un c no nulo hace imposible la igualdad y c = 0 la convierte en una identidad. Hay que separar estos casos antes de dividir por a. En una familia, perder el grado puede cambiar el número de soluciones abruptamente.</p>
+<p>En un ordenador, la fórmula habitual puede perder cifras cuando −b y √Δ casi se cancelan. Para Δ &gt; 0, una evaluación más estable calcula q = −(b + signo(b)√Δ)/2, tomando signo positivo para b = 0; obtiene una raíz como q/a y la otra como c/q. El laboratorio usa esta forma. Reduce la cancelación, pero no elimina el mal condicionamiento: cerca de una raíz doble, una pequeña perturbación de los coeficientes puede separar las raíces de forma relativamente grande.</p>
+<h3>Comprobar y explorar</h3>
+<p>Sustituir cada raíz verifica el cálculo; sumar y multiplicar verifica su estructura. Un residuo pequeño no garantiza muchas cifras correctas cuando la parábola es casi tangente al eje. La clasificación exacta debe hacerse con desigualdades exactas: las gráficas son una guía, no una demostración.</p>
+<ul>
+<li>Construye una cuadrática con raíces 2 y 7 sin la fórmula general.</li>
+<li>Busca una suma de raíces positiva con producto negativo.</li>
+<li>Compara x² − 2x + 1 con x² − 2x + 1 ± ε.</li>
+</ul>
+<p>Lectura complementaria: <a href="https://openstax.org/books/college-algebra-2e/pages/5-1-quadratic-functions">OpenStax, funciones cuadráticas</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-012">Problema 012 · Raíces y parámetro</a>. Clasifica la familia antes de calcular las raíces. Continúa con <a routerLink="/articles/cubic-equation">la ecuación cúbica</a>.</p>
+</div>

@@ -24,6 +24,11 @@ export class RaicesYParametroProblemComponent {
     "statement": "Determina los valores reales de a para los que \\(x^{2}-2ax+a+2\\) tiene dos raíces reales distintas y positivas.",
     "resources": [
       {
+        "label": "Ecuaciones cuadráticas: discriminante y Viète",
+        "route": "/articles/quadratic-equations",
+        "activity": "Clasifica las raíces reales y sus signos combinando el discriminante con la suma y el producto de Viète."
+      },
+      {
         "label": "La ecuación cúbica",
         "route": "/articles/cubic-equation",
         "activity": "Compara el papel de las raíces y los parámetros en una ecuación cúbica con la clasificación cuadrática de este ejercicio; las fórmulas de los discriminantes son distintas."

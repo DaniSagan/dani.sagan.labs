@@ -24,6 +24,11 @@ export class IntervaloParaUnaMediaNormalProblemComponent {
     "statement": "Una población normal tiene desviación típica conocida \\(\\sigma =10\\). Una muestra independiente de \\(n=100\\) da media 50. Usando \\(z_{0},_{975}=1,96\\), calcula el intervalo de confianza del 95% para la media e interpreta su cobertura.",
     "resources": [
       {
+        "label": "Inferencia estadística",
+        "route": "/articles/statistical-inference",
+        "activity": "Distingue error estándar, cobertura y nivel del contraste; planifica tamaños muestrales y comprueba las hipótesis del modelo."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras."

@@ -1,3 +1,4 @@
+import { KeplerOrbitsArticleComponent } from './kepler-orbits/kepler-orbits-article.component';
 import { LorenzAttractorComponent } from './lorenz-attractor/lorenz-attractor.component';
 import { SandpileArticleComponent } from './sandpile/sandpile-article.component';
 import { DoublePendulumArticleComponent } from './double-pendulum/double-pendulum-article.component';
@@ -5,6 +6,7 @@ import { RosslerAttractorArticleComponent } from './rossler-attractor/rossler-at
 import { CellularAutomataArticleComponent } from './cellular-automata/cellular-automata-article.component';
 
 export const DYNAMICAL_SYSTEMS_ARTICLES = [
+  KeplerOrbitsArticleComponent,
   LorenzAttractorComponent,
   RosslerAttractorArticleComponent,
   SandpileArticleComponent,

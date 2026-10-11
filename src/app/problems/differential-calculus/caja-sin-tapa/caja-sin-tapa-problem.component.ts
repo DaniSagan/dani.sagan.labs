@@ -24,6 +24,11 @@ export class CajaSinTapaProblemComponent {
     "statement": "De una cartulina cuadrada de 12 cm de lado se recortan cuadrados iguales de lado x en las esquinas y se pliegan las paredes. Maximiza el volumen de la caja sin tapa.",
     "resources": [
       {
+        "label": "Optimización con derivadas",
+        "route": "/articles/derivative-optimization",
+        "activity": "Construye la función objetivo, determina el dominio y compara candidatos interiores y extremos para justificar el óptimo global."
+      },
+      {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",
         "activity": "Como ampliación, compara el volumen obtenido por dimensiones de una caja con los métodos de volumen por secciones en integración clásica."

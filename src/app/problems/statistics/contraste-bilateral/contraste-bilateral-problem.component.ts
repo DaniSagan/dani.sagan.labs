@@ -24,6 +24,11 @@ export class ContrasteBilateralProblemComponent {
     "statement": "Con población normal y \\(\\sigma =10\\) conocida, contrasta \\(H_{0}\\):\\(\\mu =50\\) frente a \\(H_{1}\\):\\(\\mu \\ne 50\\). Una muestra de \\(n=100\\) da media 52. Usa nivel 5% y valor crítico \\(1,96\\).",
     "resources": [
       {
+        "label": "Inferencia estadística",
+        "route": "/articles/statistical-inference",
+        "activity": "Distingue error estándar, cobertura y nivel del contraste; planifica tamaños muestrales y comprueba las hipótesis del modelo."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras."

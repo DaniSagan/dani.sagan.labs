@@ -1,0 +1,68 @@
+<span class="article-kicker">Álgebra / divisibilidad polinómica</span>
+<h2>El resto contiene la información que sobrevive</h2>
+<p class="dropcap">Dividir un polinomio es separar lo que puede absorber un divisor de una pequeña expresión que conserva la información restante. Esa expresión permite evaluar polinomios enormes, detectar factores, reconstruir condiciones de interpolación y trabajar con potencias sin expandirlas. El teorema del resto abre la puerta a una aritmética de polinomios tan útil como la de enteros.</p>
+<h3>La identidad de la división</h3>
+<p>Dados P y D, con D no nulo, existen polinomios únicos Q y R tales que P = DQ + R, con R = 0 o grado de R menor que el de D. Trabajamos sobre los reales: podemos dividir por el coeficiente principal de D. Sobre los enteros, exigir cociente y resto enteros requiere cuidado si el divisor no es mónico.</p>
+<app-formula expression="P(x)=D(x)Q(x)+R(x),\qquad \deg R&lt;\deg D\quad(R\ne0)">
+</app-formula>
+<p>Construimos Q eliminando el término de mayor grado de P con un múltiplo de D. Cada resta reduce el grado del resto provisional y el proceso termina. Para probar unicidad, supongamos dos descomposiciones. Entonces D(Q₁ − Q₂) = R₂ − R₁. Si el cociente diferencia no fuera cero, la izquierda tendría grado al menos igual al de D y la derecha grado menor: una contradicción.</p>
+<h3>Un ejemplo completo</h3>
+<p>Dividamos x³ − 2x + 2 entre x − 1. El primer término del cociente es x²: al restar x²(x − 1) queda x² − 2x + 2. El segundo es x: resta x(x − 1) y queda −x + 2. Finalmente resta −(x − 1); queda 1. Así, Q = x² + x − 1 y R = 1. Multiplicar y añadir el resto recupera el dividendo.</p>
+<app-formula expression="x^3-2x+2=(x-1)(x^2+x-1)+1">
+</app-formula>
+<div class="math-lab">
+<h4>Laboratorio / dividir y reconstruir</h4>
+<p>Compara un divisor lineal con x² − 1. Comprueba ambos lados de P = DQ + R en distintos puntos.</p>
+<div class="controls">
+<label>Dividendo<select [(ngModel)]="choice" (ngModelChange)="update()">@for(e of examples;track $index){<option [ngValue]="$index">{{e.name}}</option>}</select>
+</label>
+<label>Divisor<select [(ngModel)]="divisorChoice" (ngModelChange)="update()">
+<option [ngValue]="0">x − r</option>
+<option [ngValue]="1">x² − 1</option>
+</select>
+</label>
+<label>r = {{root}}<input type="range" min="-2" max="2" step="0.25" [(ngModel)]="root" (ngModelChange)="update()">
+</label>
+<label>Punto x = {{x}}<input type="range" min="-2" max="2" step="0.1" [(ngModel)]="x">
+</label>
+</div>
+<div class="readouts">
+<span>Q(x)<b>{{text(result.quotient)}}</b>
+</span>
+<span>R(x)<b>{{text(result.remainder)}}</b>
+</span>
+<span>P(x) / D(x)Q(x) + R(x)<b>{{evaluated | number:'1.0-5'}} / {{rebuilt | number:'1.0-5'}}</b>
+</span>
+</div>
+<app-learning-plot description="Dividendo y resto: coinciden en las raíces reales del divisor." [series]="series" [xmin]="-3" [xmax]="3" [ymin]="-10" [ymax]="15" />
+</div>
+<h3>El teorema del resto y el teorema del factor</h3>
+<p>Si D(x) = x − r, el resto tiene grado menor que uno: es constante. Evaluar en r anula DQ y deja R = P(r). Se deduce que r es raíz de P si y solo si x − r divide exactamente a P. Encontrar una raíz permite reducir el grado; no demuestra que hayamos encontrado todas.</p>
+<app-formula expression="P(x)=(x-r)Q(x)+P(r),\qquad P(r)=0\iff(x-r)\mid P(x)">
+</app-formula>
+<p>Horner organiza la evaluación en multiplicaciones y sumas anidadas. Para P = aₙxⁿ + … + a₀, se empieza por aₙ y se repite «multiplica por r y suma el siguiente coeficiente». Los acumulados producen los coeficientes del cociente sintético; el último es P(r). Con n pasos evitamos calcular las potencias por separado. El ahorro de operaciones no elimina el redondeo ni el mal condicionamiento cerca de algunas raíces.</p>
+<h3>Dos valores reconstruyen un resto lineal</h3>
+<p>Para D = x² − 1 el resto es ax + b. Las raíces 1 y −1 dan R(1) = P(1) y R(−1) = P(−1). Resolver esas dos ecuaciones determina a y b sin calcular el cociente: dos datos para dos incógnitas, una forma sencilla de interpolación.</p>
+<app-formula expression="R(x)=\frac{P(1)-P(-1)}2x+\frac{P(1)+P(-1)}2">
+</app-formula>
+<p>En x²⁰²⁶ + 3x + 1, P(1) = 5 y P(−1) = −1. El resto es 3x + 2. La enorme potencia no dificulta el cálculo: solo importa que 2026 es par. Buscar qué información requiere el resultado antes de expandir una expresión es una idea central del álgebra computacional.</p>
+<h3>Congruencias de polinomios</h3>
+<p>Escribimos P ≡ R módulo D cuando D divide P − R. Podemos sumar y multiplicar congruencias. Módulo x² − 1, x² ≡ 1 reduce cada potencia par a 1 y cada impar a x. Así, x²⁰²⁶ + 3x + 1 ≡ 1 + 3x + 1. La misma respuesta surge de una regla aplicable a cualquier exponente.</p>
+<app-formula expression="x^2\equiv1\pmod{x^2-1}\Longrightarrow x^{2m}\equiv1,\quad x^{2m+1}\equiv x">
+</app-formula>
+<p>No podemos trasladar cualquier operación sin pensar: dividir una congruencia por un polinomio requiere que sea invertible en ese sistema. Suma y multiplicación están garantizadas; las inversas tienen condiciones adicionales. Reducir después de cada multiplicación permite calcular potencias por exponenciación rápida manteniendo pequeño el grado.</p>
+<h3>Qué ocurre si las raíces se repiten</h3>
+<p>Si el divisor es (x − r)², P(r) aporta un solo dato para un resto lineal. Derivar la identidad y evaluar en r da otro: R′(r) = P′(r). El resto es P(r) + P′(r)(x − r). Para (x − r)ᵐ aparecen las primeras m derivadas y obtenemos el polinomio de Taylor de orden m − 1. Divisibilidad, multiplicidad y aproximación local comparten una estructura.</p>
+<h3>Errores que conviene detectar</h3>
+<ul>
+<li>El resto no siempre es un número: su grado depende del divisor.</li>
+<li>Un resto de grado igual al divisor indica que la división no ha terminado.</li>
+<li>Evaluar en un punto arbitrario no anula D; deben usarse sus raíces.</li>
+<li>Una raíz doble exige datos de derivadas, no repetir una evaluación.</li>
+</ul>
+<p>Lectura complementaria: <a href="https://openstax.org/books/college-algebra-2e/pages/5-4-dividing-polynomials">OpenStax, división de polinomios</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-013">Problema 013 · Un resto sin dividir</a>. Resuélvelo por evaluación y congruencias; después cambia el exponente a 2027. Continúa con <a routerLink="/articles/cyclotomic-polynomials">polinomios ciclotómicos</a> y <a routerLink="/articles/taylor-series">Taylor</a>.</p>
+</div>

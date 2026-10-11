@@ -24,6 +24,11 @@ export class UnRestoSinDividirProblemComponent {
     "statement": "Halla el resto de dividir \\(x^{2026}+3x+1\\) entre \\(x^{2}-1\\).",
     "resources": [
       {
+        "label": "División de polinomios y teorema del resto",
+        "route": "/articles/polynomial-division",
+        "activity": "Obtén el resto mediante las raíces del divisor y comprueba la identidad P = DQ + R sin expandir potencias enormes."
+      },
+      {
         "label": "Polinomios ciclotómicos",
         "route": "/articles/cyclotomic-polynomials",
         "activity": "Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo."

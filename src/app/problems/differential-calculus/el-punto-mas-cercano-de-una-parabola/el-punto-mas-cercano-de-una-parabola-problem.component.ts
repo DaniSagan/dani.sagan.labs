@@ -24,6 +24,11 @@ export class ElPuntoMasCercanoDeUnaParabolaProblemComponent {
     "statement": "Halla los puntos de \\(y=x^{2}\\) más próximos a \\(P=(0,3)\\) y su distancia.",
     "resources": [
       {
+        "label": "Optimización con derivadas",
+        "route": "/articles/derivative-optimization",
+        "activity": "Construye la función objetivo, determina el dominio y compara candidatos interiores y extremos para justificar el óptimo global."
+      },
+      {
         "label": "Parábola",
         "route": "/articles/parabola",
         "activity": "Propiedades geométricas de la curva que aparece en el cálculo del ejercicio."

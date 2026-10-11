@@ -1,3 +1,7 @@
+import { StatisticalInferenceArticleComponent } from 'src/app/articles/probability/statistical-inference/statistical-inference-article.component';
+import { ContinuousRandomVariablesArticleComponent } from 'src/app/articles/probability/continuous-random-variables/continuous-random-variables-article.component';
+import { GeometricDistributionArticleComponent } from 'src/app/articles/probability/geometric-distribution/geometric-distribution-article.component';
+import { HypergeometricDistributionArticleComponent } from 'src/app/articles/probability/hypergeometric-distribution/hypergeometric-distribution-article.component';
 import { LinearRegressionArticleComponent } from 'src/app/articles/probability/linear-regression/linear-regression-article.component';
 import { SimpsonParadoxArticleComponent } from 'src/app/articles/probability/simpson-paradox/simpson-paradox-article.component';
 import { SamplingBiasArticleComponent } from 'src/app/articles/probability/sampling-bias/sampling-bias-article.component';
@@ -203,6 +207,10 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: HypergeometricDistributionArticleComponent.title, route: HypergeometricDistributionArticleComponent.route },
+    { name: GeometricDistributionArticleComponent.title, route: GeometricDistributionArticleComponent.route },
+    { name: ContinuousRandomVariablesArticleComponent.title, route: ContinuousRandomVariablesArticleComponent.route },
+    { name: StatisticalInferenceArticleComponent.title, route: StatisticalInferenceArticleComponent.route },
     { name: LinearRegressionArticleComponent.title, route: LinearRegressionArticleComponent.route },
     { name: SimpsonParadoxArticleComponent.title, route: SimpsonParadoxArticleComponent.route },
     { name: SamplingBiasArticleComponent.title, route: SamplingBiasArticleComponent.route },

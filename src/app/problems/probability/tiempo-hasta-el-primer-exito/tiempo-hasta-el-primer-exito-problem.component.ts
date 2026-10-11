@@ -24,6 +24,11 @@ export class TiempoHastaElPrimerExitoProblemComponent {
     "statement": "Ensayos independientes tienen éxito con probabilidad \\(\\frac{1}{4}\\). Sea X el número de ensayos hasta el primer éxito, incluido este. Calcula \\(P(X>3)\\) y \\(E(X)\\).",
     "resources": [
       {
+        "label": "Distribución geométrica y tiempo de espera",
+        "route": "/articles/geometric-distribution",
+        "activity": "Calcula la cola y la esperanza hasta el primer éxito y comprueba la falta de memoria bajo ensayos independientes."
+      },
+      {
         "label": "Cadenas de Markov",
         "route": "/articles/markov-chains",
         "activity": "Estados, transiciones y evolución de distribuciones en procesos discretos."

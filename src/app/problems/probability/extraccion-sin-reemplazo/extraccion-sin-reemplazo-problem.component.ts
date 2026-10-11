@@ -24,6 +24,11 @@ export class ExtraccionSinReemplazoProblemComponent {
     "statement": "Una urna contiene 5 bolas rojas y 3 azules. Se extraen 3 sin reemplazo. Calcula la probabilidad de obtener exactamente 2 rojas.",
     "resources": [
       {
+        "label": "Distribución hipergeométrica",
+        "route": "/articles/hypergeometric-distribution",
+        "activity": "Calcula probabilidades de extracción sin reemplazo, identifica el soporte y contrasta su varianza con la binomial."
+      },
+      {
         "label": "Teorema del binomio",
         "route": "/articles/binomial-theorem",
         "activity": "Coeficientes combinatorios y expansión de potencias de una suma."

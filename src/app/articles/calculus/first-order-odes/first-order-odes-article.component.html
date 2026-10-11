@@ -1,0 +1,67 @@
+<span class="article-kicker">Cálculo / leyes de cambio</span>
+<h2>Una ecuación para la pendiente, una historia para la temperatura</h2>
+<p class="dropcap">Una ecuación diferencial no nos dice directamente cuánto vale una magnitud: describe cómo cambia. La ley de enfriamiento de Newton relaciona la velocidad de cambio de la temperatura con la diferencia respecto al ambiente. A partir de esa regla local y una condición inicial podemos reconstruir una evolución completa. El mismo razonamiento aparece en circuitos, mezclas, procesos de relajación y modelos de crecimiento, aunque cada aplicación debe justificar sus propias hipótesis.</p>
+<h3>De una ley física a un problema inicial</h3>
+<p>Escribimos T′ = −k(T − A), donde A es la temperatura ambiente constante y k &gt; 0. Si T &gt; A, la derivada es negativa y el objeto se enfría; si T &lt; A, se calienta. La diferencia T − A mide cuánto falta para el equilibrio. Una condición T(0) = T₀ selecciona una trayectoria entre muchas.</p>
+<app-formula expression="\frac{dT}{dt}=-k(T-A),\qquad T(0)=T_0,\qquad k>0">
+</app-formula>
+<p>k tiene unidades de tiempo inverso: si medimos t en minutos, k se mide en min⁻¹. La temperatura puede expresarse en °C o K porque sus diferencias tienen el mismo tamaño. El modelo presupone un ambiente prácticamente constante y un objeto cuya temperatura interna pueda representarse por un solo número; no describe sin más un cambio de fase ni una pieza con fuertes gradientes internos.</p>
+<h3>Separar variables sin perder el equilibrio</h3>
+<p>La función constante T = A resuelve la ecuación. Si T ≠ A, separar variables da dT/(T − A) = −k dt. Integrar produce ln|T − A| = −kt + C. Al exponenciar y absorber signo y constante obtenemos T − A = Ce⁻ᵏᵗ. La condición inicial fija C = T₀ − A. Incluir C = 0 recupera la solución de equilibrio que la división había excluido.</p>
+<app-formula expression="T(t)=A+(T_0-A)e^{-kt}">
+</app-formula>
+<p>La comprobación exige dos pasos: derivar para verificar la ecuación y evaluar en cero para verificar la condición inicial. El factor exponencial es siempre positivo, por lo que la trayectoria permanece del mismo lado de A y no cruza el equilibrio en tiempo finito. Se aproxima a él de forma asintótica.</p>
+<h3>Estimar un parámetro con una observación</h3>
+<p>Una bebida empieza a 90 °C en una habitación a 20 °C y después de diez minutos está a 60 °C. La diferencia inicial es 70 y la posterior 40. La razón 40/70 = e⁻¹⁰ᵏ determina k = ln(7/4)/10 ≈ 0,055962 min⁻¹. Para alcanzar 40 °C, la diferencia debe reducirse a 20; el tiempo es ln(70/20)/k ≈ 22,386 minutos desde el inicio.</p>
+<app-formula expression="k=-\frac1{t_1}\ln\frac{T(t_1)-A}{T_0-A},\qquad t_*=\frac1k\ln\frac{T_0-A}{T_*-A}">
+</app-formula>
+<p>Esta fórmula de tiempo exige que las diferencias tengan el mismo signo y que el objetivo esté en la trayectoria. Para un objeto caliente que se enfría, un objetivo por debajo del ambiente es imposible en este modelo. Si la medida no conserva el signo de la diferencia inicial, debemos revisar los datos o las hipótesis antes de tomar el logaritmo.</p>
+<div class="math-lab">
+<h4>Laboratorio / solución exacta frente a pasos de Euler</h4>
+<p>Las pequeñas líneas indican las pendientes del modelo. Cambia k y el paso h: una fórmula de aproximación puede oscilar aunque la solución física sea monótona.</p>
+<div class="controls">
+<label>T₀ = {{initial}} °C<input type="range" min="0" max="100" [(ngModel)]="initial" (ngModelChange)="update()">
+</label>
+<label>Ambiente A = {{ambient}} °C<input type="range" min="0" max="40" [(ngModel)]="ambient" (ngModelChange)="update()">
+</label>
+<label>k = {{k | number:'1.0-4'}} min⁻¹<input type="range" min="0.005" max="0.5" step="0.005" [(ngModel)]="k" (ngModelChange)="update()">
+</label>
+<label>Paso h = {{h}} min<input type="range" min="0.5" max="10" step="0.5" [(ngModel)]="h" (ngModelChange)="update()">
+</label>
+<button type="button" (click)="preset()">Cargar el problema 059</button>
+</div>
+<div class="readouts">
+<span>Semivida de la diferencia<b>{{halfLife | number:'1.0-3'}} min</b>
+</span>
+<span>Euler: k·h = {{k*h | number:'1.0-3'}}<b>{{stability}}</b>
+</span>
+<span>Error a los 60 min (h)<b>{{finalEuler-exact(60) | number:'1.0-5'}} °C</b>
+</span>
+<span>Error absoluto con h/2<b>{{fineError | number:'1.0-5'}} °C</b>
+</span>
+</div>
+<app-learning-plot description="Temperatura y campo de pendientes. Valores numéricos inestables pueden salir de la ventana; el error sigue en la lectura." [series]="series" [xmin]="0" [xmax]="60" [ymin]="ymin" [ymax]="ymax" xLabel="Tiempo (min)" yLabel="Temperatura (°C)" />
+</div>
+<h3>Euler: convertir una pendiente en un paso</h3>
+<p>La aproximación Tₙ₊₁ = Tₙ + hT′ₙ usa la pendiente actual durante todo el paso. En este caso, el exceso sobre el ambiente se multiplica por 1 − kh. La solución exacta lo multiplica por e⁻ᵏʰ. Para h pequeño, e⁻ᵏʰ = 1 − kh + O(h²), pero las dos expresiones difieren cuando el paso crece.</p>
+<app-formula expression="T_{n+1}-A=(1-kh)(T_n-A),\qquad T(t+h)-A=e^{-kh}(T(t)-A)">
+</app-formula>
+<p>Si 0 &lt; kh &lt; 1, Euler conserva el signo y decae monótonamente. En kh = 1 llega artificialmente al equilibrio en un paso. Si 1 &lt; kh &lt; 2, alterna alrededor del ambiente mientras su amplitud disminuye. En kh = 2 no amortigua y para kh &gt; 2 crece: el algoritmo es inestable aunque la ecuación sea estable. Reducir el paso suele disminuir el error global de primer orden; estabilidad y precisión son preguntas diferentes.</p>
+<h3>La familia lineal general</h3>
+<p>Una ecuación y′ + p(t)y = q(t) se resuelve con el factor integrante μ(t) = exp(∫p(t)dt). Multiplicar convierte la izquierda en la derivada de μy. Tras integrar, una condición inicial fija la constante. Para el enfriamiento, p = k y q = kA: el equilibrio y la parte transitoria quedan separados.</p>
+<app-formula expression="(\mu y)'=\mu q,\qquad y(t)=\frac{C+\int\mu(t)q(t)\,dt}{\mu(t)}">
+</app-formula>
+<p>La continuidad de p y q en un intervalo garantiza la solución única del problema inicial lineal en ese intervalo. En ecuaciones no lineales hay que comprobar otras condiciones; una pendiente continua por sí sola no garantiza unicidad. Con ambiente variable A(t), sigue habiendo una ecuación lineal, pero el resultado ya no es una única exponencial que se dirige a una constante.</p>
+<h3>Tiempo característico y contraste con datos</h3>
+<p>El tiempo τ = 1/k reduce la diferencia inicial a 1/e de su valor; la semivida ln 2/k la reduce a la mitad. Cada semivida vuelve a dividirla por dos: no resta siempre la misma cantidad de grados. Con varias observaciones, una gráfica de ln|T − A| frente a t debería aproximarse a una recta de pendiente −k. Desviaciones sistemáticas pueden indicar que el ambiente cambia o que k no es constante. Un ajuste visual bueno no sustituye esa revisión.</p>
+<ul>
+<li>Comprueba por derivación la solución y sus unidades.</li>
+<li>Explica por qué no se alcanza exactamente el ambiente en tiempo finito.</li>
+<li>Busca en el laboratorio una solución de Euler oscilatoria y otra divergente.</li>
+</ul>
+<p>Lectura complementaria: <a href="https://openstax.org/books/calculus-volume-2/pages/4-1-basics-of-differential-equations">OpenStax, ecuaciones diferenciales y problemas iniciales</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-059">Problema 059 · Enfriamiento exponencial</a>. Compara la separación de variables con <a routerLink="/articles/laplace-transform">la transformada de Laplace</a> y explora sistemas en <a routerLink="/tools/vector-field">el campo vectorial</a>.</p>
+</div>

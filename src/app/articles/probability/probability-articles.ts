@@ -1,3 +1,7 @@
+import { StatisticalInferenceArticleComponent } from './statistical-inference/statistical-inference-article.component';
+import { ContinuousRandomVariablesArticleComponent } from './continuous-random-variables/continuous-random-variables-article.component';
+import { GeometricDistributionArticleComponent } from './geometric-distribution/geometric-distribution-article.component';
+import { HypergeometricDistributionArticleComponent } from './hypergeometric-distribution/hypergeometric-distribution-article.component';
 import { LinearRegressionArticleComponent } from './linear-regression/linear-regression-article.component';
 import { SimpsonParadoxArticleComponent } from './simpson-paradox/simpson-paradox-article.component';
 import { SamplingBiasArticleComponent } from './sampling-bias/sampling-bias-article.component';
@@ -11,6 +15,10 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  StatisticalInferenceArticleComponent,
+  ContinuousRandomVariablesArticleComponent,
+  GeometricDistributionArticleComponent,
+  HypergeometricDistributionArticleComponent,
   LinearRegressionArticleComponent,
   SimpsonParadoxArticleComponent,
   SamplingBiasArticleComponent,

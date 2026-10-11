@@ -1,3 +1,4 @@
+import { ContinuityDifferentiabilityArticleComponent } from './continuity-differentiability/continuity-differentiability-article.component';
 import { RecurrentSequencesArticleComponent } from './recurrent-sequences/recurrent-sequences-article.component';
 import { TelescopingSeriesArticleComponent } from './telescoping-series/telescoping-series-article.component';
 import { SeriesConvergenceArticleComponent } from './series-convergence/series-convergence-article.component';
@@ -9,6 +10,7 @@ import { BaselArticleComponent } from './basel/basel-article.component';
 import { StirlingArticleComponent } from './stirling/stirling-article.component';
 
 export const ANALYSIS_ARTICLES = [
+  ContinuityDifferentiabilityArticleComponent,
   RecurrentSequencesArticleComponent,
   TelescopingSeriesArticleComponent,
   SeriesConvergenceArticleComponent,

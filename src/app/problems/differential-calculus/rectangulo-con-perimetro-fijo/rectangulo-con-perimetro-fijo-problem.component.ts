@@ -24,6 +24,11 @@ export class RectanguloConPerimetroFijoProblemComponent {
     "statement": "Entre los rectángulos de perímetro 40 cm, determina el de área máxima.",
     "resources": [
       {
+        "label": "Optimización con derivadas",
+        "route": "/articles/derivative-optimization",
+        "activity": "Construye la función objetivo, determina el dominio y compara candidatos interiores y extremos para justificar el óptimo global."
+      },
+      {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",
         "activity": "La integración clásica amplía el cálculo de áreas a regiones curvas. En este ejercicio el área rectangular se obtiene directamente como producto de lados."

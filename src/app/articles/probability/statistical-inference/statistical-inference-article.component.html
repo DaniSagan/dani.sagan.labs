@@ -1,0 +1,111 @@
+<span class="article-kicker">Estadística / medir lo que una muestra permite afirmar</span>
+<h2>Una estimación, un intervalo y una decisión</h2>
+<p class="dropcap">Una muestra no es la población, pero puede informar sobre ella si conocemos cómo se ha seleccionado y qué variabilidad tiene. La inferencia estadística cuantifica esa incertidumbre mediante distribuciones muestrales. Un intervalo de confianza expresa la precisión de una estimación; un contraste evalúa la compatibilidad de los datos con una hipótesis; el tamaño muestral se elige para alcanzar una precisión prevista. Son herramientas relacionadas, pero ninguna corrige por sí sola el sesgo de un mal diseño.</p>
+<h3>Parámetro, estimador y realización</h3>
+<p>La media poblacional μ es un parámetro fijo desconocido. La media muestral X̄ es una variable aleatoria antes de observar los datos: distintas muestras darían distintos valores. Una vez obtenida la muestra, x̄ es el valor observado. Esta distinción separa la incertidumbre del procedimiento de la incertidumbre subjetiva sobre un resultado ya calculado.</p>
+<p>Si X₁,…,Xₙ son independientes, tienen media μ y varianza σ², la linealidad de la esperanza da E(X̄) = μ. La independencia anula las covarianzas, por lo que Var(X̄) = σ²/n. El error estándar σ/√n mide la dispersión de las medias entre muestras; no es la dispersión de las observaciones individuales.</p>
+<app-formula expression="E(\overline X)=\mu,\qquad \operatorname{Var}(\overline X)=\frac{\sigma^2}{n},\qquad \operatorname{SE}(\overline X)=\frac{\sigma}{\sqrt n}">
+</app-formula>
+<p>Con varianza 36, el error estándar es 6/√n. Para que no supere 1/2 necesitamos √n ≥ 12, es decir n ≥ 144. Reducir a la mitad el error estándar exige cuadruplicar la muestra. Esta ley de raíz cuadrada explica por qué aumentos costosos de tamaño no siempre producen grandes mejoras de precisión.</p>
+<h3>Cuándo usar una normal estándar</h3>
+<p>Si las observaciones son normales, independientes y σ es conocida, X̄ es exactamente normal y Z = (X̄ − μ)/(σ/√n) sigue una normal estándar. No necesitamos invocar un límite asintótico. Para poblaciones no normales con varianza finita, el teorema central del límite puede justificar una aproximación para muestras suficientemente grandes; «suficientemente» depende de la forma y las colas de la población.</p>
+<app-formula expression="Z=\frac{\overline X-\mu}{\sigma/\sqrt n}\sim N(0,1)\quad\text{en el modelo normal con }\sigma\text{ conocida}">
+</app-formula>
+<p>Si σ se estima con la desviación muestral S y las observaciones son normales independientes, el estadístico usa una t de Student con n − 1 grados de libertad. Sustituir σ por S y conservar automáticamente los cuantiles normales no da el intervalo exacto en muestras pequeñas. Los laboratorios de este artículo mantienen σ conocida para que todas sus probabilidades de cobertura y contraste tengan una interpretación precisa.</p>
+<h3>Construir un intervalo de confianza</h3>
+<p>Sea z el cuantil que deja probabilidad α/2 en cada cola normal. La desigualdad −z ≤ (X̄ − μ)/SE ≤ z tiene probabilidad 1 − α. Despejar μ produce un intervalo aleatorio que lo cubre con esa misma probabilidad.</p>
+<app-formula expression="I=\left[\overline X-z_{1-\alpha/2}\frac{\sigma}{\sqrt n},\ \overline X+z_{1-\alpha/2}\frac{\sigma}{\sqrt n}\right]">
+</app-formula>
+<p>Para n = 100, σ = 10 y x̄ = 50, SE = 1 y el intervalo del 95 % es aproximadamente [48,04;51,96]. Si repetimos el muestreo, cerca del 95 % de los intervalos construidos por esta regla cubrirán μ. En la interpretación frecuentista, no asignamos probabilidad 95 % al parámetro fijo dentro de un intervalo ya observado: la garantía se refiere al procedimiento aleatorio.</p>
+<div class="math-lab">
+<h4>Laboratorio 01 / repetir intervalos</h4>
+<p>La simulación genera directamente medias de una población normal con μ = 50 y σ conocida. La línea central es la media verdadera; los segmentos naranjas no la cubren. Se muestran los últimos 60 de todos los intervalos simulados.</p>
+<div class="controls">
+<label>n = {{n}}<input type="range" min="25" max="1000" step="25" [(ngModel)]="n" (ngModelChange)="update()">
+</label>
+<label>σ = {{sigma}}<input type="range" min="1" max="30" [(ngModel)]="sigma" (ngModelChange)="update()">
+</label>
+<label>Confianza<select [(ngModel)]="confidence" (ngModelChange)="update()">
+<option [ngValue]="0.8">80 %</option>
+<option [ngValue]="0.9">90 %</option>
+<option [ngValue]="0.95">95 %</option>
+<option [ngValue]="0.99">99 %</option>
+</select>
+</label>
+<button type="button" (click)="simulate()">Simular 100 intervalos</button>
+<button type="button" (click)="resetCoverage()">Reiniciar</button>
+</div>
+<div class="readouts">
+<span>Error estándar<b>{{se | number:'1.0-4'}}</b>
+</span>
+<span>Cuantil / margen<b>{{critical | number:'1.0-4'}} / {{halfWidth | number:'1.0-4'}}</b>
+</span>
+<span>{{trials}} intervalos: cobertura observada<b>{{trials ? (covered/trials*100 | number:'1.0-2')+' %' : 'Sin intervalos'}}</b>
+</span>
+</div>
+<div class="coverage" role="img" aria-label="Intervalos repetidos: verde indica cobertura de la media 50; naranja indica que no la cubre. La ventana va de 50 menos seis errores estándar a 50 más seis.">@for(row of intervals;track $index){<div class="interval-row" [attr.title]="row.lo.toFixed(3)+' … '+row.hi.toFixed(3)+(row.covers?' · Cubre 50':' · No cubre 50')">
+<span [class.miss]="!row.covers" [style.left.%]="row.left" [style.width.%]="row.width">
+</span>
+</div>}</div>
+<p>No se exige que cada lote de 100 tenga exactamente la cobertura nominal; el porcentaje observado también fluctúa.</p>
+</div>
+<h3>Contrastar una hipótesis sobre la media</h3>
+<p>Para H₀: μ = μ₀ frente a H₁: μ ≠ μ₀, estandarizamos la media observada bajo H₀. Un contraste bilateral de nivel α rechaza cuando |z observado| supera z₁₋α/₂. Las dos colas juntas tienen probabilidad α si H₀ es cierta y se cumplen las hipótesis del modelo.</p>
+<p>En el problema x̄ = 52, μ₀ = 50, n = 100 y σ = 10, z = 2. Al nivel 5 %, el umbral es aproximadamente 1,96: rechazamos H₀. El valor p es la probabilidad, calculada bajo H₀, de obtener un estadístico al menos tan extremo en valor absoluto como el observado: 2(1 − Φ(2)) ≈ 0,0455. No es la probabilidad de que H₀ sea cierta ni la probabilidad de que el resultado se deba «al azar» en general.</p>
+<div class="math-lab">
+<h4>Laboratorio 02 / dos colas, una decisión</h4>
+<div class="controls">
+<label>Media observada = {{mean}}<input type="range" min="40" max="60" step="0.1" [(ngModel)]="mean" (ngModelChange)="plot()">
+</label>
+<label>Media bajo H₀ = {{nullMean}}<input type="range" min="40" max="60" step="0.1" [(ngModel)]="nullMean" (ngModelChange)="plot()">
+</label>
+</div>
+<div class="readouts">
+<span>z observado<b>{{statistic | number:'1.0-4'}}</b>
+</span>
+<span>Valor p bilateral<b>{{pValue | number:'1.0-6'}}</b>
+</span>
+<span>Decisión al nivel {{(1-confidence)*100 | number:'1.0-0'}} %<b>{{rejects ? 'Rechazar H₀' : 'No rechazar H₀'}}</b>
+</span>
+<span>Intervalo correspondiente<b>[{{mean-halfWidth | number:'1.0-3'}}; {{mean+halfWidth | number:'1.0-3'}}]</b>
+</span>
+</div>
+<app-learning-plot description="Normal estándar bajo H₀, regiones críticas y estadístico observado. n, σ y nivel se controlan en el primer laboratorio." [series]="series" [markers]="markers" [xmin]="-plotLimit" [xmax]="plotLimit" [ymin]="0" [ymax]="0.42" xLabel="z" yLabel="Densidad bajo H₀" />
+</div>
+<h3>Intervalos y contrastes son dos lecturas del mismo pivote</h3>
+<p>En este modelo y con el mismo α, el contraste bilateral rechaza exactamente cuando μ₀ queda fuera del intervalo de confianza. No rechazar no demuestra igualdad: puede faltar precisión para detectar una diferencia real. Rechazar tampoco cuantifica la importancia práctica del efecto. Conviene informar de la diferencia estimada y su intervalo, no únicamente de una etiqueta «significativo».</p>
+<h3>Error de tipo I, tipo II y potencia</h3>
+<p>El tipo I es rechazar una H₀ verdadera; el nivel controla su probabilidad. El tipo II es no rechazar cuando la alternativa concreta es cierta. La potencia es uno menos esa probabilidad y depende del tamaño del efecto, n, σ y el nivel elegido. No hay una única potencia para «H₁: μ ≠ μ₀»: cada media alternativa produce una. Fijar α después de observar los datos o probar muchas hipótesis sin ajustar el procedimiento invalida la interpretación nominal.</p>
+<h3>Planificar una muestra para una proporción</h3>
+<p>Una proporción muestral es la media de indicadores Bernoulli. Su varianza es p(1 − p)/n bajo independencia. La aproximación normal conduce a margen e ≈ z√(p(1 − p)/n). Despejar n y redondear hacia arriba da una regla de planificación. Si desconocemos p, p(1 − p) ≤ 1/4 permite usar p = 1/2 como opción conservadora.</p>
+<app-formula expression="n\ge\frac{z^2p(1-p)}{e^2},\qquad n_{\text{conservador}}=\left\lceil\frac{z^2}{4e^2}\right\rceil">
+</app-formula>
+<div class="math-lab">
+<h4>Laboratorio 03 / cuánto cuesta la precisión</h4>
+<div class="controls">
+<label>Margen e = {{margin}}<input type="range" min="0.01" max="0.2" step="0.005" [(ngModel)]="margin">
+</label>
+<label>Conocimiento de p<select [(ngModel)]="unknownP">
+<option [ngValue]="true">Desconocida: usar 1/2</option>
+<option [ngValue]="false">Usar una estimación previa</option>
+</select>
+</label>
+<label>p previo = {{planningP}}<input type="range" min="0.05" max="0.95" step="0.01" [(ngModel)]="planningP" [disabled]="unknownP">
+</label>
+</div>
+<div class="readouts">
+<span>n mínimo según la aproximación normal<b>{{requiredN}}</b>
+</span>
+<span>Confianza utilizada<b>{{confidence*100}} %</b>
+</span>
+</div>
+</div>
+<p>Con z = 1,96 y e = 0,05, la regla conservadora da 385. Un cuantil normal calculado con más cifras produce el mismo entero en este caso. Esto es una planificación aproximada, no una garantía exacta de cobertura para cada proporción. Cerca de 0 o 1 o con pocos éxitos, el intervalo normal simétrico puede funcionar mal; alternativas como Wilson o métodos binomiales exactos cambian el procedimiento. Para una media con σ conocida, la regla correspondiente es n ≥ (zσ/e)².</p>
+<h3>Lo que aumentar n no arregla</h3>
+<p>Si encuestamos solo a personas de una biblioteca, una muestra enorme puede estimar con gran precisión la media de ese grupo y seguir sesgada para todo el instituto. La dependencia, el muestreo por conglomerados, la no respuesta y una fracción de muestreo grande alteran las varianzas. Antes de aplicar una fórmula hay que describir población objetivo, diseño y posibles sesgos. Los cálculos de este artículo corresponden a un modelo declarado, no a cualquier conjunto de datos.</p>
+<p>Lectura complementaria: <a href="https://openstax.org/books/introductory-statistics-2e/pages/8-1-a-single-population-mean-using-the-normal-distribution">OpenStax, intervalos para una media con desviación conocida</a>.</p>
+<div class="article-activities">
+<h3>Practica y experimenta</h3>
+<p>
+<a routerLink="/problems/problema-086">086 · Precisión de una media</a>, <a routerLink="/problems/problema-087">087 · Intervalo para una media normal</a>, <a routerLink="/problems/problema-088">088 · Contraste bilateral</a> y <a routerLink="/problems/problema-089">089 · Tamaño muestral para una proporción</a>. Completa la lectura con <a routerLink="/articles/central-limit-theorem">el teorema central del límite</a> y <a routerLink="/articles/sampling-bias">muestreo y sesgo</a>.</p>
+</div>

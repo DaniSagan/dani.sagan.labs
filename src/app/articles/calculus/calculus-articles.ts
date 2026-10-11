@@ -1,3 +1,5 @@
+import { FirstOrderOdesArticleComponent } from './first-order-odes/first-order-odes-article.component';
+import { DerivativeOptimizationArticleComponent } from './derivative-optimization/derivative-optimization-article.component';
 import { TaylorSeriesArticleComponent } from './taylor-series/taylor-series-article.component';
 import { IntegrationClassicalArticleComponent, IntegrationAdvancedArticleComponent, IntegrationNumericalArticleComponent } from './integration/integration-article.component';
 import { LaplaceTransformArticleComponent } from './laplace-transform/laplace-transform-article.component';
@@ -6,6 +8,8 @@ import { BrachistochroneArticleComponent } from './brachistochrone/brachistochro
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
 
 export const CALCULUS_ARTICLES = [
+  FirstOrderOdesArticleComponent,
+  DerivativeOptimizationArticleComponent,
   IntegrationClassicalArticleComponent,
   IntegrationAdvancedArticleComponent,
   IntegrationNumericalArticleComponent,

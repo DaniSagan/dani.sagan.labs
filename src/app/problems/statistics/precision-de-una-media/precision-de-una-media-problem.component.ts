@@ -24,6 +24,11 @@ export class PrecisionDeUnaMediaProblemComponent {
     "statement": "Una población tiene varianza 36. Para muestras independientes de tamaño n, calcula \\(\\operatorname{Var}(\\bar{X})\\). ¿Qué n hace que la desviación típica de X̄ sea como máximo \\(\\frac{1}{2}\\)?",
     "resources": [
       {
+        "label": "Inferencia estadística",
+        "route": "/articles/statistical-inference",
+        "activity": "Distingue error estándar, cobertura y nivel del contraste; planifica tamaños muestrales y comprueba las hipótesis del modelo."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras."

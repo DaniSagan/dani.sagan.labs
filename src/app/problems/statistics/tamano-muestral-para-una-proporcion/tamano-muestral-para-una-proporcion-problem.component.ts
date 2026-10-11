@@ -24,6 +24,11 @@ export class TamanoMuestralParaUnaProporcionProblemComponent {
     "statement": "Usando la aproximación normal, busca n para estimar una proporción con margen máximo \\(0,05\\) al 95 %, sin conocer previamente p. Usa \\(z=1,96\\).",
     "resources": [
       {
+        "label": "Inferencia estadística",
+        "route": "/articles/statistical-inference",
+        "activity": "Distingue error estándar, cobertura y nivel del contraste; planifica tamaños muestrales y comprueba las hipótesis del modelo."
+      },
+      {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",
         "activity": "Una proporción muestral es una media de indicadores Bernoulli. Su aproximación normal conecta con la distribución de medias muestrales."

@@ -24,6 +24,11 @@ export class EscalaDeUnaOrbitaCircularProblemComponent {
     "statement": "En el modelo newtoniano de masa central M fija y satélite despreciable, deduce el período de una órbita circular de radio r. ¿Cómo cambia al duplicar r?",
     "resources": [
       {
+        "label": "Órbitas circulares y tercera ley de Kepler",
+        "route": "/articles/kepler-orbits",
+        "activity": "Deriva la velocidad y el período orbital, comprueba la escala T proporcional a r^(3/2) y distingue radio de semieje mayor."
+      },
+      {
         "label": "Péndulo doble",
         "route": "/articles/double-pendulum",
         "activity": "Otra aplicación de las leyes de Newton a un sistema dinámico; permite comparar modelos físicos con distintas hipótesis."

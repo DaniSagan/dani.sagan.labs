@@ -24,6 +24,11 @@ export class UnaFuncionOscilanteProblemComponent {
     "statement": "Define \\(f(0)=0\\) y \\(f(x)=x \\sin(1/x)\\) para x≠0. Estudia continuidad y derivabilidad en 0.",
     "resources": [
       {
+        "label": "Continuidad y derivabilidad",
+        "route": "/articles/continuity-differentiability",
+        "activity": "Compara límites laterales y cocientes incrementales; distingue continuidad, derivabilidad y continuidad de la derivada."
+      },
+      {
         "label": "Series de Taylor",
         "route": "/articles/taylor-series",
         "activity": "La oscilación impide la derivada en cero. Como contraste, las expansiones de Taylor requieren las condiciones de regularidad explicadas en este artículo."
