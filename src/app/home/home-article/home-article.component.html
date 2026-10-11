@@ -11,7 +11,7 @@
       <span class="coordinate bottom-coordinate" aria-hidden="true">{{ activeScene.formula }}</span>
       <button class="play-control" type="button" (click)="togglePause()"
         [attr.aria-label]="paused ? 'Reanudar animación' : 'Pausar animación'" [attr.aria-pressed]="paused">{{ paused ?
-        '▶' : 'Ⅱ' }}</button>
+        '▶' : '⏸' }}</button>
     </div>
     <div class="scene-selector" role="group" aria-label="Elegir visualización">
       @for (scene of scenes; track scene.code; let i = $index) {
