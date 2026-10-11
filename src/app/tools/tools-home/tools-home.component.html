@@ -1,0 +1,25 @@
+<header class="tools-intro">
+  <p class="eyebrow">DaniSagan Labs / Herramientas</p>
+  <h1>Una idea. Un cálculo.<br><span>Un descubrimiento.</span></h1>
+  <p class="intro-copy">Explora las matemáticas con herramientas interactivas: representa, calcula y experimenta a tu ritmo. Elige por dónde empezar.</p>
+  <div class="intro-footer"><span>9 herramientas para explorar</span><a routerLink="/tools/graph-plotter">Empezar con una gráfica <span aria-hidden="true">↗</span></a></div>
+</header>
+
+@for (group of groups; track group.title; let i = $index) {
+  <section class="tool-group" [attr.aria-labelledby]="'tool-group-' + i">
+    <div class="group-heading">
+      <span class="group-number" aria-hidden="true">0{{ i + 1 }}</span>
+      <div><h2 [id]="'tool-group-' + i">{{ group.title }}</h2><p>{{ group.description }}</p></div>
+    </div>
+    <div class="tool-grid">
+      @for (tool of group.tools; track tool.route) {
+        <a class="tool-card" [routerLink]="['/tools', tool.route]">
+          <div class="card-top"><span class="tool-symbol" aria-hidden="true">{{ tool.symbol }}</span><span class="card-arrow" aria-hidden="true">↗</span></div>
+          <h3>{{ tool.name }}</h3>
+          <p>{{ tool.description }}</p>
+          <span class="card-action">Abrir herramienta <span aria-hidden="true">→</span></span>
+        </a>
+      }
+    </div>
+  </section>
+}

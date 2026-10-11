@@ -10,6 +10,7 @@ import { TravelPlannerComponent } from './travel-planner/travel-planner.componen
 
 const routes: Routes = [
   { path: '', component: ToolsContentComponent, children: [
+      { path: '', pathMatch: 'full', title: 'Herramientas · DaniSagan Labs', loadComponent: () => import('./tools-home/tools-home.component').then(m => m.ToolsHomeComponent) },
       { path: 'graph-plotter', component: GraphPlotterComponent },
       { path: 'prime-decomposition', component: PrimeDecompositionArticleComponent },
       { path: 'pi-decimals', component: PiDecimalComponent },
