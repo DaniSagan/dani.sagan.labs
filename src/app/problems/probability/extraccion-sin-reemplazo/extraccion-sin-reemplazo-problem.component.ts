@@ -37,6 +37,16 @@ export class ExtraccionSinReemplazoProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Principios de conteo: suma, producto y elecciones",
+        "route": "/articles/counting-principles",
+        "activity": "Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones."
+      },
+      {
+        "label": "Principio de inclusión y exclusión",
+        "route": "/articles/inclusion-exclusion",
+        "activity": "Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones."
       }
     ]
   };

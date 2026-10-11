@@ -23,11 +23,11 @@ export class TiempoHastaElPrimerExitoProblemComponent {
     "level": "Oposición",
     "statement": "Ensayos independientes tienen éxito con probabilidad \\(\\frac{1}{4}\\). Sea X el número de ensayos hasta el primer éxito, incluido este. Calcula \\(P(X>3)\\) y \\(E(X)\\).",
     "resources": [
-{
-  "label": "Esperanza discreta, juegos justos y riesgo",
-  "route": "/articles/discrete-expectation",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Esperanza discreta, juegos justos y riesgo",
+        "route": "/articles/discrete-expectation",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Distribución geométrica y tiempo de espera",
         "route": "/articles/geometric-distribution",
@@ -42,6 +42,11 @@ export class TiempoHastaElPrimerExitoProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Progresiones y series geométricas",
+        "route": "/articles/geometric-series",
+        "activity": "Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico."
       }
     ]
   };

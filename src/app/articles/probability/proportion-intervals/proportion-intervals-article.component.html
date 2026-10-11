@@ -1,0 +1,48 @@
+<span class="article-kicker">Probabilidad y estadística / comprender, deducir, experimentar</span>
+<h2>Intervalos para proporciones: Wilson y métodos exactos</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">El modelo binomial y la cobertura</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Por qué Wald falla en los extremos</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Wilson mediante inversión de un contraste</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Clopper–Pearson y métodos relacionados</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">La regla de tres y su alcance</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una proporción muestral necesita un intervalo que refleje su tamaño de muestra y la discreción de los éxitos observados. El intervalo normal de Wald puede fallar cerca de cero o uno. Wilson invierte un contraste de puntuación y Clopper–Pearson invierte colas binomiales. Ambos tratan mejor los extremos, aunque responden a criterios de cobertura diferentes.</p>
+<h3 id="section-0">El modelo binomial y la cobertura</h3>
+<p>El número de éxitos se modela como binomial si hay ensayos independientes con una misma probabilidad. La estimación natural es éxitos entre ensayos. Un intervalo frecuentista es un procedimiento aleatorio que cubre el parámetro fijo con una frecuencia especificada bajo repetición. Tras observar la muestra, no corresponde asignar una probabilidad al parámetro dentro del intervalo sin introducir un modelo bayesiano.</p>
+<h3 id="section-1">Por qué Wald falla en los extremos</h3>
+<p>Wald sustituye la varianza por una estimación basada en la proporción observada. Si no hay éxitos, esa varianza es cero y entrega un intervalo de anchura cero, aunque muchas probabilidades positivas sean compatibles con la observación. También puede cruzar los límites de cero y uno, y su cobertura real puede oscilar mucho. Recortar sus extremos no soluciona la mala calibración original.</p>
+<app-formula expression="\widehat p\pm z_{1-\alpha/2}\sqrt{\frac{\widehat p(1-\widehat p)}n}" />
+<h3 id="section-2">Wilson mediante inversión de un contraste</h3>
+<p>En lugar de reemplazar la probabilidad en la desviación del contraste, se dejan todos los valores del parámetro que no serían rechazados por el contraste de puntuación. Resolver la desigualdad cuadrática produce un centro ligeramente desplazado hacia un medio y un radio que no desaparece en los extremos. Su cobertura no es exacta para toda probabilidad, pero suele comportarse mucho mejor que Wald en muestras pequeñas.</p>
+<app-formula expression="\frac{\widehat p+z^2/(2n)\ \pm\ z\sqrt{\widehat p(1-\widehat p)/n+z^2/(4n^2)}}{1+z^2/n}" />
+<h3 id="section-3">Clopper–Pearson y métodos relacionados</h3>
+<p>El método exacto elige extremos invirtiendo las colas binomiales; la cobertura es al menos la nominal bajo el modelo y suele ser conservadora por la discreción. Con cero éxitos el extremo inferior es cero y el superior procede de la probabilidad de observar ninguno. Intervalos bayesianos con una previa beta son alternativas, pero su interpretación es credibilidad posterior y debe declararse la previa. No son simplemente otra fórmula de cobertura exacta.</p>
+<app-formula expression="k=0:\qquad p_U=1-(\alpha/2)^{1/n}" />
+<h3 id="section-deeper">La regla de tres y su alcance</h3>
+<p>Si no se observa ningún éxito, un límite superior unilateral al nivel de confianza elegido se obtiene imponiendo que la probabilidad de cero éxitos sea igual al riesgo de cola. Para riesgo cinco por ciento, el logaritmo negativo de ese riesgo es aproximadamente tres, lo que produce la regla de tres sobre el tamaño como aproximación. No es el mismo intervalo que el bilateral del laboratorio: allí cada cola recibe la mitad del riesgo. La diferencia importa especialmente con pocos ensayos. El límite asume independencia y una probabilidad común; si hay agrupación, veinte observaciones relacionadas no aportan la información de veinte ensayos independientes.</p>
+<app-formula expression="p_U=1-\alpha^{1/n}\approx\frac{-\log\alpha}{n},\qquad \alpha=0.05:\ p_U\approx3/n" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Con cero éxitos en veinte ensayos, Wald se reduce al punto cero. Wilson al 95 % da un límite superior aproximado 0,161 y Clopper–Pearson aproximadamente 0,168. La ausencia de éxitos no establece que la probabilidad poblacional sea nula.</p>
+<app-formula expression="p_U^{\mathrm{Wilson}}=\frac{1.96^2}{20+1.96^2},\qquad p_U^{\mathrm{CP}}=1-0.025^{1/20}" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Prueba los extremos cero y uno, y aumenta el tamaño. Compara la anchura y recuerda que el porcentaje del control se convierte en un número entero de éxitos.</p>
+<app-deep-explorer topic="proportion-intervals" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Estos intervalos no corrigen dependencia entre ensayos ni una muestra de selección sesgada. El modelo de observación debe justificarse primero.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Por qué pasar de cero éxitos a uno puede cambiar de forma apreciable un intervalo pequeño?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La distribución del conteo es discreta. Una observación representa una fracción grande del tamaño pequeño y cambia las colas binomiales que se invierten.</p></details>
+<p>¿El límite unilateral al 95 % con cero éxitos coincide con el superior bilateral al 95 %?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. El bilateral usa 0,025 en la cola y suele dar un límite superior mayor.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-076">Una distribución binomial</a>. Amplía la inferencia binomial con Wilson y Clopper–Pearson, especialmente cerca de cero y uno.</li>
+<li><a routerLink="/problems/problema-089">Tamaño muestral para una proporción</a>. Amplía la inferencia binomial con Wilson y Clopper–Pearson, especialmente cerca de cero y uno.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Estima una tasa de victorias solo después de definir partidas comparables y un mecanismo de muestreo.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a>, <a routerLink="/articles/large-numbers-law">Ley de los grandes números</a>, <a routerLink="/articles/probability-inequalities">Desigualdades de Markov y Chebyshev</a>.</p>

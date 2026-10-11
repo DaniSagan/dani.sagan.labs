@@ -1,0 +1,47 @@
+<span class="article-kicker">Trigonometría / comprender, deducir, experimentar</span>
+<h2>Trigonometría esférica y coordenadas celestes</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Puntos como vectores unitarios</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Triángulos de círculos máximos</a></li>
+<li><a [routerLink]="[]" fragment="section-2">De coordenadas ecuatoriales a altura</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Límites del modelo</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Azimut sin perder el cuadrante</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Sobre una esfera, los triángulos están formados por arcos de círculos máximos y sus ángulos no obedecen exactamente a la geometría plana. Esta estructura permite convertir coordenadas celestes, calcular distancias terrestres y determinar alturas de astros. Los convenios de ángulos y signos son esenciales para que una fórmula produzca el punto correcto.</p>
+<h3 id="section-0">Puntos como vectores unitarios</h3>
+<p>Latitud y longitud determinan un vector de norma uno. El producto interno de dos de esos vectores da el coseno de su separación angular. Multiplicar ese ángulo en radianes por el radio da la longitud del arco mínimo. La cuerda recta entre los puntos es una distancia diferente. En puntos casi coincidentes, evaluar un arcoseno o una forma de haversine puede ser más estable que arccos de un número cercano a uno.</p>
+<app-formula expression="\cos d=\sin\phi_1\sin\phi_2+\cos\phi_1\cos\phi_2\cos(\lambda_2-\lambda_1)" />
+<h3 id="section-1">Triángulos de círculos máximos</h3>
+<p>Los lados de un triángulo esférico se expresan como ángulos centrales, no como longitudes planas. La ley esférica de los cosenos se deduce descomponiendo vectores en el plano tangente y radial. La suma de ángulos supera ciento ochenta grados para un triángulo convexo y su exceso determina el área. Si todos los lados son pequeños frente al radio, la geometría plana aparece como aproximación.</p>
+<app-formula expression="\cos c=\cos a\cos b+\sin a\sin b\cos C,\qquad \mathcal A=R^2(A+B+C-\pi)" />
+<h3 id="section-2">De coordenadas ecuatoriales a altura</h3>
+<p>Declinación, latitud del observador y ángulo horario forman el triángulo astronómico. La altura proviene de la proyección del vector del astro sobre la vertical local. El ángulo horario depende de tiempo sidéreo y ascensión recta, no directamente de la hora civil. Para el azimut debe usarse una función de dos argumentos y fijar si se mide desde el norte y en qué sentido.</p>
+<app-formula expression="\sin h=\sin\phi\sin\delta+\cos\phi\cos\delta\cos H" />
+<h3 id="section-3">Límites del modelo</h3>
+<p>La geometría ideal no incluye refracción atmosférica, relieve ni tamaño aparente del disco solar. Para salida y puesta se usa un umbral de altura adecuado al fenómeno, y en latitudes altas puede no existir cruce. Una esfera terrestre ignora achatamiento y produce errores en distancias precisas. Las coordenadas también dependen del sistema de referencia y época, por lo que una conversión geométrica no reemplaza un catálogo astronómico actualizado.</p>
+<h3 id="section-deeper">Azimut sin perder el cuadrante</h3>
+<p>La altura puede obtenerse con una sola proyección, pero el azimut requiere dos componentes horizontales. En el convenio de ángulo horario positivo hacia el oeste y azimut medido desde el norte hacia el este, se calculan componentes este y norte y se aplica atan2 en ese orden. Cerca del cenit ambas componentes se anulan y el azimut queda indeterminado, una singularidad de coordenadas y no del astro. En el horizonte, el signo de la componente este distingue salida y puesta. Este enfoque vectorial evita seleccionar manualmente un cuadrante a partir de un arcoseno y mantiene explícita la orientación utilizada.</p>
+<app-formula expression="e=-\cos\delta\sin H,\quad n=\cos\phi\sin\delta-\sin\phi\cos\delta\cos H,\quad A=\operatorname{atan2}(e,n)" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Desde el ecuador en longitud cero hasta otro punto del ecuador a noventa grados de longitud, la separación es un cuarto de vuelta. En una esfera de radio 6371 kilómetros, el arco es aproximadamente 10007,5 kilómetros. Un triángulo formado por dos puntos ecuatoriales y el polo puede tener tres ángulos rectos.</p>
+<app-formula expression="d=\pi/2,\qquad L=6371\,\pi/2\ \mathrm{km},\qquad A+B+C=3\pi/2" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Cambia latitud y diferencia de longitud para calcular separación desde el origen ecuatorial. Comprueba los casos de coincidir, un cuarto de vuelta y puntos opuestos.</p>
+<app-deep-explorer topic="spherical-trigonometry" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Un ángulo de noventa grados debe convertirse a radianes antes de multiplicarlo por el radio. Mezclar ambas unidades introduce un factor enorme.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué altura alcanza en culminación superior un astro con declinación igual a la latitud del observador?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>En el caso ideal culmina en el cenit, con altura noventa grados, pues su distancia cenital es la diferencia absoluta entre latitud y declinación.</p></details>
+<p>¿Por qué el azimut no está definido en el cenit?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque la proyección horizontal es nula y ninguna dirección horizontal queda distinguida.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-098">Altura solar en Oviedo</a>. Amplía la geometría solar con coordenadas sobre una esfera y conversión de altura y azimut.</li>
+<li><a routerLink="/tools/sun-position">Posición del Sol</a>. Contrasta geometría y tiempo solar para una localización y fecha concretas.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Relaciona coordenadas angulares con posiciones espaciales, distinguiendo la esfera de observación de la dinámica gravitatoria.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/equation-of-time">Ecuación del tiempo y mediodía solar</a>, <a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala</a>.</p>

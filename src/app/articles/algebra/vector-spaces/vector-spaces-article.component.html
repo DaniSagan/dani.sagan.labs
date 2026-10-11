@@ -1,0 +1,50 @@
+<span class="article-kicker">Álgebra / comprender, deducir, experimentar</span>
+<h2>Espacios vectoriales, bases y rango–nulidad</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Cierre y subespacios</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Generación, independencia y coordenadas</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Imagen y núcleo de una transformación</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Demostración de rango–nulidad</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Compatibilidad y dimensión de las soluciones</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La dimensión cuenta direcciones independientes, no elementos de un conjunto. Un espacio vectorial organiza sumas y escalas; una base permite describir cualquier vector mediante coordenadas únicas. Una transformación lineal puede conservar direcciones, mezclarlas o perderlas. El teorema rango–nulidad cuantifica exactamente ese reparto y explica sistemas con soluciones únicas, infinitas o inexistentes.</p>
+<h3 id="section-0">Cierre y subespacios</h3>
+<p>Un subespacio contiene el vector cero y está cerrado bajo combinaciones lineales. Una recta que pasa por el origen es un subespacio; una recta paralela desplazada es un conjunto afín. Las soluciones de un sistema homogéneo forman un subespacio, mientras que las de un sistema compatible no homogéneo son una traslación del núcleo. Verificar cierre exige coeficientes arbitrarios, no solo sumar unos ejemplos.</p>
+<h3 id="section-1">Generación, independencia y coordenadas</h3>
+<p>Una familia generadora permite escribir todos los vectores; una familia independiente solo permite obtener cero con todos los coeficientes nulos. Una base cumple ambas condiciones, de modo que las coordenadas existen y son únicas. Distintas bases producen distintas listas de coordenadas para el mismo vector geométrico. La eliminación gaussiana encuentra pivotes y dependencias, pero al extraer una base de columnas deben tomarse las columnas correspondientes de la matriz original.</p>
+<app-formula expression="v=\sum_{i=1}^d c_i b_i,\qquad \sum_i c_i b_i=0\Longrightarrow c_i=0" />
+<h3 id="section-2">Imagen y núcleo de una transformación</h3>
+<p>El núcleo reúne los vectores enviados a cero; la imagen reúne todos los resultados alcanzables. Una matriz con varias columnas iguales pierde alguna combinación de coordenadas aunque ninguna columna sea cero. La inyectividad equivale a núcleo trivial. La sobreyectividad requiere que la imagen ocupe todo el espacio de llegada, cuya dimensión puede ser diferente de la de partida. Para resolver un sistema se comprueba primero si el objetivo está en esa imagen.</p>
+<app-formula expression="\ker T=\{v:T(v)=0\},\qquad \operatorname{im}T=\{T(v):v\in V\}" />
+<h3 id="section-3">Demostración de rango–nulidad</h3>
+<p>Toma una base del núcleo y complétala hasta una base del espacio de partida. Las imágenes de los vectores añadidos generan la imagen porque las primeras se anulan. También son independientes: una combinación cuya imagen fuera cero pertenecería al núcleo y contradiría la independencia de la base ampliada. Así los vectores añadidos cuentan exactamente el rango. La demostración indica qué parte de la información se pierde y cuál se conserva.</p>
+<app-formula expression="\dim V=\dim\ker T+\dim\operatorname{im}T" />
+<h3 id="section-deeper">Compatibilidad y dimensión de las soluciones</h3>
+<p>Si un sistema admite una solución particular, cualquier otra difiere de ella en un vector del núcleo: restar ambas ecuaciones elimina el término independiente. Recíprocamente, sumar un vector del núcleo a una solución conserva la ecuación. Por tanto la familia de soluciones es un espacio afín con dimensión igual a la nulidad. El criterio de Rouché–Capelli compara el rango de la matriz con el de la ampliada: una columna objetivo que aumenta el rango está fuera de la imagen. Esta lectura conecta un procedimiento de eliminación con una afirmación geométrica. El número de ecuaciones por sí solo no decide compatibilidad ni unicidad.</p>
+<app-formula expression="Ax=b,\quad x=x_0+\ker A,\qquad \operatorname{rank}(A)=\operatorname{rank}(A\mid b)" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>La matriz con primera fila uno, uno y segunda fila cero, cero transforma un vector del plano en la suma de sus componentes sobre el eje horizontal. El núcleo es la recta de componentes opuestas y la imagen es una recta. Si se cambia la entrada inferior derecha por un parámetro no nulo, la matriz se vuelve invertible.</p>
+<app-formula expression="A_t=\begin{pmatrix}1&amp;1\\0&amp;t\end{pmatrix},\quad t=0:\ \ker A_0=\operatorname{span}(1,-1),\quad \operatorname{rank}A_0=1" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Observa cómo la imagen del círculo se colapsa al anular el parámetro. Acerca el parámetro a cero sin llegar: la imagen es muy estrecha, pero sigue teniendo dos direcciones independientes.</p>
+<app-deep-explorer topic="vector-spaces" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Un rango numérico calculado con tolerancia puede cambiar cerca de una singularidad. Hay que distinguir dependencia exacta y dependencia aproximada.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Un mapa de un espacio de dimensión cinco tiene rango tres. ¿Qué dimensión tiene su núcleo? ¿Puede ser inyectivo?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>El núcleo tiene dimensión dos por rango–nulidad, por lo que el mapa no es inyectivo.</p></details>
+<p>Un sistema de tres incógnitas tiene rango dos y es compatible. ¿Cuántos parámetros libres tiene?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Tiene uno, porque el núcleo tiene dimensión tres menos dos.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-016">Sistema con parámetro</a>. Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones.</li>
+<li><a routerLink="/problems/problema-018">Un determinante geométrico</a>. Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones.</li>
+<li><a routerLink="/problems/problema-019">Proyección ortogonal</a>. Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones.</li>
+<li><a routerLink="/problems/problema-020">Una matriz no diagonalizable</a>. Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/rubik-cube">Cubo de Rubik</a>. Compara cambios de coordenadas con cambios de descripción de un estado; los giros del cubo se estudian como permutaciones, no como matrices arbitrarias de este laboratorio.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt</a>, <a routerLink="/articles/projection-least-squares">Proyecciones ortogonales y mínimos cuadrados</a>.</p>

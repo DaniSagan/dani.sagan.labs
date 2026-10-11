@@ -23,16 +23,16 @@ export class UnaTangenteLogaritmicaProblemComponent {
     "level": "Repaso",
     "statement": "Halla la recta tangente a \\(f(x)=\\ln x\\) en \\(x=e\\) y el punto donde corta el eje x.",
     "resources": [
-{
-  "label": "Teoremas de Rolle y del valor medio",
-  "route": "/articles/mean-value-theorems",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-{
-  "label": "Estudio completo de funciones",
-  "route": "/articles/function-analysis",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Teoremas de Rolle y del valor medio",
+        "route": "/articles/mean-value-theorems",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
+      {
+        "label": "Estudio completo de funciones",
+        "route": "/articles/function-analysis",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",
@@ -47,6 +47,11 @@ export class UnaTangenteLogaritmicaProblemComponent {
         "label": "Campo vectorial",
         "route": "/tools/vector-field",
         "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
+      },
+      {
+        "label": "Diferenciales y aproximación lineal",
+        "route": "/articles/linear-approximation",
+        "activity": "Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación."
       }
     ]
   };

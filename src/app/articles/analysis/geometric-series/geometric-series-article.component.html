@@ -1,0 +1,49 @@
+<span class="article-kicker">Análisis / comprender, deducir, experimentar</span>
+<h2>Progresiones y series geométricas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">La cancelación que produce la fórmula</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Pasar al límite y controlar el resto</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Razones negativas y fronteras</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Probabilidad y escalas discretas</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Derivar una serie para calcular una esperanza</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una progresión geométrica repite un mismo factor multiplicativo. Sus sumas describen intereses, decaimientos, tiempos de espera y construcciones fractales. La suma finita es una identidad algebraica válida para casi cualquier razón; la suma infinita añade una condición de convergencia. Mantener separadas ambas ideas evita atribuir un valor a una serie divergente.</p>
+<h3 id="section-0">La cancelación que produce la fórmula</h3>
+<p>Multiplicar la suma parcial por la razón desplaza sus términos. Restar ambas expresiones cancela todos los interiores y deja solo el primero y el último. Si la razón es uno, no se puede dividir por la diferencia y la suma vale el número de términos por el término inicial. La fórmula admite razones negativas y complejas, aunque entonces las sumas no tienen por qué ser monótonas.</p>
+<app-formula expression="S_N=a\sum_{j=0}^{N-1}r^j=a\frac{1-r^N}{1-r},\qquad r\ne1" />
+<h3 id="section-1">Pasar al límite y controlar el resto</h3>
+<p>La potencia de la razón tiende a cero exactamente cuando su módulo es menor que uno. En ese caso existe suma infinita y el resto tras cierto número de términos se calcula sin aproximación. Para conseguir un error absoluto determinado puede despejarse el número de términos mediante logaritmos, cuidando que el logaritmo del módulo es negativo. Cuando la razón se acerca a uno, la convergencia puede ser muy lenta.</p>
+<app-formula expression="S_\infty=\frac a{1-r},\qquad R_N=\frac{ar^N}{1-r},\qquad |r|&lt;1" />
+<h3 id="section-2">Razones negativas y fronteras</h3>
+<p>Una razón negativa de módulo pequeño hace alternar términos y sumas parciales; la convergencia no requiere crecimiento monótono. Con razón menos uno, los términos no tienden a cero y las sumas alternan sin límite. Con razón uno tampoco desaparecen los términos. Si el módulo es mayor que uno, las potencias crecen. Una gráfica que muestra pocos pasos puede ocultar divergencia cuando el módulo supera uno por una cantidad pequeña.</p>
+<h3 id="section-3">Probabilidad y escalas discretas</h3>
+<p>En ensayos independientes con éxito de probabilidad fija, la distribución del primer éxito tiene pesos geométricos y la suma total debe valer uno. Esa normalización usa una razón entre cero y uno. En Cantor, la longitud superviviente se multiplica por dos tercios en cada etapa y tiende a cero, aunque el número de piezas aumenta. Son magnitudes diferentes: la suma de longitudes no cuenta cardinalidad ni masa de una distribución singular.</p>
+<h3 id="section-deeper">Derivar una serie para calcular una esperanza</h3>
+<p>Dentro del disco de convergencia, la serie geométrica puede derivarse término a término. La nueva identidad suma índices multiplicados por potencias y permite calcular la esperanza de un tiempo de espera geométrico. La justificación se basa en convergencia uniforme en discos compactos estrictamente interiores, no en manipular una serie en la frontera. Para ensayos con probabilidad de éxito positiva, el primer éxito tiene esperanza inversa de esa probabilidad. Si la probabilidad es cero, el éxito no ocurre y esta expresión no describe una variable finita. Para probabilidad uno, el primer ensayo ya es un éxito con certeza.</p>
+<app-formula expression="\sum_{n=1}^\infty nr^{n-1}=\frac1{(1-r)^2},\qquad E[T]=\sum_{n\ge1}np(1-p)^{n-1}=\frac1p" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Una suma comienza en uno y cada término siguiente es la mitad. Tras diez términos queda un resto de una parte en quinientas doce, mientras que la suma total es dos. La fórmula permite elegir de antemano cuántos términos hacen falta para un error inferior a una milésima.</p>
+<app-formula expression="S_{10}=2(1-2^{-10}),\qquad R_{10}=2^{-9},\qquad R_{12}=2^{-11}&lt;10^{-3}" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Prueba razones positivas, negativas y superiores a uno. Compara una suma finita con el límite cuando existe y comprueba el resto exacto con la diferencia entre ambos.</p>
+<app-deep-explorer topic="geometric-series" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>No se puede usar la suma infinita cuando la razón tiene módulo uno o mayor, aunque la fracción algebraica produzca un número finito.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Cuál es la suma infinita que comienza en tres y tiene razón menos un medio?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Converge porque <app-formula displayMode="inline" [showCodeButton]="false" expression="|r|&lt;1" /> y vale <app-formula displayMode="inline" [showCodeButton]="false" expression="3/(1+1/2)=2" />. Las sumas parciales alternan alrededor de dos.</p></details>
+<p>Con probabilidad de éxito un cuarto, ¿cuántos ensayos se esperan hasta el primero?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Cuatro en promedio; eso no significa que cada trayectoria termine exactamente en el cuarto.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-040">Suma de raíces de la unidad</a>. Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico.</li>
+<li><a routerLink="/problems/problema-043">Recurrencia afín</a>. Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico.</li>
+<li><a routerLink="/problems/problema-077">Tiempo hasta el primer éxito</a>. Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico.</li>
+<li><a routerLink="/problems/problema-100">Longitud y dimensión de Cantor</a>. Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Distingue crecimiento por un factor fijo de crecimiento por reglas locales que pueden generar patrones mucho más complejos.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/banach-fixed-point">Teorema del punto fijo de Banach</a>, <a routerLink="/articles/cardinality-diagonal">Cardinalidad y argumento diagonal</a>.</p>

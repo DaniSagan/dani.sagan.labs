@@ -1,0 +1,32 @@
+<section class="explorer" aria-label="Laboratorio interactivo">
+  <header><span class="eyebrow">Laboratorio · modelo reproducible</span><h4>{{ title }}</h4></header>
+  <div class="controls">
+    @for (control of controls; track $index) {
+      <label>
+        <span>{{ control.label }} <output>{{ control.value }}</output></span>
+        <input type="range" [attr.aria-label]="control.label" [min]="control.min" [max]="control.max" [step]="control.step" [(ngModel)]="control.value" (ngModelChange)="update()" />
+      </label>
+    }
+  </div>
+  <div class="actions">
+    <button type="button" (click)="reset()">Restablecer</button>
+    @if (stochastic) { <button type="button" (click)="rerun()">Nueva realización · {{ seed }}</button> }
+  </div>
+  @if (result.series.length) {
+    <app-learning-plot [description]="title" [series]="result.series" [xmin]="result.xmin" [xmax]="result.xmax" [ymin]="result.ymin" [ymax]="result.ymax" [showLegend]="legend" />
+  }
+  @if (result.cells) {
+    <div class="grid-wrap">
+      <table class="discrete" [class.sudoku-grid]="topic==='sudoku-constraints'" aria-label="Datos de la construcción">
+        <caption>{{ title }}</caption>
+        @for (row of result.cells; track $index) {
+          <tr>@for (cell of row; track $index) { <td>{{ cell }}</td> }</tr>
+        }
+      </table>
+    </div>
+  }
+  <dl aria-live="polite">
+    @for (row of result.rows; track $index) { <div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}</dd></div> }
+  </dl>
+  <p class="model-note">{{ result.explanation }}</p>
+</section>

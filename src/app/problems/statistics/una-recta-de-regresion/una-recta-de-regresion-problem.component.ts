@@ -23,11 +23,11 @@ export class UnaRectaDeRegresionProblemComponent {
     "level": "Oposición",
     "statement": "Para los puntos \\((1,2),(2,2),(3,5)\\), halla la recta de mínimos cuadrados y el coeficiente de correlación de Pearson.",
     "resources": [
-{
-  "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
-  "route": "/articles/graphical-diagnostics",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
+        "route": "/articles/graphical-diagnostics",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Regresión lineal y correlación de Pearson",
         "route": "/articles/linear-regression",
@@ -42,6 +42,26 @@ export class UnaRectaDeRegresionProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Productos internos y ortonormalización de Gram–Schmidt",
+        "route": "/articles/gram-schmidt",
+        "activity": "Construye direcciones ortogonales y conecta sus componentes con productos internos."
+      },
+      {
+        "label": "Proyecciones ortogonales y mínimos cuadrados",
+        "route": "/articles/projection-least-squares",
+        "activity": "Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados."
+      },
+      {
+        "label": "Covarianza, dependencia y varianza de una suma",
+        "route": "/articles/covariance",
+        "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
+      },
+      {
+        "label": "Bootstrap y estimación por remuestreo",
+        "route": "/articles/bootstrap",
+        "activity": "Amplía la estimación de incertidumbre con remuestreo y revisa si el diseño requiere conservar grupos."
       }
     ]
   };

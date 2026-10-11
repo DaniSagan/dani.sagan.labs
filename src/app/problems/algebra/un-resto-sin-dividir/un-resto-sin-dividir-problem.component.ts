@@ -37,6 +37,11 @@ export class UnRestoSinDividirProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Interpolación de Lagrange y Hermite",
+        "route": "/articles/polynomial-interpolation",
+        "activity": "Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error."
       }
     ]
   };

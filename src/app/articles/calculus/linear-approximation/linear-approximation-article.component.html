@@ -1,0 +1,49 @@
+<span class="article-kicker">Cálculo / comprender, deducir, experimentar</span>
+<h2>Diferenciales y aproximación lineal</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Incremento y diferencial</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Una cota de error de segundo orden</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Varias variables y sensibilidad</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Elección del centro y dominio</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Cambios relativos y elasticidad</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La derivada describe cómo responde una función a cambios pequeños de su argumento. La aproximación lineal utiliza esa respuesta para estimar valores y propagar errores. Diferencial, incremento real y error de aproximación son objetos distintos. Taylor permite cuantificar la diferencia y muestra cuándo una tangente es una estimación fiable.</p>
+<h3 id="section-0">Incremento y diferencial</h3>
+<p>El incremento real compara dos valores de la función. El diferencial aplica la derivada en el centro al cambio del argumento. La diferenciabilidad exige que el resto dividido por el tamaño del incremento tienda a cero. Esta definición es más fuerte que continuidad y explica por qué una linealización se vuelve relativamente mejor en una escala pequeña, aunque el centro no tenga coordenada cero.</p>
+<app-formula expression="f(a+h)=f(a)+f&#x27;(a)h+o(h),\qquad df=f&#x27;(a)\,h" />
+<h3 id="section-1">Una cota de error de segundo orden</h3>
+<p>Si la segunda derivada está acotada en el segmento entre el centro y el nuevo punto, Taylor proporciona una cota cuadrática. No basta con evaluar la segunda derivada solo en el centro para garantizarla: hace falta un control de todo el segmento. La convexidad indica el sentido del error; una función convexa queda por encima de su tangente y una cóncava por debajo.</p>
+<app-formula expression="|f(a+h)-f(a)-f&#x27;(a)h|\le\frac M2h^2,\qquad M\ge\sup|f&#x27;&#x27;|" />
+<h3 id="section-2">Varias variables y sensibilidad</h3>
+<p>Para una función de varias entradas, el diferencial es el producto del gradiente por el vector de cambios. Los signos pueden compensarse, por lo que sumar errores absolutos da una cota conservadora y no una incertidumbre estadística. Si los errores aleatorios son pequeños, el método delta aproxima la varianza mediante la matriz de covarianza. Las correlaciones entre mediciones importan tanto como sus varianzas.</p>
+<app-formula expression="df=\nabla f(a)^\mathsf{T}h,\qquad \operatorname{Var}(f(X))\approx\nabla f^\mathsf{T}\Sigma\nabla f" />
+<h3 id="section-3">Elección del centro y dominio</h3>
+<p>Un buen centro tiene valor y derivada fáciles de calcular y está próximo al dato. Cerca de una singularidad, una derivada grande puede amplificar un error pequeño. Para la raíz cuadrada, no deben cruzarse valores negativos y su derivada deja de ser finita en cero. Para un cociente de mediciones, un denominador próximo a cero produce sensibilidad extrema; ninguna linealización elimina ese problema de fondo.</p>
+<h3 id="section-deeper">Cambios relativos y elasticidad</h3>
+<p>Cuando las magnitudes tienen escalas muy diferentes, el cambio relativo es más interpretable que el absoluto. Dividir el diferencial por el valor de la función y expresar el incremento de entrada como porcentaje produce la elasticidad local. Para una potencia, esa elasticidad es el exponente. Para productos y cocientes, diferenciar el logaritmo convierte factores en sumas y permite combinar pequeños cambios relativos con sus signos. El procedimiento requiere valores no nulos y, al usar logaritmos reales, positivos o una justificación con valores absolutos. Si los cambios no son pequeños, hay que volver a la expresión exacta o añadir términos de orden superior.</p>
+<app-formula expression="\frac{df}{f}\approx\frac{xf&#x27;(x)}{f(x)}\frac{dx}{x},\qquad f=x^a y^b:\quad\frac{df}{f}=a\frac{dx}{x}+b\frac{dy}{y}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Para estimar la raíz de 1,04, se toma centro uno e incremento 0,04. La tangente da 1,02. La concavidad indica que esta estimación es superior al valor exacto. En el intervalo elegido la segunda derivada permite acotar el error por 0,0002.</p>
+<app-formula expression="\sqrt{1.04}\approx1+\frac{0.04}2=1.02,\qquad |R|\le\frac18(0.04)^2=0.0002" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara raíz y tangente. Reduce a la mitad el incremento y observa si el error se reduce aproximadamente a la cuarta parte. Repite cerca de un centro menor para estudiar sensibilidad.</p>
+<app-deep-explorer topic="linear-approximation" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Un error de medida es una perturbación de entrada; el error de linealización aparece aunque esa entrada se conozca exactamente. Deben informarse por separado.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Estima el cambio relativo de volumen de una esfera cuando su radio aumenta un uno por ciento.</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Como <app-formula displayMode="inline" [showCodeButton]="false" expression="V\propto r^3" />, el diferencial relativo es <app-formula displayMode="inline" [showCodeButton]="false" expression="dV/V=3\,dr/r" />: aproximadamente tres por ciento. El cambio exacto incluye términos de segundo y tercer orden.</p></details>
+<p>Si un área rectangular tiene lados que suben uno y dos por ciento, ¿cuál es el aumento aproximado?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Tres por ciento. El aumento exacto es 3,02 %, porque incluye el producto de ambos incrementos relativos.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-032">Altura desde dos posiciones</a>. Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación.</li>
+<li><a routerLink="/problems/problema-051">Una tangente logarítmica</a>. Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación.</li>
+<li><a routerLink="/problems/problema-055">Taylor con control del error</a>. Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Interpreta un paso corto de trayectoria como una aproximación por la tangente, y revisa el error al aumentar el paso.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/polynomial-interpolation">Interpolación de Lagrange y Hermite</a>, <a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a>, <a routerLink="/articles/sine-law">Ley de los senos y caso ambiguo</a>.</p>

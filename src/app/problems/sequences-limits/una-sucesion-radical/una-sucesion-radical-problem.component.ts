@@ -23,11 +23,11 @@ export class UnaSucesionRadicalProblemComponent {
     "level": "Oposición",
     "statement": "Sea \\(a_{1}=1\\) y \\(a_{n+1}=\\sqrt{2+a_{n}}\\). Demuestra que converge y calcula su límite.",
     "resources": [
-{
-  "label": "Sucesiones monótonas y acotadas",
-  "route": "/articles/monotone-convergence",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Sucesiones monótonas y acotadas",
+        "route": "/articles/monotone-convergence",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Sucesiones recurrentes y puntos fijos",
         "route": "/articles/recurrent-sequences",
@@ -42,6 +42,21 @@ export class UnaSucesionRadicalProblemComponent {
         "label": "Representador de funciones",
         "route": "/tools/graph-plotter",
         "activity": "Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1."
+      },
+      {
+        "label": "Inducción matemática y construcción de pruebas",
+        "route": "/articles/mathematical-induction",
+        "activity": "Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo."
+      },
+      {
+        "label": "Teorema del punto fijo de Banach",
+        "route": "/articles/banach-fixed-point",
+        "activity": "Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error."
+      },
+      {
+        "label": "Compactos, perfectos y totalmente desconectados",
+        "route": "/articles/compact-perfect-disconnected",
+        "activity": "Prueba compacidad, ausencia de puntos aislados y desconexión sin confundir etapas finitas con el límite."
       }
     ]
   };

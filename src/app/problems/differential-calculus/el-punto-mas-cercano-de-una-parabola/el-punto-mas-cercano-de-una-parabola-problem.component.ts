@@ -42,6 +42,11 @@ export class ElPuntoMasCercanoDeUnaParabolaProblemComponent {
         "label": "Campo vectorial",
         "route": "/tools/vector-field",
         "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
+      },
+      {
+        "label": "Pitágoras y distancia euclídea",
+        "route": "/articles/pythagorean-distance",
+        "activity": "Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean."
       }
     ]
   };

@@ -23,11 +23,11 @@ export class EsperanzaYPremioJustoProblemComponent {
     "level": "Oposición",
     "statement": "Un juego cuesta 4 € y paga, antes de descontar la entrada, 10 € si un dado da 6, 5 € si da 5 y 0 € en otro caso. Calcula la ganancia esperada y la entrada justa.",
     "resources": [
-{
-  "label": "Esperanza discreta, juegos justos y riesgo",
-  "route": "/articles/discrete-expectation",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Esperanza discreta, juegos justos y riesgo",
+        "route": "/articles/discrete-expectation",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Tablero de Galton",
         "route": "/articles/galton-board",
@@ -37,6 +37,16 @@ export class EsperanzaYPremioJustoProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Ley de los grandes números",
+        "route": "/articles/large-numbers-law",
+        "activity": "Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra."
+      },
+      {
+        "label": "Desigualdades de Markov y Chebyshev",
+        "route": "/articles/probability-inequalities",
+        "activity": "Obtén garantías de desviación desde media y varianza y compáralas con colas de distribuciones concretas."
       }
     ]
   };

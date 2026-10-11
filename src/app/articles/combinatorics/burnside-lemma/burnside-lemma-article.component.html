@@ -1,0 +1,49 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Acciones de grupos y lema de Burnside</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Acción, órbita y estabilizador</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Un doble conteo que prueba Burnside</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Collares y ciclos de una permutación</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Restricciones y generalizaciones</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Añadir reflejos cambia el grupo</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Cuando se identifican objetos relacionados por simetrías, dividir el número de objetos por el número de simetrías puede fallar. Algunos objetos tienen simetría interna y menos representantes distintos. Las acciones de grupos organizan esas equivalencias; el lema de Burnside cuenta las clases mediante objetos fijos, sin tener que construir cada clase por separado.</p>
+<h3 id="section-0">Acción, órbita y estabilizador</h3>
+<p>Una acción asigna a cada simetría una transformación compatible con identidad y composición. La órbita de un objeto contiene todos sus transformados; el estabilizador contiene las simetrías que lo dejan igual. Dos objetos equivalentes tienen la misma órbita. El teorema órbita–estabilizador relaciona su tamaño con el grupo, mostrando por qué no todas las clases tienen que contener el mismo número de elementos.</p>
+<app-formula expression="|Gx|=\frac{|G|}{|\operatorname{Stab}(x)|}" />
+<h3 id="section-1">Un doble conteo que prueba Burnside</h3>
+<p>Cuenta los pares formados por una simetría y un objeto que esa simetría deja fijo. Por simetrías, la suma es la de sus números de puntos fijos. Por objetos, es la suma de tamaños de estabilizadores. En cada órbita, producto de tamaño de órbita y estabilizador vale el tamaño del grupo. Dividir la cuenta total por ese tamaño deja exactamente una unidad por órbita.</p>
+<app-formula expression="|X/G|=\frac1{|G|}\sum_{g\in G}|\operatorname{Fix}(g)|" />
+<h3 id="section-2">Collares y ciclos de una permutación</h3>
+<p>Un giro de un collar distribuye sus posiciones en ciclos. Para que una coloración quede fija, todas las posiciones de un mismo ciclo deben compartir color; ciclos diferentes eligen libremente. El número de ciclos de un giro de cierto número de posiciones es el máximo común divisor entre longitud y desplazamiento. Reflejos requieren añadir nuevas simetrías y estudiar sus ciclos, por lo que collares y pulseras no tienen el mismo conteo.</p>
+<app-formula expression="N_{\mathrm{rot}}(n,q)=\frac1n\sum_{k=0}^{n-1}q^{\gcd(n,k)}" />
+<h3 id="section-3">Restricciones y generalizaciones</h3>
+<p>Si solo se permiten coloraciones con cantidades fijas de colores, se debe contar cuántas elecciones por ciclos cumplen esas cantidades; no basta elevar colores al número de ciclos. El teorema de Pólya organiza esas cuentas mediante un índice de ciclos. Para tableros o rompecabezas hay que especificar qué transformaciones preservan las reglas y qué detalles se consideran equivalentes. Identificar renombrados y rotaciones al mismo tiempo cambia el grupo de actuación.</p>
+<h3 id="section-deeper">Añadir reflejos cambia el grupo</h3>
+<p>Para pulseras, además de girar se permite reflejar, y el grupo contiene el doble de simetrías. Si la longitud es impar, cada reflejo deja una posición fija y agrupa las restantes por parejas. Si es par, hay reflejos que pasan por dos posiciones y otros que pasan entre posiciones, con números de ciclos diferentes. Cada ciclo escoge un color para quedar fijo. Burnside incorpora estas cuentas al promedio, en lugar de dividir por dos el número de collares: algunos collares ya son equivalentes a su reflejo y otros no. Este es el mismo motivo estructural que hace fallar la división ingenua inicial.</p>
+<app-formula expression="n\text{ impar}:\quad N_{\mathrm{pulsera}}=\frac1{2n}\left(\sum_{k=0}^{n-1}q^{\gcd(n,k)}+nq^{(n+1)/2}\right)" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Un collar de cuatro posiciones con dos colores tiene dieciséis coloraciones etiquetadas. La identidad fija dieciséis, cada cuarto de vuelta fija dos y la media vuelta fija cuatro. Burnside da seis clases, frente a cuatro de la división ingenua. Las coloraciones monocromas explican parte de la diferencia.</p>
+<app-formula expression="N=\frac{16+2+4+2}{4}=6" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara el promedio de fijos con la división ingenua. Busca una configuración donde la división no sea entera y explica por qué el promedio sí cuenta órbitas enteras.</p>
+<app-deep-explorer topic="burnside-lemma" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Contar reflejos cuando el enunciado solo identifica rotaciones elimina clases que deberían seguir siendo distintas.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Cuántos collares de tres posiciones y dos colores hay si solo se identifican giros?</p>
+<details class="note"><summary>Ver solución razonada</summary><p><app-formula displayMode="inline" [showCodeButton]="false" expression="(2^3+2+2)/3=4" />. La identidad fija ocho coloraciones y cada giro no trivial fija dos.</p></details>
+<p>¿Por qué el número de pulseras no tiene que ser la mitad del número de collares?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque algunos collares son invariantes por un reflejo y forman clases de tamaño uno bajo esa identificación adicional.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-093">Líneas ganadoras en dos juegos</a>. Cuenta clases de configuraciones bajo simetrías mediante órbitas, estabilizadores y puntos fijos.</li>
+<li><a routerLink="/problems/problema-094">Una simetría del sudoku</a>. Cuenta clases de configuraciones bajo simetrías mediante órbitas, estabilizadores y puntos fijos.</li>
+<li><a routerLink="/problems/problema-095">Orden de un giro del cubo</a>. Cuenta clases de configuraciones bajo simetrías mediante órbitas, estabilizadores y puntos fijos.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/rubik-cube">Cubo de Rubik</a>. Estudia composiciones y simetrías del cubo distinguiendo rotar todo el objeto de girar una cara.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a>, <a routerLink="/articles/rubik-invariants">Invariantes del cubo de Rubik</a>, <a routerLink="/articles/sudoku-constraints">Sudoku: restricciones y cobertura exacta</a>.</p>

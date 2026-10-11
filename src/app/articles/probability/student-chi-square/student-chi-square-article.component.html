@@ -1,0 +1,52 @@
+<span class="article-kicker">Probabilidad y estadística / comprender, deducir, experimentar</span>
+<h2>Distribuciones t de Student y chi-cuadrado</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Chi-cuadrado como suma de cuadrados</a></li>
+<li><a [routerLink]="[]" fragment="section-1">De una normal y una chi-cuadrado a Student</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Por qué aparece el tamaño menos uno</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Intervalos y lectura de densidades</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Un intervalo exacto para la varianza</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Estimar la dispersión a partir de la misma muestra modifica la incertidumbre de una media. Las distribuciones t de Student y chi-cuadrado describen ese efecto bajo un modelo normal y hacen posibles intervalos y contrastes exactos. Sus grados de libertad representan información independiente restante, no un parámetro decorativo.</p>
+<h3 id="section-0">Chi-cuadrado como suma de cuadrados</h3>
+<p>La suma de cuadrados de normales estándar independientes tiene distribución chi-cuadrado con tantos grados como componentes. Su soporte es no negativo y generalmente es asimétrica. La media es el número de grados y la varianza el doble. Su densidad involucra la función gamma, que generaliza el factorial. Al aumentar los grados, una versión centrada y escalada se aproxima a la normal, pero la distribución original sigue teniendo otra escala.</p>
+<app-formula expression="Q=\sum_{i=1}^{\nu}Z_i^2\sim\chi^2_\nu,\qquad EQ=\nu,\quad\operatorname{Var}Q=2\nu" />
+<h3 id="section-1">De una normal y una chi-cuadrado a Student</h3>
+<p>Una normal estándar dividida por la raíz de una chi-cuadrado independiente por sus grados produce Student. El denominador aleatorio genera colas más pesadas que las normales. Con un grado se obtiene Cauchy y no existe media; con dos tampoco existe varianza. Cuando los grados crecen, el denominador se concentra cerca de uno y la distribución se aproxima a la normal.</p>
+<app-formula expression="T=\frac Z{\sqrt{Q/\nu}}\sim t_\nu,\quad Z\perp Q,\qquad \operatorname{Var}T=\frac{\nu}{\nu-2}\ (\nu&gt;2)" />
+<h3 id="section-2">Por qué aparece el tamaño menos uno</h3>
+<p>En una muestra normal, los residuos respecto a la media suman cero, por lo que solo quedan tantas direcciones independientes como observaciones menos una. La media y la varianza muestral son independientes bajo normalidad. Estas dos propiedades producen un pivote t para la media y uno chi-cuadrado para la varianza. Fuera del modelo normal, la independencia exacta y la distribución chi-cuadrado pueden fallar.</p>
+<app-formula expression="\frac{\overline X-\mu}{S/\sqrt n}\sim t_{n-1},\qquad \frac{(n-1)S^2}{\sigma^2}\sim\chi^2_{n-1}" />
+<h3 id="section-3">Intervalos y lectura de densidades</h3>
+<p>El intervalo t para la media utiliza un cuantil, no el valor de la densidad en un punto. El intervalo para la varianza invierte dos cuantiles chi-cuadrado y suele ser asimétrico. La muestra debe ser independiente y el modelo normal adecuado para que estas garantías sean exactas. En muestras grandes puede haber aproximaciones para medias, pero la inferencia de varianza sigue siendo sensible a colas y falta de normalidad.</p>
+<app-formula expression="\overline X\pm t_{1-\alpha/2,n-1}\frac S{\sqrt n}" />
+<h3 id="section-deeper">Un intervalo exacto para la varianza</h3>
+<p>El pivote chi-cuadrado permite encerrar la varianza entre dos límites que invierten cuantiles. El cuantil alto aparece en el denominador del límite inferior y el bajo en el superior, porque dividir una cantidad positiva invierte el orden. Esa asimetría es propia de la distribución y no un error de cálculo. La raíz cuadrada de ambos extremos da un intervalo para la desviación típica. La fórmula exige normalidad para su distribución exacta; valores extremos o colas pesadas pueden distorsionar mucho la inferencia de dispersión. Para datos no normales pueden considerarse otros procedimientos con sus hipótesis, incluido bootstrap adecuado, sin prometer exactitud universal.</p>
+<app-formula expression="\frac{(n-1)S^2}{\chi^2_{1-\alpha/2,n-1}}\le\sigma^2\le\frac{(n-1)S^2}{\chi^2_{\alpha/2,n-1}}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Con diez observaciones, media veinte y desviación muestral tres, el error estándar es tres dividido por raíz de diez. Para confianza del 95 % se usa el cuantil t con nueve grados, aproximadamente 2,262. El margen es aproximadamente 2,146, mayor que el obtenido con el cuantil normal.</p>
+<app-formula expression="20\pm2.262\frac3{\sqrt{10}}\approx[17.854,22.146]" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Reduce los grados y observa las colas t; aumenta los grados para compararla con la normal. La chi-cuadrado se centra en su media y se divide por su desviación típica antes de dibujarla: así su región principal permanece visible al cambiar los grados. Las lecturas de densidad mantienen la variable chi-cuadrado original. El cambio de escala multiplica la densidad por la desviación para conservar área total uno.</p>
+<app-formula expression="Z_Q=\frac{Q-\nu}{\sqrt{2\nu}},\qquad f_{Z_Q}(z)=\sqrt{2\nu}\,f_Q(\nu+z\sqrt{2\nu})" />
+<app-deep-explorer topic="student-chi-square" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Usar la misma forma de intervalo con datos muy asimétricos y una muestra diminuta no conserva automáticamente la cobertura nominal.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Cuál es la media y la varianza de una chi-cuadrado con ocho grados?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La media es ocho y la varianza dieciséis. Su desviación típica es cuatro.</p></details>
+<p>¿Por qué no es simétrico alrededor de la varianza muestral?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque procede de invertir cuantiles de una distribución asimétrica y la inversión modifica también las distancias.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-081">Media y varianza descriptiva</a>. Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad.</li>
+<li><a routerLink="/problems/problema-086">Precisión de una media</a>. Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad.</li>
+<li><a routerLink="/problems/problema-087">Intervalo para una media normal</a>. Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad.</li>
+<li><a routerLink="/problems/problema-088">Contraste bilateral</a>. Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Si estudias duraciones de partidas, comprueba su distribución antes de elegir una inferencia normal exacta.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/large-numbers-law">Ley de los grandes números</a>, <a routerLink="/articles/probability-inequalities">Desigualdades de Markov y Chebyshev</a>, <a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a>.</p>

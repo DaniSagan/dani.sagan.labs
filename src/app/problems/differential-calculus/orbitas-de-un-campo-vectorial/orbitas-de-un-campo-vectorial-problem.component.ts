@@ -23,11 +23,11 @@ export class OrbitasDeUnCampoVectorialProblemComponent {
     "level": "Reto",
     "statement": "Para el sistema \\(x'=-y\\), \\(y'=x\\), con \\((x(0),y(0))=(2,0)\\), halla la trayectoria, el sentido y el período.",
     "resources": [
-{
-  "label": "Oscilador armónico y retratos de fase",
-  "route": "/articles/harmonic-oscillator",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Oscilador armónico y retratos de fase",
+        "route": "/articles/harmonic-oscillator",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Autómatas celulares",
         "route": "/articles/cellular-automata",
@@ -42,6 +42,11 @@ export class OrbitasDeUnCampoVectorialProblemComponent {
         "label": "Campo vectorial",
         "route": "/tools/vector-field",
         "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
+      },
+      {
+        "label": "Integración numérica de ecuaciones diferenciales",
+        "route": "/articles/ode-numerical-integration",
+        "activity": "Contrasta Euler, Heun y RK4 con soluciones conocidas antes de aplicar un integrador a la dinámica."
       }
     ]
   };

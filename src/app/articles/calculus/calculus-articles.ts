@@ -1,3 +1,6 @@
+import { OdeNumericalIntegrationArticleComponent } from './ode-numerical-integration/ode-numerical-integration-article.component';
+import { LinearApproximationArticleComponent } from './linear-approximation/linear-approximation-article.component';
+import { PolynomialInterpolationArticleComponent } from './polynomial-interpolation/polynomial-interpolation-article.component';
 import { FunctionAnalysisArticleComponent } from './function-analysis/function-analysis-article.component';
 import { AreasRevolutionArticleComponent } from './areas-revolution/areas-revolution-article.component';
 import { ArcLengthArticleComponent } from './arc-length/arc-length-article.component';
@@ -11,6 +14,9 @@ import { BrachistochroneArticleComponent } from './brachistochrone/brachistochro
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
 
 export const CALCULUS_ARTICLES = [
+  OdeNumericalIntegrationArticleComponent,
+  LinearApproximationArticleComponent,
+  PolynomialInterpolationArticleComponent,
   FunctionAnalysisArticleComponent,
   AreasRevolutionArticleComponent,
   ArcLengthArticleComponent,

@@ -37,6 +37,21 @@ export class ProyeccionOrtogonalProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Espacios vectoriales, bases y rango–nulidad",
+        "route": "/articles/vector-spaces",
+        "activity": "Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones."
+      },
+      {
+        "label": "Productos internos y ortonormalización de Gram–Schmidt",
+        "route": "/articles/gram-schmidt",
+        "activity": "Construye direcciones ortogonales y conecta sus componentes con productos internos."
+      },
+      {
+        "label": "Proyecciones ortogonales y mínimos cuadrados",
+        "route": "/articles/projection-least-squares",
+        "activity": "Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados."
       }
     ]
   };

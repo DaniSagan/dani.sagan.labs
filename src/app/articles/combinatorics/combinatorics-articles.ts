@@ -1,3 +1,9 @@
+import { EulerHamiltonArticleComponent } from './euler-hamilton/euler-hamilton-article.component';
+import { SudokuConstraintsArticleComponent } from './sudoku-constraints/sudoku-constraints-article.component';
+import { RubikInvariantsArticleComponent } from './rubik-invariants/rubik-invariants-article.component';
+import { BurnsideLemmaArticleComponent } from './burnside-lemma/burnside-lemma-article.component';
+import { InclusionExclusionArticleComponent } from './inclusion-exclusion/inclusion-exclusion-article.component';
+import { CountingPrinciplesArticleComponent } from './counting-principles/counting-principles-article.component';
 import { ReflectionPrincipleArticleComponent } from './reflection-principle/reflection-principle-article.component';
 import { GridCountingArticleComponent } from './grid-counting/grid-counting-article.component';
 import { CatalanNumbersArticleComponent } from './catalan-numbers/catalan-numbers-article.component';
@@ -10,6 +16,12 @@ import { FourColorTheoremArticleComponent } from './four-color-theorem/four-colo
 import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
 export const COMBINATORICS_ARTICLES = [
+  EulerHamiltonArticleComponent,
+  SudokuConstraintsArticleComponent,
+  RubikInvariantsArticleComponent,
+  BurnsideLemmaArticleComponent,
+  InclusionExclusionArticleComponent,
+  CountingPrinciplesArticleComponent,
   ReflectionPrincipleArticleComponent,
   GridCountingArticleComponent,PascalTriangleArticleComponent, BinomialTheoremArticleComponent, CatalanNumbersArticleComponent, KonigsbergBridgesArticleComponent, PlanarEulerArticleComponent, RamseyTheoremArticleComponent, GrahamNumberArticleComponent, FourColorTheoremArticleComponent];
 export const COMBINATORICS_NAV_ITEMS = COMBINATORICS_ARTICLES.map(article => ({ name: article.title, route: article.route }));

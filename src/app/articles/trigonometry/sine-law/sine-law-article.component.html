@@ -1,0 +1,47 @@
+<span class="article-kicker">Trigonometría / comprender, deducir, experimentar</span>
+<h2>Ley de los senos y caso ambiguo</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Derivar la ley desde una altura</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Datos que determinan una solución</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Por qué aparece una segunda rama</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Clasificación geométrica mediante la altura</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Reconstruir todos los lados y verificar la solución</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La ley de los senos relaciona cada lado de un triángulo con el seno del ángulo opuesto. Permite resolver observaciones angulares y conecta el triángulo con su circunferencia circunscrita. Su dificultad más interesante aparece cuando se conocen dos lados y un ángulo no comprendido: esos datos pueden producir cero, uno o dos triángulos.</p>
+<h3 id="section-0">Derivar la ley desde una altura</h3>
+<p>La altura respecto a un lado puede escribirse mediante cualquiera de los dos triángulos rectángulos que forma. Igualar esas expresiones relaciona dos cocientes lado-seno, y repetir la construcción da el tercero. Con la circunferencia circunscrita, el ángulo inscrito determina una cuerda y muestra que el cociente común es el diámetro. Los ángulos interiores siempre están entre cero y ciento ochenta grados, donde el seno es positivo.</p>
+<app-formula expression="\frac a{\sin A}=\frac b{\sin B}=\frac c{\sin C}=2R" />
+<h3 id="section-1">Datos que determinan una solución</h3>
+<p>Con dos ángulos y un lado, el tercer ángulo se deduce de la suma y la ley fija los lados restantes. Con dos lados y el ángulo comprendido, la ley de los cosenos es el camino directo antes de aplicar la de los senos. Una calculadora debe usar la unidad angular elegida; mezclar radianes y grados puede dar números verosímiles pero geométricamente imposibles. Al final conviene comprobar suma de ángulos y desigualdades triangulares.</p>
+<h3 id="section-2">Por qué aparece una segunda rama</h3>
+<p>Conocidos un ángulo y dos lados, se calcula el seno del ángulo opuesto al segundo lado. Un valor mayor que uno descarta la construcción. Un valor entre cero y uno tiene dos ángulos suplementarios con el mismo seno. Cada candidato debe combinarse con el ángulo dado y dejar un tercero positivo. El arcoseno principal devuelve solamente la rama aguda y no puede decidir por sí solo cuántos triángulos existen.</p>
+<app-formula expression="\sin B=\frac{b\sin A}{a},\qquad B_1=\arcsin(s),\quad B_2=\pi-B_1" />
+<h3 id="section-3">Clasificación geométrica mediante la altura</h3>
+<p>Cuando el ángulo dado es agudo, la altura formada por el lado conocido establece un umbral. Un lado opuesto menor que esa altura no alcanza el otro rayo; si coincide produce un triángulo rectángulo; entre altura y lado adyacente produce dos; desde el lado adyacente en adelante solo uno. Si el ángulo dado es obtuso, su lado opuesto debe ser el mayor y no aparece la misma duplicidad. Esta lectura geométrica explica las condiciones algebraicas.</p>
+<h3 id="section-deeper">Reconstruir todos los lados y verificar la solución</h3>
+<p>Una vez aceptado un ángulo candidato, calcula el tercero mediante la suma angular y usa el cociente común para reconstruir el lado restante. En el caso ambiguo, las dos soluciones comparten los datos originales pero no el tercer lado ni el área. El área puede calcularse con los dos lados conocidos y el ángulo comprendido entre ellos, que debe obtenerse para cada rama. Esta comprobación completa es preferible a limitarse a anunciar dos ángulos. Si los datos contienen redondeo cerca de la tangencia, un seno apenas mayor que uno puede señalar incompatibilidad dentro de la incertidumbre, y no debe corregirse sin declarar una tolerancia.</p>
+<app-formula expression="C=\pi-A-B,\qquad c=\frac{a\sin C}{\sin A},\qquad K=\frac12ab\sin C" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Con ángulo de treinta grados, lado adyacente seis y lado opuesto cuatro, el seno del segundo ángulo vale tres cuartos. Sus ángulos aproximados son 48,59 y 131,41 grados. Ambos dejan un tercer ángulo positivo, por lo que se obtienen dos triángulos distintos.</p>
+<app-formula expression="s=\frac{6\sin30^\circ}{4}=\frac34,\qquad C_1\approx101.41^\circ,\quad C_2\approx18.59^\circ" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>El lado adyacente se fija en seis. Recorre los umbrales y observa cómo las intersecciones con la curva seno se convierten en triángulos válidos o quedan descartadas por la suma angular.</p>
+<app-deep-explorer topic="sine-law" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>No descartes automáticamente la rama obtusa ni aceptes ambas sin comprobar la suma angular. La tangencia produce una sola solución, no dos copias.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Manteniendo treinta grados y lado adyacente seis, ¿cuántas soluciones hay si el lado opuesto mide dos? ¿Y tres?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Con dos no hay triángulo, pues la altura es tres. Con tres hay una solución rectángula.</p></details>
+<p>¿Por qué las dos soluciones ambiguas pueden tener áreas diferentes?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque el ángulo comprendido entre los lados dados cambia entre ramas, y su seno determina el área.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-032">Altura desde dos posiciones</a>. Amplía la resolución triangular con la ley de los senos y comprueba todas las ramas del caso ambiguo.</li>
+<li><a routerLink="/problems/problema-035">Un triángulo con ángulo conocido</a>. Amplía la resolución triangular con la ley de los senos y comprueba todas las ramas del caso ambiguo.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Identifica ángulos entre posiciones y comprueba cuándo una aproximación triangular describe una trayectoria.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a>, <a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a>, <a routerLink="/articles/linear-approximation">Diferenciales y aproximación lineal</a>.</p>

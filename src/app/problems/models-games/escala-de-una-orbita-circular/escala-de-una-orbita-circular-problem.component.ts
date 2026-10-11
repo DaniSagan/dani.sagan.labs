@@ -37,6 +37,16 @@ export class EscalaDeUnaOrbitaCircularProblemComponent {
         "label": "Gravedad",
         "route": "/games/gravity",
         "activity": "Explora cualitativamente cómo cambia una órbita al modificar la distancia; contrasta con el ejercicio «Escala de una órbita circular»."
+      },
+      {
+        "label": "Integración numérica de ecuaciones diferenciales",
+        "route": "/articles/ode-numerical-integration",
+        "activity": "Contrasta Euler, Heun y RK4 con soluciones conocidas antes de aplicar un integrador a la dinámica."
+      },
+      {
+        "label": "Análisis dimensional y leyes de escala",
+        "route": "/articles/dimensional-analysis",
+        "activity": "Comprueba unidades y leyes de escala antes de interpretar transformaciones geométricas o físicas."
       }
     ]
   };

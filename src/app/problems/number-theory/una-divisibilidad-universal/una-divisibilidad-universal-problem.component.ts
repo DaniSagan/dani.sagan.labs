@@ -32,6 +32,11 @@ export class UnaDivisibilidadUniversalProblemComponent {
         "label": "Descomposición en primos",
         "route": "/tools/prime-decomposition",
         "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
+      },
+      {
+        "label": "Inducción matemática y construcción de pruebas",
+        "route": "/articles/mathematical-induction",
+        "activity": "Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo."
       }
     ]
   };

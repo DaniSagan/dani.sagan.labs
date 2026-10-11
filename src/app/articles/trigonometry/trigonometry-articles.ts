@@ -1,3 +1,5 @@
+import { SphericalTrigonometryArticleComponent } from './spherical-trigonometry/spherical-trigonometry-article.component';
+import { SineLawArticleComponent } from './sine-law/sine-law-article.component';
 import { TrigonometricEquationsArticleComponent } from './trigonometric-equations/trigonometric-equations-article.component';
 import { HeightSurveyingArticleComponent } from './height-surveying/height-surveying-article.component';
 import { Routes } from '@angular/router';
@@ -6,6 +8,8 @@ import { TrigNFunctionsComponent } from './trig-nfunctions/trig-nfunctions.compo
 import { TrigInverseTrigCompositionComponent } from './trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 
 export const TRIGONOMETRY_ARTICLES = [
+  SphericalTrigonometryArticleComponent,
+  SineLawArticleComponent,
   TrigonometricEquationsArticleComponent,
   HeightSurveyingArticleComponent,
   TrigInverseTrigCompositionComponent,
@@ -14,6 +18,8 @@ export const TRIGONOMETRY_ARTICLES = [
 
 // Preserve lazy loading for trigonometry articles.
 export const TRIGONOMETRY_ROUTES: Routes = [
+  { path: SphericalTrigonometryArticleComponent.route, component: SphericalTrigonometryArticleComponent },
+  { path: SineLawArticleComponent.route, component: SineLawArticleComponent },
   { path: HeightSurveyingArticleComponent.route, component: HeightSurveyingArticleComponent },
   { path: TrigonometricEquationsArticleComponent.route, component: TrigonometricEquationsArticleComponent },
   {

@@ -1,0 +1,51 @@
+<span class="article-kicker">Probabilidad y estadística / comprender, deducir, experimentar</span>
+<h2>Covarianza, dependencia y varianza de una suma</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Centrar antes de multiplicar</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Correlación y el límite de Cauchy–Schwarz</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Expandir una suma y conservar términos</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Matriz de covarianza y predicciones</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Covarianza muestral y escalas afines</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La variabilidad de una suma depende de cómo se mueven conjuntamente sus componentes. La covarianza mide asociación lineal y aparece en promedios, regresión, carteras y propagación de incertidumbre. Una covarianza nula no descarta toda dependencia. Para sumar varianzas hay que justificar la ausencia de términos cruzados y no asumirla por comodidad.</p>
+<h3 id="section-0">Centrar antes de multiplicar</h3>
+<p>La covarianza es la esperanza del producto de las desviaciones de cada variable respecto a su media. Un valor positivo indica tendencia a desviarse en el mismo sentido; uno negativo, en sentidos opuestos. La identidad con el producto de variables facilita cálculos pero puede sufrir cancelación numérica cuando las medias son grandes. Las unidades son el producto de las unidades de ambas variables, por lo que el tamaño bruto no permite comparar asociaciones en escalas diferentes.</p>
+<app-formula expression="\operatorname{Cov}(X,Y)=E[(X-EX)(Y-EY)]=E[XY]-EX\,EY" />
+<h3 id="section-1">Correlación y el límite de Cauchy–Schwarz</h3>
+<p>Dividir por las desviaciones típicas produce una medida sin unidades entre menos uno y uno. Si alguna varianza es cero, la correlación no está definida por esa fórmula. Un valor extremo implica una relación afín casi seguramente para variables no degeneradas. Una correlación pequeña solo habla de relación lineal; no prueba ausencia de estructura ni autoriza a reemplazar una distribución conjunta por el producto de sus marginales.</p>
+<app-formula expression="\rho=\frac{\operatorname{Cov}(X,Y)}{\sigma_X\sigma_Y},\qquad |\rho|\le1" />
+<h3 id="section-2">Expandir una suma y conservar términos</h3>
+<p>El cuadrado de la suma centrada contiene cuadrados individuales y productos cruzados. Al tomar esperanza aparecen varianzas y covarianzas. La independencia con segundos momentos finitos hace desaparecer estas últimas, pero la incorrelación también basta para esta identidad. En una media de observaciones correlacionadas, las covarianzas pueden impedir la reducción habitual de varianza con el tamaño.</p>
+<app-formula expression="\operatorname{Var}(aX+bY)=a^2\sigma_X^2+b^2\sigma_Y^2+2ab\operatorname{Cov}(X,Y)" />
+<h3 id="section-3">Matriz de covarianza y predicciones</h3>
+<p>Para un vector aleatorio, la matriz de covarianza es simétrica y semidefinida positiva porque cualquier combinación lineal tiene varianza no negativa. Sus elementos diagonales son varianzas y los demás asociaciones cruzadas. Una matriz singular indica una combinación lineal determinista. En regresión simple, la pendiente poblacional depende del cociente entre covarianza y varianza de la entrada, mientras que causalidad necesita un modelo de asignación adicional.</p>
+<h3 id="section-deeper">Covarianza muestral y escalas afines</h3>
+<p>La covarianza muestral usa desviaciones respecto a las medias observadas y divisor tamaño menos uno para ser insesgada bajo observaciones independientes con segundos momentos finitos. Trasladar ambas variables no cambia covarianza, pero multiplicarlas por constantes la escala por el producto de esas constantes. La correlación conserva magnitud bajo escalas positivas y cambia signo si se invierte una sola variable. Al analizar datos, un gráfico de dispersión complementa el número: muestra relaciones curvas, agrupaciones y valores influyentes que la medida lineal no describe. Una asociación que cambia al agregar grupos puede reflejar distinta composición y exige revisar la distribución conjunta.</p>
+<app-formula expression="s_{XY}=\frac1{n-1}\sum_i(x_i-\overline x)(y_i-\overline y),\qquad \operatorname{Cov}(aX+c,bY+d)=ab\operatorname{Cov}(X,Y)" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Sea una variable uniforme entre menos uno y uno y otra su cuadrado. La segunda depende totalmente de la primera, pero el momento cúbico es cero por simetría y la covarianza también. El diagrama de dispersión mostraría una parábola, que una correlación nula no resume.</p>
+<app-formula expression="Y=X^2,\quad EX=0,\quad E[X^3]=0\Longrightarrow\operatorname{Cov}(X,Y)=0" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Recorre toda la correlación y compara la varianza verdadera con la que ignora dependencia. Ajusta las desviaciones para identificar cuándo una correlación negativa cancela exactamente la variabilidad.</p>
+<app-deep-explorer topic="covariance" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>La igualdad entre varianza de una suma y suma de varianzas exige covarianzas nulas. Independencia es suficiente, pero no necesaria.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Dos variables tienen desviación uno y correlación menos uno. ¿Qué varianza tiene su suma?</p>
+<details class="note"><summary>Ver solución razonada</summary><p><app-formula displayMode="inline" [showCodeButton]="false" expression="1+1+2(-1)=0" />. La suma es constante casi seguramente bajo esas condiciones.</p></details>
+<p>¿Sumar cien a todas las observaciones de X cambia la correlación?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No, porque las desviaciones centradas permanecen iguales.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-074">Independencia de sucesos</a>. Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia.</li>
+<li><a routerLink="/problems/problema-076">Una distribución binomial</a>. Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia.</li>
+<li><a routerLink="/problems/problema-082">Transformación de medidas</a>. Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia.</li>
+<li><a routerLink="/problems/problema-083">Una recta de regresión</a>. Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia.</li>
+<li><a routerLink="/problems/problema-086">Precisión de una media</a>. Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Distingue coordenadas relacionadas por una trayectoria de observaciones independientes.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a>, <a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt</a>, <a routerLink="/articles/projection-least-squares">Proyecciones ortogonales y mínimos cuadrados</a>.</p>

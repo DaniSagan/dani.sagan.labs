@@ -1,0 +1,46 @@
+<span class="article-kicker">Topología / comprender, deducir, experimentar</span>
+<h2>Compactos, perfectos y totalmente desconectados</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Compacidad y espacios métricos</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Conjuntos perfectos</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Desconexión total en la recta</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Probar las propiedades de Cantor</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Intersecciones anidadas y extremos de funciones</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Un conjunto puede ser compacto, no tener puntos aislados y carecer por completo de intervalos. El conjunto de Cantor reúne esas tres propiedades y ayuda a separarlas. La compacidad controla sucesiones y cubiertas; ser perfecto describe acumulación local; ser totalmente desconectado limita las partes conexas. Ninguna es sinónimo de tener pocos puntos.</p>
+<h3 id="section-0">Compacidad y espacios métricos</h3>
+<p>Un conjunto es compacto si toda cubierta por abiertos admite una subcubierta finita. En espacios métricos equivale a que toda sucesión tenga una subsucesión convergente con límite dentro del conjunto. En espacios euclídeos, Heine–Borel lo caracteriza como cerrado y acotado. Esa equivalencia no se traslada sin condiciones a espacios de dimensión infinita. La compacidad permite que funciones continuas alcancen máximos y mínimos.</p>
+<h3 id="section-1">Conjuntos perfectos</h3>
+<p>Un conjunto perfecto es cerrado y cada uno de sus puntos es de acumulación del propio conjunto. No tener puntos aislados no basta si falta cierre, como ocurre con los racionales. Los intervalos cerrados no degenerados son perfectos y conectados; Cantor es perfecto pero no conectado. En un espacio euclídeo, un conjunto perfecto no vacío es incontable, aunque pueda tener medida cero.</p>
+<h3 id="section-2">Desconexión total en la recta</h3>
+<p>Un conjunto es totalmente desconectado si sus únicas partes conexas no vacías son puntos. En la recta, las partes conexas son intervalos, de modo que excluir todo intervalo no degenerado establece esta propiedad. No significa que todos los puntos sean aislados: en Cantor hay puntos arbitrariamente próximos entre sí. Un conjunto discreto finito también es totalmente desconectado, pero no perfecto si es no vacío.</p>
+<h3 id="section-3">Probar las propiedades de Cantor</h3>
+<p>Cada etapa es una unión finita de intervalos cerrados y todas están dentro del intervalo unidad. Su intersección es cerrada y acotada, por tanto compacta. Para aproximar cualquier punto por otros del conjunto se modifica una cifra ternaria cada vez más lejana; la distancia tiende a cero. Para separar dos puntos distintos, alguna etapa los coloca en intervalos separados por un hueco. Eso impide que una parte conexa contenga ambos.</p>
+<app-formula expression="C=\bigcap_{n=0}^\infty C_n,\qquad |C_n|_{\mathrm{longitud}}=(2/3)^n\longrightarrow0" />
+<h3 id="section-deeper">Intersecciones anidadas y extremos de funciones</h3>
+<p>Una familia anidada de compactos no vacíos dentro de un espacio métrico tiene intersección no vacía. Si sus diámetros tienden a cero, la intersección consta de un solo punto: dos puntos distintos requerirían un diámetro al menos igual a su distancia. Las etapas completas de Cantor no tienen diámetro decreciente a cero, pero cada rama de intervalos anidados sí. Esto justifica que una secuencia de elecciones izquierda-derecha determine un punto y enlaza topología con codificación. Sobre el compacto límite, una función continua alcanza extremos; su imagen es compacta, pero no tiene que ser desconectada, como muestra la función de Cantor al cubrir todo el intervalo unidad.</p>
+<app-formula expression="K_{n+1}\subseteq K_n,\quad K_n\ne\varnothing,\quad\operatorname{diam}K_n\to0\Longrightarrow\bigcap_nK_n=\{x\}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>El conjunto formado por cero y los inversos de los enteros positivos es compacto: está cerrado y acotado, y cero contiene el límite de su sucesión característica. Es totalmente desconectado, pero no perfecto porque cada inverso positivo es aislado. El intervalo unidad es compacto y perfecto, pero no totalmente desconectado.</p>
+<app-formula expression="K=\{0\}\cup\{1/n:n\ge1\}" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Aumenta las etapas y verifica el número de intervalos y su longitud. Prueba un punto que permanezca unas etapas y desaparezca después: una comprobación finita no decide pertenencia al límite.</p>
+<app-deep-explorer topic="compact-perfect-disconnected" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Una aproximación finita de Cantor contiene intervalos y no es totalmente desconectada. La propiedad surge en la intersección de todas las etapas.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿El intervalo abierto de cero a uno es compacto? ¿Es perfecto como subconjunto de la recta?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>No es compacto porque no es cerrado, y tampoco perfecto según la definición que incluye cierre, aunque ninguno de sus puntos sea aislado.</p></details>
+<p>¿Una imagen continua de un conjunto totalmente desconectado tiene que ser totalmente desconectada?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. La función de Cantor restringida a Cantor es continua y su imagen es todo el intervalo unidad.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-041">Una sucesión radical</a>. Prueba compacidad, ausencia de puntos aislados y desconexión sin confundir etapas finitas con el límite.</li>
+<li><a routerLink="/problems/problema-100">Longitud y dimensión de Cantor</a>. Prueba compacidad, ausencia de puntos aislados y desconexión sin confundir etapas finitas con el límite.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Distingue propiedades de un patrón finito de las de un conjunto límite o infinito.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>, <a routerLink="/articles/banach-fixed-point">Teorema del punto fijo de Banach</a>.</p>

@@ -1,0 +1,48 @@
+<span class="article-kicker">Geometría / comprender, deducir, experimentar</span>
+<h2>Análisis dimensional y leyes de escala</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Dimensión y unidad no son lo mismo</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Deducir exponentes y detectar información faltante</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Teorema de Buckingham y semejanza</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Escala geométrica y orbital</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Deducir el periodo de un péndulo y reconocer lo que falta</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una ecuación física debe ser coherente con las dimensiones de las magnitudes que relaciona. El análisis dimensional detecta errores, reduce el número de variables y anticipa leyes de escala. No determina por sí solo constantes numéricas ni demuestra un modelo dinámico, pero proporciona una comprobación poderosa antes de calcular o simular.</p>
+<h3 id="section-0">Dimensión y unidad no son lo mismo</h3>
+<p>La dimensión describe el tipo de magnitud, como longitud, masa o tiempo. La unidad fija una escala concreta, como metros o segundos. Dos términos que se suman deben tener las mismas dimensiones. En funciones exponenciales y trigonométricas, el argumento debe ser adimensional; los ángulos se tratan como cocientes de longitudes en radianes. Convertir unidades cambia valores numéricos sin cambiar dimensiones.</p>
+<app-formula expression="[v]=LT^{-1},\qquad [a]=LT^{-2},\qquad [F]=MLT^{-2}" />
+<h3 id="section-1">Deducir exponentes y detectar información faltante</h3>
+<p>Si se propone una ley como producto de potencias de variables, se igualan exponentes de dimensiones básicas para obtener un sistema lineal. La solución puede no ser única si existen grupos adimensionales libres. Una constante sin dimensiones queda indeterminada. Si dos mecanismos diferentes tienen la misma estructura dimensional, el análisis no puede decidir cuál domina; hace falta física adicional o datos.</p>
+<h3 id="section-2">Teorema de Buckingham y semejanza</h3>
+<p>Con un conjunto de variables y un rango determinado de dimensiones independientes, las relaciones se pueden expresar mediante un número menor de grupos adimensionales. Elegir escalas de longitud y tiempo transforma una ecuación en una forma comparable entre sistemas. Que dos modelos geométricos sean semejantes no garantiza semejanza dinámica: también deben coincidir los parámetros adimensionales pertinentes, como Reynolds en un flujo.</p>
+<h3 id="section-3">Escala geométrica y orbital</h3>
+<p>Al multiplicar longitudes por un factor, áreas y volúmenes cambian por su cuadrado y cubo. A densidad constante, la masa crece como el volumen y la razón superficie-volumen disminuye. Para un periodo orbital alrededor de una masa central fija, la combinación dimensional con la constante gravitatoria produce una dependencia de radio elevado a tres medios. Si también se modifica la masa, esa ley debe ajustarse.</p>
+<app-formula expression="T\propto\sqrt{\frac{r^3}{GM}},\qquad A\propto L^2,\quad V\propto L^3" />
+<h3 id="section-deeper">Deducir el periodo de un péndulo y reconocer lo que falta</h3>
+<p>Si se supone que el periodo de un péndulo ideal depende de longitud, gravedad y masa mediante potencias, igualar dimensiones elimina la masa y obliga a una raíz de longitud sobre gravedad. El análisis no obtiene el factor dos pi ni la dependencia de amplitud, pues el ángulo es adimensional y puede entrar como una función libre. La aproximación de pequeñas oscilaciones proporciona el factor mediante la ecuación diferencial linealizada. Así, dimensión y dinámica colaboran: la primera restringe la forma, la segunda determina constantes y régimen de validez. Una dimensión coherente no permite extrapolar automáticamente a amplitudes grandes o a un péndulo con rozamiento.</p>
+<app-formula expression="T=C(\theta_0)\sqrt{\ell/g},\qquad \theta_0\text{ pequeña}:\ C(\theta_0)\approx2\pi" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Escalar un objeto al doble de sus longitudes multiplica superficie por cuatro y volumen por ocho, reduciendo a la mitad superficie por unidad de volumen. En una órbita circular de masa central fija, duplicar el radio multiplica el periodo por dos elevado a tres medios, aproximadamente 2,828.</p>
+<app-formula expression="\frac{A&#x27;}{V&#x27;}=\frac12\frac AV,\qquad \frac{T&#x27;}T=2^{3/2}" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara las tres curvas de escala y cambia la dimensión seleccionada. Explica por qué el periodo orbital mostrado supone masa central fija y no un sistema completamente escalado a densidad constante.</p>
+<app-deep-explorer topic="dimensional-analysis" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Una ecuación dimensionalmente correcta puede ser físicamente falsa. La coherencia es una condición necesaria, no una prueba suficiente.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Puede la expresión velocidad por tiempo al cuadrado representar una distancia?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>No: sus dimensiones son <app-formula displayMode="inline" [showCodeButton]="false" expression="(LT^{-1})T^2=LT" />, no longitud. Aceleración por tiempo al cuadrado sí tiene dimensión de longitud.</p></details>
+<p>¿Por qué la masa no aparece en el periodo ideal deducido con estas variables?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque ninguna otra variable aporta dimensión de masa para compensarla, de modo que su exponente debe ser cero.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-082">Transformación de medidas</a>. Comprueba unidades y leyes de escala antes de interpretar transformaciones geométricas o físicas.</li>
+<li><a routerLink="/problems/problema-097">Escala de una órbita circular</a>. Comprueba unidades y leyes de escala antes de interpretar transformaciones geométricas o físicas.</li>
+<li><a routerLink="/problems/problema-098">Altura solar en Oviedo</a>. Comprueba unidades y leyes de escala antes de interpretar transformaciones geométricas o físicas.</li>
+<li><a routerLink="/tools/vector-field">Explorador de campos vectoriales</a>. Representa una ley local de evolución y relaciona el campo con las trayectorias.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Revisa cómo cambiar masa, distancia y tiempo afecta la semejanza de una simulación gravitatoria.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/ode-numerical-integration">Integración numérica de ecuaciones diferenciales</a>, <a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a>, <a routerLink="/articles/spherical-trigonometry">Trigonometría esférica y coordenadas celestes</a>.</p>

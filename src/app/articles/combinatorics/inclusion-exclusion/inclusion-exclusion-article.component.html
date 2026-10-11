@@ -1,0 +1,50 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Principio de inclusión y exclusión</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Dos conjuntos y una corrección necesaria</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Por qué alternan los signos</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Propiedades aritméticas y mínimos comunes múltiplos</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Aproximaciones y cotas de Bonferroni</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Desarreglos: ninguna posición fija</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Al contar elementos que cumplen varias propiedades, el problema no suele ser encontrarlos sino evitar contarlos varias veces. Inclusión y exclusión corrige esas repeticiones de manera sistemática. Su utilidad abarca divisibilidad, probabilidades, asignaciones prohibidas y eventos de ocupación. La fórmula tiene una demostración local: basta estudiar cuántas veces contribuye un elemento concreto.</p>
+<h3 id="section-0">Dos conjuntos y una corrección necesaria</h3>
+<p>Sumar las cardinalidades cuenta una vez los elementos exclusivos de cada conjunto y dos veces los compartidos. Restar la intersección devuelve una sola copia de cada elemento de la unión. La misma identidad sirve para medidas y probabilidades finitamente aditivas, sin exigir independencia. Si dos eventos son independientes, su intersección se puede calcular como producto; si son incompatibles, la intersección es vacía. Son hipótesis diferentes.</p>
+<app-formula expression="|A\cup B|=|A|+|B|-|A\cap B|" />
+<h3 id="section-1">Por qué alternan los signos</h3>
+<p>Con tres propiedades, restar todas las intersecciones por parejas elimina tres veces cada elemento común a las tres después de haberlo sumado tres veces. Por eso hay que añadir la triple intersección. Para un elemento que pertenece a un número determinado de conjuntos, su coeficiente total es una suma alternante de coeficientes binomiales y vale uno. Esta comprobación prueba la fórmula general sin necesitar un dibujo de todas las regiones.</p>
+<app-formula expression="\left|\bigcup_{i=1}^n A_i\right|=\sum_{\varnothing\ne I\subseteq\{1,\ldots,n\}}(-1)^{|I|+1}\left|\bigcap_{i\in I}A_i\right|" />
+<h3 id="section-2">Propiedades aritméticas y mínimos comunes múltiplos</h3>
+<p>Los múltiplos de un entero dentro de un intervalo inicial se cuentan por división entera. Un número divisible por varios enteros es múltiplo de su mínimo común múltiplo, no necesariamente de su producto. Esa diferencia importa cuando comparten factores primos. Para excluir todas las propiedades, se resta la unión del universo. Conviene definir primero si se incluye el cero, porque su pertenencia a todos los conjuntos cambia el recuento.</p>
+<app-formula expression="|\{1\le j\le N:d\mid j\}|=\left\lfloor\frac Nd\right\rfloor" />
+<h3 id="section-3">Aproximaciones y cotas de Bonferroni</h3>
+<p>Calcular todas las intersecciones puede ser costoso: con muchas propiedades el número de términos crece exponencialmente. Las sumas truncadas proporcionan cotas alternantes, conocidas como desigualdades de Bonferroni. La suma de probabilidades individuales da una cota superior de la unión; incluir las correcciones por parejas da una cota inferior. Estas garantías no deben confundirse con estimaciones exactas ni con aproximaciones basadas en independencia.</p>
+<app-formula expression="\sum_i P(A_i)-\sum_{i&lt;j}P(A_i\cap A_j)\le P\!\left(\bigcup_iA_i\right)\le\sum_iP(A_i)" />
+<h3 id="section-deeper">Desarreglos: ninguna posición fija</h3>
+<p>Una permutación sin puntos fijos se llama desarreglo. Para contarla, cada evento prohibido fija un elemento en su posición. Si se fijan j posiciones distintas, los restantes elementos se permutan libremente de tantas formas como su factorial. Hay una combinación de posiciones para cada tamaño j. Aplicar inclusión y exclusión al complemento de la unión da la suma de factoriales alternante. Al simplificar por el factorial total aparece una suma parcial de la exponencial negativa en uno. Así, la proporción de desarreglos tiende a la inversa del número e; esta conclusión surge de un conteo exacto y de un límite posterior, no de suponer independientes los eventos prohibidos.</p>
+<app-formula expression="D_n=\sum_{j=0}^n(-1)^j\binom nj(n-j)!=n!\sum_{j=0}^n\frac{(-1)^j}{j!}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Entre uno y cien, los múltiplos de dos son cincuenta y los de tres son treinta y tres. Los dieciséis múltiplos de seis aparecen en ambas listas. Por tanto sesenta y siete números son divisibles por dos o por tres, y treinta y tres por ninguno.</p>
+<app-formula expression="50+33-16=67,\qquad 100-67=33" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Observa cómo la suma ingenua supera la unión por exactamente el tamaño de la intersección. El laboratorio usa medidas que pueden ser fraccionarias; para cardinalidades finitas comprueba el mismo razonamiento con tamaños enteros.</p>
+<app-deep-explorer topic="inclusion-exclusion" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>La palabra «o» suele representar una unión inclusiva: permite cumplir ambas propiedades. Si el enunciado pide exactamente una, la intersección debe eliminarse por completo.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Cuenta los enteros entre uno y treinta divisibles por dos, tres o cinco.</p>
+<details class="note"><summary>Ver solución razonada</summary><p><app-formula displayMode="inline" [showCodeButton]="false" expression="15+10+6-5-3-2+1=22" />. Las intersecciones usan los mínimos comunes múltiplos seis, diez, quince y treinta.</p></details>
+<p>Cuenta los desarreglos de tres objetos.</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p><app-formula displayMode="inline" [showCodeButton]="false" expression="D_3=6-6+3-1=2" />: los dos ciclos de longitud tres.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-005">Totiente y coprimalidad</a>. Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones.</li>
+<li><a routerLink="/problems/problema-071">Dos dados y una condición</a>. Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones.</li>
+<li><a routerLink="/problems/problema-072">Extracción sin reemplazo</a>. Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/sudoku">Sudoku</a>. Cuenta candidatos descartados por fila y bloque teniendo en cuenta que algunas prohibiciones se solapan.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a>.</p>

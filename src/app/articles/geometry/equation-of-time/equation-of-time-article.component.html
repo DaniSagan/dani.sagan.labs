@@ -1,0 +1,48 @@
+<span class="article-kicker">Geometría / comprender, deducir, experimentar</span>
+<h2>Ecuación del tiempo y mediodía solar</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Tres nociones de hora</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Dos causas físicas</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Una aproximación útil, con límites</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Longitud y conversión a hora civil</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Mediodía, máxima altura y analema</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">El Sol no cruza un meridiano exactamente cada veinticuatro horas de reloj medio. La excentricidad orbital y la inclinación del eje terrestre generan una diferencia estacional entre tiempo solar aparente y medio. La ecuación del tiempo recoge esa diferencia. La longitud y la zona horaria añaden desplazamientos distintos, por lo que el mediodía solar raramente coincide con las doce del reloj civil.</p>
+<h3 id="section-0">Tres nociones de hora</h3>
+<p>El tiempo solar aparente sigue al Sol real y su mediodía corresponde al cruce del meridiano. El tiempo solar medio usa un Sol ficticio con movimiento uniforme. El tiempo civil sigue una zona horaria y reglas legales. La ecuación del tiempo compara las dos primeras nociones, no incorpora por sí misma la longitud del lugar ni el horario estacional. Fijar su convención de signo evita desplazamientos aplicados al revés.</p>
+<app-formula expression="E=t_{\mathrm{aparente}}-t_{\mathrm{medio}}" />
+<h3 id="section-1">Dos causas físicas</h3>
+<p>La velocidad orbital varía durante el año por la excentricidad: el desplazamiento del Sol sobre la eclíptica no es uniforme. Además, proyectar un movimiento uniforme de la eclíptica inclinada sobre el ecuador celeste produce otra variación. Ambas contribuciones tienen fases y periodicidades distintas y se combinan en una curva con varios extremos. La analema añade declinación a esa diferencia temporal y genera su conocida forma de ocho.</p>
+<h3 id="section-2">Una aproximación útil, con límites</h3>
+<p>Una fórmula trigonométrica anual aproxima la diferencia en minutos usando el número de día de un año común. Es útil para interpretar magnitudes y tendencias, pero no debe anunciarse como una efeméride exacta. El año, la definición precisa de tiempo y las correcciones astronómicas importan cuando se requiere mayor precisión. El laboratorio muestra explícitamente el carácter aproximado y la convención empleada.</p>
+<app-formula expression="B=\frac{2\pi(N-81)}{364},\qquad E\approx9.87\sin(2B)-7.53\cos B-1.5\sin B" />
+<h3 id="section-3">Longitud y conversión a hora civil</h3>
+<p>Con longitud positiva hacia el este, cada grado adelanta el tiempo solar medio cuatro minutos respecto a Greenwich. En mediodía aparente, el UTC aproximado se obtiene restando ese desplazamiento y la ecuación del tiempo a las doce. La hora civil suma el desfase de zona vigente en ese instante. Dos localidades de una misma zona pueden tener mediodías solares distintos y un cambio legal de hora no altera el movimiento del Sol.</p>
+<app-formula expression="t_{\mathrm{mediodia,UTC}}\approx12\mathrm h-4\lambda\ \mathrm{min}-E,\qquad t_{\mathrm{civil}}=t_{\mathrm{UTC}}+\text{desfase}" />
+<h3 id="section-deeper">Mediodía, máxima altura y analema</h3>
+<p>El mediodía solar se define por el tránsito del Sol por el meridiano. En el modelo diario de declinación constante coincide con la altura máxima; en una descripción precisa, la declinación también cambia durante el día y puede introducir una diferencia pequeña. Fotografiar el Sol a la misma hora de reloj a lo largo del año fija el tiempo medio civil, no el ángulo horario solar aparente. La variación horizontal de la analema está relacionada con la ecuación del tiempo y la vertical con la declinación, aunque su orientación en la imagen depende de latitud y hora de observación. El horario estacional rompe la homogeneidad si no se corrige al comparar fotografías.</p>
+<app-formula expression="H=0\quad\text{en el tránsito meridiano};\qquad h_{\mathrm{culminacion}}\approx90^\circ-|\phi-\delta|" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Para longitud menos 3,7 grados y una ecuación del tiempo de menos ocho minutos, el mediodía UTC es aproximadamente 12:22:48. Con desfase UTC más uno, el reloj marca 13:22:48; con UTC más dos, 14:22:48. El mismo evento solar se expresa con horas civiles distintas.</p>
+<app-formula expression="-4(-3.7)-(-8)=22.8\ \mathrm{min}" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Recorre el año manteniendo la longitud fija y luego cambia solo la longitud. Separa el desplazamiento estacional del desplazamiento geográfico y añade el desfase civil apropiado.</p>
+<app-deep-explorer topic="equation-of-time" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Otras fuentes definen la ecuación del tiempo con signo opuesto. Antes de comparar valores hay que comparar la definición.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Si una localidad está quince grados más al este y las demás condiciones coinciden, ¿cómo cambia el UTC de su mediodía?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Ocurre aproximadamente una hora antes, porque quince grados corresponden a sesenta minutos.</p></details>
+<p>¿El cambio al horario de verano modifica la declinación solar?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. Solo cambia la etiqueta civil del instante observado.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-098">Altura solar en Oviedo</a>. Separa tiempo solar aparente, tiempo medio, longitud geográfica y desfase civil.</li>
+<li><a routerLink="/problems/problema-099">Viaje entre husos fijos</a>. Separa tiempo solar aparente, tiempo medio, longitud geográfica y desfase civil.</li>
+<li><a routerLink="/tools/sun-position">Posición del Sol</a>. Contrasta geometría y tiempo solar para una localización y fecha concretas.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Relaciona velocidad orbital variable con tiempo solar, recordando que también interviene la inclinación terrestre.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/spherical-trigonometry">Trigonometría esférica y coordenadas celestes</a>, <a routerLink="/articles/daylight-saving-time">Horario estacional y horas locales ambiguas</a>, <a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala</a>.</p>

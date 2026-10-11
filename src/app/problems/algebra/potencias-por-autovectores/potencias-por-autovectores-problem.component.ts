@@ -23,16 +23,16 @@ export class PotenciasPorAutovectoresProblemComponent {
     "level": "Reto",
     "statement": "Sea \\(A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}\\). Calcula \\(A^{n}\\) para todo entero \\(n\\ge 0\\).",
     "resources": [
-{
-  "label": "Forma de Jordan, nilpotencia y potencias de matrices",
-  "route": "/articles/jordan-form",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-{
-  "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
-  "route": "/articles/cayley-hamilton",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Forma de Jordan, nilpotencia y potencias de matrices",
+        "route": "/articles/jordan-form",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
+      {
+        "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
+        "route": "/articles/cayley-hamilton",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Diagonalización de matrices",
         "route": "/articles/matrix-diagonalization",
@@ -42,6 +42,11 @@ export class PotenciasPorAutovectoresProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Inducción matemática y construcción de pruebas",
+        "route": "/articles/mathematical-induction",
+        "activity": "Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo."
       }
     ]
   };

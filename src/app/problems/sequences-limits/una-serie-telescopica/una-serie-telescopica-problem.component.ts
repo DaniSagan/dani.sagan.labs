@@ -37,6 +37,11 @@ export class UnaSerieTelescopicaProblemComponent {
         "label": "Representador de funciones",
         "route": "/tools/graph-plotter",
         "activity": "Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1."
+      },
+      {
+        "label": "Criterios de convergencia de series positivas",
+        "route": "/articles/positive-series-tests",
+        "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
       }
     ]
   };

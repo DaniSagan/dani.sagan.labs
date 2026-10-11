@@ -1,0 +1,54 @@
+<span class="article-kicker">Geometría / comprender, deducir, experimentar</span>
+<h2>Pitágoras y distancia euclídea</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Una identidad de áreas</a></li>
+<li><a [routerLink]="[]" fragment="section-1">De un triángulo a la distancia cartesiana</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Ortogonalidad y términos cruzados</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Métricas distintas y cálculo de longitudes</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una base oblicua necesita su matriz de Gram</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Pitágoras relaciona longitudes de un triángulo rectángulo y proporciona la fórmula de distancia en coordenadas cartesianas. Su alcance va más allá de dibujar hipotenusas: explica normas, proyecciones, longitudes de curvas y la suma de contribuciones ortogonales. La condición de perpendicularidad es la pieza que no puede omitirse cuando se generaliza.</p>
+<h3 id="section-0">Una identidad de áreas</h3>
+<p>Un cuadrado de lado suma de dos catetos puede descomponerse en cuatro copias del triángulo y un cuadrado interior cuyo lado es la hipotenusa. Igualar el área total con las áreas de las piezas y cancelar el término mixto da el teorema. El recíproco también vale para un triángulo: si la igualdad de cuadrados se cumple, el ángulo opuesto al lado mayor es recto, como se deduce de la ley de los cosenos.</p>
+<app-formula expression="(a+b)^2=4\frac{ab}{2}+c^2\Longrightarrow c^2=a^2+b^2" />
+<h3 id="section-1">De un triángulo a la distancia cartesiana</h3>
+<p>Las diferencias de coordenadas forman los catetos del desplazamiento. Trasladar ambas posiciones por el mismo vector no cambia esas diferencias, y rotar preserva el producto interno. En tres dimensiones se aplica Pitágoras primero a dos componentes y después a la tercera. En un espacio de dimensión mayor, la norma euclídea mantiene la misma estructura, aunque ya no podamos visualizar el triángulo directamente.</p>
+<app-formula expression="d(p,q)=\sqrt{\sum_{i=1}^n(p_i-q_i)^2}" />
+<h3 id="section-2">Ortogonalidad y términos cruzados</h3>
+<p>El cuadrado de la norma de una suma contiene un término cruzado. Solo desaparece cuando los vectores son ortogonales. Esta identidad explica por qué la distancia de un punto a un subespacio se minimiza mediante proyección y por qué la varianza de una suma necesita covarianzas. En bases que no son ortonormales, sumar cuadrados de coordenadas no produce necesariamente la longitud real: entra la matriz de productos internos.</p>
+<app-formula expression="\|u+v\|^2=\|u\|^2+\|v\|^2+2\langle u,v\rangle" />
+<h3 id="section-3">Métricas distintas y cálculo de longitudes</h3>
+<p>La distancia Manhattan suma valores absolutos y modela trayectos restringidos a una cuadrícula. La distancia sobre una esfera sigue arcos y no la cuerda del espacio ambiente. Para una curva suave, pequeños desplazamientos euclídeos conducen a integrar la norma de la velocidad. En computación conviene usar una función de hipotenusa que evite desbordamiento intermedio; elevar primero números enormes al cuadrado puede fallar aunque la distancia final sea representable.</p>
+<app-formula expression="L=\int_a^b\|\gamma&#x27;(t)\|\,dt" />
+<h3 id="section-deeper">Una base oblicua necesita su matriz de Gram</h3>
+<p>Las coordenadas describen un vector respecto a una base, y la longitud depende también de la geometría de esa base. Si los vectores básicos no son perpendiculares, expandir el producto interno produce términos cruzados. La matriz de Gram reúne todos los productos internos entre pares de vectores de base y permite calcular la norma mediante una forma cuadrática. Es definida positiva cuando la base es independiente y el producto interno es positivo. En una base ortonormal se reduce a la identidad, recuperando la suma habitual de cuadrados. Este detalle explica por qué algunas fórmulas de coordenadas parecen violar Pitágoras cuando en realidad usan ejes oblicuos.</p>
+<app-formula expression="G_{ij}=\langle b_i,b_j\rangle,\qquad \left\|\sum_i c_i b_i\right\|^2=c^\mathsf{T}Gc" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Entre los puntos de coordenadas uno, dos y cuatro, seis, el desplazamiento es tres, cuatro. La distancia euclídea es cinco, mientras que un recorrido obligado a seguir ejes tiene longitud siete. Ambas respuestas son correctas para sus respectivos modelos de movimiento, pero responden a preguntas distintas.</p>
+<app-formula expression="d=\sqrt{3^2+4^2}=5,\qquad d_1=|3|+|4|=7" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Cambia cada componente y compara distancia euclídea y Manhattan. Las longitudes calculadas son fiables; el ajuste independiente de los ejes del gráfico puede alterar el ángulo que se aprecia en pantalla.</p>
+<app-deep-explorer topic="pythagorean-distance" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Sumar cuadrados de dos lados cualesquiera no da el tercero si no se ha probado un ángulo recto. En un triángulo general hay que conservar el término de la ley de los cosenos.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Dos vectores tienen normas tres y cuatro y producto interno seis. ¿Cuánto mide su suma?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Su norma al cuadrado es <app-formula displayMode="inline" [showCodeButton]="false" expression="9+16+12=37" />, por lo que mide <app-formula displayMode="inline" [showCodeButton]="false" expression="\sqrt{37}" />, no cinco.</p></details>
+<p>Si dos vectores unitarios forman sesenta grados, ¿cuánto mide su suma?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>El cuadrado es <app-formula displayMode="inline" [showCodeButton]="false" expression="1+1+2\cos60^\circ=3" />, por lo que la longitud es <app-formula displayMode="inline" [showCodeButton]="false" expression="\sqrt3" />.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-022">Una mediana medida</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-028">Distancia a un plano</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-029">Dos rectas que se cruzan</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-035">Un triángulo con ángulo conocido</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-058">El punto más cercano de una parábola</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-068">Longitud de una curva</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/problems/problema-070">Una integral que contiene π</a>. Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Calcula separaciones y módulos de velocidad usando componentes ortogonales.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt</a>, <a routerLink="/articles/projection-least-squares">Proyecciones ortogonales y mínimos cuadrados</a>, <a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a>.</p>

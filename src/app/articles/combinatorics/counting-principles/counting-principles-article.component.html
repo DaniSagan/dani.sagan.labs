@@ -1,0 +1,51 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Principios de conteo: suma, producto y elecciones</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Alternativas disjuntas y decisiones sucesivas</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Repetir elementos y conservar el orden</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Olvidar el orden mediante una relación de equivalencia</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Restricciones y conteo complementario</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Demostrar la identidad de Pascal</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Contar exige definir qué objetos se consideran diferentes antes de aplicar una fórmula. Una contraseña, un comité y un reparto pueden usar los mismos nombres y producir cantidades distintas: importa si el orden cambia el resultado, si un elemento puede repetirse y si las decisiones se excluyen o se encadenan. Los principios de suma y producto son la base lógica de esas diferencias; combinaciones y permutaciones se deducen de ellos.</p>
+<h3 id="section-0">Alternativas disjuntas y decisiones sucesivas</h3>
+<p>El principio de suma cuenta alternativas que no pueden ocurrir simultáneamente. Si una elección puede hacerse por dos vías y ambas incluyen el mismo objeto, sumar sus tamaños duplica ese objeto. El principio de producto cuenta procesos por etapas: cada resultado de la primera debe admitir el mismo número de continuaciones para multiplicar por una constante. Si las ramas tienen tamaños diferentes, se suma el número de hojas de cada rama. Dibujar un árbol pequeño evita confundir estas situaciones.</p>
+<app-formula expression="|A\sqcup B|=|A|+|B|,\qquad |A\times B|=|A|\,|B|" />
+<h3 id="section-1">Repetir elementos y conservar el orden</h3>
+<p>Una palabra de longitud fija sobre un alfabeto permite reutilizar símbolos; cada posición constituye una decisión independiente de las anteriores. Elegir personas distintas para cargos diferentes reduce las opciones disponibles después de cada elección. El orden distingue presidente y secretario, aunque ambos pertenezcan al mismo conjunto de personas. Una permutación completa utiliza todos los elementos exactamente una vez. El caso de ninguna elección contiene un único resultado, el vacío, que explica el factorial de cero.</p>
+<app-formula expression="n^k,\qquad P(n,k)=\frac{n!}{(n-k)!},\qquad P(n,n)=n!" />
+<h3 id="section-2">Olvidar el orden mediante una relación de equivalencia</h3>
+<p>Cada subconjunto de tamaño fijo aparece tantas veces en la lista ordenada como maneras hay de ordenar sus miembros. Dividir por ese número funciona porque todas las clases tienen el mismo tamaño. Esta justificación es esencial: al identificar rotaciones de un collar, las clases pueden tener tamaños distintos y la misma división deja de ser válida. Las combinaciones con repetición constituyen otro problema, que puede transformarse en distribuir objetos indistinguibles mediante separadores.</p>
+<app-formula expression="\binom nk=\frac{n!}{k!(n-k)!},\qquad \binom{n+k-1}{k}" />
+<h3 id="section-3">Restricciones y conteo complementario</h3>
+<p>Si el requisito es incluir al menos un elemento especial, resulta más sencillo contar todas las elecciones y restar las que no contienen ninguno. Las probabilidades uniformes se obtienen dividiendo casos favorables entre posibles, pero solo después de verificar que todos esos resultados elementales tienen la misma probabilidad. Una lista de tipos de resultados, como tener cero, uno o dos éxitos, normalmente no es equiprobable. El conteo construye el espacio muestral; no establece por sí solo su distribución.</p>
+<h3 id="section-deeper">Demostrar la identidad de Pascal</h3>
+<p>Clasifica los subconjuntos de tamaño k según contengan o no un elemento distinguido. En el primer caso quedan k menos uno miembros por escoger entre los demás; en el segundo se escogen k entre esos mismos elementos. Son casos disjuntos y exhaustivos, así que el principio de suma produce la identidad de Pascal. Esta prueba también explica por qué las filas del triángulo de Pascal sirven para expandir una potencia: cada término corresponde a elegir en qué factores aparece la segunda variable. Para contar repartos indistinguibles, una fila de k estrellas y n menos uno separadores representa las cantidades entregadas a n receptores; escoger posiciones de estrellas da combinaciones con repetición.</p>
+<app-formula expression="\binom nk=\binom{n-1}{k-1}+\binom{n-1}k,\qquad (a+b)^n=\sum_{k=0}^n\binom nk a^{n-k}b^k" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Entre ocho personas, tres son especialistas. Formar un comité de tres con al menos un especialista da todas las combinaciones menos las que usan únicamente a las cinco restantes. Si además se asigna un cargo diferente a cada miembro, cada comité produce seis equipos ordenados.</p>
+<app-formula expression="\binom83-\binom53=56-10=46,\qquad 46\cdot3!=276" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara los tres conteos para la misma cantidad de opciones. Predice qué ocurre al elegir un solo elemento y al elegir todos. El cociente entre selección ordenada y no ordenada debe ser el factorial del número de elementos elegidos.</p>
+<app-deep-explorer topic="counting-principles" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Dividir por un factorial requiere comprobar que cada objeto final tiene exactamente el mismo número de representantes. La simetría puede romper esa condición.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Cuántas cadenas binarias de longitud cinco contienen al menos un uno? ¿Y exactamente dos?</p>
+<details class="note"><summary>Ver solución razonada</summary><p><app-formula displayMode="inline" [showCodeButton]="false" expression="2^5-1=31" />; con exactamente dos unos se eligen sus posiciones: <app-formula displayMode="inline" [showCodeButton]="false" expression="\binom52=10" />.</p></details>
+<p>¿Cuántas maneras hay de entregar cuatro fichas iguales a tres personas, permitiendo que alguna no reciba ninguna?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Hay <app-formula displayMode="inline" [showCodeButton]="false" expression="\binom{4+3-1}4=\binom64=15" />: se ordenan cuatro estrellas y dos separadores.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-009">Divisores cuadrados</a>. Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</li>
+<li><a routerLink="/problems/problema-072">Extracción sin reemplazo</a>. Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</li>
+<li><a routerLink="/problems/problema-076">Una distribución binomial</a>. Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</li>
+<li><a routerLink="/problems/problema-091">Caminos con una restricción</a>. Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</li>
+<li><a routerLink="/problems/problema-093">Líneas ganadoras en dos juegos</a>. Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Identifica secuencias de jugadas distintas que llegan a un mismo tablero; distingue contar historias y contar estados.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/inclusion-exclusion">Principio de inclusión y exclusión</a>, <a routerLink="/articles/large-numbers-law">Ley de los grandes números</a>, <a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a>.</p>

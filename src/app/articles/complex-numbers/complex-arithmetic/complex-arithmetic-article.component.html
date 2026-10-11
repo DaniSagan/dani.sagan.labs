@@ -1,0 +1,48 @@
+<span class="article-kicker">Números complejos / comprender, deducir, experimentar</span>
+<h2>Conjugado, módulo y división compleja</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Suma y producto en coordenadas</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Conjugación y módulo</a></li>
+<li><a [routerLink]="[]" fragment="section-2">División mediante racionalización</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Interpretación polar y estabilidad</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">El inverso como transformación del plano</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">El plano complejo permite tratar posiciones, escalas y rotaciones con una misma aritmética. El conjugado y el módulo proporcionan herramientas para dividir y medir sin perder esa interpretación geométrica. Comprender sus identidades evita errores de signos y prepara el uso de fasores, raíces y polinomios reales.</p>
+<h3 id="section-0">Suma y producto en coordenadas</h3>
+<p>La unidad imaginaria tiene cuadrado negativo uno. Al multiplicar dos expresiones se distribuyen términos y se reduce su cuadrado; la parte real y la imaginaria resultantes son números reales. Sumar equivale a sumar vectores del plano. Multiplicar, en cambio, no es un producto componente a componente: mezcla ambas coordenadas y corresponde a combinar una escala con una rotación.</p>
+<app-formula expression="(a+bi)(c+di)=(ac-bd)+(ad+bc)i" />
+<h3 id="section-1">Conjugación y módulo</h3>
+<p>Conjugar cambia el signo de la parte imaginaria y refleja respecto al eje real. El producto de un número por su conjugado es real no negativo y define el cuadrado del módulo. La conjugación respeta suma y producto, de modo que una raíz no real de un polinomio con coeficientes reales tiene también su conjugada como raíz. La condición de coeficientes reales es necesaria para esa conclusión.</p>
+<app-formula expression="\overline{a+bi}=a-bi,\qquad |z|^2=z\overline z=a^2+b^2" />
+<h3 id="section-2">División mediante racionalización</h3>
+<p>Si el divisor es distinto de cero, multiplicar numerador y denominador por su conjugado convierte el denominador en su módulo al cuadrado. Esa cantidad es estrictamente positiva, por lo que la operación está bien definida. El resultado permite leer las dos coordenadas del cociente y comprobarlo volviendo a multiplicar por el divisor. No debe confundirse el módulo al cuadrado con la suma simple de componentes.</p>
+<app-formula expression="\frac{a+bi}{c+di}=\frac{(ac+bd)+(bc-ad)i}{c^2+d^2}" />
+<h3 id="section-3">Interpretación polar y estabilidad</h3>
+<p>En forma polar, multiplicar suma argumentos y multiplica módulos; dividir resta argumentos y divide módulos. El argumento solo está definido módulo una vuelta completa y el cero no tiene dirección. Para valores extremos, calcular cuadrados directamente puede desbordar y conviene usar algoritmos escalados. También debe cuidarse una división por un número muy pequeño: aunque exista matemáticamente, amplifica incertidumbre de los datos.</p>
+<h3 id="section-deeper">El inverso como transformación del plano</h3>
+<p>El inverso de un complejo no nulo es su conjugado dividido por el módulo al cuadrado. Como transformación, invierte el radio y cambia el signo del argumento. No es una transformación lineal del plano: la escala depende de la posición. Las identidades del módulo permiten demostrar la desigualdad triangular, indispensable al controlar errores complejos y convergencia. En polinomios reales, multiplicar un factor de raíz no real por el de su conjugada produce una cuadrática real cuyo discriminante es negativo. Esa operación explica cómo una factorización compleja se agrupa en factores reales sin perder las raíces.</p>
+<app-formula expression="z^{-1}=\frac{\overline z}{|z|^2},\quad |z+w|\le|z|+|w|,\quad (x-z)(x-\overline z)=x^2-2\operatorname{Re}(z)x+|z|^2" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Para dividir dos más tres veces la unidad imaginaria entre dos más la unidad imaginaria, se usa el conjugado del divisor. El denominador es cinco y el numerador tiene parte real siete e imaginaria cuatro. Al multiplicar el resultado por el divisor se recupera exactamente el número original.</p>
+<app-formula expression="\frac{2+3i}{2+i}=\frac{(2+3i)(2-i)}5=\frac75+\frac45i" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>El divisor se mantiene en dos más la unidad imaginaria. Mueve el dividendo y comprueba que la razón entre los módulos se conserva. Los ejes mantienen la misma escala geométrica para conservar los ángulos.</p>
+<app-deep-explorer topic="complex-arithmetic" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>El conjugado de un producto es el producto de los conjugados. El conjugado de un cociente exige además que el divisor sea no nulo.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué representa multiplicar por la unidad imaginaria dos veces?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Cada multiplicación rota noventa grados en sentido positivo. Dos dan una media vuelta porque <app-formula displayMode="inline" [showCodeButton]="false" expression="i^2=-1" />.</p></details>
+<p>¿Qué complejos tienen inverso igual a su conjugado?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Los de módulo uno, porque el denominador del inverso es entonces uno.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-036">Raíces cuartas de −1</a>. Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio.</li>
+<li><a routerLink="/problems/problema-038">Una potencia en forma polar</a>. Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio.</li>
+<li><a routerLink="/problems/problema-039">Una transformación de Möbius</a>. Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Representa posiciones y rotaciones en un plano mediante coordenadas complejas.</li>
+</ul></div>

@@ -1,0 +1,49 @@
+<span class="article-kicker">Análisis / comprender, deducir, experimentar</span>
+<h2>Teorema del punto fijo de Banach</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Las tres hipótesis que sostienen la conclusión</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Construir una sucesión de Cauchy</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Unicidad y garantías de parada</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Reformular una ecuación con cuidado</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una reformulación contractiva de una raíz</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una ecuación puede resolverse buscando un punto que una transformación deje inmóvil. El teorema de Banach garantiza que, si esa transformación contrae distancias en un espacio completo, existe un único punto fijo y la iteración converge hacia él desde cualquier inicio permitido. Su fuerza está en ofrecer a la vez existencia, unicidad, algoritmo y estimaciones de error.</p>
+<h3 id="section-0">Las tres hipótesis que sostienen la conclusión</h3>
+<p>El conjunto de trabajo debe ser un espacio métrico completo, la transformación debe enviarlo dentro de sí mismo y debe reducir todas las distancias por una misma constante menor que uno. No basta con observar una pendiente pequeña en algunos puntos. Una contracción definida en un intervalo abierto puede converger a un extremo que no pertenece al dominio: por eso la completitud no es una formalidad.</p>
+<app-formula expression="d(Tx,Ty)\le q\,d(x,y),\qquad 0\le q&lt;1,\qquad T:X\to X" />
+<h3 id="section-1">Construir una sucesión de Cauchy</h3>
+<p>Al iterar, la distancia entre pasos consecutivos disminuye geométricamente. La desigualdad triangular acota la distancia entre cualquier par de iterados posteriores por una cola de serie geométrica. Esa cola tiende a cero, de modo que la sucesión es de Cauchy. La completitud aporta el límite dentro del espacio y la continuidad, que se deduce de la contracción, muestra que ese límite es fijo.</p>
+<app-formula expression="d(x_{n+p},x_n)\le\frac{q^n}{1-q}d(x_1,x_0)" />
+<h3 id="section-2">Unicidad y garantías de parada</h3>
+<p>Dos puntos fijos tendrían una distancia menor o igual que esa misma distancia multiplicada por una constante estrictamente menor que uno; solo puede ocurrir si coinciden. La cota a priori usa el primer paso y el número de iteraciones. La cota a posteriori usa el paso más reciente, útil para decidir cuándo parar. Estas garantías requieren conocer una constante válida, no estimarla únicamente a partir de la trayectoria observada.</p>
+<app-formula expression="d(x_n,x_*)\le\frac{q^n}{1-q}d(x_1,x_0),\qquad d(x_n,x_*)\le\frac q{1-q}d(x_n,x_{n-1})" />
+<h3 id="section-3">Reformular una ecuación con cuidado</h3>
+<p>Dos mapas con los mismos puntos fijos pueden tener comportamientos iterativos muy diferentes. Para resolver una ecuación, conviene elegir una reformulación que conserve un dominio cerrado y tenga una cota de derivada inferior a uno. Newton puede converger muy rápido localmente pero no es una contracción global automática. En ecuaciones diferenciales, la iteración de Picard aplica la misma idea a un espacio de funciones con una norma adecuada.</p>
+<h3 id="section-deeper">Una reformulación contractiva de una raíz</h3>
+<p>La ecuación de una raíz cuadrada puede escribirse de muchas formas. Para buscar la raíz positiva de dos, el mapa que combina la mitad del argumento con su inverso conserva el intervalo de uno a dos y tiene derivada de módulo como máximo un medio allí. Eso permite aplicar Banach dentro del intervalo, aunque fuera de él aparezca una singularidad en cero. La iteración coincide con Newton para esa ecuación y acelera cerca de la raíz, porque la derivada del mapa se anula en el punto fijo. Una garantía contractiva global en el intervalo y una velocidad local cuadrática son conclusiones compatibles, pero se prueban con argumentos distintos.</p>
+<app-formula expression="T(x)=\frac12\left(x+\frac2x\right),\qquad T&#x27;(x)=\frac12-\frac1{x^2},\quad x\in[1,2]" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>El mapa afín que toma la mitad del argumento y suma la mitad conserva toda la recta real, tiene constante un medio y punto fijo uno. Desde tres, los iterados son dos, uno y medio y así sucesivamente. El error exacto se divide por dos en cada paso.</p>
+<app-formula expression="T(x)=\frac{x+1}{2},\qquad x_n=1+2^{-n}(x_0-1)" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Prueba pendientes negativas para ver alternancia, y pendientes próximas a uno para ver convergencia lenta. Compara el error después de veinte pasos con la cota cuantitativa.</p>
+<app-deep-explorer topic="banach-fixed-point" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>La condición de derivada de módulo menor que uno debe ser uniforme en el conjunto usado y este debe conservarse. Un valor local no prueba convergencia desde cualquier inicio.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué ocurre con el mapa que divide por dos en el intervalo abierto de cero a uno?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Sus iterados convergen a cero, pero cero no pertenece al intervalo. El espacio no es completo y no hay punto fijo dentro de él.</p></details>
+<p>¿Por qué la misma fórmula no autoriza una garantía desde cualquier número real?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Porque no está definida en cero, no conserva todos los dominios posibles y la cota contractiva depende del intervalo.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-041">Una sucesión radical</a>. Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error.</li>
+<li><a routerLink="/problems/problema-043">Recurrencia afín</a>. Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error.</li>
+<li><a routerLink="/problems/problema-054">Dos pasos de Newton</a>. Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Contrasta una regla que contrae distancias con un sistema discreto que puede presentar ciclos y múltiples estados estables.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>, <a routerLink="/articles/numerical-conditioning">Error numérico, cancelación y condicionamiento</a>.</p>

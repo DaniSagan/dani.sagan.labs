@@ -23,16 +23,16 @@ export class UnaMatrizNoDiagonalizableProblemComponent {
     "level": "Reto",
     "statement": "Para \\(A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\), demuestra que no es diagonalizable y calcula \\(A^{n}\\) para \\(n\\ge 0\\).",
     "resources": [
-{
-  "label": "Forma de Jordan, nilpotencia y potencias de matrices",
-  "route": "/articles/jordan-form",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-{
-  "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
-  "route": "/articles/cayley-hamilton",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Forma de Jordan, nilpotencia y potencias de matrices",
+        "route": "/articles/jordan-form",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
+      {
+        "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
+        "route": "/articles/cayley-hamilton",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Diagonalización de matrices",
         "route": "/articles/matrix-diagonalization",
@@ -47,6 +47,16 @@ export class UnaMatrizNoDiagonalizableProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Inducción matemática y construcción de pruebas",
+        "route": "/articles/mathematical-induction",
+        "activity": "Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo."
+      },
+      {
+        "label": "Espacios vectoriales, bases y rango–nulidad",
+        "route": "/articles/vector-spaces",
+        "activity": "Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones."
       }
     ]
   };

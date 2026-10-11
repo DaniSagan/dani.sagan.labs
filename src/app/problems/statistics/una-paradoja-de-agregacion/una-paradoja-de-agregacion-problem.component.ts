@@ -37,6 +37,16 @@ export class UnaParadojaDeAgregacionProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Causalidad, confusión y experimentos aleatorizados",
+        "route": "/articles/causal-inference",
+        "activity": "Separa asociación y efecto causal; estudia composición de grupos y supuestos de asignación."
+      },
+      {
+        "label": "Muestreo estratificado y estimadores ponderados",
+        "route": "/articles/stratified-sampling",
+        "activity": "Recombina las medias de grupos con pesos poblacionales y distingue composición de muestra y población."
       }
     ]
   };

@@ -1,0 +1,44 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Recorridos eulerianos y caminos hamiltonianos</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Definiciones que evitan confusiones</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Grados y conectividad para Euler</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Hamilton necesita otra estructura</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Algoritmos y variantes prácticas</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Un contraejemplo que separa ambas propiedades</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Pasar por todas las aristas y pasar por todos los vértices son problemas distintos. Euler estudia recorridos que usan cada arista una sola vez; Hamilton estudia visitas a vértices sin repetirlos. El primero tiene una caracterización sencilla por grados y conectividad. El segundo no dispone de un criterio equivalente igual de simple, pese a que ambos se dibujan como rutas en un grafo.</p>
+<h3 id="section-0">Definiciones que evitan confusiones</h3>
+<p>Un recorrido puede repetir vértices; un camino simple no los repite. Un recorrido euleriano usa todas las aristas exactamente una vez y puede visitar un vértice varias veces. Un camino hamiltoniano visita todos los vértices una vez, pero deja sin usar muchas aristas; si vuelve al inicio forma un ciclo. Las condiciones cambian en grafos dirigidos, por lo que hay que fijar desde el principio si las aristas tienen orientación.</p>
+<h3 id="section-1">Grados y conectividad para Euler</h3>
+<p>Cada visita intermedia usa una arista para entrar y otra para salir, emparejando incidencias. Así un circuito euleriano exige grados pares y un recorrido abierto permite exactamente dos vértices impares, los extremos. Además, todos los vértices con aristas deben pertenecer a una componente conectada. Estas condiciones son suficientes: la construcción de Hierholzer une circuitos locales hasta consumir todas las aristas.</p>
+<app-formula expression="\text{Euler cerrado: grados pares};\qquad \text{Euler abierto: exactamente dos impares}" />
+<h3 id="section-2">Hamilton necesita otra estructura</h3>
+<p>Los grados pares no caracterizan ciclos hamiltonianos. Una condición suficiente de Dirac dice que un grafo simple de al menos tres vértices con grado mínimo al menos la mitad de su orden es hamiltoniano. No es necesaria: un ciclo largo tiene grado dos y sí es hamiltoniano. Un vértice de corte impide un ciclo hamiltoniano, pero su ausencia tampoco lo garantiza. La búsqueda general puede crecer exponencialmente.</p>
+<app-formula expression="\delta(G)\ge\frac n2,\quad n\ge3\Longrightarrow G\text{ hamiltoniano}" />
+<h3 id="section-3">Algoritmos y variantes prácticas</h3>
+<p>Hierholzer recorre aristas en tiempo lineal usando listas y una pila. Para Hamilton se emplea retroceso con podas o programación dinámica sobre subconjuntos en instancias moderadas. El viajante añade costes y busca un ciclo de coste mínimo; el cartero chino permite repetir aristas para cubrirlas con mínimo coste. Estas variantes corresponden a necesidades reales distintas y no deben resolverse con el criterio del problema vecino.</p>
+<h3 id="section-deeper">Un contraejemplo que separa ambas propiedades</h3>
+<p>Dos triángulos que comparten un único vértice forman un grafo conectado con todos sus grados pares. Hay un circuito euleriano que recorre un triángulo, regresa al vértice común y recorre el otro. Sin embargo no hay ciclo hamiltoniano: para visitar los dos lados habría que pasar dos veces por el vértice de unión. Este vértice es de corte. El ejemplo demuestra que ni conectividad ni paridad bastan para Hamilton y que Euler permite repetir vértices precisamente donde lo necesita. En sentido contrario, un grafo completo de cuatro vértices tiene ciclo hamiltoniano pero demasiados grados impares para Euler. Tener una de las propiedades no implica la otra.</p>
+<app-formula expression="(2,2,4,2,2)\ \text{son los grados de dos triángulos unidos en un vértice}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>El grafo completo de cuatro vértices tiene grado tres en cada uno: cuatro grados impares impiden un recorrido euleriano. Sin embargo tiene un ciclo hamiltoniano evidente. Al eliminar una arista, sus extremos pasan a grado dos y quedan dos impares, por lo que aparece un recorrido euleriano abierto; todavía existe un ciclo hamiltoniano.</p>
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara grafos completos con y sin una arista. Comprueba los grados y construye a mano rutas para las conclusiones positivas, sin confundir una clasificación con una ruta concreta.</p>
+<app-deep-explorer topic="euler-hamilton" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Contar grados impares no sustituye comprobar conectividad. Dos circuitos disjuntos tienen todos los grados pares y no forman un único recorrido euleriano.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Un ciclo simple de cinco vértices es euleriano y hamiltoniano?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Sí. Recorrer el ciclo utiliza cada arista una vez y visita cada vértice una vez antes de regresar al inicio.</p></details>
+<p>¿Por qué un vértice de corte impide un ciclo hamiltoniano?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Al quitarlo quedan componentes distintas; un ciclo que visitara todas tendría que entrar y salir de ellas repitiendo ese vértice.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-092">Un recorrido euleriano</a>. Compara cubrir aristas y visitar vértices para elegir el criterio de ruta que realmente pide el problema.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Representa estados o posiciones como vértices y define qué significaría recorrer transiciones frente a visitar estados.</li>
+</ul></div>

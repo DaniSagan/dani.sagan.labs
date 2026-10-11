@@ -23,11 +23,11 @@ export class TamanoMuestralParaUnaProporcionProblemComponent {
     "level": "Oposición",
     "statement": "Usando la aproximación normal, busca n para estimar una proporción con margen máximo \\(0,05\\) al 95 %, sin conocer previamente p. Usa \\(z=1,96\\).",
     "resources": [
-{
-  "label": "Distribuciones muestrales y error estándar",
-  "route": "/articles/sampling-distributions",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Distribuciones muestrales y error estándar",
+        "route": "/articles/sampling-distributions",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Inferencia estadística",
         "route": "/articles/statistical-inference",
@@ -42,6 +42,21 @@ export class TamanoMuestralParaUnaProporcionProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Desigualdades de Markov y Chebyshev",
+        "route": "/articles/probability-inequalities",
+        "activity": "Obtén garantías de desviación desde media y varianza y compáralas con colas de distribuciones concretas."
+      },
+      {
+        "label": "Intervalos para proporciones: Wilson y métodos exactos",
+        "route": "/articles/proportion-intervals",
+        "activity": "Amplía la inferencia binomial con Wilson y Clopper–Pearson, especialmente cerca de cero y uno."
+      },
+      {
+        "label": "Potencia estadística y errores de contraste",
+        "route": "/articles/statistical-power",
+        "activity": "Planifica un efecto relevante y compara nivel, error de tipo II y potencia para distintos tamaños."
       }
     ]
   };

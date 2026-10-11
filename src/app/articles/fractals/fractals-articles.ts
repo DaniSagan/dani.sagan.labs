@@ -1,3 +1,4 @@
+import { CantorFunctionArticleComponent } from './cantor-function/cantor-function-article.component';
 import { FractalMeasureDimensionArticleComponent } from './fractal-measure-dimension/fractal-measure-dimension-article.component';
 import { BurningShipComponent } from './burning-ship/burning-ship.component';
 import { FeigenbaumArticleComponent } from './feigenbaum/feigenbaum-article.component';
@@ -49,6 +50,7 @@ import { TricornComponent } from './tricorn/tricorn.component';
 import { VicsekFractalComponent } from './vicsek-fractal/vicsek-fractal.component';
 
 export const FRACTALS_ARTICLES = [
+  CantorFunctionArticleComponent,
   FractalMeasureDimensionArticleComponent,
   FeigenbaumArticleComponent,
   ApollonianSieveComponent,

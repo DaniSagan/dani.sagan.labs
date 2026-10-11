@@ -23,11 +23,11 @@ export class DistanciaAUnPlanoProblemComponent {
     "level": "Oposición",
     "statement": "Calcula la distancia de \\(P=(1,2,3)\\) al plano \\(2x-y+2z-4=0\\) y su proyección ortogonal.",
     "resources": [
-{
-  "label": "Producto vectorial y producto mixto",
-  "route": "/articles/vector-products",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Producto vectorial y producto mixto",
+        "route": "/articles/vector-products",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Proyecciones ortogonales y distancias en el espacio",
         "route": "/articles/orthogonal-projections",
@@ -42,6 +42,21 @@ export class DistanciaAUnPlanoProblemComponent {
         "label": "Curvas implícitas",
         "route": "/tools/implicit-curve-graph",
         "activity": "Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas."
+      },
+      {
+        "label": "Productos internos y ortonormalización de Gram–Schmidt",
+        "route": "/articles/gram-schmidt",
+        "activity": "Construye direcciones ortogonales y conecta sus componentes con productos internos."
+      },
+      {
+        "label": "Proyecciones ortogonales y mínimos cuadrados",
+        "route": "/articles/projection-least-squares",
+        "activity": "Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados."
+      },
+      {
+        "label": "Pitágoras y distancia euclídea",
+        "route": "/articles/pythagorean-distance",
+        "activity": "Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean."
       }
     ]
   };

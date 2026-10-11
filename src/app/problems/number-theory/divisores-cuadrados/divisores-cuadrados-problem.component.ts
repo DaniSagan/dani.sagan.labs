@@ -23,11 +23,11 @@ export class DivisoresCuadradosProblemComponent {
     "level": "Oposición",
     "statement": "¿Cuántos divisores positivos de 360 son cuadrados perfectos? Enuméralos.",
     "resources": [
-{
-  "label": "Irracionalidad y valuaciones primas",
-  "route": "/articles/prime-valuations",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Irracionalidad y valuaciones primas",
+        "route": "/articles/prime-valuations",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Divisores y suma de divisores",
         "route": "/articles/divisor-sum-theorem",
@@ -37,6 +37,11 @@ export class DivisoresCuadradosProblemComponent {
         "label": "Descomposición en primos",
         "route": "/tools/prime-decomposition",
         "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
+      },
+      {
+        "label": "Principios de conteo: suma, producto y elecciones",
+        "route": "/articles/counting-principles",
+        "activity": "Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones."
       }
     ]
   };

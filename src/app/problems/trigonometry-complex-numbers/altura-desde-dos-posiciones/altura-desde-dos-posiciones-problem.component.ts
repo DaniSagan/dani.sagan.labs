@@ -23,11 +23,11 @@ export class AlturaDesdeDosPosicionesProblemComponent {
     "level": "Oposición",
     "statement": "En terreno horizontal, la cima de una torre se ve con elevación 30°. Tras acercarse 20 m hacia su base, la elevación es 60°. Calcula su altura, despreciando la altura del observador.",
     "resources": [
-{
-  "label": "Trigonometría para medir alturas y distancias",
-  "route": "/articles/height-surveying",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Trigonometría para medir alturas y distancias",
+        "route": "/articles/height-surveying",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Ángulos múltiples y ángulo mitad",
         "route": "/articles/trig-n-functions",
@@ -42,6 +42,21 @@ export class AlturaDesdeDosPosicionesProblemComponent {
         "label": "Representador de funciones",
         "route": "/tools/graph-plotter",
         "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
+      },
+      {
+        "label": "Semejanza de triángulos y proporcionalidad",
+        "route": "/articles/triangle-similarity",
+        "activity": "Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas."
+      },
+      {
+        "label": "Ley de los senos y caso ambiguo",
+        "route": "/articles/sine-law",
+        "activity": "Amplía la resolución triangular con la ley de los senos y comprueba todas las ramas del caso ambiguo."
+      },
+      {
+        "label": "Diferenciales y aproximación lineal",
+        "route": "/articles/linear-approximation",
+        "activity": "Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación."
       }
     ]
   };

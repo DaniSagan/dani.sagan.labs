@@ -1,0 +1,49 @@
+<span class="article-kicker">Probabilidad y estadística / comprender, deducir, experimentar</span>
+<h2>Ley de los grandes números</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">La versión débil y una prueba elemental</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Convergencia casi segura y trayectorias</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Qué aporta y qué no aporta el límite central</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Dependencia, colas pesadas y Monte Carlo</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Consistencia no equivale a ausencia de sesgo</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La media muestral no tiene por qué acercarse a la media poblacional en cada paso. La ley de los grandes números describe una convergencia de conjunto conforme aumenta el número de observaciones. Fundamenta frecuencias, simulación Monte Carlo y estimación, pero requiere hipótesis sobre la distribución y la dependencia. No obliga a que una racha de resultados sea compensada por la siguiente.</p>
+<h3 id="section-0">La versión débil y una prueba elemental</h3>
+<p>Para observaciones independientes con la misma media y varianza finita, la media muestral tiene la media correcta y su varianza disminuye inversamente con el tamaño. Aplicar Chebyshev muestra que la probabilidad de un error mayor que cualquier tolerancia fija tiende a cero. Esa es convergencia en probabilidad. La varianza finita es suficiente para esta prueba, aunque la ley débil admite otras hipótesis más generales.</p>
+<app-formula expression="P(|\overline X_n-\mu|\ge\varepsilon)\le\frac{\sigma^2}{n\varepsilon^2}\longrightarrow0" />
+<h3 id="section-1">Convergencia casi segura y trayectorias</h3>
+<p>La versión fuerte para variables independientes e idénticamente distribuidas con esperanza absoluta finita establece convergencia casi segura. Significa que, salvo un conjunto de trayectorias de probabilidad cero, la sucesión de medias converge. Es una afirmación distinta de convergencia en probabilidad, y no debe deducirse simplemente de la cota anterior sin un argumento adicional. Ambas permiten desviaciones temporales y carecen de una velocidad universal para cada trayectoria.</p>
+<app-formula expression="E|X_1|&lt;\infty\quad\Longrightarrow\quad P\!\left(\lim_{n\to\infty}\overline X_n=E[X_1]\right)=1" />
+<h3 id="section-2">Qué aporta y qué no aporta el límite central</h3>
+<p>La ley de grandes números identifica un límite; el teorema central del límite describe la escala y, bajo hipótesis, la forma de las fluctuaciones alrededor de él. Duplicar el tamaño no divide por dos el error típico: con independencia y varianza finita lo reduce por raíz de dos. Para conseguir la mitad de desviación típica se necesitan cuatro veces las observaciones. Una muestra enorme puede seguir sesgada si su mecanismo de selección no representa la población.</p>
+<h3 id="section-3">Dependencia, colas pesadas y Monte Carlo</h3>
+<p>Observaciones perfectamente correlacionadas no acumulan nueva información: repetir el mismo dato no mejora la media. Procesos ergódicos permiten leyes de promedios bajo condiciones más amplias, pero su incertidumbre depende de autocorrelaciones. Una distribución de Cauchy no tiene media finita y la media muestral conserva su distribución, por lo que esta ley no aplica. En Monte Carlo hay que asegurar integrabilidad y un muestreo adecuado, no solo aumentar iteraciones.</p>
+<h3 id="section-deeper">Consistencia no equivale a ausencia de sesgo</h3>
+<p>Un estimador consistente converge al parámetro conforme aumenta la muestra; uno insesgado tiene esperanza igual a ese parámetro para cada tamaño. Son propiedades distintas. La media de una muestra representativa puede tener ambas, mientras que una estimación regularizada puede introducir un sesgo que desaparece con el tamaño. Una muestra seleccionada por una variable relacionada con el resultado puede converger con gran precisión a una media equivocada para la población objetivo. El error cuadrático medio separa varianza y sesgo al cuadrado; acumular observaciones reduce algunas varianzas, pero no elimina un sesgo estructural. Este diagnóstico es indispensable al usar grandes datos o simular un mecanismo distinto del real.</p>
+<app-formula expression="E[(\widehat\theta-\theta)^2]=\operatorname{Var}(\widehat\theta)+\bigl(E\widehat\theta-\theta\bigr)^2" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>En una Bernoulli de probabilidad 0,4, cada observación vale cero o uno, con varianza 0,24. Con cuatrocientas observaciones la desviación típica de la media es aproximadamente 0,0245. Chebyshev garantiza una cota de 0,24 para una desviación de al menos 0,05; es una garantía válida pero conservadora.</p>
+<app-formula expression="\sigma_{\overline X}=\sqrt{0.24/400},\qquad P(|\overline X-0.4|\ge0.05)\le0.24" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Aumenta el tamaño y genera varias realizaciones. Algunas pueden terminar más lejos de la media que otras más cortas. Compara la escala de fluctuación con la desviación típica indicada.</p>
+<app-deep-explorer topic="large-numbers-law" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Después de muchos fracasos, la probabilidad del próximo éxito independiente no cambia. Convergencia de promedios no significa memoria de los ensayos.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Si las observaciones son todas una copia de una sola Bernoulli, ¿qué ocurre con la media al crecer el tamaño?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Permanece igual a esa primera observación. Su varianza no disminuye y no converge a la probabilidad salvo en casos degenerados.</p></details>
+<p>¿Una media calculada con muchísimos encuestados voluntarios es necesariamente consistente para toda la población?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. Puede converger a la media de quienes deciden responder, que difiere de la población objetivo.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-076">Una distribución binomial</a>. Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra.</li>
+<li><a routerLink="/problems/problema-079">Esperanza y premio justo</a>. Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra.</li>
+<li><a routerLink="/problems/problema-081">Media y varianza descriptiva</a>. Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra.</li>
+<li><a routerLink="/problems/problema-086">Precisión de una media</a>. Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Si registras resultados de partidas, pregunta si son comparables e independientes antes de interpretar su frecuencia como probabilidad.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a>, <a routerLink="/articles/probability-inequalities">Desigualdades de Markov y Chebyshev</a>, <a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a>.</p>

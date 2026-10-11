@@ -1,0 +1,45 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Sudoku: restricciones y cobertura exacta</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Variables, dominios y restricciones</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Propagación y búsqueda controlada</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Cobertura exacta</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Algoritmo X y complejidad</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Restricciones globales y candidatos locales</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Un sudoku es un problema de satisfacción de restricciones: hay que asignar valores cumpliendo reglas simultáneas. La deducción local reduce candidatos y la búsqueda explora elecciones que aún no están decididas. Su formulación como cobertura exacta conecta el juego con algoritmos generales y permite comprobar existencia y unicidad, que son preguntas diferentes.</p>
+<h3 id="section-0">Variables, dominios y restricciones</h3>
+<p>Cada celda es una variable cuyo dominio contiene los números permitidos. Filas, columnas y bloques imponen que sus valores sean todos distintos. Una pista fija reduce el dominio a un solo valor. Propagar una asignación elimina ese valor de celdas relacionadas; un dominio vacío detecta contradicción. Un único candidato es una deducción, pero una celda con varios candidatos no implica que todos conduzcan a una solución.</p>
+<h3 id="section-1">Propagación y búsqueda controlada</h3>
+<p>Una estrategia de búsqueda elige una celda con pocos candidatos, prueba un valor y propaga. Si se obtiene contradicción se retrocede, restaurando el estado anterior completo. Elegir el dominio mínimo suele reducir ramificación. Para demostrar unicidad no basta encontrar la primera solución: hay que continuar hasta descartar todas las alternativas o encontrar una segunda. Las reglas humanas avanzadas expresan relaciones entre varios dominios, no sustituyen la definición del problema.</p>
+<h3 id="section-2">Cobertura exacta</h3>
+<p>Cada candidato de celda y valor representa una fila de una matriz binaria. Esa fila cubre cuatro condiciones: ocupar la celda, usar el valor en su fila, en su columna y en su bloque. La solución selecciona filas de candidatos de modo que cada condición se cubra exactamente una vez. Para un sudoku de nueve por nueve hay setecientos veintinueve candidatos posibles y trescientas veinticuatro condiciones, antes de incorporar pistas.</p>
+<app-formula expression="9^3=729\ \text{candidatos},\qquad 4\cdot9^2=324\ \text{restricciones}" />
+<h3 id="section-3">Algoritmo X y complejidad</h3>
+<p>Algoritmo X escoge una condición pendiente, ramifica sobre filas que la cubren y elimina condiciones y candidatos incompatibles. Dancing Links permite deshacer esas operaciones eficientemente mediante listas enlazadas. No toda instancia necesita esa implementación: un solucionador con máscaras de bits puede ser muy eficaz. El sudoku de tamaño generalizado es un problema computacional difícil, mientras que una cuadrícula fija concreta puede resolverse rápidamente por su estructura.</p>
+<h3 id="section-deeper">Restricciones globales y candidatos locales</h3>
+<p>Un dominio que contiene dos valores en una celda representa posibilidades locales todavía no eliminadas. Dos celdas de una unidad que comparten exactamente el mismo par reservan esos valores para ellas y permiten retirarlos de las demás: es una consecuencia de que la unidad deba usar cada valor una sola vez. Una generalización combina conjuntos de celdas y valores mediante condiciones de Hall. Estas deducciones pueden evitar muchas ramas, pero una propagación incompleta no prueba que todo candidato restante sea extendible a un tablero entero. Separar validez local, existencia global y unicidad hace que un solucionador pueda explicar qué está certificado y qué es una hipótesis de búsqueda.</p>
+<app-formula expression="\text{Solución válida}\ne\text{solución única},\qquad |\text{valores disponibles para }S|\ge|S|" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>En un sudoku cuatro por cuatro con bloques dos por dos hay sesenta y cuatro candidatos y sesenta y cuatro condiciones exactas. La solución final elige dieciséis candidatos, uno por celda, y cada uno satisface cuatro condiciones. Sin pistas existen doscientas ochenta y ocho completaciones; agregar pistas puede conservar varias o dejar una sola.</p>
+<app-formula expression="4^3=64,\qquad 4\cdot4^2=64,\qquad16\cdot4=64" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Aumenta las pistas y comprueba cómo disminuyen las completaciones. Cambia la selección conservando el mismo número de pistas para ver que su ubicación importa tanto como su cantidad.</p>
+<app-deep-explorer topic="sudoku-constraints" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Un tablero sin contradicciones locales puede no tener solución global. Del mismo modo, una solución válida no prueba que sea única.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué cuatro restricciones cubre el candidato valor tres en una celda determinada?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Ocupa esa celda, coloca el tres en su fila, en su columna y en su bloque. Cada una debe cubrirse exactamente una vez.</p></details>
+<p>Si dos celdas de una fila solo pueden contener uno o tres, ¿puede otra celda de esa fila usar uno?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. Esos dos valores están reservados para las dos celdas, aunque todavía no se sepa cuál ocupa cada una.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-094">Una simetría del sudoku</a>. Formula las reglas como dominios y cobertura exacta, y distingue validez de unicidad.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/sudoku">Sudoku</a>. Aplica dominios y propagación, y distingue resolver un tablero de certificar su unicidad.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/burnside-lemma">Acciones de grupos y lema de Burnside</a>.</p>

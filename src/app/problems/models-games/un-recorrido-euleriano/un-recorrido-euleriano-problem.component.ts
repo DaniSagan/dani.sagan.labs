@@ -27,6 +27,11 @@ export class UnRecorridoEulerianoProblemComponent {
         "label": "Puentes de Königsberg",
         "route": "/articles/konigsberg-bridges",
         "activity": "Grados de vértices y condiciones de existencia de recorridos eulerianos."
+      },
+      {
+        "label": "Recorridos eulerianos y caminos hamiltonianos",
+        "route": "/articles/euler-hamilton",
+        "activity": "Compara cubrir aristas y visitar vértices para elegir el criterio de ruta que realmente pide el problema."
       }
     ]
   };

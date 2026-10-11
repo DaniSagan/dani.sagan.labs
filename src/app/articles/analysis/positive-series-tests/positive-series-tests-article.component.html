@@ -1,0 +1,49 @@
+<span class="article-kicker">Análisis / comprender, deducir, experimentar</span>
+<h2>Criterios de convergencia de series positivas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">La primera prueba y las comparaciones</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Integrales y p-series</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Cociente y raíz</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Condensación y fronteras logarítmicas</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una frontera que exige condensación</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">En una serie de términos no negativos las sumas parciales crecen, por lo que converger equivale a permanecer acotadas. Los criterios de comparación, integral, cociente y raíz permiten establecer esa acotación o demostrar que falla. Cada criterio tiene una frontera donde resulta inconcluyente; reconocerla es tan importante como aplicar la fórmula.</p>
+<h3 id="section-0">La primera prueba y las comparaciones</h3>
+<p>Si los términos no tienden a cero, la serie diverge. El recíproco es falso: los términos de la armónica desaparecen y su suma crece sin cota. Una serie menor que otra convergente también converge; una mayor que otra divergente también diverge. La comparación por límite con una razón positiva finita transfiere el comportamiento de la serie modelo. Alterar un número finito de términos no cambia convergencia.</p>
+<h3 id="section-1">Integrales y p-series</h3>
+<p>Para una función positiva decreciente, rectángulos sobre la gráfica comparan la suma con su integral. La potencia negativa proporciona el modelo fundamental: la integral converge si el exponente supera uno. El mismo argumento acota el resto por dos integrales desde índices consecutivos, lo que ofrece una garantía cuantitativa para aproximar una suma convergente. Las hipótesis de positividad y descenso deben comprobarse al menos a partir de algún índice.</p>
+<app-formula expression="\sum_{n=1}^\infty n^{-p}\text{ converge}\Longleftrightarrow p&gt;1,\qquad \int_{N+1}^\infty f\le R_N\le\int_N^\infty f" />
+<h3 id="section-2">Cociente y raíz</h3>
+<p>Un cociente límite menor que uno indica decrecimiento finalmente geométrico y convergencia. Un valor mayor que uno impide que los términos tiendan a cero. La raíz enésima mide una tasa exponencial media y permite trabajar incluso cuando el cociente oscila. Si el valor es uno, ambos criterios pueden ser inconcluyentes: todas las p-series tienen ese valor, incluyendo convergentes y divergentes. Conviene entonces cambiar de comparación.</p>
+<app-formula expression="L=\limsup_{n\to\infty}\sqrt[n]{a_n},\quad L&lt;1\Rightarrow\sum a_n&lt;\infty,\quad L&gt;1\Rightarrow\text{divergencia}" />
+<h3 id="section-3">Condensación y fronteras logarítmicas</h3>
+<p>Para términos positivos decrecientes, agrupar índices entre potencias de dos convierte la serie en otra con términos multiplicados por el tamaño del bloque. La condensación de Cauchy resuelve fronteras como una potencia de logaritmo sobre el índice. Allí el criterio integral también es útil mediante un cambio de variable. Una evaluación numérica hasta millones de términos puede sugerir estabilidad engañosa para divergencias logarítmicas muy lentas.</p>
+<h3 id="section-deeper">Una frontera que exige condensación</h3>
+<p>La serie de uno dividido por el índice y una potencia de su logaritmo no se decide mediante el cociente, cuyo límite es uno. Agrupar términos entre potencias de dos transforma su comportamiento en el de una p-serie del exponente del logaritmo. También se puede integrar y sustituir el logaritmo de la variable: el diferencial elimina el factor de la variable del denominador. Ambos caminos muestran el mismo umbral. Debe comenzarse en un índice mayor que uno para que el logaritmo exista y no se anule; cambiar ese comienzo no afecta la convergencia. Esta familia revela divergencias que una suma finita puede ocultar durante mucho tiempo.</p>
+<app-formula expression="\sum_{n=2}^\infty\frac1{n(\log n)^q}\text{ converge}\Longleftrightarrow q&gt;1" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>La serie de inversos de cuadrados converge por el criterio integral. Tras cien términos, el resto está entre la inversa de ciento uno y la inversa de cien. La armónica, en cambio, aporta al menos una cantidad fija por cada bloque de índices entre potencias de dos y por ello diverge.</p>
+<app-formula expression="\frac1{N+1}\le\sum_{n=N+1}^\infty\frac1{n^2}\le\frac1N" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Acerca el exponente a uno desde ambos lados. Observa que una cota de resto puede ser grande aunque la serie converja. Explica por qué el máximo de términos mostrado no establece la clasificación.</p>
+<app-deep-explorer topic="positive-series-tests" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Que un criterio no decida no implica divergencia. El resultado uno en cociente o raíz exige otra herramienta.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Compara la serie de inversos de n al cuadrado más uno con la p-serie de exponente dos.</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Como <app-formula displayMode="inline" [showCodeButton]="false" expression="0&lt;1/(n^2+1)\le1/n^2" />, converge por comparación directa.</p></details>
+<p>¿Converge la serie con exponente logarítmico igual a uno?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. La integral correspondiente crece como logaritmo del logaritmo, muy lentamente pero sin cota.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-042">Un cociente con exponencial</a>. Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</li>
+<li><a routerLink="/problems/problema-044">Una serie telescópica</a>. Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</li>
+<li><a routerLink="/problems/problema-045">Convergencia absoluta o condicional</a>. Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</li>
+<li><a routerLink="/problems/problema-065">Integral impropia con parámetro</a>. Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Usa evoluciones finitas para formular conjeturas y separa después la evidencia de una prueba sobre tiempo infinito.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/sign-charts">Inecuaciones y tablas de signos</a>, <a routerLink="/articles/lhopital-rule">Regla de L’Hôpital y formas indeterminadas</a>.</p>

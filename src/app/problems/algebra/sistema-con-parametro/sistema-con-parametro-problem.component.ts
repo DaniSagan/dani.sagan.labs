@@ -37,6 +37,11 @@ export class SistemaConParametroProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Espacios vectoriales, bases y rango–nulidad",
+        "route": "/articles/vector-spaces",
+        "activity": "Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones."
       }
     ]
   };

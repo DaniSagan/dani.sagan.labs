@@ -23,11 +23,11 @@ export class UnaDistribucionBinomialProblemComponent {
     "level": "Repaso",
     "statement": "Se lanzan 5 monedas equilibradas e independientes. Si X es el número de caras, calcula \\(P(X=3)\\), \\(E(X)\\) y \\(\\operatorname{Var}(X)\\).",
     "resources": [
-{
-  "label": "Esperanza discreta, juegos justos y riesgo",
-  "route": "/articles/discrete-expectation",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Esperanza discreta, juegos justos y riesgo",
+        "route": "/articles/discrete-expectation",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Tablero de Galton",
         "route": "/articles/galton-board",
@@ -42,6 +42,26 @@ export class UnaDistribucionBinomialProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Principios de conteo: suma, producto y elecciones",
+        "route": "/articles/counting-principles",
+        "activity": "Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones."
+      },
+      {
+        "label": "Ley de los grandes números",
+        "route": "/articles/large-numbers-law",
+        "activity": "Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra."
+      },
+      {
+        "label": "Covarianza, dependencia y varianza de una suma",
+        "route": "/articles/covariance",
+        "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
+      },
+      {
+        "label": "Intervalos para proporciones: Wilson y métodos exactos",
+        "route": "/articles/proportion-intervals",
+        "activity": "Amplía la inferencia binomial con Wilson y Clopper–Pearson, especialmente cerca de cero y uno."
       }
     ]
   };

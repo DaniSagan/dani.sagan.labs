@@ -23,16 +23,16 @@ export class ResumenesIgualesGraficosDistintosProblemComponent {
     "level": "Oposición",
     "statement": "Dos conjuntos tienen la misma media y varianza de x e y y la misma correlación. ¿Implica que sus diagramas de dispersión son iguales o que el mismo modelo lineal es adecuado? Explica cómo lo comprobarías con Datasaurus.",
     "resources": [
-{
-  "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
-  "route": "/articles/graphical-diagnostics",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-{
-  "label": "Estadística descriptiva y valores atípicos",
-  "route": "/articles/descriptive-statistics",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
+        "route": "/articles/graphical-diagnostics",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
+      {
+        "label": "Estadística descriptiva y valores atípicos",
+        "route": "/articles/descriptive-statistics",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Regresión lineal y correlación de Pearson",
         "route": "/articles/linear-regression",
@@ -47,6 +47,11 @@ export class ResumenesIgualesGraficosDistintosProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Bootstrap y estimación por remuestreo",
+        "route": "/articles/bootstrap",
+        "activity": "Amplía la estimación de incertidumbre con remuestreo y revisa si el diseño requiere conservar grupos."
       }
     ]
   };

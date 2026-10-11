@@ -32,6 +32,11 @@ export class UnaTransformacionDeMobiusProblemComponent {
         "label": "Representador de funciones",
         "route": "/tools/graph-plotter",
         "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
+      },
+      {
+        "label": "Conjugado, módulo y división compleja",
+        "route": "/articles/complex-arithmetic",
+        "activity": "Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio."
       }
     ]
   };

@@ -1,0 +1,48 @@
+<span class="article-kicker">Geometría / comprender, deducir, experimentar</span>
+<h2>Semejanza de triángulos y proporcionalidad</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Correspondencia y criterios</a></li>
+<li><a [routerLink]="[]" fragment="section-1">De la homotecia a las medidas</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Tales y mediciones indirectas</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Error y límites del modelo</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una demostración de la proporcionalidad por áreas</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Dos triángulos semejantes comparten su forma, aunque tengan tamaños diferentes. Esta idea permite medir alturas inaccesibles, reconstruir distancias y demostrar relaciones métricas sin conocer todos los lados. La proporcionalidad no debe deducirse de la apariencia del dibujo: los criterios de semejanza proporcionan la justificación y establecen qué vértices se corresponden.</p>
+<h3 id="section-0">Correspondencia y criterios</h3>
+<p>La semejanza exige ángulos iguales y lados correspondientes proporcionales. Basta comprobar dos ángulos, pues el tercero queda determinado por la suma angular. También bastan tres razones de lados iguales, o dos lados proporcionales con el ángulo comprendido igual. El orden de los vértices importa: comparar un lado con el que no le corresponde puede producir razones inconsistentes aunque los triángulos sí sean semejantes.</p>
+<app-formula expression="\frac{a&#x27;}a=\frac{b&#x27;}b=\frac{c&#x27;}c=k" />
+<h3 id="section-1">De la homotecia a las medidas</h3>
+<p>Una homotecia multiplica todos los desplazamientos desde su centro por una constante. Si esa constante es positiva conserva la orientación de cada rayo; si es negativa también cambia su sentido. Las longitudes usan el valor absoluto de la razón, los perímetros el mismo factor y las áreas su cuadrado. Para cuerpos semejantes, los volúmenes usan el cubo. Semejanza incluye además movimientos rígidos, por lo que no siempre existe un centro de homotecia común.</p>
+<h3 id="section-2">Tales y mediciones indirectas</h3>
+<p>Rectas paralelas que cortan dos rayos producen segmentos proporcionales porque forman triángulos con ángulos correspondientes iguales. En una medición por sombras, la altura y la sombra deben tomarse sobre un terreno comparable y con el mismo ángulo solar. Una pendiente del suelo o mediciones realizadas a horas distintas rompen la semejanza asumida. Las unidades de ambas razones deben ser coherentes; una relación adimensional ayuda a comprobar el planteamiento.</p>
+<app-formula expression="\frac{\text{altura del objeto}}{\text{longitud de su sombra}}=\frac{\text{altura de referencia}}{\text{sombra de referencia}}" />
+<h3 id="section-3">Error y límites del modelo</h3>
+<p>La fórmula de una altura indirecta combina varias mediciones, y una sombra de referencia muy pequeña hace sensible el cociente a errores absolutos. La semejanza ideal no elimina incertidumbre ni obstáculos de perspectiva. Una fotografía introduce una proyección: las proporciones de objetos situados a distintas profundidades no se conservan de forma general. Para distancias grandes sobre la Tierra también debe revisarse la aproximación de terreno plano.</p>
+<h3 id="section-deeper">Una demostración de la proporcionalidad por áreas</h3>
+<p>Cuando una recta paralela a un lado corta los otros dos de un triángulo, los triángulos de la franja comparten alturas o bases. Comparar sus áreas establece la proporcionalidad de segmentos y ofrece una prueba de Tales independiente de mediciones sobre el dibujo. El mismo método permite estudiar bisectrices: los dos triángulos a cada lado de la bisectriz comparten la distancia del punto de corte a los lados del ángulo, y sus áreas quedan relacionadas con las longitudes de esos lados. El teorema de la bisectriz es una consecuencia de esta geometría de áreas, aunque la bisectriz no sea paralela a un lado.</p>
+<app-formula expression="\frac{BD}{DC}=\frac{AB}{AC}\quad\text{si }AD\text{ biseca el ángulo }A" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Una vara de dos metros proyecta una sombra de tres metros y un edificio una de dieciocho, bajo el mismo Sol y sobre terreno horizontal. Los triángulos tienen igual ángulo solar y ambos son rectángulos; la semejanza establece la altura. Si se duplica una maqueta, su superficie aumenta cuatro veces y no dos.</p>
+<app-formula expression="h=18\frac23=12\ \mathrm m,\qquad A&#x27;=2^2A" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Observa los dos triángulos y compara los factores de perímetro y área. Mantén fijo el lado original y duplica la razón: predice cada medida antes de mover el control.</p>
+<app-deep-explorer topic="triangle-similarity" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Dos pares de lados proporcionales sin controlar el ángulo comprendido no prueban semejanza. La situación puede producir el caso ambiguo de un triángulo.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Una figura semejante tiene nueve veces el área original. ¿Qué razón tienen sus perímetros?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La razón de longitudes es tres, raíz cuadrada del factor de área. Los perímetros también se multiplican por tres.</p></details>
+<p>Una bisectriz divide el lado opuesto en segmentos de dos y tres. ¿Qué razón tienen los lados adyacentes?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Dos a tres, respetando la correspondencia entre cada segmento y su lado adyacente.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-024">Potencia de un punto</a>. Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas.</li>
+<li><a routerLink="/problems/problema-032">Altura desde dos posiciones</a>. Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas.</li>
+<li><a routerLink="/problems/problema-035">Un triángulo con ángulo conocido</a>. Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Compara una órbita y una copia a escala; la semejanza geométrica no conserva automáticamente el tiempo de recorrido.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a>, <a routerLink="/articles/sine-law">Ley de los senos y caso ambiguo</a>, <a routerLink="/articles/linear-approximation">Diferenciales y aproximación lineal</a>.</p>

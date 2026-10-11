@@ -1,0 +1,45 @@
+<span class="article-kicker">Topología / comprender, deducir, experimentar</span>
+<h2>Cardinalidad y argumento diagonal</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Biyectividad como definición de igual tamaño</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Enumerar enteros y racionales</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Diagonal en secuencias binarias</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Del diagonal a Cantor y al conjunto potencia</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una inyección ternaria sin ambigüedad</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Los conjuntos infinitos pueden tener tamaños diferentes. La cardinalidad los compara mediante correspondencias uno a uno, no por longitud, densidad o apariencia. Los naturales, enteros y racionales son numerables; los reales no. El argumento diagonal explica por qué ninguna lista infinita de reales puede ser completa y conecta esa diferencia con el conjunto de Cantor.</p>
+<h3 id="section-0">Biyectividad como definición de igual tamaño</h3>
+<p>Dos conjuntos tienen la misma cardinalidad si existe una biyección. Un conjunto es numerable cuando puede ponerse en correspondencia con naturales, incluyendo la convención de permitir conjuntos finitos como a lo sumo numerables. Un subconjunto propio puede tener la misma cardinalidad que el conjunto completo: los pares se corresponden con todos los naturales duplicando cada índice. Esto contradice una intuición finita, no la definición.</p>
+<h3 id="section-1">Enumerar enteros y racionales</h3>
+<p>Los enteros se listan alternando positivos y negativos. Para racionales positivos, se colocan pares de numerador y denominador en una cuadrícula y se recorren diagonales de suma fija, omitiendo fracciones repetidas. Cada par aparece tras un número finito de diagonales. Añadir cero y negativos conserva numerabilidad. La densidad de los racionales en la recta no implica incontabilidad: entre cualesquiera dos reales hay racionales y, aun así, pueden listarse.</p>
+<h3 id="section-2">Diagonal en secuencias binarias</h3>
+<p>Supón una lista que contiene todas las secuencias de ceros y unos. Construye una nueva cambiando la cifra de la fila de índice n en su columna n. La nueva secuencia difiere de cada fila al menos en una posición y por tanto no está en la lista. La contradicción prueba que el conjunto de secuencias binarias es incontable. El argumento requiere una lista infinita arbitraria; un dibujo finito solo representa su mecanismo.</p>
+<app-formula expression="b_n=1-a_{nn}\quad\Longrightarrow\quad (b_n)_{n\ge1}\ne(a_{kn})_{n\ge1}\ \text{para todo }k" />
+<h3 id="section-3">Del diagonal a Cantor y al conjunto potencia</h3>
+<p>Las secuencias binarias se inyectan en Cantor reemplazando unos por doses en una expansión ternaria. Dos secuencias distintas no producen el mismo punto dentro de esta codificación; puede probarse comparando la primera cifra diferente con toda la cola. El argumento de Cantor para el conjunto potencia construye el subconjunto de elementos que no pertenecen al subconjunto asignado por una supuesta enumeración. Así ningún conjunto tiene el mismo tamaño que su conjunto potencia.</p>
+<app-formula expression="x=\sum_{n=1}^\infty\frac{2b_n}{3^n},\qquad |A|&lt;|\mathcal P(A)|" />
+<h3 id="section-deeper">Una inyección ternaria sin ambigüedad</h3>
+<p>Si dos secuencias binarias difieren por primera vez en la posición k, sus imágenes ternarias difieren allí en dos tercios elevados a k. La contribución máxima de todas las posiciones posteriores es un tercio elevado a k, por la suma geométrica. Por tanto la diferencia principal no puede cancelarse y las imágenes son distintas. Esa estimación prueba inyectividad sin confiar en una representación decimal elegida arbitrariamente. El conjunto de secuencias también se corresponde con subconjuntos de naturales mediante indicadores de pertenencia, conectando diagonal y conjunto potencia. Para los reales de un intervalo, esta inyección ya basta para demostrar incontabilidad; una biyección adicional no es necesaria para esa conclusión.</p>
+<app-formula expression="\frac2{3^k}-\sum_{j&gt;k}\frac2{3^j}=\frac1{3^k}&gt;0" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Aunque el conjunto de Cantor tiene longitud cero, contiene un punto distinto por cada secuencia binaria infinita. Por tanto es incontable. Los racionales, por el contrario, son densos y numerables. Cardinalidad, medida y densidad describen propiedades independientes y ninguna debe usarse como sustituto de otra.</p>
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>La tabla usa cifras ternarias cero y dos y marca su diagonal. Comprueba la diferencia con cada fila y explica cómo se extiende la construcción a cualquier lista infinita.</p>
+<app-deep-explorer topic="cardinality-diagonal" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>El diagonal decimal ingenuo puede construir una representación alternativa de un número ya listado. Se debe controlar esa ambigüedad o trabajar primero con secuencias.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Por qué los números con expansión decimal finita forman un conjunto numerable?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Para cada longitud hay un conjunto numerable de numeradores sobre una potencia de diez; la unión sobre longitudes naturales sigue siendo numerable.</p></details>
+<p>¿Demostrar una inyección desde un conjunto incontable a otro basta para probar que el segundo es incontable?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Sí. Si el segundo fuera numerable, su subconjunto imagen y por tanto el primero también lo serían.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-100">Longitud y dimensión de Cantor</a>. Demuestra incontabilidad mediante diagonal y separa cardinalidad, medida y densidad.</li>
+<li><a routerLink="/tools/prime-decomposition">Descomposición en primos</a>. Relaciona codificaciones enteras con números naturales y sus estructuras aritméticas.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Distingue estados finitos codificables por enteros de configuraciones sobre una cuadrícula infinita, cuyo tamaño depende de qué soporte se permita.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>, <a routerLink="/articles/cantor-function">Función de Cantor y distribuciones singulares</a>.</p>

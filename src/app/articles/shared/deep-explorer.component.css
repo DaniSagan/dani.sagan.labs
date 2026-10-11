@@ -1,0 +1,36 @@
+:host { display: block; min-width: 0; }
+.explorer { margin: 2rem 0; padding: 1.2rem; border: 1px solid var(--rule); border-radius: 12px; background: var(--bg2); }
+h4 { margin: .5rem 0 1rem; color: var(--gold); font: 1.1rem 'Courier Prime', monospace; }
+.eyebrow { font: 10px 'Courier Prime', monospace; letter-spacing: .1em; color: var(--gold); }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+label { min-width: 0; font: .8rem 'Courier Prime', monospace; }
+label span { display: flex; justify-content: space-between; gap: .4rem; }
+output { color: var(--gold); font-variant-numeric: tabular-nums; }
+input { width: 100%; accent-color: var(--gold); margin: .7rem 0; }
+.actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+button { background: transparent; color: var(--ink); border: 1px solid var(--rule); border-radius: 6px; padding: .5rem .8rem; cursor: pointer; font: .8rem 'Courier Prime', monospace; }
+button:hover { background: #e8c77712; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin: 1rem 0; }
+dl div { padding: .6rem; border-left: 2px solid var(--gold); min-width: 0; }
+dt { font: .75rem 'Courier Prime', monospace; color: var(--ink-dim); }
+dd { margin: .3rem 0 0; overflow-wrap: anywhere; font: .95rem 'Courier Prime', monospace; font-variant-numeric: tabular-nums; }
+.model-note { color: var(--ink-dim); font-size: .85rem; line-height: 1.65; }
+.grid-wrap { overflow: auto; margin: 1rem 0; }
+.discrete { border-collapse: collapse; width: 100%; font: 14px 'Courier Prime', monospace; }
+.discrete caption { text-align: left; color: var(--ink-dim); font-size: .75rem; padding-bottom: .6rem; }
+.discrete td { padding: .65rem; border: 1px solid var(--rule); text-align: center; white-space: nowrap; }
+.sudoku-grid { table-layout: fixed; max-width: 360px; margin-inline: auto; }
+.sudoku-grid td:nth-child(2) { border-right: 2px solid var(--gold); }
+.sudoku-grid tr:nth-of-type(2) td { border-bottom: 2px solid var(--gold); }
+@media (max-width: 600px) {
+  .controls, dl { grid-template-columns: 1fr; }
+  .explorer { padding: .8rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .explorer { animation: reveal .5s ease-out; }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

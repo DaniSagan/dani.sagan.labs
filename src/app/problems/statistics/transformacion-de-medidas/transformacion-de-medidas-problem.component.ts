@@ -23,11 +23,11 @@ export class TransformacionDeMedidasProblemComponent {
     "level": "Repaso",
     "statement": "Un conjunto de temperaturas en °C tiene media 20 y desviación típica 3. Convierte su media, desviación típica y varianza a °F, usando \\(F=1,8C+32\\).",
     "resources": [
-{
-  "label": "Estadística descriptiva y valores atípicos",
-  "route": "/articles/descriptive-statistics",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Estadística descriptiva y valores atípicos",
+        "route": "/articles/descriptive-statistics",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Densidad, esperanza y varianza",
         "route": "/articles/continuous-random-variables",
@@ -42,6 +42,16 @@ export class TransformacionDeMedidasProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Covarianza, dependencia y varianza de una suma",
+        "route": "/articles/covariance",
+        "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
+      },
+      {
+        "label": "Análisis dimensional y leyes de escala",
+        "route": "/articles/dimensional-analysis",
+        "activity": "Comprueba unidades y leyes de escala antes de interpretar transformaciones geométricas o físicas."
       }
     ]
   };

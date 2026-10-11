@@ -1,0 +1,49 @@
+<span class="article-kicker">Álgebra / comprender, deducir, experimentar</span>
+<h2>Proyecciones ortogonales y mínimos cuadrados</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">La condición geométrica del mínimo</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Ecuaciones normales y matriz de proyección</a></li>
+<li><a [routerLink]="[]" fragment="section-2">La recta como modelo de diseño</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Pesos, regularización y cálculo robusto</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Resolver con QR sin formar la inversa</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Cuando un sistema tiene más ecuaciones que incógnitas, exigir que todas se cumplan exactamente puede ser imposible. Mínimos cuadrados busca la predicción más cercana a los datos en distancia euclídea. La proyección ortogonal explica el criterio, las ecuaciones normales y la geometría del residuo. También muestra qué cambia si los errores tienen varianzas distintas o se necesita regularizar.</p>
+<h3 id="section-0">La condición geométrica del mínimo</h3>
+<p>La predicción pertenece al espacio generado por las columnas de la matriz de diseño. En el punto más cercano, el residuo debe ser ortogonal a ese espacio: si tuviera una componente paralela, podríamos mover la predicción en esa dirección y acortarlo. La descomposición ortogonal produce una identidad pitagórica que prueba el mínimo global, no solamente una condición estacionaria. La predicción es única aun cuando varias listas de coeficientes la representen.</p>
+<app-formula expression="b=A\widehat x+r,\qquad A^\mathsf{T}r=0,\qquad \|b-Ax\|^2=\|r\|^2+\|A(x-\widehat x)\|^2" />
+<h3 id="section-1">Ecuaciones normales y matriz de proyección</h3>
+<p>Si las columnas son independientes, el producto transpuesto por la matriz es invertible y determina coeficientes únicos. La matriz que transforma los datos en predicciones es simétrica e idempotente, propiedades que caracterizan una proyección ortogonal euclídea. Su traza coincide con la dimensión del subespacio ajustado. Si las columnas son dependientes, se recurre a una pseudoinversa o una base reducida, no a una inversa inexistente.</p>
+<app-formula expression="A^\mathsf{T}A\widehat x=A^\mathsf{T}b,\qquad P=A(A^\mathsf{T}A)^{-1}A^\mathsf{T},\quad P^2=P=P^\mathsf{T}" />
+<h3 id="section-2">La recta como modelo de diseño</h3>
+<p>Para ajustar una recta, la matriz incluye una columna de unos y otra de abscisas. La ortogonalidad con la primera obliga a que la suma de residuos sea cero; con la segunda impone que el residuo no tenga componente lineal restante. Esas propiedades cambian si se elimina el intercepto. Un residuo pequeño no prueba causalidad, y una extrapolación lejos de las abscisas observadas puede ser muy incierta.</p>
+<h3 id="section-3">Pesos, regularización y cálculo robusto</h3>
+<p>Cuando distintas observaciones tienen precisiones diferentes, una matriz de pesos positivos cambia la geometría del error. Pesos inversamente proporcionales a las varianzas son naturales bajo un modelo heterocedástico conocido. Ridge añade una penalización de coeficientes y reduce inestabilidad, a cambio de sesgo. Para el problema ordinario, QR o SVD suelen ser preferibles a formar explícitamente las ecuaciones normales, porque estas elevan al cuadrado el condicionamiento de la matriz.</p>
+<app-formula expression="\min_x(b-Ax)^\mathsf{T}W(b-Ax),\qquad \min_x\{\|Ax-b\|^2+\lambda\|x\|^2\}" />
+<h3 id="section-deeper">Resolver con QR sin formar la inversa</h3>
+<p>Si la matriz de diseño tiene columnas independientes y factorización QR reducida, multiplicar la ecuación de ajuste por la transpuesta de Q convierte mínimos cuadrados en un sistema triangular. Se resuelve por sustitución hacia atrás y no es necesario formar una inversa. El residuo queda en el complemento ortogonal de las columnas de Q. Las entradas diagonales de la matriz de proyección, llamadas palancas, describen cuánto influye una observación en su propio ajuste; suman el rango. Una observación con palanca alta puede dominar el ajuste incluso sin residuo grande. Esa influencia no debe confundirse con ser necesariamente un dato erróneo.</p>
+<app-formula expression="R\widehat x=Q^\mathsf{T}b,\qquad P=QQ^\mathsf{T},\qquad \sum_i P_{ii}=\operatorname{rank}A" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Para tres observaciones con abscisas menos uno, cero y uno y ordenadas cero, dos y dos, la simetría simplifica las ecuaciones normales. La pendiente vale uno y el intercepto cuatro tercios. Los residuos son menos un tercio, dos tercios y menos un tercio: suman cero y su producto con las abscisas también se anula.</p>
+<app-formula expression="\widehat y=x+\frac43,\qquad r=(-1/3,2/3,-1/3),\qquad \|r\|^2=2/3" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Desplaza solo el punto central. Comprueba que la pendiente no cambia y que el intercepto reparte ese desplazamiento entre las tres predicciones. Verifica la ortogonalidad de los residuos a mano.</p>
+<app-deep-explorer topic="projection-least-squares" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Una proyección oblicua también puede ser idempotente, pero no es necesariamente simétrica ni minimiza distancia euclídea.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Si se multiplica toda la respuesta por tres manteniendo la matriz de diseño, ¿cómo cambian ajuste y residuo?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Ambos se multiplican por tres porque la proyección es lineal. La suma de cuadrados residual se multiplica por nueve.</p></details>
+<p>¿Una matriz simétrica e idempotente siempre proyecta ortogonalmente?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Sí en el producto interno euclídeo: sus espacios imagen y núcleo son ortogonales.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-019">Proyección ortogonal</a>. Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados.</li>
+<li><a routerLink="/problems/problema-028">Distancia a un plano</a>. Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados.</li>
+<li><a routerLink="/problems/problema-083">Una recta de regresión</a>. Deduce la proyección mediante ortogonalidad del residuo y relaciónala con un ajuste de mínimos cuadrados.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Ajusta una tendencia local a posiciones observadas y contrasta después si corresponde a la dinámica del movimiento.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad</a>, <a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt</a>, <a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a>.</p>

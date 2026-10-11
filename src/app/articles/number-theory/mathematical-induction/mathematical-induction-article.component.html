@@ -1,0 +1,52 @@
+<span class="article-kicker">Teoría de números / comprender, deducir, experimentar</span>
+<h2>Inducción matemática y construcción de pruebas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Qué se debe demostrar exactamente</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Una suma como plantilla de razonamiento</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Inducción fuerte y recurrencias de varios pasos</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Invariantes de algoritmos y objetos construidos</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una desigualdad que se fortalece al avanzar</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una comprobación puede abarcar miles de ejemplos y seguir sin demostrar una afirmación universal. La inducción convierte la estructura de los números naturales en una herramienta de prueba: un caso inicial y un paso válido para cualquier índice establecen una cadena completa. Además de sumas, sirve para recurrencias, potencias de matrices, algoritmos y aproximaciones de fractales.</p>
+<h3 id="section-0">Qué se debe demostrar exactamente</h3>
+<p>Escribe la proposición con su índice, su dominio y cualquier condición auxiliar. El caso base fija el comienzo de la cadena. El paso inductivo asume la proposición para un índice arbitrario y deduce la del siguiente; esa hipótesis no autoriza a asumir el resultado que se está intentando probar. El principio se justifica por el buen orden: si hubiera contraejemplos, el menor no podría ser el caso inicial ni tener un antecesor válido.</p>
+<app-formula expression="P(n_0),\qquad \forall n\ge n_0:\ P(n)\Longrightarrow P(n+1)" />
+<h3 id="section-1">Una suma como plantilla de razonamiento</h3>
+<p>Para sumar los primeros enteros, separa el último término de la suma siguiente y sustituye la parte anterior por la hipótesis. El cálculo restante debe llegar literalmente a la expresión objetivo con el índice incrementado. La prueba no consiste en reemplazar todos los índices a la vez, sino en relacionar dos objetos consecutivos. Formular el objetivo antes del cálculo ayuda a detectar un término olvidado o una condición que cambia.</p>
+<app-formula expression="\sum_{j=1}^{n+1}j=\frac{n(n+1)}2+(n+1)=\frac{(n+1)(n+2)}2" />
+<h3 id="section-2">Inducción fuerte y recurrencias de varios pasos</h3>
+<p>La inducción fuerte permite usar todos los casos anteriores, no solo el inmediato. No es un principio más poderoso: puede convertirse en inducción ordinaria sobre la afirmación de que todos los casos hasta un índice son verdaderos. Es natural para descomponer un entero en factores primos o para recurrencias que consultan varios términos. En una recurrencia de orden dos suelen ser necesarios dos valores iniciales; probar uno solo deja un hueco en la cadena.</p>
+<app-formula expression="\bigl(P(n_0)\land\cdots\land P(n)\bigr)\Longrightarrow P(n+1)" />
+<h3 id="section-3">Invariantes de algoritmos y objetos construidos</h3>
+<p>Un invariante describe una propiedad que permanece cierta después de cada iteración. Su prueba tiene inicialización, preservación y una conexión con el resultado al terminar. La terminación exige un argumento adicional, como una cantidad entera no negativa que disminuye estrictamente. En matrices, es importante preservar el orden de productos: no se puede conmutar una matriz arbitraria con otra. En construcciones fractales, las etapas finitas se prueban por inducción, mientras que pasar al límite puede requerir análisis.</p>
+<h3 id="section-deeper">Una desigualdad que se fortalece al avanzar</h3>
+<p>Para demostrar una desigualdad conviene examinar si la hipótesis aporta un margen suficiente en el siguiente paso. La desigualdad de Bernoulli para incrementos reales mayores o iguales que menos uno se prueba multiplicando por una cantidad no negativa. En el paso aparece un término cuadrático no negativo que puede descartarse en el sentido correcto. Si ese multiplicador fuese negativo, la desigualdad se invertiría y la prueba dejaría de funcionar. Este ejemplo muestra por qué las condiciones del dominio deben escribirse junto a la proposición. También ilustra una diferencia entre igualdad y desigualdad inductiva: a menudo no es necesario conservar todos los términos, pero sí justificar cada estimación.</p>
+<app-formula expression="(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>En la etapa inicial del conjunto de Cantor hay un intervalo de longitud uno. Cada paso sustituye cada intervalo por dos, ambos de longitud un tercio de la anterior. La hipótesis para una etapa transmite simultáneamente el número y la longitud de las piezas a la siguiente.</p>
+<app-formula expression="N_n=2^n,\qquad \ell_n=3^{-n},\qquad L_n=N_n\ell_n=(2/3)^n" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara sumas directas de primeras, segundas y terceras potencias con sus expresiones cerradas. Utiliza los resultados para detectar errores, y después escribe un paso inductivo que no dependa del máximo del deslizador.</p>
+<app-deep-explorer topic="mathematical-induction" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>El argumento de que todos los caballos tienen el mismo color falla cuando se pasa de uno a dos: las dos subfamilias no comparten ningún caballo. El paso debe funcionar también en el primer índice permitido.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Prueba la suma de los primeros números impares y explica por qué comprobarla hasta cien no sustituye el paso inductivo.</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La base es <app-formula displayMode="inline" [showCodeButton]="false" expression="1=1^2" />. Si la suma hasta n vale <app-formula displayMode="inline" [showCodeButton]="false" expression="n^2" />, añadir <app-formula displayMode="inline" [showCodeButton]="false" expression="2n+1" /> da <app-formula displayMode="inline" [showCodeButton]="false" expression="(n+1)^2" />. La comprobación finita no controla índices posteriores.</p></details>
+<p>¿Para qué valores de x se puede multiplicar por uno más x sin invertir el signo?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Para x mayor o igual que menos uno; esa es una hipótesis esencial de este paso.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-008">Una divisibilidad universal</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/problems/problema-017">Potencias por autovectores</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/problems/problema-020">Una matriz no diagonalizable</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/problems/problema-041">Una sucesión radical</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/problems/problema-043">Recurrencia afín</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/problems/problema-100">Longitud y dimensión de Cantor</a>. Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Formula un invariante para un patrón periódico y distingue verificar varios pasos de demostrar periodicidad.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad</a>, <a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>, <a routerLink="/articles/banach-fixed-point">Teorema del punto fijo de Banach</a>.</p>

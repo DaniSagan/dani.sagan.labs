@@ -37,6 +37,11 @@ export class NormalizarUnaDensidadProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Función de Cantor y distribuciones singulares",
+        "route": "/articles/cantor-function",
+        "activity": "Amplía la noción de distribución continua con una acumulada singular concentrada en Cantor."
       }
     ]
   };

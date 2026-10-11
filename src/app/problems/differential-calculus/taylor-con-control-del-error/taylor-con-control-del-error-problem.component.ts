@@ -37,6 +37,21 @@ export class TaylorConControlDelErrorProblemComponent {
         "label": "Campo vectorial",
         "route": "/tools/vector-field",
         "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
+      },
+      {
+        "label": "Interpolación de Lagrange y Hermite",
+        "route": "/articles/polynomial-interpolation",
+        "activity": "Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error."
+      },
+      {
+        "label": "Diferenciales y aproximación lineal",
+        "route": "/articles/linear-approximation",
+        "activity": "Interpreta la derivada como cambio lineal y separa el incremento real del error de aproximación."
+      },
+      {
+        "label": "Error numérico, cancelación y condicionamiento",
+        "route": "/articles/numerical-conditioning",
+        "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
       }
     ]
   };

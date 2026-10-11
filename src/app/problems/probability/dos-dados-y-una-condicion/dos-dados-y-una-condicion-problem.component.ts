@@ -23,11 +23,11 @@ export class DosDadosYUnaCondicionProblemComponent {
     "level": "Repaso",
     "statement": "Se lanzan dos dados equilibrados. Sea S la suma y A el suceso «el primer dado es par». Calcula \\(P(S=8)\\) y \\(P(S=8\\mid A)\\).",
     "resources": [
-{
-  "label": "Probabilidad condicionada e independencia",
-  "route": "/articles/conditional-independence",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Probabilidad condicionada e independencia",
+        "route": "/articles/conditional-independence",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Teorema del binomio",
         "route": "/articles/binomial-theorem",
@@ -37,6 +37,11 @@ export class DosDadosYUnaCondicionProblemComponent {
         "label": "Laboratorio de probabilidad",
         "route": "/tools/probability-lab",
         "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
+      },
+      {
+        "label": "Principio de inclusión y exclusión",
+        "route": "/articles/inclusion-exclusion",
+        "activity": "Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones."
       }
     ]
   };

@@ -23,11 +23,11 @@ export class UnaMedianaMedidaProblemComponent {
     "level": "Oposición",
     "statement": "En un triángulo, \\(AB=7\\), \\(AC=5\\) y \\(BC=6\\). Calcula la longitud de la mediana desde A.",
     "resources": [
-{
-  "label": "Geometría del triángulo: radios, alturas y medianas",
-  "route": "/articles/triangle-metrics",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Geometría del triángulo: radios, alturas y medianas",
+        "route": "/articles/triangle-metrics",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Teorema de Stewart",
         "route": "/articles/stewart-theorem",
@@ -37,6 +37,11 @@ export class UnaMedianaMedidaProblemComponent {
         "label": "Curvas implícitas",
         "route": "/tools/implicit-curve-graph",
         "activity": "Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas."
+      },
+      {
+        "label": "Pitágoras y distancia euclídea",
+        "route": "/articles/pythagorean-distance",
+        "activity": "Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean."
       }
     ]
   };

@@ -1,0 +1,46 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Invariantes del cubo de Rubik</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Separar identidad, posición y orientación</a></li>
+<li><a [routerLink]="[]" fragment="section-1">La suma de giros de esquinas</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Volteos y paridad de permutaciones</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Suficiencia y tamaño del espacio legal</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Por qué son doce clases de disposiciones formales</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">No toda disposición aparentemente posible de las piezas de un cubo de Rubik puede obtenerse girando sus caras. Las orientaciones y las permutaciones satisfacen invariantes que los movimientos legales conservan. Estos permiten diagnosticar un cubo remontado incorrectamente y entender por qué una esquina aislada girada o dos piezas intercambiadas no se resuelven con más movimientos.</p>
+<h3 id="section-0">Separar identidad, posición y orientación</h3>
+<p>Un cubo estándar tiene ocho esquinas y doce aristas; los centros fijan el sistema de referencia. Cada esquina puede ocupar una posición y tener tres orientaciones, mientras cada arista tiene dos. Describir colores sueltos no basta: hay que mantener juntas las pegatinas de una misma pieza y usar una convención coherente para medir orientación. Girar todo el cubo cambia la referencia, no produce una nueva permutación relativa a los centros.</p>
+<h3 id="section-1">La suma de giros de esquinas</h3>
+<p>Codifica la orientación de cada esquina módulo tres. Un giro de cara puede cambiar varias orientaciones, pero la suma permanece cero módulo tres bajo la convención estándar. Por tanto una esquina girada aisladamente viola el invariante. Dos esquinas pueden girarse en sentidos complementarios sin violarlo. Conocer el resto modular es necesario antes de intentar diseñar una secuencia correctora.</p>
+<app-formula expression="\sum_{i=1}^8 t_i\equiv0\pmod3" />
+<h3 id="section-2">Volteos y paridad de permutaciones</h3>
+<p>El número total de aristas volteadas debe ser par. Además, las permutaciones de esquinas y aristas tienen la misma paridad. Un cuarto de vuelta hace una permutación impar de cuatro esquinas y otra impar de cuatro aristas, preservando la igualdad. Intercambiar solo dos aristas cambia una paridad y deja la otra igual. Estas tres restricciones son independientes: cumplir dos no implica cumplir la tercera.</p>
+<app-formula expression="\sum_{j=1}^{12}f_j\equiv0\pmod2,\qquad \operatorname{sgn}(\pi_c)=\operatorname{sgn}(\pi_e)" />
+<h3 id="section-3">Suficiencia y tamaño del espacio legal</h3>
+<p>Para el cubo estándar, con piezas y orientaciones codificadas correctamente, estas restricciones caracterizan las configuraciones alcanzables por giros de caras. La prueba de suficiencia exige construir generadores que permitan reorganizar piezas respetando los invariantes; la mera conservación no basta. El número de estados se calcula eligiendo permutaciones y orientaciones libres salvo una esquina, una arista y una paridad dependientes.</p>
+<app-formula expression="|G|=8!\,3^7\,12!\,2^{10}=43\,252\,003\,274\,489\,856\,000" />
+<h3 id="section-deeper">Por qué son doce clases de disposiciones formales</h3>
+<p>Si se enumeran todas las permutaciones y todas las orientaciones sin restricciones, se obtienen doce veces más estados que los legales: tres posibilidades para la suma de giros, dos para la suma de volteos y dos para la relación de paridades. Un montaje aleatorio entre esas disposiciones coherentes con las piezas tiene una probabilidad de uno entre doce de satisfacer los invariantes. Esta proporción no describe mezclas realizadas con giros de caras, que siempre permanecen legales. Los algoritmos que giran dos esquinas de forma complementaria o voltean dos aristas ilustran cómo corregir orientaciones respetando las sumas; no pueden corregir una violación aislada creada desmontando una pieza.</p>
+<app-formula expression="\frac{8!\,3^8\,12!\,2^{12}}{8!\,3^7\,12!\,2^{10}}=12" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Un cubo resuelto al que se gira físicamente una esquina un tercio de vuelta tiene suma de orientaciones uno módulo tres y es imposible. Si además se voltea una arista, también se viola la restricción módulo dos; corregir únicamente uno de los errores deja el otro. El diagnóstico permite identificar qué tipo de remontaje produjo el estado.</p>
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Prueba una sola esquina girada y una sola arista volteada. Busca valores que restauren ambos restos cero. El laboratorio supone paridades iguales; no simula una configuración completa.</p>
+<app-deep-explorer topic="rubik-invariants" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Los invariantes del cubo 3×3 con centros fijos no se trasladan sin revisión a otros rompecabezas, tamaños o mecanismos.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Puede intercambiarse solo una pareja de esquinas mediante giros legales, dejando todas las aristas en su posición?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>No. La permutación de esquinas sería impar y la de aristas par, contradiciendo la igualdad de paridades.</p></details>
+<p>¿Un número enorme de giros legales puede producir un estado con una arista volteada aislada?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No. La cantidad de giros no afecta la conservación de los invariantes.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-095">Orden de un giro del cubo</a>. Comprueba orientaciones modulares y paridades antes de clasificar un estado del cubo como alcanzable.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/rubik-cube">Cubo de Rubik</a>. Verifica que movimientos legales conservan las restricciones y distingue un estado difícil de uno imposible.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/burnside-lemma">Acciones de grupos y lema de Burnside</a>.</p>

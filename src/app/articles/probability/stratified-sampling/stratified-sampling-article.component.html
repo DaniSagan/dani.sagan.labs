@@ -1,0 +1,48 @@
+<span class="article-kicker">Probabilidad y estadística / comprender, deducir, experimentar</span>
+<h2>Muestreo estratificado y estimadores ponderados</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Diseño y estimación de la media</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Varianza y corrección finita</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Asignación proporcional y de Neyman</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Pesos no corrigen todos los sesgos</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Por qué estratificar puede ahorrar muestra</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una población puede dividirse en grupos con pesos conocidos y características distintas. El muestreo estratificado selecciona observaciones dentro de cada grupo y combina sus estimaciones con pesos poblacionales. Permite mejorar precisión y representar grupos pequeños, pero la media muestral sin ponderar puede ser incorrecta si la composición de la muestra no coincide con la población.</p>
+<h3 id="section-0">Diseño y estimación de la media</h3>
+<p>Los estratos deben ser excluyentes y cubrir la población objetivo. En cada uno se obtiene una muestra con un mecanismo probabilístico adecuado. La media poblacional es una suma de medias de estrato ponderada por su proporción real; el estimador reemplaza esas medias por las observadas. Los pesos de composición no son la fracción del grupo en la muestra, salvo cuando la asignación es proporcional.</p>
+<app-formula expression="\mu=\sum_hW_h\mu_h,\qquad\widehat\mu_{\mathrm{st}}=\sum_hW_h\overline X_h,\quad W_h=N_h/N" />
+<h3 id="section-1">Varianza y corrección finita</h3>
+<p>Con muestreo aleatorio simple independiente dentro de cada estrato, la varianza suma las contribuciones de cada media ponderada. Si se muestrea sin reemplazo una fracción apreciable de una población finita, aparece la corrección correspondiente. Ignorar la estratificación en el análisis puede perder precisión o calcular una incertidumbre equivocada. Las varianzas dentro de estratos, no solo la dispersión total, determinan el rendimiento.</p>
+<app-formula expression="\operatorname{Var}(\widehat\mu_{\mathrm{st}})=\sum_hW_h^2\frac{\sigma_h^2}{n_h}(1-f_h),\quad f_h=n_h/N_h" />
+<h3 id="section-2">Asignación proporcional y de Neyman</h3>
+<p>Asignar tamaños proporcionales a las poblaciones hace que cada observación tenga el mismo peso cuando las probabilidades dentro de estrato son iguales. Para un presupuesto fijo y costes iguales, Neyman asigna más observaciones a estratos grandes y variables. Si los costes difieren, la asignación debe incorporar ese coste. En la práctica, se garantizan mínimos para estimar grupos pequeños y se usan datos piloto para aproximar dispersión.</p>
+<app-formula expression="n_h\propto N_h\sigma_h,\qquad n_h\propto\frac{N_h\sigma_h}{\sqrt{c_h}}\ \text{con costes distintos}" />
+<h3 id="section-3">Pesos no corrigen todos los sesgos</h3>
+<p>Ponderar correctamente la composición no corrige que respondan solo ciertos individuos dentro de cada estrato. La no respuesta y probabilidades de inclusión desiguales requieren tratamientos adicionales. Estimar proporciones desconocidas de población añade incertidumbre. Tampoco conviene dividir en demasiados grupos diminutos si no habrá muestra suficiente para estimar sus medias y varianzas. El diseño debe responder a la población objetivo y a los recursos reales.</p>
+<h3 id="section-deeper">Por qué estratificar puede ahorrar muestra</h3>
+<p>La variabilidad total puede descomponerse en variabilidad dentro de estratos y diferencias entre sus medias. Un muestreo estratificado bien diseñado controla la composición y evita que las fluctuaciones aleatorias en la cantidad de personas de cada grupo añadan esa variabilidad entre medias. La ganancia es grande cuando los estratos son internamente homogéneos y distintos entre sí. Si se forman grupos poco relacionados con el resultado, la mejora puede ser escasa. Una asignación desproporcionada sigue siendo útil para estudiar subgrupos, pero requiere pesos y una estimación de varianza que respete el diseño. El análisis debe conservar la información de estrato de cada observación.</p>
+<app-formula expression="\operatorname{Var}(Y)=E[\operatorname{Var}(Y\mid H)]+\operatorname{Var}(E[Y\mid H])" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Un estrato representa el 70 % de la población y tiene media diez; el otro representa el 30 % y tiene media treinta. La media objetivo es dieciséis. Si la muestra contiene solo 30 % del primero y 70 % del segundo, su media ingenua es veinticuatro. Ponderar con la composición poblacional recupera el objetivo.</p>
+<app-formula expression="0.7(10)+0.3(30)=16,\qquad0.3(10)+0.7(30)=24" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Iguala los pesos muestrales y poblacionales para que ambas medias coincidan. Después cambia solo la muestra y verifica que la estimación ponderada conserva la población objetivo.</p>
+<app-deep-explorer topic="stratified-sampling" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>El tamaño de un grupo en la muestra no determina su importancia poblacional. Confundir ambos pesos cambia la cantidad que se estima.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Si todos los estratos tienen la misma desviación, ¿cómo se simplifica la asignación de Neyman con costes iguales?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Se vuelve proporcional a los tamaños poblacionales, porque la desviación común se cancela.</p></details>
+<p>¿Qué estratos suelen mejorar más la precisión de una media?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Los que reúnen valores parecidos dentro de cada grupo y tienen medias distintas entre grupos, siempre con un muestreo adecuado.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-084">Una paradoja de agregación</a>. Recombina las medias de grupos con pesos poblacionales y distingue composición de muestra y población.</li>
+<li><a routerLink="/problems/problema-090">Sesgo de selección</a>. Recombina las medias de grupos con pesos poblacionales y distingue composición de muestra y población.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Separa resultados por quién empieza y recombínalos con una composición objetivo explícita.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/causal-inference">Causalidad, confusión y experimentos aleatorizados</a>.</p>

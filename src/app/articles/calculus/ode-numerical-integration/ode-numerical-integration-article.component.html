@@ -1,0 +1,49 @@
+<span class="article-kicker">Cálculo / comprender, deducir, experimentar</span>
+<h2>Integración numérica de ecuaciones diferenciales</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Del problema inicial al método de Euler</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Heun y Runge–Kutta clásico</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Estabilidad y ecuaciones rígidas</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Adaptación y conservación</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Las cuatro pendientes de RK4</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Resolver una ecuación diferencial numéricamente consiste en aproximar una trayectoria que satisface una ley local de evolución. Euler, Heun y Runge–Kutta usan distintas evaluaciones de esa ley para avanzar un paso. La precisión depende del orden, pero también de estabilidad, rigidez y estructura física. Una curva suave en pantalla no certifica una integración correcta.</p>
+<h3 id="section-0">Del problema inicial al método de Euler</h3>
+<p>Una ecuación de primer orden prescribe la derivada a partir de tiempo y estado, junto con un valor inicial. Euler sustituye el incremento por el diferencial en el comienzo del paso. Su error local es de segundo orden bajo suavidad suficiente, pero el error global habitual es de primer orden porque muchos pasos acumulan esas desviaciones. La existencia y unicidad de la solución continua requiere hipótesis propias, independientes del algoritmo.</p>
+<app-formula expression="y&#x27;=f(t,y),\quad y(t_0)=y_0,\qquad y_{n+1}=y_n+h f(t_n,y_n)" />
+<h3 id="section-1">Heun y Runge–Kutta clásico</h3>
+<p>Heun calcula una predicción de Euler y promedia las pendientes del principio y del final predicho; alcanza orden global dos. RK4 evalúa cuatro pendientes en posiciones escogidas para cancelar términos de error y alcanza orden cuatro en problemas suficientemente suaves. Más orden no significa exactitud automática: cada evaluación cuesta y eventos discontinuos pueden reducir el orden efectivo.</p>
+<app-formula expression="y_{n+1}^{\mathrm{Heun}}=y_n+\frac h2\left[f(t_n,y_n)+f(t_n+h,y_n+h f(t_n,y_n))\right]" />
+<h3 id="section-2">Estabilidad y ecuaciones rígidas</h3>
+<p>En la ecuación de prueba con coeficiente negativo, Euler multiplica el estado por un factor. Para no amplificar una solución que debería decaer, ese factor debe tener módulo menor que uno. Un paso demasiado grande puede crear oscilación o crecimiento artificial. En sistemas rígidos, una escala rápida impone pasos diminutos aunque el fenómeno de interés sea lento; métodos implícitos pueden ampliar la región estable.</p>
+<app-formula expression="y&#x27;=\lambda y:\qquad y_{n+1}=(1+h\lambda)y_n,\quad |1+h\lambda|&lt;1" />
+<h3 id="section-3">Adaptación y conservación</h3>
+<p>Los métodos adaptativos comparan dos estimaciones de distinto orden para ajustar el paso a una tolerancia. El error local estimado no es una garantía directa del error global. Para órbitas y osciladores importa además conservar estructura: métodos simplécticos pueden mantener mejor el comportamiento energético durante tiempos largos que métodos de alto orden usados sin atención. Los eventos deben localizarse y el último paso ajustarse al tiempo final.</p>
+<h3 id="section-deeper">Las cuatro pendientes de RK4</h3>
+<p>Runge–Kutta clásico calcula una pendiente inicial, dos en puntos medios estimados y una al final estimado. Las dos pendientes intermedias se evalúan en estados diferentes, por lo que no deben reutilizarse como si fueran idénticas. La combinación ponderada cancela términos de error hasta orden cuatro bajo suavidad. Para comprobar una implementación, una ecuación con solución exacta permite estudiar error y orden sin depender de otro integrador. En problemas sin solución conocida se puede comparar refinamientos, pero la coincidencia no certifica conservación física ni resuelve automáticamente una zona rígida. Por eso el laboratorio incluye referencia exacta y los artículos enlazan simulaciones donde esos diagnósticos importan.</p>
+<app-formula expression="\begin{aligned}k_1&amp;=f(t_n,y_n),\\k_2&amp;=f(t_n+h/2,y_n+hk_1/2),\\k_3&amp;=f(t_n+h/2,y_n+hk_2/2),\\k_4&amp;=f(t_n+h,y_n+hk_3),\\y_{n+1}&amp;=y_n+\tfrac h6(k_1+2k_2+2k_3+k_4).\end{aligned}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>En el decaimiento con valor inicial uno, la solución exacta es la exponencial negativa. Euler con paso un medio produce los valores uno, un medio y un cuarto, mientras que el valor exacto al tiempo uno es aproximadamente 0,3679. Reducir el paso permite medir el orden de error sin confundirlo con una modificación del modelo.</p>
+<app-formula expression="y&#x27;=-y,\quad y(0)=1,\quad y(t)=e^{-t},\qquad y_2^{\mathrm{Euler}}=(1-0.5)^2=0.25" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara los errores finales de Euler, Heun y RK4. Reduce el paso aproximadamente a la mitad y observa factores de mejora cercanos a dos, cuatro y dieciséis, antes de que domine el redondeo.</p>
+<app-deep-explorer topic="ode-numerical-integration" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Una trayectoria numérica que parece cerrada puede haber cambiado energía y periodo. Comparar solo su forma en un intervalo corto oculta errores acumulados.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué ocurre en Euler para el decaimiento si el paso vale tres?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>El factor por paso es menos dos: el valor alterna y crece en magnitud aunque la solución exacta decae. Es un fallo de estabilidad.</p></details>
+<p>¿Qué diferencia hay entre error local y global?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>El local supone partir de un estado exacto en un paso; el global incluye la acumulación y propagación de errores de pasos anteriores.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-059">Enfriamiento exponencial</a>. Contrasta Euler, Heun y RK4 con soluciones conocidas antes de aplicar un integrador a la dinámica.</li>
+<li><a routerLink="/problems/problema-060">Órbitas de un campo vectorial</a>. Contrasta Euler, Heun y RK4 con soluciones conocidas antes de aplicar un integrador a la dinámica.</li>
+<li><a routerLink="/problems/problema-097">Escala de una órbita circular</a>. Contrasta Euler, Heun y RK4 con soluciones conocidas antes de aplicar un integrador a la dinámica.</li>
+<li><a routerLink="/tools/vector-field">Explorador de campos vectoriales</a>. Representa una ley local de evolución y relaciona el campo con las trayectorias.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Relaciona el integrador con la evolución de órbitas y revisa energía, paso y estabilidad.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala</a>.</p>

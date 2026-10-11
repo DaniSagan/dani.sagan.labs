@@ -37,6 +37,11 @@ export class RaicesYParametroProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Inecuaciones y tablas de signos",
+        "route": "/articles/sign-charts",
+        "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
       }
     ]
   };

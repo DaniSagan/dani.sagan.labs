@@ -23,11 +23,11 @@ export class OrdenDeUnGiroDelCuboProblemComponent {
     "level": "Oposición",
     "statement": "Modela un giro de 90° de una cara exterior del cubo de Rubik como permutación de pegatinas. Determina su orden y la inversa, sin confundirlo con un algoritmo de varias caras.",
     "resources": [
-{
-  "label": "Permutaciones, ciclos y grupos de simetrías",
-  "route": "/articles/permutation-symmetries",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Permutaciones, ciclos y grupos de simetrías",
+        "route": "/articles/permutation-symmetries",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Polinomios ciclotómicos",
         "route": "/articles/cyclotomic-polynomials",
@@ -37,6 +37,16 @@ export class OrdenDeUnGiroDelCuboProblemComponent {
         "label": "Cubo de Rubik",
         "route": "/games/rubik-cube",
         "activity": "Repite cuatro veces un mismo giro exterior para comprobar el orden del movimiento en el ejercicio «Orden de un giro del cubo»."
+      },
+      {
+        "label": "Acciones de grupos y lema de Burnside",
+        "route": "/articles/burnside-lemma",
+        "activity": "Cuenta clases de configuraciones bajo simetrías mediante órbitas, estabilizadores y puntos fijos."
+      },
+      {
+        "label": "Invariantes del cubo de Rubik",
+        "route": "/articles/rubik-invariants",
+        "activity": "Comprueba orientaciones modulares y paridades antes de clasificar un estado del cubo como alcanzable."
       }
     ]
   };

@@ -32,6 +32,11 @@ export class UnaCubicaConTresRaicesProblemComponent {
         "label": "Laboratorio de álgebra lineal",
         "route": "/tools/linear-algebra",
         "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+      },
+      {
+        "label": "Teorema de las raíces racionales",
+        "route": "/articles/rational-root-theorem",
+        "activity": "Enumera candidatos racionales a partir de los divisores de los coeficientes y verifica cuáles anulan el polinomio."
       }
     ]
   };

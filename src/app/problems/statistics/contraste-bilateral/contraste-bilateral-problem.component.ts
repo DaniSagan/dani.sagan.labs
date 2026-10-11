@@ -37,6 +37,16 @@ export class ContrasteBilateralProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Distribuciones t de Student y chi-cuadrado",
+        "route": "/articles/student-chi-square",
+        "activity": "Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad."
+      },
+      {
+        "label": "Potencia estadística y errores de contraste",
+        "route": "/articles/statistical-power",
+        "activity": "Planifica un efecto relevante y compara nivel, error de tipo II y potencia para distintos tamaños."
       }
     ]
   };

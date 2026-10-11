@@ -1,3 +1,7 @@
+import { DimensionalAnalysisArticleComponent } from './dimensional-analysis/dimensional-analysis-article.component';
+import { EquationOfTimeArticleComponent } from './equation-of-time/equation-of-time-article.component';
+import { TriangleSimilarityArticleComponent } from './triangle-similarity/triangle-similarity-article.component';
+import { PythagoreanDistanceArticleComponent } from './pythagorean-distance/pythagorean-distance-article.component';
 import { VectorProductsArticleComponent } from './vector-products/vector-products-article.component';
 import { TriangleMetricsArticleComponent } from './triangle-metrics/triangle-metrics-article.component';
 import { SolarGeometryArticleComponent } from './solar-geometry/solar-geometry-article.component';
@@ -41,6 +45,10 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  DimensionalAnalysisArticleComponent,
+  EquationOfTimeArticleComponent,
+  TriangleSimilarityArticleComponent,
+  PythagoreanDistanceArticleComponent,
   VectorProductsArticleComponent,
   TriangleMetricsArticleComponent,
   SolarGeometryArticleComponent,

@@ -1,0 +1,47 @@
+<span class="article-kicker">Fractales / comprender, deducir, experimentar</span>
+<h2>Función de Cantor y distribuciones singulares</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Construcción por etapas</a></li>
+<li><a [routerLink]="[]" fragment="section-1">La regla de ternario a binario</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Una distribución singular y sin átomos</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Derivada y teorema fundamental</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Una variable aleatoria construida con monedas</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">La función de Cantor es continua y no decreciente, aumenta de cero a uno y tiene derivada cero casi en todas partes. No es una contradicción: el crecimiento se concentra en un conjunto de longitud cero y la función no es absolutamente continua. Como distribución acumulada, describe una probabilidad singular sin átomos y permite precisar qué significa una variable continua.</p>
+<h3 id="section-0">Construcción por etapas</h3>
+<p>Se empieza con el intervalo unidad y se elimina el tercio central repetidamente. La aproximación de la función asigna igual masa a los intervalos supervivientes, permanece constante en huecos y conecta linealmente sus extremos. En cada paso aumenta la pendiente sobre los intervalos restantes, cuyo total de longitudes disminuye. Las aproximaciones convergen uniformemente a una función continua que conserva valores cero y uno en los extremos.</p>
+<h3 id="section-1">La regla de ternario a binario</h3>
+<p>En un punto de Cantor se puede elegir una expansión ternaria formada por ceros y doses. Reemplazar cada dos por uno y leer el resultado en base dos da el valor de la función. En huecos se extiende de forma constante; los extremos tienen representaciones compatibles que dan el mismo valor. Esta codificación muestra monotonía y explica por qué los puntos de un mismo intervalo eliminado comparten imagen.</p>
+<app-formula expression="x=\sum_{n=1}^\infty\frac{2b_n}{3^n}\quad\Longrightarrow\quad F(x)=\sum_{n=1}^\infty\frac{b_n}{2^n}" />
+<h3 id="section-2">Una distribución singular y sin átomos</h3>
+<p>La medida asociada coloca masa uno sobre Cantor, que tiene medida de Lebesgue cero. Cada punto individual tiene masa cero porque la masa de su intervalo anidado tiende a cero. Por eso la acumulada es continua, pero no existe una densidad de Lebesgue que la represente. «Continua» puede significar ausencia de átomos; «absolutamente continua» es una condición más fuerte y equivale a tener una densidad integrable.</p>
+<h3 id="section-3">Derivada y teorema fundamental</h3>
+<p>Fuera de Cantor, la función es localmente constante y su derivada es cero. Como ese complemento tiene longitud total uno, la derivada se anula casi en todas partes. No puede recuperarse el incremento total integrando esa derivada: la fórmula de recuperación requiere absoluta continuidad. La continuidad ordinaria y la existencia de derivada casi en todas partes no bastan. El ejemplo señala una hipótesis esencial del teorema fundamental del cálculo.</p>
+<app-formula expression="F&#x27;(x)=0\ \text{casi en todas partes},\qquad F(1)-F(0)=1\ne\int_0^1F&#x27;(x)\,dx" />
+<h3 id="section-deeper">Una variable aleatoria construida con monedas</h3>
+<p>Toma una sucesión de bits independientes y equiprobables y forma un número sumando cada bit con peso dos sobre una potencia de tres. El resultado pertenece a Cantor con probabilidad uno. Su esperanza se obtiene sumando esperanzas y vale un medio; su varianza suma las contribuciones independientes y vale un octavo. La acumulada es precisamente la función de Cantor. Ninguna realización finita genera toda la distribución exacta: truncar deja una cola acotada y produce solo un conjunto finito de valores, mientras que el límite tiene una distribución continua singular. Esa diferencia explica por qué un histograma finito no puede certificar existencia de densidad.</p>
+<app-formula expression="X=\sum_{n\ge1}\frac{2B_n}{3^n},\quad B_n\sim\operatorname{Bernoulli}(1/2),\quad EX=\frac12,\quad\operatorname{Var}X=\sum_{n\ge1}3^{-2n}=\frac18" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Todo el tercio central tiene valor un medio. El hueco entre un noveno y dos novenos tiene valor un cuarto, y su reflejo entre siete novenos y ocho novenos tiene valor tres cuartos. La distribución asigna mitad de la masa a cada tercio exterior y cero al central, sin colocar masas puntuales en sus extremos.</p>
+<app-formula expression="F(x)=\tfrac12\ (1/3\le x\le2/3),\qquad F(1/9)=F(2/9)=\tfrac14" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Aumenta las etapas y observa zonas horizontales persistentes. Compara masa por intervalo y longitud total: la masa sigue siendo uno aunque la longitud soporte tienda a cero.</p>
+<app-deep-explorer topic="cantor-function" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Una acumulada continua no tiene necesariamente densidad. Buscar una densidad igual a su derivada puede perder toda la masa singular.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Cuál es la probabilidad del tercio central para la distribución de Cantor?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Es cero: la acumulada no aumenta allí. Su valor constante un medio representa la masa situada a la izquierda, no la masa del intervalo.</p></details>
+<p>¿Cuál es la probabilidad de un punto específico bajo esta distribución?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Cero, porque fijar cada vez más cifras reduce la masa de su intervalo a potencias de un medio que tienden a cero.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-078">Normalizar una densidad</a>. Amplía la noción de distribución continua con una acumulada singular concentrada en Cantor.</li>
+<li><a routerLink="/problems/problema-100">Longitud y dimensión de Cantor</a>. Amplía la noción de distribución continua con una acumulada singular concentrada en Cantor.</li>
+<li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a>. Explora distribuciones, muestras y simulaciones; contrasta las hipótesis del ejemplo antes de interpretar los resultados.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Compara una construcción límite con aproximaciones finitas y pregunta qué propiedades se conservan al pasar al límite.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas</a>, <a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>, <a routerLink="/articles/cardinality-diagonal">Cardinalidad y argumento diagonal</a>.</p>

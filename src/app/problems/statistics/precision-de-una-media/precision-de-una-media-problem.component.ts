@@ -23,16 +23,16 @@ export class PrecisionDeUnaMediaProblemComponent {
     "level": "Oposición",
     "statement": "Una población tiene varianza 36. Para muestras independientes de tamaño n, calcula \\(\\operatorname{Var}(\\bar{X})\\). ¿Qué n hace que la desviación típica de X̄ sea como máximo \\(\\frac{1}{2}\\)?",
     "resources": [
-{
-  "label": "Distribuciones muestrales y error estándar",
-  "route": "/articles/sampling-distributions",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-{
-  "label": "Corrección de Bessel y estimadores insesgados",
-  "route": "/articles/bessel-correction",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Distribuciones muestrales y error estándar",
+        "route": "/articles/sampling-distributions",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
+      {
+        "label": "Corrección de Bessel y estimadores insesgados",
+        "route": "/articles/bessel-correction",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Inferencia estadística",
         "route": "/articles/statistical-inference",
@@ -47,6 +47,31 @@ export class PrecisionDeUnaMediaProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Ley de los grandes números",
+        "route": "/articles/large-numbers-law",
+        "activity": "Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra."
+      },
+      {
+        "label": "Desigualdades de Markov y Chebyshev",
+        "route": "/articles/probability-inequalities",
+        "activity": "Obtén garantías de desviación desde media y varianza y compáralas con colas de distribuciones concretas."
+      },
+      {
+        "label": "Covarianza, dependencia y varianza de una suma",
+        "route": "/articles/covariance",
+        "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
+      },
+      {
+        "label": "Distribuciones t de Student y chi-cuadrado",
+        "route": "/articles/student-chi-square",
+        "activity": "Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad."
+      },
+      {
+        "label": "Bootstrap y estimación por remuestreo",
+        "route": "/articles/bootstrap",
+        "activity": "Amplía la estimación de incertidumbre con remuestreo y revisa si el diseño requiere conservar grupos."
       }
     ]
   };

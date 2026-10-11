@@ -32,6 +32,11 @@ export class TotienteYCoprimalidadProblemComponent {
         "label": "Descomposición en primos",
         "route": "/tools/prime-decomposition",
         "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
+      },
+      {
+        "label": "Principio de inclusión y exclusión",
+        "route": "/articles/inclusion-exclusion",
+        "activity": "Corrige el doble conteo de propiedades que se solapan mediante sus intersecciones."
       }
     ]
   };

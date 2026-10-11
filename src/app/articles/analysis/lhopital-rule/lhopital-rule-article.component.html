@@ -1,0 +1,48 @@
+<span class="article-kicker">Análisis / comprender, deducir, experimentar</span>
+<h2>Regla de L’Hôpital y formas indeterminadas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Cuándo existe una forma indeterminada</a></li>
+<li><a [routerLink]="[]" fragment="section-1">La conclusión y sus hipótesis</a></li>
+<li><a [routerLink]="[]" fragment="section-2">La prueba mediante el valor medio de Cauchy</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Transformar productos, diferencias y potencias</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">La regla no decide todos los límites existentes</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una forma indeterminada describe una competencia entre cantidades, no el valor de un límite. La regla de L’Hôpital permite estudiar ciertos cocientes sustituyéndolos por cocientes de derivadas bajo hipótesis precisas. Es una consecuencia del teorema del valor medio de Cauchy y no una receta universal para diferenciar cualquier fracción.</p>
+<h3 id="section-0">Cuándo existe una forma indeterminada</h3>
+<p>Los casos básicos son numerador y denominador que ambos tienden a cero o que ambos crecen sin límite en magnitud. Un cociente con numerador no nulo y denominador que tiende a cero suele ser un problema de signos y divergencia, no de L’Hôpital. Antes de derivar hay que evaluar la forma, elegir el lado del límite y verificar diferenciabilidad en un entorno perforado. La derivada del denominador debe ser no nula allí.</p>
+<h3 id="section-1">La conclusión y sus hipótesis</h3>
+<p>En una versión estándar, si el cociente de derivadas tiene límite finito o infinito y se cumplen las condiciones del cociente inicial, este posee el mismo límite. El recíproco no está garantizado: el límite original puede existir aunque el de derivadas no exista. Si tras una aplicación sigue habiendo una forma permitida, puede repetirse comprobando de nuevo las hipótesis. La regla deriva numerador y denominador por separado, no la fracción completa.</p>
+<app-formula expression="\lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f&#x27;(x)}{g&#x27;(x)}" />
+<h3 id="section-2">La prueba mediante el valor medio de Cauchy</h3>
+<p>Cuando ambas funciones se extienden con valor cero en el punto límite, el teorema del valor medio relaciona el cociente de incrementos con el cociente de derivadas en un punto intermedio. Al acercarse el argumento, ese punto también se acerca al extremo y transfiere el límite. Las otras versiones requieren adaptar el argumento a intervalos y límites infinitos. La prueba muestra por qué no basta con que ambas derivadas existan en un único punto.</p>
+<app-formula expression="\frac{f(x)-f(a)}{g(x)-g(a)}=\frac{f&#x27;(\xi_x)}{g&#x27;(\xi_x)},\qquad \xi_x\text{ entre }a\text{ y }x" />
+<h3 id="section-3">Transformar productos, diferencias y potencias</h3>
+<p>Un producto de cero por infinito puede reescribirse como cociente. Una diferencia de infinitos suele exigir denominador común o racionalización. Una potencia con forma indeterminada se analiza tomando logaritmos, siempre que la base sea positiva en el entorno considerado. Después se recupera el límite exponenciando. En muchos problemas, Taylor o equivalencias asintóticas ofrecen un cálculo más corto y también muestran el orden del error.</p>
+<h3 id="section-deeper">La regla no decide todos los límites existentes</h3>
+<p>Para ver que la existencia del cociente de derivadas no es necesaria, considera una función que combina una parte lineal con una oscilación de segundo orden y divídela por la variable. El cociente original tiende a uno porque la oscilación restante está multiplicada por una cantidad que tiende a cero. Al derivar, aparece una oscilación de amplitud constante, así que el cociente de derivadas no tiene límite. No hay contradicción con L’Hôpital: sus hipótesis de aplicación no se cumplen. El ejemplo recomienda usar primero acotaciones, equivalencias o Taylor y reservar la regla para situaciones donde realmente produce un límite controlable.</p>
+<app-formula expression="f(x)=x+x^2\sin(1/x),\quad \frac{f(x)}x\to1,\quad f&#x27;(x)=1+2x\sin(1/x)-\cos(1/x)" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>El cociente de la exponencial menos uno menos la variable entre el cuadrado de la variable tiene forma cero sobre cero. Una primera derivación todavía conserva esa forma; la segunda deja la exponencial dividida por dos. El límite vale un medio, coherente con el segundo término de Taylor.</p>
+<app-formula expression="\lim_{x\to0}\frac{e^x-1-x}{x^2}=\lim_{x\to0}\frac{e^x-1}{2x}=\frac12" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>La curva utiliza restos de Taylor de distintos órdenes. Baja la distancia al origen y separa el límite teórico del cálculo directo en doble precisión; explica cuándo la resta pierde cifras.</p>
+<app-deep-explorer topic="lhopital-rule" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Si se evalúa el cociente original muy cerca de cero, la cancelación puede producir resultados malos o incluso cero. Eso es un error numérico, no un contraejemplo al teorema.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Calcula el límite de seno de x dividido por x cuando x tiende a cero, usando la regla y sus hipótesis.</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La forma es cero sobre cero y la derivada del denominador vale uno. El cociente derivado es <app-formula displayMode="inline" [showCodeButton]="false" expression="\cos x" />, cuyo límite es uno.</p></details>
+<p>¿Qué teorema resuelve el límite original del ejemplo?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>El encaje: el término oscilante está acotado en valor absoluto por la magnitud de la variable.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-042">Un cociente con exponencial</a>. Revisa las hipótesis de L’Hôpital y compáralo con equivalencias y desarrollos de Taylor.</li>
+<li><a routerLink="/problems/problema-046">Un límite con seno</a>. Revisa las hipótesis de L’Hôpital y compáralo con equivalencias y desarrollos de Taylor.</li>
+<li><a routerLink="/problems/problema-047">Racionalización y límite</a>. Revisa las hipótesis de L’Hôpital y compáralo con equivalencias y desarrollos de Taylor.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Distingue una velocidad límite definida por cocientes de incrementos de una estimación hecha con pasos demasiado pequeños.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas</a>, <a routerLink="/articles/numerical-conditioning">Error numérico, cancelación y condicionamiento</a>.</p>

@@ -37,6 +37,16 @@ export class TrapeciosFrenteASimpsonProblemComponent {
         "label": "Curvas implícitas",
         "route": "/tools/implicit-curve-graph",
         "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
+      },
+      {
+        "label": "Interpolación de Lagrange y Hermite",
+        "route": "/articles/polynomial-interpolation",
+        "activity": "Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error."
+      },
+      {
+        "label": "Error numérico, cancelación y condicionamiento",
+        "route": "/articles/numerical-conditioning",
+        "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
       }
     ]
   };

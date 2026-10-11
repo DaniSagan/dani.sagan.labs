@@ -1,0 +1,49 @@
+<span class="article-kicker">Cálculo / comprender, deducir, experimentar</span>
+<h2>Interpolación de Lagrange y Hermite</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Existencia y unicidad desde los nodos</a></li>
+<li><a [routerLink]="[]" fragment="section-1">El resto no depende solo del grado</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Hermite añade información de tangencia</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Evaluación estable y alternativas modernas</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Bases explícitas de Hermite</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Interpolar construye una función que pasa exactamente por unos datos. Eso no garantiza que aproxime bien entre ellos ni que prediga correctamente fuera del intervalo. Lagrange usa valores en nodos distintos; Hermite incorpora también derivadas. La elección de nodos, el resto teórico y la forma de evaluar el polinomio explican cuándo la interpolación es útil y cuándo un grado mayor empeora el resultado.</p>
+<h3 id="section-0">Existencia y unicidad desde los nodos</h3>
+<p>Para datos en nodos distintos, las bases de Lagrange valen uno en su nodo y cero en todos los demás. Su combinación reproduce cada valor prescrito y tiene grado como máximo el número de datos menos uno. Si dos polinomios cumplieran esas condiciones, su diferencia tendría más raíces distintas que su grado y sería nula. Esta prueba separa unicidad de estabilidad: que exista una única solución no significa que sea insensible a errores en los datos.</p>
+<app-formula expression="p_n(x)=\sum_{i=0}^n y_iL_i(x),\qquad L_i(x)=\prod_{j\ne i}\frac{x-x_j}{x_i-x_j}" />
+<h3 id="section-1">El resto no depende solo del grado</h3>
+<p>Si la función tiene suficientes derivadas, el error contiene una derivada de orden superior y el producto de distancias a los nodos. La expresión permite una cota uniforme cuando se controla esa derivada, pero el punto intermedio depende de dónde se evalúa. Los nodos equiespaciados pueden hacer crecer el producto y la amplificación de errores cerca de los extremos. La función de Runge demuestra que aumentar el grado puede generar oscilaciones mayores.</p>
+<app-formula expression="f(x)-p_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}\prod_{i=0}^n(x-x_i)" />
+<h3 id="section-2">Hermite añade información de tangencia</h3>
+<p>Con valores y primeras derivadas en cada nodo, se imponen el doble de condiciones y el grado máximo aumenta correspondientemente. La diferencia entre dos candidatos tiene raíces dobles, lo que vuelve a probar unicidad. Las bases de Hermite combinan el cuadrado de la base de Lagrange con correcciones de pendiente. Estas condiciones no convierten en exactas unas derivadas obtenidas con ruido; aumentar información incierta puede amplificar el error.</p>
+<h3 id="section-3">Evaluación estable y alternativas modernas</h3>
+<p>La forma baricéntrica reutiliza pesos de los nodos y evita expandir coeficientes de un polinomio de grado alto. En un nodo se devuelve directamente el dato para evitar dividir por cero. Los nodos de Chebyshev reducen las oscilaciones en aproximación polinómica global. Los splines dividen el intervalo en piezas de bajo grado con condiciones de suavidad. Si los datos contienen ruido y se busca una tendencia, mínimos cuadrados responde a una pregunta distinta de interpolar exactamente.</p>
+<app-formula expression="p_n(x)=\frac{\sum_i\frac{w_i y_i}{x-x_i}}{\sum_i\frac{w_i}{x-x_i}},\qquad w_i=\frac1{\prod_{j\ne i}(x_i-x_j)}" />
+<h3 id="section-deeper">Bases explícitas de Hermite</h3>
+<p>La fórmula de Hermite puede construirse sin resolver un sistema de coeficientes. Elevar al cuadrado cada base de Lagrange mantiene ceros dobles en los otros nodos. Una corrección lineal hace que la primera base tenga valor uno y pendiente cero en su propio nodo; la segunda tiene valor cero y pendiente uno. Al combinar valores y derivadas se obtiene un polinomio de grado como máximo dos veces el número de nodos menos uno. El resto contiene el producto de distancias al cuadrado y una derivada de orden correspondiente. Si solo algunos nodos incluyen derivadas, las multiplicidades del producto deben reflejar exactamente las condiciones prescritas.</p>
+<app-formula expression="H(x)=\sum_i\left[(1-2L_i&#x27;(x_i)(x-x_i))L_i(x)^2y_i+(x-x_i)L_i(x)^2y_i&#x27;\right]" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Dos datos, valor uno en cero y valor dos en uno, determinan una recta. Si además se prescribe pendiente cero en ambos extremos, Hermite determina una cúbica. Su derivada verifica la tangencia y permite comparar ambas aproximaciones incluso aunque compartan los mismos valores finales.</p>
+<app-formula expression="p(x)=1+x,\qquad H(x)=1+3x^2-2x^3,\qquad H&#x27;(x)=6x(1-x)" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara nodos uniformes y de Chebyshev con la función de Runge. Observa los extremos además del punto seleccionado. Busca un grado para el que el error puntual sea pequeño y el error en otra zona sea grande.</p>
+<app-deep-explorer topic="polynomial-interpolation" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Extrapolar fuera del intervalo puede multiplicar rápidamente el error. Una coincidencia exacta en los nodos no certifica fidelidad al fenómeno observado.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Por qué tres nodos distintos determinan una única cuadrática de grado como máximo dos?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La diferencia de dos candidatas tendría tres raíces distintas y grado como máximo dos, lo que obliga a que sea el polinomio cero.</p></details>
+<p>¿Cuántas condiciones hay con valor y derivada en tres nodos, y cuál es el grado máximo de Hermite?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Hay seis condiciones y el grado máximo es cinco.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-013">Un resto sin dividir</a>. Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error.</li>
+<li><a routerLink="/problems/problema-055">Taylor con control del error</a>. Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error.</li>
+<li><a routerLink="/problems/problema-069">Trapecios frente a Simpson</a>. Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error.</li>
+<li><a routerLink="/tools/graph-plotter">Graficador de funciones</a>. Dibuja las funciones del ejemplo y compara valores, intervalos y aproximaciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Piensa qué datos de posición y velocidad permitirían interpolar un tramo de trayectoria, sin confundirlo con resolver la dinámica.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/linear-approximation">Diferenciales y aproximación lineal</a>, <a routerLink="/articles/numerical-conditioning">Error numérico, cancelación y condicionamiento</a>.</p>

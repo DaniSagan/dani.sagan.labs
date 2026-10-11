@@ -37,6 +37,16 @@ export class IntegralImpropiaConParametroProblemComponent {
         "label": "Curvas implícitas",
         "route": "/tools/implicit-curve-graph",
         "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
+      },
+      {
+        "label": "Inecuaciones y tablas de signos",
+        "route": "/articles/sign-charts",
+        "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
+      },
+      {
+        "label": "Criterios de convergencia de series positivas",
+        "route": "/articles/positive-series-tests",
+        "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
       }
     ]
   };

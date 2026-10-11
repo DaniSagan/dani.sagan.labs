@@ -32,6 +32,11 @@ export class PotenciaDeUnPuntoProblemComponent {
         "label": "Curvas implícitas",
         "route": "/tools/implicit-curve-graph",
         "activity": "Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas."
+      },
+      {
+        "label": "Semejanza de triángulos y proporcionalidad",
+        "route": "/articles/triangle-similarity",
+        "activity": "Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas."
       }
     ]
   };

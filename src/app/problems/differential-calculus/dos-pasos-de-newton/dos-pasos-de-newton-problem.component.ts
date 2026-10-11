@@ -37,6 +37,16 @@ export class DosPasosDeNewtonProblemComponent {
         "label": "Campo vectorial",
         "route": "/tools/vector-field",
         "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
+      },
+      {
+        "label": "Teorema del punto fijo de Banach",
+        "route": "/articles/banach-fixed-point",
+        "activity": "Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error."
+      },
+      {
+        "label": "Error numérico, cancelación y condicionamiento",
+        "route": "/articles/numerical-conditioning",
+        "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
       }
     ]
   };

@@ -1,3 +1,4 @@
+import { MathematicalInductionArticleComponent } from './mathematical-induction/mathematical-induction-article.component';
 import { PrimeValuationsArticleComponent } from './prime-valuations/prime-valuations-article.component';
 import { FrobeniusCoinsArticleComponent } from './frobenius-coins/frobenius-coins-article.component';
 import { ArithmeticDerivativeArticleComponent } from './arithmetic-derivative/arithmetic-derivative-article.component';
@@ -46,6 +47,7 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  MathematicalInductionArticleComponent,
   FrobeniusCoinsArticleComponent,
   PrimeValuationsArticleComponent,
   ContinuedFractionsArticleComponent,

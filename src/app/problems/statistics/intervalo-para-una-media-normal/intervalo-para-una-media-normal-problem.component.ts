@@ -23,11 +23,11 @@ export class IntervaloParaUnaMediaNormalProblemComponent {
     "level": "Oposición",
     "statement": "Una población normal tiene desviación típica conocida \\(\\sigma =10\\). Una muestra independiente de \\(n=100\\) da media 50. Usando \\(z_{0},_{975}=1,96\\), calcula el intervalo de confianza del 95% para la media e interpreta su cobertura.",
     "resources": [
-{
-  "label": "Distribuciones muestrales y error estándar",
-  "route": "/articles/sampling-distributions",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
+      {
+        "label": "Distribuciones muestrales y error estándar",
+        "route": "/articles/sampling-distributions",
+        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+      },
       {
         "label": "Inferencia estadística",
         "route": "/articles/statistical-inference",
@@ -42,6 +42,16 @@ export class IntervaloParaUnaMediaNormalProblemComponent {
         "label": "Laboratorio de probabilidad y datos",
         "route": "/tools/probability-lab",
         "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
+      },
+      {
+        "label": "Distribuciones t de Student y chi-cuadrado",
+        "route": "/articles/student-chi-square",
+        "activity": "Revisa cuándo la estimación de dispersión exige Student o chi-cuadrado y sus grados de libertad."
+      },
+      {
+        "label": "Bootstrap y estimación por remuestreo",
+        "route": "/articles/bootstrap",
+        "activity": "Amplía la estimación de incertidumbre con remuestreo y revisa si el diseño requiere conservar grupos."
       }
     ]
   };

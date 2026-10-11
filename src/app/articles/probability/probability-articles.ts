@@ -1,3 +1,12 @@
+import { StratifiedSamplingArticleComponent } from './stratified-sampling/stratified-sampling-article.component';
+import { CausalInferenceArticleComponent } from './causal-inference/causal-inference-article.component';
+import { BootstrapArticleComponent } from './bootstrap/bootstrap-article.component';
+import { StatisticalPowerArticleComponent } from './statistical-power/statistical-power-article.component';
+import { ProportionIntervalsArticleComponent } from './proportion-intervals/proportion-intervals-article.component';
+import { StudentChiSquareArticleComponent } from './student-chi-square/student-chi-square-article.component';
+import { CovarianceArticleComponent } from './covariance/covariance-article.component';
+import { ProbabilityInequalitiesArticleComponent } from './probability-inequalities/probability-inequalities-article.component';
+import { LargeNumbersLawArticleComponent } from './large-numbers-law/large-numbers-law-article.component';
 import { SamplingDistributionsArticleComponent } from './sampling-distributions/sampling-distributions-article.component';
 import { GraphicalDiagnosticsArticleComponent } from './graphical-diagnostics/graphical-diagnostics-article.component';
 import { DiscreteExpectationArticleComponent } from './discrete-expectation/discrete-expectation-article.component';
@@ -21,6 +30,15 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  StratifiedSamplingArticleComponent,
+  CausalInferenceArticleComponent,
+  BootstrapArticleComponent,
+  StatisticalPowerArticleComponent,
+  ProportionIntervalsArticleComponent,
+  StudentChiSquareArticleComponent,
+  CovarianceArticleComponent,
+  ProbabilityInequalitiesArticleComponent,
+  LargeNumbersLawArticleComponent,
   SamplingDistributionsArticleComponent,
   GraphicalDiagnosticsArticleComponent,
   DiscreteExpectationArticleComponent,

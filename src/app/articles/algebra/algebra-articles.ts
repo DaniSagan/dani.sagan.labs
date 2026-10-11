@@ -1,3 +1,8 @@
+import { ProjectionLeastSquaresArticleComponent } from './projection-least-squares/projection-least-squares-article.component';
+import { GramSchmidtArticleComponent } from './gram-schmidt/gram-schmidt-article.component';
+import { VectorSpacesArticleComponent } from './vector-spaces/vector-spaces-article.component';
+import { SignChartsArticleComponent } from './sign-charts/sign-charts-article.component';
+import { RationalRootTheoremArticleComponent } from './rational-root-theorem/rational-root-theorem-article.component';
 import { PermutationSymmetriesArticleComponent } from './permutation-symmetries/permutation-symmetries-article.component';
 import { MeanInequalitiesArticleComponent } from './mean-inequalities/mean-inequalities-article.component';
 import { JordanFormArticleComponent } from './jordan-form/jordan-form-article.component';
@@ -12,6 +17,11 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  ProjectionLeastSquaresArticleComponent,
+  GramSchmidtArticleComponent,
+  VectorSpacesArticleComponent,
+  SignChartsArticleComponent,
+  RationalRootTheoremArticleComponent,
   PermutationSymmetriesArticleComponent,
   MeanInequalitiesArticleComponent,
   JordanFormArticleComponent,

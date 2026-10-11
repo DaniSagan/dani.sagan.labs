@@ -1,0 +1,50 @@
+<span class="article-kicker">Álgebra / comprender, deducir, experimentar</span>
+<h2>Productos internos y ortonormalización de Gram–Schmidt</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">La geometría proviene del producto interno</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Restar lo que ya pertenece al subespacio</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Coordenadas ortonormales y factorización QR</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Estabilidad y versiones modificadas</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Proyección y desigualdad de Bessel</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una base puede describir correctamente un espacio y aun así dificultar proyecciones y cálculos. Un producto interno introduce longitudes y ángulos; una base ortonormal convierte las coordenadas en productos internos. Gram–Schmidt construye esa base quitando de cada vector sus componentes ya explicadas. Su geometría es sencilla, pero la precisión numérica exige atención cuando los vectores son casi dependientes.</p>
+<h3 id="section-0">La geometría proviene del producto interno</h3>
+<p>En el plano euclídeo, el producto interno suma productos de coordenadas. En un espacio complejo una de las entradas se conjuga, y debe fijarse cuál argumento es lineal. En espacios de funciones, integrar el producto con un peso positivo produce otra geometría. La positividad garantiza que la norma solo se anule en el vector cero; Cauchy–Schwarz controla el producto y permite definir el ángulo para vectores reales no nulos.</p>
+<app-formula expression="\|v\|=\sqrt{\langle v,v\rangle},\qquad |\langle u,v\rangle|\le\|u\|\,\|v\|" />
+<h3 id="section-1">Restar lo que ya pertenece al subespacio</h3>
+<p>Al construir la siguiente dirección, se resta la proyección sobre cada vector ortonormal anterior. El resto es ortogonal a todos ellos porque cada producto interno correspondiente se cancela. Si no es cero, se divide por su norma. Si se anula, el vector original ya era una combinación de los anteriores y no añade una dimensión. El algoritmo conserva el subespacio generado por cada prefijo de la familia.</p>
+<app-formula expression="u_k=v_k-\sum_{j&lt;k}\langle v_k,q_j\rangle q_j,\qquad q_k=\frac{u_k}{\|u_k\|}" />
+<h3 id="section-2">Coordenadas ortonormales y factorización QR</h3>
+<p>Al apilar los vectores iniciales como columnas, las nuevas direcciones forman una matriz con columnas ortonormales. Sus coeficientes de proyección se organizan en una matriz triangular superior. Esta factorización separa geometría y escala, y sirve para resolver mínimos cuadrados sin formar las ecuaciones normales. Si una columna no añade dirección, la versión con detección de rango debe tratarla por separado, en lugar de dividir por una norma nula.</p>
+<app-formula expression="A=QR,\qquad Q^\mathsf{T}Q=I" />
+<h3 id="section-3">Estabilidad y versiones modificadas</h3>
+<p>En aritmética exacta, Gram–Schmidt clásico y modificado son equivalentes. En coma flotante, actualizar el resto después de cada proyección suele preservar mejor la ortogonalidad. Reortogonalizar puede mejorar resultados con columnas casi dependientes. Las reflexiones de Householder son una alternativa robusta para QR; una descomposición en valores singulares permite además estimar rango y condicionamiento. La elección depende de tamaño, estructura y precisión requerida.</p>
+<h3 id="section-deeper">Proyección y desigualdad de Bessel</h3>
+<p>Una familia ortonormal no tiene que abarcar todo el espacio para ser útil. La suma de componentes sobre ella define la proyección a su subespacio; el resto es ortogonal. Pitágoras descompone el cuadrado de la norma en suma de cuadrados de coeficientes y norma residual, dando la desigualdad de Bessel. Si la familia es una base completa en dimensión finita, el resto desaparece y aparece la identidad de Parseval. En espacios de funciones de dimensión infinita, hablar de base y de serie exige especificar la noción de convergencia: la igualdad de energía no equivale automáticamente a convergencia puntual de la expansión.</p>
+<app-formula expression="\sum_{j=1}^m|\langle v,q_j\rangle|^2\le\|v\|^2,\qquad v=\sum_j\langle v,q_j\rangle q_j+r" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>Con un primer vector de componentes uno y uno, el segundo de componentes dos y cero tiene proyección de componentes uno y uno. Su resto es uno y menos uno. Normalizar ambos da dos direcciones perpendiculares. La suma de sus componentes reproduce el vector inicial, lo que comprueba tanto la ortogonalidad como la conservación del espacio.</p>
+<app-formula expression="q_1=\frac1{\sqrt2}(1,1),\qquad u_2=(1,-1),\qquad q_2=\frac1{\sqrt2}(1,-1)" />
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Reduce el parámetro de separación a cero y observa la norma del resto. Predice por qué la dirección normalizada permanece fija mientras su cálculo se vuelve sensible al ruido de las entradas.</p>
+<app-deep-explorer topic="gram-schmidt" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>Normalizar primero todos los vectores no los vuelve ortogonales. La unidad de longitud y la perpendicularidad son requisitos distintos.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>¿Qué ocurre si el segundo vector es tres veces el primero?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>La proyección coincide con todo el segundo vector, el resto es cero y no aparece una segunda dirección. La familia genera un espacio de dimensión uno.</p></details>
+<p>¿Cuándo hay igualdad en Bessel para una familia finita?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>Cuando el vector pertenece al subespacio generado por la familia, de modo que el residuo ortogonal es cero.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-019">Proyección ortogonal</a>. Construye direcciones ortogonales y conecta sus componentes con productos internos.</li>
+<li><a routerLink="/problems/problema-028">Distancia a un plano</a>. Construye direcciones ortogonales y conecta sus componentes con productos internos.</li>
+<li><a routerLink="/problems/problema-029">Dos rectas que se cruzan</a>. Construye direcciones ortogonales y conecta sus componentes con productos internos.</li>
+<li><a routerLink="/problems/problema-083">Una recta de regresión</a>. Construye direcciones ortogonales y conecta sus componentes con productos internos.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba operaciones y relaciones matriciales; para temas discretos, utiliza matrices como una representación de sus datos y restricciones.</li>
+<li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Descompón mentalmente posición y velocidad en direcciones ortogonales para analizar una trayectoria.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad</a>, <a routerLink="/articles/projection-least-squares">Proyecciones ortogonales y mínimos cuadrados</a>, <a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a>.</p>

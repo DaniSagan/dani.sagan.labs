@@ -1,3 +1,9 @@
+import { DaylightSavingTimeArticleComponent } from './daylight-saving-time/daylight-saving-time-article.component';
+import { NumericalConditioningArticleComponent } from './numerical-conditioning/numerical-conditioning-article.component';
+import { BanachFixedPointArticleComponent } from './banach-fixed-point/banach-fixed-point-article.component';
+import { LhopitalRuleArticleComponent } from './lhopital-rule/lhopital-rule-article.component';
+import { PositiveSeriesTestsArticleComponent } from './positive-series-tests/positive-series-tests-article.component';
+import { GeometricSeriesArticleComponent } from './geometric-series/geometric-series-article.component';
 import { UtcDateArithmeticArticleComponent } from './utc-date-arithmetic/utc-date-arithmetic-article.component';
 import { SqueezeOscillationArticleComponent } from './squeeze-oscillation/squeeze-oscillation-article.component';
 import { MonotoneConvergenceArticleComponent } from './monotone-convergence/monotone-convergence-article.component';
@@ -16,6 +22,12 @@ import { BaselArticleComponent } from './basel/basel-article.component';
 import { StirlingArticleComponent } from './stirling/stirling-article.component';
 
 export const ANALYSIS_ARTICLES = [
+  DaylightSavingTimeArticleComponent,
+  NumericalConditioningArticleComponent,
+  BanachFixedPointArticleComponent,
+  LhopitalRuleArticleComponent,
+  PositiveSeriesTestsArticleComponent,
+  GeometricSeriesArticleComponent,
   UtcDateArithmeticArticleComponent,
   SqueezeOscillationArticleComponent,
   MonotoneConvergenceArticleComponent,

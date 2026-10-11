@@ -1,0 +1,44 @@
+<span class="article-kicker">Análisis / comprender, deducir, experimentar</span>
+<h2>Horario estacional y horas locales ambiguas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">Instante, representación y zona</a></li>
+<li><a [routerLink]="[]" fragment="section-1">Saltos hacia delante</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Pliegues hacia atrás</a></li>
+<li><a [routerLink]="[]" fragment="section-3">Duraciones y reglas de calendario</a></li>
+<li><a [routerLink]="[]" fragment="section-deeper">Desambiguación y contratos de almacenamiento</a></li><li><a [routerLink]="[]" fragment="section-4">Un ejemplo resuelto</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Laboratorio y comprobación</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Hipótesis y errores frecuentes</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
+</ol></details></nav>
+<p class="dropcap">Una hora local no siempre identifica un instante. Cuando el reloj se adelanta hay horas inexistentes; cuando se retrasa, horas repetidas. Para programar eventos, comparar vuelos o calcular duraciones hay que distinguir instante UTC, fecha local y zona horaria. El horario estacional es una regla civil que puede cambiar, no una propiedad astronómica fija.</p>
+<h3 id="section-0">Instante, representación y zona</h3>
+<p>Un instante puede expresarse con una línea temporal UTC o una marca temporal. Una fecha y hora local necesita una zona para convertirse en instante. Un desfase como UTC más uno no es equivalente a una zona IANA: el desfase es una cantidad fija, mientras la zona contiene reglas históricas y transiciones. Conviene almacenar el instante para eventos ocurridos y conservar también la zona y la intención local para eventos futuros.</p>
+<h3 id="section-1">Saltos hacia delante</h3>
+<p>Cuando el desfase aumenta una hora, algunas etiquetas locales dejan de existir. Sumar una hora de duración en UTC puede cambiar el reloj local en dos horas durante ese salto. Una aplicación debe decidir cómo manejar una cita solicitada dentro del hueco: rechazarla o desplazarla con una regla explícita. No conviene aceptar silenciosamente una normalización del sistema si altera la intención del usuario.</p>
+<h3 id="section-2">Pliegues hacia atrás</h3>
+<p>Cuando el desfase disminuye, una misma hora local corresponde a dos instantes distintos. Para desambiguar se necesita el desfase o una regla que elija la primera o la segunda aparición. Una fecha local ambigua no debe compararse como una cadena de texto para deducir orden temporal. Mostrar zona y desfase ayuda a distinguir los dos eventos que comparten la misma etiqueta de reloj.</p>
+<h3 id="section-3">Duraciones y reglas de calendario</h3>
+<p>Un día de calendario local puede durar veintitrés o veinticinco horas durante una transición. Añadir un día de calendario no es siempre añadir veinticuatro horas de duración. Los horarios semanales suelen seguir la pared del reloj, mientras una cuenta atrás sigue tiempo transcurrido. Las reglas IANA incluidas en un entorno deben mantenerse actualizadas: una decisión legal futura puede cambiar la conversión de una cita aún no celebrada.</p>
+<app-formula expression="\Delta t=t_{\mathrm{fin,UTC}}-t_{\mathrm{inicio,UTC}}" />
+<h3 id="section-deeper">Desambiguación y contratos de almacenamiento</h3>
+<p>Para un evento pasado, almacenar el instante y la zona permite recuperar su representación local con reglas conocidas. Para un evento futuro recurrente, almacenar solo UTC puede traicionar la intención de mantener siempre las nueve locales si la zona cambia su desfase. Un contrato robusto conserva fecha local, zona y regla de recurrencia, y vuelve a calcular instantes conforme al calendario vigente. En una hora repetida se debe conservar también la elección de aparición; en un hueco debe declararse una política de rechazo o desplazamiento. La precisión de la base de zonas del entorno forma parte de esa conversión. No debe sustituirse por una suma manual fija de horas.</p>
+<app-formula expression="\text{hora local}+\text{zona}+\text{política de desambiguación}\longrightarrow\text{instante}" />
+<h3 id="section-4">Un ejemplo resuelto</h3>
+<p>En la transición de otoño de Madrid usada por el laboratorio, 00:30 UTC y 01:30 UTC se muestran ambas como 02:30 local. La primera lleva desfase más dos y la segunda más uno. Son instantes separados por una hora, pese a compartir fecha y hora local. En primavera, el tramo local de las dos a las tres se omite.</p>
+<h3 id="section-5">Laboratorio y comprobación</h3>
+<p>Compara la tabla UTC-local en primavera y otoño. Busca el salto y la repetición, y anota qué información adicional necesitaría una hora local aislada para convertirse sin ambigüedad.</p>
+<app-deep-explorer topic="daylight-saving-time" />
+<h3 id="section-6">Hipótesis y errores frecuentes</h3>
+<aside class="note"><p>No restes directamente horas de reloj local atravesando una transición. Convierte primero a instantes inequívocos y después calcula la duración.</p></aside>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<p>Una tarea empieza a las 01:30 UTC y termina a las 02:30 UTC. ¿Puede durar cero o dos horas por un cambio de zona?</p>
+<details class="note"><summary>Ver solución razonada</summary><p>Su duración es una hora. La zona modifica la representación local, no el intervalo entre esos dos instantes UTC.</p></details>
+<p>¿Es igual añadir un día de calendario y añadir 86400 segundos?</p>
+<details class="note"><summary>Ver solución de la ampliación</summary><p>No necesariamente. Un día local atravesando una transición puede tener otra duración.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas, herramientas y juegos</h3><ul>
+<li><a routerLink="/problems/problema-099">Viaje entre husos fijos</a>. Detecta horas repetidas o inexistentes y calcula duraciones usando instantes UTC inequívocos.</li>
+<li><a routerLink="/tools/travel-planner">Planificador de viajes</a>. Compara instantes y representaciones de hora local en distintas zonas.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Distingue contar pasos de evolución de medir una duración real o representar una hora de calendario.</li>
+</ul></div>
+<p>Conecta estas ideas con <a routerLink="/articles/equation-of-time">Ecuación del tiempo y mediodía solar</a>.</p>
