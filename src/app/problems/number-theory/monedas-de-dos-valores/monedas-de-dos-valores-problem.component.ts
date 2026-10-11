@@ -23,6 +23,11 @@ export class MonedasDeDosValoresProblemComponent {
     "level": "Oposición",
     "statement": "Resuelve \\(7x+11y=100\\) en enteros no negativos e interpreta \\(x,y\\) como cantidades de monedas.",
     "resources": [
+{
+  "label": "El problema de las monedas y el número de Frobenius",
+  "route": "/articles/frobenius-coins",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Ecuaciones diofánticas lineales",
         "route": "/articles/linear-diophantine-equations",

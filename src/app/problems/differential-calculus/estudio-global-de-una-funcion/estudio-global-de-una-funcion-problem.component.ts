@@ -23,6 +23,16 @@ export class EstudioGlobalDeUnaFuncionProblemComponent {
     "level": "Oposición",
     "statement": "Estudia crecimiento, extremos, concavidad y límites de \\(f(x)=xe^{-x}\\) en \\(\\mathbb{R}\\).",
     "resources": [
+{
+  "label": "Estudio completo de funciones",
+  "route": "/articles/function-analysis",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Convexidad, concavidad y desigualdades",
+  "route": "/articles/convexity-tangents",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Series de Taylor",
         "route": "/articles/taylor-series",

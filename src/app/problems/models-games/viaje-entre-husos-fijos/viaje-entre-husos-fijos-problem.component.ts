@@ -23,6 +23,11 @@ export class ViajeEntreHusosFijosProblemComponent {
     "level": "Repaso",
     "statement": "Un vuelo sale a las 22:30 del 10 de enero desde una ciudad con \\(UTC+1\\) y llega a las 06:15 del 11 de enero a otra con \\(UTC+3\\). Suponiendo esos offsets constantes, calcula la duración.",
     "resources": [
+{
+  "label": "UTC, husos horarios y aritmética de fechas",
+  "route": "/articles/utc-date-arithmetic",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Algoritmo de la división",
         "route": "/articles/division-algorithm",

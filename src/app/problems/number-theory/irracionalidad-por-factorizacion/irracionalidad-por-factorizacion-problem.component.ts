@@ -23,6 +23,11 @@ export class IrracionalidadPorFactorizacionProblemComponent {
     "level": "Oposición",
     "statement": "Demuestra que \\(\\sqrt{6}\\) es irracional usando la unicidad de la factorización prima.",
     "resources": [
+{
+  "label": "Irracionalidad y valuaciones primas",
+  "route": "/articles/prime-valuations",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema fundamental de la aritmética",
         "route": "/articles/fundamental-theorem-arithmetic",

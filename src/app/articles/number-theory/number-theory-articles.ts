@@ -1,3 +1,5 @@
+import { PrimeValuationsArticleComponent } from './prime-valuations/prime-valuations-article.component';
+import { FrobeniusCoinsArticleComponent } from './frobenius-coins/frobenius-coins-article.component';
 import { ArithmeticDerivativeArticleComponent } from './arithmetic-derivative/arithmetic-derivative-article.component';
 import { GoldbachArticleComponent } from './goldbach/goldbach-article.component';
 import { Type } from '@angular/core';
@@ -44,6 +46,8 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  FrobeniusCoinsArticleComponent,
+  PrimeValuationsArticleComponent,
   ContinuedFractionsArticleComponent,
   PellArticleComponent,
   GoldbachArticleComponent,

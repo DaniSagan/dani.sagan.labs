@@ -5,25 +5,25 @@
 <p>Decir que f(x) tiende a L cuando x se aproxima a c significa que los valores se acercan a L al tomar x suficientemente próximo a c, pero distinto de c. Podemos modificar f(c) sin cambiar el límite. En un punto interior del dominio, el límite bilateral existe si y solo si los límites por izquierda y derecha existen y coinciden.</p>
 <app-formula expression="\lim_{x\to c^-}f(x)=\lim_{x\to c^+}f(x)=L">
 </app-formula>
-<p>La continuidad añade dos requisitos: f(c) está definido y coincide con L. La definición precisa dice que para todo ε &gt; 0 existe δ &gt; 0 tal que |x − c| &lt; δ implica |f(x) − f(c)| &lt; ε, restringiendo x al dominio. Esa relación controla todos los puntos suficientemente cercanos, no solo una lista de muestras. En los extremos de un intervalo usamos el límite correspondiente dentro del dominio.</p>
+<p>La continuidad añade dos requisitos: f(c) está definido y coincide con L. La definición precisa dice que para todo <app-formula displayMode="inline" [showCodeButton]="false" expression="\varepsilon  &gt; 0" /> existe <app-formula displayMode="inline" [showCodeButton]="false" expression="\delta  &gt; 0" /> tal que <app-formula displayMode="inline" [showCodeButton]="false" expression="|x - c| &lt; \delta" /> implica <app-formula displayMode="inline" [showCodeButton]="false" expression="|f(x) - f(c)| &lt; \varepsilon" />, restringiendo x al dominio. Esa relación controla todos los puntos suficientemente cercanos, no solo una lista de muestras. En los extremos de un intervalo usamos el límite correspondiente dentro del dominio.</p>
 <h3>Una unión de dos ramas</h3>
-<p>Sea f(x) = ax + b para x ≤ 1 y f(x) = x² para x &gt; 1. Por izquierda el límite es a + b, que además es el valor asignado en 1; por derecha es 1. La continuidad exige a + b = 1. Hay infinitas parejas que satisfacen esta ecuación: unir las alturas no decide todavía las pendientes.</p>
-<app-formula expression="f(x)=\begin{cases}ax+b,&x\le1,\\x^2,&x>1.\end{cases}\qquad \text{Continua en }1\iff a+b=1">
+<p>Sea <app-formula displayMode="inline" [showCodeButton]="false" expression="f(x) = ax + b" /> para <app-formula displayMode="inline" [showCodeButton]="false" expression="x \le  1" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="f(x) = x^{2}" /> para <app-formula displayMode="inline" [showCodeButton]="false" expression="x &gt; 1" />. Por izquierda el límite es a <app-formula displayMode="inline" [showCodeButton]="false" expression="+ b" />, que además es el valor asignado en 1; por derecha es 1. La continuidad exige a <app-formula displayMode="inline" [showCodeButton]="false" expression="+ b = 1" />. Hay infinitas parejas que satisfacen esta ecuación: unir las alturas no decide todavía las pendientes.</p>
+<app-formula expression="f(x)=\begin{cases}ax+b,&amp;x\le1,\\x^2,&amp;x&gt;1.\end{cases}\qquad \text{Continua en }1\iff a+b=1">
 </app-formula>
 <h3>La derivada es un límite de cocientes</h3>
-<p>La pendiente entre (c,f(c)) y (c+h,f(c+h)) es el cociente incremental. Si tiende a un mismo número finito por ambos lados, ese número es f′(c). La derivada no se obtiene promediando pendientes laterales distintas.</p>
-<app-formula expression="f'(c)=\lim_{h\to0}\frac{f(c+h)-f(c)}h">
+<p>La pendiente entre <app-formula displayMode="inline" [showCodeButton]="false" expression="(c,f(c))" /> <app-formula displayMode="inline" [showCodeButton]="false" expression="y (c+h,f(c+h))" /> es el cociente incremental. Si tiende a un mismo número finito por ambos lados, ese número es f′(c). La derivada no se obtiene promediando pendientes laterales distintas.</p>
+<app-formula expression="f&#x27;(c)=\lim_{h\to0}\frac{f(c+h)-f(c)}h">
 </app-formula>
-<p>Para la familia a trozos, primero exigimos continuidad. Entonces la pendiente izquierda es a; la derecha se calcula como ((1+h)² − 1)/h = 2 + h y tiende a 2. Por tanto a = 2 y b = −1 es la única pareja derivable. Si no hay continuidad, derivar cada fórmula por separado y comparar a con 2 da una conclusión inválida: el salto introduce un término dividido por h que no desaparece.</p>
+<p>Para la familia a trozos, primero exigimos continuidad. Entonces la pendiente izquierda es a; la derecha se calcula como <app-formula displayMode="inline" [showCodeButton]="false" expression="((1+h)^{2} - 1)/h = 2 + h" /> y tiende a 2. Por tanto <app-formula displayMode="inline" [showCodeButton]="false" expression="a = 2" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="b = -1" /> es la única pareja derivable. Si no hay continuidad, derivar cada fórmula por separado y comparar a con 2 da una conclusión inválida: el salto introduce un término dividido por h que no desaparece.</p>
 <div class="math-lab">
 <h4>Laboratorio / alturas, secantes y oscilaciones</h4>
-<p>En la función a trozos prueba (a,b) = (2,−1), (1,0) y (2,0). Después reduce h y compara las pendientes laterales. El zoom cambia la ventana; no modifica la función.</p>
+<p>En la función a trozos prueba <app-formula displayMode="inline" [showCodeButton]="false" expression="(a,b) = (2,-1), (1,0)" /> y (2,0). Después reduce h y compara las pendientes laterales. El zoom cambia la ventana; no modifica la función.</p>
 <div class="controls">
 <label>Función<select [(ngModel)]="mode" (ngModelChange)="select()">
-<option [ngValue]="0">ax+b / x², unión en 1</option>
-<option [ngValue]="1">|x|</option>
-<option [ngValue]="2">x sin(1/x)</option>
-<option [ngValue]="3">x² sin(1/x)</option>
+<option [ngValue]="0"><app-formula displayMode="inline" [showCodeButton]="false" expression="ax+b / x^{2}" />, unión en 1</option>
+<option [ngValue]="1"><app-formula displayMode="inline" [showCodeButton]="false" expression="|x|" /></option>
+<option [ngValue]="2"><app-formula displayMode="inline" [showCodeButton]="false" expression="x \sin (1/x)" /></option>
+<option [ngValue]="3"><app-formula displayMode="inline" [showCodeButton]="false" expression="x^{2} \sin (1/x)" /></option>
 </select>
 </label>@if(mode===0){<label>a = {{a}}<input type="range" min="-2" max="4" step="0.25" [(ngModel)]="a" (ngModelChange)="update()">
 </label>
@@ -44,19 +44,19 @@
 <app-learning-plot description="Ramas y secantes laterales. Cerca de cero, el muestreo finito no resuelve todas las oscilaciones." [series]="series" [markers]="markers" [xmin]="center-zoom" [xmax]="center+zoom" [ymin]="mode===0?-2:-zoom*1.5" [ymax]="mode===0?5:zoom*1.5" />
 </div>
 <h3>Derivable implica continua</h3>
-<p>Si el cociente incremental tiene un límite finito, podemos escribir f(c+h) − f(c) como h multiplicado por ese cociente. El primer factor tiende a cero y el segundo permanece acotado; su producto tiende a cero. Esta demostración explica por qué la continuidad debe comprobarse antes de calcular pendientes en una unión.</p>
+<p>Si el cociente incremental tiene un límite finito, podemos escribir <app-formula displayMode="inline" [showCodeButton]="false" expression="f(c+h) - f(c)" /> como h multiplicado por ese cociente. El primer factor tiende a cero y el segundo permanece acotado; su producto tiende a cero. Esta demostración explica por qué la continuidad debe comprobarse antes de calcular pendientes en una unión.</p>
 <app-formula expression="f(c+h)-f(c)=h\frac{f(c+h)-f(c)}h\longrightarrow0">
 </app-formula>
-<p>El recíproco es falso. En |x|, ambas ramas llegan a cero, pero los cocientes son −1 por izquierda y 1 por derecha. La esquina es continua y no derivable. También una tangente vertical puede impedir una derivada finita: para la raíz cúbica, el cociente en cero crece sin cota. Ausencia de salto no garantiza ausencia de singularidad en la pendiente.</p>
+<p>El recíproco es falso. En <app-formula displayMode="inline" [showCodeButton]="false" expression="|x|" />, ambas ramas llegan a cero, pero los cocientes son <app-formula displayMode="inline" [showCodeButton]="false" expression="-1" /> por izquierda y 1 por derecha. La esquina es continua y no derivable. También una tangente vertical puede impedir una derivada finita: para la raíz cúbica, el cociente en cero crece sin cota. Ausencia de salto no garantiza ausencia de singularidad en la pendiente.</p>
 <h3>Oscilar dentro de una envolvente</h3>
-<p>Definamos f(0) = 0 y f(x) = x sin(1/x) para x distinto de cero. La desigualdad |f(x)| ≤ |x| prueba continuidad por el teorema del encaje. Sin embargo, el cociente en cero es sin(1/h). Las sucesiones hₙ = 1/(π/2 + 2πn) y kₙ = 1/(3π/2 + 2πn) dan valores 1 y −1. No existe un límite único, de modo que no hay derivada.</p>
-<p>Ahora g(x) = x² sin(1/x), con g(0) = 0. Su cociente es h sin(1/h), acotado en valor absoluto por |h|, por lo que g′(0) = 0. Para x distinto de cero, g′(x) = 2x sin(1/x) − cos(1/x), que no converge a cero. La función es derivable en el origen, pero su derivada no es continua allí. Esta diferencia importa al aplicar teoremas que exigen una derivada continua.</p>
+<p>Definamos <app-formula displayMode="inline" [showCodeButton]="false" expression="f(0) = 0" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="f(x) = x \sin (1/x)" /> para x distinto de cero. La desigualdad <app-formula displayMode="inline" [showCodeButton]="false" expression="|f(x)| \le  |x|" /> prueba continuidad por el teorema del encaje. Sin embargo, el cociente en cero es <app-formula displayMode="inline" [showCodeButton]="false" expression="\sin (1/h)" />. Las sucesiones <app-formula displayMode="inline" [showCodeButton]="false" expression="h_{n} = 1/(\pi /2 + 2\pi n)" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="k_{n} = 1/(3\pi /2 + 2\pi n)" /> dan valores 1 y <app-formula displayMode="inline" [showCodeButton]="false" expression="-1" />. No existe un límite único, de modo que no hay derivada.</p>
+<p>Ahora <app-formula displayMode="inline" [showCodeButton]="false" expression="g(x) = x^{2} \sin (1/x)" />, con <app-formula displayMode="inline" [showCodeButton]="false" expression="g(0) = 0" />. Su cociente es <app-formula displayMode="inline" [showCodeButton]="false" expression="h \sin (1/h)" />, acotado en valor absoluto por <app-formula displayMode="inline" [showCodeButton]="false" expression="|h|" />, por lo que <app-formula displayMode="inline" [showCodeButton]="false" expression="g&#x27;(0) = 0" />. Para x distinto de cero, <app-formula displayMode="inline" [showCodeButton]="false" expression="g&#x27;(x) = 2x \sin (1/x) - \cos (1/x)" />, que no converge a cero. La función es derivable en el origen, pero su derivada no es continua allí. Esta diferencia importa al aplicar teoremas que exigen una derivada continua.</p>
 <h3>Qué puede demostrar un ordenador</h3>
 <p>Una tabla de pendientes puede sugerir convergencia, pero una secuencia particular de h puede ocultar la oscilación. Un gráfico con resolución finita puede dibujar falsas líneas entre crestas que no ha muestreado. Por eso el laboratorio separa la clasificación obtenida por las definiciones de sus lecturas numéricas. Aumentar el zoom no sustituye una desigualdad de encaje ni dos sucesiones con límites diferentes.</p>
 <ul>
 <li>Encuentra todas las parejas que hacen continua la unión y explica por qué solo una la hace derivable.</li>
-<li>Para x³ sin(1/x), estudia si la derivada es continua en cero.</li>
-<li>Modifica únicamente f(0) en x sin(1/x). ¿Qué propiedad se pierde?</li>
+<li>Para <app-formula displayMode="inline" [showCodeButton]="false" expression="x^{3} \sin (1/x)" />, estudia si la derivada es continua en cero.</li>
+<li>Modifica únicamente f(0) en <app-formula displayMode="inline" [showCodeButton]="false" expression="x \sin (1/x)" />. ¿Qué propiedad se pierde?</li>
 </ul>
 <p>Lectura complementaria: <a href="https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative">OpenStax, definición de derivada</a>.</p>
 <div class="article-activities">

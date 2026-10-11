@@ -23,6 +23,11 @@ export class AlturaDesdeDosPosicionesProblemComponent {
     "level": "Oposición",
     "statement": "En terreno horizontal, la cima de una torre se ve con elevación 30°. Tras acercarse 20 m hacia su base, la elevación es 60°. Calcula su altura, despreciando la altura del observador.",
     "resources": [
+{
+  "label": "Trigonometría para medir alturas y distancias",
+  "route": "/articles/height-surveying",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Ángulos múltiples y ángulo mitad",
         "route": "/articles/trig-n-functions",

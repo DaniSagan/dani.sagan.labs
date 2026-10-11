@@ -3,6 +3,6 @@
   <input type="number" id="value" name="value" [(ngModel)]="value" (change)="onInputTextChange($event)">
   <button type="button" (click)="onButtonClick(value)">Factorizar</button>
   <div class="formula-container">
-    <app-formula [formula]="formula"></app-formula>
+    <app-formula [expression]="formula?.toLatex() ?? ''"></app-formula>
   </div>
 </div>

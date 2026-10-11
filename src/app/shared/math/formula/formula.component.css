@@ -36,7 +36,13 @@ div.formula-container {
 
 div.formula-container.formula-inline {
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: baseline;
+  line-height: normal;
+}
+
+div.formula-container.formula-inline > .formula-expression {
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 div.formula-container.formula-block {

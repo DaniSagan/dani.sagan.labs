@@ -23,6 +23,11 @@ export class BayesYTasaBaseProblemComponent {
     "level": "Oposición",
     "statement": "Un detector marca el 90% de las piezas defectuosas y el 5% de las correctas. El 2% de las piezas son defectuosas. Si marca una pieza, ¿qué probabilidad hay de que sea defectuosa?",
     "resources": [
+{
+  "label": "Probabilidad condicionada e independencia",
+  "route": "/articles/conditional-independence",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema de Bayes",
         "route": "/articles/bayes-theorem",

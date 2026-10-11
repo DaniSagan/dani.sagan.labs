@@ -23,6 +23,16 @@ export class UnLimiteConSenoProblemComponent {
     "level": "Repaso",
     "statement": "Calcula \\(\\lim_{x\\to0}\\frac{\\sin(3x)-3x}{x^3}\\).",
     "resources": [
+{
+  "label": "Teorema del encaje y funciones oscilantes",
+  "route": "/articles/squeeze-oscillation",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Límites, equivalencias y jerarquías de crecimiento",
+  "route": "/articles/asymptotic-limits",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Series de Taylor",
         "route": "/articles/taylor-series",

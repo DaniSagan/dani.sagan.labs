@@ -1,3 +1,11 @@
+import { TRIGONOMETRY_ARTICLES } from 'src/app/articles/trigonometry/trigonometry-articles';
+import { FractalMeasureDimensionArticleComponent } from 'src/app/articles/fractals/fractal-measure-dimension/fractal-measure-dimension-article.component';
+import { SamplingDistributionsArticleComponent } from 'src/app/articles/probability/sampling-distributions/sampling-distributions-article.component';
+import { GraphicalDiagnosticsArticleComponent } from 'src/app/articles/probability/graphical-diagnostics/graphical-diagnostics-article.component';
+import { DiscreteExpectationArticleComponent } from 'src/app/articles/probability/discrete-expectation/discrete-expectation-article.component';
+import { DescriptiveStatisticsArticleComponent } from 'src/app/articles/probability/descriptive-statistics/descriptive-statistics-article.component';
+import { ConditionalIndependenceArticleComponent } from 'src/app/articles/probability/conditional-independence/conditional-independence-article.component';
+import { BesselCorrectionArticleComponent } from 'src/app/articles/probability/bessel-correction/bessel-correction-article.component';
 import { StatisticalInferenceArticleComponent } from 'src/app/articles/probability/statistical-inference/statistical-inference-article.component';
 import { ContinuousRandomVariablesArticleComponent } from 'src/app/articles/probability/continuous-random-variables/continuous-random-variables-article.component';
 import { GeometricDistributionArticleComponent } from 'src/app/articles/probability/geometric-distribution/geometric-distribution-article.component';
@@ -105,6 +113,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
 
   fractals: NavbarItem[] =
   [
+    { name: FractalMeasureDimensionArticleComponent.title, route: FractalMeasureDimensionArticleComponent.route },
     { name: SierpinskiTriangleComponent.title, route: SierpinskiTriangleComponent.route },
     { name: SierpinskiCarpetComponent.title, route: SierpinskiCarpetComponent.route },
     { name: BarnsleyFernComponent.title, route: BarnsleyFernComponent.route },
@@ -207,6 +216,12 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: SamplingDistributionsArticleComponent.title, route: SamplingDistributionsArticleComponent.route },
+    { name: GraphicalDiagnosticsArticleComponent.title, route: GraphicalDiagnosticsArticleComponent.route },
+    { name: DiscreteExpectationArticleComponent.title, route: DiscreteExpectationArticleComponent.route },
+    { name: DescriptiveStatisticsArticleComponent.title, route: DescriptiveStatisticsArticleComponent.route },
+    { name: ConditionalIndependenceArticleComponent.title, route: ConditionalIndependenceArticleComponent.route },
+    { name: BesselCorrectionArticleComponent.title, route: BesselCorrectionArticleComponent.route },
     { name: HypergeometricDistributionArticleComponent.title, route: HypergeometricDistributionArticleComponent.route },
     { name: GeometricDistributionArticleComponent.title, route: GeometricDistributionArticleComponent.route },
     { name: ContinuousRandomVariablesArticleComponent.title, route: ContinuousRandomVariablesArticleComponent.route },
@@ -224,10 +239,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     { name: MontyHallArticleComponent.title, route: MontyHallArticleComponent.route }
   ];
 
-  trigonometry: NavbarItem[] = [
-    { name: TrigInverseTrigCompositionComponent.title, route: TrigInverseTrigCompositionComponent.route },
-    { name: TrigNFunctionsComponent.title, route: TrigNFunctionsComponent.route }
-  ];
+  trigonometry: NavbarItem[] = TRIGONOMETRY_ARTICLES.map(article => ({ name: article.title, route: article.route }));
 
   others: NavbarItem[] =
   [

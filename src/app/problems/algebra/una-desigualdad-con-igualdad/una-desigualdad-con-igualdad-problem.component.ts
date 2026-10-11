@@ -23,6 +23,11 @@ export class UnaDesigualdadConIgualdadProblemComponent {
     "level": "Oposición",
     "statement": "Demuestra que \\((a+b+c)(1/a+1/b+1/c)\\ge 9\\) para \\(a,b,c>0\\) e identifica cuándo hay igualdad.",
     "resources": [
+{
+  "label": "Medias aritmética, geométrica y armónica",
+  "route": "/articles/mean-inequalities",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Desigualdad de Cauchy–Schwarz",
         "route": "/articles/cauchy-schwarz",

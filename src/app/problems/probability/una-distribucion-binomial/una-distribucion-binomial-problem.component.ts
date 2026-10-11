@@ -23,6 +23,11 @@ export class UnaDistribucionBinomialProblemComponent {
     "level": "Repaso",
     "statement": "Se lanzan 5 monedas equilibradas e independientes. Si X es el número de caras, calcula \\(P(X=3)\\), \\(E(X)\\) y \\(\\operatorname{Var}(X)\\).",
     "resources": [
+{
+  "label": "Esperanza discreta, juegos justos y riesgo",
+  "route": "/articles/discrete-expectation",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Tablero de Galton",
         "route": "/articles/galton-board",

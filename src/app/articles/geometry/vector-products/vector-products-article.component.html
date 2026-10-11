@@ -1,0 +1,41 @@
+<span class="article-kicker">Geometría / explorar, deducir, comprobar</span>
+<h2>Producto vectorial y producto mixto</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol><li><a [routerLink]="[]" fragment="section-0">Área orientada en el espacio</a></li><li><a [routerLink]="[]" fragment="section-1">Del paralelogramo al volumen</a></li><li><a [routerLink]="[]" fragment="section-2">Distancias y normales comunes</a></li><li><a [routerLink]="[]" fragment="section-3">Orientación, coplanaridad y estabilidad</a></li><li><a [routerLink]="[]" fragment="section-4">Derivar la distancia entre dos rectas</a></li><li><a [routerLink]="[]" fragment="section-5">Un ejemplo completo</a></li><li><a [routerLink]="[]" fragment="section-6">Hipótesis, límites y errores frecuentes</a></li><li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li><li><a [routerLink]="[]" fragment="section-8">Problemas y recursos para continuar</a></li><li><a [routerLink]="[]" fragment="section-9">Lectura de referencia</a></li></ol></details></nav>
+
+<p class="dropcap">Los productos de vectores permiten calcular superficies y volúmenes sin construir alturas por separado. También describen normales, orientación y distancias entre rectas alabeadas. El producto vectorial vive en tres dimensiones y produce un vector perpendicular; el producto mixto añade un tercer vector y produce un número cuyo signo conserva información geométrica.</p>
+<h3 id="section-0">Área orientada en el espacio</h3>
+<p>Si u y v forman un ángulo <app-formula displayMode="inline" [showCodeButton]="false" expression="\theta , |u\times v|=|u||v|\sin \theta" /> es el área del paralelogramo. Su dirección es perpendicular a ambos, con orientación dada por la regla de la mano derecha. Cambiar el orden invierte el signo. Un producto vectorial nulo significa que los vectores son paralelos o alguno es cero.</p>
+<app-formula expression="V_{\mathrm{tetraedro}}=\frac{|(u\times v)\cdot w|}{6},\qquad d=\frac{|(Q-P)\cdot(u\times v)|}{|u\times v|}" />
+<h3 id="section-1">Del paralelogramo al volumen</h3>
+<p>El producto mixto (u×v)·w es el determinante con esas tres direcciones. Su valor absoluto es el volumen del paralelepípedo: área de la base por la altura perpendicular de w. El tetraedro formado desde un vértice común ocupa una sexta parte. El laboratorio varía una arista y muestra el área de la base y el volumen firmado y absoluto.</p>
+<app-topic-lab topic="vector-products" />
+<h3 id="section-2">Distancias y normales comunes</h3>
+<p>Si dos rectas tienen direcciones no paralelas u y v y pasan por P y Q, u×v es una normal común. La distancia es <app-formula displayMode="inline" [showCodeButton]="false" expression="|(Q-P)\cdot (u\times v)|/|u\times v|" />. El numerador mide la separación proyectada sobre la normal; los desplazamientos a lo largo de las rectas desaparecen al tomar el producto escalar. Si son paralelas, hay que usar otra fórmula.</p>
+<h3 id="section-3">Orientación, coplanaridad y estabilidad</h3>
+<p>Un producto mixto cero significa que las tres direcciones son coplanarias, por lo que el volumen se anula. Si está cerca de cero, el tetraedro es casi plano; en datos aproximados la clasificación debe atender a la escala. La orientación cambia al intercambiar dos vectores, pero el volumen geométrico siempre es no negativo.</p>
+<h3 id="section-4">Derivar la distancia entre dos rectas</h3>
+<p>Un punto de la primera recta es P+su y uno de la segunda Q+tv. Su diferencia es <app-formula displayMode="inline" [showCodeButton]="false" expression="Q-P" />+tv−su. Al multiplicar escalarmente por <app-formula displayMode="inline" [showCodeButton]="false" expression="n=u\times v" />, los términos con s y t desaparecen porque n es perpendicular a ambas direcciones. Por tanto todos los pares de puntos comparten la misma separación firmada en la dirección normal.</p>
+<p>La mínima distancia se alcanza cuando la diferencia entre puntos es paralela a esa normal, lo que equivale a resolver las dos condiciones de perpendicularidad con u y v. Para direcciones no paralelas hay una solución de esos parámetros. El valor mínimo es el módulo de la proyección normal, de donde sale la fórmula y no solo una regla memorizada.</p>
+<h3 id="section-5">Un ejemplo completo</h3>
+<p>Para <app-formula displayMode="inline" [showCodeButton]="false" expression="O=(0, 0{,}0), A=(2, 0{,}0), B=(0, 3{,}0), C=(1, 1{,}4), u\times v=(0, 0{,}6)" />. Al multiplicar por C obtenemos 24, así que el volumen del tetraedro es <app-formula displayMode="inline" [showCodeButton]="false" expression="\frac{24}{6}=4" />. Las componentes horizontales de C desplazan el vértice, pero no cambian la altura sobre la base.</p>
+<p>En las rectas de direcciones <app-formula displayMode="inline" [showCodeButton]="false" expression="(1, 0, 0)" /> y (0, 1, 0), la normal común es <app-formula displayMode="inline" [showCodeButton]="false" expression="(0, 0, 1)" />. Si la separación inicial es <app-formula displayMode="inline" [showCodeButton]="false" expression="(0, 1, 1)" />, su proyección normal vale uno y esa es la distancia, aunque la separación entre los puntos elegidos sea <app-formula displayMode="inline" [showCodeButton]="false" expression="\sqrt{2}" />.</p>
+<h3 id="section-6">Hipótesis, límites y errores frecuentes</h3>
+<p>El producto vectorial ordinario está ligado al espacio euclídeo orientado de dimensión tres; no debe trasladarse a otras dimensiones sin definir un objeto distinto. Para un plano <app-formula displayMode="inline" [showCodeButton]="false" expression="ax+by" />+cz<app-formula displayMode="inline" [showCodeButton]="false" expression="+d=0" />, su normal es <app-formula displayMode="inline" [showCodeButton]="false" expression="(a,b,c)" /> y la distancia se calcula mediante el producto escalar normalizado.</p>
+<p>En la fórmula de rectas alabeadas, el denominador no puede ser cero. Si las direcciones casi son paralelas, conviene estudiar el condicionamiento de las operaciones antes de dividir por un valor muy pequeño.</p>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<ol>
+<li>Desplaza el vértice C paralelo a la base y explica la invariancia del volumen.</li>
+<li>Invierte dos aristas y compara volumen firmado y absoluto.</li>
+<li>Deriva la fórmula de la distancia a un plano a partir de una proyección sobre su normal.</li>
+</ol>
+<details class="note"><summary>Solución de la ampliación</summary><p>Trasladar C paralelamente a la base añade al tercer vector una combinación de u y v. Ambos aportes tienen producto escalar cero con u×v, así el volumen no cambia. Intercambiar u y v invierte el producto mixto y conserva su módulo. Para un plano de normal n, proyectar P sobre la dirección n produce distancia <app-formula displayMode="inline" [showCodeButton]="false" expression="|n\cdot P+d|/|n|" />, siempre que n no sea cero.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
+<li><a routerLink="/problems/problema-030">Volumen de un tetraedro</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/problema-029">Dos rectas que se cruzan</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/problema-028">Distancia a un plano</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba productos, rangos y cambios de base con las matrices del ejemplo.</li>
+<li><a routerLink="/games/gravity">Gravedad</a>. Explora movimientos y geometría espacial; distingue esa simulación del modelo ideal del artículo.</li>
+</ul></div>
+<p>Continúa con <a routerLink="/articles/matrix-determinant">El determinante</a> para conectar estos resultados con otro enfoque.</p>
+<p>Continúa con <a routerLink="/articles/orthogonal-projections">Proyecciones ortogonales y distancias en el espacio</a> para conectar estos resultados con otro enfoque.</p>
+<h3 id="section-9">Lectura de referencia</h3><p><a href="https://openstax.org/books/calculus-volume-1/pages/1-introduction" target="_blank" rel="noopener noreferrer">OpenStax · Calculus</a>. Material complementario para contrastar definiciones y continuar el estudio.</p>

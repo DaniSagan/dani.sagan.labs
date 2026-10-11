@@ -23,6 +23,11 @@ export class TrianguloDeLadosEnterosProblemComponent {
     "level": "Repaso",
     "statement": "Calcula el área, el inradio y la altura sobre el lado 14 de un triángulo de lados \\(13,14,15\\).",
     "resources": [
+{
+  "label": "Geometría del triángulo: radios, alturas y medianas",
+  "route": "/articles/triangle-metrics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Fórmula de Herón",
         "route": "/articles/heron-formula",

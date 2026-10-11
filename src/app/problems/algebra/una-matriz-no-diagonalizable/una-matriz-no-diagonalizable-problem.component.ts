@@ -23,6 +23,16 @@ export class UnaMatrizNoDiagonalizableProblemComponent {
     "level": "Reto",
     "statement": "Para \\(A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\), demuestra que no es diagonalizable y calcula \\(A^{n}\\) para \\(n\\ge 0\\).",
     "resources": [
+{
+  "label": "Forma de Jordan, nilpotencia y potencias de matrices",
+  "route": "/articles/jordan-form",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
+  "route": "/articles/cayley-hamilton",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Diagonalización de matrices",
         "route": "/articles/matrix-diagonalization",

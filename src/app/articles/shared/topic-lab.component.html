@@ -1,0 +1,49 @@
+<section class="math-lab topic-lab" [attr.aria-label]="config.title">
+ <span class="article-kicker">Laboratorio / exploración matemática</span>
+ <h4>{{ config.title }}</h4><p>{{ config.prompt }}</p>
+ <div class="controls">
+  @for (control of config.controls; track i; let i=$index) {
+   <label>{{ control.label }} @if (!control.options) { = {{ values[i] | number:'1.0-4' }} }
+    @if (control.options) {<select [(ngModel)]="values[i]" (ngModelChange)="update()">@for (option of control.options;track j;let j=$index) {<option [ngValue]="j">{{option}}</option>}</select>}
+    @else {<input type="range" [min]="control.min" [max]="control.max" [step]="control.step" [(ngModel)]="values[i]" (ngModelChange)="update()">}
+   </label>
+  }
+  <button type="button" (click)="reset()">Restablecer</button>
+  @if (topic==='life-patterns'||topic==='permutation-symmetries'||topic==='harmonic-oscillator'||topic==='fractal-measure-dimension') {
+   <button type="button" (click)="advance()">Avanzar un paso</button>
+  }
+ </div>
+ <div class="readouts" aria-live="polite" aria-atomic="true">
+  @for (item of result.readouts; track $index) {<span>{{ item[0] }}<b>{{ item[1] }}</b></span>}
+ </div>
+ @if (topic==='life-patterns') {
+  <figure><svg class="life-grid" viewBox="0 0 340 340" role="img" aria-label="Estado del autómata celular; células vivas en dorado">
+   <title>Generación {{ values[0] }} del patrón {{ result.readouts[2][1] }}</title>
+   @for (cell of generationCells; track $index) {
+    <rect [attr.x]="(cell[0]+4)*20" [attr.y]="(cell[1]+4)*20" width="18" height="18" rx="2" [class.alive]="isAlive(cell[0],cell[1])"><title>({{cell[0]}},{{cell[1]}}): {{isAlive(cell[0],cell[1])?'viva':'muerta'}}</title></rect>
+   }
+  </svg><figcaption>Ventana de una cuadrícula sin envoltura. El cálculo conserva también las células fuera de la ventana.</figcaption></figure>
+ } @else {
+  <app-learning-plot [description]="config.title + '. ' + config.prompt" [series]="result.series" [markers]="result.markers"
+   [xmin]="bounds[0]" [xmax]="bounds[1]" [ymin]="bounds[2]" [ymax]="bounds[3]"
+   [xLabel]="config.xLabel || 'x'" [yLabel]="config.yLabel || 'y'" [showLegend]="result.series.length <= 12" [barWidth]="topic === 'frobenius-coins' ? 3 : 14" />
+ }
+ @if (result.table?.length) {
+  <details><summary>Ver los valores y comprobar el cálculo</summary><div class="table-scroll"><table [attr.aria-label]="'Valores de ' + config.title">
+   <tbody>@for (row of result.table;track $index) {<tr>@for (value of row;track $index) {<td>{{value}}</td>}</tr>}</tbody>
+  </table></div></details>
+ }
+ @if (canSample) {
+  <h4>Repetir el experimento</h4>
+  @if (topic === 'bessel-correction') {<p>Cada resultado es la varianza corregida S² de una muestra de tamaño n, obtenida de una población normal con varianza 9.</p>}
+  @if (topic === 'sampling-distributions') {<p>Cada resultado es la media de una muestra de tamaño n. La población es normal, con media 0 y desviación típica 6.</p>}
+  @if (topic === 'discrete-expectation') {<p>Cada resultado es la ganancia neta de una partida: premio bruto menos entrada.</p>}<p>Generamos muestras independientes del modelo. La semilla permite repetir la misma secuencia; las frecuencias son una aproximación, no probabilidades exactas.</p>
+  <div class="controls"><label>Semilla<input type="number" min="0" max="4294967295" step="1" [(ngModel)]="seed" (ngModelChange)="clearSample()"></label>
+   <button type="button" (click)="simulate()" [disabled]="sampleCount >= 5000">Simular 200 muestras</button><button type="button" (click)="clearSample()">Borrar simulación</button></div>
+  @if (sample) {
+   <div class="readouts" aria-live="polite"><span>Muestras<b>{{ sampleCount }}</b></span><span>Media de lo simulado<b>{{ sample.mean | number:'1.0-4' }}</b></span><span>Varianza de lo simulado<b>{{ sample.variance | number:'1.0-4' }}</b></span></div>
+   <app-learning-plot description="Histograma de resultados del experimento; alturas de frecuencia relativa por intervalo, no densidades." [series]="sample.series" [xmin]="sample.bounds[0]" [xmax]="sample.bounds[1]" [ymin]="sample.bounds[2]" [ymax]="sample.bounds[3]" xLabel="Resultado de una muestra" yLabel="Frecuencia relativa" />
+  }
+ }
+ <p class="lab-caption">Explora un caso, formula una conjetura y contrástala con la derivación. Las lecturas corresponden al modelo descrito; una gráfica finita no sustituye una demostración.</p>
+</section>

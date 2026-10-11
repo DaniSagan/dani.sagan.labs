@@ -23,6 +23,11 @@ export class RacionalizacionYLimiteProblemComponent {
     "level": "Repaso",
     "statement": "Calcula \\(\\lim_{x\\to0}\\frac{\\sqrt{1+x}-1}{x}\\) e indica el dominio real cerca de cero.",
     "resources": [
+{
+  "label": "Límites, equivalencias y jerarquías de crecimiento",
+  "route": "/articles/asymptotic-limits",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Series de Taylor",
         "route": "/articles/taylor-series",

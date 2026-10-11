@@ -23,6 +23,11 @@ export class LongitudYDimensionDeCantorProblemComponent {
     "level": "Reto",
     "statement": "En el conjunto ternario de Cantor, calcula la longitud total restante tras n etapas, la longitud total eliminada en el límite y la dimensión de autosimilitud.",
     "resources": [
+{
+  "label": "Medida, dimensión y autosimilitud",
+  "route": "/articles/fractal-measure-dimension",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Conjunto de Cantor",
         "route": "/articles/cantor-set",

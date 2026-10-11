@@ -15,7 +15,7 @@ import { LineItem } from 'src/app/widgets/canvas/items/line-item';
 import { CanvasComponent as CanvasComponent_1 } from '../../widgets/canvas/canvas.component';
 import { ArithmeticDerivativeComponent } from '../../widgets/arithmetic-derivative/arithmetic-derivative.component';
 import { PrimeDecompositionComponent } from '../../widgets/prime-decomposition/prime-decomposition.component';
-import { FormulaComponent } from '../../mathematics/formula/formula.component';
+import { FormulaComponent } from '../../shared/math/formula/formula.component';
 import { MathjaxModule } from 'mathjax-angular';
 
 @Component({

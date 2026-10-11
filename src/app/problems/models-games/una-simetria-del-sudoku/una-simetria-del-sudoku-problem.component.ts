@@ -23,6 +23,11 @@ export class UnaSimetriaDelSudokuProblemComponent {
     "level": "Oposición",
     "statement": "En un sudoku 9×9 resuelto, intercambia globalmente los símbolos 1 y 9. Demuestra que el resultado sigue siendo válido. ¿Qué ocurre si solo cambias una casilla con 1 por 9?",
     "resources": [
+{
+  "label": "Permutaciones, ciclos y grupos de simetrías",
+  "route": "/articles/permutation-symmetries",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema de los cuatro colores",
         "route": "/articles/four-color-theorem",

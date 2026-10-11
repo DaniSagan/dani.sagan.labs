@@ -23,6 +23,11 @@ export class AlturaSolarEnOviedoProblemComponent {
     "level": "Oposición",
     "statement": "En un modelo ideal sin refracción, Oviedo tiene latitud \\(\\varphi =43,36\\)° N. Calcula la altura del Sol al mediodía solar para declinaciones \\(\\delta =0\\)°\\(, +23,44\\)° \\(y -23,44\\)°.",
     "resources": [
+{
+  "label": "Geometría solar: latitud, declinación y altura",
+  "route": "/articles/solar-geometry",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Ángulos múltiples y ángulo mitad",
         "route": "/articles/trig-n-functions",

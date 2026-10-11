@@ -23,6 +23,11 @@ export class VolumenPorDiscosProblemComponent {
     "level": "Oposición",
     "statement": "Gira alrededor del eje x la región \\(0\\le x\\le 1\\), \\(0\\le y\\le \\sqrt{x}\\). Calcula el volumen.",
     "resources": [
+{
+  "label": "Áreas entre curvas y sólidos de revolución",
+  "route": "/articles/areas-revolution",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",

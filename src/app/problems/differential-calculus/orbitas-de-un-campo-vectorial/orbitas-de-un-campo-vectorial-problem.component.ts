@@ -23,6 +23,11 @@ export class OrbitasDeUnCampoVectorialProblemComponent {
     "level": "Reto",
     "statement": "Para el sistema \\(x'=-y\\), \\(y'=x\\), con \\((x(0),y(0))=(2,0)\\), halla la trayectoria, el sentido y el período.",
     "resources": [
+{
+  "label": "Oscilador armónico y retratos de fase",
+  "route": "/articles/harmonic-oscillator",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Autómatas celulares",
         "route": "/articles/cellular-automata",

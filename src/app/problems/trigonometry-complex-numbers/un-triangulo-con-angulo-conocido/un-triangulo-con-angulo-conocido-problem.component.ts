@@ -23,6 +23,16 @@ export class UnTrianguloConAnguloConocidoProblemComponent {
     "level": "Repaso",
     "statement": "Dos lados de un triángulo miden 5 y 7 y forman 60°. Calcula el tercer lado y el área.",
     "resources": [
+{
+  "label": "Geometría del triángulo: radios, alturas y medianas",
+  "route": "/articles/triangle-metrics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Trigonometría para medir alturas y distancias",
+  "route": "/articles/height-surveying",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema del coseno",
         "route": "/articles/law-of-cosines",

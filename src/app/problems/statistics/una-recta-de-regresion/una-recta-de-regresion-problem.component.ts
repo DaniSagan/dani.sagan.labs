@@ -23,6 +23,11 @@ export class UnaRectaDeRegresionProblemComponent {
     "level": "Oposición",
     "statement": "Para los puntos \\((1,2),(2,2),(3,5)\\), halla la recta de mínimos cuadrados y el coeficiente de correlación de Pearson.",
     "resources": [
+{
+  "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
+  "route": "/articles/graphical-diagnostics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Regresión lineal y correlación de Pearson",
         "route": "/articles/linear-regression",

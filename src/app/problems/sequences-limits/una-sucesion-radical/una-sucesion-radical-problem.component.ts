@@ -23,6 +23,11 @@ export class UnaSucesionRadicalProblemComponent {
     "level": "Oposición",
     "statement": "Sea \\(a_{1}=1\\) y \\(a_{n+1}=\\sqrt{2+a_{n}}\\). Demuestra que converge y calcula su límite.",
     "resources": [
+{
+  "label": "Sucesiones monótonas y acotadas",
+  "route": "/articles/monotone-convergence",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Sucesiones recurrentes y puntos fijos",
         "route": "/articles/recurrent-sequences",

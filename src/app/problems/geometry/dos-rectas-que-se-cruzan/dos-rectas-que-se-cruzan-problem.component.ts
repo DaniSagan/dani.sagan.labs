@@ -23,6 +23,11 @@ export class DosRectasQueSeCruzanProblemComponent {
     "level": "Reto",
     "statement": "Sean \\(r=(t,0,0)\\) y \\(s=(0,1,1)+u(0,1,0)\\). Demuestra que son alabeadas y calcula su distancia.",
     "resources": [
+{
+  "label": "Producto vectorial y producto mixto",
+  "route": "/articles/vector-products",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Proyecciones ortogonales y distancias en el espacio",
         "route": "/articles/orthogonal-projections",

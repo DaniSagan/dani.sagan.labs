@@ -23,6 +23,11 @@ export class UnaFuncionOscilanteProblemComponent {
     "level": "Oposición",
     "statement": "Define \\(f(0)=0\\) y \\(f(x)=x \\sin(1/x)\\) para x≠0. Estudia continuidad y derivabilidad en 0.",
     "resources": [
+{
+  "label": "Teorema del encaje y funciones oscilantes",
+  "route": "/articles/squeeze-oscillation",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Continuidad y derivabilidad",
         "route": "/articles/continuity-differentiability",

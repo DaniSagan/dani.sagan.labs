@@ -23,6 +23,11 @@ export class DosDadosYUnaCondicionProblemComponent {
     "level": "Repaso",
     "statement": "Se lanzan dos dados equilibrados. Sea S la suma y A el suceso «el primer dado es par». Calcula \\(P(S=8)\\) y \\(P(S=8\\mid A)\\).",
     "resources": [
+{
+  "label": "Probabilidad condicionada e independencia",
+  "route": "/articles/conditional-independence",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema del binomio",
         "route": "/articles/binomial-theorem",

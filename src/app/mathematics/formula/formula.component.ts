@@ -9,13 +9,13 @@ import { FormulaItem } from './items/formula-item';
 import { MathjaxModule } from 'mathjax-angular';
 
 @Component({
-  selector: 'app-formula',
+  selector: 'app-formula-obsolete',
   templateUrl: './formula.component.html',
   styleUrls: ['./formula.component.css'],
   standalone: true,
   imports: [MathjaxModule],
 })
-export class FormulaComponent implements OnInit, OnChanges {
+export class FormulaObsoleteComponent implements OnInit, OnChanges {
   public content: string;
 
   private _formula: FormulaItem | null;

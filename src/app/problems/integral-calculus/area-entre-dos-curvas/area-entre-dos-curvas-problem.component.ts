@@ -23,6 +23,11 @@ export class AreaEntreDosCurvasProblemComponent {
     "level": "Repaso",
     "statement": "Calcula el área encerrada entre \\(y=x\\) e \\(y=x^{2}\\).",
     "resources": [
+{
+  "label": "Áreas entre curvas y sólidos de revolución",
+  "route": "/articles/areas-revolution",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Parábola",
         "route": "/articles/parabola",

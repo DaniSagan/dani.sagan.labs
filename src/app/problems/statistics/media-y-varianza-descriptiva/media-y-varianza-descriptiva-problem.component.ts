@@ -23,6 +23,16 @@ export class MediaYVarianzaDescriptivaProblemComponent {
     "level": "Repaso",
     "statement": "Para los datos \\(2,4,4,6\\), calcula media, mediana, varianza descriptiva con divisor n y varianza muestral con divisor \\(n-1\\).",
     "resources": [
+{
+  "label": "Estadística descriptiva y valores atípicos",
+  "route": "/articles/descriptive-statistics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Corrección de Bessel y estimadores insesgados",
+  "route": "/articles/bessel-correction",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema central del límite",
         "route": "/articles/central-limit-theorem",

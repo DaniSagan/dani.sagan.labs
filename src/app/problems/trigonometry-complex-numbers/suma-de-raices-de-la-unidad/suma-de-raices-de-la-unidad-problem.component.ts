@@ -23,6 +23,16 @@ export class SumaDeRaicesDeLaUnidadProblemComponent {
     "level": "Oposición",
     "statement": "Sean \\(\\zeta =e^{\\frac{2\\pi i}{5}}\\) y \\(S=1+\\zeta +\\zeta ^{2}+\\zeta ^{3}+\\zeta ^{4}\\). Calcula S y deduce la suma de los cosenos de sus argumentos.",
     "resources": [
+{
+  "label": "Fasores y superposición de ondas",
+  "route": "/articles/phasor-superposition",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Fórmula de De Moivre: potencias y raíces complejas",
+  "route": "/articles/de-moivre",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Polinomios ciclotómicos",
         "route": "/articles/cyclotomic-polynomials",

@@ -23,6 +23,11 @@ export class RecurrenciaAfinProblemComponent {
     "level": "Oposición",
     "statement": "Resuelve \\(a_{0}=5\\), \\(a_{n+1}=\\frac{a_n+6}3\\) y calcula su límite.",
     "resources": [
+{
+  "label": "Sucesiones monótonas y acotadas",
+  "route": "/articles/monotone-convergence",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Sucesiones recurrentes y puntos fijos",
         "route": "/articles/recurrent-sequences",

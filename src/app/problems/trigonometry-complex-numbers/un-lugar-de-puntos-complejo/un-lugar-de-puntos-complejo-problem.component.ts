@@ -23,6 +23,11 @@ export class UnLugarDePuntosComplejoProblemComponent {
     "level": "Oposición",
     "statement": "Describe geométricamente los z que cumplen \\(\\lvert z-1\\rvert =2\\lvert z+1\\rvert\\) y da centro y radio.",
     "resources": [
+{
+  "label": "Circunferencias de Apolonio y razones de distancias",
+  "route": "/articles/apollonius-circles",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Transformaciones de Möbius",
         "route": "/articles/mobius-transformations",

@@ -23,6 +23,11 @@ export class VolumenDeUnTetraedroProblemComponent {
     "level": "Oposición",
     "statement": "Calcula el volumen del tetraedro con vértices \\(O=(0,0,0)\\), \\(A=(2,0,0)\\), \\(B=(0,3,0)\\), \\(C=(1,1,4)\\).",
     "resources": [
+{
+  "label": "Producto vectorial y producto mixto",
+  "route": "/articles/vector-products",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Determinantes",
         "route": "/articles/matrix-determinant",

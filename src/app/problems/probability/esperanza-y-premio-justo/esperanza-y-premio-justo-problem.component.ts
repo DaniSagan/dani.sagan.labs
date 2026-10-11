@@ -23,6 +23,11 @@ export class EsperanzaYPremioJustoProblemComponent {
     "level": "Oposición",
     "statement": "Un juego cuesta 4 € y paga, antes de descontar la entrada, 10 € si un dado da 6, 5 € si da 5 y 0 € en otro caso. Calcula la ganancia esperada y la entrada justa.",
     "resources": [
+{
+  "label": "Esperanza discreta, juegos justos y riesgo",
+  "route": "/articles/discrete-expectation",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Tablero de Galton",
         "route": "/articles/galton-board",

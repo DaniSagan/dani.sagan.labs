@@ -1,0 +1,38 @@
+<span class="article-kicker">Análisis matemático / explorar, deducir, comprobar</span>
+<h2>UTC, husos horarios y aritmética de fechas</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol><li><a [routerLink]="[]" fragment="section-0">Un instante y varias representaciones</a></li><li><a [routerLink]="[]" fragment="section-1">Representar con minutos absolutos</a></li><li><a [routerLink]="[]" fragment="section-2">Medianoche y viajes largos</a></li><li><a [routerLink]="[]" fragment="section-3">Zonas reales y cambios de reloj</a></li><li><a [routerLink]="[]" fragment="section-4">Separar calendario, offset y duración</a></li><li><a [routerLink]="[]" fragment="section-5">Un ejemplo completo</a></li><li><a [routerLink]="[]" fragment="section-6">Hipótesis, límites y errores frecuentes</a></li><li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li><li><a [routerLink]="[]" fragment="section-8">Problemas y recursos para continuar</a></li><li><a [routerLink]="[]" fragment="section-9">Lectura de referencia</a></li></ol></details></nav>
+
+<p class="dropcap">Restar dos horas locales de ciudades diferentes no da necesariamente la duración de un viaje. Antes hay que convertirlas a una referencia común y conservar la fecha. UTC proporciona esa referencia; el desfase local indica cuánto sumar al instante UTC. Los husos reales son reglas de calendario, no solo constantes geográficas.</p>
+<h3 id="section-0">Un instante y varias representaciones</h3>
+<p>Si la hora local tiene offset o, entonces <app-formula displayMode="inline" [showCodeButton]="false" expression="\mathrm{UTC}=\text{hora local}-o" />. Una ciudad <app-formula displayMode="inline" [showCodeButton]="false" expression="UTC+3" /> marca tres horas más que UTC para el mismo instante. Convertir hacia UTC puede cambiar de día; por eso una hora sin fecha es insuficiente para muchos cálculos. El laboratorio mantiene las fechas del ejemplo y cambia el offset del destino.</p>
+<app-formula expression="t_{\rm UTC}=t_{\rm local}-o,\qquad \Delta t=(t_{\rm llegada}-o_l)-(t_{\rm salida}-o_s)" />
+<h3 id="section-1">Representar con minutos absolutos</h3>
+<p>Para el modelo de offsets fijos, elegimos un origen de fecha y representamos cada fecha-hora como minutos desde ese origen. Restamos el offset expresado en minutos y luego restamos llegada menos salida. No normalizamos prematuramente al intervalo 0–24: eso perdería la información del día.</p>
+<app-topic-lab topic="utc-date-arithmetic" />
+<h3 id="section-2">Medianoche y viajes largos</h3>
+<p>Cruzar medianoche no implica una duración negativa. Si la llegada es al día siguiente, sumamos los minutos del nuevo día antes de convertir. En viajes de más de 24 horas, la fecha distingue una duración larga de una vuelta del reloj. El formato final puede mostrar horas y minutos sin reducir las horas módulo 24.</p>
+<h3 id="section-3">Zonas reales y cambios de reloj</h3>
+<p>Una zona identificada por reglas puede cambiar su offset según la fecha. En un cambio de horario hay horas locales inexistentes y otras que ocurren dos veces. Para resolverlas hacen falta fecha, zona y a veces una elección explícita de cuál instante se pretende. Los offsets fijos del problema evitan esa ambigüedad, pero no deben extrapolarse a todos los viajes.</p>
+<h3 id="section-4">Separar calendario, offset y duración</h3>
+<p>En el ejemplo podemos fijar el 10 de enero 00:00 como origen. La salida local corresponde a 22, 5 horas y su instante UTC a 21, 5. La llegada local corresponde a <app-formula displayMode="inline" [showCodeButton]="false" expression="24+6{,}25=30{,}25" /> horas; restar el offset tres produce 27, 25. La diferencia <app-formula displayMode="inline" [showCodeButton]="false" expression="27{,}25-21{,}5=5{,}75" /> horas equivale a 345 minutos.</p>
+<p>Un offset se aplica a la representación de un instante; no se añade a la duración de un trayecto una vez que ambos extremos ya están en UTC. Para convertir la llegada a la zona de salida, sumamos uno al instante 27, 25 y obtenemos el día siguiente 04:15 local. Restar 22:30 del día anterior vuelve a producir 5:45, lo que ofrece una verificación independiente de la referencia elegida.</p>
+<h3 id="section-5">Un ejemplo completo</h3>
+<p>La salida es el 10 de enero a 22:30 con <app-formula displayMode="inline" [showCodeButton]="false" expression="UTC+1" />: en UTC es 21:30 del mismo día. La llegada es el 11 a 06:15 con <app-formula displayMode="inline" [showCodeButton]="false" expression="UTC+3" />: en UTC es 03:15 del día siguiente. Desde 21:30 hasta medianoche hay 2 h 30 min y después 3 h 15 min; duración total 5 h 45 min.</p>
+<p>Restar directamente las horas locales daría 7 h 45 min, dos horas de más por la diferencia de offsets. El cambio de fecha y el cambio de zona son dos correcciones distintas que deben preservarse.</p>
+<h3 id="section-6">Hipótesis, límites y errores frecuentes</h3>
+<p>El laboratorio utiliza exclusivamente offsets constantes, desde<app-formula displayMode="inline" [showCodeButton]="false" expression="-12" /> hasta<app-formula displayMode="inline" [showCodeButton]="false" expression="+14" />, y las fechas explícitas del ejemplo. No consulta reglas de horario estacional. Un resultado negativo indica que los instantes elegidos no describen una llegada posterior; no se corrige sumando 24 sin revisar la fecha.</p>
+<p>Para casos reales, la herramienta de planificación enlazada utiliza ubicación y fecha. Las duraciones físicas y las representaciones civiles son conceptos distintos, y una tabla de zonas no puede reemplazarse por una suposición basada solo en longitud.</p>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<ol>
+<li>Recalcula el ejemplo si el destino tiene <app-formula displayMode="inline" [showCodeButton]="false" expression="UTC-5" />.</li>
+<li>Diseña un viaje de 26 horas y explica por qué no debes reducir la duración módulo 24.</li>
+<li>Describe qué información adicional necesitarías para una hora local repetida en un cambio de reloj.</li>
+</ol>
+<details class="note"><summary>Solución de la ampliación</summary><p>Si el destino usa <app-formula displayMode="inline" [showCodeButton]="false" expression="UTC-5" /> y mantiene la fecha y hora local de llegada, su instante UTC es 35, 25 horas desde el origen. La duración es 13, 75 horas, es decir 13 h 45 min. Un viaje de 26 horas no se reduce a dos horas: el número de días forma parte del intervalo. Una hora repetida en un cambio de reloj requiere indicar la zona y cuál offset corresponde al instante elegido.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
+<li><a routerLink="/problems/problema-099">Viaje entre husos fijos</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/tools/travel-planner">Planificador de viajes</a>. Introduce ubicaciones y fechas para contrastar el modelo de offsets fijos.</li>
+</ul></div>
+<p>Continúa con <a routerLink="/articles/solar-geometry">Geometría solar: latitud, declinación y altura</a> para conectar estos resultados con otro enfoque.</p>
+<p>Continúa con <a routerLink="/articles/asymptotic-limits">Límites, equivalencias y jerarquías de crecimiento</a> para conectar estos resultados con otro enfoque.</p>
+<h3 id="section-9">Lectura de referencia</h3><p><a href="https://www.iana.org/time-zones" target="_blank" rel="noopener noreferrer">IANA · Base de datos de zonas horarias</a>. Material complementario para contrastar definiciones y continuar el estudio.</p>

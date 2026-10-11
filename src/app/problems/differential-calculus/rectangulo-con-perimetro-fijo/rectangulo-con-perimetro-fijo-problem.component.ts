@@ -23,6 +23,11 @@ export class RectanguloConPerimetroFijoProblemComponent {
     "level": "Repaso",
     "statement": "Entre los rectángulos de perímetro 40 cm, determina el de área máxima.",
     "resources": [
+{
+  "label": "Medias aritmética, geométrica y armónica",
+  "route": "/articles/mean-inequalities",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Optimización con derivadas",
         "route": "/articles/derivative-optimization",

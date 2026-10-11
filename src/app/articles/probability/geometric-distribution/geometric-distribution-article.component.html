@@ -2,24 +2,24 @@
 <h2>Cuánto tarda en llegar un éxito</h2>
 <p class="dropcap">Lanzamos una moneda hasta obtener cara, repetimos una prueba hasta que funciona o esperamos un evento en ensayos independientes. El número de intentos no está fijado de antemano: puede ser uno, diez o mucho más. La distribución geométrica convierte ese tiempo discreto de espera en un modelo calculable. Su rasgo más sorprendente es la falta de memoria: si los ensayos siguen siendo independientes y tienen la misma probabilidad de éxito, haber esperado mucho no acerca el próximo éxito.</p>
 <h3>Una convención que cambia las fórmulas</h3>
-<p>Usaremos X como número de ensayos hasta el primer éxito, incluyéndolo, con valores 1,2,… y probabilidad de éxito p en cada ensayo. Otra convención cuenta los fracasos anteriores, Y = X − 1, con valores 0,1,… . Ambas describen el mismo experimento, pero sus medias difieren en uno. Hay que declarar la convención antes de interpretar una fórmula o una función de software.</p>
+<p>Usaremos X como número de ensayos hasta el primer éxito, incluyéndolo, con valores 1,2,… y probabilidad de éxito p en cada ensayo. Otra convención cuenta los fracasos anteriores, <app-formula displayMode="inline" [showCodeButton]="false" expression="Y = X - 1" />, con valores 0,1,… . Ambas describen el mismo experimento, pero sus medias difieren en uno. Hay que declarar la convención antes de interpretar una fórmula o una función de software.</p>
 <h3>Derivar la probabilidad y la cola</h3>
-<p>Para que X = k, deben ocurrir k − 1 fracasos y después un éxito. La independencia permite multiplicar: P(X = k) = (1 − p)ᵏ⁻¹p. En cambio, X &gt; m significa que los primeros m ensayos fueron todos fracasos. Esta descripción del evento da la cola sin sumar una serie infinita.</p>
-<app-formula expression="P(X=k)=(1-p)^{k-1}p,\quad k\ge1;\qquad P(X>m)=(1-p)^m,\quad m\ge0">
+<p>Para que <app-formula displayMode="inline" [showCodeButton]="false" expression="X = k" />, deben ocurrir <app-formula displayMode="inline" [showCodeButton]="false" expression="k - 1" /> fracasos y después un éxito. La independencia permite multiplicar: <app-formula displayMode="inline" [showCodeButton]="false" expression="P(X = k) = (1 - p)^{k-1}p" />. En cambio, <app-formula displayMode="inline" [showCodeButton]="false" expression="X &gt; m" /> significa que los primeros m ensayos fueron todos fracasos. Esta descripción del evento da la cola sin sumar una serie infinita.</p>
+<app-formula expression="P(X=k)=(1-p)^{k-1}p,\quad k\ge1;\qquad P(X&gt;m)=(1-p)^m,\quad m\ge0">
 </app-formula>
-<p>Para 0 &lt; p &lt; 1, la serie de todas las probabilidades suma p/(1 − (1 − p)) = 1. El éxito llega con probabilidad uno, aunque no exista un máximo finito para la espera. Si p = 1, X = 1 con certeza. Si p = 0, nunca llega un éxito y X no tiene una distribución geométrica propia con valores finitos: la esperanza sería infinita.</p>
+<p>Para <app-formula displayMode="inline" [showCodeButton]="false" expression="0 &lt; p &lt; 1" />, la serie de todas las probabilidades suma <app-formula displayMode="inline" [showCodeButton]="false" expression="p/(1 - (1 - p)) = 1" />. El éxito llega con probabilidad uno, aunque no exista un máximo finito para la espera. Si <app-formula displayMode="inline" [showCodeButton]="false" expression="p = 1, X = 1" /> con certeza. Si <app-formula displayMode="inline" [showCodeButton]="false" expression="p = 0" />, nunca llega un éxito y X no tiene una distribución geométrica propia con valores finitos: la esperanza sería infinita.</p>
 <h3>La media mediante una suma de colas</h3>
-<p>Un entero positivo X puede escribirse como la suma de los indicadores de los eventos X &gt; m para m = 0,1,… . Para X = 4, los cuatro primeros indicadores valen uno y el resto cero. Tomar esperanzas permite sumar las probabilidades de cola, todas no negativas.</p>
-<app-formula expression="E(X)=\sum_{m=0}^{\infty}P(X>m)=\sum_{m=0}^{\infty}(1-p)^m=\frac1p">
+<p>Un entero positivo X puede escribirse como la suma de los indicadores de los eventos <app-formula displayMode="inline" [showCodeButton]="false" expression="X &gt; m" /> para <app-formula displayMode="inline" [showCodeButton]="false" expression="m = 0{,}1,\cdots" /> . Para <app-formula displayMode="inline" [showCodeButton]="false" expression="X = 4" />, los cuatro primeros indicadores valen uno y el resto cero. Tomar esperanzas permite sumar las probabilidades de cola, todas no negativas.</p>
+<app-formula expression="E(X)=\sum_{m=0}^{\infty}P(X&gt;m)=\sum_{m=0}^{\infty}(1-p)^m=\frac1p">
 </app-formula>
-<p>También podemos condicionar por el primer ensayo: con probabilidad p terminamos tras uno; con probabilidad 1 − p gastamos un ensayo y volvemos a una espera del mismo tipo. La ecuación E(X) = p + (1 − p)(1 + E(X)) conduce al mismo resultado. Esta segunda vía supone que la esperanza es finita; la suma de colas lo demuestra directamente para p &gt; 0.</p>
+<p>También podemos condicionar por el primer ensayo: con probabilidad p terminamos tras uno; con probabilidad <app-formula displayMode="inline" [showCodeButton]="false" expression="1 - p" /> gastamos un ensayo y volvemos a una espera del mismo tipo. La ecuación <app-formula displayMode="inline" [showCodeButton]="false" expression="E(X) = p + (1 - p)(1 + E(X))" /> conduce al mismo resultado. Esta segunda vía supone que la esperanza es finita; la suma de colas lo demuestra directamente para <app-formula displayMode="inline" [showCodeButton]="false" expression="p &gt; 0" />.</p>
 <h3>La dispersión de la espera</h3>
-<p>Derivar la serie geométrica o calcular el segundo momento da Var(X) = (1 − p)/p². Para p = 1/4, la media es 4 y la varianza 12. El resultado no significa que cada bloque de cuatro ensayos contenga un éxito: describe un promedio de esperas independientes. La moda es siempre 1, muy distinta de la media cuando p es pequeño; la cola larga desplaza el promedio hacia arriba.</p>
+<p>Derivar la serie geométrica o calcular el segundo momento da <app-formula displayMode="inline" [showCodeButton]="false" expression="\operatorname{Var} (X) = (1 - p)/p^{2}" />. Para <app-formula displayMode="inline" [showCodeButton]="false" expression="p = \frac{1}{4}" />, la media es 4 y la varianza 12. El resultado no significa que cada bloque de cuatro ensayos contenga un éxito: describe un promedio de esperas independientes. La moda es siempre 1, muy distinta de la media cuando p es pequeño; la cola larga desplaza el promedio hacia arriba.</p>
 <app-formula expression="\operatorname{Var}(X)=\frac{1-p}{p^2},\qquad E(X^2)=\frac{2-p}{p^2}">
 </app-formula>
 <div class="math-lab">
 <h4>Laboratorio / una cola que no termina</h4>
-<p>La última barra agrupa todas las esperas mayores de 20; no representa exclusivamente X = 21. La media simulada conserva el valor completo de cada espera, incluso fuera de la ventana.</p>
+<p>La última barra agrupa todas las esperas mayores de 20; no representa exclusivamente <app-formula displayMode="inline" [showCodeButton]="false" expression="X = 21" />. La media simulada conserva el valor completo de cada espera, incluso fuera de la ventana.</p>
 <div class="controls">
 <label>Éxito p = {{p}}<input type="range" min="0.05" max="1" step="0.01" [(ngModel)]="p" (ngModelChange)="update()">
 </label>
@@ -40,10 +40,10 @@
 <app-learning-plot description="Probabilidad de seguir esperando tras k ensayos." [series]="survival" [xmin]="0" [xmax]="30" [ymin]="0" [ymax]="1" xLabel="Ensayos transcurridos k" yLabel="P(X > k)" />
 </div>
 <h3>La falta de memoria, demostrada</h3>
-<p>Si llevamos m ensayos sin éxito, la probabilidad de necesitar más de n ensayos adicionales se obtiene por probabilidad condicionada. El evento X &gt; m+n está contenido en X &gt; m; dividir las colas cancela los m fracasos conocidos.</p>
-<app-formula expression="P(X>m+n\mid X>m)=\frac{(1-p)^{m+n}}{(1-p)^m}=(1-p)^n=P(X>n)">
+<p>Si llevamos m ensayos sin éxito, la probabilidad de necesitar más de n ensayos adicionales se obtiene por probabilidad condicionada. El evento <app-formula displayMode="inline" [showCodeButton]="false" expression="X &gt; m+n" /> está contenido en <app-formula displayMode="inline" [showCodeButton]="false" expression="X &gt; m" />; dividir las colas cancela los m fracasos conocidos.</p>
+<app-formula expression="P(X&gt;m+n\mid X&gt;m)=\frac{(1-p)^{m+n}}{(1-p)^m}=(1-p)^n=P(X&gt;n)">
 </app-formula>
-<p>Esta igualdad vale para 0 &lt; p &lt; 1; con p = 1 y m ≥ 1, la condición tiene probabilidad cero y el cociente no está definido. La propiedad no asegura que el siguiente intento vaya a funcionar. Precisamente afirma que su probabilidad sigue siendo p. Creer que un éxito «ya toca» tras una racha de fracasos es la falacia del jugador bajo estas hipótesis.</p>
+<p>Esta igualdad vale para <app-formula displayMode="inline" [showCodeButton]="false" expression="0 &lt; p &lt; 1" />; con <app-formula displayMode="inline" [showCodeButton]="false" expression="p = 1" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="m \ge  1" />, la condición tiene probabilidad cero y el cociente no está definido. La propiedad no asegura que el siguiente intento vaya a funcionar. Precisamente afirma que su probabilidad sigue siendo p. Creer que un éxito «ya toca» tras una racha de fracasos es la falacia del jugador bajo estas hipótesis.</p>
 <div class="math-lab">
 <h4>Laboratorio / esperar no cambia el futuro</h4>
 <div class="controls">
@@ -53,14 +53,14 @@
 </label>
 </div>
 <div class="readouts">
-<span>Sin historia: P(X > n)<b>{{memory | number:'1.0-6'}}</b>
+<span>Sin historia: <app-formula displayMode="inline" [showCodeButton]="false" expression="P(X &gt; n)" /><b>{{memory | number:'1.0-6'}}</b>
 </span>
 <span>Tras m fracasos<b>{{p===1 && elapsed>0 ? 'Condición imposible' : (memory | number:'1.0-6')}}</b>
 </span>
 </div>
 </div>
 <h3>Más allá de un solo éxito</h3>
-<p>La espera hasta r éxitos independientes con probabilidad p constante sigue una distribución binomial negativa. Puede verse como la suma de r esperas geométricas independientes; su media es r/p y su varianza r(1 − p)/p² con la convención que cuenta ensayos. En tiempo continuo, la distribución exponencial desempeña un papel análogo y también carece de memoria. La aproximación aparece al hacer muy pequeños los intervalos con p aproximadamente proporcional a su duración.</p>
+<p>La espera hasta r éxitos independientes con probabilidad p constante sigue una distribución binomial negativa. Puede verse como la suma de r esperas geométricas independientes; su media es <app-formula displayMode="inline" [showCodeButton]="false" expression="r/p" /> y su varianza <app-formula displayMode="inline" [showCodeButton]="false" expression="r(1 - p)/p^{2}" /> con la convención que cuenta ensayos. En tiempo continuo, la distribución exponencial desempeña un papel análog o y también carece de memoria. La aproximación aparece al hacer muy pequeños los intervalos con p aproximadamente proporcional a su duración.</p>
 <h3>Cuándo deja de ser geométrica</h3>
 <p>Si se extraen objetos sin reemplazo, la probabilidad cambia. Si un mecanismo se desgasta, la probabilidad puede depender del tiempo. Si las pruebas comparten una causa de fallo, no hay independencia. La fórmula puede ajustar algunos datos y seguir teniendo supuestos incorrectos. Comprueba esas condiciones antes de interpretar una racha o estimar p por la inversa de la espera media.</p>
 <p>Lectura complementaria: <a href="https://openstax.org/books/introductory-statistics-2e/pages/4-4-geometric-distribution">OpenStax, distribución geométrica</a>.</p>

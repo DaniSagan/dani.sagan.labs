@@ -23,6 +23,11 @@ export class LongitudDeUnaCurvaProblemComponent {
     "level": "Reto",
     "statement": "Calcula la longitud del arco \\(y=(\\frac{2}{3})x^{\\frac{3}{2}}\\) para \\(0\\le x\\le 3\\).",
     "resources": [
+{
+  "label": "Longitud de arco y parametrización de curvas",
+  "route": "/articles/arc-length",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",

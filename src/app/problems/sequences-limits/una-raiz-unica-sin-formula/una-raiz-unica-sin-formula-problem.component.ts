@@ -23,6 +23,11 @@ export class UnaRaizUnicaSinFormulaProblemComponent {
     "level": "Oposición",
     "statement": "Demuestra que \\(x^{3}+x-1=0\\) tiene una única raíz real y que está entre \\(\\frac{1}{2}\\) y 1.",
     "resources": [
+{
+  "label": "Teoremas de Rolle y del valor medio",
+  "route": "/articles/mean-value-theorems",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema de Bolzano: existencia y unicidad de raíces",
         "route": "/articles/bolzano-theorem",

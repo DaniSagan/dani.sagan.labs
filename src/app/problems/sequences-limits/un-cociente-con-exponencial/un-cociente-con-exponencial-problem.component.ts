@@ -23,6 +23,11 @@ export class UnCocienteConExponencialProblemComponent {
     "level": "Repaso",
     "statement": "Calcula \\(\\lim_{n\\to\\infty}\\frac{n^2}{2^n}\\) y justifica la convergencia.",
     "resources": [
+{
+  "label": "Límites, equivalencias y jerarquías de crecimiento",
+  "route": "/articles/asymptotic-limits",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Fórmula de Stirling",
         "route": "/articles/stirling",

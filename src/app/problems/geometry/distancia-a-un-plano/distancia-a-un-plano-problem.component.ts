@@ -23,6 +23,11 @@ export class DistanciaAUnPlanoProblemComponent {
     "level": "Oposición",
     "statement": "Calcula la distancia de \\(P=(1,2,3)\\) al plano \\(2x-y+2z-4=0\\) y su proyección ortogonal.",
     "resources": [
+{
+  "label": "Producto vectorial y producto mixto",
+  "route": "/articles/vector-products",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Proyecciones ortogonales y distancias en el espacio",
         "route": "/articles/orthogonal-projections",

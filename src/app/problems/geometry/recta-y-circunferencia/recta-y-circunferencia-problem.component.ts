@@ -23,6 +23,11 @@ export class RectaYCircunferenciaProblemComponent {
     "level": "Repaso",
     "statement": "Encuentra las intersecciones de \\(x^{2}+y^{2}=25\\) con \\(y=x+1\\).",
     "resources": [
+{
+  "label": "Cónicas como formas cuadráticas",
+  "route": "/articles/quadratic-conics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Potencia de un punto",
         "route": "/articles/power-of-point",

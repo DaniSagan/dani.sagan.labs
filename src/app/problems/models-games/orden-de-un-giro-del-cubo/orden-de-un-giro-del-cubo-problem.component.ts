@@ -23,6 +23,11 @@ export class OrdenDeUnGiroDelCuboProblemComponent {
     "level": "Oposición",
     "statement": "Modela un giro de 90° de una cara exterior del cubo de Rubik como permutación de pegatinas. Determina su orden y la inversa, sin confundirlo con un algoritmo de varias caras.",
     "resources": [
+{
+  "label": "Permutaciones, ciclos y grupos de simetrías",
+  "route": "/articles/permutation-symmetries",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Polinomios ciclotómicos",
         "route": "/articles/cyclotomic-polynomials",

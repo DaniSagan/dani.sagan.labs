@@ -51,7 +51,7 @@ export interface PlotMarker {
         <text x="688" y="353" text-anchor="end">{{ xLabel }}</text><text x="64" y="15">{{ yLabel }}</text>
       </svg>
       <figcaption>{{ description }}</figcaption>
-      <div class="legend">@for (item of paths; track $index) { <span><i [style.background]="item.color"></i>{{ item.series.label }}</span> }</div>
+      <div class="legend">@if (showLegend) { @for (item of paths; track $index) { <span><i [style.background]="item.color"></i>{{ item.series.label }}</span> } }</div>
     </figure>`,
     styles: [`:host{display:block;min-width:0}figure{margin:1rem 0}svg{display:block;width:100%;height:auto;overflow:visible}text{fill:var(--ink-dim);font:11px monospace}.grid{stroke:#ffffff0b}.axis{stroke:#777580;stroke-width:1}figcaption{font-size:.85rem;color:var(--ink-dim);line-height:1.5}.legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;font:11px monospace;color:var(--ink);margin-top:.75rem}.legend span{display:flex;gap:6px;align-items:center}.legend i{width:15px;height:3px}`]
 })
@@ -61,6 +61,7 @@ export class LearningPlotComponent implements OnChanges {
     readonly Math = Math;
     @Input()
     description = '';
+    @Input() showLegend = true;
     @Input()
     xLabel = 'x';
     @Input()

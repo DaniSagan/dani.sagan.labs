@@ -1,3 +1,7 @@
+import { PermutationSymmetriesArticleComponent } from './permutation-symmetries/permutation-symmetries-article.component';
+import { MeanInequalitiesArticleComponent } from './mean-inequalities/mean-inequalities-article.component';
+import { JordanFormArticleComponent } from './jordan-form/jordan-form-article.component';
+import { CayleyHamiltonArticleComponent } from './cayley-hamilton/cayley-hamilton-article.component';
 import { PolynomialDivisionArticleComponent } from './polynomial-division/polynomial-division-article.component';
 import { QuadraticEquationsArticleComponent } from './quadratic-equations/quadratic-equations-article.component';
 import { CauchySchwarzArticleComponent } from './cauchy-schwarz/cauchy-schwarz-article.component';
@@ -8,6 +12,10 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  PermutationSymmetriesArticleComponent,
+  MeanInequalitiesArticleComponent,
+  JordanFormArticleComponent,
+  CayleyHamiltonArticleComponent,
   PolynomialDivisionArticleComponent,
   QuadraticEquationsArticleComponent,
   CauchySchwarzArticleComponent,

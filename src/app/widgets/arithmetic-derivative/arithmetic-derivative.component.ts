@@ -4,7 +4,7 @@ import { FormulaItem } from '../../mathematics/formula/items/formula-item';
 import { FunctionItem } from '../../mathematics/formula/items/function-item';
 import { IntegerItem } from '../../mathematics/formula/items/integer-item';
 import { Factor, getFactors, isPrime } from '../../mathematics/mathematics';
-import { FormulaComponent } from '../../mathematics/formula/formula.component';
+import { FormulaComponent } from '../../shared/math/formula/formula.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({

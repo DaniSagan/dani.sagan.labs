@@ -23,6 +23,11 @@ export class UnaEcuacionTrigonometricaProblemComponent {
     "level": "Repaso",
     "statement": "Resuelve \\(\\sin x=\\cos(2x)\\) para \\(0\\le x<2\\pi\\).",
     "resources": [
+{
+  "label": "Ecuaciones trigonométricas y periodicidad",
+  "route": "/articles/trigonometric-equations",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Ángulos múltiples y ángulo mitad",
         "route": "/articles/trig-n-functions",

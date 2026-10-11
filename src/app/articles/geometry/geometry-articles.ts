@@ -1,3 +1,8 @@
+import { VectorProductsArticleComponent } from './vector-products/vector-products-article.component';
+import { TriangleMetricsArticleComponent } from './triangle-metrics/triangle-metrics-article.component';
+import { SolarGeometryArticleComponent } from './solar-geometry/solar-geometry-article.component';
+import { QuadraticConicsArticleComponent } from './quadratic-conics/quadratic-conics-article.component';
+import { ApolloniusCirclesArticleComponent } from './apollonius-circles/apollonius-circles-article.component';
 import { OrthogonalProjectionsArticleComponent } from './orthogonal-projections/orthogonal-projections-article.component';
 import { HeronFormulaArticleComponent } from './heron-formula/heron-formula-article.component';
 import { PtolemyTheoremArticleComponent } from './ptolemy-theorem/ptolemy-theorem-article.component';
@@ -36,6 +41,11 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  VectorProductsArticleComponent,
+  TriangleMetricsArticleComponent,
+  SolarGeometryArticleComponent,
+  QuadraticConicsArticleComponent,
+  ApolloniusCirclesArticleComponent,
   OrthogonalProjectionsArticleComponent,
   HitomezashiArticleComponent,
   PtolemyTheoremArticleComponent,

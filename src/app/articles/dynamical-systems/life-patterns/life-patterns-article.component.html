@@ -1,0 +1,38 @@
+<span class="article-kicker">Sistemas dinámicos / explorar, deducir, comprobar</span>
+<h2>El Juego de la vida: osciladores y evolución</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol><li><a [routerLink]="[]" fragment="section-0">Una vecindad de ocho posiciones</a></li><li><a [routerLink]="[]" fragment="section-1">El parpadeador paso a paso</a></li><li><a [routerLink]="[]" fragment="section-2">Período y traslación</a></li><li><a [routerLink]="[]" fragment="section-3">Qué se conserva y qué no</a></li><li><a [routerLink]="[]" fragment="section-4">Implementar la regla sin introducir un borde</a></li><li><a [routerLink]="[]" fragment="section-5">Un ejemplo completo</a></li><li><a [routerLink]="[]" fragment="section-6">Hipótesis, límites y errores frecuentes</a></li><li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li><li><a [routerLink]="[]" fragment="section-8">Problemas y recursos para continuar</a></li></ol></details></nav>
+
+<p class="dropcap">El Juego de la vida produce patrones complejos mediante una regla local muy breve. Cada generación se calcula simultáneamente a partir de la anterior. Esa simultaneidad distingue un autómata celular de una actualización secuencial y es esencial para obtener osciladores, patrones estables y estructuras que se desplazan sin una instrucción explícita de movimiento.</p>
+<h3 id="section-0">Una vecindad de ocho posiciones</h3>
+<p>Cada célula ve las ocho casillas que la rodean, sin contarse a sí misma. La regla <app-formula displayMode="inline" [showCodeButton]="false" expression="B3/S23" /> hace nacer una célula muerta con tres vecinas vivas y conserva una viva con dos o tres. En los demás casos queda muerta. Cada decisión utiliza el mismo estado anterior; modificar el tablero mientras contamos cambia el modelo.</p>
+<app-formula expression="\text{viva}_{t+1}(c)\iff N_t(c)=3\ \text{o}\ [\text{viva}_t(c)\land N_t(c)=2]" />
+<h3 id="section-1">El parpadeador paso a paso</h3>
+<p>Tres células consecutivas horizontales forman un oscilador. La central sobrevive porque tiene dos vecinas; los extremos mueren por tener una. Nacen las células inmediatamente arriba y abajo del centro porque tienen tres vecinas. El laboratorio muestra generaciones del parpadeador y permite alternar con un bloque estable y un deslizador.</p>
+<app-topic-lab topic="life-patterns" />
+<h3 id="section-2">Período y traslación</h3>
+<p>Un oscilador vuelve al mismo conjunto de posiciones tras un número mínimo de generaciones. Un patrón estable tiene período uno. Un deslizador vuelve a la misma forma después de varias generaciones, pero desplazado; no es un oscilador en coordenadas absolutas. Para describirlo necesitamos tiempo de repetición y vector de traslación.</p>
+<h3 id="section-3">Qué se conserva y qué no</h3>
+<p>El número de células vivas no es en general un invariante: pueden nacer y morir cantidades diferentes. Sí se conserva la regla local y la invariancia ante traslaciones, rotaciones y reflexiones del tablero ideal. Estas simetrías permiten reconocer patrones equivalentes sin confundirlos con conservación de población.</p>
+<h3 id="section-4">Implementar la regla sin introducir un borde</h3>
+<p>Para un conjunto finito de células vivas, toda célula que pueda nacer está en la vecindad de alguna de ellas. Por tanto podemos acumular un mapa de conteos alrededor de las vivas y evaluar solo esas posiciones candidatas. Una viva aislada que no aparezca entre candidatos muere, como exige la regla. No necesitamos reservar una cuadrícula infinita ni añadir una envoltura artificial.</p>
+<p>Después construimos un conjunto nuevo: nacen las candidatas con tres vecinas y sobreviven las que ya estaban vivas con dos. Solo al terminar reemplazamos la generación. Este orden garantiza simultaneidad y permite usar coordenadas negativas. El tamaño de la ventana de dibujo no participa en la dinámica; es una decisión de presentación.</p>
+<h3 id="section-5">Un ejemplo completo</h3>
+<p>Desde <app-formula displayMode="inline" [showCodeButton]="false" expression="\{(-1,0),(0,0),(1,0)\}" />, la siguiente generación es <app-formula displayMode="inline" [showCodeButton]="false" expression="\{(0,-1),(0, 0),(0, 1)\}" />. Repetir el conteo devuelve el patrón horizontal. El período es dos porque la primera generación es distinta y la segunda coincide exactamente con la inicial.</p>
+<p>Un bloque dos por dos es estable: cada célula viva tiene tres vecinas vivas y sobrevive, mientras las células externas no alcanzan tres vecinas. Comparar ambos patrones muestra que el período depende del estado completo, no solo del número de células.</p>
+<h3 id="section-6">Hipótesis, límites y errores frecuentes</h3>
+<p>Un tablero finito con bordes muertos o envoltura toroidal no equivale a una cuadrícula infinita. El laboratorio calcula posiciones enteras en una región dinámica sin envolver y usa una ventana de visualización; si un patrón sale de ella, eso no significa que haya desaparecido.</p>
+<p>La actualización utiliza conjuntos nuevos por generación. Las pruebas comprueban el período del parpadeador, la estabilidad del bloque y la traslación del deslizador, evitando que un error de orden altere las reglas.</p>
+<h3 id="section-7">Comprueba tu comprensión</h3>
+<ol>
+<li>Cuenta manualmente las vecinas de una célula externa al parpadeador.</li>
+<li>Comprueba que el bloque tiene período uno.</li>
+<li>Distingue repetición exacta de repetición después de una traslación.</li>
+</ol>
+<details class="note"><summary>Solución de la ampliación</summary><p>La célula<app-formula displayMode="inline" [showCodeButton]="false" expression="(0, 1)" /> sobre el centro del parpadeador ve las tres vivas iniciales y nace. Cada esquina del bloque 2×2 ve las otras tres y sobrevive. Un deslizador estándar recupera su forma tras cuatro generaciones, desplazada una unidad en cada eje en la orientación usada; en coordenadas absolutas no vuelve al estado inicial.</p></details>
+<div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
+<li><a routerLink="/problems/problema-096">Un oscilador celular</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/tools/vector-field">Campo vectorial</a>. Explora el campo y compara dirección local y trayectoria global.</li>
+<li><a routerLink="/games/game-of-life">Juego de la vida</a>. Explora patrones, escalas y generaciones y compara el resultado con las hipótesis del modelo.</li>
+</ul></div>
+<p>Continúa con <a routerLink="/articles/cellular-automata">Autómatas celulares y la Regla 30</a> para conectar estos resultados con otro enfoque.</p>
+<p>Continúa con <a routerLink="/articles/fractal-measure-dimension">Medida, dimensión y autosimilitud</a> para conectar estos resultados con otro enfoque.</p>

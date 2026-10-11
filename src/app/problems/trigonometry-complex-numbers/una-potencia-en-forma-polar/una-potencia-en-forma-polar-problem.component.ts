@@ -23,6 +23,11 @@ export class UnaPotenciaEnFormaPolarProblemComponent {
     "level": "Repaso",
     "statement": "Calcula \\((1+i)^{12}\\) en forma binómica.",
     "resources": [
+{
+  "label": "Fórmula de De Moivre: potencias y raíces complejas",
+  "route": "/articles/de-moivre",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Identidad de Euler",
         "route": "/articles/euler-identity",

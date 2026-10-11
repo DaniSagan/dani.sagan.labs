@@ -23,6 +23,16 @@ export class CaminosConUnaRestriccionProblemComponent {
     "level": "Oposición",
     "statement": "Cuenta los caminos de \\((0,0)\\) a \\((4,4)\\) con pasos \\((1,0)\\) o \\((0,1)\\). ¿Cuántos no pasan nunca por encima de \\(y=x\\)?",
     "resources": [
+{
+  "label": "Principio de reflexión y caminos restringidos",
+  "route": "/articles/reflection-principle",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Conteo sistemático en tableros y cuadrículas",
+  "route": "/articles/grid-counting",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Números de Catalan",
         "route": "/articles/catalan-numbers",

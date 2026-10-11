@@ -23,6 +23,11 @@ export class LineasGanadorasEnDosJuegosProblemComponent {
     "level": "Repaso",
     "statement": "Cuenta las líneas ganadoras de tres en raya en un tablero 3×3 y los segmentos de cuatro casillas consecutivas en un tablero de cuatro en raya de 6 filas y 7 columnas.",
     "resources": [
+{
+  "label": "Conteo sistemático en tableros y cuadrículas",
+  "route": "/articles/grid-counting",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Teorema del binomio",
         "route": "/articles/binomial-theorem",

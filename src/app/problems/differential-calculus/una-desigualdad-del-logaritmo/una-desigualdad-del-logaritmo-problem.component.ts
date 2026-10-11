@@ -23,6 +23,16 @@ export class UnaDesigualdadDelLogaritmoProblemComponent {
     "level": "Oposición",
     "statement": "Demuestra \\(\\ln x\\le x-1\\) para todo \\(x>0\\) e identifica el caso de igualdad.",
     "resources": [
+{
+  "label": "Teoremas de Rolle y del valor medio",
+  "route": "/articles/mean-value-theorems",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Convexidad, concavidad y desigualdades",
+  "route": "/articles/convexity-tangents",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Integración clásica",
         "route": "/articles/integration-classical",

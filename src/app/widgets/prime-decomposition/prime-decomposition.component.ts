@@ -5,8 +5,8 @@ import { FormulaItem } from 'src/app/mathematics/formula/items/formula-item';
 import { IntegerItem } from 'src/app/mathematics/formula/items/integer-item';
 import { MultiplicationItem } from 'src/app/mathematics/formula/items/multiplication-item';
 import { getFactors } from 'src/app/mathematics/mathematics';
-import { FormulaComponent } from '../../mathematics/formula/formula.component';
 import { FormsModule } from '@angular/forms';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
 
 interface Factor {
   base: number;

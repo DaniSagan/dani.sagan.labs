@@ -1,3 +1,9 @@
+import { SamplingDistributionsArticleComponent } from './sampling-distributions/sampling-distributions-article.component';
+import { GraphicalDiagnosticsArticleComponent } from './graphical-diagnostics/graphical-diagnostics-article.component';
+import { DiscreteExpectationArticleComponent } from './discrete-expectation/discrete-expectation-article.component';
+import { DescriptiveStatisticsArticleComponent } from './descriptive-statistics/descriptive-statistics-article.component';
+import { ConditionalIndependenceArticleComponent } from './conditional-independence/conditional-independence-article.component';
+import { BesselCorrectionArticleComponent } from './bessel-correction/bessel-correction-article.component';
 import { StatisticalInferenceArticleComponent } from './statistical-inference/statistical-inference-article.component';
 import { ContinuousRandomVariablesArticleComponent } from './continuous-random-variables/continuous-random-variables-article.component';
 import { GeometricDistributionArticleComponent } from './geometric-distribution/geometric-distribution-article.component';
@@ -15,6 +21,12 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  SamplingDistributionsArticleComponent,
+  GraphicalDiagnosticsArticleComponent,
+  DiscreteExpectationArticleComponent,
+  DescriptiveStatisticsArticleComponent,
+  ConditionalIndependenceArticleComponent,
+  BesselCorrectionArticleComponent,
   StatisticalInferenceArticleComponent,
   ContinuousRandomVariablesArticleComponent,
   GeometricDistributionArticleComponent,

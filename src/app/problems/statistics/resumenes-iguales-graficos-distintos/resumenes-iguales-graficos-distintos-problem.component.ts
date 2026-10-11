@@ -23,6 +23,16 @@ export class ResumenesIgualesGraficosDistintosProblemComponent {
     "level": "Oposición",
     "statement": "Dos conjuntos tienen la misma media y varianza de x e y y la misma correlación. ¿Implica que sus diagramas de dispersión son iguales o que el mismo modelo lineal es adecuado? Explica cómo lo comprobarías con Datasaurus.",
     "resources": [
+{
+  "label": "Diagnóstico gráfico: Anscombe, Datasaurus y residuos",
+  "route": "/articles/graphical-diagnostics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
+{
+  "label": "Estadística descriptiva y valores atípicos",
+  "route": "/articles/descriptive-statistics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Regresión lineal y correlación de Pearson",
         "route": "/articles/linear-regression",

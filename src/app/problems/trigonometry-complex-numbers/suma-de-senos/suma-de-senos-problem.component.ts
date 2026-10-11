@@ -23,6 +23,11 @@ export class SumaDeSenosProblemComponent {
     "level": "Oposición",
     "statement": "Demuestra que \\(\\sin x+\\sin(x+2\\frac{\\pi}{3})+\\sin(x+4\\frac{\\pi}{3})=0\\) para todo x real.",
     "resources": [
+{
+  "label": "Fasores y superposición de ondas",
+  "route": "/articles/phasor-superposition",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Ángulos múltiples y ángulo mitad",
         "route": "/articles/trig-n-functions",

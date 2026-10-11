@@ -23,6 +23,11 @@ export class UnaHiperbolaTrasladadaProblemComponent {
     "level": "Oposición",
     "statement": "Identifica la cónica \\(4x^{2}-9y^{2}-8x-18y-41=0\\), su centro y sus asíntotas.",
     "resources": [
+{
+  "label": "Cónicas como formas cuadráticas",
+  "route": "/articles/quadratic-conics",
+  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+},
       {
         "label": "Hipérbola",
         "route": "/articles/hyperbola",
