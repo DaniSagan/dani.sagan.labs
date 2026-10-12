@@ -16,7 +16,9 @@
     "test:curve-articles": "node scripts/test-additional-curve-articles.cjs",
     "test:curve-pages": "node scripts/check-additional-curve-pages.cjs",
     "test:probability-detective": "node scripts/test-probability-detective.cjs",
-    "generate:life-catalog": "node scripts/generate-life-catalog.cjs"
+    "generate:life-catalog": "node scripts/generate-life-catalog.cjs",
+    "test:2048": "node scripts/test-2048.cjs",
+    "test:2048:browser": "node scripts/check-2048-page.cjs"
   },
   "private": true,
   "dependencies": {

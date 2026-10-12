@@ -1,0 +1,29 @@
+﻿<section class="game-shell" aria-labelledby="game-title">
+  <header class="game-header">
+    <div><p class="eyebrow">JUEGOS · POTENCIAS DE DOS</p><h1 id="game-title">20<span>48</span><span class="title-dot">.</span></h1><p class="intro">Un tablero. Cuatro direcciones.<br>Y una combinación que lo cambia todo.</p></div>
+    <div class="scorecards"><div class="scorecard"><span>PUNTOS</span><strong>{{ score }}</strong>@if (gain) {<small>+{{ gain }} en la última jugada</small>}</div><div class="scorecard record"><span>MEJOR MARCA</span><strong>{{ best }}</strong><small>Guardada en este navegador</small></div></div>
+  </header>
+  <div class="play-layout">
+    <div class="play-area">
+      <div class="toolbar"><span class="move-count">{{ moves }} movimientos</span><div><button type="button" (click)="undo()" [disabled]="!previous || busy || resetPending" aria-label="Deshacer el último movimiento">↶ Deshacer</button><button type="button" class="primary" (click)="resetPending = true" [disabled]="busy">Nueva partida</button></div></div>
+      <div class="board" tabindex="0" role="group" aria-label="Tablero de 2048. Usa las flechas o desliza las fichas." aria-describedby="board-help" (pointerdown)="pointerDown($event)" (pointerup)="pointerUp($event)" (pointercancel)="cancelPointer()" (lostpointercapture)="cancelPointer()">
+        <div class="cells" aria-hidden="true">@for (cell of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; track cell) {<div class="cell"></div>}</div>
+        <div class="tiles">@for (tile of visual; track tile.id) {<div class="tile" [class.fresh]="tile.fresh" [class.merged]="tile.merged" [class.ghost]="tile.ghost" [class.long]="tile.value >= 1024" [attr.data-level]="level(tile.value)" [style.--col]="tile.col" [style.--row]="tile.row" [attr.aria-label]="'Fila ' + (tile.row + 1) + ', columna ' + (tile.col + 1) + ': ' + tile.value"><div class="tile-face">{{ tile.value }}</div></div>}</div>
+        @if (resetPending) {<div class="overlay" role="group" aria-label="Confirmar nueva partida"><span class="overlay-symbol">↻</span><h2>¿Empezar de nuevo?</h2><p>Se sustituirá esta partida.<br>Tu mejor marca se conserva.</p><button type="button" class="primary" (click)="newGame()">Sí, nueva partida</button><button type="button" (click)="resetPending = false">Seguir jugando</button></div>}
+        @else if (!busy && won && !continued) {<div class="overlay victory" role="group" aria-label="Victoria"><span class="overlay-symbol">✦</span><p class="eyebrow">OBJETIVO CONSEGUIDO</p><h2>¡2048!</h2><p>Cada pequeño paso contaba.<br>¿Hasta dónde puedes llegar?</p><button type="button" class="primary" (click)="continueGame()">Ir a por 4096</button><button type="button" (click)="resetPending = true">Nueva partida</button></div>}
+        @else if (!busy && over) {<div class="overlay" role="group" aria-label="Fin de partida"><span class="overlay-symbol">◇</span><h2>Sin movimientos</h2><p>{{ score }} puntos · {{ moves }} movimientos</p><button type="button" class="primary" (click)="resetPending = true">Volver a intentarlo</button>@if (previous) {<button type="button" (click)="undo()">Deshacer y continuar</button>}</div>}
+      </div>
+      <p class="board-help" id="board-help"><span>⌨ Flechas o WASD</span><span>↔ Desliza sobre el tablero</span></p>
+      <div class="direction-pad" aria-label="Controles de dirección"><button type="button" class="up" aria-label="Mover arriba" (click)="move('up')" [disabled]="busy || blocked">↑</button><button type="button" class="left" aria-label="Mover izquierda" (click)="move('left')" [disabled]="busy || blocked">←</button><button type="button" class="down" aria-label="Mover abajo" (click)="move('down')" [disabled]="busy || blocked">↓</button><button type="button" class="right" aria-label="Mover derecha" (click)="move('right')" [disabled]="busy || blocked">→</button></div>
+    </div>
+    <aside class="game-notes">
+      <div class="goal"><p class="eyebrow">TU PRÓXIMA GRAN COMBINACIÓN</p><div class="goal-line"><strong>{{ highest }}</strong><span>→</span><strong class="goal-target">{{ highest >= 2048 ? highest * 2 : 2048 }}</strong></div><div class="progress-track" role="progressbar" aria-label="Progreso hasta 2048 por potencias de dos" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"><span [style.width.%]="progress"></span></div><p>{{ empty }} casillas libres · Haz espacio para crecer.</p></div>
+      <div class="how-to"><span class="section-number">01 / LAS REGLAS</span><h2>Iguales se suman.</h2><div class="merge-example" aria-hidden="true"><span>2</span><b>+</b><span>2</span><b>=</b><span class="result">4</span></div><p>Mueve todas las fichas en una dirección. Dos fichas iguales que se encuentran se fusionan una sola vez por movimiento.</p><p>Tras cada movimiento válido aparece un <strong>2</strong> (90 %) o un <strong>4</strong> (10 %). Cada fusión suma su nuevo valor a tu puntuación.</p></div>
+      <div class="tip"><span class="section-number">02 / UNA IDEA PARA EMPEZAR</span><p>Reserva una esquina para tu ficha más grande y construye a su alrededor. El espacio libre es tu mejor aliado.</p></div>
+      <p class="save-note">Tu partida se guarda automáticamente en este navegador. Puedes deshacer una jugada; el récord se conserva.</p>
+      @if (storageMessage) {<p class="storage-warning" role="status">{{ storageMessage }}</p>}
+    </aside>
+  </div>
+  <p class="sr-only" role="status" aria-live="polite" aria-atomic="true">{{ message }}</p>
+  <footer class="game-footer">Pequeñas decisiones, grandes potencias.<span>2 → 4 → 8 → … → 2048</span></footer>
+</section>
