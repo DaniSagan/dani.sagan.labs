@@ -24,6 +24,11 @@ export class EnfriamientoExponencialProblemComponent {
     "statement": "Una bebida pasa de 90 °C a 60 °C en 10 minutos, en una habitación a 20 °C. Con \\(T'=-k(T-20)\\), halla \\(T(t)\\) y cuándo alcanza 40 °C.",
     "resources": [
       {
+        "label": "Exponenciales y logaritmos: propiedades y ecuaciones",
+        "route": "/articles/exponentials-logarithms",
+        "activity": "Respeta el dominio del logaritmo, transforma cocientes adimensionales y distingue cambio relativo constante de crecimiento polinómico."
+      },
+      {
         "label": "Ecuaciones diferenciales y enfriamiento",
         "route": "/articles/first-order-odes",
         "activity": "Resuelve el problema inicial, estima la constante de enfriamiento y compara la solución exacta con la aproximación de Euler."

@@ -1,0 +1,44 @@
+<section class="math-lab" [attr.aria-label]="title">
+  <span class="article-kicker">Laboratorio / predice, explora, justifica</span>
+  <h4>{{ title }}</h4>
+  <p>{{ prompt }}</p>
+  <app-formula [expression]="expression" displayMode="block" [showCodeButton]="false" />
+  <div class="controls">
+    @for (control of controls; track $index) {
+      <label>
+        {{ control.label }} = {{ control.value | number:'1.0-4' }}
+        <input type="range" [min]="control.min" [max]="control.max" [step]="control.step"
+          [(ngModel)]="control.value" (ngModelChange)="update()">
+      </label>
+    }
+    <button type="button" (click)="reset()">Restablecer</button>
+  </div>
+  <div class="readouts" aria-live="polite" aria-atomic="true">
+    @for (row of result.rows; track $index) {
+      <span>{{ row[0] }}<b>{{ row[1] }}</b></span>
+    }
+  </div>
+  @if (result.intervals) {
+    <figure>
+      <svg class="orbit" viewBox="0 0 720 60" role="img"
+        [attr.aria-label]="result.intervalView?.title ?? 'Intervalos'">
+        <title>{{ result.intervalView?.title ?? 'Intervalos' }}</title>
+        @for (interval of result.intervals; track $index) {
+          <rect [attr.x]="10 + 700 * interval[0]" y="10"
+            [attr.width]="700 * (interval[1] - interval[0])" height="24" fill="var(--gold)" />
+        }
+        <text x="10" y="55">0</text><text x="700" y="55">1</text>
+      </svg>
+      @if (result.intervalView?.caption) {
+        <figcaption>{{ result.intervalView?.caption }}</figcaption>
+      }
+    </figure>
+  }
+  <app-learning-plot [description]="result.description" [series]="result.series"
+    [markers]="result.markers || []" [xmin]="result.bounds[0]" [xmax]="result.bounds[1]"
+    [ymin]="result.bounds[2]" [ymax]="result.bounds[3]" [xLabel]="result.xLabel"
+    [yLabel]="result.yLabel" [barWidth]="definition.barWidth ?? 14" />
+  @if (definition.note) {
+    <p class="note">{{ definition.note }}</p>
+  }
+</section>

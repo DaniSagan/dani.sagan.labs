@@ -24,6 +24,16 @@ export class EstudioGlobalDeUnaFuncionProblemComponent {
     "statement": "Estudia crecimiento, extremos, concavidad y límites de \\(f(x)=xe^{-x}\\) en \\(\\mathbb{R}\\).",
     "resources": [
       {
+        "label": "Exponenciales y logaritmos: propiedades y ecuaciones",
+        "route": "/articles/exponentials-logarithms",
+        "activity": "Respeta el dominio del logaritmo, transforma cocientes adimensionales y distingue cambio relativo constante de crecimiento polinómico."
+      },
+      {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Estudio completo de funciones",
         "route": "/articles/function-analysis",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

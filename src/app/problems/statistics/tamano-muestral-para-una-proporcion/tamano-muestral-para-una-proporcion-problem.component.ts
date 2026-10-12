@@ -24,6 +24,11 @@ export class TamanoMuestralParaUnaProporcionProblemComponent {
     "statement": "Usando la aproximación normal, busca n para estimar una proporción con margen máximo \\(0,05\\) al 95 %, sin conocer previamente p. Usa \\(z=1,96\\).",
     "resources": [
       {
+        "label": "Distribución normal y tipificación",
+        "route": "/articles/normal-distribution",
+        "activity": "Tipifica con el error estándar adecuado, distingue colas unilaterales y bilaterales e interpreta cobertura y p-valor."
+      },
+      {
         "label": "Distribuciones muestrales y error estándar",
         "route": "/articles/sampling-distributions",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

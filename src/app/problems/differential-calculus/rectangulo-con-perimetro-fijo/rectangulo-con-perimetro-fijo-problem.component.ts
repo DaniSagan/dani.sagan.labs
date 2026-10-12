@@ -23,6 +23,11 @@ export class RectanguloConPerimetroFijoProblemComponent {
     "level": "Repaso",
     "statement": "Entre los rectángulos de perímetro 40 cm, determina el de área máxima.",
     "resources": [
+      {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
 {
   "label": "Medias aritmética, geométrica y armónica",
   "route": "/articles/mean-inequalities",

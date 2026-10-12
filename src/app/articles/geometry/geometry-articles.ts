@@ -1,3 +1,5 @@
+import { LinesPlanesArticleComponent } from './lines-planes/lines-planes-article.component';
+import { LineCircleArticleComponent } from './line-circle/line-circle-article.component';
 import { DimensionalAnalysisArticleComponent } from './dimensional-analysis/dimensional-analysis-article.component';
 import { EquationOfTimeArticleComponent } from './equation-of-time/equation-of-time-article.component';
 import { TriangleSimilarityArticleComponent } from './triangle-similarity/triangle-similarity-article.component';
@@ -45,6 +47,8 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  LinesPlanesArticleComponent,
+  LineCircleArticleComponent,
   DimensionalAnalysisArticleComponent,
   EquationOfTimeArticleComponent,
   TriangleSimilarityArticleComponent,

@@ -24,6 +24,11 @@ export class ContinuidadYDerivabilidadATrozosProblemComponent {
     "statement": "Sea \\(f(x)=ax+b\\) si \\(x\\le 1\\) y \\(f(x)=x^{2}\\) si \\(x>1\\). Halla \\(a,b\\) para que sea derivable en \\(x=1\\).",
     "resources": [
       {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Continuidad y derivabilidad",
         "route": "/articles/continuity-differentiability",
         "activity": "Compara límites laterales y cocientes incrementales; distingue continuidad, derivabilidad y continuidad de la derivada."

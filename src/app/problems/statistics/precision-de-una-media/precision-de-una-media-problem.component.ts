@@ -24,6 +24,11 @@ export class PrecisionDeUnaMediaProblemComponent {
     "statement": "Una población tiene varianza 36. Para muestras independientes de tamaño n, calcula \\(\\operatorname{Var}(\\bar{X})\\). ¿Qué n hace que la desviación típica de X̄ sea como máximo \\(\\frac{1}{2}\\)?",
     "resources": [
       {
+        "label": "Transformaciones de variables y de sus momentos",
+        "route": "/articles/moment-transformations",
+        "activity": "Transforma media y dispersión con sus factores correctos y revisa las covarianzas antes de calcular la varianza de una media."
+      },
+      {
         "label": "Distribuciones muestrales y error estándar",
         "route": "/articles/sampling-distributions",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

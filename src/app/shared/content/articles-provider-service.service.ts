@@ -1,3 +1,8 @@
+import { ZeroMeasureDimensionArticleComponent } from 'src/app/articles/fractals/zero-measure-dimension/zero-measure-dimension-article.component';
+import { FiniteProbabilityArticleComponent } from 'src/app/articles/probability/finite-probability/finite-probability-article.component';
+import { MomentTransformationsArticleComponent } from 'src/app/articles/probability/moment-transformations/moment-transformations-article.component';
+import { NormalDistributionArticleComponent } from 'src/app/articles/probability/normal-distribution/normal-distribution-article.component';
+import { BernoulliBinomialArticleComponent } from 'src/app/articles/probability/bernoulli-binomial/bernoulli-binomial-article.component';
 import { TRIGONOMETRY_ARTICLES } from 'src/app/articles/trigonometry/trigonometry-articles';
 import { FractalMeasureDimensionArticleComponent } from 'src/app/articles/fractals/fractal-measure-dimension/fractal-measure-dimension-article.component';
 import { SamplingDistributionsArticleComponent } from 'src/app/articles/probability/sampling-distributions/sampling-distributions-article.component';
@@ -113,6 +118,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
 
   fractals: NavbarItem[] =
   [
+    { name: ZeroMeasureDimensionArticleComponent.title, route: ZeroMeasureDimensionArticleComponent.route },
     { name: FractalMeasureDimensionArticleComponent.title, route: FractalMeasureDimensionArticleComponent.route },
     { name: SierpinskiTriangleComponent.title, route: SierpinskiTriangleComponent.route },
     { name: SierpinskiCarpetComponent.title, route: SierpinskiCarpetComponent.route },
@@ -216,6 +222,10 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: FiniteProbabilityArticleComponent.title, route: FiniteProbabilityArticleComponent.route },
+    { name: MomentTransformationsArticleComponent.title, route: MomentTransformationsArticleComponent.route },
+    { name: NormalDistributionArticleComponent.title, route: NormalDistributionArticleComponent.route },
+    { name: BernoulliBinomialArticleComponent.title, route: BernoulliBinomialArticleComponent.route },
     { name: SamplingDistributionsArticleComponent.title, route: SamplingDistributionsArticleComponent.route },
     { name: GraphicalDiagnosticsArticleComponent.title, route: GraphicalDiagnosticsArticleComponent.route },
     { name: DiscreteExpectationArticleComponent.title, route: DiscreteExpectationArticleComponent.route },

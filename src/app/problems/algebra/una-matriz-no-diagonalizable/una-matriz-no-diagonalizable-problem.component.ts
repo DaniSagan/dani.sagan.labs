@@ -24,6 +24,11 @@ export class UnaMatrizNoDiagonalizableProblemComponent {
     "statement": "Para \\(A=\\begin{pmatrix}1&1\\\\0&1\\end{pmatrix}\\), demuestra que no es diagonalizable y calcula \\(A^{n}\\) para \\(n\\ge 0\\).",
     "resources": [
       {
+        "label": "Sistemas diferenciales lineales y exponencial de matrices",
+        "route": "/articles/linear-ode-systems",
+        "activity": "Conecta autovectores y Jordan con el flujo continuo; deriva la exponencial de la matriz y verifica el dato inicial."
+      },
+      {
         "label": "Forma de Jordan, nilpotencia y potencias de matrices",
         "route": "/articles/jordan-form",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

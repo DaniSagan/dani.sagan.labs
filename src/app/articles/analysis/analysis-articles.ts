@@ -1,3 +1,4 @@
+import { ExponentialsLogarithmsArticleComponent } from './exponentials-logarithms/exponentials-logarithms-article.component';
 import { DaylightSavingTimeArticleComponent } from './daylight-saving-time/daylight-saving-time-article.component';
 import { NumericalConditioningArticleComponent } from './numerical-conditioning/numerical-conditioning-article.component';
 import { BanachFixedPointArticleComponent } from './banach-fixed-point/banach-fixed-point-article.component';
@@ -22,6 +23,7 @@ import { BaselArticleComponent } from './basel/basel-article.component';
 import { StirlingArticleComponent } from './stirling/stirling-article.component';
 
 export const ANALYSIS_ARTICLES = [
+  ExponentialsLogarithmsArticleComponent,
   DaylightSavingTimeArticleComponent,
   NumericalConditioningArticleComponent,
   BanachFixedPointArticleComponent,

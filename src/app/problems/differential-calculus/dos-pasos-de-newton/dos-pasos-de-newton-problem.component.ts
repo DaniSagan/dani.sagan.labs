@@ -24,6 +24,11 @@ export class DosPasosDeNewtonProblemComponent {
     "statement": "Aplica dos iteraciones de Newton a \\(x^{2}-2=0\\) desde \\(x_{0}=1\\), con aritmética exacta.",
     "resources": [
       {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Newton–Raphson",
         "route": "/articles/newton-raphson",
         "activity": "Búsqueda de raíces mediante rectas tangentes e iteraciones sucesivas."

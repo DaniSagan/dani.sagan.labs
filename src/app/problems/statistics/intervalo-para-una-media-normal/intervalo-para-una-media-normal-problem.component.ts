@@ -24,6 +24,11 @@ export class IntervaloParaUnaMediaNormalProblemComponent {
     "statement": "Una población normal tiene desviación típica conocida \\(\\sigma =10\\). Una muestra independiente de \\(n=100\\) da media 50. Usando \\(z_{0},_{975}=1,96\\), calcula el intervalo de confianza del 95% para la media e interpreta su cobertura.",
     "resources": [
       {
+        "label": "Distribución normal y tipificación",
+        "route": "/articles/normal-distribution",
+        "activity": "Tipifica con el error estándar adecuado, distingue colas unilaterales y bilaterales e interpreta cobertura y p-valor."
+      },
+      {
         "label": "Distribuciones muestrales y error estándar",
         "route": "/articles/sampling-distributions",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

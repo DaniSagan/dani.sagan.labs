@@ -26,7 +26,7 @@ const GROUPS = {
     ],
     [
       'Autosimilitud y conjuntos geométricos',
-      'sierpinski-triangle sierpinski-carpet cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal pentaflake hexaflake durer-pentagon menger-sponge jerusalem-cross',
+      'sierpinski-triangle sierpinski-carpet zero-measure-dimension cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal pentaflake hexaflake durer-pentagon menger-sponge jerusalem-cross',
     ],
     ['Bifurcaciones y caos', 'bifurcation-diagram feigenbaum'],
   ],
@@ -71,7 +71,7 @@ const GROUPS = {
     ],
     [
       'Circunferencias y tangencias',
-      'power-of-point chords-secants-tangents casey-theorem apollonius-problem descartes-circles',
+      'line-circle power-of-point chords-secants-tangents casey-theorem apollonius-problem descartes-circles',
     ],
     [
       'Cuadriláteros y áreas',
@@ -83,7 +83,7 @@ const GROUPS = {
     ],
     [
       'Espacio y dimensiones',
-      'orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
+      'lines-planes orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
     ],
     ['Patrones geométricos', 'hitomezashi'],
   ],

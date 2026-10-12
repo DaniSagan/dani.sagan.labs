@@ -24,6 +24,11 @@ export class CajaSinTapaProblemComponent {
     "statement": "De una cartulina cuadrada de 12 cm de lado se recortan cuadrados iguales de lado x en las esquinas y se pliegan las paredes. Maximiza el volumen de la caja sin tapa.",
     "resources": [
       {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Optimización con derivadas",
         "route": "/articles/derivative-optimization",
         "activity": "Construye la función objetivo, determina el dominio y compara candidatos interiores y extremos para justificar el óptimo global."

@@ -24,6 +24,11 @@ export class IndependenciaDeSucesosProblemComponent {
     "statement": "En un dado equilibrado, \\(A={2,4,6}\\) y \\(B={3,6}\\). Decide si son independientes. Repite con \\(C={4,5,6}\\) en lugar de B.",
     "resources": [
       {
+        "label": "Probabilidad en espacios finitos: sucesos y regla de Laplace",
+        "route": "/articles/finite-probability",
+        "activity": "Define los resultados elementales, justifica su equiprobabilidad y cuenta la intersección antes de condicionar o comprobar independencia."
+      },
+      {
         "label": "Probabilidad condicionada e independencia",
         "route": "/articles/conditional-independence",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

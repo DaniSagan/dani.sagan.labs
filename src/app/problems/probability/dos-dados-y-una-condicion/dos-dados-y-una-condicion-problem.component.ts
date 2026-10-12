@@ -24,6 +24,11 @@ export class DosDadosYUnaCondicionProblemComponent {
     "statement": "Se lanzan dos dados equilibrados. Sea S la suma y A el suceso «el primer dado es par». Calcula \\(P(S=8)\\) y \\(P(S=8\\mid A)\\).",
     "resources": [
       {
+        "label": "Probabilidad en espacios finitos: sucesos y regla de Laplace",
+        "route": "/articles/finite-probability",
+        "activity": "Define los resultados elementales, justifica su equiprobabilidad y cuenta la intersección antes de condicionar o comprobar independencia."
+      },
+      {
         "label": "Probabilidad condicionada e independencia",
         "route": "/articles/conditional-independence",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

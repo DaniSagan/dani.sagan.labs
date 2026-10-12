@@ -24,6 +24,11 @@ export class UnaDistribucionBinomialProblemComponent {
     "statement": "Se lanzan 5 monedas equilibradas e independientes. Si X es el número de caras, calcula \\(P(X=3)\\), \\(E(X)\\) y \\(\\operatorname{Var}(X)\\).",
     "resources": [
       {
+        "label": "Distribuciones de Bernoulli y binomial",
+        "route": "/articles/bernoulli-binomial",
+        "activity": "Justifica los ensayos independientes, deduce la distribución del recuento y calcula su esperanza y varianza desde las indicadoras."
+      },
+      {
         "label": "Esperanza discreta, juegos justos y riesgo",
         "route": "/articles/discrete-expectation",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

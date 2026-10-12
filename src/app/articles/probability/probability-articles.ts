@@ -1,3 +1,7 @@
+import { FiniteProbabilityArticleComponent } from './finite-probability/finite-probability-article.component';
+import { MomentTransformationsArticleComponent } from './moment-transformations/moment-transformations-article.component';
+import { NormalDistributionArticleComponent } from './normal-distribution/normal-distribution-article.component';
+import { BernoulliBinomialArticleComponent } from './bernoulli-binomial/bernoulli-binomial-article.component';
 import { StratifiedSamplingArticleComponent } from './stratified-sampling/stratified-sampling-article.component';
 import { CausalInferenceArticleComponent } from './causal-inference/causal-inference-article.component';
 import { BootstrapArticleComponent } from './bootstrap/bootstrap-article.component';
@@ -30,6 +34,10 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  FiniteProbabilityArticleComponent,
+  MomentTransformationsArticleComponent,
+  NormalDistributionArticleComponent,
+  BernoulliBinomialArticleComponent,
   StratifiedSamplingArticleComponent,
   CausalInferenceArticleComponent,
   BootstrapArticleComponent,

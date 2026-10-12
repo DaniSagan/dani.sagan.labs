@@ -24,6 +24,11 @@ export class ProyeccionOrtogonalProblemComponent {
     "statement": "Proyecta \\(v=(2,1,3)\\) sobre el plano \\(x+y+z=0\\) y calcula la distancia de v al plano.",
     "resources": [
       {
+        "label": "Rectas y planos en el espacio: posiciones relativas",
+        "route": "/articles/lines-planes",
+        "activity": "Clasifica las posiciones mediante productos y rango; verifica que la proyección pertenece al plano y que el segmento mínimo es perpendicular."
+      },
+      {
         "label": "Proyecciones ortogonales y distancias en el espacio",
         "route": "/articles/orthogonal-projections",
         "activity": "Calcula el pie de la perpendicular y las distancias a planos o entre rectas, y verifica la ortogonalidad del residuo."

@@ -24,6 +24,11 @@ export class PotenciasPorAutovectoresProblemComponent {
     "statement": "Sea \\(A=\\begin{pmatrix}2&1\\\\1&2\\end{pmatrix}\\). Calcula \\(A^{n}\\) para todo entero \\(n\\ge 0\\).",
     "resources": [
       {
+        "label": "Sistemas diferenciales lineales y exponencial de matrices",
+        "route": "/articles/linear-ode-systems",
+        "activity": "Conecta autovectores y Jordan con el flujo continuo; deriva la exponencial de la matriz y verifica el dato inicial."
+      },
+      {
         "label": "Forma de Jordan, nilpotencia y potencias de matrices",
         "route": "/articles/jordan-form",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

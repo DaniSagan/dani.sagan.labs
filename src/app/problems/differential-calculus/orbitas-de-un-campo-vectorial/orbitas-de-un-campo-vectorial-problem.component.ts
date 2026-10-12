@@ -24,6 +24,16 @@ export class OrbitasDeUnCampoVectorialProblemComponent {
     "statement": "Para el sistema \\(x'=-y\\), \\(y'=x\\), con \\((x(0),y(0))=(2,0)\\), halla la trayectoria, el sentido y el período.",
     "resources": [
       {
+        "label": "Integrales primeras y cantidades conservadas",
+        "route": "/articles/first-integrals",
+        "activity": "Deriva la cantidad conservada a lo largo del campo y distingue su conservación exacta de la deriva de un integrador numérico."
+      },
+      {
+        "label": "Sistemas diferenciales lineales y exponencial de matrices",
+        "route": "/articles/linear-ode-systems",
+        "activity": "Conecta autovectores y Jordan con el flujo continuo; deriva la exponencial de la matriz y verifica el dato inicial."
+      },
+      {
         "label": "Oscilador armónico y retratos de fase",
         "route": "/articles/harmonic-oscillator",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

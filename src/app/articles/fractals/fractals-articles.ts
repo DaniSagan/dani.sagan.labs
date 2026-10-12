@@ -1,3 +1,4 @@
+import { ZeroMeasureDimensionArticleComponent } from './zero-measure-dimension/zero-measure-dimension-article.component';
 import { CantorFunctionArticleComponent } from './cantor-function/cantor-function-article.component';
 import { FractalMeasureDimensionArticleComponent } from './fractal-measure-dimension/fractal-measure-dimension-article.component';
 import { BurningShipComponent } from './burning-ship/burning-ship.component';
@@ -50,6 +51,7 @@ import { TricornComponent } from './tricorn/tricorn.component';
 import { VicsekFractalComponent } from './vicsek-fractal/vicsek-fractal.component';
 
 export const FRACTALS_ARTICLES = [
+  ZeroMeasureDimensionArticleComponent,
   CantorFunctionArticleComponent,
   FractalMeasureDimensionArticleComponent,
   FeigenbaumArticleComponent,

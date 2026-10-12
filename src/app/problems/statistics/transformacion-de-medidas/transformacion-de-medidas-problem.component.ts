@@ -24,6 +24,11 @@ export class TransformacionDeMedidasProblemComponent {
     "statement": "Un conjunto de temperaturas en °C tiene media 20 y desviación típica 3. Convierte su media, desviación típica y varianza a °F, usando \\(F=1,8C+32\\).",
     "resources": [
       {
+        "label": "Transformaciones de variables y de sus momentos",
+        "route": "/articles/moment-transformations",
+        "activity": "Transforma media y dispersión con sus factores correctos y revisa las covarianzas antes de calcular la varianza de una media."
+      },
+      {
         "label": "Estadística descriptiva y valores atípicos",
         "route": "/articles/descriptive-statistics",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

@@ -1,3 +1,4 @@
+import { FirstIntegralsArticleComponent } from './first-integrals/first-integrals-article.component';
 import { LifePatternsArticleComponent } from './life-patterns/life-patterns-article.component';
 import { HarmonicOscillatorArticleComponent } from './harmonic-oscillator/harmonic-oscillator-article.component';
 import { KeplerOrbitsArticleComponent } from './kepler-orbits/kepler-orbits-article.component';
@@ -8,6 +9,7 @@ import { RosslerAttractorArticleComponent } from './rossler-attractor/rossler-at
 import { CellularAutomataArticleComponent } from './cellular-automata/cellular-automata-article.component';
 
 export const DYNAMICAL_SYSTEMS_ARTICLES = [
+  FirstIntegralsArticleComponent,
   LifePatternsArticleComponent,
   HarmonicOscillatorArticleComponent,
   KeplerOrbitsArticleComponent,

@@ -24,6 +24,11 @@ export class UnCocienteConExponencialProblemComponent {
     "statement": "Calcula \\(\\lim_{n\\to\\infty}\\frac{n^2}{2^n}\\) y justifica la convergencia.",
     "resources": [
       {
+        "label": "Exponenciales y logaritmos: propiedades y ecuaciones",
+        "route": "/articles/exponentials-logarithms",
+        "activity": "Respeta el dominio del logaritmo, transforma cocientes adimensionales y distingue cambio relativo constante de crecimiento polinómico."
+      },
+      {
         "label": "Límites, equivalencias y jerarquías de crecimiento",
         "route": "/articles/asymptotic-limits",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

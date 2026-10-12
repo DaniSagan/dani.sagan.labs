@@ -24,6 +24,11 @@ export class EscalaDeUnaOrbitaCircularProblemComponent {
     "statement": "En el modelo newtoniano de masa central M fija y satélite despreciable, deduce el período de una órbita circular de radio r. ¿Cómo cambia al duplicar r?",
     "resources": [
       {
+        "label": "Integrales primeras y cantidades conservadas",
+        "route": "/articles/first-integrals",
+        "activity": "Deriva la cantidad conservada a lo largo del campo y distingue su conservación exacta de la deriva de un integrador numérico."
+      },
+      {
         "label": "Órbitas circulares y tercera ley de Kepler",
         "route": "/articles/kepler-orbits",
         "activity": "Deriva la velocidad y el período orbital, comprueba la escala T proporcional a r^(3/2) y distingue radio de semieje mayor."

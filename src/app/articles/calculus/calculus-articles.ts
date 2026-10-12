@@ -1,3 +1,5 @@
+import { LinearOdeSystemsArticleComponent } from './linear-ode-systems/linear-ode-systems-article.component';
+import { DerivativeFoundationsArticleComponent } from './derivative-foundations/derivative-foundations-article.component';
 import { OdeNumericalIntegrationArticleComponent } from './ode-numerical-integration/ode-numerical-integration-article.component';
 import { LinearApproximationArticleComponent } from './linear-approximation/linear-approximation-article.component';
 import { PolynomialInterpolationArticleComponent } from './polynomial-interpolation/polynomial-interpolation-article.component';
@@ -14,6 +16,8 @@ import { BrachistochroneArticleComponent } from './brachistochrone/brachistochro
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
 
 export const CALCULUS_ARTICLES = [
+  LinearOdeSystemsArticleComponent,
+  DerivativeFoundationsArticleComponent,
   OdeNumericalIntegrationArticleComponent,
   LinearApproximationArticleComponent,
   PolynomialInterpolationArticleComponent,

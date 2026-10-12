@@ -24,6 +24,11 @@ export class ContrasteBilateralProblemComponent {
     "statement": "Con población normal y \\(\\sigma =10\\) conocida, contrasta \\(H_{0}\\):\\(\\mu =50\\) frente a \\(H_{1}\\):\\(\\mu \\ne 50\\). Una muestra de \\(n=100\\) da media 52. Usa nivel 5% y valor crítico \\(1,96\\).",
     "resources": [
       {
+        "label": "Distribución normal y tipificación",
+        "route": "/articles/normal-distribution",
+        "activity": "Tipifica con el error estándar adecuado, distingue colas unilaterales y bilaterales e interpreta cobertura y p-valor."
+      },
+      {
         "label": "Inferencia estadística",
         "route": "/articles/statistical-inference",
         "activity": "Distingue error estándar, cobertura y nivel del contraste; planifica tamaños muestrales y comprueba las hipótesis del modelo."

@@ -24,6 +24,11 @@ export class TaylorConControlDelErrorProblemComponent {
     "statement": "Aproxima \\(e^{\\frac{1}{10}}\\) mediante el polinomio de Taylor de grado 2 en 0 y acota el error usando \\(e^{\\frac{1}{10}}<2\\).",
     "resources": [
       {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Series de Taylor",
         "route": "/articles/taylor-series",
         "activity": "Aproximaciones locales, derivadas y términos de error en desarrollos de funciones."

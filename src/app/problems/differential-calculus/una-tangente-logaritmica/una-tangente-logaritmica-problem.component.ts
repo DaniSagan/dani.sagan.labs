@@ -24,6 +24,16 @@ export class UnaTangenteLogaritmicaProblemComponent {
     "statement": "Halla la recta tangente a \\(f(x)=\\ln x\\) en \\(x=e\\) y el punto donde corta el eje x.",
     "resources": [
       {
+        "label": "Exponenciales y logaritmos: propiedades y ecuaciones",
+        "route": "/articles/exponentials-logarithms",
+        "activity": "Respeta el dominio del logaritmo, transforma cocientes adimensionales y distingue cambio relativo constante de crecimiento polinómico."
+      },
+      {
+        "label": "Derivadas: definición, interpretación y reglas",
+        "route": "/articles/derivative-foundations",
+        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+      },
+      {
         "label": "Teoremas de Rolle y del valor medio",
         "route": "/articles/mean-value-theorems",
         "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."

@@ -23,6 +23,11 @@ export class VolumenDeUnTetraedroProblemComponent {
     "level": "Oposición",
     "statement": "Calcula el volumen del tetraedro con vértices \\(O=(0,0,0)\\), \\(A=(2,0,0)\\), \\(B=(0,3,0)\\), \\(C=(1,1,4)\\).",
     "resources": [
+      {
+        "label": "Rectas y planos en el espacio: posiciones relativas",
+        "route": "/articles/lines-planes",
+        "activity": "Clasifica las posiciones mediante productos y rango; verifica que la proyección pertenece al plano y que el segmento mínimo es perpendicular."
+      },
 {
   "label": "Producto vectorial y producto mixto",
   "route": "/articles/vector-products",
