@@ -11,6 +11,7 @@
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage=false",
     "test:life-engine": "node scripts/test-life-engine.cjs",
+    "test:probability-detective": "node scripts/test-probability-detective.cjs",
     "generate:life-catalog": "node scripts/generate-life-catalog.cjs"
   },
   "private": true,

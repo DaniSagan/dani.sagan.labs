@@ -14,6 +14,7 @@ export class GamesNavbarComponent {
   readonly sections: NavbarSubsection[] = [{
     name: 'Otros',
     items: [
+      { name: 'Detective de probabilidades', route: 'probability-detective' },
       { name: 'Tres en Raya', route: 'tic-tac-toe' },
       { name: 'Cuatro en Raya', route: 'four-in-a-row' },
       { name: 'Juego de la Vida de Conway', route: 'game-of-life' },

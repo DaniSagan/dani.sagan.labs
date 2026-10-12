@@ -13,6 +13,7 @@ const routes: Routes = [
     path: '',
     component: GamesContentComponent,
     children: [
+      {path: 'probability-detective', loadComponent: () => import('./probability-detective/probability-detective.component').then(m => m.ProbabilityDetectiveComponent)},
       {path: 'tic-tac-toe', component: TicTacToeComponent},
       {path: 'four-in-a-row', component: FourInARowComponent},
       {path: 'game-of-life', component: GameOfLifeComponent},
