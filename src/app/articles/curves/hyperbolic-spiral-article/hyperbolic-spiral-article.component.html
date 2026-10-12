@@ -1,0 +1,39 @@
+<h2>Espiral hiperbólica</h2>
+<p class="dropcap">La espiral hiperbólica reduce el radio de forma inversamente proporcional al ángulo. Al avanzar, da vueltas cada vez más pequeñas alrededor del origen.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [0.3, 31.416].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>El origen es un punto límite cuando t tiende a infinito, no un punto alcanzado con un parámetro finito. Para t próximo a cero, la coordenada x diverge y la coordenada y tiende a p.</p>
+
+<h3>Análisis y construcción</h3>
+<p>El límite sin t/t=1 muestra que y=p es una asíntota cuando t→0 por la derecha. Esta asíntota surge de la parametrización y no de fijar arbitrariamente una ventana de dibujo.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="hyperbolic-spiral-parameter">Escala (p)</label>
+    <input id="hyperbolic-spiral-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Compara los puntos t=π y t=2π y explica por qué el radio se reduce a la mitad.</p>
+  <details><summary>Ver comprobación</summary><p>Son (−p/π,0) y (p/(2π),0). Sus radios son p/π y p/(2π), conforme a la ley inversa.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/lissajous">Curva de Lissajous</a>. Compara el periodo de las coordenadas y el cierre del recorrido.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathshistory.st-andrews.ac.uk/Curves/Hyperbolic/" target="_blank" rel="noopener noreferrer">MacTutor · Universidad de St Andrews</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

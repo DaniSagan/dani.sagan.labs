@@ -1,0 +1,38 @@
+<h2>Curva del mecanismo de Watt</h2>
+<p class="dropcap">La curva de Watt describe el movimiento del punto medio de una biela en un mecanismo articulado. Su interés práctico reside en que ciertos tramos se aproximan a una línea recta.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>El gráfico representa el conjunto algebraico del mecanismo con a=c=1 y b=1.5. Una rama mecánica concreta exige fijar cómo se articulan las barras; la escala p multiplica todas las longitudes.</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La ecuación utilizada corresponde a una separación de pivotes 2, brazos de radio 1.5 y semibiela 1, en unidades normalizadas. Es simétrica respecto de ambos ejes y puede contener contactos entre ramas.</p>
+
+<h3>Análisis y construcción</h3>
+<p>La forma polar general contiene una raíz cuadrada y dos signos de ensamblaje. Al eliminar las raíces se obtiene una ecuación algebraica; para un mecanismo físico concreto hay que seleccionar además el modo de ensamblaje.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los puntos singulares.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="watt-linkage-curve-parameter">Escala (p)</label>
+    <input id="watt-linkage-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Encuentra los puntos del conjunto algebraico situados en el eje horizontal.</p>
+  <details><summary>Ver comprobación</summary><p>Con v=0 queda [u²(u²−2.25)]²=0. Las soluciones son u=0 y u=±1.5. El contorno algebraico reúne los modos de ensamblaje.</p></details>
+  <ul>
+    <li><a routerLink="/tools/implicit-curve-graph">Explorador de curvas implícitas</a>. Introduce la ecuación de escala unidad y compara el resultado con el dibujo del artículo.</li>
+    <li><a routerLink="/articles/cissoid">Cisoide de Diocles</a>. Compara sus ramas y distingue una cúspide de un cruce entre dos tangentes.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/WattsCurve.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

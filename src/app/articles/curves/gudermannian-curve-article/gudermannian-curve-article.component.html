@@ -1,0 +1,39 @@
+<h2>Curva gudermanniana</h2>
+<p class="dropcap">La gudermanniana conecta funciones trigonométricas e hiperbólicas sin introducir números complejos. Su gráfica transforma toda la recta en un intervalo angular finito.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [-5, 5].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>Es impar y creciente, con límites ±π/2. Su derivada es p sech(pt) y la pendiente central p. Las identidades sin(gd z)=tanh z y tan(gd z)=sinh z expresan su papel de puente.</p>
+
+<h3>Análisis y construcción</h3>
+<p>La forma 2atan(tanh(z/2)) evita invertir funciones con valores fuera de su dominio. Al crecer z, la tangente hiperbólica tiende a uno y la imagen se aproxima a π/2.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="gudermannian-curve-parameter">Escala del argumento (p)</label>
+    <input id="gudermannian-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala del argumento (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Encuentra el argumento para el que la altura es π/4.</p>
+  <details><summary>Ver comprobación</summary><p>tan(π/4)=1=sinh(pt), luego t=asinh(1)/p=log(1+√2)/p.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/function-analysis">Estudio de funciones</a>. Contrasta crecimiento, extremos e inflexiones con la forma del gráfico.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Gudermannian.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

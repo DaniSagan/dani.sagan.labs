@@ -129,6 +129,18 @@ const GROUPS = {
       'Otras curvas clásicas',
       'agnesi-witch lissajous conchoid cissoid parabola-like',
     ],
+    ["Cúbicas y curvas racionales", 'descartes-folium neile-semicubical right-strophoid maclaurin-trisectrix tschirnhausen-cubic newton-serpentine newton-trident sluze-conchoid newton-divergent-parabola'],
+    ["Cuárticas históricas", 'sylvester-bicorn algebraic-bean longchamps-piriform devils-curve gutschoven-kappa eudoxus-kampyle bullet-nose-curve proclus-hippopede ampersand-curve bow-curve'],
+    ["Séxticas y construcciones algebraicas", 'cayley-sextic dumbbell-curve algebraic-butterfly algebraic-heart watt-linkage-curve cornoid-curve durer-conchoid sluze-pearls'],
+    ["Distancias, óvalos y contornos", 'circle-curve cartesian-oval perseus-spiric reuleaux-triangle-curve stadium-curve lame-superellipse fernandez-guasti-squircle three-focus-ellipse'],
+    ["Espirales y recorridos angulares", 'fermat-spiral hyperbolic-spiral lituus-spiral euler-clothoid epispiral-curve poinsot-spiral cochleoid-curve theodorus-spiral'],
+    ["Rodaduras y curvas de movimiento", 'trochoid-curve epitrochoid-curve hypotrochoid-curve nephroid-curve freeth-nephroid ceva-cycloid pascal-limacon talbot-curve'],
+    ["Geometría diferencial y equilibrio", 'circle-involute ellipse-evolute-curve catenary-curve tractrix-curve catenary-evolute euler-elastica'],
+    ["Interpolación y diseño geométrico", 'quadratic-bezier-curve cubic-bezier-curve rational-bezier-curve cubic-hermite-curve catmull-rom-curve uniform-cubic-bspline natural-cubic-spline lagrange-interpolation-curve pythagorean-hodograph-quintic nurbs-curve'],
+    ["Gráficas trascendentes y señales", 'sinusoidal-curve damped-sinusoid exponential-curve logarithmic-curve logistic-curve gompertz-curve hyperbolic-tangent-curve sinc-curve error-function-curve gudermannian-curve'],
+    ["Polinomios, funciones especiales y densidades", 'chebyshev-curve legendre-curve hermite-probabilist-curve laguerre-curve bessel-j0-curve airy-ai-curve dawson-curve beta-density-curve gamma-density-curve student-density-curve'],
+    ["Lazos, perfiles y curvas ornamentales", 'gerono-lemniscate bifolium-curve kepler-folium-curve cruciform-curve fay-butterfly gielis-superformula teardrop-curve trigonometric-egg-curve plateau-curve gear-profile-curve'],
+    ["Curvas espaciales y sus proyecciones", 'circular-helix-curve conical-helix-curve viviani-curve'],
   ],
 } as const;
 

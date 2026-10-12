@@ -1,0 +1,39 @@
+<h2>Cocleoide</h2>
+<p class="dropcap">La cocleoide produce una sucesión de lazos cada vez más pequeños mediante el cociente sin t/t. El valor aparentemente indeterminado en t=0 tiene un límite finito.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [-18.85, 18.85].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La función radial es par; x es par e y impar. La curva pasa por el origen cuando t es un múltiplo no nulo de π, y por (p,0) cuando t=0.</p>
+
+<h3>Análisis y construcción</h3>
+<p>La prolongación continua del cociente en cero vale uno. Las amplitudes de los lazos decrecen como 1/|t|; por ello una ventana finita del parámetro solo muestra un número finito de ellos.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="cochleoid-curve-parameter">Escala (p)</label>
+    <input id="cochleoid-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Distingue el punto asociado a t=0 del asociado a t=π.</p>
+  <details><summary>Ver comprobación</summary><p>En t=0 se usa el límite r=p y aparece (p,0). En t=π el numerador es cero y se obtiene el origen.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/lissajous">Curva de Lissajous</a>. Compara el periodo de las coordenadas y el cierre del recorrido.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathshistory.st-andrews.ac.uk/Curves/Cochleoid/" target="_blank" rel="noopener noreferrer">MacTutor · Universidad de St Andrews</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

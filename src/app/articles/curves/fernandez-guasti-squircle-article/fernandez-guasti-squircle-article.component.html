@@ -1,0 +1,38 @@
+<h2>Squircle de Fernández-Guasti</h2>
+<p class="dropcap">El squircle de Fernández-Guasti es una interpolación algebraica entre la circunferencia y el cuadrado. Es diferente de la superelipse: utiliza un producto de cuadrados en lugar de una suma de potencias.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>Se representa exclusivamente la componente central, con |u|≤1 y |v|≤1. El evaluador devuelve un valor no definido fuera de este dominio para no dibujar las ramas exteriores.</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La ecuación general es u²+v²−s²u²v²=1; aquí s²=0.8. Se selecciona el contorno central dentro del cuadrado |u|≤1, |v|≤1, excluyendo posibles ramas exteriores del polinomio.</p>
+
+<h3>Análisis y construcción</h3>
+<p>En los ejes, los puntos permanecen en ±1. En las diagonales se resuelve una ecuación cuadrática en u². Cuando s tiende a uno, la ecuación se factoriza y el contorno central tiende a los lados del cuadrado.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los puntos singulares.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="fernandez-guasti-squircle-parameter">Escala (p)</label>
+    <input id="fernandez-guasti-squircle-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Explica por qué es necesario indicar el dominio además de la ecuación.</p>
+  <details><summary>Ver comprobación</summary><p>La ecuación polinómica puede tener otras componentes fuera del cuadrado. El squircle designa su contorno central; evaluar únicamente el polinomio mostraría puntos que no pertenecen a ese contorno.</p></details>
+  <ul>
+    <li><a routerLink="/tools/implicit-curve-graph">Explorador de curvas implícitas</a>. Introduce la ecuación de escala unidad y compara el resultado con el dibujo del artículo.</li>
+    <li><a routerLink="/articles/cissoid">Cisoide de Diocles</a>. Compara sus ramas y distingue una cúspide de un cruce entre dos tangentes.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Squircle.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

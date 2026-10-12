@@ -1,0 +1,39 @@
+<h2>Curva de la superfórmula de Gielis</h2>
+<p class="dropcap">La superfórmula de Gielis generaliza perfiles radiales mediante exponentes. Este explorador elige una configuración de doce sectores para mostrar cómo cambia la forma sin modificar su periodicidad.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [0, 6.283].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>Se fijan m=12, a=b=1 y n₁=n₂=n₃=p. Para p=2 se obtiene una circunferencia. Otros exponentes producen bordes ondulados o angulosos según el régimen.</p>
+
+<h3>Análisis y construcción</h3>
+<p>El argumento mθ/4 se convierte aquí en 3t. Los valores absolutos garantizan radios reales para exponentes no enteros. Seno y coseno no se anulan a la vez, por lo que el radio está definido.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="gielis-superformula-parameter">Exponente común (p)</label>
+    <input id="gielis-superformula-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Exponente común (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Calcula el radio en t=0 y t=π/12 para p=4.</p>
+  <details><summary>Ver comprobación</summary><p>En cero el radio es uno. En π/12, las dos potencias suman 1/2, de modo que r=2^(1/4).</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/lissajous">Curva de Lissajous</a>. Compara el periodo de las coordenadas y el cierre del recorrido.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Superformula.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Se fija una configuración concreta de la superfórmula general: m=12, a=b=1 y n₁=n₂=n₃=p.</p>

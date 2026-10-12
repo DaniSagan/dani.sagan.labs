@@ -1,0 +1,39 @@
+<h2>Superelipse de Lamé</h2>
+<p class="dropcap">La superelipse de Lamé generaliza la elipse mediante un exponente. A medida que ese exponente aumenta, los lados se aplanan y la figura se aproxima a un rectángulo.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [0, 6.283].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>El modelo cumple |x/2|^p+|y|^p=1. Para p=2 es una elipse; para p=1 es un rombo. Si p&gt;1, la curva es convexa y conserva las reflexiones respecto de ambos ejes.</p>
+
+<h3>Análisis y construcción</h3>
+<p>Elevar las coordenadas normalizadas a la potencia p deja cos²t y sin²t. Su suma es uno, lo que verifica exactamente la parametrización y explica por qué deben conservarse los signos.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Cambia el exponente entre el rombo, la elipse y los contornos rectangulares redondeados. Los semiejes permanecen fijos.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="lame-superellipse-parameter">Exponente (p)</label>
+    <input id="lame-superellipse-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Exponente (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Compara el punto del primer cuadrante correspondiente a t=π/4 para p=2 y p=4.</p>
+  <details><summary>Ver comprobación</summary><p>Para p=2 es (√2,1/√2). Para p=4 es (2·2^(−1/4),2^(−1/4)); se acerca a la esquina del rectángulo.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/lissajous">Curva de Lissajous</a>. Compara el periodo de las coordenadas y el cierre del recorrido.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Superellipse.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

@@ -1,0 +1,39 @@
+<h2>Curva sinusoidal</h2>
+<p class="dropcap">La curva sinusoidal representa una oscilación periódica de amplitud constante. Conecta geometría circular, ondas y movimientos armónicos mediante una función elemental.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [-6.283, 6.283].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La amplitud es uno y el periodo es 2π/p. La función es impar, con simetría central. Sus ceros están en t=kπ/p y los extremos alternan entre uno y menos uno.</p>
+
+<h3>Análisis y construcción</h3>
+<p>La segunda derivada es y″=−p²y. Esa ecuación caracteriza un oscilador armónico sin amortiguamiento. Aumentar p incrementa la frecuencia sin cambiar la altura de los extremos.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="sinusoidal-curve-parameter">Frecuencia angular (p)</label>
+    <input id="sinusoidal-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Frecuencia angular (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Determina el periodo y la separación entre ceros consecutivos cuando p=2.</p>
+  <details><summary>Ver comprobación</summary><p>El periodo es π y la separación entre ceros es π/2. Un periodo contiene dos intervalos entre ceros consecutivos.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/function-analysis">Estudio de funciones</a>. Contrasta crecimiento, extremos e inflexiones con la forma del gráfico.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Sine.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

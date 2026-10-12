@@ -1,0 +1,39 @@
+<h2>Curva de Dawson</h2>
+<p class="dropcap">La integral de Dawson combina una exponencial decreciente con una integral de exponenciales crecientes. El resultado tiene dos elevaciones opuestas y colas que se acercan al eje.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>Se utiliza cuadratura de Simpson con 240 subintervalos en [−4,4]. La función de Dawson se evalúa antes de aplicar la amplitud p.</p>
+<p class="curve-domain">Intervalos representados: [-4, 4].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La función es impar y se anula en el origen. Satisface F′(t)=1−2tF(t). Para argumentos grandes, su primer comportamiento asintótico es F(t)≈1/(2t).</p>
+
+<h3>Análisis y construcción</h3>
+<p>La ecuación diferencial se obtiene derivando el producto de la definición. El explorador usa Simpson compuesto en |t|≤4; la expresión directa no es adecuada para argumentos enormes por riesgo de desbordamiento.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="dawson-curve-parameter">Escala (p)</label>
+    <input id="dawson-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Calcula la pendiente de la gráfica en el origen y la condición de sus extremos.</p>
+  <details><summary>Ver comprobación</summary><p>F′(0)=1, por lo que la pendiente dibujada es p. Fuera del origen los extremos cumplen F(t)=1/(2t).</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/function-analysis">Estudio de funciones</a>. Contrasta crecimiento, extremos e inflexiones con la forma del gráfico.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://dlmf.nist.gov/7.2" target="_blank" rel="noopener noreferrer">NIST · Digital Library of Mathematical Functions</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

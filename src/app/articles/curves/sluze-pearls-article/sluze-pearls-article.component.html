@@ -1,0 +1,38 @@
+<h2>Perlas de Sluze</h2>
+<p class="dropcap">Las perlas de Sluze son curvas algebraicas construidas con productos de potencias. El ejemplo elegido posee un pequeño lóbulo cerrado y ramas que continúan después de un punto doble.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La ecuación define el conjunto de puntos reales que anulan la expresión. Las coordenadas u y v corresponden a la curva de escala unidad; p dilata ambas coordenadas sin modificar su forma. El gráfico muestra una ventana finita del conjunto.</p>
+
+<h3>Propiedades geométricas</h3>
+<p>La ecuación exige u≥0. Cerca de u=0 presenta comportamiento semicúbico; cerca de u=1, v²≈(u−1)², lo que produce dos tangentes distintas.</p>
+
+<h3>Análisis y construcción</h3>
+<p>En 0≤u≤1 las ramas v=±u^(3/2)(1−u) cierran un lóbulo. Maximizar la altura de ese tramo equivale a derivar u^(3/2)(1−u), cuyo máximo interior está en u=3/5.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los puntos singulares.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="sluze-pearls-parameter">Escala (p)</label>
+    <input id="sluze-pearls-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Distingue los tipos de singularidad en (0,0) y (1,0).</p>
+  <details><summary>Ver comprobación</summary><p>En el origen las dos ramas comparten la tangente horizontal; en (1,0) las pendientes límite son ±1. El primer punto es una cúspide y el segundo un nodo.</p></details>
+  <ul>
+    <li><a routerLink="/tools/implicit-curve-graph">Explorador de curvas implícitas</a>. Introduce la ecuación de escala unidad y compara el resultado con el dibujo del artículo.</li>
+    <li><a routerLink="/articles/cissoid">Cisoide de Diocles</a>. Compara sus ramas y distingue una cúspide de un cruce entre dos tangentes.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathshistory.st-andrews.ac.uk/Curves/Pearls/" target="_blank" rel="noopener noreferrer">MacTutor · Universidad de St Andrews</a>. La referencia describe la familia de productos de potencias. Aquí se fija la configuración v²=u³(1−u)² para comparar sus dos singularidades.</p>

@@ -1,0 +1,39 @@
+<h2>Trocoide</h2>
+<p class="dropcap">Una trocoide es el recorrido de un punto ligado a un círculo que rueda sobre una recta. La distancia del punto al centro puede ser distinta del radio del círculo.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [0, 12.566].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>El círculo rodante tiene radio uno y el punto está a distancia p. Si p&lt;1, el recorrido es acortado; si p=1, se obtiene la cicloide; si p&gt;1 aparecen lazos.</p>
+
+<h3>Análisis y construcción</h3>
+<p>La velocidad horizontal es 1−p cos t. Para p&lt;1 nunca se anula. Para p&gt;1 cambia de signo en parte de cada vuelta, lo que permite que el punto retroceda y forme un lazo.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="trochoid-curve-parameter">Distancia al centro (p)</label>
+    <input id="trochoid-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Distancia al centro (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Identifica el valor de p para el que aparecen cúspides y calcula la separación horizontal entre ellas.</p>
+  <details><summary>Ver comprobación</summary><p>En p=1 se anulan simultáneamente las dos derivadas en t=2kπ. Las cúspides consecutivas están separadas por 2π.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/cycloid">Cicloide</a>. Comprueba que p=1 recupera exactamente la curva del artículo de la cicloide.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/Trochoid.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>

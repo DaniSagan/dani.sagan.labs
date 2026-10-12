@@ -1,0 +1,39 @@
+<h2>Cúbica de Tschirnhausen</h2>
+<p class="dropcap">La cúbica de Tschirnhausen, también llamada trisectriz de Catalan, posee un lazo y dos brazos que se alejan. Una parametrización polinómica evita denominadores y permite seguir todo el recorrido.</p>
+
+<h3>Definición y ecuación</h3>
+<app-formula [expression]="generalEquation"></app-formula>
+<p>La parametrización describe el recorrido al variar t. El explorador dibuja los intervalos indicados a continuación; los extremos abiertos y las ramas infinitas se representan mediante un tramo finito.</p>
+<p class="curve-domain">Intervalos representados: [-2.1, 2.1].</p>
+
+<h3>Propiedades geométricas</h3>
+<p>Cambiar t por −t refleja el punto respecto del eje horizontal. Los valores t=±√3 llegan al mismo punto (−8p,0), formando un cruce. El punto t=0 es (p,0).</p>
+
+<h3>Análisis y construcción</h3>
+<p>Eliminar el parámetro conduce a 27py²=(p−x)(x+8p)². El factor cuadrado en x+8p anuncia el nodo. Derivar las coordenadas muestra que sus dos velocidades no son paralelas allí.</p>
+
+<div class="widget-container curve-widget">
+  <div class="widget-title">{{ title }}</div>
+  <p>Modifica el parámetro y comprueba en el gráfico qué cambia en el recorrido. Utiliza los controles de la gráfica para explorar las tangentes y las intersecciones.</p>
+  <div class="curve-parameters"><div class="curve-parameter">
+    <label for="tschirnhausen-cubic-parameter">Escala (p)</label>
+    <input id="tschirnhausen-cubic-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+    <input type="range" aria-label="Escala (p)" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
+  </div></div>
+  <button type="button" class="curve-reset" (click)="reset()">Restablecer parámetros</button>
+  <div class="curve-current-equation"><p>Ecuación con el parámetro seleccionado</p><app-formula [expression]="getEquation()"></app-formula></div>
+  <app-implicit-curve-graph #curveGraph></app-implicit-curve-graph>
+</div>
+
+<div class="article-activities">
+  <h3>Practica y experimenta</h3>
+  <p>Calcula las pendientes en los dos pasos por el punto doble.</p>
+  <details><summary>Ver comprobación</summary><p>x′=−6pt e y′=p(3−3t²). Para t=±√3, las pendientes son ±1/√3; cada valor recorre una rama diferente.</p></details>
+  <ul>
+    <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
+    <li><a routerLink="/articles/lissajous">Curva de Lissajous</a>. Compara el periodo de las coordenadas y el cierre del recorrido.</li>
+  </ul>
+</div>
+
+<h3>Referencias</h3>
+<p><a href="https://mathworld.wolfram.com/TschirnhausenCubic.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
