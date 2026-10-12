@@ -3,6 +3,34 @@ import { NavbarSubsection } from './navbar-subsection';
 
 // Las rutas originales se conservan: esta clasificación solo organiza el menú.
 const GROUPS = {
+  combinatorics: [
+    ['Técnicas de conteo', 'counting-principles inclusion-exclusion reflection-principle grid-counting pascal-triangle binomial-theorem catalan-numbers'],
+    ['Grafos y coloración', 'euler-hamilton konigsberg-bridges planar-euler four-color-theorem ramsey-theorem graham-number'],
+    ['Simetrías y rompecabezas', 'burnside-lemma sudoku-constraints rubik-invariants'],
+  ],
+  algebra: [
+    ['Polinomios y ecuaciones', 'polynomial-division quadratic-equations cubic-equation rational-root-theorem cyclotomic-polynomials sign-charts'],
+    ['Álgebra lineal', 'vector-spaces gaussian-elimination matrix-determinant matrix-diagonalization jordan-form cayley-hamilton gram-schmidt projection-least-squares'],
+    ['Desigualdades y simetrías', 'cauchy-schwarz mean-inequalities permutation-symmetries'],
+  ],
+  analysis: [
+    ['Funciones, límites y continuidad', 'exponentials-logarithms asymptotic-limits squeeze-oscillation continuity-differentiability bolzano-theorem lhopital-rule mean-value-theorems convexity-tangents'],
+    ['Sucesiones y series', 'recurrent-sequences monotone-convergence geometric-series telescoping-series series-convergence positive-series-tests basel'],
+    ['Funciones especiales y aproximaciones', 'gamma-function lambert-w euler-mascheroni stirling numerical-conditioning banach-fixed-point'],
+    ['Fechas y tiempo', 'utc-date-arithmetic daylight-saving-time'],
+  ],
+  calculus: [
+    ['Derivadas y estudio de funciones', 'derivative-foundations linear-approximation function-analysis derivative-optimization newton-raphson'],
+    ['Integrales y aplicaciones geométricas', 'integration-classical integration-advanced integration-numerical areas-revolution arc-length brachistochrone'],
+    ['Series, interpolación y transformadas', 'taylor-series fourier-series polynomial-interpolation laplace-transform'],
+    ['Ecuaciones diferenciales', 'first-order-odes linear-ode-systems ode-numerical-integration'],
+  ],
+  probability: [
+    ['Fundamentos y probabilidad condicionada', 'finite-probability conditional-independence bayes-theorem birthday-paradox monty-hall'],
+    ['Variables aleatorias y distribuciones', 'discrete-expectation continuous-random-variables moment-transformations bernoulli-binomial normal-distribution geometric-distribution hypergeometric-distribution'],
+    ['Estadística e inferencia', 'descriptive-statistics graphical-diagnostics sampling-distributions bessel-correction statistical-inference linear-regression simpson-paradox sampling-bias central-limit-theorem'],
+    ['Procesos y experimentos aleatorios', 'galton-board markov-chains buffon-needle percolation-diagram'],
+  ],
   fractals: [
     [
       'Conjuntos del plano complejo',
@@ -26,8 +54,10 @@ const GROUPS = {
     ],
     [
       'Autosimilitud y conjuntos geométricos',
-      'sierpinski-triangle sierpinski-carpet zero-measure-dimension cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal pentaflake hexaflake durer-pentagon menger-sponge jerusalem-cross',
+      'sierpinski-triangle sierpinski-carpet cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal',
     ],
+    ['Polígonos y fractales espaciales', 'pentaflake hexaflake durer-pentagon menger-sponge jerusalem-cross'],
+    ['Medida y dimensión', 'zero-measure-dimension fractal-measure-dimension'],
     ['Bifurcaciones y caos', 'bifurcation-diagram feigenbaum'],
   ],
   numbers: [
