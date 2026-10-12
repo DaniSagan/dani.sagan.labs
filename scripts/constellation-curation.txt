@@ -1,0 +1,33 @@
+﻿UMa|Osa Mayor|Ursa Major|north|Busca el carro: cuatro estrellas forman la caja y otras tres dibujan el mango. Es un asterismo dentro de una constelación más extensa.
+UMi|Osa Menor|Ursa Minor|north|Su pequeño carro acaba en Polaris. Compara el arco del mango y el rectángulo de la caja con los de la Osa Mayor.
+Cas|Casiopea|Cassiopeia|north|Reconoce su característico zigzag de cinco estrellas principales: una W o una M, según la orientación.
+Cep|Cefeo|Cepheus|north|Busca un pentágono parecido a una casa con tejado; fíjate en las longitudes desiguales de sus lados.
+Dra|Dragón|Draco|north|Sigue la larga cadena serpenteante hasta el pequeño grupo de estrellas de su cabeza.
+Cyg|Cisne|Cygnus|north|Su cruz de estrellas marca las alas y el cuerpo. Deneb queda en uno de los extremos del eje largo.
+Lyr|Lira|Lyra|north|Vega destaca junto a un pequeño paralelogramo. La combinación de una estrella brillante y una figura compacta es la clave.
+Aql|Águila|Aquila|north|Busca Altair y las dos estrellas que la flanquean, y después sigue las líneas que se extienden hacia las alas.
+And|Andrómeda|Andromeda|north|Reconoce una cadena que parte de Alpheratz y se prolonga por Mirach y Almach; el dibujo completo tiene ramificaciones.
+Peg|Pegaso|Pegasus|north|El gran cuadrado es la referencia principal. Una de sus esquinas, Alpheratz, pertenece a Andrómeda: los dibujos pueden compartir estrellas.
+Per|Perseo|Perseus|north|Busca la ramificación alrededor de Mirfak y compara las dos cadenas que se separan de ese núcleo.
+Aur|Auriga|Auriga|north|Capella destaca en un gran polígono. Observa el contorno y no solo la estrella más brillante.
+Gem|Géminis|Gemini|north|Cástor y Pólux encabezan dos cadenas aproximadamente paralelas: imagina las dos figuras de los gemelos.
+Tau|Tauro|Taurus|north|La V de la cabeza, con Aldebarán, y sus dos prolongaciones largas sugieren los cuernos del toro.
+Leo|Leo|Leo|north|Combina la hoz de la cabeza con el triángulo de la parte trasera. Regulus está en la base de la hoz.
+Boo|Boyero|Boötes|north|Arturo está cerca del extremo estrecho de una figura semejante a una cometa o un cono alargado.
+Cru|Cruz del Sur|Crux|south|Cuatro estrellas principales forman una cruz compacta. Compara la longitud de los dos brazos.
+Cen|Centauro|Centaurus|south|El dibujo es extenso y ramificado. El par Alpha y Beta Centauri ayuda a reconocer uno de sus extremos.
+Car|Carina|Carina|south|Canopus es una referencia muy brillante en un dibujo amplio e irregular: sigue las cadenas que la rodean.
+Vel|Vela|Vela|south|Busca el gran contorno poligonal de las velas; conviene comparar sus esquinas y sus lados, no solo una cruz aparente.
+Pup|Popa|Puppis|south|Su patrón es amplio y asimétrico. Practica siguiendo sus cadenas y los cambios de dirección del contorno.
+Sco|Escorpio|Scorpius|south|Antares está en el cuerpo. La larga cola se curva y acaba en un pequeño gancho muy característico.
+Sgr|Sagitario|Sagittarius|south|Dentro de su dibujo puedes reconocer el asterismo de la tetera: cuerpo, tapa, asa y pico.
+CMa|Can Mayor|Canis Major|south|Sirio destaca en la figura. Busca el cuerpo alargado y las prolongaciones que sugieren las patas.
+Eri|Erídano|Eridanus|south|Sigue una larga cadena sinuosa. Achernar marca uno de sus extremos; aquí importa reconocer el recorrido completo.
+Phe|Fénix|Phoenix|south|Ankaa ayuda a localizar una figura angular con un contorno compacto y una prolongación lateral.
+Gru|Grulla|Grus|south|Observa el eje largo y las ramificaciones que evocan el cuello y las alas de una grulla.
+Pav|Pavo|Pavo|south|Peacock es la estrella de referencia. El resto del dibujo se extiende formando un amplio contorno angular.
+Tuc|Tucán|Tucana|south|Busca una figura alargada y quebrada; compara las separaciones de sus estrellas más visibles.
+Dor|Dorado|Dorado|south|Un pequeño patrón alargado: fíjate en su estrechez y en los cambios de dirección de la cadena.
+Hyi|Hidra Austral|Hydrus|south|Sus estrellas principales forman un triángulo amplio. No la confundas con la constelación mucho más extensa de Hidra.
+TrA|Triángulo Austral|Triangulum Australe|south|El triángulo de tres estrellas principales es la clave; Atria está en uno de sus vértices.
+Ori|Orión|Orion|both|Tres estrellas alineadas forman el cinturón, entre Betelgeuse y Rigel. El patrón cruza el ecuador celeste y se practica en ambos grupos.

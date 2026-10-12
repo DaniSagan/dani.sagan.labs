@@ -18,7 +18,9 @@
     "test:probability-detective": "node scripts/test-probability-detective.cjs",
     "generate:life-catalog": "node scripts/generate-life-catalog.cjs",
     "test:2048": "node scripts/test-2048.cjs",
-    "test:2048:browser": "node scripts/check-2048-page.cjs"
+    "test:2048:browser": "node scripts/check-2048-page.cjs",
+    "test:constellations": "node scripts/test-constellations.cjs",
+    "test:constellations:browser": "node scripts/check-constellations-page.cjs"
   },
   "private": true,
   "dependencies": {

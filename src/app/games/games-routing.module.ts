@@ -13,6 +13,7 @@ const routes: Routes = [
     path: '',
     component: GamesContentComponent,
     children: [
+      {path: 'constellations', loadComponent: () => import('./constellation-recognition/constellation-recognition.component').then(m => m.ConstellationRecognitionComponent)},
       {path: '2048', loadComponent: () => import('./game-2048/game-2048.component').then(m => m.Game2048Component)},
       {path: 'probability-detective', loadComponent: () => import('./probability-detective/probability-detective.component').then(m => m.ProbabilityDetectiveComponent)},
       {path: 'tic-tac-toe', component: TicTacToeComponent},
