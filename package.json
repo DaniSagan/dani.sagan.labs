@@ -11,6 +11,8 @@
     "test": "ng test",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage=false",
     "test:life-engine": "node scripts/test-life-engine.cjs",
+    "test:googology:browser": "node scripts/check-googology-page.cjs",
+    "test:googology": "node scripts/test-googology.cjs",
     "test:curve-articles": "node scripts/test-additional-curve-articles.cjs",
     "test:curve-pages": "node scripts/check-additional-curve-pages.cjs",
     "test:probability-detective": "node scripts/test-probability-detective.cjs",

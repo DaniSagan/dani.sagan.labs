@@ -4,8 +4,9 @@ import { NavbarSubsection } from './navbar-subsection';
 // Las rutas originales se conservan: esta clasificación solo organiza el menú.
 const GROUPS = {
   combinatorics: [
+    ['Ramsey, crecimiento y grandes números', 'ramsey-theorem graham-number googology'],
     ['Técnicas de conteo', 'counting-principles inclusion-exclusion reflection-principle grid-counting pascal-triangle binomial-theorem catalan-numbers'],
-    ['Grafos y coloración', 'euler-hamilton konigsberg-bridges planar-euler four-color-theorem ramsey-theorem graham-number'],
+    ['Grafos y coloración', 'euler-hamilton konigsberg-bridges planar-euler four-color-theorem'],
     ['Simetrías y rompecabezas', 'burnside-lemma sudoku-constraints rubik-invariants'],
   ],
   algebra: [
