@@ -1,12 +1,13 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { escapeColor } from '../fractal-explorer/fractal-palette';
+import { OnDestroy, Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-mandelbrot',
   templateUrl: './mandelbrot.component.html',
   styleUrls: ['./mandelbrot.component.css'],
   standalone: true,
 })
-export class MandelbrotComponent implements AfterViewInit {
+export class MandelbrotComponent implements OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   static title: string = 'Conjunto de Mandelbrot';
@@ -25,7 +26,9 @@ export class MandelbrotComponent implements AfterViewInit {
   centerX: number = -0.5;
   centerY: number = 0;
 
-  isDrawing = false;
+  isDrawing = true;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { ++this.renderGeneration; this.isDrawing = false; }
 
   constructor() {}
 
@@ -34,6 +37,7 @@ export class MandelbrotComponent implements AfterViewInit {
   }
 
   async drawMandelbrot() {
+    const generation = ++this.renderGeneration;
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -55,14 +59,14 @@ export class MandelbrotComponent implements AfterViewInit {
     this.isDrawing = true;
 
     for (let x = 0; x < this.width; x++) {
-      if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
+      if (generation !== this.renderGeneration) return; // Stop drawing if a new request is initiated.
 
       for (let y = 0; y < this.height; y++) {
         const real = minX + x * dx;
         const imag = minY + y * dy;
 
-        let cReal = real;
-        let cImag = imag;
+        let cReal = 0;
+        let cImag = 0;
         let n = 0;
 
         while (n < this.maxIterations) {
@@ -85,10 +89,12 @@ export class MandelbrotComponent implements AfterViewInit {
       // Dibujar cada línea y esperar al siguiente ciclo del event loop para no bloquear la interfaz.
       if (x % 10 === 0) {
         await this.sleep(0); // Pausar brevemente la ejecución
+        if (generation !== this.renderGeneration) return;
         ctx.putImageData(imgData, 0, 0);
       }
     }
 
+    if (generation !== this.renderGeneration) return;
     ctx.putImageData(imgData, 0, 0);
     this.isDrawing = false;
   }
@@ -100,15 +106,7 @@ export class MandelbrotComponent implements AfterViewInit {
    * @param iteration Número de iteraciones.
    * @returns Color en formato [R, G, B].
    */
-  getColor(iteration: number): [number, number, number] {
-    if (iteration === this.maxIterations) {
-      return [0, 0, 0]; // Negro para iteración máxima
-    }
-
-    const t = iteration / this.maxIterations;
-    const hue = t * 360; // Color en el espectro del arco iris
-    return this.hslToRgb(hue, 1, 0.5);
-  }
+  getColor(iteration: number): [number, number, number] { return escapeColor(iteration, this.maxIterations); }
 
   /**
    * Convierte un valor HSL a RGB.
@@ -153,14 +151,7 @@ export class MandelbrotComponent implements AfterViewInit {
     ];
   }
 
-  updateValues() {
-    if (!this.isDrawing) {
-      this.drawMandelbrot();
-    } else {
-      this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawMandelbrot(), 100); // Restart after a slight delay.
-    }
-  }
+  updateValues() { void this.drawMandelbrot(); }
 
   moveLeft(): void {
     this.centerX -= 200.0 / 2 ** this.scale;
@@ -183,22 +174,22 @@ export class MandelbrotComponent implements AfterViewInit {
   }
 
   zoomIn(): void {
-    this.scale += 1;
+    this.scale = Math.min(40, this.scale + 1);
     this.updateValues();
   }
 
   zoomOut(): void {
-    this.scale -= 1;
+    this.scale = Math.max(6, this.scale - 1);
     this.updateValues();
   }
 
   incrementMaxIterations(): void {
-    this.maxIterations *= 2;
+    this.maxIterations = Math.min(2048, this.maxIterations * 2);
     this.updateValues();
   }
 
   decrementMaxIterations(): void {
-    this.maxIterations /= 2;
+    this.maxIterations = Math.max(16, Math.floor(this.maxIterations / 2));
     this.updateValues();
   }
 

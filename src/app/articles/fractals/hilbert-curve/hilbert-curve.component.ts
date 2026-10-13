@@ -5,7 +5,7 @@ import {
   FractalRenderer,
   paint,
 } from '../fractal-explorer/fractal-explorer.component';
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-hilbert-curve',
   standalone: true,
   imports: [RouterLink, FractalExplorerComponent],

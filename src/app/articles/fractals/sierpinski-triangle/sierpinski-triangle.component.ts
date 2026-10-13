@@ -1,7 +1,7 @@
 import { RouterLink } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-sierpinski-triangle',
   templateUrl: './sierpinski-triangle.component.html',
   styleUrls: ['./sierpinski-triangle.component.css'],
@@ -29,12 +29,12 @@ export class SierpinskiTriangleComponent implements OnInit {
     this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // Estilo de neón
-    this.ctx.strokeStyle = '#00FFFF'; // Color cian brillante
-    this.ctx.shadowColor = '#00FFFF';
+    this.ctx.strokeStyle = '#d4a843'; // Color cian brillante
+    this.ctx.shadowColor = '#d4a843';
     this.ctx.shadowBlur = 5;
 
     // Estilo de relleno sólido
-    this.ctx.fillStyle = '#002222'; // Color oscuro para el relleno
+    this.ctx.fillStyle = '#221c11'; // Color oscuro para el relleno
 
     // Definir los puntos del triángulo principal
     const p1 = { x: canvasWidth / 2, y: 10 };
@@ -74,7 +74,7 @@ export class SierpinskiTriangleComponent implements OnInit {
   }
 
   incrementIterations(): void {
-    this.iterations++;
+    this.iterations = Math.min(8, this.iterations + 1);
     this.drawSierpinski();
   }
 

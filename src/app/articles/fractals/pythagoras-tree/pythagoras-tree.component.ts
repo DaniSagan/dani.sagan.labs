@@ -5,7 +5,7 @@ import {
   FractalExplorerComponent,
   FractalRenderer,
 } from '../fractal-explorer/fractal-explorer.component';
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-pythagoras-tree',
   standalone: true,
   imports: [RouterLink, FractalExplorerComponent],

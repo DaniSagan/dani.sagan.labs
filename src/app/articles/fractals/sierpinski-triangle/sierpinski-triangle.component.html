@@ -16,12 +16,12 @@
 <p>Debajo, puedes visualizar el Triángulo de Sierpinski con un componente interactivo, donde podrás controlar el número de iteraciones, incrementándolo o disminuyéndolo para observar cómo se genera el fractal a distintos niveles de detalle.</p>
 <div class="widget-container">
   <div class="widget-title">Triángulo de Sierpinski</div>
-  <div>
-    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+  <div class="legacy-workspace"><div class="legacy-stage"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas width="600" height="600"></canvas></div><div class="legacy-console"><div>
+    <button [disabled]="iterations <= 0" (click)="decrementIterations()">− Iteraciones</button>
     <div class="widget-label">{{iterations}} iteraciones.</div>
-    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
-  </div>
-  <canvas #canvas width="600" height="600"></canvas>
+    <button [disabled]="iterations >= 8" (click)="incrementIterations()">+ Iteraciones</button>
+  </div></div></div>
+
 </div>
 
 <div class="footnotes">

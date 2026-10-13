@@ -2,6 +2,7 @@
 @import './styles/variables.css';
 @import './styles/navbar.css';
 @import './styles/widgets.css';
+@import './styles/fractals.css';
 
 html {
   scroll-behavior: smooth;

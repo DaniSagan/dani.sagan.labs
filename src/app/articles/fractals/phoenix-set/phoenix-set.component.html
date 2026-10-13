@@ -28,41 +28,27 @@
 </p>
 <div class="widget-container">
   <div class="widget-title">Fractal del conjunto de Phoenix</div>
-  <div class="controls">
-    <table>
-      <tr>
-        <td><app-move2d (movement)="onMovement($event)"/></td>
-        <td><app-zoom (zoom)="onZoom($event)" (reset)="onZoomReset()"/></td>
-        <td>
+  <div class="legacy-workspace"><div class="legacy-stage" [attr.aria-busy]="isDrawing"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas [width]="width" [height]="height" (pointerdown)="onCanvasMouseDown($event)"></canvas></div><div class="legacy-console"><div class="controls">
+    <div class="navigation-widgets">
+      <div class="navigation-row">
+        <div class="navigation-cell navigation-controls" aria-label="Desplazamiento y zoom">
+ <button type="button" aria-label="Mover a la izquierda" (click)="moveLeft()">←</button><button type="button" aria-label="Mover arriba" (click)="moveUp()">↑</button><button type="button" aria-label="Mover abajo" (click)="moveDown()">↓</button><button type="button" aria-label="Mover a la derecha" (click)="moveRight()">→</button><button type="button" aria-label="Alejar" (click)="zoomOut()">−</button><button type="button" aria-label="Acercar" (click)="zoomIn()">+</button><button type="button" aria-label="Restablecer vista" (click)="onZoomReset()">⌂</button></div>
+        <div class="navigation-cell">
           <div class="widget-control-group">
-            <form (ngSubmit)="update()">
-              <div>
-                <label>k:
-                  <input type="number" [(ngModel)]="k" name="k" required>
-                </label>
-              </div>
-              <div>
-                <label>c (real):
-                  <input type="number" [(ngModel)]="cReal" name="cReal" required>
-                </label>
-              </div>
-              <div>
-                <label>c (imag):
-                  <input type="number" [(ngModel)]="cImag" name="cImag" required>
-                </label>
-              </div>
-              <div>
-                <button type="submit">Actualizar</button>
-              </div>
-            </form>
+            <div class="phoenix-parameters">
+ <label>k = {{k.toFixed(3)}}<input type="range" min="-1" max="1" step="0.001" [(ngModel)]="k" (ngModelChange)="update()"></label>
+ <label>Re(c) = {{cReal.toFixed(3)}}<input type="range" min="-2" max="2" step="0.001" [(ngModel)]="cReal" (ngModelChange)="update()"></label>
+ <label>Im(c) = {{cImag.toFixed(3)}}<input type="range" min="-2" max="2" step="0.001" [(ngModel)]="cImag" (ngModelChange)="update()"></label>
+ </div>
           </div>
-        </td>
-      </tr>
-    </table>
-    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
-    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
-  </div>
-  <canvas #canvas [width]="width" [height]="height" (mousedown)="onCanvasMouseDown($event)"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="iteration-readout" role="status">{{maxIterations}} iteraciones</div>
+    <button [disabled]="maxIterations >= 2048" (click)="incrementMaxIterations()">+ Iteraciones</button>
+    <button [disabled]="maxIterations <= 16" (click)="decrementMaxIterations()">− Iteraciones</button>
+  </div></div></div>
+
   <div>
     <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
   </div>

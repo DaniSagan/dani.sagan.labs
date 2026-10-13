@@ -1,7 +1,7 @@
 import { RouterLink } from '@angular/router';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-sierpinski-carpet',
   templateUrl: './sierpinski-carpet.component.html',
   styleUrls: ['./sierpinski-carpet.component.css'],
@@ -29,9 +29,9 @@ export class SierpinskiCarpetComponent implements OnInit {
     this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // Establecer estilo de neón
-    this.ctx.strokeStyle = '#00FFFF'; // Color cian brillante para los bordes
-    this.ctx.fillStyle = '#002222'; // Color oscuro para el relleno
-    this.ctx.shadowColor = '#00FFFF';
+    this.ctx.strokeStyle = '#d4a843'; // Color cian brillante para los bordes
+    this.ctx.fillStyle = '#221c11'; // Color oscuro para el relleno
+    this.ctx.shadowColor = '#d4a843';
     this.ctx.shadowBlur = 5;
 
     // Dibujar la Alfombra de Sierpinski
@@ -60,7 +60,7 @@ export class SierpinskiCarpetComponent implements OnInit {
   }
 
   incrementIterations(): void {
-    this.iterations++;
+    this.iterations = Math.min(5, this.iterations + 1);
     this.drawSierpinskiCarpet();
   }
 

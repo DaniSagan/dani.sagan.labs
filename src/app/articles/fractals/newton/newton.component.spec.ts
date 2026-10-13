@@ -1,3 +1,4 @@
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewtonComponent } from './newton.component';
@@ -7,7 +8,7 @@ describe('NewtonComponent', () => {
   let fixture: ComponentFixture<NewtonComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({ providers: [provideRouter([])],
       imports: [NewtonComponent]
     })
     .compileComponents();

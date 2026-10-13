@@ -1,14 +1,15 @@
+import { escapeColor } from '../fractal-explorer/fractal-palette';
 import { RouterLink } from '@angular/router';
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { OnDestroy, AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-burning-ship',
   standalone: true,
   imports: [RouterLink, ],
   templateUrl: './burning-ship.component.html',
   styleUrl: './burning-ship.component.css'
 })
-export class BurningShipComponent implements AfterViewInit {
+export class BurningShipComponent implements OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   static title: string = 'Fractal del barco en llamas';
@@ -27,7 +28,9 @@ export class BurningShipComponent implements AfterViewInit {
   centerX: number = -0.5;
   centerY: number = 0;
 
-  isDrawing = false;
+  isDrawing = true;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { ++this.renderGeneration; this.isDrawing = false; }
 
   constructor() {}
 
@@ -36,6 +39,7 @@ export class BurningShipComponent implements AfterViewInit {
   }
 
   async drawFractal() {
+    const generation = ++this.renderGeneration;
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -54,24 +58,24 @@ export class BurningShipComponent implements AfterViewInit {
     this.isDrawing = true;
 
     for (let xPixel = 0; xPixel < this.width; xPixel++) {
-      if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
+      if (generation !== this.renderGeneration) return; // Stop drawing if a new request is initiated.
 
       for (let yPixel = 0; yPixel < this.height; yPixel++) {
         const real = minX + xPixel * dx;
         const imag = minY + yPixel * dy;
 
-        let zReal = real;
-        let zImag = imag;
+        let zReal = 0;
+        let zImag = 0;
         let iteration = 0;
 
         while (zReal * zReal + zImag * zImag <= 4 && iteration < this.maxIterations) {
           const xTemp = zReal * zReal - zImag * zImag + real;
           zImag = Math.abs(2 * zReal * zImag) + imag;
-          zReal = Math.abs(xTemp);
+          zReal = xTemp;
           iteration++;
         }
 
-        const color = this.getColor(iteration, this.maxIterations);
+        const color = this.getColor(iteration);
         const index = (xPixel + yPixel * this.width) * 4;
         data[index + 0] = color[0]; // Red
         data[index + 1] = color[1]; // Green
@@ -82,24 +86,17 @@ export class BurningShipComponent implements AfterViewInit {
       // Dibujar cada línea y esperar al siguiente ciclo del event loop para no bloquear la interfaz.
       if (xPixel % 10 === 0) {
         await this.sleep(0); // Pausar brevemente la ejecución
+        if (generation !== this.renderGeneration) return;
         ctx.putImageData(imgData, 0, 0);
       }
     }
 
+    if (generation !== this.renderGeneration) return;
     ctx.putImageData(imgData, 0, 0);
     this.isDrawing = false;
   }
 
-  getColor(iteration: number, maxIterations: number): [number, number, number] {
-    if (iteration === maxIterations) {
-      return [0, 0, 0]; // Black for points in the fractal
-    }
-    const t = iteration / maxIterations;
-    const r = Math.floor(9 * (1 - t) * t * t * t * 255);
-    const g = Math.floor(15 * (1 - t) * (1 - t) * t * t * 255);
-    const b = Math.floor(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-    return [r, g, b];
-  }
+  getColor(iteration: number): [number, number, number] { return escapeColor(iteration, this.maxIterations); }
 
   /**
    * Convierte un valor HSL a RGB.
@@ -144,14 +141,7 @@ export class BurningShipComponent implements AfterViewInit {
     ];
   }
 
-  updateValues() {
-    if (!this.isDrawing) {
-      this.drawFractal();
-    } else {
-      this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal(), 100); // Restart after a slight delay.
-    }
-  }
+  updateValues() { void this.drawFractal(); }
 
   moveLeft(): void {
     this.centerX -= 200.0 / 2 ** this.scale;
@@ -174,22 +164,22 @@ export class BurningShipComponent implements AfterViewInit {
   }
 
   zoomIn(): void {
-    this.scale += 1;
+    this.scale = Math.min(40, this.scale + 1);
     this.updateValues();
   }
 
   zoomOut(): void {
-    this.scale -= 1;
+    this.scale = Math.max(6, this.scale - 1);
     this.updateValues();
   }
 
   incrementMaxIterations(): void {
-    this.maxIterations *= 2;
+    this.maxIterations = Math.min(2048, this.maxIterations * 2);
     this.updateValues();
   }
 
   decrementMaxIterations(): void {
-    this.maxIterations /= 2;
+    this.maxIterations = Math.max(16, Math.floor(this.maxIterations / 2));
     this.updateValues();
   }
 

@@ -15,6 +15,8 @@
     "test:googology": "node scripts/test-googology.cjs",
     "test:curve-articles": "node scripts/test-additional-curve-articles.cjs",
     "test:curve-pages": "node scripts/check-additional-curve-pages.cjs",
+    "test:fractals": "node scripts/test-fractal-rendering.cjs",
+    "test:fractals:browser": "node scripts/check-fractal-pages.cjs",
     "test:probability-detective": "node scripts/test-probability-detective.cjs",
     "generate:life-catalog": "node scripts/generate-life-catalog.cjs",
     "test:2048": "node scripts/test-2048.cjs",

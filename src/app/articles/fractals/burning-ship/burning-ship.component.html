@@ -12,31 +12,20 @@
 <p>Para comprender mejor este fractal, es ideal explorarlo a través de herramientas interactivas. A continuación, puedes experimentar con un componente que permite visualizar el Barco en Llamas, ajustando el número de iteraciones, el nivel de zoom y los límites de las coordenadas:</p>
 <div class="widget-container">
   <div class="widget-title">Fractal del barco en llamas</div>
-  <div class="controls">
-    <table>
-      <tr>
-        <td></td>
-        <td><button (click)="moveUp()">🡩</button></td>
-        <td></td>
-        <td><button (click)="zoomIn()">➕</button></td>
-      </tr>
-      <tr>
-        <td><button (click)="moveLeft()">🡠</button></td>
-        <td></td>
-        <td><button (click)="moveRight()">🡢</button></td>
-        <td>zoom</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><button (click)="moveDown()">🡣</button></td>
-        <td></td>
-        <td><button (click)="zoomOut()">➖</button></td>
-      </tr>
-    </table>
-    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
-    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
-  </div>
-  <canvas #canvas [width]="width" [height]="height"></canvas>
+  <div class="legacy-workspace"><div class="legacy-stage" [attr.aria-busy]="isDrawing"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas [width]="width" [height]="height"></canvas></div><div class="legacy-console"><div class="controls">
+    <div class="navigation-controls" aria-label="Desplazamiento y zoom">
+      <button aria-label="Mover a la izquierda" (click)="moveLeft()">←</button>
+      <button aria-label="Mover arriba" (click)="moveUp()">↑</button>
+      <button aria-label="Mover abajo" (click)="moveDown()">↓</button>
+      <button aria-label="Mover a la derecha" (click)="moveRight()">→</button>
+      <button aria-label="Alejar" (click)="zoomOut()">−</button>
+      <button aria-label="Acercar" (click)="zoomIn()">+</button>
+    </div>
+    <div class="iteration-readout" role="status">{{maxIterations}} iteraciones</div>
+    <button [disabled]="maxIterations >= 2048" (click)="incrementMaxIterations()">+ Iteraciones</button>
+    <button [disabled]="maxIterations <= 16" (click)="decrementMaxIterations()">− Iteraciones</button>
+  </div></div></div>
+
   <div>
     <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
   </div>

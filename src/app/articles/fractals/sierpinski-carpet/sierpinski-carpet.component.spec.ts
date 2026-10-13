@@ -1,3 +1,4 @@
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SierpinskiCarpetComponent } from './sierpinski-carpet.component';
@@ -7,7 +8,7 @@ describe('SierpinskiCarpetComponent', () => {
   let fixture: ComponentFixture<SierpinskiCarpetComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({ providers: [provideRouter([])],
       imports: [SierpinskiCarpetComponent],
     }).compileComponents();
 

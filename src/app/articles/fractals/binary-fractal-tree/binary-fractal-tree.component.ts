@@ -7,7 +7,7 @@ import {
   paint,
 } from '../fractal-explorer/fractal-explorer.component';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-binary-fractal-tree',
   standalone: true,
   imports: [RouterLink, FractalExplorerComponent],

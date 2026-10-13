@@ -6,7 +6,7 @@ import {
   paint,
 } from '../fractal-explorer/fractal-explorer.component';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-pentaflake',
   standalone: true,
   imports: [FractalExplorerComponent],

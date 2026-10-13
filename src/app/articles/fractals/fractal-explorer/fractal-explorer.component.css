@@ -1,10 +1,41 @@
-.explorer-formula { color: var(--ink-dim); font-family: 'Courier Prime', monospace; font-size: .9rem; }
-.explorer-note { color: var(--ink-dim); font-size: .9rem; line-height: 1.55; margin-top: 1rem; }
-.explorer-controls { display: flex; align-items: center; gap: .5rem; margin-bottom: 1rem; }
-.explorer-controls label { width: auto; margin: 0; }
-.explorer-controls input { margin: 0; }
-.explorer-controls + canvas { clear: both; }
-
-@media (max-width: 520px) {
-  .explorer-controls { flex-wrap: wrap; }
+﻿:host { display: block; min-width: 0; }
+.fractal-studio { padding: 0; overflow: hidden; border-radius: 18px; background: var(--bg2); color: var(--ink); }
+.studio-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--rule); }
+.studio-kicker { display: block; color: var(--accent); font: 10px/1.4 'Courier Prime', monospace; letter-spacing: .12em; }
+.widget-title { margin: 6px 0 0; font: 600 clamp(20px, 3vw, 28px)/1.2 'EB Garamond', serif; }
+button { color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); min-height: 44px; padding: 8px 12px; font: 12px/1.2 system-ui, sans-serif; cursor: pointer; }
+button:hover { border-color: var(--accent); background: #231a1a; }
+button:disabled { opacity: .4; cursor: default; }
+:is(button,input,summary):focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.fractal-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 220px; }
+.fractal-stage { position: relative; min-width: 0; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 30%, #272031, var(--bg) 75%); padding: 28px 12px 12px; }
+.stage-caption { position: absolute; top: 10px; left: 16px; color: var(--gold); font: 10px/1.2 'Courier Prime', monospace; letter-spacing: .12em; }
+.fractal-stage canvas { display: block; width: min(100%, 480px); height: auto; aspect-ratio: 1; border: 0; margin: 0; border-radius: 8px; }
+.fractal-console { padding: 24px 16px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-left: 1px solid var(--rule); }
+.fractal-studio .iteration-control { display: block; width: 100%; margin: 0; font: 13px/1.4 system-ui, sans-serif; }
+.iteration-control span { display: flex; justify-content: space-between; align-items: center; }
+output { color: var(--gold); font: 24px/1 monospace; }
+.iteration-control input { width: 100%; height: 44px; margin: 8px 0 0; accent-color: var(--accent); cursor: pointer; }
+.step-controls { display: grid; grid-template-columns: 44px 1fr 44px; gap: 6px; }
+.console-hint { color: #bab3a6; font: 12px/1.6 system-ui, sans-serif; margin: 0; }
+.explorer-formula { margin: 0; padding: 14px 20px; border-top: 1px solid var(--rule); color: var(--gold); font: 12px/1.6 'Courier Prime', monospace; overflow-wrap: anywhere; }
+.explorer-guide { padding: 14px 20px; border-top: 1px solid var(--rule); color: #bab3a6; font: 13px/1.6 system-ui, sans-serif; }
+.explorer-guide summary { cursor: pointer; color: var(--ink); min-height: 28px; }
+.explorer-guide p { color: inherit; margin: 12px 0; }
+@media (max-width: 700px) {
+  .studio-header { padding: 12px; }
+  .studio-kicker { font-size: 8px; letter-spacing: .06em; }
+  .save-button { max-width: 90px; font-size: 11px; }
+  .fractal-workspace { grid-template-columns: 1fr; }
+  .fractal-stage { padding: 28px 8px 8px; }
+  .fractal-stage canvas { width: auto; max-width: 100%; height: min(72vw, 34svh); }
+  .fractal-console { border-left: 0; border-top: 1px solid var(--rule); padding: 10px 12px; gap: 4px; }
+  .iteration-control input { margin: 0; }
+  .console-hint { display: none; }
+  .explorer-formula, .explorer-guide { padding: 10px 12px; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+  .fractal-workspace { grid-template-columns: minmax(0, 1fr) 220px; }
+  .fractal-stage canvas { height: 45svh; width: auto; max-width: 100%; }
+  .fractal-console { border-left: 1px solid var(--rule); border-top: 0; }
 }

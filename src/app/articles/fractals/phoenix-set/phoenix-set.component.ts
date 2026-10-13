@@ -1,5 +1,6 @@
+import { escapeColor } from '../fractal-explorer/fractal-palette';
 import { RouterLink } from '@angular/router';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { OnDestroy, Component, ElementRef, ViewChild } from '@angular/core';
 import { Complex } from 'src/app/shared/math/complex';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,14 +12,14 @@ import {FormsModule} from '@angular/forms';
 import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
 import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-phoenix-set',
   standalone: true,
   imports: [RouterLink, MatButtonModule, MatDividerModule, MatIconModule, FormsModule, MatFormFieldModule, MatInputModule, Move2DComponent, ZoomComponent],
   templateUrl: './phoenix-set.component.html',
   styleUrl: './phoenix-set.component.css'
 })
-export class PhoenixSetComponent {
+export class PhoenixSetComponent implements OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   static title: string = 'Conjunto de Phoenix';
@@ -35,7 +36,9 @@ export class PhoenixSetComponent {
   centerX: number = 0;
   centerY: number = 0;
 
-  isDrawing = false;
+  isDrawing = true;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { ++this.renderGeneration; this.isDrawing = false; }
 
   constructor() {}
 
@@ -48,6 +51,7 @@ export class PhoenixSetComponent {
   }
 
   async drawFractal(center: Vec2, scale: number, c: Complex, k: number) {
+    const generation = ++this.renderGeneration;
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -63,7 +67,7 @@ export class PhoenixSetComponent {
     this.isDrawing = true;
 
     for (let xPixel = 0; xPixel < this.width; xPixel++) {
-      if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
+      if (generation !== this.renderGeneration) return; // Stop drawing if a new request is initiated.
 
       for (let yPixel = 0; yPixel < this.height; yPixel++) {
         let z: Complex = new Complex(minX + xPixel * dx, minY + yPixel * dy);
@@ -87,19 +91,17 @@ export class PhoenixSetComponent {
       // Dibujar cada línea y esperar al siguiente ciclo del event loop para no bloquear la interfaz.
       if (xPixel % 10 === 0) {
         await this.sleep(0); // Pausar brevemente la ejecución
+        if (generation !== this.renderGeneration) return;
         ctx.putImageData(imgData, 0, 0);
       }
     }
 
+    if (generation !== this.renderGeneration) return;
     ctx.putImageData(imgData, 0, 0);
     this.isDrawing = false;
   }
 
-  getColor(iteration: number): [number, number, number] {
-    if (iteration === this.maxIterations) return [255, 255, 255];
-    const t = iteration / this.maxIterations;
-    return [Math.floor(255 * t), Math.floor(255 * (1 - t)), Math.floor(255 * Math.sin(2 * t * Math.PI))];
-  }
+  getColor(iteration: number): [number, number, number] { return escapeColor(iteration, this.maxIterations); }
 
   /**
    * Convierte un valor HSL a RGB.
@@ -144,20 +146,7 @@ export class PhoenixSetComponent {
     ];
   }
 
-  updateValues() {
-    if (!this.isDrawing) {
-      this.drawFractal(new Vec2(this.centerX, this.centerY),
-        2 ** this.zoom,
-        new Complex(this.cReal, this.cImag),
-        this.k);
-    } else {
-      this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal(new Vec2(this.centerX, this.centerY),
-        2 ** this.zoom,
-        new Complex(this.cReal, this.cImag),
-        this.k), 100); // Restart after a slight delay.
-    }
-  }
+  updateValues() { void this.drawFractal(new Vec2(this.centerX, this.centerY), 2 ** this.zoom, new Complex(this.cReal, this.cImag), this.k); }
 
   onMovement(value: Vec2) {
     if(value.x === 1) this.moveRight();
@@ -199,22 +188,22 @@ export class PhoenixSetComponent {
   }
 
   zoomIn(): void {
-    this.zoom += 1;
+    this.zoom = Math.min(40, this.zoom + 1);
     this.updateValues();
   }
 
   zoomOut(): void {
-    this.zoom -= 1;
+    this.zoom = Math.max(6, this.zoom - 1);
     this.updateValues();
   }
 
   incrementMaxIterations(): void {
-    this.maxIterations *= 2;
+    this.maxIterations = Math.min(2048, this.maxIterations * 2);
     this.updateValues();
   }
 
   decrementMaxIterations(): void {
-    this.maxIterations /= 2;
+    this.maxIterations = Math.max(16, Math.floor(this.maxIterations / 2));
     this.updateValues();
   }
 
@@ -224,8 +213,8 @@ export class PhoenixSetComponent {
 
   onCanvasMouseDown(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = (event.clientX - rect.left) * this.width / rect.width;
+    const y = (event.clientY - rect.top) * this.height / rect.height;
     const scale = 2 ** this.zoom;
     const dx = 1.0 / scale;
     const dy = 1.0 / scale;

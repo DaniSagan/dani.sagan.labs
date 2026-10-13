@@ -1,17 +1,19 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { OnDestroy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-dragon-curve',
   templateUrl: './dragon-curve.component.html',
   styleUrls: ['./dragon-curve.component.css'],
   standalone: true,
 })
-export class DragonCurveComponent implements OnInit {
+export class DragonCurveComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 10;
   isDrawing: boolean = false;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { this.stopDrawing(); }
   lineLength: number = 5;
 
   static title: string = 'Curva del Dragón';
@@ -23,11 +25,13 @@ export class DragonCurveComponent implements OnInit {
   }
 
   async drawDragonCurve(): Promise<void> {
+    const generation = ++this.renderGeneration;
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;
 
     // Limpiar el canvas
     this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    this.ctx.beginPath();
     this.ctx.rect(0, 0, canvasWidth, canvasHeight);
     this.ctx.fillStyle = '#000000';
     this.ctx.fill();
@@ -50,8 +54,19 @@ export class DragonCurveComponent implements OnInit {
 
     let n: number = 0;
     let sequenceLength = sequence.length;
+    let bx = 0, by = 0, vx = 1, vy = 0;
+    let minX = 0, maxX = 0, minY = 0, maxY = 0;
+    for (const turn of sequence) {
+      [vx, vy] = turn === 'L' ? [-vy, vx] : [vy, -vx]; bx += vx; by += vy;
+      minX = Math.min(minX, bx); maxX = Math.max(maxX, bx);
+      minY = Math.min(minY, by); maxY = Math.max(maxY, by);
+    }
+    const step = Math.min(this.lineLength, (canvasWidth - 48) / Math.max(1, maxX - minX), (canvasHeight - 48) / Math.max(1, maxY - minY));
+    x = (canvasWidth - (maxX + minX) * step) / 2;
+    y = (canvasHeight - (maxY + minY) * step) / 2;
+    direction = new Vec2(step, 0);
     for (let turn of sequence) {
-      if (!this.isDrawing) break;
+      if (generation !== this.renderGeneration) return;
       direction =
         turn === 'L' ? this.rotateLeft(direction) : this.rotateRight(direction);
 
@@ -70,7 +85,7 @@ export class DragonCurveComponent implements OnInit {
       n++;
     }
 
-    this.isDrawing = false;
+    if (generation === this.renderGeneration) this.isDrawing = false;
   }
 
   generateDragonSequence(iterations: number): string[] {
@@ -87,40 +102,30 @@ export class DragonCurveComponent implements OnInit {
   }
 
   incrementIterations(): void {
-    this.iterations++;
-    if (!this.isDrawing) {
-      this.drawDragonCurve();
-    }
+    this.iterations = Math.min(16, this.iterations + 1);
+    void this.drawDragonCurve();
   }
 
   decrementIterations(): void {
     if (this.iterations > 0) {
       this.iterations--;
-      if (!this.isDrawing) {
-        this.drawDragonCurve();
-      }
+      void this.drawDragonCurve();
     }
   }
 
   incrementLineLength(): void {
-    this.lineLength++;
-    if (!this.isDrawing) {
-      this.drawDragonCurve();
-    }
+    this.lineLength = Math.min(20, this.lineLength + 1);
+    void this.drawDragonCurve();
   }
 
   decrementLineLength(): void {
     if (this.lineLength > 1) {
       this.lineLength--;
-      if (!this.isDrawing) {
-        this.drawDragonCurve();
-      }
+      void this.drawDragonCurve();
     }
   }
 
-  stopDrawing(): void {
-    this.isDrawing = false;
-  }
+  stopDrawing(): void { ++this.renderGeneration; this.isDrawing = false; }
 
   private sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -139,7 +144,7 @@ export class DragonCurveComponent implements OnInit {
     value = Math.max(0, Math.min(1, value));
 
     // Convertir el valor decimal entre 0 y 1 a un valor entre 0 y 360 grados para el espectro de color HSL
-    const hue = value * 360; // 0 (rojo) a 360 (rojo de nuevo pasando por violeta)
+    const hue = 15 + value * 35; // 0 (rojo) a 360 (rojo de nuevo pasando por violeta)
 
     // Definir saturación (100%) y luminosidad (50%) para colores vivos y de espectro completo
     const saturation = 100;

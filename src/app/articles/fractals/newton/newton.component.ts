@@ -1,19 +1,19 @@
 import { RouterLink } from '@angular/router';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { OnDestroy, Component, ElementRef, ViewChild } from '@angular/core';
 import { Move2DComponent } from "../../../widgets/move2d/move2d.component";
 import { ZoomComponent } from "../../../widgets/zoom/zoom.component";
 import { Vec2 } from 'src/app/shared/math/vec2';
 import { Complex } from 'src/app/shared/math/complex';
 import { ComplexFunction } from './complex-function';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-newton',
   standalone: true,
   imports: [RouterLink, Move2DComponent, ZoomComponent],
   templateUrl: './newton.component.html',
   styleUrl: './newton.component.css'
 })
-export class NewtonComponent {
+export class NewtonComponent implements OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
 
   static title: string = 'Fractal del conjunto de Newton';
@@ -27,16 +27,11 @@ export class NewtonComponent {
   centerX: number = 0;
   centerY: number = 0;
 
-  isDrawing: boolean = false;
+  isDrawing = true;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { ++this.renderGeneration; this.isDrawing = false; }
 
-  colors: [number, number, number][] = [
-    [255, 0, 0],
-    [0, 255, 0],
-    [0, 0, 255],
-    [255, 255, 0],
-    [255, 0, 255],
-    [0, 255, 255]
-  ];
+  colors: [number, number, number][] = [[232,100,58], [74,158,255], [212,168,67], [168,230,160], [213,184,236], [232,228,216]];
 
   functions: Record<string, ComplexFunction> = {};
   selectedFunction = "z^3 - 1";
@@ -80,6 +75,7 @@ export class NewtonComponent {
   }
 
   async drawFractal(fn: ComplexFunction, center: Vec2, scale: number) {
+    const generation = ++this.renderGeneration;
     const canvas = this.canvas.nativeElement;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
@@ -97,10 +93,10 @@ export class NewtonComponent {
     this.isDrawing = true;
 
     for (let pixelX = 0; pixelX < width; pixelX++) {
-      if (!this.isDrawing) break; // Stop drawing if a new request is initiated.
+      if (generation !== this.renderGeneration) return; // Stop drawing if a new request is initiated.
       for (let pixelY = 0; pixelY < height; pixelY++) {
         let z = new Complex(minX + pixelX * dx, minY + pixelY * dy);
-        const solution: NewtonSolution = this.newtonMethod(this.functions[this.selectedFunction], z);
+        const solution: NewtonSolution = this.newtonMethod(fn, z);
         const color = this.getColor(solution);
         const index = (pixelX + pixelY * width) * 4;
         data[index] = color[0];
@@ -112,10 +108,12 @@ export class NewtonComponent {
       // Dibujar cada línea y esperar al siguiente ciclo del event loop para no bloquear la interfaz.
       if (pixelX % 10 === 0) {
         await this.sleep(0); // Pausar brevemente la ejecución
+        if (generation !== this.renderGeneration) return;
         ctx.putImageData(imageData, 0, 0);
       }
     }
 
+    if (generation !== this.renderGeneration) return;
     ctx.putImageData(imageData, 0, 0);
     this.isDrawing = false;
   }
@@ -157,12 +155,12 @@ export class NewtonComponent {
   }
 
   zoomIn(): void {
-    this.zoom += 1;
+    this.zoom = Math.min(40, this.zoom + 1);
     this.updateValues();
   }
 
   zoomOut(): void {
-    this.zoom -= 1;
+    this.zoom = Math.max(6, this.zoom - 1);
     this.updateValues();
   }
 
@@ -174,12 +172,12 @@ export class NewtonComponent {
   }
 
   incrementMaxIterations(): void {
-    this.maxIterations *= 2;
+    this.maxIterations = Math.min(2048, this.maxIterations * 2);
     this.updateValues();
   }
 
   decrementMaxIterations(): void {
-    this.maxIterations /= 2;
+    this.maxIterations = Math.max(16, Math.floor(this.maxIterations / 2));
     this.updateValues();
   }
 
@@ -187,19 +185,12 @@ export class NewtonComponent {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  updateValues() {
-    if (!this.isDrawing) {
-      this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom);
-    } else {
-      this.isDrawing = false; // Stop current rendering if new values are set.
-      setTimeout(() => this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom), 100); // Restart after a slight delay.
-    }
-  }
+  updateValues() { void this.drawFractal(this.functions[this.selectedFunction], new Vec2(this.centerX, this.centerY), 2 ** this.zoom); }
 
   onCanvasMouseDown(event: MouseEvent) {
     const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+    const x = (event.clientX - rect.left) * this.width / rect.width;
+    const y = (event.clientY - rect.top) * this.height / rect.height;
     const scale = 2 ** this.zoom;
     const dx = 1.0 / scale;
     const dy = 1.0 / scale;
@@ -222,7 +213,7 @@ export class NewtonComponent {
     let iteration = 0;
     let zz = new Complex(z.real, z.imaginary);
     while (iteration < this.maxIterations) {
-      const denom = z.absSquared();
+      const denom = fn.derivative(zz).absSquared();
       if (denom === 0) break;
 
       // Newton's method: z = z - f(z) / f'(z)

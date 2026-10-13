@@ -5,18 +5,18 @@
 <p>Debajo, puedes visualizar la Curva del Dragón con un componente interactivo, donde puedes controlar el número de iteraciones para observar cómo evoluciona este fascinante fractal en cada nivel.</p>
 <div class="widget-container">
   <div class="widget-title">Curva del Dragón</div>
-  <div>
-    <button (click)="decrementIterations()">Decrementar Iteraciones</button>
+  <div class="legacy-workspace"><div class="legacy-stage"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas width="800" height="600"></canvas></div><div class="legacy-console"><div>
+    <button [disabled]="iterations <= 0" (click)="decrementIterations()">− Iteraciones</button>
     <div class="widget-label">{{iterations}} iteraciones</div>
-    <button (click)="incrementIterations()">Incrementar Iteraciones</button>
+    <button [disabled]="iterations >= 16" (click)="incrementIterations()">+ Iteraciones</button>
     <button (click)="stopDrawing()">Detener Dibujo</button>
   </div>
   <div>
     <button (click)="decrementLineLength()">Disminuir longitud de línea</button>
     <div class="widget-label">longitud de línea: {{lineLength}}</div>
     <button (click)="incrementLineLength()">Incrementar longitud de línea</button>
-  </div>
-  <canvas #canvas width="800" height="600"></canvas>
+  </div></div></div>
+
 </div>
 
 <div class="footnotes">

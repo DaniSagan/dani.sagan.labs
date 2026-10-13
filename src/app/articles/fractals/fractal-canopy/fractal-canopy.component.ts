@@ -6,7 +6,7 @@ import {
 } from '../fractal-explorer/fractal-explorer.component';
 import { drawLSystem } from '../shared/l-system-renderer';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-fractal-canopy',
   standalone: true,
   imports: [FractalExplorerComponent],

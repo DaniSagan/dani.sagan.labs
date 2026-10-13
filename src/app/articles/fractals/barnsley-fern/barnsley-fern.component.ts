@@ -1,16 +1,18 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { OnDestroy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-barnsley-fern',
   templateUrl: './barnsley-fern.component.html',
   styleUrls: ['./barnsley-fern.component.css'],
   standalone: true,
 })
-export class BarnsleyFernComponent implements OnInit {
+export class BarnsleyFernComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
   iterations: number = 5000;
   isDrawing: boolean = false;
+  private renderGeneration = 0;
+  ngOnDestroy(): void { this.stopDrawing(); }
 
   static title: string = 'Helecho de Barnsley';
   static route: string = 'barnsley-fern';
@@ -21,6 +23,7 @@ export class BarnsleyFernComponent implements OnInit {
   }
 
   async drawBarnsleyFern(): Promise<void> {
+    const generation = ++this.renderGeneration;
     const canvasWidth = this.canvas.nativeElement.width;
     const canvasHeight = this.canvas.nativeElement.height;
 
@@ -28,9 +31,9 @@ export class BarnsleyFernComponent implements OnInit {
     this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
     // Configurar el estilo de neón
-    this.ctx.fillStyle = '#00FF00'; // Color verde brillante
-    this.ctx.shadowColor = '#00FF00';
-    this.ctx.shadowBlur = 5;
+    this.ctx.fillStyle = '#a8e6a0'; // Color verde brillante
+    this.ctx.shadowColor = '#a8e6a0';
+    this.ctx.shadowBlur = 0;
 
     // Coordenadas iniciales
     let x = 0;
@@ -39,9 +42,7 @@ export class BarnsleyFernComponent implements OnInit {
     this.isDrawing = true;
 
     for (let i = 0; i < this.iterations; i++) {
-      if (!this.isDrawing) {
-        break; // Salir del bucle si se ha detenido el dibujo
-      }
+      if (generation !== this.renderGeneration) return;
 
       const nextPoint = this.computeNextPoint(x, y);
       x = nextPoint[0];
@@ -60,7 +61,7 @@ export class BarnsleyFernComponent implements OnInit {
       }
     }
 
-    this.isDrawing = false;
+    if (generation === this.renderGeneration) this.isDrawing = false;
   }
 
   computeNextPoint(x: number, y: number): [number, number] {
@@ -85,24 +86,18 @@ export class BarnsleyFernComponent implements OnInit {
   }
 
   incrementIterations(): void {
-    this.iterations += 5000;
-    if (!this.isDrawing) {
-      this.drawBarnsleyFern();
-    }
+    this.iterations = Math.min(100000, this.iterations + 5000);
+    void this.drawBarnsleyFern();
   }
 
   decrementIterations(): void {
     if (this.iterations > 5000) {
       this.iterations -= 5000;
-      if (!this.isDrawing) {
-        this.drawBarnsleyFern();
-      }
+      void this.drawBarnsleyFern();
     }
   }
 
-  stopDrawing(): void {
-    this.isDrawing = false;
-  }
+  stopDrawing(): void { ++this.renderGeneration; this.isDrawing = false; }
 
   private sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));

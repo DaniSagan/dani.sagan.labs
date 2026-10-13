@@ -5,7 +5,7 @@ import {
   paint,
 } from '../fractal-explorer/fractal-explorer.component';
 import { Vec2 } from 'src/app/shared/math/vec2';
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-gosper-curve',
   standalone: true,
   imports: [FractalExplorerComponent],

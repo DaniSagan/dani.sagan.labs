@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LEARNING_IMPORTS } from '../../shared/learning-imports';
 import { MathLabComponent } from '../../shared/math-lab.component';
 import { lab } from './zero-measure-dimension-lab.model';
-@Component({
+@Component({ host: { class: 'fractal-page' },
     selector: 'app-zero-measure-dimension-article', standalone: true,
     imports: [...LEARNING_IMPORTS, MathLabComponent],
     templateUrl: './zero-measure-dimension-article.component.html',

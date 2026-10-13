@@ -4,44 +4,22 @@
 <p>Debajo de este artículo, encontrarás un componente interactivo donde puedes visualizar el conjunto de Mandelbrot. El componente te permite desplazarte por el plano complejo, hacer zoom para observar sus detalles y ajustar el número máximo de iteraciones, lo que afectará la precisión y profundidad de la imagen generada.</p>
 <div class="widget-container">
   <div class="widget-title">Conjunto de Mandelbrot</div>
-  <div class="controls">
-    <!-- <label>Min X:
-      <input type="number" [(ngModel)]="minX" (input)="updateValues()">
-    </label>
-    <label>Max X:
-      <input type="number" [(ngModel)]="maxX" (input)="updateValues()">
-    </label>
-    <label>Min Y:
-      <input type="number" [(ngModel)]="minY" (input)="updateValues()">
-    </label>
-    <label>Max Y:
-      <input type="number" [(ngModel)]="maxY" (input)="updateValues()">
-    </label> -->
+  <div class="legacy-workspace"><div class="legacy-stage" [attr.aria-busy]="isDrawing"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas [width]="width" [height]="height"></canvas></div><div class="legacy-console"><div class="controls">
 
-    <table>
-      <tr>
-        <td></td>
-        <td><button (click)="moveUp()">🡩</button></td>
-        <td></td>
-        <td><button (click)="zoomIn()">➕</button></td>
-      </tr>
-      <tr>
-        <td><button (click)="moveLeft()">🡠</button></td>
-        <td></td>
-        <td><button (click)="moveRight()">🡢</button></td>
-        <td>zoom</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td><button (click)="moveDown()">🡣</button></td>
-        <td></td>
-        <td><button (click)="zoomOut()">➖</button></td>
-      </tr>
-    </table>
-    <button (click)="incrementMaxIterations()">Incrementar Iteraciones</button>
-    <button (click)="decrementMaxIterations()">Disminuir Iteraciones</button>
-  </div>
-  <canvas #canvas [width]="width" [height]="height"></canvas>
+
+    <div class="navigation-controls" aria-label="Desplazamiento y zoom">
+      <button aria-label="Mover a la izquierda" (click)="moveLeft()">←</button>
+      <button aria-label="Mover arriba" (click)="moveUp()">↑</button>
+      <button aria-label="Mover abajo" (click)="moveDown()">↓</button>
+      <button aria-label="Mover a la derecha" (click)="moveRight()">→</button>
+      <button aria-label="Alejar" (click)="zoomOut()">−</button>
+      <button aria-label="Acercar" (click)="zoomIn()">+</button>
+    </div>
+    <div class="iteration-readout" role="status">{{maxIterations}} iteraciones</div>
+    <button [disabled]="maxIterations >= 2048" (click)="incrementMaxIterations()">+ Iteraciones</button>
+    <button [disabled]="maxIterations <= 16" (click)="decrementMaxIterations()">− Iteraciones</button>
+  </div></div></div>
+
   <div>
     <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
   </div>

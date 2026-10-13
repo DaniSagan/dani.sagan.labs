@@ -1,12 +1,29 @@
-<div class="widget-container">
-  <div class="widget-title">Explorador: {{ title }}</div>
-  <p class="explorer-formula" *ngIf="formula">{{ formula }}</p>
-  <div class="explorer-controls">
-    <label for="iterations">Iteraciones</label>
-    <input id="iterations" type="range" [min]="minIterations" [max]="maxIterations" [(ngModel)]="iterations" (input)="update()">
-    <span class="widget-label">{{ iterations }}</span>
+﻿<div class="widget-container fractal-studio">
+  <header class="studio-header">
+    <div><span class="studio-kicker">GEOMETRÍA / LABORATORIO INTERACTIVO</span><div class="widget-title">{{ title }}</div></div>
+    <button type="button" class="save-button" (click)="save()" aria-label="Guardar visualización como imagen PNG">Guardar PNG ↗</button>
+  </header>
+  <div class="fractal-workspace">
+    <div class="fractal-stage">
+      <span class="stage-caption">ETAPA {{ iterations }} / {{ maxIterations }}</span>
+      <canvas #canvas role="img" [attr.aria-label]="title + ', etapa ' + iterations"></canvas>
+    </div>
+    <div class="fractal-console">
+      <label class="iteration-control"><span>Iteraciones <output aria-live="polite">{{ iterations }}</output></span>
+        <input type="range" [min]="minIterations" [max]="maxIterations" step="1" [value]="iterations" (input)="iterations = +$any($event.target).value; update()">
+      </label>
+      <div class="step-controls">
+        <button type="button" (click)="step(-1)" [disabled]="iterations <= minIterations" aria-label="Reducir una iteración">−</button>
+        <button type="button" (click)="reset()">Restablecer</button>
+        <button type="button" (click)="step(1)" [disabled]="iterations >= maxIterations" aria-label="Aumentar una iteración">+</button>
+      </div>
+      <div class="extra-parameters"><ng-content /></div>
+      <p class="console-hint">Compara dos etapas consecutivas y busca la regla que se repite.</p>
+    </div>
   </div>
-  <canvas #canvas [width]="size" [height]="size" aria-label="Visualización interactiva del fractal"></canvas>
-  <p class="explorer-note">Este lienzo no es una imagen almacenada: se vuelve a calcular al cambiar el nivel. Las primeras iteraciones muestran la regla generadora y las siguientes hacen visibles sus consecuencias a escalas menores. El límite elegido evita que el número de operaciones crezca demasiado, pero basta para apreciar la autosimilitud. En los fractales de escape, el control aumenta el número máximo de pasos de la órbita; en los geométricos, aumenta la profundidad de la recursión o de la sustitución.</p>
-  <p class="explorer-note">Conviene comparar dos niveles consecutivos en lugar de mirar solo el último. Pregúntate qué parte se ha sustituido, cuántas copias aparecen y cuál es su factor de escala. Esa observación permite deducir el crecimiento del número de elementos y, en muchos casos, su dimensión de semejanza. El color y el grosor se han elegido únicamente para facilitar la lectura; la información matemática está en la posición de los puntos y en el orden de las iteraciones. Puedes volver a un nivel pequeño siempre que quieras para reconstruir mentalmente el algoritmo.</p>
+  <p class="explorer-formula" *ngIf="formula">{{ formula }}</p>
+  <details class="explorer-guide"><summary>Cómo leer esta visualización</summary>
+    <p>El dibujo se recalcula al cambiar el nivel. En los fractales geométricos, las iteraciones indican la profundidad de la construcción; en los conjuntos de escape aumentan el número de pasos de la órbita. La imagen representa una aproximación finita, no el conjunto límite.</p>
+    <p>Observa qué parte se sustituye, cuántas copias aparecen y su factor de escala. El límite del control mantiene el cálculo manejable. Guarda una etapa para compararla con otra.</p>
+  </details>
 </div>

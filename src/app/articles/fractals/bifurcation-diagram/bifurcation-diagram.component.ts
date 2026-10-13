@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 interface Viewport { rMin: number; rMax: number; yMin: number; yMax: number; }
 interface Preset extends Viewport { label: string; r: number; }
 
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-bifurcation-diagram',
   standalone: true,
   imports: [RouterLink, FormsModule],

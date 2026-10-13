@@ -4,7 +4,7 @@ import {
   FractalRenderer,
   paint,
 } from '../fractal-explorer/fractal-explorer.component';
-@Component({
+@Component({ host: { class: 'fractal-page' },
   selector: 'app-peano-curve',
   standalone: true,
   imports: [FractalExplorerComponent],
