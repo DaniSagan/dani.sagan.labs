@@ -2,34 +2,47 @@
 <p class="dropcap">El conjunto de Mandelbrot es uno de los fractales más famosos y estudiados en matemáticas debido a su complejidad y belleza visual. Fue nombrado en honor al matemático Benoît Mandelbrot, quien lo descubrió en 1980 mientras estudiaba geometría fractal. Este conjunto es generado mediante una sencilla iteración de la fórmula matemática <span class="formula">z<sub>n+1</sub> = z<sub>n</sub><sup>2</sup> + c</span>, donde <span class="formula">z</span> y <span class="formula">c</span> son números complejos. La idea básica es aplicar repetidamente esta fórmula a cada punto del plano complejo para ver si el valor resultante tiende al infinito o permanece acotado. Los puntos que no divergen (permanecen acotados) forman el conjunto de Mandelbrot, mientras que los que divergen dan lugar a las coloridas y complejas estructuras que se observan en sus bordes.</p>
 <p>Visualmente, el conjunto de Mandelbrot tiene una estructura autosemejante: al hacer zoom en sus bordes, se pueden ver réplicas de la figura principal y patrones extremadamente intrincados. Este comportamiento fractal refleja la riqueza matemática de este conjunto.</p>
 <p>Debajo de este artículo, encontrarás un componente interactivo donde puedes visualizar el conjunto de Mandelbrot. El componente te permite desplazarte por el plano complejo, hacer zoom para observar sus detalles y ajustar el número máximo de iteraciones, lo que afectará la precisión y profundidad de la imagen generada.</p>
-<div class="widget-container">
-  <div class="widget-title">Conjunto de Mandelbrot</div>
-  <div class="legacy-workspace"><div class="legacy-stage" [attr.aria-busy]="isDrawing"><canvas role="img" aria-label="Visualización interactiva del fractal" #canvas [width]="width" [height]="height"></canvas></div><div class="legacy-console"><div class="controls">
-
-
-    <div class="navigation-controls" aria-label="Desplazamiento y zoom">
-      <button aria-label="Mover a la izquierda" (click)="moveLeft()">←</button>
-      <button aria-label="Mover arriba" (click)="moveUp()">↑</button>
-      <button aria-label="Mover abajo" (click)="moveDown()">↓</button>
-      <button aria-label="Mover a la derecha" (click)="moveRight()">→</button>
-      <button aria-label="Alejar" (click)="zoomOut()">−</button>
-      <button aria-label="Acercar" (click)="zoomIn()">+</button>
+<div #studio class="mandelbrot-studio" aria-label="Explorador del conjunto de Mandelbrot">
+  <header class="mb-heading"><div><span class="mb-kicker">PLANO COMPLEJO / EXPLORACIÓN PROFUNDA</span><h3>Mandelbrot</h3></div><span class="mb-zoom">× {{zoomLabel}}</span></header>
+  <div #stage class="mb-stage" [class.dragging]="dragging" [attr.aria-busy]="isDrawing">
+    <canvas #canvas tabindex="0" role="img" aria-label="Conjunto de Mandelbrot interactivo. Usa la rueda para acercar al cursor, arrastra para desplazar, o usa dos dedos. Con el teclado: flechas, más, menos e Inicio."
+      (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp($event)" (pointercancel)="pointerUp($event)" (lostpointercapture)="pointerUp($event)" (keydown)="onKey($event)"></canvas>
+    <div class="mb-image-status" role="status"><span class="mb-dot" [class.busy]="isDrawing || !!error"></span>{{error ? 'Vista incompleta' : isDrawing ? 'Afinando detalle · ' + progress + '%' : 'Vista lista'}}</div>
+    <div class="mb-image-hint">Rueda o pellizco: zoom · Arrastra: desplazar</div>
+  </div>
+  <div class="mb-console">
+    <div class="mb-navigation" aria-label="Navegación y exportación">
+      <button type="button" (click)="zoomOut()" aria-label="Alejar Mandelbrot" title="Alejar">−</button>
+      <button type="button" (click)="zoomIn()" aria-label="Acercar Mandelbrot" title="Acercar">+</button>
+      <button type="button" (click)="resetView()" title="Volver al conjunto completo">Inicio</button>
+      <button type="button" (click)="undo()" [disabled]="!canUndo" aria-label="Volver a la vista anterior" title="Vista anterior">↶</button>
+      <button type="button" (click)="savePng()" [disabled]="isDrawing || !!error" title="Guardar la imagen a su resolución actual">PNG ↗</button>
+      <button type="button" (click)="fullscreen()" aria-label="Alternar pantalla completa" title="Pantalla completa">⛶</button>
     </div>
-    <div class="iteration-readout" role="status">{{maxIterations}} iteraciones</div>
-    <button [disabled]="maxIterations >= 2048" (click)="incrementMaxIterations()">+ Iteraciones</button>
-    <button [disabled]="maxIterations <= 16" (click)="decrementMaxIterations()">− Iteraciones</button>
-  </div></div></div>
-
-  <div>
-    <div class="widget-label">Centro: ({{centerX}}, {{centerY}})</div>
-  </div>
-  <div>
-    <div class="widget-label">Escala: 2<sup>{{scale}}</sup> px/unidad</div>
-  </div>
-  <div>
-    <div class="widget-label">Max. iteraciones: {{maxIterations}}</div>
+    <div class="mb-settings">
+      <label>Paleta<select name="palette" [(ngModel)]="palette" (ngModelChange)="recolor()">@for(p of palettes;track p.id){<option [value]="p.id">{{p.name}}</option>}</select></label>
+      <label>Iteraciones<select name="iterations" [(ngModel)]="iterationBudget" (ngModelChange)="changeSettings()">
+        <option [ngValue]="0">Automáticas · {{iterationBudget===0 ? maxIterations : 'según zoom'}}</option>
+        @for(n of [512,1024,2048,4096,8192,16384,32768,65536];track n){<option [ngValue]="n">{{n}}</option>}
+        <option [ngValue]="-1">Personalizadas</option>
+      </select></label>
+      <label>Calidad<select name="quality" [(ngModel)]="quality" (ngModelChange)="changeSettings()"><option value="fast">Rápida</option><option value="balanced">Equilibrada · adaptable</option><option value="ultra">Máxima · 4 muestras</option></select></label>
+      <label class="mb-phase"><span>Desplazar color <output>{{(phase*100).toFixed(0)}}%</output></span><input name="phase" type="range" min="0" max="1" step="0.001" [(ngModel)]="phase" (ngModelChange)="recolor()"></label>
+      @if(iterationBudget===-1){<label>Iteraciones personalizadas<input name="customIterations" type="number" min="16" step="1" [(ngModel)]="customIterations" (change)="changeSettings()"></label>}
+    </div>
+    @if(error){<p class="mb-error" role="alert">{{error}} <button type="button" (click)="retry()">Reintentar</button></p>}
+    @if(notice){<p class="mb-notice" role="status">{{notice}}</p>}
+    <details class="mb-details"><summary>Lugares, posición y cómo se calcula</summary>
+      <div class="mb-detail-controls"><label>Lugares para explorar<select name="preset" [(ngModel)]="preset" (ngModelChange)="choosePreset()">@for(p of presets;track $index){<option [ngValue]="$index">{{p.name}}</option>}</select></label>
+        <button type="button" (click)="savePosition()">Guardar posición exacta</button><label class="mb-file">Abrir posición<input type="file" accept="application/json,.json" (change)="loadPosition($event)"></label></div>
+      <dl><div><dt>Centro · primeras cifras</dt><dd>{{centerLabel}}</dd></div><div><dt>Precisión de coordenadas</dt><dd>{{view.bits}} bits · aumenta con el zoom</dd></div><div><dt>Motor</dt><dd>{{algorithmLabel}}</dd></div><div><dt>Última imagen</dt><dd>{{(renderMilliseconds/1000).toFixed(2)}} s · {{threadCount}} hilos · {{width}} × {{height}} px</dd></div><div><dt>Trabajo ahorrado por BLA</dt><dd>{{skippedIterations | number}} pasos</dd></div><div><dt>Correcciones de precisión</dt><dd>{{repairedPixels | number}} muestras</dd></div></dl>
+      <p>La profundidad de zoom no tiene un techo programado: las coordenadas conservan precisión creciente y el motor de perturbación guarda los exponentes por separado. La órbita de referencia se calcula con enteros de precisión arbitraria; BLA permite saltar pasos cuando la aproximación es válida. Los puntos sospechosos se recalculan a precisión completa.</p>
+      <p>Las zonas oscuras no han escapado dentro del presupuesto de iteraciones; eso no demuestra pertenencia al conjunto. Aumenta las iteraciones para comprobar sus fronteras. Profundizar y mejorar la calidad requiere más tiempo y memoria. La posición guardada conserva todas las cifras de esta vista.</p>
+      <p>Fundamento del motor: <a href="https://mathr.co.uk/web/deep-zoom.html" target="_blank" rel="noopener noreferrer">perturbación, rebasing y BLA — Claude Heiland-Allen</a>.</p>
+    </details>
   </div>
 </div>
+
 
 <div class="footnotes">
   <h4>Más información</h4>

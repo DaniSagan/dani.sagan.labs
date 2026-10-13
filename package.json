@@ -15,6 +15,8 @@
     "test:googology": "node scripts/test-googology.cjs",
     "test:curve-articles": "node scripts/test-additional-curve-articles.cjs",
     "test:curve-pages": "node scripts/check-additional-curve-pages.cjs",
+    "test:mandelbrot": "node scripts/test-mandelbrot.cjs",
+    "test:mandelbrot:browser": "node scripts/check-mandelbrot-page.cjs",
     "test:fractals": "node scripts/test-fractal-rendering.cjs",
     "test:fractals:browser": "node scripts/check-fractal-pages.cjs",
     "test:probability-detective": "node scripts/test-probability-detective.cjs",

@@ -41,16 +41,5 @@ for(const frame of frames.values())frame();frames.clear();assert.equal(canvas.wi
 explorer.raster=true;explorer.iterations=NaN;explorer.update();assert.equal(explorer.iterations,4);
 for(const frame of frames.values())frame();frames.clear();assert.equal(canvas.width,480);assert.equal(ratio,1);
 explorer.update();explorer.ngOnDestroy();assert.equal(frames.size,0);
-(async()=>{
- const {MandelbrotComponent}=load(base+'mandelbrot/mandelbrot.component.ts');
- const app=new MandelbrotComponent();app.width=20;app.height=20;
- let paints=0;const ctx={createImageData:(w,h)=>({data:new Uint8ClampedArray(w*h*4)}),putImageData(){paints++;}};
- app.canvas={nativeElement:{getContext:()=>ctx}};
- const pending=[];app.sleep=()=>new Promise(resolve=>pending.push(resolve));
- const first=app.drawMandelbrot();app.centerX=.3;const second=app.drawMandelbrot();
- pending.shift()();await new Promise(resolve=>setImmediate(resolve));assert.equal(paints,0,'Obsolete render must never publish pixels');
- while(pending.length){pending.shift()();await new Promise(resolve=>setImmediate(resolve));}
- await Promise.all([first,second]);assert.equal(app.isDrawing,false);assert(paints>0);
- const third=app.drawMandelbrot();const previous=paints;app.ngOnDestroy();while(pending.length){pending.shift()();await new Promise(resolve=>setImmediate(resolve));}await third;assert.equal(paints,previous,'Destroyed render must not publish');
- console.log('PASS: palette bounds, four tangency fixtures, finite packed circles, stale rendering cancellation and component disposal.');
-})().catch(e=>{console.error(e);process.exitCode=1;});
+console.log('PASS: palettes, tangency fixtures, Menger construction, iteration bounds, retina scaling and scheduled frame cancellation.');
+require('./test-mandelbrot.cjs');
