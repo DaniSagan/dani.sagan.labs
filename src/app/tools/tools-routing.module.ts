@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: '', component: ToolsContentComponent, children: [
       { path: '', pathMatch: 'full', title: 'Herramientas · DaniSagan Labs', loadComponent: () => import('./tools-home/tools-home.component').then(m => m.ToolsHomeComponent) },
       { path: 'graph-plotter', component: GraphPlotterComponent },
+      { path: 'latex-editor', title: 'LaTeX Studio · DaniSagan Labs', loadComponent: () => import('./latex-editor/latex-editor.component').then(m => m.LatexEditorComponent) },
       { path: 'prime-decomposition', component: PrimeDecompositionArticleComponent },
       { path: 'pi-decimals', component: PiDecimalComponent },
       { path: 'implicit-curve-graph', component: ImplicitCurveGraphToolComponent },

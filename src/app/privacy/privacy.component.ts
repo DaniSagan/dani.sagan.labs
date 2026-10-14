@@ -13,7 +13,7 @@ export class PrivacyComponent {
     this.storageMessage = '';
     if (
       !window.confirm(
-        '¿Borrar las partidas de Sudoku, los sistemas de Gravedad y los borradores de viajes guardados en este navegador? Esta acción no se puede deshacer. Los archivos descargados se conservarán.',
+        '¿Borrar las partidas de Sudoku, los sistemas de Gravedad, los borradores de viajes y las fórmulas LaTeX guardados en este navegador? Esta acción no se puede deshacer. Los archivos descargados se conservarán.',
       )
     )
       return;
@@ -38,11 +38,15 @@ export class PrivacyComponent {
       ]);
       for (const path of paths) {
         document.cookie = `travel_planner_draft=; Max-Age=0; Path=${path}; SameSite=Lax; Secure`;
+        for (const cookie of document.cookie.split(';')) {
+          const name = cookie.trim().split('=')[0];
+          if (name.startsWith('dsl_formula_v1_')) document.cookie = `${name}=; Max-Age=0; Path=${path}; SameSite=Strict`;
+        }
       }
       if (
         document.cookie
           .split(';')
-          .some((cookie) => cookie.trim().startsWith('travel_planner_draft='))
+          .some((cookie) => cookie.trim().startsWith('travel_planner_draft=') || cookie.trim().startsWith('dsl_formula_v1_'))
       ) {
         throw new Error('Legacy draft could not be removed');
       }

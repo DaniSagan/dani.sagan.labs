@@ -3,23 +3,24 @@
     <p class="eyebrow">Dani.Sagan.Labs</p>
     <h1 id="privacy-title">Privacidad y datos guardados</h1>
     <p>Información sobre los datos que se conservan en tu navegador y los servicios externos que utiliza esta web.</p>
-    <p class="updated">Última actualización: 4 de octubre de 2026.</p>
+    <p class="updated">Última actualización: 14 de octubre de 2026.</p>
   </header>
 
   <section aria-labelledby="storage-title">
     <h2 id="storage-title">Qué se guarda en tu dispositivo</h2>
     <p>Algunas herramientas utilizan el almacenamiento local del navegador para que puedas recuperar tu trabajo. La aplicación no envía esos datos guardados a un servidor propio ni los utiliza para publicidad, estadísticas o perfiles de navegación.</p>
     <ul>
+      <li><strong>LaTeX Studio:</strong> conserva automáticamente hasta 16 fórmulas en cookies funcionales durante un año, con nombre, expresión y opciones de imagen. Puedes borrarlas individualmente desde la biblioteca o descargar una copia JSON.</li>
       <li><strong>Sudoku:</strong> conserva el tablero y la dificultad cuando pulsas «Guardar Tablero».</li>
       <li><strong>Gravedad:</strong> conserva los cuerpos y la fecha de la simulación cuando pulsas «Guardar sistema».</li>
       <li><strong>Planificador de viajes:</strong> guarda automáticamente el borrador, incluido el nombre del viaje, presupuesto, actividades, fechas y lugares que introduces, para recuperarlo en futuras visitas.</li>
     </ul>
-    <p>Estos datos permanecen en el navegador, sin un plazo de caducidad automático, hasta que los sustituyes o los eliminas. No se sincronizan con otros dispositivos. Los archivos que descargas se guardan donde tú elijas.</p>
+    <p>Los datos del almacenamiento local permanecen en el navegador hasta que los sustituyes o los eliminas; las cookies del editor LaTeX caducan tras un año sin actualizarse. No se sincronizan con otros dispositivos. Los archivos que descargas se guardan donde tú elijas.</p>
   </section>
 
   <section aria-labelledby="cookies-title">
     <h2 id="cookies-title">Cookies y almacenamiento funcional</h2>
-    <p>La aplicación no instala cookies de publicidad ni de seguimiento. El almacenamiento local descrito se utiliza exclusivamente para guardar y recuperar los datos de las herramientas que usas. El planificador también puede leer una cookie de borrador de versiones anteriores para recuperar tu viaje.</p>
+    <p>La aplicación no instala cookies de publicidad ni de seguimiento. El editor LaTeX utiliza cookies funcionales para recuperar tus fórmulas y la última fórmula activa. El almacenamiento local descrito se utiliza exclusivamente para guardar y recuperar los datos de las herramientas que usas. El planificador también puede leer una cookie de borrador de versiones anteriores para recuperar tu viaje.</p>
     <p>No se solicita consentimiento de cookies para estas funciones de almacenamiento necesarias para el servicio solicitado. Puedes consultar el <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758#a22">artículo 22.2 de la LSSI</a> y la <a href="https://www.aepd.es/guias/guia-cookies.pdf">guía de cookies de la AEPD</a>.</p>
   </section>
 
@@ -38,8 +39,8 @@
 
   <section class="storage-controls" aria-labelledby="delete-title">
     <h2 id="delete-title">Borrar datos guardados</h2>
-    <p>Elimina las partidas de Sudoku, los sistemas de Gravedad y los borradores de viajes guardados por esta web en este navegador. El borrado es irreversible y no elimina archivos descargados.</p>
-    <p>Antes de borrar, descarga una copia de los viajes que quieras conservar. Cierra las herramientas abiertas en otras pestañas para evitar que vuelvan a guardar datos.</p>
+    <p>Elimina las partidas de Sudoku, los sistemas de Gravedad, los borradores de viajes y las fórmulas LaTeX guardados por esta web en este navegador. El borrado es irreversible y no elimina archivos descargados.</p>
+    <p>Antes de borrar, descarga una copia de los viajes y las fórmulas que quieras conservar. Cierra las herramientas abiertas en otras pestañas para evitar que vuelvan a guardar datos.</p>
     <button type="button" (click)="clearSavedData()">Borrar datos guardados</button>
     <p class="storage-message" role="status" aria-live="polite">{{ storageMessage }}</p>
     <p>También puedes eliminar estos datos desde la configuración de tu navegador.</p>

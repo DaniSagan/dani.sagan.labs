@@ -15,6 +15,7 @@ export class ToolsNavbarComponent {
     name: 'Otros',
     items: [
       { name: 'Todas las herramientas', route: '' },
+      { name: 'Editor de fórmulas LaTeX', route: 'latex-editor' },
       { name: 'Factorización en primos', route: 'prime-decomposition' },
       { name: 'Graficador de funciones', route: 'graph-plotter' },
       { name: 'Calculadora de decimales de pi', route: 'pi-decimals' },

@@ -1,0 +1,70 @@
+<div #studio class="studio" [class.expanded]="expanded" (keydown)="escape($event)">
+  <header class="studio-header">
+    <div><span class="eyebrow">DANI SAGAN LABS / HERRAMIENTAS</span><h1>LaTeX <em>Studio</em><span class="title-dot">.</span></h1></div>
+    <button class="fullscreen" type="button" (click)="fullscreen()" [attr.aria-label]="expanded ? 'Salir de pantalla completa' : 'Pantalla completa'">{{ expanded ? '↙ Salir' : '⛶ Pantalla completa' }}</button>
+  </header>
+  <div class="document-bar">
+    <label class="document-name">Fórmula<input aria-label="Nombre de la fórmula" maxlength="80" [(ngModel)]="doc.name" (ngModelChange)="scheduleSave()"></label>
+    <button type="button" (click)="newFormula()">＋ Nueva</button>
+    <button type="button" (click)="copy()">Copiar LaTeX</button>
+    <span class="save-state" role="status">{{ saveStatus }}</span>
+  </div>
+  <div class="workspace">
+    <div class="visual-pane">
+      <div class="pane-label"><span><i></i> FÓRMULA VIVA</span><span>Ratón · tacto · teclado</span></div>
+      <div #formulaStage class="formula-stage" [style.background-color]="doc.background" [style.color]="doc.foreground" (scroll)="refreshVisualSelection()">
+        <math-field #field aria-label="Editor visual de fórmula matemática" [style.font-size.px]="doc.fontSize"></math-field>
+        <div *ngIf="visualSelectionBox as box" class="visual-selection-box" aria-hidden="true" [style.left.px]="box.left" [style.top.px]="box.top" [style.width.px]="box.width" [style.height.px]="box.height"></div>
+      </div>
+      <div class="selection-info"><span>{{ selectedLabel }}</span><code>{{ selected || 'Toca la fórmula para situar el cursor' }}</code></div>
+    </div>
+    <div class="source-pane">
+      <label class="pane-label" for="latex-source"><span>FUENTE LATEX</span><span>{{ latex.length }} caracteres</span></label>
+      <div class="source-editor">
+        <div #sourceHighlight class="source-highlight" aria-hidden="true"><span>{{ latex.slice(0, selectionStart) }}</span><mark [class.has-selection]="selectionEnd > selectionStart">{{ selected }}</mark><span>{{ latex.slice(selectionEnd) }}{{ '\n ' }}</span></div>
+        <textarea #code id="latex-source" spellcheck="false" autocapitalize="off" autocomplete="off" [value]="latex" (input)="editCode(code.value)" (select)="fromCode()" (click)="fromCode()" (keyup)="fromCode()" (scroll)="sourceHighlight.scrollTop = code.scrollTop; sourceHighlight.scrollLeft = code.scrollLeft" aria-describedby="source-help"></textarea>
+      </div>
+      <p id="source-help">Selecciona un bloque aquí o en la fórmula. Los controles conectan ambas vistas.</p>
+    </div>
+  </div>
+  <div class="navigation" aria-label="Navegación estructural">
+    <div class="nav-cluster"><button type="button" aria-label="Seleccionar sumando anterior" title="Sumando anterior" (click)="navigate('left')">←</button><button type="button" aria-label="Subir de nivel: seleccionar operador padre" title="Seleccionar operador padre" (click)="navigate('parent')">↑ Nivel</button><button type="button" aria-label="Bajar de nivel: entrar en operador" title="Entrar en el operador" (click)="navigate('child')">↓ Nivel</button><button type="button" aria-label="Seleccionar sumando siguiente" title="Sumando siguiente" (click)="navigate('right')">→</button></div>
+    <div class="nav-cluster"><button type="button" (click)="command('moveToPreviousPlaceholder')" aria-label="Hueco anterior">⇤</button><button type="button" (click)="command('moveToNextPlaceholder')" aria-label="Hueco siguiente">⇥ Hueco</button><button type="button" (click)="undo(-1)" aria-label="Deshacer">↶</button><button type="button" (click)="undo(1)" aria-label="Rehacer">↷</button><button type="button" (click)="command('deleteBackward')" aria-label="Borrar selección o carácter anterior">⌫</button></div>
+  </div>
+  <p class="error" *ngIf="error" role="alert">{{ error }}</p>
+  <div class="panel-tabs" role="tablist" aria-label="Paneles del editor">
+    <button type="button" role="tab" [attr.aria-selected]="panel === 'keyboard'" (click)="panel = 'keyboard'">⌨ Teclado</button>
+    <button type="button" role="tab" [attr.aria-selected]="panel === 'export'" (click)="panel = 'export'">↓ Exportar</button>
+    <button type="button" role="tab" [attr.aria-selected]="panel === 'library'" (click)="panel = 'library'">▤ Biblioteca</button>
+    <button type="button" role="tab" [attr.aria-selected]="panel === 'help'" (click)="panel = 'help'">? Guía</button>
+  </div>
+  <div class="panel" *ngIf="panel === 'keyboard'" role="tabpanel" aria-label="Teclado matemático">
+    <div class="keyboard-filters"><label>Familia<select [(ngModel)]="group" (ngModelChange)="page = 0; search = ''"><option *ngFor="let g of groups">{{ g }}</option></select></label><label class="search">Buscar<input type="search" placeholder="símbolo, nombre o \comando" [(ngModel)]="search" (ngModelChange)="page = 0"></label></div>
+    <div class="key-grid"><button type="button" class="formula-key" *ngFor="let key of keys" [attr.aria-label]="key.name + ': ' + key.latex" [title]="key.name + ' · ' + key.latex" (pointerdown)="$event.preventDefault()" (click)="insert(key)"><span>
+      <svg *ngIf="key.accent; else plainKey" class="accent-preview" viewBox="0 0 48 50" aria-hidden="true" focusable="false">
+        <text x="24" y="43" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" fill="currentColor">x</text>
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" [ngSwitch]="key.accent">
+          <path *ngSwitchCase="'vector'" d="M10 18H38 M32 13L38 18L32 23"/>
+          <path *ngSwitchCase="'hat'" d="M12 21L24 13L36 21"/>
+          <path *ngSwitchCase="'bar'" d="M10 18H38"/>
+          <path *ngSwitchCase="'tilde'" d="M10 20C18 8 26 30 38 16"/>
+          <circle *ngSwitchCase="'dot'" cx="24" cy="18" r="2" fill="currentColor" stroke="none"/>
+          <g *ngSwitchCase="'ddot'" fill="currentColor" stroke="none"><circle cx="19" cy="18" r="2"/><circle cx="29" cy="18" r="2"/></g>
+        </g>
+      </svg><ng-template #plainKey>{{ key.label }}</ng-template>
+    </span><small>{{ key.latex.replace('#0', 'x').replace('#?', '□') }}</small></button></div>
+    <div class="keyboard-footer"><span>{{ filtered.length }} opciones · {{ count }} en total</span><div><button type="button" aria-label="Página anterior de símbolos" [disabled]="page === 0" (click)="page = page - 1">‹</button><span>{{ page + 1 }} / {{ pages }}</span><button type="button" aria-label="Página siguiente de símbolos" [disabled]="page + 1 >= pages" (click)="page = page + 1">›</button></div></div>
+    <p class="empty" *ngIf="!filtered.length">No hay coincidencias. Puedes escribir cualquier comando en la fuente LaTeX.</p>
+  </div>
+  <div class="panel export-panel" *ngIf="panel === 'export'" role="tabpanel" aria-label="Opciones de exportación">
+    <div class="export-controls"><label>Tamaño de texto <span>{{ doc.fontSize }} px</span><input type="range" min="12" max="96" [(ngModel)]="doc.fontSize" (ngModelChange)="scheduleSave()"></label><label>Color del texto<input type="color" [(ngModel)]="doc.foreground" (ngModelChange)="scheduleSave()"></label><label>Color del fondo<input type="color" [(ngModel)]="doc.background" (ngModelChange)="scheduleSave()"></label><label>Resolución PNG<select [(ngModel)]="doc.scale" (ngModelChange)="scheduleSave()"><option [ngValue]="1">1×</option><option [ngValue]="2">2× Retina</option><option [ngValue]="3">3×</option><option [ngValue]="4">4×</option></select></label><label class="check"><input type="checkbox" [(ngModel)]="doc.transparent" (ngModelChange)="scheduleSave()"> Fondo transparente</label></div>
+    <div class="export-actions"><button type="button" class="primary" [disabled]="busy" (click)="export('png')">Descargar PNG</button><button type="button" [disabled]="busy" (click)="export('svg')">Descargar SVG</button><button type="button" [disabled]="busy" (click)="export('json')">Descargar JSON</button></div><p>SVG conserva la nitidez a cualquier escala. JSON conserva el LaTeX, el nombre y el diseño.</p>
+  </div>
+  <div class="panel library-panel" *ngIf="panel === 'library'" role="tabpanel" aria-label="Biblioteca de fórmulas">
+    <label>Fórmulas guardadas<select [ngModel]="doc.id" (ngModelChange)="open($event)"><option *ngFor="let d of docs" [value]="d.id">{{ d.name || 'Sin título' }}</option></select></label><div class="library-actions"><button type="button" (click)="newFormula()">＋ Nueva fórmula</button><label class="import-button">Importar JSON<input type="file" accept=".json,application/json" (change)="importFile($event)"></label><button type="button" class="danger" (click)="remove()">Eliminar actual</button></div><p>Hasta 16 fórmulas en cookies funcionales durante un año, según su tamaño y la capacidad disponible. Para fórmulas extensas, guarda una copia JSON. No se sincronizan entre dispositivos.</p>
+    <span class="eyebrow">PUNTOS DE PARTIDA · ABREN UNA FÓRMULA NUEVA</span><div class="examples"><button type="button" *ngFor="let example of examples" (click)="chooseExample(example.latex)">{{ example.name }}</button></div>
+  </div>
+  <div class="panel guide" *ngIf="panel === 'help'" role="tabpanel" aria-label="Guía de edición"><p><strong>Selecciona, transforma, explora.</strong> Arrastra sobre la fórmula con el ratón o usa la selección táctil. ↑ selecciona el nivel superior; ↓ entra en sus argumentos; ← y → recorren bloques y sumandos.</p><p>Selecciona una expresión y pulsa una plantilla, como fracción o raíz, para envolverla. Un símbolo sencillo sustituye la selección. Los cuadros □ son huecos: avanza entre ellos con ⇥, o con Tab en el editor visual.</p><p>La fuente admite edición libre y conserva el texto incompleto. Un fragmento de comando sin significado matemático puede no tener una selección visual equivalente. Deshacer y rehacer conservan los cambios en ambas vistas.</p><p>El catálogo incluye los símbolos del motor y plantillas habituales, con búsqueda por comando. LaTeX permite paquetes y macros ilimitados; los comandos compatibles con MathLive se pueden introducir directamente. <a href="https://mathlive.io/mathfield/" target="_blank" rel="noopener">Documentación de MathLive</a>.</p></div>
+  <p class="feedback" role="status" aria-live="polite">{{ busy ? 'Preparando imagen…' : message }}</p>
+  <footer class="studio-footer"><span>DE LA IDEA A LA NOTACIÓN</span><span>Edición local · Sin cuentas · Sin enviar tus fórmulas</span></footer>
+</div>

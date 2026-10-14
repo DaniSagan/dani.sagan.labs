@@ -14,6 +14,7 @@ export class ToolsHomeComponent {
       title: 'Representar y explorar',
       description: 'De una expresión a una imagen: descubre formas, relaciones y movimiento.',
       tools: [
+        { route: 'latex-editor', name: 'LaTeX Studio', symbol: '∑', description: 'Crea fórmulas con edición visual y LaTeX sincronizados, un teclado matemático y exportación a imágenes.' },
         { route: 'graph-plotter', name: 'Graficador de funciones', symbol: 'ƒ(x)', description: 'Representa funciones y compara sus gráficas para explorar cómo cambian.' },
         { route: 'implicit-curve-graph', name: 'Curvas implícitas', symbol: 'F(x,y)', description: 'Explora curvas definidas por ecuaciones y descubre una galería de formas.' },
         { route: 'vector-field', name: 'Campos vectoriales y dinámica', symbol: '↗', description: 'Visualiza campos y trayectorias para investigar el comportamiento de sistemas dinámicos.' },
