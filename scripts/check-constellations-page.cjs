@@ -15,7 +15,7 @@ const mathjaxBundle = process.env.MATHJAX_TEST_BUNDLE || path.join(os.tmpdir(), 
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.ico': 'image/x-icon' };
 let browser, socket, server;
-const watchdog = setTimeout(() => { console.error('Browser audit timed out.'); process.exit(1); }, 180000);
+const watchdog = setTimeout(() => { console.error('Browser audit timed out.'); process.exit(1); }, 300000);
 async function main() {
   assert(fs.existsSync(path.join(dist, 'index.html')), 'Run a development build first.');
   server = http.createServer((req, res) => {
@@ -70,13 +70,13 @@ async function main() {
   const apply=async expression=>{await evaluate(component+'.'+expression);await evaluate('ng.applyChanges('+component+')');await pause(90);};
   const state=expression=>evaluate(component+'.'+expression);
   async function mount(){for(let i=0;i<100;i++){if(await evaluate("!!document.querySelector('app-constellation-recognition .sky')"))return;await pause(100);}throw Error('Game did not mount');}
-  const presentation=async(lines,names)=>{assert.equal(await evaluate("!!document.querySelector('.constellation-lines')"),lines);assert.equal(await evaluate("!!document.querySelector('.star-labels')"),names);};
+  const presentation=async(lines,names)=>{assert.equal(await evaluate("!!document.querySelector('.constellation-lines')"),lines);assert.equal(await evaluate("!!document.querySelector('.star-labels')"),names);const objectCount=await state('target.objects.length'),enabled=await state('deepSkyEnabled');assert.equal(await evaluate("document.querySelectorAll('.deep-sky-object').length"),names&&enabled?objectCount:0);};
   await call('Page.navigate',{url:origin+'/games/constellations'});await mount();
   assert(await evaluate("!!document.querySelector('app-games-navbar a[href=\"/games/constellations\"]')"));
   await presentation(true,true);
-  for(const hemisphere of ['north','south'])for(const difficulty of [1,2,3]){
-    await apply('setup()');await apply(`configureHemisphere('${hemisphere}')`);await apply(`difficulty=${difficulty}`);await apply('count=17');await apply('start()');
-    assert.equal(await state('questions.length'),17);
+  for(const hemisphere of ['north','south','all'])for(const difficulty of [1,2,3]){
+    await apply('setup()');await apply(`configureHemisphere('${hemisphere}')`);await apply(`difficulty=${difficulty}`);await apply(`count=${await state('candidates.length')}`);await apply('start()');
+    const roundCount=await state('candidates.length');assert.equal(await state('questions.length'),roundCount);
     await presentation(difficulty<=2,difficulty===1);
     if(difficulty===3){await apply('hint()');await presentation(true,false);await apply('hint()');await presentation(true,true);}
     // Select one deliberately incorrect answer through the rendered button.
@@ -84,11 +84,11 @@ async function main() {
     await evaluate(`document.querySelectorAll('.answer-options button')[${wrong}].click()`);await pause(100);await evaluate('ng.applyChanges('+component+')');
     assert.equal(await state('answer.correct'),false);await presentation(true,true);assert(await evaluate("!!document.querySelector('.incorrect')"));
     await apply('next()');
-    for(let i=1;i<17;i++){
+    for(let i=1;i<roundCount;i++){
       await presentation(difficulty<=2,difficulty===1);
       await evaluate(`(()=>{const c=${component};const i=c.question.options.findIndex(o=>o.id===c.target.id);document.querySelectorAll('.answer-options button')[i].click();})()`);await pause(30);await apply('next()');
     }
-    assert.equal(await state('mode'),'results');assert.equal(await state('correct'),16);assert(await evaluate("!!document.querySelector('.results')"));
+    assert.equal(await state('mode'),'results');assert.equal(await state('correct'),roundCount-1);assert(await evaluate("!!document.querySelector('.results')"));
     await apply('retryMissed()');assert.equal(await state('questions.length'),1);assert.equal(await state('practiceRound'),true);await apply(`choose(${component}.target.id)`);await apply('next()');
     assert.equal(await state('mode'),'results');await apply('setup()');
   }
@@ -104,16 +104,19 @@ async function main() {
   await call('Input.dispatchMouseEvent',{type:'mouseReleased',x:hit.x,y:hit.y,button:'left',clickCount:1});
   let updated=false;for(let i=0;i<30;i++){updated=await evaluate("!!document.querySelector('.feedback') && !!document.querySelector('.incorrect') && !!document.querySelector('.star-labels')");if(updated)break;await pause(100);}if(!updated){console.log('Native debug',await evaluate(`JSON.stringify({mode:${component}.mode,index:${component}.index,answer:${component}.answer,pending:${component}.pendingExit})`),await evaluate(`document.elementFromPoint(${hit.x},${hit.y})?.outerHTML`),await evaluate("document.querySelector('.answer-options').outerHTML"));const shot=await call('Page.captureScreenshot',{format:'png'});fs.writeFileSync(path.join(os.tmpdir(),'danisagan-constellations-debug.png'),Buffer.from(shot.data,'base64'));}assert(updated,'Native click did not update feedback');await apply('setup()');
   await apply('atlas()');
-  for(const hemisphere of ['north','south']){await apply(`configureHemisphere('${hemisphere}')`);const ids=await state('candidates.map(c=>c.id)');for(const id of ids){await apply(`inspect('${id}')`);await presentation(true,true);const geometry=await evaluate("[...document.querySelectorAll('.sky circle,.sky text,.sky line')].every(el=>!el.outerHTML.includes('NaN')&&!el.outerHTML.includes('Infinity'))");assert(geometry,'Invalid geometry for '+id);}}
+  for(const hemisphere of ['north','south','all']){await apply(`configureHemisphere('${hemisphere}')`);const ids=await state('candidates.map(c=>c.id)');for(const id of ids){await apply(`inspect('${id}')`);await presentation(true,true);const geometry=await evaluate("[...document.querySelectorAll('.sky circle,.sky text,.sky line,.sky g,.sky ellipse,.sky path')].every(el=>!el.outerHTML.includes('NaN')&&!el.outerHTML.includes('Infinity'))");assert(geometry,'Invalid geometry for '+id);}}
   await apply("configureHemisphere('north')");await apply("inspect('Cas')");
+  await apply("inspect('Ori')");await presentation(true,true);assert.equal(await evaluate("document.querySelectorAll('.deep-sky-object').length"),2);
+  await evaluate("document.querySelector('.deep-sky-toggle').click()");await pause(100);await evaluate('ng.applyChanges('+component+')');assert.equal(await state('deepSkyEnabled'),false);assert.equal(await evaluate("document.querySelectorAll('.deep-sky-object').length"),0);
+  await evaluate("document.querySelector('.deep-sky-toggle').click()");await pause(100);await evaluate('ng.applyChanges('+component+')');await presentation(true,true);
   for(const width of [1440,768,390,320]){await call('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<500});await pause(100);assert(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Overflow at '+width);}
   await apply('setZoom(1)');assert.equal(await state('zoom'),2);assert(await evaluate("document.querySelector('.sky-scroll').scrollWidth>document.querySelector('.sky-scroll').clientWidth"));assert(await evaluate('document.documentElement.scrollWidth<=innerWidth'));await apply('setZoom(-1)');
   await apply('setup()');await apply('difficulty=3');await apply('start()');await presentation(false,false);await apply('pendingExit=true');await apply('setup()');await presentation(false,false);
   const mastery=await state('mastered.size');assert(mastery>0);await call('Page.reload');await mount();assert.equal(await state('mastered.size'),mastery);
-  await apply('atlas()');await apply("inspect('Cas')");
+  await apply('atlas()');await apply("inspect('Ori')");
   for(const [label,width,height] of [['desktop',1440,1000],['mobile',390,1000]]){await call('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<500});await pause(150);await evaluate("document.querySelector('.sky-panel').scrollIntoView({behavior:'instant',block:'start'})");await pause(150);const shot=await call('Page.captureScreenshot',{format:'png'});const file=path.join(os.tmpdir(),'danisagan-constellations-'+label+'.png');fs.writeFileSync(file,Buffer.from(shot.data,'base64'));console.log('Screenshot: '+file);}
   assert.equal(errors.length,0,errors.join('\n'));
-  console.log('PASS: actual menu/route, six full rounds, all 33 figures, three strict rendering levels, hints, feedback, review, atlas, zoom, local progress; desktop/tablet/mobile/320px; no runtime exceptions.');
+  console.log('PASS: actual menu/route, nine full rounds, all 88 figures, three strict rendering levels, hints, feedback, review, atlas, zoom, local progress; desktop/tablet/mobile/320px; no runtime exceptions.');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
   clearTimeout(watchdog);
