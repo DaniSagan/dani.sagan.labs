@@ -44,7 +44,9 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
   get selected(): string { return this.latex.slice(this.selectionStart, this.selectionEnd); }
   makeDocument(name: string, latex = ''): FormulaDocument { return { id: crypto.randomUUID(), name, latex, updated: new Date().toISOString(), fontSize: 32, foreground: '#e8e4d8', background: '#12121e', transparent: false, scale: 2 }; }
   ngAfterViewInit(): void {
-    this.field.mathVirtualKeyboardPolicy = 'manual'; this.field.smartFence = true;
+    // On touch devices MathLive opens its letters/numbers/symbols keyboard on focus.
+    // Keep the native keyboard suppressed so it does not cover the math keyboard.
+    this.field.mathVirtualKeyboardPolicy = 'auto'; this.field.smartFence = true;
     this.field.setAttribute('inputmode', 'none');
     this.field.value = this.latex;
     const listen = (target: EventTarget, type: string, fn: () => void) => { target.addEventListener(type, fn); this.listeners.push(() => target.removeEventListener(type, fn)); };

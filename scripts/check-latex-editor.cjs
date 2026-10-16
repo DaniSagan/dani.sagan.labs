@@ -155,6 +155,17 @@ async function main() {
   const r = await evaluate("(()=>{const r=document.querySelector('math-field').getBoundingClientRect();return{x:r.x+30,y:r.y+r.height/2}})()");
   await call('Input.dispatchTouchEvent', { type:'touchStart', touchPoints:[r] }); await call('Input.dispatchTouchEvent', { type:'touchEnd', touchPoints:[] }); await pause(150);
   await action('await c.fullscreen()'); assert.equal(await state('c.expanded'),false);
+  // Reload with touch capability present from startup, as on a real phone.
+  await call('Page.reload');
+  for (let i = 0; i < 180; i++) { if (await evaluate("!!document.querySelector('app-latex-editor math-field')?.shadowRoot")) break; await pause(100); }
+  await evaluate("document.querySelector('math-field').scrollIntoView({block:'center',behavior:'instant'})");
+  const touchField = await evaluate("(()=>{const r=document.querySelector('math-field').getBoundingClientRect();return{x:r.x+30,y:r.y+r.height/2}})()");
+  await call('Input.dispatchTouchEvent', { type:'touchStart', touchPoints:[touchField] });
+  await call('Input.dispatchTouchEvent', { type:'touchEnd', touchPoints:[] });
+  await pause(400);
+  assert(await evaluate('window.mathVirtualKeyboard.visible'), 'Touching the formula opens the math keyboard');
+  const layouts = await evaluate('window.mathVirtualKeyboard.layouts');
+  for (const name of ['numeric', 'alphabetic', 'symbols']) assert(layouts.includes(name), `Mobile keyboard includes ${name}`);
   assert.equal(failedFonts.length,0,failedFonts.join('\n')); assert.equal(errors.length,0,errors.join('\n'));
   console.log('PASS: structure, bidirectional selection, repeated symbols, real keyboard clicks, wrap/undo/redo, incomplete source, cookies/reload/new/library, search, SVG/PNG/JSON, desktop/tablet/mobile/320px, touch, fullscreen; no runtime exceptions.');
 }
