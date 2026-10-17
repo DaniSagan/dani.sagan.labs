@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Media y mediana ante un dato extremo</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula media y mediana de 2, 3, 3, 4, 18. Repite al sustituir 18 por 48 y compara.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La media es la suma dividida por el número de datos. La suma inicial es 2+3+3+4+18=30; como hay cinco datos, la media es 30/5=6.</li>
+      <li>Para la mediana ordenamos los datos, que ya están ordenados. Con cinco observaciones, la posición central es la tercera: la mediana es 3.</li>
+      <li>Al sustituir 18 por 48, la suma aumenta 30 unidades y pasa a 60. La nueva media es 60/5=12. La lista sigue ordenada y el tercer dato sigue siendo 3.</li>
+      <li>La media se duplica porque incorpora la magnitud de cada dato. La mediana no cambia porque depende de la posición central. Esto muestra distinta sensibilidad a un valor extremo.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Media 6→12; mediana 3→3.</p>
+    <app-formula expression="\overline x:6\longrightarrow12,\quad\operatorname{mediana}:3\longrightarrow3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La mediana requiere ordenar, y no se calcula promediando todos los valores.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/descriptive-statistics">Estadística descriptiva y valores atípicos ↗</a><p>Practica media y mediana ante un dato extremo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-181" />
+</article>

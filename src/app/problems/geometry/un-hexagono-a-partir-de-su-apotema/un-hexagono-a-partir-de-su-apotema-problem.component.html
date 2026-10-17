@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un hexágono a partir de su apotema</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un hexágono regular tiene apotema 3√3 cm. Calcula su lado, perímetro y área.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Unimos el centro con los seis vértices. Se forman seis triángulos isósceles con ángulo central 360°/6=60°; sus otros dos ángulos también son 60°, por lo que son equiláteros.</li>
+      <li>Si el lado es l, la apotema es la altura de uno de esos triángulos. Al dividirlo por la mitad, Pitágoras da a²=l²−(l/2)²=3l²/4.</li>
+      <li>Como las longitudes son positivas, a=√3·l/2. Sustituimos 3√3=√3·l/2 y dividimos por √3: l=6 cm.</li>
+      <li>El perímetro es P=6l=36 cm. Sumando las seis áreas triangulares obtenemos A=Pa/2=36·3√3/2=54√3 cm².</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Lado 6 cm, perímetro 36 cm y área 54√3 cm².</p>
+    <app-formula expression="l=6\ \mathrm{cm},\quad A=54\sqrt3\ \mathrm{cm}^2" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La apotema llega al punto medio de un lado, no a un vértice.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/apothem">Apotema de un polígono regular ↗</a><p>Practica un hexágono a partir de su apotema. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-123" />
+</article>

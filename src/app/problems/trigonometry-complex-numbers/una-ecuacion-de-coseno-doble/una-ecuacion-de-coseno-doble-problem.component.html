@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una ecuación de coseno doble</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Resuelve cos(2x)=1/2 para 0≤x&lt;2π.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Llamamos t=2x. Como x recorre [0,2π), el nuevo ángulo recorre [0,4π); debemos buscar soluciones durante dos vueltas completas.</li>
+      <li>En la circunferencia unidad, cos t=1/2 corresponde a t=π/3 y t=5π/3 en la primera vuelta. En la segunda sumamos 2π: t=7π/3 y t=11π/3.</li>
+      <li>Dividimos cada valor por 2 para volver a x: π/6, 5π/6, 7π/6 y 11π/6. Todos pertenecen al intervalo pedido.</li>
+      <li>Al duplicar cada candidato se recuperan los cuatro ángulos anteriores. No hay más porque en cada vuelta el coseno toma 1/2 solo en esas dos posiciones.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> x=π/6, 5π/6, 7π/6 o 11π/6.</p>
+    <app-formula expression="x\in\left\{\frac\pi6,\frac{5\pi}6,\frac{7\pi}6,\frac{11\pi}6\right\}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Al sustituir t=2x también cambia el intervalo de búsqueda.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/trigonometric-equations">Ecuaciones trigonométricas y periodicidad ↗</a><p>Practica una ecuación de coseno doble. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-132" />
+</article>

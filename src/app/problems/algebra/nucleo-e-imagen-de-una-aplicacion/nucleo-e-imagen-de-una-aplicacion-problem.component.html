@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Núcleo e imagen de una aplicación</h2>
+  <p class="topic">Álgebra y álgebra lineal · Matrices y sistemas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Para T(x,y,z)=(x+y,y+z), describe el núcleo y la imagen y comprueba rango más nulidad.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El núcleo contiene las entradas que producen el vector cero. Imponemos x+y=0 e y+z=0.</li>
+      <li>De la primera ecuación x=−y y de la segunda z=−y. Si llamamos t a y, toda solución es (−t,t,−t)=t(−1,1,−1). El núcleo tiene una dirección libre: dimensión 1.</li>
+      <li>La imagen contiene las salidas posibles. Dado cualquier par (a,b), la entrada (a,0,b) produce T(a,0,b)=(a,b). Por tanto la imagen es todo el plano real, de dimensión 2.</li>
+      <li>El rango es la dimensión de la imagen, 2; la nulidad es la dimensión del núcleo, 1. Su suma 2+1=3 coincide con la dimensión del espacio de entrada.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Núcleo generado por (−1,1,−1); imagen igual a ℝ²; rango 2 y nulidad 1.</p>
+    <app-formula expression="\ker T=\operatorname{span}\{(-1,1,-1)\},\quad\operatorname{im}T=\mathbb R^2" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La imagen vive en el espacio de salida y el núcleo en el de entrada.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad ↗</a><p>Practica núcleo e imagen de una aplicación. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-117" />
+</article>

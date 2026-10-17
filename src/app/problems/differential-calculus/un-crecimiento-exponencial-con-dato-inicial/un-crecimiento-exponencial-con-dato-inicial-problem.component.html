@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un crecimiento exponencial con dato inicial</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una población idealizada satisface P′(t)=0,2P(t) y P(0)=500. Halla P(t) y el tiempo de duplicación.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La ecuación dice que la tasa de crecimiento es proporcional a la población presente. La función exponencial P(t)=Ce^(0,2t) cumple esta relación porque su derivada es 0,2Ce^(0,2t).</li>
+      <li>La condición inicial fija C: en t=0, e⁰=1 y P(0)=C=500. Así P(t)=500e^(0,2t).</li>
+      <li>Para duplicar pedimos P(t)=1000. Al dividir por 500 queda e^(0,2t)=2. El logaritmo natural deshace la exponencial: 0,2t=ln 2.</li>
+      <li>Despejamos t=ln 2/0,2=5 ln 2≈3,466 unidades de tiempo. El resultado supone que la tasa proporcional permanece constante durante todo el proceso.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> P(t)=500e^(0,2t); duplicación en 5 ln 2≈3,466 unidades.</p>
+    <app-formula expression="P(t)=500e^{0.2t},\quad T=5\ln2" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una tasa proporcional constante produce crecimiento exponencial, no un aumento absoluto constante.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden y enfriamiento ↗</a><p>Practica un crecimiento exponencial con dato inicial. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-158" />
+</article>

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Profundización</span>
+  <h2 id="problem-title">Una paradoja al mezclar grupos</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>El método A logra 81/90 éxitos en casos fáciles y 2/10 en difíciles. B logra 19/20 y 24/80, respectivamente. Compara por grupo y en conjunto.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En casos fáciles, A tiene 81/90=90% y B 19/20=95%; B supera a A. En difíciles, A tiene 2/10=20% y B 24/80=30%; B también supera a A.</li>
+      <li>Al reunir grupos, A suma 83 éxitos entre 100 casos: 83%. B suma 43 entre 100: 43%. La comparación agregada se invierte.</li>
+      <li>La razón está en los pesos: A atiende 90% de casos fáciles, mientras B solo 20%. El promedio global combina porcentajes con pesos diferentes, no con una mitad para cada grupo.</li>
+      <li>Estos datos no prueban que A sea mejor causalmente. El tipo de caso está relacionado tanto con el método aplicado como con la posibilidad de éxito; para comparar métodos hay que considerar esa composición.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> B mejora a A en ambos grupos, pero A obtiene 83% global frente a 43%.</p>
+    <app-formula expression="\frac{81+2}{90+10}=0.83&gt;0.43=\frac{19+24}{20+80}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Los porcentajes globales pueden ocultar distribuciones muy diferentes de la dificultad.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/simpson-paradox">Paradoja de Simpson ↗</a><p>Practica una paradoja al mezclar grupos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-190" />
+</article>

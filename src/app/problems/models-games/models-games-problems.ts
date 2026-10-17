@@ -1,3 +1,13 @@
+import { ContrasenasConUnaRestriccionProblemComponent } from './contrasenas-con-una-restriccion/contrasenas-con-una-restriccion-problem.component';
+import { CaminosMinimosEnUnaCuadriculaProblemComponent } from './caminos-minimos-en-una-cuadricula/caminos-minimos-en-una-cuadricula-problem.component';
+import { ElegirAsignaturasSinContarDosVecesProblemComponent } from './elegir-asignaturas-sin-contar-dos-veces/elegir-asignaturas-sin-contar-dos-veces-problem.component';
+import { UnCoeficienteSinExpandirTodoProblemComponent } from './un-coeficiente-sin-expandir-todo/un-coeficiente-sin-expandir-todo-problem.component';
+import { UnaRutaQueUsaCadaAristaProblemComponent } from './una-ruta-que-usa-cada-arista/una-ruta-que-usa-cada-arista-problem.component';
+import { CollaresDeCuatroCuentasBajoRotacionesProblemComponent } from './collares-de-cuatro-cuentas-bajo-rotaciones/collares-de-cuatro-cuentas-bajo-rotaciones-problem.component';
+import { ParentesisQueNuncaQuedanSinAbrirProblemComponent } from './parentesis-que-nunca-quedan-sin-abrir/parentesis-que-nunca-quedan-sin-abrir-problem.component';
+import { UnNacimientoYUnaSupervivenciaEnVidaProblemComponent } from './un-nacimiento-y-una-supervivencia-en-vida/un-nacimiento-y-una-supervivencia-en-vida-problem.component';
+import { UnaRestriccionDeUnidadesFisicasProblemComponent } from './una-restriccion-de-unidades-fisicas/una-restriccion-de-unidades-fisicas-problem.component';
+import { CompararDosOrbitasPorSuEscalaProblemComponent } from './comparar-dos-orbitas-por-su-escala/comparar-dos-orbitas-por-su-escala-problem.component';
 import { CaminosConUnaRestriccionProblemComponent } from './caminos-con-una-restriccion/caminos-con-una-restriccion-problem.component';
 import { UnRecorridoEulerianoProblemComponent } from './un-recorrido-euleriano/un-recorrido-euleriano-problem.component';
 import { LineasGanadorasEnDosJuegosProblemComponent } from './lineas-ganadoras-en-dos-juegos/lineas-ganadoras-en-dos-juegos-problem.component';
@@ -20,4 +30,14 @@ export const MODELS_GAMES_PROBLEMS = [
   AlturaSolarEnOviedoProblemComponent,
   ViajeEntreHusosFijosProblemComponent,
   LongitudYDimensionDeCantorProblemComponent,
+  ContrasenasConUnaRestriccionProblemComponent,
+  CaminosMinimosEnUnaCuadriculaProblemComponent,
+  ElegirAsignaturasSinContarDosVecesProblemComponent,
+  UnCoeficienteSinExpandirTodoProblemComponent,
+  UnaRutaQueUsaCadaAristaProblemComponent,
+  CollaresDeCuatroCuentasBajoRotacionesProblemComponent,
+  ParentesisQueNuncaQuedanSinAbrirProblemComponent,
+  UnNacimientoYUnaSupervivenciaEnVidaProblemComponent,
+  UnaRestriccionDeUnidadesFisicasProblemComponent,
+  CompararDosOrbitasPorSuEscalaProblemComponent,
 ] as const;

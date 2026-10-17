@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una desigualdad racional</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Resuelve (x−1)/(x+2)≥0 en los números reales.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El denominador se anula en x=−2; ese punto queda prohibido. El numerador se anula en x=1; ahí la fracción sí existe y vale cero.</li>
+      <li>Los puntos −2 y 1 separan la recta en tres intervalos. En x&lt;−2 ambos factores son negativos: su cociente es positivo.</li>
+      <li>Si −2&lt;x&lt;1, el numerador es negativo y el denominador positivo: el cociente es negativo. Si x&gt;1, ambos son positivos y el cociente también.</li>
+      <li>La desigualdad admite los valores positivos y el cero. Reunimos x&lt;−2 y x≥1, incluyendo 1 y excluyendo −2. Los signos no cambian dentro de cada intervalo porque ningún factor se anula allí.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Solución: (−∞,−2) ∪ [1,∞).</p>
+    <app-formula expression="x\in(-\infty,-2)\cup[1,\infty)" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Multiplicar directamente por x+2 exige separar su signo, pues podría invertir la desigualdad.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/sign-charts">Inecuaciones y tablas de signos ↗</a><p>Practica una desigualdad racional. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-113" />
+</article>

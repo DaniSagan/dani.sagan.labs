@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un mínimo con dominio abierto</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Encuentra el mínimo global de f(x)=x+9/x para x&gt;0.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El dominio x&gt;0 es esencial: el término 9/x está definido y es positivo. Derivamos término a término: f′(x)=1−9/x².</li>
+      <li>Los puntos críticos satisfacen 1−9/x²=0, es decir x²=9. En el dominio positivo solo queda x=3.</li>
+      <li>Si 0&lt;x&lt;3, x²&lt;9 y f′(x)&lt;0; si x&gt;3, f′(x)&gt;0. Así la función decrece hasta 3 y crece después: es un mínimo global.</li>
+      <li>Evaluamos f(3)=3+9/3=6. También podemos comprobarlo con f(x)−6=(x²−6x+9)/x=(x−3)²/x≥0, con igualdad únicamente en 3.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Mínimo global 6 en x=3.</p>
+    <app-formula expression="x+\frac9x-6=\frac{(x-3)^2}x\ge0\quad(x&gt;0)" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un punto crítico fuera del dominio no es candidato.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/derivative-optimization">Optimización con derivadas ↗</a><p>Practica un mínimo con dominio abierto. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-154" />
+</article>

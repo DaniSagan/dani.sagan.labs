@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una altura por semejanza</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una vara vertical de 1,5 m proyecta una sombra de 2 m. Un árbol proyecta al mismo tiempo una sombra de 12 m sobre el mismo suelo horizontal. Halla su altura.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Idealizamos los rayos solares como paralelos y el árbol y la vara como verticales. Cada objeto y su sombra forman un triángulo rectángulo con un rayo solar como hipotenusa.</li>
+      <li>Ambos triángulos tienen un ángulo recto y el mismo ángulo con los rayos. Son semejantes: sus longitudes correspondientes guardan la misma proporción.</li>
+      <li>Si h es la altura del árbol, h/12=1,5/2. Multiplicamos ambos lados por 12: h=12·1,5/2.</li>
+      <li>Calculamos 12/2=6 y 6·1,5=9. La sombra del árbol es seis veces mayor y su altura también; esto comprueba la proporción y las unidades.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El árbol mide 9 m bajo las hipótesis indicadas.</p>
+    <app-formula expression="h=12\frac{1.5}{2}=9\ \mathrm m" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La comparación exige el mismo ángulo solar y pendientes de suelo compatibles.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad ↗</a><p>Practica una altura por semejanza. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-121" />
+</article>

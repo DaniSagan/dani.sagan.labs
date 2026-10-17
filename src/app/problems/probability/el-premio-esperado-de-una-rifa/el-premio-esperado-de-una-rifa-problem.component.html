@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">El premio esperado de una rifa</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una rifa tiene 100 boletos equiprobables: uno paga 50 euros, cuatro pagan 10 euros y los demás cero. Un boleto cuesta 2 euros. Calcula la ganancia neta esperada.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El valor esperado es el promedio ponderado por las probabilidades. El pago bruto toma 50 con probabilidad 1/100, 10 con probabilidad 4/100 y 0 con probabilidad 95/100.</li>
+      <li>El pago esperado es 50·1/100+10·4/100+0·95/100=(50+40)/100=0,90 euros.</li>
+      <li>El coste de 2 euros se paga siempre. La ganancia neta esperada es pago esperado menos coste: 0,90−2=−1,10 euros.</li>
+      <li>También se puede usar directamente la ganancia neta: 48 para el premio mayor, 8 para los cuatro pequeños y −2 en los demás; (48+32−190)/100=−1,10. Coinciden ambos métodos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Ganancia neta esperada −1,10 euros por boleto.</p>
+    <app-formula expression="E(G)=\frac{50+4\cdot10}{100}-2=-1.10\text{ euros}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una esperanza negativa es un promedio teórico, no el resultado concreto de cada compra.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/discrete-expectation">Esperanza discreta, juegos justos y riesgo ↗</a><p>Practica el premio esperado de una rifa. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-177" />
+</article>

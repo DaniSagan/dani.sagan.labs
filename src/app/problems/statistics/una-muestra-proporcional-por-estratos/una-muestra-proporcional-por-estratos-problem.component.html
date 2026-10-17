@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Profundización</span>
+  <h2 id="problem-title">Una muestra proporcional por estratos</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una población tiene tres grupos de 600, 300 y 100 personas. Distribuye una muestra de tamaño 80 proporcionalmente y explica cómo seleccionarla.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El total poblacional es 600+300+100=1000. Los pesos de los grupos son 0,6, 0,3 y 0,1, respectivamente.</li>
+      <li>La asignación proporcional multiplica el tamaño muestral por cada peso: 80·0,6=48; 80·0,3=24; 80·0,1=8.</li>
+      <li>La suma 48+24+8=80 comprueba que se respeta el tamaño pedido. Aquí no aparecen fracciones de personas, por lo que no hace falta una regla de redondeo.</li>
+      <li>Dentro de cada grupo se eligen las personas aleatoriamente desde un listado completo. Cada persona tiene probabilidad 48/600=24/300=8/100=0,08 de entrar. Elegir solo voluntarios no mantendría esta garantía.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Seleccionar aleatoriamente 48, 24 y 8 personas en los tres estratos.</p>
+    <app-formula expression="(n_1,n_2,n_3)=(48,24,8)" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las cuotas proporcionales no eliminan el sesgo si la selección dentro de cada grupo no es adecuada.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/stratified-sampling">Muestreo estratificado y estimadores ponderados ↗</a><p>Practica una muestra proporcional por estratos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-188" />
+</article>

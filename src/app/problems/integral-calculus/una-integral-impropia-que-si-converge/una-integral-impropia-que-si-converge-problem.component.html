@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una integral impropia que sí converge</h2>
+  <p class="topic">Integración y cálculo numérico · Primitivas e integrales</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de 1/x² desde 1 hasta infinito y la cola desde R hasta infinito, con R≥1.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El extremo infinito exige una definición por límite. Primero integramos hasta un número finito B&gt;1 y después hacemos B→∞.</li>
+      <li>Una primitiva de x⁻² es −1/x. Por tanto la integral de 1 a B es −1/B−(−1)=1−1/B.</li>
+      <li>Como 1/B tiende a cero, el límite existe y vale 1. Esto significa que el área total es finita aunque el intervalo no esté acotado.</li>
+      <li>Desde R hasta B, la integral es 1/R−1/B. Al tomar B→∞ queda 1/R. Esa es también la cantidad que se omite al truncar la integral en R.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Integral total 1; cola desde R igual a 1/R.</p>
+    <app-formula expression="\int_1^\infty\frac{dx}{x^2}=1,\quad\int_R^\infty\frac{dx}{x^2}=\frac1R" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> No se trata infinito como un extremo numérico: se toma un límite de integrales finitas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas ↗</a><p>Practica una integral impropia que sí converge. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-165" />
+</article>

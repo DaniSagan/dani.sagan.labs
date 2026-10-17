@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Racionalizar cerca de cero</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula el límite de (√(1+x)−1)/x cuando x tiende a cero.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La expresión está definida cerca de cero para x≥−1, salvo en x=0. Sustituir cero da 0/0, por lo que necesitamos transformar la expresión.</li>
+      <li>Multiplicamos numerador y denominador por √(1+x)+1. Usamos la identidad (a−b)(a+b)=a²−b².</li>
+      <li>El numerador queda (1+x)−1=x. Para x≠0 se cancela con el factor x del denominador y resulta 1/(√(1+x)+1).</li>
+      <li>Esta nueva expresión sí es continua en cero y su denominador allí vale 2. Su límite es 1/2. Cancelar para x≠0 es suficiente porque el límite estudia valores próximos, no el valor en el punto.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El límite es 1/2.</p>
+    <app-formula expression="\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}=\frac12" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La cancelación no define la fracción original en x=0, aunque sí permite calcular su límite.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/asymptotic-limits">Límites, equivalencias y jerarquías de crecimiento ↗</a><p>Practica racionalizar cerca de cero. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-146" />
+</article>

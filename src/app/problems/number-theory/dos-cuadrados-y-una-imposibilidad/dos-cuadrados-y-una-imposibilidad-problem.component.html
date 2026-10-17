@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Dos cuadrados y una imposibilidad</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Demuestra que ningún entero de la forma 4k+3 puede escribirse como suma de dos cuadrados de enteros.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Basta estudiar los restos al dividir por 4. Todo entero es par, n=2a, o impar, n=2a+1; estas posibilidades cubren también los enteros negativos.</li>
+      <li>Si es par, n²=4a² deja resto 0. Si es impar, n²=4a²+4a+1 deja resto 1.</li>
+      <li>Al sumar dos cuadrados solo podemos sumar los restos 0+0, 0+1, 1+0 o 1+1. Los restos resultantes son 0, 1 o 2.</li>
+      <li>Un número 4k+3 deja resto 3. Como ese resto no aparece en la lista exhaustiva anterior, no puede ser una suma de dos cuadrados enteros.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Es imposible para todo entero k.</p>
+    <app-formula expression="a^2+b^2\not\equiv3\pmod4" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Que un número no tenga resto 3 es necesario, pero por sí solo no garantiza una representación.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/sum-of-two-squares">Teorema de Fermat sobre dos cuadrados ↗</a><p>Practica dos cuadrados y una imposibilidad. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-108" />
+</article>

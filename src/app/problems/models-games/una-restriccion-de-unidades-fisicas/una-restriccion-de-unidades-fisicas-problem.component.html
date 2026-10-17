@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una restricción de unidades físicas</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Suponiendo que el período T depende solo de una longitud L y una aceleración g como T=C Lᵃgᵇ, determina los exponentes y qué queda sin saber.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las dimensiones son [T]=tiempo, [L]=longitud y [g]=longitud/tiempo². La constante C se supone adimensional.</li>
+      <li>El miembro derecho tiene dimensión longitud^(a+b)·tiempo^(−2b). Para igualar un tiempo, el exponente de longitud debe ser cero y el de tiempo uno.</li>
+      <li>Resolvemos a+b=0 y −2b=1. La segunda da b=−1/2 y la primera a=1/2. Por tanto T=C√(L/g).</li>
+      <li>El análisis dimensional no determina C ni demuestra que el fenómeno dependa exclusivamente de L y g. Si se aplica al péndulo simple de pequeña amplitud, otra teoría establece C=2π; esa información no procede de las unidades.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> a=1/2, b=−1/2; T=C√(L/g), con C indeterminado.</p>
+    <app-formula expression="T=C\sqrt{L/g}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las unidades restringen una fórmula, pero no fijan constantes adimensionales ni validan todas las hipótesis físicas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala ↗</a><p>Practica una restricción de unidades físicas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-199" />
+</article>

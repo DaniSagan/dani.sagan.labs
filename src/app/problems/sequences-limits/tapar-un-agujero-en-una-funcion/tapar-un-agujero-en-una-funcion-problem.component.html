@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Tapar un agujero en una función</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Sea f(x)=(x²−9)/(x−3) para x≠3 y f(3)=k. Determina k para que sea continua en 3.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Continuidad en 3 significa que el límite al acercarnos a 3 coincide con el valor asignado f(3). Primero calculamos el límite sin usar k.</li>
+      <li>El numerador es una diferencia de cuadrados: x²−9=(x−3)(x+3). Para x≠3 podemos cancelar x−3 y queda f(x)=x+3.</li>
+      <li>Cuando x tiende a 3, x+3 tiende a 6. Por ello necesitamos f(3)=k=6 para que límite y valor coincidan.</li>
+      <li>Con esa elección la función es x+3 para todo x, incluido 3. Cualquier otro k dejaría el mismo límite 6 pero un valor diferente, impidiendo continuidad.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> k=6.</p>
+    <app-formula expression="\lim_{x\to3}\frac{x^2-9}{x-3}=6=k" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La definición separada de f(3) no modifica el límite de los valores vecinos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/continuity-differentiability">Continuidad y derivabilidad: funciones a trozos ↗</a><p>Practica tapar un agujero en una función. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-147" />
+</article>

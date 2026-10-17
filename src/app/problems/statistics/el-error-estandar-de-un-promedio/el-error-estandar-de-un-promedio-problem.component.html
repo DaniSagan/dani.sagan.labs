@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">El error estándar de un promedio</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Se promedian 64 mediciones independientes de una población con media 10 y desviación típica 4. Calcula la media y desviación típica del promedio.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Llamamos X̄=(X₁+…+X₆₄)/64. Cada medición tiene esperanza 10, así que la esperanza de la suma es 64·10 y E(X̄)=10.</li>
+      <li>Cada medición tiene varianza 4²=16. La independencia permite sumar varianzas: la suma tiene varianza 64·16.</li>
+      <li>Dividir una variable por 64 divide su varianza por 64². Por ello Var(X̄)=64·16/64²=16/64=1/4.</li>
+      <li>La desviación típica del promedio, llamada error estándar, es √(1/4)=1/2. La media del promedio no cambia, pero su dispersión es menor que la de una observación individual.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Media 10; varianza 1/4; error estándar 0,5.</p>
+    <app-formula expression="E(\overline X)=10,\quad\operatorname{Var}(\overline X)=\frac14" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La independencia es necesaria para sumar varianzas sin términos de covarianza.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/sampling-distributions">Distribuciones muestrales y error estándar ↗</a><p>Practica el error estándar de un promedio. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-187" />
+</article>

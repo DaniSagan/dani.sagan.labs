@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una iteración contractiva elemental</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Con x₀=0 y xₙ₊₁=(xₙ+6)/4, encuentra el límite y un índice que asegure error menor que 0,001.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Si la sucesión tiene límite L, la recurrencia exige L=(L+6)/4. Resolver 4L=L+6 da L=2. Todavía debemos demostrar que realmente se aproxima a él.</li>
+      <li>Restamos 2 a ambos lados: xₙ₊₁−2=(xₙ−2)/4. Cada paso reduce el error por un factor 4.</li>
+      <li>Como x₀−2=−2, se deduce xₙ−2=−2/4ⁿ. Por tanto xₙ=2−2/4ⁿ y el error absoluto es 2/4ⁿ, que tiende a cero.</li>
+      <li>Queremos 2/4ⁿ&lt;0,001, o 4ⁿ&gt;2000. Como 4⁵=1024 y 4⁶=4096, n=6 basta; el error es 2/4096≈0,000488.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Límite 2; desde n=6 el error es menor que 0,001.</p>
+    <app-formula expression="x_n=2-\frac2{4^n},\quad |x_n-2|=\frac2{4^n}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Encontrar un posible punto fijo no demuestra por sí solo convergencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/banach-fixed-point">Teorema del punto fijo de Banach ↗</a><p>Practica una iteración contractiva elemental. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-150" />
+</article>

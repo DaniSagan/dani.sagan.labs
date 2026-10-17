@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Multiplicar dos números imaginarios compuestos</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula (2+3i)(1−2i), su módulo y su conjugado.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La unidad imaginaria cumple i²=−1. Multiplicamos distribuyendo todos los términos: 2·1+2·(−2i)+3i·1+3i·(−2i).</li>
+      <li>Obtenemos 2−4i+3i−6i². Como −6i²=6, la parte real es 2+6=8 y la imaginaria −4i+3i=−i.</li>
+      <li>El producto es z=8−i. Su módulo es la distancia al origen del punto (8,−1): |z|=√(8²+(−1)²)=√65.</li>
+      <li>El conjugado cambia solo el signo de la parte imaginaria: z̄=8+i. Comprobamos zz̄=(8−i)(8+i)=64−i²=65=|z|².</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Producto 8−i, módulo √65 y conjugado 8+i.</p>
+    <app-formula expression="(2+3i)(1-2i)=8-i,\quad |8-i|=\sqrt{65}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El producto de dos términos imaginarios contribuye a la parte real porque i²=−1.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/complex-arithmetic">Conjugado, módulo y división compleja ↗</a><p>Practica multiplicar dos números imaginarios compuestos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-136" />
+</article>

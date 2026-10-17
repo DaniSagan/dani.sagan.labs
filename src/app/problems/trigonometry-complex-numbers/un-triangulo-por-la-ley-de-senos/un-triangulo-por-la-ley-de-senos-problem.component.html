@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un triángulo por la ley de senos</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>En un triángulo A=30°, B=45° y el lado opuesto a A mide 6. Halla C y el lado opuesto a B.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Los ángulos interiores de un triángulo plano suman 180°. Por ello C=180°−30°−45°=105°, que es positivo.</li>
+      <li>Denotamos a=6 y b al lado buscado. La ley de senos afirma a/sen A=b/sen B; cada lado se empareja con su ángulo opuesto.</li>
+      <li>Despejamos b=a·sen B/sen A. Sustituimos sen 45°=√2/2 y sen 30°=1/2: b=6·(√2/2)/(1/2)=6√2.</li>
+      <li>El lado b es mayor que a, como debe ocurrir porque su ángulo opuesto 45° es mayor que 30°. Esta comparación comprueba que no intercambiamos los lados.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> C=105° y b=6√2.</p>
+    <app-formula expression="C=105^\circ,\quad b=6\sqrt2" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Los lados y ángulos de la ley de senos se emparejan por oposición.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/sine-law">Ley de los senos y caso ambiguo ↗</a><p>Practica un triángulo por la ley de senos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-135" />
+</article>

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un seno inverso fuera de su rama</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula arcsen(sen(5π/6)) y explica por qué no devuelve 5π/6.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La función seno repite valores y por eso no puede tener una inversa sobre todos los reales. Para definir arcsen se restringe el ángulo de salida al intervalo [−π/2,π/2].</li>
+      <li>El ángulo 5π/6 equivale a 150°. Su seno es el de π−π/6, que coincide con sen(π/6)=1/2.</li>
+      <li>Buscamos ahora el ángulo de la rama principal cuyo seno es 1/2. Ese ángulo es π/6, y sí pertenece a [−π/2,π/2].</li>
+      <li>El ángulo 5π/6 no pertenece a dicha rama. Por tanto arcsen(sen x)=x solo puede usarse sin corrección cuando x ya está en el intervalo principal.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> arcsen(sen(5π/6))=π/6.</p>
+    <app-formula expression="\arcsin\left(\sin\frac{5\pi}6\right)=\frac\pi6" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una función trigonométrica inversa devuelve un representante fijado, no todos los ángulos posibles.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/trig-inverse-trig-composition">Composición de funciones trigonométricas y sus inversas ↗</a><p>Practica un seno inverso fuera de su rama. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-133" />
+</article>

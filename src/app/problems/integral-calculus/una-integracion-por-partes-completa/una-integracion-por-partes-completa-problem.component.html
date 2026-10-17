@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una integración por partes completa</h2>
+  <p class="topic">Integración y cálculo numérico · Primitivas e integrales</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de x eˣ entre 0 y 1 justificando la fórmula usada.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La regla del producto dice (uv)′=u′v+uv′. Al integrar y despejar obtenemos la fórmula por partes: integral de u v′ = uv menos integral de u′v.</li>
+      <li>Elegimos u=x y v′=eˣ. Entonces u′=1 y podemos tomar v=eˣ, porque su derivada vuelve a ser eˣ.</li>
+      <li>Una primitiva de xeˣ es xeˣ−eˣ=(x−1)eˣ. Evaluamos en 1: (1−1)e=0; en 0: (0−1)·1=−1.</li>
+      <li>La integral definida es valor superior menos inferior: 0−(−1)=1. Al derivar (x−1)eˣ obtenemos eˣ+(x−1)eˣ=xeˣ, confirmando la primitiva.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> La integral vale 1.</p>
+    <app-formula expression="\int_0^1 xe^x\,dx=1" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La evaluación del extremo inferior se resta entera, incluido su signo negativo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/integration-classical">Integrales I: técnicas clásicas ↗</a><p>Practica una integración por partes completa. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-164" />
+</article>

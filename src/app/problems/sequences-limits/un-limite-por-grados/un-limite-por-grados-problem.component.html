@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un límite por grados</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula el límite de (3n²−n+4)/(2n²+5) cuando n tiende a infinito.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Numerador y denominador crecen sin cota, así que no podemos sustituir infinito como si fuera un número. Dividimos ambos por la mayor potencia presente, n².</li>
+      <li>La fracción queda (3−1/n+4/n²)/(2+5/n²). Esta igualdad vale para todo entero positivo n.</li>
+      <li>Cuando n crece, 1/n y 1/n² tienden a cero. Por tanto el numerador transformado tiende a 3 y el denominador a 2.</li>
+      <li>Como el límite del denominador es distinto de cero, podemos tomar el cociente de los límites: 3/2. Los términos de menor grado no alteran ese valor.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El límite es 3/2.</p>
+    <app-formula expression="\lim_{n\to\infty}\frac{3n^2-n+4}{2n^2+5}=\frac32" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El símbolo ∞/∞ señala una indeterminación, no un resultado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/asymptotic-limits">Límites, equivalencias y jerarquías de crecimiento ↗</a><p>Practica un límite por grados. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-142" />
+</article>

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Estandarizar una medida normal</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una variable normal tiene media 100 y desviación típica 15. Expresa P(85≤X≤130) mediante la normal estándar y usa Φ(2)=0,97725, Φ(−1)=0,15866.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La normal estándar tiene media cero y desviación típica uno. Para pasar a ella restamos la media y dividimos por la desviación: Z=(X−100)/15.</li>
+      <li>El extremo inferior 85 se transforma en (85−100)/15=−1. El superior 130 se transforma en (130−100)/15=2.</li>
+      <li>Como dividimos por una cantidad positiva, las desigualdades mantienen su sentido. Por tanto la probabilidad es P(−1≤Z≤2)=Φ(2)−Φ(−1).</li>
+      <li>Con los valores facilitados resulta 0,97725−0,15866=0,81859. La normal es continua, por lo que incluir o excluir los extremos no cambia esta probabilidad.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Probabilidad aproximada 0,81859, es decir, 81,859%.</p>
+    <app-formula expression="P(85\le X\le130)=\Phi(2)-\Phi(-1)=0.81859" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Se divide por la desviación típica 15, no por la varianza 225.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/normal-distribution">Distribución normal y tipificación ↗</a><p>Practica estandarizar una medida normal. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-179" />
+</article>

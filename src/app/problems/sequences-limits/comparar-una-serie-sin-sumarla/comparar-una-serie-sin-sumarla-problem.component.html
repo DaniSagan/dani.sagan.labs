@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Comparar una serie sin sumarla</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Decide si la serie desde n=1 hasta infinito de 1/(n²+n+1) converge.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Los términos son positivos. Como n²+n+1≥n² para n≥1, al invertir se obtiene 0&lt;1/(n²+n+1)≤1/n².</li>
+      <li>La serie de 1/n² converge. Podemos justificarlo sin conocer su suma: para n≥2, 1/n²≤1/(n(n−1))=1/(n−1)−1/n.</li>
+      <li>La suma de estas cotas desde 2 hasta N se telescopa y vale 1−1/N&lt;1. Añadiendo el término n=1, las sumas de 1/n² están acotadas por 2.</li>
+      <li>Las sumas parciales de la serie pedida son crecientes por positividad y están acotadas por las de 1/n². Toda sucesión creciente acotada tiene límite; por ello la serie converge.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> La serie converge por comparación con una serie convergente.</p>
+    <app-formula expression="\sum_{n=1}^\infty\frac1{n^2+n+1}&lt;\infty" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Que los términos tiendan a cero es necesario, pero no basta para garantizar convergencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas ↗</a><p>Practica comparar una serie sin sumarla. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-149" />
+</article>

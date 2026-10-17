@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una potencia enorme módulo siete</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula el resto de 3²⁰²⁶ al dividir por 7 sin calcular la potencia completa.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Solo necesitamos el resto. En aritmética modular podemos sustituir un factor por otro con el mismo resto, porque sus diferencias siguen siendo múltiplos de 7 después de multiplicar.</li>
+      <li>Calculamos 3²=9≡2 y 3³≡2·3=6≡−1. Al cuadrar esta última relación obtenemos 3⁶≡1.</li>
+      <li>Dividimos el exponente: 2026=6·337+4. Entonces 3²⁰²⁶=(3⁶)³³⁷·3⁴≡1·3⁴.</li>
+      <li>Como 3⁴=(3²)²≡2²=4, ese es el resto. Está entre 0 y 6, por lo que ya es el representante euclídeo buscado.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El resto es 4.</p>
+    <app-formula expression="3^{2026}\equiv4\pmod7" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Reducir el exponente módulo 7 no está justificado; aquí se reduce por el período 6.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat ↗</a><p>Practica una potencia enorme módulo siete. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-105" />
+</article>

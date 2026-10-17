@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Dos extracciones con reposición</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una urna contiene 3 bolas rojas y 2 azules. Se extraen dos bolas, devolviendo la primera antes de extraer la segunda. Calcula la probabilidad de obtener colores distintos.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Al devolver la bola, la urna recupera su composición. Cada extracción tiene probabilidad 3/5 de roja y 2/5 de azul; suponiendo mezcla aleatoria, las extracciones son independientes.</li>
+      <li>Los colores distintos pueden aparecer en dos órdenes: roja y después azul, o azul y después roja. Estos casos no pueden ocurrir simultáneamente.</li>
+      <li>Por independencia, la probabilidad de roja-azul es (3/5)(2/5)=6/25. La de azul-roja es (2/5)(3/5)=6/25.</li>
+      <li>Sumamos los casos disjuntos: 12/25. Comprobamos con el complemento: mismo color tiene probabilidad 9/25+4/25=13/25, que junto con 12/25 suma uno.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Probabilidad 12/25=0,48.</p>
+    <app-formula expression="P(\text{distintos})=\frac{12}{25}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Sin reposición cambiarían las probabilidades de la segunda extracción.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/finite-probability">Probabilidad en espacios finitos: sucesos y regla de Laplace ↗</a><p>Practica dos extracciones con reposición. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-171" />
+</article>

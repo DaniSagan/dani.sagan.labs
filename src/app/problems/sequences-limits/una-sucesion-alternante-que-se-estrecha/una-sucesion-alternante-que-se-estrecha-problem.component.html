@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una sucesión alternante que se estrecha</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Demuestra que aₙ=(−1)ⁿ/(n+1) converge y encuentra su límite.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El factor (−1)ⁿ alterna entre 1 y −1, así que el signo cambia. Pero el tamaño es |aₙ|=1/(n+1), que disminuye hacia cero.</li>
+      <li>Tenemos −1/(n+1)≤aₙ≤1/(n+1). Los extremos tienden a cero, y el teorema del encaje obliga a que aₙ tenga el mismo límite.</li>
+      <li>Podemos cuantificarlo: dado ε&gt;0, basta elegir un entero N mayor que 1/ε. Para n≥N, 1/(n+1)&lt;ε.</li>
+      <li>Así |aₙ−0|&lt;ε a partir de ese índice. Esto prueba convergencia aunque los términos no sean monótonos: sus oscilaciones se hacen arbitrariamente pequeñas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> La sucesión converge a 0.</p>
+    <app-formula expression="\left|\frac{(-1)^n}{n+1}\right|\longrightarrow0" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar de signo no impide converger si la amplitud de la oscilación tiende a cero.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/squeeze-oscillation">Teorema del encaje y funciones oscilantes ↗</a><p>Practica una sucesión alternante que se estrecha. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-143" />
+</article>

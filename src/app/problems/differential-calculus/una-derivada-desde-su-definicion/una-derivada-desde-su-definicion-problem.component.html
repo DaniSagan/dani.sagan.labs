@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una derivada desde su definición</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula la derivada de f(x)=x²+3x usando el cociente incremental, sin aplicar una tabla de derivadas.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La derivada mide el límite de la pendiente entre dos puntos próximos. En x se define como el límite de (f(x+h)−f(x))/h cuando h tiende a cero y h≠0.</li>
+      <li>Desarrollamos f(x+h)=(x+h)²+3(x+h)=x²+2xh+h²+3x+3h. Al restar f(x)=x²+3x quedan 2xh+h²+3h.</li>
+      <li>Dividimos por h, que todavía es distinto de cero: el cociente es 2x+h+3. Esta simplificación evita sustituir en una expresión 0/0.</li>
+      <li>Al hacer h→0 obtenemos f′(x)=2x+3. Por ejemplo, en x=1 la pendiente es 5, y el cociente incremental es 5+h, que efectivamente se aproxima a 5.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> f′(x)=2x+3 para todo x real.</p>
+    <app-formula expression="f'(x)=\lim_{h\to0}(2x+h+3)=2x+3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> No se sustituye h=0 antes de simplificar el cociente.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas ↗</a><p>Practica una derivada desde su definición. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-151" />
+</article>

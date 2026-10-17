@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un intervalo aproximado para una proporción</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Inferencia y muestreo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>En una muestra aleatoria de 400 respuestas independientes, 240 son favorables. Construye el intervalo normal aproximado del 95% usando 1,96 y comenta su interpretación.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La proporción observada es p̂=240/400=0,6. Para esta aproximación estimamos su error estándar por √(p̂(1−p̂)/n).</li>
+      <li>Sustituimos: √(0,6·0,4/400)=√0,0006≈0,024495. Hay 240 éxitos y 160 fallos, cantidades suficientemente grandes para usar esta aproximación habitual.</li>
+      <li>El margen es 1,96·0,024495≈0,04801. Restamos y sumamos a 0,6: obtenemos aproximadamente [0,55199,0,64801].</li>
+      <li>La cobertura del 95% se refiere al procedimiento repetido en muchas muestras bajo el modelo. No significa que el 95% de las personas esté dentro de un intervalo ni corrige un muestreo sesgado. La aproximación normal puede fallar cerca de 0 o 1 o con muestras pequeñas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Intervalo aproximado [0,5520,0,6480], o 55,20%–64,80%.</p>
+    <app-formula expression="\widehat p\pm1.96\sqrt{\frac{\widehat p(1-\widehat p)}n}\approx[0.5520,0.6480]" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El nivel de confianza no es una proporción de observaciones individuales.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/proportion-intervals">Intervalos para proporciones: Wilson y métodos exactos ↗</a><p>Practica un intervalo aproximado para una proporción. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-189" />
+</article>

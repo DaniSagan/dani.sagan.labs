@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un lado por el coseno incluido</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Dos lados de un triángulo miden 5 y 7 y forman un ángulo de 60°. Halla el tercer lado y el área.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El ángulo dado está entre los dos lados conocidos. La ley de cosenos relaciona el lado opuesto c con ellos: c²=5²+7²−2·5·7·cos 60°.</li>
+      <li>Usamos cos 60°=1/2. Entonces c²=25+49−70/2=74−35=39. Como es una longitud, c=√39.</li>
+      <li>Para el área tomamos base 7. La altura del otro lado sobre esa base es 5·sen 60°=5√3/2, porque la altura es la componente perpendicular.</li>
+      <li>El área es base por altura entre dos: A=7·(5√3/2)/2=35√3/4. El lado √39 está entre 2 y 12, coherentemente con la desigualdad triangular.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Tercer lado √39 y área 35√3/4.</p>
+    <app-formula expression="c=\sqrt{39},\quad A=\frac{35\sqrt3}4" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La ley de cosenos usa el ángulo comprendido entre los dos lados que aparecen en el producto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/law-of-cosines">Ley de los cosenos ↗</a><p>Practica un lado por el coseno incluido. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-134" />
+</article>

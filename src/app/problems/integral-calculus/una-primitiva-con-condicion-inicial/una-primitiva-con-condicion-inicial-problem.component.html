@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una primitiva con condición inicial</h2>
+  <p class="topic">Integración y cálculo numérico · Primitivas e integrales</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Encuentra F si F′(x)=6x²−4x+1 y F(0)=7.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una primitiva es una función cuya derivada coincide con la dada. Para una potencia xⁿ con n≠−1, una primitiva es x^(n+1)/(n+1), como se comprueba derivando.</li>
+      <li>Integramos cada término: 6x² produce 2x³, −4x produce −2x² y 1 produce x. Añadimos una constante C porque su derivada es cero.</li>
+      <li>La familia es F(x)=2x³−2x²+x+C. Aplicamos F(0)=7: todos los términos con x se anulan y queda C=7.</li>
+      <li>Verificamos derivando: F′(x)=6x²−4x+1. Además F(0)=7, de modo que cumple tanto la ecuación como el dato inicial.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> F(x)=2x³−2x²+x+7.</p>
+    <app-formula expression="F(x)=2x^3-2x^2+x+7" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La constante de integración solo queda fijada después de usar el dato adicional.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/integration-classical">Integrales I: técnicas clásicas ↗</a><p>Practica una primitiva con condición inicial. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-161" />
+</article>

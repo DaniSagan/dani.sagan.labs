@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una suma de potencias de dos</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula 1+2+4+…+2¹⁰ sin sumar los once términos uno a uno.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Llamamos S a la suma. Cada término se obtiene multiplicando el anterior por 2: es una progresión geométrica finita.</li>
+      <li>Multiplicamos toda la suma por 2: 2S=2+4+8+…+2¹¹. Ambas expresiones tienen en común los términos desde 2 hasta 2¹⁰.</li>
+      <li>Restamos S de 2S. Todos los términos comunes se cancelan y queda S=2¹¹−1.</li>
+      <li>Como 2¹⁰=1024, 2¹¹=2048. La suma vale 2047. La cuenta incluye once términos, ya que los exponentes van de 0 a 10, ambos incluidos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> La suma es 2047.</p>
+    <app-formula expression="\sum_{k=0}^{10}2^k=2^{11}-1=2047" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El último exponente no coincide con el número de términos cuando se empieza en cero.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/geometric-series">Progresiones y series geométricas ↗</a><p>Practica una suma de potencias de dos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-141" />
+</article>

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una rotación en el plano complejo</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Interpreta la transformación z↦iz y aplícala al punto 3−2i cuatro veces.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Si z=x+yi, entonces iz=xi+yi²=−y+xi. En coordenadas, la transformación es (x,y)↦(−y,x).</li>
+      <li>Este cambio conserva x²+y², por lo que mantiene la distancia al origen. Además envía (1,0) a (0,1): es una rotación de 90° en sentido antihorario.</li>
+      <li>Partiendo de 3−2i, obtenemos primero 2+3i; después −3+2i; después −2−3i; por último 3−2i.</li>
+      <li>La cuarta aplicación regresa al origen de la secuencia porque i⁴=(i²)²=(−1)²=1. Los cuatro puntos tienen módulo √13.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Rotación antihoraria de 90°; órbita 3−2i → 2+3i → −3+2i → −2−3i → 3−2i.</p>
+    <app-formula expression="z\mapsto iz,\quad i^4=1" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Multiplicar por i gira en torno al origen, no en torno al punto inicial.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/complex-arithmetic">Conjugado, módulo y división compleja ↗</a><p>Practica una rotación en el plano complejo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-139" />
+</article>

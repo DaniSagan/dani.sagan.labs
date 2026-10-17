@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una función con esquina</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Estudia la continuidad y derivabilidad en cero de f(x)=|x|.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El valor absoluto cumple |x|=x si x≥0 y |x|=−x si x&lt;0. Ambas expresiones se aproximan a 0 cuando x tiende a 0; además f(0)=0.</li>
+      <li>Por tanto el límite coincide con el valor y la función es continua en cero. Para la derivada debemos estudiar (f(h)−f(0))/h=|h|/h.</li>
+      <li>Si h&gt;0, el cociente vale h/h=1. Si h&lt;0, vale −h/h=−1. Las pendientes laterales son distintas.</li>
+      <li>Un límite bilateral solo existe si los dos laterales coinciden. Por eso f no es derivable en cero, aunque no tenga salto ni agujero allí.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Continua en cero, pero no derivable: derivadas laterales −1 y 1.</p>
+    <app-formula expression="f'_-(0)=-1\ne1=f'_+(0)" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La continuidad es necesaria para derivar, pero no suficiente.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/continuity-differentiability">Continuidad y derivabilidad: funciones a trozos ↗</a><p>Practica una función con esquina. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-160" />
+</article>

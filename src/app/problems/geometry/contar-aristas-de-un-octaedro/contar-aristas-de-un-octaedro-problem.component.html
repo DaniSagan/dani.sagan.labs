@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Contar aristas de un octaedro</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un octaedro tiene ocho caras triangulares. Deduce cuántas aristas y vértices tiene.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Cada una de las ocho caras tiene tres lados. Al contar por caras obtenemos 8·3=24 incidencias de lado con cara.</li>
+      <li>En un poliedro cerrado cada arista pertenece a dos caras. La cuenta anterior duplica cada arista: 2E=24 y E=12.</li>
+      <li>Para un poliedro convexo, la fórmula de Euler dice V−E+F=2. Aquí F=8 y E=12; sustituimos V−12+8=2.</li>
+      <li>Simplificando V−4=2 obtenemos V=6. La cuenta es coherente con dos pirámides de base cuadrada unidas: cuatro vértices ecuatoriales y dos extremos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 12 aristas y 6 vértices.</p>
+    <app-formula expression="E=12,\quad V=6,\quad V-E+F=2" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Contar tres lados por cara sin dividir entre dos duplica las aristas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/euler-polyhedron-formula">Fórmula de Euler para poliedros ↗</a><p>Practica contar aristas de un octaedro. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-129" />
+</article>

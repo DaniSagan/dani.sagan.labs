@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una vuelta expresada en radianes</h2>
+  <p class="topic">Trigonometría y números complejos · Identidades y ecuaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una rueda de radio 30 cm gira 150°. Calcula el ángulo en radianes y la longitud del arco recorrido por un punto del borde.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un radián es el ángulo que abarca un arco de longitud igual al radio. Una vuelta completa abarca 2π radianes y también 360°, por lo que 180° equivalen a π radianes.</li>
+      <li>Convertimos 150° multiplicando por π/180: θ=150π/180=5π/6. El ángulo representa cinco doceavos de una vuelta.</li>
+      <li>Por la definición de radián, la longitud del arco es s=rθ cuando θ está en radianes. Sustituimos r=30 cm: s=30·5π/6=25π cm.</li>
+      <li>Comprobamos con la proporción de vuelta: la circunferencia mide 2π·30=60π cm y cinco doceavos son 60π·5/12=25π cm.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Ángulo 5π/6 rad y arco 25π cm.</p>
+    <app-formula expression="\theta=\frac{5\pi}6,\quad s=25\pi\ \mathrm{cm}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La fórmula s=rθ no admite introducir grados directamente.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/radians">Radianes ↗</a><p>Practica una vuelta expresada en radianes. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-131" />
+</article>

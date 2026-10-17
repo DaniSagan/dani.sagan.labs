@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una normal a partir de dos direcciones</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>El plano pasa por el origen y contiene u=(1,0,1) y v=(0,1,1). Encuentra una ecuación del plano.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una normal es un vector perpendicular a todas las direcciones del plano. El producto vectorial de dos direcciones independientes permite construirla.</li>
+      <li>Para u y v, el producto vectorial es (u₂v₃−u₃v₂, u₃v₁−u₁v₃, u₁v₂−u₂v₁). Sustituimos y obtenemos n=(−1,−1,1).</li>
+      <li>Comprobamos n·u=−1+1=0 y n·v=−1+1=0. Además n no es cero, de modo que sí determina una dirección normal.</li>
+      <li>Como el plano pasa por el origen, sus puntos X=(x,y,z) cumplen n·X=0. Así, −x−y+z=0, o equivalentemente z=x+y. Los vectores u y v satisfacen esta ecuación.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El plano es z=x+y.</p>
+    <app-formula expression="u\times v=(-1,-1,1),\quad z=x+y" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un vector contenido en el plano no puede usarse como normal sin comprobar perpendicularidad.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/cross-product">Producto vectorial ↗</a><p>Practica una normal a partir de dos direcciones. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-127" />
+</article>

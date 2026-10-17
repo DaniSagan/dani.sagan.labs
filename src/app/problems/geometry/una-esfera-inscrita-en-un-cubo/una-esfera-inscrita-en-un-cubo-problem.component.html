@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una esfera inscrita en un cubo</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un cubo tiene arista 6. Calcula los radios de sus esferas inscrita y circunscrita y su cociente.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las dos esferas tienen centro en el centro del cubo. La inscrita toca cada cara, así que su radio es la distancia del centro a una cara: r=6/2=3.</li>
+      <li>Para la circunscrita necesitamos la distancia del centro a un vértice. Tomando el centro como origen, un vértice tiene coordenadas (3,3,3).</li>
+      <li>Aplicamos Pitágoras en tres dimensiones: R²=3²+3²+3²=27. Como el radio es positivo, R=√27=3√3.</li>
+      <li>El cociente R/r=(3√3)/3=√3. La esfera circunscrita pasa por los vértices; la inscrita toca los centros de las caras, que están más cerca del centro.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> r=3, R=3√3 y R/r=√3.</p>
+    <app-formula expression="r=3,\quad R=3\sqrt3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La diagonal de una cara no es la diagonal espacial que conecta vértices opuestos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/inspheres-circumspheres">Esferas inscritas y circunscritas ↗</a><p>Practica una esfera inscrita en un cubo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-126" />
+</article>

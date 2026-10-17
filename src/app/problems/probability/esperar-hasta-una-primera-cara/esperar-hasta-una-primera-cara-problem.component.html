@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Esperar hasta una primera cara</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Se lanza una moneda equilibrada e independiente hasta la primera cara. Calcula la probabilidad de necesitar exactamente cuatro lanzamientos y la de necesitar más de cuatro.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Necesitar exactamente cuatro significa obtener cruz en los tres primeros y cara en el cuarto. No hay otros órdenes posibles porque una cara anterior habría detenido el proceso.</li>
+      <li>Cada resultado tiene probabilidad 1/2 y los lanzamientos son independientes. Así P(N=4)=(1/2)³·(1/2)=1/16.</li>
+      <li>Necesitar más de cuatro significa que los cuatro primeros fueron cruces. No impone qué ocurre en el quinto ni después; su probabilidad es también (1/2)⁴=1/16.</li>
+      <li>La igualdad numérica es propia de esta moneda: en general, con probabilidad de cara p, los valores serían (1−p)³p y (1−p)⁴, respectivamente.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> P(N=4)=1/16 y P(N&gt;4)=1/16.</p>
+    <app-formula expression="P(N=4)=P(N&gt;4)=\frac1{16}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Más de cuatro no incluye el caso de detenerse exactamente en el cuarto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/geometric-distribution">Distribución geométrica y tiempo de espera ↗</a><p>Practica esperar hasta una primera cara. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-176" />
+</article>

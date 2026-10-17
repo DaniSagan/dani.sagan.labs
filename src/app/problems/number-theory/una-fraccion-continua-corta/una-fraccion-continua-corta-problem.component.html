@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una fracción continua corta</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Escribe 43/19 como fracción continua simple y reconstruye la fracción desde ella.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>En una fracción continua simple se separa la parte entera y se invierte el resto positivo. Empezamos con 43=2·19+5: 43/19=2+5/19=2+1/(19/5).</li>
+      <li>Repetimos: 19=3·5+4, así que 19/5=3+1/(5/4). Después 5=1·4+1 da 5/4=1+1/4.</li>
+      <li>La notación compacta es [2;3,1,4], que significa 2+1/(3+1/(1+1/4)). Cada denominador se interpreta desde dentro hacia fuera.</li>
+      <li>Reconstruimos: 1+1/4=5/4; luego 3+1/(5/4)=3+4/5=19/5; finalmente 2+1/(19/5)=2+5/19=43/19. Recuperamos el dato inicial.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 43/19=[2;3,1,4].</p>
+    <app-formula expression="\frac{43}{19}=2+\cfrac1{3+\cfrac1{1+\cfrac14}}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> No se suman las entradas: representan divisiones anidadas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/continued-fractions">Fracciones continuas ↗</a><p>Practica una fracción continua corta. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-109" />
+</article>

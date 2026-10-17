@@ -36,5 +36,5 @@ export const PROBLEM_BLOCKS: ProblemBlock[] = [
   { name: "Combinatoria, juegos y modelización", topics: ["Conteo, grafos y estrategias","Dinámica y aplicaciones"], problems: MODELS_GAMES_PROBLEMS.map(component => component.problem) },
 ];
 
-export const PROBLEMS = PROBLEM_BLOCKS.flatMap(group => group.problems);
+export const PROBLEMS = PROBLEM_BLOCKS.flatMap(group => group.problems).sort((a, b) => a.number - b.number);
 export const PROBLEM_NAVIGATION = problemNavigation(PROBLEM_BLOCKS);

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un valor medio que no es el punto medio</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula el valor medio de f(x)=x² en [0,3] y encuentra c con f(c) igual a ese promedio.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El valor medio de una función continua en [a,b] es su integral dividida por la longitud b−a. Representa la altura constante que produce la misma área.</li>
+      <li>Integramos x² de 0 a 3: [x³/3] da 27/3=9. La longitud del intervalo es 3, así que el promedio es 9/3=3.</li>
+      <li>Buscamos c en [0,3] con c²=3. Las soluciones algebraicas son ±√3, pero solo la positiva pertenece al intervalo.</li>
+      <li>Así c=√3. El punto medio del intervalo es 1,5 y su valor f(1,5)=2,25 no coincide con el promedio; una función no lineal no tiene por qué promediarse en el centro.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Valor medio 3; se alcanza en c=√3.</p>
+    <app-formula expression="\overline f=\frac13\int_0^3x^2\,dx=3,\quad c=\sqrt3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El promedio de valores de una función no es, en general, su valor en el promedio de los extremos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/mean-value-theorems">Teoremas de Rolle y del valor medio ↗</a><p>Practica un valor medio que no es el punto medio. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-168" />
+</article>

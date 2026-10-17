@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { PracticeProblem } from '../../problem-catalog';
+import { ProblemNavigationComponent } from '../../shared/problem-navigation.component';
+
+@Component({
+  selector: 'app-ceros-al-final-de-un-factorial-problem', standalone: true,
+  imports: [RouterLink, FormulaComponent, ProblemNavigationComponent],
+  templateUrl: './ceros-al-final-de-un-factorial-problem.component.html',
+  styleUrl: '../../shared/problem.css',
+})
+export class CerosAlFinalDeUnFactorialProblemComponent {
+  static readonly title = "Ceros al final de un factorial";
+  static readonly route = 'problema-102';
+  static readonly problem: PracticeProblem = {
+  "id": "problema-102",
+  "number": 102,
+  "title": "Ceros al final de un factorial",
+  "category": "Aritmética y teoría de números",
+  "topic": "Divisibilidad y congruencias",
+  "level": "Repaso",
+  "statement": "¿Cuántos ceros tiene al final 25! en base diez? Justifica cómo cuentas los factores.",
+  "resources": [
+    {
+      "label": "Irracionalidad y valuaciones primas",
+      "route": "/articles/prime-valuations",
+      "activity": "Practica ceros al final de un factorial. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    }
+  ]
+};
+}

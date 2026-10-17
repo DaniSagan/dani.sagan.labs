@@ -117,3 +117,13 @@
     @if (item.route !== chapter.route) { <a [routerLink]="['/articles', item.route]">{{ item.title }} →</a> }
   }
 </nav>
+
+<!-- additional-problems:integration-classical:start -->
+@if (chapter.route === 'integration-classical') {
+<section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
+<li><a routerLink="/problems/problema-161">161 · Una primitiva con condición inicial</a>. Encuentra F si F′(x)=6x²−4x+1 y F(0)=7.</li>
+<li><a routerLink="/problems/problema-163">163 · Un cambio de variable con extremos</a>. Calcula la integral de 2x(x²+1)³ entre x=0 y x=1.</li>
+<li><a routerLink="/problems/problema-164">164 · Una integración por partes completa</a>. Calcula la integral de x eˣ entre 0 y 1 justificando la fórmula usada.</li>
+</ul></section>
+}
+<!-- additional-problems:integration-classical:end -->

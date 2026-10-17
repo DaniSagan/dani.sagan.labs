@@ -1,3 +1,13 @@
+import { MediaYMedianaAnteUnDatoExtremoProblemComponent } from './media-y-mediana-ante-un-dato-extremo/media-y-mediana-ante-un-dato-extremo-problem.component';
+import { VarianzaDeUnaPoblacionPequenaProblemComponent } from './varianza-de-una-poblacion-pequena/varianza-de-una-poblacion-pequena-problem.component';
+import { PorQueCambiaElDivisorMuestralProblemComponent } from './por-que-cambia-el-divisor-muestral/por-que-cambia-el-divisor-muestral-problem.component';
+import { CambiarLasUnidadesDeUnosDatosProblemComponent } from './cambiar-las-unidades-de-unos-datos/cambiar-las-unidades-de-unos-datos-problem.component';
+import { CovarianzaDeTresParesProblemComponent } from './covarianza-de-tres-pares/covarianza-de-tres-pares-problem.component';
+import { UnaPrediccionPorRegresionYSusResiduosProblemComponent } from './una-prediccion-por-regresion-y-sus-residuos/una-prediccion-por-regresion-y-sus-residuos-problem.component';
+import { ElErrorEstandarDeUnPromedioProblemComponent } from './el-error-estandar-de-un-promedio/el-error-estandar-de-un-promedio-problem.component';
+import { UnaMuestraProporcionalPorEstratosProblemComponent } from './una-muestra-proporcional-por-estratos/una-muestra-proporcional-por-estratos-problem.component';
+import { UnIntervaloAproximadoParaUnaProporcionProblemComponent } from './un-intervalo-aproximado-para-una-proporcion/un-intervalo-aproximado-para-una-proporcion-problem.component';
+import { UnaParadojaAlMezclarGruposProblemComponent } from './una-paradoja-al-mezclar-grupos/una-paradoja-al-mezclar-grupos-problem.component';
 import { MediaYVarianzaDescriptivaProblemComponent } from './media-y-varianza-descriptiva/media-y-varianza-descriptiva-problem.component';
 import { TransformacionDeMedidasProblemComponent } from './transformacion-de-medidas/transformacion-de-medidas-problem.component';
 import { UnaRectaDeRegresionProblemComponent } from './una-recta-de-regresion/una-recta-de-regresion-problem.component';
@@ -20,4 +30,14 @@ export const STATISTICS_PROBLEMS = [
   ContrasteBilateralProblemComponent,
   TamanoMuestralParaUnaProporcionProblemComponent,
   SesgoDeSeleccionProblemComponent,
+  MediaYMedianaAnteUnDatoExtremoProblemComponent,
+  VarianzaDeUnaPoblacionPequenaProblemComponent,
+  PorQueCambiaElDivisorMuestralProblemComponent,
+  CambiarLasUnidadesDeUnosDatosProblemComponent,
+  CovarianzaDeTresParesProblemComponent,
+  UnaPrediccionPorRegresionYSusResiduosProblemComponent,
+  ElErrorEstandarDeUnPromedioProblemComponent,
+  UnaMuestraProporcionalPorEstratosProblemComponent,
+  UnIntervaloAproximadoParaUnaProporcionProblemComponent,
+  UnaParadojaAlMezclarGruposProblemComponent,
 ] as const;

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una aproximación cuadrática con cota</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Aproxima e^0,1 con su Taylor de grado dos en cero y acota el error usando e^0,1&lt;1,11.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las derivadas de eˣ son todas eˣ y en cero valen 1. El polinomio de Taylor de grado dos es 1+x+x²/2.</li>
+      <li>Sustituimos x=0,1: 1+0,1+0,01/2=1,105. Esto es una aproximación, porque hemos omitido términos de grado tres en adelante.</li>
+      <li>El resto de Taylor es e^ξ·x³/6 para algún ξ entre 0 y x. Como la exponencial crece, 1≤e^ξ&lt;1,11 en ese intervalo.</li>
+      <li>Así 0&lt;e^0,1−1,105&lt;1,11·0,001/6=0,000185. La aproximación queda por debajo del valor exacto y el error es menor que esa cota.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> e^0,1≈1,105 con error positivo menor que 0,000185.</p>
+    <app-formula expression="0&lt;e^{0.1}-1.105&lt;0.000185" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El primer término omitido orienta el error, pero una cota rigurosa requiere controlar la derivada del resto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/taylor-series">Series de Taylor ↗</a><p>Practica una aproximación cuadrática con cota. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-159" />
+</article>

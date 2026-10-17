@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una raíz garantizada sin resolverla</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Límites y continuidad</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Demuestra que x³+x−1=0 tiene exactamente una raíz en (0,1).</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La función f(x)=x³+x−1 es un polinomio y, por tanto, continua en [0,1]. En los extremos f(0)=−1 y f(1)=1.</li>
+      <li>Al tener signos opuestos, el teorema de Bolzano garantiza al menos un punto c entre 0 y 1 con f(c)=0. La continuidad es la hipótesis que impide saltarse el cero.</li>
+      <li>Para la unicidad tomamos b&gt;a. La diferencia f(b)−f(a)=(b−a)(b²+ab+a²+1). El primer factor es positivo.</li>
+      <li>El segundo también es positivo porque b²+ab+a²=(b+a/2)²+3a²/4≥0. Así f(b)&gt;f(a): la función es estrictamente creciente y no puede tomar cero dos veces.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Existe exactamente una raíz en (0,1).</p>
+    <app-formula expression="\exists!c\in(0,1):c^3+c-1=0" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Bolzano garantiza existencia; la unicidad requiere un argumento adicional.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/bolzano-theorem">Teorema de Bolzano: existencia y unicidad de raíces ↗</a><p>Practica una raíz garantizada sin resolverla. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-148" />
+</article>

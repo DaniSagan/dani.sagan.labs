@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una ruta que usa cada arista</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un grafo tiene vértices A,B,C,D y aristas AB, BC, CD, DA y AC. Decide si existe un recorrido que use cada arista exactamente una vez y construye uno.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El grado es el número de aristas incidentes en un vértice. A y C tienen grado 3; B y D, grado 2. El grafo es conexo porque el ciclo exterior conecta sus vértices.</li>
+      <li>En un recorrido que usa cada arista una vez, cada visita interior empareja una entrada con una salida. Solo inicio y final pueden tener grado impar.</li>
+      <li>Hay exactamente dos vértices impares, A y C, así que un recorrido euleriano debe comenzar en uno y terminar en el otro. No puede ser cerrado.</li>
+      <li>Construimos A→B→C→D→A→C. Usa, en orden, AB, BC, CD, DA y AC: todas las aristas de la lista, sin repetir ninguna. Así queda demostrada la existencia.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Sí: A→B→C→D→A→C; no existe un circuito euleriano cerrado.</p>
+    <app-formula expression="A\to B\to C\to D\to A\to C" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Un recorrido euleriano controla aristas; uno hamiltoniano controla vértices.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/euler-hamilton">Recorridos eulerianos y caminos hamiltonianos ↗</a><p>Practica una ruta que usa cada arista. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-195" />
+</article>

@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una identidad que acota un producto</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Si a y b son reales con a+b=10, demuestra que ab≤25 y determina cuándo hay igualdad.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El cuadrado de cualquier número real es no negativo. Aplicamos esta propiedad a la diferencia: (a−b)²≥0.</li>
+      <li>Desarrollamos: a²−2ab+b²≥0. Como (a+b)²=a²+2ab+b², podemos reescribir lo anterior como (a+b)²−4ab≥0.</li>
+      <li>Sustituimos la suma conocida: 100−4ab≥0. Sumamos 4ab y dividimos por 4, que es positivo: ab≤25.</li>
+      <li>La igualdad exige (a−b)²=0, por tanto a=b. Junto con a+b=10 obtenemos a=b=5; su producto es efectivamente 25. No hemos supuesto que a y b fueran positivos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> ab≤25, con igualdad únicamente si a=b=5.</p>
+    <app-formula expression="ab\le25,\quad a+b=10" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La condición de igualdad debe verificarse también con la restricción original.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/quadratic-equations">Ecuaciones cuadráticas: discriminante y Viète ↗</a><p>Practica una identidad que acota un producto. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-115" />
+</article>

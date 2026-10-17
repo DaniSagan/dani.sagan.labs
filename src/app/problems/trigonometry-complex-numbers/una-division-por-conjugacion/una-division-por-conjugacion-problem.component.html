@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una división por conjugación</h2>
+  <p class="topic">Trigonometría y números complejos · Plano complejo</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Expresa (3+i)/(1−i) en la forma a+bi.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para eliminar la parte imaginaria del denominador multiplicamos numerador y denominador por el conjugado de 1−i, que es 1+i. Este factor no es cero.</li>
+      <li>El denominador se convierte en (1−i)(1+i)=1−i²=2. El numerador es (3+i)(1+i)=3+3i+i+i².</li>
+      <li>Sustituimos i²=−1: el numerador es 2+4i. Al dividir cada término por 2 resulta 1+2i.</li>
+      <li>Comprobamos multiplicando por el divisor original: (1+2i)(1−i)=1−i+2i−2i²=3+i. Así recuperamos el numerador.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> (3+i)/(1−i)=1+2i.</p>
+    <app-formula expression="\frac{3+i}{1-i}=1+2i" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Hay que multiplicar por el conjugado tanto arriba como abajo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/de-moivre">Fórmula de De Moivre: potencias y raíces complejas ↗</a><p>Practica una división por conjugación. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-137" />
+</article>

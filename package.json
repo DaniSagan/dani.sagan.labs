@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:additional-problems": "node scripts/test-additional-problems.cjs",
+    "test:additional-problems:browser": "node scripts/check-additional-problems.cjs",
     "generate:curve-previews": "node scripts/generate-curve-previews.cjs",
     "generate:vector-previews": "node scripts/generate-vector-previews.cjs",
     "ng": "ng",

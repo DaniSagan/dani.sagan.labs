@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un paso de Euler y su error</h2>
+  <p class="topic">Integración y cálculo numérico · Áreas, volúmenes y aproximación</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Para y′=y, y(0)=1, aplica Euler con paso 0,5 hasta t=1 y compara con y(1)=e.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Euler aproxima la solución durante cada paso por una recta con la pendiente al comienzo. La regla es yₙ₊₁=yₙ+h f(tₙ,yₙ). Aquí f(t,y)=y y h=0,5.</li>
+      <li>Partimos de (t₀,y₀)=(0,1). El primer paso da y₁=1+0,5·1=1,5, correspondiente a t₁=0,5.</li>
+      <li>El segundo usa la nueva pendiente y₁: y₂=1,5+0,5·1,5=2,25, en t₂=1. No usamos de nuevo la pendiente inicial.</li>
+      <li>La solución exacta es eᵗ, por lo que y(1)=e≈2,71828. El error absoluto es e−2,25≈0,46828. La aproximación queda por debajo porque la pendiente real aumenta dentro de cada paso.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Euler da y(1)≈2,25; error absoluto aproximado 0,46828.</p>
+    <app-formula expression="y_2=(1+0.5)^2=2.25&lt;e" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Cada paso se construye con el valor aproximado recién calculado.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/ode-numerical-integration">Integración numérica de ecuaciones diferenciales ↗</a><p>Practica un paso de Euler y su error. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-170" />
+</article>

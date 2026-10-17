@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">El radio de un triángulo rectángulo</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Calcula el inradio y el circunradio de un triángulo rectángulo con catetos 6 y 8.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La hipotenusa se obtiene por Pitágoras: c²=6²+8²=36+64=100, así que c=10. El área es la mitad del producto de los catetos: A=6·8/2=24.</li>
+      <li>El semiperímetro es la mitad de la suma de lados: s=(6+8+10)/2=12. Unir el incentro con los tres vértices divide el triángulo en tres triángulos de altura r, el inradio.</li>
+      <li>La suma de sus áreas es (6r+8r+10r)/2=sr. Por tanto r=A/s=24/12=2.</li>
+      <li>En un triángulo rectángulo el punto medio de la hipotenusa está a igual distancia de los tres vértices. Es el circuncentro y su radio es la mitad de la hipotenusa: R=10/2=5.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Inradio 2 y circunradio 5, en las unidades de los lados.</p>
+    <app-formula expression="r=2,\quad R=5" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El inradio mide distancia a los lados; el circunradio mide distancia a los vértices.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/incircles-circumcircles">Circunferencias inscritas y circunscritas ↗</a><p>Practica el radio de un triángulo rectángulo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-122" />
+</article>

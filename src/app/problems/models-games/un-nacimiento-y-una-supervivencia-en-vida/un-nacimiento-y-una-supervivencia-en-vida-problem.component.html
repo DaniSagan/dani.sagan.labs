@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un nacimiento y una supervivencia en Vida</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>En el Juego de la Vida, solo están vivas las celdas (−1,0), (0,0), (1,0) de una cuadrícula infinita. Calcula la generación siguiente con la regla B3/S23.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La regla usa las ocho celdas vecinas, sin contar la propia. Una muerta nace con exactamente tres vecinas vivas; una viva sobrevive con dos o tres.</li>
+      <li>La celda central (0,0) tiene dos vecinas vivas, los extremos, y sobrevive. Cada extremo tiene solo una vecina viva y muere.</li>
+      <li>Las celdas (0,1) y (0,−1) ven las tres celdas originales, de modo que nacen. Cualquier otra celda muerta ve como máximo dos: para ver los tres extremos debe tener coordenada horizontal cero.</li>
+      <li>Actualizamos todas simultáneamente usando la generación original. Queda la línea vertical (0,−1),(0,0),(0,1). Por simetría, un paso más devuelve la línea horizontal: es un oscilador de período dos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Nueva generación: (0,−1), (0,0), (0,1).</p>
+    <app-formula expression="\{(-1,0),(0,0),(1,0)\}\mapsto\{(0,-1),(0,0),(0,1)\}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Actualizar celdas una tras otra usando resultados recién cambiados rompe la regla simultánea.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/life-patterns">El Juego de la vida: osciladores y evolución ↗</a><p>Practica un nacimiento y una supervivencia en Vida. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-198" />
+</article>

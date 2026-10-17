@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una derivada por la regla de la cadena</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Deriva g(x)=(3x²+1)⁴ y calcula g′(1).</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La expresión es una composición: primero u(x)=3x²+1 y después se eleva u a la cuarta potencia. La regla de la cadena multiplica las tasas de cambio de ambas operaciones.</li>
+      <li>La derivada de u⁴ respecto de u es 4u³. La derivada de u respecto de x es u′(x)=6x.</li>
+      <li>Multiplicamos y sustituimos u: g′(x)=4(3x²+1)³·6x=24x(3x²+1)³.</li>
+      <li>En x=1, la expresión interior vale 3+1=4. Por tanto g′(1)=24·4³=24·64=1536. El factor 6x recoge cuánto cambia la expresión interior.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> g′(x)=24x(3x²+1)³ y g′(1)=1536.</p>
+    <app-formula expression="g'(x)=24x(3x^2+1)^3,\quad g'(1)=1536" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Derivar solo la potencia exterior omite el factor de la función interior.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas ↗</a><p>Practica una derivada por la regla de la cadena. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-153" />
+</article>

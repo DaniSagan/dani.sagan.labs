@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Escalar longitudes, áreas y volúmenes</h2>
+  <p class="topic">Geometría · Triángulos y áreas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un modelo sólido tiene arista característica 4 cm, área total 60 cm² y volumen 20 cm³. Se amplía por semejanza hasta una arista de 10 cm. Halla área y volumen nuevos.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La razón de semejanza es la longitud nueva dividida por la original: k=10/4=5/2. Todas las longitudes se multiplican por ese mismo factor.</li>
+      <li>Un área combina dos dimensiones. Si ambas se multiplican por k, el área se multiplica por k²=25/4.</li>
+      <li>Un volumen combina tres dimensiones, así que su factor es k³=125/8. Esta regla vale para sólidos semejantes, aunque no sean cubos.</li>
+      <li>El área nueva es 60·25/4=375 cm². El volumen nuevo es 20·125/8=625/2=312,5 cm³. Ambos crecen más que una longitud porque intervienen más dimensiones.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Área 375 cm² y volumen 312,5 cm³.</p>
+    <app-formula expression="A'=375\ \mathrm{cm}^2,\quad V'=312.5\ \mathrm{cm}^3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Aplicar el factor 2,5 directamente al volumen ignora dos dimensiones.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/homothety">Homotecia ↗</a><p>Practica escalar longitudes, áreas y volúmenes. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-124" />
+</article>

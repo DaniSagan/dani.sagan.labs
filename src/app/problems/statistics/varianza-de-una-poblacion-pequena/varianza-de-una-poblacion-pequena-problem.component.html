@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Varianza de una población pequeña</h2>
+  <p class="topic">Estadística y lectura crítica de datos · Descriptiva y regresión</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Los cuatro valores 1, 3, 5, 7 constituyen toda una población. Calcula su varianza y desviación típica.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La media poblacional es (1+3+5+7)/4=16/4=4. Las desviaciones respecto de ella son −3, −1, 1 y 3.</li>
+      <li>Elevamos las desviaciones al cuadrado: 9, 1, 1 y 9. Su suma es 20; los signos ya no pueden cancelarse.</li>
+      <li>Como los datos son toda la población, la varianza es el promedio de esos cuadrados: 20/4=5. No usamos la corrección muestral.</li>
+      <li>La desviación típica es la raíz positiva de la varianza: √5≈2,236. Vuelve a las mismas unidades de los datos; la varianza tiene unidades al cuadrado.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Varianza poblacional 5 y desviación típica √5.</p>
+    <app-formula expression="\sigma^2=5,\quad\sigma=\sqrt5" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El divisor n−1 corresponde a otro objetivo: estimar una varianza poblacional desde una muestra.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/descriptive-statistics">Estadística descriptiva y valores atípicos ↗</a><p>Practica varianza de una población pequeña. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-182" />
+</article>

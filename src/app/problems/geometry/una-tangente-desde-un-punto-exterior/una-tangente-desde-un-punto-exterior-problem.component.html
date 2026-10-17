@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una tangente desde un punto exterior</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una circunferencia tiene centro O y radio 5. P está a distancia 13 de O. Calcula la longitud del segmento tangente PT.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El punto de tangencia T pertenece a la circunferencia, por lo que OT=5. El radio al punto de tangencia es perpendicular a la recta tangente.</li>
+      <li>Así, el triángulo OTP es rectángulo en T. Su hipotenusa es OP=13, no el segmento tangente.</li>
+      <li>Pitágoras da OP²=OT²+PT². Despejamos PT²=13²−5²=169−25=144.</li>
+      <li>La longitud es positiva: PT=√144=12. Al comprobar 5²+12²=25+144=169=13² recuperamos el triángulo rectángulo requerido.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El segmento tangente mide 12.</p>
+    <app-formula expression="PT=\sqrt{13^2-5^2}=12" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La resta se hace entre cuadrados de longitudes, no entre las longitudes 13 y 5.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/chords-secants-tangents">Teoremas de cuerdas, secantes y tangentes ↗</a><p>Practica una tangente desde un punto exterior. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-130" />
+</article>

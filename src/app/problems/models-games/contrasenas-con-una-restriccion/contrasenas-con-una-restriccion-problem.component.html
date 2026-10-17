@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Contraseñas con una restricción</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Conteo, grafos y estrategias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Cuenta las claves de cuatro cifras que empiezan por una cifra no nula y no repiten ninguna cifra.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Las cifras disponibles son 0,1,…,9. En el primer puesto no se permite cero, por lo que hay 9 opciones.</li>
+      <li>Una vez elegida la primera, quedan 9 cifras para el segundo puesto: ahora cero sí se permite, pero la cifra usada no.</li>
+      <li>Para el tercer puesto quedan 8 opciones y para el cuarto 7. Cada elección puede continuarse con cualquiera de las opciones disponibles en el siguiente puesto.</li>
+      <li>Aplicamos el principio multiplicativo: 9·9·8·7=4536. No dividimos por permutaciones, porque cambiar el orden cambia la clave.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Hay 4536 claves.</p>
+    <app-formula expression="9\cdot9\cdot8\cdot7=4536" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Excluir el cero de todos los puestos eliminaría claves válidas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones ↗</a><p>Practica contraseñas con una restricción. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-191" />
+</article>

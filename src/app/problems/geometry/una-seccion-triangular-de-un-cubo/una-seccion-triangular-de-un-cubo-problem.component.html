@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una sección triangular de un cubo</h2>
+  <p class="topic">Geometría · Geometría analítica y espacio</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>En un cubo de arista 2 considera A=(2,0,0), B=(0,2,0), C=(0,0,2). Calcula el perímetro y el área del triángulo ABC.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Para medir AB restamos coordenadas: B−A=(−2,2,0). Su longitud es √(4+4)=2√2. Las otras dos diferencias tienen las mismas componentes salvo orden y signo.</li>
+      <li>Por tanto AB=BC=CA=2√2. El triángulo es equilátero y su perímetro es 3·2√2=6√2.</li>
+      <li>La altura de un equilátero de lado l divide la base en dos mitades. Por Pitágoras h²=l²−l²/4=3l²/4, de donde h=√3·l/2.</li>
+      <li>Su área es lh/2=√3·l²/4. Con l²=8 obtenemos A=2√3. Las distancias se expresan en unidades y el área en unidades cuadradas.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Perímetro 6√2 y área 2√3.</p>
+    <app-formula expression="P=6\sqrt2,\quad A=2\sqrt3" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Los lados del triángulo son diagonales de caras, no aristas del cubo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea ↗</a><p>Practica una sección triangular de un cubo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-128" />
+</article>

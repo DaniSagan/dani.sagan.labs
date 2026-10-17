@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un ahorro con aportaciones regulares</h2>
+  <p class="topic">Sucesiones, límites y continuidad · Sucesiones y series</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Una cuenta empieza con 100 euros. Cada mes se multiplica el saldo por 1,01 y después se ingresan 20 euros. Obtén el saldo tras n meses.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Si aₙ es el saldo después de n meses, el orden indicado da aₙ₊₁=1,01aₙ+20 y a₀=100. El ingreso del mes no recibe intereses hasta el mes siguiente.</li>
+      <li>Buscamos una constante c que elimine el término independiente. Si bₙ=aₙ+2000, entonces bₙ₊₁=1,01aₙ+2020=1,01(aₙ+2000)=1,01bₙ.</li>
+      <li>La nueva sucesión es geométrica: bₙ=b₀·1,01ⁿ. Como b₀=100+2000=2100, obtenemos bₙ=2100·1,01ⁿ.</li>
+      <li>Restamos 2000: aₙ=2100·1,01ⁿ−2000. Para n=0 produce 100 y para n=1 produce 121, igual que 100·1,01+20. La fórmula describe saldos teóricos antes de redondeos bancarios.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> aₙ=2100·1,01ⁿ−2000 euros, sin redondeos intermedios.</p>
+    <app-formula expression="a_n=2100(1.01)^n-2000" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar el orden de ingreso e interés cambia la recurrencia.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos ↗</a><p>Practica un ahorro con aportaciones regulares. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-144" />
+</article>

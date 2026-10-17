@@ -1,0 +1,27 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un decimal periódico como fracción</h2>
+  <p class="topic">Aritmética y teoría de números · Diofánticas y demostraciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Convierte 0,272727… en una fracción irreducible y explica por qué el procedimiento es exacto.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Llamamos x al decimal infinito. Su bloque repetido tiene dos cifras; multiplicar por 100 desplaza la coma dos lugares y deja exactamente la misma cola periódica.</li>
+      <li>Así, 100x=27,272727… y x=0,272727…. Al restar, las colas coinciden y se cancelan: 99x=27.</li>
+      <li>Dividimos por 99: x=27/99. Numerador y denominador tienen un factor 9 común, de modo que x=3/11.</li>
+      <li>La cancelación puede justificarse con aproximaciones finitas: la cola que queda después de m bloques es menor que 100⁻ᵐ, que tiende a cero. Por tanto la igualdad no es un redondeo.</li>
+      <li>Como 3 y 11 son primos distintos, no tienen divisor común mayor que 1. La fracción obtenida ya es irreducible.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 0,272727…=3/11.</p>
+    <app-formula expression="0.\overline{27}=\frac3{11}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El decimal infinito no es igual a una versión truncada como 0,27.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/geometric-series">Progresiones y series geométricas ↗</a><p>Practica un decimal periódico como fracción. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-107" />
+</article>

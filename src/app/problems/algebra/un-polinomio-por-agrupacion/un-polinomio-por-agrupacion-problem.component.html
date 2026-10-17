@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un polinomio por agrupación</h2>
+  <p class="topic">Álgebra y álgebra lineal · Polinomios y desigualdades</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Factoriza x³−2x²−x+2 y resuelve x³−2x²−x+2=0 en los reales.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Factorizar significa escribir una suma como producto. Agrupamos los dos primeros términos y los dos últimos: x²(x−2)−(x−2).</li>
+      <li>Los dos sumandos contienen x−2. Lo extraemos: (x−2)(x²−1). Al multiplicar este producto se recupera exactamente el polinomio.</li>
+      <li>La diferencia de cuadrados satisface a²−b²=(a−b)(a+b). Con a=x y b=1 resulta (x−2)(x−1)(x+1).</li>
+      <li>Un producto de números reales vale cero si al menos uno de los factores vale cero. Resolvemos x−2=0, x−1=0 y x+1=0; salen 2, 1 y −1, respectivamente.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Factorización (x−2)(x−1)(x+1); raíces −1, 1 y 2.</p>
+    <app-formula expression="x^3-2x^2-x+2=(x-2)(x-1)(x+1)" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El factor −(x−2) tiene signo negativo en ambos términos de su expansión.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/rational-root-theorem">Teorema de las raíces racionales ↗</a><p>Practica un polinomio por agrupación. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-112" />
+</article>

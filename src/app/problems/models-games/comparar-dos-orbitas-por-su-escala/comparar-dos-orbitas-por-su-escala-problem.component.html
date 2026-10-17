@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Comparar dos órbitas por su escala</h2>
+  <p class="topic">Combinatoria, juegos y modelización · Dinámica y aplicaciones</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Dos satélites en órbitas circulares alrededor de la misma masa tienen radios r y 4r. Usando v²=GM/r y T=2πr/v, compara sus velocidades y períodos.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>G es la constante gravitatoria y M la masa central, igual para ambos. Despejando la velocidad positiva, v=√(GM/r). Aquí r es distancia al centro, no altura sobre la superficie.</li>
+      <li>Al pasar de r a 4r, la velocidad es √(GM/(4r))=(1/2)√(GM/r). Por tanto el segundo satélite se mueve a la mitad de velocidad.</li>
+      <li>El período es longitud de la órbita dividida por velocidad. La circunferencia se multiplica por cuatro y la velocidad se divide por dos, de modo que el tiempo se multiplica por 4/(1/2)=8.</li>
+      <li>También podemos sustituir v: T=2π√(r³/(GM)). Al multiplicar r por cuatro, el período cambia por 4^(3/2)=8, en acuerdo con la comparación anterior.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> La velocidad se reduce a la mitad y el período se multiplica por 8.</p>
+    <app-formula expression="\frac{v_2}{v_1}=\frac12,\quad\frac{T_2}{T_1}=8" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una órbita más grande tiene más recorrido y también una velocidad diferente.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala ↗</a><p>Practica comparar dos órbitas por su escala. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-200" />
+</article>

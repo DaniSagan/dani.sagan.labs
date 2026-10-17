@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un paso de Newton para una raíz cúbica</h2>
+  <p class="topic">Cálculo diferencial y optimización · Optimización y modelos</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Usa dos pasos de Newton desde x₀=2 para aproximar la solución positiva de x³=10.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Reescribimos la ecuación como f(x)=x³−10=0. Newton sustituye la curva por su tangente y usa el corte de esa recta con el eje: xₙ₊₁=xₙ−f(xₙ)/f′(xₙ).</li>
+      <li>Como f′(x)=3x², la fórmula es xₙ₊₁=xₙ−(xₙ³−10)/(3xₙ²). En x₀=2, f(2)=−2 y f′(2)=12.</li>
+      <li>El primer paso da x₁=2−(−2)/12=13/6. Para el segundo, x₁³−10=2197/216−2160/216=37/216 y 3x₁²=169/12.</li>
+      <li>Por tanto x₂=13/6−(37/216)/(169/12)=13/6−37/3042=3277/1521≈2,15450. Son aproximaciones; no hemos obtenido una expresión exacta de la raíz.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> x₁=13/6 y x₂=3277/1521≈2,15450.</p>
+    <app-formula expression="x_1=\frac{13}6,\quad x_2=\frac{3277}{1521}\approx2.15450" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> En cada paso hay que reevaluar tanto la función como la derivada en el nuevo punto.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/newton-raphson">Método de Newton–Raphson ↗</a><p>Practica un paso de Newton para una raíz cúbica. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-157" />
+</article>

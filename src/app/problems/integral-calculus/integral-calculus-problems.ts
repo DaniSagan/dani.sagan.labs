@@ -1,3 +1,13 @@
+import { UnaPrimitivaConCondicionInicialProblemComponent } from './una-primitiva-con-condicion-inicial/una-primitiva-con-condicion-inicial-problem.component';
+import { UnaIntegralComoAreaFirmadaProblemComponent } from './una-integral-como-area-firmada/una-integral-como-area-firmada-problem.component';
+import { UnCambioDeVariableConExtremosProblemComponent } from './un-cambio-de-variable-con-extremos/un-cambio-de-variable-con-extremos-problem.component';
+import { UnaIntegracionPorPartesCompletaProblemComponent } from './una-integracion-por-partes-completa/una-integracion-por-partes-completa-problem.component';
+import { UnaIntegralImpropiaQueSiConvergeProblemComponent } from './una-integral-impropia-que-si-converge/una-integral-impropia-que-si-converge-problem.component';
+import { UnSolidoAlGirarUnaRectaProblemComponent } from './un-solido-al-girar-una-recta/un-solido-al-girar-una-recta-problem.component';
+import { LaLongitudExactaDeUnaRectaProblemComponent } from './la-longitud-exacta-de-una-recta/la-longitud-exacta-de-una-recta-problem.component';
+import { UnValorMedioQueNoEsElPuntoMedioProblemComponent } from './un-valor-medio-que-no-es-el-punto-medio/un-valor-medio-que-no-es-el-punto-medio-problem.component';
+import { TrapeciosParaUnaFuncionConvexaProblemComponent } from './trapecios-para-una-funcion-convexa/trapecios-para-una-funcion-convexa-problem.component';
+import { UnPasoDeEulerYSuErrorProblemComponent } from './un-paso-de-euler-y-su-error/un-paso-de-euler-y-su-error-problem.component';
 import { SustitucionEnUnaIntegralProblemComponent } from './sustitucion-en-una-integral/sustitucion-en-una-integral-problem.component';
 import { IntegracionPorPartesProblemComponent } from './integracion-por-partes/integracion-por-partes-problem.component';
 import { UnaIntegralRacionalProblemComponent } from './una-integral-racional/una-integral-racional-problem.component';
@@ -20,4 +30,14 @@ export const INTEGRAL_CALCULUS_PROBLEMS = [
   LongitudDeUnaCurvaProblemComponent,
   TrapeciosFrenteASimpsonProblemComponent,
   UnaIntegralQueContieneProblemComponent,
+  UnaPrimitivaConCondicionInicialProblemComponent,
+  UnaIntegralComoAreaFirmadaProblemComponent,
+  UnCambioDeVariableConExtremosProblemComponent,
+  UnaIntegracionPorPartesCompletaProblemComponent,
+  UnaIntegralImpropiaQueSiConvergeProblemComponent,
+  UnSolidoAlGirarUnaRectaProblemComponent,
+  LaLongitudExactaDeUnaRectaProblemComponent,
+  UnValorMedioQueNoEsElPuntoMedioProblemComponent,
+  TrapeciosParaUnaFuncionConvexaProblemComponent,
+  UnPasoDeEulerYSuErrorProblemComponent,
 ] as const;

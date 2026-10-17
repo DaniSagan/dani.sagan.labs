@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un lote con dos piezas defectuosas</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Un lote de 8 piezas contiene 2 defectuosas. Se eligen 3 sin reposición, uniformemente entre todos los subconjuntos. Calcula la probabilidad de exactamente una defectuosa.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Como no importa el orden, contamos subconjuntos. El total de elecciones es C(8,3)=8·7·6/(3·2·1)=56.</li>
+      <li>Para tener exactamente una defectuosa elegimos una de las dos defectuosas: C(2,1)=2 opciones. Las otras dos piezas deben salir de las seis buenas.</li>
+      <li>Elegir dos buenas tiene C(6,2)=6·5/2=15 posibilidades. Cada elección de defectuosa se combina con cada par bueno: 2·15=30 casos favorables.</li>
+      <li>La probabilidad es 30/56=15/28≈0,5357. La cuenta no supone independencia: la ausencia de reposición se incorpora al elegir subconjuntos del lote.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 15/28≈53,57%.</p>
+    <app-formula expression="P(X=1)=\frac{\binom21\binom62}{\binom83}=\frac{15}{28}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Usar probabilidades constantes en tres ensayos independientes modelaría una extracción con reposición.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/hypergeometric-distribution">Distribución hipergeométrica: extracción sin reemplazo ↗</a><p>Practica un lote con dos piezas defectuosas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-175" />
+</article>

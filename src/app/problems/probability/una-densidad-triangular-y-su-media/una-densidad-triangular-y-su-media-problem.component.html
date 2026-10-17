@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Una densidad triangular y su media</h2>
+  <p class="topic">Probabilidad · Variables aleatorias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Sea f(x)=2x en [0,1] y cero fuera. Comprueba que es una densidad, calcula P(X≤1/2) y la media.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Una densidad debe ser no negativa y tener integral total uno. Aquí 2x≥0 en [0,1] y su integral es [x²] de 0 a 1, igual a 1.</li>
+      <li>La probabilidad de X≤1/2 es el área bajo la densidad desde 0 hasta 1/2: [x²] da 1/4.</li>
+      <li>La media de una variable continua se calcula integrando x por su densidad. Aquí E(X) es la integral de 2x² entre 0 y 1.</li>
+      <li>Una primitiva es 2x³/3, de modo que E(X)=2/3. El promedio supera 1/2 porque la densidad da más peso a los valores grandes del intervalo.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Es una densidad; P(X≤1/2)=1/4 y E(X)=2/3.</p>
+    <app-formula expression="P(X\le1/2)=\frac14,\quad E(X)=\frac23" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> El valor f(x) no es la probabilidad de ese punto: las probabilidades son áreas.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/continuous-random-variables">Variables continuas: densidad, esperanza y varianza ↗</a><p>Practica una densidad triangular y su media. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-178" />
+</article>

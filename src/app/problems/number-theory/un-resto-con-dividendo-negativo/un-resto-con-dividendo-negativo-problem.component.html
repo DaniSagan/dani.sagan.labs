@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un resto con dividendo negativo</h2>
+  <p class="topic">Aritmética y teoría de números · Divisibilidad y congruencias</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Divide −47 entre 6 usando un resto no negativo. Explica por qué el cociente no es −7.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>La división euclídea busca enteros q y r tales que −47=6q+r y 0≤r&lt;6. El resto representa lo que falta tras retirar un múltiplo del divisor; esta condición fija una única respuesta.</li>
+      <li>El múltiplo 6·(−7)=−42 queda por encima de −47. Si lo usamos, r=−47−(−42)=−5, que incumple la condición de no negatividad.</li>
+      <li>Bajamos un múltiplo: 6·(−8)=−48. Ahora r=−47−(−48)=1, comprendido entre 0 y 5.</li>
+      <li>Comprobamos la igualdad: 6·(−8)+1=−48+1=−47. Otro cociente cambiaría el resto en un múltiplo de 6 y lo sacaría del intervalo permitido.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> Cociente −8 y resto 1.</p>
+    <app-formula expression="-47=6(-8)+1" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Truncar una división decimal hacia cero no siempre produce el cociente euclídeo.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/division-algorithm">Teorema de la división euclídea ↗</a><p>Practica un resto con dividendo negativo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-101" />
+</article>

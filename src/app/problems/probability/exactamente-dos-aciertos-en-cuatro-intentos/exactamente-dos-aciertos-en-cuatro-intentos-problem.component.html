@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Exactamente dos aciertos en cuatro intentos</h2>
+  <p class="topic">Probabilidad · Conteo y probabilidad condicionada</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Cada intento independiente tiene probabilidad 1/3 de éxito. ¿Cuál es la probabilidad de exactamente dos éxitos en cuatro intentos?</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>Un patrón concreto con dos éxitos y dos fallos, por ejemplo E-E-F-F, tiene probabilidad (1/3)²(2/3)²=4/81.</li>
+      <li>Debemos contar las posiciones de los éxitos. Elegir dos lugares entre cuatro puede hacerse de 4·3/2=6 maneras; dividimos por dos porque elegir primero un lugar u otro no cambia el par.</li>
+      <li>Los seis patrones son disjuntos y tienen la misma probabilidad. Sumamos sus probabilidades multiplicando: 6·4/81=24/81.</li>
+      <li>Simplificamos por 3: 8/27≈0,2963. El factor seis es imprescindible porque el enunciado no fija el orden de los éxitos.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> 8/27≈29,63%.</p>
+    <app-formula expression="P(X=2)=\binom42\left(\frac13\right)^2\left(\frac23\right)^2=\frac8{27}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> La probabilidad de un orden concreto no es la de todos los órdenes con dos éxitos.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/bernoulli-binomial">Distribuciones de Bernoulli y binomial ↗</a><p>Practica exactamente dos aciertos en cuatro intentos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-174" />
+</article>

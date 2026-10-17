@@ -1,0 +1,26 @@
+<article class="problem-detail" aria-labelledby="problem-title">
+  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>
+  <span class="eyebrow">Repaso</span>
+  <h2 id="problem-title">Un punto del teorema del valor medio</h2>
+  <p class="topic">Cálculo diferencial y optimización · Derivadas y teoremas</p>
+  <section class="statement" aria-labelledby="statement-title">
+    <h3 id="statement-title">Enunciado</h3><p>Aplica el teorema del valor medio a f(x)=x² en [1,3] y encuentra el punto que garantiza.</p>
+  </section>
+  <section id="problem-solution" class="solution" aria-labelledby="solution-title">
+    <h3 id="solution-title">Solución paso a paso</h3>
+    <ol>
+      <li>El teorema exige continuidad en el intervalo cerrado y derivabilidad en el abierto. Un polinomio cumple ambas hipótesis, así que puede aplicarse.</li>
+      <li>La pendiente media entre los extremos es (f(3)−f(1))/(3−1)=(9−1)/2=4.</li>
+      <li>El teorema afirma que existe c en (1,3) con f′(c)=4. Como f′(x)=2x, resolvemos 2c=4 y obtenemos c=2.</li>
+      <li>El valor 2 está dentro del intervalo abierto. La tangente allí tiene pendiente 4, igual a la secante entre (1,1) y (3,9). Esta es la interpretación geométrica de la igualdad.</li>
+    </ol>
+    <p class="answer"><strong>Resultado.</strong> El punto garantizado es c=2.</p>
+    <app-formula expression="f'(2)=4=\frac{f(3)-f(1)}{3-1}" [showCodeButton]="false" />
+    <aside class="pitfall"><strong>Error frecuente.</strong> Las hipótesis se comprueban antes de resolver la ecuación de pendientes.</aside>
+  </section>
+  <section class="resources" aria-labelledby="resources-title">
+    <h3 id="resources-title">Para repasar y ampliar</h3>
+    <div class="resource"><a routerLink="/articles/mean-value-theorems">Teoremas de Rolle y del valor medio ↗</a><p>Practica un punto del teorema del valor medio. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+  </section>
+  <app-problem-navigation currentId="problema-156" />
+</article>
