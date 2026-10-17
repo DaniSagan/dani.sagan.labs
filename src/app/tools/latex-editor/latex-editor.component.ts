@@ -320,7 +320,9 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
     });
   }
   fromCode(): void {
-    if (this.syncing) return;
+    // Programmatic source highlights also emit select events. Only a user
+    // selection in the focused textarea should move the visual caret.
+    if (this.syncing || document.activeElement !== this.codeRef.nativeElement) return;
     this.readCodeSelection();
     this.toVisual();
   }
@@ -372,7 +374,7 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
   editCode(value: string): void {
     this.latex = value;
     this.syncing = true;
-    this.field.setValue(value, { silenceNotifications: true });
+    this.field.setValue(value, { silenceNotifications: true, mode: 'math' });
     this.syncing = false;
     this.changed();
     this.fromCode();
@@ -412,7 +414,7 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
         inserted = ' ' + inserted;
       this.latex =
         this.latex.slice(0, start) + inserted + this.latex.slice(end);
-      this.field.setValue(this.latex, { silenceNotifications: true });
+      this.field.setValue(this.latex, { silenceNotifications: true, mode: 'math' });
       this.changed();
       const hole = inserted.indexOf('{}');
       const caret = start + (hole >= 0 ? hole + 1 : inserted.length);
@@ -425,7 +427,13 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
       return;
     }
     this.field.focus();
-    this.field.insert(key.latex, {
+    // An empty root needs an editable placeholder; #0 alone leaves the caret
+    // after the operator when there is no expression to wrap.
+    const latex = key.latex.startsWith(String.raw`\sqrt`) && this.field.selectionIsCollapsed
+      ? key.latex.replace('#0', '#?')
+      : key.latex;
+    this.field.insert(latex, {
+      mode: 'math',
       insertionMode: 'replaceSelection',
       selectionMode: 'placeholder',
     });
@@ -452,7 +460,7 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
       end = emptyOperator.end;
     }
     this.latex = this.latex.slice(0, start) + this.latex.slice(end);
-    this.field.setValue(this.latex, { silenceNotifications: true });
+    this.field.setValue(this.latex, { silenceNotifications: true, mode: 'math' });
     this.codeRef.nativeElement.value = this.latex;
     this.changed();
     const emptyOperator = this.emptyOperatorAt(start);
@@ -492,7 +500,7 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
     if (next < 0 || next >= this.history.length) return;
     this.historyIndex = next;
     this.latex = this.history[next];
-    this.field.setValue(this.latex, { silenceNotifications: true });
+    this.field.setValue(this.latex, { silenceNotifications: true, mode: 'math' });
     this.validate();
     this.scheduleSave();
     this.fromVisual();
@@ -551,7 +559,7 @@ export class LatexEditorComponent implements AfterViewInit, OnDestroy {
   private load(doc: FormulaDocument): void {
     this.doc = { ...doc };
     this.latex = doc.latex;
-    this.field.setValue(this.latex, { silenceNotifications: true });
+    this.field.setValue(this.latex, { silenceNotifications: true, mode: 'math' });
     this.history = [this.latex];
     this.historyIndex = 0;
     this.setSourceSelection(0, 0, 'Cursor');

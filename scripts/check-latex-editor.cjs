@@ -64,6 +64,23 @@ async function main() {
     if (latex.includes('[3]')) assert(await state("c.latex.includes('3')"), 'A nonempty root index is retained');
     else assert.equal(await state('c.latex'), '', 'Deleting an empty operator removes its structure');
   }
+  const freshEmptyEditor = async () => {
+    await action("c.editCode('');c.persist()");
+    await call('Page.reload'); await pause(1200);
+    await action('c.field.focus();c.field.position=0');
+  };
+  const rootContent = () => state("new DOMParser().parseFromString(c.field.getValue('math-ml'),'application/xml').querySelector('msqrt')?.textContent");
+  await freshEmptyEditor();
+  await action("c.insert(c.filtered.find(k=>k.latex===String.raw`\\sqrt{#0}`))");
+  await call('Input.dispatchKeyEvent', { type: 'keyDown', key: '9', text: '9' });
+  await call('Input.dispatchKeyEvent', { type: 'keyUp', key: '9' });
+  assert.equal(await rootContent(), '9', 'The next number goes inside a newly inserted root');
+  await freshEmptyEditor();
+  for (const key of 'sqrt9') {
+    await call('Input.dispatchKeyEvent', { type: 'keyDown', key, text: key });
+    await call('Input.dispatchKeyEvent', { type: 'keyUp', key });
+  }
+  assert.equal(await rootContent(), '9', 'Typing sqrt then a number enters the root');
   const repeatedFixtures=[
     {latex:'\\phi=1+\\frac{1}{1+\\frac{1}{1+\\frac{1}{1+\\frac{1}{1}}}}'},
     {latex:'\\phi = 1 + \\dfrac{ 1 }{ 1 + \\dfrac{ 1 }{ 1 + \\dfrac{ 1 }{ 1 } } }'},
