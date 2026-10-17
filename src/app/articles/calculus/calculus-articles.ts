@@ -1,3 +1,4 @@
+import { PartialDerivativesMinimizationArticleComponent } from './partial-derivatives-minimization/partial-derivatives-minimization-article.component';
 import { LinearOdeSystemsArticleComponent } from './linear-ode-systems/linear-ode-systems-article.component';
 import { DerivativeFoundationsArticleComponent } from './derivative-foundations/derivative-foundations-article.component';
 import { OdeNumericalIntegrationArticleComponent } from './ode-numerical-integration/ode-numerical-integration-article.component';
@@ -16,6 +17,7 @@ import { BrachistochroneArticleComponent } from './brachistochrone/brachistochro
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
 
 export const CALCULUS_ARTICLES = [
+  PartialDerivativesMinimizationArticleComponent,
   LinearOdeSystemsArticleComponent,
   DerivativeFoundationsArticleComponent,
   OdeNumericalIntegrationArticleComponent,

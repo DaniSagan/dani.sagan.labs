@@ -15,29 +15,34 @@ export class IrracionalidadPorFactorizacionProblemComponent {
   static readonly title = "Irracionalidad por factorización";
   static readonly route = "problema-010";
   static readonly problem: PracticeProblem = {
-    "id": "problema-010",
-    "number": 10,
-    "title": "Irracionalidad por factorización",
-    "category": "Aritmética y teoría de números",
-    "topic": "Diofánticas y demostraciones",
-    "level": "Oposición",
-    "statement": "Demuestra que \\(\\sqrt{6}\\) es irracional usando la unicidad de la factorización prima.",
-    "resources": [
-{
-  "label": "Irracionalidad y valuaciones primas",
-  "route": "/articles/prime-valuations",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Teorema fundamental de la aritmética",
-        "route": "/articles/fundamental-theorem-arithmetic",
-        "activity": "La unicidad de la factorización prima que fundamenta la contradicción de paridades."
-      },
-      {
-        "label": "Descomposición en primos",
-        "route": "/tools/prime-decomposition",
-        "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
-      }
-    ]
-  };
+  "id": "problema-010",
+  "number": 10,
+  "title": "Irracionalidad por factorización",
+  "category": "Aritmética y teoría de números",
+  "topic": "Diofánticas y demostraciones",
+  "level": "Oposición",
+  "statement": "Demuestra que \\(\\sqrt{6}\\) es irracional usando la unicidad de la factorización prima.",
+  "resources": [
+    {
+      "label": "Irracionalidad y valuaciones primas",
+      "route": "/articles/prime-valuations",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Teorema fundamental de la aritmética",
+      "route": "/articles/fundamental-theorem-arithmetic",
+      "activity": "La unicidad de la factorización prima que fundamenta la contradicción de paridades."
+    },
+    {
+      "label": "Descomposición en primos",
+      "route": "/tools/prime-decomposition",
+      "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
+    },
+    {
+      "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
+      "route": "/articles/proof-strategies",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    }
+  ]
+};
 }

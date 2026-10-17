@@ -26,6 +26,11 @@ export class UnAjusteConstantePorMinimosCuadradosProblemComponent {
       "label": "Proyecciones ortogonales y mínimos cuadrados",
       "route": "/articles/projection-least-squares",
       "activity": "Practica un ajuste constante por mínimos cuadrados. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Derivadas parciales y minimización en varias variables",
+      "route": "/articles/partial-derivatives-minimization",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

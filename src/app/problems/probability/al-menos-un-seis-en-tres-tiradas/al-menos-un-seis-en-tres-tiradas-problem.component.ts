@@ -26,6 +26,16 @@ export class AlMenosUnSeisEnTresTiradasProblemComponent {
       "label": "Distribuciones de Bernoulli y binomial",
       "route": "/articles/bernoulli-binomial",
       "activity": "Practica al menos un seis en tres tiradas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Árboles de probabilidad y experimentos por etapas",
+      "route": "/articles/probability-trees",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Función de distribución, colas y probabilidades acumuladas",
+      "route": "/articles/distribution-functions-tails",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

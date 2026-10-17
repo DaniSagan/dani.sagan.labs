@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:problem-support-articles": "node scripts/test-problem-support-articles.cjs",
+    "test:problem-support-articles:browser": "node scripts/check-problem-support-articles.cjs",
     "test:additional-problems": "node scripts/test-additional-problems.cjs",
     "test:additional-problems:browser": "node scripts/check-additional-problems.cjs",
     "generate:curve-previews": "node scripts/generate-curve-previews.cjs",

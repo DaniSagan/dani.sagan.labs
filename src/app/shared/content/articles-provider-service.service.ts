@@ -1,3 +1,5 @@
+import { ProbabilityTreesArticleComponent } from 'src/app/articles/probability/probability-trees/probability-trees-article.component';
+import { DistributionFunctionsTailsArticleComponent } from 'src/app/articles/probability/distribution-functions-tails/distribution-functions-tails-article.component';
 import { ZeroMeasureDimensionArticleComponent } from 'src/app/articles/fractals/zero-measure-dimension/zero-measure-dimension-article.component';
 import { FiniteProbabilityArticleComponent } from 'src/app/articles/probability/finite-probability/finite-probability-article.component';
 import { MomentTransformationsArticleComponent } from 'src/app/articles/probability/moment-transformations/moment-transformations-article.component';
@@ -322,6 +324,8 @@ export class ArticlesProviderServiceService extends NavbarProvider {
   ];
 
   probability: NavbarItem[] = [
+    { name: ProbabilityTreesArticleComponent.title, route: ProbabilityTreesArticleComponent.route },
+    { name: DistributionFunctionsTailsArticleComponent.title, route: DistributionFunctionsTailsArticleComponent.route },
     { name: FiniteProbabilityArticleComponent.title, route: FiniteProbabilityArticleComponent.route },
     { name: MomentTransformationsArticleComponent.title, route: MomentTransformationsArticleComponent.route },
     { name: NormalDistributionArticleComponent.title, route: NormalDistributionArticleComponent.route },

@@ -26,6 +26,11 @@ export class CoordenadasEnUnaBaseOblicuaProblemComponent {
       "label": "Espacios vectoriales, bases y rango–nulidad",
       "route": "/articles/vector-spaces",
       "activity": "Practica coordenadas en una base oblicua. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cambios de base y matrices de una transformación",
+      "route": "/articles/change-of-basis",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

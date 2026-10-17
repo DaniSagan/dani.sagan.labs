@@ -26,6 +26,11 @@ export class EstandarizarUnaMedidaNormalProblemComponent {
       "label": "Distribución normal y tipificación",
       "route": "/articles/normal-distribution",
       "activity": "Practica estandarizar una medida normal. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Función de distribución, colas y probabilidades acumuladas",
+      "route": "/articles/distribution-functions-tails",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

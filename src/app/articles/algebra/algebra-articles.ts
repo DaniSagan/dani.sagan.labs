@@ -1,3 +1,5 @@
+import { AlgebraicIdentitiesFactorizationArticleComponent } from './algebraic-identities-factorization/algebraic-identities-factorization-article.component';
+import { ChangeOfBasisArticleComponent } from './change-of-basis/change-of-basis-article.component';
 import { ProjectionLeastSquaresArticleComponent } from './projection-least-squares/projection-least-squares-article.component';
 import { GramSchmidtArticleComponent } from './gram-schmidt/gram-schmidt-article.component';
 import { VectorSpacesArticleComponent } from './vector-spaces/vector-spaces-article.component';
@@ -17,6 +19,8 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  AlgebraicIdentitiesFactorizationArticleComponent,
+  ChangeOfBasisArticleComponent,
   ProjectionLeastSquaresArticleComponent,
   GramSchmidtArticleComponent,
   VectorSpacesArticleComponent,

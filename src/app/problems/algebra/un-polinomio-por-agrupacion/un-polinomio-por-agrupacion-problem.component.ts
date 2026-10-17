@@ -26,6 +26,11 @@ export class UnPolinomioPorAgrupacionProblemComponent {
       "label": "Teorema de las raíces racionales",
       "route": "/articles/rational-root-theorem",
       "activity": "Practica un polinomio por agrupación. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Identidades algebraicas y técnicas de factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

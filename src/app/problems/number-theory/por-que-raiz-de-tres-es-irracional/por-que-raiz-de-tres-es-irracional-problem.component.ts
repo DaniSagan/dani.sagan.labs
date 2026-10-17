@@ -26,6 +26,11 @@ export class PorQueRaizDeTresEsIrracionalProblemComponent {
       "label": "Teorema fundamental de la aritmética",
       "route": "/articles/fundamental-theorem-arithmetic",
       "activity": "Practica por qué raíz de tres es irracional. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
+      "route": "/articles/proof-strategies",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

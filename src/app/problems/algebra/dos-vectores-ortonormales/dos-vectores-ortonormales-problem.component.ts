@@ -26,6 +26,11 @@ export class DosVectoresOrtonormalesProblemComponent {
       "label": "Productos internos y ortonormalización de Gram–Schmidt",
       "route": "/articles/gram-schmidt",
       "activity": "Practica dos vectores ortonormales. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cambios de base y matrices de una transformación",
+      "route": "/articles/change-of-basis",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

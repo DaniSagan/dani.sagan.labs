@@ -15,34 +15,39 @@ export class UnLugarDePuntosComplejoProblemComponent {
   static readonly title = "Un lugar de puntos complejo";
   static readonly route = "problema-037";
   static readonly problem: PracticeProblem = {
-    "id": "problema-037",
-    "number": 37,
-    "title": "Un lugar de puntos complejo",
-    "category": "Trigonometría y números complejos",
-    "topic": "Plano complejo",
-    "level": "Oposición",
-    "statement": "Describe geométricamente los z que cumplen \\(\\lvert z-1\\rvert =2\\lvert z+1\\rvert\\) y da centro y radio.",
-    "resources": [
-      {
-        "label": "Geometría analítica de la recta y la circunferencia",
-        "route": "/articles/line-circle",
-        "activity": "Completa cuadrados, compara la distancia al centro con el radio y verifica las intersecciones en las ecuaciones originales."
-      },
-{
-  "label": "Circunferencias de Apolonio y razones de distancias",
-  "route": "/articles/apollonius-circles",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Transformaciones de Möbius",
-        "route": "/articles/mobius-transformations",
-        "activity": "Transformaciones fraccionarias del plano complejo y sus imágenes geométricas."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
-      }
-    ]
-  };
+  "id": "problema-037",
+  "number": 37,
+  "title": "Un lugar de puntos complejo",
+  "category": "Trigonometría y números complejos",
+  "topic": "Plano complejo",
+  "level": "Oposición",
+  "statement": "Describe geométricamente los z que cumplen \\(\\lvert z-1\\rvert =2\\lvert z+1\\rvert\\) y da centro y radio.",
+  "resources": [
+    {
+      "label": "Geometría analítica de la recta y la circunferencia",
+      "route": "/articles/line-circle",
+      "activity": "Completa cuadrados, compara la distancia al centro con el radio y verifica las intersecciones en las ecuaciones originales."
+    },
+    {
+      "label": "Circunferencias de Apolonio y razones de distancias",
+      "route": "/articles/apollonius-circles",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Transformaciones de Möbius",
+      "route": "/articles/mobius-transformations",
+      "activity": "Transformaciones fraccionarias del plano complejo y sus imágenes geométricas."
+    },
+    {
+      "label": "Representador de funciones",
+      "route": "/tools/graph-plotter",
+      "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
+    },
+    {
+      "label": "Valor absoluto: distancias y funciones a trozos",
+      "route": "/articles/absolute-value-distance",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    }
+  ]
+};
 }

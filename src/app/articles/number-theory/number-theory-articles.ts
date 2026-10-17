@@ -1,3 +1,5 @@
+import { ProofStrategiesArticleComponent } from './proof-strategies/proof-strategies-article.component';
+import { FactorialsLegendreArticleComponent } from './factorials-legendre/factorials-legendre-article.component';
 import { MathematicalInductionArticleComponent } from './mathematical-induction/mathematical-induction-article.component';
 import { PrimeValuationsArticleComponent } from './prime-valuations/prime-valuations-article.component';
 import { FrobeniusCoinsArticleComponent } from './frobenius-coins/frobenius-coins-article.component';
@@ -47,6 +49,8 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  ProofStrategiesArticleComponent,
+  FactorialsLegendreArticleComponent,
   MathematicalInductionArticleComponent,
   FrobeniusCoinsArticleComponent,
   PrimeValuationsArticleComponent,

@@ -26,6 +26,11 @@ export class UnLoteConDosPiezasDefectuosasProblemComponent {
       "label": "Distribución hipergeométrica: extracción sin reemplazo",
       "route": "/articles/hypergeometric-distribution",
       "activity": "Practica un lote con dos piezas defectuosas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Árboles de probabilidad y experimentos por etapas",
+      "route": "/articles/probability-trees",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

@@ -26,6 +26,11 @@ export class UnMinimoConDominioAbiertoProblemComponent {
       "label": "Optimización con derivadas",
       "route": "/articles/derivative-optimization",
       "activity": "Practica un mínimo con dominio abierto. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Extremos globales y teorema de Weierstrass",
+      "route": "/articles/global-extrema-weierstrass",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

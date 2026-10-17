@@ -26,6 +26,16 @@ export class CompletarUnCuadradoProblemComponent {
       "label": "Ecuaciones cuadráticas: discriminante y Viète",
       "route": "/articles/quadratic-equations",
       "activity": "Practica completar un cuadrado. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Identidades algebraicas y técnicas de factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Extremos globales y teorema de Weierstrass",
+      "route": "/articles/global-extrema-weierstrass",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

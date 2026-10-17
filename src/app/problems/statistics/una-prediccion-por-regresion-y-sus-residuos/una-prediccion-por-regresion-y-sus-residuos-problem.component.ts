@@ -26,6 +26,11 @@ export class UnaPrediccionPorRegresionYSusResiduosProblemComponent {
       "label": "Regresión lineal y correlación de Pearson",
       "route": "/articles/linear-regression",
       "activity": "Practica una predicción por regresión y sus residuos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Derivadas parciales y minimización en varias variables",
+      "route": "/articles/partial-derivatives-minimization",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

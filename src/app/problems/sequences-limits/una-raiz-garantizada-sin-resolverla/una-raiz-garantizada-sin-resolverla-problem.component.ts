@@ -26,6 +26,11 @@ export class UnaRaizGarantizadaSinResolverlaProblemComponent {
       "label": "Teorema de Bolzano: existencia y unicidad de raíces",
       "route": "/articles/bolzano-theorem",
       "activity": "Practica una raíz garantizada sin resolverla. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
+      "route": "/articles/proof-strategies",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

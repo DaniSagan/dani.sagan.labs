@@ -26,6 +26,11 @@ export class UnaRutaQueUsaCadaAristaProblemComponent {
       "label": "Recorridos eulerianos y caminos hamiltonianos",
       "route": "/articles/euler-hamilton",
       "activity": "Practica una ruta que usa cada arista. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Grafos desde cero: grados, caminos y conectividad",
+      "route": "/articles/graph-foundations",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

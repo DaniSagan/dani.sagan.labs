@@ -1,3 +1,5 @@
+import { AbsoluteValueDistanceArticleComponent } from './absolute-value-distance/absolute-value-distance-article.component';
+import { GlobalExtremaWeierstrassArticleComponent } from './global-extrema-weierstrass/global-extrema-weierstrass-article.component';
 import { ExponentialsLogarithmsArticleComponent } from './exponentials-logarithms/exponentials-logarithms-article.component';
 import { DaylightSavingTimeArticleComponent } from './daylight-saving-time/daylight-saving-time-article.component';
 import { NumericalConditioningArticleComponent } from './numerical-conditioning/numerical-conditioning-article.component';
@@ -23,6 +25,8 @@ import { BaselArticleComponent } from './basel/basel-article.component';
 import { StirlingArticleComponent } from './stirling/stirling-article.component';
 
 export const ANALYSIS_ARTICLES = [
+  AbsoluteValueDistanceArticleComponent,
+  GlobalExtremaWeierstrassArticleComponent,
   ExponentialsLogarithmsArticleComponent,
   DaylightSavingTimeArticleComponent,
   NumericalConditioningArticleComponent,

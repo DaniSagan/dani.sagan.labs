@@ -26,6 +26,11 @@ export class DosCuadradosYUnaImposibilidadProblemComponent {
       "label": "Teorema de Fermat sobre dos cuadrados",
       "route": "/articles/sum-of-two-squares",
       "activity": "Practica dos cuadrados y una imposibilidad. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
+      "route": "/articles/proof-strategies",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

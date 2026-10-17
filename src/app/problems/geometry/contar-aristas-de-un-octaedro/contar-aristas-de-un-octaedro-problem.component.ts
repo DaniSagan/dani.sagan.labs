@@ -26,6 +26,11 @@ export class ContarAristasDeUnOctaedroProblemComponent {
       "label": "Fórmula de Euler para poliedros",
       "route": "/articles/euler-polyhedron-formula",
       "activity": "Practica contar aristas de un octaedro. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Grafos desde cero: grados, caminos y conectividad",
+      "route": "/articles/graph-foundations",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

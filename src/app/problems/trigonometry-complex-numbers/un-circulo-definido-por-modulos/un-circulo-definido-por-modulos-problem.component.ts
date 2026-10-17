@@ -26,6 +26,11 @@ export class UnCirculoDefinidoPorModulosProblemComponent {
       "label": "Conjugado, módulo y división compleja",
       "route": "/articles/complex-arithmetic",
       "activity": "Practica un círculo definido por módulos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Valor absoluto: distancias y funciones a trozos",
+      "route": "/articles/absolute-value-distance",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

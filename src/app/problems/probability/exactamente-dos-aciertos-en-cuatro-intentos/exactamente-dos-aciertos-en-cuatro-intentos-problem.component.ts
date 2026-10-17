@@ -26,6 +26,11 @@ export class ExactamenteDosAciertosEnCuatroIntentosProblemComponent {
       "label": "Distribuciones de Bernoulli y binomial",
       "route": "/articles/bernoulli-binomial",
       "activity": "Practica exactamente dos aciertos en cuatro intentos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Factoriales, exponentes primos y fórmula de Legendre",
+      "route": "/articles/factorials-legendre",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

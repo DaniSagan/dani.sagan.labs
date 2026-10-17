@@ -1,3 +1,4 @@
+import { GraphFoundationsArticleComponent } from './graph-foundations/graph-foundations-article.component';
 import { GoogologyArticleComponent } from './googology/googology-article.component';
 import { EulerHamiltonArticleComponent } from './euler-hamilton/euler-hamilton-article.component';
 import { SudokuConstraintsArticleComponent } from './sudoku-constraints/sudoku-constraints-article.component';
@@ -17,6 +18,7 @@ import { FourColorTheoremArticleComponent } from './four-color-theorem/four-colo
 import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
 export const COMBINATORICS_ARTICLES = [
+  GraphFoundationsArticleComponent,
   GoogologyArticleComponent,
   EulerHamiltonArticleComponent,
   SudokuConstraintsArticleComponent,

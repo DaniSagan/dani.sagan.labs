@@ -26,6 +26,11 @@ export class UnaDensidadTriangularYSuMediaProblemComponent {
       "label": "Variables continuas: densidad, esperanza y varianza",
       "route": "/articles/continuous-random-variables",
       "activity": "Practica una densidad triangular y su media. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Función de distribución, colas y probabilidades acumuladas",
+      "route": "/articles/distribution-functions-tails",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };

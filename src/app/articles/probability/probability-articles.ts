@@ -1,3 +1,5 @@
+import { ProbabilityTreesArticleComponent } from './probability-trees/probability-trees-article.component';
+import { DistributionFunctionsTailsArticleComponent } from './distribution-functions-tails/distribution-functions-tails-article.component';
 import { FiniteProbabilityArticleComponent } from './finite-probability/finite-probability-article.component';
 import { MomentTransformationsArticleComponent } from './moment-transformations/moment-transformations-article.component';
 import { NormalDistributionArticleComponent } from './normal-distribution/normal-distribution-article.component';
@@ -34,6 +36,8 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  ProbabilityTreesArticleComponent,
+  DistributionFunctionsTailsArticleComponent,
   FiniteProbabilityArticleComponent,
   MomentTransformationsArticleComponent,
   NormalDistributionArticleComponent,

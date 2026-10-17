@@ -26,6 +26,11 @@ export class UnaFuncionConEsquinaProblemComponent {
       "label": "Continuidad y derivabilidad: funciones a trozos",
       "route": "/articles/continuity-differentiability",
       "activity": "Practica una función con esquina. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Valor absoluto: distancias y funciones a trozos",
+      "route": "/articles/absolute-value-distance",
+      "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
     }
   ]
 };
