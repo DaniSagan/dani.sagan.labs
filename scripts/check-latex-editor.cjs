@@ -31,6 +31,39 @@ async function main() {
   const action = async s => { await evaluate(`(async()=>{const c=${component};${s};ng.applyChanges(c)})()`); await pause(80); };
   const state = s => evaluate(`(()=>{const c=${component};return ${s}})()`);
   assert(await state('c.count > 550')); assert(await state('c.field.lastOffset > 0'));
+  const openDeletionFixture = async latex => action(`c.editCode(${JSON.stringify(latex)})`);
+  const selectSource = async (start, end) => action(`c.codeRef.nativeElement.focus();c.codeRef.nativeElement.setSelectionRange(${start},${end});c.fromCode()`);
+  for (const latex of [String.raw`\sqrt{x}`, String.raw`\frac{a}{b}`]) {
+    await openDeletionFixture(latex);
+    await selectSource(0, latex.length);
+    await action("c.command('deleteBackward')");
+    assert.equal(await state('c.latex'), '', 'Deleting a selected operator removes its structure');
+    await action('c.undo(-1)');
+    assert.equal(await state('c.latex'), latex, 'Operator deletion is undoable');
+    await action('c.undo(1)');
+    assert.equal(await state('c.latex'), '', 'Operator deletion is redoable');
+    await openDeletionFixture(latex);
+    await action("c.field.focus();c.field.executeCommand('selectAll');c.fromVisual();c.command('deleteBackward')");
+    assert.equal(await state('c.latex'), '', 'Visual selection deletes the complete operator');
+  }
+  await openDeletionFixture(String.raw`1+\sqrt{x}+2`);
+  await selectSource(8,9);
+  await action("c.command('deleteBackward')");
+  assert.equal(await state('c.latex'), String.raw`1+\sqrt{}+2`, 'Deleting the radicand preserves the root initially');
+  await action("c.command('deleteBackward')");
+  assert.equal(await state('c.latex'), '1++2', 'Deleting an empty root preserves surrounding terms');
+  await openDeletionFixture(String.raw`\frac{a}{b}`);
+  await selectSource(6,7);
+  await action("c.command('deleteBackward');c.command('deleteBackward')");
+  assert(await state("c.latex.includes('b')"), 'An occupied denominator is retained');
+  for (const latex of [String.raw`\sqrt{}`, String.raw`\frac{}{}`, String.raw`\sqrt[3]{}`]) {
+    await openDeletionFixture(latex);
+    const caret = latex.indexOf('{}') + 1;
+    await selectSource(caret, caret);
+    await action("c.command('deleteBackward')");
+    if (latex.includes('[3]')) assert(await state("c.latex.includes('3')"), 'A nonempty root index is retained');
+    else assert.equal(await state('c.latex'), '', 'Deleting an empty operator removes its structure');
+  }
   const repeatedFixtures=[
     {latex:'\\phi=1+\\frac{1}{1+\\frac{1}{1+\\frac{1}{1+\\frac{1}{1}}}}'},
     {latex:'\\phi = 1 + \\dfrac{ 1 }{ 1 + \\dfrac{ 1 }{ 1 + \\dfrac{ 1 }{ 1 } } }'},
