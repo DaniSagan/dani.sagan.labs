@@ -1,0 +1,106 @@
+:host {
+  display:block;
+  min-width:0
+}
+.article-intro {
+  max-width:78ch
+}
+.article-tag {
+  font:11px 'Courier Prime',monospace;
+  letter-spacing:.18em;
+  color:var(--gold)
+}
+.article-nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem 1.2rem;
+  padding:1rem 0;
+  border-block:1px solid var(--rule);
+  font-size:.9rem;
+  margin:1.5rem 0
+}
+.article-block {
+  padding:0 0 1.8rem;
+  border-bottom:1px solid var(--rule);
+  scroll-margin-top:90px
+}
+.article-block h3 {
+  font-size:1.65rem
+}
+.article-block h4 {
+  font-size:1.15rem;
+  color:var(--ink);
+  margin:1.7rem 0 .5rem
+}
+.article-block p {
+  max-width:80ch
+}
+.theorem-box {
+  border-left:3px solid var(--gold);
+  background:#d6b7770a;
+  padding:1rem 1.3rem;
+  margin:1.5rem 0
+}
+.metric-table {
+  overflow-x:auto;
+  margin:1.5rem 0
+}
+.metric-table table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:.95rem
+}
+.metric-table th,.metric-table td {
+  text-align:left;
+  vertical-align:top;
+  padding:.7rem;
+  border-bottom:1px solid var(--rule)
+}
+.metric-table th {
+  color:var(--gold);
+  font-weight:normal
+}
+.metric-table app-formula {
+  min-width:120px
+}
+.exercise {
+  margin:1rem 0;
+  padding:1rem 1.3rem;
+  background:#ffffff04;
+  border:1px solid var(--rule);
+  border-radius:8px
+}
+.exercise summary {
+  cursor:pointer;
+  color:var(--gold);
+  padding:.5rem 0
+}
+.references {
+  font-size:.9rem;
+  line-height:1.6
+}
+.references li {
+  margin:.5rem 0
+}
+.related {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.7rem 1.2rem;
+  margin:1rem 0
+}
+app-formula {
+  display:block;
+  max-width:100%;
+  overflow-x:auto
+}
+@media(max-width:600px) {
+  .metric-table th,.metric-table td {
+    padding:.5rem
+  }
+  .article-nav {
+    font-size:.8rem
+  }
+  .theorem-box,.exercise {
+    padding:.8rem
+  }
+}

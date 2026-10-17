@@ -1,0 +1,10 @@
+import { Point3, regularPolyhedron } from './polyhedron-model';
+const phi = (1 + Math.sqrt(5)) / 2;
+const signs = [-1, 1];
+const cube: Point3[] = signs.flatMap(x => signs.flatMap(y => signs.map(z => [x,y,z] as Point3)));
+const cycle = (v: Point3): Point3[] => [v, [v[2],v[0],v[1]], [v[1],v[2],v[0]]];
+export const TETRAHEDRON = regularPolyhedron('Tetraedro', 'Tetraedro', [[1,1,1],[1,-1,-1],[-1,1,-1],[-1,-1,1]], 3, 3);
+export const HEXAHEDRON = regularPolyhedron('Cubo', 'Octaedro', cube, 4, 3);
+export const OCTAHEDRON = regularPolyhedron('Octaedro', 'Cubo', [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]], 3, 4);
+export const ICOSAHEDRON = regularPolyhedron('Icosaedro', 'Dodecaedro', signs.flatMap(s => signs.flatMap(t => cycle([0,s,t*phi]))), 3, 5);
+export const DODECAHEDRON = regularPolyhedron('Dodecaedro', 'Icosaedro', [...cube, ...signs.flatMap(s => signs.flatMap(t => cycle([0,s/phi,t*phi])))], 5, 3);

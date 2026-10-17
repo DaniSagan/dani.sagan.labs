@@ -26,6 +26,8 @@
     "test:constellations": "node scripts/test-constellations.cjs",
     "test:constellations:browser": "node scripts/check-constellations-page.cjs",
     "test:latex-editor:browser": "node scripts/check-latex-editor.cjs",
+    "test:platonic-solids": "node scripts/test-platonic-solids.cjs",
+    "test:platonic-solids:browser": "node scripts/check-platonic-pages.cjs",
     "generate:latex-keyboard": "node scripts/generate-latex-keyboard.cjs"
   },
   "private": true,

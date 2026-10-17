@@ -1,10 +1,46 @@
-<h2>Hexahedro Regular</h2>
-<div #rendererContainer class="renderer-container"></div>
-
-<div class="article-activities">
-<h3>Practica y experimenta</h3>
-<ul>
-  <li><a routerLink="/problems/problema-095">Problema 095 · Orden de un giro del cubo</a>. Distingue el sólido geométrico de una permutación de pegatinas producida por un giro de una cara.</li>
-  <li><a routerLink="/games/rubik-cube">Cubo de Rubik</a>. Explora los giros de las capas de un cubo y compara su orientación con la rotación del sólido completo.</li>
-</ul>
+<header class="article-intro">
+<span class="article-tag">GEOMETRÍA DEL ESPACIO · SÓLIDOS PLATÓNICOS</span>
+<h2>Cubo o hexaedro regular</h2>
+<p class="dropcap">El cubo, o hexaedro regular, reúne seis cuadrados, doce aristas y ocho vértices. Tres cuadrados concurren en cada vértice, de ahí el símbolo &#123;4,3&#125;. Su sencillez permite distinguir con claridad las diagonales de las caras, las diagonales espaciales y los tres radios característicos.</p>
+<p>Construiremos sus vértices y deduciremos las medidas a partir de distancias, planos y productos escalares. En todo el artículo <strong>a es la longitud de la arista</strong>; R, r y ρ son, respectivamente, los radios hasta un vértice, el centro de una cara y el punto medio de una arista.</p>
+</header>
+<nav class="article-nav" aria-label="Contenido del artículo"><a [routerLink]="[]" fragment="laboratorio">Explorar en 3D</a><a [routerLink]="[]" fragment="coordenadas">Construir vértices</a><a [routerLink]="[]" fragment="radios">Radios</a><a [routerLink]="[]" fragment="angulos">Ángulos</a><a [routerLink]="[]" fragment="volumen">Área y volumen</a><a [routerLink]="[]" fragment="practica">Practicar</a></nav>
+<div id="laboratorio"><app-polyhedron-lab [model]="solid"/></div>
+<div class="theorem-box"><strong>Una estructura regular.</strong> 8 vértices, 12 aristas y 6 caras. Cada cara tiene 4 lados y cada vértice pertenece a 3 caras. Si N es el número de vértices, E el de aristas y F el de caras:
+<app-formula expression="N-E+F=8-12+6=2,\qquad 4F=2E,\qquad 3N=2E" displayMode="block"/>
+<p>Las dos últimas igualdades cuentan cada arista dos veces: una por cada cara y una por cada extremo. La primera es la relación de Euler para un poliedro convexo.</p></div>
+<div class="article-block" id="coordenadas"><span class="article-tag">01 · CONSTRUCCIÓN CARTESIANA</span><h3>Cómo obtener los vértices</h3><h4>1. Intersecar tres pares de planos paralelos</h4><p>Para una arista a, situamos las caras en x = ±a/2, y = ±a/2 y z = ±a/2. Cada vértice es la intersección de tres caras, una de cada par. Las tres elecciones independientes de signo producen exactamente ocho puntos.</p>
+<app-formula expression="V_{\varepsilon_1,\varepsilon_2,\varepsilon_3}=\frac a2(\varepsilon_1,\varepsilon_2,\varepsilon_3),\qquad \varepsilon_i\in\{-1,1\}" displayMode="block"/>
+<p>Dos vértices son adyacentes cuando difieren en un único signo: solo una coordenada cambia en a. Si difieren en dos signos, quedan en extremos de una diagonal de cara; si cambian los tres, son vértices opuestos. Así clasificamos todas las distancias sin depender de la perspectiva del dibujo.</p>
+<app-formula expression="d_{\rm arista}=a,\qquad d_{\rm cara}=\sqrt{a^2+a^2}=a\sqrt2,\qquad d_{\rm espacio}=\sqrt{3a^2}=a\sqrt3" displayMode="block"/>
+<h4>2. Comprobar que las caras son cuadrados</h4><p>En la cara x = a/2, las otras dos coordenadas toman los valores ±a/2. Las aristas son paralelas a los ejes y y z, por lo que forman ángulos rectos; además tienen la misma longitud a. Cada una de las seis caras satisface el mismo argumento.</p>
+<p>El centro del cubo es el promedio de cada pareja de vértices opuestos. Esto explica que la elección simétrica de coordenadas sitúe simultáneamente las tres esferas de referencia en el origen.</p></div>
+<div class="article-block" id="radios"><span class="article-tag">02 · TRES DISTANCIAS AL CENTRO</span><h3>Radios y esferas de referencia</h3><p>El radio circunscrito es la mitad de la diagonal espacial. El inscrito es la distancia del origen a cualquiera de los planos coordenados de las caras. Para el radio medio tomamos, por ejemplo, el punto medio (a/2,a/2,0) de una arista vertical.</p>
+<app-formula expression="R=\frac{\sqrt3}{2}a,\qquad r=\frac a2,\qquad \rho=\frac{\sqrt2}{2}a" displayMode="block"/>
+<p>Una sección que pasa por el centro, el centro de una cara y el punto medio de una arista muestra el triángulo rectángulo con catetos r y a/2 e hipotenusa ρ. Si añadimos un vértice de esa arista obtenemos la relación R² = ρ² + a²/4.</p>
+<div class="theorem-box"><strong>Un triángulo útil en todos los sólidos regulares.</strong><p>Si M es el punto medio de una arista, P uno de sus extremos y O el centro, OM es perpendicular a MP. El radio al centro de una cara es perpendicular a su plano. Si b es la apotema de esa cara:</p>
+<app-formula expression="R^2=\rho^2+\frac{a^2}{4},\qquad \rho^2=r^2+b^2,\qquad b=\frac a2\cot\frac\pi p" displayMode="block"/></div>
 </div>
+<div class="article-block" id="angulos"><span class="article-tag">03 · DE LA CARA AL ESPACIO</span><h3>Ángulo plano, diedro, central y sólido</h3>
+<p>El ángulo plano vive dentro de una cara; el <strong>diedro interior δ</strong> mide la apertura entre dos caras a través del interior del sólido. El ángulo central θ está en O, entre dos radios hacia vértices adyacentes. El ángulo sólido Ω mide la porción de direcciones delimitada por las caras en un vértice y se expresa en estereorradianes.</p>
+<p>El ángulo interior de cada cara es 90°. Las normales exteriores de dos caras adyacentes son dos vectores coordenados perpendiculares, por lo que el diedro interior también es 90°. El ángulo central de una arista es distinto: los vectores (1,1,1) y (−1,1,1) tienen producto escalar 1 y normas √3.</p>
+<app-formula expression="\delta=\frac\pi2=90^\circ,\qquad \theta=\arccos\left(\frac13\right)\approx70.5288^\circ" displayMode="block"/>
+<p>Las tres caras de un vértice delimitan un octante del espacio. Por simetría, los ocho octantes reparten los 4π estereorradianes de una esfera.</p>
+<app-formula expression="\Omega=3\frac\pi2-\pi=\frac\pi2\ \mathrm{sr}" displayMode="block"/>
+<p>Para comprobar los resultados, usamos normales exteriores unitarias n₁ y n₂. En el ángulo central, la arista es una cuerda de la esfera de radio R. El ángulo sólido es el área en la esfera unitaria de un polígono esférico con q ángulos interiores iguales a δ; en esta fórmula δ está en radianes.</p>
+<app-formula expression="\cos\delta=-\,\mathbf n_1\cdot\mathbf n_2,\qquad \theta=2\arcsin\frac a{2R},\qquad \Omega=q\delta-(q-2)\pi" displayMode="block"/>
+<p>Explora el diedro en el visor: las dos caras destacadas comparten una arista y el arco se dibuja en una sección perpendicular a esa arista.</p></div>
+<div class="article-block" id="volumen"><span class="article-tag">04 · MEDIR EL SÓLIDO</span><h3>Área y volumen, paso a paso</h3><p>Sumando los seis cuadrados obtenemos el área. Para el volumen podemos usar directamente el área de la base por la altura: a² · a. También podemos dividir el cubo en seis pirámides cuadradas de vértice común en el centro, cada una de altura a/2.</p>
+<app-formula expression="S=6a^2,\qquad V=a^3=6\left(\frac13 a^2\frac a2\right)" displayMode="block"/>
+<p>La segunda descomposición es la que se generaliza a los cinco sólidos platónicos. La primera utiliza la estructura especial del cubo como prisma recto. Con a = 1, el volumen unidad no implica que la esfera circunscrita tenga radio unidad: aquí R = √3/2.</p>
+<div class="theorem-box"><strong>La fórmula común.</strong><p>Unimos el centro con todos los vértices de cada cara. Las F pirámides obtenidas tienen altura r y sus bases recubren exactamente la superficie del sólido. Si S es el área total, la suma de los volúmenes es:</p><app-formula expression="V=F\frac{A_{\rm cara}r}{3}=\frac{Sr}{3}" displayMode="block"/></div>
+<p>Una homotecia de razón k multiplica todas las longitudes por k, las áreas por k² y los volúmenes por k³. Los ángulos permanecen constantes. El control de arista del laboratorio permite contrastarlo con valores numéricos; la vista se mantiene normalizada para que los sólidos puedan compararse sin salir del encuadre.</p></div>
+<div class="article-block" id="dualidad"><span class="article-tag">05 · CAMBIAR CARAS POR VÉRTICES</span><h3>Dualidad y simetría</h3><p>Los seis centros de las caras son (±a/2,0,0), (0,±a/2,0) y (0,0,±a/2). Su envolvente convexa es un octaedro: las seis caras del cubo se convierten en seis vértices y sus ocho vértices en ocho caras. La arista del dual mostrado mide a/√2.</p><p>Activa la transparencia y la capa dual para seguir las correspondencias. Si separas las caras, sus centros dibujados en el dual siguen siendo los del sólido original: no se trata de un desarrollo plano ni de otro sólido regular de mayor tamaño.</p></div>
+
+<div class="article-block" id="practica"><span class="article-tag">06 · PRACTICA Y EXPERIMENTA</span><h3>Del cálculo a la comprobación</h3>
+<div class="exercise"><p>Inscribimos un cubo en una esfera de radio R = 1. ¿Cuál es su arista? Calcula su área y volumen sin confundir radio unitario con arista unitaria.</p><details><summary>Ver solución razonada</summary><app-formula expression="a=\frac2{\sqrt3},\qquad S=8,\qquad V=\frac8{3\sqrt3}" displayMode="block"/><p>Se sustituyen las longitudes en las fórmulas deducidas arriba, respetando sus potencias: una escala lineal cambia el área al cuadrado y el volumen al cubo. Conserva los radicales hasta el último paso para evitar errores de redondeo.</p></details></div>
+<div class="exercise"><p><strong>Comprueba la geometría del visor.</strong> Activa las etiquetas y abre la tabla. Elige los vértices de una cara, calcula la distancia de dos consecutivos y verifica que coincide con a. Después calcula la norma de un vértice y contrástala con R. ¿Qué cambia al duplicar a?</p><details><summary>Pista</summary><app-formula expression="|P-Q|=\sqrt{(x_P-x_Q)^2+(y_P-y_Q)^2+(z_P-z_Q)^2},\qquad |P|=\sqrt{x_P^2+y_P^2+z_P^2}" displayMode="block"/><p>El visor muestra decimales redondeados; la construcción del artículo proporciona las coordenadas exactas. Al duplicar a se duplican tanto la distancia entre vecinos como la norma de los vértices.</p></details></div>
+
+</div>
+<div class="article-block"><h3>Continúa explorando</h3><div class="related"><a routerLink="/articles/square">Construcción del cuadrado</a><a routerLink="/articles/octahedron-viewer">Octaedro: el dual del cubo</a><a routerLink="/articles/tetrahedron-viewer" fragment="clasificacion">Por qué solo hay cinco sólidos platónicos</a></div>
+<h4>Referencias para contrastar resultados</h4><ul class="references"><li><a href="https://mathworld.wolfram.com/Cube.html" target="_blank" rel="noopener">Eric W. Weisstein · Cubo o hexaedro regular, MathWorld</a>: propiedades y expresiones exactas. Las derivaciones del artículo parten de las coordenadas indicadas.</li><li>Euclides, <em>Elementos</em>, libro XIII: construcción y clasificación de los cinco sólidos regulares.</li></ul></div>

@@ -1,32 +1,18 @@
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { GeometryViewer } from '../geometry-viewer';
-import * as THREE from 'three';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { PolyhedronLabComponent } from '../polyhedron-lab.component';
+import { TETRAHEDRON } from '../platonic-models';
 
 @Component({
   selector: 'app-tetrahedron-viewer',
-  templateUrl: './tetrahedron-viewer.component.html',
-  styleUrl: './tetrahedron-viewer.component.css',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormulaComponent, PolyhedronLabComponent],
+  templateUrl: './tetrahedron-viewer.component.html',
+  styleUrl: '../platonic-article.css',
 })
-export class TetrahedronViewerComponent extends GeometryViewer {
-  @ViewChild('rendererContainer', { static: true })
-  rendererContainer!: ElementRef;
-
-  static title: string = 'Tetrahedro regular';
-  static route: string = 'tetrahedron-viewer';
-
-  ngOnInit(): void {
-    this.initThreeJS(this.rendererContainer);
-  }
-
-  getPolyhedron(): THREE.BufferGeometry {
-    return new THREE.TetrahedronGeometry();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(): void {
-    this.resizeWindow(this.rendererContainer);
-  }
+export class TetrahedronViewerComponent {
+  static title = 'Tetraedro regular';
+  static route = 'tetrahedron-viewer';
+  readonly solid = TETRAHEDRON;
 }

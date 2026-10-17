@@ -1,0 +1,382 @@
+:host {
+  display:block;
+  margin:2rem 0 3rem;
+  min-width:0
+}
+.poly-lab {
+  border:1px solid var(--rule);
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--surface,#14151c)
+}
+.lab-heading {
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:center;
+  padding:1.3rem 1.5rem;
+  border-bottom:1px solid var(--rule)
+}
+.kicker,.topology {
+  font:11px 'Courier Prime',monospace;
+  letter-spacing:.13em;
+  color:var(--gold);
+  display:block
+}
+.lab-heading h3 {
+  margin:.4rem 0 0;
+  font-size:1.6rem;
+  color:var(--ink)
+}
+.topology {
+  white-space:nowrap;
+  color:var(--ink-dim,#b6b4ac);
+  letter-spacing:.03em
+}
+.lab-layout {
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(230px,1fr)
+}
+.visual {
+  min-width:0;
+  background:radial-gradient(ellipse at 50% 42%,#283d43 0,#141b24 52%,#10121b 100%)
+}
+.poly-stage {
+  height:440px;
+  position:relative;
+  overflow:hidden
+}
+.poly-stage:after {
+  content:'';
+  position:absolute;
+  width:55%;
+  height:24px;
+  bottom:44px;
+  left:22%;
+  border-radius:50%;
+  background:#0008;
+  filter:blur(14px);
+  pointer-events:none
+}
+.poly-stage ::ng-deep canvas {
+  display:block;
+  position:relative;
+  z-index:1;
+  touch-action:none
+}
+.poly-stage ::ng-deep .vertex-label {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:3;
+  pointer-events:none;
+  padding:1px 5px;
+  background:#111c;
+  color:#ffe1a4;
+  border-radius:4px;
+  font:11px monospace
+}
+.stage-caption {
+  position:absolute;
+  z-index:2;
+  left:20px;
+  top:15px;
+  font-size:13px;
+  color:#c3d8d6;
+  pointer-events:none
+}
+.stage-caption span {
+  display:block;
+  font-size:11px;
+  opacity:.7
+}
+.axis-key {
+  position:absolute;
+  bottom:15px;
+  left:20px;
+  font:11px monospace;
+  color:#a2b5ba;
+  pointer-events:none
+}
+.fallback {
+  position:absolute;
+  z-index:4;
+  inset:20%;
+  background:#111e;
+  padding:1rem;
+  color:#eee
+}
+.view-actions {
+  display:flex;
+  gap:.4rem;
+  justify-content:center;
+  padding:.7rem;
+  border-top:1px solid #ffffff0d
+}
+.lab-controls {
+  padding:1.3rem;
+  border-left:1px solid var(--rule);
+  font-size:.88rem
+}
+.toggles {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.6rem .4rem;
+  margin:1rem 0
+}
+.toggles label {
+  display:flex;
+  gap:.4rem;
+  align-items:center;
+  line-height:1.3;
+  min-height:32px
+}
+.toggles input {
+  accent-color:var(--gold);
+  width:16px;
+  height:16px
+}
+.control {
+  display:block;
+  margin:1rem 0 0;
+  color:var(--ink)
+}
+.control output {
+  float:right;
+  font:12px monospace;
+  color:var(--gold)
+}
+select {
+  display:block;
+  width:100%;
+  margin-top:.3rem;
+  background:var(--bg);
+  color:var(--ink);
+  border:1px solid var(--rule);
+  border-radius:6px;
+  padding:.5rem;
+  font:inherit;
+  min-height:40px
+}
+input[type=range] {
+  display:block;
+  width:100%;
+  accent-color:var(--gold);
+  min-height:30px;
+  margin:0
+}
+.face-info,.lab-note {
+  font-size:.8rem;
+  line-height:1.5;
+  color:var(--ink-dim,#bbb);
+  margin:.8rem 0 0
+}
+button {
+  border:1px solid #ffffff25;
+  border-radius:6px;
+  background:#ffffff09;
+  color:var(--ink);
+  font:12px 'Courier Prime',monospace;
+  padding:.5rem .7rem;
+  min-height:40px;
+  cursor:pointer
+}
+button:hover,button[aria-pressed=true] {
+  background:#d6b77725;
+  border-color:var(--gold)
+}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:3px
+}
+button:disabled {
+  opacity:.4;
+  cursor:default
+}
+.measurement-bar {
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+  padding:1rem 1.5rem;
+  border-top:1px solid var(--rule)
+}
+.measurement-bar label {
+  display:grid;
+  grid-template-columns:auto minmax(80px,140px) auto;
+  align-items:center;
+  gap:.8rem;
+  font-size:.85rem;
+  white-space:nowrap
+}
+.measurement-bar>span {
+  font-size:.75rem;
+  line-height:1.4;
+  color:var(--ink-dim,#bbb)
+}
+.measurements {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  padding:1rem 1.5rem;
+  gap:.8rem;
+  background:#ffffff04;
+  border-top:1px solid var(--rule)
+}
+.measurements span {
+  display:block;
+  font:10px 'Courier Prime',monospace;
+  color:var(--ink-dim,#aaa);
+  letter-spacing:.05em
+}
+.measurements strong {
+  display:block;
+  font:1.3rem Georgia,serif;
+  margin-top:.4rem;
+  font-variant-numeric:tabular-nums
+}
+.measurements small {
+  font-size:.7rem;
+  color:var(--ink-dim,#aaa)
+}
+.measurements .outer {
+  color:#8ebbe2
+}
+.measurements .inner {
+  color:#e6b96a
+}
+.measurements .middle {
+  color:#9ecfa9
+}
+.lab-note {
+  padding:.3rem 1.5rem 1rem
+}
+details {
+  border-top:1px solid var(--rule);
+  padding:1rem 1.5rem;
+  font-size:.85rem
+}
+summary {
+  cursor:pointer;
+  color:var(--gold);
+  min-height:32px
+}
+details p {
+  font-size:.85rem;
+  margin:1rem 0
+}
+.coordinate-scroll {
+  overflow:auto;
+  max-height:280px
+}
+table {
+  width:100%;
+  border-collapse:collapse;
+  font:12px monospace;
+  text-align:right
+}
+caption {
+  text-align:left;
+  font:12px Georgia,serif;
+  padding-bottom:.5rem
+}
+th,td {
+  padding:.5rem;
+  border-bottom:1px solid var(--rule)
+}
+th {
+  color:var(--gold)
+}
+@media(max-width:760px) {
+  .lab-layout {
+    grid-template-columns:1fr
+  }
+  .poly-stage {
+    height:330px
+  }
+  .lab-controls {
+    border-left:0;
+    border-top:1px solid var(--rule)
+  }
+  .toggles {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    font-size:.8rem
+  }
+  .control {
+    margin:.7rem 0
+  }
+  .measurements {
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+  .measurement-bar {
+    display:block
+  }
+  .measurement-bar>span {
+    display:block;
+    margin-top:.6rem
+  }
+  .lab-heading {
+    padding:1rem
+  }
+  .lab-heading h3 {
+    font-size:1.3rem
+  }
+  .topology {
+    font-size:9px
+  }
+  .view-actions button {
+    font-size:10px;
+    padding:.4rem
+  }
+  .lab-controls {
+    padding:1rem
+  }
+}
+@media(max-width:400px) {
+  .axis-key { display:none; }
+  .poly-stage {
+    height:290px
+  }
+  .toggles {
+    grid-template-columns:1fr 1fr
+  }
+  .measurements {
+    grid-template-columns:repeat(2,minmax(0,1fr))
+  }
+  .lab-heading {
+    align-items:flex-start
+  }
+  .topology {
+    white-space:normal;
+    max-width:65px;
+    line-height:1.5
+  }
+}
+:host .angle-label {
+  position:absolute;
+  right:18px;
+  bottom:16px;
+  z-index:3;
+  font:16px Georgia,serif;
+  color:#ffe1a4;
+  pointer-events:none;
+  text-align:right
+}
+.angle-label span {
+  display:block;
+  font:10px monospace;
+  color:#c3d8d6
+}
+.view-actions>span {
+  font:10px monospace;
+  align-self:center;
+  color:#a2b5ba
+}
+.angle-metrics {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem 1.5rem;
+  padding:.8rem 1.5rem;
+  font-size:.75rem;
+  border-top:1px solid var(--rule);
+  color:var(--ink-dim);
+}
+.angle-metrics strong { color:var(--ink); font-weight:normal; }

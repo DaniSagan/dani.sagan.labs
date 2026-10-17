@@ -1,40 +1,18 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  HostListener,
-  Input,
-} from '@angular/core';
-import * as THREE from 'three';
-import { GeometryViewer } from '../geometry-viewer';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { PolyhedronLabComponent } from '../polyhedron-lab.component';
+import { DODECAHEDRON } from '../platonic-models';
 
 @Component({
   selector: 'app-dodecahedron-viewer',
-  templateUrl: './dodecahedron-viewer.component.html',
-  styleUrls: ['./dodecahedron-viewer.component.css'],
   standalone: true,
+  imports: [RouterLink, FormulaComponent, PolyhedronLabComponent],
+  templateUrl: './dodecahedron-viewer.component.html',
+  styleUrl: '../platonic-article.css',
 })
-export class DodecahedronViewerComponent
-  extends GeometryViewer
-  implements OnInit
-{
-  @ViewChild('rendererContainer', { static: true })
-  rendererContainer!: ElementRef;
-
-  static title: string = 'Dodecahedro Regular';
-  static route: string = 'dodecahedron-viewer';
-
-  ngOnInit(): void {
-    this.initThreeJS(this.rendererContainer);
-  }
-
-  getPolyhedron(): THREE.BufferGeometry {
-    return new THREE.DodecahedronGeometry();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(): void {
-    this.resizeWindow(this.rendererContainer);
-  }
+export class DodecahedronViewerComponent {
+  static title = 'Dodecaedro regular';
+  static route = 'dodecahedron-viewer';
+  readonly solid = DODECAHEDRON;
 }

@@ -1,0 +1,42 @@
+<div class="poly-lab">
+  <div class="lab-heading"><div><span class="kicker">LABORATORIO · {{ '{' + model.p + ', ' + model.q + '}' }}</span><h3>{{ model.name }} en el espacio</h3></div><span class="topology">{{ model.vertices.length }} V · {{ model.edges.length }} A · {{ model.faces.length }} C</span></div>
+  <div class="lab-layout">
+    <div class="visual">
+      <div #stage class="poly-stage" [class.exploded]="exploded > 0">
+        <div class="stage-caption">{{ model.name }}<span>Arrastra para orbitar · pellizca para acercar</span></div>
+        <div *ngIf="failed" class="fallback" role="status">No se ha podido iniciar WebGL. Las medidas y la tabla de coordenadas siguen disponibles debajo.</div>
+        <div class="axis-key" aria-hidden="true">O · centro del sólido</div>
+        <div class="angle-label" *ngIf="angle && exploded === 0">δ = {{ number(model.dihedral) }}°<span>Diedro interior · contornos oro y azul</span></div>
+      </div>
+      <div class="view-actions"><button type="button" (click)="reset()" [disabled]="failed">Restablecer vista</button><button type="button" (click)="rotating = !rotating" [attr.aria-pressed]="rotating" [disabled]="failed">{{ rotating ? 'Pausar giro' : 'Girar' }}</button><button type="button" (click)="download()" [disabled]="failed">Guardar PNG</button></div>
+      <div class="view-actions"><span>Mirar desde</span><button type="button" (click)="project('xy')" [disabled]="failed">Eje Z</button><button type="button" (click)="project('xz')" [disabled]="failed">Eje Y</button><button type="button" (click)="project('yz')" [disabled]="failed">Eje X</button></div>
+    </div>
+    <div class="lab-controls">
+      <span class="kicker">CAPAS DE EXPLORACIÓN</span>
+      <div class="toggles">
+        <label><input type="checkbox" [(ngModel)]="edges" (ngModelChange)="update()"> Aristas</label>
+        <label><input type="checkbox" [(ngModel)]="vertices" (ngModelChange)="update()"> Vértices</label>
+        <label><input type="checkbox" [(ngModel)]="labels"> Etiquetas Vᵢ</label>
+        <label><input type="checkbox" [(ngModel)]="xray" (ngModelChange)="update()"> Transparencia</label>
+        <label><input type="checkbox" [(ngModel)]="dual" (ngModelChange)="update()"> Dual: {{ model.dualName }}</label>
+        <label><input type="checkbox" [(ngModel)]="radii" (ngModelChange)="update()"> Radios R, r, ρ</label>
+        <label><input type="checkbox" [(ngModel)]="angle" (ngModelChange)="update()"> Diedro interior</label>
+      </div>
+      <label class="control">Esfera de referencia<select [(ngModel)]="sphere" (ngModelChange)="update()"><option value="none">Sin esfera</option><option value="outer">Circunscrita · pasa por vértices</option><option value="inner">Inscrita · tangente a las caras</option></select></label>
+      <label class="control">Separar caras <output>{{ number(exploded * 100) }} %</output><input aria-label="Separación de las caras" type="range" min="0" max="0.7" step="0.01" [(ngModel)]="exploded" (ngModelChange)="update()"></label>
+      <label class="control">Cara destacada<select aria-label="Cara destacada" [(ngModel)]="face" (ngModelChange)="update()"><option *ngFor="let f of model.faces; let i = index" [ngValue]="i">Cara {{ i + 1 }} · {{ f.vertices.length }} vértices</option></select></label>
+      <p class="face-info" aria-live="polite">Cara {{ face + 1 }}: <span *ngFor="let v of selectedFace.vertices; let last = last">V{{ v }}{{ last ? '' : ' · ' }}</span>. También puedes seleccionarla sobre el sólido.</p>
+    </div>
+  </div>
+  <div class="measurement-bar"><label>Arista a <input aria-label="Longitud de la arista" type="range" min="0.25" max="3" step="0.05" [(ngModel)]="edge"><output>{{ number(edge) }} u</output></label><span>Vista normalizada a R = 1. Las medidas corresponden a la arista elegida.</span></div>
+  <div class="measurements" aria-live="polite">
+    <div><span>ÁREA TOTAL</span><strong>{{ number(model.area * edge * edge) }} <small>u²</small></strong></div>
+    <div><span>VOLUMEN</span><strong>{{ number(model.volume * edge * edge * edge) }} <small>u³</small></strong></div>
+    <div><span class="outer">R · VÉRTICE</span><strong>{{ number(model.radius * edge) }} <small>u</small></strong></div>
+    <div><span class="inner">r · CARA</span><strong>{{ number(model.inradius * edge) }} <small>u</small></strong></div>
+    <div><span class="middle">ρ · ARISTA</span><strong>{{ number(model.midradius * edge) }} <small>u</small></strong></div>
+  </div>
+  <div class="angle-metrics"><span>Ángulo de cara <strong>{{ number(faceAngle) }}°</strong></span><span>Diedro interior <strong>{{ number(model.dihedral) }}°</strong></span><span>Central de arista <strong>{{ number(model.central) }}°</strong></span><span>Ángulo sólido <strong>{{ number(solidAngle) }} sr</strong></span></div>
+  <p class="lab-note" *ngIf="dual || exploded > 0">El dual une centros de caras adyacentes, sin reescalarlos. La separación de caras es un recurso de exploración: los radios, las esferas y las medidas siguen describiendo el sólido original.</p>
+  <details><summary>Coordenadas de los {{ model.vertices.length }} vértices · arista {{ number(edge) }}</summary><p>El índice coincide con las etiquetas del visor. Coordenadas aproximadas, centradas en el origen; la construcción exacta se deriva en el artículo.</p><div class="coordinate-scroll"><table><caption>Coordenadas cartesianas en unidades de longitud</caption><thead><tr><th scope="col">Vértice</th><th scope="col">x</th><th scope="col">y</th><th scope="col">z</th></tr></thead><tbody><tr *ngFor="let v of coordinates; let i = index"><th scope="row">V{{ i }}</th><td *ngFor="let x of v">{{ number(x * edge) }}</td></tr></tbody></table></div></details>
+</div>

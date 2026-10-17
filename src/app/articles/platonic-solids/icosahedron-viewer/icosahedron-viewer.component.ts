@@ -1,39 +1,18 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { GeometryViewer } from '../geometry-viewer';
-import * as THREE from 'three';
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FormulaComponent } from 'src/app/shared/math/formula/formula.component';
+import { PolyhedronLabComponent } from '../polyhedron-lab.component';
+import { ICOSAHEDRON } from '../platonic-models';
 
 @Component({
   selector: 'app-icosahedron-viewer',
-  templateUrl: './icosahedron-viewer.component.html',
-  styleUrl: './icosahedron-viewer.component.css',
   standalone: true,
+  imports: [RouterLink, FormulaComponent, PolyhedronLabComponent],
+  templateUrl: './icosahedron-viewer.component.html',
+  styleUrl: '../platonic-article.css',
 })
-export class IcosahedronViewerComponent
-  extends GeometryViewer
-  implements OnInit
-{
-  @ViewChild('rendererContainer', { static: true })
-  rendererContainer!: ElementRef;
-
-  static title: string = 'Icosahedro regular';
-  static route: string = 'icosahedron-viewer';
-
-  ngOnInit(): void {
-    this.initThreeJS(this.rendererContainer);
-  }
-
-  getPolyhedron(): THREE.BufferGeometry {
-    return new THREE.IcosahedronGeometry();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(): void {
-    this.resizeWindow(this.rendererContainer);
-  }
+export class IcosahedronViewerComponent {
+  static title = 'Icosaedro regular';
+  static route = 'icosahedron-viewer';
+  readonly solid = ICOSAHEDRON;
 }
