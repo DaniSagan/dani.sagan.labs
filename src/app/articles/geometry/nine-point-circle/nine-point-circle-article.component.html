@@ -1,5 +1,5 @@
 <h2>La circunferencia de los nueve puntos</h2>
-<p class="dropcap">En un triángulo aparecen nueve puntos aparentemente independientes: los tres puntos medios de sus lados, los tres pies de las alturas y los tres puntos medios entre cada vértice y el ortocentro. Todos pertenecen a una misma circunferencia. Su centro N es el punto medio del segmento que une circuncentro y ortocentro, y su radio es la mitad del circunradio.</p>
+<p class="dropcap">En un triángulo aparecen nueve puntos aparentemente independientes: los tres puntos medios de sus lados, los tres pies de las alturas y los tres puntos medios entre cada vértice y el ortocentro. Todos pertenecen a una misma circunferencia. Su centro N es el punto medio del segmento que une circuncentro y ortocentro, y su radio es la mitad del <a routerLink="/articles/incircles-circumcircles">circunradio</a>.</p>
 <h3>1. Recuperar los centros mediante vectores</h3>
 <p>Tomamos el circuncentro O como origen y escribimos a, b, c para los vectores de los vértices. Todos tienen módulo R. La demostración de la <a routerLink="/articles/euler-line">recta de Euler</a> proporciona h=a+b+c como vector del ortocentro H. Proponemos n=h/2 como centro de la circunferencia buscada:</p>
 <app-formula expression="\mathbf h=\mathbf a+\mathbf b+\mathbf c,\qquad \mathbf n=\frac{\mathbf h}{2}" displayMode="block"/>
@@ -9,7 +9,7 @@
 <app-formula expression="\mathbf m-\mathbf n=\frac{\mathbf b+\mathbf c}{2}-\frac{\mathbf a+\mathbf b+\mathbf c}{2}=-\frac{\mathbf a}{2},\qquad NM=\frac R2" displayMode="block"/>
 <p>La misma cuenta sirve para los puntos medios de CA y AB. Ya conocemos tres puntos de la circunferencia, pero todavía debemos justificar los otros seis; un dibujo aproximado no bastaría para asegurar que pertenecen a ella.</p>
 <h3>3. Añadir los puntos medios de AH, BH y CH</h3>
-<p>Llamamos E al punto medio de AH. Al restar n, desaparece ahora h. La distancia vuelve a ser R/2. Esta segunda familia se obtiene también mediante una homotecia de centro H y razón un medio aplicada a la circunferencia circunscrita:</p>
+<p>Llamamos E al punto medio de AH. Al restar n, desaparece ahora h. La distancia vuelve a ser R/2. Esta segunda familia se obtiene también mediante una <a routerLink="/articles/homothety">homotecia</a> de centro H y razón un medio aplicada a la circunferencia circunscrita:</p>
 <app-formula expression="\mathbf e-\mathbf n=\frac{\mathbf a+\mathbf h}{2}-\frac{\mathbf h}{2}=\frac{\mathbf a}{2},\qquad NE=\frac R2" displayMode="block"/>
 <p>Observamos algo adicional: los vectores NM y NE son opuestos. Luego M y E son extremos de un diámetro de la nueva circunferencia.</p>
 <h3>4. Incorporar los pies de las alturas</h3>

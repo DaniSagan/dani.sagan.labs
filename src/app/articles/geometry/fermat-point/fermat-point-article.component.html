@@ -8,7 +8,7 @@
 <p>Supongamos que P no coincide con ningún vértice. La derivada vectorial de una distancia es el vector unitario que apunta desde el vértice hacia P. En un mínimo interior la suma de estas tres direcciones debe anularse. Cambiando simultáneamente sus signos, también se anulan los vectores unitarios que apuntan desde P a los vértices:</p>
 <app-formula expression="\mathbf u_A=\frac{A-P}{|A-P|},\quad \mathbf u_B=\frac{B-P}{|B-P|},\quad \mathbf u_C=\frac{C-P}{|C-P|}" displayMode="block"/>
 <app-formula expression="\mathbf u_A+\mathbf u_B+\mathbf u_C=\mathbf0" displayMode="block"/>
-<p>De la igualdad uA+uB=−uC tomamos módulos al cuadrado. Como los tres módulos valen uno, el producto escalar entre dos de ellos debe ser menos un medio. Repetimos el cálculo con las otras parejas:</p>
+<p>De la igualdad uA+uB=−uC tomamos módulos al cuadrado. Como los tres módulos valen uno, el <a routerLink="/articles/dot-product">producto escalar</a> entre dos de ellos debe ser menos un medio. Repetimos el cálculo con las otras parejas:</p>
 <app-formula expression="2+2\mathbf u_A\cdot\mathbf u_B=1,\qquad \cos\angle APB=-\frac12" displayMode="block"/>
 <app-formula expression="\angle APB=\angle BPC=\angle CPA=120^\circ" displayMode="block"/>
 <h3>3. Justificar que es realmente un mínimo</h3>
@@ -18,7 +18,7 @@
 <app-formula expression="|\mathbf e_{AB}+\mathbf e_{AC}|^2=2+2\cos A\leq1\quad\Longleftrightarrow\quad A\geq120^\circ" displayMode="block"/>
 <p>Si todos los ángulos son menores, el mínimo es el punto interior de los tres ángulos de ciento veinte grados. Puede construirse levantando equiláteros exteriores y uniendo sus nuevos vértices con los vértices opuestos originales.</p>
 <h3>Historia y curiosidades</h3>
-<p>Fermat propuso el problema y Torricelli desarrolló una solución geométrica en el siglo XVII, como explica <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Torricelli/">MacTutor</a>. El equilibrio admite una interpretación física mediante tres tensiones iguales. No debe confundirse este punto con el baricentro, que minimiza la suma de las distancias <em>al cuadrado</em>; solo en casos muy simétricos ambos centros coinciden.</p>
+<p>Fermat propuso el problema y Torricelli desarrolló una solución geométrica en el siglo XVII, como explica <a href="https://mathshistory.st-andrews.ac.uk/Biographies/Torricelli/">MacTutor</a>. El equilibrio admite una interpretación física mediante tres tensiones iguales. No debe confundirse este punto con el <a routerLink="/articles/barycenter">baricentro</a>, que minimiza la suma de las distancias <em>al cuadrado</em>; solo en casos muy simétricos ambos centros coinciden.</p>
 
 <p>El criterio de los ciento veinte grados también permite reconocer rápidamente cuándo no debemos buscar una solución interior. Si un vértice ya alcanza ese ángulo, desplazar la conexión desde él aumenta o mantiene inicialmente la suma en cualquier dirección, y la convexidad impide encontrar una mejora más lejos.</p>
 

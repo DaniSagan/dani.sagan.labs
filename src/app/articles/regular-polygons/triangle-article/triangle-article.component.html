@@ -1,6 +1,6 @@
 <h2>Triángulo regular</h2>
 
-<p class="dropcap">El triángulo regular, también llamado equilátero, tiene tres lados iguales y tres ángulos interiores de sesenta grados. Posee tres ejes de simetría y permanece invariable al girarlo ciento veinte grados alrededor de su centro. Sus alturas, medianas, mediatrices y bisectrices coinciden; por eso el baricentro, el incentro, el circuncentro y el ortocentro ocupan el mismo punto.</p>
+<p class="dropcap">El triángulo regular, también llamado equilátero, tiene tres lados iguales y tres ángulos interiores de sesenta grados. Posee tres ejes de simetría y permanece invariable al girarlo ciento veinte grados alrededor de su centro. Sus alturas, medianas, mediatrices y bisectrices coinciden; por eso el <a routerLink="/articles/barycenter">baricentro</a>, el incentro, el circuncentro y el ortocentro ocupan el mismo punto.</p>
 <p>Una curiosidad es que seis triángulos equiláteros encajan alrededor de un punto y permiten recubrir el plano sin huecos. Además, cualquier punto interior tiene una suma constante de distancias a los tres lados: esa suma coincide con la altura. No tiene diagonales, pues cualquier pareja de vértices ya está conectada por un lado.</p>
 
 <canvas #canvas width="600" height="600" aria-label="Triángulo regular y sus segmentos">Representación del triángulo regular.</canvas>
@@ -10,7 +10,7 @@
 <h4>1. La altura mediante Pitágoras</h4>
 <p>La altura divide el triángulo equilátero en dos triángulos rectángulos de hipotenusa uno y cateto menor igual a medio lado. El otro cateto es la altura h:</p>
 <app-formula expression="h^2+\left(\frac12\right)^2=1,\qquad h=\frac{\sqrt3}{2}" displayMode="block"/>
-<p>El centro coincide con el baricentro, que divide cada mediana en razón dos a uno desde el vértice. Por tanto, el radio es dos tercios de la altura y la apotema es el tercio restante.</p>
+<p>El centro coincide con el baricentro, que divide cada mediana en razón dos a uno desde el vértice. Por tanto, el radio es dos tercios de la altura y la <a routerLink="/articles/apothem">apotema</a> es el tercio restante.</p>
 <app-formula expression="R=\frac{2h}{3}=\frac{\sqrt3}{3},\qquad a=\frac h3=\frac{\sqrt3}{6}" displayMode="block"/>
 <h4>2. Situar los vértices por simetría</h4>
 <p>Colocamos un vértice a la derecha del centro. El lado opuesto es vertical, está a una apotema a la izquierda del origen y su punto medio queda sobre el eje horizontal. Sus extremos se separan de ese punto medio en medio lado hacia arriba y hacia abajo.</p>

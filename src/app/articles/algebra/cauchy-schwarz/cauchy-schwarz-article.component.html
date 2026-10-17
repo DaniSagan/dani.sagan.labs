@@ -1,10 +1,10 @@
 <h2>Cauchy–Schwarz: cuánto pueden alinearse dos vectores</h2>
-<p class="dropcap">Dos flechas de la misma longitud pueden apuntar juntas, formar un ángulo recto o mirar en sentidos opuestos. Su producto escalar distingue esas situaciones. Cauchy–Schwarz pone un límite a ese producto y transforma una idea geométrica en una herramienta para demostrar desigualdades, controlar errores y entender la correlación.</p>
+<p class="dropcap">Dos flechas de la misma longitud pueden apuntar juntas, formar un ángulo recto o mirar en sentidos opuestos. Su <a routerLink="/articles/dot-product">producto escalar</a> distingue esas situaciones. Cauchy–Schwarz pone un límite a ese producto y transforma una idea geométrica en una herramienta para demostrar desigualdades, controlar errores y entender la correlación.</p>
 <aside class="theorem"><span class="section-label">EL TEOREMA · VECTORES REALES</span><p>Para cualesquiera u, v de un espacio euclídeo:</p>
 <app-formula expression="|\langle u,v\rangle|^2\le\|u\|^2\|v\|^2,\qquad (\sum u_iv_i)^2\le(\sum u_i^2)(\sum v_i^2)" />
 <p>Hay igualdad exactamente cuando los vectores son linealmente dependientes. Esto incluye que uno de ellos sea cero.</p></aside>
 <h3>1. Una demostración con un cuadrado</h3>
-<p>Si v no es cero, restamos a u su componente paralela a v. La norma del residuo es no negativa. Desarrollarla da la desigualdad; que valga cero equivale a que u sea un múltiplo de v.</p>
+<p>Si v no es cero, restamos a u su componente paralela a v. La <a routerLink="/articles/vector-norm">norma</a> del residuo es no negativa. Desarrollarla da la desigualdad; que valga cero equivale a que u sea un múltiplo de v.</p>
 <app-formula expression="0\le\left\|u-\frac{\langle u,v\rangle}{\|v\|^2}v\right\|^2=\|u\|^2-\frac{\langle u,v\rangle^2}{\|v\|^2}" />
 <p>Si v es cero, el producto escalar es cero y no hace falta dividir. La prueba explica las <a routerLink="/articles/orthogonal-projections">proyecciones ortogonales</a>: el residuo perpendicular es lo que falta para alcanzar la igualdad.</p>
 <h3>2. Mover el ángulo, conservar las longitudes</h3>

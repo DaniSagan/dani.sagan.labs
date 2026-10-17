@@ -1,14 +1,14 @@
 <h2>Hexágono regular</h2>
 
 <p class="dropcap">El hexágono regular tiene seis lados iguales, seis ángulos interiores de ciento veinte grados y seis ejes de simetría. Tres ejes unen vértices opuestos y los otros tres conectan puntos medios de lados opuestos. Al girarlo sesenta grados alrededor del centro, sus vértices vuelven a ocupar las posiciones iniciales.</p>
-<p>Una característica especialmente útil es que su radio circunscrito coincide con el lado. Al unir el centro con los vértices aparecen seis triángulos equiláteros. Tres hexágonos encajan alrededor de un punto y recubren el plano sin huecos, formando la conocida retícula de los panales. Sus nueve diagonales tienen dos longitudes distintas: las que saltan un vértice y las que unen vértices opuestos.</p>
+<p>Una característica especialmente útil es que su <a routerLink="/articles/incircles-circumcircles">radio circunscrito</a> coincide con el lado. Al unir el centro con los vértices aparecen seis triángulos equiláteros. Tres hexágonos encajan alrededor de un punto y recubren el plano sin huecos, formando la conocida retícula de los panales. Sus nueve diagonales tienen dos longitudes distintas: las que saltan un vértice y las que unen vértices opuestos.</p>
 
 <canvas #canvas width="600" height="600" aria-label="Hexágono regular y sus segmentos">Representación del hexágono regular.</canvas>
 
 <h3>Obtención geométrica con lado de una unidad</h3>
 <p>Tomamos el centro como origen, el eje vertical positivo hacia arriba y numeramos los vértices en sentido antihorario. La orientación puede diferir de la ilustración: un giro conserva todas las longitudes. Las coordenadas siguientes son exactas.</p>
 <h4>1. Seis triángulos equiláteros</h4>
-<p>Al unir el centro con los seis vértices se forman seis triángulos isósceles iguales. Sus ángulos centrales son de sesenta grados, por lo que los otros dos ángulos también lo son: son equiláteros y el radio mide uno. Al dividir cualquiera de ellos por su altura, Pitágoras proporciona la apotema.</p>
+<p>Al unir el centro con los seis vértices se forman seis triángulos isósceles iguales. Sus ángulos centrales son de sesenta grados, por lo que los otros dos ángulos también lo son: son equiláteros y el radio mide uno. Al dividir cualquiera de ellos por su altura, Pitágoras proporciona la <a routerLink="/articles/apothem">apotema</a>.</p>
 <app-formula expression="R=1,\qquad a^2=1-\left(\frac12\right)^2=\frac34,\qquad a=\frac{\sqrt3}{2}" displayMode="block"/>
 <h4>2. Obtener las coordenadas</h4>
 <p>Situamos el primer radio sobre el semieje horizontal positivo. El vértice siguiente se proyecta en el punto medio de ese radio, porque pertenece a un triángulo equilátero. Su abscisa es medio lado y su ordenada es la altura recién calculada. Las reflexiones en los ejes dan los demás vértices.</p>

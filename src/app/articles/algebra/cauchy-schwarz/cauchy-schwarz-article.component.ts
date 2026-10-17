@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +8,7 @@ import { FormulaComponent } from '../../../shared/math/formula/formula.component
 @Component({
   selector: 'app-cauchy-schwarz-article',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, FormulaComponent],
+  imports: [RouterLink, CommonModule, FormsModule, RouterModule, FormulaComponent],
   templateUrl: './cauchy-schwarz-article.component.html',
   styleUrl: '../../shared/foundation-article.css'
 })

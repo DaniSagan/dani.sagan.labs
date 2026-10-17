@@ -28,7 +28,9 @@
     "test:latex-editor:browser": "node scripts/check-latex-editor.cjs",
     "test:platonic-solids": "node scripts/test-platonic-solids.cjs",
     "test:platonic-solids:browser": "node scripts/check-platonic-pages.cjs",
-    "generate:latex-keyboard": "node scripts/generate-latex-keyboard.cjs"
+    "generate:latex-keyboard": "node scripts/generate-latex-keyboard.cjs",
+    "test:geometry-foundations": "node scripts/test-geometry-foundations.cjs",
+    "test:geometry-foundations:browser": "node scripts/check-geometry-foundations.cjs"
   },
   "private": true,
   "dependencies": {

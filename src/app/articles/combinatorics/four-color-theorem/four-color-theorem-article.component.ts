@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
@@ -9,6 +10,7 @@ import { FourColorKempeComponent } from '../../../widgets/four-color/four-color-
   selector: 'app-four-color-theorem-article',
   standalone: true,
   imports: [
+    RouterLink,
     RouterModule,
     FormulaComponent,
     FourColorEditorComponent,

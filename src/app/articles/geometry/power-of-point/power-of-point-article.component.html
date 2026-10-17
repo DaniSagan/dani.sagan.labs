@@ -7,7 +7,7 @@
 <h3>2. Parametrizar una secante</h3>
 <p>Elegimos un vector unitario u en la dirección de la recta. Cada punto X de ella se escribe como P+tu. El parámetro t es una distancia dirigida: los puntos de una semirrecta tienen signo positivo y los de la contraria, negativo. Para que X pertenezca a la circunferencia, imponemos que su distancia a O sea R:</p>
 <app-formula expression="X=P+t\mathbf u,\quad |\mathbf u|=1,\qquad |P-O+t\mathbf u|^2=R^2" displayMode="block"/>
-<p>Al desarrollar el producto escalar aparece una ecuación cuadrática. Sus dos raíces son precisamente los parámetros de los puntos de intersección A y B:</p>
+<p>Al desarrollar el <a routerLink="/articles/dot-product">producto escalar</a> aparece una ecuación cuadrática. Sus dos raíces son precisamente los parámetros de los puntos de intersección A y B:</p>
 <app-formula expression="t^2+2\mathbf u\cdot(P-O)t+PO^2-R^2=0" displayMode="block"/>
 <h3>3. Aplicar las relaciones de Viète</h3>
 <p>En una ecuación mónica, el producto de las raíces coincide con el término independiente. Este término no contiene la dirección u, y esa ausencia explica la invariancia geométrica que buscábamos:</p>

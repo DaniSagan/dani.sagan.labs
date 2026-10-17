@@ -1,10 +1,11 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { TesseractViewerComponent } from './tesseract-viewer.component';
 
 @Component({
   selector: 'app-tesseract-article', standalone: true,
-  imports: [FormulaComponent, TesseractViewerComponent],
+  imports: [RouterLink, FormulaComponent, TesseractViewerComponent],
   templateUrl: './tesseract-article.component.html',
   styleUrls: ['../shared/geometry-article.css', './tesseract-article.component.css']
 })

@@ -32,8 +32,8 @@
   no es una función lineal de la matriz completa.</p>
 
 <h3>3. El salto al volumen</h3>
-<p>Tres columnas u, v y w generan un paralelepípedo. Su volumen orientado es el producto mixto:
-  el producto vectorial de dos columnas da un vector perpendicular a la base, y el producto escalar
+<p>Tres columnas u, v y w generan un paralelepípedo. Su volumen orientado es el <a routerLink="/articles/scalar-triple-product">producto mixto</a>:
+  el <a routerLink="/articles/cross-product">producto vectorial</a> de dos columnas da un vector perpendicular a la base, y el <a routerLink="/articles/dot-product">producto escalar</a>
   con la tercera incorpora la altura con su signo.</p>
 <app-formula expression="A=(u\ v\ w),\qquad \det A=u\cdot(v\times w),\qquad V=|\det A|"></app-formula>
 <p>Si las tres columnas están en un mismo plano, el volumen es cero, aunque algunos lados puedan ser
@@ -100,7 +100,7 @@
 <h3>9. Un determinante pequeño no basta para diagnosticar estabilidad</h3>
 <p>El tamaño del determinante depende de la escala. La matriz 0,001 I en dimensión dos tiene
   determinante 10⁻⁶ y, sin embargo, trata ambas direcciones por igual: su número de condición en
-  norma euclídea es 1. La matriz diagonal con entradas 1000 y 0,001 tiene determinante 1, pero su
+  <a routerLink="/articles/vector-norm">norma euclídea</a> es 1. La matriz diagonal con entradas 1000 y 0,001 tiene determinante 1, pero su
   número de condición es 10⁶: unas direcciones se amplifican mucho más que otras.</p>
 <p>Para decidir si un problema es casi singular numéricamente conviene estudiar sus valores singulares
   o una estimación del número de condición, teniendo en cuenta la escala. En matrices grandes se usa

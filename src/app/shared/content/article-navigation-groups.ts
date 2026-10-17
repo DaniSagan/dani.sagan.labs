@@ -92,6 +92,10 @@ const GROUPS = {
     ],
   ],
   geometry: [
+    ['Vectores, productos y planos', 'vector-norm dot-product cross-product scalar-triple-product plane-normal vector-products'],
+    ['Ángulos y sus unidades', 'complementary-supplementary-angles radians steradians dihedral-angle'],
+    ['Transformaciones, convexidad y centros', 'homothety convex-hull barycenter'],
+    ['Regularidad y dualidad', 'schlafli-symbol polyhedral-duality apothem'],
     [
       'Triángulos: medidas y proporciones',
       'heron-formula law-of-cosines thales-theorem stewart-theorem ceva-theorem menelaus-theorem',
@@ -102,7 +106,7 @@ const GROUPS = {
     ],
     [
       'Circunferencias y tangencias',
-      'line-circle power-of-point chords-secants-tangents casey-theorem apollonius-problem descartes-circles',
+      'incircles-circumcircles line-circle power-of-point chords-secants-tangents casey-theorem apollonius-problem descartes-circles',
     ],
     [
       'Cuadriláteros y áreas',
@@ -114,7 +118,7 @@ const GROUPS = {
     ],
     [
       'Espacio y dimensiones',
-      'lines-planes orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
+      'inspheres-circumspheres lines-planes orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
     ],
     ['Patrones geométricos', 'hitomezashi'],
   ],

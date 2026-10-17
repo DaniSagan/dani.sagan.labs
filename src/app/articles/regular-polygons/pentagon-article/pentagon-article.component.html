@@ -7,7 +7,7 @@
 
 <h3>Obtención geométrica con lado de una unidad</h3>
 <h4>1. Obtener la diagonal con el teorema de Ptolomeo</h4>
-<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un cuadrilátero inscrito en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El <a routerLink="/articles/ptolemy-theorem">teorema de Ptolomeo</a> afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
+<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un <a routerLink="/articles/incircles-circumcircles">cuadrilátero inscrito</a> en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El <a routerLink="/articles/ptolemy-theorem">teorema de Ptolomeo</a> afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
 <app-formula expression="d^2=1\cdot1+1\cdot d,\qquad d^2-d-1=0,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
 <p>Elegimos la raíz positiva porque d es una longitud. Así obtenemos el número áureo mediante una ecuación cuadrática. Las cinco diagonales tienen esta misma longitud por la simetría del pentágono.</p>
 <h4>2. Hallar el radio mediante un triángulo rectángulo</h4>
@@ -22,7 +22,7 @@
 <app-formula expression="V_4=\left(\frac{R(\sqrt5-1)}4,-\frac{1+\sqrt5}{4}\right)" displayMode="block"/>
 <p>R es la raíz cuadrada indicada arriba, de modo que estas coordenadas solo contienen operaciones aritméticas y raíces cuadradas. Unimos los puntos en orden y cerramos desde V₄ hasta V₀. La orientación puede diferir de la ilustración sin alterar las longitudes.</p>
 <h4>4. Diagonales, apotema y área</h4>
-<p>Cada vértice tiene dos diagonales, pero cada segmento se cuenta desde sus dos extremos: hay cinco, todas de longitud d. La perpendicular del centro a un lado lo divide en dos mitades. Otro uso de Pitágoras da la apotema y permite sumar las áreas de los cinco triángulos centrales.</p>
+<p>Cada vértice tiene dos diagonales, pero cada segmento se cuenta desde sus dos extremos: hay cinco, todas de longitud d. La perpendicular del centro a un lado lo divide en dos mitades. Otro uso de Pitágoras da la <a routerLink="/articles/apothem">apotema</a> y permite sumar las áreas de los cinco triángulos centrales.</p>
 <app-formula expression="N_d=\frac{5\cdot2}{2}=5,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
 <app-formula expression="a=\sqrt{R^2-\frac14}=\sqrt{\frac{5+2\sqrt5}{20}},\qquad P=5,\qquad A=\frac{5a}{2}=\frac{\sqrt{25+10\sqrt5}}4" displayMode="block"/>
 <p>Para un lado de longitud L, multiplicamos las coordenadas y todas las longitudes por L; las áreas se multiplican por su cuadrado.</p>
