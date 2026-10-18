@@ -27,9 +27,11 @@ const GROUPS = {
     ['Ecuaciones diferenciales', 'first-order-odes linear-ode-systems ode-numerical-integration'],
   ],
   probability: [
-    ['Fundamentos y probabilidad condicionada', 'finite-probability probability-trees conditional-independence bayes-theorem birthday-paradox monty-hall'],
-    ['Variables aleatorias y distribuciones', 'discrete-expectation distribution-functions-tails continuous-random-variables moment-transformations bernoulli-binomial normal-distribution geometric-distribution hypergeometric-distribution'],
-    ['Estadística e inferencia', 'descriptive-statistics graphical-diagnostics sampling-distributions bessel-correction statistical-inference linear-regression simpson-paradox sampling-bias central-limit-theorem'],
+    ['Fundamentos y probabilidad condicionada', 'finite-probability probability-trees conditional-independence bayes-theorem birthday-paradox monty-hall probability-inequalities large-numbers-law'],
+    ['Variables aleatorias y distribuciones', 'discrete-expectation distribution-functions-tails continuous-random-variables moment-transformations bernoulli-binomial normal-distribution geometric-distribution hypergeometric-distribution student-chi-square'],
+    ['Estadística descriptiva y dependencia', 'descriptive-statistics graphical-diagnostics covariance linear-regression simpson-paradox causal-inference'],
+    ['Muestreo y estimación', 'sampling-distributions bessel-correction sampling-bias stratified-sampling bootstrap proportion-intervals'],
+    ['Inferencia y contrastes', 'statistical-inference statistical-power central-limit-theorem'],
     ['Procesos y experimentos aleatorios', 'galton-board markov-chains buffon-needle percolation-diagram'],
   ],
   fractals: [
@@ -55,10 +57,10 @@ const GROUPS = {
     ],
     [
       'Autosimilitud y conjuntos geométricos',
-      'sierpinski-triangle sierpinski-carpet cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal',
+      'sierpinski-triangle sierpinski-carpet cantor-set cantor-dust vicsek-fractal t-square box-fractal cross-fractal apollonian-sieve',
     ],
     ['Polígonos y fractales espaciales', 'pentaflake hexaflake durer-pentagon menger-sponge jerusalem-cross'],
-    ['Medida y dimensión', 'zero-measure-dimension fractal-measure-dimension'],
+    ['Medida y dimensión', 'zero-measure-dimension fractal-measure-dimension cantor-function'],
     ['Bifurcaciones y caos', 'bifurcation-diagram feigenbaum'],
   ],
   numbers: [
