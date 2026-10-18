@@ -126,10 +126,15 @@ Abre [http://localhost:4200](http://localhost:4200). El servidor recargará la a
 | `npm start` | Inicia el servidor local de desarrollo |
 | `npm run build` | Genera el bundle optimizado de producción |
 | `npm run watch` | Compila en modo desarrollo y observa cambios |
-| `npm test` | Ejecuta las pruebas con Karma en modo interactivo |
-| `npm run test:ci` | Ejecuta las pruebas una vez en Chrome Headless |
+| `npm test` | Valida los presupuestos de producción y ejecuta Karma en modo interactivo |
+| `npm run test:ci` | Valida los presupuestos de producción y ejecuta las pruebas una vez en Chrome Headless |
+| `npm run test:budgets` | Compila en producción y comprueba los presupuestos de `angular.json` |
 
 El resultado de producción se genera en `dist/dani.sagan.labs/`.
+
+Antes de subir cambios, ejecuta `npm run test:budgets` para detectar excesos de CSS y del bundle inicial. Esta comprobación usa el compilador de producción, escribe en un directorio temporal y conserva los límites de `angular.json`. Los avisos no bloquean; superar un límite de error o cualquier otro fallo de compilación termina con código de salida 1. Solo se desactiva la descarga e incrustación de fuentes externas para permitir la validación sin acceso a Google Fonts.
+
+La comprobación también se ejecuta automáticamente antes de `npm test` y `npm run test:ci` mediante los hooks de npm. No se ejecuta al invocar directamente `ng test` ni los comandos específicos `test:*`; tampoco necesita pull requests ni impide por sí sola un `git push`.
 
 ## Cómo añadir contenido
 
