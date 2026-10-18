@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:koch-antisnowflake": "node scripts/test-koch-antisnowflake.cjs",
+    "test:koch-antisnowflake:browser": "node scripts/check-koch-antisnowflake-page.cjs",
     "test:pi-decimals": "node scripts/test-pi-decimals.cjs && node scripts/test-pi-bigint-limit.cjs",
     "test:pi-decimals:browser": "node scripts/check-pi-decimals-page.cjs",
     "test:prime-decomposition": "node scripts/test-prime-decomposition.cjs",

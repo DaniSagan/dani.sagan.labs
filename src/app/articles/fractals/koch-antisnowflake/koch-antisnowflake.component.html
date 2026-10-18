@@ -2,15 +2,15 @@
   <h2>Anticopo de Koch</h2>
   <p class="dropcap">El anticopo de Koch se obtiene invirtiendo la dirección de los picos del <a routerLink="/articles/koch-snowflake">copo tradicional</a>. Allí donde el copo añade promontorios hacia fuera, el anticopo talla entrantes hacia dentro. La regla métrica es la misma y, sin embargo, la experiencia visual cambia por completo: en lugar de un cristal que crece, aparece una isla erosionada por bahías triangulares. Es una demostración directa de que orientación y topología importan tanto como el número de piezas.</p>
   <p>Partimos de un triángulo equilátero. Cada lado se divide en tres y el tercio central se reemplaza por dos lados de otro triángulo, pero el giro apunta al interior. La sustitución <code>F → F−F++F−F</code> utiliza cuatro segmentos y giros de 60 grados. Como en Koch, el perímetro se multiplica por 4/3 en cada nivel y diverge en el límite; la dimensión de la frontera sigue siendo log(4)/log(3).</p>
-  <p>¿Qué ocurre con el área? En el copo ordinario se añaden triángulos cada vez menores y el área converge. En el anticopo se retiran regiones. También aparece una serie convergente, aunque los contactos y la orientación deben tratarse con cuidado. Dos objetos pueden compartir dimensión y ley de escala, pero encerrar áreas diferentes y separar el plano de maneras distintas.</p>
+  <p>Si A<sub>0</sub> es el área del triángulo inicial, después de n pasos queda A<sub>n</sub> = A<sub>0</sub>[2/5 + (3/5)(4/9)<sup>n</sup>]. En el primer paso se conserva 2/3 del área inicial y, en el límite, 2/5. El contorno permanece dentro del triángulo de partida. Los tres primeros entrantes se tocan en su centro: esos contactos son parte de la construcción, no un fallo del dibujo. Puedes contrastar la secuencia con la <a href="https://mathworld.wolfram.com/KochAntisnowflake.html">construcción del anticopo en MathWorld</a>.</p>
   <h3>Negativo y positivo</h3>
   <p>Diseñadores y artistas suelen explorar una regla junto con su inversión. Cambiar el signo de los giros funciona como una operación de figura-fondo: lo que era saliente se convierte en cavidad. En fabricación, esa diferencia puede significar añadir material o perforarlo; en una antena fractal, cambiar el contorno exterior por una ranura interior altera el comportamiento electromagnético.</p>
-  <p>El código usa un <a data-article-concept="l-systems" routerLink="/articles/l-systems">sistema-L</a> común con el resto de curvas de sustitución. Los puntos del recorrido son <code>Vec2</code> y se escalan después de calcular la caja completa. Esto es especialmente útil aquí, porque los entrantes cambian el espacio ocupado sin que el componente tenga que ajustar márgenes manualmente.</p>
+  <p>El <a data-article-concept="l-systems" routerLink="/articles/l-systems">sistema-L</a> parte de <code>F−−F−−F</code> y aplica <code>F → F−F++F−F</code> con giros de 60 grados. El sentido de recorrido del triángulo importa: con <code>F++F++F</code> y esa misma sustitución, los picos apuntarían hacia fuera. Para obtener entrantes, la orientación del triángulo y la de la sustitución deben ser coherentes.</p>
   <p>Alterna mentalmente entre este dibujo y el copo clásico. La secuencia de longitudes es idéntica; solo cambia el signo de los giros. Una modificación de dos caracteres transforma crecimiento en erosión y recuerda que una fórmula compacta contiene decisiones geométricas muy concretas.</p>
   <app-fractal-explorer
     [draw]="draw"
     title="Anticopo de Koch"
-    formula="F → F−F++F−F; picos orientados hacia dentro"
+    formula="Inicio: F−−F−−F · Regla: F → F−F++F−F · Giro: 60°"
     [maxIterations]="6"
   ></app-fractal-explorer>
 

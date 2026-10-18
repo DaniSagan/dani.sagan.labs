@@ -42,4 +42,5 @@ explorer.raster=true;explorer.iterations=NaN;explorer.update();assert.equal(expl
 for(const frame of frames.values())frame();frames.clear();assert.equal(canvas.width,480);assert.equal(ratio,1);
 explorer.update();explorer.ngOnDestroy();assert.equal(frames.size,0);
 console.log('PASS: palettes, tangency fixtures, Menger construction, iteration bounds, retina scaling and scheduled frame cancellation.');
+require('./test-koch-antisnowflake.cjs');
 require('./test-mandelbrot.cjs');

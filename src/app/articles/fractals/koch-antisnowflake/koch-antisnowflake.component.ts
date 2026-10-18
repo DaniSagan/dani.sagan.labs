@@ -21,7 +21,8 @@ export class KochAntisnowflakeComponent {
   readonly draw: FractalRenderer = (context, iterations, canvasSize) => {
     paint(context, 182);
     drawLSystem(context, {
-      axiom: 'F++F++F',
+      // Keep the seed orientation consistent with the inward F-F++F-F motif.
+      axiom: 'F--F--F',
       rules: { F: 'F-F++F-F' },
       angle: Math.PI / 3,
       iterations,
