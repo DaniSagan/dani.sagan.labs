@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class LaTangenteAUnaRaizProblemComponent {
   static readonly title = "La tangente a una raíz";
-  static readonly route = 'problema-152';
+  static readonly route = "square-root-tangent";
   static readonly problem: PracticeProblem = {
   "id": "problema-152",
+  "route": "square-root-tangent",
   "number": 152,
   "title": "La tangente a una raíz",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,11 @@ export class LaTangenteAUnaRaizProblemComponent {
       "label": "Diferenciales y aproximación lineal",
       "route": "/articles/linear-approximation",
       "activity": "Practica la tangente a una raíz. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

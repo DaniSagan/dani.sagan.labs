@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CerosAlFinalDeUnFactorialProblemComponent {
   static readonly title = "Ceros al final de un factorial";
-  static readonly route = 'problema-102';
+  static readonly route = "factorial-trailing-zeros";
   static readonly problem: PracticeProblem = {
   "id": "problema-102",
+  "route": "factorial-trailing-zeros",
   "number": 102,
   "title": "Ceros al final de un factorial",
   "category": "Aritmética y teoría de números",
@@ -31,6 +32,16 @@ export class CerosAlFinalDeUnFactorialProblemComponent {
       "label": "Factoriales, exponentes primos y fórmula de Legendre",
       "route": "/articles/factorials-legendre",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Factorización prima y divisores",
+      "route": "/articles/fundamental-theorem-arithmetic",
+      "activity": "Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades."
+    },
+    {
+      "label": "Descomposición en primos",
+      "route": "/tools/prime-decomposition",
+      "activity": "Descompón los enteros del problema y contrasta sus exponentes y divisores."
     }
   ]
 };

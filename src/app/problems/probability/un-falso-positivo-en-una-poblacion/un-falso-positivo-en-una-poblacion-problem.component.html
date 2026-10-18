@@ -6,12 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una condición aparece en el 2% de una población. Una prueba detecta el 90% de los casos y da positivo en el 5% de quienes no la tienen. Calcula la probabilidad de tener la condición dado un positivo.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/bayes-theorem">Bayes, probabilidad total y tasa base</a>. Distingue la probabilidad de un positivo de la probabilidad de la condición dado un positivo.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Usamos una población hipotética de 10000 personas para convertir proporciones en frecuencias. Hay 200 con la condición y 9800 sin ella.</li>
       <li>Entre las 200 con la condición, el 90% da positivo: 180. Entre las 9800 restantes, el 5% también da positivo: 490.</li>
-      <li>En total hay 180+490=670 positivos. Al condicionar a positivo, ese es el nuevo grupo de referencia; solo 180 tienen la condición.</li>
+      <li>En total hay 180+490=670 <a data-prerequisite="bayes" routerLink="/articles/bayes-theorem">positivos</a>. Al <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">condicionar</a> a positivo, ese es el nuevo grupo de referencia; solo 180 tienen la condición.</li>
       <li>La probabilidad buscada es 180/670=18/67≈0,2687. La prueba detecta muchos casos, pero la condición poco frecuente permite que los falsos positivos sean numerosos.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 18/67≈26,87%, bajo las proporciones del modelo.</p>
@@ -20,7 +27,7 @@
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
-    <div class="resource"><a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a><p>Practica un falso positivo en una población. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+    <div class="resource"><a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a><p>Practica un falso positivo en una población. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div><div class="resource prerequisite-practice"><a routerLink="/games/probability-detective">Detective de probabilidad</a><p>Practica cómo una evidencia cambia las probabilidades sin olvidar la tasa base.</p></div>
   </section>
   <app-problem-navigation currentId="problema-172" />
 </article>

@@ -9,10 +9,18 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Un detector marca el 90% de las piezas defectuosas y el 5% de las correctas. El 2% de las piezas son defectuosas. Si marca una pieza, ¿qué probabilidad hay de que sea defectuosa?</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/bayes-theorem">Bayes, probabilidad total y tasa base</a>. Distingue la probabilidad de un positivo de la probabilidad de la condición dado un positivo.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+    <li><a routerLink="/articles/probability-trees">Árboles de probabilidad</a>. Multiplica a lo largo de cada camino y suma los caminos alternativos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Bayes actualiza la probabilidad de enfermedad cuando conocemos el resultado positivo: <span class="math-part"><app-formula expression="P(E\mid+) = P(+\mid E)P(E)/P(+)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador incluye positivos verdaderos y falsos. En 1000 personas, las tasas del enunciado corresponden a 18 positivos enfermos y 49 positivos sanos, lo que explica la fracción final.</li>
+      <li><a data-prerequisite="bayes" routerLink="/articles/bayes-theorem">Bayes</a> actualiza la probabilidad de enfermedad cuando conocemos el resultado positivo: <span class="math-part"><app-formula expression="P(E\mid+) = P(+\mid E)P(E)/P(+)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador incluye <a data-prerequisite="bayes" routerLink="/articles/bayes-theorem">positivos</a> verdaderos y falsos. En 1000 personas, las tasas del enunciado corresponden a 18 positivos enfermos y 49 positivos sanos, lo que explica la fracción final.</li>
       <li>Sea D defecto y M marca. <span class="math-part"><app-formula expression="P(D)=0,02" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="P(M\mid D)=0,90" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="P(M\mid D^{c})=0,05" displayMode="inline" [showCodeButton]="false" /></span>. Los datos diferencian probabilidad de defecto y probabilidades de marca condicionadas al estado. La proporción correcta es <span class="math-part"><app-formula expression="P(D^{c})=0,98" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li><span class="math-part"><app-formula expression="P(M)=0,90\cdot 0,02+0,05\cdot 0,98=0,067" displayMode="inline" [showCodeButton]="false" /></span>. La probabilidad total suma dos casos excluyentes: pieza defectuosa marcada y pieza correcta marcada. Sus aportes son <span class="math-part"><app-formula expression="0,018" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0,049" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Bayes da <span class="math-part"><app-formula expression="P(D\mid M)=0,\frac{018}{0},067=\frac{18}{67}" displayMode="inline" [showCodeButton]="false" /></span>. Bayes divide el aporte del defecto al total de marcas entre la probabilidad de cualquier marca. Así invierte correctamente la condición.</li>
@@ -30,14 +38,11 @@
       <a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a>
       <p>Probabilidades condicionadas, probabilidades totales e inversión de la condición.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
-      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/causal-inference">Causalidad, confusión y experimentos aleatorizados ↗</a>
       <p>Separa asociación y efecto causal; estudia composición de grupos y supuestos de asignación.</p>
-    </div>
+    </div><div class="resource prerequisite-practice"><a routerLink="/games/probability-detective">Detective de probabilidad</a><p>Practica cómo una evidencia cambia las probabilidades sin olvidar la tasa base.</p></div>
   </section>
   <app-problem-navigation currentId="problema-073" />
 </article>

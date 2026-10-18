@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Con x₀=0 y xₙ₊₁=(xₙ+6)/4, encuentra el límite y un índice que asegure error menor que 0,001.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/recurrent-sequences">Recurrencias y puntos fijos</a>. Resta el punto fijo para obtener una expresión explícita de la sucesión.</li>
+    <li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>. Distingue suma finita, serie infinita y condición sobre la razón.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Si la sucesión tiene límite L, la recurrencia exige L=(L+6)/4. Resolver 4L=L+6 da L=2. Todavía debemos demostrar que realmente se aproxima a él.</li>
+      <li>Si la sucesión tiene límite L, la <a data-prerequisite="recurrence" routerLink="/articles/recurrent-sequences">recurrencia</a> exige L=(L+6)/4. Resolver 4L=L+6 da L=2. Todavía debemos demostrar que realmente se aproxima a él.</li>
       <li>Restamos 2 a ambos lados: xₙ₊₁−2=(xₙ−2)/4. Cada paso reduce el error por un factor 4.</li>
       <li>Como x₀−2=−2, se deduce xₙ−2=−2/4ⁿ. Por tanto xₙ=2−2/4ⁿ y el error absoluto es 2/4ⁿ, que tiende a cero.</li>
       <li>Queremos 2/4ⁿ&lt;0,001, o 4ⁿ&gt;2000. Como 4⁵=1024 y 4⁶=4096, n=6 basta; el error es 2/4096≈0,000488.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Límite 2; desde n=6 el error es menor que 0,001.</p>
     <app-formula expression="x_n=2-\frac2{4^n},\quad |x_n-2|=\frac2{4^n}" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Encontrar un posible punto fijo no demuestra por sí solo convergencia.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Encontrar un posible <a data-prerequisite="recurrence" routerLink="/articles/recurrent-sequences">punto fijo</a> no demuestra por sí solo convergencia.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

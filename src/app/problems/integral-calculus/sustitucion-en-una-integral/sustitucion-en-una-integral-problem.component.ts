@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class SustitucionEnUnaIntegralProblemComponent {
   static readonly title = "Sustitución en una integral";
-  static readonly route = "problema-061";
+  static readonly route = "integration-by-substitution";
   static readonly problem: PracticeProblem = {
-    "id": "problema-061",
-    "number": 61,
-    "title": "Sustitución en una integral",
-    "category": "Integración y cálculo numérico",
-    "topic": "Primitivas e integrales",
-    "level": "Repaso",
-    "statement": "Calcula \\(\\int_0^1\\frac{2x}{1+x^2}\\,dx\\).",
-    "resources": [
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      }
-    ]
-  };
+  "id": "problema-061",
+  "route": "integration-by-substitution",
+  "number": 61,
+  "title": "Sustitución en una integral",
+  "category": "Integración y cálculo numérico",
+  "topic": "Primitivas e integrales",
+  "level": "Repaso",
+  "statement": "Calcula \\(\\int_0^1\\frac{2x}{1+x^2}\\,dx\\).",
+  "resources": [
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
+    }
+  ]
+};
 }

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaSeccionTriangularDeUnCuboProblemComponent {
   static readonly title = "Una sección triangular de un cubo";
-  static readonly route = 'problema-128';
+  static readonly route = "triangular-cross-section-of-a-cube";
   static readonly problem: PracticeProblem = {
   "id": "problema-128",
+  "route": "triangular-cross-section-of-a-cube",
   "number": 128,
   "title": "Una sección triangular de un cubo",
   "category": "Geometría",
@@ -26,6 +27,16 @@ export class UnaSeccionTriangularDeUnCuboProblemComponent {
       "label": "Pitágoras y distancia euclídea",
       "route": "/articles/pythagorean-distance",
       "activity": "Practica una sección triangular de un cubo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Rectas y planos del espacio",
+      "route": "/articles/lines-planes",
+      "activity": "Interpreta las ecuaciones y distingue paralelismo de intersección."
+    },
+    {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "activity": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
     }
   ]
 };

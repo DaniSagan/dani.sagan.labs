@@ -6,13 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>En el Juego de la Vida, solo están vivas las celdas (−1,0), (0,0), (1,0) de una cuadrícula infinita. Calcula la generación siguiente con la regla B3/S23.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/life-patterns">Autómatas celulares y osciladores de Vida</a>. Calcula todas las celdas nuevas a partir del estado anterior, de forma simultánea.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La regla usa las ocho celdas vecinas, sin contar la propia. Una muerta nace con exactamente tres vecinas vivas; una viva sobrevive con dos o tres.</li>
+      <li>La regla usa las ocho celdas <a data-prerequisite="life" routerLink="/articles/life-patterns">vecinas</a>, sin contar la propia. Una muerta <a data-prerequisite="life" routerLink="/articles/life-patterns">nace</a> con exactamente tres vecinas vivas; una viva <a data-prerequisite="life" routerLink="/articles/life-patterns">sobrevive</a> con dos o tres.</li>
       <li>La celda central (0,0) tiene dos vecinas vivas, los extremos, y sobrevive. Cada extremo tiene solo una vecina viva y muere.</li>
       <li>Las celdas (0,1) y (0,−1) ven las tres celdas originales, de modo que nacen. Cualquier otra celda muerta ve como máximo dos: para ver los tres extremos debe tener coordenada horizontal cero.</li>
-      <li>Actualizamos todas simultáneamente usando la generación original. Queda la línea vertical (0,−1),(0,0),(0,1). Por simetría, un paso más devuelve la línea horizontal: es un oscilador de período dos.</li>
+      <li>Actualizamos todas simultáneamente usando la generación original. Queda la línea vertical (0,−1),(0,0),(0,1). Por simetría, un paso más devuelve la línea horizontal: es un <a data-prerequisite="life" routerLink="/articles/life-patterns">oscilador</a> de período dos.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Nueva generación: (0,−1), (0,0), (0,1).</p>
     <app-formula expression="\{(-1,0),(0,0),(1,0)\}\mapsto\{(0,-1),(0,0),(0,1)\}" [showCodeButton]="false" />
@@ -20,7 +25,7 @@
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
-    <div class="resource"><a routerLink="/articles/life-patterns">El Juego de la vida: osciladores y evolución ↗</a><p>Practica un nacimiento y una supervivencia en Vida. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+    <div class="resource"><a routerLink="/articles/life-patterns">El Juego de la vida: osciladores y evolución ↗</a><p>Practica un nacimiento y una supervivencia en Vida. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div><div class="resource prerequisite-practice"><a routerLink="/games/game-of-life">Juego de la Vida</a><p>Construye el patrón y avanza una generación para comprobar nacimientos, supervivencias y oscilación.</p></div>
   </section>
   <app-problem-navigation currentId="problema-198" />
 </article>

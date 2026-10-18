@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDivisionPorConjugacionProblemComponent {
   static readonly title = "Una división por conjugación";
-  static readonly route = 'problema-137';
+  static readonly route = "complex-division-by-conjugation";
   static readonly problem: PracticeProblem = {
   "id": "problema-137",
+  "route": "complex-division-by-conjugation",
   "number": 137,
   "title": "Una división por conjugación",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,17 @@ export class UnaDivisionPorConjugacionProblemComponent {
       "label": "Fórmula de De Moivre: potencias y raíces complejas",
       "route": "/articles/de-moivre",
       "activity": "Practica una división por conjugación. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Aritmética compleja, módulo y conjugado",
+      "route": "/articles/complex-arithmetic",
+      "activity": "Calcula en forma binómica y usa el conjugado para dividir."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

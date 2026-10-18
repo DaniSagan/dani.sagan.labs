@@ -6,12 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Aproxima e^0,1 con su Taylor de grado dos en cero y acota el error usando e^0,1&lt;1,11.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/taylor-series">Taylor y cotas del resto</a>. Controla el primer término omitido y las hipótesis de la aproximación.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Las derivadas de eˣ son todas eˣ y en cero valen 1. El polinomio de Taylor de grado dos es 1+x+x²/2.</li>
+      <li>Las derivadas de eˣ son todas eˣ y en cero valen 1. El <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">polinomio</a> de <a data-prerequisite="taylor" routerLink="/articles/taylor-series">Taylor</a> de <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">grado</a> dos es 1+x+x²/2.</li>
       <li>Sustituimos x=0,1: 1+0,1+0,01/2=1,105. Esto es una aproximación, porque hemos omitido términos de grado tres en adelante.</li>
-      <li>El resto de Taylor es e^ξ·x³/6 para algún ξ entre 0 y x. Como la exponencial crece, 1≤e^ξ&lt;1,11 en ese intervalo.</li>
+      <li>El <a data-prerequisite="taylor" routerLink="/articles/taylor-series">resto de Taylor</a> es e^ξ·x³/6 para algún ξ entre 0 y x. Como la <a data-prerequisite="logarithms" routerLink="/articles/exponentials-logarithms">exponencial</a> crece, 1≤e^ξ&lt;1,11 en ese intervalo.</li>
       <li>Así 0&lt;e^0,1−1,105&lt;1,11·0,001/6=0,000185. La aproximación queda por debajo del valor exacto y el error es menor que esa cota.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> e^0,1≈1,105 con error positivo menor que 0,000185.</p>

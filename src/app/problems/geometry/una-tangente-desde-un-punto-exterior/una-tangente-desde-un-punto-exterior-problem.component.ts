@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaTangenteDesdeUnPuntoExteriorProblemComponent {
   static readonly title = "Una tangente desde un punto exterior";
-  static readonly route = 'problema-130';
+  static readonly route = "tangent-from-an-external-point";
   static readonly problem: PracticeProblem = {
   "id": "problema-130",
+  "route": "tangent-from-an-external-point",
   "number": 130,
   "title": "Una tangente desde un punto exterior",
   "category": "Geometría",
@@ -26,6 +27,16 @@ export class UnaTangenteDesdeUnPuntoExteriorProblemComponent {
       "label": "Teoremas de cuerdas, secantes y tangentes",
       "route": "/articles/chords-secants-tangents",
       "activity": "Practica una tangente desde un punto exterior. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Potencia de un punto y tangentes",
+      "route": "/articles/power-of-point",
+      "activity": "Mide los segmentos desde el mismo punto exterior."
+    },
+    {
+      "label": "Teorema de Pitágoras y distancia",
+      "route": "/articles/pythagorean-distance",
+      "activity": "Comprueba la perpendicularidad necesaria antes de sumar cuadrados."
     }
   ]
 };

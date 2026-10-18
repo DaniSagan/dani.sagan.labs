@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Expresa (3+i)/(1−i) en la forma a+bi.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Para eliminar la parte imaginaria del denominador multiplicamos numerador y denominador por el conjugado de 1−i, que es 1+i. Este factor no es cero.</li>
+      <li>Para eliminar la parte <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">imaginaria</a> del <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> multiplicamos numerador y denominador por el <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">conjugado</a> de 1−i, que es 1+i. Este factor no es cero.</li>
       <li>El denominador se convierte en (1−i)(1+i)=1−i²=2. El numerador es (3+i)(1+i)=3+3i+i+i².</li>
       <li>Sustituimos i²=−1: el numerador es 2+4i. Al dividir cada término por 2 resulta 1+2i.</li>
       <li>Comprobamos multiplicando por el divisor original: (1+2i)(1−i)=1−i+2i−2i²=3+i. Así recuperamos el numerador.</li>

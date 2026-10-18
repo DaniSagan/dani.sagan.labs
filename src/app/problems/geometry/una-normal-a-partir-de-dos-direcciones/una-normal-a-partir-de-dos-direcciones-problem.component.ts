@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaNormalAPartirDeDosDireccionesProblemComponent {
   static readonly title = "Una normal a partir de dos direcciones";
-  static readonly route = 'problema-127';
+  static readonly route = "normal-from-two-directions";
   static readonly problem: PracticeProblem = {
   "id": "problema-127",
+  "route": "normal-from-two-directions",
   "number": 127,
   "title": "Una normal a partir de dos direcciones",
   "category": "Geometría",
@@ -26,6 +27,21 @@ export class UnaNormalAPartirDeDosDireccionesProblemComponent {
       "label": "Producto vectorial",
       "route": "/articles/cross-product",
       "activity": "Practica una normal a partir de dos direcciones. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Vectores normales a un plano",
+      "route": "/articles/plane-normal",
+      "activity": "Obtén una dirección perpendicular al plano y úsala para proyectar."
+    },
+    {
+      "label": "Producto escalar y perpendicularidad",
+      "route": "/articles/dot-product",
+      "activity": "Calcula productos escalares y comprueba ortogonalidad."
+    },
+    {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "activity": "Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes."
     }
   ]
 };

@@ -6,11 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Para (0,1), (1,2), (2,2), encuentra la recta de mínimos cuadrados y predice el valor en x=3.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/linear-regression">Regresión lineal y residuos</a>. Interpreta la pendiente, el ajuste y el signo de cada residuo.</li>
+    <li><a routerLink="/articles/projection-least-squares">Proyecciones y mínimos cuadrados</a>. Interpreta el ajuste como minimización de la suma de residuos cuadrados.</li>
+    <li><a routerLink="/articles/partial-derivatives-minimization">Derivadas parciales y minimización</a>. Distingue los parámetros del ajuste y resuelve sus condiciones de mínimo.</li>
+    <li><a routerLink="/articles/covariance">Covarianza y correlación</a>. Centra los datos y distingue asociación lineal de causalidad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Minimizamos S(a,b)=Σ(yᵢ−a−bxᵢ)², donde Σ significa sumar los tres datos. Derivar respecto de a e igualar a cero exige que los residuos sumen cero, lo que da a=ȳ−bx̄. Al sustituir, cada residuo queda (yᵢ−ȳ)−b(xᵢ−x̄). Derivar ahora respecto de b da b·Σ(xᵢ−x̄)²=Σ(xᵢ−x̄)(yᵢ−ȳ). Como la suma de cuadrados de x es positiva, esta función cuadrática tiene allí su mínimo único.</li>
-      <li>La recta es y=a+bx. Las medias son x̄=1 e ȳ=5/3. La pendiente de mínimos cuadrados es la suma de productos de desviaciones dividida por la suma de cuadrados de las desviaciones de x.</li>
+      <li>Minimizamos S(a,b)=Σ(yᵢ−a−bxᵢ)², donde Σ significa sumar los tres datos. <a data-prerequisite="partials" routerLink="/articles/partial-derivatives-minimization">Derivar respecto</a> de a e igualar a cero exige que los <a data-prerequisite="least-squares" routerLink="/articles/projection-least-squares">residuos</a> sumen cero, lo que da a=ȳ−bx̄. Al sustituir, cada residuo queda (yᵢ−ȳ)−b(xᵢ−x̄). Derivar ahora respecto de b da b·Σ(xᵢ−x̄)²=Σ(xᵢ−x̄)(yᵢ−ȳ). Como la suma de cuadrados de x es positiva, esta función cuadrática tiene allí su mínimo único.</li>
+      <li>La recta es y=a+bx. Las medias son x̄=1 e ȳ=5/3. La pendiente de <a data-prerequisite="least-squares" routerLink="/articles/projection-least-squares">mínimos cuadrados</a> es la suma de productos de desviaciones dividida por la suma de cuadrados de las desviaciones de x.</li>
       <li>Las desviaciones de x son −1,0,1 y las de y son −2/3,1/3,1/3. La suma de productos es 2/3+0+1/3=1; la suma de cuadrados de x es 1+0+1=2.</li>
       <li>Por tanto b=1/2. La recta pasa por las medias, así que a=5/3−(1/2)·1=7/6. Los residuos son −1/6,1/3,−1/6 y suman cero.</li>
       <li>En x=3, la predicción es 7/6+3/2=16/6=8/3. Es una extrapolación fuera del rango observado [0,2]; la recta calcula ese valor, pero los datos no garantizan que describa el fenómeno allí.</li>

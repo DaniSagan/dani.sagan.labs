@@ -6,10 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Para y′=y, y(0)=1, aplica Euler con paso 0,5 hasta t=1 y compara con y(1)=e.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/ode-numerical-integration">Método de Euler e integración de EDO</a>. Actualiza la pendiente en cada paso y compara con la solución exacta.</li>
+    <li><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden</a>. Separa la ecuación diferencial de la condición que fija su solución.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Euler aproxima la solución durante cada paso por una recta con la pendiente al comienzo. La regla es yₙ₊₁=yₙ+h f(tₙ,yₙ). Aquí f(t,y)=y y h=0,5.</li>
+      <li><a data-prerequisite="euler" routerLink="/articles/ode-numerical-integration">Euler</a> aproxima la solución durante cada paso por una recta con la pendiente al comienzo. La regla es yₙ₊₁=yₙ+h f(tₙ,yₙ). Aquí f(t,y)=y y h=0,5.</li>
       <li>Partimos de (t₀,y₀)=(0,1). El primer paso da y₁=1+0,5·1=1,5, correspondiente a t₁=0,5.</li>
       <li>El segundo usa la nueva pendiente y₁: y₂=1,5+0,5·1,5=2,25, en t₂=1. No usamos de nuevo la pendiente inicial.</li>
       <li>La solución exacta es eᵗ, por lo que y(1)=e≈2,71828. El error absoluto es e−2,25≈0,46828. La aproximación queda por debajo porque la pendiente real aumenta dentro de cada paso.</li>

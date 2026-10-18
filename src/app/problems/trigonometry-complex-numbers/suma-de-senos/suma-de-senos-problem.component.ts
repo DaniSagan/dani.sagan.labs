@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class SumaDeSenosProblemComponent {
   static readonly title = "Suma de senos";
-  static readonly route = "problema-034";
+  static readonly route = "sum-of-sines";
   static readonly problem: PracticeProblem = {
-    "id": "problema-034",
-    "number": 34,
-    "title": "Suma de senos",
-    "category": "Trigonometría y números complejos",
-    "topic": "Identidades y ecuaciones",
-    "level": "Oposición",
-    "statement": "Demuestra que \\(\\sin x+\\sin(x+2\\frac{\\pi}{3})+\\sin(x+4\\frac{\\pi}{3})=0\\) para todo x real.",
-    "resources": [
-{
-  "label": "Fasores y superposición de ondas",
-  "route": "/articles/phasor-superposition",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Ángulos múltiples y ángulo mitad",
-        "route": "/articles/trig-n-functions",
-        "activity": "Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
-      }
-    ]
-  };
+  "id": "problema-034",
+  "route": "sum-of-sines",
+  "number": 34,
+  "title": "Suma de senos",
+  "category": "Trigonometría y números complejos",
+  "topic": "Identidades y ecuaciones",
+  "level": "Oposición",
+  "statement": "Demuestra que \\(\\sin x+\\sin(x+2\\frac{\\pi}{3})+\\sin(x+4\\frac{\\pi}{3})=0\\) para todo x real.",
+  "resources": [
+    {
+      "label": "Fasores y superposición de ondas",
+      "route": "/articles/phasor-superposition",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Ángulos múltiples y ángulo mitad",
+      "route": "/articles/trig-n-functions",
+      "activity": "Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones."
+    },
+    {
+      "label": "Contradicción, implicación y equivalencia",
+      "route": "/articles/proof-strategies",
+      "activity": "Separa una demostración para todos los casos de una comprobación particular."
+    }
+  ]
+};
 }

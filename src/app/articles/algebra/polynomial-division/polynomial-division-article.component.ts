@@ -18,6 +18,17 @@ export class PolynomialDivisionArticleComponent {
     get divisor(): number[] { return this.divisorChoice === 0 ? [-this.root, 1] : [-1, 0, 1]; }
     get evaluated(): number { return evaluatePolynomial(this.dividend, this.x); }
     get rebuilt(): number { return evaluatePolynomial(this.divisor, this.x) * evaluatePolynomial(this.result.quotient, this.x) + evaluatePolynomial(this.result.remainder, this.x); }
+    get syntheticRows(): { coefficient: number; product: number | null; sum: number }[] {
+        let carry = 0;
+        return [...this.dividend].reverse().map((coefficient, i) => {
+            const product = i === 0 ? null : this.root * carry;
+            carry = coefficient + (product ?? 0);
+            return { coefficient, product, sum: carry };
+        });
+    }
+    get syntheticQuotient(): number[] { return this.syntheticRows.slice(0, -1).map(row => row.sum).reverse(); }
+    get syntheticRemainder(): number { return this.syntheticRows[this.syntheticRows.length - 1].sum; }
+    reset(): void { this.choice = 0; this.divisorChoice = 0; this.root = 1; this.x = 1; this.update(); }
     constructor() { this.update(); }
     update(): void { this.result = dividePolynomial(this.dividend, this.divisor); this.series = [curve('P(x)', x => evaluatePolynomial(this.dividend, x), -3, 3), curve('R(x)', x => evaluatePolynomial(this.result.remainder, x), -3, 3, '#4a9eff')]; }
 }

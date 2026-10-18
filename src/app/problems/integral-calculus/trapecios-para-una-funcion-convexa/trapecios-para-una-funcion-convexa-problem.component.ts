@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class TrapeciosParaUnaFuncionConvexaProblemComponent {
   static readonly title = "Trapecios para una función convexa";
-  static readonly route = 'problema-169';
+  static readonly route = "trapezoidal-rule-for-a-convex-function";
   static readonly problem: PracticeProblem = {
   "id": "problema-169",
+  "route": "trapezoidal-rule-for-a-convex-function",
   "number": 169,
   "title": "Trapecios para una función convexa",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,18 @@ export class TrapeciosParaUnaFuncionConvexaProblemComponent {
       "label": "Convexidad, concavidad y desigualdades",
       "route": "/articles/convexity-tangents",
       "activity": "Practica trapecios para una función convexa. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Trapecios, Simpson y error de cuadratura",
+      "route": "/articles/integration-numerical",
+      "fragment": "newton-cotes",
+      "activity": "Identifica los nodos y los pesos y contrasta con un valor exacto."
+    },
+    {
+      "label": "Primitivas y teorema fundamental del cálculo",
+      "route": "/articles/integration-classical",
+      "fragment": "fundamental",
+      "activity": "Distingue una familia de funciones de una integral definida con signo."
     }
   ]
 };

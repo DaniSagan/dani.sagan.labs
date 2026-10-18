@@ -9,16 +9,23 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>¿Cuántos divisores positivos de 360 son cuadrados perfectos? Enuméralos.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/fundamental-theorem-arithmetic">Factorización prima y divisores</a>. Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades.</li>
+    <li><a routerLink="/articles/prime-valuations">Exponentes primos y valuaciones</a>. Traduce cuadrados, cubos y divisibilidad a condiciones sobre exponentes.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La factorización prima de un divisor se obtiene eligiendo para cada primo un exponente entre cero y el de 360. Un cuadrado tiene exponentes pares porque al elevar al cuadrado se duplican. Recíprocamente, si todos son pares, dividir cada exponente entre dos construye una raíz cuadrada entera.</li>
+      <li>La <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">factorización prima</a> de un divisor se obtiene eligiendo para cada primo un exponente entre cero y el de 360. Un cuadrado tiene <a data-prerequisite="valuations" routerLink="/articles/prime-valuations">exponentes pares</a> porque al elevar al cuadrado se duplican. Recíprocamente, si todos son pares, dividir cada exponente entre dos construye una raíz cuadrada entera.</li>
       <li><span class="math-part"><app-formula expression="360=2^{3}\cdot 3^{2}\cdot 5^{1}" displayMode="inline" [showCodeButton]="false" /></span>. Cada divisor tiene forma <span class="math-part"><app-formula expression="2^{a}3^{b}5^{c}" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0\le a\le 3" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="0\le b\le 2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0\le c\le 1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
-      <li>Un divisor cuadrado tiene exponentes de 2 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span>, de 3 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span> y de 5 solo 0. Ser cuadrado equivale a tener exponentes pares en todos los primos. Por eso el exponente de 5 debe ser cero.</li>
-      <li>El principio multiplicativo da <span class="math-part"><app-formula expression="2\cdot 2\cdot 1=4" displayMode="inline" [showCodeButton]="false" /></span>. Cada combinación permitida de exponentes determina un divisor distinto, lo que justifica multiplicar los números de opciones.</li>
+      <li>Un divisor cuadrado tiene <a data-prerequisite="valuations" routerLink="/articles/prime-valuations">exponentes</a> de 2 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span>, de 3 en <span class="math-part"><app-formula expression="{0,2}" displayMode="inline" [showCodeButton]="false" /></span> y de 5 solo 0. Ser cuadrado equivale a tener exponentes pares en todos los <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">primos</a>. Por eso el exponente de 5 debe ser cero.</li>
+      <li>El <a data-prerequisite="counting" routerLink="/articles/counting-principles">principio multiplicativo</a> da <span class="math-part"><app-formula expression="2\cdot 2\cdot 1=4" displayMode="inline" [showCodeButton]="false" /></span>. Cada combinación permitida de exponentes determina un divisor distinto, lo que justifica multiplicar los números de opciones.</li>
       <li>Combina los exponentes: <span class="math-part"><app-formula expression="1,4,9,36" displayMode="inline" [showCodeButton]="false" /></span>, que dividen 360. Los valores corresponden a las parejas <span class="math-part"><app-formula expression="(a,b)=(0,0),(2,0),(0,2),(2,2)" displayMode="inline" [showCodeButton]="false" /></span>. El 1 corresponde a todos los exponentes cero.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> 4 divisores: <span class="math-part"><app-formula expression="1,4,9,36" displayMode="inline" [showCodeButton]="false" /></span>.</p>
+    <p class="answer"><strong>Resultado.</strong> 4 <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">divisores</a>: <span class="math-part"><app-formula expression="1,4,9,36" displayMode="inline" [showCodeButton]="false" /></span>.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> El número 1 es un cuadrado perfecto.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">

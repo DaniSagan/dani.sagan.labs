@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class IrracionalidadPorFactorizacionProblemComponent {
   static readonly title = "Irracionalidad por factorización";
-  static readonly route = "problema-010";
+  static readonly route = "irrationality-by-prime-factorization";
   static readonly problem: PracticeProblem = {
   "id": "problema-010",
+  "route": "irrationality-by-prime-factorization",
   "number": 10,
   "title": "Irracionalidad por factorización",
   "category": "Aritmética y teoría de números",
@@ -32,11 +33,6 @@ export class IrracionalidadPorFactorizacionProblemComponent {
       "label": "Teorema fundamental de la aritmética",
       "route": "/articles/fundamental-theorem-arithmetic",
       "activity": "La unicidad de la factorización prima que fundamenta la contradicción de paridades."
-    },
-    {
-      "label": "Descomposición en primos",
-      "route": "/tools/prime-decomposition",
-      "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
     },
     {
       "label": "Cómo demostrar: implicaciones, contradicción y contraposición",

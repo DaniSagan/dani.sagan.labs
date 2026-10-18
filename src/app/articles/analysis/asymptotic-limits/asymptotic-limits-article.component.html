@@ -30,9 +30,9 @@
 </ol>
 <details class="note"><summary>Solución de la ampliación</summary><p>El desarrollo <app-formula displayMode="inline" [showCodeButton]="false" expression="\cos  x=1-x^{2}/2+O(x^{4})" /> da<app-formula displayMode="inline" [showCodeButton]="false" expression="\frac{1-\cos x}{x^2}\to\frac12" />. Para <app-formula displayMode="inline" [showCodeButton]="false" expression="\log  n/n" />, el crecimiento del logaritmo es menor que el de cualquier potencia positiva; puede probarse aplicando el valor medio o una comparación integral. Si <app-formula displayMode="inline" [showCodeButton]="false" expression="f=g+o(g)" />, al restar un h equivalente a g el error puede convertirse en el término principal: por eso una equivalencia no se transporta automáticamente a una resta.</p></details>
 <div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
-<li><a routerLink="/problems/problema-047">Racionalización y límite</a>. Reconstruye la solución con las ideas del artículo.</li>
-<li><a routerLink="/problems/problema-046">Un límite con seno</a>. Reconstruye la solución con las ideas del artículo.</li>
-<li><a routerLink="/problems/problema-042">Un cociente con exponencial</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/limit-by-rationalization">Racionalización y límite</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/sine-limit">Un límite con seno</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/exponential-ratio-limit">Un cociente con exponencial</a>. Reconstruye la solución con las ideas del artículo.</li>
 <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las expresiones del artículo y compara dominios y escalas.</li>
 </ul></div>
 <p>Continúa con <a routerLink="/articles/taylor-series">Series de Taylor</a> para conectar estos resultados con otro enfoque.</p>
@@ -41,7 +41,17 @@
 
 <!-- additional-problems:asymptotic-limits:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-142">142 · Un límite por grados</a>. Calcula el límite de (3n²−n+4)/(2n²+5) cuando n tiende a infinito.</li>
-<li><a routerLink="/problems/problema-146">146 · Racionalizar cerca de cero</a>. Calcula el límite de (√(1+x)−1)/x cuando x tiende a cero.</li>
+<li><a routerLink="/problems/polynomial-degree-limit">142 · Un límite por grados</a>. Calcula el límite de (3n²−n+4)/(2n²+5) cuando n tiende a infinito.</li>
+<li><a routerLink="/problems/rationalizing-near-zero">146 · Racionalizar cerca de cero</a>. Calcula el límite de (√(1+x)−1)/x cuando x tiende a cero.</li>
 </ul></section>
 <!-- additional-problems:asymptotic-limits:end -->
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (6)</summary><ul>
+<li><a routerLink="/problems/exponential-ratio-limit">42 · Un cociente con exponencial</a></li>
+<li><a routerLink="/problems/sine-limit">46 · Un límite con seno</a></li>
+<li><a routerLink="/problems/improper-integral-with-parameter">65 · Integral impropia con parámetro</a></li>
+<li><a routerLink="/problems/polynomial-degree-limit">142 · Un límite por grados</a></li>
+<li><a routerLink="/problems/telescoping-series-tail">145 · Una cola de serie telescópica</a></li>
+<li><a routerLink="/problems/convergent-improper-integral">165 · Una integral impropia que sí converge</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

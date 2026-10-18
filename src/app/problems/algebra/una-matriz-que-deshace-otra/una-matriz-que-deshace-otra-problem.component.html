@@ -6,10 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Encuentra la inversa de la matriz con filas (2,1) y (1,1), y úsala para resolver 2x+y=7, x+y=4.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/matrix-determinant">Determinante y matrices invertibles</a>. Relaciona el determinante con volumen, independencia e invertibilidad.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una matriz inversa deshace la transformación original: su producto con ella debe ser la identidad, que deja cualquier vector igual. El determinante es 2·1−1·1=1, distinto de cero.</li>
+      <li>Una matriz <a data-prerequisite="det" routerLink="/articles/matrix-determinant">inversa</a> deshace la transformación original: su producto con ella debe ser la identidad, que deja cualquier vector igual. El <a data-prerequisite="det" routerLink="/articles/matrix-determinant">determinante</a> es 2·1−1·1=1, distinto de cero.</li>
       <li>Para una matriz de filas (a,b),(c,d), la inversa tiene filas (d,−b),(−c,a), divididas por ad−bc. En este caso las filas son (1,−1),(−1,2).</li>
       <li>Comprobamos el producto: la primera fila produce (2−1,−2+2)=(1,0) y la segunda (1−1,−1+2)=(0,1). Por tanto la fórmula sí da una inversa.</li>
       <li>Multiplicamos la inversa por el vector de términos independientes (7,4): x=7−4=3, y=−7+8=1. Sustituir da 2·3+1=7 y 3+1=4.</li>
@@ -20,7 +27,7 @@
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
-    <div class="resource"><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación ↗</a><p>Practica una matriz que deshace otra. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+    <div class="resource"><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación ↗</a><p>Practica una matriz que deshace otra. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a><p>Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes.</p></div>
   </section>
   <app-problem-navigation currentId="problema-120" />
 </article>

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnCrecimientoExponencialConDatoInicialProblemComponent {
   static readonly title = "Un crecimiento exponencial con dato inicial";
-  static readonly route = 'problema-158';
+  static readonly route = "exponential-growth-with-initial-value";
   static readonly problem: PracticeProblem = {
   "id": "problema-158",
+  "route": "exponential-growth-with-initial-value",
   "number": 158,
   "title": "Un crecimiento exponencial con dato inicial",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,11 @@ export class UnCrecimientoExponencialConDatoInicialProblemComponent {
       "label": "Ecuaciones diferenciales de primer orden y enfriamiento",
       "route": "/articles/first-order-odes",
       "activity": "Practica un crecimiento exponencial con dato inicial. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
     }
   ]
 };

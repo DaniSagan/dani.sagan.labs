@@ -6,10 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>La posición de una partícula es s(t)=t³−6t²+9t metros para 0≤t≤4 segundos. Determina cuándo cambia de sentido.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/function-analysis">Crecimiento, extremos y concavidad</a>. Relaciona los signos de las derivadas con el comportamiento de la función.</li>
+    <li><a routerLink="/articles/sign-charts">Tablas de signos e inecuaciones</a>. Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La velocidad es la derivada de la posición: v(t)=3t²−12t+9=3(t−1)(t−3). Su signo indica el sentido del movimiento.</li>
+      <li>La velocidad es la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> de la posición: v(t)=3t²−12t+9=3(t−1)(t−3). Su <a data-prerequisite="signs" routerLink="/articles/sign-charts">signo</a> indica el sentido del movimiento.</li>
       <li>Los instantes de reposo son t=1 y t=3. Para 0&lt;t&lt;1, ambos factores son negativos y v&gt;0; la partícula avanza en sentido positivo.</li>
       <li>Para 1&lt;t&lt;3, t−1&gt;0 y t−3&lt;0, de modo que v&lt;0. Para 3&lt;t&lt;4 ambos son positivos, así que v&gt;0 otra vez.</li>
       <li>La velocidad cambia de signo en los dos instantes: de positivo a negativo en 1 y de negativo a positivo en 3. Por eso ambos son cambios de sentido, no simples paradas sin inversión.</li>

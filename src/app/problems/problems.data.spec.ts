@@ -9,15 +9,16 @@ describe('Problem collection integrity', () => {
     expect(new Set(PROBLEMS.map(p => p.title)).size).toBe(200);
     expect(PROBLEM_BLOCKS.length).toBe(10);
     const links = PROBLEM_NAVIGATION.flatMap(group => group.subsections!.flatMap(topic => topic.items));
-    expect(links.map(link => link.route).sort()).toEqual(PROBLEMS.map(p => p.id).sort());
+    expect(links.map(link => link.route).sort()).toEqual(PROBLEMS.map(p => p.route).sort());
     expect(new Set(links.map(link => link.route)).size).toBe(200);
     PROBLEMS.forEach((problem, index) => {
       expect(problem.number).toBe(index + 1);
       expect(['Repaso', 'Oposición', 'Reto']).toContain(problem.level);
       expect(problem.statement.length).toBeGreaterThan(25);
 
-      const component = PROBLEM_COMPONENTS.find(candidate => candidate.route === problem.id)!;
-      expect(component.route).toBe(problem.id);
+      const component = PROBLEM_COMPONENTS.find(candidate => candidate.route === problem.route)!;
+      expect(component.route).toBe(problem.route);
+      expect(problem.route).toMatch(/^[a-z]+(?:-[a-z]+)*$/);
       expect(component.title).toBe(problem.title);
       expect(component.problem).toBe(problem);
       expect(problem.resources.some(resource => resource.route.startsWith('/articles/'))).toBeTrue();

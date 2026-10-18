@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaPrimitivaConCondicionInicialProblemComponent {
   static readonly title = "Una primitiva con condición inicial";
-  static readonly route = 'problema-161';
+  static readonly route = "antiderivative-with-initial-condition";
   static readonly problem: PracticeProblem = {
   "id": "problema-161",
+  "route": "antiderivative-with-initial-condition",
   "number": 161,
   "title": "Una primitiva con condición inicial",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,11 @@ export class UnaPrimitivaConCondicionInicialProblemComponent {
       "label": "Integrales I: técnicas clásicas",
       "route": "/articles/integration-classical",
       "activity": "Practica una primitiva con condición inicial. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

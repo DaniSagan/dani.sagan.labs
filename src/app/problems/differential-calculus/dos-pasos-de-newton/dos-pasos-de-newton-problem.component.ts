@@ -13,46 +13,42 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosPasosDeNewtonProblemComponent {
   static readonly title = "Dos pasos de Newton";
-  static readonly route = "problema-054";
+  static readonly route = "two-newton-iterations";
   static readonly problem: PracticeProblem = {
-    "id": "problema-054",
-    "number": 54,
-    "title": "Dos pasos de Newton",
-    "category": "Cálculo diferencial y optimización",
-    "topic": "Derivadas y teoremas",
-    "level": "Oposición",
-    "statement": "Aplica dos iteraciones de Newton a \\(x^{2}-2=0\\) desde \\(x_{0}=1\\), con aritmética exacta.",
-    "resources": [
-      {
-        "label": "Derivadas: definición, interpretación y reglas",
-        "route": "/articles/derivative-foundations",
-        "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
-      },
-      {
-        "label": "Newton–Raphson",
-        "route": "/articles/newton-raphson",
-        "activity": "Búsqueda de raíces mediante rectas tangentes e iteraciones sucesivas."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función»."
-      },
-      {
-        "label": "Campo vectorial",
-        "route": "/tools/vector-field",
-        "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
-      },
-      {
-        "label": "Teorema del punto fijo de Banach",
-        "route": "/articles/banach-fixed-point",
-        "activity": "Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error."
-      },
-      {
-        "label": "Error numérico, cancelación y condicionamiento",
-        "route": "/articles/numerical-conditioning",
-        "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
-      }
-    ]
-  };
+  "id": "problema-054",
+  "route": "two-newton-iterations",
+  "number": 54,
+  "title": "Dos pasos de Newton",
+  "category": "Cálculo diferencial y optimización",
+  "topic": "Derivadas y teoremas",
+  "level": "Oposición",
+  "statement": "Aplica dos iteraciones de Newton a \\(x^{2}-2=0\\) desde \\(x_{0}=1\\), con aritmética exacta.",
+  "resources": [
+    {
+      "label": "Derivadas: definición, interpretación y reglas",
+      "route": "/articles/derivative-foundations",
+      "activity": "Parte del cociente incremental, respeta los dominios y distingue una condición necesaria de una prueba suficiente de extremo."
+    },
+    {
+      "label": "Newton–Raphson",
+      "route": "/articles/newton-raphson",
+      "activity": "Búsqueda de raíces mediante rectas tangentes e iteraciones sucesivas."
+    },
+    {
+      "label": "Teorema del punto fijo de Banach",
+      "route": "/articles/banach-fixed-point",
+      "activity": "Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error."
+    },
+    {
+      "label": "Error numérico, cancelación y condicionamiento",
+      "route": "/articles/numerical-conditioning",
+      "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
+    },
+    {
+      "label": "Ecuaciones cuadráticas",
+      "route": "/articles/quadratic-equations",
+      "activity": "Resuelve la ecuación de segundo grado y distingue los casos degenerados."
+    }
+  ]
+};
 }

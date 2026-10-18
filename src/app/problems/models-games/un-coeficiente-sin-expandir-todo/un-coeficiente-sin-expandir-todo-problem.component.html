@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Halla el coeficiente de x³ en (1+2x)⁵.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/binomial-theorem">Teorema del binomio</a>. Cuenta las elecciones que producen cada término de una potencia.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>El producto contiene cinco factores iguales a (1+2x). Para obtener un término x³ hay que elegir 2x en exactamente tres factores y 1 en los otros dos.</li>
-      <li>Las posiciones de los tres factores que aportan x se eligen de C(5,3)=5·4·3/(3·2·1)=10 maneras.</li>
-      <li>En cada elección el producto aporta (2x)³=8x³. Al sumar las diez contribuciones, el coeficiente es 10·8=80.</li>
-      <li>No pueden contribuir otras elecciones: elegir dos factores produce grado dos y elegir cuatro produce grado cuatro. Por ello el recuento cubre exactamente el término solicitado.</li>
+      <li>Las <a data-prerequisite="counting" routerLink="/articles/counting-principles">posiciones</a> de los tres factores que aportan x se eligen de C(5,3)=5·4·3/(3·2·1)=10 maneras.</li>
+      <li>En cada elección el producto aporta (2x)³=8x³. Al sumar las diez contribuciones, el <a data-prerequisite="binomial" routerLink="/articles/binomial-theorem">coeficiente</a> es 10·8=80.</li>
+      <li>No pueden contribuir otras elecciones: elegir dos factores produce <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">grado</a> dos y elegir cuatro produce grado cuatro. Por ello el recuento cubre exactamente el término solicitado.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> El coeficiente es 80.</p>
     <app-formula expression="[x^3](1+2x)^5=\binom53 2^3=80" [showCodeButton]="false" />

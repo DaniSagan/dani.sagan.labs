@@ -6,24 +6,31 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Aplica Gram–Schmidt a u=(1,1,0) y v=(1,0,1), y da una base ortonormal del plano que generan.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/dot-product">Producto escalar y perpendicularidad</a>. Calcula productos escalares y comprueba ortogonalidad.</li>
+    <li><a routerLink="/articles/vector-norm">Norma y distancia euclídea</a>. Distingue un vector de su longitud y calcula distancias.</li>
+    <li><a routerLink="/articles/gram-schmidt">Ortonormalidad y Gram–Schmidt</a>. Verifica norma uno y productos escalares cero.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Ortonormal significa que los vectores son perpendiculares y tienen longitud 1. La longitud de u es √(1²+1²)=√2, de modo que e₁=(1,1,0)/√2.</li>
-      <li>Para quitar la parte paralela buscamos w=v−αu perpendicular a u. Imponemos w·u=0: v·u−α(u·u)=0. Despejando obtenemos α=(v·u)/(u·u); podemos dividir porque u no es cero y u·u es su longitud al cuadrado.</li>
-      <li>El producto escalar suma productos de componentes. Calculamos v·u=1 y u·u=2. La parte de v paralela a u es ((v·u)/(u·u))u=(1/2,1/2,0).</li>
+      <li><a data-prerequisite="gram" routerLink="/articles/gram-schmidt">Ortonormal</a> significa que los vectores son <a data-prerequisite="dot" routerLink="/articles/dot-product">perpendiculares</a> y tienen longitud 1. La longitud de u es √(1²+1²)=√2, de modo que e₁=(1,1,0)/√2.</li>
+      <li>Para quitar la parte paralela buscamos w=v−αu <a data-prerequisite="dot" routerLink="/articles/dot-product">perpendicular</a> a u. Imponemos w·u=0: v·u−α(u·u)=0. Despejando obtenemos α=(v·u)/(u·u); podemos dividir porque u no es cero y u·u es su longitud al cuadrado.</li>
+      <li>El <a data-prerequisite="dot" routerLink="/articles/dot-product">producto escalar</a> suma productos de componentes. Calculamos v·u=1 y u·u=2. La parte de v paralela a u es ((v·u)/(u·u))u=(1/2,1/2,0).</li>
       <li>Restamos esa parte: w=v−u/2=(1/2,−1/2,1). Comprobamos u·w=1/2−1/2=0; el nuevo vector es perpendicular al primero.</li>
-      <li>La norma de w es √(1/4+1/4+1)=√(3/2)=√6/2. Al dividir w por ella obtenemos e₂=(1,−1,2)/√6.</li>
+      <li>La <a data-prerequisite="norm" routerLink="/articles/vector-norm">norma</a> de w es √(1/4+1/4+1)=√(3/2)=√6/2. Al dividir w por ella obtenemos e₂=(1,−1,2)/√6.</li>
       <li>Los numeradores tienen producto escalar 1−1+0=0 y cuadrados de normas 2 y 6. Los denominadores los convierten en unitarios. Como solo restamos un múltiplo de u y escalamos, el plano generado no cambia.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> e₁=(1,1,0)/√2 y e₂=(1,−1,2)/√6.</p>
     <app-formula expression="e_1=\frac{(1,1,0)}{\sqrt2},\quad e_2=\frac{(1,-1,2)}{\sqrt6}" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Normalizar sin restar la proyección no elimina la componente paralela.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> <a data-prerequisite="gram" routerLink="/articles/gram-schmidt">Normalizar</a> sin restar la proyección no elimina la componente paralela.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
     <div class="resource"><a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt ↗</a><p>Practica dos vectores ortonormales. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
-    <div class="resource"><a routerLink="/articles/change-of-basis">Cambios de base y matrices de una transformación ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div>
+    <div class="resource"><a routerLink="/articles/change-of-basis">Cambios de base y matrices de una transformación ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a><p>Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes.</p></div>
   </section>
   <app-problem-navigation currentId="problema-118" />
 </article>

@@ -6,13 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Se promedian 64 mediciones independientes de una población con media 10 y desviación típica 4. Calcula la media y desviación típica del promedio.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/sampling-distributions">Distribución de la media y error estándar</a>. Separa la dispersión de las observaciones de la dispersión de su media.</li>
+    <li><a routerLink="/articles/moment-transformations">Transformaciones de medias y varianzas</a>. El desplazamiento afecta a la media y la escala entra al cuadrado en la varianza.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/discrete-expectation">Esperanza, ganancia neta y varianza discreta</a>. Pondera cada valor por su probabilidad y descuenta los costes ciertos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Llamamos X̄=(X₁+…+X₆₄)/64. Cada medición tiene esperanza 10, así que la esperanza de la suma es 64·10 y E(X̄)=10.</li>
-      <li>Cada medición tiene varianza 4²=16. La independencia permite sumar varianzas: la suma tiene varianza 64·16.</li>
+      <li>Llamamos X̄=(X₁+…+X₆₄)/64. Cada medición tiene <a data-prerequisite="expectation" routerLink="/articles/discrete-expectation">esperanza</a> 10, así que la esperanza de la suma es 64·10 y E(X̄)=10.</li>
+      <li>Cada medición tiene varianza 4²=16. La <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independencia</a> permite sumar varianzas: la suma tiene varianza 64·16.</li>
       <li>Dividir una variable por 64 divide su varianza por 64². Por ello Var(X̄)=64·16/64²=16/64=1/4.</li>
-      <li>La desviación típica del promedio, llamada error estándar, es √(1/4)=1/2. La media del promedio no cambia, pero su dispersión es menor que la de una observación individual.</li>
+      <li>La desviación típica del <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">promedio</a>, llamada <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">error estándar</a>, es √(1/4)=1/2. La media del promedio no cambia, pero su dispersión es menor que la de una observación individual.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Media 10; varianza 1/4; error estándar 0,5.</p>
     <app-formula expression="E(\overline X)=10,\quad\operatorname{Var}(\overline X)=\frac14" [showCodeButton]="false" />

@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Aplica dos iteraciones de Newton a <span class="math-part"><app-formula expression="x^{2}-2=0" displayMode="inline" [showCodeButton]="false" /></span> desde <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span>, con aritmética exacta.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/newton-raphson">Método de Newton</a>. Comprueba que la derivada no se anula en cada iteración.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/quadratic-equations">Ecuaciones cuadráticas</a>. Resuelve la ecuación de segundo grado y distingue los casos degenerados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Newton aproxima un cero reemplazando la curva por su tangente en el punto actual. Resolver <span class="math-part"><app-formula expression="0=f(x_n)+f&#39;(x_n)(x_{n+1}-x_n)" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="x_{n+1}=x_n-f(x_n)/f&#39;(x_n)" displayMode="inline" [showCodeButton]="false" /></span>, siempre que la derivada no sea cero. El residuo <span class="math-part"><app-formula expression="f(x_{n+1})" displayMode="inline" [showCodeButton]="false" /></span> comprueba cuánto falta para satisfacer la ecuación.</li>
+      <li><a data-prerequisite="newton" routerLink="/articles/newton-raphson">Newton</a> aproxima un cero reemplazando la curva por su tangente en el punto actual. Resolver <span class="math-part"><app-formula expression="0=f(x_n)+f&#39;(x_n)(x_{n+1}-x_n)" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="x_{n+1}=x_n-f(x_n)/f&#39;(x_n)" displayMode="inline" [showCodeButton]="false" /></span>, siempre que la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> no sea cero. El residuo <span class="math-part"><app-formula expression="f(x_{n+1})" displayMode="inline" [showCodeButton]="false" /></span> comprueba cuánto falta para satisfacer la ecuación.</li>
       <li>Newton da <span class="math-part"><app-formula expression="x_{n+1}=x_{n}-(x_{n}^{2}-2)/(2x_{n})=(x_{n}+2/x_{n})/2" displayMode="inline" [showCodeButton]="false" /></span>. Newton usa la tangente: x nuevo es x anterior menos el cociente <span class="math-part"><app-formula expression="f/f&#39;" displayMode="inline" [showCodeButton]="false" /></span>. Aquí <span class="math-part"><app-formula expression="f&#39;=2x" displayMode="inline" [showCodeButton]="false" /></span>, que no se anula en las aproximaciones usadas.</li>
       <li>Desde <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span> se obtiene <span class="math-part"><app-formula expression="x_{1}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Sustituir <span class="math-part"><app-formula expression="x_{0}=1" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="(1+2)/2=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span>. Se conservan fracciones para evitar errores de redondeo.</li>
       <li>Luego <span class="math-part"><app-formula expression="x_{2}=(\frac{3}{2}+\frac{4}{3})/2=\frac{17}{12}" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="x_{1}=\frac{3}{2}" displayMode="inline" [showCodeButton]="false" /></span> se tiene <span class="math-part"><app-formula expression="2/x_{1}=\frac{4}{3}" displayMode="inline" [showCodeButton]="false" /></span>. La suma común es <span class="math-part"><app-formula expression="\frac{9}{6}+\frac{8}{6}=\frac{17}{6}" displayMode="inline" [showCodeButton]="false" /></span>; dividir entre 2 da <span class="math-part"><app-formula expression="\frac{17}{12}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
@@ -29,14 +36,8 @@
       <a routerLink="/articles/newton-raphson">Newton–Raphson ↗</a>
       <p>Búsqueda de raíces mediante rectas tangentes e iteraciones sucesivas.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
-    </div>
-    <div class="resource">
-      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
-      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
-    </div>
+
+
     <div class="resource">
       <a routerLink="/articles/banach-fixed-point">Teorema del punto fijo de Banach ↗</a>
       <p>Amplía el análisis de iteraciones con conservación del dominio, contracción y cotas de error.</p>

@@ -13,31 +13,27 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIntegralTrigonometricaProblemComponent {
   static readonly title = "Una integral trigonométrica";
-  static readonly route = "problema-064";
+  static readonly route = "trigonometric-integral";
   static readonly problem: PracticeProblem = {
-    "id": "problema-064",
-    "number": 64,
-    "title": "Una integral trigonométrica",
-    "category": "Integración y cálculo numérico",
-    "topic": "Primitivas e integrales",
-    "level": "Oposición",
-    "statement": "Calcula \\(\\int_0^{\\pi/2}\\sin^3x\\,dx\\).",
-    "resources": [
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      }
-    ]
-  };
+  "id": "problema-064",
+  "route": "trigonometric-integral",
+  "number": 64,
+  "title": "Una integral trigonométrica",
+  "category": "Integración y cálculo numérico",
+  "topic": "Primitivas e integrales",
+  "level": "Oposición",
+  "statement": "Calcula \\(\\int_0^{\\pi/2}\\sin^3x\\,dx\\).",
+  "resources": [
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    }
+  ]
+};
 }

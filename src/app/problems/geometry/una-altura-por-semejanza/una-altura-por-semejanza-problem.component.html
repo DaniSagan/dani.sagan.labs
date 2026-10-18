@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una vara vertical de 1,5 m proyecta una sombra de 2 m. Un árbol proyecta al mismo tiempo una sombra de 12 m sobre el mismo suelo horizontal. Halla su altura.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos</a>. Usa la misma razón para lados correspondientes, no para áreas.</li>
+    <li><a routerLink="/articles/triangle-metrics">Medianas, alturas, incentro y métricas del triángulo</a>. Distingue los segmentos y centros del triángulo y sus relaciones con el área.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Idealizamos los rayos solares como paralelos y el árbol y la vara como verticales. Cada objeto y su sombra forman un triángulo rectángulo con un rayo solar como hipotenusa.</li>
-      <li>Ambos triángulos tienen un ángulo recto y el mismo ángulo con los rayos. Son semejantes: sus longitudes correspondientes guardan la misma proporción.</li>
-      <li>Si h es la altura del árbol, h/12=1,5/2. Multiplicamos ambos lados por 12: h=12·1,5/2.</li>
+      <li>Ambos triángulos tienen un ángulo recto y el mismo ángulo con los rayos. Son <a data-prerequisite="similar" routerLink="/articles/triangle-similarity">semejantes</a>: sus longitudes correspondientes guardan la misma proporción.</li>
+      <li>Si h es la <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">altura</a> del árbol, h/12=1,5/2. Multiplicamos ambos lados por 12: h=12·1,5/2.</li>
       <li>Calculamos 12/2=6 y 6·1,5=9. La sombra del árbol es seis veces mayor y su altura también; esto comprueba la proporción y las unidades.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> El árbol mide 9 m bajo las hipótesis indicadas.</p>

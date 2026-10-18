@@ -9,10 +9,18 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Halla el resto de dividir <span class="math-part"><app-formula expression="x^{2026}+3x+1" displayMode="inline" [showCodeButton]="false" /></span> entre <span class="math-part"><app-formula expression="x^{2}-1" displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+    <li><a routerLink="/articles/polynomial-division" fragment="division">División polinómica</a>. Reconstruye dividendo = divisor por cociente más resto y controla los grados.</li>
+    <li><a routerLink="/articles/polynomial-division" fragment="factor-theorem">Teoremas del resto y del factor</a>. Relaciona la evaluación en r con la divisibilidad por x − r.</li>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La división polinómica escribe <span class="math-part"><app-formula expression="P=DQ+R" displayMode="inline" [showCodeButton]="false" /></span>, con grado de R menor que el de D. Trabajar módulo <span class="math-part"><app-formula expression="x^2-1" displayMode="inline" [showCodeButton]="false" /></span> significa que podemos cambiar un polinomio por otro si su diferencia es múltiplo de ese divisor. En particular, <span class="math-part"><app-formula expression="x^2" displayMode="inline" [showCodeButton]="false" /></span> y 1 tienen el mismo resto, lo que reduce todas las potencias pares.</li>
+      <li>La <a data-prerequisite="poly-division" routerLink="/articles/polynomial-division" fragment="division">división polinómica</a> escribe <span class="math-part"><app-formula expression="P=DQ+R" displayMode="inline" [showCodeButton]="false" /></span>, con <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">grado</a> de R menor que el de D. Trabajar <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">módulo</a> <span class="math-part"><app-formula expression="x^2-1" displayMode="inline" [showCodeButton]="false" /></span> significa que podemos cambiar un <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">polinomio</a> por otro si su diferencia es múltiplo de ese divisor. En particular, <span class="math-part"><app-formula expression="x^2" displayMode="inline" [showCodeButton]="false" /></span> y 1 tienen el mismo resto, lo que reduce todas las potencias pares.</li>
       <li>Todo resto tiene forma <span class="math-part"><app-formula expression="r(x)=ax+b" displayMode="inline" [showCodeButton]="false" /></span>. El resto de dividir por un cuadrático tiene grado menor que 2. Por eso se escribe como <span class="math-part"><app-formula expression="ax+b" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Como la potencia es par, <span class="math-part"><app-formula expression="x^{2026}\equiv 1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="\pmod{x^2-1}" displayMode="inline" [showCodeButton]="false" /></span>. Como 2026 es par, <span class="math-part"><app-formula expression="x^{2026}=(x^{2})^{1013}" displayMode="inline" [showCodeButton]="false" /></span>. Cada factor <span class="math-part"><app-formula expression="x^{2}" displayMode="inline" [showCodeButton]="false" /></span> puede sustituirse por 1 al calcular el resto.</li>
       <li>Entonces <span class="math-part"><app-formula expression="r(x)=3x+2" displayMode="inline" [showCodeButton]="false" /></span>. Los términos <span class="math-part"><app-formula expression="3x" displayMode="inline" [showCodeButton]="false" /></span> y 1 ya tienen grado menor que 2. Se suman al resto 1 de la potencia.</li>
@@ -32,10 +40,7 @@
       <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
       <p>Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
-      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/polynomial-interpolation">Interpolación de Lagrange y Hermite ↗</a>
       <p>Amplía el uso de valores y derivadas para reconstruir un polinomio y controlar su error.</p>

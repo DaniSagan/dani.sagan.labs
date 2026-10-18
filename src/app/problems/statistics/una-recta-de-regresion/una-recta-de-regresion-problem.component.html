@@ -11,15 +11,23 @@
           [showCodeButton]="false" /></span>, halla la recta de mínimos cuadrados y el coeficiente de correlación de
       Pearson.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/linear-regression">Regresión lineal y residuos</a>. Interpreta la pendiente, el ajuste y el signo de cada residuo.</li>
+    <li><a routerLink="/articles/covariance">Covarianza y correlación</a>. Centra los datos y distingue asociación lineal de causalidad.</li>
+    <li><a routerLink="/articles/projection-least-squares">Proyecciones y mínimos cuadrados</a>. Interpreta el ajuste como minimización de la suma de residuos cuadrados.</li>
+    <li><a routerLink="/articles/cauchy-schwarz">Desigualdad de Cauchy–Schwarz</a>. Comprueba la desigualdad y la condición exacta de igualdad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La recta de mínimos cuadrados <span class="math-part"><app-formula expression="\widehat y=\alpha+\beta x"
-            displayMode="inline" [showCodeButton]="false" /></span> minimiza la suma de errores verticales al cuadrado.
+      <li>La <a data-prerequisite="regression" routerLink="/articles/linear-regression">recta de mínimos cuadrados</a> <span class="math-part"><app-formula expression="\widehat y=\alpha+\beta x"
+            displayMode="inline" [showCodeButton]="false" /></span> <a data-prerequisite="least-squares" routerLink="/articles/projection-least-squares">minimiza</a> la suma de errores verticales al cuadrado.
         Sus coeficientes cumplen <span class="math-part"><app-formula expression="\beta=S_{xy}/S_{xx}"
             displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula
             expression="\alpha=\overline y-\beta\overline x" displayMode="inline" [showCodeButton]="false" /></span>,
-        donde las S son sumas de desviaciones centradas. La correlación <span class="math-part"><app-formula
+        donde las S son sumas de desviaciones centradas. La <a data-prerequisite="covariance" routerLink="/articles/covariance">correlación</a> <span class="math-part"><app-formula
             expression="r=S_{xy}/\sqrt{S_{xx}S_{yy}}" displayMode="inline" [showCodeButton]="false" /></span> mide
         asociación lineal, no causalidad.</li>
       <li><span class="math-part"><app-formula expression="\bar{x}=2" displayMode="inline"
@@ -38,7 +46,7 @@
       <li>La pendiente es <span class="math-part"><app-formula expression="\frac{S_{xy}}{S_{xx}}=\frac{3}{2}"
             displayMode="inline" [showCodeButton]="false" /></span> y la ordenada <span class="math-part"><app-formula
             expression="\bar y-\frac32\bar x=0" displayMode="inline" [showCodeButton]="false" /></span>. La minimización
-        de la suma de cuadrados de residuos produce <span class="math-part"><app-formula
+        de la suma de cuadrados de <a data-prerequisite="least-squares" routerLink="/articles/projection-least-squares">residuos</a> produce <span class="math-part"><app-formula
             expression="b=\frac{S_{xy}}{S_{xx}}" displayMode="inline" [showCodeButton]="false" /></span> y <span
           class="math-part"><app-formula expression="a=\bar y-b\bar x" displayMode="inline"
             [showCodeButton]="false" /></span>, aquí <span class="math-part"><app-formula expression="a=0"
@@ -73,11 +81,7 @@
       <p>Lectura de ampliación sobre variabilidad muestral. La recta y la correlación de este ejercicio se calculan
         directamente con sumas centradas, sin usar el teorema central del límite.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
-      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»;
-        explora también muestreo e histogramas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt ↗</a>
       <p>Construye direcciones ortogonales y conecta sus componentes con productos internos.</p>

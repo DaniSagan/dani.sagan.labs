@@ -1,0 +1,2720 @@
+{
+  "_comment": "Editorial audit of prerequisites for all 200 problems. Used only by authoring and validation scripts; public pages contain ordinary Angular links.",
+  "concepts": {
+    "gcd": {
+      "label": "Máximo común divisor y algoritmo de Euclides",
+      "route": "/articles/gcd-euclid",
+      "terms": [
+        "máximo común divisor",
+        "mcd",
+        "algoritmo de Euclides"
+      ],
+      "help": "Comprende por qué cada división conserva los divisores comunes."
+    },
+    "bezout": {
+      "label": "Identidad de Bézout",
+      "route": "/articles/bezout-identity",
+      "terms": [
+        "Bézout",
+        "combinación entera"
+      ],
+      "help": "Reconstruye los coeficientes enteros a partir de las divisiones."
+    },
+    "division": {
+      "label": "División euclídea y restos",
+      "route": "/articles/division-algorithm",
+      "terms": [
+        "división euclídea",
+        "resto no negativo"
+      ],
+      "help": "Distingue cociente y resto, también para dividendos negativos."
+    },
+    "modular": {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "terms": [
+        "congruencia",
+        "congruencias",
+        "módulo",
+        "inverso",
+        "coprimo",
+        "coprimos"
+      ],
+      "help": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    "linear-congruence": {
+      "label": "Congruencias lineales",
+      "route": "/articles/linear-congruence-theorem",
+      "terms": [
+        "congruencia lineal"
+      ],
+      "help": "Estudia la condición de existencia y todas las clases de soluciones."
+    },
+    "crt": {
+      "label": "Teorema chino del resto",
+      "route": "/articles/chinese-remainder-theorem",
+      "terms": [
+        "módulos coprimos",
+        "condiciones simultáneamente"
+      ],
+      "help": "Resuelve condiciones modulares simultáneas y determina su período."
+    },
+    "totient": {
+      "label": "Totiente y coprimalidad",
+      "route": "/articles/euler-totient-formula",
+      "terms": [
+        "totiente",
+        "coprimalidad"
+      ],
+      "help": "Cuenta los enteros coprimos usando los factores primos."
+    },
+    "primes": {
+      "label": "Factorización prima y divisores",
+      "route": "/articles/fundamental-theorem-arithmetic",
+      "terms": [
+        "factorización prima",
+        "factorización en primos",
+        "primos",
+        "divisores"
+      ],
+      "help": "Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades."
+    },
+    "valuations": {
+      "label": "Exponentes primos y valuaciones",
+      "route": "/articles/prime-valuations",
+      "terms": [
+        "exponentes pares",
+        "exponentes",
+        "valuación"
+      ],
+      "help": "Traduce cuadrados, cubos y divisibilidad a condiciones sobre exponentes."
+    },
+    "diophantine": {
+      "label": "Ecuaciones diofánticas lineales",
+      "route": "/articles/linear-diophantine-equations",
+      "terms": [
+        "diofántica",
+        "diofánticas",
+        "soluciones enteras"
+      ],
+      "help": "Obtén toda la familia entera antes de imponer restricciones."
+    },
+    "pell": {
+      "label": "Ecuación de Pell y norma algebraica",
+      "route": "/articles/pell-equation",
+      "terms": [
+        "Pell",
+        "norma",
+        "multiplicativa"
+      ],
+      "help": "Distingue la norma algebraica de una longitud y comprueba cómo genera soluciones."
+    },
+    "fermat": {
+      "label": "Pequeño teorema de Fermat",
+      "route": "/articles/fermats-little-theorem",
+      "terms": [
+        "Fermat"
+      ],
+      "help": "Comprueba la hipótesis de coprimalidad antes de reducir exponentes."
+    },
+    "proof": {
+      "label": "Contradicción, implicación y equivalencia",
+      "route": "/articles/proof-strategies",
+      "terms": [
+        "contradicción",
+        "contraposición",
+        "irracionalidad",
+        "irracional",
+        "recíprocamente"
+      ],
+      "help": "Separa una demostración para todos los casos de una comprobación particular."
+    },
+    "induction": {
+      "label": "Inducción matemática",
+      "route": "/articles/mathematical-induction",
+      "terms": [
+        "inducción",
+        "paso inductivo"
+      ],
+      "help": "Verifica el caso inicial y el paso de un índice al siguiente."
+    },
+    "factorial": {
+      "label": "Factoriales y fórmula de Legendre",
+      "route": "/articles/factorials-legendre",
+      "terms": [
+        "factorial",
+        "Legendre",
+        "ceros finales"
+      ],
+      "help": "Suma las contribuciones de cada potencia prima."
+    },
+    "continued": {
+      "label": "Fracciones continuas",
+      "route": "/articles/continued-fractions",
+      "terms": [
+        "fracción continua",
+        "fracciones continuas"
+      ],
+      "help": "Evalúa desde el término interior y reconstruye el cociente exacto."
+    },
+    "decimal": {
+      "label": "Sistemas de numeración y decimales periódicos",
+      "route": "/articles/numeral-systems",
+      "terms": [
+        "decimal periódico",
+        "período decimal"
+      ],
+      "help": "Relaciona el desplazamiento decimal con una fracción exacta."
+    },
+    "degree": {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "terms": [
+        "grado",
+        "coeficientes",
+        "término independiente",
+        "coeficiente principal",
+        "polinomio",
+        "polinomios"
+      ],
+      "help": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
+    },
+    "monic": {
+      "label": "Polinomio mónico",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "monic",
+      "terms": [
+        "polinomio mónico",
+        "mónico",
+        "mónica"
+      ],
+      "help": "Reconoce qué significa que el coeficiente principal sea uno."
+    },
+    "roots": {
+      "label": "Raíces, factores y multiplicidad",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "roots",
+      "terms": [
+        "raíz doble",
+        "raíces distintas",
+        "multiplicidad",
+        "producto nulo",
+        "producto es cero"
+      ],
+      "help": "Distingue raíces distintas de raíces contadas con multiplicidad y usa el producto nulo."
+    },
+    "factor": {
+      "label": "Teoremas del resto y del factor",
+      "route": "/articles/polynomial-division",
+      "fragment": "factor-theorem",
+      "terms": [
+        "teorema del factor",
+        "teorema del resto"
+      ],
+      "help": "Relaciona la evaluación en r con la divisibilidad por x − r."
+    },
+    "poly-division": {
+      "label": "División polinómica",
+      "route": "/articles/polynomial-division",
+      "fragment": "division",
+      "terms": [
+        "división polinómica",
+        "división de polinomios"
+      ],
+      "help": "Reconstruye dividendo = divisor por cociente más resto y controla los grados."
+    },
+    "ruffini": {
+      "label": "Regla de Ruffini y esquema de Horner",
+      "route": "/articles/polynomial-division",
+      "fragment": "ruffini",
+      "terms": [
+        "Ruffini",
+        "Horner"
+      ],
+      "help": "Sigue las multiplicaciones y sumas del cociente sintético, incluidos los coeficientes cero."
+    },
+    "rational-roots": {
+      "label": "Teorema de las raíces racionales",
+      "route": "/articles/rational-root-theorem",
+      "terms": [
+        "raíz entera",
+        "raíces enteras",
+        "raíces racionales"
+      ],
+      "help": "Enumera candidatos con los divisores; comprueba cada uno en el polinomio."
+    },
+    "factoring": {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "terms": [
+        "factoriza",
+        "factorización",
+        "factorizar",
+        "completa cuadrados",
+        "completar cuadrados",
+        "diferencia de cuadrados"
+      ],
+      "help": "Desarrolla o agrupa términos para justificar la factorización utilizada."
+    },
+    "quadratic": {
+      "label": "Ecuaciones cuadráticas",
+      "route": "/articles/quadratic-equations",
+      "terms": [
+        "cuadrática",
+        "cuadrático",
+        "ecuación de segundo grado"
+      ],
+      "help": "Resuelve la ecuación de segundo grado y distingue los casos degenerados."
+    },
+    "discriminant": {
+      "label": "Discriminante",
+      "route": "/articles/quadratic-equations",
+      "fragment": "discriminant",
+      "terms": [
+        "discriminante"
+      ],
+      "help": "Distingue dos raíces reales, raíz doble y raíces complejas."
+    },
+    "vieta": {
+      "label": "Relaciones de Viète",
+      "route": "/articles/quadratic-equations",
+      "fragment": "vieta",
+      "terms": [
+        "Viète",
+        "Viè te",
+        "Vieta",
+        "suma y producto"
+      ],
+      "help": "Deduce la suma y el producto de las raíces comparando coeficientes."
+    },
+    "cauchy": {
+      "label": "Desigualdad de Cauchy–Schwarz",
+      "route": "/articles/cauchy-schwarz",
+      "terms": [
+        "Cauchy–Schwarz",
+        "Cauchy-Schwarz",
+        "Cauchy"
+      ],
+      "help": "Comprueba la desigualdad y la condición exacta de igualdad."
+    },
+    "means": {
+      "label": "Desigualdades entre medias",
+      "route": "/articles/mean-inequalities",
+      "terms": [
+        "media aritmética",
+        "media geométrica"
+      ],
+      "help": "Relaciona sumas y productos de números positivos."
+    },
+    "equivalence": {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "terms": [
+        "dominio",
+        "equivalente",
+        "equivalentes",
+        "denominadores",
+        "denominador",
+        "no se anula"
+      ],
+      "help": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    },
+    "squaring": {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "terms": [
+        "elevar al cuadrado",
+        "elevando al cuadrado",
+        "no negativos"
+      ],
+      "help": "Controla los signos antes de cuadrar para que la transformación sea reversible."
+    },
+    "signs": {
+      "label": "Tablas de signos e inecuaciones",
+      "route": "/articles/sign-charts",
+      "terms": [
+        "tabla de signos",
+        "signo",
+        "signos",
+        "desigualdades"
+      ],
+      "help": "Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad."
+    },
+    "partial-fractions": {
+      "label": "Descomposición en fracciones parciales",
+      "route": "/articles/integration-classical",
+      "fragment": "rational",
+      "terms": [
+        "fracciones parciales",
+        "descomponer la fracción",
+        "descomposición"
+      ],
+      "help": "Compara coeficientes después de reunir denominadores y conserva el dominio."
+    },
+    "gauss": {
+      "label": "Eliminación de Gauss y sistemas compatibles",
+      "route": "/articles/gaussian-elimination",
+      "terms": [
+        "compatible",
+        "determinado",
+        "indeterminado",
+        "restar ecuaciones",
+        "operaciones elementales"
+      ],
+      "help": "Entiende qué operaciones conservan las soluciones de un sistema."
+    },
+    "vectors": {
+      "label": "Bases, independencia, núcleo e imagen",
+      "route": "/articles/vector-spaces",
+      "terms": [
+        "base",
+        "independientes",
+        "dependientes",
+        "núcleo",
+        "imagen",
+        "linealmente dependientes"
+      ],
+      "help": "Distingue coordenadas, independencia y dimensiones de los espacios asociados."
+    },
+    "eigen": {
+      "label": "Autovalores, autovectores y diagonalización",
+      "route": "/articles/matrix-diagonalization",
+      "terms": [
+        "autovector",
+        "autovectores",
+        "autovalores",
+        "diagonalizar",
+        "diagonalización",
+        "polinomio característico"
+      ],
+      "help": "Comprueba que existe una base de autovectores antes de elevar una matriz mediante diagonalización."
+    },
+    "basis": {
+      "label": "Cambios de base",
+      "route": "/articles/change-of-basis",
+      "terms": [
+        "cambio de base",
+        "coordenadas"
+      ],
+      "help": "Reconstruye el vector desde sus coordenadas en la base indicada."
+    },
+    "det": {
+      "label": "Determinante y matrices invertibles",
+      "route": "/articles/matrix-determinant",
+      "terms": [
+        "determinante",
+        "matriz triangular",
+        "invertible",
+        "inversa"
+      ],
+      "help": "Relaciona el determinante con volumen, independencia e invertibilidad."
+    },
+    "projection": {
+      "label": "Proyección ortogonal",
+      "route": "/articles/orthogonal-projections",
+      "terms": [
+        "proyección ortogonal",
+        "proyección",
+        "componente perpendicular"
+      ],
+      "help": "Separa la componente paralela y la perpendicular mediante el vector normal."
+    },
+    "dot": {
+      "label": "Producto escalar y perpendicularidad",
+      "route": "/articles/dot-product",
+      "terms": [
+        "producto escalar",
+        "productos escalares",
+        "perpendiculares",
+        "perpendicular"
+      ],
+      "help": "Calcula productos escalares y comprueba ortogonalidad."
+    },
+    "norm": {
+      "label": "Norma y distancia euclídea",
+      "route": "/articles/vector-norm",
+      "terms": [
+        "norma",
+        "longitud del vector"
+      ],
+      "help": "Distingue un vector de su longitud y calcula distancias."
+    },
+    "jordan": {
+      "label": "Matrices nilpotentes y forma de Jordan",
+      "route": "/articles/jordan-form",
+      "terms": [
+        "nilpotente",
+        "nilpotentes"
+      ],
+      "help": "Usa la potencia que se anula para simplificar potencias matriciales."
+    },
+    "binomial": {
+      "label": "Teorema del binomio",
+      "route": "/articles/binomial-theorem",
+      "terms": [
+        "binomio",
+        "coeficiente binomial",
+        "coeficiente"
+      ],
+      "help": "Cuenta las elecciones que producen cada término de una potencia."
+    },
+    "gram": {
+      "label": "Ortonormalidad y Gram–Schmidt",
+      "route": "/articles/gram-schmidt",
+      "terms": [
+        "ortonormales",
+        "ortonormal",
+        "normalizar"
+      ],
+      "help": "Verifica norma uno y productos escalares cero."
+    },
+    "least-squares": {
+      "label": "Proyecciones y mínimos cuadrados",
+      "route": "/articles/projection-least-squares",
+      "terms": [
+        "mínimos cuadrados",
+        "minimiza",
+        "residuos"
+      ],
+      "help": "Interpreta el ajuste como minimización de la suma de residuos cuadrados."
+    },
+    "heron": {
+      "label": "Fórmula de Herón y semiperímetro",
+      "route": "/articles/heron-formula",
+      "terms": [
+        "Herón",
+        "semiperímetro"
+      ],
+      "help": "Comprueba que los lados forman un triángulo antes de calcular su área."
+    },
+    "triangle": {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "terms": [
+        "mediana",
+        "medianas",
+        "incentro",
+        "inradio",
+        "altura"
+      ],
+      "help": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
+    },
+    "stewart": {
+      "label": "Teorema de Stewart y mediana de Apolonio",
+      "route": "/articles/stewart-theorem",
+      "terms": [
+        "Apolonio",
+        "Stewart"
+      ],
+      "help": "Relaciona la longitud de una ceviana con los lados y los segmentos de la base."
+    },
+    "ceva": {
+      "label": "Teorema de Ceva",
+      "route": "/articles/ceva-theorem",
+      "terms": [
+        "Ceva",
+        "concurren",
+        "concurrencia"
+      ],
+      "help": "Mantén un orden coherente en las tres razones."
+    },
+    "power-point": {
+      "label": "Potencia de un punto y tangentes",
+      "route": "/articles/power-of-point",
+      "terms": [
+        "potencia de un punto",
+        "secante",
+        "tangente"
+      ],
+      "help": "Mide los segmentos desde el mismo punto exterior."
+    },
+    "similar": {
+      "label": "Semejanza de triángulos",
+      "route": "/articles/triangle-similarity",
+      "terms": [
+        "semejanza",
+        "semejantes"
+      ],
+      "help": "Usa la misma razón para lados correspondientes, no para áreas."
+    },
+    "shoelace": {
+      "label": "Fórmula del cordón y orientación",
+      "route": "/articles/shoelace-formula",
+      "terms": [
+        "suma cruzada",
+        "polígono ordenado"
+      ],
+      "help": "Ordena los vértices y cierra el recorrido antes de sumar."
+    },
+    "pick": {
+      "label": "Teorema de Pick",
+      "route": "/articles/pick-theorem",
+      "terms": [
+        "Pick",
+        "puntos interiores"
+      ],
+      "help": "Cuenta correctamente los puntos de borde e interiores en una retícula."
+    },
+    "line-circle": {
+      "label": "Rectas, circunferencias e intersecciones",
+      "route": "/articles/line-circle",
+      "terms": [
+        "circunferencia",
+        "intersección",
+        "intersecciones"
+      ],
+      "help": "Exige que cada punto cumpla simultáneamente las dos ecuaciones."
+    },
+    "conics": {
+      "label": "Cónicas y asíntotas",
+      "route": "/articles/quadratic-conics",
+      "terms": [
+        "hipérbola",
+        "asíntotas",
+        "centro"
+      ],
+      "help": "Reconoce la forma canónica después de completar cuadrados."
+    },
+    "planes": {
+      "label": "Rectas y planos del espacio",
+      "route": "/articles/lines-planes",
+      "terms": [
+        "plano",
+        "rectas cruzadas",
+        "vector director"
+      ],
+      "help": "Interpreta las ecuaciones y distingue paralelismo de intersección."
+    },
+    "normal": {
+      "label": "Vectores normales a un plano",
+      "route": "/articles/plane-normal",
+      "terms": [
+        "vector normal",
+        "normal",
+        "normales"
+      ],
+      "help": "Obtén una dirección perpendicular al plano y úsala para proyectar."
+    },
+    "cross": {
+      "label": "Producto vectorial",
+      "route": "/articles/cross-product",
+      "terms": [
+        "producto vectorial"
+      ],
+      "help": "Construye una dirección perpendicular a dos vectores independientes."
+    },
+    "triple": {
+      "label": "Producto mixto y volumen",
+      "route": "/articles/scalar-triple-product",
+      "terms": [
+        "producto mixto",
+        "paralelepípedo"
+      ],
+      "help": "Relaciona el determinante con el volumen y toma valor absoluto."
+    },
+    "pythagoras": {
+      "label": "Teorema de Pitágoras y distancia",
+      "route": "/articles/pythagorean-distance",
+      "terms": [
+        "Pitágoras",
+        "pitagórica",
+        "hipotenusa",
+        "catetos"
+      ],
+      "help": "Comprueba la perpendicularidad necesaria antes de sumar cuadrados."
+    },
+    "trig": {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "terms": [
+        "seno",
+        "coseno",
+        "tangente",
+        "ángulo doble",
+        "fórmula de suma"
+      ],
+      "help": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    },
+    "trig-eq": {
+      "label": "Ecuaciones trigonométricas y periodicidad",
+      "route": "/articles/trigonometric-equations",
+      "terms": [
+        "ecuación trigonométrica",
+        "cuadrantes",
+        "período"
+      ],
+      "help": "Busca todas las familias y restringe al intervalo pedido."
+    },
+    "radians": {
+      "label": "Radianes y longitud de arco",
+      "route": "/articles/radians",
+      "terms": [
+        "radián",
+        "radianes",
+        "vuelta completa"
+      ],
+      "help": "Convierte grados a radianes antes de aplicar longitud = radio por ángulo."
+    },
+    "height": {
+      "label": "Triangulación y ángulos de elevación",
+      "route": "/articles/height-surveying",
+      "terms": [
+        "elevación",
+        "distancia horizontal"
+      ],
+      "help": "Construye los dos triángulos conservando la misma altura."
+    },
+    "cosine-rule": {
+      "label": "Ley de cosenos",
+      "route": "/articles/law-of-cosines",
+      "terms": [
+        "teorema del coseno",
+        "ley de cosenos",
+        "ley del coseno"
+      ],
+      "help": "Usa el ángulo comprendido entre los lados conocidos."
+    },
+    "sine-rule": {
+      "label": "Ley de senos",
+      "route": "/articles/sine-law",
+      "terms": [
+        "ley de senos",
+        "ley de los senos"
+      ],
+      "help": "Empareja cada lado con su ángulo opuesto."
+    },
+    "inverse-trig": {
+      "label": "Ramas de las inversas trigonométricas",
+      "route": "/articles/trig-inverse-trig-composition",
+      "terms": [
+        "arcsen",
+        "inversa",
+        "argumento principal"
+      ],
+      "help": "Distingue todas las soluciones de un ángulo y la salida de una rama principal."
+    },
+    "complex": {
+      "label": "Aritmética compleja, módulo y conjugado",
+      "route": "/articles/complex-arithmetic",
+      "terms": [
+        "módulo",
+        "conjugado",
+        "conjugada",
+        "forma binómica",
+        "imaginaria",
+        "imaginario"
+      ],
+      "help": "Calcula en forma binómica y usa el conjugado para dividir."
+    },
+    "moivre": {
+      "label": "Forma polar, raíces y De Moivre",
+      "route": "/articles/de-moivre",
+      "terms": [
+        "De Moivre",
+        "argumento",
+        "argumentos",
+        "forma polar"
+      ],
+      "help": "Eleva el módulo y multiplica el argumento; enumera todas las raíces."
+    },
+    "mobius": {
+      "label": "Transformaciones de Möbius",
+      "route": "/articles/mobius-transformations",
+      "terms": [
+        "Möbius",
+        "transformación fraccionaria",
+        "preimagen"
+      ],
+      "help": "Comprueba dominio e imagen, incluidos los puntos omitidos."
+    },
+    "unity": {
+      "label": "Raíces de la unidad",
+      "route": "/articles/cyclotomic-polynomials",
+      "terms": [
+        "raíces de la unidad",
+        "quinta potencia"
+      ],
+      "help": "Relaciona raíces complejas con una suma geométrica."
+    },
+    "monotone": {
+      "label": "Convergencia monótona y cotas",
+      "route": "/articles/monotone-convergence",
+      "terms": [
+        "creciente y acotada",
+        "convergencia monótona",
+        "supremo",
+        "acotada"
+      ],
+      "help": "Demuestra monotonía y acotación antes de resolver la ecuación del límite."
+    },
+    "asymptotic": {
+      "label": "Equivalencias y órdenes de crecimiento",
+      "route": "/articles/asymptotic-limits",
+      "terms": [
+        "exponencial vence",
+        "equivalencias",
+        "orden",
+        "resto",
+        "mayor potencia"
+      ],
+      "help": "Compara los términos dominantes y controla el error tras cancelar."
+    },
+    "squeeze": {
+      "label": "Teorema del encaje y oscilación",
+      "route": "/articles/squeeze-oscillation",
+      "terms": [
+        "encaje",
+        "oscilación",
+        "oscilante"
+      ],
+      "help": "Acota por dos expresiones con el mismo límite."
+    },
+    "recurrence": {
+      "label": "Recurrencias y puntos fijos",
+      "route": "/articles/recurrent-sequences",
+      "terms": [
+        "recurrencia",
+        "recurrencias",
+        "punto fijo"
+      ],
+      "help": "Resta el punto fijo para obtener una expresión explícita de la sucesión."
+    },
+    "geometric": {
+      "label": "Progresiones y series geométricas",
+      "route": "/articles/geometric-series",
+      "terms": [
+        "progresión geométrica",
+        "serie geométrica",
+        "geométrica"
+      ],
+      "help": "Distingue suma finita, serie infinita y condición sobre la razón."
+    },
+    "telescoping": {
+      "label": "Sumas parciales y series telescópicas",
+      "route": "/articles/telescoping-series",
+      "terms": [
+        "telescópica",
+        "sumas parciales",
+        "suma parcial",
+        "cancelaciones"
+      ],
+      "help": "Cancela primero en una suma finita y después toma el límite."
+    },
+    "series": {
+      "label": "Convergencia absoluta, condicional y Leibniz",
+      "route": "/articles/series-convergence",
+      "terms": [
+        "Leibniz",
+        "convergencia absoluta",
+        "condicional",
+        "serie alternada"
+      ],
+      "help": "Verifica el decrecimiento y el límite cero y estudia aparte los valores absolutos."
+    },
+    "comparison": {
+      "label": "Criterios de comparación e integral",
+      "route": "/articles/positive-series-tests",
+      "terms": [
+        "criterio integral",
+        "comparación",
+        "serie positiva"
+      ],
+      "help": "Comprueba positividad y el sentido de la cota antes de concluir convergencia."
+    },
+    "taylor": {
+      "label": "Taylor y cotas del resto",
+      "route": "/articles/taylor-series",
+      "terms": [
+        "Taylor",
+        "desarrollo local",
+        "desarrollo",
+        "resto de Taylor"
+      ],
+      "help": "Controla el primer término omitido y las hipótesis de la aproximación."
+    },
+    "continuity": {
+      "label": "Continuidad y derivadas laterales",
+      "route": "/articles/continuity-differentiability",
+      "terms": [
+        "continua",
+        "continuidad",
+        "derivable",
+        "derivabilidad",
+        "límites laterales"
+      ],
+      "help": "Separa el valor, el límite y la existencia de una derivada."
+    },
+    "absolute": {
+      "label": "Valor absoluto y funciones a trozos",
+      "route": "/articles/absolute-value-distance",
+      "terms": [
+        "valor absoluto",
+        "laterales",
+        "función a trozos"
+      ],
+      "help": "Escribe las ramas según el signo y distingue distancia de valor con signo."
+    },
+    "bolzano": {
+      "label": "Teorema de Bolzano",
+      "route": "/articles/bolzano-theorem",
+      "terms": [
+        "Bolzano",
+        "valor intermedio"
+      ],
+      "help": "Usa continuidad y cambio de signo para demostrar existencia, sin asumir unicidad."
+    },
+    "derivative": {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "terms": [
+        "derivada",
+        "derivadas",
+        "cociente incremental",
+        "regla de la cadena",
+        "regla del producto"
+      ],
+      "help": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    "function": {
+      "label": "Crecimiento, extremos y concavidad",
+      "route": "/articles/function-analysis",
+      "terms": [
+        "crecimiento",
+        "concavidad",
+        "estrictamente creciente",
+        "decreciente"
+      ],
+      "help": "Relaciona los signos de las derivadas con el comportamiento de la función."
+    },
+    "logarithms": {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "terms": [
+        "logaritmo",
+        "logaritmos",
+        "exponencial"
+      ],
+      "help": "Respeta el dominio y utiliza las funciones inversas para despejar."
+    },
+    "tangent": {
+      "label": "Tangente y aproximación lineal",
+      "route": "/articles/linear-approximation",
+      "terms": [
+        "recta tangente",
+        "pendiente",
+        "aproximación lineal"
+      ],
+      "help": "Construye la recta con el valor y la derivada en el punto de contacto."
+    },
+    "convexity": {
+      "label": "Convexidad y tangentes",
+      "route": "/articles/convexity-tangents",
+      "terms": [
+        "convexa",
+        "convexidad",
+        "cóncava"
+      ],
+      "help": "Distingue la posición de las tangentes y de las cuerdas."
+    },
+    "newton": {
+      "label": "Método de Newton",
+      "route": "/articles/newton-raphson",
+      "terms": [
+        "Newton"
+      ],
+      "help": "Comprueba que la derivada no se anula en cada iteración."
+    },
+    "extrema": {
+      "label": "Extremos globales y Weierstrass",
+      "route": "/articles/global-extrema-weierstrass",
+      "terms": [
+        "mínimo",
+        "máximo",
+        "extremos",
+        "dominio abierto"
+      ],
+      "help": "Distingue extremo alcanzado de ínfimo o supremo y revisa los bordes."
+    },
+    "optimize": {
+      "label": "Modelización y optimización",
+      "route": "/articles/derivative-optimization",
+      "terms": [
+        "optimización",
+        "perímetro",
+        "volumen máximo"
+      ],
+      "help": "Expresa la magnitud objetivo con una variable y conserva las restricciones físicas."
+    },
+    "mvt": {
+      "label": "Rolle y teorema del valor medio",
+      "route": "/articles/mean-value-theorems",
+      "terms": [
+        "teorema del valor medio",
+        "Rolle",
+        "valor medio"
+      ],
+      "help": "Comprueba continuidad en el intervalo cerrado y derivabilidad en el abierto."
+    },
+    "ode": {
+      "label": "Ecuaciones diferenciales de primer orden",
+      "route": "/articles/first-order-odes",
+      "terms": [
+        "enfriamiento",
+        "condición inicial",
+        "tasa de crecimiento"
+      ],
+      "help": "Separa la ecuación diferencial de la condición que fija su solución."
+    },
+    "first-integrals": {
+      "label": "Órbitas e integrales primeras",
+      "route": "/articles/first-integrals",
+      "terms": [
+        "órbita",
+        "órbitas",
+        "campo vectorial",
+        "trayectoria"
+      ],
+      "help": "Comprueba que una cantidad permanece constante a lo largo del movimiento."
+    },
+    "integral": {
+      "label": "Primitivas y teorema fundamental del cálculo",
+      "route": "/articles/integration-classical",
+      "fragment": "fundamental",
+      "terms": [
+        "primitiva",
+        "primitivas",
+        "teorema fundamental",
+        "integral definida",
+        "área firmada"
+      ],
+      "help": "Distingue una familia de funciones de una integral definida con signo."
+    },
+    "substitution": {
+      "label": "Cambio de variable en integrales",
+      "route": "/articles/integration-classical",
+      "fragment": "substitution",
+      "terms": [
+        "sustitución",
+        "cambio de variable",
+        "diferencial"
+      ],
+      "help": "Transforma el diferencial y los dos extremos cuando la integral es definida."
+    },
+    "parts": {
+      "label": "Integración por partes",
+      "route": "/articles/integration-classical",
+      "fragment": "parts",
+      "terms": [
+        "por partes",
+        "regla del producto"
+      ],
+      "help": "Obtén la fórmula desde la derivada de un producto e incluye ambos términos de borde."
+    },
+    "trig-integral": {
+      "label": "Integrales trigonométricas",
+      "route": "/articles/integration-classical",
+      "fragment": "trig-identities",
+      "terms": [
+        "potencia impar",
+        "identidad pitagórica"
+      ],
+      "help": "Reserva el factor que produce el diferencial y controla el signo."
+    },
+    "improper": {
+      "label": "Integrales impropias y convergencia",
+      "route": "/articles/integration-classical",
+      "fragment": "improper",
+      "terms": [
+        "impropia",
+        "extremo infinito",
+        "diverge",
+        "converge"
+      ],
+      "help": "Define primero el límite truncado y decide si es finito."
+    },
+    "area": {
+      "label": "Áreas y sólidos de revolución",
+      "route": "/articles/areas-revolution",
+      "terms": [
+        "disco",
+        "discos",
+        "área entre",
+        "arandela",
+        "sección"
+      ],
+      "help": "Integra la diferencia correcta de alturas o el área de cada sección."
+    },
+    "arc": {
+      "label": "Longitud de arco",
+      "route": "/articles/arc-length",
+      "terms": [
+        "longitud de arco",
+        "longitud de la gráfica",
+        "longitud del arco"
+      ],
+      "help": "Usa la derivada y Pitágoras; no confundas longitud con área."
+    },
+    "quadrature": {
+      "label": "Trapecios, Simpson y error de cuadratura",
+      "route": "/articles/integration-numerical",
+      "fragment": "newton-cotes",
+      "terms": [
+        "trapecios",
+        "trapecio",
+        "Simpson",
+        "subintervalos"
+      ],
+      "help": "Identifica los nodos y los pesos y contrasta con un valor exacto."
+    },
+    "euler": {
+      "label": "Método de Euler e integración de EDO",
+      "route": "/articles/ode-numerical-integration",
+      "terms": [
+        "Euler",
+        "error global"
+      ],
+      "help": "Actualiza la pendiente en cada paso y compara con la solución exacta."
+    },
+    "finite": {
+      "label": "Espacio muestral, sucesos y complemento",
+      "route": "/articles/finite-probability",
+      "terms": [
+        "espacio muestral",
+        "equiprobables",
+        "equiprobable",
+        "suceso",
+        "casos favorables",
+        "contrario",
+        "complemento"
+      ],
+      "help": "Cuenta solo resultados equiprobables y distingue unión, intersección y complemento."
+    },
+    "counting": {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "terms": [
+        "combinatorio",
+        "combinaciones",
+        "subconjuntos",
+        "principio multiplicativo",
+        "posiciones",
+        "factorial"
+      ],
+      "help": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
+    },
+    "conditional": {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "terms": [
+        "condicionar",
+        "condicionada",
+        "independientes",
+        "independencia",
+        "disjuntos"
+      ],
+      "help": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
+    },
+    "tree": {
+      "label": "Árboles de probabilidad",
+      "route": "/articles/probability-trees",
+      "terms": [
+        "reposición",
+        "reemplazo",
+        "ramas",
+        "caminos"
+      ],
+      "help": "Multiplica a lo largo de cada camino y suma los caminos alternativos."
+    },
+    "hypergeometric": {
+      "label": "Distribución hipergeométrica",
+      "route": "/articles/hypergeometric-distribution",
+      "terms": [
+        "sin reemplazo",
+        "sin reposición"
+      ],
+      "help": "Cuenta elecciones sin reposición mediante combinaciones."
+    },
+    "bayes": {
+      "label": "Bayes, probabilidad total y tasa base",
+      "route": "/articles/bayes-theorem",
+      "terms": [
+        "Bayes",
+        "tasa base",
+        "falso positivo",
+        "positivos",
+        "condicionar"
+      ],
+      "help": "Distingue la probabilidad de un positivo de la probabilidad de la condición dado un positivo."
+    },
+    "monty": {
+      "label": "Hipótesis del problema de Monty Hall",
+      "route": "/articles/monty-hall",
+      "terms": [
+        "Monty Hall",
+        "presentador"
+      ],
+      "help": "Ten en cuenta qué sabe el presentador y cómo elige la puerta."
+    },
+    "bernoulli": {
+      "label": "Ensayos de Bernoulli y distribución binomial",
+      "route": "/articles/bernoulli-binomial",
+      "terms": [
+        "Bernoulli",
+        "binomial",
+        "ensayos",
+        "éxitos"
+      ],
+      "help": "Comprueba independencia y probabilidad constante antes de contar éxitos."
+    },
+    "geometric-prob": {
+      "label": "Distribución geométrica",
+      "route": "/articles/geometric-distribution",
+      "terms": [
+        "geométrica",
+        "primer éxito",
+        "primera cara"
+      ],
+      "help": "Distingue contar ensayos de contar fallos y calcula la cola."
+    },
+    "expectation": {
+      "label": "Esperanza, ganancia neta y varianza discreta",
+      "route": "/articles/discrete-expectation",
+      "terms": [
+        "esperanza",
+        "valor esperado",
+        "ganancia",
+        "ponderada"
+      ],
+      "help": "Pondera cada valor por su probabilidad y descuenta los costes ciertos."
+    },
+    "density": {
+      "label": "Densidades y momentos continuos",
+      "route": "/articles/continuous-random-variables",
+      "terms": [
+        "densidad",
+        "momentos",
+        "normalización"
+      ],
+      "help": "Comprueba no negatividad e integral uno antes de calcular probabilidades y momentos."
+    },
+    "cdf": {
+      "label": "Distribución acumulada y colas",
+      "route": "/articles/distribution-functions-tails",
+      "terms": [
+        "acumulada",
+        "cola",
+        "colas"
+      ],
+      "help": "Relaciona áreas acumuladas, probabilidades de intervalos y complementos."
+    },
+    "markov": {
+      "label": "Cadenas de Markov y estados estacionarios",
+      "route": "/articles/markov-chains",
+      "terms": [
+        "Markov",
+        "estacionaria",
+        "transición",
+        "transiciones"
+      ],
+      "help": "Multiplica las transiciones de cada camino y suma sobre estados intermedios."
+    },
+    "descriptive": {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "terms": [
+        "media",
+        "mediana",
+        "varianza",
+        "desviación típica",
+        "desviaciones"
+      ],
+      "help": "Distingue posición de dispersión y especifica el divisor de la varianza."
+    },
+    "bessel": {
+      "label": "Corrección de Bessel y grados de libertad",
+      "route": "/articles/bessel-correction",
+      "terms": [
+        "corrección muestral",
+        "Bessel",
+        "grados de libertad",
+        "sesgo",
+        "divisor muestral"
+      ],
+      "help": "Distingue describir la lista observada de estimar sin sesgo una varianza poblacional."
+    },
+    "moments": {
+      "label": "Transformaciones de medias y varianzas",
+      "route": "/articles/moment-transformations",
+      "terms": [
+        "transformación",
+        "transformada",
+        "linealmente"
+      ],
+      "help": "El desplazamiento afecta a la media y la escala entra al cuadrado en la varianza."
+    },
+    "covariance": {
+      "label": "Covarianza y correlación",
+      "route": "/articles/covariance",
+      "terms": [
+        "covarianza",
+        "correlación",
+        "Pearson"
+      ],
+      "help": "Centra los datos y distingue asociación lineal de causalidad."
+    },
+    "regression": {
+      "label": "Regresión lineal y residuos",
+      "route": "/articles/linear-regression",
+      "terms": [
+        "regresión",
+        "residuos",
+        "recta de mínimos cuadrados"
+      ],
+      "help": "Interpreta la pendiente, el ajuste y el signo de cada residuo."
+    },
+    "simpson": {
+      "label": "Paradoja de Simpson y medias ponderadas",
+      "route": "/articles/simpson-paradox",
+      "terms": [
+        "paradoja",
+        "agregada",
+        "agregación",
+        "pesos",
+        "ponderada"
+      ],
+      "help": "Calcula primero por grupos y después con los pesos reales de cada grupo."
+    },
+    "diagnostics": {
+      "label": "Diagramas de dispersión y diagnósticos",
+      "route": "/articles/graphical-diagnostics",
+      "terms": [
+        "Datasaurus",
+        "diagrama de dispersión",
+        "atípicos"
+      ],
+      "help": "Inspecciona la forma de los datos además de sus resúmenes."
+    },
+    "sampling": {
+      "label": "Distribución de la media y error estándar",
+      "route": "/articles/sampling-distributions",
+      "terms": [
+        "error estándar",
+        "media muestral",
+        "promedio"
+      ],
+      "help": "Separa la dispersión de las observaciones de la dispersión de su media."
+    },
+    "normal-prob": {
+      "label": "Normal estándar, tipificación y cuantiles",
+      "route": "/articles/normal-distribution",
+      "terms": [
+        "normal estándar",
+        "normalidad",
+        "estandarizamos",
+        "estandarizar",
+        "tipificar"
+      ],
+      "help": "Resta la media y divide por la desviación típica, no por la varianza."
+    },
+    "inference": {
+      "label": "Intervalos, cobertura y contraste de hipótesis",
+      "route": "/articles/statistical-inference",
+      "terms": [
+        "confianza",
+        "cobertura",
+        "hipótesis nula",
+        "contraste",
+        "bilateral",
+        "nivel",
+        "rechazar"
+      ],
+      "help": "Interpreta el procedimiento repetido y distingue significación de tamaño del efecto."
+    },
+    "proportion": {
+      "label": "Intervalos y tamaño muestral para proporciones",
+      "route": "/articles/proportion-intervals",
+      "terms": [
+        "proporción",
+        "margen",
+        "aproximación normal"
+      ],
+      "help": "Comprueba los tamaños de éxitos y fallos y el margen antes de usar la aproximación."
+    },
+    "bias": {
+      "label": "Sesgo de selección y representatividad",
+      "route": "/articles/sampling-bias",
+      "terms": [
+        "sesgo de selección",
+        "representativa",
+        "representación"
+      ],
+      "help": "Un tamaño grande no corrige una selección que excluye parte de la población."
+    },
+    "strata": {
+      "label": "Muestreo estratificado y asignación proporcional",
+      "route": "/articles/stratified-sampling",
+      "terms": [
+        "estratos",
+        "estratificado",
+        "asignación proporcional"
+      ],
+      "help": "Reparte la muestra según pesos y selecciona aleatoriamente dentro de cada grupo."
+    },
+    "reflection": {
+      "label": "Principio de reflexión",
+      "route": "/articles/reflection-principle",
+      "terms": [
+        "reflejar",
+        "reflexión"
+      ],
+      "help": "Construye una correspondencia entre los caminos que incumplen la restricción y otros caminos contables."
+    },
+    "catalan": {
+      "label": "Números de Catalan",
+      "route": "/articles/catalan-numbers",
+      "terms": [
+        "Catalan",
+        "paréntesis",
+        "prefijo"
+      ],
+      "help": "Relaciona palabras bien equilibradas con caminos que no cruzan una diagonal."
+    },
+    "graphs": {
+      "label": "Grafos: vértices, aristas, grados y conectividad",
+      "route": "/articles/graph-foundations",
+      "terms": [
+        "grafo",
+        "grado",
+        "vértice",
+        "aristas",
+        "conexo"
+      ],
+      "help": "Cuenta incidencias y distingue aristas de vértices."
+    },
+    "eulerian": {
+      "label": "Recorridos y circuitos eulerianos",
+      "route": "/articles/euler-hamilton",
+      "terms": [
+        "euleriano",
+        "circuito",
+        "recorrido"
+      ],
+      "help": "Comprueba conectividad y número de vértices impares antes de construir un recorrido."
+    },
+    "inclusion": {
+      "label": "Inclusión y exclusión",
+      "route": "/articles/inclusion-exclusion",
+      "terms": [
+        "inclusión-exclusión",
+        "inclusión y exclusión",
+        "intersecciones"
+      ],
+      "help": "Corrige los elementos contados más de una vez."
+    },
+    "grid": {
+      "label": "Conteo de líneas y caminos en tableros",
+      "route": "/articles/grid-counting",
+      "terms": [
+        "diagonales",
+        "segmentos",
+        "camino"
+      ],
+      "help": "Clasifica por dirección y evita duplicados."
+    },
+    "symmetry": {
+      "label": "Permutaciones, simetrías y orden",
+      "route": "/articles/permutation-symmetries",
+      "terms": [
+        "simetría",
+        "permutación",
+        "orden de",
+        "rotación"
+      ],
+      "help": "Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad."
+    },
+    "burnside": {
+      "label": "Lema de Burnside y coloraciones fijas",
+      "route": "/articles/burnside-lemma",
+      "terms": [
+        "Burnside",
+        "coloraciones",
+        "rotaciones"
+      ],
+      "help": "Cuenta los diseños fijos por cada simetría; no dividas siempre por el tamaño del grupo."
+    },
+    "sudoku": {
+      "label": "Restricciones y simetrías del sudoku",
+      "route": "/articles/sudoku-constraints",
+      "terms": [
+        "sudoku",
+        "bandas"
+      ],
+      "help": "Comprueba qué permutaciones preservan filas, columnas y bloques."
+    },
+    "rubik": {
+      "label": "Invariantes y movimientos del cubo",
+      "route": "/articles/rubik-invariants",
+      "terms": [
+        "cubo",
+        "giro"
+      ],
+      "help": "Relaciona la permutación de piezas con el orden del movimiento."
+    },
+    "life": {
+      "label": "Autómatas celulares y osciladores de Vida",
+      "route": "/articles/life-patterns",
+      "terms": [
+        "vecinas",
+        "oscilador",
+        "nace",
+        "sobrevive"
+      ],
+      "help": "Calcula todas las celdas nuevas a partir del estado anterior, de forma simultánea."
+    },
+    "kepler": {
+      "label": "Órbitas de Kepler y leyes de escala",
+      "route": "/articles/kepler-orbits",
+      "terms": [
+        "órbita",
+        "órbitas",
+        "velocidad orbital",
+        "período"
+      ],
+      "help": "Separa radio al centro, velocidad y período al cambiar la escala."
+    },
+    "solar": {
+      "label": "Geometría solar y altura del Sol",
+      "route": "/articles/solar-geometry",
+      "terms": [
+        "altura solar",
+        "declinación",
+        "latitud"
+      ],
+      "help": "Identifica latitud, declinación y ángulo horario en el modelo."
+    },
+    "utc": {
+      "label": "Fechas UTC y aritmética de husos",
+      "route": "/articles/utc-date-arithmetic",
+      "terms": [
+        "UTC",
+        "huso",
+        "husos"
+      ],
+      "help": "Convierte ambos instantes a una misma referencia antes de restar."
+    },
+    "cantor": {
+      "label": "Conjunto de Cantor",
+      "route": "/articles/cantor-set",
+      "terms": [
+        "Cantor",
+        "tercio",
+        "longitud total"
+      ],
+      "help": "Separa cada etapa finita del conjunto límite."
+    },
+    "dimension": {
+      "label": "Medida y dimensión fractal",
+      "route": "/articles/zero-measure-dimension",
+      "terms": [
+        "dimensión",
+        "medida",
+        "longitud cero"
+      ],
+      "help": "Distingue cardinalidad, medida y dimensión: no responden a la misma pregunta."
+    },
+    "homothety": {
+      "label": "Homotecia y leyes de escala",
+      "route": "/articles/homothety",
+      "terms": [
+        "homotecia",
+        "factor de escala",
+        "escala"
+      ],
+      "help": "Eleva la razón a dos para áreas y a tres para volúmenes."
+    },
+    "barycenter": {
+      "label": "Baricentro y centro de masas",
+      "route": "/articles/barycenter",
+      "terms": [
+        "baricentro",
+        "centro de masas"
+      ],
+      "help": "Pondera las coordenadas por las masas y comprueba si son iguales."
+    },
+    "apothem": {
+      "label": "Apotema y área de polígonos regulares",
+      "route": "/articles/apothem",
+      "terms": [
+        "apotema"
+      ],
+      "help": "Divide el polígono en triángulos para relacionar apotema, perímetro y área."
+    },
+    "insphere": {
+      "label": "Esferas inscritas y circunscritas",
+      "route": "/articles/inspheres-circumspheres",
+      "terms": [
+        "esfera inscrita",
+        "radio de la esfera"
+      ],
+      "help": "Relaciona la distancia a las caras con el radio interior."
+    },
+    "polyhedron": {
+      "label": "Fórmula de Euler para poliedros",
+      "route": "/articles/euler-polyhedron-formula",
+      "terms": [
+        "Euler",
+        "caras",
+        "vértices"
+      ],
+      "help": "Cuenta caras, aristas y vértices bajo las hipótesis de un poliedro convexo."
+    },
+    "units": {
+      "label": "Análisis dimensional",
+      "route": "/articles/dimensional-analysis",
+      "terms": [
+        "dimensiones",
+        "dimensional",
+        "unidades",
+        "adimensional"
+      ],
+      "help": "Iguala los exponentes de las dimensiones y distingue escala de constante física."
+    },
+    "partials": {
+      "label": "Derivadas parciales y minimización",
+      "route": "/articles/partial-derivatives-minimization",
+      "terms": [
+        "derivar respecto",
+        "derivadas parciales"
+      ],
+      "help": "Distingue los parámetros del ajuste y resuelve sus condiciones de mínimo."
+    },
+    "plot": {
+      "label": "Trazador de funciones",
+      "route": "/tools/graph-plotter",
+      "terms": [],
+      "help": "Representa la función del enunciado y comprueba visualmente ceros, pendientes y extremos."
+    },
+    "prime-tool": {
+      "label": "Descomposición en primos",
+      "route": "/tools/prime-decomposition",
+      "terms": [],
+      "help": "Descompón los enteros del problema y contrasta sus exponentes y divisores."
+    },
+    "matrix-tool": {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "terms": [],
+      "help": "Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes."
+    },
+    "implicit-tool": {
+      "label": "Trazador de curvas implícitas",
+      "route": "/tools/implicit-curve-graph",
+      "terms": [],
+      "help": "Dibuja la ecuación cartesiana y comprueba centro, cortes o asíntotas."
+    },
+    "vector-tool": {
+      "label": "Explorador de campos vectoriales",
+      "route": "/tools/vector-field",
+      "terms": [],
+      "help": "Representa el campo y sigue sus trayectorias desde diferentes puntos iniciales."
+    },
+    "prob-tool": {
+      "label": "Laboratorio de probabilidad",
+      "route": "/tools/probability-lab",
+      "terms": [],
+      "help": "Compara frecuencias simuladas con el valor teórico y observa la variación entre muestras."
+    },
+    "sun-tool": {
+      "label": "Posición del Sol",
+      "route": "/tools/sun-position",
+      "terms": [],
+      "help": "Contrasta el modelo ideal con un lugar, fecha y hora definidos."
+    },
+    "travel-tool": {
+      "label": "Planificador de viajes y husos",
+      "route": "/tools/travel-planner",
+      "terms": [],
+      "help": "Compara horas locales con el instante UTC y revisa las zonas horarias."
+    },
+    "detective": {
+      "label": "Detective de probabilidad",
+      "route": "/games/probability-detective",
+      "terms": [],
+      "help": "Practica cómo una evidencia cambia las probabilidades sin olvidar la tasa base."
+    },
+    "tic-game": {
+      "label": "Tres en raya",
+      "route": "/games/tic-tac-toe",
+      "terms": [],
+      "help": "Localiza cada línea ganadora en el tablero y comprueba el conteo por direcciones."
+    },
+    "four-game": {
+      "label": "Cuatro en raya",
+      "route": "/games/four-in-a-row",
+      "terms": [],
+      "help": "Identifica los segmentos horizontales, verticales y diagonales de cuatro casillas."
+    },
+    "sudoku-game": {
+      "label": "Sudoku",
+      "route": "/games/sudoku",
+      "terms": [],
+      "help": "Comprueba en un tablero cómo las restricciones se conservan bajo las simetrías válidas."
+    },
+    "rubik-game": {
+      "label": "Cubo de Rubik",
+      "route": "/games/rubik-cube",
+      "terms": [],
+      "help": "Repite el giro indicado y cuenta cuántas aplicaciones recuperan la posición inicial."
+    },
+    "life-game": {
+      "label": "Juego de la Vida",
+      "route": "/games/game-of-life",
+      "terms": [],
+      "help": "Construye el patrón y avanza una generación para comprobar nacimientos, supervivencias y oscilación."
+    },
+    "gravity-game": {
+      "label": "Simulador de gravedad",
+      "route": "/games/gravity",
+      "terms": [],
+      "help": "Explora órbitas y distingue el modelo de masa central fija de una simulación de varios cuerpos."
+    },
+    "pi-tool": {
+      "label": "Decimales de π",
+      "route": "/tools/pi-decimals",
+      "terms": [],
+      "help": "Explora el valor decimal de π después de demostrar las cotas exactas; una aproximación no sustituye la prueba."
+    }
+  },
+  "problems": {
+    "1": [
+      "gcd",
+      "bezout",
+      "division",
+      "prime-tool"
+    ],
+    "2": [
+      "modular",
+      "gcd",
+      "linear-congruence"
+    ],
+    "3": [
+      "modular",
+      "crt"
+    ],
+    "4": [
+      "modular",
+      "division"
+    ],
+    "5": [
+      "totient",
+      "primes",
+      "inclusion",
+      "finite",
+      "prime-tool"
+    ],
+    "6": [
+      "diophantine",
+      "modular",
+      "signs"
+    ],
+    "7": [
+      "pell",
+      "factoring",
+      "proof"
+    ],
+    "8": [
+      "primes",
+      "modular",
+      "fermat",
+      "proof"
+    ],
+    "9": [
+      "primes",
+      "valuations",
+      "counting",
+      "prime-tool"
+    ],
+    "10": [
+      "proof",
+      "primes",
+      "valuations"
+    ],
+    "11": [
+      "degree",
+      "monic",
+      "roots",
+      "factor",
+      "ruffini",
+      "rational-roots",
+      "factoring"
+    ],
+    "12": [
+      "quadratic",
+      "discriminant",
+      "vieta",
+      "signs"
+    ],
+    "13": [
+      "degree",
+      "poly-division",
+      "factor",
+      "modular"
+    ],
+    "14": [
+      "cauchy",
+      "means",
+      "squaring"
+    ],
+    "15": [
+      "degree",
+      "partial-fractions",
+      "equivalence",
+      "gauss"
+    ],
+    "16": [
+      "gauss",
+      "equivalence",
+      "matrix-tool"
+    ],
+    "17": [
+      "eigen",
+      "vectors",
+      "basis",
+      "matrix-tool"
+    ],
+    "18": [
+      "det",
+      "vectors",
+      "matrix-tool"
+    ],
+    "19": [
+      "projection",
+      "normal",
+      "dot",
+      "norm",
+      "matrix-tool"
+    ],
+    "20": [
+      "eigen",
+      "jordan",
+      "binomial",
+      "matrix-tool"
+    ],
+    "21": [
+      "heron",
+      "triangle"
+    ],
+    "22": [
+      "triangle",
+      "stewart",
+      "pythagoras"
+    ],
+    "23": [
+      "ceva",
+      "triangle",
+      "similar"
+    ],
+    "24": [
+      "power-point",
+      "similar",
+      "pythagoras"
+    ],
+    "25": [
+      "shoelace",
+      "pick"
+    ],
+    "26": [
+      "line-circle",
+      "quadratic",
+      "discriminant",
+      "implicit-tool"
+    ],
+    "27": [
+      "conics",
+      "factoring",
+      "implicit-tool"
+    ],
+    "28": [
+      "planes",
+      "normal",
+      "dot",
+      "norm",
+      "projection"
+    ],
+    "29": [
+      "planes",
+      "cross",
+      "norm"
+    ],
+    "30": [
+      "triple",
+      "det",
+      "area",
+      "matrix-tool"
+    ],
+    "31": [
+      "trig",
+      "trig-eq",
+      "quadratic",
+      "equivalence",
+      "radians"
+    ],
+    "32": [
+      "height",
+      "trig",
+      "similar"
+    ],
+    "33": [
+      "trig",
+      "trig-eq",
+      "roots",
+      "radians"
+    ],
+    "34": [
+      "trig",
+      "proof"
+    ],
+    "35": [
+      "cosine-rule",
+      "triangle",
+      "trig"
+    ],
+    "36": [
+      "complex",
+      "moivre",
+      "radians"
+    ],
+    "37": [
+      "complex",
+      "factoring",
+      "line-circle",
+      "squaring",
+      "implicit-tool"
+    ],
+    "38": [
+      "complex",
+      "moivre",
+      "radians"
+    ],
+    "39": [
+      "complex",
+      "mobius",
+      "equivalence"
+    ],
+    "40": [
+      "unity",
+      "geometric",
+      "moivre"
+    ],
+    "41": [
+      "monotone",
+      "induction",
+      "continuity",
+      "recurrence"
+    ],
+    "42": [
+      "asymptotic",
+      "geometric",
+      "squeeze",
+      "induction"
+    ],
+    "43": [
+      "recurrence",
+      "geometric",
+      "induction"
+    ],
+    "44": [
+      "telescoping",
+      "partial-fractions",
+      "integral"
+    ],
+    "45": [
+      "series",
+      "comparison",
+      "integral"
+    ],
+    "46": [
+      "taylor",
+      "asymptotic",
+      "trig"
+    ],
+    "47": [
+      "factoring",
+      "equivalence",
+      "continuity"
+    ],
+    "48": [
+      "continuity",
+      "derivative",
+      "tangent"
+    ],
+    "49": [
+      "continuity",
+      "derivative",
+      "squeeze",
+      "trig"
+    ],
+    "50": [
+      "bolzano",
+      "derivative",
+      "function",
+      "degree",
+      "plot"
+    ],
+    "51": [
+      "derivative",
+      "tangent",
+      "logarithms",
+      "plot"
+    ],
+    "52": [
+      "derivative",
+      "function",
+      "convexity",
+      "logarithms",
+      "plot"
+    ],
+    "53": [
+      "logarithms",
+      "derivative",
+      "extrema",
+      "proof"
+    ],
+    "54": [
+      "newton",
+      "derivative",
+      "quadratic"
+    ],
+    "55": [
+      "taylor",
+      "derivative",
+      "logarithms"
+    ],
+    "56": [
+      "optimize",
+      "derivative",
+      "extrema"
+    ],
+    "57": [
+      "optimize",
+      "derivative",
+      "extrema",
+      "equivalence"
+    ],
+    "58": [
+      "optimize",
+      "derivative",
+      "extrema",
+      "pythagoras"
+    ],
+    "59": [
+      "ode",
+      "logarithms"
+    ],
+    "60": [
+      "first-integrals",
+      "derivative",
+      "trig",
+      "vector-tool"
+    ],
+    "61": [
+      "integral",
+      "substitution",
+      "derivative",
+      "logarithms"
+    ],
+    "62": [
+      "integral",
+      "parts",
+      "derivative",
+      "logarithms"
+    ],
+    "63": [
+      "integral",
+      "partial-fractions",
+      "factoring",
+      "logarithms"
+    ],
+    "64": [
+      "integral",
+      "substitution",
+      "trig-integral",
+      "trig"
+    ],
+    "65": [
+      "improper",
+      "integral",
+      "logarithms",
+      "asymptotic"
+    ],
+    "66": [
+      "area",
+      "integral",
+      "signs",
+      "quadratic"
+    ],
+    "67": [
+      "area",
+      "integral",
+      "units"
+    ],
+    "68": [
+      "arc",
+      "derivative",
+      "substitution",
+      "pythagoras"
+    ],
+    "69": [
+      "quadrature",
+      "integral",
+      "convexity"
+    ],
+    "70": [
+      "integral",
+      "area",
+      "squaring",
+      "pi-tool"
+    ],
+    "71": [
+      "finite",
+      "conditional",
+      "counting",
+      "prob-tool"
+    ],
+    "72": [
+      "finite",
+      "hypergeometric",
+      "counting",
+      "conditional",
+      "tree"
+    ],
+    "73": [
+      "bayes",
+      "conditional",
+      "finite",
+      "tree",
+      "detective"
+    ],
+    "74": [
+      "conditional",
+      "finite"
+    ],
+    "75": [
+      "monty",
+      "conditional",
+      "finite"
+    ],
+    "76": [
+      "bernoulli",
+      "counting",
+      "expectation",
+      "conditional",
+      "prob-tool"
+    ],
+    "77": [
+      "geometric-prob",
+      "conditional",
+      "expectation",
+      "cdf"
+    ],
+    "78": [
+      "density",
+      "integral",
+      "cdf",
+      "moments"
+    ],
+    "79": [
+      "expectation",
+      "finite"
+    ],
+    "80": [
+      "markov",
+      "conditional",
+      "gauss",
+      "matrix-tool"
+    ],
+    "81": [
+      "descriptive",
+      "bessel"
+    ],
+    "82": [
+      "moments",
+      "descriptive",
+      "units"
+    ],
+    "83": [
+      "regression",
+      "covariance",
+      "least-squares",
+      "cauchy"
+    ],
+    "84": [
+      "simpson",
+      "descriptive",
+      "bias"
+    ],
+    "85": [
+      "diagnostics",
+      "regression",
+      "covariance"
+    ],
+    "86": [
+      "sampling",
+      "moments",
+      "conditional"
+    ],
+    "87": [
+      "inference",
+      "normal-prob",
+      "sampling"
+    ],
+    "88": [
+      "inference",
+      "normal-prob",
+      "sampling"
+    ],
+    "89": [
+      "proportion",
+      "bernoulli",
+      "sampling"
+    ],
+    "90": [
+      "bias",
+      "strata"
+    ],
+    "91": [
+      "counting",
+      "reflection",
+      "catalan"
+    ],
+    "92": [
+      "graphs",
+      "eulerian"
+    ],
+    "93": [
+      "grid",
+      "counting",
+      "tic-game",
+      "four-game"
+    ],
+    "94": [
+      "sudoku",
+      "symmetry",
+      "sudoku-game"
+    ],
+    "95": [
+      "symmetry",
+      "rubik",
+      "rubik-game"
+    ],
+    "96": [
+      "life",
+      "life-game"
+    ],
+    "97": [
+      "kepler",
+      "units",
+      "gravity-game"
+    ],
+    "98": [
+      "solar",
+      "trig",
+      "radians",
+      "sun-tool"
+    ],
+    "99": [
+      "utc",
+      "travel-tool"
+    ],
+    "100": [
+      "cantor",
+      "dimension",
+      "geometric"
+    ],
+    "101": [
+      "division",
+      "modular"
+    ],
+    "102": [
+      "factorial",
+      "valuations",
+      "primes",
+      "prime-tool"
+    ],
+    "103": [
+      "modular",
+      "bezout",
+      "linear-congruence"
+    ],
+    "104": [
+      "primes",
+      "valuations",
+      "counting",
+      "prime-tool"
+    ],
+    "105": [
+      "modular",
+      "fermat",
+      "division"
+    ],
+    "106": [
+      "crt",
+      "modular"
+    ],
+    "107": [
+      "decimal",
+      "geometric"
+    ],
+    "108": [
+      "modular",
+      "squaring",
+      "proof"
+    ],
+    "109": [
+      "continued",
+      "equivalence"
+    ],
+    "110": [
+      "proof",
+      "primes",
+      "valuations"
+    ],
+    "111": [
+      "equivalence",
+      "factoring",
+      "gauss"
+    ],
+    "112": [
+      "factoring",
+      "roots",
+      "degree"
+    ],
+    "113": [
+      "signs",
+      "equivalence"
+    ],
+    "114": [
+      "factoring",
+      "quadratic",
+      "extrema"
+    ],
+    "115": [
+      "factoring",
+      "squaring",
+      "means"
+    ],
+    "116": [
+      "vectors",
+      "basis",
+      "gauss",
+      "matrix-tool"
+    ],
+    "117": [
+      "vectors",
+      "gauss",
+      "det",
+      "matrix-tool"
+    ],
+    "118": [
+      "dot",
+      "norm",
+      "gram",
+      "matrix-tool"
+    ],
+    "119": [
+      "least-squares",
+      "descriptive",
+      "partials"
+    ],
+    "120": [
+      "det",
+      "gauss",
+      "equivalence",
+      "matrix-tool"
+    ],
+    "121": [
+      "similar",
+      "triangle"
+    ],
+    "122": [
+      "triangle",
+      "pythagoras",
+      "heron"
+    ],
+    "123": [
+      "apothem",
+      "trig",
+      "triangle"
+    ],
+    "124": [
+      "homothety",
+      "units"
+    ],
+    "125": [
+      "barycenter",
+      "vectors"
+    ],
+    "126": [
+      "insphere",
+      "pythagoras"
+    ],
+    "127": [
+      "cross",
+      "normal",
+      "dot",
+      "matrix-tool"
+    ],
+    "128": [
+      "planes",
+      "pythagoras",
+      "triangle"
+    ],
+    "129": [
+      "polyhedron",
+      "graphs"
+    ],
+    "130": [
+      "power-point",
+      "pythagoras"
+    ],
+    "131": [
+      "radians",
+      "trig"
+    ],
+    "132": [
+      "trig-eq",
+      "trig",
+      "radians"
+    ],
+    "133": [
+      "inverse-trig",
+      "trig",
+      "radians"
+    ],
+    "134": [
+      "cosine-rule",
+      "trig",
+      "triangle"
+    ],
+    "135": [
+      "sine-rule",
+      "triangle",
+      "trig"
+    ],
+    "136": [
+      "complex",
+      "factoring"
+    ],
+    "137": [
+      "complex",
+      "equivalence"
+    ],
+    "138": [
+      "moivre",
+      "complex",
+      "roots"
+    ],
+    "139": [
+      "complex",
+      "moivre",
+      "symmetry"
+    ],
+    "140": [
+      "complex",
+      "line-circle",
+      "quadratic",
+      "squaring",
+      "implicit-tool"
+    ],
+    "141": [
+      "geometric",
+      "proof"
+    ],
+    "142": [
+      "degree",
+      "asymptotic",
+      "equivalence"
+    ],
+    "143": [
+      "squeeze",
+      "absolute"
+    ],
+    "144": [
+      "recurrence",
+      "geometric",
+      "logarithms"
+    ],
+    "145": [
+      "telescoping",
+      "partial-fractions",
+      "asymptotic"
+    ],
+    "146": [
+      "factoring",
+      "equivalence",
+      "continuity"
+    ],
+    "147": [
+      "factoring",
+      "continuity",
+      "equivalence"
+    ],
+    "148": [
+      "bolzano",
+      "derivative",
+      "function",
+      "degree"
+    ],
+    "149": [
+      "comparison",
+      "telescoping",
+      "series"
+    ],
+    "150": [
+      "recurrence",
+      "geometric",
+      "logarithms"
+    ],
+    "151": [
+      "derivative",
+      "factoring"
+    ],
+    "152": [
+      "derivative",
+      "tangent"
+    ],
+    "153": [
+      "derivative",
+      "equivalence"
+    ],
+    "154": [
+      "derivative",
+      "extrema",
+      "equivalence"
+    ],
+    "155": [
+      "derivative",
+      "function",
+      "signs"
+    ],
+    "156": [
+      "mvt",
+      "derivative"
+    ],
+    "157": [
+      "newton",
+      "derivative"
+    ],
+    "158": [
+      "ode",
+      "logarithms"
+    ],
+    "159": [
+      "taylor",
+      "logarithms",
+      "degree"
+    ],
+    "160": [
+      "absolute",
+      "continuity",
+      "derivative"
+    ],
+    "161": [
+      "integral",
+      "derivative"
+    ],
+    "162": [
+      "integral",
+      "area",
+      "signs"
+    ],
+    "163": [
+      "integral",
+      "substitution",
+      "derivative"
+    ],
+    "164": [
+      "integral",
+      "parts",
+      "derivative",
+      "logarithms"
+    ],
+    "165": [
+      "improper",
+      "integral",
+      "asymptotic"
+    ],
+    "166": [
+      "area",
+      "integral",
+      "units"
+    ],
+    "167": [
+      "arc",
+      "derivative",
+      "pythagoras"
+    ],
+    "168": [
+      "integral",
+      "mvt"
+    ],
+    "169": [
+      "quadrature",
+      "convexity",
+      "integral"
+    ],
+    "170": [
+      "euler",
+      "ode",
+      "logarithms"
+    ],
+    "171": [
+      "tree",
+      "conditional",
+      "finite"
+    ],
+    "172": [
+      "bayes",
+      "conditional",
+      "finite",
+      "detective"
+    ],
+    "173": [
+      "finite",
+      "conditional",
+      "bernoulli",
+      "prob-tool"
+    ],
+    "174": [
+      "bernoulli",
+      "counting",
+      "conditional"
+    ],
+    "175": [
+      "hypergeometric",
+      "counting",
+      "finite"
+    ],
+    "176": [
+      "geometric-prob",
+      "conditional",
+      "cdf"
+    ],
+    "177": [
+      "expectation",
+      "finite"
+    ],
+    "178": [
+      "density",
+      "cdf",
+      "integral"
+    ],
+    "179": [
+      "normal-prob",
+      "cdf",
+      "descriptive"
+    ],
+    "180": [
+      "markov",
+      "conditional",
+      "tree",
+      "matrix-tool"
+    ],
+    "181": [
+      "descriptive",
+      "diagnostics"
+    ],
+    "182": [
+      "descriptive",
+      "squaring"
+    ],
+    "183": [
+      "descriptive",
+      "bessel",
+      "sampling"
+    ],
+    "184": [
+      "moments",
+      "descriptive",
+      "units"
+    ],
+    "185": [
+      "covariance",
+      "descriptive"
+    ],
+    "186": [
+      "regression",
+      "least-squares",
+      "partials",
+      "covariance"
+    ],
+    "187": [
+      "sampling",
+      "moments",
+      "conditional",
+      "expectation"
+    ],
+    "188": [
+      "strata",
+      "counting",
+      "bias"
+    ],
+    "189": [
+      "proportion",
+      "sampling",
+      "inference"
+    ],
+    "190": [
+      "simpson",
+      "descriptive",
+      "bias"
+    ],
+    "191": [
+      "counting",
+      "finite"
+    ],
+    "192": [
+      "counting",
+      "grid"
+    ],
+    "193": [
+      "inclusion",
+      "finite"
+    ],
+    "194": [
+      "binomial",
+      "counting",
+      "degree"
+    ],
+    "195": [
+      "graphs",
+      "eulerian"
+    ],
+    "196": [
+      "burnside",
+      "symmetry",
+      "counting"
+    ],
+    "197": [
+      "catalan",
+      "counting",
+      "reflection"
+    ],
+    "198": [
+      "life",
+      "life-game"
+    ],
+    "199": [
+      "units",
+      "gauss"
+    ],
+    "200": [
+      "kepler",
+      "units",
+      "gravity-game"
+    ]
+  }
+}

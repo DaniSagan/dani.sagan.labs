@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class TiempoHastaElPrimerExitoProblemComponent {
   static readonly title = "Tiempo hasta el primer éxito";
-  static readonly route = "problema-077";
+  static readonly route = "waiting-for-first-success";
   static readonly problem: PracticeProblem = {
   "id": "problema-077",
+  "route": "waiting-for-first-success",
   "number": 77,
   "title": "Tiempo hasta el primer éxito",
   "category": "Probabilidad",
@@ -39,11 +40,6 @@ export class TiempoHastaElPrimerExitoProblemComponent {
       "activity": "Estados, transiciones y evolución de distribuciones en procesos discretos."
     },
     {
-      "label": "Laboratorio de probabilidad",
-      "route": "/tools/probability-lab",
-      "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
-    },
-    {
       "label": "Progresiones y series geométricas",
       "route": "/articles/geometric-series",
       "activity": "Reconoce la razón multiplicativa y distingue suma finita, límite y resto geométrico."
@@ -52,6 +48,11 @@ export class TiempoHastaElPrimerExitoProblemComponent {
       "label": "Función de distribución, colas y probabilidades acumuladas",
       "route": "/articles/distribution-functions-tails",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
     }
   ]
 };

@@ -13,41 +13,37 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class IndependenciaDeSucesosProblemComponent {
   static readonly title = "Independencia de sucesos";
-  static readonly route = "problema-074";
+  static readonly route = "independence-of-events";
   static readonly problem: PracticeProblem = {
-    "id": "problema-074",
-    "number": 74,
-    "title": "Independencia de sucesos",
-    "category": "Probabilidad",
-    "topic": "Conteo y probabilidad condicionada",
-    "level": "Oposición",
-    "statement": "En un dado equilibrado, \\(A={2,4,6}\\) y \\(B={3,6}\\). Decide si son independientes. Repite con \\(C={4,5,6}\\) en lugar de B.",
-    "resources": [
-      {
-        "label": "Probabilidad en espacios finitos: sucesos y regla de Laplace",
-        "route": "/articles/finite-probability",
-        "activity": "Define los resultados elementales, justifica su equiprobabilidad y cuenta la intersección antes de condicionar o comprobar independencia."
-      },
-      {
-        "label": "Probabilidad condicionada e independencia",
-        "route": "/articles/conditional-independence",
-        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-      },
-      {
-        "label": "Teorema de Bayes",
-        "route": "/articles/bayes-theorem",
-        "activity": "Probabilidades condicionadas, probabilidades totales e inversión de la condición."
-      },
-      {
-        "label": "Laboratorio de probabilidad",
-        "route": "/tools/probability-lab",
-        "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
-      },
-      {
-        "label": "Covarianza, dependencia y varianza de una suma",
-        "route": "/articles/covariance",
-        "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
-      }
-    ]
-  };
+  "id": "problema-074",
+  "route": "independence-of-events",
+  "number": 74,
+  "title": "Independencia de sucesos",
+  "category": "Probabilidad",
+  "topic": "Conteo y probabilidad condicionada",
+  "level": "Oposición",
+  "statement": "En un dado equilibrado, \\(A={2,4,6}\\) y \\(B={3,6}\\). Decide si son independientes. Repite con \\(C={4,5,6}\\) en lugar de B.",
+  "resources": [
+    {
+      "label": "Probabilidad en espacios finitos: sucesos y regla de Laplace",
+      "route": "/articles/finite-probability",
+      "activity": "Define los resultados elementales, justifica su equiprobabilidad y cuenta la intersección antes de condicionar o comprobar independencia."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Teorema de Bayes",
+      "route": "/articles/bayes-theorem",
+      "activity": "Probabilidades condicionadas, probabilidades totales e inversión de la condición."
+    },
+    {
+      "label": "Covarianza, dependencia y varianza de una suma",
+      "route": "/articles/covariance",
+      "activity": "Incluye las covarianzas al transformar o sumar variables y distingue incorrelación de independencia."
+    }
+  ]
+};
 }

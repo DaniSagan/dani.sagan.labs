@@ -6,13 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de x eˣ entre 0 y 1 justificando la fórmula usada.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="parts">Integración por partes</a>. Obtén la fórmula desde la derivada de un producto e incluye ambos términos de borde.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La regla del producto dice (uv)′=u′v+uv′. Al integrar y despejar obtenemos la fórmula por partes: integral de u v′ = uv menos integral de u′v.</li>
-      <li>Elegimos u=x y v′=eˣ. Entonces u′=1 y podemos tomar v=eˣ, porque su derivada vuelve a ser eˣ.</li>
-      <li>Una primitiva de xeˣ es xeˣ−eˣ=(x−1)eˣ. Evaluamos en 1: (1−1)e=0; en 0: (0−1)·1=−1.</li>
-      <li>La integral definida es valor superior menos inferior: 0−(−1)=1. Al derivar (x−1)eˣ obtenemos eˣ+(x−1)eˣ=xeˣ, confirmando la primitiva.</li>
+      <li>La <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">regla del producto</a> dice (uv)′=u′v+uv′. Al integrar y despejar obtenemos la fórmula <a data-prerequisite="parts" routerLink="/articles/integration-classical" fragment="parts">por partes</a>: integral de u v′ = uv menos integral de u′v.</li>
+      <li>Elegimos u=x y v′=eˣ. Entonces u′=1 y podemos tomar v=eˣ, porque su <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> vuelve a ser eˣ.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> de xeˣ es xeˣ−eˣ=(x−1)eˣ. Evaluamos en 1: (1−1)e=0; en 0: (0−1)·1=−1.</li>
+      <li>La <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">integral definida</a> es valor superior menos inferior: 0−(−1)=1. Al derivar (x−1)eˣ obtenemos eˣ+(x−1)eˣ=xeˣ, confirmando la primitiva.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> La integral vale 1.</p>
     <app-formula expression="\int_0^1 xe^x\,dx=1" [showCodeButton]="false" />

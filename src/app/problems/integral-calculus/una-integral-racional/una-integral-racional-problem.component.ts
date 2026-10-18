@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIntegralRacionalProblemComponent {
   static readonly title = "Una integral racional";
-  static readonly route = "problema-063";
+  static readonly route = "rational-integral";
   static readonly problem: PracticeProblem = {
-    "id": "problema-063",
-    "number": 63,
-    "title": "Una integral racional",
-    "category": "Integración y cálculo numérico",
-    "topic": "Primitivas e integrales",
-    "level": "Oposición",
-    "statement": "Calcula \\(\\int_0^1\\frac{1}{x^2+3x+2}\\,dx\\).",
-    "resources": [
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      }
-    ]
-  };
+  "id": "problema-063",
+  "route": "rational-integral",
+  "number": 63,
+  "title": "Una integral racional",
+  "category": "Integración y cálculo numérico",
+  "topic": "Primitivas e integrales",
+  "level": "Oposición",
+  "statement": "Calcula \\(\\int_0^1\\frac{1}{x^2+3x+2}\\,dx\\).",
+  "resources": [
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
+    }
+  ]
+};
 }

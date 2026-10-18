@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una urna contiene 3 bolas rojas y 2 azules. Se extraen dos bolas, devolviendo la primera antes de extraer la segunda. Calcula la probabilidad de obtener colores distintos.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/probability-trees">Árboles de probabilidad</a>. Multiplica a lo largo de cada camino y suma los caminos alternativos.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Al devolver la bola, la urna recupera su composición. Cada extracción tiene probabilidad 3/5 de roja y 2/5 de azul; suponiendo mezcla aleatoria, las extracciones son independientes.</li>
+      <li>Al devolver la bola, la urna recupera su composición. Cada extracción tiene probabilidad 3/5 de roja y 2/5 de azul; suponiendo mezcla aleatoria, las extracciones son <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independientes</a>.</li>
       <li>Los colores distintos pueden aparecer en dos órdenes: roja y después azul, o azul y después roja. Estos casos no pueden ocurrir simultáneamente.</li>
-      <li>Por independencia, la probabilidad de roja-azul es (3/5)(2/5)=6/25. La de azul-roja es (2/5)(3/5)=6/25.</li>
-      <li>Sumamos los casos disjuntos: 12/25. Comprobamos con el complemento: mismo color tiene probabilidad 9/25+4/25=13/25, que junto con 12/25 suma uno.</li>
+      <li>Por <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independencia</a>, la probabilidad de roja-azul es (3/5)(2/5)=6/25. La de azul-roja es (2/5)(3/5)=6/25.</li>
+      <li>Sumamos los casos <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">disjuntos</a>: 12/25. Comprobamos con el <a data-prerequisite="finite" routerLink="/articles/finite-probability">complemento</a>: mismo color tiene probabilidad 9/25+4/25=13/25, que junto con 12/25 suma uno.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Probabilidad 12/25=0,48.</p>
     <app-formula expression="P(\text{distintos})=\frac{12}{25}" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Sin reposición cambiarían las probabilidades de la segunda extracción.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Sin <a data-prerequisite="tree" routerLink="/articles/probability-trees">reposición</a> cambiarían las probabilidades de la segunda extracción.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

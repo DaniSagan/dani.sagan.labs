@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIntegralImpropiaQueSiConvergeProblemComponent {
   static readonly title = "Una integral impropia que sí converge";
-  static readonly route = 'problema-165';
+  static readonly route = "convergent-improper-integral";
   static readonly problem: PracticeProblem = {
   "id": "problema-165",
+  "route": "convergent-improper-integral",
   "number": 165,
   "title": "Una integral impropia que sí converge",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,17 @@ export class UnaIntegralImpropiaQueSiConvergeProblemComponent {
       "label": "Criterios de convergencia de series positivas",
       "route": "/articles/positive-series-tests",
       "activity": "Practica una integral impropia que sí converge. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Integrales impropias y convergencia",
+      "route": "/articles/integration-classical",
+      "fragment": "improper",
+      "activity": "Define primero el límite truncado y decide si es finito."
+    },
+    {
+      "label": "Equivalencias y órdenes de crecimiento",
+      "route": "/articles/asymptotic-limits",
+      "activity": "Compara los términos dominantes y controla el error tras cancelar."
     }
   ]
 };

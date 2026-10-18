@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaEsferaInscritaEnUnCuboProblemComponent {
   static readonly title = "Una esfera inscrita en un cubo";
-  static readonly route = 'problema-126';
+  static readonly route = "sphere-inscribed-in-a-cube";
   static readonly problem: PracticeProblem = {
   "id": "problema-126",
+  "route": "sphere-inscribed-in-a-cube",
   "number": 126,
   "title": "Una esfera inscrita en un cubo",
   "category": "Geometría",
@@ -26,6 +27,11 @@ export class UnaEsferaInscritaEnUnCuboProblemComponent {
       "label": "Esferas inscritas y circunscritas",
       "route": "/articles/inspheres-circumspheres",
       "activity": "Practica una esfera inscrita en un cubo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Teorema de Pitágoras y distancia",
+      "route": "/articles/pythagorean-distance",
+      "activity": "Comprueba la perpendicularidad necesaria antes de sumar cuadrados."
     }
   ]
 };

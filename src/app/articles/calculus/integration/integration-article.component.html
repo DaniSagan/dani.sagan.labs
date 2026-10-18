@@ -91,23 +91,23 @@
 @switch (chapter.route) {
   @case ('integration-classical') {
 <ul>
-  <li><a routerLink="/problems/problema-061">Problema 061 · Cambio de variable</a>. Identifica la derivada interior y transforma también los límites.</li>
-  <li><a routerLink="/problems/problema-062">Problema 062 · Integración por partes</a>. Elige qué derivar y qué integrar para simplificar el producto.</li>
-  <li><a routerLink="/problems/problema-063">Problema 063 · Fracciones simples</a>. Descompón una función racional antes de buscar su primitiva.</li>
-  <li><a routerLink="/problems/problema-066">Problema 066 · Área entre curvas</a>. Determina las intersecciones y el orden de las curvas antes de integrar.</li>
-  <li><a routerLink="/problems/problema-067">Problema 067 · Volumen de revolución</a>. Relaciona las secciones transversales con el volumen.</li>
-  <li><a routerLink="/problems/problema-068">Problema 068 · Longitud de una curva</a>. Aplica la integral de longitud de arco y revisa sus límites.</li>
+  <li><a routerLink="/problems/integration-by-substitution">Problema 061 · Cambio de variable</a>. Identifica la derivada interior y transforma también los límites.</li>
+  <li><a routerLink="/problems/integration-by-parts">Problema 062 · Integración por partes</a>. Elige qué derivar y qué integrar para simplificar el producto.</li>
+  <li><a routerLink="/problems/rational-integral">Problema 063 · Fracciones simples</a>. Descompón una función racional antes de buscar su primitiva.</li>
+  <li><a routerLink="/problems/area-between-curves">Problema 066 · Área entre curvas</a>. Determina las intersecciones y el orden de las curvas antes de integrar.</li>
+  <li><a routerLink="/problems/volume-by-disk-method">Problema 067 · Volumen de revolución</a>. Relaciona las secciones transversales con el volumen.</li>
+  <li><a routerLink="/problems/curve-arc-length">Problema 068 · Longitud de una curva</a>. Aplica la integral de longitud de arco y revisa sus límites.</li>
 </ul>
   }
   @case ('integration-advanced') {
 <ul>
-  <li><a routerLink="/problems/problema-065">Problema 065 · Una integral impropia</a>. Analiza por separado los extremos antes de calcular un valor.</li>
+  <li><a routerLink="/problems/improper-integral-with-parameter">Problema 065 · Una integral impropia</a>. Analiza por separado los extremos antes de calcular un valor.</li>
   <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Compara e^(-x) y 1/(1+x^2) para explorar cómo decaen integrandos en un intervalo no acotado; una gráfica no demuestra su convergencia.</li>
 </ul>
   }
   @case ('integration-numerical') {
 <ul>
-  <li><a routerLink="/problems/problema-069">Problema 069 · Regla de Simpson</a>. Aproxima una integral y utiliza la cota de error para decidir qué precisión puedes garantizar.</li>
+  <li><a routerLink="/problems/trapezoidal-rule-versus-simpson">Problema 069 · Regla de Simpson</a>. Aproxima una integral y utiliza la cota de error para decidir qué precisión puedes garantizar.</li>
 </ul>
   }
 }
@@ -121,9 +121,45 @@
 <!-- additional-problems:integration-classical:start -->
 @if (chapter.route === 'integration-classical') {
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-161">161 · Una primitiva con condición inicial</a>. Encuentra F si F′(x)=6x²−4x+1 y F(0)=7.</li>
-<li><a routerLink="/problems/problema-163">163 · Un cambio de variable con extremos</a>. Calcula la integral de 2x(x²+1)³ entre x=0 y x=1.</li>
-<li><a routerLink="/problems/problema-164">164 · Una integración por partes completa</a>. Calcula la integral de x eˣ entre 0 y 1 justificando la fórmula usada.</li>
+<li><a routerLink="/problems/antiderivative-with-initial-condition">161 · Una primitiva con condición inicial</a>. Encuentra F si F′(x)=6x²−4x+1 y F(0)=7.</li>
+<li><a routerLink="/problems/substitution-with-integration-bounds">163 · Un cambio de variable con extremos</a>. Calcula la integral de 2x(x²+1)³ entre x=0 y x=1.</li>
+<li><a routerLink="/problems/definite-integration-by-parts">164 · Una integración por partes completa</a>. Calcula la integral de x eˣ entre 0 y 1 justificando la fórmula usada.</li>
 </ul></section>
 }
 <!-- additional-problems:integration-classical:end -->
+<!-- prerequisite-problems:start -->
+@if (chapter.route === 'integration-classical') {
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (24)</summary><ul>
+<li><a routerLink="/problems/partial-fractions">15 · Fracciones parciales</a></li>
+<li><a routerLink="/problems/telescoping-series">44 · Una serie telescópica</a></li>
+<li><a routerLink="/problems/absolute-and-conditional-convergence">45 · Convergencia absoluta o condicional</a></li>
+<li><a routerLink="/problems/integration-by-substitution">61 · Sustitución en una integral</a></li>
+<li><a routerLink="/problems/integration-by-parts">62 · Integración por partes</a></li>
+<li><a routerLink="/problems/rational-integral">63 · Una integral racional</a></li>
+<li><a routerLink="/problems/trigonometric-integral">64 · Una integral trigonométrica</a></li>
+<li><a routerLink="/problems/improper-integral-with-parameter">65 · Integral impropia con parámetro</a></li>
+<li><a routerLink="/problems/area-between-curves">66 · Área entre dos curvas</a></li>
+<li><a routerLink="/problems/volume-by-disk-method">67 · Volumen por discos</a></li>
+<li><a routerLink="/problems/curve-arc-length">68 · Longitud de una curva</a></li>
+<li><a routerLink="/problems/trapezoidal-rule-versus-simpson">69 · Trapecios frente a Simpson</a></li>
+<li><a routerLink="/problems/integral-involving-pi">70 · Una integral que contiene π</a></li>
+<li><a routerLink="/problems/normalizing-a-density">78 · Normalizar una densidad</a></li>
+<li><a routerLink="/problems/telescoping-series-tail">145 · Una cola de serie telescópica</a></li>
+<li><a routerLink="/problems/antiderivative-with-initial-condition">161 · Una primitiva con condición inicial</a></li>
+<li><a routerLink="/problems/integral-as-signed-area">162 · Una integral como área firmada</a></li>
+<li><a routerLink="/problems/substitution-with-integration-bounds">163 · Un cambio de variable con extremos</a></li>
+<li><a routerLink="/problems/definite-integration-by-parts">164 · Una integración por partes completa</a></li>
+<li><a routerLink="/problems/convergent-improper-integral">165 · Una integral impropia que sí converge</a></li>
+<li><a routerLink="/problems/solid-of-revolution-from-a-line">166 · Un sólido al girar una recta</a></li>
+<li><a routerLink="/problems/integral-average-versus-midpoint">168 · Un valor medio que no es el punto medio</a></li>
+<li><a routerLink="/problems/trapezoidal-rule-for-a-convex-function">169 · Trapecios para una función convexa</a></li>
+<li><a routerLink="/problems/triangular-density-and-mean">178 · Una densidad triangular y su media</a></li>
+</ul></details></section>
+}
+@if (chapter.route === 'integration-numerical') {
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/trapezoidal-rule-versus-simpson">69 · Trapecios frente a Simpson</a></li>
+<li><a routerLink="/problems/trapezoidal-rule-for-a-convex-function">169 · Trapecios para una función convexa</a></li>
+</ul></details></section>
+}
+<!-- prerequisite-problems:end -->

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDerivadaPorLaReglaDeLaCadenaProblemComponent {
   static readonly title = "Una derivada por la regla de la cadena";
-  static readonly route = 'problema-153';
+  static readonly route = "chain-rule-derivative";
   static readonly problem: PracticeProblem = {
   "id": "problema-153",
+  "route": "chain-rule-derivative",
   "number": 153,
   "title": "Una derivada por la regla de la cadena",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,12 @@ export class UnaDerivadaPorLaReglaDeLaCadenaProblemComponent {
       "label": "Derivadas: definición, interpretación y reglas",
       "route": "/articles/derivative-foundations",
       "activity": "Practica una derivada por la regla de la cadena. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

@@ -36,7 +36,9 @@
     "test:geometry-foundations": "node scripts/test-geometry-foundations.cjs",
     "test:geometry-foundations:browser": "node scripts/check-geometry-foundations.cjs",
     "test:langtons-ant": "node scripts/test-langtons-ant.cjs",
-    "test:langtons-ant:browser": "node scripts/check-langtons-ant.cjs"
+    "test:langtons-ant:browser": "node scripts/check-langtons-ant.cjs",
+    "test:problem-concepts": "node scripts/test-problem-concepts.cjs",
+    "test:problem-concepts:browser": "node scripts/check-problem-concepts.cjs"
   },
   "private": true,
   "dependencies": {

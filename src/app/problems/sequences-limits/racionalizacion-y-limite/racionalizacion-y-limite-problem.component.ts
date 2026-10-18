@@ -13,41 +13,53 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class RacionalizacionYLimiteProblemComponent {
   static readonly title = "Racionalización y límite";
-  static readonly route = "problema-047";
+  static readonly route = "limit-by-rationalization";
   static readonly problem: PracticeProblem = {
-    "id": "problema-047",
-    "number": 47,
-    "title": "Racionalización y límite",
-    "category": "Sucesiones, límites y continuidad",
-    "topic": "Límites y continuidad",
-    "level": "Repaso",
-    "statement": "Calcula \\(\\lim_{x\\to0}\\frac{\\sqrt{1+x}-1}{x}\\) e indica el dominio real cerca de cero.",
-    "resources": [
-      {
-        "label": "Límites, equivalencias y jerarquías de crecimiento",
-        "route": "/articles/asymptotic-limits",
-        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-      },
-      {
-        "label": "Series de Taylor",
-        "route": "/articles/taylor-series",
-        "activity": "El desarrollo √(1+x)=1+x/2+O(x²) ofrece una comprobación alternativa del límite calculado aquí por racionalización."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1."
-      },
-      {
-        "label": "Regla de L’Hôpital y formas indeterminadas",
-        "route": "/articles/lhopital-rule",
-        "activity": "Revisa las hipótesis de L’Hôpital y compáralo con equivalencias y desarrollos de Taylor."
-      },
-      {
-        "label": "Error numérico, cancelación y condicionamiento",
-        "route": "/articles/numerical-conditioning",
-        "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
-      }
-    ]
-  };
+  "id": "problema-047",
+  "route": "limit-by-rationalization",
+  "number": 47,
+  "title": "Racionalización y límite",
+  "category": "Sucesiones, límites y continuidad",
+  "topic": "Límites y continuidad",
+  "level": "Repaso",
+  "statement": "Calcula \\(\\lim_{x\\to0}\\frac{\\sqrt{1+x}-1}{x}\\) e indica el dominio real cerca de cero.",
+  "resources": [
+    {
+      "label": "Límites, equivalencias y jerarquías de crecimiento",
+      "route": "/articles/asymptotic-limits",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Series de Taylor",
+      "route": "/articles/taylor-series",
+      "activity": "El desarrollo √(1+x)=1+x/2+O(x²) ofrece una comprobación alternativa del límite calculado aquí por racionalización."
+    },
+    {
+      "label": "Regla de L’Hôpital y formas indeterminadas",
+      "route": "/articles/lhopital-rule",
+      "activity": "Revisa las hipótesis de L’Hôpital y compáralo con equivalencias y desarrollos de Taylor."
+    },
+    {
+      "label": "Error numérico, cancelación y condicionamiento",
+      "route": "/articles/numerical-conditioning",
+      "activity": "Separa la sensibilidad del problema de la estabilidad del cálculo y comprueba cancelaciones."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    },
+    {
+      "label": "Continuidad y derivadas laterales",
+      "route": "/articles/continuity-differentiability",
+      "activity": "Separa el valor, el límite y la existencia de una derivada."
+    }
+  ]
+};
 }

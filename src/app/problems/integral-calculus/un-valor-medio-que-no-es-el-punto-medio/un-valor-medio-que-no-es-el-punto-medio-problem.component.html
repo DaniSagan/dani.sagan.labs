@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula el valor medio de f(x)=x² en [0,3] y encuentra c con f(c) igual a ese promedio.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/mean-value-theorems">Rolle y teorema del valor medio</a>. Comprueba continuidad en el intervalo cerrado y derivabilidad en el abierto.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El valor medio de una función continua en [a,b] es su integral dividida por la longitud b−a. Representa la altura constante que produce la misma área.</li>
+      <li>El <a data-prerequisite="mvt" routerLink="/articles/mean-value-theorems">valor medio</a> de una función continua en [a,b] es su integral dividida por la longitud b−a. Representa la altura constante que produce la misma área.</li>
       <li>Integramos x² de 0 a 3: [x³/3] da 27/3=9. La longitud del intervalo es 3, así que el promedio es 9/3=3.</li>
       <li>Buscamos c en [0,3] con c²=3. Las soluciones algebraicas son ±√3, pero solo la positiva pertenece al intervalo.</li>
       <li>Así c=√3. El punto medio del intervalo es 1,5 y su valor f(1,5)=2,25 no coincide con el promedio; una función no lineal no tiene por qué promediarse en el centro.</li>

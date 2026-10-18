@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnCirculoDefinidoPorModulosProblemComponent {
   static readonly title = "Un círculo definido por módulos";
-  static readonly route = 'problema-140';
+  static readonly route = "circle-defined-by-complex-moduli";
   static readonly problem: PracticeProblem = {
   "id": "problema-140",
+  "route": "circle-defined-by-complex-moduli",
   "number": 140,
   "title": "Un círculo definido por módulos",
   "category": "Trigonometría y números complejos",
@@ -31,6 +32,27 @@ export class UnCirculoDefinidoPorModulosProblemComponent {
       "label": "Valor absoluto: distancias y funciones a trozos",
       "route": "/articles/absolute-value-distance",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Rectas, circunferencias e intersecciones",
+      "route": "/articles/line-circle",
+      "activity": "Exige que cada punto cumpla simultáneamente las dos ecuaciones."
+    },
+    {
+      "label": "Ecuaciones cuadráticas",
+      "route": "/articles/quadratic-equations",
+      "activity": "Resuelve la ecuación de segundo grado y distingue los casos degenerados."
+    },
+    {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "activity": "Controla los signos antes de cuadrar para que la transformación sea reversible."
+    },
+    {
+      "label": "Trazador de curvas implícitas",
+      "route": "/tools/implicit-curve-graph",
+      "activity": "Dibuja la ecuación cartesiana y comprueba centro, cortes o asíntotas."
     }
   ]
 };

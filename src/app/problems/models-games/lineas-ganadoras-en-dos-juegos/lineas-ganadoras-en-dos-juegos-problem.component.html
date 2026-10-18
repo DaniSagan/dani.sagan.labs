@@ -9,10 +9,16 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Cuenta las líneas ganadoras de tres en raya en un tablero 3×3 y los segmentos de cuatro casillas consecutivas en un tablero de cuatro en raya de 6 filas y 7 columnas.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/grid-counting">Conteo de líneas y caminos en tableros</a>. Clasifica por dirección y evita duplicados.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Contamos segmentos ganadores por dirección para evitar duplicados. En una cuadrícula de R filas y C columnas, un segmento de longitud k tiene <span class="math-part"><app-formula expression="R(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> posiciones horizontales y <span class="math-part"><app-formula expression="C(R-k+1)" displayMode="inline" [showCodeButton]="false" /></span> verticales. Cada una de las dos diagonales tiene <span class="math-part"><app-formula expression="(R-k+1)(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> posiciones cuando ambas dimensiones alcanzan k.</li>
+      <li>Contamos <a data-prerequisite="grid" routerLink="/articles/grid-counting">segmentos</a> ganadores por dirección para evitar duplicados. En una cuadrícula de R filas y C columnas, un segmento de longitud k tiene <span class="math-part"><app-formula expression="R(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> <a data-prerequisite="counting" routerLink="/articles/counting-principles">posiciones</a> horizontales y <span class="math-part"><app-formula expression="C(R-k+1)" displayMode="inline" [showCodeButton]="false" /></span> verticales. Cada una de las dos <a data-prerequisite="grid" routerLink="/articles/grid-counting">diagonales</a> tiene <span class="math-part"><app-formula expression="(R-k+1)(C-k+1)" displayMode="inline" [showCodeButton]="false" /></span> posiciones cuando ambas dimensiones alcanzan k.</li>
       <li>En tres en raya hay 3 filas, 3 columnas y 2 diagonales: 8 líneas. En 3×3 una línea de tres ocupa una fila o columna completa, o una de las dos diagonales principales.</li>
       <li>En cuatro en raya, horizontales: <span class="math-part"><app-formula expression="6(7-4+1)=24" displayMode="inline" [showCodeButton]="false" /></span>; verticales: <span class="math-part"><app-formula expression="7(6-4+1)=21" displayMode="inline" [showCodeButton]="false" /></span>. Un segmento horizontal de cuatro puede empezar en cuatro columnas de cada fila; uno vertical, en tres filas de cada columna.</li>
       <li>En cada pendiente diagonal hay <span class="math-part"><app-formula expression="(6-4+1)(7-4+1)=12" displayMode="inline" [showCodeButton]="false" /></span> segmentos; las dos pendientes aportan 24. Para una diagonal ascendente o descendente hay tres posiciones iniciales de fila y cuatro de columna que dejan espacio para cuatro casillas.</li>

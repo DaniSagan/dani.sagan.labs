@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class PotenciaDeUnPuntoProblemComponent {
   static readonly title = "Potencia de un punto";
-  static readonly route = "problema-024";
+  static readonly route = "power-of-a-point";
   static readonly problem: PracticeProblem = {
-    "id": "problema-024",
-    "number": 24,
-    "title": "Potencia de un punto",
-    "category": "Geometría",
-    "topic": "Triángulos y áreas",
-    "level": "Repaso",
-    "statement": "Desde P exterior a una circunferencia, una secante corta primero en A y después en B, con \\(PA=4\\) y \\(PB=9\\). Calcula la tangente PT.",
-    "resources": [
-      {
-        "label": "Potencia de un punto",
-        "route": "/articles/power-of-point",
-        "activity": "Relaciones entre secantes y tangentes a una circunferencia."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas."
-      },
-      {
-        "label": "Semejanza de triángulos y proporcionalidad",
-        "route": "/articles/triangle-similarity",
-        "activity": "Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas."
-      }
-    ]
-  };
+  "id": "problema-024",
+  "route": "power-of-a-point",
+  "number": 24,
+  "title": "Potencia de un punto",
+  "category": "Geometría",
+  "topic": "Triángulos y áreas",
+  "level": "Repaso",
+  "statement": "Desde P exterior a una circunferencia, una secante corta primero en A y después en B, con \\(PA=4\\) y \\(PB=9\\). Calcula la tangente PT.",
+  "resources": [
+    {
+      "label": "Potencia de un punto",
+      "route": "/articles/power-of-point",
+      "activity": "Relaciones entre secantes y tangentes a una circunferencia."
+    },
+    {
+      "label": "Semejanza de triángulos y proporcionalidad",
+      "route": "/articles/triangle-similarity",
+      "activity": "Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas."
+    },
+    {
+      "label": "Teorema de Pitágoras y distancia",
+      "route": "/articles/pythagorean-distance",
+      "activity": "Comprueba la perpendicularidad necesaria antes de sumar cuadrados."
+    }
+  ]
+};
 }

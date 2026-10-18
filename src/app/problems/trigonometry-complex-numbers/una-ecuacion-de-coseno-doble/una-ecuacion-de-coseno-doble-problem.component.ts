@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaEcuacionDeCosenoDobleProblemComponent {
   static readonly title = "Una ecuación de coseno doble";
-  static readonly route = 'problema-132';
+  static readonly route = "double-angle-cosine-equation";
   static readonly problem: PracticeProblem = {
   "id": "problema-132",
+  "route": "double-angle-cosine-equation",
   "number": 132,
   "title": "Una ecuación de coseno doble",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,16 @@ export class UnaEcuacionDeCosenoDobleProblemComponent {
       "label": "Ecuaciones trigonométricas y periodicidad",
       "route": "/articles/trigonometric-equations",
       "activity": "Practica una ecuación de coseno doble. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    },
+    {
+      "label": "Radianes y longitud de arco",
+      "route": "/articles/radians",
+      "activity": "Convierte grados a radianes antes de aplicar longitud = radio por ángulo."
     }
   ]
 };

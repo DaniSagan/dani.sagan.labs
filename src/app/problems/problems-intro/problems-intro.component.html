@@ -13,7 +13,7 @@
     <p aria-live="polite" class="result-count">{{ filtered.length }} de {{ problems.length }} problemas</p>
     <div class="problem-list">
       @for (problem of filtered; track problem.id) {
-        <a class="problem-card" [routerLink]="['/problems', problem.id]">
+        <a class="problem-card" [routerLink]="['/problems', problem.route]">
           <div><span class="card-topic">{{ problem.category }} · {{ problem.topic }}</span><h3>{{ problem.title }}</h3><span class="level">{{ problem.level === 'Oposición' ? 'Profundización' : problem.level }}</span></div>
           <span class="card-arrow" aria-hidden="true">→</span>
         </a>

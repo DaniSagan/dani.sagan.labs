@@ -13,26 +13,39 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class FraccionesParcialesProblemComponent {
   static readonly title = "Fracciones parciales";
-  static readonly route = "problema-015";
+  static readonly route = "partial-fractions";
   static readonly problem: PracticeProblem = {
-    "id": "problema-015",
-    "number": 15,
-    "title": "Fracciones parciales",
-    "category": "Álgebra y álgebra lineal",
-    "topic": "Polinomios y desigualdades",
-    "level": "Oposición",
-    "statement": "Descompón \\(\\frac{3x+5}{(x+1)(x+2)}\\) en fracciones simples e indica su dominio.",
-    "resources": [
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Laboratorio de álgebra lineal",
-        "route": "/tools/linear-algebra",
-        "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
-      }
-    ]
-  };
+  "id": "problema-015",
+  "route": "partial-fractions",
+  "number": 15,
+  "title": "Fracciones parciales",
+  "category": "Álgebra y álgebra lineal",
+  "topic": "Polinomios y desigualdades",
+  "level": "Oposición",
+  "statement": "Descompón \\(\\frac{3x+5}{(x+1)(x+2)}\\) en fracciones simples e indica su dominio.",
+  "resources": [
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    },
+    {
+      "label": "Eliminación de Gauss y sistemas compatibles",
+      "route": "/articles/gaussian-elimination",
+      "activity": "Entiende qué operaciones conservan las soluciones de un sistema."
+    }
+  ]
+};
 }

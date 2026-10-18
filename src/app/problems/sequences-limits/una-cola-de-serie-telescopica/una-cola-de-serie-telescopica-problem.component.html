@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula la suma desde n=1 hasta infinito de 1/((n+1)(n+2)) y el error tras N términos.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/telescoping-series">Sumas parciales y series telescópicas</a>. Cancela primero en una suma finita y después toma el límite.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="rational">Descomposición en fracciones parciales</a>. Compara coeficientes después de reunir denominadores y conserva el dominio.</li>
+    <li><a routerLink="/articles/asymptotic-limits">Equivalencias y órdenes de crecimiento</a>. Compara los términos dominantes y controla el error tras cancelar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Separamos cada término: 1/((n+1)(n+2))=1/(n+1)−1/(n+2). Al reunir estas fracciones el numerador es (n+2)−(n+1)=1.</li>
-      <li>La suma parcial es Sₙ=(1/2−1/3)+(1/3−1/4)+…+(1/(N+1)−1/(N+2)). Los términos interiores se cancelan.</li>
+      <li>La <a data-prerequisite="telescoping" routerLink="/articles/telescoping-series">suma parcial</a> es Sₙ=(1/2−1/3)+(1/3−1/4)+…+(1/(N+1)−1/(N+2)). Los términos interiores se cancelan.</li>
       <li>Queda Sₙ=1/2−1/(N+2). Cuando N crece, el último término tiende a cero, por lo que la suma infinita es 1/2.</li>
       <li>El error es la suma total menos la parcial: 1/2−Sₙ=1/(N+2). Es positivo porque todos los términos omitidos son positivos.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Suma 1/2; error después de N términos: 1/(N+2).</p>
     <app-formula expression="\sum_{n=1}^\infty\frac1{(n+1)(n+2)}=\frac12,\quad R_N=\frac1{N+2}" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Una suma infinita se define mediante el límite de sumas parciales.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una suma infinita se define mediante el límite de <a data-prerequisite="telescoping" routerLink="/articles/telescoping-series">sumas parciales</a>.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

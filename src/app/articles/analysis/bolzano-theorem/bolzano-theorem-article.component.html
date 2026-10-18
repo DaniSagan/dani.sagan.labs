@@ -9,7 +9,7 @@
 <h3>2. La unicidad necesita otra razón</h3>
 <p>En f(x) = x³ + x − 1, f(1/2) = −3/8 y f(1) = 1. Existe una raíz entre ambos. Como f′(x) = 3x² + 1 &gt; 0 para todo x real, f es estrictamente creciente y esa raíz es la única real.</p>
 <app-formula expression="f(\tfrac12)=-\tfrac38&lt;0&lt;f(1)=1,\qquad f'(x)=3x^2+1\ge1" />
-<p>Este es el <a routerLink="/problems/problema-050">problema 050</a>. Bolzano prueba existencia, y la monotonía prueba unicidad. Por Rolle, dos raíces distintas de una función diferenciable obligarían a una derivada nula entre ellas.</p>
+<p>Este es el <a routerLink="/problems/unique-root-without-explicit-formula">problema 050</a>. Bolzano prueba existencia, y la monotonía prueba unicidad. Por Rolle, dos raíces distintas de una función diferenciable obligarían a una derivada nula entre ellas.</p>
 <h3>3. Bisección: convertir existencia en una cota</h3>
 <p>Después de k divisiones, la longitud es (b₀ − a₀)/2ᵏ. El punto medio tiene un error no mayor que la mitad de esa longitud. La bisección es lenta frente a Newton cerca de una raíz simple, pero conserva una garantía de encierro.</p>
 <app-formula expression="|m_k-c|\le\frac{b_0-a_0}{2^{k+1}}" />
@@ -24,7 +24,7 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/problema-054">Problema 054 · Dos pasos de Newton</a>. Compara una aproximación por tangentes con el encierro que proporciona bisección.</li>
+  <li><a routerLink="/problems/two-newton-iterations">Problema 054 · Dos pasos de Newton</a>. Compara una aproximación por tangentes con el encierro que proporciona bisección.</li>
   <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Dibuja x^3+x-1 y verifica el cambio de signo entre 1/2 y 1; el dibujo orienta, pero la prueba usa continuidad y monotonía.</li>
 </ul>
 </div>
@@ -33,6 +33,12 @@
 
 <!-- additional-problems:bolzano-theorem:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-148">148 · Una raíz garantizada sin resolverla</a>. Demuestra que x³+x−1=0 tiene exactamente una raíz en (0,1).</li>
+<li><a routerLink="/problems/root-existence-by-intermediate-value">148 · Una raíz garantizada sin resolverla</a>. Demuestra que x³+x−1=0 tiene exactamente una raíz en (0,1).</li>
 </ul></section>
 <!-- additional-problems:bolzano-theorem:end -->
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/unique-root-without-explicit-formula">50 · Una raíz única sin fórmula</a></li>
+<li><a routerLink="/problems/root-existence-by-intermediate-value">148 · Una raíz garantizada sin resolverla</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

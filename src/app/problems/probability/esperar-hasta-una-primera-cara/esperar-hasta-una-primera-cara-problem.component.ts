@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class EsperarHastaUnaPrimeraCaraProblemComponent {
   static readonly title = "Esperar hasta una primera cara";
-  static readonly route = 'problema-176';
+  static readonly route = "waiting-for-first-head";
   static readonly problem: PracticeProblem = {
   "id": "problema-176",
+  "route": "waiting-for-first-head",
   "number": 176,
   "title": "Esperar hasta una primera cara",
   "category": "Probabilidad",
@@ -31,6 +32,11 @@ export class EsperarHastaUnaPrimeraCaraProblemComponent {
       "label": "Función de distribución, colas y probabilidades acumuladas",
       "route": "/articles/distribution-functions-tails",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
     }
   ]
 };

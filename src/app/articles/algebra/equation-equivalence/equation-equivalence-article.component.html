@@ -1,0 +1,66 @@
+<span class="article-kicker">Álgebra / resolver con garantías</span>
+<h2>Transformar una ecuación sin perder sus soluciones</h2>
+<p class="dropcap">Elevar al cuadrado puede añadir soluciones. Dividir por una expresión puede borrarlas. Resolver bien exige saber qué operaciones se pueden deshacer y en qué dominio. Una lista de candidatos solo se convierte en solución cuando respeta las condiciones originales.</p>
+<h3 id="domain">Dominio y conjunto solución</h3>
+<p>El <strong>dominio</strong> reúne los valores para los que las expresiones originales están definidas. En los reales, un denominador no puede ser cero, una raíz cuadrada requiere radicando no negativo y un logaritmo exige argumento positivo. La solución es el subconjunto del dominio que hace verdadera la igualdad.</p>
+<p>Dos ecuaciones son <strong>equivalentes en un dominio</strong> si tienen exactamente las mismas soluciones allí. Una implicación solo asegura que las soluciones de la primera son candidatas para la segunda. Repasa la <a routerLink="/articles/proof-strategies">lógica de implicaciones y equivalencias</a>.</p>
+<h3 id="operations">Qué operaciones son reversibles</h3>
+<div class="table-scroll"><table><caption>Condiciones para conservar la equivalencia</caption><thead><tr><th>Operación en ambos miembros</th><th>Condición</th></tr></thead><tbody>
+<tr><td>Sumar o restar una expresión</td><td>Debe estar definida en el dominio considerado.</td></tr>
+<tr><td>Multiplicar o dividir por g(x)</td><td>g(x) debe ser no nula. Si puede anularse, separa ese caso.</td></tr>
+<tr><td>Elevar al cuadrado</td><td>Es reversible si ambos miembros son no negativos, o ambos no positivos. Sin control de signos puede añadir candidatos.</td></tr>
+<tr><td>Aplicar logaritmos</td><td>Ambos miembros deben ser positivos; el logaritmo es inyectivo allí.</td></tr>
+<tr><td>Aplicar seno o coseno</td><td>No son inyectivos en toda la recta: pueden perder información sobre los ángulos.</td></tr>
+</tbody></table></div>
+<h3 id="cancellation">Cancelar factores y eliminar denominadores</h3>
+<p>En x(x − 1) = 0, dividir entre x dejaría solo x = 1 y perdería x = 0. La propiedad del producto nulo da ambos casos. En cambio, (x² − 1)/(x − 1) = x + 1 es una identidad válida únicamente para x distinto de 1. Simplificar no añade ese punto al dominio.</p>
+<app-formula expression="\frac{x^2-1}{x-1}=2,\quad x\ne1\quad\Longleftrightarrow\quad x+1=2,\quad x\ne1" />
+<p>La última ecuación propone x = 1, excluido desde el principio. No hay solución. Multiplicar por denominadores es legítimo después de registrar dónde son no nulos; conserva esas exclusiones hasta el final.</p>
+<h3 id="squaring">Elevar al cuadrado: un ejemplo completo</h3>
+<app-formula expression="\sqrt{x+2}=x\quad\Longrightarrow\quad x+2=x^2\quad\Longleftrightarrow\quad(x-2)(x+1)=0" />
+<p>El dominio exige x ≥ −2. Además, como la raíz es no negativa, una solución debe cumplir x ≥ 0. El cuadrado produce 2 y −1. El primero verifica √4 = 2; el segundo daría 1 = −1 y se descarta. Si incorporamos x ≥ 0 antes de cuadrar, el proceso sí es equivalente.</p>
+<div class="math-lab" aria-labelledby="equivalence-lab">
+<h4 id="equivalence-lab">Laboratorio / candidatos frente a soluciones</h4>
+<p>Explora √(x + k) = x. La cuadrática obtenida al elevar al cuadrado es x² − x − k = 0. Prueba k = 2, 0, −0,25 y −1.</p>
+<div class="controls"><label>k = {{ k }}<input type="range" min="-4" max="4" step="0.25" [(ngModel)]="k" /></label></div>
+<div class="readouts" aria-live="polite"><span>Dominio original<b>x ≥ {{ -k }}</b></span><span>Condición adicional de signo<b>x ≥ 0</b></span><span>Discriminante del cuadrado<b>{{ 1 + 4 * k }}</b></span></div>
+<div class="table-scroll"><table><caption>Candidatos y comprobación en la raíz</caption><thead><tr><th>Candidato</th><th>¿Resuelve la original?</th></tr></thead><tbody>@for (x of candidates; track $index) {<tr><td>{{ x | number:'1.0-6' }}</td><td>{{ valid(x) ? 'Sí: cumple dominio, signo e igualdad' : 'No: solución extraña al cuadrar' }}</td></tr>} @empty {<tr><td colspan="2">No hay candidatos reales; tampoco soluciones de la original.</td></tr>}</tbody></table></div>
+<app-learning-plot description="Las soluciones originales son las intersecciones de la raíz y la recta, con x no negativo." [series]="series" [xmin]="-4" [xmax]="6" [ymin]="-4" [ymax]="6" />
+<button type="button" (click)="reset()">Restablecer</button>
+</div>
+<h3 id="inequalities">En desigualdades también importa el signo</h3>
+<p>Multiplicar por un número positivo conserva el sentido; por uno negativo lo invierte. Si el factor depende de x, no elijas un sentido único sin estudiar su signo. Para (x − 1)/(x + 2) ≥ 0 usa una <a routerLink="/articles/sign-charts">tabla de signos</a>, conservando x = −2 como exclusión.</p>
+<p>Para comparar raíces cuadradas verifica los signos antes de cuadrar. En √(1 − x²) &gt; 1 − x, con 0 &lt; x &lt; 1, ambos miembros son positivos: comparar sus cuadrados es equivalente. Fuera del intervalo habría que volver a estudiar dominio y signos.</p>
+<h3 id="exercises">Ejercicios con comprobación</h3>
+<p>1. Resuelve (x² − 4)/(x − 2) = 4.</p><details class="note"><summary>Ver solución razonada</summary><p>El dominio excluye 2. Simplificar da x + 2 = 4 y propone precisamente 2. Como está excluido, no hay solución.</p></details>
+<p>2. Resuelve √(x + 6) = x.</p><details class="note"><summary>Ver solución razonada</summary><p>Dominio x ≥ −6 y signo necesario x ≥ 0. Al cuadrar queda (x − 3)(x + 2) = 0. Se acepta 3 y se descarta −2. Comprobar √9 = 3 confirma la solución.</p></details>
+<p>3. ¿Es equivalente x² = 9 a x = 3?</p><details class="note"><summary>Ver solución razonada</summary><p>En toda la recta no: también −3 resuelve la primera. Tomar la raíz positiva da |x| = 3. Si el dominio original restringiese x a no negativos, sí serían equivalentes.</p></details>
+<h3>Para seguir</h3><p>Repasa <a routerLink="/articles/polynomial-foundations">raíces y factores</a>, <a routerLink="/articles/absolute-value-distance">valor absoluto</a> e <a routerLink="/articles/trig-inverse-trig-composition">inversas trigonométricas</a>. Usa el <a routerLink="/tools/graph-plotter">trazador</a> para explorar intersecciones y contrástalas con las condiciones algebraicas.</p>
+<section class="references"><h3>Lectura de referencia</h3><p><a href="https://openstax.org/books/college-algebra-2e/pages/2-6-other-types-of-equations" target="_blank" rel="noopener noreferrer">OpenStax · Ecuaciones racionales, radicales y soluciones extrañas</a> (en inglés).</p></section>
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (23)</summary><ul>
+<li><a routerLink="/problems/inequality-and-equality-case">14 · Una desigualdad con igualdad</a></li>
+<li><a routerLink="/problems/partial-fractions">15 · Fracciones parciales</a></li>
+<li><a routerLink="/problems/linear-system-with-parameter">16 · Sistema con parámetro</a></li>
+<li><a routerLink="/problems/trigonometric-equation">31 · Una ecuación trigonométrica</a></li>
+<li><a routerLink="/problems/complex-plane-locus">37 · Un lugar de puntos complejo</a></li>
+<li><a routerLink="/problems/mobius-transformation">39 · Una transformación de Möbius</a></li>
+<li><a routerLink="/problems/limit-by-rationalization">47 · Racionalización y límite</a></li>
+<li><a routerLink="/problems/open-top-box-optimization">57 · Caja sin tapa</a></li>
+<li><a routerLink="/problems/integral-involving-pi">70 · Una integral que contiene π</a></li>
+<li><a routerLink="/problems/impossible-sum-of-two-squares">108 · Dos cuadrados y una imposibilidad</a></li>
+<li><a routerLink="/problems/finite-continued-fraction">109 · Una fracción continua corta</a></li>
+<li><a routerLink="/problems/rational-equation-with-denominators">111 · Una ecuación con denominadores</a></li>
+<li><a routerLink="/problems/rational-inequality">113 · Una desigualdad racional</a></li>
+<li><a routerLink="/problems/product-bound-by-algebraic-identity">115 · Una identidad que acota un producto</a></li>
+<li><a routerLink="/problems/inverse-matrix">120 · Una matriz que deshace otra</a></li>
+<li><a routerLink="/problems/complex-division-by-conjugation">137 · Una división por conjugación</a></li>
+<li><a routerLink="/problems/circle-defined-by-complex-moduli">140 · Un círculo definido por módulos</a></li>
+<li><a routerLink="/problems/polynomial-degree-limit">142 · Un límite por grados</a></li>
+<li><a routerLink="/problems/rationalizing-near-zero">146 · Racionalizar cerca de cero</a></li>
+<li><a routerLink="/problems/removable-discontinuity">147 · Tapar un agujero en una función</a></li>
+<li><a routerLink="/problems/chain-rule-derivative">153 · Una derivada por la regla de la cadena</a></li>
+<li><a routerLink="/problems/minimum-on-an-open-domain">154 · Un mínimo con dominio abierto</a></li>
+<li><a routerLink="/problems/small-population-variance">182 · Varianza de una población pequeña</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Se lanza una moneda equilibrada e independiente hasta la primera cara. Calcula la probabilidad de necesitar exactamente cuatro lanzamientos y la de necesitar más de cuatro.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/geometric-distribution">Distribución geométrica</a>. Distingue contar ensayos de contar fallos y calcula la cola.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/distribution-functions-tails">Distribución acumulada y colas</a>. Relaciona áreas acumuladas, probabilidades de intervalos y complementos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Necesitar exactamente cuatro significa obtener cruz en los tres primeros y cara en el cuarto. No hay otros órdenes posibles porque una cara anterior habría detenido el proceso.</li>
-      <li>Cada resultado tiene probabilidad 1/2 y los lanzamientos son independientes. Así P(N=4)=(1/2)³·(1/2)=1/16.</li>
+      <li>Cada resultado tiene probabilidad 1/2 y los lanzamientos son <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independientes</a>. Así P(N=4)=(1/2)³·(1/2)=1/16.</li>
       <li>Necesitar más de cuatro significa que los cuatro primeros fueron cruces. No impone qué ocurre en el quinto ni después; su probabilidad es también (1/2)⁴=1/16.</li>
       <li>La igualdad numérica es propia de esta moneda: en general, con probabilidad de cara p, los valores serían (1−p)³p y (1−p)⁴, respectivamente.</li>
     </ol>

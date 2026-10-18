@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CajaSinTapaProblemComponent {
   static readonly title = "Caja sin tapa";
-  static readonly route = "problema-057";
+  static readonly route = "open-top-box-optimization";
   static readonly problem: PracticeProblem = {
   "id": "problema-057",
+  "route": "open-top-box-optimization",
   "number": 57,
   "title": "Caja sin tapa",
   "category": "Cálculo diferencial y optimización",
@@ -39,19 +40,15 @@ export class CajaSinTapaProblemComponent {
       "activity": "Como ampliación, compara el volumen obtenido por dimensiones de una caja con los métodos de volumen por secciones en integración clásica."
     },
     {
-      "label": "Representador de funciones",
-      "route": "/tools/graph-plotter",
-      "activity": "Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función»."
-    },
-    {
-      "label": "Campo vectorial",
-      "route": "/tools/vector-field",
-      "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
-    },
-    {
       "label": "Extremos globales y teorema de Weierstrass",
       "route": "/articles/global-extrema-weierstrass",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

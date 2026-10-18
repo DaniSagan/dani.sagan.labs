@@ -6,11 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Cuenta los caminos desde (0,0) hasta (4,3) que solo avanzan una unidad a la derecha o una hacia arriba.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+    <li><a routerLink="/articles/grid-counting">Conteo de líneas y caminos en tableros</a>. Clasifica por dirección y evita duplicados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Para llegar al destino debemos dar exactamente cuatro pasos a la derecha y tres hacia arriba. Cualquier camino válido tiene siete pasos.</li>
-      <li>Un camino queda determinado al elegir qué tres de las siete posiciones contienen subidas; las cuatro restantes serán pasos a la derecha.</li>
+      <li>Para llegar al destino debemos dar exactamente cuatro pasos a la derecha y tres hacia arriba. Cualquier <a data-prerequisite="grid" routerLink="/articles/grid-counting">camino</a> válido tiene siete pasos.</li>
+      <li>Un camino queda determinado al elegir qué tres de las siete <a data-prerequisite="counting" routerLink="/articles/counting-principles">posiciones</a> contienen subidas; las cuatro restantes serán pasos a la derecha.</li>
       <li>Elegimos esas posiciones con C(7,3)=7·6·5/(3·2·1)=35. Dividimos por 3! porque el orden en que seleccionamos las tres posiciones no cambia el conjunto.</li>
       <li>No hay restricciones de obstáculos ni de cruzar una diagonal, de modo que cada elección de posiciones produce un camino válido y distinto. Por eso el recuento no requiere descontar casos.</li>
     </ol>

@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class IntegracionPorPartesProblemComponent {
   static readonly title = "Integración por partes";
-  static readonly route = "problema-062";
+  static readonly route = "integration-by-parts";
   static readonly problem: PracticeProblem = {
-    "id": "problema-062",
-    "number": 62,
-    "title": "Integración por partes",
-    "category": "Integración y cálculo numérico",
-    "topic": "Primitivas e integrales",
-    "level": "Repaso",
-    "statement": "Calcula \\(\\int_0^1xe^x\\,dx\\).",
-    "resources": [
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      }
-    ]
-  };
+  "id": "problema-062",
+  "route": "integration-by-parts",
+  "number": 62,
+  "title": "Integración por partes",
+  "category": "Integración y cálculo numérico",
+  "topic": "Primitivas e integrales",
+  "level": "Repaso",
+  "statement": "Calcula \\(\\int_0^1xe^x\\,dx\\).",
+  "resources": [
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
+    }
+  ]
+};
 }

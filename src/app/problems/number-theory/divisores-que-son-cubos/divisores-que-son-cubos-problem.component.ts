@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DivisoresQueSonCubosProblemComponent {
   static readonly title = "Divisores que son cubos";
-  static readonly route = 'problema-104';
+  static readonly route = "cube-divisors";
   static readonly problem: PracticeProblem = {
   "id": "problema-104",
+  "route": "cube-divisors",
   "number": 104,
   "title": "Divisores que son cubos",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,26 @@ export class DivisoresQueSonCubosProblemComponent {
       "label": "Fórmulas para divisores y suma de divisores",
       "route": "/articles/divisor-sum-theorem",
       "activity": "Practica divisores que son cubos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Factorización prima y divisores",
+      "route": "/articles/fundamental-theorem-arithmetic",
+      "activity": "Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades."
+    },
+    {
+      "label": "Exponentes primos y valuaciones",
+      "route": "/articles/prime-valuations",
+      "activity": "Traduce cuadrados, cubos y divisibilidad a condiciones sobre exponentes."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
+    },
+    {
+      "label": "Descomposición en primos",
+      "route": "/tools/prime-decomposition",
+      "activity": "Descompón los enteros del problema y contrasta sus exponentes y divisores."
     }
   ]
 };

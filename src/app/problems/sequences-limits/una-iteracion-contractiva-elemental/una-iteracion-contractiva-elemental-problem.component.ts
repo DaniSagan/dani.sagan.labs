@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIteracionContractivaElementalProblemComponent {
   static readonly title = "Una iteración contractiva elemental";
-  static readonly route = 'problema-150';
+  static readonly route = "elementary-contraction-iteration";
   static readonly problem: PracticeProblem = {
   "id": "problema-150",
+  "route": "elementary-contraction-iteration",
   "number": 150,
   "title": "Una iteración contractiva elemental",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,21 @@ export class UnaIteracionContractivaElementalProblemComponent {
       "label": "Teorema del punto fijo de Banach",
       "route": "/articles/banach-fixed-point",
       "activity": "Practica una iteración contractiva elemental. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Recurrencias y puntos fijos",
+      "route": "/articles/recurrent-sequences",
+      "activity": "Resta el punto fijo para obtener una expresión explícita de la sucesión."
+    },
+    {
+      "label": "Progresiones y series geométricas",
+      "route": "/articles/geometric-series",
+      "activity": "Distingue suma finita, serie infinita y condición sobre la razón."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
     }
   ]
 };

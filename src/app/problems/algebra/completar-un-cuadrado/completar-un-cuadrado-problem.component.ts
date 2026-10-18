@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CompletarUnCuadradoProblemComponent {
   static readonly title = "Completar un cuadrado";
-  static readonly route = 'problema-114';
+  static readonly route = "completing-the-square";
   static readonly problem: PracticeProblem = {
   "id": "problema-114",
+  "route": "completing-the-square",
   "number": 114,
   "title": "Completar un cuadrado",
   "category": "Álgebra y álgebra lineal",

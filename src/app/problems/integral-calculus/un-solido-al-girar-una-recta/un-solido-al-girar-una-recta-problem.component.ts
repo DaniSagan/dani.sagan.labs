@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnSolidoAlGirarUnaRectaProblemComponent {
   static readonly title = "Un sólido al girar una recta";
-  static readonly route = 'problema-166';
+  static readonly route = "solid-of-revolution-from-a-line";
   static readonly problem: PracticeProblem = {
   "id": "problema-166",
+  "route": "solid-of-revolution-from-a-line",
   "number": 166,
   "title": "Un sólido al girar una recta",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,17 @@ export class UnSolidoAlGirarUnaRectaProblemComponent {
       "label": "Áreas entre curvas y sólidos de revolución",
       "route": "/articles/areas-revolution",
       "activity": "Practica un sólido al girar una recta. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Primitivas y teorema fundamental del cálculo",
+      "route": "/articles/integration-classical",
+      "fragment": "fundamental",
+      "activity": "Distingue una familia de funciones de una integral definida con signo."
+    },
+    {
+      "label": "Análisis dimensional",
+      "route": "/articles/dimensional-analysis",
+      "activity": "Iguala los exponentes de las dimensiones y distingue escala de constante física."
     }
   ]
 };

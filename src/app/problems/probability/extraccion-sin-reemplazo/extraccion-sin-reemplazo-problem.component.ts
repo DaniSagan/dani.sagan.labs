@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ExtraccionSinReemplazoProblemComponent {
   static readonly title = "Extracción sin reemplazo";
-  static readonly route = "problema-072";
+  static readonly route = "sampling-without-replacement";
   static readonly problem: PracticeProblem = {
   "id": "problema-072",
+  "route": "sampling-without-replacement",
   "number": 72,
   "title": "Extracción sin reemplazo",
   "category": "Probabilidad",
@@ -34,11 +35,6 @@ export class ExtraccionSinReemplazoProblemComponent {
       "activity": "Coeficientes combinatorios y expansión de potencias de una suma."
     },
     {
-      "label": "Laboratorio de probabilidad",
-      "route": "/tools/probability-lab",
-      "activity": "Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas."
-    },
-    {
       "label": "Principios de conteo: suma, producto y elecciones",
       "route": "/articles/counting-principles",
       "activity": "Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones."
@@ -52,6 +48,16 @@ export class ExtraccionSinReemplazoProblemComponent {
       "label": "Árboles de probabilidad y experimentos por etapas",
       "route": "/articles/probability-trees",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Espacio muestral, sucesos y complemento",
+      "route": "/articles/finite-probability",
+      "activity": "Cuenta solo resultados equiprobables y distingue unión, intersección y complemento."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
     }
   ]
 };

@@ -6,15 +6,22 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Gira la región bajo y=x, entre x=0 y x=2, alrededor del eje horizontal y calcula su volumen.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/areas-revolution">Áreas y sólidos de revolución</a>. Integra la diferencia correcta de alturas o el área de cada sección.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/dimensional-analysis">Análisis dimensional</a>. Iguala los exponentes de las dimensiones y distingue escala de constante física.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una sección perpendicular al eje en la posición x es un disco de radio y=x. El área del disco es πx².</li>
+      <li>Una <a data-prerequisite="area" routerLink="/articles/areas-revolution">sección</a> perpendicular al eje en la posición x es un <a data-prerequisite="area" routerLink="/articles/areas-revolution">disco</a> de radio y=x. El área del disco es πx².</li>
       <li>El volumen se obtiene sumando las áreas de las secciones por su espesor: V es la integral de πx² entre 0 y 2.</li>
-      <li>Una primitiva es πx³/3. Evaluamos: V=π·2³/3−0=8π/3.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> es πx³/3. Evaluamos: V=π·2³/3−0=8π/3.</li>
       <li>La figura es también un cono de altura 2 y radio de base 2. Su volumen πr²h/3=π·4·2/3 coincide con la integral, lo que proporciona una comprobación geométrica.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Volumen 8π/3 unidades cúbicas.</p>
+    <p class="answer"><strong>Resultado.</strong> Volumen 8π/3 <a data-prerequisite="units" routerLink="/articles/dimensional-analysis">unidades</a> cúbicas.</p>
     <app-formula expression="V=\pi\int_0^2x^2\,dx=\frac{8\pi}3" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> El área de cada sección usa el radio al cuadrado; integrar solo πx daría otra magnitud.</aside>
   </section>

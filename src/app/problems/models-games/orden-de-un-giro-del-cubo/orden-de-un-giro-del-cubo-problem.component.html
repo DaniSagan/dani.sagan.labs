@@ -9,10 +9,16 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Modela un giro de 90° de una cara exterior del cubo de Rubik como permutación de pegatinas. Determina su orden y la inversa, sin confundirlo con un algoritmo de varias caras.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/permutation-symmetries">Permutaciones, simetrías y orden</a>. Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad.</li>
+    <li><a routerLink="/articles/rubik-invariants">Invariantes y movimientos del cubo</a>. Relaciona la permutación de piezas con el orden del movimiento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El orden de una transformación es el menor entero positivo m para el que repetirla m veces da la identidad. Un giro de cara de noventa grados repite su orientación tras cuatro giros y mueve sus piezas en ciclos compatibles con ese período. Su inverso debe deshacer el giro: tres giros del mismo sentido completan una vuelta.</li>
+      <li>El <a data-prerequisite="symmetry" routerLink="/articles/permutation-symmetries">orden de</a> una transformación es el menor entero positivo m para el que repetirla m veces da la identidad. Un <a data-prerequisite="rubik" routerLink="/articles/rubik-invariants">giro</a> de cara de noventa grados repite su orientación tras cuatro giros y mueve sus piezas en ciclos compatibles con ese período. Su inverso debe deshacer el giro: tres giros del mismo sentido completan una vuelta.</li>
       <li>Un giro lleva esa pegatina a la esquina siguiente; tras 2 y 3 giros no ha vuelto al lugar original. Seguir una pegatina que no esté en el centro muestra que el movimiento no es la identidad tras uno, dos o tres giros.</li>
       <li>Cuatro giros de 90° completan 360° y restauran todas las pegatinas de la cara y las bandas adyacentes. Cada pegatina afectada recorre un ciclo cuya longitud divide cuatro. Cuatro aplicaciones devuelven simultáneamente todas a su lugar.</li>
       <li>El menor entero positivo con <span class="math-part"><app-formula expression="R^{k}=I" displayMode="inline" [showCodeButton]="false" /></span> es por tanto 4. Que cuatro giros basten y que los tres menores no basten prueba el orden exacto, no solo una cota superior.</li>

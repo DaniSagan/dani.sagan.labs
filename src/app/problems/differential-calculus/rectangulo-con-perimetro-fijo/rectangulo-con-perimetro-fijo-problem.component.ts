@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class RectanguloConPerimetroFijoProblemComponent {
   static readonly title = "Rectángulo con perímetro fijo";
-  static readonly route = "problema-056";
+  static readonly route = "maximum-area-with-fixed-perimeter";
   static readonly problem: PracticeProblem = {
   "id": "problema-056",
+  "route": "maximum-area-with-fixed-perimeter",
   "number": 56,
   "title": "Rectángulo con perímetro fijo",
   "category": "Cálculo diferencial y optimización",
@@ -42,16 +43,6 @@ export class RectanguloConPerimetroFijoProblemComponent {
       "label": "Integración clásica",
       "route": "/articles/integration-classical",
       "activity": "La integración clásica amplía el cálculo de áreas a regiones curvas. En este ejercicio el área rectangular se obtiene directamente como producto de lados."
-    },
-    {
-      "label": "Representador de funciones",
-      "route": "/tools/graph-plotter",
-      "activity": "Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función»."
-    },
-    {
-      "label": "Campo vectorial",
-      "route": "/tools/vector-field",
-      "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
     },
     {
       "label": "Extremos globales y teorema de Weierstrass",

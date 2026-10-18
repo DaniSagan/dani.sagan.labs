@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Se lanza un dado equilibrado tres veces de forma independiente. Calcula la probabilidad de obtener al menos un seis.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/bernoulli-binomial">Ensayos de Bernoulli y distribución binomial</a>. Comprueba independencia y probabilidad constante antes de contar éxitos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Al menos un seis incluye uno, dos o tres seises. Es más sencillo calcular el caso contrario: que no aparezca ningún seis.</li>
-      <li>En una tirada hay cinco resultados distintos de seis entre seis equiprobables. La probabilidad de no obtener seis es 5/6.</li>
-      <li>Por independencia, no obtener seis en las tres tiradas tiene probabilidad (5/6)³=125/216.</li>
-      <li>Un suceso y su contrario suman probabilidad uno. Restamos: 1−125/216=91/216≈0,4213. Esto cuenta todos los casos deseados sin duplicaciones.</li>
+      <li>Al menos un seis incluye uno, dos o tres seises. Es más sencillo calcular el caso <a data-prerequisite="finite" routerLink="/articles/finite-probability">contrario</a>: que no aparezca ningún seis.</li>
+      <li>En una tirada hay cinco resultados distintos de seis entre seis <a data-prerequisite="finite" routerLink="/articles/finite-probability">equiprobables</a>. La probabilidad de no obtener seis es 5/6.</li>
+      <li>Por <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independencia</a>, no obtener seis en las tres tiradas tiene probabilidad (5/6)³=125/216.</li>
+      <li>Un <a data-prerequisite="finite" routerLink="/articles/finite-probability">suceso</a> y su contrario suman probabilidad uno. Restamos: 1−125/216=91/216≈0,4213. Esto cuenta todos los casos deseados sin duplicaciones.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 91/216≈42,13%.</p>
     <app-formula expression="P(\text{al menos un seis})=1-\left(\frac56\right)^3=\frac{91}{216}" [showCodeButton]="false" />
@@ -22,7 +29,7 @@
     <h3 id="resources-title">Para repasar y ampliar</h3>
     <div class="resource"><a routerLink="/articles/bernoulli-binomial">Distribuciones de Bernoulli y binomial ↗</a><p>Practica al menos un seis en tres tiradas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
     <div class="resource"><a routerLink="/articles/probability-trees">Árboles de probabilidad y experimentos por etapas ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div>
-    <div class="resource"><a routerLink="/articles/distribution-functions-tails">Función de distribución, colas y probabilidades acumuladas ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div>
+    <div class="resource"><a routerLink="/articles/distribution-functions-tails">Función de distribución, colas y probabilidades acumuladas ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/probability-lab">Laboratorio de probabilidad</a><p>Compara frecuencias simuladas con el valor teórico y observa la variación entre muestras.</p></div>
   </section>
   <app-problem-navigation currentId="problema-173" />
 </article>

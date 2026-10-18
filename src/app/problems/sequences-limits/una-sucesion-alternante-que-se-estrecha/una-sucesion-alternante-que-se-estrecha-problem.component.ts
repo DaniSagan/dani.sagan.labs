@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaSucesionAlternanteQueSeEstrechaProblemComponent {
   static readonly title = "Una sucesión alternante que se estrecha";
-  static readonly route = 'problema-143';
+  static readonly route = "shrinking-alternating-sequence";
   static readonly problem: PracticeProblem = {
   "id": "problema-143",
+  "route": "shrinking-alternating-sequence",
   "number": 143,
   "title": "Una sucesión alternante que se estrecha",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,11 @@ export class UnaSucesionAlternanteQueSeEstrechaProblemComponent {
       "label": "Teorema del encaje y funciones oscilantes",
       "route": "/articles/squeeze-oscillation",
       "activity": "Practica una sucesión alternante que se estrecha. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Valor absoluto y funciones a trozos",
+      "route": "/articles/absolute-value-distance",
+      "activity": "Escribe las ramas según el signo y distingue distancia de valor con signo."
     }
   ]
 };

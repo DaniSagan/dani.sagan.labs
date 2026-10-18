@@ -6,14 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Encuentra todas las soluciones complejas de z³=8 y comprueba que no falta ninguna.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/de-moivre">Forma polar, raíces y De Moivre</a>. Eleva el módulo y multiplica el argumento; enumera todas las raíces.</li>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="roots">Raíces, factores y multiplicidad</a>. Distingue raíces distintas de raíces contadas con multiplicidad y usa el producto nulo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El módulo de z³ es |z|³. Por tanto |z|³=8 y |z|=2. Escribimos z=2(cos θ+i sen θ).</li>
+      <li>El <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">módulo</a> de z³ es |z|³. Por tanto |z|³=8 y |z|=2. Escribimos z=2(cos θ+i sen θ).</li>
       <li>Al elevar al cubo, el ángulo se triplica. Para obtener el número real positivo 8 necesitamos 3θ=2πk, con k entero.</li>
       <li>Así θ=2πk/3. Los valores k=0,1,2 dan tres direcciones distintas; k=3 repite la primera, de modo que todos los demás solo repiten estas.</li>
       <li>Para k=0 obtenemos 2. Para k=1, cos(2π/3)=−1/2 y sen(2π/3)=√3/2, dando −1+i√3. Para k=2 resulta −1−i√3.</li>
-      <li>Cada candidato tiene módulo 2 y al triplicar su ángulo da una vuelta entera. Su cubo es 8; la ecuación de grado tres ya tiene tres raíces distintas.</li>
+      <li>Cada candidato tiene módulo 2 y al triplicar su ángulo da una vuelta entera. Su cubo es 8; la ecuación de grado tres ya tiene tres <a data-prerequisite="roots" routerLink="/articles/polynomial-foundations" fragment="roots">raíces distintas</a>.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Raíces 2, −1+i√3 y −1−i√3.</p>
     <app-formula expression="z\in\{2,-1+i\sqrt3,-1-i\sqrt3\}" [showCodeButton]="false" />

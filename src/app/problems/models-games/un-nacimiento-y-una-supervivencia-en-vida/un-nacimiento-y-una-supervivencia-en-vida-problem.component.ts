@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnNacimientoYUnaSupervivenciaEnVidaProblemComponent {
   static readonly title = "Un nacimiento y una supervivencia en Vida";
-  static readonly route = 'problema-198';
+  static readonly route = "birth-and-survival-in-game-of-life";
   static readonly problem: PracticeProblem = {
   "id": "problema-198",
+  "route": "birth-and-survival-in-game-of-life",
   "number": 198,
   "title": "Un nacimiento y una supervivencia en Vida",
   "category": "Combinatoria, juegos y modelización",
@@ -26,6 +27,11 @@ export class UnNacimientoYUnaSupervivenciaEnVidaProblemComponent {
       "label": "El Juego de la vida: osciladores y evolución",
       "route": "/articles/life-patterns",
       "activity": "Practica un nacimiento y una supervivencia en Vida. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Juego de la Vida",
+      "route": "/games/game-of-life",
+      "activity": "Construye el patrón y avanza una generación para comprobar nacimientos, supervivencias y oscilación."
     }
   ]
 };

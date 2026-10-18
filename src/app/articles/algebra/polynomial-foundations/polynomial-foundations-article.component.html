@@ -1,0 +1,55 @@
+<span class="article-kicker">Álgebra / fundamentos</span>
+<h2>Leer un polinomio antes de resolverlo</h2>
+<p class="dropcap">En «un polinomio mónico de grado tres», cada palabra aporta información. El grado limita cuántas raíces distintas podemos encontrar; ser mónico describe un coeficiente. Leer esa información evita aplicar recetas sin saber qué representan.</p>
+<nav class="article-outline" aria-label="Contenido"><a [routerLink]="[]" fragment="coefficients">Coeficientes y grado</a> · <a [routerLink]="[]" fragment="monic">Mónico</a> · <a [routerLink]="[]" fragment="roots">Raíces y factores</a> · <a [routerLink]="[]" fragment="multiplicity">Multiplicidad</a></nav>
+<h3 id="coefficients">Términos, coeficientes y grado</h3>
+<p>Un polinomio en x es una suma finita de potencias enteras no negativas de x, multiplicadas por números llamados <strong>coeficientes</strong>. En 3x³ − 2x + 5, los coeficientes de x³, x², x y 1 son 3, 0, −2 y 5. El término independiente es 5. Escribir el cero que falta resulta esencial en Ruffini.</p>
+<app-formula expression="P(x)=a_nx^n+\cdots+a_1x+a_0,\qquad a_n\ne0,\qquad \deg P=n" />
+<p>El <strong>grado</strong> es el mayor exponente con coeficiente distinto de cero, después de simplificar. x³ − x³ + 2x tiene grado 1. Una constante no nula tiene grado 0. El polinomio cero no tiene grado finito: a veces se adopta la convención −∞, pero no se le asigna grado 0. Las expresiones 1/x y √x no son polinomios en x.</p>
+<h3 id="monic">Coeficiente principal y polinomio mónico</h3>
+<p>El coeficiente del término de mayor grado se llama <strong>principal</strong>. Un polinomio es <strong>mónico</strong> cuando ese coeficiente es 1. x³ − 6x² + 11x − 6 es mónico; 2x² + x no lo es. La constante 1 también es mónica. El polinomio cero no lo es.</p>
+<p>Dividir todos los coeficientes de un polinomio real no nulo por su coeficiente principal lo convierte en mónico y conserva sus raíces. No conserva necesariamente coeficientes enteros: 2x + 1 se convierte en x + 1/2. Esta distinción importa en el <a routerLink="/articles/rational-root-theorem">teorema de las raíces racionales</a>.</p>
+<div class="math-lab" aria-labelledby="coefficient-lab">
+<h4 id="coefficient-lab">Laboratorio / ¿qué determina el grado?</h4>
+<p>Anula el coeficiente de x³ y después el de x². Prueba a dejar todos a cero y a dejar solo la constante 1.</p>
+<div class="controls">@for (power of powers; track power) {<label><span>Coeficiente de x<sup>{{ power }}</sup></span><input type="range" min="-12" max="12" step="1" [(ngModel)]="coefficients[power]" /></label>}</div>
+<app-formula [expression]="expression" [showCodeButton]="false" />
+<div class="readouts" aria-live="polite"><span>Grado<b>{{ degreeText }}</b></span><span>Coeficiente principal<b>{{ leading === null ? 'No existe' : leading }}</b></span><span>¿Es mónico?<b>{{ monic ? 'Sí' : 'No' }}</b></span><span>P(1)<b>{{ evaluate(1) }}</b></span></div>
+<app-learning-plot description="Polinomio definido por los coeficientes; ventana vertical fija para comparar cambios." [series]="series" [xmin]="-4" [xmax]="4" [ymin]="-15" [ymax]="15" />
+<button type="button" (click)="reset()">Restablecer laboratorios</button>
+</div>
+<h3 id="roots">Raíz, cero, factor y producto nulo</h3>
+<p>Un número r es una <strong>raíz</strong> o <strong>cero</strong> de P si P(r) = 0. El <a routerLink="/articles/polynomial-division" fragment="factor-theorem">teorema del factor</a> dice que equivale a escribir P(x) = (x − r)Q(x), con Q polinomio. Evaluar en r comprueba esa raíz; no proporciona todas las demás.</p>
+<app-formula expression="x^3-6x^2+11x-6=(x-1)(x-2)(x-3)" />
+<p>Sobre los reales o los complejos, un producto es cero si y solo si alguno de sus factores es cero. Esta factorización da exactamente las raíces 1, 2 y 3. Dividir entre x − 1 al resolver perdería la solución x = 1. Puedes reconstruir el cociente con <a routerLink="/articles/polynomial-division" fragment="ruffini">Ruffini</a>.</p>
+<h3 id="multiplicity">Grado y multiplicidad no cuentan lo mismo</h3>
+<p>La <strong>multiplicidad</strong> de r es el número de veces que aparece su factor: P(x) = (x − r)ᵐQ(x), con Q(r) distinto de cero. En (x − 1)²(x + 2), la raíz 1 es doble y −2 es simple: hay dos raíces distintas y el grado es tres.</p>
+<p>Un polinomio no nulo de grado n tiene como máximo n raíces distintas. Se demuestra extrayendo sucesivamente factores lineales: cada raíz distinta reduce el grado en uno. El teorema fundamental del álgebra garantiza exactamente n raíces complejas <em>contadas con multiplicidad</em> para n positivo. No garantiza n raíces reales: x² + 1 no tiene ninguna.</p>
+<div class="math-lab" aria-labelledby="multiplicity-lab">
+<h4 id="multiplicity-lab">Laboratorio / cruzar o tocar el eje</h4>
+<div class="controls"><label>Raíz r = {{ r }}<input type="range" min="-2" max="2" step="1" [(ngModel)]="r" /></label><label>Raíz s = {{ s }}<input type="range" min="-2" max="2" step="1" [(ngModel)]="s" /></label><label>Exponente m<select [(ngModel)]="multiplicity"><option [ngValue]="1">1</option><option [ngValue]="2">2</option><option [ngValue]="3">3</option></select></label></div>
+<div class="readouts" aria-live="polite"><span>Grado<b>{{ multiplicity + 1 }}</b></span><span>Multiplicidad real en r<b>{{ actualMultiplicity }}</b></span><span>Comportamiento local en r<b>{{ actualMultiplicity % 2 === 0 ? 'Toca sin cambiar de signo' : 'Cruza cambiando de signo' }}</b></span></div>
+<app-learning-plot description="Una raíz de multiplicidad par no cambia el signo; una de multiplicidad impar sí. Si r = s, los exponentes se suman." [series]="rootSeries" [xmin]="-4" [xmax]="4" [ymin]="-10" [ymax]="10" />
+<p>La regla de signos es local: cerca de r, Q conserva su signo porque Q(r) no es cero. Si haces r = s, la multiplicidad pasa a ser m + 1.</p>
+</div>
+<h3 id="exercises">Comprueba tu comprensión</h3>
+<p>1. ¿Qué grado tiene 0x⁴ − 3x² + 7? ¿Es mónico?</p><details class="note"><summary>Ver solución razonada</summary><p>Grado 2: el término de cuarto grado desaparece. El coeficiente principal es −3, así que no es mónico. El término independiente es 7.</p></details>
+<p>2. Cuenta las raíces de (x − 2)³(x + 1)².</p><details class="note"><summary>Ver solución razonada</summary><p>2 tiene multiplicidad 3 y −1 tiene multiplicidad 2. Hay dos raíces distintas y cinco contadas con multiplicidad; el grado es 5. La gráfica cambia de signo en 2 y lo conserva en −1.</p></details>
+<p>3. Si un polinomio de grado 3 se anula en 1, 2 y 3, ¿es necesariamente (x − 1)(x − 2)(x − 3)?</p><details class="note"><summary>Ver solución razonada</summary><p>Es a(x − 1)(x − 2)(x − 3), con a no nulo. Solo podemos fijar a = 1 si además es mónico.</p></details>
+<h3>Para continuar</h3><p>Relaciona coeficientes y raíces mediante <a routerLink="/articles/quadratic-equations" fragment="vieta">Viète</a>, aprende a <a routerLink="/articles/algebraic-identities-factorization">factorizar</a> y prueba una gráfica en el <a routerLink="/tools/graph-plotter">trazador</a>. Las condiciones para transformar ecuaciones se desarrollan en <a routerLink="/articles/equation-equivalence">ecuaciones y dominio</a>.</p>
+<section class="references"><h3>Lectura de referencia</h3><p><a href="https://openstax.org/books/college-algebra-2e/pages/5-2-power-functions-and-polynomial-functions" target="_blank" rel="noopener noreferrer">OpenStax · Grado y coeficiente principal de un polinomio</a> (en inglés).</p></section>
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (11)</summary><ul>
+<li><a routerLink="/problems/cubic-with-three-roots">11 · Una cúbica con tres raíces</a></li>
+<li><a routerLink="/problems/polynomial-remainder-theorem">13 · Un resto sin dividir</a></li>
+<li><a routerLink="/problems/partial-fractions">15 · Fracciones parciales</a></li>
+<li><a routerLink="/problems/triple-angle-identity">33 · Ángulo triple</a></li>
+<li><a routerLink="/problems/unique-root-without-explicit-formula">50 · Una raíz única sin fórmula</a></li>
+<li><a routerLink="/problems/factoring-by-grouping">112 · Un polinomio por agrupación</a></li>
+<li><a routerLink="/problems/cube-roots-of-eight">138 · Las raíces cúbicas de ocho</a></li>
+<li><a routerLink="/problems/polynomial-degree-limit">142 · Un límite por grados</a></li>
+<li><a routerLink="/problems/root-existence-by-intermediate-value">148 · Una raíz garantizada sin resolverla</a></li>
+<li><a routerLink="/problems/quadratic-approximation-error-bound">159 · Una aproximación cuadrática con cota</a></li>
+<li><a routerLink="/problems/coefficient-without-full-expansion">194 · Un coeficiente sin expandir todo</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

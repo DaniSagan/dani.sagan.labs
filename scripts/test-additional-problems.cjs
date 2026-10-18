@@ -6,6 +6,19 @@ const files=walk('src/app/problems'), articleFiles=walk('src/app/articles');
 const components=files.filter(f=>f.endsWith('problem.component.ts'));
 const metadata=components.map(f=>({file:f,problem:JSON.parse(fs.readFileSync(f,'utf8').match(/problem: PracticeProblem = ([\s\S]*?);\s*}/)[1])}));
 assert.equal(metadata.length,200);
+const publicRoutes = require('./problem-routes.cjs');
+assert.equal(new Set(metadata.map(e=>e.problem.route)).size,200,'unique public routes');
+for (const {file,problem:p} of metadata) {
+ assert.match(p.route,/^[a-z]+(?:-[a-z]+)*$/,'English slug '+p.id);
+ assert.equal(p.route,publicRoutes[p.number-1],'generator route '+p.id);
+ assert.equal(fs.readFileSync(file,'utf8').match(/static readonly route\s*=\s*['"]([^'"]+)/)[1],p.route,'component route '+p.id);
+}
+for (const f of articleFiles.filter(f=>f.endsWith('.html'))) {
+ for (const link of fs.readFileSync(f,'utf8').matchAll(/routerLink="\/problems\/([^"#?]+)/g)) {
+  assert(publicRoutes.includes(link[1]),'canonical incoming link '+f+': '+link[1]);
+ }
+}
+
 for(const field of ['id','title','number']) assert.equal(new Set(metadata.map(e=>e.problem[field])).size,200,field+' uniqueness');
 assert.deepEqual(metadata.map(e=>e.problem.number).sort((a,b)=>a-b),Array.from({length:200},(_,i)=>i+1));
 const {mathjax}=require('mathjax-full/js/mathjax.js'),{TeX}=require('mathjax-full/js/input/tex.js'),{SVG}=require('mathjax-full/js/output/svg.js'),{liteAdaptor}=require('mathjax-full/js/adaptors/liteAdaptor.js'),{RegisterHTMLHandler}=require('mathjax-full/js/handlers/html.js'),{AllPackages}=require('mathjax-full/js/input/tex/AllPackages.js');
@@ -17,19 +30,21 @@ for(const f of articleFiles.filter(f=>f.endsWith('.ts'))) {
  if(!template)continue;
  for(const m of s.matchAll(/static (?:readonly )?route(?:\s*:\s*string)?\s*=\s*['"]([^'"]+)/g))routes.set(m[1],path.resolve(path.dirname(f),template));
 }
-routes.set('integration-classical',path.resolve('src/app/articles/calculus/integration/integration-article.component.html'));
+for(const chapter of ['classical','advanced','numerical']) routes.set('integration-'+chapter,path.resolve('src/app/articles/calculus/integration/integration-article.component.html'));
 let stepCount=0,formulaCount=0;
 for(const {file,problem:p}of metadata.filter(e=>e.problem.number>100)) {
  const html=fs.readFileSync(file.replace('.ts','.html'),'utf8');
  assert(html.includes(`<h2 id="problem-title">${p.title.replace(/&/g,'&amp;')}</h2>`));
  assert(html.includes(`currentId="${p.id}"`));
- const steps=[...html.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m=>decode(m[1]));
+ const steps=[...html.split('class="solution"')[1].split('</ol>')[0].matchAll(/<li>([\s\S]*?)<\/li>/g)].map(m=>decode(m[1]));
  assert(steps.length>=4,p.id+' sufficient steps');
  stepCount+=steps.length;
  for(const resource of p.resources) {
+  assert(html.includes('routerLink="'+resource.route+'"'),p.id+' rendered resource '+resource.route);
+  if(!resource.route.startsWith('/articles/')) continue;
   const route=resource.route.replace('/articles/',''),article=routes.get(route);assert(article,p.id+' valid article '+route);
   assert(html.includes(`routerLink="${resource.route}"`));
-  assert(fs.readFileSync(article,'utf8').includes(`routerLink="/problems/${p.id}"`),p.id+' reciprocal reference');
+  assert(fs.readFileSync(article,'utf8').includes(`routerLink="/problems/${p.route}"`),p.id+' reciprocal reference');
  }
  for(const m of html.matchAll(/<app-formula expression="([^"]+)"/g)) {
   const tex=decode(m[1]),svg=adaptor.outerHTML(doc.convert(tex,{display:true}));

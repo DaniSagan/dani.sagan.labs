@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnTrianguloPorLaLeyDeSenosProblemComponent {
   static readonly title = "Un triángulo por la ley de senos";
-  static readonly route = 'problema-135';
+  static readonly route = "triangle-by-sine-rule";
   static readonly problem: PracticeProblem = {
   "id": "problema-135",
+  "route": "triangle-by-sine-rule",
   "number": 135,
   "title": "Un triángulo por la ley de senos",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,16 @@ export class UnTrianguloPorLaLeyDeSenosProblemComponent {
       "label": "Ley de los senos y caso ambiguo",
       "route": "/articles/sine-law",
       "activity": "Practica un triángulo por la ley de senos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "activity": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
     }
   ]
 };

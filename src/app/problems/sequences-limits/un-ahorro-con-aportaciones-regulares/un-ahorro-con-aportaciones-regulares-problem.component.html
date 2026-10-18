@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una cuenta empieza con 100 euros. Cada mes se multiplica el saldo por 1,01 y después se ingresan 20 euros. Obtén el saldo tras n meses.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/recurrent-sequences">Recurrencias y puntos fijos</a>. Resta el punto fijo para obtener una expresión explícita de la sucesión.</li>
+    <li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>. Distingue suma finita, serie infinita y condición sobre la razón.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Si aₙ es el saldo después de n meses, el orden indicado da aₙ₊₁=1,01aₙ+20 y a₀=100. El ingreso del mes no recibe intereses hasta el mes siguiente.</li>
       <li>Buscamos una constante c que elimine el término independiente. Si bₙ=aₙ+2000, entonces bₙ₊₁=1,01aₙ+2020=1,01(aₙ+2000)=1,01bₙ.</li>
-      <li>La nueva sucesión es geométrica: bₙ=b₀·1,01ⁿ. Como b₀=100+2000=2100, obtenemos bₙ=2100·1,01ⁿ.</li>
+      <li>La nueva sucesión es <a data-prerequisite="geometric" routerLink="/articles/geometric-series">geométrica</a>: bₙ=b₀·1,01ⁿ. Como b₀=100+2000=2100, obtenemos bₙ=2100·1,01ⁿ.</li>
       <li>Restamos 2000: aₙ=2100·1,01ⁿ−2000. Para n=0 produce 100 y para n=1 produce 121, igual que 100·1,01+20. La fórmula describe saldos teóricos antes de redondeos bancarios.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> aₙ=2100·1,01ⁿ−2000 euros, sin redondeos intermedios.</p>
     <app-formula expression="a_n=2100(1.01)^n-2000" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar el orden de ingreso e interés cambia la recurrencia.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar el orden de ingreso e interés cambia la <a data-prerequisite="recurrence" routerLink="/articles/recurrent-sequences">recurrencia</a>.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

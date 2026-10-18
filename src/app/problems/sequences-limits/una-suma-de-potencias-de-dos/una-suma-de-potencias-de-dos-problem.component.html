@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula 1+2+4+…+2¹⁰ sin sumar los once términos uno a uno.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>. Distingue suma finita, serie infinita y condición sobre la razón.</li>
+    <li><a routerLink="/articles/proof-strategies">Contradicción, implicación y equivalencia</a>. Separa una demostración para todos los casos de una comprobación particular.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Llamamos S a la suma. Cada término se obtiene multiplicando el anterior por 2: es una progresión geométrica finita.</li>
+      <li>Llamamos S a la suma. Cada término se obtiene multiplicando el anterior por 2: es una <a data-prerequisite="geometric" routerLink="/articles/geometric-series">progresión geométrica</a> finita.</li>
       <li>Multiplicamos toda la suma por 2: 2S=2+4+8+…+2¹¹. Ambas expresiones tienen en común los términos desde 2 hasta 2¹⁰.</li>
       <li>Restamos S de 2S. Todos los términos comunes se cancelan y queda S=2¹¹−1.</li>
       <li>Como 2¹⁰=1024, 2¹¹=2048. La suma vale 2047. La cuenta incluye once términos, ya que los exponentes van de 0 a 10, ambos incluidos.</li>

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnLimitePorGradosProblemComponent {
   static readonly title = "Un límite por grados";
-  static readonly route = 'problema-142';
+  static readonly route = "polynomial-degree-limit";
   static readonly problem: PracticeProblem = {
   "id": "problema-142",
+  "route": "polynomial-degree-limit",
   "number": 142,
   "title": "Un límite por grados",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,18 @@ export class UnLimitePorGradosProblemComponent {
       "label": "Límites, equivalencias y jerarquías de crecimiento",
       "route": "/articles/asymptotic-limits",
       "activity": "Practica un límite por grados. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

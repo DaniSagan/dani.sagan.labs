@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CambiarLasUnidadesDeUnosDatosProblemComponent {
   static readonly title = "Cambiar las unidades de unos datos";
-  static readonly route = 'problema-184';
+  static readonly route = "changing-data-units";
   static readonly problem: PracticeProblem = {
   "id": "problema-184",
+  "route": "changing-data-units",
   "number": 184,
   "title": "Cambiar las unidades de unos datos",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,16 @@ export class CambiarLasUnidadesDeUnosDatosProblemComponent {
       "label": "Transformaciones de variables y de sus momentos",
       "route": "/articles/moment-transformations",
       "activity": "Practica cambiar las unidades de unos datos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "activity": "Distingue posición de dispersión y especifica el divisor de la varianza."
+    },
+    {
+      "label": "Análisis dimensional",
+      "route": "/articles/dimensional-analysis",
+      "activity": "Iguala los exponentes de las dimensiones y distingue escala de constante física."
     }
   ]
 };

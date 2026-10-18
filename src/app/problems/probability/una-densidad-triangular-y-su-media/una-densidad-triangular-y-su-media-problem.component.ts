@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDensidadTriangularYSuMediaProblemComponent {
   static readonly title = "Una densidad triangular y su media";
-  static readonly route = 'problema-178';
+  static readonly route = "triangular-density-and-mean";
   static readonly problem: PracticeProblem = {
   "id": "problema-178",
+  "route": "triangular-density-and-mean",
   "number": 178,
   "title": "Una densidad triangular y su media",
   "category": "Probabilidad",
@@ -31,6 +32,12 @@ export class UnaDensidadTriangularYSuMediaProblemComponent {
       "label": "Función de distribución, colas y probabilidades acumuladas",
       "route": "/articles/distribution-functions-tails",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Primitivas y teorema fundamental del cálculo",
+      "route": "/articles/integration-classical",
+      "fragment": "fundamental",
+      "activity": "Distingue una familia de funciones de una integral definida con signo."
     }
   ]
 };

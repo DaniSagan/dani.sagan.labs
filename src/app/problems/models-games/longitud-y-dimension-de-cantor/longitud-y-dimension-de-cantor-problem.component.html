@@ -10,12 +10,19 @@
     <p>En el conjunto ternario de Cantor, calcula la longitud total restante tras n etapas, la longitud total eliminada
       en el límite y la dimensión de autosimilitud.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/cantor-set">Conjunto de Cantor</a>. Separa cada etapa finita del conjunto límite.</li>
+    <li><a routerLink="/articles/zero-measure-dimension">Medida y dimensión fractal</a>. Distingue cardinalidad, medida y dimensión: no responden a la misma pregunta.</li>
+    <li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>. Distingue suma finita, serie infinita y condición sobre la razón.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>En cada etapa de Cantor se retira el tercio central de todos los intervalos restantes. Hay dos copias del
+      <li>En cada etapa de <a data-prerequisite="cantor" routerLink="/articles/cantor-set">Cantor</a> se retira el <a data-prerequisite="cantor" routerLink="/articles/cantor-set">tercio</a> central de todos los intervalos restantes. Hay dos copias del
         conjunto a escala <span class="math-part"><app-formula expression="1/3" displayMode="inline"
-            [showCodeButton]="false" /></span>, separadas entre sí. La dimensión de autosimilitud se define por <span
+            [showCodeButton]="false" /></span>, separadas entre sí. La <a data-prerequisite="dimension" routerLink="/articles/zero-measure-dimension">dimensión</a> de autosimilitud se define por <span
           class="math-part"><app-formula expression="2(1/3)^d=1" displayMode="inline"
             [showCodeButton]="false" /></span>; para esta construcción coincide con la dimensión de Hausdorff. Esta
         dimensión y la longitud ordinaria son magnitudes distintas.</li>
@@ -25,7 +32,7 @@
           class="math-part"><app-formula expression="L_{n}=\left(\dfrac{2}{3}\right)^{n}" displayMode="inline"
             [showCodeButton]="false" /></span>. Cada etapa duplica el número de intervalos y divide su longitud por 3.
         Para <span class="math-part"><app-formula expression="n=0" displayMode="inline"
-            [showCodeButton]="false" /></span> se recuperan un intervalo y longitud total 1.</li>
+            [showCodeButton]="false" /></span> se recuperan un intervalo y <a data-prerequisite="cantor" routerLink="/articles/cantor-set">longitud total</a> 1.</li>
       <li><span class="math-part"><app-formula expression="L_{n}\to 0" displayMode="inline"
             [showCodeButton]="false" /></span>; la suma de longitudes eliminadas es <span class="math-part"><app-formula
             expression="1-\lim_{n\to\infty}L_n=1" displayMode="inline" [showCodeButton]="false" /></span>. La longitud
@@ -39,7 +46,7 @@
         escala <span class="math-part"><app-formula expression="\dfrac{1}{3}" displayMode="inline"
             [showCodeButton]="false" /></span>. No se usa la fórmula de longitud ordinaria para calcular d.</li>
       <li>Despeja <span class="math-part"><app-formula expression="d=\dfrac{\ln2}{\ln3}" displayMode="inline"
-            [showCodeButton]="false" /></span>; longitud cero no implica ausencia de puntos, pues al menos 0 y 1
+            [showCodeButton]="false" /></span>; <a data-prerequisite="dimension" routerLink="/articles/zero-measure-dimension">longitud cero</a> no implica ausencia de puntos, pues al menos 0 y 1
         permanecen y el conjunto es mucho más amplio. Tomar logaritmos da <span class="math-part"><app-formula
             expression="\ln2-d \ln3=0" displayMode="inline" [showCodeButton]="false" /></span>. Además <span
           class="math-part"><app-formula expression="0&lt;\ln2/\ln3&lt;1" displayMode="inline"

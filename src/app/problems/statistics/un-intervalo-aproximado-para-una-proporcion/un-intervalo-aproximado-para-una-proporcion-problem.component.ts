@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnIntervaloAproximadoParaUnaProporcionProblemComponent {
   static readonly title = "Un intervalo aproximado para una proporción";
-  static readonly route = 'problema-189';
+  static readonly route = "approximate-proportion-confidence-interval";
   static readonly problem: PracticeProblem = {
   "id": "problema-189",
+  "route": "approximate-proportion-confidence-interval",
   "number": 189,
   "title": "Un intervalo aproximado para una proporción",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,16 @@ export class UnIntervaloAproximadoParaUnaProporcionProblemComponent {
       "label": "Intervalos para proporciones: Wilson y métodos exactos",
       "route": "/articles/proportion-intervals",
       "activity": "Practica un intervalo aproximado para una proporción. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Distribución de la media y error estándar",
+      "route": "/articles/sampling-distributions",
+      "activity": "Separa la dispersión de las observaciones de la dispersión de su media."
+    },
+    {
+      "label": "Intervalos, cobertura y contraste de hipótesis",
+      "route": "/articles/statistical-inference",
+      "activity": "Interpreta el procedimiento repetido y distingue significación de tamaño del efecto."
     }
   ]
 };

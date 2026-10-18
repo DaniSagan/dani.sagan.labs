@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Escribe 43/19 como fracción continua simple y reconstruye la fracción desde ella.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/continued-fractions">Fracciones continuas</a>. Evalúa desde el término interior y reconstruye el cociente exacto.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>En una fracción continua simple se separa la parte entera y se invierte el resto positivo. Empezamos con 43=2·19+5: 43/19=2+5/19=2+1/(19/5).</li>
+      <li>En una <a data-prerequisite="continued" routerLink="/articles/continued-fractions">fracción continua</a> simple se separa la parte entera y se invierte el resto positivo. Empezamos con 43=2·19+5: 43/19=2+5/19=2+1/(19/5).</li>
       <li>Repetimos: 19=3·5+4, así que 19/5=3+1/(5/4). Después 5=1·4+1 da 5/4=1+1/4.</li>
-      <li>La notación compacta es [2;3,1,4], que significa 2+1/(3+1/(1+1/4)). Cada denominador se interpreta desde dentro hacia fuera.</li>
+      <li>La notación compacta es [2;3,1,4], que significa 2+1/(3+1/(1+1/4)). Cada <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> se interpreta desde dentro hacia fuera.</li>
       <li>Reconstruimos: 1+1/4=5/4; luego 3+1/(5/4)=3+4/5=19/5; finalmente 2+1/(19/5)=2+5/19=43/19. Recuperamos el dato inicial.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 43/19=[2;3,1,4].</p>

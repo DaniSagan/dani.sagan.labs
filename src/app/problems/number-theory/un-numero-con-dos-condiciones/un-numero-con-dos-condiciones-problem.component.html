@@ -6,11 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Busca el menor entero positivo que deja resto 2 al dividir por 5 y resto 4 al dividir por 7.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/chinese-remainder-theorem">Teorema chino del resto</a>. Resuelve condiciones modulares simultáneas y determina su período.</li>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>La primera condición significa n=2+5k, con k entero. Escribir todos los candidatos de esta manera asegura que no perdamos ninguna solución.</li>
-      <li>Sustituimos en la segunda: 2+5k≡4 módulo 7, de donde 5k≡2. Como 5·3=15≡1, multiplicamos por 3 y obtenemos k≡6.</li>
+      <li>Sustituimos en la segunda: 2+5k≡4 <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">módulo</a> 7, de donde 5k≡2. Como 5·3=15≡1, multiplicamos por 3 y obtenemos k≡6.</li>
       <li>Todos los valores son k=6+7t. Por tanto n=2+5(6+7t)=32+35t, con t entero.</li>
       <li>Con t=0 sale 32; con t=−1 sale −3. Los valores crecen de 35 en 35, así que 32 es el menor positivo. Comprobamos 32=6·5+2=4·7+4.</li>
     </ol>

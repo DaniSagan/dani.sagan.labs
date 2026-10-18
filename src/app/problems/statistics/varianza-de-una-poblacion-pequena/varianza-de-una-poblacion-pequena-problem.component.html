@@ -6,13 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Los cuatro valores 1, 3, 5, 7 constituyen toda una población. Calcula su varianza y desviación típica.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="squaring">Cuadrados y soluciones extrañas</a>. Controla los signos antes de cuadrar para que la transformación sea reversible.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La media poblacional es (1+3+5+7)/4=16/4=4. Las desviaciones respecto de ella son −3, −1, 1 y 3.</li>
+      <li>La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> poblacional es (1+3+5+7)/4=16/4=4. Las <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviaciones</a> respecto de ella son −3, −1, 1 y 3.</li>
       <li>Elevamos las desviaciones al cuadrado: 9, 1, 1 y 9. Su suma es 20; los signos ya no pueden cancelarse.</li>
-      <li>Como los datos son toda la población, la varianza es el promedio de esos cuadrados: 20/4=5. No usamos la corrección muestral.</li>
-      <li>La desviación típica es la raíz positiva de la varianza: √5≈2,236. Vuelve a las mismas unidades de los datos; la varianza tiene unidades al cuadrado.</li>
+      <li>Como los datos son toda la población, la <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">varianza</a> es el promedio de esos cuadrados: 20/4=5. No usamos la corrección muestral.</li>
+      <li>La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviación típica</a> es la raíz positiva de la varianza: √5≈2,236. Vuelve a las mismas unidades de los datos; la varianza tiene unidades al cuadrado.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Varianza poblacional 5 y desviación típica √5.</p>
     <app-formula expression="\sigma^2=5,\quad\sigma=\sqrt5" [showCodeButton]="false" />

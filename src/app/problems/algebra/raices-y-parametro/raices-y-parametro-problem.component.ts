@@ -13,36 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class RaicesYParametroProblemComponent {
   static readonly title = "Raíces y parámetro";
-  static readonly route = "problema-012";
+  static readonly route = "quadratic-roots-and-parameter";
   static readonly problem: PracticeProblem = {
-    "id": "problema-012",
-    "number": 12,
-    "title": "Raíces y parámetro",
-    "category": "Álgebra y álgebra lineal",
-    "topic": "Polinomios y desigualdades",
-    "level": "Oposición",
-    "statement": "Determina los valores reales de a para los que \\(x^{2}-2ax+a+2\\) tiene dos raíces reales distintas y positivas.",
-    "resources": [
-      {
-        "label": "Ecuaciones cuadráticas: discriminante y Viète",
-        "route": "/articles/quadratic-equations",
-        "activity": "Clasifica las raíces reales y sus signos combinando el discriminante con la suma y el producto de Viète."
-      },
-      {
-        "label": "La ecuación cúbica",
-        "route": "/articles/cubic-equation",
-        "activity": "Compara el papel de las raíces y los parámetros en una ecuación cúbica con la clasificación cuadrática de este ejercicio; las fórmulas de los discriminantes son distintas."
-      },
-      {
-        "label": "Laboratorio de álgebra lineal",
-        "route": "/tools/linear-algebra",
-        "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
-      },
-      {
-        "label": "Inecuaciones y tablas de signos",
-        "route": "/articles/sign-charts",
-        "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
-      }
-    ]
-  };
+  "id": "problema-012",
+  "route": "quadratic-roots-and-parameter",
+  "number": 12,
+  "title": "Raíces y parámetro",
+  "category": "Álgebra y álgebra lineal",
+  "topic": "Polinomios y desigualdades",
+  "level": "Oposición",
+  "statement": "Determina los valores reales de a para los que \\(x^{2}-2ax+a+2\\) tiene dos raíces reales distintas y positivas.",
+  "resources": [
+    {
+      "label": "Ecuaciones cuadráticas: discriminante y Viète",
+      "route": "/articles/quadratic-equations",
+      "activity": "Clasifica las raíces reales y sus signos combinando el discriminante con la suma y el producto de Viète."
+    },
+    {
+      "label": "La ecuación cúbica",
+      "route": "/articles/cubic-equation",
+      "activity": "Compara el papel de las raíces y los parámetros en una ecuación cúbica con la clasificación cuadrática de este ejercicio; las fórmulas de los discriminantes son distintas."
+    },
+    {
+      "label": "Inecuaciones y tablas de signos",
+      "route": "/articles/sign-charts",
+      "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
+    }
+  ]
+};
 }

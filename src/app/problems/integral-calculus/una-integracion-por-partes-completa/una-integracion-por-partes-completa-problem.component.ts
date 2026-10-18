@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIntegracionPorPartesCompletaProblemComponent {
   static readonly title = "Una integración por partes completa";
-  static readonly route = 'problema-164';
+  static readonly route = "definite-integration-by-parts";
   static readonly problem: PracticeProblem = {
   "id": "problema-164",
+  "route": "definite-integration-by-parts",
   "number": 164,
   "title": "Una integración por partes completa",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,16 @@ export class UnaIntegracionPorPartesCompletaProblemComponent {
       "label": "Integrales I: técnicas clásicas",
       "route": "/articles/integration-classical",
       "activity": "Practica una integración por partes completa. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
     }
   ]
 };

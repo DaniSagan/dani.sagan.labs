@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula el límite de (3n²−n+4)/(2n²+5) cuando n tiende a infinito.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+    <li><a routerLink="/articles/asymptotic-limits">Equivalencias y órdenes de crecimiento</a>. Compara los términos dominantes y controla el error tras cancelar.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Numerador y denominador crecen sin cota, así que no podemos sustituir infinito como si fuera un número. Dividimos ambos por la mayor potencia presente, n².</li>
+      <li>Numerador y <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> crecen sin cota, así que no podemos sustituir infinito como si fuera un número. Dividimos ambos por la <a data-prerequisite="asymptotic" routerLink="/articles/asymptotic-limits">mayor potencia</a> presente, n².</li>
       <li>La fracción queda (3−1/n+4/n²)/(2+5/n²). Esta igualdad vale para todo entero positivo n.</li>
       <li>Cuando n crece, 1/n y 1/n² tienden a cero. Por tanto el numerador transformado tiende a 3 y el denominador a 2.</li>
-      <li>Como el límite del denominador es distinto de cero, podemos tomar el cociente de los límites: 3/2. Los términos de menor grado no alteran ese valor.</li>
+      <li>Como el límite del denominador es distinto de cero, podemos tomar el cociente de los límites: 3/2. Los términos de menor <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">grado</a> no alteran ese valor.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> El límite es 3/2.</p>
     <app-formula expression="\lim_{n\to\infty}\frac{3n^2-n+4}{2n^2+5}=\frac32" [showCodeButton]="false" />

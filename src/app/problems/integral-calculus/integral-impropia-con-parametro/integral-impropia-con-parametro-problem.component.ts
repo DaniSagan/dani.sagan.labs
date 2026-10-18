@@ -13,41 +13,48 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class IntegralImpropiaConParametroProblemComponent {
   static readonly title = "Integral impropia con parámetro";
-  static readonly route = "problema-065";
+  static readonly route = "improper-integral-with-parameter";
   static readonly problem: PracticeProblem = {
-    "id": "problema-065",
-    "number": 65,
-    "title": "Integral impropia con parámetro",
-    "category": "Integración y cálculo numérico",
-    "topic": "Primitivas e integrales",
-    "level": "Oposición",
-    "statement": "Estudia para qué \\(p\\in\\mathbb R\\) converge \\(\\int_1^{\\infty}x^{-p}\\,dx\\) y calcula su valor cuando converge.",
-    "resources": [
-      {
-        "label": "Integración avanzada",
-        "route": "/articles/integration-advanced",
-        "activity": "Lectura complementaria sobre integrales impropias y las condiciones de su convergencia."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      },
-      {
-        "label": "Inecuaciones y tablas de signos",
-        "route": "/articles/sign-charts",
-        "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
-      },
-      {
-        "label": "Criterios de convergencia de series positivas",
-        "route": "/articles/positive-series-tests",
-        "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
-      }
-    ]
-  };
+  "id": "problema-065",
+  "route": "improper-integral-with-parameter",
+  "number": 65,
+  "title": "Integral impropia con parámetro",
+  "category": "Integración y cálculo numérico",
+  "topic": "Primitivas e integrales",
+  "level": "Oposición",
+  "statement": "Estudia para qué \\(p\\in\\mathbb R\\) converge \\(\\int_1^{\\infty}x^{-p}\\,dx\\) y calcula su valor cuando converge.",
+  "resources": [
+    {
+      "label": "Integración avanzada",
+      "route": "/articles/integration-advanced",
+      "activity": "Lectura complementaria sobre integrales impropias y las condiciones de su convergencia."
+    },
+    {
+      "label": "Inecuaciones y tablas de signos",
+      "route": "/articles/sign-charts",
+      "activity": "Organiza ceros y puntos excluidos por intervalos y combina correctamente las condiciones de signo."
+    },
+    {
+      "label": "Criterios de convergencia de series positivas",
+      "route": "/articles/positive-series-tests",
+      "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
+    },
+    {
+      "label": "Integrales impropias y convergencia",
+      "route": "/articles/integration-classical",
+      "fragment": "improper",
+      "activity": "Define primero el límite truncado y decide si es finito."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
+    },
+    {
+      "label": "Equivalencias y órdenes de crecimiento",
+      "route": "/articles/asymptotic-limits",
+      "activity": "Compara los términos dominantes y controla el error tras cancelar."
+    }
+  ]
+};
 }

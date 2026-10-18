@@ -1,3 +1,4 @@
+const problemRoutes = require('./problem-routes.cjs');
 // Real Chrome integration/visual audit; run after a development build.
 const fs = require('node:fs'), path = require('node:path'), os = require('node:os'), http = require('node:http');
 const { spawn } = require('node:child_process');
@@ -52,15 +53,16 @@ async function main() {
   await waitFor("document.querySelectorAll('.problem-card').length===200",'reset search');
   const numbers=process.env.PROBLEM_NUMBERS?process.env.PROBLEM_NUMBERS.split(',').map(Number):Array.from({length:100},(_,i)=>101+i);
   for(const n of numbers){
-    await navigate('/problems/problema-'+n);
+    await navigate(n===173 ? '/problems/problema-173' : '/problems/'+problemRoutes[n-1]);
     await waitFor("!!document.querySelector('app-"+problemSlugs[n-101]+"-problem .solution')",'page '+n);
     await waitFor("document.querySelectorAll('.problem-detail app-formula mjx-container').length===1",'formula '+n);
     assert.equal(await evaluate("document.querySelectorAll('mjx-merror,[data-mml-node=merror]').length"),0,'MathJax '+n);
     assert((await evaluate("document.querySelectorAll('.solution ol li').length"))>=4,'steps '+n);
     assert(await evaluate("!!document.querySelector('.resources a[href^=\"/articles/\"]')"),'resource '+n);
+    assert.equal(await evaluate('location.pathname'), '/problems/'+problemRoutes[n-1], 'canonical route '+n);
     const next=await evaluate("Array.from(document.querySelectorAll('.adjacent a')).map(e=>e.getAttribute('href'))");
-    if(n<200)assert(next.includes('/problems/problema-'+(n+1)),'next '+n);
-    assert(next.includes('/problems/problema-'+(n-1)),'previous '+n);
+    if(n<200)assert(next.includes('/problems/'+problemRoutes[n]),'next '+n);
+    assert(next.includes('/problems/'+problemRoutes[n-2]),'previous '+n);
     for(const width of(n%10===1?[1440,390,320]:[390])){
       await call('Emulation.setDeviceMetricsOverride',{width,height:900,deviceScaleFactor:1,mobile:width<600});await pause(450);
       const geometry=await evaluate("({width:innerWidth,scroll:document.documentElement.scrollWidth})");
@@ -76,7 +78,7 @@ async function main() {
   // Follow actual Angular links in both directions, including the shared integration chapter.
   for(const [number,route]of[[118,'gram-schmidt'],[163,'integration-classical'],[198,'life-patterns']]){
     await navigate('/articles/'+route);
-    const selector='a[href="/problems/problema-'+number+'"]';
+    const selector='a[href="/problems/'+problemRoutes[number-1]+'"]';
     await waitFor('!!document.querySelector('+JSON.stringify(selector)+')','incoming '+route);
     await evaluate('document.querySelector('+JSON.stringify(selector)+').click()');
     await waitFor("!!document.querySelector('app-"+problemSlugs[number-101]+"-problem .solution')",'article to problem');

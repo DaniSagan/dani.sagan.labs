@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class PotenciasPorAutovectoresProblemComponent {
   static readonly title = "Potencias por autovectores";
-  static readonly route = "problema-017";
+  static readonly route = "matrix-powers-using-eigenvectors";
   static readonly problem: PracticeProblem = {
   "id": "problema-017",
+  "route": "matrix-powers-using-eigenvectors",
   "number": 17,
   "title": "Potencias por autovectores",
   "category": "Álgebra y álgebra lineal",
@@ -57,6 +58,11 @@ export class PotenciasPorAutovectoresProblemComponent {
       "label": "Cambios de base y matrices de una transformación",
       "route": "/articles/change-of-basis",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Bases, independencia, núcleo e imagen",
+      "route": "/articles/vector-spaces",
+      "activity": "Distingue coordenadas, independencia y dimensiones de los espacios asociados."
     }
   ]
 };

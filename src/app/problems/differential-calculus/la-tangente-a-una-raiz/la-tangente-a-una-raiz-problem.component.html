@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Encuentra la recta tangente a f(x)=√x en x=4 y úsala para aproximar √4,1.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/linear-approximation">Tangente y aproximación lineal</a>. Construye la recta con el valor y la derivada en el punto de contacto.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La recta tangente pasa por (4,f(4))=(4,2). Su pendiente es la derivada f′(x)=1/(2√x), que en x=4 vale 1/4.</li>
+      <li>La <a data-prerequisite="tangent" routerLink="/articles/linear-approximation">recta tangente</a> pasa por (4,f(4))=(4,2). Su <a data-prerequisite="tangent" routerLink="/articles/linear-approximation">pendiente</a> es la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> f′(x)=1/(2√x), que en x=4 vale 1/4.</li>
       <li>La ecuación de una recta de pendiente m que pasa por (a,b) es y=b+m(x−a). Aquí resulta y=2+(x−4)/4.</li>
-      <li>Para x=4,1, el incremento es 0,1. La aproximación lineal da √4,1≈2+0,1/4=2,025.</li>
+      <li>Para x=4,1, el incremento es 0,1. La <a data-prerequisite="tangent" routerLink="/articles/linear-approximation">aproximación lineal</a> da √4,1≈2+0,1/4=2,025.</li>
       <li>Para x&gt;0 la segunda derivada es −1/(4x^(3/2)), negativa. La gráfica se curva hacia abajo y queda bajo su tangente: la aproximación es una sobreestimación. No es una igualdad exacta.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Tangente y=2+(x−4)/4; √4,1≈2,025 por exceso.</p>

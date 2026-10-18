@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosCuadradosYUnaImposibilidadProblemComponent {
   static readonly title = "Dos cuadrados y una imposibilidad";
-  static readonly route = 'problema-108';
+  static readonly route = "impossible-sum-of-two-squares";
   static readonly problem: PracticeProblem = {
   "id": "problema-108",
+  "route": "impossible-sum-of-two-squares",
   "number": 108,
   "title": "Dos cuadrados y una imposibilidad",
   "category": "Aritmética y teoría de números",
@@ -31,6 +32,17 @@ export class DosCuadradosYUnaImposibilidadProblemComponent {
       "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
       "route": "/articles/proof-strategies",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "activity": "Controla los signos antes de cuadrar para que la transformación sea reversible."
     }
   ]
 };

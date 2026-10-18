@@ -30,11 +30,16 @@
 </ol>
 <details class="note"><summary>Solución de la ampliación</summary><p>Para <app-formula displayMode="inline" [showCodeButton]="false" expression="J=I+N" /> de tamaño tres, <app-formula displayMode="inline" [showCodeButton]="false" expression="N^{3}=0" />. Así <app-formula displayMode="inline" [showCodeButton]="false" expression="J^{2}=I+2N+N^{2}" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="J^{3}=I+3N+3N^{2}" />. La entrada situada dos posiciones sobre la diagonal es <app-formula displayMode="inline" [showCodeButton]="false" expression="n(n-1)/2" />. Su crecimiento cuadrático procede de aplicar dos veces el desplazamiento de la cadena. Con <app-formula displayMode="inline" [showCodeButton]="false" expression="\lambda =0{,}5" />, el cociente de <app-formula displayMode="inline" [showCodeButton]="false" expression="n\lambda ^{n-1}" /> en pasos consecutivos tiende a 0, 5: acaba decreciendo y converge a cero. Un valor propio de módulo inferior a uno sigue dominando cualquier factor polinómico fijo.</p></details>
 <div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
-<li><a routerLink="/problems/problema-020">Una matriz no diagonalizable</a>. Reconstruye la solución con las ideas del artículo.</li>
-<li><a routerLink="/problems/problema-017">Potencias por autovectores</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/non-diagonalizable-matrix">Una matriz no diagonalizable</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/matrix-powers-using-eigenvectors">Potencias por autovectores</a>. Reconstruye la solución con las ideas del artículo.</li>
 <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba productos, rangos y cambios de base con las matrices del ejemplo.</li>
 <li><a routerLink="/games/rubik-cube">Cubo de Rubik</a>. Compara la composición de transformaciones con el orden de los giros.</li>
 </ul></div>
 <p>Continúa con <a routerLink="/articles/matrix-diagonalization">Diagonalización de matrices</a> para conectar estos resultados con otro enfoque.</p>
 <p>Continúa con <a routerLink="/articles/cayley-hamilton">Teorema de Cayley–Hamilton y polinomio mínimo</a> para conectar estos resultados con otro enfoque.</p>
 <h3 id="section-9">Lectura de referencia</h3><p><a href="https://textbooks.math.gatech.edu/ila/" target="_blank" rel="noopener noreferrer">Georgia Tech · Interactive Linear Algebra</a>. Material complementario para contrastar definiciones y continuar el estudio.</p>
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (1)</summary><ul>
+<li><a routerLink="/problems/non-diagonalizable-matrix">20 · Una matriz no diagonalizable</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

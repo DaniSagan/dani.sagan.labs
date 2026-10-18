@@ -13,36 +13,38 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDesigualdadConIgualdadProblemComponent {
   static readonly title = "Una desigualdad con igualdad";
-  static readonly route = "problema-014";
+  static readonly route = "inequality-and-equality-case";
   static readonly problem: PracticeProblem = {
-    "id": "problema-014",
-    "number": 14,
-    "title": "Una desigualdad con igualdad",
-    "category": "Álgebra y álgebra lineal",
-    "topic": "Polinomios y desigualdades",
-    "level": "Oposición",
-    "statement": "Demuestra que \\((a+b+c)(1/a+1/b+1/c)\\ge 9\\) para \\(a,b,c>0\\) e identifica cuándo hay igualdad.",
-    "resources": [
-{
-  "label": "Medias aritmética, geométrica y armónica",
-  "route": "/articles/mean-inequalities",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Desigualdad de Cauchy–Schwarz",
-        "route": "/articles/cauchy-schwarz",
-        "activity": "Demuestra la desigualdad de recíprocos con Cauchy–Schwarz y comprueba cuándo se alcanza la igualdad."
-      },
-      {
-        "label": "Determinantes",
-        "route": "/articles/matrix-determinant",
-        "activity": "Conexión con determinantes: los dos vectores de Cauchy tienen matriz de Gram ((a+b+c,3),(3,1/a+1/b+1/c)); su determinante no negativo equivale a la desigualdad."
-      },
-      {
-        "label": "Laboratorio de álgebra lineal",
-        "route": "/tools/linear-algebra",
-        "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
-      }
-    ]
-  };
+  "id": "problema-014",
+  "route": "inequality-and-equality-case",
+  "number": 14,
+  "title": "Una desigualdad con igualdad",
+  "category": "Álgebra y álgebra lineal",
+  "topic": "Polinomios y desigualdades",
+  "level": "Oposición",
+  "statement": "Demuestra que \\((a+b+c)(1/a+1/b+1/c)\\ge 9\\) para \\(a,b,c>0\\) e identifica cuándo hay igualdad.",
+  "resources": [
+    {
+      "label": "Medias aritmética, geométrica y armónica",
+      "route": "/articles/mean-inequalities",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Desigualdad de Cauchy–Schwarz",
+      "route": "/articles/cauchy-schwarz",
+      "activity": "Demuestra la desigualdad de recíprocos con Cauchy–Schwarz y comprueba cuándo se alcanza la igualdad."
+    },
+    {
+      "label": "Determinantes",
+      "route": "/articles/matrix-determinant",
+      "activity": "Conexión con determinantes: los dos vectores de Cauchy tienen matriz de Gram ((a+b+c,3),(3,1/a+1/b+1/c)); su determinante no negativo equivale a la desigualdad."
+    },
+    {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "activity": "Controla los signos antes de cuadrar para que la transformación sea reversible."
+    }
+  ]
+};
 }

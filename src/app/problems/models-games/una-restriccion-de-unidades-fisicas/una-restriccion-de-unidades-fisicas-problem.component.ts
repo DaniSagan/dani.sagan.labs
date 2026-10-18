@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRestriccionDeUnidadesFisicasProblemComponent {
   static readonly title = "Una restricción de unidades físicas";
-  static readonly route = 'problema-199';
+  static readonly route = "physical-units-constraint";
   static readonly problem: PracticeProblem = {
   "id": "problema-199",
+  "route": "physical-units-constraint",
   "number": 199,
   "title": "Una restricción de unidades físicas",
   "category": "Combinatoria, juegos y modelización",
@@ -26,6 +27,11 @@ export class UnaRestriccionDeUnidadesFisicasProblemComponent {
       "label": "Análisis dimensional y leyes de escala",
       "route": "/articles/dimensional-analysis",
       "activity": "Practica una restricción de unidades físicas. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Eliminación de Gauss y sistemas compatibles",
+      "route": "/articles/gaussian-elimination",
+      "activity": "Entiende qué operaciones conservan las soluciones de un sistema."
     }
   ]
 };

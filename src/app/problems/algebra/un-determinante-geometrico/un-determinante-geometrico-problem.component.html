@@ -9,10 +9,16 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Calcula <span class="math-part"><app-formula expression="\det\begin{pmatrix}1&amp;1&amp;1\\1&amp;2&amp;3\\1&amp;3&amp;6\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span>, donde las ternas son filas, y decide si las filas son independientes.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/matrix-determinant">Determinante y matrices invertibles</a>. Relaciona el determinante con volumen, independencia e invertibilidad.</li>
+    <li><a routerLink="/articles/vector-spaces">Bases, independencia, núcleo e imagen</a>. Distingue coordenadas, independencia y dimensiones de los espacios asociados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El determinante de una matriz cuadrada mide el factor de volumen con signo de la transformación asociada. Si las filas son dependientes, ese volumen se aplana y el determinante es cero. Reducir filas mediante sumas permite calcularlo sin cambiar su valor; una matriz de orden tres con determinante no nulo tiene tres filas independientes.</li>
+      <li>El <a data-prerequisite="det" routerLink="/articles/matrix-determinant">determinante</a> de una matriz cuadrada mide el factor de volumen con signo de la transformación asociada. Si las filas son <a data-prerequisite="vectors" routerLink="/articles/vector-spaces">dependientes</a>, ese volumen se aplana y el determinante es cero. Reducir filas mediante sumas permite calcularlo sin cambiar su valor; una matriz de orden tres con determinante no nulo tiene tres filas <a data-prerequisite="vectors" routerLink="/articles/vector-spaces">independientes</a>.</li>
       <li>Las filas segunda y tercera pasan a <span class="math-part"><app-formula expression="(0,1,2)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(0,2,5)" displayMode="inline" [showCodeButton]="false" /></span>. Se efectúan <span class="math-part"><app-formula expression="F_{2}" displayMode="inline" [showCodeButton]="false" /></span>←<span class="math-part"><app-formula expression="F_{2}-F_{1}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="F_{3}" displayMode="inline" [showCodeButton]="false" /></span>←<span class="math-part"><app-formula expression="F_{3}-F_{1}" displayMode="inline" [showCodeButton]="false" /></span>. No se ha escalado ni intercambiado ninguna fila.</li>
       <li>Estas operaciones conservan el determinante. La multilinealidad y alternancia del determinante garantizan que añadir múltiplos de otras filas lo conserva.</li>
       <li>Expande por la primera columna: <span class="math-part"><app-formula expression="\det=1\cdot (5-4)=1" displayMode="inline" [showCodeButton]="false" /></span>. El menor 2×2 restante tiene determinante <span class="math-part"><app-formula expression="1\cdot 5-2\cdot 2=1" displayMode="inline" [showCodeButton]="false" /></span>. Los otros términos de la expansión se anulan.</li>

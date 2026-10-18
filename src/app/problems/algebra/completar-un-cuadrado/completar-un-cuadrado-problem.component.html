@@ -6,6 +6,13 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Encuentra el mínimo de x²−6x+13 y los valores de x para los que vale 8.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/quadratic-equations">Ecuaciones cuadráticas</a>. Resuelve la ecuación de segundo grado y distingue los casos degenerados.</li>
+    <li><a routerLink="/articles/global-extrema-weierstrass">Extremos globales y Weierstrass</a>. Distingue extremo alcanzado de ínfimo o supremo y revisa los bordes.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
@@ -14,7 +21,7 @@
       <li>Para que valga 8, imponemos (x−3)²+4=8. Restar 4 da (x−3)²=4.</li>
       <li>Los números cuyo cuadrado es 4 son 2 y −2. Así, x−3=2 o x−3=−2, que dan x=5 o x=1. Al sustituir en el polinomio ambos producen 8.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Mínimo 4 en x=3; el valor 8 se alcanza en x=1 y x=5.</p>
+    <p class="answer"><strong>Resultado.</strong> <a data-prerequisite="extrema" routerLink="/articles/global-extrema-weierstrass">Mínimo</a> 4 en x=3; el valor 8 se alcanza en x=1 y x=5.</p>
     <app-formula expression="x^2-6x+13=(x-3)^2+4" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> Tomar solo la raíz positiva perdería una de las dos soluciones.</aside>
   </section>

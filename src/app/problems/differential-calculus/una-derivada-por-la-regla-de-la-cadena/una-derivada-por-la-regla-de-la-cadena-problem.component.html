@@ -6,11 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Deriva g(x)=(3x²+1)⁴ y calcula g′(1).</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La expresión es una composición: primero u(x)=3x²+1 y después se eleva u a la cuarta potencia. La regla de la cadena multiplica las tasas de cambio de ambas operaciones.</li>
-      <li>La derivada de u⁴ respecto de u es 4u³. La derivada de u respecto de x es u′(x)=6x.</li>
+      <li>La expresión es una composición: primero u(x)=3x²+1 y después se eleva u a la cuarta potencia. La <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">regla de la cadena</a> multiplica las tasas de cambio de ambas operaciones.</li>
+      <li>La <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> de u⁴ respecto de u es 4u³. La derivada de u respecto de x es u′(x)=6x.</li>
       <li>Multiplicamos y sustituimos u: g′(x)=4(3x²+1)³·6x=24x(3x²+1)³.</li>
       <li>En x=1, la expresión interior vale 3+1=4. Por tanto g′(1)=24·4³=24·64=1536. El factor 6x recoge cuánto cambia la expresión interior.</li>
     </ol>

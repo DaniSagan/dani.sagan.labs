@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class VelocidadYCambioDeSentidoProblemComponent {
   static readonly title = "Velocidad y cambio de sentido";
-  static readonly route = 'problema-155';
+  static readonly route = "velocity-and-direction-changes";
   static readonly problem: PracticeProblem = {
   "id": "problema-155",
+  "route": "velocity-and-direction-changes",
   "number": 155,
   "title": "Velocidad y cambio de sentido",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,16 @@ export class VelocidadYCambioDeSentidoProblemComponent {
       "label": "Derivadas: definición, interpretación y reglas",
       "route": "/articles/derivative-foundations",
       "activity": "Practica velocidad y cambio de sentido. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Crecimiento, extremos y concavidad",
+      "route": "/articles/function-analysis",
+      "activity": "Relaciona los signos de las derivadas con el comportamiento de la función."
+    },
+    {
+      "label": "Tablas de signos e inecuaciones",
+      "route": "/articles/sign-charts",
+      "activity": "Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad."
     }
   ]
 };

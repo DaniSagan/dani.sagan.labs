@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Enumera las cadenas correctas de tres pares de paréntesis y explica por qué hay cinco.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/catalan-numbers">Números de Catalan</a>. Relaciona palabras bien equilibradas con caminos que no cruzan una diagonal.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+    <li><a routerLink="/articles/reflection-principle">Principio de reflexión</a>. Construye una correspondencia entre los caminos que incumplen la restricción y otros caminos contables.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una cadena correcta tiene tantos cierres como aperturas y en ningún prefijo aparecen más cierres que aperturas. El primer paréntesis necesariamente es una apertura.</li>
+      <li>Una cadena correcta tiene tantos cierres como aperturas y en ningún <a data-prerequisite="catalan" routerLink="/articles/catalan-numbers">prefijo</a> aparecen más cierres que aperturas. El primer <a data-prerequisite="catalan" routerLink="/articles/catalan-numbers">paréntesis</a> necesariamente es una apertura.</li>
       <li>Emparejamos esa apertura con su cierre correspondiente. Dentro puede haber cero, uno o dos pares; lo restante queda después del cierre.</li>
       <li>Si dentro no hay pares, quedan dos fuera: ()(()) y ()()(). Si dentro hay uno y fuera otro, solo aparece (())().</li>
-      <li>Si dentro hay dos y fuera ninguno, las dos posibilidades interiores son (()) y ()(), que producen ((())) y (()()). Estos casos no se solapan porque el cierre emparejado con el primero está en posiciones distintas.</li>
+      <li>Si dentro hay dos y fuera ninguno, las dos posibilidades interiores son (()) y ()(), que producen ((())) y (()()). Estos casos no se solapan porque el cierre emparejado con el primero está en <a data-prerequisite="counting" routerLink="/articles/counting-principles">posiciones</a> distintas.</li>
       <li>Sumamos 2+1+2=5 cadenas. Todas cumplen la condición de prefijos y contienen exactamente tres aperturas y tres cierres.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Cinco: ((())), (()()), (())(), ()(()), ()()().</p>

@@ -8,16 +8,16 @@
 <aside class="theorem"><span class="section-label">PLANO AFÍN · n ≠ 0</span><p>Para n · x = d y un punto p, restamos el exceso en la dirección normal.</p>
 <app-formula expression="q=p-\frac{n\cdot p-d}{\|n\|^2}n,\qquad\operatorname{dist}(p,\Pi)=\frac{|n\cdot p-d|}{\|n\|}" />
 <p>q pertenece al plano y p − q es paralelo a n. Ambas condiciones caracterizan el pie de la perpendicular.</p></aside>
-<p>En el <a routerLink="/problems/problema-019">problema 019</a>, p = (2, 1, 3), n = (1, 1, 1) y d = 0. El multiplicador es 2: q = (0, −1, 1) y la distancia es 2√3.</p>
+<p>En el <a routerLink="/problems/orthogonal-projection">problema 019</a>, p = (2, 1, 3), n = (1, 1, 1) y d = 0. El multiplicador es 2: q = (0, −1, 1) y la distancia es 2√3.</p>
 <div class="explorer" aria-labelledby="projection-lab"><h4 id="projection-lab">Trasladar el plano x + y + z = d</h4><label for="projection-d">d = {{ offset }}</label><input id="projection-d" type="range" min="-6" max="12" [(ngModel)]="offset" /><div class="metrics" aria-live="polite"><p>Pie q <strong>({{ projection[0] | number:'1.2-2' }}, {{ projection[1] | number:'1.2-2' }}, {{ projection[2] | number:'1.2-2' }})</strong></p><p>Distancia <strong>{{ distance | number:'1.4-4' }}</strong></p><p>q₁ + q₂ + q₃ − d <strong>{{ check | number:'1.6-6' }}</strong></p></div><p class="hint">El punto permanece en (2, 1, 3). Con d = 6 el plano lo contiene y la distancia es cero.</p></div>
 <h3>3. Por qué la distancia es mínima</h3>
 <p>Para cualquier otro punto r del plano, q − r es tangente y p − q es normal. Pitágoras da una distancia mayor o igual, con igualdad únicamente en r = q.</p>
 <app-formula expression="\|p-r\|^2=\|p-q\|^2+\|q-r\|^2\ge\|p-q\|^2" />
-<p>En el <a routerLink="/problems/problema-028">problema 028</a>, n = (2, −1, 2), p = (1, 2, 3), d = 4. El exceso es 2, la <a routerLink="/articles/vector-norm">norma</a> de n es 3 y la distancia vale 2/3. El pie es (5/9, 20/9, 23/9).</p>
+<p>En el <a routerLink="/problems/point-plane-distance">problema 028</a>, n = (2, −1, 2), p = (1, 2, 3), d = 4. El exceso es 2, la <a routerLink="/articles/vector-norm">norma</a> de n es 3 y la distancia vale 2/3. El pie es (5/9, 20/9, 23/9).</p>
 <h3>4. Rectas alabeadas y paralelas</h3>
 <p>Si r = p + tu y s = q + sv tienen direcciones no paralelas, u × v es perpendicular a ambas. La distancia es el módulo de la componente de q − p en esa normal común.</p>
 <app-formula expression="\operatorname{dist}(r,s)=\frac{|(q-p)\cdot(u\times v)|}{\|u\times v\|}" />
-<p>Con numerador cero y direcciones no paralelas, se cortan. Si u × v = 0, usamos la distancia de un punto a una recta: |(q − p) × u| / |u|. En el <a routerLink="/problems/problema-029">problema 029</a>, las direcciones son los dos primeros ejes y la separación en el tercero da distancia 1.</p>
+<p>Con numerador cero y direcciones no paralelas, se cortan. Si u × v = 0, usamos la distancia de un punto a una recta: |(q − p) × u| / |u|. En el <a routerLink="/problems/skew-lines-distance">problema 029</a>, las direcciones son los dos primeros ejes y la separación en el tercero da distancia 1.</p>
 <h3>5. Subespacios, QR y mínimos cuadrados</h3>
 <p>Si Q tiene columnas ortonormales, P = QQᵀ proyecta sobre el subespacio que generan. Cumple P² = P y Pᵀ = P. Con A de columnas independientes también se escribe A(AᵀA)⁻¹Aᵀ; formar AᵀA puede empeorar el condicionamiento.</p>
 <p>En cálculo numérico se suele aplicar QR o SVD. El residuo queda perpendicular a las columnas: es la geometría de la <a routerLink="/articles/linear-regression">regresión lineal</a>. Para un plano afín primero trasladamos el origen a un punto del plano.</p>
@@ -29,3 +29,9 @@
   <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Selecciona un ejemplo de proyección o introduce el plano como ecuación y contrasta las coordenadas del pie perpendicular.</li>
 </ul>
 </div>
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/orthogonal-projection">19 · Proyección ortogonal</a></li>
+<li><a routerLink="/problems/point-plane-distance">28 · Distancia a un plano</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

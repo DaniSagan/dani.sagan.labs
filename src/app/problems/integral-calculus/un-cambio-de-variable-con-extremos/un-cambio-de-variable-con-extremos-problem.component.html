@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de 2x(x²+1)³ entre x=0 y x=1.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="substitution">Cambio de variable en integrales</a>. Transforma el diferencial y los dos extremos cuando la integral es definida.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La expresión interior x²+1 tiene derivada 2x, presente como factor. Elegimos u=x²+1 y entonces du=2x dx.</li>
+      <li>La expresión interior x²+1 tiene <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> 2x, presente como factor. Elegimos u=x²+1 y entonces du=2x dx.</li>
       <li>También cambiamos los extremos: cuando x=0, u=1; cuando x=1, u=2. La integral se transforma en la de u³ desde 1 hasta 2.</li>
-      <li>Una primitiva de u³ es u⁴/4. Evaluamos: (2⁴−1⁴)/4=(16−1)/4=15/4.</li>
-      <li>Para comprobar el cambio podemos derivar (x²+1)⁴/4: la regla de la cadena produce (x²+1)³·2x, exactamente el integrando original.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> de u³ es u⁴/4. Evaluamos: (2⁴−1⁴)/4=(16−1)/4=15/4.</li>
+      <li>Para comprobar el cambio podemos derivar (x²+1)⁴/4: la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">regla de la cadena</a> produce (x²+1)³·2x, exactamente el integrando original.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> La integral vale 15/4.</p>
     <app-formula expression="\int_0^1 2x(x^2+1)^3\,dx=\frac{15}4" [showCodeButton]="false" />

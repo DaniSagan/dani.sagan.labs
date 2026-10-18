@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaSumaDePotenciasDeDosProblemComponent {
   static readonly title = "Una suma de potencias de dos";
-  static readonly route = 'problema-141';
+  static readonly route = "sum-of-powers-of-two";
   static readonly problem: PracticeProblem = {
   "id": "problema-141",
+  "route": "sum-of-powers-of-two",
   "number": 141,
   "title": "Una suma de potencias de dos",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,11 @@ export class UnaSumaDePotenciasDeDosProblemComponent {
       "label": "Progresiones y series geométricas",
       "route": "/articles/geometric-series",
       "activity": "Practica una suma de potencias de dos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Contradicción, implicación y equivalencia",
+      "route": "/articles/proof-strategies",
+      "activity": "Separa una demostración para todos los casos de una comprobación particular."
     }
   ]
 };

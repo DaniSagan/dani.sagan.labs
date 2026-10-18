@@ -1,3 +1,5 @@
+import { PolynomialFoundationsArticleComponent } from './polynomial-foundations/polynomial-foundations-article.component';
+import { EquationEquivalenceArticleComponent } from './equation-equivalence/equation-equivalence-article.component';
 import { AlgebraicIdentitiesFactorizationArticleComponent } from './algebraic-identities-factorization/algebraic-identities-factorization-article.component';
 import { ChangeOfBasisArticleComponent } from './change-of-basis/change-of-basis-article.component';
 import { ProjectionLeastSquaresArticleComponent } from './projection-least-squares/projection-least-squares-article.component';
@@ -19,6 +21,8 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  PolynomialFoundationsArticleComponent,
+  EquationEquivalenceArticleComponent,
   AlgebraicIdentitiesFactorizationArticleComponent,
   ChangeOfBasisArticleComponent,
   ProjectionLeastSquaresArticleComponent,

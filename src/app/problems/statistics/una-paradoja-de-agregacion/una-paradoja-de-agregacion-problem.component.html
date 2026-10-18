@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>El tratamiento A cura 9 de 10 casos leves y 30 de 100 graves. B cura 80 de 100 leves y 2 de 10 graves. Compara las tasas por gravedad y globales.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/simpson-paradox">Paradoja de Simpson y medias ponderadas</a>. Calcula primero por grupos y después con los pesos reales de cada grupo.</li>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/sampling-bias">Sesgo de selección y representatividad</a>. Un tamaño grande no corrige una selección que excluye parte de la población.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una tasa agregada es una media ponderada de las tasas de los subgrupos. Si los pesos de casos leves y graves son diferentes en los tratamientos, comparar los totales mezcla efecto del tratamiento y composición de pacientes. Por eso calculamos primero las tasas en cada grupo y después mostramos cómo cambian los pesos al agregar.</li>
+      <li>Una tasa <a data-prerequisite="simpson" routerLink="/articles/simpson-paradox">agregada</a> es una <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> <a data-prerequisite="simpson" routerLink="/articles/simpson-paradox">ponderada</a> de las tasas de los subgrupos. Si los <a data-prerequisite="simpson" routerLink="/articles/simpson-paradox">pesos</a> de casos leves y graves son diferentes en los tratamientos, comparar los totales mezcla efecto del tratamiento y composición de pacientes. Por eso calculamos primero las tasas en cada grupo y después mostramos cómo cambian los pesos al agregar.</li>
       <li>En leves, A tiene 90% y B 80%, así que A es superior. Dentro de leves se comparan <span class="math-part"><app-formula expression="\frac{9}{10}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\frac{80}{100}" displayMode="inline" [showCodeButton]="false" /></span>, con el mismo criterio de curación. La ventaja de A es de diez puntos porcentuales.</li>
       <li>En graves, A tiene 30% y B 20%, también superior. Dentro de graves, <span class="math-part"><app-formula expression="\frac{30}{100}" displayMode="inline" [showCodeButton]="false" /></span> frente a <span class="math-part"><app-formula expression="\frac{2}{10}" displayMode="inline" [showCodeButton]="false" /></span> también favorece A en diez puntos porcentuales.</li>
       <li>Globalmente, A cura <span class="math-part"><app-formula expression="\frac{39}{110}" displayMode="inline" [showCodeButton]="false" /></span>≈<span class="math-part"><app-formula expression="35,45" displayMode="inline" [showCodeButton]="false" /></span>% y B <span class="math-part"><app-formula expression="\frac{82}{110}" displayMode="inline" [showCodeButton]="false" /></span>≈<span class="math-part"><app-formula expression="74,55" displayMode="inline" [showCodeButton]="false" /></span>%. Cada total se calcula sumando curaciones y pacientes, no promediando porcentajes sin ponderar. Los denominadores totales son 110.</li>
@@ -32,10 +39,7 @@
       <a routerLink="/articles/bayes-theorem">Teorema de Bayes ↗</a>
       <p>Condicionar por gravedad modifica las proporciones de los grupos; el teorema de probabilidad total ayuda a entender las ponderaciones de las tasas agregadas.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
-      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/causal-inference">Causalidad, confusión y experimentos aleatorizados ↗</a>
       <p>Separa asociación y efecto causal; estudia composición de grupos y supuestos de asignación.</p>

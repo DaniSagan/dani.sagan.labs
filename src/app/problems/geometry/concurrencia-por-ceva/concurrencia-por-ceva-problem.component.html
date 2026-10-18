@@ -9,14 +9,21 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>En ABC, D∈BC, E∈CA, F∈AB son interiores. Si <span class="math-part"><app-formula expression="BD/DC=2" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="CE/EA=3" displayMode="inline" [showCodeButton]="false" /></span>, determina <span class="math-part"><app-formula expression="AF/FB" displayMode="inline" [showCodeButton]="false" /></span> para que <span class="math-part"><app-formula expression="AD,BE,CF" displayMode="inline" [showCodeButton]="false" /></span> concurran.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/ceva-theorem">Teorema de Ceva</a>. Mantén un orden coherente en las tres razones.</li>
+    <li><a routerLink="/articles/triangle-metrics">Medianas, alturas, incentro y métricas del triángulo</a>. Distingue los segmentos y centros del triángulo y sus relaciones con el área.</li>
+    <li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos</a>. Usa la misma razón para lados correspondientes, no para áreas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Para puntos D, E y F interiores a los lados BC, CA y AB, Ceva afirma que AD, BE y CF concurren si y solo si <span class="math-part"><app-formula expression="(BD/DC)(CE/EA)(AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Los cocientes corresponden a áreas de triángulos con la misma altura; al comparar esas áreas alrededor del punto común los factores se cancelan. Usamos los cocientes en ese orden para no invertir uno de ellos.</li>
+      <li>Para puntos D, E y F interiores a los lados BC, CA y AB, <a data-prerequisite="ceva" routerLink="/articles/ceva-theorem">Ceva</a> afirma que AD, BE y CF <a data-prerequisite="ceva" routerLink="/articles/ceva-theorem">concurren</a> si y solo si <span class="math-part"><app-formula expression="(BD/DC)(CE/EA)(AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Los cocientes corresponden a áreas de triángulos con la misma <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">altura</a>; al comparar esas áreas alrededor del punto común los factores se cancelan. Usamos los cocientes en ese orden para no invertir uno de ellos.</li>
       <li>Para puntos interiores, Ceva dice <span class="math-part"><app-formula expression="(BD/DC)(CE/EA)(AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Las tres razones recorren el borde en el mismo sentido: <span class="math-part"><app-formula expression="BD/DC" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="CE/EA" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="AF/FB" displayMode="inline" [showCodeButton]="false" /></span>. Esto fija qué cocientes se multiplican.</li>
       <li>Sustituye las dos razones: <span class="math-part"><app-formula expression="2\cdot 3\cdot (AF/FB)=1" displayMode="inline" [showCodeButton]="false" /></span>. Ceva es una condición necesaria y suficiente para puntos interiores. No hacen falta longitudes absolutas del triángulo.</li>
       <li>Despeja <span class="math-part"><app-formula expression="AF/FB=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>. Llamando r al cociente desconocido se obtiene <span class="math-part"><app-formula expression="6r=1" displayMode="inline" [showCodeButton]="false" /></span>; de ahí <span class="math-part"><app-formula expression="r=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
-      <li>Las tres razones positivas satisfacen la condición suficiente, por lo que hay concurrencia. La razón positiva determina un único F interior. El recíproco de Ceva prueba que esa elección sí produce concurrencia.</li>
+      <li>Las tres razones positivas satisfacen la condición suficiente, por lo que hay <a data-prerequisite="ceva" routerLink="/articles/ceva-theorem">concurrencia</a>. La razón positiva determina un único F interior. El recíproco de Ceva prueba que esa elección sí produce concurrencia.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="AF/FB=\frac{1}{6}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> Invertir una sola razón cambia la condición de Ceva.</aside>
@@ -28,10 +35,7 @@
       <a routerLink="/articles/ceva-theorem">Teorema de Ceva ↗</a>
       <p>La condición de concurrencia expresada como producto de razones de segmentos.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
-      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
-    </div>
+
   </section>
   <app-problem-navigation currentId="problema-023" />
 </article>

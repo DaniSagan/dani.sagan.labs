@@ -6,13 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Describe geométricamente los complejos z que cumplen |z−(2−i)|=3 y halla sus intersecciones con el eje real.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/line-circle">Rectas, circunferencias e intersecciones</a>. Exige que cada punto cumpla simultáneamente las dos ecuaciones.</li>
+    <li><a routerLink="/articles/quadratic-equations">Ecuaciones cuadráticas</a>. Resuelve la ecuación de segundo grado y distingue los casos degenerados.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="squaring">Cuadrados y soluciones extrañas</a>. Controla los signos antes de cuadrar para que la transformación sea reversible.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Escribimos z=x+yi. Entonces z−(2−i)=(x−2)+(y+1)i. Su módulo es la distancia entre el punto (x,y) y el punto fijo (2,−1).</li>
-      <li>La condición impone distancia 3, de modo que es una circunferencia de centro (2,−1) y radio 3. En coordenadas: (x−2)²+(y+1)²=9.</li>
-      <li>En el eje real la parte imaginaria es cero: y=0. Sustituimos y obtenemos (x−2)²+1=9, luego (x−2)²=8.</li>
-      <li>Por tanto x−2=±√8=±2√2. Las intersecciones son los números reales 2−2√2 y 2+2√2. Ambos distan 3 del centro al incluir la separación vertical de 1.</li>
+      <li>Escribimos z=x+yi. Entonces z−(2−i)=(x−2)+(y+1)i. Su <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">módulo</a> es la distancia entre el punto (x,y) y el punto fijo (2,−1).</li>
+      <li>La condición impone distancia 3, de modo que es una <a data-prerequisite="line-circle" routerLink="/articles/line-circle">circunferencia</a> de centro (2,−1) y radio 3. En coordenadas: (x−2)²+(y+1)²=9.</li>
+      <li>En el eje real la parte <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">imaginaria</a> es cero: y=0. Sustituimos y obtenemos (x−2)²+1=9, luego (x−2)²=8.</li>
+      <li>Por tanto x−2=±√8=±2√2. Las <a data-prerequisite="line-circle" routerLink="/articles/line-circle">intersecciones</a> son los números reales 2−2√2 y 2+2√2. Ambos distan 3 del centro al incluir la separación vertical de 1.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Circunferencia de centro 2−i y radio 3; cortes reales 2±2√2.</p>
     <app-formula expression="(x-2)^2+(y+1)^2=9,\quad x=2\pm2\sqrt2\text{ si }y=0" [showCodeButton]="false" />
@@ -21,7 +29,7 @@
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
     <div class="resource"><a routerLink="/articles/complex-arithmetic">Conjugado, módulo y división compleja ↗</a><p>Practica un círculo definido por módulos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
-    <div class="resource"><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div>
+    <div class="resource"><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/implicit-curve-graph">Trazador de curvas implícitas</a><p>Dibuja la ecuación cartesiana y comprueba centro, cortes o asíntotas.</p></div>
   </section>
   <app-problem-navigation currentId="problema-140" />
 </article>

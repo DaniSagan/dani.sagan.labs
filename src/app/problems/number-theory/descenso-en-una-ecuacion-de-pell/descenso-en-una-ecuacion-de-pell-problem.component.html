@@ -9,14 +9,21 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Encuentra la menor solución entera con <span class="math-part"><app-formula expression="x&gt;0,y&gt;0" displayMode="inline" [showCodeButton]="false" /></span> de <span class="math-part"><app-formula expression="x^{2}-2y^{2}=1" displayMode="inline" [showCodeButton]="false" /></span> y obtén otra solución al cuadrar <span class="math-part"><app-formula expression="x+y\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/pell-equation">Ecuación de Pell y norma algebraica</a>. Distingue la norma algebraica de una longitud y comprueba cómo genera soluciones.</li>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/proof-strategies">Contradicción, implicación y equivalencia</a>. Separa una demostración para todos los casos de una comprobación particular.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La ecuación de Pell relaciona cuadrados enteros. Aquí no necesitamos un algoritmo general: para hallar la primera solución basta examinar los valores positivos de y hasta encontrar un cuadrado. Para generar otra, usamos <span class="math-part"><app-formula expression="(a+b\sqrt2)(a-b\sqrt2)=a^2-2b^2" displayMode="inline" [showCodeButton]="false" /></span>; al cuadrar ambos factores, este producto también se eleva al cuadrado.</li>
+      <li>La ecuación de <a data-prerequisite="pell" routerLink="/articles/pell-equation">Pell</a> relaciona cuadrados enteros. Aquí no necesitamos un algoritmo general: para hallar la primera solución basta examinar los valores positivos de y hasta encontrar un cuadrado. Para generar otra, usamos <span class="math-part"><app-formula expression="(a+b\sqrt2)(a-b\sqrt2)=a^2-2b^2" displayMode="inline" [showCodeButton]="false" /></span>; al cuadrar ambos factores, este producto también se eleva al cuadrado.</li>
       <li>Para <span class="math-part"><app-formula expression="y=1" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x^{2}=3" displayMode="inline" [showCodeButton]="false" /></span> no es cuadrado; para <span class="math-part"><app-formula expression="y=2" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="x^{2}=9" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=3" displayMode="inline" [showCodeButton]="false" /></span>. Para cada y, <span class="math-part"><app-formula expression="x^{2}=1+2y^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Se descarta <span class="math-part"><app-formula expression="y=1" displayMode="inline" [showCodeButton]="false" /></span> y se encuentra solución en <span class="math-part"><app-formula expression="y=2" displayMode="inline" [showCodeButton]="false" /></span>, sin saltarse valores positivos menores.</li>
       <li>La primera solución positiva es <span class="math-part"><app-formula expression="(3,2)" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="9-8=1" displayMode="inline" [showCodeButton]="false" /></span>. Como <span class="math-part"><app-formula expression="x=\sqrt{1+2y^{2}}" displayMode="inline" [showCodeButton]="false" /></span> aumenta con y positivo, la pareja hallada también minimiza x.</li>
       <li>Cuadra <span class="math-part"><app-formula expression="3+2\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>: <span class="math-part"><app-formula expression="(3+2\sqrt{2})^{2}=17+12\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span>. El desarrollo del cuadrado es <span class="math-part"><app-formula expression="9+12\sqrt{2}+8" displayMode="inline" [showCodeButton]="false" /></span>. De ahí se leen los nuevos coeficientes 17 y 12.</li>
-      <li>Su norma sigue siendo 1: <span class="math-part"><app-formula expression="17^{2}-2\cdot 12^{2}=289-288=1" displayMode="inline" [showCodeButton]="false" /></span>. La norma de <span class="math-part"><app-formula expression="a+b\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="a^{2}-2b^{2}" displayMode="inline" [showCodeButton]="false" /></span> y es multiplicativa. Cuadrar una expresión de norma 1 mantiene la norma 1.</li>
+      <li>Su <a data-prerequisite="pell" routerLink="/articles/pell-equation">norma</a> sigue siendo 1: <span class="math-part"><app-formula expression="17^{2}-2\cdot 12^{2}=289-288=1" displayMode="inline" [showCodeButton]="false" /></span>. La norma de <span class="math-part"><app-formula expression="a+b\sqrt{2}" displayMode="inline" [showCodeButton]="false" /></span> es <span class="math-part"><app-formula expression="a^{2}-2b^{2}" displayMode="inline" [showCodeButton]="false" /></span> y es <a data-prerequisite="pell" routerLink="/articles/pell-equation">multiplicativa</a>. Cuadrar una expresión de norma 1 mantiene la norma 1.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="(3,2)" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="(17,12)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> La solución trivial <span class="math-part"><app-formula expression="(1,0)" displayMode="inline" [showCodeButton]="false" /></span> está excluida por <span class="math-part"><app-formula expression="y&gt;0" displayMode="inline" [showCodeButton]="false" /></span>.</aside>
@@ -28,10 +35,7 @@
       <a routerLink="/articles/pell-equation">Ecuación de Pell ↗</a>
       <p>Soluciones enteras de ecuaciones cuadráticas y su conexión con irracionales cuadráticos.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
-      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
-    </div>
+
   </section>
   <app-problem-navigation currentId="problema-007" />
 </article>

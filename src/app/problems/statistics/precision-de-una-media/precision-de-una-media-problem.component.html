@@ -9,14 +9,21 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Una población tiene varianza 36. Para muestras independientes de tamaño n, calcula <span class="math-part"><app-formula expression="\operatorname{Var}(\bar{X})" displayMode="inline" [showCodeButton]="false" /></span>. ¿Qué n hace que la desviación típica de X̄ sea como máximo <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span>?</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/sampling-distributions">Distribución de la media y error estándar</a>. Separa la dispersión de las observaciones de la dispersión de su media.</li>
+    <li><a routerLink="/articles/moment-transformations">Transformaciones de medias y varianzas</a>. El desplazamiento afecta a la media y la escala entra al cuadrado en la varianza.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Para observaciones independientes con igual varianza <span class="math-part"><app-formula expression="\sigma^2" displayMode="inline" [showCodeButton]="false" /></span>, la media tiene varianza <span class="math-part"><app-formula expression="\sigma^2/n" displayMode="inline" [showCodeButton]="false" /></span>: en la suma se añaden n varianzas y dividir entre n eleva el divisor al cuadrado. Su desviación típica, llamada error estándar, es <span class="math-part"><app-formula expression="\sigma/\sqrt n" displayMode="inline" [showCodeButton]="false" /></span>. Aquí la precisión pedida se refiere a esa dispersión de la media.</li>
-      <li><span class="math-part"><app-formula expression="\bar X=\frac{X_1+\cdots+X_n}{n}" displayMode="inline" [showCodeButton]="false" /></span>. La media muestral es una combinación lineal con coeficientes <span class="math-part"><app-formula expression="1/n" displayMode="inline" [showCodeButton]="false" /></span>. Se supone que las observaciones tienen la misma varianza y son independientes.</li>
+      <li>Para observaciones <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independientes</a> con igual varianza <span class="math-part"><app-formula expression="\sigma^2" displayMode="inline" [showCodeButton]="false" /></span>, la media tiene varianza <span class="math-part"><app-formula expression="\sigma^2/n" displayMode="inline" [showCodeButton]="false" /></span>: en la suma se añaden n varianzas y dividir entre n eleva el divisor al cuadrado. Su desviación típica, llamada <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">error estándar</a>, es <span class="math-part"><app-formula expression="\sigma/\sqrt n" displayMode="inline" [showCodeButton]="false" /></span>. Aquí la precisión pedida se refiere a esa dispersión de la media.</li>
+      <li><span class="math-part"><app-formula expression="\bar X=\frac{X_1+\cdots+X_n}{n}" displayMode="inline" [showCodeButton]="false" /></span>. La <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">media muestral</a> es una combinación lineal con coeficientes <span class="math-part"><app-formula expression="1/n" displayMode="inline" [showCodeButton]="false" /></span>. Se supone que las observaciones tienen la misma varianza y son independientes.</li>
       <li><span class="math-part"><app-formula expression="\operatorname{Var}(\bar{X})=n\cdot 36/n^{2}=36/n" displayMode="inline" [showCodeButton]="false" /></span>. La varianza de una suma independiente es la suma de varianzas; al dividir por n se multiplica la varianza por <span class="math-part"><app-formula expression="1/n^{2}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Su desviación típica es <span class="math-part"><app-formula expression="\frac6{\sqrt n}" displayMode="inline" [showCodeButton]="false" /></span>; exigir <span class="math-part"><app-formula expression="\frac6{\sqrt n}\le \frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> equivale a <span class="math-part"><app-formula expression="\sqrt{n}\ge 12" displayMode="inline" [showCodeButton]="false" /></span>. Tomar la raíz de <span class="math-part"><app-formula expression="36/n" displayMode="inline" [showCodeButton]="false" /></span> produce <span class="math-part"><app-formula expression="\frac6{\sqrt n}" displayMode="inline" [showCodeButton]="false" /></span>. La condición sobre precisión afecta a esa desviación, no directamente a la varianza.</li>
-      <li>Por tanto <span class="math-part"><app-formula expression="n\ge 144" displayMode="inline" [showCodeButton]="false" /></span>; no hace falta normalidad para esta fórmula de varianza. Elevar <span class="math-part"><app-formula expression="\sqrt{n}\ge 12" displayMode="inline" [showCodeButton]="false" /></span> al cuadrado conserva la desigualdad porque ambos miembros son no negativos. La independencia es esencial para no añadir covarianzas.</li>
+      <li>Por tanto <span class="math-part"><app-formula expression="n\ge 144" displayMode="inline" [showCodeButton]="false" /></span>; no hace falta normalidad para esta fórmula de varianza. Elevar <span class="math-part"><app-formula expression="\sqrt{n}\ge 12" displayMode="inline" [showCodeButton]="false" /></span> al cuadrado conserva la desigualdad porque ambos miembros son no negativos. La <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independencia</a> es esencial para no añadir covarianzas.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="\operatorname{Var}(\bar{X})=36/n" displayMode="inline" [showCodeButton]="false" /></span>; tamaño mínimo 144.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> La desviación se divide por <span class="math-part"><app-formula expression="\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span>, no por n.</aside>
@@ -37,10 +44,7 @@
       <a routerLink="/articles/central-limit-theorem">Teorema central del límite ↗</a>
       <p>Lectura complementaria sobre medias muestrales, dispersión e inferencia a partir de muestras.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad y datos ↗</a>
-      <p>Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/large-numbers-law">Ley de los grandes números ↗</a>
       <p>Relaciona promedios y frecuencias con convergencia, independencia y tamaño de muestra.</p>

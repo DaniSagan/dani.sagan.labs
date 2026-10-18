@@ -13,26 +13,27 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosRelojesYUnRestoProblemComponent {
   static readonly title = "Dos relojes y un resto";
-  static readonly route = "problema-003";
+  static readonly route = "simultaneous-clock-congruences";
   static readonly problem: PracticeProblem = {
-    "id": "problema-003",
-    "number": 3,
-    "title": "Dos relojes y un resto",
-    "category": "Aritmética y teoría de números",
-    "topic": "Divisibilidad y congruencias",
-    "level": "Oposición",
-    "statement": "Encuentra el menor entero positivo que deja resto 2 al dividir entre 7 y resto 3 al dividir entre 11.",
-    "resources": [
-      {
-        "label": "Teorema chino del resto",
-        "route": "/articles/chinese-remainder-theorem",
-        "activity": "Compatibilidad y unicidad modular de sistemas de congruencias con módulos coprimos."
-      },
-      {
-        "label": "Descomposición en primos",
-        "route": "/tools/prime-decomposition",
-        "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
-      }
-    ]
-  };
+  "id": "problema-003",
+  "route": "simultaneous-clock-congruences",
+  "number": 3,
+  "title": "Dos relojes y un resto",
+  "category": "Aritmética y teoría de números",
+  "topic": "Divisibilidad y congruencias",
+  "level": "Oposición",
+  "statement": "Encuentra el menor entero positivo que deja resto 2 al dividir entre 7 y resto 3 al dividir entre 11.",
+  "resources": [
+    {
+      "label": "Teorema chino del resto",
+      "route": "/articles/chinese-remainder-theorem",
+      "activity": "Compatibilidad y unicidad modular de sistemas de congruencias con módulos coprimos."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    }
+  ]
+};
 }

@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>En terreno horizontal, la cima de una torre se ve con elevación 30°. Tras acercarse 20 m hacia su base, la elevación es 60°. Calcula su altura, despreciando la altura del observador.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/height-surveying">Triangulación y ángulos de elevación</a>. Construye los dos triángulos conservando la misma altura.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos</a>. Usa la misma razón para lados correspondientes, no para áreas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>En cada posición, la tangente del ángulo de elevación es altura entre distancia horizontal. Suponemos terreno horizontal y la misma base del objeto. Si la distancia inicial es d y nos acercamos 20 metros, las dos ecuaciones son <span class="math-part"><app-formula expression="h=d\tan30^\circ" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="h=(d-20)\tan60^\circ" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="d&gt;20" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>En cada posición, la <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">tangente</a> del ángulo de <a data-prerequisite="height" routerLink="/articles/height-surveying">elevación</a> es altura entre <a data-prerequisite="height" routerLink="/articles/height-surveying">distancia horizontal</a>. Suponemos terreno horizontal y la misma base del objeto. Si la distancia inicial es d y nos acercamos 20 metros, las dos ecuaciones son <span class="math-part"><app-formula expression="h=d\tan30^\circ" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="h=(d-20)\tan60^\circ" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="d&gt;20" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>La distancia inicial es <span class="math-part"><app-formula expression="d+20" displayMode="inline" [showCodeButton]="false" /></span> y la altura h es la misma en ambas posiciones. El desplazamiento de 20 m reduce la distancia horizontal, sin modificar la altura ni la posición de la torre.</li>
       <li><span class="math-part"><app-formula expression="\tan 30" displayMode="inline" [showCodeButton]="false" /></span>°<span class="math-part"><app-formula expression="=h/(d+20)=1/\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> y tan 60°<span class="math-part"><app-formula expression="=h/d=\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span>. En cada triángulo rectángulo, tangente es cateto opuesto dividido entre adyacente. Los valores exactos corresponden a 30° y 60°.</li>
       <li>Iguala h: <span class="math-part"><app-formula expression="(d+20)/\sqrt{3}=d\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="d+20=3d" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="d=10" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar por <span class="math-part"><app-formula expression="\sqrt{3}" displayMode="inline" [showCodeButton]="false" /></span> convierte la igualdad de alturas en <span class="math-part"><app-formula expression="d+20=3d" displayMode="inline" [showCodeButton]="false" /></span>. Restar d y dividir entre 2 da <span class="math-part"><app-formula expression="d=10" displayMode="inline" [showCodeButton]="false" /></span>.</li>
@@ -34,10 +41,7 @@
       <a routerLink="/articles/thales-theorem">Teorema de Tales ↗</a>
       <p>Semejanza y proporcionalidad de segmentos como base de medidas indirectas.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad ↗</a>
       <p>Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas.</p>

@@ -9,11 +9,20 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Una urna contiene 5 bolas rojas y 3 azules. Se extraen 3 sin reemplazo. Calcula la probabilidad de obtener exactamente 2 rojas.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+    <li><a routerLink="/articles/hypergeometric-distribution">Distribución hipergeométrica</a>. Cuenta elecciones sin reposición mediante combinaciones.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/probability-trees">Árboles de probabilidad</a>. Multiplica a lo largo de cada camino y suma los caminos alternativos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Al extraer sin reemplazo, todas las selecciones de tres bolas son equiprobables si la extracción es uniforme. El número de selecciones de k elementos entre n es <span class="math-part"><app-formula expression="\binom nk=n!/(k!(n-k)!)" displayMode="inline" [showCodeButton]="false" /></span>. Elegir dos rojas y una azul combina elecciones independientes de grupos, aunque las extracciones sucesivas no sean independientes.</li>
-      <li>Hay <span class="math-part"><app-formula expression="C(8,3)=56" displayMode="inline" [showCodeButton]="false" /></span> muestras no ordenadas equiprobables. El número combinatorio <span class="math-part"><app-formula expression="C(8,3)=8\cdot 7\cdot 6/(3\cdot 2\cdot 1)" displayMode="inline" [showCodeButton]="false" /></span> ignora el orden. Es válido porque todas las selecciones de tres bolas individuales son equiprobables.</li>
+      <li>Al extraer <a data-prerequisite="hypergeometric" routerLink="/articles/hypergeometric-distribution">sin reemplazo</a>, todas las selecciones de tres bolas son <a data-prerequisite="finite" routerLink="/articles/finite-probability">equiprobables</a> si la extracción es uniforme. El número de selecciones de k elementos entre n es <span class="math-part"><app-formula expression="\binom nk=n!/(k!(n-k)!)" displayMode="inline" [showCodeButton]="false" /></span>. Elegir dos rojas y una azul combina elecciones <a data-prerequisite="conditional" routerLink="/articles/conditional-independence">independientes</a> de grupos, aunque las extracciones sucesivas no sean independientes.</li>
+      <li>Hay <span class="math-part"><app-formula expression="C(8,3)=56" displayMode="inline" [showCodeButton]="false" /></span> muestras no ordenadas equiprobables. El número <a data-prerequisite="counting" routerLink="/articles/counting-principles">combinatorio</a> <span class="math-part"><app-formula expression="C(8,3)=8\cdot 7\cdot 6/(3\cdot 2\cdot 1)" displayMode="inline" [showCodeButton]="false" /></span> ignora el orden. Es válido porque todas las selecciones de tres bolas individuales son equiprobables.</li>
       <li>Las favorables se forman escogiendo 2 de las 5 rojas y 1 de las 3 azules. Elegir dos rojas y una azul determina exactamente el evento pedido. No se suman los casos de tres rojas.</li>
       <li>Su número es <span class="math-part"><app-formula expression="C(5,2)C(3,1)=10\cdot 3=30" displayMode="inline" [showCodeButton]="false" /></span>. <span class="math-part"><app-formula expression="C(5,2)=5\cdot \frac{4}{2}=10" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="C(3,1)=3" displayMode="inline" [showCodeButton]="false" /></span>. Cada elección de rojas combina con cada elección de azul.</li>
       <li>La probabilidad es <span class="math-part"><app-formula expression="\frac{30}{56}=\frac{15}{28}" displayMode="inline" [showCodeButton]="false" /></span>. La fracción <span class="math-part"><app-formula expression="\frac{30}{56}" displayMode="inline" [showCodeButton]="false" /></span> se simplifica dividiendo entre 2. El modelo es hipergeométrico, no binomial, por la extracción sin reemplazo.</li>
@@ -32,10 +41,7 @@
       <a routerLink="/articles/binomial-theorem">Teorema del binomio ↗</a>
       <p>Coeficientes combinatorios y expansión de potencias de una suma.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
-      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones ↗</a>
       <p>Define si el orden importa y si se permite repetición antes de construir el espacio de elecciones.</p>

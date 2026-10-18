@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Sitúa masas 1, 2 y 3 en A=(0,0), B=(6,0) y C=(0,4). Encuentra su centro de masas.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/barycenter">Baricentro y centro de masas</a>. Pondera las coordenadas por las masas y comprueba si son iguales.</li>
+    <li><a routerLink="/articles/vector-spaces">Bases, independencia, núcleo e imagen</a>. Distingue coordenadas, independencia y dimensiones de los espacios asociados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El centro de masas es un promedio de posiciones ponderado por las masas. La masa total es M=1+2+3=6; dividir por M convierte las masas en pesos que suman uno.</li>
+      <li>El <a data-prerequisite="barycenter" routerLink="/articles/barycenter">centro de masas</a> es un promedio de posiciones ponderado por las masas. La masa total es M=1+2+3=6; dividir por M convierte las masas en pesos que suman uno.</li>
       <li>Para la coordenada horizontal sumamos masa por posición horizontal: 1·0+2·6+3·0=12. Por ello x=12/6=2.</li>
       <li>Para la vertical sumamos 1·0+2·0+3·4=12, por lo que y=12/6=2. El centro es G=(2,2).</li>
       <li>Comprobamos el equilibrio de desplazamientos: horizontalmente 1(0−2)+2(6−2)+3(0−2)=−2+8−6=0; verticalmente 1(0−2)+2(0−2)+3(4−2)=−2−4+6=0.</li>

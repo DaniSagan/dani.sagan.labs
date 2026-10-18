@@ -9,13 +9,21 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Sea <span class="math-part"><app-formula expression="a_{1}=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="a_{n+1}=\sqrt{2+a_{n}}" displayMode="inline" [showCodeButton]="false" /></span>. Demuestra que converge y calcula su límite.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/monotone-convergence">Convergencia monótona y cotas</a>. Demuestra monotonía y acotación antes de resolver la ecuación del límite.</li>
+    <li><a routerLink="/articles/mathematical-induction">Inducción matemática</a>. Verifica el caso inicial y el paso de un índice al siguiente.</li>
+    <li><a routerLink="/articles/continuity-differentiability">Continuidad y derivadas laterales</a>. Separa el valor, el límite y la existencia de una derivada.</li>
+    <li><a routerLink="/articles/recurrent-sequences">Recurrencias y puntos fijos</a>. Resta el punto fijo para obtener una expresión explícita de la sucesión.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una sucesión creciente y acotada superiormente converge a su supremo. Para usar este hecho debemos demostrar ambas propiedades, normalmente por inducción. Solo después de asegurar la convergencia podemos pasar al límite en la recurrencia, usando la continuidad de la raíz cuadrada.</li>
+      <li>Una sucesión <a data-prerequisite="monotone" routerLink="/articles/monotone-convergence">creciente y acotada</a> superiormente converge a su <a data-prerequisite="monotone" routerLink="/articles/monotone-convergence">supremo</a>. Para usar este hecho debemos demostrar ambas propiedades, normalmente por <a data-prerequisite="induction" routerLink="/articles/mathematical-induction">inducción</a>. Solo después de asegurar la convergencia podemos pasar al límite en la <a data-prerequisite="recurrence" routerLink="/articles/recurrent-sequences">recurrencia</a>, usando la <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continuidad</a> de la raíz cuadrada.</li>
       <li>Si <span class="math-part"><app-formula expression="1\le a_{n}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>, entonces <span class="math-part"><app-formula expression="1&lt;\sqrt{2+a_{n}}&lt;2" displayMode="inline" [showCodeButton]="false" /></span>; la cota se conserva desde <span class="math-part"><app-formula expression="a_{1}" displayMode="inline" [showCodeButton]="false" /></span>. La base de la inducción es <span class="math-part"><app-formula expression="a_{1}=1" displayMode="inline" [showCodeButton]="false" /></span>. La función raíz es creciente, y <span class="math-part"><app-formula expression="2+a_{n}&lt;4" displayMode="inline" [showCodeButton]="false" /></span> conserva la cota superior estricta.</li>
       <li>Para <span class="math-part"><app-formula expression="1\le t&lt;2" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="2+t-t^{2}=(2-t)(t+1)&gt;0" displayMode="inline" [showCodeButton]="false" /></span>, luego <span class="math-part"><app-formula expression="\sqrt{2+t}&gt;t" displayMode="inline" [showCodeButton]="false" /></span>. Como <span class="math-part"><app-formula expression="t\ge 1" displayMode="inline" [showCodeButton]="false" /></span>, ambos lados de <span class="math-part"><app-formula expression="\sqrt{2+t}&gt;t" displayMode="inline" [showCodeButton]="false" /></span> son no negativos. Se puede elevar al cuadrado y verificar el producto positivo.</li>
-      <li>La sucesión es creciente y acotada, así que converge a <span class="math-part"><app-formula expression="L\in [1,2]" displayMode="inline" [showCodeButton]="false" /></span>. El teorema de convergencia monótona garantiza un límite finito. Solo después es legítimo trasladar el límite a la recurrencia.</li>
+      <li>La sucesión es creciente y acotada, así que converge a <span class="math-part"><app-formula expression="L\in [1,2]" displayMode="inline" [showCodeButton]="false" /></span>. El teorema de <a data-prerequisite="monotone" routerLink="/articles/monotone-convergence">convergencia monótona</a> garantiza un límite finito. Solo después es legítimo trasladar el límite a la recurrencia.</li>
       <li>Por continuidad <span class="math-part"><app-formula expression="L=\sqrt{2+L}" displayMode="inline" [showCodeButton]="false" /></span>, es decir <span class="math-part"><app-formula expression="(L-2)(L+1)=0" displayMode="inline" [showCodeButton]="false" /></span>; la cota excluye <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>. La ecuación da candidatos 2 <span class="math-part"><app-formula expression="y -1" displayMode="inline" [showCodeButton]="false" /></span>, pero el límite pertenece a <span class="math-part"><app-formula expression="[1,2]" displayMode="inline" [showCodeButton]="false" /></span>. El candidato negativo no satisface esa restricción.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> <span class="math-part"><app-formula expression="L=2" displayMode="inline" [showCodeButton]="false" /></span>.</p>
@@ -34,10 +42,7 @@
       <a routerLink="/articles/basel">Problema de Basilea ↗</a>
       <p>Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas ↗</a>
       <p>Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</p>

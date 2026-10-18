@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRutaQueUsaCadaAristaProblemComponent {
   static readonly title = "Una ruta que usa cada arista";
-  static readonly route = 'problema-195';
+  static readonly route = "route-using-every-edge";
   static readonly problem: PracticeProblem = {
   "id": "problema-195",
+  "route": "route-using-every-edge",
   "number": 195,
   "title": "Una ruta que usa cada arista",
   "category": "Combinatoria, juegos y modelización",

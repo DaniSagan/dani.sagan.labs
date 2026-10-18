@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnPasoDeEulerYSuErrorProblemComponent {
   static readonly title = "Un paso de Euler y su error";
-  static readonly route = 'problema-170';
+  static readonly route = "euler-step-and-error";
   static readonly problem: PracticeProblem = {
   "id": "problema-170",
+  "route": "euler-step-and-error",
   "number": 170,
   "title": "Un paso de Euler y su error",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,16 @@ export class UnPasoDeEulerYSuErrorProblemComponent {
       "label": "Integración numérica de ecuaciones diferenciales",
       "route": "/articles/ode-numerical-integration",
       "activity": "Practica un paso de Euler y su error. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Ecuaciones diferenciales de primer orden",
+      "route": "/articles/first-order-odes",
+      "activity": "Separa la ecuación diferencial de la condición que fija su solución."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
     }
   ]
 };

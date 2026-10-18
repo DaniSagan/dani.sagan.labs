@@ -9,10 +9,16 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Demuestra que <span class="math-part"><app-formula expression="\sin x+\sin(x+2\frac{\pi}{3})+\sin(x+4\frac{\pi}{3})=0" displayMode="inline" [showCodeButton]="false" /></span> para todo x real.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/proof-strategies">Contradicción, implicación y equivalencia</a>. Separa una demostración para todos los casos de una comprobación particular.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La fórmula de suma <span class="math-part"><app-formula expression="\sin(x+\alpha)=\sin x\cos\alpha+\cos x\sin\alpha" displayMode="inline" [showCodeButton]="false" /></span> separa la dependencia de x de los ángulos fijos. Sumando las tres expresiones, los coeficientes de seno y coseno se cancelan: <span class="math-part"><app-formula expression="1-1/2-1/2=0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0+\sqrt3/2-\sqrt3/2=0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">fórmula de suma</a> <span class="math-part"><app-formula expression="\sin(x+\alpha)=\sin x\cos\alpha+\cos x\sin\alpha" displayMode="inline" [showCodeButton]="false" /></span> separa la dependencia de x de los ángulos fijos. Sumando las tres expresiones, los coeficientes de <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">seno</a> y <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">coseno</a> se cancelan: <span class="math-part"><app-formula expression="1-1/2-1/2=0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="0+\sqrt3/2-\sqrt3/2=0" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li><span class="math-part"><app-formula expression="\sin(x+2\frac{\pi}{3})=-\sin x/2+\sqrt{3} \cos x/2" displayMode="inline" [showCodeButton]="false" /></span>. La fórmula <span class="math-part"><app-formula expression="\sin(x+\alpha )=\sin x \cos \alpha +\cos x \sin \alpha" displayMode="inline" [showCodeButton]="false" /></span> se aplica con <span class="math-part"><app-formula expression="\cos(2\frac{\pi}{3})=-\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y \sin(2\frac{\pi}{3})=\frac{\sqrt3}2" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li><span class="math-part"><app-formula expression="\sin(x+4\frac{\pi}{3})=-\sin x/2-\sqrt{3} \cos x/2" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="4\frac{\pi}{3}" displayMode="inline" [showCodeButton]="false" /></span>, el coseno sigue siendo <span class="math-part"><app-formula expression="-\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> y el seno pasa <span class="math-part"><app-formula expression="a -\frac{\sqrt3}2" displayMode="inline" [showCodeButton]="false" /></span>. Esta diferencia de signos es decisiva.</li>
       <li>Al sumar con <span class="math-part"><app-formula expression="\sin x" displayMode="inline" [showCodeButton]="false" /></span>, los coeficientes del seno son <span class="math-part"><app-formula expression="1-\frac{1}{2}-\frac{1}{2}=0" displayMode="inline" [showCodeButton]="false" /></span>. Agrupar coeficientes evita depender de un ángulo concreto: se obtiene cero veces <span class="math-part"><app-formula expression="\sin x" displayMode="inline" [showCodeButton]="false" /></span> y cero veces <span class="math-part"><app-formula expression="\cos x" displayMode="inline" [showCodeButton]="false" /></span>.</li>
@@ -30,10 +36,7 @@
       <a routerLink="/articles/trig-n-functions">Ángulos múltiples y ángulo mitad ↗</a>
       <p>Identidades trigonométricas que relacionan ángulos y permiten reducir ecuaciones.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
-    </div>
+
   </section>
   <app-problem-navigation currentId="problema-034" />
 </article>

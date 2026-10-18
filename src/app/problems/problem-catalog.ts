@@ -1,9 +1,9 @@
 import { NavbarSubsection } from '../shared/content/navbar-subsection';
 
 export type ProblemLevel = 'Repaso' | 'Oposición' | 'Reto';
-export interface ProblemResource { label: string; route: string; activity: string; }
+export interface ProblemResource { label: string; route: string; fragment?: string; activity: string; }
 export interface PracticeProblem {
-  id: string; number: number; title: string; category: string; topic: string;
+  id: string; route: string; number: number; title: string; category: string; topic: string;
   level: ProblemLevel; statement: string; resources: ProblemResource[];
 }
 export interface ProblemBlock {
@@ -20,6 +20,6 @@ export const OFFICIAL_SOURCES = [
 export function problemNavigation(blocks: ProblemBlock[]): NavbarSubsection[] {
   return blocks.map(group => ({ name: group.name, items: [], subsections: group.topics.map(topic => ({
     name: topic, items: group.problems.filter(problem => problem.topic === topic)
-      .map(problem => ({ name: problem.title, route: problem.id }))
+      .map(problem => ({ name: problem.title, route: problem.route }))
   })) }));
 }

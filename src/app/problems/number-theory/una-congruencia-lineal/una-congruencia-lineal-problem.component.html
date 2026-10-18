@@ -9,11 +9,18 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Resuelve <span class="math-part"><app-formula expression="18x\equiv 30 \pmod{42}" displayMode="inline" [showCodeButton]="false" /></span> y da todas las clases de soluciones módulo 42.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+    <li><a routerLink="/articles/gcd-euclid">Máximo común divisor y algoritmo de Euclides</a>. Comprende por qué cada división conserva los divisores comunes.</li>
+    <li><a routerLink="/articles/linear-congruence-theorem">Congruencias lineales</a>. Estudia la condición de existencia y todas las clases de soluciones.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una congruencia <span class="math-part"><app-formula expression="ax\equiv b\pmod m" displayMode="inline" [showCodeButton]="false" /></span> significa <span class="math-part"><app-formula expression="ax-b=mk" displayMode="inline" [showCodeButton]="false" /></span> para algún entero k. Si <span class="math-part"><app-formula expression="d=\operatorname{mcd}(a,m)" displayMode="inline" [showCodeButton]="false" /></span>, necesariamente d divide b. Cuando lo divide, reducir entre d deja un coeficiente coprimo con el nuevo módulo, que tiene inverso y permite despejar x.</li>
-      <li>El mcd es 6 y divide 30, así que hay soluciones. La congruencia significa que 42 divide <span class="math-part"><app-formula expression="18x-30" displayMode="inline" [showCodeButton]="false" /></span>. La existencia requiere que <span class="math-part"><app-formula expression="\operatorname{mcd}(18,42)" displayMode="inline" [showCodeButton]="false" /></span> divida 30, condición que aquí se cumple.</li>
+      <li>Una <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">congruencia</a> <span class="math-part"><app-formula expression="ax\equiv b\pmod m" displayMode="inline" [showCodeButton]="false" /></span> significa <span class="math-part"><app-formula expression="ax-b=mk" displayMode="inline" [showCodeButton]="false" /></span> para algún entero k. Si <span class="math-part"><app-formula expression="d=\operatorname{mcd}(a,m)" displayMode="inline" [showCodeButton]="false" /></span>, necesariamente d divide b. Cuando lo divide, reducir entre d deja un coeficiente <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">coprimo</a> con el nuevo <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">módulo</a>, que tiene <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">inverso</a> y permite despejar x.</li>
+      <li>El <a data-prerequisite="gcd" routerLink="/articles/gcd-euclid">mcd</a> es 6 y divide 30, así que hay soluciones. La congruencia significa que 42 divide <span class="math-part"><app-formula expression="18x-30" displayMode="inline" [showCodeButton]="false" /></span>. La existencia requiere que <span class="math-part"><app-formula expression="\operatorname{mcd}(18,42)" displayMode="inline" [showCodeButton]="false" /></span> divida 30, condición que aquí se cumple.</li>
       <li>Divide la congruencia por 6, reduciendo también el módulo: <span class="math-part"><app-formula expression="3x\equiv 5 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>. Dividir <span class="math-part"><app-formula expression="18x-30=42k" displayMode="inline" [showCodeButton]="false" /></span> entre 6 da <span class="math-part"><app-formula expression="3x-5=7k" displayMode="inline" [showCodeButton]="false" /></span>. Esto explica que también cambie el módulo.</li>
       <li>El inverso de 3 módulo 7 es 5: <span class="math-part"><app-formula expression="x\equiv 25\equiv 4 \pmod{7}" displayMode="inline" [showCodeButton]="false" /></span>. El inverso funciona porque <span class="math-part"><app-formula expression="3\cdot 5=15=2\cdot 7+1" displayMode="inline" [showCodeButton]="false" /></span>. Multiplicar por 5 da <span class="math-part"><app-formula expression="x\equiv 25" displayMode="inline" [showCodeButton]="false" /></span>, que se reduce restando 21.</li>
       <li>En módulo 42 aparecen <span class="math-part"><app-formula expression="4,11,18,25,32,39" displayMode="inline" [showCodeButton]="false" /></span>; cada una produce resto 30 al multiplicar por 18. Se toma <span class="math-part"><app-formula expression="x=4+7t" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="t=0" displayMode="inline" [showCodeButton]="false" /></span>,…<span class="math-part"><app-formula expression=",5" displayMode="inline" [showCodeButton]="false" /></span>. El siguiente valor, 46, ya repite la clase 4 módulo 42.</li>
@@ -28,10 +35,7 @@
       <a routerLink="/articles/linear-congruence-theorem">Teorema de la congruencia lineal ↗</a>
       <p>Condiciones de existencia y número de soluciones de una congruencia lineal.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
-      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
-    </div>
+
   </section>
   <app-problem-navigation currentId="problema-002" />
 </article>

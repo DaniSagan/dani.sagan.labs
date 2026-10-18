@@ -6,17 +6,23 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Demuestra que aₙ=(−1)ⁿ/(n+1) converge y encuentra su límite.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/squeeze-oscillation">Teorema del encaje y oscilación</a>. Acota por dos expresiones con el mismo límite.</li>
+    <li><a routerLink="/articles/absolute-value-distance">Valor absoluto y funciones a trozos</a>. Escribe las ramas según el signo y distingue distancia de valor con signo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>El factor (−1)ⁿ alterna entre 1 y −1, así que el signo cambia. Pero el tamaño es |aₙ|=1/(n+1), que disminuye hacia cero.</li>
-      <li>Tenemos −1/(n+1)≤aₙ≤1/(n+1). Los extremos tienden a cero, y el teorema del encaje obliga a que aₙ tenga el mismo límite.</li>
+      <li>Tenemos −1/(n+1)≤aₙ≤1/(n+1). Los extremos tienden a cero, y el teorema del <a data-prerequisite="squeeze" routerLink="/articles/squeeze-oscillation">encaje</a> obliga a que aₙ tenga el mismo límite.</li>
       <li>Podemos cuantificarlo: dado ε&gt;0, basta elegir un entero N mayor que 1/ε. Para n≥N, 1/(n+1)&lt;ε.</li>
       <li>Así |aₙ−0|&lt;ε a partir de ese índice. Esto prueba convergencia aunque los términos no sean monótonos: sus oscilaciones se hacen arbitrariamente pequeñas.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> La sucesión converge a 0.</p>
     <app-formula expression="\left|\frac{(-1)^n}{n+1}\right|\longrightarrow0" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar de signo no impide converger si la amplitud de la oscilación tiende a cero.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Cambiar de signo no impide converger si la amplitud de la <a data-prerequisite="squeeze" routerLink="/articles/squeeze-oscillation">oscilación</a> tiende a cero.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

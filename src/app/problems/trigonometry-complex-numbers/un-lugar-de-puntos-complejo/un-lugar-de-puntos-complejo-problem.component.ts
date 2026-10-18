@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnLugarDePuntosComplejoProblemComponent {
   static readonly title = "Un lugar de puntos complejo";
-  static readonly route = "problema-037";
+  static readonly route = "complex-plane-locus";
   static readonly problem: PracticeProblem = {
   "id": "problema-037",
+  "route": "complex-plane-locus",
   "number": 37,
   "title": "Un lugar de puntos complejo",
   "category": "Trigonometría y números complejos",
@@ -39,14 +40,30 @@ export class UnLugarDePuntosComplejoProblemComponent {
       "activity": "Transformaciones fraccionarias del plano complejo y sus imágenes geométricas."
     },
     {
-      "label": "Representador de funciones",
-      "route": "/tools/graph-plotter",
-      "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
-    },
-    {
       "label": "Valor absoluto: distancias y funciones a trozos",
       "route": "/articles/absolute-value-distance",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Aritmética compleja, módulo y conjugado",
+      "route": "/articles/complex-arithmetic",
+      "activity": "Calcula en forma binómica y usa el conjugado para dividir."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
+    },
+    {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "activity": "Controla los signos antes de cuadrar para que la transformación sea reversible."
+    },
+    {
+      "label": "Trazador de curvas implícitas",
+      "route": "/tools/implicit-curve-graph",
+      "activity": "Dibuja la ecuación cartesiana y comprueba centro, cortes o asíntotas."
     }
   ]
 };

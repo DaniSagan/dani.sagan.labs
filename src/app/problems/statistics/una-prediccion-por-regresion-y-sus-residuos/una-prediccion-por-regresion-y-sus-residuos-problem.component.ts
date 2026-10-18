@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaPrediccionPorRegresionYSusResiduosProblemComponent {
   static readonly title = "Una predicción por regresión y sus residuos";
-  static readonly route = 'problema-186';
+  static readonly route = "regression-prediction-and-residuals";
   static readonly problem: PracticeProblem = {
   "id": "problema-186",
+  "route": "regression-prediction-and-residuals",
   "number": 186,
   "title": "Una predicción por regresión y sus residuos",
   "category": "Estadística y lectura crítica de datos",
@@ -31,6 +32,16 @@ export class UnaPrediccionPorRegresionYSusResiduosProblemComponent {
       "label": "Derivadas parciales y minimización en varias variables",
       "route": "/articles/partial-derivatives-minimization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Proyecciones y mínimos cuadrados",
+      "route": "/articles/projection-least-squares",
+      "activity": "Interpreta el ajuste como minimización de la suma de residuos cuadrados."
+    },
+    {
+      "label": "Covarianza y correlación",
+      "route": "/articles/covariance",
+      "activity": "Centra los datos y distingue asociación lineal de causalidad."
     }
   ]
 };

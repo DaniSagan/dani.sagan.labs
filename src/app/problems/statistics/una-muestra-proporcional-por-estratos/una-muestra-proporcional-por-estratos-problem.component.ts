@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaMuestraProporcionalPorEstratosProblemComponent {
   static readonly title = "Una muestra proporcional por estratos";
-  static readonly route = 'problema-188';
+  static readonly route = "proportional-stratified-sampling";
   static readonly problem: PracticeProblem = {
   "id": "problema-188",
+  "route": "proportional-stratified-sampling",
   "number": 188,
   "title": "Una muestra proporcional por estratos",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,16 @@ export class UnaMuestraProporcionalPorEstratosProblemComponent {
       "label": "Muestreo estratificado y estimadores ponderados",
       "route": "/articles/stratified-sampling",
       "activity": "Practica una muestra proporcional por estratos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
+    },
+    {
+      "label": "Sesgo de selección y representatividad",
+      "route": "/articles/sampling-bias",
+      "activity": "Un tamaño grande no corrige una selección que excluye parte de la población."
     }
   ]
 };

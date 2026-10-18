@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class PorQueCambiaElDivisorMuestralProblemComponent {
   static readonly title = "Por qué cambia el divisor muestral";
-  static readonly route = 'problema-183';
+  static readonly route = "sample-variance-denominator";
   static readonly problem: PracticeProblem = {
   "id": "problema-183",
+  "route": "sample-variance-denominator",
   "number": 183,
   "title": "Por qué cambia el divisor muestral",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,16 @@ export class PorQueCambiaElDivisorMuestralProblemComponent {
       "label": "Corrección de Bessel y estimadores insesgados",
       "route": "/articles/bessel-correction",
       "activity": "Practica por qué cambia el divisor muestral. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "activity": "Distingue posición de dispersión y especifica el divisor de la varianza."
+    },
+    {
+      "label": "Distribución de la media y error estándar",
+      "route": "/articles/sampling-distributions",
+      "activity": "Separa la dispersión de las observaciones de la dispersión de su media."
     }
   ]
 };

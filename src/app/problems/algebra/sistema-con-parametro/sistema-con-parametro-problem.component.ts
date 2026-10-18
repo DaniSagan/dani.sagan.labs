@@ -13,36 +13,43 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class SistemaConParametroProblemComponent {
   static readonly title = "Sistema con parámetro";
-  static readonly route = "problema-016";
+  static readonly route = "linear-system-with-parameter";
   static readonly problem: PracticeProblem = {
-    "id": "problema-016",
-    "number": 16,
-    "title": "Sistema con parámetro",
-    "category": "Álgebra y álgebra lineal",
-    "topic": "Matrices y sistemas",
-    "level": "Oposición",
-    "statement": "Clasifica y resuelve \\(x+y+z=1\\), \\(x+ay+z=1\\), \\(x+y+az=1\\) según el parámetro real a.",
-    "resources": [
-      {
-        "label": "Eliminación de Gauss y teorema de Rouché–Capelli",
-        "route": "/articles/gaussian-elimination",
-        "activity": "Clasifica el sistema con parámetro mediante Gauss y compara los rangos de la matriz y de la ampliada."
-      },
-      {
-        "label": "Determinantes",
-        "route": "/articles/matrix-determinant",
-        "activity": "Propiedades algebraicas y significado geométrico de los determinantes."
-      },
-      {
-        "label": "Laboratorio de álgebra lineal",
-        "route": "/tools/linear-algebra",
-        "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
-      },
-      {
-        "label": "Espacios vectoriales, bases y rango–nulidad",
-        "route": "/articles/vector-spaces",
-        "activity": "Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones."
-      }
-    ]
-  };
+  "id": "problema-016",
+  "route": "linear-system-with-parameter",
+  "number": 16,
+  "title": "Sistema con parámetro",
+  "category": "Álgebra y álgebra lineal",
+  "topic": "Matrices y sistemas",
+  "level": "Oposición",
+  "statement": "Clasifica y resuelve \\(x+y+z=1\\), \\(x+ay+z=1\\), \\(x+y+az=1\\) según el parámetro real a.",
+  "resources": [
+    {
+      "label": "Eliminación de Gauss y teorema de Rouché–Capelli",
+      "route": "/articles/gaussian-elimination",
+      "activity": "Clasifica el sistema con parámetro mediante Gauss y compara los rangos de la matriz y de la ampliada."
+    },
+    {
+      "label": "Determinantes",
+      "route": "/articles/matrix-determinant",
+      "activity": "Propiedades algebraicas y significado geométrico de los determinantes."
+    },
+    {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
+    },
+    {
+      "label": "Espacios vectoriales, bases y rango–nulidad",
+      "route": "/articles/vector-spaces",
+      "activity": "Interpreta rango, imagen y núcleo para clasificar transformaciones y conjuntos de soluciones."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    }
+  ]
+};
 }

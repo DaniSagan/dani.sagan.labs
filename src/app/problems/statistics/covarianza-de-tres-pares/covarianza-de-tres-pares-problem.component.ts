@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CovarianzaDeTresParesProblemComponent {
   static readonly title = "Covarianza de tres pares";
-  static readonly route = 'problema-185';
+  static readonly route = "covariance-of-three-pairs";
   static readonly problem: PracticeProblem = {
   "id": "problema-185",
+  "route": "covariance-of-three-pairs",
   "number": 185,
   "title": "Covarianza de tres pares",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,11 @@ export class CovarianzaDeTresParesProblemComponent {
       "label": "Covarianza, dependencia y varianza de una suma",
       "route": "/articles/covariance",
       "activity": "Practica covarianza de tres pares. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "activity": "Distingue posición de dispersión y especifica el divisor de la varianza."
     }
   ]
 };

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnPolinomioPorAgrupacionProblemComponent {
   static readonly title = "Un polinomio por agrupación";
-  static readonly route = 'problema-112';
+  static readonly route = "factoring-by-grouping";
   static readonly problem: PracticeProblem = {
   "id": "problema-112",
+  "route": "factoring-by-grouping",
   "number": 112,
   "title": "Un polinomio por agrupación",
   "category": "Álgebra y álgebra lineal",
@@ -31,6 +32,12 @@ export class UnPolinomioPorAgrupacionProblemComponent {
       "label": "Identidades algebraicas y técnicas de factorización",
       "route": "/articles/algebraic-identities-factorization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Raíces, factores y multiplicidad",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "roots",
+      "activity": "Distingue raíces distintas de raíces contadas con multiplicidad y usa el producto nulo."
     }
   ]
 };

@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una población idealizada satisface P′(t)=0,2P(t) y P(0)=500. Halla P(t) y el tiempo de duplicación.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden</a>. Separa la ecuación diferencial de la condición que fija su solución.</li>
+    <li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos</a>. Respeta el dominio y utiliza las funciones inversas para despejar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La ecuación dice que la tasa de crecimiento es proporcional a la población presente. La función exponencial P(t)=Ce^(0,2t) cumple esta relación porque su derivada es 0,2Ce^(0,2t).</li>
-      <li>La condición inicial fija C: en t=0, e⁰=1 y P(0)=C=500. Así P(t)=500e^(0,2t).</li>
-      <li>Para duplicar pedimos P(t)=1000. Al dividir por 500 queda e^(0,2t)=2. El logaritmo natural deshace la exponencial: 0,2t=ln 2.</li>
+      <li>La ecuación dice que la <a data-prerequisite="ode" routerLink="/articles/first-order-odes">tasa de crecimiento</a> es proporcional a la población presente. La función <a data-prerequisite="logarithms" routerLink="/articles/exponentials-logarithms">exponencial</a> P(t)=Ce^(0,2t) cumple esta relación porque su derivada es 0,2Ce^(0,2t).</li>
+      <li>La <a data-prerequisite="ode" routerLink="/articles/first-order-odes">condición inicial</a> fija C: en t=0, e⁰=1 y P(0)=C=500. Así P(t)=500e^(0,2t).</li>
+      <li>Para duplicar pedimos P(t)=1000. Al dividir por 500 queda e^(0,2t)=2. El <a data-prerequisite="logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> natural deshace la exponencial: 0,2t=ln 2.</li>
       <li>Despejamos t=ln 2/0,2=5 ln 2≈3,466 unidades de tiempo. El resultado supone que la tasa proporcional permanece constante durante todo el proceso.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> P(t)=500e^(0,2t); duplicación en 5 ln 2≈3,466 unidades.</p>

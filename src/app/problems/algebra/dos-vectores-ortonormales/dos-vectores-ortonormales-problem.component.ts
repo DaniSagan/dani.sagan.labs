@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosVectoresOrtonormalesProblemComponent {
   static readonly title = "Dos vectores ortonormales";
-  static readonly route = 'problema-118';
+  static readonly route = "orthonormal-vector-pair";
   static readonly problem: PracticeProblem = {
   "id": "problema-118",
+  "route": "orthonormal-vector-pair",
   "number": 118,
   "title": "Dos vectores ortonormales",
   "category": "Álgebra y álgebra lineal",
@@ -31,6 +32,21 @@ export class DosVectoresOrtonormalesProblemComponent {
       "label": "Cambios de base y matrices de una transformación",
       "route": "/articles/change-of-basis",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Producto escalar y perpendicularidad",
+      "route": "/articles/dot-product",
+      "activity": "Calcula productos escalares y comprueba ortogonalidad."
+    },
+    {
+      "label": "Norma y distancia euclídea",
+      "route": "/articles/vector-norm",
+      "activity": "Distingue un vector de su longitud y calcula distancias."
+    },
+    {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "activity": "Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes."
     }
   ]
 };

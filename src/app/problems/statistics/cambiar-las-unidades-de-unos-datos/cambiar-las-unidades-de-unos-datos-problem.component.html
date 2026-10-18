@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Unos datos en Celsius tienen media 20 y desviación típica 3. Al convertirlos con F=1,8C+32, calcula media, varianza y desviación en Fahrenheit.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/moment-transformations">Transformaciones de medias y varianzas</a>. El desplazamiento afecta a la media y la escala entra al cuadrado en la varianza.</li>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/dimensional-analysis">Análisis dimensional</a>. Iguala los exponentes de las dimensiones y distingue escala de constante física.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La conversión aplica la misma transformación a cada dato. La media transforma linealmente: media de F=1,8·20+32=68.</li>
+      <li>La conversión aplica la misma <a data-prerequisite="moments" routerLink="/articles/moment-transformations">transformación</a> a cada dato. La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> transforma <a data-prerequisite="moments" routerLink="/articles/moment-transformations">linealmente</a>: media de F=1,8·20+32=68.</li>
       <li>Para una desviación respecto de la media, F−68=1,8(C−20). La suma de 32 desaparece al restar la media; desplazar una lista no cambia su dispersión.</li>
-      <li>Al elevar las desviaciones al cuadrado, el factor pasa a ser 1,8². La varianza original es 3²=9, por lo que la nueva vale 1,8²·9=29,16.</li>
-      <li>La desviación típica es √29,16=5,4, que también se obtiene como 1,8·3. La media y desviación quedan en °F y la varianza en °F².</li>
+      <li>Al elevar las <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviaciones</a> al cuadrado, el factor pasa a ser 1,8². La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">varianza</a> original es 3²=9, por lo que la nueva vale 1,8²·9=29,16.</li>
+      <li>La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviación típica</a> es √29,16=5,4, que también se obtiene como 1,8·3. La media y desviación quedan en °F y la varianza en °F².</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Media 68 °F, varianza 29,16 °F² y desviación 5,4 °F.</p>
     <app-formula expression="\mu_F=68,\quad\sigma_F^2=29.16,\quad\sigma_F=5.4" [showCodeButton]="false" />

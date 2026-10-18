@@ -6,10 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula arcsen(sen(5π/6)) y explica por qué no devuelve 5π/6.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/trig-inverse-trig-composition">Ramas de las inversas trigonométricas</a>. Distingue todas las soluciones de un ángulo y la salida de una rama principal.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/radians">Radianes y longitud de arco</a>. Convierte grados a radianes antes de aplicar longitud = radio por ángulo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La función seno repite valores y por eso no puede tener una inversa sobre todos los reales. Para definir arcsen se restringe el ángulo de salida al intervalo [−π/2,π/2].</li>
+      <li>La función <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">seno</a> repite valores y por eso no puede tener una <a data-prerequisite="inverse-trig" routerLink="/articles/trig-inverse-trig-composition">inversa</a> sobre todos los reales. Para definir <a data-prerequisite="inverse-trig" routerLink="/articles/trig-inverse-trig-composition">arcsen</a> se restringe el ángulo de salida al intervalo [−π/2,π/2].</li>
       <li>El ángulo 5π/6 equivale a 150°. Su seno es el de π−π/6, que coincide con sen(π/6)=1/2.</li>
       <li>Buscamos ahora el ángulo de la rama principal cuyo seno es 1/2. Ese ángulo es π/6, y sí pertenece a [−π/2,π/2].</li>
       <li>El ángulo 5π/6 no pertenece a dicha rama. Por tanto arcsen(sen x)=x solo puede usarse sin corrección cuando x ya está en el intervalo principal.</li>

@@ -6,12 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Dos lados de un triángulo miden 5 y 7 y forman un ángulo de 60°. Halla el tercer lado y el área.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/law-of-cosines">Ley de cosenos</a>. Usa el ángulo comprendido entre los lados conocidos.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/triangle-metrics">Medianas, alturas, incentro y métricas del triángulo</a>. Distingue los segmentos y centros del triángulo y sus relaciones con el área.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El ángulo dado está entre los dos lados conocidos. La ley de cosenos relaciona el lado opuesto c con ellos: c²=5²+7²−2·5·7·cos 60°.</li>
+      <li>El ángulo dado está entre los dos lados conocidos. La <a data-prerequisite="cosine-rule" routerLink="/articles/law-of-cosines">ley de cosenos</a> relaciona el lado opuesto c con ellos: c²=5²+7²−2·5·7·cos 60°.</li>
       <li>Usamos cos 60°=1/2. Entonces c²=25+49−70/2=74−35=39. Como es una longitud, c=√39.</li>
-      <li>Para el área tomamos base 7. La altura del otro lado sobre esa base es 5·sen 60°=5√3/2, porque la altura es la componente perpendicular.</li>
+      <li>Para el área tomamos base 7. La <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">altura</a> del otro lado sobre esa base es 5·sen 60°=5√3/2, porque la altura es la componente perpendicular.</li>
       <li>El área es base por altura entre dos: A=7·(5√3/2)/2=35√3/4. El lado √39 está entre 2 y 12, coherentemente con la desigualdad triangular.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Tercer lado √39 y área 35√3/4.</p>

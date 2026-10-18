@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaMatrizNoDiagonalizableProblemComponent {
   static readonly title = "Una matriz no diagonalizable";
-  static readonly route = "problema-020";
+  static readonly route = "non-diagonalizable-matrix";
   static readonly problem: PracticeProblem = {
   "id": "problema-020",
+  "route": "non-diagonalizable-matrix",
   "number": 20,
   "title": "Una matriz no diagonalizable",
   "category": "Álgebra y álgebra lineal",

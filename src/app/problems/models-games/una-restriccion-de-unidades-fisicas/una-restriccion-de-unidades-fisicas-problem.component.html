@@ -6,15 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Suponiendo que el período T depende solo de una longitud L y una aceleración g como T=C Lᵃgᵇ, determina los exponentes y qué queda sin saber.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/dimensional-analysis">Análisis dimensional</a>. Iguala los exponentes de las dimensiones y distingue escala de constante física.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Las dimensiones son [T]=tiempo, [L]=longitud y [g]=longitud/tiempo². La constante C se supone adimensional.</li>
+      <li>Las <a data-prerequisite="units" routerLink="/articles/dimensional-analysis">dimensiones</a> son [T]=tiempo, [L]=longitud y [g]=longitud/tiempo². La constante C se supone <a data-prerequisite="units" routerLink="/articles/dimensional-analysis">adimensional</a>.</li>
       <li>El miembro derecho tiene dimensión longitud^(a+b)·tiempo^(−2b). Para igualar un tiempo, el exponente de longitud debe ser cero y el de tiempo uno.</li>
       <li>Resolvemos a+b=0 y −2b=1. La segunda da b=−1/2 y la primera a=1/2. Por tanto T=C√(L/g).</li>
-      <li>El análisis dimensional no determina C ni demuestra que el fenómeno dependa exclusivamente de L y g. Si se aplica al péndulo simple de pequeña amplitud, otra teoría establece C=2π; esa información no procede de las unidades.</li>
+      <li>El análisis <a data-prerequisite="units" routerLink="/articles/dimensional-analysis">dimensional</a> no determina C ni demuestra que el fenómeno dependa exclusivamente de L y g. Si se aplica al péndulo simple de pequeña amplitud, otra teoría establece C=2π; esa información no procede de las <a data-prerequisite="units" routerLink="/articles/dimensional-analysis">unidades</a>.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> a=1/2, b=−1/2; T=C√(L/g), con C indeterminado.</p>
+    <p class="answer"><strong>Resultado.</strong> a=1/2, b=−1/2; T=C√(L/g), con C <a data-prerequisite="gauss" routerLink="/articles/gaussian-elimination">indeterminado</a>.</p>
     <app-formula expression="T=C\sqrt{L/g}" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> Las unidades restringen una fórmula, pero no fijan constantes adimensionales ni validan todas las hipótesis físicas.</aside>
   </section>

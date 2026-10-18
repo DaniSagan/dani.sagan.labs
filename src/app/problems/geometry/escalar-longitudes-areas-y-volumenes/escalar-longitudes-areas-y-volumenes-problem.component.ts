@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class EscalarLongitudesAreasYVolumenesProblemComponent {
   static readonly title = "Escalar longitudes, áreas y volúmenes";
-  static readonly route = 'problema-124';
+  static readonly route = "scaling-length-area-and-volume";
   static readonly problem: PracticeProblem = {
   "id": "problema-124",
+  "route": "scaling-length-area-and-volume",
   "number": 124,
   "title": "Escalar longitudes, áreas y volúmenes",
   "category": "Geometría",
@@ -26,6 +27,11 @@ export class EscalarLongitudesAreasYVolumenesProblemComponent {
       "label": "Homotecia",
       "route": "/articles/homothety",
       "activity": "Practica escalar longitudes, áreas y volúmenes. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Análisis dimensional",
+      "route": "/articles/dimensional-analysis",
+      "activity": "Iguala los exponentes de las dimensiones y distingue escala de constante física."
     }
   ]
 };

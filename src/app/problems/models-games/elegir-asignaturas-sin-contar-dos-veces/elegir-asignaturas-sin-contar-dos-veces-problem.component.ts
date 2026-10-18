@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ElegirAsignaturasSinContarDosVecesProblemComponent {
   static readonly title = "Elegir asignaturas sin contar dos veces";
-  static readonly route = 'problema-193';
+  static readonly route = "course-selection-by-inclusion-exclusion";
   static readonly problem: PracticeProblem = {
   "id": "problema-193",
+  "route": "course-selection-by-inclusion-exclusion",
   "number": 193,
   "title": "Elegir asignaturas sin contar dos veces",
   "category": "Combinatoria, juegos y modelización",
@@ -26,6 +27,11 @@ export class ElegirAsignaturasSinContarDosVecesProblemComponent {
       "label": "Principio de inclusión y exclusión",
       "route": "/articles/inclusion-exclusion",
       "activity": "Practica elegir asignaturas sin contar dos veces. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Espacio muestral, sucesos y complemento",
+      "route": "/articles/finite-probability",
+      "activity": "Cuenta solo resultados equiprobables y distingue unión, intersección y complemento."
     }
   ]
 };

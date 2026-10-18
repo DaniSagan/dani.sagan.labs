@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaEcuacionConDenominadoresProblemComponent {
   static readonly title = "Una ecuación con denominadores";
-  static readonly route = 'problema-111';
+  static readonly route = "rational-equation-with-denominators";
   static readonly problem: PracticeProblem = {
   "id": "problema-111",
+  "route": "rational-equation-with-denominators",
   "number": 111,
   "title": "Una ecuación con denominadores",
   "category": "Álgebra y álgebra lineal",
@@ -31,6 +32,17 @@ export class UnaEcuacionConDenominadoresProblemComponent {
       "label": "Identidades algebraicas y técnicas de factorización",
       "route": "/articles/algebraic-identities-factorization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    },
+    {
+      "label": "Eliminación de Gauss y sistemas compatibles",
+      "route": "/articles/gaussian-elimination",
+      "activity": "Entiende qué operaciones conservan las soluciones de un sistema."
     }
   ]
 };

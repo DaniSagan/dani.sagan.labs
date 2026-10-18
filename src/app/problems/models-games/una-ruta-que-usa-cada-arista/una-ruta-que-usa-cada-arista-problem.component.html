@@ -6,15 +6,21 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Un grafo tiene vértices A,B,C,D y aristas AB, BC, CD, DA y AC. Decide si existe un recorrido que use cada arista exactamente una vez y construye uno.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/graph-foundations">Grafos: vértices, aristas, grados y conectividad</a>. Cuenta incidencias y distingue aristas de vértices.</li>
+    <li><a routerLink="/articles/euler-hamilton">Recorridos y circuitos eulerianos</a>. Comprueba conectividad y número de vértices impares antes de construir un recorrido.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El grado es el número de aristas incidentes en un vértice. A y C tienen grado 3; B y D, grado 2. El grafo es conexo porque el ciclo exterior conecta sus vértices.</li>
-      <li>En un recorrido que usa cada arista una vez, cada visita interior empareja una entrada con una salida. Solo inicio y final pueden tener grado impar.</li>
-      <li>Hay exactamente dos vértices impares, A y C, así que un recorrido euleriano debe comenzar en uno y terminar en el otro. No puede ser cerrado.</li>
+      <li>El <a data-prerequisite="graphs" routerLink="/articles/graph-foundations">grado</a> es el número de <a data-prerequisite="graphs" routerLink="/articles/graph-foundations">aristas</a> incidentes en un <a data-prerequisite="graphs" routerLink="/articles/graph-foundations">vértice</a>. A y C tienen grado 3; B y D, grado 2. El <a data-prerequisite="graphs" routerLink="/articles/graph-foundations">grafo</a> es <a data-prerequisite="graphs" routerLink="/articles/graph-foundations">conexo</a> porque el ciclo exterior conecta sus vértices.</li>
+      <li>En un <a data-prerequisite="eulerian" routerLink="/articles/euler-hamilton">recorrido</a> que usa cada arista una vez, cada visita interior empareja una entrada con una salida. Solo inicio y final pueden tener grado impar.</li>
+      <li>Hay exactamente dos vértices impares, A y C, así que un recorrido <a data-prerequisite="eulerian" routerLink="/articles/euler-hamilton">euleriano</a> debe comenzar en uno y terminar en el otro. No puede ser cerrado.</li>
       <li>Construimos A→B→C→D→A→C. Usa, en orden, AB, BC, CD, DA y AC: todas las aristas de la lista, sin repetir ninguna. Así queda demostrada la existencia.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Sí: A→B→C→D→A→C; no existe un circuito euleriano cerrado.</p>
+    <p class="answer"><strong>Resultado.</strong> Sí: A→B→C→D→A→C; no existe un <a data-prerequisite="eulerian" routerLink="/articles/euler-hamilton">circuito</a> euleriano cerrado.</p>
     <app-formula expression="A\to B\to C\to D\to A\to C" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> Un recorrido euleriano controla aristas; uno hamiltoniano controla vértices.</aside>
   </section>

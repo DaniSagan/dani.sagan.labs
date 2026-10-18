@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula el inradio y el circunradio de un triángulo rectángulo con catetos 6 y 8.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/triangle-metrics">Medianas, alturas, incentro y métricas del triángulo</a>. Distingue los segmentos y centros del triángulo y sus relaciones con el área.</li>
+    <li><a routerLink="/articles/pythagorean-distance">Teorema de Pitágoras y distancia</a>. Comprueba la perpendicularidad necesaria antes de sumar cuadrados.</li>
+    <li><a routerLink="/articles/heron-formula">Fórmula de Herón y semiperímetro</a>. Comprueba que los lados forman un triángulo antes de calcular su área.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La hipotenusa se obtiene por Pitágoras: c²=6²+8²=36+64=100, así que c=10. El área es la mitad del producto de los catetos: A=6·8/2=24.</li>
-      <li>El semiperímetro es la mitad de la suma de lados: s=(6+8+10)/2=12. Unir el incentro con los tres vértices divide el triángulo en tres triángulos de altura r, el inradio.</li>
+      <li>La <a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">hipotenusa</a> se obtiene por <a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">Pitágoras</a>: c²=6²+8²=36+64=100, así que c=10. El área es la mitad del producto de los <a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">catetos</a>: A=6·8/2=24.</li>
+      <li>El <a data-prerequisite="heron" routerLink="/articles/heron-formula">semiperímetro</a> es la mitad de la suma de lados: s=(6+8+10)/2=12. Unir el <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">incentro</a> con los tres vértices divide el triángulo en tres triángulos de <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">altura</a> r, el <a data-prerequisite="triangle" routerLink="/articles/triangle-metrics">inradio</a>.</li>
       <li>La suma de sus áreas es (6r+8r+10r)/2=sr. Por tanto r=A/s=24/12=2.</li>
       <li>En un triángulo rectángulo el punto medio de la hipotenusa está a igual distancia de los tres vértices. Es el circuncentro y su radio es la mitad de la hipotenusa: R=10/2=5.</li>
     </ol>

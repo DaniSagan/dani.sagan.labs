@@ -9,14 +9,22 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Demuestra que <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span> es divisible entre 30 para todo entero n.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/fundamental-theorem-arithmetic">Factorización prima y divisores</a>. Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades.</li>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+    <li><a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat</a>. Comprueba la hipótesis de coprimalidad antes de reducir exponentes.</li>
+    <li><a routerLink="/articles/proof-strategies">Contradicción, implicación y equivalencia</a>. Separa una demostración para todos los casos de una comprobación particular.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Es suficiente probar divisibilidad por los primos distintos 2, 3 y 5. Para el paso módulo 5 puede evitarse citar Fermat: las clases son <span class="math-part"><app-formula expression="0,1,-1,2,-2" displayMode="inline" [showCodeButton]="false" /></span>, y <span class="math-part"><app-formula expression="2^5-2=30" displayMode="inline" [showCodeButton]="false" /></span>; las clases negativas dan el opuesto de la misma diferencia. En todas las clases, la quinta potencia menos la base es múltiplo de 5.</li>
+      <li>Es suficiente probar divisibilidad por los <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">primos</a> distintos 2, 3 y 5. Para el paso <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">módulo</a> 5 puede evitarse citar <a data-prerequisite="fermat" routerLink="/articles/fermats-little-theorem">Fermat</a>: las clases son <span class="math-part"><app-formula expression="0,1,-1,2,-2" displayMode="inline" [showCodeButton]="false" /></span>, y <span class="math-part"><app-formula expression="2^5-2=30" displayMode="inline" [showCodeButton]="false" /></span>; las clases negativas dan el opuesto de la misma diferencia. En todas las clases, la quinta potencia menos la base es múltiplo de 5.</li>
       <li>Módulo 2 se tiene <span class="math-part"><app-formula expression="n^{5}\equiv n" displayMode="inline" [showCodeButton]="false" /></span>, tanto para n par como impar. Tanto un entero como su quinta potencia tienen la misma paridad. Su diferencia siempre es par.</li>
       <li>Módulo 3, las clases <span class="math-part"><app-formula expression="0,1,-1" displayMode="inline" [showCodeButton]="false" /></span> satisfacen <span class="math-part"><app-formula expression="n^{5}\equiv n" displayMode="inline" [showCodeButton]="false" /></span>. En módulo 3 las clases son <span class="math-part"><app-formula expression="0,1,-1" displayMode="inline" [showCodeButton]="false" /></span>; una quinta potencia conserva cada una de ellas.</li>
-      <li>Módulo 5, si 5 no divide n, Fermat da <span class="math-part"><app-formula expression="n^{4}\equiv 1" displayMode="inline" [showCodeButton]="false" /></span>; si lo divide, la conclusión es inmediata. Fermat se usa solo si n es coprimo con 5. Si 5 divide n, divide directamente los dos términos.</li>
-      <li>Como <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span> son coprimos dos a dos, su producto divide <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span>. En la factorización de la diferencia aparecen los tres primos distintos <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span>. Por tanto también aparece su producto 30.</li>
+      <li>Módulo 5, si 5 no divide n, Fermat da <span class="math-part"><app-formula expression="n^{4}\equiv 1" displayMode="inline" [showCodeButton]="false" /></span>; si lo divide, la conclusión es inmediata. Fermat se usa solo si n es <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">coprimo</a> con 5. Si 5 divide n, divide directamente los dos términos.</li>
+      <li>Como <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span> son <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">coprimos</a> dos a dos, su producto divide <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span>. En la factorización de la diferencia aparecen los tres primos distintos <span class="math-part"><app-formula expression="2,3,5" displayMode="inline" [showCodeButton]="false" /></span>. Por tanto también aparece su producto 30.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 30 divide <span class="math-part"><app-formula expression="n^{5}-n" displayMode="inline" [showCodeButton]="false" /></span> para todo n entero.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> La divisibilidad entre factores no coprimos no garantiza la divisibilidad entre su producto.</aside>
@@ -28,10 +36,7 @@
       <a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat ↗</a>
       <p>La congruencia de potencias usada en la prueba de divisibilidad por un primo.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/prime-decomposition">Descomposición en primos ↗</a>
-      <p>Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados».</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/mathematical-induction">Inducción matemática y construcción de pruebas ↗</a>
       <p>Demuestra la identidad o la estructura de todas las etapas, separando caso inicial y paso inductivo.</p>

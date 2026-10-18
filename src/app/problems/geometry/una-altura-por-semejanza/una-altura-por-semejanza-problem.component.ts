@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaAlturaPorSemejanzaProblemComponent {
   static readonly title = "Una altura por semejanza";
-  static readonly route = 'problema-121';
+  static readonly route = "height-by-similar-triangles";
   static readonly problem: PracticeProblem = {
   "id": "problema-121",
+  "route": "height-by-similar-triangles",
   "number": 121,
   "title": "Una altura por semejanza",
   "category": "Geometría",
@@ -26,6 +27,11 @@ export class UnaAlturaPorSemejanzaProblemComponent {
       "label": "Semejanza de triángulos y proporcionalidad",
       "route": "/articles/triangle-similarity",
       "activity": "Practica una altura por semejanza. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "activity": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
     }
   ]
 };

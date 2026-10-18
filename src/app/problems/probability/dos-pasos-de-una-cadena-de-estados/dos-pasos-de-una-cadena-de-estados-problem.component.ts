@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosPasosDeUnaCadenaDeEstadosProblemComponent {
   static readonly title = "Dos pasos de una cadena de estados";
-  static readonly route = 'problema-180';
+  static readonly route = "two-step-state-transition";
   static readonly problem: PracticeProblem = {
   "id": "problema-180",
+  "route": "two-step-state-transition",
   "number": 180,
   "title": "Dos pasos de una cadena de estados",
   "category": "Probabilidad",
@@ -36,6 +37,16 @@ export class DosPasosDeUnaCadenaDeEstadosProblemComponent {
       "label": "Grafos desde cero: grados, caminos y conectividad",
       "route": "/articles/graph-foundations",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
+    },
+    {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "activity": "Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes."
     }
   ]
 };

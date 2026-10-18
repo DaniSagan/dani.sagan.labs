@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Sea f(x)=(x²−9)/(x−3) para x≠3 y f(3)=k. Determina k para que sea continua en 3.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/continuity-differentiability">Continuidad y derivadas laterales</a>. Separa el valor, el límite y la existencia de una derivada.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Continuidad en 3 significa que el límite al acercarnos a 3 coincide con el valor asignado f(3). Primero calculamos el límite sin usar k.</li>
-      <li>El numerador es una diferencia de cuadrados: x²−9=(x−3)(x+3). Para x≠3 podemos cancelar x−3 y queda f(x)=x+3.</li>
+      <li><a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">Continuidad</a> en 3 significa que el límite al acercarnos a 3 coincide con el valor asignado f(3). Primero calculamos el límite sin usar k.</li>
+      <li>El numerador es una <a data-prerequisite="factoring" routerLink="/articles/algebraic-identities-factorization">diferencia de cuadrados</a>: x²−9=(x−3)(x+3). Para x≠3 podemos cancelar x−3 y queda f(x)=x+3.</li>
       <li>Cuando x tiende a 3, x+3 tiende a 6. Por ello necesitamos f(3)=k=6 para que límite y valor coincidan.</li>
       <li>Con esa elección la función es x+3 para todo x, incluido 3. Cualquier otro k dejaría el mismo límite 6 pero un valor diferente, impidiendo continuidad.</li>
     </ol>

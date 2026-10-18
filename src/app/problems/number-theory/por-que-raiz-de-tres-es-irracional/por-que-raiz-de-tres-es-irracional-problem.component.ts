@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class PorQueRaizDeTresEsIrracionalProblemComponent {
   static readonly title = "Por qué raíz de tres es irracional";
-  static readonly route = 'problema-110';
+  static readonly route = "irrationality-of-square-root-of-three";
   static readonly problem: PracticeProblem = {
   "id": "problema-110",
+  "route": "irrationality-of-square-root-of-three",
   "number": 110,
   "title": "Por qué raíz de tres es irracional",
   "category": "Aritmética y teoría de números",
@@ -31,6 +32,11 @@ export class PorQueRaizDeTresEsIrracionalProblemComponent {
       "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
       "route": "/articles/proof-strategies",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Exponentes primos y valuaciones",
+      "route": "/articles/prime-valuations",
+      "activity": "Traduce cuadrados, cubos y divisibilidad a condiciones sobre exponentes."
     }
   ]
 };

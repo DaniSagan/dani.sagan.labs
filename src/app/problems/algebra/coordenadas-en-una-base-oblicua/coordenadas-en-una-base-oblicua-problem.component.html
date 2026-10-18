@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Expresa v=(5,1) en la base u=(1,1), w=(1,−1). Explica la diferencia entre coordenadas y componentes habituales.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/vector-spaces">Bases, independencia, núcleo e imagen</a>. Distingue coordenadas, independencia y dimensiones de los espacios asociados.</li>
+    <li><a routerLink="/articles/change-of-basis">Cambios de base</a>. Reconstruye el vector desde sus coordenadas en la base indicada.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Buscamos coeficientes a y b que cumplan v=au+bw. No estamos pidiendo las coordenadas habituales (5,1), sino cuánto aporta cada vector de la nueva base.</li>
+      <li>Buscamos coeficientes a y b que cumplan v=au+bw. No estamos pidiendo las <a data-prerequisite="basis" routerLink="/articles/change-of-basis">coordenadas</a> habituales (5,1), sino cuánto aporta cada vector de la nueva <a data-prerequisite="vectors" routerLink="/articles/vector-spaces">base</a>.</li>
       <li>Al sumar por componentes, au+bw=(a+b,a−b). Igualando con (5,1) obtenemos a+b=5 y a−b=1.</li>
       <li>Sumamos las ecuaciones: 2a=6, de donde a=3. Sustituimos en a+b=5: b=2.</li>
-      <li>Verificamos 3(1,1)+2(1,−1)=(3,3)+(2,−2)=(5,1). Además, el sistema homogéneo a+b=0, a−b=0 solo tiene a=b=0; los vectores son independientes y estas coordenadas son únicas.</li>
+      <li>Verificamos 3(1,1)+2(1,−1)=(3,3)+(2,−2)=(5,1). Además, el sistema homogéneo a+b=0, a−b=0 solo tiene a=b=0; los vectores son <a data-prerequisite="vectors" routerLink="/articles/vector-spaces">independientes</a> y estas coordenadas son únicas.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Las coordenadas en la base (u,w) son (3,2).</p>
     <app-formula expression="(5,1)=3(1,1)+2(1,-1)" [showCodeButton]="false" />
@@ -21,7 +28,7 @@
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
     <div class="resource"><a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad ↗</a><p>Practica coordenadas en una base oblicua. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
-    <div class="resource"><a routerLink="/articles/change-of-basis">Cambios de base y matrices de una transformación ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div>
+    <div class="resource"><a routerLink="/articles/change-of-basis">Cambios de base y matrices de una transformación ↗</a><p>Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a><p>Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes.</p></div>
   </section>
   <app-problem-navigation currentId="problema-116" />
 </article>

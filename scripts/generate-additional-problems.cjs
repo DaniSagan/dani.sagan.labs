@@ -1,3 +1,4 @@
+const problemRoutes = require('./problem-routes.cjs');
 const fs = require('node:fs'), path = require('node:path');
 const groups = require('./additional-problems.cjs');
 const { problemNames } = require('./problem-names.cjs');
@@ -135,7 +136,7 @@ for(const g of groups) {
   const orderedTopics=JSON.parse(blockLine.match(/topics:\s*(\[[^\]]+\])/)[1]);
   let imports='', names='';
   g.entries.forEach((e,i)=>{
-    const number=101+index, id=`problema-${number}`;
+    const number=101+index, id=`problema-${number}`, route=problemRoutes[number-1];
     const { slug, className: cls } = problemNames(e.title);
     // Use integration's dedicated chapter for basic antiderivatives and techniques.
     if(g.folder==='integral-calculus' && e.article==='derivative-foundations') e.article='integration-classical';
@@ -149,7 +150,7 @@ for(const g of groups) {
     if(g.folder==='differential-calculus') topicIndex=[3,6,7].includes(i)?1:0;
     if(g.folder==='integral-calculus') topicIndex=[0,2,3,4].includes(i)?0:1;
     if(g.folder==='number-theory') topicIndex=[5,6,7,8,9].includes(i)?1:0;
-    const problem={id,number,title:e.title,category,topic:orderedTopics[topicIndex],level,statement:e.statement,resources:[{label:a.title,route:'/articles/'+e.article,activity}]};
+    const problem={id,route,number,title:e.title,category,topic:orderedTopics[topicIndex],level,statement:e.statement,resources:[{label:a.title,route:'/articles/'+e.article,activity}]};
     const dir=path.join(root,'problems',g.folder,slug); fs.mkdirSync(dir,{recursive:true});
     const existingFile=path.join(dir,`${slug}-problem.component.ts`);
     if(fs.existsSync(existingFile)) {
@@ -158,11 +159,11 @@ for(const g of groups) {
         if(!problem.resources.some(current=>current.route===resource.route))problem.resources.push(resource);
       }
     }
-    fs.writeFileSync(path.join(dir,`${slug}-problem.component.ts`),`import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { FormulaComponent } from 'src/app/shared/math/formula/formula.component';\nimport { PracticeProblem } from '../../problem-catalog';\nimport { ProblemNavigationComponent } from '../../shared/problem-navigation.component';\n\n@Component({\n  selector: 'app-${slug}-problem', standalone: true,\n  imports: [RouterLink, FormulaComponent, ProblemNavigationComponent],\n  templateUrl: './${slug}-problem.component.html',\n  styleUrl: '../../shared/problem.css',\n})\nexport class ${cls} {\n  static readonly title = ${JSON.stringify(e.title)};\n  static readonly route = '${id}';\n  static readonly problem: PracticeProblem = ${JSON.stringify(problem,null,2)};\n}\n`);
-    fs.writeFileSync(path.join(dir,`${slug}-problem.component.html`),`<article class="problem-detail" aria-labelledby="problem-title">\n  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>\n  <span class="eyebrow">${level==='Oposición'?'Profundización':level}</span>\n  <h2 id="problem-title">${esc(e.title)}</h2>\n  <p class="topic">${esc(category)} · ${esc(problem.topic)}</p>\n  <section class="statement" aria-labelledby="statement-title">\n    <h3 id="statement-title">Enunciado</h3><p>${esc(e.statement)}</p>\n  </section>\n  <section id="problem-solution" class="solution" aria-labelledby="solution-title">\n    <h3 id="solution-title">Solución paso a paso</h3>\n    <ol>\n${e.steps.map(s=>'      <li>'+esc(s)+'</li>').join('\n')}\n    </ol>\n    <p class="answer"><strong>Resultado.</strong> ${esc(e.answer)}</p>\n    <app-formula expression="${esc(formulas[index])}" [showCodeButton]="false" />\n    <aside class="pitfall"><strong>Error frecuente.</strong> ${esc(e.pitfall)}</aside>\n  </section>\n  <section class="resources" aria-labelledby="resources-title">\n    <h3 id="resources-title">Para repasar y ampliar</h3>\n    ${problem.resources.map(resource => `<div class="resource"><a routerLink="${esc(resource.route)}">${esc(resource.label)} ↗</a><p>${esc(resource.activity)}</p></div>`).join("\n    ")}\n  </section>\n  <app-problem-navigation currentId="${id}" />\n</article>\n`);
+    fs.writeFileSync(path.join(dir,`${slug}-problem.component.ts`),`import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\nimport { FormulaComponent } from 'src/app/shared/math/formula/formula.component';\nimport { PracticeProblem } from '../../problem-catalog';\nimport { ProblemNavigationComponent } from '../../shared/problem-navigation.component';\n\n@Component({\n  selector: 'app-${slug}-problem', standalone: true,\n  imports: [RouterLink, FormulaComponent, ProblemNavigationComponent],\n  templateUrl: './${slug}-problem.component.html',\n  styleUrl: '../../shared/problem.css',\n})\nexport class ${cls} {\n  static readonly title = ${JSON.stringify(e.title)};\n  static readonly route = '${route}';\n  static readonly problem: PracticeProblem = ${JSON.stringify(problem,null,2)};\n}\n`);
+    fs.writeFileSync(path.join(dir,`${slug}-problem.component.html`),`<article class="problem-detail" aria-labelledby="problem-title">\n  <nav class="problem-actions" aria-label="Navegación de problemas"><a routerLink="/problems">← Colección completa</a></nav>\n  <span class="eyebrow">${level==='Oposición'?'Profundización':level}</span>\n  <h2 id="problem-title">${esc(e.title)}</h2>\n  <p class="topic">${esc(category)} · ${esc(problem.topic)}</p>\n  <section class="statement" aria-labelledby="statement-title">\n    <h3 id="statement-title">Enunciado</h3><p>${esc(e.statement)}</p>\n  </section>\n  <section id="problem-solution" class="solution" aria-labelledby="solution-title">\n    <h3 id="solution-title">Solución paso a paso</h3>\n    <ol>\n${e.steps.map(s=>'      <li>'+esc(s)+'</li>').join('\n')}\n    </ol>\n    <p class="answer"><strong>Resultado.</strong> ${esc(e.answer)}</p>\n    <app-formula expression="${esc(formulas[index])}" [showCodeButton]="false" />\n    <aside class="pitfall"><strong>Error frecuente.</strong> ${esc(e.pitfall)}</aside>\n  </section>\n  <section class="resources" aria-labelledby="resources-title">\n    <h3 id="resources-title">Para repasar y ampliar</h3>\n    ${problem.resources.map(resource => `<div class="resource"><a routerLink="${esc(resource.route)}"${resource.fragment ? ' fragment="' + esc(resource.fragment) + '"' : ''}>${esc(resource.label)} ↗</a><p>${esc(resource.activity)}</p></div>`).join("\n    ")}\n  </section>\n  <app-problem-navigation currentId="${id}" />\n</article>\n`);
     imports+=`import { ${cls} } from './${slug}/${slug}-problem.component';\n`; names+=`  ${cls},\n`;
     const key=a.file+'|'+e.article; if(!incoming.has(key)) incoming.set(key,[]);
-    incoming.get(key).push(`<li><a routerLink="/problems/${id}">${number} · ${esc(e.title)}</a>. ${esc(e.statement)}</li>`);
+    incoming.get(key).push(`<li><a routerLink="/problems/${route}">${number} · ${esc(e.title)}</a>. ${esc(e.statement)}</li>`);
     index++;
   });
   source=imports+source.replace(/\] as const;/,names+'] as const;');fs.writeFileSync(catalog,source);
@@ -175,3 +176,5 @@ for(const [key,links] of incoming) {
   fs.writeFileSync(file,source+section);
 }
 console.log(`Generated ${index} independent problems and ${[...incoming.values()].flat().length} incoming article references in ${incoming.size} articles.`);
+
+require('./link-problem-concepts.cjs').synchronize();

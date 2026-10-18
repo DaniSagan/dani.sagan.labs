@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnDecimalPeriodicoComoFraccionProblemComponent {
   static readonly title = "Un decimal periódico como fracción";
-  static readonly route = 'problema-107';
+  static readonly route = "repeating-decimal-as-a-fraction";
   static readonly problem: PracticeProblem = {
   "id": "problema-107",
+  "route": "repeating-decimal-as-a-fraction",
   "number": 107,
   "title": "Un decimal periódico como fracción",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,11 @@ export class UnDecimalPeriodicoComoFraccionProblemComponent {
       "label": "Progresiones y series geométricas",
       "route": "/articles/geometric-series",
       "activity": "Practica un decimal periódico como fracción. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Sistemas de numeración y decimales periódicos",
+      "route": "/articles/numeral-systems",
+      "activity": "Relaciona el desplazamiento decimal con una fracción exacta."
     }
   ]
 };

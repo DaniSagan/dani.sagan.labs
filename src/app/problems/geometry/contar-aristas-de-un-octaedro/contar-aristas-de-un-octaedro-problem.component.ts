@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ContarAristasDeUnOctaedroProblemComponent {
   static readonly title = "Contar aristas de un octaedro";
-  static readonly route = 'problema-129';
+  static readonly route = "octahedron-edge-count";
   static readonly problem: PracticeProblem = {
   "id": "problema-129",
+  "route": "octahedron-edge-count",
   "number": 129,
   "title": "Contar aristas de un octaedro",
   "category": "Geometría",

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaPotenciaEnormeModuloSieteProblemComponent {
   static readonly title = "Una potencia enorme módulo siete";
-  static readonly route = 'problema-105';
+  static readonly route = "large-power-modulo-seven";
   static readonly problem: PracticeProblem = {
   "id": "problema-105",
+  "route": "large-power-modulo-seven",
   "number": 105,
   "title": "Una potencia enorme módulo siete",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,16 @@ export class UnaPotenciaEnormeModuloSieteProblemComponent {
       "label": "Pequeño teorema de Fermat",
       "route": "/articles/fermats-little-theorem",
       "activity": "Practica una potencia enorme módulo siete. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    {
+      "label": "División euclídea y restos",
+      "route": "/articles/division-algorithm",
+      "activity": "Distingue cociente y resto, también para dividendos negativos."
     }
   ]
 };

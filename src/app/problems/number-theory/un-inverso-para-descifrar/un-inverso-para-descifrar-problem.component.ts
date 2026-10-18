@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnInversoParaDescifrarProblemComponent {
   static readonly title = "Un inverso para descifrar";
-  static readonly route = 'problema-103';
+  static readonly route = "modular-inverse-for-decoding";
   static readonly problem: PracticeProblem = {
   "id": "problema-103",
+  "route": "modular-inverse-for-decoding",
   "number": 103,
   "title": "Un inverso para descifrar",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,16 @@ export class UnInversoParaDescifrarProblemComponent {
       "label": "Identidad de Bézout",
       "route": "/articles/bezout-identity",
       "activity": "Practica un inverso para descifrar. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    {
+      "label": "Congruencias lineales",
+      "route": "/articles/linear-congruence-theorem",
+      "activity": "Estudia la condición de existencia y todas las clases de soluciones."
     }
   ]
 };

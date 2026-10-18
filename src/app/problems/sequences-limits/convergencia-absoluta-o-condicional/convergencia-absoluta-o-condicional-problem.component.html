@@ -9,14 +9,21 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Estudia <span class="math-part"><app-formula expression="\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{\sqrt n}" displayMode="inline" [showCodeButton]="false" /></span> y su convergencia absoluta.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/series-convergence">Convergencia absoluta, condicional y Leibniz</a>. Verifica el decrecimiento y el límite cero y estudia aparte los valores absolutos.</li>
+    <li><a routerLink="/articles/positive-series-tests">Criterios de comparación e integral</a>. Comprueba positividad y el sentido de la cota antes de concluir convergencia.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El criterio de Leibniz afirma que una serie alternada converge cuando las magnitudes de sus términos decrecen hacia cero; el resto queda acotado por el primer término omitido. Convergencia absoluta significa además que converge la serie de valores absolutos. Aquí debemos examinar por separado ambas condiciones.</li>
+      <li>El criterio de <a data-prerequisite="series" routerLink="/articles/series-convergence">Leibniz</a> afirma que una <a data-prerequisite="series" routerLink="/articles/series-convergence">serie alternada</a> converge cuando las magnitudes de sus términos decrecen hacia cero; el resto queda acotado por el primer término omitido. <a data-prerequisite="series" routerLink="/articles/series-convergence">Convergencia absoluta</a> significa además que converge la serie de valores absolutos. Aquí debemos examinar por separado ambas condiciones.</li>
       <li><span class="math-part"><app-formula expression="1/\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> es decreciente y tiende a 0. Los términos positivos <span class="math-part"><app-formula expression="1/\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> disminuyen porque <span class="math-part"><app-formula expression="\sqrt{n}" displayMode="inline" [showCodeButton]="false" /></span> aumenta, y su límite es cero. Son las dos condiciones de Leibniz.</li>
       <li>Por Leibniz, la serie alternada converge. El criterio de Leibniz asegura convergencia de la serie con signos alternos, aunque todavía no decide la absoluta.</li>
-      <li>La serie de valores absolutos es <span class="math-part"><app-formula expression="\sum n^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span>; la integral de <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> entre 1 y R vale <span class="math-part"><app-formula expression="2(\sqrt{R}-1)" displayMode="inline" [showCodeButton]="false" /></span>. La función <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> es positiva y decreciente en [1,∞), permitiendo la comparación integral con la serie de valores absolutos.</li>
-      <li>Esta integral diverge al crecer R, por lo que la serie positiva diverge. La integral crece sin cota. Por el criterio integral, la serie positiva diverge y la convergencia original es condicional.</li>
+      <li>La serie de valores absolutos es <span class="math-part"><app-formula expression="\sum n^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span>; la integral de <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> entre 1 y R vale <span class="math-part"><app-formula expression="2(\sqrt{R}-1)" displayMode="inline" [showCodeButton]="false" /></span>. La función <span class="math-part"><app-formula expression="x^{-\frac{1}{2}}" displayMode="inline" [showCodeButton]="false" /></span> es positiva y decreciente en [1,∞), permitiendo la <a data-prerequisite="comparison" routerLink="/articles/positive-series-tests">comparación</a> integral con la serie de valores absolutos.</li>
+      <li>Esta integral diverge al crecer R, por lo que la <a data-prerequisite="comparison" routerLink="/articles/positive-series-tests">serie positiva</a> diverge. La integral crece sin cota. Por el <a data-prerequisite="comparison" routerLink="/articles/positive-series-tests">criterio integral</a>, la serie positiva diverge y la convergencia original es <a data-prerequisite="series" routerLink="/articles/series-convergence">condicional</a>.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Convergencia condicional, no absoluta.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> La alternancia de signos sola no garantiza convergencia.</aside>
@@ -32,10 +39,7 @@
       <a routerLink="/articles/basel">Problema de Basilea ↗</a>
       <p>Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas ↗</a>
       <p>Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</p>

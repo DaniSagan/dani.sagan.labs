@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaColaDeSerieTelescopicaProblemComponent {
   static readonly title = "Una cola de serie telescópica";
-  static readonly route = 'problema-145';
+  static readonly route = "telescoping-series-tail";
   static readonly problem: PracticeProblem = {
   "id": "problema-145",
+  "route": "telescoping-series-tail",
   "number": 145,
   "title": "Una cola de serie telescópica",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,17 @@ export class UnaColaDeSerieTelescopicaProblemComponent {
       "label": "Series telescópicas",
       "route": "/articles/telescoping-series",
       "activity": "Practica una cola de serie telescópica. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Descomposición en fracciones parciales",
+      "route": "/articles/integration-classical",
+      "fragment": "rational",
+      "activity": "Compara coeficientes después de reunir denominadores y conserva el dominio."
+    },
+    {
+      "label": "Equivalencias y órdenes de crecimiento",
+      "route": "/articles/asymptotic-limits",
+      "activity": "Compara los términos dominantes y controla el error tras cancelar."
     }
   ]
 };

@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Resuelve <span class="math-part"><app-formula expression="z^{4}=-1" displayMode="inline" [showCodeButton]="false" /></span> en los complejos y sitúa las raíces en el plano.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/de-moivre">Forma polar, raíces y De Moivre</a>. Eleva el módulo y multiplica el argumento; enumera todas las raíces.</li>
+    <li><a routerLink="/articles/radians">Radianes y longitud de arco</a>. Convierte grados a radianes antes de aplicar longitud = radio por ángulo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Escribimos <span class="math-part"><app-formula expression="-1=e^{i(\pi+2k\pi)}" displayMode="inline" [showCodeButton]="false" /></span>. Al elevar un complejo a la cuarta potencia, su módulo se eleva a cuatro y su argumento se multiplica por cuatro. Por tanto las raíces tienen módulo 1 y argumentos <span class="math-part"><app-formula expression="(\pi+2k\pi)/4" displayMode="inline" [showCodeButton]="false" /></span>; cuatro valores consecutivos de k dan todas las raíces distintas.</li>
+      <li>Escribimos <span class="math-part"><app-formula expression="-1=e^{i(\pi+2k\pi)}" displayMode="inline" [showCodeButton]="false" /></span>. Al elevar un complejo a la cuarta potencia, su <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">módulo</a> se eleva a cuatro y su <a data-prerequisite="moivre" routerLink="/articles/de-moivre">argumento</a> se multiplica por cuatro. Por tanto las raíces tienen módulo 1 y <a data-prerequisite="moivre" routerLink="/articles/de-moivre">argumentos</a> <span class="math-part"><app-formula expression="(\pi+2k\pi)/4" displayMode="inline" [showCodeButton]="false" /></span>; cuatro valores consecutivos de k dan todas las raíces distintas.</li>
       <li>Toda raíz tiene módulo 1 porque su cuarta potencia tiene módulo 1. Si z tiene módulo r, <span class="math-part"><app-formula expression="z^{4}" displayMode="inline" [showCodeButton]="false" /></span> tiene módulo <span class="math-part"><app-formula expression="r^{4}" displayMode="inline" [showCodeButton]="false" /></span>. De <span class="math-part"><app-formula expression="r^{4}=1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="r\ge 0" displayMode="inline" [showCodeButton]="false" /></span> se deduce <span class="math-part"><app-formula expression="r=1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Sus argumentos son <span class="math-part"><app-formula expression="\frac{\pi+2k\pi}{4}=\frac\pi4+\frac{k\pi}{2}" displayMode="inline" [showCodeButton]="false" /></span>. El argumento de una cuarta potencia es cuatro veces el de la base, considerado módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. Se divide <span class="math-part"><app-formula expression="\pi+2k\pi" displayMode="inline" [showCodeButton]="false" /></span> entre 4.</li>
       <li>Para <span class="math-part"><app-formula expression="k=0,1,2,3" displayMode="inline" [showCodeButton]="false" /></span> se obtienen cuatro argumentos distintos módulo <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>. Los argumentos son <span class="math-part"><app-formula expression="\frac{\pi}{4},3\frac{\pi}{4},5\frac{\pi}{4},7\frac{\pi}{4}" displayMode="inline" [showCodeButton]="false" /></span>. Un quinto valor repetiría el primero al añadir <span class="math-part"><app-formula expression="2\pi" displayMode="inline" [showCodeButton]="false" /></span>.</li>
@@ -34,10 +41,7 @@
       <a routerLink="/articles/cyclotomic-polynomials">Polinomios ciclotómicos ↗</a>
       <p>Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/complex-arithmetic">Conjugado, módulo y división compleja ↗</a>
       <p>Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio.</p>

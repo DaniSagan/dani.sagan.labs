@@ -9,16 +9,24 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Define <span class="math-part"><app-formula expression="f(0)=0" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="f(x)=x \sin(1/x)" displayMode="inline" [showCodeButton]="false" /></span> para x≠0. Estudia continuidad y derivabilidad en 0.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/continuity-differentiability">Continuidad y derivadas laterales</a>. Separa el valor, el límite y la existencia de una derivada.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/squeeze-oscillation">Teorema del encaje y oscilación</a>. Acota por dos expresiones con el mismo límite.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La continuidad en cero depende de que <span class="math-part"><app-formula expression="f(x)-f(0)" displayMode="inline" [showCodeButton]="false" /></span> tienda a cero. La derivabilidad depende del cociente <span class="math-part"><app-formula expression="(f(x)-f(0))/x" displayMode="inline" [showCodeButton]="false" /></span>, una condición más fuerte. Aunque el factor x amortigua la oscilación de <span class="math-part"><app-formula expression="\sin(1/x)" displayMode="inline" [showCodeButton]="false" /></span>, al formar ese cociente desaparece y puede impedir la existencia de derivada.</li>
-      <li><span class="math-part"><app-formula expression="\lvert x \sin(1/x)\rvert \le \lvert x\rvert" displayMode="inline" [showCodeButton]="false" /></span>, que tiende a 0; así f es continua en 0. La cota procede de <span class="math-part"><app-formula expression="\lvert \sin t\rvert \le 1" displayMode="inline" [showCodeButton]="false" /></span>. El teorema del encaje hace que el límite de f coincida con su valor definido en cero.</li>
-      <li>El cociente incremental es <span class="math-part"><app-formula expression="(f(h)-f(0))/h=\sin(1/h)" displayMode="inline" [showCodeButton]="false" /></span>. Para derivar en cero se usa la definición de derivada, no la fórmula de la derivada de la rama para x≠0.</li>
-      <li>Para <span class="math-part"><app-formula expression="h_{n}=1/(\frac{\pi}{2}+2\pi n)" displayMode="inline" [showCodeButton]="false" /></span> el cociente vale 1; para <span class="math-part"><app-formula expression="k_{n}=1/(3\frac{\pi}{2}+2\pi n)" displayMode="inline" [showCodeButton]="false" /></span> vale <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>. Los argumentos <span class="math-part"><app-formula expression="1/h_{n}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="1/k_{n}" displayMode="inline" [showCodeButton]="false" /></span> son ángulos donde el seno vale exactamente 1 <span class="math-part"><app-formula expression="y -1" displayMode="inline" [showCodeButton]="false" /></span>, respectivamente.</li>
+      <li>La <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continuidad</a> en cero depende de que <span class="math-part"><app-formula expression="f(x)-f(0)" displayMode="inline" [showCodeButton]="false" /></span> tienda a cero. La <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">derivabilidad</a> depende del cociente <span class="math-part"><app-formula expression="(f(x)-f(0))/x" displayMode="inline" [showCodeButton]="false" /></span>, una condición más fuerte. Aunque el factor x amortigua la <a data-prerequisite="squeeze" routerLink="/articles/squeeze-oscillation">oscilación</a> de <span class="math-part"><app-formula expression="\sin(1/x)" displayMode="inline" [showCodeButton]="false" /></span>, al formar ese cociente desaparece y puede impedir la existencia de <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a>.</li>
+      <li><span class="math-part"><app-formula expression="\lvert x \sin(1/x)\rvert \le \lvert x\rvert" displayMode="inline" [showCodeButton]="false" /></span>, que tiende a 0; así f es <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continua</a> en 0. La cota procede de <span class="math-part"><app-formula expression="\lvert \sin t\rvert \le 1" displayMode="inline" [showCodeButton]="false" /></span>. El teorema del <a data-prerequisite="squeeze" routerLink="/articles/squeeze-oscillation">encaje</a> hace que el límite de f coincida con su valor definido en cero.</li>
+      <li>El <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">cociente incremental</a> es <span class="math-part"><app-formula expression="(f(h)-f(0))/h=\sin(1/h)" displayMode="inline" [showCodeButton]="false" /></span>. Para derivar en cero se usa la definición de derivada, no la fórmula de la derivada de la rama para x≠0.</li>
+      <li>Para <span class="math-part"><app-formula expression="h_{n}=1/(\frac{\pi}{2}+2\pi n)" displayMode="inline" [showCodeButton]="false" /></span> el cociente vale 1; para <span class="math-part"><app-formula expression="k_{n}=1/(3\frac{\pi}{2}+2\pi n)" displayMode="inline" [showCodeButton]="false" /></span> vale <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span>. Los argumentos <span class="math-part"><app-formula expression="1/h_{n}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="1/k_{n}" displayMode="inline" [showCodeButton]="false" /></span> son ángulos donde el <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">seno</a> vale exactamente 1 <span class="math-part"><app-formula expression="y -1" displayMode="inline" [showCodeButton]="false" /></span>, respectivamente.</li>
       <li>Ambas sucesiones tienden a 0, pero los cocientes no tienen un límite común. Si existiera el límite del cociente incremental, sería el mismo a lo largo de cualquier sucesión que tienda a cero. Los dos valores distintos lo contradicen.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Continua en 0; no derivable en 0.</p>
+    <p class="answer"><strong>Resultado.</strong> Continua en 0; no <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">derivable</a> en 0.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> La continuidad no implica derivabilidad.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
@@ -35,10 +43,7 @@
       <a routerLink="/articles/taylor-series">Series de Taylor ↗</a>
       <p>La oscilación impide la derivada en cero. Como contraste, las expansiones de Taylor requieren las condiciones de regularidad explicadas en este artículo.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
-    </div>
+
       <div class="resource"><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos ↗</a><p>Repasa los fundamentos y las justificaciones del método con ejemplos desarrollados.</p></div>
 </section>
   <app-problem-navigation currentId="problema-049" />

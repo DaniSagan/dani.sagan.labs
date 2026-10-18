@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>De 60 estudiantes, 35 cursan álgebra, 28 geometría y 12 ambas. ¿Cuántos cursan al menos una y cuántos ninguna?</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/inclusion-exclusion">Inclusión y exclusión</a>. Corrige los elementos contados más de una vez.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Al sumar 35+28 contamos una vez a quienes cursan solo una asignatura, pero dos veces a los 12 que cursan ambas.</li>
-      <li>Restamos una de esas copias: quienes cursan al menos una son 35+28−12=51. Esta es la fórmula de inclusión-exclusión para dos conjuntos.</li>
-      <li>Los 60 estudiantes se reparten entre quienes cursan alguna y quienes ninguna. Por complemento, ninguna son 60−51=9.</li>
+      <li>Restamos una de esas copias: quienes cursan al menos una son 35+28−12=51. Esta es la fórmula de <a data-prerequisite="inclusion" routerLink="/articles/inclusion-exclusion">inclusión-exclusión</a> para dos conjuntos.</li>
+      <li>Los 60 estudiantes se reparten entre quienes cursan alguna y quienes ninguna. Por <a data-prerequisite="finite" routerLink="/articles/finite-probability">complemento</a>, ninguna son 60−51=9.</li>
       <li>Podemos comprobarlo separando casos: solo álgebra 35−12=23; solo geometría 28−12=16; ambas 12; ninguna 9. La suma 23+16+12+9=60 recupera el total.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 51 cursan al menos una; 9 no cursan ninguna.</p>

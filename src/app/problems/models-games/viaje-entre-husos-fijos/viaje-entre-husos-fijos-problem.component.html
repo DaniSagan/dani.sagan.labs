@@ -9,10 +9,15 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Un vuelo sale a las 22:30 del 10 de enero desde una ciudad con <span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> y llega a las 06:15 del 11 de enero a otra con <span class="math-part"><app-formula expression="UTC+3" displayMode="inline" [showCodeButton]="false" /></span>. Suponiendo esos offsets constantes, calcula la duración.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/utc-date-arithmetic">Fechas UTC y aritmética de husos</a>. Convierte ambos instantes a una misma referencia antes de restar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Un huso fijo expresa la hora local como UTC más un desplazamiento. Antes de restar dos instantes, los convertimos a la misma referencia y conservamos sus fechas. La duración es la diferencia en esa línea temporal común; cruzar medianoche exige incluir las horas de ambos días.</li>
+      <li>Un <a data-prerequisite="utc" routerLink="/articles/utc-date-arithmetic">huso</a> fijo expresa la hora local como <a data-prerequisite="utc" routerLink="/articles/utc-date-arithmetic">UTC</a> más un desplazamiento. Antes de restar dos instantes, los convertimos a la misma referencia y conservamos sus fechas. La duración es la diferencia en esa línea temporal común; cruzar medianoche exige incluir las horas de ambos días.</li>
       <li>La salida en UTC es 21:30 del 10 de enero. <span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> significa hora local=<span class="math-part"><app-formula expression="UTC+1" displayMode="inline" [showCodeButton]="false" /></span> h. Para recuperar UTC se resta una hora a la salida.</li>
       <li>La llegada en UTC es 03:15 del 11 de enero. En la llegada <span class="math-part"><app-formula expression="UTC+3" displayMode="inline" [showCodeButton]="false" /></span> se restan tres horas, obteniendo 03:15 sin cambiar todavía el día 11.</li>
       <li>Desde 21:30 hasta medianoche pasan 2 h 30 min; desde medianoche hasta 03:15 pasan 3 h 15 min. Hay que sumar los intervalos separados por la medianoche, o trabajar con una misma línea temporal completa.</li>

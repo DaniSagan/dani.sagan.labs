@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>En una muestra aleatoria de 400 respuestas independientes, 240 son favorables. Construye el intervalo normal aproximado del 95% usando 1,96 y comenta su interpretación.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/proportion-intervals">Intervalos y tamaño muestral para proporciones</a>. Comprueba los tamaños de éxitos y fallos y el margen antes de usar la aproximación.</li>
+    <li><a routerLink="/articles/sampling-distributions">Distribución de la media y error estándar</a>. Separa la dispersión de las observaciones de la dispersión de su media.</li>
+    <li><a routerLink="/articles/statistical-inference">Intervalos, cobertura y contraste de hipótesis</a>. Interpreta el procedimiento repetido y distingue significación de tamaño del efecto.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La proporción observada es p̂=240/400=0,6. Para esta aproximación estimamos su error estándar por √(p̂(1−p̂)/n).</li>
+      <li>La <a data-prerequisite="proportion" routerLink="/articles/proportion-intervals">proporción</a> observada es p̂=240/400=0,6. Para esta aproximación estimamos su <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">error estándar</a> por √(p̂(1−p̂)/n).</li>
       <li>Sustituimos: √(0,6·0,4/400)=√0,0006≈0,024495. Hay 240 éxitos y 160 fallos, cantidades suficientemente grandes para usar esta aproximación habitual.</li>
-      <li>El margen es 1,96·0,024495≈0,04801. Restamos y sumamos a 0,6: obtenemos aproximadamente [0,55199,0,64801].</li>
-      <li>La cobertura del 95% se refiere al procedimiento repetido en muchas muestras bajo el modelo. No significa que el 95% de las personas esté dentro de un intervalo ni corrige un muestreo sesgado. La aproximación normal puede fallar cerca de 0 o 1 o con muestras pequeñas.</li>
+      <li>El <a data-prerequisite="proportion" routerLink="/articles/proportion-intervals">margen</a> es 1,96·0,024495≈0,04801. Restamos y sumamos a 0,6: obtenemos aproximadamente [0,55199,0,64801].</li>
+      <li>La <a data-prerequisite="inference" routerLink="/articles/statistical-inference">cobertura</a> del 95% se refiere al procedimiento repetido en muchas muestras bajo el modelo. No significa que el 95% de las personas esté dentro de un intervalo ni corrige un muestreo sesgado. La <a data-prerequisite="proportion" routerLink="/articles/proportion-intervals">aproximación normal</a> puede fallar cerca de 0 o 1 o con muestras pequeñas.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Intervalo aproximado [0,5520,0,6480], o 55,20%–64,80%.</p>
     <app-formula expression="\widehat p\pm1.96\sqrt{\frac{\widehat p(1-\widehat p)}n}\approx[0.5520,0.6480]" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> El nivel de confianza no es una proporción de observaciones individuales.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> El <a data-prerequisite="inference" routerLink="/articles/statistical-inference">nivel</a> de <a data-prerequisite="inference" routerLink="/articles/statistical-inference">confianza</a> no es una proporción de observaciones individuales.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

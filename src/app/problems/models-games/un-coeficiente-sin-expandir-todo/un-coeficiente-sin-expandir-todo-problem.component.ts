@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnCoeficienteSinExpandirTodoProblemComponent {
   static readonly title = "Un coeficiente sin expandir todo";
-  static readonly route = 'problema-194';
+  static readonly route = "coefficient-without-full-expansion";
   static readonly problem: PracticeProblem = {
   "id": "problema-194",
+  "route": "coefficient-without-full-expansion",
   "number": 194,
   "title": "Un coeficiente sin expandir todo",
   "category": "Combinatoria, juegos y modelización",
@@ -31,6 +32,17 @@ export class UnCoeficienteSinExpandirTodoProblemComponent {
       "label": "Factoriales, exponentes primos y fórmula de Legendre",
       "route": "/articles/factorials-legendre",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
     }
   ]
 };

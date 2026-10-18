@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaFraccionContinuaCortaProblemComponent {
   static readonly title = "Una fracción continua corta";
-  static readonly route = 'problema-109';
+  static readonly route = "finite-continued-fraction";
   static readonly problem: PracticeProblem = {
   "id": "problema-109",
+  "route": "finite-continued-fraction",
   "number": 109,
   "title": "Una fracción continua corta",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,12 @@ export class UnaFraccionContinuaCortaProblemComponent {
       "label": "Fracciones continuas",
       "route": "/articles/continued-fractions",
       "activity": "Practica una fracción continua corta. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRectaDeRegresionProblemComponent {
   static readonly title = "Una recta de regresión";
-  static readonly route = "problema-083";
+  static readonly route = "regression-line";
   static readonly problem: PracticeProblem = {
   "id": "problema-083",
+  "route": "regression-line",
   "number": 83,
   "title": "Una recta de regresión",
   "category": "Estadística y lectura crítica de datos",
@@ -37,11 +38,6 @@ export class UnaRectaDeRegresionProblemComponent {
       "label": "Teorema central del límite",
       "route": "/articles/central-limit-theorem",
       "activity": "Lectura de ampliación sobre variabilidad muestral. La recta y la correlación de este ejercicio se calculan directamente con sumas centradas, sin usar el teorema central del límite."
-    },
-    {
-      "label": "Laboratorio de probabilidad y datos",
-      "route": "/tools/probability-lab",
-      "activity": "Carga Datasaurus y compara resúmenes y gráficos para el ejercicio «Resúmenes iguales, gráficos distintos»; explora también muestreo e histogramas."
     },
     {
       "label": "Productos internos y ortonormalización de Gram–Schmidt",
@@ -67,6 +63,11 @@ export class UnaRectaDeRegresionProblemComponent {
       "label": "Derivadas parciales y minimización en varias variables",
       "route": "/articles/partial-derivatives-minimization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Desigualdad de Cauchy–Schwarz",
+      "route": "/articles/cauchy-schwarz",
+      "activity": "Comprueba la desigualdad y la condición exacta de igualdad."
     }
   ]
 };

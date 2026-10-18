@@ -9,16 +9,24 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>De una cartulina cuadrada de 12 cm de lado se recortan cuadrados iguales de lado x en las esquinas y se pliegan las paredes. Maximiza el volumen de la caja sin tapa.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/derivative-optimization">Modelización y optimización</a>. Expresa la magnitud objetivo con una variable y conserva las restricciones físicas.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/global-extrema-weierstrass">Extremos globales y Weierstrass</a>. Distingue extremo alcanzado de ínfimo o supremo y revisa los bordes.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Al recortar cuadrados de lado x, la altura de la caja es x y ambos lados de la base son <span class="math-part"><app-formula expression="12-2x" displayMode="inline" [showCodeButton]="false" /></span>. Por eso <span class="math-part"><app-formula expression="V(x)=x(12-2x)^2" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0&lt;x&lt;6" displayMode="inline" [showCodeButton]="false" /></span>. Las raíces de la derivada son candidatos; las restricciones y los volúmenes nulos de los extremos deciden cuál da el máximo.</li>
+      <li>Al recortar cuadrados de lado x, la altura de la caja es x y ambos lados de la base son <span class="math-part"><app-formula expression="12-2x" displayMode="inline" [showCodeButton]="false" /></span>. Por eso <span class="math-part"><app-formula expression="V(x)=x(12-2x)^2" displayMode="inline" [showCodeButton]="false" /></span>, con <span class="math-part"><app-formula expression="0&lt;x&lt;6" displayMode="inline" [showCodeButton]="false" /></span>. Las raíces de la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> son candidatos; las restricciones y los volúmenes nulos de los <a data-prerequisite="extrema" routerLink="/articles/global-extrema-weierstrass">extremos</a> deciden cuál da el <a data-prerequisite="extrema" routerLink="/articles/global-extrema-weierstrass">máximo</a>.</li>
       <li><span class="math-part"><app-formula expression="V(x)=x(12-2x)^{2}" displayMode="inline" [showCodeButton]="false" /></span>. Al recortar x por ambos extremos de cada lado queda una base de <span class="math-part"><app-formula expression="12-2x" displayMode="inline" [showCodeButton]="false" /></span> y altura x. Para una caja real se necesita <span class="math-part"><app-formula expression="0&lt;x&lt;6" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Deriva: <span class="math-part"><app-formula expression="V&#39;(x)=(12-2x)(12-6x)" displayMode="inline" [showCodeButton]="false" /></span>. Por producto y cadena, <span class="math-part"><app-formula expression="V&#39;=(12-2x)^{2}-4x(12-2x)" displayMode="inline" [showCodeButton]="false" /></span>. Factorizar da <span class="math-part"><app-formula expression="(12-2x)(12-6x)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
-      <li>En el dominio, el único punto crítico es <span class="math-part"><app-formula expression="x=2" displayMode="inline" [showCodeButton]="false" /></span>; V crece antes y decrece después. El primer factor es positivo en el dominio; el segundo cambia de positivo a negativo en 2, por lo que allí está el máximo.</li>
+      <li>En el <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">dominio</a>, el único punto crítico es <span class="math-part"><app-formula expression="x=2" displayMode="inline" [showCodeButton]="false" /></span>; V crece antes y decrece después. El primer factor es positivo en el dominio; el segundo cambia de positivo a negativo en 2, por lo que allí está el máximo.</li>
       <li>En los extremos degenerados el volumen tiende a 0; <span class="math-part"><app-formula expression="V(2)=2\cdot 8^{2}=128" displayMode="inline" [showCodeButton]="false" /></span>. El volumen tiende a cero en x→0 y x→6. Comparar con 128 asegura que el máximo interior también es global.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Recorte de 2 cm; volumen máximo 128 cm³.</p>
+    <p class="answer"><strong>Resultado.</strong> Recorte de 2 cm; <a data-prerequisite="optimize" routerLink="/articles/derivative-optimization">volumen máximo</a> 128 cm³.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> El valor <span class="math-part"><app-formula expression="x=6" displayMode="inline" [showCodeButton]="false" /></span> anula la base y no da una caja válida.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
@@ -33,14 +41,8 @@
       <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
       <p>Como ampliación, compara el volumen obtenido por dimensiones de una caja con los métodos de volumen por secciones en integración clásica.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función».</p>
-    </div>
-    <div class="resource">
-      <a routerLink="/tools/vector-field">Campo vectorial ↗</a>
-      <p>Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares.</p>
-    </div>
+
+
       <div class="resource"><a routerLink="/articles/global-extrema-weierstrass">Extremos globales y teorema de Weierstrass ↗</a><p>Repasa los fundamentos y las justificaciones del método con ejemplos desarrollados.</p></div>
 </section>
   <app-problem-navigation currentId="problema-057" />

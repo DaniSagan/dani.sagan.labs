@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaIntegralComoAreaFirmadaProblemComponent {
   static readonly title = "Una integral como área firmada";
-  static readonly route = 'problema-162';
+  static readonly route = "integral-as-signed-area";
   static readonly problem: PracticeProblem = {
   "id": "problema-162",
+  "route": "integral-as-signed-area",
   "number": 162,
   "title": "Una integral como área firmada",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,17 @@ export class UnaIntegralComoAreaFirmadaProblemComponent {
       "label": "Áreas entre curvas y sólidos de revolución",
       "route": "/articles/areas-revolution",
       "activity": "Practica una integral como área firmada. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Primitivas y teorema fundamental del cálculo",
+      "route": "/articles/integration-classical",
+      "fragment": "fundamental",
+      "activity": "Distingue una familia de funciones de una integral definida con signo."
+    },
+    {
+      "label": "Tablas de signos e inecuaciones",
+      "route": "/articles/sign-charts",
+      "activity": "Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad."
     }
   ]
 };

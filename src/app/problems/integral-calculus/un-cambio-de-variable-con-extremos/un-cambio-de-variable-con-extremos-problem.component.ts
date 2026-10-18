@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnCambioDeVariableConExtremosProblemComponent {
   static readonly title = "Un cambio de variable con extremos";
-  static readonly route = 'problema-163';
+  static readonly route = "substitution-with-integration-bounds";
   static readonly problem: PracticeProblem = {
   "id": "problema-163",
+  "route": "substitution-with-integration-bounds",
   "number": 163,
   "title": "Un cambio de variable con extremos",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,11 @@ export class UnCambioDeVariableConExtremosProblemComponent {
       "label": "Integrales I: técnicas clásicas",
       "route": "/articles/integration-classical",
       "activity": "Practica un cambio de variable con extremos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

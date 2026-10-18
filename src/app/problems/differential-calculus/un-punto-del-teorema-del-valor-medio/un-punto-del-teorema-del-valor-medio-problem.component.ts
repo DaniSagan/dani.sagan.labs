@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnPuntoDelTeoremaDelValorMedioProblemComponent {
   static readonly title = "Un punto del teorema del valor medio";
-  static readonly route = 'problema-156';
+  static readonly route = "mean-value-theorem-point";
   static readonly problem: PracticeProblem = {
   "id": "problema-156",
+  "route": "mean-value-theorem-point",
   "number": 156,
   "title": "Un punto del teorema del valor medio",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,11 @@ export class UnPuntoDelTeoremaDelValorMedioProblemComponent {
       "label": "Teoremas de Rolle y del valor medio",
       "route": "/articles/mean-value-theorems",
       "activity": "Practica un punto del teorema del valor medio. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosDadosYUnaCondicionProblemComponent {
   static readonly title = "Dos dados y una condición";
-  static readonly route = "problema-071";
+  static readonly route = "two-dice-conditional-probability";
   static readonly problem: PracticeProblem = {
   "id": "problema-071",
+  "route": "two-dice-conditional-probability",
   "number": 71,
   "title": "Dos dados y una condición",
   "category": "Probabilidad",
@@ -52,6 +53,11 @@ export class DosDadosYUnaCondicionProblemComponent {
       "label": "Árboles de probabilidad y experimentos por etapas",
       "route": "/articles/probability-trees",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
     }
   ]
 };

@@ -10,7 +10,7 @@ const GROUPS = {
     ['Simetrías y rompecabezas', 'burnside-lemma sudoku-constraints rubik-invariants'],
   ],
   algebra: [
-    ['Polinomios y ecuaciones', 'polynomial-division algebraic-identities-factorization quadratic-equations cubic-equation rational-root-theorem cyclotomic-polynomials sign-charts'],
+    ['Polinomios y ecuaciones', 'polynomial-foundations equation-equivalence polynomial-division algebraic-identities-factorization quadratic-equations cubic-equation rational-root-theorem cyclotomic-polynomials sign-charts'],
     ['Álgebra lineal', 'vector-spaces change-of-basis gaussian-elimination matrix-determinant matrix-diagonalization jordan-form cayley-hamilton gram-schmidt projection-least-squares'],
     ['Desigualdades y simetrías', 'cauchy-schwarz mean-inequalities permutation-symmetries'],
   ],

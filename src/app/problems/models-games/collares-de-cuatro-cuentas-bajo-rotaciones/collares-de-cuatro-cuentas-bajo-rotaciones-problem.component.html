@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Cada vértice de un cuadrado se colorea de blanco o negro. Cuenta los diseños distintos si solo identificamos rotaciones, sin identificar reflexiones.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/burnside-lemma">Lema de Burnside y coloraciones fijas</a>. Cuenta los diseños fijos por cada simetría; no dividas siempre por el tamaño del grupo.</li>
+    <li><a routerLink="/articles/permutation-symmetries">Permutaciones, simetrías y orden</a>. Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Con posiciones etiquetadas hay 2⁴=16 coloraciones. No basta dividir por cuatro: algunos diseños quedan iguales al rotar y tienen menos copias distintas.</li>
-      <li>El lema de Burnside promedia las coloraciones fijas por cada rotación. La identidad fija las 16. Un cuarto de vuelta obliga a que los cuatro colores sean iguales, por lo que fija 2.</li>
+      <li>Con <a data-prerequisite="counting" routerLink="/articles/counting-principles">posiciones</a> etiquetadas hay 2⁴=16 <a data-prerequisite="burnside" routerLink="/articles/burnside-lemma">coloraciones</a>. No basta dividir por cuatro: algunos diseños quedan iguales al rotar y tienen menos copias distintas.</li>
+      <li>El lema de <a data-prerequisite="burnside" routerLink="/articles/burnside-lemma">Burnside</a> promedia las coloraciones fijas por cada <a data-prerequisite="symmetry" routerLink="/articles/permutation-symmetries">rotación</a>. La identidad fija las 16. Un cuarto de vuelta obliga a que los cuatro colores sean iguales, por lo que fija 2.</li>
       <li>La media vuelta empareja vértices opuestos. Elegimos independientemente un color por pareja: 2²=4 coloraciones fijas. Tres cuartos de vuelta, igual que un cuarto, fija 2.</li>
-      <li>Promediamos sobre las cuatro rotaciones: (16+2+4+2)/4=24/4=6. No añadimos reflexiones al promedio porque el enunciado solo identifica rotaciones.</li>
+      <li>Promediamos sobre las cuatro <a data-prerequisite="burnside" routerLink="/articles/burnside-lemma">rotaciones</a>: (16+2+4+2)/4=24/4=6. No añadimos reflexiones al promedio porque el enunciado solo identifica rotaciones.</li>
       <li>La razón del promedio puede verse contando parejas de diseño y rotación que lo deja fijo. Si un diseño tiene m versiones distintas al girar, cada versión es fijada por 4/m rotaciones: las cuatro rotaciones se reparten por igual entre sus m imágenes. Sus m versiones aportan m·(4/m)=4 parejas. Por ello cada diseño distinto contribuye exactamente cuatro a la suma de fijos, y dividir por cuatro cuenta los diseños.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Hay 6 diseños distintos bajo rotaciones.</p>

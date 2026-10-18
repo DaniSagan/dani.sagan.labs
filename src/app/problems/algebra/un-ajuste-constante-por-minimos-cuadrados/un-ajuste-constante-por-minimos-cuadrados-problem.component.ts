@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnAjusteConstantePorMinimosCuadradosProblemComponent {
   static readonly title = "Un ajuste constante por mínimos cuadrados";
-  static readonly route = 'problema-119';
+  static readonly route = "least-squares-constant-fit";
   static readonly problem: PracticeProblem = {
   "id": "problema-119",
+  "route": "least-squares-constant-fit",
   "number": 119,
   "title": "Un ajuste constante por mínimos cuadrados",
   "category": "Álgebra y álgebra lineal",
@@ -31,6 +32,11 @@ export class UnAjusteConstantePorMinimosCuadradosProblemComponent {
       "label": "Derivadas parciales y minimización en varias variables",
       "route": "/articles/partial-derivatives-minimization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "activity": "Distingue posición de dispersión y especifica el divisor de la varianza."
     }
   ]
 };

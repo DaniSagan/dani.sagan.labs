@@ -9,11 +9,19 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Descompón <span class="math-part"><app-formula expression="\frac{3x+5}{(x+1)(x+2)}" displayMode="inline" [showCodeButton]="false" /></span> en fracciones simples e indica su dominio.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="rational">Descomposición en fracciones parciales</a>. Compara coeficientes después de reunir denominadores y conserva el dominio.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una fracción con denominador producto de dos factores lineales distintos puede buscarse como suma de dos fracciones con numeradores constantes. Multiplicar por el denominador común convierte la igualdad de fracciones en una identidad polinómica. Comparar sus coeficientes determina las constantes, manteniendo excluidos los ceros del denominador original.</li>
-      <li>El dominio excluye <span class="math-part"><app-formula expression="x=-1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=-2" displayMode="inline" [showCodeButton]="false" /></span>. El denominador se anula precisamente en <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y -2" displayMode="inline" [showCodeButton]="false" /></span>. La descomposición se usa fuera de esos puntos.</li>
+      <li>Una fracción con <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> producto de dos factores lineales distintos puede buscarse como suma de dos fracciones con numeradores constantes. Multiplicar por el denominador común convierte la igualdad de fracciones en una identidad polinómica. Comparar sus <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">coeficientes</a> determina las constantes, manteniendo excluidos los ceros del denominador original.</li>
+      <li>El <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">dominio</a> excluye <span class="math-part"><app-formula expression="x=-1" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="x=-2" displayMode="inline" [showCodeButton]="false" /></span>. El denominador se anula precisamente en <span class="math-part"><app-formula expression="-1" displayMode="inline" [showCodeButton]="false" /></span> <span class="math-part"><app-formula expression="y -2" displayMode="inline" [showCodeButton]="false" /></span>. La <a data-prerequisite="partial-fractions" routerLink="/articles/integration-classical" fragment="rational">descomposición</a> se usa fuera de esos puntos.</li>
       <li>Igualar numeradores da <span class="math-part"><app-formula expression="3x+5=A(x+2)+B(x+1)" displayMode="inline" [showCodeButton]="false" /></span>. El denominador común produce el numerador <span class="math-part"><app-formula expression="A(x+2)+B(x+1)" displayMode="inline" [showCodeButton]="false" /></span>, que debe coincidir con <span class="math-part"><app-formula expression="3x+5" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Comparando coeficientes: <span class="math-part"><app-formula expression="A+B=3" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="2A+B=5" displayMode="inline" [showCodeButton]="false" /></span>; luego <span class="math-part"><app-formula expression="A=2,B=1" displayMode="inline" [showCodeButton]="false" /></span>. Restar <span class="math-part"><app-formula expression="A+B=3" displayMode="inline" [showCodeButton]="false" /></span> de <span class="math-part"><app-formula expression="2A+B=5" displayMode="inline" [showCodeButton]="false" /></span> da <span class="math-part"><app-formula expression="A=2" displayMode="inline" [showCodeButton]="false" /></span>. Después <span class="math-part"><app-formula expression="B=3-2=1" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>La identidad se comprueba recombinando los dos términos en el mismo denominador. Recombinar las fracciones da <span class="math-part"><app-formula expression="2(x+2)+(x+1)=3x+5" displayMode="inline" [showCodeButton]="false" /></span>, comprobando la identidad en su dominio.</li>
@@ -28,10 +36,7 @@
       <a routerLink="/articles/integration-classical">Integración clásica ↗</a>
       <p>Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal ↗</a>
-      <p>Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes.</p>
-    </div>
+
   </section>
   <app-problem-navigation currentId="problema-015" />
 </article>

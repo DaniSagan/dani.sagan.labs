@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnNumeroConDosCondicionesProblemComponent {
   static readonly title = "Un número con dos condiciones";
-  static readonly route = 'problema-106';
+  static readonly route = "chinese-remainder-conditions";
   static readonly problem: PracticeProblem = {
   "id": "problema-106",
+  "route": "chinese-remainder-conditions",
   "number": 106,
   "title": "Un número con dos condiciones",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,11 @@ export class UnNumeroConDosCondicionesProblemComponent {
       "label": "Sistemas de congruencias y Teorema Chino del Resto",
       "route": "/articles/chinese-remainder-theorem",
       "activity": "Practica un número con dos condiciones. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
     }
   ]
 };

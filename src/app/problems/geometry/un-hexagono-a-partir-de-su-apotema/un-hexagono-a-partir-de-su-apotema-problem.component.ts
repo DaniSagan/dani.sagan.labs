@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnHexagonoAPartirDeSuApotemaProblemComponent {
   static readonly title = "Un hexágono a partir de su apotema";
-  static readonly route = 'problema-123';
+  static readonly route = "hexagon-from-its-apothem";
   static readonly problem: PracticeProblem = {
   "id": "problema-123",
+  "route": "hexagon-from-its-apothem",
   "number": 123,
   "title": "Un hexágono a partir de su apotema",
   "category": "Geometría",
@@ -26,6 +27,16 @@ export class UnHexagonoAPartirDeSuApotemaProblemComponent {
       "label": "Apotema de un polígono regular",
       "route": "/articles/apothem",
       "activity": "Practica un hexágono a partir de su apotema. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    },
+    {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "activity": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
     }
   ]
 };

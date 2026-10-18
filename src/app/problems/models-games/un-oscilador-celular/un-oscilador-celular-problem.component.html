@@ -12,13 +12,18 @@
           [showCodeButton]="false" /></span>. Determina las dos generaciones siguientes con las reglas <span
         class="math-part"><app-formula expression="B3/S23" displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/life-patterns">Autómatas celulares y osciladores de Vida</a>. Calcula todas las celdas nuevas a partir del estado anterior, de forma simultánea.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>En el juego de la vida, cada celda tiene ocho vecinas. La regla B3/S23 hace nacer una celda muerta con tres
+      <li>En el juego de la vida, cada celda tiene ocho <a data-prerequisite="life" routerLink="/articles/life-patterns">vecinas</a>. La regla B3/S23 hace nacer una celda muerta con tres
         vecinas vivas y mantiene una viva con dos o tres. La actualización es simultánea: contamos todas las vecindades
         en la configuración anterior, sin utilizar cambios recién calculados.</li>
-      <li>La célula central tiene dos vecinas vivas y sobrevive; los extremos solo una y mueren. B3 significa nacimiento
+      <li>La célula central tiene dos vecinas vivas y <a data-prerequisite="life" routerLink="/articles/life-patterns">sobrevive</a>; los extremos solo una y mueren. B3 significa nacimiento
         con tres vecinas; S23, supervivencia con dos o tres. Se cuentan siempre las ocho posiciones adyacentes en la
         generación original.</li>
       <li>Las células <span class="math-part"><app-formula expression="(0,1)" displayMode="inline"
@@ -29,7 +34,7 @@
       <li>La primera generación es <span class="math-part"><app-formula expression="{(0,-1),(0,0),(0,1)}"
             displayMode="inline" [showCodeButton]="false" /></span>. La actualización se hace simultáneamente: las
         muertes de los extremos no se usan al contar vecinas para los nacimientos.</li>
-      <li>Por simetría, la siguiente vuelve al trío horizontal inicial: es un oscilador de período 2. Intercambiar los
+      <li>Por simetría, la siguiente vuelve al trío horizontal inicial: es un <a data-prerequisite="life" routerLink="/articles/life-patterns">oscilador</a> de período 2. Intercambiar los
         ejes transforma el análisis horizontal en el vertical. Como las dos generaciones son distintas y la segunda
         vuelve a la inicial, el período es exactamente 2.</li>
     </ol>

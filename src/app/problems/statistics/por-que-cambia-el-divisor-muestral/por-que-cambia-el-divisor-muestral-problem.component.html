@@ -6,12 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Para la muestra 2, 4, 6 calcula la media, la varianza con divisor n y la varianza muestral corregida.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/bessel-correction">Corrección de Bessel y grados de libertad</a>. Distingue describir la lista observada de estimar sin sesgo una varianza poblacional.</li>
+    <li><a routerLink="/articles/sampling-distributions">Distribución de la media y error estándar</a>. Separa la dispersión de las observaciones de la dispersión de su media.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La media es (2+4+6)/3=4. Las desviaciones son −2, 0 y 2, que suman cero porque usamos la propia media muestral.</li>
+      <li>La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> es (2+4+6)/3=4. Las <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviaciones</a> son −2, 0 y 2, que suman cero porque usamos la propia <a data-prerequisite="sampling" routerLink="/articles/sampling-distributions">media muestral</a>.</li>
       <li>La suma de cuadrados de las desviaciones es 4+0+4=8. Si solo describimos esta lista con divisor n=3 obtenemos 8/3.</li>
-      <li>Para estimar sin sesgo la varianza de una población a partir de una muestra aleatoria independiente, se usa n−1. Aquí el estimador corregido es s²=8/2=4.</li>
+      <li>Para estimar sin <a data-prerequisite="bessel" routerLink="/articles/bessel-correction">sesgo</a> la <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">varianza</a> de una población a partir de una muestra aleatoria independiente, se usa n−1. Aquí el estimador corregido es s²=8/2=4.</li>
       <li>La pérdida de un grado de libertad se ve en que, una vez fijadas dos desviaciones, la tercera está obligada a completar suma cero. La corrección no garantiza acertar la varianza en cada muestra.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Media 4; varianza descriptiva 8/3; varianza corregida 4.</p>

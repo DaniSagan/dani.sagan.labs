@@ -6,15 +6,22 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Factoriza x³−2x²−x+2 y resuelve x³−2x²−x+2=0 en los reales.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="roots">Raíces, factores y multiplicidad</a>. Distingue raíces distintas de raíces contadas con multiplicidad y usa el producto nulo.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Factorizar significa escribir una suma como producto. Agrupamos los dos primeros términos y los dos últimos: x²(x−2)−(x−2).</li>
-      <li>Los dos sumandos contienen x−2. Lo extraemos: (x−2)(x²−1). Al multiplicar este producto se recupera exactamente el polinomio.</li>
-      <li>La diferencia de cuadrados satisface a²−b²=(a−b)(a+b). Con a=x y b=1 resulta (x−2)(x−1)(x+1).</li>
+      <li><a data-prerequisite="factoring" routerLink="/articles/algebraic-identities-factorization">Factorizar</a> significa escribir una suma como producto. Agrupamos los dos primeros términos y los dos últimos: x²(x−2)−(x−2).</li>
+      <li>Los dos sumandos contienen x−2. Lo extraemos: (x−2)(x²−1). Al multiplicar este producto se recupera exactamente el <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">polinomio</a>.</li>
+      <li>La <a data-prerequisite="factoring" routerLink="/articles/algebraic-identities-factorization">diferencia de cuadrados</a> satisface a²−b²=(a−b)(a+b). Con a=x y b=1 resulta (x−2)(x−1)(x+1).</li>
       <li>Un producto de números reales vale cero si al menos uno de los factores vale cero. Resolvemos x−2=0, x−1=0 y x+1=0; salen 2, 1 y −1, respectivamente.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Factorización (x−2)(x−1)(x+1); raíces −1, 1 y 2.</p>
+    <p class="answer"><strong>Resultado.</strong> <a data-prerequisite="factoring" routerLink="/articles/algebraic-identities-factorization">Factorización</a> (x−2)(x−1)(x+1); raíces −1, 1 y 2.</p>
     <app-formula expression="x^3-2x^2-x+2=(x-2)(x-1)(x+1)" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> El factor −(x−2) tiene signo negativo en ambos términos de su expansión.</aside>
   </section>

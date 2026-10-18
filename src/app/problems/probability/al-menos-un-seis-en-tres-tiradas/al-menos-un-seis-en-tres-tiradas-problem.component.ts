@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class AlMenosUnSeisEnTresTiradasProblemComponent {
   static readonly title = "Al menos un seis en tres tiradas";
-  static readonly route = 'problema-173';
+  static readonly route = "at-least-one-six-in-three-rolls";
   static readonly problem: PracticeProblem = {
   "id": "problema-173",
+  "route": "at-least-one-six-in-three-rolls",
   "number": 173,
   "title": "Al menos un seis en tres tiradas",
   "category": "Probabilidad",
@@ -36,6 +37,21 @@ export class AlMenosUnSeisEnTresTiradasProblemComponent {
       "label": "Función de distribución, colas y probabilidades acumuladas",
       "route": "/articles/distribution-functions-tails",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Espacio muestral, sucesos y complemento",
+      "route": "/articles/finite-probability",
+      "activity": "Cuenta solo resultados equiprobables y distingue unión, intersección y complemento."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
+    },
+    {
+      "label": "Laboratorio de probabilidad",
+      "route": "/tools/probability-lab",
+      "activity": "Compara frecuencias simuladas con el valor teórico y observa la variación entre muestras."
     }
   ]
 };

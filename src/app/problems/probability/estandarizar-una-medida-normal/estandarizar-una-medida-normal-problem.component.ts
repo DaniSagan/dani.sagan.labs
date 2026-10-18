@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class EstandarizarUnaMedidaNormalProblemComponent {
   static readonly title = "Estandarizar una medida normal";
-  static readonly route = 'problema-179';
+  static readonly route = "standardizing-a-normal-variable";
   static readonly problem: PracticeProblem = {
   "id": "problema-179",
+  "route": "standardizing-a-normal-variable",
   "number": 179,
   "title": "Estandarizar una medida normal",
   "category": "Probabilidad",
@@ -31,6 +32,11 @@ export class EstandarizarUnaMedidaNormalProblemComponent {
       "label": "Función de distribución, colas y probabilidades acumuladas",
       "route": "/articles/distribution-functions-tails",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Media, mediana, varianza y desviación típica",
+      "route": "/articles/descriptive-statistics",
+      "activity": "Distingue posición de dispersión y especifica el divisor de la varianza."
     }
   ]
 };

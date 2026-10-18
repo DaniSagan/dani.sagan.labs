@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Resuelve (x+1)/(x−2)=3 e indica qué valor está prohibido.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una fracción solo está definida cuando su denominador no vale cero. Aquí x−2≠0, así que trabajamos con x≠2.</li>
-      <li>Multiplicamos ambos miembros por x−2. Es una transformación reversible dentro del dominio permitido: x+1=3(x−2).</li>
+      <li>Una fracción solo está definida cuando su <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> no vale cero. Aquí x−2≠0, así que trabajamos con x≠2.</li>
+      <li>Multiplicamos ambos miembros por x−2. Es una transformación reversible dentro del <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">dominio</a> permitido: x+1=3(x−2).</li>
       <li>Distribuimos el 3: x+1=3x−6. Sumamos 6 y restamos x en ambos lados: 7=2x. Dividimos por 2 y obtenemos x=7/2.</li>
       <li>La solución no es 2. Sustituimos: (7/2+1)/(7/2−2)=(9/2)/(3/2)=3. Por tanto satisface la ecuación original.</li>
     </ol>

@@ -13,41 +13,37 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class LongitudDeUnaCurvaProblemComponent {
   static readonly title = "Longitud de una curva";
-  static readonly route = "problema-068";
+  static readonly route = "curve-arc-length";
   static readonly problem: PracticeProblem = {
-    "id": "problema-068",
-    "number": 68,
-    "title": "Longitud de una curva",
-    "category": "Integración y cálculo numérico",
-    "topic": "Áreas, volúmenes y aproximación",
-    "level": "Reto",
-    "statement": "Calcula la longitud del arco \\(y=(\\frac{2}{3})x^{\\frac{3}{2}}\\) para \\(0\\le x\\le 3\\).",
-    "resources": [
-      {
-        "label": "Longitud de arco y parametrización de curvas",
-        "route": "/articles/arc-length",
-        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-      },
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      },
-      {
-        "label": "Pitágoras y distancia euclídea",
-        "route": "/articles/pythagorean-distance",
-        "activity": "Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean."
-      }
-    ]
-  };
+  "id": "problema-068",
+  "route": "curve-arc-length",
+  "number": 68,
+  "title": "Longitud de una curva",
+  "category": "Integración y cálculo numérico",
+  "topic": "Áreas, volúmenes y aproximación",
+  "level": "Reto",
+  "statement": "Calcula la longitud del arco \\(y=(\\frac{2}{3})x^{\\frac{3}{2}}\\) para \\(0\\le x\\le 3\\).",
+  "resources": [
+    {
+      "label": "Longitud de arco y parametrización de curvas",
+      "route": "/articles/arc-length",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Pitágoras y distancia euclídea",
+      "route": "/articles/pythagorean-distance",
+      "activity": "Justifica las distancias con componentes ortogonales y conserva los términos cruzados cuando no lo sean."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    }
+  ]
+};
 }

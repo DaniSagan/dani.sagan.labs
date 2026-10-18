@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula el límite de (√(1+x)−1)/x cuando x tiende a cero.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+    <li><a routerLink="/articles/equation-equivalence" fragment="domain">Dominio y transformaciones equivalentes</a>. Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas.</li>
+    <li><a routerLink="/articles/continuity-differentiability">Continuidad y derivadas laterales</a>. Separa el valor, el límite y la existencia de una derivada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>La expresión está definida cerca de cero para x≥−1, salvo en x=0. Sustituir cero da 0/0, por lo que necesitamos transformar la expresión.</li>
-      <li>Multiplicamos numerador y denominador por √(1+x)+1. Usamos la identidad (a−b)(a+b)=a²−b².</li>
+      <li>Multiplicamos numerador y <a data-prerequisite="equivalence" routerLink="/articles/equation-equivalence" fragment="domain">denominador</a> por √(1+x)+1. Usamos la identidad (a−b)(a+b)=a²−b².</li>
       <li>El numerador queda (1+x)−1=x. Para x≠0 se cancela con el factor x del denominador y resulta 1/(√(1+x)+1).</li>
-      <li>Esta nueva expresión sí es continua en cero y su denominador allí vale 2. Su límite es 1/2. Cancelar para x≠0 es suficiente porque el límite estudia valores próximos, no el valor en el punto.</li>
+      <li>Esta nueva expresión sí es <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continua</a> en cero y su denominador allí vale 2. Su límite es 1/2. Cancelar para x≠0 es suficiente porque el límite estudia valores próximos, no el valor en el punto.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> El límite es 1/2.</p>
     <app-formula expression="\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}=\frac12" [showCodeButton]="false" />

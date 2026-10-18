@@ -30,8 +30,8 @@
 </ol>
 <details class="note"><summary>Solución de la ampliación</summary><p>Para <app-formula displayMode="inline" [showCodeButton]="false" expression="k=5" /> en un tablero 8×8 hay 32 horizontales, 32 verticales y 16 en cada diagonal:96 segmentos. Para cinco pasos horizontales y tres verticales, el número de caminos es <app-formula displayMode="inline" [showCodeButton]="false" expression="C(8, 3)=56" />. Una posición legal ganadora puede contener varias líneas, mientras una línea cuenta solo un segmento concreto; esas familias no admiten una identificación uno a uno.</p></details>
 <div class="article-activities"><h3 id="section-8">Problemas y recursos para continuar</h3><ul>
-<li><a routerLink="/problems/problema-093">Líneas ganadoras en dos juegos</a>. Reconstruye la solución con las ideas del artículo.</li>
-<li><a routerLink="/problems/problema-091">Caminos con una restricción</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/winning-lines-in-two-games">Líneas ganadoras en dos juegos</a>. Reconstruye la solución con las ideas del artículo.</li>
+<li><a routerLink="/problems/constrained-lattice-paths">Caminos con una restricción</a>. Reconstruye la solución con las ideas del artículo.</li>
 <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Comprueba productos, rangos y cambios de base con las matrices del ejemplo.</li>
 <li><a routerLink="/games/tic-tac-toe">Tres en raya</a>. Identifica las líneas ganadoras y comprueba qué configuraciones respetan las reglas.</li>
 <li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Busca segmentos de cuatro casillas y distingue sus orientaciones de los estados legales del juego.</li></ul></div>
@@ -40,6 +40,12 @@
 
 <!-- additional-problems:grid-counting:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-192">192 · Caminos mínimos en una cuadrícula</a>. Cuenta los caminos desde (0,0) hasta (4,3) que solo avanzan una unidad a la derecha o una hacia arriba.</li>
+<li><a routerLink="/problems/shortest-grid-paths">192 · Caminos mínimos en una cuadrícula</a>. Cuenta los caminos desde (0,0) hasta (4,3) que solo avanzan una unidad a la derecha o una hacia arriba.</li>
 </ul></section>
 <!-- additional-problems:grid-counting:end -->
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/winning-lines-in-two-games">93 · Líneas ganadoras en dos juegos</a></li>
+<li><a routerLink="/problems/shortest-grid-paths">192 · Caminos mínimos en una cuadrícula</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

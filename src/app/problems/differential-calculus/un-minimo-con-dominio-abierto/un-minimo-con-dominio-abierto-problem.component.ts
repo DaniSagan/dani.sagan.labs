@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnMinimoConDominioAbiertoProblemComponent {
   static readonly title = "Un mínimo con dominio abierto";
-  static readonly route = 'problema-154';
+  static readonly route = "minimum-on-an-open-domain";
   static readonly problem: PracticeProblem = {
   "id": "problema-154",
+  "route": "minimum-on-an-open-domain",
   "number": 154,
   "title": "Un mínimo con dominio abierto",
   "category": "Cálculo diferencial y optimización",
@@ -31,6 +32,17 @@ export class UnMinimoConDominioAbiertoProblemComponent {
       "label": "Extremos globales y teorema de Weierstrass",
       "route": "/articles/global-extrema-weierstrass",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class MultiplicarDosNumerosImaginariosCompuestosProblemComponent {
   static readonly title = "Multiplicar dos números imaginarios compuestos";
-  static readonly route = 'problema-136';
+  static readonly route = "complex-number-multiplication";
   static readonly problem: PracticeProblem = {
   "id": "problema-136",
+  "route": "complex-number-multiplication",
   "number": 136,
   "title": "Multiplicar dos números imaginarios compuestos",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,11 @@ export class MultiplicarDosNumerosImaginariosCompuestosProblemComponent {
       "label": "Conjugado, módulo y división compleja",
       "route": "/articles/complex-arithmetic",
       "activity": "Practica multiplicar dos números imaginarios compuestos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
     }
   ]
 };

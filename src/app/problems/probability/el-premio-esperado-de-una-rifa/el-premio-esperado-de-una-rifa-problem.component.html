@@ -6,17 +6,23 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una rifa tiene 100 boletos equiprobables: uno paga 50 euros, cuatro pagan 10 euros y los demás cero. Un boleto cuesta 2 euros. Calcula la ganancia neta esperada.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/discrete-expectation">Esperanza, ganancia neta y varianza discreta</a>. Pondera cada valor por su probabilidad y descuenta los costes ciertos.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El valor esperado es el promedio ponderado por las probabilidades. El pago bruto toma 50 con probabilidad 1/100, 10 con probabilidad 4/100 y 0 con probabilidad 95/100.</li>
+      <li>El <a data-prerequisite="expectation" routerLink="/articles/discrete-expectation">valor esperado</a> es el promedio ponderado por las probabilidades. El pago bruto toma 50 con probabilidad 1/100, 10 con probabilidad 4/100 y 0 con probabilidad 95/100.</li>
       <li>El pago esperado es 50·1/100+10·4/100+0·95/100=(50+40)/100=0,90 euros.</li>
-      <li>El coste de 2 euros se paga siempre. La ganancia neta esperada es pago esperado menos coste: 0,90−2=−1,10 euros.</li>
+      <li>El coste de 2 euros se paga siempre. La <a data-prerequisite="expectation" routerLink="/articles/discrete-expectation">ganancia</a> neta esperada es pago esperado menos coste: 0,90−2=−1,10 euros.</li>
       <li>También se puede usar directamente la ganancia neta: 48 para el premio mayor, 8 para los cuatro pequeños y −2 en los demás; (48+32−190)/100=−1,10. Coinciden ambos métodos.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Ganancia neta esperada −1,10 euros por boleto.</p>
     <app-formula expression="E(G)=\frac{50+4\cdot10}{100}-2=-1.10\text{ euros}" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Una esperanza negativa es un promedio teórico, no el resultado concreto de cada compra.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Una <a data-prerequisite="expectation" routerLink="/articles/discrete-expectation">esperanza</a> negativa es un promedio teórico, no el resultado concreto de cada compra.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

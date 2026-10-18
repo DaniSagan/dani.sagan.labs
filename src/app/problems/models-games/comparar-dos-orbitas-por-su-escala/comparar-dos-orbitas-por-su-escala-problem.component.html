@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Dos satélites en órbitas circulares alrededor de la misma masa tienen radios r y 4r. Usando v²=GM/r y T=2πr/v, compara sus velocidades y períodos.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/kepler-orbits">Órbitas de Kepler y leyes de escala</a>. Separa radio al centro, velocidad y período al cambiar la escala.</li>
+    <li><a routerLink="/articles/dimensional-analysis">Análisis dimensional</a>. Iguala los exponentes de las dimensiones y distingue escala de constante física.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>G es la constante gravitatoria y M la masa central, igual para ambos. Despejando la velocidad positiva, v=√(GM/r). Aquí r es distancia al centro, no altura sobre la superficie.</li>
       <li>Al pasar de r a 4r, la velocidad es √(GM/(4r))=(1/2)√(GM/r). Por tanto el segundo satélite se mueve a la mitad de velocidad.</li>
-      <li>El período es longitud de la órbita dividida por velocidad. La circunferencia se multiplica por cuatro y la velocidad se divide por dos, de modo que el tiempo se multiplica por 4/(1/2)=8.</li>
+      <li>El <a data-prerequisite="kepler" routerLink="/articles/kepler-orbits">período</a> es longitud de la <a data-prerequisite="kepler" routerLink="/articles/kepler-orbits">órbita</a> dividida por velocidad. La circunferencia se multiplica por cuatro y la velocidad se divide por dos, de modo que el tiempo se multiplica por 4/(1/2)=8.</li>
       <li>También podemos sustituir v: T=2π√(r³/(GM)). Al multiplicar r por cuatro, el período cambia por 4^(3/2)=8, en acuerdo con la comparación anterior.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> La velocidad se reduce a la mitad y el período se multiplica por 8.</p>
@@ -20,7 +26,7 @@
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
-    <div class="resource"><a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala ↗</a><p>Practica comparar dos órbitas por su escala. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+    <div class="resource"><a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala ↗</a><p>Practica comparar dos órbitas por su escala. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div><div class="resource prerequisite-practice"><a routerLink="/games/gravity">Simulador de gravedad</a><p>Explora órbitas y distingue el modelo de masa central fija de una simulación de varios cuerpos.</p></div>
   </section>
   <app-problem-navigation currentId="problema-200" />
 </article>

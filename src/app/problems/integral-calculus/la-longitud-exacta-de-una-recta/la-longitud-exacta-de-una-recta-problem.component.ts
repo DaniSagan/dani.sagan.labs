@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class LaLongitudExactaDeUnaRectaProblemComponent {
   static readonly title = "La longitud exacta de una recta";
-  static readonly route = 'problema-167';
+  static readonly route = "exact-length-of-a-line-segment";
   static readonly problem: PracticeProblem = {
   "id": "problema-167",
+  "route": "exact-length-of-a-line-segment",
   "number": 167,
   "title": "La longitud exacta de una recta",
   "category": "Integración y cálculo numérico",
@@ -26,6 +27,16 @@ export class LaLongitudExactaDeUnaRectaProblemComponent {
       "label": "Longitud de arco y parametrización de curvas",
       "route": "/articles/arc-length",
       "activity": "Practica la longitud exacta de una recta. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Teorema de Pitágoras y distancia",
+      "route": "/articles/pythagorean-distance",
+      "activity": "Comprueba la perpendicularidad necesaria antes de sumar cuadrados."
     }
   ]
 };

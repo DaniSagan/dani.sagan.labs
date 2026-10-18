@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaFuncionOscilanteProblemComponent {
   static readonly title = "Una función oscilante";
-  static readonly route = "problema-049";
+  static readonly route = "oscillating-function";
   static readonly problem: PracticeProblem = {
   "id": "problema-049",
+  "route": "oscillating-function",
   "number": 49,
   "title": "Una función oscilante",
   "category": "Sucesiones, límites y continuidad",
@@ -44,14 +45,14 @@ export class UnaFuncionOscilanteProblemComponent {
       "activity": "La oscilación impide la derivada en cero. Como contraste, las expansiones de Taylor requieren las condiciones de regularidad explicadas en este artículo."
     },
     {
-      "label": "Representador de funciones",
-      "route": "/tools/graph-plotter",
-      "activity": "Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1."
-    },
-    {
       "label": "Valor absoluto: distancias y funciones a trozos",
       "route": "/articles/absolute-value-distance",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
     }
   ]
 };

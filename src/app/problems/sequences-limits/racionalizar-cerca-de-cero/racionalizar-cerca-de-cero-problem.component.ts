@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class RacionalizarCercaDeCeroProblemComponent {
   static readonly title = "Racionalizar cerca de cero";
-  static readonly route = 'problema-146';
+  static readonly route = "rationalizing-near-zero";
   static readonly problem: PracticeProblem = {
   "id": "problema-146",
+  "route": "rationalizing-near-zero",
   "number": 146,
   "title": "Racionalizar cerca de cero",
   "category": "Sucesiones, límites y continuidad",
@@ -31,6 +32,17 @@ export class RacionalizarCercaDeCeroProblemComponent {
       "label": "Identidades algebraicas y técnicas de factorización",
       "route": "/articles/algebraic-identities-factorization",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
+    },
+    {
+      "label": "Continuidad y derivadas laterales",
+      "route": "/articles/continuity-differentiability",
+      "activity": "Separa el valor, el límite y la existencia de una derivada."
     }
   ]
 };

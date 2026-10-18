@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Sea f(x)=2x en [0,1] y cero fuera. Comprueba que es una densidad, calcula P(X≤1/2) y la media.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/continuous-random-variables">Densidades y momentos continuos</a>. Comprueba no negatividad e integral uno antes de calcular probabilidades y momentos.</li>
+    <li><a routerLink="/articles/distribution-functions-tails">Distribución acumulada y colas</a>. Relaciona áreas acumuladas, probabilidades de intervalos y complementos.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una densidad debe ser no negativa y tener integral total uno. Aquí 2x≥0 en [0,1] y su integral es [x²] de 0 a 1, igual a 1.</li>
+      <li>Una <a data-prerequisite="density" routerLink="/articles/continuous-random-variables">densidad</a> debe ser no negativa y tener integral total uno. Aquí 2x≥0 en [0,1] y su integral es [x²] de 0 a 1, igual a 1.</li>
       <li>La probabilidad de X≤1/2 es el área bajo la densidad desde 0 hasta 1/2: [x²] da 1/4.</li>
       <li>La media de una variable continua se calcula integrando x por su densidad. Aquí E(X) es la integral de 2x² entre 0 y 1.</li>
-      <li>Una primitiva es 2x³/3, de modo que E(X)=2/3. El promedio supera 1/2 porque la densidad da más peso a los valores grandes del intervalo.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> es 2x³/3, de modo que E(X)=2/3. El promedio supera 1/2 porque la densidad da más peso a los valores grandes del intervalo.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Es una densidad; P(X≤1/2)=1/4 y E(X)=2/3.</p>
     <app-formula expression="P(X\le1/2)=\frac14,\quad E(X)=\frac23" [showCodeButton]="false" />

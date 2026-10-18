@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRotacionEnElPlanoComplejoProblemComponent {
   static readonly title = "Una rotación en el plano complejo";
-  static readonly route = 'problema-139';
+  static readonly route = "complex-plane-rotation";
   static readonly problem: PracticeProblem = {
   "id": "problema-139",
+  "route": "complex-plane-rotation",
   "number": 139,
   "title": "Una rotación en el plano complejo",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,16 @@ export class UnaRotacionEnElPlanoComplejoProblemComponent {
       "label": "Conjugado, módulo y división compleja",
       "route": "/articles/complex-arithmetic",
       "activity": "Practica una rotación en el plano complejo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Forma polar, raíces y De Moivre",
+      "route": "/articles/de-moivre",
+      "activity": "Eleva el módulo y multiplica el argumento; enumera todas las raíces."
+    },
+    {
+      "label": "Permutaciones, simetrías y orden",
+      "route": "/articles/permutation-symmetries",
+      "activity": "Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad."
     }
   ]
 };

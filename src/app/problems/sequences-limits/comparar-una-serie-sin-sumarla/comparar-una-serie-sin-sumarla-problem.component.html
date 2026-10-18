@@ -6,15 +6,22 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Decide si la serie desde n=1 hasta infinito de 1/(n²+n+1) converge.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/positive-series-tests">Criterios de comparación e integral</a>. Comprueba positividad y el sentido de la cota antes de concluir convergencia.</li>
+    <li><a routerLink="/articles/telescoping-series">Sumas parciales y series telescópicas</a>. Cancela primero en una suma finita y después toma el límite.</li>
+    <li><a routerLink="/articles/series-convergence">Convergencia absoluta, condicional y Leibniz</a>. Verifica el decrecimiento y el límite cero y estudia aparte los valores absolutos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Los términos son positivos. Como n²+n+1≥n² para n≥1, al invertir se obtiene 0&lt;1/(n²+n+1)≤1/n².</li>
       <li>La serie de 1/n² converge. Podemos justificarlo sin conocer su suma: para n≥2, 1/n²≤1/(n(n−1))=1/(n−1)−1/n.</li>
       <li>La suma de estas cotas desde 2 hasta N se telescopa y vale 1−1/N&lt;1. Añadiendo el término n=1, las sumas de 1/n² están acotadas por 2.</li>
-      <li>Las sumas parciales de la serie pedida son crecientes por positividad y están acotadas por las de 1/n². Toda sucesión creciente acotada tiene límite; por ello la serie converge.</li>
+      <li>Las <a data-prerequisite="telescoping" routerLink="/articles/telescoping-series">sumas parciales</a> de la serie pedida son crecientes por positividad y están acotadas por las de 1/n². Toda sucesión creciente acotada tiene límite; por ello la serie converge.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> La serie converge por comparación con una serie convergente.</p>
+    <p class="answer"><strong>Resultado.</strong> La serie converge por <a data-prerequisite="comparison" routerLink="/articles/positive-series-tests">comparación</a> con una serie convergente.</p>
     <app-formula expression="\sum_{n=1}^\infty\frac1{n^2+n+1}&lt;\infty" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> Que los términos tiendan a cero es necesario, pero no basta para garantizar convergencia.</aside>
   </section>

@@ -10,8 +10,8 @@ export const PROBLEM_LIST = new InjectionToken<readonly PracticeProblem[]>('Prob
   imports: [RouterLink],
   template: `
     <nav class="adjacent" aria-label="Problemas consecutivos">
-      @if (previous; as problem) { <a [routerLink]="['/problems', problem.id]">← {{ problem.title }}</a> }
-      @if (next; as problem) { <a [routerLink]="['/problems', problem.id]">{{ problem.title }} →</a> }
+      @if (previous; as problem) { <a [routerLink]="['/problems', problem.route]">← {{ problem.title }}</a> }
+      @if (next; as problem) { <a [routerLink]="['/problems', problem.route]">{{ problem.title }} →</a> }
     </nav>
   `,
   styles: `

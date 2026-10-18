@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Encuentra F si F′(x)=6x²−4x+1 y F(0)=7.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una primitiva es una función cuya derivada coincide con la dada. Para una potencia xⁿ con n≠−1, una primitiva es x^(n+1)/(n+1), como se comprueba derivando.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> es una función cuya <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> coincide con la dada. Para una potencia xⁿ con n≠−1, una primitiva es x^(n+1)/(n+1), como se comprueba derivando.</li>
       <li>Integramos cada término: 6x² produce 2x³, −4x produce −2x² y 1 produce x. Añadimos una constante C porque su derivada es cero.</li>
       <li>La familia es F(x)=2x³−2x²+x+C. Aplicamos F(0)=7: todos los términos con x se anulan y queda C=7.</li>
       <li>Verificamos derivando: F′(x)=6x²−4x+1. Además F(0)=7, de modo que cumple tanto la ecuación como el dato inicial.</li>

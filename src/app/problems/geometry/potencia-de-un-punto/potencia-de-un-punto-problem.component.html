@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Desde P exterior a una circunferencia, una secante corta primero en A y después en B, con <span class="math-part"><app-formula expression="PA=4" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="PB=9" displayMode="inline" [showCodeButton]="false" /></span>. Calcula la tangente PT.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/power-of-point">Potencia de un punto y tangentes</a>. Mide los segmentos desde el mismo punto exterior.</li>
+    <li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos</a>. Usa la misma razón para lados correspondientes, no para áreas.</li>
+    <li><a routerLink="/articles/pythagorean-distance">Teorema de Pitágoras y distancia</a>. Comprueba la perpendicularidad necesaria antes de sumar cuadrados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La potencia de un punto exterior a una circunferencia es <span class="math-part"><app-formula expression="PA\,PB" displayMode="inline" [showCodeButton]="false" /></span>, donde A y B son las intersecciones de una secante y las longitudes parten siempre de P. Es independiente de la secante. Para una tangente el valor es <span class="math-part"><app-formula expression="PT^2" displayMode="inline" [showCodeButton]="false" /></span>: la relación <span class="math-part"><app-formula expression="PA\,PB=PT^2" displayMode="inline" [showCodeButton]="false" /></span> se obtiene de la semejanza de los triángulos determinados por la secante y la tangente.</li>
+      <li>La <a data-prerequisite="power-point" routerLink="/articles/power-of-point">potencia de un punto</a> exterior a una circunferencia es <span class="math-part"><app-formula expression="PA\,PB" displayMode="inline" [showCodeButton]="false" /></span>, donde A y B son las intersecciones de una <a data-prerequisite="power-point" routerLink="/articles/power-of-point">secante</a> y las longitudes parten siempre de P. Es independiente de la secante. Para una <a data-prerequisite="power-point" routerLink="/articles/power-of-point">tangente</a> el valor es <span class="math-part"><app-formula expression="PT^2" displayMode="inline" [showCodeButton]="false" /></span>: la relación <span class="math-part"><app-formula expression="PA\,PB=PT^2" displayMode="inline" [showCodeButton]="false" /></span> se obtiene de la <a data-prerequisite="similar" routerLink="/articles/triangle-similarity">semejanza</a> de los triángulos determinados por la secante y la tangente.</li>
       <li>Ambas distancias se miden desde el mismo punto P. Las distancias de la secante se miden desde P: <span class="math-part"><app-formula expression="PA=4" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="PB=9" displayMode="inline" [showCodeButton]="false" /></span>. El segmento AB tendría longitud 5 y no sustituye a PB.</li>
       <li>La potencia vale <span class="math-part"><app-formula expression="4\cdot 9=36" displayMode="inline" [showCodeButton]="false" /></span>. El teorema de potencia permite expresar el mismo valor por una secante y por una tangente desde P.</li>
       <li>Para la tangente, <span class="math-part"><app-formula expression="PT^{2}=36" displayMode="inline" [showCodeButton]="false" /></span>. La longitud de tangente es la raíz cuadrada de la potencia, que aquí vale 36.</li>
@@ -28,10 +35,7 @@
       <a routerLink="/articles/power-of-point">Potencia de un punto ↗</a>
       <p>Relaciones entre secantes y tangentes a una circunferencia.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
-      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad ↗</a>
       <p>Identifica triángulos correspondientes y deduce razones de longitud, área y medidas indirectas.</p>

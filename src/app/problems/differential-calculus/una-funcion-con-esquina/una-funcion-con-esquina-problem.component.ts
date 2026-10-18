@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaFuncionConEsquinaProblemComponent {
   static readonly title = "Una función con esquina";
-  static readonly route = 'problema-160';
+  static readonly route = "function-with-a-corner";
   static readonly problem: PracticeProblem = {
   "id": "problema-160",
+  "route": "function-with-a-corner",
   "number": 160,
   "title": "Una función con esquina",
   "category": "Cálculo diferencial y optimización",
@@ -31,6 +32,11 @@ export class UnaFuncionConEsquinaProblemComponent {
       "label": "Valor absoluto: distancias y funciones a trozos",
       "route": "/articles/absolute-value-distance",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

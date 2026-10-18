@@ -9,10 +9,16 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>En un sudoku 9×9 resuelto, intercambia globalmente los símbolos 1 y 9. Demuestra que el resultado sigue siendo válido. ¿Qué ocurre si solo cambias una casilla con 1 por 9?</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/sudoku-constraints">Restricciones y simetrías del sudoku</a>. Comprueba qué permutaciones preservan filas, columnas y bloques.</li>
+    <li><a routerLink="/articles/permutation-symmetries">Permutaciones, simetrías y orden</a>. Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Las reglas del sudoku exigen que cada fila, columna y caja contenga los nueve símbolos una sola vez. Una permutación global de los símbolos conserva esa propiedad porque transforma nueve símbolos distintos en otros nueve distintos. Para preservar el mismo problema transformado, hay que aplicar también la permutación a todas las pistas.</li>
+      <li>Las reglas del <a data-prerequisite="sudoku" routerLink="/articles/sudoku-constraints">sudoku</a> exigen que cada fila, columna y caja contenga los nueve símbolos una sola vez. Una <a data-prerequisite="symmetry" routerLink="/articles/permutation-symmetries">permutación</a> global de los símbolos conserva esa propiedad porque transforma nueve símbolos distintos en otros nueve distintos. Para preservar el mismo problema transformado, hay que aplicar también la permutación a todas las pistas.</li>
       <li>Cada fila, columna y bloque contiene exactamente una vez cada símbolo del 1 al 9. La validez de un sudoku depende de que no se repita un símbolo en fila, columna o bloque. Cada grupo completo contiene los nueve símbolos.</li>
       <li>Una permutación global de símbolos es biyectiva y mantiene esa propiedad en todos los grupos. Una biyección de símbolos envía valores distintos a valores distintos y conserva la cantidad de apariciones de cada uno.</li>
       <li>En particular, intercambiar 1 y 9 globalmente da otra solución válida para pistas también transformadas. Para conservar también la condición de resolver las pistas, esas pistas deben transformarse con la misma permutación global.</li>

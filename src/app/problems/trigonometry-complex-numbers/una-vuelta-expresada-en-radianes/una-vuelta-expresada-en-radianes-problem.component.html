@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una rueda de radio 30 cm gira 150°. Calcula el ángulo en radianes y la longitud del arco recorrido por un punto del borde.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/radians">Radianes y longitud de arco</a>. Convierte grados a radianes antes de aplicar longitud = radio por ángulo.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Un radián es el ángulo que abarca un arco de longitud igual al radio. Una vuelta completa abarca 2π radianes y también 360°, por lo que 180° equivalen a π radianes.</li>
+      <li>Un <a data-prerequisite="radians" routerLink="/articles/radians">radián</a> es el ángulo que abarca un arco de longitud igual al radio. Una <a data-prerequisite="radians" routerLink="/articles/radians">vuelta completa</a> abarca 2π <a data-prerequisite="radians" routerLink="/articles/radians">radianes</a> y también 360°, por lo que 180° equivalen a π radianes.</li>
       <li>Convertimos 150° multiplicando por π/180: θ=150π/180=5π/6. El ángulo representa cinco doceavos de una vuelta.</li>
       <li>Por la definición de radián, la longitud del arco es s=rθ cuando θ está en radianes. Sustituimos r=30 cm: s=30·5π/6=25π cm.</li>
       <li>Comprobamos con la proporción de vuelta: la circunferencia mide 2π·30=60π cm y cinco doceavos son 60π·5/12=25π cm.</li>

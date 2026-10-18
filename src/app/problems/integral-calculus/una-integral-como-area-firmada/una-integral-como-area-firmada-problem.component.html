@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de x−1 entre 0 y 3 y compárala con el área geométrica entre la recta y el eje horizontal.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/areas-revolution">Áreas y sólidos de revolución</a>. Integra la diferencia correcta de alturas o el área de cada sección.</li>
+    <li><a routerLink="/articles/sign-charts">Tablas de signos e inecuaciones</a>. Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La recta y=x−1 corta el eje en x=1. Está por debajo para 0≤x&lt;1 y por encima para 1&lt;x≤3. La integral cuenta con signo esas dos regiones.</li>
-      <li>Una primitiva es x²/2−x. Evaluamos en los extremos: (9/2−3)−0=3/2.</li>
+      <li>La recta y=x−1 corta el eje en x=1. Está por debajo para 0≤x&lt;1 y por encima para 1&lt;x≤3. La integral cuenta con <a data-prerequisite="signs" routerLink="/articles/sign-charts">signo</a> esas dos regiones.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> es x²/2−x. Evaluamos en los extremos: (9/2−3)−0=3/2.</li>
       <li>El área inferior es un triángulo de base 1 y altura 1, por tanto 1/2. El área superior tiene base 2 y altura 2: su área es 2.</li>
       <li>La integral es 2−1/2=3/2, mientras que el área geométrica suma ambas magnitudes: 2+1/2=5/2. Esta cuenta independiente comprueba el signo de cada contribución.</li>
     </ol>

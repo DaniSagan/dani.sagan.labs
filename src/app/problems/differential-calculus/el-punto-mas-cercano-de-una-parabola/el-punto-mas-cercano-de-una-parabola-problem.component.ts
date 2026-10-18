@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ElPuntoMasCercanoDeUnaParabolaProblemComponent {
   static readonly title = "El punto más cercano de una parábola";
-  static readonly route = "problema-058";
+  static readonly route = "nearest-point-on-a-parabola";
   static readonly problem: PracticeProblem = {
   "id": "problema-058",
+  "route": "nearest-point-on-a-parabola",
   "number": 58,
   "title": "El punto más cercano de una parábola",
   "category": "Cálculo diferencial y optimización",
@@ -37,16 +38,6 @@ export class ElPuntoMasCercanoDeUnaParabolaProblemComponent {
       "label": "Parábola",
       "route": "/articles/parabola",
       "activity": "Propiedades geométricas de la curva que aparece en el cálculo del ejercicio."
-    },
-    {
-      "label": "Representador de funciones",
-      "route": "/tools/graph-plotter",
-      "activity": "Representa x*exp(-x) para verificar la forma global descrita en el ejercicio «Estudio global de una función»."
-    },
-    {
-      "label": "Campo vectorial",
-      "route": "/tools/vector-field",
-      "activity": "Explora el campo (−y,x) del ejercicio «Órbitas de un campo vectorial» y observa las trayectorias circulares."
     },
     {
       "label": "Pitágoras y distancia euclídea",

@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una circunferencia tiene centro O y radio 5. P está a distancia 13 de O. Calcula la longitud del segmento tangente PT.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/power-of-point">Potencia de un punto y tangentes</a>. Mide los segmentos desde el mismo punto exterior.</li>
+    <li><a routerLink="/articles/pythagorean-distance">Teorema de Pitágoras y distancia</a>. Comprueba la perpendicularidad necesaria antes de sumar cuadrados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El punto de tangencia T pertenece a la circunferencia, por lo que OT=5. El radio al punto de tangencia es perpendicular a la recta tangente.</li>
-      <li>Así, el triángulo OTP es rectángulo en T. Su hipotenusa es OP=13, no el segmento tangente.</li>
-      <li>Pitágoras da OP²=OT²+PT². Despejamos PT²=13²−5²=169−25=144.</li>
+      <li>El punto de tangencia T pertenece a la circunferencia, por lo que OT=5. El radio al punto de tangencia es perpendicular a la recta <a data-prerequisite="power-point" routerLink="/articles/power-of-point">tangente</a>.</li>
+      <li>Así, el triángulo OTP es rectángulo en T. Su <a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">hipotenusa</a> es OP=13, no el segmento tangente.</li>
+      <li><a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">Pitágoras</a> da OP²=OT²+PT². Despejamos PT²=13²−5²=169−25=144.</li>
       <li>La longitud es positiva: PT=√144=12. Al comprobar 5²+12²=25+144=169=13² recuperamos el triángulo rectángulo requerido.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> El segmento tangente mide 12.</p>

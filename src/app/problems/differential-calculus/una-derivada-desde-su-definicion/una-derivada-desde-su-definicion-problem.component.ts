@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDerivadaDesdeSuDefinicionProblemComponent {
   static readonly title = "Una derivada desde su definición";
-  static readonly route = 'problema-151';
+  static readonly route = "derivative-from-definition";
   static readonly problem: PracticeProblem = {
   "id": "problema-151",
+  "route": "derivative-from-definition",
   "number": 151,
   "title": "Una derivada desde su definición",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,11 @@ export class UnaDerivadaDesdeSuDefinicionProblemComponent {
       "label": "Derivadas: definición, interpretación y reglas",
       "route": "/articles/derivative-foundations",
       "activity": "Practica una derivada desde su definición. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
     }
   ]
 };

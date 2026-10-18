@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class VarianzaDeUnaPoblacionPequenaProblemComponent {
   static readonly title = "Varianza de una población pequeña";
-  static readonly route = 'problema-182';
+  static readonly route = "small-population-variance";
   static readonly problem: PracticeProblem = {
   "id": "problema-182",
+  "route": "small-population-variance",
   "number": 182,
   "title": "Varianza de una población pequeña",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,12 @@ export class VarianzaDeUnaPoblacionPequenaProblemComponent {
       "label": "Estadística descriptiva y valores atípicos",
       "route": "/articles/descriptive-statistics",
       "activity": "Practica varianza de una población pequeña. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Cuadrados y soluciones extrañas",
+      "route": "/articles/equation-equivalence",
+      "fragment": "squaring",
+      "activity": "Controla los signos antes de cuadrar para que la transformación sea reversible."
     }
   ]
 };

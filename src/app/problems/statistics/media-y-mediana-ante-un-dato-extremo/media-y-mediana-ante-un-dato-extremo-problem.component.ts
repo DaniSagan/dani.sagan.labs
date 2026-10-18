@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class MediaYMedianaAnteUnDatoExtremoProblemComponent {
   static readonly title = "Media y mediana ante un dato extremo";
-  static readonly route = 'problema-181';
+  static readonly route = "outlier-effect-on-mean-and-median";
   static readonly problem: PracticeProblem = {
   "id": "problema-181",
+  "route": "outlier-effect-on-mean-and-median",
   "number": 181,
   "title": "Media y mediana ante un dato extremo",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,11 @@ export class MediaYMedianaAnteUnDatoExtremoProblemComponent {
       "label": "Estadística descriptiva y valores atípicos",
       "route": "/articles/descriptive-statistics",
       "activity": "Practica media y mediana ante un dato extremo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Diagramas de dispersión y diagnósticos",
+      "route": "/articles/graphical-diagnostics",
+      "activity": "Inspecciona la forma de los datos además de sus resúmenes."
     }
   ]
 };

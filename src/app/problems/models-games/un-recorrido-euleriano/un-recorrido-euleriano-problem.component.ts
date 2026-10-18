@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnRecorridoEulerianoProblemComponent {
   static readonly title = "Un recorrido euleriano";
-  static readonly route = "problema-092";
+  static readonly route = "eulerian-trail";
   static readonly problem: PracticeProblem = {
   "id": "problema-092",
+  "route": "eulerian-trail",
   "number": 92,
   "title": "Un recorrido euleriano",
   "category": "Combinatoria, juegos y modelización",

@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CaminosMinimosEnUnaCuadriculaProblemComponent {
   static readonly title = "Caminos mínimos en una cuadrícula";
-  static readonly route = 'problema-192';
+  static readonly route = "shortest-grid-paths";
   static readonly problem: PracticeProblem = {
   "id": "problema-192",
+  "route": "shortest-grid-paths",
   "number": 192,
   "title": "Caminos mínimos en una cuadrícula",
   "category": "Combinatoria, juegos y modelización",
@@ -31,6 +32,11 @@ export class CaminosMinimosEnUnaCuadriculaProblemComponent {
       "label": "Factoriales, exponentes primos y fórmula de Legendre",
       "route": "/articles/factorials-legendre",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
     }
   ]
 };

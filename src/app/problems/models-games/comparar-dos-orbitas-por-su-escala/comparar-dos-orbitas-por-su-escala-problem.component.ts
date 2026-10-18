@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CompararDosOrbitasPorSuEscalaProblemComponent {
   static readonly title = "Comparar dos órbitas por su escala";
-  static readonly route = 'problema-200';
+  static readonly route = "comparing-orbital-scales";
   static readonly problem: PracticeProblem = {
   "id": "problema-200",
+  "route": "comparing-orbital-scales",
   "number": 200,
   "title": "Comparar dos órbitas por su escala",
   "category": "Combinatoria, juegos y modelización",
@@ -26,6 +27,16 @@ export class CompararDosOrbitasPorSuEscalaProblemComponent {
       "label": "Análisis dimensional y leyes de escala",
       "route": "/articles/dimensional-analysis",
       "activity": "Practica comparar dos órbitas por su escala. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Órbitas de Kepler y leyes de escala",
+      "route": "/articles/kepler-orbits",
+      "activity": "Separa radio al centro, velocidad y período al cambiar la escala."
+    },
+    {
+      "label": "Simulador de gravedad",
+      "route": "/games/gravity",
+      "activity": "Explora órbitas y distingue el modelo de masa central fija de una simulación de varios cuerpos."
     }
   ]
 };

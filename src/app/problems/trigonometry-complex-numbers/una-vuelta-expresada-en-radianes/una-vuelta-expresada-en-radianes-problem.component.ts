@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaVueltaExpresadaEnRadianesProblemComponent {
   static readonly title = "Una vuelta expresada en radianes";
-  static readonly route = 'problema-131';
+  static readonly route = "full-turn-in-radians";
   static readonly problem: PracticeProblem = {
   "id": "problema-131",
+  "route": "full-turn-in-radians",
   "number": 131,
   "title": "Una vuelta expresada en radianes",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,11 @@ export class UnaVueltaExpresadaEnRadianesProblemComponent {
       "label": "Radianes",
       "route": "/articles/radians",
       "activity": "Practica una vuelta expresada en radianes. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
     }
   ]
 };

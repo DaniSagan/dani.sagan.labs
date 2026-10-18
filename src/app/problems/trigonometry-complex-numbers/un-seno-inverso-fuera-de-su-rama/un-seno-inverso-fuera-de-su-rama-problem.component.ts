@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnSenoInversoFueraDeSuRamaProblemComponent {
   static readonly title = "Un seno inverso fuera de su rama";
-  static readonly route = 'problema-133';
+  static readonly route = "inverse-sine-principal-branch";
   static readonly problem: PracticeProblem = {
   "id": "problema-133",
+  "route": "inverse-sine-principal-branch",
   "number": 133,
   "title": "Un seno inverso fuera de su rama",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,16 @@ export class UnSenoInversoFueraDeSuRamaProblemComponent {
       "label": "Composición de funciones trigonométricas y sus inversas",
       "route": "/articles/trig-inverse-trig-composition",
       "activity": "Practica un seno inverso fuera de su rama. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    },
+    {
+      "label": "Radianes y longitud de arco",
+      "route": "/articles/radians",
+      "activity": "Convierte grados a radianes antes de aplicar longitud = radio por ángulo."
     }
   ]
 };

@@ -15,10 +15,17 @@
           [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\delta =-23{,}44^\circ"
           displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/solar-geometry">Geometría solar y altura del Sol</a>. Identifica latitud, declinación y ángulo horario en el modelo.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/radians">Radianes y longitud de arco</a>. Convierte grados a radianes antes de aplicar longitud = radio por ángulo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La latitud sitúa el cénit respecto al ecuador celeste; la declinación sitúa el Sol respecto al mismo ecuador.
+      <li>La <a data-prerequisite="solar" routerLink="/articles/solar-geometry">latitud</a> sitúa el cénit respecto al ecuador celeste; la <a data-prerequisite="solar" routerLink="/articles/solar-geometry">declinación</a> sitúa el Sol respecto al mismo ecuador.
         Al cruzar el meridiano al mediodía solar, su separación angular del cénit es <span
           class="math-part"><app-formula expression="\lvert\varphi-\delta\rvert" displayMode="inline"
             [showCodeButton]="false" /></span>. La altura sobre el horizonte es el complemento: <span

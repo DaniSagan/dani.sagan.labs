@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class CoordenadasEnUnaBaseOblicuaProblemComponent {
   static readonly title = "Coordenadas en una base oblicua";
-  static readonly route = 'problema-116';
+  static readonly route = "coordinates-in-an-oblique-basis";
   static readonly problem: PracticeProblem = {
   "id": "problema-116",
+  "route": "coordinates-in-an-oblique-basis",
   "number": 116,
   "title": "Coordenadas en una base oblicua",
   "category": "Álgebra y álgebra lineal",
@@ -31,6 +32,16 @@ export class CoordenadasEnUnaBaseOblicuaProblemComponent {
       "label": "Cambios de base y matrices de una transformación",
       "route": "/articles/change-of-basis",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Eliminación de Gauss y sistemas compatibles",
+      "route": "/articles/gaussian-elimination",
+      "activity": "Entiende qué operaciones conservan las soluciones de un sistema."
+    },
+    {
+      "label": "Laboratorio de álgebra lineal",
+      "route": "/tools/linear-algebra",
+      "activity": "Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes."
     }
   ]
 };

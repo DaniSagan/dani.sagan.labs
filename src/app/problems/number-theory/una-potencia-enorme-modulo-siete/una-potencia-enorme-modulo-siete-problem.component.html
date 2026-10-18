@@ -6,6 +6,13 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula el resto de 3²⁰²⁶ al dividir por 7 sin calcular la potencia completa.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+    <li><a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat</a>. Comprueba la hipótesis de coprimalidad antes de reducir exponentes.</li>
+    <li><a routerLink="/articles/division-algorithm">División euclídea y restos</a>. Distingue cociente y resto, también para dividendos negativos.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
@@ -16,7 +23,7 @@
     </ol>
     <p class="answer"><strong>Resultado.</strong> El resto es 4.</p>
     <app-formula expression="3^{2026}\equiv4\pmod7" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Reducir el exponente módulo 7 no está justificado; aquí se reduce por el período 6.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Reducir el exponente <a data-prerequisite="modular" routerLink="/articles/modular-arithmetic">módulo</a> 7 no está justificado; aquí se reduce por el período 6.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

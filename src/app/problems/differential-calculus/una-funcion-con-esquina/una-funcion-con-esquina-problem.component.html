@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Estudia la continuidad y derivabilidad en cero de f(x)=|x|.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/absolute-value-distance">Valor absoluto y funciones a trozos</a>. Escribe las ramas según el signo y distingue distancia de valor con signo.</li>
+    <li><a routerLink="/articles/continuity-differentiability">Continuidad y derivadas laterales</a>. Separa el valor, el límite y la existencia de una derivada.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El valor absoluto cumple |x|=x si x≥0 y |x|=−x si x&lt;0. Ambas expresiones se aproximan a 0 cuando x tiende a 0; además f(0)=0.</li>
-      <li>Por tanto el límite coincide con el valor y la función es continua en cero. Para la derivada debemos estudiar (f(h)−f(0))/h=|h|/h.</li>
-      <li>Si h&gt;0, el cociente vale h/h=1. Si h&lt;0, vale −h/h=−1. Las pendientes laterales son distintas.</li>
-      <li>Un límite bilateral solo existe si los dos laterales coinciden. Por eso f no es derivable en cero, aunque no tenga salto ni agujero allí.</li>
+      <li>El <a data-prerequisite="absolute" routerLink="/articles/absolute-value-distance">valor absoluto</a> cumple |x|=x si x≥0 y |x|=−x si x&lt;0. Ambas expresiones se aproximan a 0 cuando x tiende a 0; además f(0)=0.</li>
+      <li>Por tanto el límite coincide con el valor y la función es <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continua</a> en cero. Para la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> debemos estudiar (f(h)−f(0))/h=|h|/h.</li>
+      <li>Si h&gt;0, el cociente vale h/h=1. Si h&lt;0, vale −h/h=−1. Las pendientes <a data-prerequisite="absolute" routerLink="/articles/absolute-value-distance">laterales</a> son distintas.</li>
+      <li>Un límite bilateral solo existe si los dos laterales coinciden. Por eso f no es <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">derivable</a> en cero, aunque no tenga salto ni agujero allí.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Continua en cero, pero no derivable: derivadas laterales −1 y 1.</p>
+    <p class="answer"><strong>Resultado.</strong> Continua en cero, pero no derivable: <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivadas</a> laterales −1 y 1.</p>
     <app-formula expression="f'_-(0)=-1\ne1=f'_+(0)" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> La continuidad es necesaria para derivar, pero no suficiente.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> La <a data-prerequisite="continuity" routerLink="/articles/continuity-differentiability">continuidad</a> es necesaria para derivar, pero no suficiente.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

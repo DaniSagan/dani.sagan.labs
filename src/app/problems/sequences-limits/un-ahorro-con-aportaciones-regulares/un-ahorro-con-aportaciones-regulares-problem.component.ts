@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnAhorroConAportacionesRegularesProblemComponent {
   static readonly title = "Un ahorro con aportaciones regulares";
-  static readonly route = 'problema-144';
+  static readonly route = "savings-with-regular-deposits";
   static readonly problem: PracticeProblem = {
   "id": "problema-144",
+  "route": "savings-with-regular-deposits",
   "number": 144,
   "title": "Un ahorro con aportaciones regulares",
   "category": "Sucesiones, límites y continuidad",
@@ -26,6 +27,16 @@ export class UnAhorroConAportacionesRegularesProblemComponent {
       "label": "Sucesiones recurrentes y puntos fijos",
       "route": "/articles/recurrent-sequences",
       "activity": "Practica un ahorro con aportaciones regulares. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Progresiones y series geométricas",
+      "route": "/articles/geometric-series",
+      "activity": "Distingue suma finita, serie infinita y condición sobre la razón."
+    },
+    {
+      "label": "Exponenciales y logaritmos",
+      "route": "/articles/exponentials-logarithms",
+      "activity": "Respeta el dominio y utiliza las funciones inversas para despejar."
     }
   ]
 };

@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRaizUnicaSinFormulaProblemComponent {
   static readonly title = "Una raíz única sin fórmula";
-  static readonly route = "problema-050";
+  static readonly route = "unique-root-without-explicit-formula";
   static readonly problem: PracticeProblem = {
   "id": "problema-050",
+  "route": "unique-root-without-explicit-formula",
   "number": 50,
   "title": "Una raíz única sin fórmula",
   "category": "Sucesiones, límites y continuidad",
@@ -47,6 +48,22 @@ export class UnaRaizUnicaSinFormulaProblemComponent {
       "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
       "route": "/articles/proof-strategies",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Crecimiento, extremos y concavidad",
+      "route": "/articles/function-analysis",
+      "activity": "Relaciona los signos de las derivadas con el comportamiento de la función."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
     }
   ]
 };

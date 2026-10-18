@@ -6,12 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Un lote de 8 piezas contiene 2 defectuosas. Se eligen 3 sin reposición, uniformemente entre todos los subconjuntos. Calcula la probabilidad de exactamente una defectuosa.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/hypergeometric-distribution">Distribución hipergeométrica</a>. Cuenta elecciones sin reposición mediante combinaciones.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+    <li><a routerLink="/articles/finite-probability">Espacio muestral, sucesos y complemento</a>. Cuenta solo resultados equiprobables y distingue unión, intersección y complemento.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Como no importa el orden, contamos subconjuntos. El total de elecciones es C(8,3)=8·7·6/(3·2·1)=56.</li>
+      <li>Como no importa el orden, contamos <a data-prerequisite="counting" routerLink="/articles/counting-principles">subconjuntos</a>. El total de elecciones es C(8,3)=8·7·6/(3·2·1)=56.</li>
       <li>Para tener exactamente una defectuosa elegimos una de las dos defectuosas: C(2,1)=2 opciones. Las otras dos piezas deben salir de las seis buenas.</li>
-      <li>Elegir dos buenas tiene C(6,2)=6·5/2=15 posibilidades. Cada elección de defectuosa se combina con cada par bueno: 2·15=30 casos favorables.</li>
+      <li>Elegir dos buenas tiene C(6,2)=6·5/2=15 posibilidades. Cada elección de defectuosa se combina con cada par bueno: 2·15=30 <a data-prerequisite="finite" routerLink="/articles/finite-probability">casos favorables</a>.</li>
       <li>La probabilidad es 30/56=15/28≈0,5357. La cuenta no supone independencia: la ausencia de reposición se incorpora al elegir subconjuntos del lote.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 15/28≈53,57%.</p>

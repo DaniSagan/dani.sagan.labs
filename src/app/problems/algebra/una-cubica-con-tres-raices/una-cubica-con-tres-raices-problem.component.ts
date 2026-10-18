@@ -13,31 +13,44 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaCubicaConTresRaicesProblemComponent {
   static readonly title = "Una cúbica con tres raíces";
-  static readonly route = "problema-011";
+  static readonly route = "cubic-with-three-roots";
   static readonly problem: PracticeProblem = {
-    "id": "problema-011",
-    "number": 11,
-    "title": "Una cúbica con tres raíces",
-    "category": "Álgebra y álgebra lineal",
-    "topic": "Polinomios y desigualdades",
-    "level": "Repaso",
-    "statement": "Resuelve \\(x^{3}-6x^{2}+11x-6=0\\) y justifica que no hay más raíces reales.",
-    "resources": [
-      {
-        "label": "La ecuación cúbica",
-        "route": "/articles/cubic-equation",
-        "activity": "Lectura complementaria sobre raíces, factorización y resolución de ecuaciones polinómicas."
-      },
-      {
-        "label": "Laboratorio de álgebra lineal",
-        "route": "/tools/linear-algebra",
-        "activity": "Introduce las matrices de los ejercicios «Sistema con parámetro», «Potencias por autovectores», «Un determinante geométrico», «Proyección ortogonal», «Una matriz no diagonalizable» y comprueba rangos, productos y determinantes."
-      },
-      {
-        "label": "Teorema de las raíces racionales",
-        "route": "/articles/rational-root-theorem",
-        "activity": "Enumera candidatos racionales a partir de los divisores de los coeficientes y verifica cuáles anulan el polinomio."
-      }
-    ]
-  };
+  "id": "problema-011",
+  "route": "cubic-with-three-roots",
+  "number": 11,
+  "title": "Una cúbica con tres raíces",
+  "category": "Álgebra y álgebra lineal",
+  "topic": "Polinomios y desigualdades",
+  "level": "Repaso",
+  "statement": "Resuelve \\(x^{3}-6x^{2}+11x-6=0\\) y justifica que no hay más raíces reales.",
+  "resources": [
+    {
+      "label": "La ecuación cúbica",
+      "route": "/articles/cubic-equation",
+      "activity": "Lectura complementaria sobre raíces, factorización y resolución de ecuaciones polinómicas."
+    },
+    {
+      "label": "Teorema de las raíces racionales",
+      "route": "/articles/rational-root-theorem",
+      "activity": "Enumera candidatos racionales a partir de los divisores de los coeficientes y verifica cuáles anulan el polinomio."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
+    },
+    {
+      "label": "Teoremas del resto y del factor",
+      "route": "/articles/polynomial-division",
+      "fragment": "factor-theorem",
+      "activity": "Relaciona la evaluación en r con la divisibilidad por x − r."
+    },
+    {
+      "label": "Identidades notables y factorización",
+      "route": "/articles/algebraic-identities-factorization",
+      "activity": "Desarrolla o agrupa términos para justificar la factorización utilizada."
+    }
+  ]
+};
 }

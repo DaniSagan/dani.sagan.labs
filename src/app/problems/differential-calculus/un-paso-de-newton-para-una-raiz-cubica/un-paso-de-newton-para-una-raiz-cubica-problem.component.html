@@ -6,17 +6,23 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Usa dos pasos de Newton desde x₀=2 para aproximar la solución positiva de x³=10.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/newton-raphson">Método de Newton</a>. Comprueba que la derivada no se anula en cada iteración.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Reescribimos la ecuación como f(x)=x³−10=0. Newton sustituye la curva por su tangente y usa el corte de esa recta con el eje: xₙ₊₁=xₙ−f(xₙ)/f′(xₙ).</li>
+      <li>Reescribimos la ecuación como f(x)=x³−10=0. <a data-prerequisite="newton" routerLink="/articles/newton-raphson">Newton</a> sustituye la curva por su tangente y usa el corte de esa recta con el eje: xₙ₊₁=xₙ−f(xₙ)/f′(xₙ).</li>
       <li>Como f′(x)=3x², la fórmula es xₙ₊₁=xₙ−(xₙ³−10)/(3xₙ²). En x₀=2, f(2)=−2 y f′(2)=12.</li>
       <li>El primer paso da x₁=2−(−2)/12=13/6. Para el segundo, x₁³−10=2197/216−2160/216=37/216 y 3x₁²=169/12.</li>
       <li>Por tanto x₂=13/6−(37/216)/(169/12)=13/6−37/3042=3277/1521≈2,15450. Son aproximaciones; no hemos obtenido una expresión exacta de la raíz.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> x₁=13/6 y x₂=3277/1521≈2,15450.</p>
     <app-formula expression="x_1=\frac{13}6,\quad x_2=\frac{3277}{1521}\approx2.15450" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> En cada paso hay que reevaluar tanto la función como la derivada en el nuevo punto.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> En cada paso hay que reevaluar tanto la función como la <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> en el nuevo punto.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

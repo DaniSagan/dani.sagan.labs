@@ -9,10 +9,17 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Una máquina pasa de operativa a averiada con probabilidad <span class="math-part"><app-formula expression="\frac{1}{10}" displayMode="inline" [showCodeButton]="false" /></span> por día y de averiada a operativa con probabilidad <span class="math-part"><app-formula expression="\frac{3}{5}" displayMode="inline" [showCodeButton]="false" /></span>. Halla la distribución estacionaria y la probabilidad de estar operativa dentro de dos días si hoy lo está.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/markov-chains">Cadenas de Markov y estados estacionarios</a>. Multiplica las transiciones de cada camino y suma sobre estados intermedios.</li>
+    <li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a>. Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos.</li>
+    <li><a routerLink="/articles/gaussian-elimination">Eliminación de Gauss y sistemas compatibles</a>. Entiende qué operaciones conservan las soluciones de un sistema.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Una cadena de Markov usa probabilidades de transición que dependen solo del estado actual. Una distribución estacionaria permanece igual tras una transición. Para dos pasos se suman las probabilidades de todos los caminos intermedios: cada camino multiplica sus dos transiciones y los caminos alternativos se suman.</li>
+      <li>Una cadena de <a data-prerequisite="markov" routerLink="/articles/markov-chains">Markov</a> usa probabilidades de <a data-prerequisite="markov" routerLink="/articles/markov-chains">transición</a> que dependen solo del estado actual. Una distribución <a data-prerequisite="markov" routerLink="/articles/markov-chains">estacionaria</a> permanece igual tras una transición. Para dos pasos se suman las probabilidades de todos los caminos intermedios: cada camino multiplica sus dos <a data-prerequisite="markov" routerLink="/articles/markov-chains">transiciones</a> y los caminos alternativos se suman.</li>
       <li><span class="math-part"><app-formula expression="P=\begin{pmatrix}\frac{9}{10}&amp;\frac{1}{10}\\\frac{3}{5}&amp;\frac{2}{5}\end{pmatrix}" displayMode="inline" [showCodeButton]="false" /></span>. Para estacionariedad, <span class="math-part"><app-formula expression="\pi _A=\pi _O/6" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\pi _O+\pi _A=1" displayMode="inline" [showCodeButton]="false" /></span>. Cada fila de P contiene probabilidades de salir del estado indicado y suma 1. El balance estacionario cumple <span class="math-part"><app-formula expression="\pi _OP(O,A)=\pi _AP(A,O)" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Se obtiene <span class="math-part"><app-formula expression="\pi _O=\frac{6}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\pi _A=\frac{1}{7}" displayMode="inline" [showCodeButton]="false" /></span>. De <span class="math-part"><app-formula expression="\pi _O/10=3\pi _A/5" displayMode="inline" [showCodeButton]="false" /></span> sale <span class="math-part"><app-formula expression="\pi _O=6\pi _A" displayMode="inline" [showCodeButton]="false" /></span>. Junto con la suma 1 se obtienen <span class="math-part"><app-formula expression="\frac{6}{7}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="\frac{1}{7}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
       <li>Desde O, estar en O tras dos días puede seguir O→O→O o O→A→O. Para terminar operativa a los dos días hay dos estados intermedios posibles, O o A. Se enumeran ambos caminos.</li>
@@ -27,11 +34,8 @@
     <div class="resource">
       <a routerLink="/articles/markov-chains">Cadenas de Markov ↗</a>
       <p>Estados, transiciones y evolución de distribuciones en procesos discretos.</p>
-    </div>
-    <div class="resource">
-      <a routerLink="/tools/probability-lab">Laboratorio de probabilidad ↗</a>
-      <p>Simula experimentos de los ejercicios «Dos dados y una condición», «Extracción sin reemplazo», «Una distribución binomial» y compara frecuencias con probabilidades exactas.</p>
-    </div>
+    </div><div class="resource prerequisite-practice"><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a><p>Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes.</p></div>
+
   </section>
   <app-problem-navigation currentId="problema-080" />
 </article>

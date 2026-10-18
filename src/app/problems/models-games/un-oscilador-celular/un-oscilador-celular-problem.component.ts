@@ -13,31 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnOsciladorCelularProblemComponent {
   static readonly title = "Un oscilador celular";
-  static readonly route = "problema-096";
+  static readonly route = "cellular-automaton-oscillator";
   static readonly problem: PracticeProblem = {
-    "id": "problema-096",
-    "number": 96,
-    "title": "Un oscilador celular",
-    "category": "Combinatoria, juegos y modelización",
-    "topic": "Dinámica y aplicaciones",
-    "level": "Oposición",
-    "statement": "En el Juego de la vida sobre una cuadrícula infinita, parte de las células vivas \\((-1,0),(0,0),(1,0)\\). Determina las dos generaciones siguientes con las reglas \\(B3/S23\\).",
-    "resources": [
-{
-  "label": "El Juego de la vida: osciladores y evolución",
-  "route": "/articles/life-patterns",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Autómatas celulares",
-        "route": "/articles/cellular-automata",
-        "activity": "Estados discretos, reglas locales y evolución simultánea de una configuración."
-      },
-      {
-        "label": "Juego de la vida",
-        "route": "/games/game-of-life",
-        "activity": "Construye el oscilador de tres células del ejercicio «Un oscilador celular» y avanza dos generaciones."
-      }
-    ]
-  };
+  "id": "problema-096",
+  "route": "cellular-automaton-oscillator",
+  "number": 96,
+  "title": "Un oscilador celular",
+  "category": "Combinatoria, juegos y modelización",
+  "topic": "Dinámica y aplicaciones",
+  "level": "Oposición",
+  "statement": "En el Juego de la vida sobre una cuadrícula infinita, parte de las células vivas \\((-1,0),(0,0),(1,0)\\). Determina las dos generaciones siguientes con las reglas \\(B3/S23\\).",
+  "resources": [
+    {
+      "label": "El Juego de la vida: osciladores y evolución",
+      "route": "/articles/life-patterns",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Autómatas celulares",
+      "route": "/articles/cellular-automata",
+      "activity": "Estados discretos, reglas locales y evolución simultánea de una configuración."
+    },
+    {
+      "label": "Juego de la vida",
+      "route": "/games/game-of-life",
+      "activity": "Construye el oscilador de tres células del ejercicio «Un oscilador celular» y avanza dos generaciones."
+    }
+  ]
+};
 }

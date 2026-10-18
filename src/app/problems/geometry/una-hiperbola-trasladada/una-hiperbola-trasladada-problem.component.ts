@@ -13,9 +13,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaHiperbolaTrasladadaProblemComponent {
   static readonly title = "Una hipérbola trasladada";
-  static readonly route = "problema-027";
+  static readonly route = "translated-hyperbola";
   static readonly problem: PracticeProblem = {
   "id": "problema-027",
+  "route": "translated-hyperbola",
   "number": 27,
   "title": "Una hipérbola trasladada",
   "category": "Geometría",

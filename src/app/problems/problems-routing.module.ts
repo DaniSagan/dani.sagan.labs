@@ -16,6 +16,11 @@ const routes: Routes = [
         component: problem,
         title: `${problem.title} · DaniSagan Labs`,
       })),
+      ...PROBLEM_COMPONENTS.map(problem => ({
+        path: problem.problem.id,
+        pathMatch: 'full' as const,
+        redirectTo: problem.route,
+      })),
       { path: '**', title: 'Problema no encontrado · DaniSagan Labs', loadComponent: () => import('./shared/problem-not-found.component').then(m => m.ProblemNotFoundComponent) },
     ],
   },

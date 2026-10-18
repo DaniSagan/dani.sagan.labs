@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class LasRaicesCubicasDeOchoProblemComponent {
   static readonly title = "Las raíces cúbicas de ocho";
-  static readonly route = 'problema-138';
+  static readonly route = "cube-roots-of-eight";
   static readonly problem: PracticeProblem = {
   "id": "problema-138",
+  "route": "cube-roots-of-eight",
   "number": 138,
   "title": "Las raíces cúbicas de ocho",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,17 @@ export class LasRaicesCubicasDeOchoProblemComponent {
       "label": "Fórmula de De Moivre: potencias y raíces complejas",
       "route": "/articles/de-moivre",
       "activity": "Practica las raíces cúbicas de ocho. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Aritmética compleja, módulo y conjugado",
+      "route": "/articles/complex-arithmetic",
+      "activity": "Calcula en forma binómica y usa el conjugado para dividir."
+    },
+    {
+      "label": "Raíces, factores y multiplicidad",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "roots",
+      "activity": "Distingue raíces distintas de raíces contadas con multiplicidad y usa el producto nulo."
     }
   ]
 };

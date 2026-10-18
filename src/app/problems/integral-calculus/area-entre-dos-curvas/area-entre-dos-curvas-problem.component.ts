@@ -13,41 +13,42 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class AreaEntreDosCurvasProblemComponent {
   static readonly title = "Área entre dos curvas";
-  static readonly route = "problema-066";
+  static readonly route = "area-between-curves";
   static readonly problem: PracticeProblem = {
-    "id": "problema-066",
-    "number": 66,
-    "title": "Área entre dos curvas",
-    "category": "Integración y cálculo numérico",
-    "topic": "Áreas, volúmenes y aproximación",
-    "level": "Repaso",
-    "statement": "Calcula el área encerrada entre \\(y=x\\) e \\(y=x^{2}\\).",
-    "resources": [
-{
-  "label": "Áreas entre curvas y sólidos de revolución",
-  "route": "/articles/areas-revolution",
-  "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-},
-      {
-        "label": "Parábola",
-        "route": "/articles/parabola",
-        "activity": "Propiedades geométricas de la curva que aparece en el cálculo del ejercicio."
-      },
-      {
-        "label": "Integración clásica",
-        "route": "/articles/integration-classical",
-        "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
-      },
-      {
-        "label": "Decimales de π",
-        "route": "/tools/pi-decimals",
-        "activity": "Compara los decimales de π con la cota obtenida mediante el ejercicio «Una integral que contiene π»; distingue cálculo de demostración."
-      },
-      {
-        "label": "Curvas implícitas",
-        "route": "/tools/implicit-curve-graph",
-        "activity": "Dibuja x²+y²=1 y relaciona el cuarto de disco con la integral del ejercicio «Una integral que contiene π»."
-      }
-    ]
-  };
+  "id": "problema-066",
+  "route": "area-between-curves",
+  "number": 66,
+  "title": "Área entre dos curvas",
+  "category": "Integración y cálculo numérico",
+  "topic": "Áreas, volúmenes y aproximación",
+  "level": "Repaso",
+  "statement": "Calcula el área encerrada entre \\(y=x\\) e \\(y=x^{2}\\).",
+  "resources": [
+    {
+      "label": "Áreas entre curvas y sólidos de revolución",
+      "route": "/articles/areas-revolution",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Parábola",
+      "route": "/articles/parabola",
+      "activity": "Propiedades geométricas de la curva que aparece en el cálculo del ejercicio."
+    },
+    {
+      "label": "Integración clásica",
+      "route": "/articles/integration-classical",
+      "activity": "Sustitución, partes, fracciones simples y aplicación de primitivas a integrales definidas."
+    },
+    {
+      "label": "Tablas de signos e inecuaciones",
+      "route": "/articles/sign-charts",
+      "activity": "Separa ceros y puntos excluidos antes de decidir dónde se cumple una desigualdad."
+    },
+    {
+      "label": "Ecuaciones cuadráticas",
+      "route": "/articles/quadratic-equations",
+      "activity": "Resuelve la ecuación de segundo grado y distingue los casos degenerados."
+    }
+  ]
+};
 }

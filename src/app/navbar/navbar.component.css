@@ -5,6 +5,8 @@
   border-bottom: 1px solid #393142;
 }
 .primary-nav {
+  /* Keep the animated selection inside the nav while the grid changes width. */
+  overflow: clip;
   position: relative;
   isolation: isolate;
   max-width: 1000px;

@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Aproxima la integral de x² entre 0 y 2 con dos trapecios de igual anchura y compara con el valor exacto.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-numerical" fragment="newton-cotes">Trapecios, Simpson y error de cuadratura</a>. Identifica los nodos y los pesos y contrasta con un valor exacto.</li>
+    <li><a routerLink="/articles/convexity-tangents">Convexidad y tangentes</a>. Distingue la posición de las tangentes y de las cuerdas.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Dividimos [0,2] en [0,1] y [1,2], ambos de anchura h=1. Los valores de la función en los nodos son f(0)=0, f(1)=1 y f(2)=4.</li>
-      <li>El área de un trapecio de anchura h y alturas a,b es h(a+b)/2. El primero aporta (0+1)/2=1/2; el segundo, (1+4)/2=5/2.</li>
+      <li>El área de un <a data-prerequisite="quadrature" routerLink="/articles/integration-numerical" fragment="newton-cotes">trapecio</a> de anchura h y alturas a,b es h(a+b)/2. El primero aporta (0+1)/2=1/2; el segundo, (1+4)/2=5/2.</li>
       <li>La aproximación total es 1/2+5/2=3. La integral exacta es [x³/3] entre 0 y 2, igual a 8/3.</li>
-      <li>La diferencia es 3−8/3=1/3. Como x² es convexa, cada segmento entre nodos queda por encima de la curva; eso explica que los trapecios sobreestimen el área.</li>
+      <li>La diferencia es 3−8/3=1/3. Como x² es <a data-prerequisite="convexity" routerLink="/articles/convexity-tangents">convexa</a>, cada segmento entre nodos queda por encima de la curva; eso explica que los <a data-prerequisite="quadrature" routerLink="/articles/integration-numerical" fragment="newton-cotes">trapecios</a> sobreestimen el área.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Aproximación 3; valor exacto 8/3; exceso 1/3.</p>
     <app-formula expression="T_2=3,\quad I=\frac83,\quad T_2-I=\frac13" [showCodeButton]="false" />

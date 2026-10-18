@@ -9,12 +9,19 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Calcula el volumen del tetraedro con vértices <span class="math-part"><app-formula expression="O=(0,0,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="A=(2,0,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="B=(0,3,0)" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="C=(1,1,4)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/scalar-triple-product">Producto mixto y volumen</a>. Relaciona el determinante con el volumen y toma valor absoluto.</li>
+    <li><a routerLink="/articles/matrix-determinant">Determinante y matrices invertibles</a>. Relaciona el determinante con volumen, independencia e invertibilidad.</li>
+    <li><a routerLink="/articles/areas-revolution">Áreas y sólidos de revolución</a>. Integra la diferencia correcta de alturas o el área de cada sección.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El valor absoluto del producto mixto <span class="math-part"><app-formula expression="\det(A,B,C)" displayMode="inline" [showCodeButton]="false" /></span> es el volumen del paralelepípedo con esas aristas desde el origen. El tetraedro ocupa la sexta parte: su base triangular tiene la mitad del área de la base del paralelepípedo y una pirámide tiene un tercio del volumen del prisma de igual base y altura.</li>
-      <li>Los vectores <span class="math-part"><app-formula expression="OA,OB,OC" displayMode="inline" [showCodeButton]="false" /></span> forman las columnas de una matriz triangular. Tomar O como origen deja las coordenadas de <span class="math-part"><app-formula expression="A,B,C" displayMode="inline" [showCodeButton]="false" /></span> como vectores generadores. El producto mixto mide el volumen asociado.</li>
-      <li>Su determinante es <span class="math-part"><app-formula expression="2\cdot 3\cdot 4=24" displayMode="inline" [showCodeButton]="false" /></span>. La matriz es triangular con diagonal <span class="math-part"><app-formula expression="2,3,4" displayMode="inline" [showCodeButton]="false" /></span>. Su determinante es el producto de esas entradas.</li>
+      <li>El valor absoluto del <a data-prerequisite="triple" routerLink="/articles/scalar-triple-product">producto mixto</a> <span class="math-part"><app-formula expression="\det(A,B,C)" displayMode="inline" [showCodeButton]="false" /></span> es el volumen del <a data-prerequisite="triple" routerLink="/articles/scalar-triple-product">paralelepípedo</a> con esas aristas desde el origen. El tetraedro ocupa la sexta parte: su base triangular tiene la mitad del área de la base del paralelepípedo y una pirámide tiene un tercio del volumen del prisma de igual base y altura.</li>
+      <li>Los vectores <span class="math-part"><app-formula expression="OA,OB,OC" displayMode="inline" [showCodeButton]="false" /></span> forman las columnas de una <a data-prerequisite="det" routerLink="/articles/matrix-determinant">matriz triangular</a>. Tomar O como origen deja las coordenadas de <span class="math-part"><app-formula expression="A,B,C" displayMode="inline" [showCodeButton]="false" /></span> como vectores generadores. El producto mixto mide el volumen asociado.</li>
+      <li>Su <a data-prerequisite="det" routerLink="/articles/matrix-determinant">determinante</a> es <span class="math-part"><app-formula expression="2\cdot 3\cdot 4=24" displayMode="inline" [showCodeButton]="false" /></span>. La matriz es triangular con diagonal <span class="math-part"><app-formula expression="2,3,4" displayMode="inline" [showCodeButton]="false" /></span>. Su determinante es el producto de esas entradas.</li>
       <li>El volumen de un tetraedro es el valor absoluto del producto mixto dividido entre 6. Un paralelepípedo se descompone en seis tetraedros de igual volumen. Esa es la razón del divisor 6.</li>
       <li>Por tanto <span class="math-part"><app-formula expression="V=\frac{24}{6}=4" displayMode="inline" [showCodeButton]="false" /></span>; también se obtiene con base de área 3 y altura 4. La base OAB tiene área <span class="math-part"><app-formula expression="2\cdot \frac{3}{2}=3" displayMode="inline" [showCodeButton]="false" /></span> y C está a altura 4 sobre <span class="math-part"><app-formula expression="z=0" displayMode="inline" [showCodeButton]="false" /></span>. La fórmula base·altura/3 también produce 4.</li>
     </ol>
@@ -30,11 +37,8 @@
     <div class="resource">
       <a routerLink="/articles/matrix-determinant">Determinantes ↗</a>
       <p>Propiedades algebraicas y significado geométrico de los determinantes.</p>
-    </div>
-    <div class="resource">
-      <a routerLink="/tools/implicit-curve-graph">Curvas implícitas ↗</a>
-      <p>Representa las ecuaciones de los ejercicios «Recta y circunferencia», «Una hipérbola trasladada» y comprueba intersecciones y asíntotas.</p>
-    </div>
+    </div><div class="resource prerequisite-practice"><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a><p>Introduce las matrices o vectores del enunciado y contrasta productos, rangos y determinantes.</p></div>
+
   </section>
   <app-problem-navigation currentId="problema-030" />
 </article>

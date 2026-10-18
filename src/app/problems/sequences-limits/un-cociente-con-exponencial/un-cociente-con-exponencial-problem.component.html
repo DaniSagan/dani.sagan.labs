@@ -9,14 +9,22 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Calcula <span class="math-part"><app-formula expression="\lim_{n\to\infty}\frac{n^2}{2^n}" displayMode="inline" [showCodeButton]="false" /></span> y justifica la convergencia.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/asymptotic-limits">Equivalencias y órdenes de crecimiento</a>. Compara los términos dominantes y controla el error tras cancelar.</li>
+    <li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a>. Distingue suma finita, serie infinita y condición sobre la razón.</li>
+    <li><a routerLink="/articles/squeeze-oscillation">Teorema del encaje y oscilación</a>. Acota por dos expresiones con el mismo límite.</li>
+    <li><a routerLink="/articles/mathematical-induction">Inducción matemática</a>. Verifica el caso inicial y el paso de un índice al siguiente.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>Comparar términos consecutivos permite justificar que una exponencial vence a un polinomio. Si <span class="math-part"><app-formula expression="a_{n+1}/a_n\le q&lt;1" displayMode="inline" [showCodeButton]="false" /></span> desde cierto índice N, entonces <span class="math-part"><app-formula expression="0\le a_n\le a_Nq^{n-N}" displayMode="inline" [showCodeButton]="false" /></span> por repetición. La progresión geométrica de la derecha tiende a cero y el teorema del encaje concluye.</li>
+      <li>Comparar términos consecutivos permite justificar que una <a data-prerequisite="asymptotic" routerLink="/articles/asymptotic-limits">exponencial vence</a> a un polinomio. Si <span class="math-part"><app-formula expression="a_{n+1}/a_n\le q&lt;1" displayMode="inline" [showCodeButton]="false" /></span> desde cierto índice N, entonces <span class="math-part"><app-formula expression="0\le a_n\le a_Nq^{n-N}" displayMode="inline" [showCodeButton]="false" /></span> por repetición. La <a data-prerequisite="geometric" routerLink="/articles/geometric-series">progresión geométrica</a> de la derecha tiende a cero y el teorema del <a data-prerequisite="squeeze" routerLink="/articles/squeeze-oscillation">encaje</a> concluye.</li>
       <li>Para <span class="math-part"><app-formula expression="b_{n}=n^{2}/2^{n}" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="b_{n+1}/b_{n}=(1+1/n)^{2}/2" displayMode="inline" [showCodeButton]="false" /></span>. El cociente permite comparar el crecimiento de los términos consecutivos sin recurrir a tratar n como variable continua.</li>
       <li>Si <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>, el cociente es como máximo <span class="math-part"><app-formula expression="(\frac{6}{5})^{2}/2=\frac{18}{25}&lt;1" displayMode="inline" [showCodeButton]="false" /></span>. Para <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>, <span class="math-part"><app-formula expression="1+1/n\le \frac{6}{5}" displayMode="inline" [showCodeButton]="false" /></span>. La cota <span class="math-part"><app-formula expression="\frac{18}{25}" displayMode="inline" [showCodeButton]="false" /></span> es fija y estrictamente menor que 1.</li>
-      <li>Por inducción <span class="math-part"><app-formula expression="b_{n}\le b_{5}(\frac{18}{25})^{n-5}" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>. Aplicar la cota repetidamente da b₆≤qb₅, <span class="math-part"><app-formula expression="b_{7}\le q^{2}b_{5}" displayMode="inline" [showCodeButton]="false" /></span> y, por inducción, la expresión general, con <span class="math-part"><app-formula expression="q=\frac{18}{25}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
-      <li>La cota geométrica tiende a 0 y <span class="math-part"><app-formula expression="b_{n}\ge 0" displayMode="inline" [showCodeButton]="false" /></span>; el encaje da el límite. Una sucesión geométrica con razón de módulo menor que 1 tiende a cero. El encaje entre cero y esa cota prueba el límite.</li>
+      <li>Por <a data-prerequisite="induction" routerLink="/articles/mathematical-induction">inducción</a> <span class="math-part"><app-formula expression="b_{n}\le b_{5}(\frac{18}{25})^{n-5}" displayMode="inline" [showCodeButton]="false" /></span> para <span class="math-part"><app-formula expression="n\ge 5" displayMode="inline" [showCodeButton]="false" /></span>. Aplicar la cota repetidamente da b₆≤qb₅, <span class="math-part"><app-formula expression="b_{7}\le q^{2}b_{5}" displayMode="inline" [showCodeButton]="false" /></span> y, por inducción, la expresión general, con <span class="math-part"><app-formula expression="q=\frac{18}{25}" displayMode="inline" [showCodeButton]="false" /></span>.</li>
+      <li>La cota <a data-prerequisite="geometric" routerLink="/articles/geometric-series">geométrica</a> tiende a 0 y <span class="math-part"><app-formula expression="b_{n}\ge 0" displayMode="inline" [showCodeButton]="false" /></span>; el encaje da el límite. Una sucesión geométrica con razón de módulo menor que 1 tiende a cero. El encaje entre cero y esa cota prueba el límite.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> 0.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> Que el denominador crezca no basta sin comparar velocidades.</aside>
@@ -31,10 +39,7 @@
       <a routerLink="/articles/stirling">Fórmula de Stirling ↗</a>
       <p>Comparación de velocidades de crecimiento mediante una aproximación asintótica del factorial.</p>
     </div>
-    <div class="resource">
-      <a routerLink="/tools/graph-plotter">Representador de funciones ↗</a>
-      <p>Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1.</p>
-    </div>
+
     <div class="resource">
       <a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas ↗</a>
       <p>Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio.</p>

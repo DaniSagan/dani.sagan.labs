@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ElCentroDeMasasDeTresPuntosProblemComponent {
   static readonly title = "El centro de masas de tres puntos";
-  static readonly route = 'problema-125';
+  static readonly route = "centroid-of-three-points";
   static readonly problem: PracticeProblem = {
   "id": "problema-125",
+  "route": "centroid-of-three-points",
   "number": 125,
   "title": "El centro de masas de tres puntos",
   "category": "Geometría",
@@ -26,6 +27,11 @@ export class ElCentroDeMasasDeTresPuntosProblemComponent {
       "label": "Baricentro y centro de masas",
       "route": "/articles/barycenter",
       "activity": "Practica el centro de masas de tres puntos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Bases, independencia, núcleo e imagen",
+      "route": "/articles/vector-spaces",
+      "activity": "Distingue coordenadas, independencia y dimensiones de los espacios asociados."
     }
   ]
 };

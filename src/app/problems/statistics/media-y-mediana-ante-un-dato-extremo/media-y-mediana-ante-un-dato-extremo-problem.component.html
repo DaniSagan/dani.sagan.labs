@@ -6,11 +6,17 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula media y mediana de 2, 3, 3, 4, 18. Repite al sustituir 18 por 48 y compara.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/graphical-diagnostics">Diagramas de dispersión y diagnósticos</a>. Inspecciona la forma de los datos además de sus resúmenes.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La media es la suma dividida por el número de datos. La suma inicial es 2+3+3+4+18=30; como hay cinco datos, la media es 30/5=6.</li>
-      <li>Para la mediana ordenamos los datos, que ya están ordenados. Con cinco observaciones, la posición central es la tercera: la mediana es 3.</li>
+      <li>La <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> es la suma dividida por el número de datos. La suma inicial es 2+3+3+4+18=30; como hay cinco datos, la media es 30/5=6.</li>
+      <li>Para la <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">mediana</a> ordenamos los datos, que ya están ordenados. Con cinco observaciones, la posición central es la tercera: la mediana es 3.</li>
       <li>Al sustituir 18 por 48, la suma aumenta 30 unidades y pasa a 60. La nueva media es 60/5=12. La lista sigue ordenada y el tercer dato sigue siendo 3.</li>
       <li>La media se duplica porque incorpora la magnitud de cada dato. La mediana no cambia porque depende de la posición central. Esto muestra distinta sensibilidad a un valor extremo.</li>
     </ol>

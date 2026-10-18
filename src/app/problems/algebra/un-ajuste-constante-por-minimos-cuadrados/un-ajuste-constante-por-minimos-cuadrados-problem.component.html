@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Aproxima las mediciones 2, 4 y 9 por una sola constante c minimizando la suma de errores cuadrados.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/projection-least-squares">Proyecciones y mínimos cuadrados</a>. Interpreta el ajuste como minimización de la suma de residuos cuadrados.</li>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+    <li><a routerLink="/articles/partial-derivatives-minimization">Derivadas parciales y minimización</a>. Distingue los parámetros del ajuste y resuelve sus condiciones de mínimo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>La función que queremos minimizar es S(c)=(2−c)²+(4−c)²+(9−c)². El cuadrado impide que errores de signos contrarios se cancelen.</li>
       <li>Desarrollamos cada término y agrupamos: S(c)=3c²−30c+101. El coeficiente lineal es −2(2+4+9)=−30 y el constante es 4+16+81=101.</li>
       <li>Completamos el cuadrado: 3c²−30c+101=3(c−5)²+26. La primera parte es no negativa y se anula exactamente cuando c=5.</li>
-      <li>Los residuos son 2−5=−3, 4−5=−1 y 9−5=4. Su suma es cero y la suma de cuadrados es 9+1+16=26, lo que comprueba el mínimo calculado.</li>
+      <li>Los <a data-prerequisite="least-squares" routerLink="/articles/projection-least-squares">residuos</a> son 2−5=−3, 4−5=−1 y 9−5=4. Su suma es cero y la suma de cuadrados es 9+1+16=26, lo que comprueba el mínimo calculado.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> La mejor constante es c=5 y el error cuadrático mínimo es 26.</p>
     <app-formula expression="S(c)=3(c-5)^2+26" [showCodeButton]="false" />

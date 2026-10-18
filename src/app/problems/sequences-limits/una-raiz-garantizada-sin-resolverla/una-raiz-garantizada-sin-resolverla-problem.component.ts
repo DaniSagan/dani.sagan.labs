@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaRaizGarantizadaSinResolverlaProblemComponent {
   static readonly title = "Una raíz garantizada sin resolverla";
-  static readonly route = 'problema-148';
+  static readonly route = "root-existence-by-intermediate-value";
   static readonly problem: PracticeProblem = {
   "id": "problema-148",
+  "route": "root-existence-by-intermediate-value",
   "number": 148,
   "title": "Una raíz garantizada sin resolverla",
   "category": "Sucesiones, límites y continuidad",
@@ -31,6 +32,22 @@ export class UnaRaizGarantizadaSinResolverlaProblemComponent {
       "label": "Cómo demostrar: implicaciones, contradicción y contraposición",
       "route": "/articles/proof-strategies",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
+    },
+    {
+      "label": "Crecimiento, extremos y concavidad",
+      "route": "/articles/function-analysis",
+      "activity": "Relaciona los signos de las derivadas con el comportamiento de la función."
+    },
+    {
+      "label": "Grado, términos y coeficientes de un polinomio",
+      "route": "/articles/polynomial-foundations",
+      "fragment": "coefficients",
+      "activity": "Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar."
     }
   ]
 };

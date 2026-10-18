@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class DosExtraccionesConReposicionProblemComponent {
   static readonly title = "Dos extracciones con reposición";
-  static readonly route = 'problema-171';
+  static readonly route = "sampling-with-replacement";
   static readonly problem: PracticeProblem = {
   "id": "problema-171",
+  "route": "sampling-with-replacement",
   "number": 171,
   "title": "Dos extracciones con reposición",
   "category": "Probabilidad",
@@ -31,6 +32,11 @@ export class DosExtraccionesConReposicionProblemComponent {
       "label": "Árboles de probabilidad y experimentos por etapas",
       "route": "/articles/probability-trees",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
     }
   ]
 };

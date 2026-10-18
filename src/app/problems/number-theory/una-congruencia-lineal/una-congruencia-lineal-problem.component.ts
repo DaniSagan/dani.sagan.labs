@@ -13,26 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaCongruenciaLinealProblemComponent {
   static readonly title = "Una congruencia lineal";
-  static readonly route = "problema-002";
+  static readonly route = "linear-congruence";
   static readonly problem: PracticeProblem = {
-    "id": "problema-002",
-    "number": 2,
-    "title": "Una congruencia lineal",
-    "category": "Aritmética y teoría de números",
-    "topic": "Divisibilidad y congruencias",
-    "level": "Oposición",
-    "statement": "Resuelve \\(18x\\equiv 30 \\pmod{42}\\) y da todas las clases de soluciones módulo 42.",
-    "resources": [
-      {
-        "label": "Teorema de la congruencia lineal",
-        "route": "/articles/linear-congruence-theorem",
-        "activity": "Condiciones de existencia y número de soluciones de una congruencia lineal."
-      },
-      {
-        "label": "Descomposición en primos",
-        "route": "/tools/prime-decomposition",
-        "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
-      }
-    ]
-  };
+  "id": "problema-002",
+  "route": "linear-congruence",
+  "number": 2,
+  "title": "Una congruencia lineal",
+  "category": "Aritmética y teoría de números",
+  "topic": "Divisibilidad y congruencias",
+  "level": "Oposición",
+  "statement": "Resuelve \\(18x\\equiv 30 \\pmod{42}\\) y da todas las clases de soluciones módulo 42.",
+  "resources": [
+    {
+      "label": "Teorema de la congruencia lineal",
+      "route": "/articles/linear-congruence-theorem",
+      "activity": "Condiciones de existencia y número de soluciones de una congruencia lineal."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    {
+      "label": "Máximo común divisor y algoritmo de Euclides",
+      "route": "/articles/gcd-euclid",
+      "activity": "Comprende por qué cada división conserva los divisores comunes."
+    }
+  ]
+};
 }

@@ -6,13 +6,19 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula (2+3i)(1−2i), su módulo y su conjugado.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/algebraic-identities-factorization">Identidades notables y factorización</a>. Desarrolla o agrupa términos para justificar la factorización utilizada.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La unidad imaginaria cumple i²=−1. Multiplicamos distribuyendo todos los términos: 2·1+2·(−2i)+3i·1+3i·(−2i).</li>
+      <li>La unidad <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">imaginaria</a> cumple i²=−1. Multiplicamos distribuyendo todos los términos: 2·1+2·(−2i)+3i·1+3i·(−2i).</li>
       <li>Obtenemos 2−4i+3i−6i². Como −6i²=6, la parte real es 2+6=8 y la imaginaria −4i+3i=−i.</li>
-      <li>El producto es z=8−i. Su módulo es la distancia al origen del punto (8,−1): |z|=√(8²+(−1)²)=√65.</li>
-      <li>El conjugado cambia solo el signo de la parte imaginaria: z̄=8+i. Comprobamos zz̄=(8−i)(8+i)=64−i²=65=|z|².</li>
+      <li>El producto es z=8−i. Su <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">módulo</a> es la distancia al origen del punto (8,−1): |z|=√(8²+(−1)²)=√65.</li>
+      <li>El <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">conjugado</a> cambia solo el signo de la parte imaginaria: z̄=8+i. Comprobamos zz̄=(8−i)(8+i)=64−i²=65=|z|².</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Producto 8−i, módulo √65 y conjugado 8+i.</p>
     <app-formula expression="(2+3i)(1-2i)=8-i,\quad |8-i|=\sqrt{65}" [showCodeButton]="false" />

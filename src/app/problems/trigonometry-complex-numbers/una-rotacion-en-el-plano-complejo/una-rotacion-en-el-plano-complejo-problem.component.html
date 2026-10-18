@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Interpreta la transformación z↦iz y aplícala al punto 3−2i cuatro veces.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/complex-arithmetic">Aritmética compleja, módulo y conjugado</a>. Calcula en forma binómica y usa el conjugado para dividir.</li>
+    <li><a routerLink="/articles/de-moivre">Forma polar, raíces y De Moivre</a>. Eleva el módulo y multiplica el argumento; enumera todas las raíces.</li>
+    <li><a routerLink="/articles/permutation-symmetries">Permutaciones, simetrías y orden</a>. Distingue una transformación de sus iteraciones y busca cuándo vuelve la identidad.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Si z=x+yi, entonces iz=xi+yi²=−y+xi. En coordenadas, la transformación es (x,y)↦(−y,x).</li>
-      <li>Este cambio conserva x²+y², por lo que mantiene la distancia al origen. Además envía (1,0) a (0,1): es una rotación de 90° en sentido antihorario.</li>
+      <li>Este cambio conserva x²+y², por lo que mantiene la distancia al origen. Además envía (1,0) a (0,1): es una <a data-prerequisite="symmetry" routerLink="/articles/permutation-symmetries">rotación</a> de 90° en sentido antihorario.</li>
       <li>Partiendo de 3−2i, obtenemos primero 2+3i; después −3+2i; después −2−3i; por último 3−2i.</li>
-      <li>La cuarta aplicación regresa al origen de la secuencia porque i⁴=(i²)²=(−1)²=1. Los cuatro puntos tienen módulo √13.</li>
+      <li>La cuarta aplicación regresa al origen de la secuencia porque i⁴=(i²)²=(−1)²=1. Los cuatro puntos tienen <a data-prerequisite="complex" routerLink="/articles/complex-arithmetic">módulo</a> √13.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Rotación antihoraria de 90°; órbita 3−2i → 2+3i → −3+2i → −2−3i → 3−2i.</p>
     <app-formula expression="z\mapsto iz,\quad i^4=1" [showCodeButton]="false" />

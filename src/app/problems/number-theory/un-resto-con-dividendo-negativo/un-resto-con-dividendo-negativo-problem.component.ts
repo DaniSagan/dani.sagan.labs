@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnRestoConDividendoNegativoProblemComponent {
   static readonly title = "Un resto con dividendo negativo";
-  static readonly route = 'problema-101';
+  static readonly route = "remainder-with-negative-dividend";
   static readonly problem: PracticeProblem = {
   "id": "problema-101",
+  "route": "remainder-with-negative-dividend",
   "number": 101,
   "title": "Un resto con dividendo negativo",
   "category": "Aritmética y teoría de números",
@@ -26,6 +27,11 @@ export class UnRestoConDividendoNegativoProblemComponent {
       "label": "Teorema de la división euclídea",
       "route": "/articles/division-algorithm",
       "activity": "Practica un resto con dividendo negativo. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
     }
   ]
 };

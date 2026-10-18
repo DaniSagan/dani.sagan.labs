@@ -6,21 +6,28 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula cuántos divisores positivos de 3600 son cubos perfectos y enuméralos.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/fundamental-theorem-arithmetic">Factorización prima y divisores</a>. Usa la unicidad de la factorización para contar divisores y demostrar imposibilidades.</li>
+    <li><a routerLink="/articles/prime-valuations">Exponentes primos y valuaciones</a>. Traduce cuadrados, cubos y divisibilidad a condiciones sobre exponentes.</li>
+    <li><a routerLink="/articles/counting-principles">Principios de conteo y combinaciones</a>. Decide si importa el orden y si se permite repetir antes de usar una fórmula.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Descomponemos 3600=36·100=2⁴·3²·5². Todo divisor positivo tiene la forma 2ᵃ3ᵇ5ᶜ, con 0≤a≤4, 0≤b≤2 y 0≤c≤2.</li>
-      <li>Un cubo perfecto es el cubo de un entero. Al elevar un producto de primos al cubo, todos sus exponentes se multiplican por tres; por unicidad de la factorización, también es una condición necesaria.</li>
+      <li>Un cubo perfecto es el cubo de un entero. Al elevar un producto de <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">primos</a> al cubo, todos sus <a data-prerequisite="valuations" routerLink="/articles/prime-valuations">exponentes</a> se multiplican por tres; por unicidad de la factorización, también es una condición necesaria.</li>
       <li>Para a podemos elegir 0 o 3. Para b y c solo podemos elegir 0, pues el siguiente múltiplo de tres sería 3 y superaría sus cotas.</li>
       <li>Hay 2·1·1=2 elecciones independientes: 2⁰3⁰5⁰=1 y 2³3⁰5⁰=8. Ambos dividen 3600 y son 1³ y 2³.</li>
     </ol>
-    <p class="answer"><strong>Resultado.</strong> Dos divisores: 1 y 8.</p>
+    <p class="answer"><strong>Resultado.</strong> Dos <a data-prerequisite="primes" routerLink="/articles/fundamental-theorem-arithmetic">divisores</a>: 1 y 8.</p>
     <app-formula expression="3600=2^4 3^2 5^2,\quad d\in\{1,8\}" [showCodeButton]="false" />
     <aside class="pitfall"><strong>Error frecuente.</strong> El número 1 también es un cubo perfecto y un divisor positivo.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>
-    <div class="resource"><a routerLink="/articles/divisor-sum-theorem">Fórmulas para divisores y suma de divisores ↗</a><p>Practica divisores que son cubos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div>
+    <div class="resource"><a routerLink="/articles/divisor-sum-theorem">Fórmulas para divisores y suma de divisores ↗</a><p>Practica divisores que son cubos. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada.</p></div><div class="resource prerequisite-practice"><a routerLink="/tools/prime-decomposition">Descomposición en primos</a><p>Descompón los enteros del problema y contrasta sus exponentes y divisores.</p></div>
   </section>
   <app-problem-navigation currentId="problema-104" />
 </article>

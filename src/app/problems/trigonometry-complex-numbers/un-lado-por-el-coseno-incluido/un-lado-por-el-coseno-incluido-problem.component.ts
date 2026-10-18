@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnLadoPorElCosenoIncluidoProblemComponent {
   static readonly title = "Un lado por el coseno incluido";
-  static readonly route = 'problema-134';
+  static readonly route = "side-length-by-cosine-rule";
   static readonly problem: PracticeProblem = {
   "id": "problema-134",
+  "route": "side-length-by-cosine-rule",
   "number": 134,
   "title": "Un lado por el coseno incluido",
   "category": "Trigonometría y números complejos",
@@ -26,6 +27,16 @@ export class UnLadoPorElCosenoIncluidoProblemComponent {
       "label": "Ley de los cosenos",
       "route": "/articles/law-of-cosines",
       "activity": "Practica un lado por el coseno incluido. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Razones e identidades trigonométricas",
+      "route": "/articles/trig-n-functions",
+      "activity": "Relaciona ángulos y coordenadas y justifica las identidades utilizadas."
+    },
+    {
+      "label": "Medianas, alturas, incentro y métricas del triángulo",
+      "route": "/articles/triangle-metrics",
+      "activity": "Distingue los segmentos y centros del triángulo y sus relaciones con el área."
     }
   ]
 };

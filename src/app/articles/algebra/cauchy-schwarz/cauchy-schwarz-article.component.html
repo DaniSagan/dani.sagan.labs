@@ -15,7 +15,7 @@
 <h3>3. Una desigualdad de recíprocos</h3>
 <p>Con a, b, c positivos, elegimos u = (√a, √b, √c) y v = (1/√a, 1/√b, 1/√c). Los productos de coordenadas suman tres. Las normas al cuadrado dan los dos factores del problema.</p>
 <app-formula expression="(a+b+c)\left(\frac1a+\frac1b+\frac1c\right)\ge(1+1+1)^2=9" />
-<p>La igualdad exige una misma constante de proporcionalidad en las tres coordenadas, por lo que a = b = c. La positividad justifica raíces y recíprocos. Es el mecanismo del <a routerLink="/problems/problema-014">problema 014</a>.</p>
+<p>La igualdad exige una misma constante de proporcionalidad en las tres coordenadas, por lo que a = b = c. La positividad justifica raíces y recíprocos. Es el mecanismo del <a routerLink="/problems/inequality-and-equality-case">problema 014</a>.</p>
 <h3>4. Gram, integrales y espacios complejos</h3>
 <p>La matriz de Gram contiene los productos escalares de una familia. Para dos vectores su determinante es la holgura de Cauchy–Schwarz; en el plano representa el área del paralelogramo al cuadrado.</p>
 <app-formula expression="\det\begin{pmatrix}\langle u,u\rangle&amp;\langle u,v\rangle\\\langle v,u\rangle&amp;\langle v,v\rangle\end{pmatrix}=\|u\|^2\|v\|^2-|\langle u,v\rangle|^2\ge0" />
@@ -32,3 +32,9 @@
   <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Introduce la matriz de Gram ((a+b+c,3),(3,1/a+1/b+1/c)), sustituyendo primero a, b y c por valores positivos y calculando sus entradas numéricas y comprueba su determinante no negativo; prueba también a = b = c.</li>
 </ul>
 </div>
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/inequality-and-equality-case">14 · Una desigualdad con igualdad</a></li>
+<li><a routerLink="/problems/regression-line">83 · Una recta de regresión</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

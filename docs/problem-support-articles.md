@@ -25,3 +25,7 @@ Los artículos incluyen ejemplos desarrollados, ejercicios con solución y 45 re
 - `npx ng build --configuration development`: compilación Angular/AOT.
 
 El generador de problemas conserva las referencias adicionales que ya existan en los metadatos de cada componente y las vuelve a incluir en su plantilla.
+
+## Revisión de conceptos en todos los problemas
+
+La auditoría del 18 de octubre de 2026 amplía este trabajo a los 200 problemas. Consulta el [inventario completo de conceptos y recursos](problem-concepts-audit.md). Añade dos artículos de fundamentos algebraicos y amplía Ruffini en la página de división polinómica. Los enlaces aparecen en las soluciones y en un panel desplegable de repaso; se mantienen referencias de vuelta desde los artículos.

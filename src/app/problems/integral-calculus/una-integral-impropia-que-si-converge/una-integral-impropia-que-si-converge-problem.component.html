@@ -6,11 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Calcula la integral de 1/x² desde 1 hasta infinito y la cola desde R hasta infinito, con R≥1.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/integration-classical" fragment="improper">Integrales impropias y convergencia</a>. Define primero el límite truncado y decide si es finito.</li>
+    <li><a routerLink="/articles/integration-classical" fragment="fundamental">Primitivas y teorema fundamental del cálculo</a>. Distingue una familia de funciones de una integral definida con signo.</li>
+    <li><a routerLink="/articles/asymptotic-limits">Equivalencias y órdenes de crecimiento</a>. Compara los términos dominantes y controla el error tras cancelar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El extremo infinito exige una definición por límite. Primero integramos hasta un número finito B&gt;1 y después hacemos B→∞.</li>
-      <li>Una primitiva de x⁻² es −1/x. Por tanto la integral de 1 a B es −1/B−(−1)=1−1/B.</li>
+      <li>El <a data-prerequisite="improper" routerLink="/articles/integration-classical" fragment="improper">extremo infinito</a> exige una definición por límite. Primero integramos hasta un número finito B&gt;1 y después hacemos B→∞.</li>
+      <li>Una <a data-prerequisite="integral" routerLink="/articles/integration-classical" fragment="fundamental">primitiva</a> de x⁻² es −1/x. Por tanto la integral de 1 a B es −1/B−(−1)=1−1/B.</li>
       <li>Como 1/B tiende a cero, el límite existe y vale 1. Esto significa que el área total es finita aunque el intervalo no esté acotado.</li>
       <li>Desde R hasta B, la integral es 1/R−1/B. Al tomar B→∞ queda 1/R. Esa es también la cantidad que se omite al truncar la integral en R.</li>
     </ol>

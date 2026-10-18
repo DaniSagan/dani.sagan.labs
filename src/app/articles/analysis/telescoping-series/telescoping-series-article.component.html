@@ -7,7 +7,7 @@
 <app-formula expression="\sum_{n=1}^{\infty}(u_n-u_{n+1})=u_1-\ell,\qquad R_N=u_{N+1}-\ell" />
 <p>La identidad finita demuestra ambas direcciones: Sₙ y uₙ₊₁ difieren solo en un signo y una constante.</p></aside>
 <h3>2. Separar una fracción revela el patrón</h3>
-<p>En el <a routerLink="/problems/problema-044">problema 044</a>, las fracciones simples hacen visible la diferencia.</p>
+<p>En el <a routerLink="/problems/telescoping-series">problema 044</a>, las fracciones simples hacen visible la diferencia.</p>
 <app-formula expression="\frac1{n(n+1)}=\frac1n-\frac1{n+1},\qquad S_N=1-\frac1{N+1}\longrightarrow1" />
 <p>El error exacto es 1/(N + 1). Para que sea menor que 0,001 necesitamos N ≥ 1000. Cancelar facilita calcular la suma, pero no acelera por sí solo la convergencia.</p>
 <div class="explorer" aria-labelledby="telescope-lab"><h4 id="telescope-lab">Seguir el término que no se cancela</h4><div class="controls"><label for="telescope-mode">Diferencias<select id="telescope-mode" [(ngModel)]="mode"><option value="convergent">1/n − 1/(n + 1)</option><option value="divergent">n − (n + 1)</option></select></label><label for="telescope-n">N = {{ count }}<input id="telescope-n" type="range" min="1" max="1000" [(ngModel)]="count" /></label></div><div class="table-scroll" tabindex="0" role="region" aria-label="Primeros términos"><table><caption>Primeros {{ terms.length }} términos</caption><thead><tr><th scope="col">n</th><th scope="col">uₙ − uₙ₊₁</th></tr></thead><tbody><tr *ngFor="let term of terms"><td>{{ term.n }}</td><td>{{ term.value | number:'1.6-6' }}</td></tr></tbody></table></div><div class="metrics" aria-live="polite"><p>Suma parcial <strong>{{ sum | number:'1.6-6' }}</strong></p><p>Frontera uₙ₊₁ <strong>{{ boundary | number:'1.6-6' }}</strong></p></div><p class="hint">{{ mode==='convergent'?'La frontera tiende a cero; la suma se acerca a 1 desde abajo.':'Hay cancelación, pero la frontera crece sin cota. La serie diverge hacia menos infinito.' }}</p></div>
@@ -28,12 +28,19 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/problema-063">Problema 063 · Una integral racional</a>. Practica la misma descomposición en fracciones simples, esta vez dentro de una integral.</li>
+  <li><a routerLink="/problems/rational-integral">Problema 063 · Una integral racional</a>. Practica la misma descomposición en fracciones simples, esta vez dentro de una integral.</li>
 </ul>
 </div>
 
 <!-- additional-problems:telescoping-series:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-145">145 · Una cola de serie telescópica</a>. Calcula la suma desde n=1 hasta infinito de 1/((n+1)(n+2)) y el error tras N términos.</li>
+<li><a routerLink="/problems/telescoping-series-tail">145 · Una cola de serie telescópica</a>. Calcula la suma desde n=1 hasta infinito de 1/((n+1)(n+2)) y el error tras N términos.</li>
 </ul></section>
 <!-- additional-problems:telescoping-series:end -->
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (3)</summary><ul>
+<li><a routerLink="/problems/telescoping-series">44 · Una serie telescópica</a></li>
+<li><a routerLink="/problems/telescoping-series-tail">145 · Una cola de serie telescópica</a></li>
+<li><a routerLink="/problems/series-comparison-without-summing">149 · Comparar una serie sin sumarla</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

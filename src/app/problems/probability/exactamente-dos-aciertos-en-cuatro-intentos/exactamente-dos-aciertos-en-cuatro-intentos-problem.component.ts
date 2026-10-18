@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ExactamenteDosAciertosEnCuatroIntentosProblemComponent {
   static readonly title = "Exactamente dos aciertos en cuatro intentos";
-  static readonly route = 'problema-174';
+  static readonly route = "exactly-two-successes-in-four-trials";
   static readonly problem: PracticeProblem = {
   "id": "problema-174",
+  "route": "exactly-two-successes-in-four-trials",
   "number": 174,
   "title": "Exactamente dos aciertos en cuatro intentos",
   "category": "Probabilidad",
@@ -31,6 +32,16 @@ export class ExactamenteDosAciertosEnCuatroIntentosProblemComponent {
       "label": "Factoriales, exponentes primos y fórmula de Legendre",
       "route": "/articles/factorials-legendre",
       "activity": "Repasa los fundamentos y las justificaciones del método, y aplica los ejemplos del artículo a este problema."
+    },
+    {
+      "label": "Principios de conteo y combinaciones",
+      "route": "/articles/counting-principles",
+      "activity": "Decide si importa el orden y si se permite repetir antes de usar una fórmula."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
     }
   ]
 };

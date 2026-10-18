@@ -13,36 +13,38 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaSerieTelescopicaProblemComponent {
   static readonly title = "Una serie telescópica";
-  static readonly route = "problema-044";
+  static readonly route = "telescoping-series";
   static readonly problem: PracticeProblem = {
-    "id": "problema-044",
-    "number": 44,
-    "title": "Una serie telescópica",
-    "category": "Sucesiones, límites y continuidad",
-    "topic": "Sucesiones y series",
-    "level": "Repaso",
-    "statement": "Calcula \\(\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}\\).",
-    "resources": [
-      {
-        "label": "Series telescópicas",
-        "route": "/articles/telescoping-series",
-        "activity": "Descompón los términos en diferencias y controla las sumas parciales, la frontera y el error restante."
-      },
-      {
-        "label": "Problema de Basilea",
-        "route": "/articles/basel",
-        "activity": "Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Representa las dos ramas del ejercicio «Continuidad y derivabilidad a trozos» por separado y observa el encuentro en x=1."
-      },
-      {
-        "label": "Criterios de convergencia de series positivas",
-        "route": "/articles/positive-series-tests",
-        "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
-      }
-    ]
-  };
+  "id": "problema-044",
+  "route": "telescoping-series",
+  "number": 44,
+  "title": "Una serie telescópica",
+  "category": "Sucesiones, límites y continuidad",
+  "topic": "Sucesiones y series",
+  "level": "Repaso",
+  "statement": "Calcula \\(\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}\\).",
+  "resources": [
+    {
+      "label": "Series telescópicas",
+      "route": "/articles/telescoping-series",
+      "activity": "Descompón los términos en diferencias y controla las sumas parciales, la frontera y el error restante."
+    },
+    {
+      "label": "Problema de Basilea",
+      "route": "/articles/basel",
+      "activity": "Una lectura complementaria sobre sumas infinitas y la diferencia entre convergencia y cálculo de su valor."
+    },
+    {
+      "label": "Criterios de convergencia de series positivas",
+      "route": "/articles/positive-series-tests",
+      "activity": "Compara el comportamiento asintótico con series modelo y revisa las fronteras de cada criterio."
+    },
+    {
+      "label": "Descomposición en fracciones parciales",
+      "route": "/articles/integration-classical",
+      "fragment": "rational",
+      "activity": "Compara coeficientes después de reunir denominadores y conserva el dominio."
+    }
+  ]
+};
 }

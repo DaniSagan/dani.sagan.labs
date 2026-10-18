@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnPasoDeNewtonParaUnaRaizCubicaProblemComponent {
   static readonly title = "Un paso de Newton para una raíz cúbica";
-  static readonly route = 'problema-157';
+  static readonly route = "newton-step-for-a-cube-root";
   static readonly problem: PracticeProblem = {
   "id": "problema-157",
+  "route": "newton-step-for-a-cube-root",
   "number": 157,
   "title": "Un paso de Newton para una raíz cúbica",
   "category": "Cálculo diferencial y optimización",
@@ -26,6 +27,11 @@ export class UnPasoDeNewtonParaUnaRaizCubicaProblemComponent {
       "label": "Método de Newton–Raphson",
       "route": "/articles/newton-raphson",
       "activity": "Practica un paso de Newton para una raíz cúbica. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Definición y reglas de derivación",
+      "route": "/articles/derivative-foundations",
+      "activity": "Interpreta la derivada como límite de pendientes y justifica la regla aplicada."
     }
   ]
 };

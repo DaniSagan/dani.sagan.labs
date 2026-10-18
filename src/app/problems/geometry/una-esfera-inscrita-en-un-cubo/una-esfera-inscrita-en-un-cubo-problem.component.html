@@ -6,12 +6,18 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Un cubo tiene arista 6. Calcula los radios de sus esferas inscrita y circunscrita y su cociente.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/inspheres-circumspheres">Esferas inscritas y circunscritas</a>. Relaciona la distancia a las caras con el radio interior.</li>
+    <li><a routerLink="/articles/pythagorean-distance">Teorema de Pitágoras y distancia</a>. Comprueba la perpendicularidad necesaria antes de sumar cuadrados.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Las dos esferas tienen centro en el centro del cubo. La inscrita toca cada cara, así que su radio es la distancia del centro a una cara: r=6/2=3.</li>
       <li>Para la circunscrita necesitamos la distancia del centro a un vértice. Tomando el centro como origen, un vértice tiene coordenadas (3,3,3).</li>
-      <li>Aplicamos Pitágoras en tres dimensiones: R²=3²+3²+3²=27. Como el radio es positivo, R=√27=3√3.</li>
+      <li>Aplicamos <a data-prerequisite="pythagoras" routerLink="/articles/pythagorean-distance">Pitágoras</a> en tres dimensiones: R²=3²+3²+3²=27. Como el radio es positivo, R=√27=3√3.</li>
       <li>El cociente R/r=(3√3)/3=√3. La esfera circunscrita pasa por los vértices; la inscrita toca los centros de las caras, que están más cerca del centro.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> r=3, R=3√3 y R/r=√3.</p>

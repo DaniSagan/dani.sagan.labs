@@ -9,14 +9,22 @@
     <h3 id="statement-title">Enunciado</h3>
     <p>Demuestra que <span class="math-part"><app-formula expression="x^{3}+x-1=0" displayMode="inline" [showCodeButton]="false" /></span> tiene una única raíz real y que está entre <span class="math-part"><app-formula expression="\frac{1}{2}" displayMode="inline" [showCodeButton]="false" /></span> y 1.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/bolzano-theorem">Teorema de Bolzano</a>. Usa continuidad y cambio de signo para demostrar existencia, sin asumir unicidad.</li>
+    <li><a routerLink="/articles/derivative-foundations">Definición y reglas de derivación</a>. Interpreta la derivada como límite de pendientes y justifica la regla aplicada.</li>
+    <li><a routerLink="/articles/function-analysis">Crecimiento, extremos y concavidad</a>. Relaciona los signos de las derivadas con el comportamiento de la función.</li>
+    <li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Grado, términos y coeficientes de un polinomio</a>. Identifica los coeficientes, incluye términos ausentes y determina el grado después de simplificar.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>El teorema del valor intermedio garantiza una raíz si una función continua toma signos opuestos en los extremos de un intervalo. No garantiza unicidad. Para esto probamos que la función es estrictamente creciente, usando que su derivada es positiva en toda la recta.</li>
-      <li>p es un polinomio, continuo en toda la recta. La continuidad del polinomio asegura que no hay saltos entre los dos extremos elegidos.</li>
+      <li>El teorema del <a data-prerequisite="bolzano" routerLink="/articles/bolzano-theorem">valor intermedio</a> garantiza una raíz si una función continua toma signos opuestos en los extremos de un intervalo. No garantiza unicidad. Para esto probamos que la función es <a data-prerequisite="function" routerLink="/articles/function-analysis">estrictamente creciente</a>, usando que su <a data-prerequisite="derivative" routerLink="/articles/derivative-foundations">derivada</a> es positiva en toda la recta.</li>
+      <li>p es un <a data-prerequisite="degree" routerLink="/articles/polynomial-foundations" fragment="coefficients">polinomio</a>, continuo en toda la recta. La continuidad del polinomio asegura que no hay saltos entre los dos extremos elegidos.</li>
       <li><span class="math-part"><app-formula expression="p(\frac{1}{2})=\frac{1}{8}+\frac{1}{2}-1=-\frac{3}{8}" displayMode="inline" [showCodeButton]="false" /></span> y <span class="math-part"><app-formula expression="p(1)=1" displayMode="inline" [showCodeButton]="false" /></span>. Las evaluaciones tienen signos opuestos. La raíz está estrictamente dentro porque ninguno de los valores extremos es cero.</li>
-      <li>Bolzano garantiza una raíz en <span class="math-part"><app-formula expression="(\frac{1}{2},1)" displayMode="inline" [showCodeButton]="false" /></span>. Bolzano proporciona al menos una raíz, pero por sí solo no informa del número total de raíces.</li>
-      <li><span class="math-part"><app-formula expression="p&#39;(x)=3x^{2}+1&gt;0" displayMode="inline" [showCodeButton]="false" /></span> para todo x, luego p es estrictamente creciente y no admite dos raíces. Una derivada estrictamente positiva implica crecimiento estricto. Si hubiera dos ceros, sus valores deberían ser distintos por monotonicidad, lo cual es imposible.</li>
+      <li><a data-prerequisite="bolzano" routerLink="/articles/bolzano-theorem">Bolzano</a> garantiza una raíz en <span class="math-part"><app-formula expression="(\frac{1}{2},1)" displayMode="inline" [showCodeButton]="false" /></span>. Bolzano proporciona al menos una raíz, pero por sí solo no informa del número total de raíces.</li>
+      <li><span class="math-part"><app-formula expression="p&#39;(x)=3x^{2}+1&gt;0" displayMode="inline" [showCodeButton]="false" /></span> para todo x, luego p es estrictamente creciente y no admite dos raíces. Una derivada estrictamente positiva implica <a data-prerequisite="function" routerLink="/articles/function-analysis">crecimiento</a> estricto. Si hubiera dos ceros, sus valores deberían ser distintos por monotonicidad, lo cual es imposible.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Una única raíz real, en <span class="math-part"><app-formula expression="(\frac{1}{2},1)" displayMode="inline" [showCodeButton]="false" /></span>.</p>
     <aside class="pitfall"><strong>Error frecuente.</strong> Un cambio de signo prueba existencia, pero no unicidad.</aside>

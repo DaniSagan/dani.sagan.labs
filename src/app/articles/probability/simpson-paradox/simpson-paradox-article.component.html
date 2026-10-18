@@ -1,7 +1,7 @@
 <h2>Simpson: una comparación que cambia al reunir los grupos</h2>
 <p class="dropcap">Un método puede obtener una proporción de éxitos mayor en cada grupo y una proporción menor al sumar todos los casos. No hay una contradicción aritmética: las dos comparaciones están usando mezclas distintas. La paradoja de Simpson obliga a preguntar qué población representa cada porcentaje y qué comparación responde a la pregunta que realmente nos interesa.</p>
 <h3>1. El ejemplo, con sus denominadores</h3>
-<p>En el <a routerLink="/problems/problema-084">problema 084</a>, A cura 9 de 10 casos leves y 30 de 100 graves. B cura 80 de 100 leves y 2 de 10 graves. Es un ejemplo matemático construido, no evidencia clínica.</p>
+<p>En el <a routerLink="/problems/simpsons-aggregation-paradox">problema 084</a>, A cura 9 de 10 casos leves y 30 de 100 graves. B cura 80 de 100 leves y 2 de 10 graves. Es un ejemplo matemático construido, no evidencia clínica.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Tasas por gravedad y globales"><table><caption>Datos del problema 084</caption><thead><tr><th scope="col">Grupo</th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr><th scope="row">Leves</th><td>9/10 = 90 %</td><td>80/100 = 80 %</td></tr><tr><th scope="row">Graves</th><td>30/100 = 30 %</td><td>2/10 = 20 %</td></tr><tr><th scope="row">Todos</th><td>39/110 ≈ 35,45 %</td><td>82/110 ≈ 74,55 %</td></tr></tbody></table></div>
 <p>A tiene una ventaja de diez puntos porcentuales en ambos estratos. Pero atiende sobre todo casos graves, cuya tasa de éxito es menor con cualquiera de los dos métodos.</p>
 <h3>2. Una tasa total es una media ponderada</h3>
@@ -30,6 +30,12 @@
 
 <!-- additional-problems:simpson-paradox:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/problema-190">190 · Una paradoja al mezclar grupos</a>. El método A logra 81/90 éxitos en casos fáciles y 2/10 en difíciles. B logra 19/20 y 24/80, respectivamente. Compara por grupo y en conjunto.</li>
+<li><a routerLink="/problems/simpsons-paradox-when-mixing-groups">190 · Una paradoja al mezclar grupos</a>. El método A logra 81/90 éxitos en casos fáciles y 2/10 en difíciles. B logra 19/20 y 24/80, respectivamente. Compara por grupo y en conjunto.</li>
 </ul></section>
 <!-- additional-problems:simpson-paradox:end -->
+<!-- prerequisite-problems:start -->
+<section class="article-activities prerequisite-problems"><details><summary>Problemas que utilizan estos conceptos (2)</summary><ul>
+<li><a routerLink="/problems/simpsons-aggregation-paradox">84 · Una paradoja de agregación</a></li>
+<li><a routerLink="/problems/simpsons-paradox-when-mixing-groups">190 · Una paradoja al mezclar grupos</a></li>
+</ul></details></section>
+<!-- prerequisite-problems:end -->

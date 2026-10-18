@@ -6,17 +6,24 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Una variable normal tiene media 100 y desviación típica 15. Expresa P(85≤X≤130) mediante la normal estándar y usa Φ(2)=0,97725, Φ(−1)=0,15866.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/normal-distribution">Normal estándar, tipificación y cuantiles</a>. Resta la media y divide por la desviación típica, no por la varianza.</li>
+    <li><a routerLink="/articles/distribution-functions-tails">Distribución acumulada y colas</a>. Relaciona áreas acumuladas, probabilidades de intervalos y complementos.</li>
+    <li><a routerLink="/articles/descriptive-statistics">Media, mediana, varianza y desviación típica</a>. Distingue posición de dispersión y especifica el divisor de la varianza.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La normal estándar tiene media cero y desviación típica uno. Para pasar a ella restamos la media y dividimos por la desviación: Z=(X−100)/15.</li>
+      <li>La <a data-prerequisite="normal-prob" routerLink="/articles/normal-distribution">normal estándar</a> tiene <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">media</a> cero y <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">desviación típica</a> uno. Para pasar a ella restamos la media y dividimos por la desviación: Z=(X−100)/15.</li>
       <li>El extremo inferior 85 se transforma en (85−100)/15=−1. El superior 130 se transforma en (130−100)/15=2.</li>
       <li>Como dividimos por una cantidad positiva, las desigualdades mantienen su sentido. Por tanto la probabilidad es P(−1≤Z≤2)=Φ(2)−Φ(−1).</li>
       <li>Con los valores facilitados resulta 0,97725−0,15866=0,81859. La normal es continua, por lo que incluir o excluir los extremos no cambia esta probabilidad.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> Probabilidad aproximada 0,81859, es decir, 81,859%.</p>
     <app-formula expression="P(85\le X\le130)=\Phi(2)-\Phi(-1)=0.81859" [showCodeButton]="false" />
-    <aside class="pitfall"><strong>Error frecuente.</strong> Se divide por la desviación típica 15, no por la varianza 225.</aside>
+    <aside class="pitfall"><strong>Error frecuente.</strong> Se divide por la desviación típica 15, no por la <a data-prerequisite="descriptive" routerLink="/articles/descriptive-statistics">varianza</a> 225.</aside>
   </section>
   <section class="resources" aria-labelledby="resources-title">
     <h3 id="resources-title">Para repasar y ampliar</h3>

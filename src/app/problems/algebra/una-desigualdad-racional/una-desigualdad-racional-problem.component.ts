@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UnaDesigualdadRacionalProblemComponent {
   static readonly title = "Una desigualdad racional";
-  static readonly route = 'problema-113';
+  static readonly route = "rational-inequality";
   static readonly problem: PracticeProblem = {
   "id": "problema-113",
+  "route": "rational-inequality",
   "number": 113,
   "title": "Una desigualdad racional",
   "category": "Álgebra y álgebra lineal",
@@ -26,6 +27,12 @@ export class UnaDesigualdadRacionalProblemComponent {
       "label": "Inecuaciones y tablas de signos",
       "route": "/articles/sign-charts",
       "activity": "Practica una desigualdad racional. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Dominio y transformaciones equivalentes",
+      "route": "/articles/equation-equivalence",
+      "fragment": "domain",
+      "activity": "Conserva las exclusiones al cancelar o multiplicar y comprueba las soluciones obtenidas."
     }
   ]
 };

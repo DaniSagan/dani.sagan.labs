@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ElErrorEstandarDeUnPromedioProblemComponent {
   static readonly title = "El error estándar de un promedio";
-  static readonly route = 'problema-187';
+  static readonly route = "standard-error-of-an-average";
   static readonly problem: PracticeProblem = {
   "id": "problema-187",
+  "route": "standard-error-of-an-average",
   "number": 187,
   "title": "El error estándar de un promedio",
   "category": "Estadística y lectura crítica de datos",
@@ -26,6 +27,21 @@ export class ElErrorEstandarDeUnPromedioProblemComponent {
       "label": "Distribuciones muestrales y error estándar",
       "route": "/articles/sampling-distributions",
       "activity": "Practica el error estándar de un promedio. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Transformaciones de medias y varianzas",
+      "route": "/articles/moment-transformations",
+      "activity": "El desplazamiento afecta a la media y la escala entra al cuadrado en la varianza."
+    },
+    {
+      "label": "Probabilidad condicionada e independencia",
+      "route": "/articles/conditional-independence",
+      "activity": "Distingue restringir el espacio de resultados, multiplicar probabilidades y sumar casos disjuntos."
+    },
+    {
+      "label": "Esperanza, ganancia neta y varianza discreta",
+      "route": "/articles/discrete-expectation",
+      "activity": "Pondera cada valor por su probabilidad y descuenta los costes ciertos."
     }
   ]
 };

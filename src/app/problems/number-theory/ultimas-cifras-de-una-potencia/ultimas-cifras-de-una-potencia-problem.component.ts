@@ -13,26 +13,32 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class UltimasCifrasDeUnaPotenciaProblemComponent {
   static readonly title = "Últimas cifras de una potencia";
-  static readonly route = "problema-004";
+  static readonly route = "last-digits-of-a-power";
   static readonly problem: PracticeProblem = {
-    "id": "problema-004",
-    "number": 4,
-    "title": "Últimas cifras de una potencia",
-    "category": "Aritmética y teoría de números",
-    "topic": "Divisibilidad y congruencias",
-    "level": "Oposición",
-    "statement": "Calcula las dos últimas cifras de \\(7^{2026}\\) sin calcular la potencia completa.",
-    "resources": [
-      {
-        "label": "Orden multiplicativo",
-        "route": "/articles/orders-theorem",
-        "activity": "El papel de los ciclos de potencias al reducir exponentes en aritmética modular."
-      },
-      {
-        "label": "Descomposición en primos",
-        "route": "/tools/prime-decomposition",
-        "activity": "Factoriza 252, 198 y 360 para contrastar los ejercicios «Euclides y Bézout», «Divisores cuadrados»."
-      }
-    ]
-  };
+  "id": "problema-004",
+  "route": "last-digits-of-a-power",
+  "number": 4,
+  "title": "Últimas cifras de una potencia",
+  "category": "Aritmética y teoría de números",
+  "topic": "Divisibilidad y congruencias",
+  "level": "Oposición",
+  "statement": "Calcula las dos últimas cifras de \\(7^{2026}\\) sin calcular la potencia completa.",
+  "resources": [
+    {
+      "label": "Orden multiplicativo",
+      "route": "/articles/orders-theorem",
+      "activity": "El papel de los ciclos de potencias al reducir exponentes en aritmética modular."
+    },
+    {
+      "label": "Congruencias, clases e inversos modulares",
+      "route": "/articles/modular-arithmetic",
+      "activity": "Interpreta la igualdad de restos y comprueba cuándo existe un inverso."
+    },
+    {
+      "label": "División euclídea y restos",
+      "route": "/articles/division-algorithm",
+      "activity": "Distingue cociente y resto, también para dividendos negativos."
+    }
+  ]
+};
 }

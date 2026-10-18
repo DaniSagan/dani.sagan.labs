@@ -6,10 +6,16 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Divide −47 entre 6 usando un resto no negativo. Explica por qué el cociente no es −7.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/division-algorithm">División euclídea y restos</a>. Distingue cociente y resto, también para dividendos negativos.</li>
+    <li><a routerLink="/articles/modular-arithmetic">Congruencias, clases e inversos modulares</a>. Interpreta la igualdad de restos y comprueba cuándo existe un inverso.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
-      <li>La división euclídea busca enteros q y r tales que −47=6q+r y 0≤r&lt;6. El resto representa lo que falta tras retirar un múltiplo del divisor; esta condición fija una única respuesta.</li>
+      <li>La <a data-prerequisite="division" routerLink="/articles/division-algorithm">división euclídea</a> busca enteros q y r tales que −47=6q+r y 0≤r&lt;6. El resto representa lo que falta tras retirar un múltiplo del divisor; esta condición fija una única respuesta.</li>
       <li>El múltiplo 6·(−7)=−42 queda por encima de −47. Si lo usamos, r=−47−(−42)=−5, que incumple la condición de no negatividad.</li>
       <li>Bajamos un múltiplo: 6·(−8)=−48. Ahora r=−47−(−48)=1, comprendido entre 0 y 5.</li>
       <li>Comprobamos la igualdad: 6·(−8)+1=−48+1=−47. Otro cociente cambiaría el resto en un múltiplo de 6 y lo sacaría del intervalo permitido.</li>

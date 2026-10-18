@@ -13,41 +13,42 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class RaicesCuartasDe1ProblemComponent {
   static readonly title = "Raíces cuartas de −1";
-  static readonly route = "problema-036";
+  static readonly route = "fourth-roots-of-minus-one";
   static readonly problem: PracticeProblem = {
-    "id": "problema-036",
-    "number": 36,
-    "title": "Raíces cuartas de −1",
-    "category": "Trigonometría y números complejos",
-    "topic": "Plano complejo",
-    "level": "Oposición",
-    "statement": "Resuelve \\(z^{4}=-1\\) en los complejos y sitúa las raíces en el plano.",
-    "resources": [
-      {
-        "label": "Fórmula de De Moivre: potencias y raíces complejas",
-        "route": "/articles/de-moivre",
-        "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
-      },
-      {
-        "label": "Identidad de Euler",
-        "route": "/articles/euler-identity",
-        "activity": "La conexión entre forma polar, exponencial compleja, seno y coseno."
-      },
-      {
-        "label": "Polinomios ciclotómicos",
-        "route": "/articles/cyclotomic-polynomials",
-        "activity": "Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo."
-      },
-      {
-        "label": "Representador de funciones",
-        "route": "/tools/graph-plotter",
-        "activity": "Dibuja sin(x) y cos(2*x) para localizar las soluciones del ejercicio «Una ecuación trigonométrica» antes de justificarlas."
-      },
-      {
-        "label": "Conjugado, módulo y división compleja",
-        "route": "/articles/complex-arithmetic",
-        "activity": "Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio."
-      }
-    ]
-  };
+  "id": "problema-036",
+  "route": "fourth-roots-of-minus-one",
+  "number": 36,
+  "title": "Raíces cuartas de −1",
+  "category": "Trigonometría y números complejos",
+  "topic": "Plano complejo",
+  "level": "Oposición",
+  "statement": "Resuelve \\(z^{4}=-1\\) en los complejos y sitúa las raíces en el plano.",
+  "resources": [
+    {
+      "label": "Fórmula de De Moivre: potencias y raíces complejas",
+      "route": "/articles/de-moivre",
+      "activity": "Relaciona las hipótesis y las ecuaciones del artículo con la solución de este ejercicio."
+    },
+    {
+      "label": "Identidad de Euler",
+      "route": "/articles/euler-identity",
+      "activity": "La conexión entre forma polar, exponencial compleja, seno y coseno."
+    },
+    {
+      "label": "Polinomios ciclotómicos",
+      "route": "/articles/cyclotomic-polynomials",
+      "activity": "Factorizaciones de potencias menos uno y raíces de la unidad en el plano complejo."
+    },
+    {
+      "label": "Conjugado, módulo y división compleja",
+      "route": "/articles/complex-arithmetic",
+      "activity": "Calcula módulos, conjugados y cocientes para verificar las operaciones complejas del ejercicio."
+    },
+    {
+      "label": "Radianes y longitud de arco",
+      "route": "/articles/radians",
+      "activity": "Convierte grados a radianes antes de aplicar longitud = radio por ángulo."
+    }
+  ]
+};
 }

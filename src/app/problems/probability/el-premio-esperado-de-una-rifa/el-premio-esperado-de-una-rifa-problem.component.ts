@@ -12,9 +12,10 @@ import { ProblemNavigationComponent } from '../../shared/problem-navigation.comp
 })
 export class ElPremioEsperadoDeUnaRifaProblemComponent {
   static readonly title = "El premio esperado de una rifa";
-  static readonly route = 'problema-177';
+  static readonly route = "expected-raffle-prize";
   static readonly problem: PracticeProblem = {
   "id": "problema-177",
+  "route": "expected-raffle-prize",
   "number": 177,
   "title": "El premio esperado de una rifa",
   "category": "Probabilidad",
@@ -26,6 +27,11 @@ export class ElPremioEsperadoDeUnaRifaProblemComponent {
       "label": "Esperanza discreta, juegos justos y riesgo",
       "route": "/articles/discrete-expectation",
       "activity": "Practica el premio esperado de una rifa. Revisa en el artículo las definiciones y contrasta cada cálculo con la solución razonada."
+    },
+    {
+      "label": "Espacio muestral, sucesos y complemento",
+      "route": "/articles/finite-probability",
+      "activity": "Cuenta solo resultados equiprobables y distingue unión, intersección y complemento."
     }
   ]
 };

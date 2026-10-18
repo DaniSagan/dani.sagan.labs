@@ -6,13 +6,20 @@
   <section class="statement" aria-labelledby="statement-title">
     <h3 id="statement-title">Enunciado</h3><p>Resuelve cos(2x)=1/2 para 0≤x&lt;2π.</p>
   </section>
+<!-- problem-prerequisites:start -->
+  <section class="prerequisites" aria-label="Conceptos para resolver el problema"><details><summary>Conceptos que puedes repasar</summary><ul>
+    <li><a routerLink="/articles/trigonometric-equations">Ecuaciones trigonométricas y periodicidad</a>. Busca todas las familias y restringe al intervalo pedido.</li>
+    <li><a routerLink="/articles/trig-n-functions">Razones e identidades trigonométricas</a>. Relaciona ángulos y coordenadas y justifica las identidades utilizadas.</li>
+    <li><a routerLink="/articles/radians">Radianes y longitud de arco</a>. Convierte grados a radianes antes de aplicar longitud = radio por ángulo.</li>
+  </ul></details></section>
+<!-- problem-prerequisites:end -->
   <section id="problem-solution" class="solution" aria-labelledby="solution-title">
     <h3 id="solution-title">Solución paso a paso</h3>
     <ol>
       <li>Llamamos t=2x. Como x recorre [0,2π), el nuevo ángulo recorre [0,4π); debemos buscar soluciones durante dos vueltas completas.</li>
       <li>En la circunferencia unidad, cos t=1/2 corresponde a t=π/3 y t=5π/3 en la primera vuelta. En la segunda sumamos 2π: t=7π/3 y t=11π/3.</li>
       <li>Dividimos cada valor por 2 para volver a x: π/6, 5π/6, 7π/6 y 11π/6. Todos pertenecen al intervalo pedido.</li>
-      <li>Al duplicar cada candidato se recuperan los cuatro ángulos anteriores. No hay más porque en cada vuelta el coseno toma 1/2 solo en esas dos posiciones.</li>
+      <li>Al duplicar cada candidato se recuperan los cuatro ángulos anteriores. No hay más porque en cada vuelta el <a data-prerequisite="trig" routerLink="/articles/trig-n-functions">coseno</a> toma 1/2 solo en esas dos posiciones.</li>
     </ol>
     <p class="answer"><strong>Resultado.</strong> x=π/6, 5π/6, 7π/6 o 11π/6.</p>
     <app-formula expression="x\in\left\{\frac\pi6,\frac{5\pi}6,\frac{7\pi}6,\frac{11\pi}6\right\}" [showCodeButton]="false" />
