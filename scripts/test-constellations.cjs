@@ -3,7 +3,7 @@ const dir='src/app/games/constellation-recognition/';
 function load(file,dependencies={}){const exports={};vm.runInNewContext(ts.transpileModule(fs.readFileSync(dir+file,'utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS,experimentalDecorators:true}}).outputText,{exports,require:name=>dependencies[name]||{},Math,Set,localStorage:storage,requestAnimationFrame:()=>{}});return exports;}
 const saved={};const storage={getItem:k=>saved[k]||null,setItem:(k,v)=>{saved[k]=v;}};
 const model=load('constellation.model.ts'),{CONSTELLATIONS:catalog}=load('constellation-catalog.ts');
-const {ConstellationRecognitionComponent:Game}=load('constellation-recognition.component.ts',{'./constellation.model':model,'./constellation-catalog':{CONSTELLATIONS:catalog},'@angular/core':{Component:()=>target=>target}});
+const {ConstellationRecognitionComponent:Game}=load('constellation-recognition.component.ts',{'./constellation.model':model,'./constellation-catalog':{CONSTELLATIONS:catalog},'@angular/core':{Component:()=>target=>target,ViewChild:()=>()=>{}}});
 assert.equal(catalog.length,88);assert.equal(new Set(catalog.map(c=>c.id)).size,88);
 assert.deepEqual([...catalog.map(c=>c.id)].sort().join(' '),'And Ant Aps Aql Aqr Ara Ari Aur Boo CMa CMi CVn Cae Cam Cap Car Cas Cen Cep Cet Cha Cir Cnc Col Com CrA CrB Crt Cru Crv Cyg Del Dor Dra Equ Eri For Gem Gru Her Hor Hya Hyi Ind Lac LMi Leo Lep Lib Lup Lyn Lyr Men Mic Mon Mus Nor Oct Oph Ori Pav Peg Per Phe Pic PsA Psc Pup Pyx Ret Scl Sco Sct Ser Sex Sge Sgr Tau Tel TrA Tri Tuc UMa UMi Vel Vir Vol Vul'.split(' ').sort().join(' '));
 assert.equal(model.pool(catalog,'north').length,43);assert.equal(model.pool(catalog,'south').length,60);assert.equal(model.pool(catalog,'all').length,88);

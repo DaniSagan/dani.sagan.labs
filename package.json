@@ -43,7 +43,8 @@
     "test:article-navigation:browser": "node scripts/check-article-navigation.cjs",
     "test:article-concepts": "node scripts/test-article-concepts.cjs",
     "test:article-concepts:browser": "node scripts/check-article-concepts.cjs",
-    "link:article-concepts": "node scripts/link-article-concepts.cjs"
+    "link:article-concepts": "node scripts/link-article-concepts.cjs",
+    "test:constellations:gestures": "node scripts/check-constellation-gestures.cjs"
   },
   "private": true,
   "dependencies": {
