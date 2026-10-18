@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-four-in-a-row',
   templateUrl: './four-in-a-row.component.html',
-  styleUrls: ['./four-in-a-row.component.css'],
+  styleUrls: ['../board-game-layout.css', './four-in-a-row.component.css'],
   standalone: true,
 })
 export class FourInARowComponent implements OnInit, OnDestroy {

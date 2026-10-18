@@ -4,7 +4,7 @@ type Mark = '' | 'X' | 'O';
 @Component({
   selector: 'app-tic-tac-toe', standalone: true,
   templateUrl: './tic-tac-toe.component.html',
-  styleUrls: ['./tic-tac-toe.component.css']
+  styleUrls: ['../board-game-layout.css', './tic-tac-toe.component.css']
 })
 export class TicTacToeComponent implements OnDestroy {
   board: Mark[][] = [['', '', ''], ['', '', ''], ['', '', '']];
