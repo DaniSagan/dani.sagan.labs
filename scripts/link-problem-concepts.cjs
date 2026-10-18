@@ -102,7 +102,10 @@ function synchronize() {
         '\n</ul></details></section>';
       return route.startsWith('/articles/integration-') ? "@if (chapter.route === '" + route.slice('/articles/'.length) + "') {\n" + body + '\n}' : body;
     });
-    write(file, html + '\n<!-- ' + reverseMarker + ':start -->\n' + parts.join('\n') + '\n<!-- ' + reverseMarker + ':end -->\n');
+    const conceptStart = html.indexOf('<!-- article-concepts:start -->');
+    const tail = conceptStart < 0 ? '' : html.slice(conceptStart);
+    if (conceptStart >= 0) html = html.slice(0, conceptStart).trimEnd();
+    write(file, html + '\n<!-- ' + reverseMarker + ':start -->\n' + parts.join('\n') + '\n<!-- ' + reverseMarker + ':end -->\n' + tail + (tail ? '\n' : ''));
   }
   rows.sort((a, b) => a.number - b.number);
   const used = new Set(rows.flatMap(r => r.concepts));

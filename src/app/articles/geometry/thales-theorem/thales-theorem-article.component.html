@@ -1,5 +1,5 @@
 <h2>Teorema de Tales: el ángulo inscrito</h2>
-<p class="dropcap">Si A y B son extremos de un diámetro y C es otro punto de su circunferencia, el ángulo ACB es recto. Esta es la formulación clásica del teorema de Tales sobre el ángulo inscrito en una semicircunferencia. No debe confundirse con el resultado de segmentos proporcionales entre paralelas, que también recibe su nombre en muchos libros escolares.</p>
+<p class="dropcap">Si A y B son extremos de un diámetro y C es otro punto de su <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a>, el ángulo ACB es recto. Esta es la formulación clásica del teorema de Tales sobre el ángulo inscrito en una semicircunferencia. No debe confundirse con el resultado de segmentos proporcionales entre paralelas, que también recibe su nombre en muchos libros escolares.</p>
 <h3>1. Trazar el radio auxiliar</h3>
 <p>Llamamos O al centro de la circunferencia y unimos O con C. Los segmentos OA, OB y OC tienen la misma longitud R. Por ello, los triángulos AOC y BOC son isósceles. Denotamos por α los ángulos de base del primero y por β los del segundo; podemos suponer C en la semicircunferencia superior, pues la otra se obtiene por reflexión.</p>
 <app-formula expression="OA=OB=OC=R,\qquad \angle OAC=\angle ACO=\alpha" displayMode="block"/>
@@ -11,7 +11,7 @@
 <app-formula expression="\angle ACB=\alpha+\beta=90^\circ" displayMode="block"/>
 <p>Solo hemos utilizado igualdad de radios, propiedades del triángulo isósceles y suma de ángulos. No es necesario medir distancias ni introducir funciones trigonométricas. El argumento también explica por qué C puede moverse libremente por la semicircunferencia sin cambiar el ángulo recto.</p>
 <h3>3. Demostrar el recíproco</h3>
-<p>Supongamos ahora que ACB es recto y que O es el punto medio de AB. Situamos C en el origen, A=(u,0) y B=(0,v), con los catetos sobre ejes perpendiculares. Las coordenadas del punto medio permiten calcular las tres distancias al cuadrado:</p>
+<p>Supongamos ahora que ACB es recto y que O es el punto medio de AB. Situamos C en el origen, A=(u,0) y B=(0,v), con los <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">catetos</a> sobre ejes <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendiculares</a>. Las coordenadas del punto medio permiten calcular las tres distancias al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>:</p>
 <app-formula expression="O=\left(\frac u2,\frac v2\right),\qquad OA^2=OB^2=OC^2=\frac{u^2+v^2}{4}" displayMode="block"/>
 <p>Luego O es equidistante de A, B y C: es su circuncentro. Además, A y B están alineados con O y a lados opuestos, por lo que AB es un diámetro. Queda demostrado que el ángulo es recto si y solo si su lado opuesto es un diámetro de la <a routerLink="/articles/incircles-circumcircles">circunferencia circunscrita</a>.</p>
 <h3>4. Una construcción útil</h3>
@@ -25,3 +25,6 @@
   <li><a routerLink="/problems/line-circle-intersection">Problema 026 · Recta y circunferencia</a>. Calcula puntos de una circunferencia y construye un triángulo con extremos de un diámetro para comprobar el ángulo recto.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

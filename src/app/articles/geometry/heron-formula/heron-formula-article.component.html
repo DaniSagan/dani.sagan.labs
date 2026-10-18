@@ -1,9 +1,9 @@
 <h2>Fórmula de Herón</h2>
 
-<p class="dropcap">La fórmula de Herón permite calcular el área de un triángulo conociendo únicamente las longitudes de sus tres lados. No necesitamos medir ángulos ni conocer previamente una altura. La deduciremos mediante el teorema de Pitágoras y dos factorizaciones, hasta obtener una expresión simétrica que trata por igual a los tres lados.</p>
+<p class="dropcap">La fórmula de Herón permite calcular el área de un triángulo conociendo únicamente las longitudes de sus tres lados. No necesitamos medir ángulos ni conocer previamente una altura. La deduciremos mediante el <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">teorema de Pitágoras</a> y dos factorizaciones, hasta obtener una expresión simétrica que trata por igual a los tres lados.</p>
 
 <h3>1. Trazar una altura</h3>
-<p>Consideremos un triángulo ABC y llamemos <app-formula expression="a=BC,\ b=CA,\ c=AB" displayMode="inline"/>. Elegimos como base un lado de longitud máxima, que denominamos c. Así, el pie H de la perpendicular desde C queda en el segmento AB, también cuando el triángulo es obtusángulo. Escribimos <app-formula expression="AH=x,\ HB=c-x,\ CH=h" displayMode="inline"/>. La altura divide la figura en dos triángulos rectángulos.</p>
+<p>Consideremos un triángulo ABC y llamemos <app-formula expression="a=BC,\ b=CA,\ c=AB" displayMode="inline"/>. Elegimos como base un lado de longitud máxima, que denominamos c. Así, el pie H de la <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> desde C queda en el segmento AB, también cuando el triángulo es obtusángulo. Escribimos <app-formula expression="AH=x,\ HB=c-x,\ CH=h" displayMode="inline"/>. La altura divide la figura en dos triángulos rectángulos.</p>
 
 <figure>
   <canvas #triangleCanvas width="1200" height="680" role="img" aria-label="Triángulo ABC dividido por la altura CH: los lados son BC igual a a, CA igual a b y AB igual a c; AH mide x y HB mide c menos x.">La altura h divide la base c en los segmentos x y c − x.</canvas>
@@ -11,7 +11,7 @@
 </figure>
 
 <h3>2. Eliminar la proyección desconocida</h3>
-<p>Aplicamos Pitágoras a cada mitad. Como ambas comparten la altura, restar sus ecuaciones elimina su cuadrado:</p>
+<p>Aplicamos Pitágoras a cada mitad. Como ambas comparten la altura, restar sus ecuaciones elimina su <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>:</p>
 <app-formula expression="b^2=x^2+h^2,\qquad a^2=(c-x)^2+h^2" displayMode="block"/>
 <app-formula expression="a^2-b^2=c^2-2cx,\qquad x=\frac{b^2+c^2-a^2}{2c}" displayMode="block"/>
 <p>Ya hemos expresado la proyección horizontal exclusivamente mediante los lados. Sustituimos este resultado en la primera ecuación para recuperar la altura:</p>
@@ -20,7 +20,7 @@
 <h3>3. Introducir el área y factorizar</h3>
 <p>Si K representa el área, la fórmula de base por altura proporciona <app-formula expression="K=ch/2" displayMode="inline"/>. Elevamos al cuadrado y multiplicamos por dieciséis para eliminar los denominadores:</p>
 <app-formula expression="16K^2=4b^2c^2-(b^2+c^2-a^2)^2" displayMode="block"/>
-<p>El miembro derecho es una diferencia de cuadrados. Usamos <app-formula expression="u^2-v^2=(u-v)(u+v)" displayMode="inline"/> y agrupamos los términos:</p>
+<p>El miembro derecho es una <a data-article-concept="algebraic-identities-factorization" routerLink="/articles/algebraic-identities-factorization">diferencia de cuadrados</a>. Usamos <app-formula expression="u^2-v^2=(u-v)(u+v)" displayMode="inline"/> y agrupamos los términos:</p>
 <app-formula expression="16K^2=\bigl[a^2-(b-c)^2\bigr]\bigl[(b+c)^2-a^2\bigr]" displayMode="block"/>
 <p>Cada corchete vuelve a ser una diferencia de cuadrados. Al factorizar ambos aparecen cuatro factores lineales:</p>
 <app-formula expression="16K^2=(a+b-c)(a+c-b)(b+c-a)(a+b+c)" displayMode="block"/>
@@ -54,3 +54,6 @@
 <li><a routerLink="/problems/right-triangle-inradius">122 · El radio de un triángulo rectángulo</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/algebraic-identities-factorization">Identidades algebraicas y técnicas de factorización</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -40,7 +40,10 @@
     "test:problem-concepts": "node scripts/test-problem-concepts.cjs",
     "test:problem-concepts:browser": "node scripts/check-problem-concepts.cjs",
     "test:article-navigation": "node scripts/test-article-navigation.cjs",
-    "test:article-navigation:browser": "node scripts/check-article-navigation.cjs"
+    "test:article-navigation:browser": "node scripts/check-article-navigation.cjs",
+    "test:article-concepts": "node scripts/test-article-concepts.cjs",
+    "test:article-concepts:browser": "node scripts/check-article-concepts.cjs",
+    "link:article-concepts": "node scripts/link-article-concepts.cjs"
   },
   "private": true,
   "dependencies": {

@@ -1,11 +1,11 @@
 <h2>La recta de Euler</h2>
-<p class="dropcap">El circuncentro O, el <a routerLink="/articles/barycenter">baricentro</a> G y el ortocentro H responden a construcciones distintas: mediatrices, medianas y alturas. Sin embargo, en cualquier triángulo no equilátero están alineados y el baricentro divide el segmento que une los otros dos en una razón fija. Una demostración vectorial revela que esta coincidencia no depende de la forma del dibujo.</p>
+<p class="dropcap">El circuncentro O, el <a routerLink="/articles/barycenter">baricentro</a> G y el ortocentro H responden a construcciones distintas: mediatrices, <a data-article-concept="triangle-metrics" routerLink="/articles/triangle-metrics">medianas</a> y alturas. Sin embargo, en cualquier triángulo no equilátero están alineados y el <a data-article-concept="barycenter" routerLink="/articles/barycenter">baricentro</a> divide el segmento que une los otros dos en una razón fija. Una demostración vectorial revela que esta coincidencia no depende de la forma del dibujo.</p>
 <h3>1. Tomar el circuncentro como origen</h3>
 <p>Sean a, b y c los vectores de posición de A, B y C respecto de O. Como los tres vértices pertenecen a la <a routerLink="/articles/incircles-circumcircles">circunferencia circunscrita</a> de radio R, sus módulos son iguales. Las letras en negrita siguientes representan vectores, no longitudes de lados:</p>
 <app-formula expression="O=\mathbf0,\qquad |\mathbf a|^2=|\mathbf b|^2=|\mathbf c|^2=R^2" displayMode="block"/>
 <app-geometry-diagram diagram="euler-line" description="O es el circuncentro, G el baricentro y H el ortocentro. Las alturas y una mediana permiten reconocer los centros sobre la recta resaltada."/>
 <h3>2. Encontrar el ortocentro</h3>
-<p>Proponemos el vector h=a+b+c como posición de H. Para comprobarlo, restamos el vector a y calculamos su <a routerLink="/articles/dot-product">producto escalar</a> con la dirección del lado BC. Si el resultado es cero, AH será perpendicular a BC y pertenecerá a una altura:</p>
+<p>Proponemos el vector h=a+b+c como posición de H. Para comprobarlo, restamos el vector a y calculamos su <a routerLink="/articles/dot-product">producto escalar</a> con la dirección del lado BC. Si el resultado es cero, AH será <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> a BC y pertenecerá a una altura:</p>
 <app-formula expression="\mathbf h=\mathbf a+\mathbf b+\mathbf c" displayMode="block"/>
 <app-formula expression="(\mathbf h-\mathbf a)\cdot(\mathbf c-\mathbf b)=(\mathbf b+\mathbf c)\cdot(\mathbf c-\mathbf b)=|\mathbf c|^2-|\mathbf b|^2=0" displayMode="block"/>
 <p>Al intercambiar cíclicamente los vértices obtenemos las otras dos perpendicularidades. Por tanto, el punto propuesto está simultáneamente en las tres alturas y es el ortocentro. El argumento también funciona si H queda fuera del triángulo, como sucede en el caso obtusángulo.</p>
@@ -27,3 +27,6 @@
   <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Representa dos ecuaciones de mediatrices como sistema 2 × 2 para hallar un circuncentro y contrasta después las relaciones vectoriales entre centros.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/triangle-metrics">Geometría del triángulo: radios, alturas y medianas</a></li><li><a routerLink="/articles/barycenter">Baricentro y centro de masas</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li></ul></details></section>
+<!-- article-concepts:end -->

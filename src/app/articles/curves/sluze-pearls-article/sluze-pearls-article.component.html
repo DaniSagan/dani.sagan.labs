@@ -13,7 +13,7 @@
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
-  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los puntos singulares.</p>
+  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">puntos singulares</a>.</p>
   <div class="curve-parameters"><div class="curve-parameter">
     <label for="sluze-pearls-parameter">Escala (p)</label>
     <input id="sluze-pearls-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
@@ -36,3 +36,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathshistory.st-andrews.ac.uk/Curves/Pearls/" target="_blank" rel="noopener noreferrer">MacTutor · Universidad de St Andrews</a>. La referencia describe la familia de productos de potencias. Aquí se fija la configuración v²=u³(1−u)² para comparar sus dos singularidades.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li></ul></details></section>
+<!-- article-concepts:end -->

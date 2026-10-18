@@ -1,5 +1,5 @@
 <h2>La función gamma: más allá del factorial</h2>
-<p class="dropcap">El factorial multiplica enteros consecutivos: 4! = 1 · 2 · 3 · 4 = 24.
+<p class="dropcap">El <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a> multiplica enteros consecutivos: 4! = 1 · 2 · 3 · 4 = 24.
   ¿Podemos prolongar esa idea a valores que no sean enteros? La función gamma lo hace de una manera compatible
   con la regla del factorial, aunque con un desplazamiento que conviene recordar:</p>
 <app-formula expression="\Gamma(n+1)=n!,\qquad n=0,1,2,\ldots"></app-formula>
@@ -14,14 +14,14 @@
   el término de borde se anula tanto en cero como en infinito:</p>
 <app-formula expression="\Gamma(x+1)=[-t^xe^{-t}]_0^\infty+x\int_0^\infty t^{x-1}e^{-t}\,dt=x\Gamma(x)"></app-formula>
 <p>Empezando en Γ(1) = 1 obtenemos Γ(2) = 1, Γ(3) = 2, Γ(4) = 6 y Γ(5) = 24.
-  La recurrencia y el valor inicial explican los factoriales, aunque por sí solos no determinan una única interpolación
+  La <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> y el valor inicial explican los factoriales, aunque por sí solos no determinan una única interpolación
   entre los enteros: la integral especifica cuál es la función gamma.</p>
 <app-gamma-explorer></app-gamma-explorer>
 <h3>El valor en un medio</h3>
 <p>En la integral de Γ(½), el cambio t = u² transforma la raíz del denominador:</p>
 <app-formula expression="\Gamma\!\left(\frac12\right)=2\int_0^\infty e^{-u^2}\,du=\sqrt\pi"></app-formula>
 <p>La última igualdad procede de la integral gaussiana. Si I es la integral de e⁻ᵘ² sobre toda la recta,
-  su cuadrado se convierte en una integral doble. En coordenadas polares:</p>
+  su <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> se convierte en una <a data-article-concept="multiple-integrals" routerLink="/articles/multiple-integrals">integral doble</a>. En coordenadas polares:</p>
 <app-formula expression="I^2=\int_0^{2\pi}\int_0^\infty e^{-r^2}r\,dr\,d\theta=\pi"></app-formula>
 <p>Como I es positivo, I = √π. Aplicando ahora la recurrencia:</p>
 <app-formula expression="\Gamma\!\left(\frac32\right)=\frac{\sqrt\pi}{2},\qquad \Gamma\!\left(\frac52\right)=\frac{3\sqrt\pi}{4}"></app-formula>
@@ -48,3 +48,6 @@
   <li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad y estadística</a>. Selecciona la distribución gamma y cambia sus parámetros para relacionar su densidad con la función gamma.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/multiple-integrals">Integrales múltiples y coordenadas polares</a></li><li><a routerLink="/articles/complex-residues">Singularidades, polos y residuos</a></li></ul></details></section>
+<!-- article-concepts:end -->

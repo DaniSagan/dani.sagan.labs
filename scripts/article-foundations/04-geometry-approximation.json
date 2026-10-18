@@ -1,0 +1,473 @@
+[
+  {
+    "slug": "constructible-numbers",
+    "area": "geometry",
+    "ids": [
+      "M41"
+    ],
+    "title": "Regla, compás y números construibles",
+    "terms": [
+      "regla y compás",
+      "número construible",
+      "números construibles",
+      "construcción exacta"
+    ],
+    "definition": "Un número real es construible si puede obtenerse como coordenada mediante un número finito de rectas y circunferencias partiendo de un segmento unidad. Sumas, restas, productos, cocientes no nulos y raíces cuadradas de cantidades positivas son operaciones construibles. Una aproximación por dibujo no equivale a una construcción exacta.",
+    "argument": "Intersecar dos rectas resuelve ecuaciones lineales. Intersecar una recta y una circunferencia, o dos circunferencias, reduce a ecuaciones de grado como máximo dos. Por eso cada paso añade como mucho una extensión cuadrática. El grado de un número construible algebraico sobre los racionales debe ser una potencia de dos; esta condición necesaria no es suficiente por sí sola para un número algebraico arbitrario.",
+    "example": "√2 se construye como diagonal de un cuadrado unidad. La raíz cúbica de dos tiene grado tres, de modo que duplicar exactamente el volumen de un cubo usando solo regla y compás es imposible. Para polígonos regulares, el criterio de Gauss–Wantzel caracteriza los lados n como potencia de dos por un producto de primos de Fermat distintos.",
+    "caution": "La imposibilidad depende de las herramientas permitidas. Añadir marcas a la regla, permitir origami o aceptar aproximaciones cambia el problema. No basta con que un ángulo tenga una expresión decimal manejable.",
+    "formula": "[\\mathbb Q(\\alpha):\\mathbb Q]\\ne2^k\\Longrightarrow\\alpha\\text{ no construible},\\qquad n=2^a p_1\\cdots p_r",
+    "question": "¿Por qué √(1+√2) es construible?",
+    "answer": "Se construye primero √2, se suma la unidad y después se toma otra raíz cuadrada. Existe una torre explícita de operaciones permitidas; no se usa solo una observación sobre el grado.",
+    "n": [
+      "Número de lados",
+      3,
+      30,
+      1,
+      7
+    ],
+    "t": [
+      "Radio circunscrito",
+      0.5,
+      3,
+      0.25,
+      1
+    ],
+    "lab": "Polígonos regulares: exactitud y representación",
+    "code": "let m=n;while(m%2===0)m/=2;let ok=true;for(const p of[3,5,17,257,65537])if(m%p===0){m/=p;if(m%p===0)ok=false;}ok=ok&&m===1;rows.push(['Construible por Gauss–Wantzel',ok?'Sí':'No'],['Longitud numérica del lado',2*t*Math.sin(Math.PI/n)]);for(let k=0;k<=n;k++)points.push([t*Math.cos(2*Math.PI*k/n),t*Math.sin(2*Math.PI*k/n)]);note='El trazado numérico existe incluso cuando el polígono no es construible exactamente con regla y compás. Son tareas diferentes.';",
+    "related": [
+      "heptagon",
+      "nonagon",
+      "golden-ratio"
+    ]
+  },
+  {
+    "slug": "plane-tessellations",
+    "area": "geometry",
+    "ids": [
+      "M42"
+    ],
+    "title": "Teselaciones del plano y polígonos regulares",
+    "terms": [
+      "teselación",
+      "teselaciones",
+      "teselar",
+      "mosaicos regulares"
+    ],
+    "definition": "Una teselación cubre el plano sin dejar huecos ni solapar los interiores de sus piezas. En una teselación regular euclídea todas las piezas son polígonos regulares congruentes y se unen lado a lado. En cada vértice la suma de sus ángulos debe ser una vuelta completa.",
+    "argument": "El ángulo interior de un polígono regular de n lados es π−2π/n. Si k piezas concurren en cada vértice, k(n−2)π/n=2π. Con n y k enteros al menos tres, las únicas soluciones son (3,6), (4,4) y (6,3). Las construcciones por triángulos equiláteros, cuadrados y hexágonos regulares muestran que esos casos sí cubren el plano.",
+    "example": "Un pentágono regular tiene ángulos de 108°. Tres suman 324° y dejan un hueco; cuatro suman 432° y se solapan. Esto no prohíbe teselaciones con pentágonos no regulares, ni combinaciones de varios tipos de polígonos.",
+    "caution": "Cerrar los ángulos alrededor de un vértice es necesario, pero en problemas generales no demuestra por sí solo que una disposición local se extienda a todo el plano. La clasificación cambia en geometría esférica e hiperbólica.",
+    "formula": "k\\,\\frac{(n-2)\\pi}{n}=2\\pi,\\qquad (n-2)(k-2)=4",
+    "question": "¿Cuántos triángulos equiláteros concurren en un vértice de su teselación regular?",
+    "answer": "Cada ángulo mide 60°. Seis completan 360°, sin huecos ni solapamientos. En este caso el patrón se extiende por traslaciones a todo el plano.",
+    "n": [
+      "Lados n",
+      3,
+      10,
+      1,
+      6
+    ],
+    "t": [
+      "Piezas en el vértice k",
+      3,
+      8,
+      1,
+      3
+    ],
+    "lab": "Cerrar una vuelta con ángulos",
+    "code": "const angle=180*(n-2)/n,total=t*angle;rows.push(['Ángulo de cada pieza',angle],['Suma alrededor del vértice',total],['Hueco positivo / solape negativo',360-total],['Cierre local',Math.abs(total-360)<1e-9?'Exacto':'No cierra']);note='La tabla prueba una condición angular local para polígonos regulares euclídeos. No clasifica todos los mosaicos posibles.';",
+    "related": [
+      "schlafli-symbol",
+      "hexagon",
+      "triangle"
+    ]
+  },
+  {
+    "slug": "projective-homogeneous-coordinates",
+    "area": "geometry",
+    "ids": [
+      "M43"
+    ],
+    "title": "Geometría proyectiva y coordenadas homogéneas",
+    "terms": [
+      "geometría proyectiva",
+      "coordenadas homogéneas",
+      "punto del infinito",
+      "puntos del infinito",
+      "plano proyectivo"
+    ],
+    "definition": "Un punto del plano proyectivo real es una terna no nula [X:Y:Z], identificada con todos sus múltiplos escalares no nulos. Si Z no es cero se recuperan coordenadas afines (X/Z,Y/Z). Los puntos con Z=0 forman la recta del infinito y representan direcciones, no distancias infinitas ordinarias.",
+    "argument": "Una recta tiene ecuación homogénea aX+bY+cZ=0. Dos rectas distintas se intersecan mediante el producto vectorial de sus ternas de coeficientes; dos puntos distintos determinan una recta de la misma forma. Las rectas paralelas afines comparten un punto con Z=0, con lo que la incidencia se expresa sin una excepción separada para el paralelismo.",
+    "example": "Las rectas y=m₁x y y=m₂x+1 se cortan en x=1/(m₁−m₂) si sus pendientes difieren. Su intersección homogénea puede escribirse [1:m₁:m₁−m₂]. Cuando las pendientes se igualan, esa terna sigue siendo válida y representa el punto de dirección [1:m₁:0].",
+    "caution": "La terna [0:0:0] no es un punto. Dos ternas proporcionales representan el mismo punto. Una transformación proyectiva conserva incidencias y razones dobles, pero no conserva en general longitudes, ángulos ni razones simples.",
+    "formula": "[X:Y:Z]=[\\lambda X:\\lambda Y:\\lambda Z]\\quad(\\lambda\\ne0),\\qquad ax+by+c=0\\longleftrightarrow aX+bY+cZ=0",
+    "question": "Encuentra el punto proyectivo de intersección de y=1 y y=2.",
+    "answer": "Sus coeficientes homogéneos son (0,1,−1) y (0,1,−2). Su producto vectorial es proporcional a (1,0,0), el punto del infinito en dirección horizontal.",
+    "n": [
+      "Pendiente m₁",
+      -2,
+      2,
+      0.25,
+      1
+    ],
+    "t": [
+      "Pendiente m₂",
+      -2,
+      2,
+      0.25,
+      0.5
+    ],
+    "lab": "Una intersección que alcanza el infinito",
+    "code": "const z=n-t;rows.push(['Coordenadas homogéneas','[1 : '+n+' : '+z+']'],['Intersección afín',Math.abs(z)<1e-10?'Punto del infinito':'('+1/z+', '+n/z+')']);note='El objeto homogéneo permanece definido cuando desaparece la intersección afín. No se sustituye el infinito por un número grande.';",
+    "related": [
+      "cross-product",
+      "pascal-theorem",
+      "cross-ratio"
+    ]
+  },
+  {
+    "slug": "circle-inversion",
+    "area": "geometry",
+    "ids": [
+      "M44"
+    ],
+    "title": "Inversión respecto de una circunferencia",
+    "terms": [
+      "inversión circular",
+      "inversión geométrica",
+      "inversión respecto",
+      "circunferencia de inversión"
+    ],
+    "definition": "La inversión de centro O y radio R envía cada punto P distinto de O al punto P′ de la misma semirrecta que satisface OP·OP′=R². Los puntos interiores y exteriores se intercambian; los de la circunferencia permanecen fijos. Aplicar dos veces la inversión recupera el punto inicial.",
+    "argument": "Con O en el origen, P′=R²P/‖P‖². La fórmula demuestra directamente la involución. Sustituirla en una ecuación de recta o circunferencia muestra que una circunferencia que pasa por O se transforma en una recta que no pasa por O, y una circunferencia que no pasa por O se transforma en otra circunferencia.",
+    "example": "Para R=1, el punto (2,0) va a (1/2,0). La recta x=a, con a distinto de cero, se transforma en la circunferencia de centro (1/(2a),0) y radio 1/(2|a|), que pasa por O. El punto O queda excluido de la imagen procedente de puntos finitos de la recta.",
+    "caution": "En notación compleja, la inversión circular es R²/conj(z), no R²/z. Esta última añade una reflexión respecto del eje real. La inversión conserva ángulos no orientados localmente donde es regular, pero no longitudes ni orientación.",
+    "formula": "P'=\\frac{R^2}{\\|P\\|^2}P,\\qquad z'=\\frac{R^2}{\\overline z},\\qquad OP\\cdot OP'=R^2",
+    "question": "¿Qué puntos quedan fijos bajo la inversión?",
+    "answer": "Exactamente los de distancia R al centro. De OP=OP′ y OP·OP′=R² resulta OP=R, pues las distancias son positivas.",
+    "n": [
+      "Radio R",
+      0.5,
+      3,
+      0.25,
+      1
+    ],
+    "t": [
+      "Distancia OP",
+      0.25,
+      5,
+      0.25,
+      2
+    ],
+    "lab": "Distancias recíprocas",
+    "code": "const q=n*n/t;rows.push(['Distancia de la imagen',q],['Producto de distancias',t*q],['R²',n*n],['Segunda inversión',n*n/q]);for(let k=1;k<=100;k++){const r=.05*k;points.push([r,n*n/r]);}note='La gráfica relaciona las distancias al centro; no representa un punto imagen en coordenadas cartesianas. El centro no tiene imagen finita.';",
+    "related": [
+      "mobius-transformations",
+      "power-of-point",
+      "complex-arithmetic"
+    ]
+  },
+  {
+    "slug": "curvature-frenet",
+    "area": "geometry",
+    "ids": [
+      "M45",
+      "M46"
+    ],
+    "title": "Curvatura, círculo osculador y triedro de Frenet",
+    "terms": [
+      "curvatura",
+      "círculo osculador",
+      "radio de curvatura",
+      "torsión",
+      "triedro de Frenet",
+      "normal principal"
+    ],
+    "definition": "La curvatura mide cuánto cambia la dirección tangente por unidad de longitud de arco. Si es positiva, su inversa es el radio del círculo osculador. En una curva espacial regular, T es el tangente unitario; donde T varía se define la normal principal N y la binormal B=T×N. La torsión mide el giro de ese plano móvil.",
+    "argument": "Derivar T respecto de la longitud de arco elimina la influencia de recorrer la misma curva con distinta velocidad. Para una parametrización regular, el producto vectorial r′×r″ conduce a κ=‖r′×r″‖/‖r′‖³. La fórmula de torsión usa el producto mixto de r′,r″,r‴ y exige que el producto vectorial no se anule.",
+    "example": "Para la hélice (a cos u,a sen u,bu), con a positivo, κ=a/(a²+b²) y τ=b/(a²+b²). Si b=0 se obtiene una circunferencia plana de radio a, con curvatura 1/a y torsión cero. La normal de una curva es un vector del triedro y no equivale a cualquier normal a un plano.",
+    "caution": "En puntos de curvatura cero la normal principal puede no estar definida. Una recta tiene curvatura cero, pero no un círculo osculador de radio finito. Las fórmulas no se aplican directamente donde r′=0.",
+    "formula": "\\kappa=\\frac{\\|r'\\times r''\\|}{\\|r'\\|^3},\\qquad\\tau=\\frac{\\det(r',r'',r''')}{\\|r'\\times r''\\|^2}",
+    "question": "Calcula curvatura y torsión de la hélice con a=b=1.",
+    "answer": "Ambas son 1/2. Su radio de curvatura es 2, aunque su proyección horizontal tenga radio 1: el radio osculador no es el radio del cilindro que contiene la hélice.",
+    "n": [
+      "Radio a",
+      0.5,
+      3,
+      0.25,
+      1
+    ],
+    "t": [
+      "Ascenso b",
+      0,
+      3,
+      0.25,
+      1
+    ],
+    "lab": "Cambiar la geometría de una hélice",
+    "code": "const q=n*n+t*t;rows.push(['Curvatura',n/q],['Torsión',t/q],['Radio osculador',q/n],['Velocidad para el parámetro u',Math.sqrt(q)]);for(let k=0;k<=120;k++){const u=2*Math.PI*k/120;points.push([n*Math.cos(u),n*Math.sin(u)]);}note='La gráfica es solo la proyección horizontal de la hélice. La tabla incorpora el ascenso espacial, que esa proyección no puede mostrar.';",
+    "related": [
+      "arc-length",
+      "cross-product",
+      "circular-helix-curve"
+    ]
+  },
+  {
+    "slug": "envelopes-evolutes",
+    "area": "geometry",
+    "ids": [
+      "M47"
+    ],
+    "title": "Envolventes, evolutas e involutas",
+    "terms": [
+      "envolvente",
+      "envolventes",
+      "evoluta",
+      "evolutas",
+      "involuta",
+      "involutas"
+    ],
+    "definition": "Una envolvente es una curva tangente a miembros de una familia parametrizada. Si la familia se escribe F(x,y,u)=0, los candidatos se obtienen junto con ∂F/∂u=0, bajo condiciones de regularidad. Una evoluta es el lugar de los centros de curvatura de otra curva; una involuta surge al desenrollar una cuerda tensa sobre ella.",
+    "argument": "Si un punto de contacto varía sobre un miembro de la familia, derivar F(x(u),y(u),u)=0 relaciona la tangente del lugar con el gradiente de F. La condición ∂F/∂u=0 hace que esa tangente coincida con la del miembro correspondiente, cuando los gradientes no se anulan y la parametrización es regular.",
+    "example": "Para las rectas y=ux−u², las ecuaciones son y−ux+u²=0 y −x+2u=0. Resultan x=2u,y=u², y al eliminar u queda y=x²/4. Cada recta toca esa parábola en el punto (2u,u²). En una circunferencia, todos los centros de curvatura coinciden en su centro: su evoluta degenera en un punto.",
+    "caution": "Resolver las dos ecuaciones proporciona candidatos; hay que estudiar ramas, puntos singulares y contactos reales. El lugar de puntos de una trayectoria no es automáticamente una envolvente.",
+    "formula": "F(x,y,u)=0,\\quad F_u(x,y,u)=0;\\qquad y=ux-u^2\\Longrightarrow (x,y)=(2u,u^2)",
+    "question": "Comprueba que la recta de la familia tiene la misma pendiente que la parábola en el contacto.",
+    "answer": "La pendiente de y=x²/4 es x/2. En x=2u vale u, exactamente la pendiente de la recta y=ux−u².",
+    "n": [
+      "Densidad de muestreo",
+      10,
+      100,
+      5,
+      40
+    ],
+    "t": [
+      "Miembro de la familia u",
+      -2,
+      2,
+      0.1,
+      1
+    ],
+    "lab": "Del parámetro al punto de contacto",
+    "code": "rows.push(['Abscisa de contacto',2*t],['Ordenada de contacto',t*t],['Pendiente de la recta',t],['Pendiente de la envolvente',t]);for(let k=0;k<=n;k++){const u=-2+4*k/n;points.push([2*u,u*u]);}note='La curva trazada es el lugar de contactos. El muestreo cambia su resolución; el contacto calculado se obtiene de ecuaciones exactas.';",
+    "related": [
+      "curvature-frenet",
+      "circle-involute",
+      "ellipse-evolute-curve"
+    ]
+  },
+  {
+    "slug": "curve-singularities",
+    "area": "geometry",
+    "ids": [
+      "M48"
+    ],
+    "title": "Puntos singulares, cúspides y nodos de curvas",
+    "terms": [
+      "punto singular",
+      "puntos singulares",
+      "cúspide",
+      "cúspides",
+      "nodo",
+      "nodos"
+    ],
+    "definition": "En una curva implícita F(x,y)=0, un punto donde el gradiente no se anula es regular: localmente puede describirse como gráfica suave. Si F y sus dos derivadas parciales se anulan, el punto es singular para esa ecuación. Puede haber ramas que se cruzan, una cúspide u otros comportamientos; anular el gradiente no los clasifica por sí solo.",
+    "argument": "La parte homogénea de menor grado no nula en el desarrollo local de F determina candidatos a direcciones tangentes. Para y²−x²−x³=0, la parte inicial (y−x)(y+x) da dos tangentes distintas: es un nodo en el origen. Para y²−x³=0 hay una tangente doble y una parametrización (u²,u³), que muestra una cúspide.",
+    "example": "La cúspide semicúbica solo tiene x no negativo y el punto origen corresponde a velocidad paramétrica cero. El nodo y²=x²(x+1) admite la parametrización (u²−1,u(u²−1)): el origen se alcanza con u=1 y u=−1, mediante dos ramas de tangentes distintas.",
+    "caution": "Una parametrización con velocidad cero puede deberse a un mal parámetro de una curva geométricamente regular. Además, usar F² en vez de F anula el gradiente en todos los puntos sin cambiar el conjunto: la ecuación debe tratarse sin factores repetidos artificiales.",
+    "formula": "F=F_x=F_y=0,\\qquad y^2=x^3:\\ (x,y)=(u^2,u^3)",
+    "question": "¿Por qué y²=x² tiene un nodo y no una cúspide en el origen?",
+    "answer": "Se factoriza como (y−x)(y+x)=0: es la unión de dos rectas distintas. Hay dos direcciones tangentes y dos ramas que se cruzan.",
+    "n": [
+      "Modelo: 0=cúspide, 1=nodo",
+      0,
+      1,
+      1,
+      0
+    ],
+    "t": [
+      "Parámetro u",
+      -1.5,
+      1.5,
+      0.05,
+      0
+    ],
+    "lab": "Una parametrización y sus ramas",
+    "code": "const x=n===0?t*t:t*t-1,y=n===0?t**3:t*(t*t-1);rows.push(['x(u)',x],['y(u)',y],['Velocidad paramétrica',n===0?Math.hypot(2*t,3*t*t):Math.hypot(2*t,3*t*t-1)]);for(let k=0;k<=160;k++){const u=-1.5+3*k/160;points.push(n===0?[u*u,u**3]:[u*u-1,u*(u*u-1)]);}note='En el nodo el mismo punto puede corresponder a dos parámetros distintos. En la cúspide, la parametrización usada se detiene en u=0.';",
+    "related": [
+      "total-derivative-gradient",
+      "neile-semicubical",
+      "descartes-folium"
+    ]
+  },
+  {
+    "slug": "hyperbolic-functions",
+    "area": "analysis",
+    "ids": [
+      "M49"
+    ],
+    "title": "Funciones hiperbólicas e inversas",
+    "terms": [
+      "funciones hiperbólicas",
+      "seno hiperbólico",
+      "coseno hiperbólico",
+      "tangente hiperbólica",
+      "arsinh",
+      "arcosh"
+    ],
+    "definition": "El seno y coseno hiperbólicos se definen por combinaciones de exponenciales. Su identidad básica es cosh²x−sinh²x=1: parametrizan una rama de la hipérbola, en lugar de la circunferencia trigonométrica. La tangente hiperbólica es sinh/cosh y toma valores entre −1 y 1.",
+    "argument": "Al desarrollar los cuadrados de las definiciones exponenciales se cancelan los términos e^(2x) y e^(−2x), quedando uno. Derivar muestra que sinh′=cosh y cosh′=sinh. Como cosh es siempre positivo, sinh es estrictamente creciente y tiene inversa real en toda la recta. Para invertir cosh se restringe a x≥0; su inversa tiene dominio [1,∞).",
+    "example": "Resolver y=sinh x mediante u=eˣ positivo conduce a u²−2yu−1=0. La raíz positiva es y+√(y²+1), así que arsinh y=log(y+√(y²+1)). La catenaria se expresa con cosh, y esta conexión permite calcular arcos y pendientes sin convertirla en una parábola.",
+    "caution": "Las fórmulas de las inversas tienen dominios distintos. En particular, arcosh no es real para argumentos menores que uno. La identidad hiperbólica tiene una resta y no debe confundirse con sen²x+cos²x=1.",
+    "formula": "\\sinh x=\\frac{e^x-e^{-x}}2,\\quad\\cosh x=\\frac{e^x+e^{-x}}2,\\quad\\operatorname{arsinh}x=\\log(x+\\sqrt{x^2+1})",
+    "question": "Demuestra que tanh x nunca alcanza uno en un x real finito.",
+    "answer": "Se escribe (e^(2x)−1)/(e^(2x)+1). El denominador supera al numerador en dos y es positivo, de modo que el cociente es menor que uno. Tiende a uno al crecer x.",
+    "n": [
+      "Ventana horizontal",
+      1,
+      4,
+      0.5,
+      2
+    ],
+    "t": [
+      "Punto x",
+      -3,
+      3,
+      0.1,
+      1
+    ],
+    "lab": "Identidad e inversión",
+    "code": "rows.push(['sinh(x)',Math.sinh(t)],['cosh(x)',Math.cosh(t)],['cosh²−sinh²',Math.cosh(t)**2-Math.sinh(t)**2],['arsinh(sinh(x))',Math.asinh(Math.sinh(t))]);for(let k=0;k<=120;k++){const x=-n+2*n*k/120;points.push([x,Math.tanh(x)]);}note='La gráfica muestra tanh. La tabla contrasta la identidad algebraica y una composición con su inversa real.';",
+    "related": [
+      "exponentials-logarithms",
+      "catenary-curve",
+      "integration-classical"
+    ]
+  },
+  {
+    "slug": "orthogonal-polynomials",
+    "area": "analysis",
+    "ids": [
+      "M50"
+    ],
+    "title": "Polinomios ortogonales y funciones de peso",
+    "terms": [
+      "polinomios ortogonales",
+      "función de peso",
+      "funciones de peso",
+      "ortogonalidad de polinomios"
+    ],
+    "definition": "Dos polinomios pueden ser ortogonales respecto de un producto interno integral: se integra su producto multiplicado por un peso no negativo. El intervalo y el peso forman parte de la definición. Las familias clásicas de Legendre, Chebyshev, Hermite y Laguerre usan pesos o dominios distintos.",
+    "argument": "Aplicar Gram–Schmidt a 1,x,x²,… con un producto interno positivo produce polinomios de grados sucesivos ortogonales. Para Legendre en [−1,1] con peso uno, los primeros son 1, x y (3x²−1)/2. La simetría anula productos de paridad impar; los restantes deben verificarse mediante sus integrales, no solo por la apariencia de sus gráficas.",
+    "example": "La integral de P₂ sobre [−1,1] es (3·2/3−2)/2=0. Así P₂ es ortogonal al polinomio constante. Pero integrar P₂² produce 2/5, no uno: ortogonal no significa normalizado. Estas familias permiten aproximar funciones y construir reglas de cuadratura.",
+    "caution": "Cambiar el peso puede destruir la ortogonalidad. La ortogonalidad integral no implica que los polinomios no se corten como curvas. Las raíces y la normalización dependen de la familia elegida.",
+    "formula": "\\langle p,q\\rangle_w=\\int_a^bp(x)q(x)w(x)\\,dx,\\qquad (k+1)P_{k+1}=(2k+1)xP_k-kP_{k-1}",
+    "question": "Verifica la norma al cuadrado de P₁(x)=x con peso uno en [−1,1].",
+    "answer": "La integral de x² es 2/3. Para convertirlo en un vector unitario se multiplica por √(3/2).",
+    "n": [
+      "Grado de Legendre",
+      0,
+      8,
+      1,
+      2
+    ],
+    "t": [
+      "Punto x",
+      -1,
+      1,
+      0.05,
+      0.5
+    ],
+    "lab": "Recurrencia de Legendre",
+    "code": "const P=(x:number)=>{if(n===0)return 1;let a=1,b=x;for(let k=1;k<n;k++){const c=((2*k+1)*x*b-k*a)/(k+1);a=b;b=c;}return b;};rows.push(['P_n(x)',P(t)],['Norma² exacta',2/(2*n+1)]);for(let k=0;k<=160;k++){const x=-1+2*k/160;points.push([x,P(x)]);}note='La recurrencia calcula Legendre con peso uno. No se aplica sin cambios a otras familias ni a otros productos internos.';",
+    "related": [
+      "gram-schmidt",
+      "legendre-curve",
+      "chebyshev-curve"
+    ]
+  },
+  {
+    "slug": "bernstein-polynomials",
+    "area": "algebra",
+    "ids": [
+      "M51"
+    ],
+    "title": "Polinomios de Bernstein y aproximación",
+    "terms": [
+      "polinomios de Bernstein",
+      "base de Bernstein",
+      "Bernstein"
+    ],
+    "definition": "Los polinomios Bₖ,ₙ(t)=C(n,k)tᵏ(1−t)^(n−k), para k entre cero y n, son no negativos en [0,1] y suman uno. Constituyen una base del espacio de polinomios de grado como máximo n. Esta partición de la unidad permite combinar puntos de control sin salir de su envolvente convexa.",
+    "argument": "La suma uno se obtiene del teorema del binomio aplicado a t+(1−t). El operador de aproximación de Bernstein de una función continua combina f(k/n) con esos pesos. Puede interpretarse como E[f(K/n)] para K binomial(n,t); concentración de K/n alrededor de t y continuidad uniforme explican la convergencia uniforme.",
+    "example": "Para f(t)=t², la media del cuadrado de K/n es t²+t(1−t)/n. El error es no negativo y su máximo es 1/(4n). Aumentar n mejora esta aproximación, aunque no reproduce exactamente la cuadrática con este operador. En una curva de Bézier, los coeficientes son puntos de control y tienen otra interpretación.",
+    "caution": "Los puntos de control de Bézier no son en general valores muestreados de la curva. Fuera de [0,1], los pesos pueden dejar de ser no negativos y la propiedad de envolvente convexa ya no está garantizada.",
+    "formula": "B_n(f)(t)=\\sum_{k=0}^nf(k/n)\\binom nk t^k(1-t)^{n-k},\\qquad B_n(t^2)-t^2=\\frac{t(1-t)}n",
+    "question": "¿Por qué el operador reproduce cualquier función afín?",
+    "answer": "Porque la suma de los pesos vale uno y la suma de (k/n) por esos pesos es E[K/n]=t. Por linealidad, Bₙ(at+b)=at+b.",
+    "n": [
+      "Grado n",
+      1,
+      30,
+      1,
+      5
+    ],
+    "t": [
+      "Punto t",
+      0,
+      1,
+      0.01,
+      0.5
+    ],
+    "lab": "Un error de aproximación exacto",
+    "code": "rows.push(['f(t)=t²',t*t],['Bernstein de t²',t*t+t*(1-t)/n],['Error exacto',t*(1-t)/n],['Cota uniforme',1/(4*n)]);for(let k=0;k<=100;k++){const x=k/100;points.push([x,x*(1-x)/n]);}note='La gráfica muestra el error de aproximar t², calculado con su identidad exacta. El máximo aparece en t=1/2.';",
+    "related": [
+      "binomial-theorem",
+      "cubic-bezier-curve",
+      "convex-hull"
+    ]
+  },
+  {
+    "slug": "affine-transformations",
+    "area": "geometry",
+    "ids": [
+      "M52"
+    ],
+    "title": "Transformaciones afines: parte lineal y traslación",
+    "terms": [
+      "transformación afín",
+      "transformaciones afines",
+      "aplicación afín",
+      "contracciones afines"
+    ],
+    "definition": "Una transformación afín tiene la forma F(x)=Ax+b: aplica primero una transformación lineal y después una traslación. Conserva combinaciones de puntos cuyos coeficientes suman uno. De ahí que preserve rectas y paralelismo, salvo colapsos cuando la parte lineal no es invertible.",
+    "argument": "Si Σλᵢ=1, desarrollar A(Σλᵢxᵢ)+b da Σλᵢ(Axᵢ+b). En particular se preservan segmentos, puntos medios y baricentros afines. El determinante de A controla el factor de área o volumen y su signo la orientación; la traslación no interviene en ese factor.",
+    "example": "La cizalla F(x,y)=(x+ky+c,y) transforma un cuadrado unidad en un paralelogramo. Su determinante es uno para cualquier k y c, de modo que conserva el área. No conserva los ángulos: una arista vertical pasa a dirección (k,1). Una transformación afín general tampoco conserva longitudes.",
+    "caution": "«Afín» no significa «isometría». Para que sea biyectiva en un espacio finito de igual dimensión, A debe ser invertible. Un sistema iterado requiere además verificar que cada aplicación sea contractiva para aplicar los teoremas de atractores por contracción.",
+    "formula": "F(x)=Ax+b,\\qquad F\\!\\left(\\sum_i\\lambda_ix_i\\right)=\\sum_i\\lambda_iF(x_i)\\quad\\left(\\sum_i\\lambda_i=1\\right)",
+    "question": "¿Una proyección ortogonal sobre una recta es afín e invertible?",
+    "answer": "Es lineal, luego afín con b=0. En el plano no es invertible: anula la dirección perpendicular y su determinante es cero.",
+    "n": [
+      "Cizalla k",
+      -2,
+      2,
+      0.25,
+      1
+    ],
+    "t": [
+      "Traslación horizontal c",
+      -2,
+      2,
+      0.25,
+      0
+    ],
+    "lab": "Cambiar ángulos sin cambiar el área",
+    "code": "for(const [x,y]of[[0,0],[1,0],[1,1],[0,1],[0,0]])points.push([x+n*y+t,y]);rows.push(['Determinante',1],['Área de la imagen',1],['Longitud de la arista oblicua',Math.hypot(n,1)]);note='Se representa la imagen del cuadrado unidad. La traslación desplaza la figura; la cizalla modifica sus ángulos.';",
+    "related": [
+      "matrix-determinant",
+      "barycenter",
+      "orthogonal-projections"
+    ]
+  }
+]

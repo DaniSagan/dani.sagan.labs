@@ -7,9 +7,9 @@
 <p>Para justificarlo, dividimos el intervalo por la mitad y conservamos una mitad con signos opuestos. Los intervalos encajados tienen longitudes que tienden a cero y un único punto común. La continuidad obliga a que su valor sea cero: si fuera positivo o negativo, una vecindad conservaría ese signo, contradiciendo el encierro.</p>
 <p>La función 1/x sobre [−1, 1] tiene signos opuestos en los extremos, pero no es continua ni está definida en cero. No tiene raíces. La continuidad es parte de la hipótesis, no un detalle decorativo.</p>
 <h3>2. La unicidad necesita otra razón</h3>
-<p>En f(x) = x³ + x − 1, f(1/2) = −3/8 y f(1) = 1. Existe una raíz entre ambos. Como f′(x) = 3x² + 1 &gt; 0 para todo x real, f es estrictamente creciente y esa raíz es la única real.</p>
+<p>En f(x) = x³ + x − 1, f(1/2) = −3/8 y f(1) = 1. Existe una raíz entre ambos. Como f′(x) = 3x² + 1 &gt; 0 para todo x real, f es <a data-article-concept="function-analysis" routerLink="/articles/function-analysis">estrictamente creciente</a> y esa raíz es la única real.</p>
 <app-formula expression="f(\tfrac12)=-\tfrac38&lt;0&lt;f(1)=1,\qquad f'(x)=3x^2+1\ge1" />
-<p>Este es el <a routerLink="/problems/unique-root-without-explicit-formula">problema 050</a>. Bolzano prueba existencia, y la monotonía prueba unicidad. Por Rolle, dos raíces distintas de una función diferenciable obligarían a una derivada nula entre ellas.</p>
+<p>Este es el <a routerLink="/problems/unique-root-without-explicit-formula">problema 050</a>. Bolzano prueba existencia, y la monotonía prueba unicidad. Por <a data-article-concept="mean-value-theorems" routerLink="/articles/mean-value-theorems">Rolle</a>, dos raíces distintas de una función diferenciable obligarían a una derivada nula entre ellas.</p>
 <h3>3. Bisección: convertir existencia en una cota</h3>
 <p>Después de k divisiones, la longitud es (b₀ − a₀)/2ᵏ. El punto medio tiene un error no mayor que la mitad de esa longitud. La bisección es lenta frente a Newton cerca de una raíz simple, pero conserva una garantía de encierro.</p>
 <app-formula expression="|m_k-c|\le\frac{b_0-a_0}{2^{k+1}}" />
@@ -42,3 +42,6 @@
 <li><a routerLink="/problems/root-existence-by-intermediate-value">148 · Una raíz garantizada sin resolverla</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/function-analysis">Estudio completo de funciones</a></li><li><a routerLink="/articles/mean-value-theorems">Teoremas de Rolle y del valor medio</a></li></ul></details></section>
+<!-- article-concepts:end -->

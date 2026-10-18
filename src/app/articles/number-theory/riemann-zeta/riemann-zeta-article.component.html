@@ -8,14 +8,14 @@
   absolutamente:</p>
 <app-formula
   expression="\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s},\qquad n^{-s}=e^{-s\log n},\qquad \Re(s)>1"></app-formula>
-<p>El producto de Euler expresa la misma función usando únicamente números primos. Al expandir cada factor
-  como una serie geométrica, la <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a> hace que cada entero positivo aparezca exactamente una vez:</p>
+<p>El <a data-article-concept="dirichlet-convolution-series" routerLink="/articles/dirichlet-convolution-series">producto de Euler</a> expresa la misma función usando únicamente números primos. Al expandir cada factor
+  como una <a data-article-concept="geometric-series" routerLink="/articles/geometric-series">serie geométrica</a>, la <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a> hace que cada entero positivo aparezca exactamente una vez:</p>
 <app-formula expression="\zeta(s)=\prod_{p\;\mathrm{primo}}\frac{1}{1-p^{-s}},\qquad \Re(s)>1"></app-formula>
 <p>Esta identidad explica su papel en teoría de números: una función analítica reúne información sobre todos los primos.
   Riemann estudió esta conexión con una variable compleja en su trabajo de 1859.</p>
 
 <h3>Más allá de la serie: continuación analítica</h3>
-<p>La serie anterior no converge en la franja crítica. Para llegar allí se usa la continuación analítica,
+<p>La serie anterior no converge en la franja crítica. Para llegar allí se usa la <a data-article-concept="holomorphic-continuation" routerLink="/articles/holomorphic-continuation">continuación analítica</a>,
   que extiende de manera única la función a todo el plano complejo salvo un polo simple en s = 1, de residuo 1.
   Cerca de ese punto, su término dominante es 1/(s − 1).
   <a href="https://dlmf.nist.gov/25.2">Definición y continuación en DLMF (NIST)</a>.
@@ -23,7 +23,7 @@
 <app-formula expression="\zeta(2)=\frac{\pi^2}{6},\qquad \zeta(0)=-\frac12,\qquad \zeta(-1)=-\frac1{12}"></app-formula>
 <p>El último valor corresponde a la función continuada: no significa que la suma ordinaria 1 + 2 + 3 + ⋯
   sea negativa ni convergente. Es esencial distinguir la serie original de su continuación.</p>
-<p>La ecuación funcional relaciona valores a ambos lados del plano. La <a routerLink="/articles/gamma-function">función gamma</a> Γ extiende el factorial,
+<p>La ecuación funcional relaciona valores a ambos lados del plano. La <a routerLink="/articles/gamma-function">función gamma</a> Γ extiende el <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a>,
   con Γ(n) = (n − 1)! para enteros positivos:</p>
 <app-formula expression="\zeta(s)=2^s\pi^{s-1}\sin\!\left(\frac{\pi s}{2}\right)\Gamma(1-s)\zeta(1-s)"></app-formula>
 <p>En puntos donde aparecen factores singulares, esta identidad se interpreta por límites.
@@ -55,7 +55,7 @@
   y explorar una cantidad finita de puntos no prueba una afirmación sobre todos los ceros.</p>
 
 <h3>Cómo se calcula</h3>
-<p>La calculadora usa la fórmula de Euler–Maclaurin para combinar una suma finita con correcciones de su cola,
+<p>La calculadora usa la fórmula de <a data-article-concept="euler-maclaurin-asymptotics" routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin</a> para combinar una suma finita con correcciones de su cola,
   y comprueba la estabilidad al duplicar el número de términos. En el semiplano izquierdo emplea la ecuación funcional.
   Son aproximaciones de doble precisión, no un sistema de aritmética de precisión arbitraria.
   <a href="https://dlmf.nist.gov/25.11#iii">Representaciones de Euler–Maclaurin en DLMF</a>.
@@ -67,3 +67,6 @@
   <li><a routerLink="/problems/improper-integral-with-parameter">Problema 065 · Integral impropia con parámetro</a>. Comprueba la frontera p = 1 mediante la integral que sirve para comparar la serie real de potencias.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dirichlet-convolution-series">Funciones aritméticas, convolución y series de Dirichlet</a></li><li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a></li><li><a routerLink="/articles/holomorphic-continuation">Funciones holomorfas y continuación analítica</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin y truncamiento de desarrollos asintóticos</a></li><li><a routerLink="/articles/complex-residues">Singularidades, polos y residuos</a></li></ul></details></section>
+<!-- article-concepts:end -->

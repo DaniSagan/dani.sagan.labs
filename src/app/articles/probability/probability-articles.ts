@@ -1,3 +1,10 @@
+import { ErgodicityAutocorrelationArticleComponent } from './ergodicity-autocorrelation/ergodicity-autocorrelation-article.component';
+import { BerryEsseenArticleComponent } from './berry-esseen/berry-esseen-article.component';
+import { GeneratingConcentrationArticleComponent } from './generating-concentration/generating-concentration-article.component';
+import { MaximumLikelihoodArticleComponent } from './maximum-likelihood/maximum-likelihood-article.component';
+import { CauchyHeavyTailsArticleComponent } from './cauchy-heavy-tails/cauchy-heavy-tails-article.component';
+import { HeterogeneousBinomialMixturesArticleComponent } from './heterogeneous-binomial-mixtures/heterogeneous-binomial-mixtures-article.component';
+import { PoissonExponentialWaitingArticleComponent } from './poisson-exponential-waiting/poisson-exponential-waiting-article.component';
 import { ProbabilityTreesArticleComponent } from './probability-trees/probability-trees-article.component';
 import { DistributionFunctionsTailsArticleComponent } from './distribution-functions-tails/distribution-functions-tails-article.component';
 import { FiniteProbabilityArticleComponent } from './finite-probability/finite-probability-article.component';
@@ -36,6 +43,13 @@ import { CentralLimitTheoremArticleComponent } from './central-limit-theorem/cen
 import { MarkovChainsArticleComponent } from './markov-chains/markov-chains-article.component';
 
 export const PROBABILITY_ARTICLES = [
+  ErgodicityAutocorrelationArticleComponent,
+  BerryEsseenArticleComponent,
+  GeneratingConcentrationArticleComponent,
+  MaximumLikelihoodArticleComponent,
+  CauchyHeavyTailsArticleComponent,
+  HeterogeneousBinomialMixturesArticleComponent,
+  PoissonExponentialWaitingArticleComponent,
   ProbabilityTreesArticleComponent,
   DistributionFunctionsTailsArticleComponent,
   FiniteProbabilityArticleComponent,

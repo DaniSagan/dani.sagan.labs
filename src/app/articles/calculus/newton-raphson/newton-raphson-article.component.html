@@ -38,7 +38,7 @@
 <app-newton-convergence></app-newton-convergence>
 
 <h3>Las raíces múltiples cambian el ritmo</h3>
-<p>Una raíz de multiplicidad m puede escribirse localmente como f(x) = (x − α)ᵐg(x),
+<p>Una raíz de <a data-article-concept="polynomial-foundations" routerLink="/articles/polynomial-foundations" fragment="roots">multiplicidad</a> m puede escribirse localmente como f(x) = (x − α)ᵐg(x),
   con g(α) ≠ 0. Cuando m &gt; 1, la derivada también se anula en la raíz y Newton ordinario pierde
   su velocidad cuadrática: el cociente de errores tiende a 1 − 1/m.</p>
 <app-formula expression="\frac{e_{n+1}}{e_n}\longrightarrow\frac{m-1}{m},\qquad x_{n+1}=x_n-m\frac{f(x_n)}{f'(x_n)}\quad\text{(multiplicidad conocida)}"></app-formula>
@@ -78,7 +78,7 @@
   que encierra una raíz y una cota de error mediante su anchura.</p>
 
 <h3>Rapidez con una red de seguridad</h3>
-<p>La bisección no necesita derivadas y conserva el encierro cuando sus hipótesis se cumplen,
+<p>La bisección no necesita <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> y conserva el encierro cuando sus hipótesis se cumplen,
   aunque suele avanzar más despacio. Un método híbrido puede mantener ese intervalo, intentar
   un paso de Newton y recurrir al punto medio si el paso sale del intervalo o no reduce suficientemente
   su anchura. Así se combina la rapidez local con una garantía de progreso.</p>
@@ -100,11 +100,11 @@
   <a routerLink="../newton-set-fractal">explorador del fractal de Newton</a>.</p>
 
 <h3>De una variable a muchas</h3>
-<p>Para resolver un sistema F(x) = 0, la derivada se sustituye por la matriz jacobiana J.
+<p>Para resolver un sistema F(x) = 0, la derivada se sustituye por la <a data-article-concept="jacobian-change-variables" routerLink="/articles/jacobian-change-variables">matriz jacobiana</a> J.
   En cada paso se resuelve un sistema lineal para la corrección Δx:</p>
 <app-formula expression="J_F(x_n)\,\Delta x_n=-F(x_n),\qquad x_{n+1}=x_n+\Delta x_n"></app-formula>
 <p>No es necesario formar explícitamente la inversa de la matriz. Esta idea aparece en simulación,
-  ecuaciones implícitas y optimización. En una variable, aplicar Newton a f′ busca puntos estacionarios
+  ecuaciones implícitas y <a data-article-concept="derivative-optimization" routerLink="/articles/derivative-optimization">optimización</a>. En una variable, aplicar Newton a f′ busca puntos estacionarios
   de f; distinguir un mínimo de un máximo exige información adicional.</p>
 
 <h3>Retos para explorar</h3>
@@ -123,7 +123,7 @@
 <h3>Practica y experimenta</h3>
 <ul>
   <li><a routerLink="/problems/two-newton-iterations">Problema 054 · Dos pasos de Newton</a>. Realiza las dos iteraciones con aritmética exacta antes de convertirlas en decimales.</li>
-  <li><a routerLink="/problems/unique-root-without-explicit-formula">Problema 050 · Una raíz única sin fórmula</a>. Prueba existencia y unicidad antes de buscar una aproximación de la raíz.</li>
+  <li><a routerLink="/problems/unique-root-without-explicit-formula">Problema 050 · Una raíz única sin fórmula</a>. Prueba <a data-article-concept="picard-lipschitz" routerLink="/articles/picard-lipschitz">existencia y unicidad</a> antes de buscar una aproximación de la raíz.</li>
   <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa x^2-2 para localizar las raíces que se aproximan con el método de tangentes.</li>
 </ul>
 </div>
@@ -139,3 +139,6 @@
 <li><a routerLink="/problems/newton-step-for-a-cube-root">157 · Un paso de Newton para una raíz cúbica</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/polynomial-foundations" fragment="roots">Polinomios desde cero: grado, coeficientes y raíces</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/jacobian-change-variables">Matriz jacobiana y cambios de variables</a></li><li><a routerLink="/articles/derivative-optimization">Optimización con derivadas</a></li><li><a routerLink="/articles/picard-lipschitz">Existencia y unicidad: Picard y la condición de Lipschitz</a></li></ul></details></section>
+<!-- article-concepts:end -->

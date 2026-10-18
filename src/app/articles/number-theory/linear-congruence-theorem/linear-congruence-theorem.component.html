@@ -1,6 +1,6 @@
 <h2>Congruencias lineales: cuándo se puede dividir</h2>
-<p class="dropcap">En una congruencia no siempre es lícito cancelar un coeficiente. De 6x≡6 (mod 15), por ejemplo, no se
-  obtiene una única clase al “dividir por 6”. El máximo común divisor entre el coeficiente y el módulo determina tanto
+<p class="dropcap">En una <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">congruencia</a> no siempre es lícito cancelar un coeficiente. De 6x≡6 (mod 15), por ejemplo, no se
+  obtiene una única clase al “dividir por 6”. El <a data-article-concept="gcd-euclid" routerLink="/articles/gcd-euclid">máximo común divisor</a> entre el coeficiente y el módulo determina tanto
   la existencia como el número de soluciones.</p>
 <p>Gauss introdujo la notación de congruencia en 1801 y reunió bajo un mismo lenguaje numerosos cálculos tradicionales
   con restos. La ecuación básica es</p>
@@ -34,7 +34,7 @@
   evita encontrarlas por tanteo.</p>
 <p>El caso b=1 merece atención: la congruencia ax≡1 pregunta por el inverso de a. El teorema asegura que existe
   exactamente cuando a y n son coprimos, y el algoritmo extendido de Euclides lo calcula. Así quedan unidas ecuaciones
-  diofánticas, inversos y división modular.</p>
+  <a data-article-concept="linear-diophantine-equations" routerLink="/articles/linear-diophantine-equations">diofánticas</a>, inversos y división modular.</p>
 <p><strong>Práctica.</strong> Resuelve 14x≡8 (mod 30) y comprueba cada solución. Decide después, sin probar valores, si
   12x≡5 (mod 18) es resoluble. Como extensión, demuestra que ax≡b tiene una única solución módulo n precisamente cuando
   gcd(a,n)=1.</p>
@@ -52,3 +52,6 @@
 <li><a routerLink="/problems/modular-inverse-for-decoding">103 · Un inverso para descifrar</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/gcd-euclid">Máximo común divisor (MCD) y algoritmo de Euclides</a></li><li><a routerLink="/articles/linear-diophantine-equations">Ecuaciones diofánticas lineales</a></li></ul></details></section>
+<!-- article-concepts:end -->

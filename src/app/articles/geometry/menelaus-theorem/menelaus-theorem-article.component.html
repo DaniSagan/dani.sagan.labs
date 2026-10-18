@@ -1,15 +1,15 @@
 <h2>Teorema de Menelao</h2>
 <p class="dropcap">El teorema de Menelao permite decidir cuándo tres puntos situados en las rectas que contienen los lados de un triángulo están alineados. Es un compañero natural de Ceva: allí buscamos tres rectas concurrentes; aquí buscamos tres puntos sobre una misma transversal. Para incluir las prolongaciones sin separar numerosos dibujos, utilizaremos coordenadas y cocientes con signo.</p>
 <h3>1. Fijar los puntos y los signos</h3>
-<p>Tomamos D en la recta BC, E en CA y F en AB, distintos de los vértices. Escribimos sus posiciones mediante parámetros reales. Un parámetro entre cero y uno representa un punto interior; fuera de ese intervalo representa una prolongación. Las expresiones siguientes son combinaciones afines, por lo que sus coeficientes suman uno:</p>
+<p>Tomamos D en la recta BC, E en CA y F en AB, distintos de los vértices. Escribimos sus posiciones mediante parámetros reales. Un parámetro entre cero y uno representa un punto interior; fuera de ese intervalo representa una prolongación. Las expresiones siguientes son <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a> afines, por lo que sus coeficientes suman uno:</p>
 <app-formula expression="D=(1-d)B+dC,\quad E=(1-e)C+eA,\quad F=(1-f)A+fB" displayMode="block"/>
 <p>Con esta convención, BD/DC significa d/(1−d), y análogamente para los otros lados. Es positivo en el interior y negativo en el exterior. Menelao afirma que la alineación equivale a que el producto sea menos uno.</p>
 <app-formula expression="\frac{d}{1-d}\frac{e}{1-e}\frac{f}{1-f}=-1" displayMode="block"/>
 <app-geometry-diagram diagram="menelaus-theorem" description="D y E están en dos lados del triángulo; F se encuentra en la prolongación de AB. La transversal DEF produce un cociente negativo."/>
 <h3>2. Elegir coordenadas sencillas</h3>
-<p>Una transformación afín conserva rectas y razones de segmentos sobre una misma recta. Podemos trabajar, por tanto, con A=(0,0), B=(1,0) y C=(0,1), aunque el triángulo original tenga otra forma. Sustituimos estas coordenadas en las definiciones anteriores:</p>
+<p>Una <a data-article-concept="affine-transformations" routerLink="/articles/affine-transformations">transformación afín</a> conserva rectas y razones de segmentos sobre una misma recta. Podemos trabajar, por tanto, con A=(0,0), B=(1,0) y C=(0,1), aunque el triángulo original tenga otra forma. Sustituimos estas coordenadas en las definiciones anteriores:</p>
 <app-formula expression="D=(1-d,d),\quad E=(0,1-e),\quad F=(f,0)" displayMode="block"/>
-<p>Tres puntos están alineados exactamente cuando su <a routerLink="/articles/matrix-determinant">determinante</a> de coordenadas ampliadas es cero. Geométricamente, ese determinante es el doble del área orientada del triángulo DEF; un área nula expresa la colinealidad que queremos demostrar.</p>
+<p>Tres puntos están alineados exactamente cuando su <a routerLink="/articles/matrix-determinant">determinante</a> de coordenadas ampliadas es cero. Geométricamente, ese <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a> es el doble del área orientada del triángulo DEF; un área nula expresa la colinealidad que queremos demostrar.</p>
 <h3>3. Desarrollar el determinante</h3>
 <p>Escribimos una fila por cada punto y añadimos una tercera coordenada igual a uno. La expansión por la primera fila permite comprobar cada término sin invocar ningún resultado métrico:</p>
 <app-formula expression="\begin{vmatrix}1-d&d&1\\0&1-e&1\\f&0&1\end{vmatrix}=(1-d)(1-e)+df-f(1-e)=0" displayMode="block"/>
@@ -26,6 +26,9 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Introduce las coordenadas homogéneas de tres puntos como filas de una matriz 3 × 3: un determinante nulo permite comprobar su alineación.</li>
+  <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Introduce las <a data-article-concept="projective-homogeneous-coordinates" routerLink="/articles/projective-homogeneous-coordinates">coordenadas homogéneas</a> de tres puntos como filas de una matriz 3 × 3: un determinante nulo permite comprobar su alineación.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/affine-transformations">Transformaciones afines: parte lineal y traslación</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/projective-homogeneous-coordinates">Geometría proyectiva y coordenadas homogéneas</a></li></ul></details></section>
+<!-- article-concepts:end -->

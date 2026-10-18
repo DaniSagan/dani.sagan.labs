@@ -12,7 +12,7 @@
   pero conserva las alineaciones.</p>
 <app-ulam-explorer></app-ulam-explorer>
 <h3>Los anillos esconden cuadrados</h3>
-<p>El anillo de radio r contiene 8r casillas nuevas. Su esquina inferior derecha es el cuadrado impar (2r + 1)².
+<p>El anillo de radio r contiene 8r casillas nuevas. Su esquina inferior derecha es el <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> impar (2r + 1)².
   Desde esa esquina, recorrer un lado resta 2r al valor. Así se obtienen las cuatro diagonales que pasan por las esquinas:</p>
 <app-formula expression="\begin{aligned}\text{NE: }&4r^2-2r+1,\\\text{NO: }&4r^2+1,\\\text{SO: }&4r^2+2r+1,\\\text{SE: }&(2r+1)^2,\qquad r\ge1.\end{aligned}"></app-formula>
 <section aria-label="Comparar diagonales de la espiral">
@@ -41,7 +41,7 @@
   las afirmaciones sobre infinitos valores requieren argumentos matemáticos.</p>
 <p>En zonas muy lejanas, el visor mantiene exactos los enteros y sus posiciones mediante BigInt. Comprobar primalidad
   puede ser mucho más costoso que localizar una casilla: por eso separa los primos demostrados de los candidatos
-  que superan un test de Miller–Rabin. Un punto naranja no es una demostración de primalidad.</p>
+  que superan un test de <a data-article-concept="sieve-primality" routerLink="/articles/sieve-primality">Miller–Rabin</a>. Un punto naranja no es una demostración de primalidad.</p>
 <p><strong>Para explorar.</strong> Reduce la ventana a 7 × 7, activa los números y compara con la matriz inicial.
   Después amplía el tramo y la ventana para observar las diagonales. Busca 49: ¿en qué diagonal cae?
   Finalmente escribe un N de muchas cifras y pulsa «Ir a N» para inspeccionar su entorno sin calcular los anteriores.</p>
@@ -52,3 +52,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Comprueba la primalidad de números situados en una diagonal de la espiral y distingue un patrón visual de una afirmación válida para toda la diagonal.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/sieve-primality">Criba de Eratóstenes y pruebas de primalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -5,7 +5,7 @@
 <app-formula expression="\alpha+\beta+\gamma=60^\circ,\qquad \angle PAQ=\alpha" displayMode="block"/>
 <app-geometry-diagram diagram="morley-theorem" description="P, Q y T son las intersecciones de las trisectrices interiores adyacentes a los lados. El triángulo verde es equilátero."/>
 <h3>2. Calcular AP y AQ</h3>
-<p>En ABP los ángulos en A y B son α y β. La ley de los senos da AP=AB·sinβ/sin(α+β). Como AB=2R sin3γ y α+β=60°−γ, sustituimos y aplicamos la identidad del ángulo triple, escrita en forma de producto:</p>
+<p>En ABP los ángulos en A y B son α y β. La <a data-article-concept="sine-law" routerLink="/articles/sine-law">ley de los senos</a> da AP=AB·sinβ/sin(α+β). Como AB=2R sin3γ y α+β=60°−γ, sustituimos y aplicamos la identidad del ángulo triple, escrita en forma de producto:</p>
 <app-formula expression="AP=\frac{2R\sin3\gamma\sin\beta}{\sin(60^\circ-\gamma)}" displayMode="block"/>
 <app-formula expression="\sin3\gamma=4\sin\gamma\sin(60^\circ+\gamma)\sin(60^\circ-\gamma)" displayMode="block"/>
 <p>Los ángulos son positivos y menores de sesenta grados, así que el denominador no se anula. Cancelamos y repetimos la cuenta en ACQ. Para abreviar, llamamos k al factor común:</p>
@@ -17,9 +17,9 @@
 <p>La identidad intermedia se comprueba desarrollando el seno y el coseno de una suma. Al tomar la raíz positiva llegamos a una expresión donde α, β y γ aparecen en igualdad de condiciones:</p>
 <app-formula expression="PQ=8R\sin\alpha\sin\beta\sin\gamma" displayMode="block"/>
 <h3>4. Concluir la regularidad</h3>
-<p>Repetimos la cuenta desde B y C. La permutación de los tres ángulos no cambia su producto, de modo que PT y QT tienen exactamente la misma longitud que PQ. El triángulo interior es equilátero, aunque ABC sea escaleno. Esta conclusión depende de una igualdad exacta, no de la precisión con que se dibujen las trisectrices.</p>
+<p>Repetimos la cuenta desde B y C. La <a data-article-concept="permutation-symmetries" routerLink="/articles/permutation-symmetries">permutación</a> de los tres ángulos no cambia su producto, de modo que PT y QT tienen exactamente la misma longitud que PQ. El triángulo interior es equilátero, aunque ABC sea escaleno. Esta conclusión depende de una igualdad exacta, no de la precisión con que se dibujen las trisectrices.</p>
 <h3>Historia y una limitación curiosa</h3>
-<p>Frank Morley descubrió esta configuración a finales del siglo XIX; posteriormente se estudiaron numerosas variantes con trisectrices exteriores. <a href="https://mathworld.wolfram.com/MorleysTheorem.html">MathWorld</a> recoge esas extensiones. El teorema no proporciona un procedimiento universal para trisecar ángulos con regla y compás: tal construcción es imposible en general. Demostrar una propiedad de trisectrices que existen geométricamente es distinto de poder construirlas con esas herramientas clásicas. Aquí la trigonometría permite una deducción directa y verificable de su sorprendente regularidad.</p>
+<p>Frank Morley descubrió esta configuración a finales del siglo XIX; posteriormente se estudiaron numerosas variantes con trisectrices exteriores. <a href="https://mathworld.wolfram.com/MorleysTheorem.html">MathWorld</a> recoge esas extensiones. El teorema no proporciona un procedimiento universal para trisecar ángulos con <a data-article-concept="constructible-numbers" routerLink="/articles/constructible-numbers">regla y compás</a>: tal construcción es imposible en general. Demostrar una propiedad de trisectrices que existen geométricamente es distinto de poder construirlas con esas herramientas clásicas. Aquí la trigonometría permite una deducción directa y verificable de su sorprendente regularidad.</p>
 
 <p>Como comprobación adicional, en un triángulo equilátero las tres terceras partes de los ángulos valen veinte grados. La expresión del lado interior se reduce a ocho veces el circunradio por el cubo del seno de veinte grados, y da el mismo resultado desde cualquiera de los tres vértices.</p>
 
@@ -29,3 +29,6 @@
   <li><a routerLink="/problems/triple-angle-identity">Problema 033 · Ángulo triple</a>. Practica la identidad del ángulo triple que aparece al relacionar un ángulo con su tercera parte.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/sine-law">Ley de los senos y caso ambiguo</a></li><li><a routerLink="/articles/permutation-symmetries">Permutaciones, ciclos y grupos de simetrías</a></li><li><a routerLink="/articles/constructible-numbers">Regla, compás y números construibles</a></li></ul></details></section>
+<!-- article-concepts:end -->

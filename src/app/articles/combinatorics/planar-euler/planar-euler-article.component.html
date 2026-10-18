@@ -1,7 +1,7 @@
 <h2>La fórmula de Euler para grafos planares</h2>
 <p class="dropcap">Dibuja una red de puntos y conexiones sin que las líneas se crucen. Cuenta sus vértices, sus aristas y las regiones en las que divide el plano. Si la red está conectada, esos tres números obedecen una identidad sorprendentemente rígida: vértices menos aristas más caras siempre vale dos. La forma de las líneas puede cambiar, pero el balance permanece.</p>
 <app-formula expression="V-A+F=2" displayMode="block"/>
-<p>La letra F cuenta las caras, incluida la región exterior ilimitada. Esta precisión es esencial: un triángulo tiene tres vértices, tres aristas y <strong>dos caras</strong>, no una. Vamos a explorar de dónde sale la fórmula, cómo cambia si el grafo se desconecta y por qué permite demostrar que ciertas redes nunca podrán dibujarse sin cruces.</p>
+<p>La letra F cuenta las caras, incluida la región exterior ilimitada. Esta precisión es esencial: un triángulo tiene tres vértices, tres aristas y <strong>dos caras</strong>, no una. Vamos a explorar de dónde sale la fórmula, cómo cambia si el <a data-article-concept="graph-foundations" routerLink="/articles/graph-foundations">grafo</a> se desconecta y por qué permite demostrar que ciertas redes nunca podrán dibujarse sin cruces.</p>
 <app-plane-euler-explorer/>
 
 <h3>1. Planar no significa «dibujado sin cruces»</h3>
@@ -14,14 +14,14 @@
 <p>Supongamos primero que el grafo plano es finito y conexo. Si contiene un ciclo, escoge una arista de ese ciclo y bórrala. Sus extremos siguen conectados por el resto del ciclo, de modo que el grafo continúa conexo. Las dos caras que estaban a sus lados se fusionan.</p>
 <app-formula expression="\Delta V=0,\qquad \Delta A=-1,\qquad \Delta F=-1" displayMode="block"/>
 <app-formula expression="V-(A-1)+(F-1)=V-A+F" displayMode="block"/>
-<p>El balance no cambia. Repite hasta que no queden ciclos. Lo que queda es un <strong>árbol generador</strong>: conserva todos los vértices, sigue conectado y tiene exactamente V−1 aristas.</p>
+<p>El balance no cambia. Repite hasta que no queden ciclos. Lo que queda es un <strong><a data-article-concept="trees-graph-coloring" routerLink="/articles/trees-graph-coloring">árbol generador</a></strong>: conserva todos los vértices, sigue conectado y tiene exactamente V−1 aristas.</p>
 <p>Un árbol dibujado en el plano tiene una sola cara. Sus ramas no encierran regiones: siempre podemos rodear sus extremos. Así, en el último paso sabemos calcular el balance:</p>
 <app-formula expression="A_{\text{árbol}}=V-1,\qquad F_{\text{árbol}}=1,\qquad V-(V-1)+1=2" displayMode="block"/>
 <p>Como cada eliminación conservó V−A+F, el grafo inicial también tenía valor dos. En el laboratorio, «Demostrar por eliminación» retira únicamente aristas de ciclos. Los colores de las caras muestran sus fusiones; los vértices nunca desaparecen.</p>
 <p>El dato A=V−1 para un árbol puede demostrarse retirando hojas: cada hoja eliminada se lleva un vértice y una arista. El proceso acaba en un solo vértice, sin aristas, y conserva V−A=1.</p>
 
 <h3>3. Qué ocurre al quitar una arista puente</h3>
-<p>Una arista puente no separa dos caras diferentes. Sus dos lados pertenecen a la misma cara. Al quitarla disminuye A, pero F no cambia: lo que aumenta es el número de componentes conexas. Por eso no podemos aplicar indiscriminadamente el paso anterior a cualquier arista.</p>
+<p>Una arista puente no separa dos caras diferentes. Sus dos lados pertenecen a la misma cara. Al quitarla disminuye A, pero F no cambia: lo que aumenta es el número de <a data-article-concept="open-closed-connected" routerLink="/articles/open-closed-connected">componentes conexas</a>. Por eso no podemos aplicar indiscriminadamente el paso anterior a cualquier arista.</p>
 <div class="table-scroll"><table><thead><tr><th>Operación</th><th>ΔV</th><th>ΔA</th><th>ΔF</th><th>Δk</th></tr></thead><tbody><tr><td>Retirar una arista de un ciclo</td><td>0</td><td>−1</td><td>−1</td><td>0</td></tr><tr><td>Retirar una arista puente</td><td>0</td><td>−1</td><td>0</td><td>+1</td></tr><tr><td>Añadir un vértice aislado</td><td>+1</td><td>0</td><td>0</td><td>+1</td></tr><tr><td>Subdividir una arista con un nuevo vértice</td><td>+1</td><td>+1</td><td>0</td><td>0</td></tr></tbody></table></div>
 <p>En la última fila, una arista se sustituye por dos; por eso el incremento neto de A es uno. Ninguna región nueva aparece.</p>
 
@@ -67,8 +67,11 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/eulerian-trail">Problema 092 · Un recorrido euleriano</a>. Distingue la fórmula de Euler para caras y aristas del criterio de grados que decide un recorrido euleriano.</li>
+  <li><a routerLink="/problems/eulerian-trail">Problema 092 · Un recorrido euleriano</a>. Distingue la fórmula de Euler para caras y aristas del criterio de grados que decide un recorrido <a data-article-concept="euler-hamilton" routerLink="/articles/euler-hamilton">euleriano</a>.</li>
 </ul>
 </div>
 
 <section class="article-activities" aria-label="Fundamentos para resolver problemas"><h3>Fundamentos para resolver problemas</h3><ul><li><a routerLink="/articles/graph-foundations">Grafos desde cero: grados, caminos y conectividad</a></li></ul></section>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/graph-foundations">Grafos desde cero: grados, caminos y conectividad</a></li><li><a routerLink="/articles/trees-graph-coloring">Árboles, árboles generadores y coloración de grafos</a></li><li><a routerLink="/articles/open-closed-connected">Abiertos, cerrados, acumulación y conexidad</a></li><li><a routerLink="/articles/euler-hamilton">Recorridos eulerianos y caminos hamiltonianos</a></li></ul></details></section>
+<!-- article-concepts:end -->

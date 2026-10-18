@@ -4,7 +4,7 @@
 <p>Recorremos ABC en sentido antihorario y representamos sus vértices mediante los complejos a, b y c. Multiplicar por i gira un vector noventa grados hacia la izquierda; multiplicar por −i lo gira hacia la derecha. El centro de un equilátero está a un tercio de su altura respecto de la base. Esa altura es raíz de tres sobre dos veces el lado, por Pitágoras.</p>
 <app-formula expression="h=\frac{\sqrt3}{2}L,\qquad \text{distancia del centro a la base}=\frac{\sqrt3}{6}L" displayMode="block"/>
 <app-geometry-diagram diagram="napoleon-theorem" description="Los equiláteros se construyen hacia fuera de ABC. Sus centros U, V y W, unidos en verde, forman el triángulo de Napoleón."/>
-<p>Por tanto, para situar los centros exteriores U, V y W, partimos de cada punto medio y añadimos un desplazamiento perpendicular hacia la derecha del recorrido. La orientación exterior debe ser la misma en los tres lados; mezclar construcciones interiores y exteriores invalidaría esta versión del resultado.</p>
+<p>Por tanto, para situar los centros exteriores U, V y W, partimos de cada punto medio y añadimos un desplazamiento <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> hacia la derecha del recorrido. La orientación exterior debe ser la misma en los tres lados; mezclar construcciones interiores y exteriores invalidaría esta versión del resultado.</p>
 <app-formula expression="u=\frac{a+b}{2}-\frac{i\sqrt3}{6}(b-a)" displayMode="block"/>
 <app-formula expression="v=\frac{b+c}{2}-\frac{i\sqrt3}{6}(c-b),\qquad w=\frac{c+a}{2}-\frac{i\sqrt3}{6}(a-c)" displayMode="block"/>
 <h3>2. Comparar los vectores del nuevo triángulo</h3>
@@ -19,3 +19,6 @@
 <p>La atribución a Napoleón Bonaparte es tradicional, pero su autoría no está establecida; el nombre no debe tomarse como una prueba histórica. <a href="https://mathworld.wolfram.com/NapoleonsTheorem.html">MathWorld</a> recoge el teorema y sus variantes. Otra consecuencia se obtiene sumando u, v y w: los desplazamientos perpendiculares se cancelan, de modo que el nuevo triángulo tiene el mismo <a routerLink="/articles/barycenter">baricentro</a> que ABC. Existe una versión con equiláteros interiores, cuyo triángulo de centros puede degenerar. Esta regularidad nacida de una figura arbitraria convierte el resultado en un ejemplo especialmente atractivo del poder de las rotaciones.</p>
 
 <p>Por ejemplo, si ABC ya es equilátero, los tres centros exteriores aparecen por simetría a distancias iguales entre sí. El interés del cálculo es demostrar que esa igualdad sobrevive cuando desplazamos un vértice y destruimos toda la simetría de la figura original.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dot-product">Producto escalar</a></li></ul></details></section>
+<!-- article-concepts:end -->

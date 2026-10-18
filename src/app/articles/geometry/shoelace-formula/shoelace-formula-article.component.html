@@ -9,7 +9,7 @@
 <app-formula expression="K_{\mathrm{or}}=\frac12\sum_{i=1}^{n}(x_i y_{i+1}-y_i x_{i+1}),\qquad P_{n+1}=P_1" displayMode="block"/>
 <p>Una justificación alternativa consiste en triangular el polígono: cada diagonal interior aparece dos veces en sentidos opuestos y desaparece de la suma de determinantes. Solo quedan los lados del borde. Esta cancelación explica por qué no se necesita una triangulación concreta para efectuar el cálculo final.</p>
 <h3>3. Convertir el resultado en área ordinaria</h3>
-<p>La suma anterior cambia de signo si invertimos el orden de los vértices. El área geométrica no debe cambiar, por lo que tomamos un único valor absoluto después de sumar todos los términos:</p>
+<p>La suma anterior cambia de signo si invertimos el orden de los vértices. El área geométrica no debe cambiar, por lo que tomamos un único <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> después de sumar todos los términos:</p>
 <app-formula expression="\boxed{K=\frac12\left|\sum_{i=1}^{n}x_i y_{i+1}-\sum_{i=1}^{n}y_i x_{i+1}\right|}" displayMode="block"/>
 <p>Tomar valores absolutos por separado antes de sumar sería incorrecto en general. También es imprescindible repetir el primer vértice al final de la tabla: sin el último producto faltaría la contribución del lado que cierra la figura.</p>
 <h3>4. Resolver un ejemplo exacto</h3>
@@ -32,3 +32,6 @@
 <li><a routerLink="/problems/area-on-a-grid">25 · Área en una cuadrícula</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li></ul></details></section>
+<!-- article-concepts:end -->

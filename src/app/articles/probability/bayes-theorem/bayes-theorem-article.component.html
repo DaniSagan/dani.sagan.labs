@@ -11,7 +11,7 @@
 <app-formula expression="P(H\cap A)=P(A\mid H)P(H)=P(H\mid A)P(A)"></app-formula>
 <p>Si P(A) &gt; 0, dividimos por la probabilidad de la observación:</p>
 <app-formula expression="P(H\mid A)=\frac{P(A\mid H)P(H)}{P(A)}"></app-formula>
-<p>Esta es la fórmula de Bayes. P(H) es la probabilidad <strong>previa</strong>; P(A | H), la <strong>verosimilitud</strong>
+<p>Esta es la fórmula de Bayes. P(H) es la probabilidad <strong>previa</strong>; P(A | H), la <strong><a data-article-concept="maximum-likelihood" routerLink="/articles/maximum-likelihood">verosimilitud</a></strong>
   de la observación bajo la hipótesis; P(H | A), la probabilidad <strong>posterior</strong>.
   El denominador normaliza el resultado usando todas las maneras en que puede aparecer A.</p>
 <h3>Calcular el denominador</h3>
@@ -32,7 +32,7 @@
 <p>Podemos condicionar al resultado contrario. En el ejemplo quedan 10 defectuosas sin detectar y 9405 correctas sin alarma:</p>
 <app-formula expression="P(H\mid\neg A)=\frac{(1-P(A\mid H))P(H)}{(1-P(A\mid H))P(H)+(1-P(A\mid\neg H))(1-P(H))}"></app-formula>
 <p>Así, la probabilidad de defecto sin alarma es 10/9415, aproximadamente un 0,106 %.
-  Si un resultado tiene probabilidad cero, su probabilidad condicionada no se define mediante este cociente.</p>
+  Si un resultado tiene probabilidad cero, su <a data-article-concept="conditional-independence" routerLink="/articles/conditional-independence">probabilidad condicionada</a> no se define mediante este cociente.</p>
 <h3>Más de dos hipótesis</h3>
 <p>Si H₁,…,Hₘ forman una partición —son incompatibles entre sí y cubren todos los casos—,
   cada hipótesis contribuye a la probabilidad total de la evidencia:</p>
@@ -82,3 +82,6 @@
 <li><a routerLink="/problems/false-positive-in-a-population">172 · Un falso positivo en una población</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/maximum-likelihood">Verosimilitud y estimación de máxima verosimilitud</a></li><li><a routerLink="/articles/conditional-independence">Probabilidad condicionada e independencia</a></li></ul></details></section>
+<!-- article-concepts:end -->

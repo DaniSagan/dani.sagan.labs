@@ -1,5 +1,5 @@
 <h2>Teorema de Descartes: circunferencias tangentes</h2>
-<p class="dropcap">Cuatro circunferencias distintas y mutuamente tangentes, sin contactos triples, forman una configuración de Descartes. Sus radios parecen relacionados de manera complicada, pero sus inversos satisfacen una ecuación cuadrática simétrica. A esos inversos se les llama curvaturas: una circunferencia pequeña tiene gran curvatura, mientras una muy grande tiene curvatura pequeña. Una recta aparece como el caso límite de curvatura cero.</p>
+<p class="dropcap">Cuatro circunferencias distintas y mutuamente tangentes, sin contactos triples, forman una configuración de Descartes. Sus radios parecen relacionados de manera complicada, pero sus inversos satisfacen una ecuación cuadrática simétrica. A esos inversos se les llama curvaturas: una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> pequeña tiene gran <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">curvatura</a>, mientras una muy grande tiene curvatura pequeña. Una recta aparece como el caso límite de curvatura cero.</p>
 <h3>1. Introducir curvaturas con signo</h3>
 <p>Para una circunferencia que no contiene a las demás tomamos k=1/r. Si una de ellas encierra a las otras tres y las toca interiormente, le asignamos curvatura negativa. Con esta orientación coherente, el teorema adopta una única forma:</p>
 <app-formula expression="(k_1+k_2+k_3+k_4)^2=2(k_1^2+k_2^2+k_3^2+k_4^2)" displayMode="block"/>
@@ -9,10 +9,10 @@
 <app-formula expression="|v_i|^2=(r_i+r_4)^2" displayMode="block"/>
 <app-formula expression="v_i\cdot v_j=\frac{(r_i+r_4)^2+(r_j+r_4)^2-(r_i+r_j)^2}{2}" displayMode="block"/>
 <h3>3. Utilizar que los centros están en un plano</h3>
-<p>Tres vectores del plano son linealmente dependientes. Por ello, el <a routerLink="/articles/matrix-determinant">determinante</a> de su matriz de productos escalares, llamada matriz de Gram, es cero. Construimos esa matriz con las expresiones anteriores y desarrollamos su determinante. Agrupar los términos por los inversos de los radios da:</p>
+<p>Tres vectores del plano son <a data-article-concept="vector-spaces" routerLink="/articles/vector-spaces">linealmente dependientes</a>. Por ello, el <a routerLink="/articles/matrix-determinant">determinante</a> de su matriz de <a data-article-concept="dot-product" routerLink="/articles/dot-product">productos escalares</a>, llamada matriz de Gram, es cero. Construimos esa matriz con las expresiones anteriores y desarrollamos su <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a>. Agrupar los términos por los inversos de los radios da:</p>
 <app-formula expression="G=(v_i\cdot v_j)_{i,j=1}^{3},\qquad \det G=0" displayMode="block"/>
 <app-formula expression="\det G=-4(r_1r_2r_3r_4)^2\left[2\sum_{i=1}^{4}\frac1{r_i^2}-\left(\sum_{i=1}^{4}\frac1{r_i}\right)^2\right]" displayMode="block"/>
-<p>Como los radios son distintos de cero, cancelamos el factor exterior. Sustituir ki=1/ri proporciona la fórmula anunciada. Para la circunferencia envolvente, las distancias son diferencias de radios; el mismo cálculo con su radio orientado negativo conduce a la misma identidad.</p>
+<p>Como los radios son distintos de cero, cancelamos el factor exterior. Sustituir ki=1/ri proporciona la fórmula anunciada. Para la circunferencia <a data-article-concept="envelopes-evolutes" routerLink="/articles/envelopes-evolutes">envolvente</a>, las distancias son diferencias de radios; el mismo cálculo con su radio orientado negativo conduce a la misma identidad.</p>
 <h3>4. Encontrar la cuarta curvatura</h3>
 <p>Consideramos conocidas las tres primeras curvaturas y resolvemos la ecuación como cuadrática en k4. Las dos raíces corresponden a las dos circunferencias que completan la configuración en los casos ordinarios:</p>
 <app-formula expression="k_4=k_1+k_2+k_3\pm2\sqrt{k_1k_2+k_2k_3+k_3k_1}" displayMode="block"/>
@@ -28,3 +28,6 @@
   <li><a routerLink="/tools/implicit-curve-graph">Graficador de curvas implícitas</a>. Dibuja las circunferencias de una configuración sencilla y compara los radios calculados con la fórmula de las curvaturas.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li><li><a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/envelopes-evolutes">Envolventes, evolutas e involutas</a></li></ul></details></section>
+<!-- article-concepts:end -->

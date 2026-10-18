@@ -2,7 +2,7 @@
 <p class="dropcap">Bruja de Agnesi es una curva algebraica de ecuación racional con un máximo en el origen y dos ramas que se aproximan al eje horizontal. Su ecuación permite estudiar con precisión cómo varían la altura central y la rapidez con que las ramas se aproximan al eje horizontal.</p>
 
 <h3>Definición y propiedades</h3>
-<p>Para el modelo habitual <app-formula displayMode="inline" [showCodeButton]="false" expression="y=\dfrac{a^3}{x^2+a^2}"></app-formula>, el parámetro a controla tanto la altura como la anchura. La función es par, por lo que presenta simetría respecto del eje y, y su valor tiende a cero cuando |x| crece. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, puntos singulares, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
+<p>Para el modelo habitual <app-formula displayMode="inline" [showCodeButton]="false" expression="y=\dfrac{a^3}{x^2+a^2}"></app-formula>, el parámetro a controla tanto la altura como la anchura. La función es par, por lo que presenta simetría respecto del eje y, y su valor tiende a cero cuando |x| crece. Estas propiedades permiten distinguir la curva de otras familias próximas y anticipar la forma general de su representación. En particular, conviene identificar simetrías, <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">puntos singulares</a>, intersecciones y comportamiento cuando las variables toman valores grandes.</p>
 
 <h3>Contexto histórico</h3>
 <p>Maria Gaetana Agnesi la incluyó en sus estudios de análisis del siglo XVIII. El nombre en castellano procede de una traducción errónea de un término italiano, no de una propiedad matemática. El interés histórico de estas curvas está ligado a problemas concretos: construcciones geométricas, descripción del movimiento, astronomía o desarrollo del cálculo. Su estudio muestra cómo una pregunta aplicada puede conducir a una herramienta matemática general.</p>
@@ -11,7 +11,7 @@
 <p>El gráfico interactivo permite comprobar las propiedades anteriores sin tratar la ecuación como una fórmula aislada. Modifica un parámetro cada vez y observa qué magnitudes se mantienen, qué puntos se desplazan y si cambia la simetría. Comparar dos configuraciones cercanas es una manera práctica de distinguir una variación de escala de un cambio estructural de la curva.</p>
 
 <h3>Aplicaciones y relaciones</h3>
-<p>Se relaciona con la distribución de Cauchy en probabilidad y se utiliza como ejemplo de función racional con colas largas. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
+<p>Se relaciona con la <a data-article-concept="cauchy-heavy-tails" routerLink="/articles/cauchy-heavy-tails">distribución de Cauchy</a> en probabilidad y se utiliza como ejemplo de función racional con colas largas. También tiene valor didáctico porque conecta varias representaciones de un mismo objeto: una descripción geométrica, una ecuación, una parametrización y un dibujo. Pasar de una representación a otra es una habilidad central en matemáticas aplicadas.</p>
 
 <h3>Comprobaciones útiles</h3>
 <p>Al analizar esta curva, resulta útil comprobar primero el dominio de la ecuación y los valores para los que la parametrización está definida. Después pueden localizarse intersecciones con los ejes, simetrías y puntos en los que la tangente cambia de comportamiento. Si el modelo utiliza un parámetro, conviene comparar un valor pequeño, uno intermedio y uno grande. Este procedimiento separa las propiedades propias de la familia de las que dependen únicamente de la escala o de una configuración concreta.</p>
@@ -40,3 +40,6 @@
   <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa 1/(1+x^2) y modifica la escala para comparar el máximo y el decaimiento de sus ramas.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li><li><a routerLink="/articles/cauchy-heavy-tails">Distribución de Cauchy, colas pesadas y esperanza inexistente</a></li></ul></details></section>
+<!-- article-concepts:end -->

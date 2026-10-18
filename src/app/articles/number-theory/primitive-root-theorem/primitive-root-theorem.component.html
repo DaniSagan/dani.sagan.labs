@@ -5,7 +5,7 @@
 <app-formula
   expression="(\mathbb Z/n\mathbb Z)^\times\text{ es cíclico}\Longleftrightarrow n=1,2,4,p^k,2p^k"></app-formula>
 <p>Aquí p es un primo impar. Dicho sin lenguaje de grupos: existe un entero g cuyas potencias producen todos los
-  residuos coprimos con n exactamente para esos módulos.</p>
+  residuos <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a> con n exactamente para esos módulos.</p>
 <h3>La idea de la demostración</h3>
 <p>Las clases residuales, sus unidades y los ciclos de potencias se presentan en <a
     routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
@@ -16,10 +16,10 @@
 <p>Para descartar otros módulos se utiliza el <a routerLink="/articles/chinese-remainder-theorem">teorema chino del
     resto</a>. Si el módulo contiene demasiados factores independientes, la congruencia x²≡1 posee más de dos
   soluciones. Un grupo cíclico de orden par solo puede tener dos, así que tal grupo de unidades no puede ser cíclico.
-  Módulo 8, por ejemplo, cada unidad 1,3,5,7 tiene cuadrado 1.</p>
+  Módulo 8, por ejemplo, cada unidad 1,3,5,7 tiene <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> 1.</p>
 <app-formula expression="3^1,3^2,\ldots,3^6\equiv3,2,6,4,5,1\pmod7"></app-formula>
 <p>Cuando existe una raíz primitiva, los productos se convierten en sumas de exponentes; esta es la base de los índices
-  y logaritmos discretos.</p>
+  y <a data-article-concept="rsa-discrete-logarithm" routerLink="/articles/rsa-discrete-logarithm">logaritmos discretos</a>.</p>
 <p>Si g es raíz primitiva, g<sup>k</sup> también lo es exactamente cuando gcd(k,φ(n))=1. Por tanto, un módulo que admite
   raíces primitivas tiene φ(φ(n)) generadores. Esto se deduce de que el orden de g<sup>k</sup> es φ(n)/gcd(k,φ(n)),
   enlazando la clasificación con el teorema del orden.</p>
@@ -36,3 +36,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Factoriza p−1 para conocer los divisores que debes comprobar al buscar una raíz primitiva módulo un primo p.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/rsa-discrete-logarithm">RSA y logaritmo discreto: dos problemas inversos</a></li></ul></details></section>
+<!-- article-concepts:end -->

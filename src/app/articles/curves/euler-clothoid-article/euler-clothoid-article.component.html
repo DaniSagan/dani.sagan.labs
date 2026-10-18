@@ -1,5 +1,5 @@
 <h2>Clotoide de Euler</h2>
-<p class="dropcap">La clotoide de Euler es una curva de transición cuya curvatura crece linealmente con la longitud recorrida. Se utiliza para introducir giros progresivos en trazados de carreteras y vías.</p>
+<p class="dropcap">La clotoide de Euler es una curva de transición cuya <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">curvatura</a> crece linealmente con la longitud recorrida. Se utiliza para introducir giros progresivos en trazados de carreteras y vías.</p>
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
@@ -7,10 +7,10 @@
 <p class="curve-domain">Intervalos representados: [-4, 4].</p>
 
 <h3>Propiedades geométricas</h3>
-<p>Las derivadas son x′=p cos(t²) e y′=p sin(t²), de modo que la rapidez es constante p. La curva tiene simetría central y una tangente horizontal en el origen.</p>
+<p>Las <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> son x′=p cos(t²) e y′=p sin(t²), de modo que la rapidez es constante p. La curva tiene simetría central y una tangente horizontal en el origen.</p>
 
 <h3>Análisis y construcción</h3>
-<p>El ángulo tangente es t². Como la longitud de arco orientada es pt, la curvatura firmada resulta 2t/p. El explorador aproxima las integrales con una regla compuesta de puntos medios; el dibujo es numérico.</p>
+<p>El ángulo tangente es t². Como la <a data-article-concept="arc-length" routerLink="/articles/arc-length">longitud de arco</a> orientada es pt, la curvatura firmada resulta 2t/p. El explorador aproxima las integrales con una regla compuesta de puntos medios; el dibujo es numérico.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/EulersSpiral.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/arc-length">Longitud de arco y parametrización de curvas</a></li></ul></details></section>
+<!-- article-concepts:end -->

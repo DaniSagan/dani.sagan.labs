@@ -11,7 +11,7 @@
 <li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
 <li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
 </ol></details></nav>
-<p class="dropcap">En una serie de términos no negativos las sumas parciales crecen, por lo que converger equivale a permanecer acotadas. Los criterios de comparación, integral, cociente y raíz permiten establecer esa acotación o demostrar que falla. Cada criterio tiene una frontera donde resulta inconcluyente; reconocerla es tan importante como aplicar la fórmula.</p>
+<p class="dropcap">En una serie de términos no negativos las <a data-article-concept="telescoping-series" routerLink="/articles/telescoping-series">sumas parciales</a> crecen, por lo que converger equivale a permanecer acotadas. Los criterios de comparación, integral, cociente y raíz permiten establecer esa acotación o demostrar que falla. Cada criterio tiene una frontera donde resulta inconcluyente; reconocerla es tan importante como aplicar la fórmula.</p>
 <h3 id="section-0">La primera prueba y las comparaciones</h3>
 <p>Si los términos no tienden a cero, la serie diverge. El recíproco es falso: los términos de la armónica desaparecen y su suma crece sin cota. Una serie menor que otra convergente también converge; una mayor que otra divergente también diverge. La comparación por límite con una razón positiva finita transfiere el comportamiento de la serie modelo. Alterar un número finito de términos no cambia convergencia.</p>
 <h3 id="section-1">Integrales y p-series</h3>
@@ -21,7 +21,7 @@
 <p>Un cociente límite menor que uno indica decrecimiento finalmente geométrico y convergencia. Un valor mayor que uno impide que los términos tiendan a cero. La raíz enésima mide una tasa exponencial media y permite trabajar incluso cuando el cociente oscila. Si el valor es uno, ambos criterios pueden ser inconcluyentes: todas las p-series tienen ese valor, incluyendo convergentes y divergentes. Conviene entonces cambiar de comparación.</p>
 <app-formula expression="L=\limsup_{n\to\infty}\sqrt[n]{a_n},\quad L&lt;1\Rightarrow\sum a_n&lt;\infty,\quad L&gt;1\Rightarrow\text{divergencia}" />
 <h3 id="section-3">Condensación y fronteras logarítmicas</h3>
-<p>Para términos positivos decrecientes, agrupar índices entre potencias de dos convierte la serie en otra con términos multiplicados por el tamaño del bloque. La condensación de Cauchy resuelve fronteras como una potencia de logaritmo sobre el índice. Allí el criterio integral también es útil mediante un cambio de variable. Una evaluación numérica hasta millones de términos puede sugerir estabilidad engañosa para divergencias logarítmicas muy lentas.</p>
+<p>Para términos positivos decrecientes, agrupar índices entre potencias de dos convierte la serie en otra con términos multiplicados por el tamaño del bloque. La condensación de Cauchy resuelve fronteras como una potencia de <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> sobre el índice. Allí el criterio integral también es útil mediante un <a data-article-concept="integration-classical" routerLink="/articles/integration-classical" fragment="substitution">cambio de variable</a>. Una evaluación numérica hasta millones de términos puede sugerir estabilidad engañosa para divergencias logarítmicas muy lentas.</p>
 <h3 id="section-deeper">Una frontera que exige condensación</h3>
 <p>La serie de uno dividido por el índice y una potencia de su logaritmo no se decide mediante el cociente, cuyo límite es uno. Agrupar términos entre potencias de dos transforma su comportamiento en el de una p-serie del exponente del logaritmo. También se puede integrar y sustituir el logaritmo de la variable: el diferencial elimina el factor de la variable del denominador. Ambos caminos muestran el mismo umbral. Debe comenzarse en un índice mayor que uno para que el logaritmo exista y no se anule; cambiar ese comienzo no afecta la convergencia. Esta familia revela divergencias que una suma finita puede ocultar durante mucho tiempo.</p>
 <app-formula expression="\sum_{n=2}^\infty\frac1{n(\log n)^q}\text{ converge}\Longleftrightarrow q&gt;1" />
@@ -32,9 +32,9 @@
 <p>Acerca el exponente a uno desde ambos lados. Observa que una cota de resto puede ser grande aunque la serie converja. Explica por qué el máximo de términos mostrado no establece la clasificación.</p>
 <app-deep-explorer topic="positive-series-tests" />
 <h3 id="section-6">Hipótesis y errores frecuentes</h3>
-<aside class="note"><p>Que un criterio no decida no implica divergencia. El resultado uno en cociente o raíz exige otra herramienta.</p></aside>
+<aside class="note"><p>Que un criterio no decida no implica <a data-article-concept="vector-calculus" routerLink="/articles/vector-calculus">divergencia</a>. El resultado uno en cociente o raíz exige otra herramienta.</p></aside>
 <h3 id="section-7">Comprueba tu comprensión</h3>
-<p>Compara la serie de inversos de n al cuadrado más uno con la p-serie de exponente dos.</p>
+<p>Compara la serie de inversos de n al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> más uno con la p-serie de exponente dos.</p>
 <details class="note"><summary>Ver solución razonada</summary><p>Como <app-formula displayMode="inline" [showCodeButton]="false" expression="0&lt;1/(n^2+1)\le1/n^2" />, converge por comparación directa.</p></details>
 <p>¿Converge la serie con exponente logarítmico igual a uno?</p>
 <details class="note"><summary>Ver solución de la ampliación</summary><p>No. La integral correspondiente crece como logaritmo del logaritmo, muy lentamente pero sin cota.</p></details>
@@ -60,3 +60,6 @@
 <li><a routerLink="/problems/series-comparison-without-summing">149 · Comparar una serie sin sumarla</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/telescoping-series">Series telescópicas</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/integration-classical" fragment="substitution">Integrales I: técnicas clásicas</a></li><li><a routerLink="/articles/vector-calculus">Flujo, divergencia y rotacional de un campo</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

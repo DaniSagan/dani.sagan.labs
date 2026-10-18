@@ -1,0 +1,266 @@
+[
+  {
+    "slug": "pigeonhole-principle",
+    "area": "combinatorics",
+    "ids": [
+      "M66"
+    ],
+    "title": "Principio del palomar y argumentos de existencia",
+    "terms": [
+      "principio del palomar",
+      "principio de las casillas"
+    ],
+    "definition": "Si se reparten más objetos que cajas, alguna caja contiene al menos dos. La versión general afirma que N objetos en k cajas, con k positivo, obligan a que alguna contenga al menos el techo de N/k. No exige que el reparto sea aleatorio ni uniforme.",
+    "argument": "Si todas las cajas tuvieran como máximo m−1 objetos, el total no superaría k(m−1). Cuando N es mayor que esa cantidad, la suposición es imposible. Para m=techo(N/k), esta cuenta prueba la cota. Identificar correctamente objetos y cajas es la parte sustancial de muchas aplicaciones.",
+    "example": "Entre trece personas, al menos dos cumplen años en el mismo mes: las personas son objetos y los doce meses son cajas. Entre n+1 enteros, dos tienen el mismo resto módulo n. Su diferencia es entonces múltiplo de n, aunque no se sepa qué pareja es.",
+    "caution": "El principio garantiza existencia, no identifica una pareja concreta ni calcula una probabilidad. Que dos personas compartan mes no exige que compartan día. Si cambia la clasificación, cambia el número de cajas y la conclusión.",
+    "formula": "\\max_{1\\le i\\le k}n_i\\ge\\left\\lceil\\frac Nk\\right\\rceil,\\qquad \\sum_i n_i=N",
+    "question": "¿Cuántos objetos garantizan una caja con al menos cuatro objetos si hay cinco cajas?",
+    "answer": "Dieciséis. Con quince todavía pueden ponerse tres en cada caja. Con dieciséis, esa capacidad total se supera y alguna debe alcanzar cuatro.",
+    "n": [
+      "Objetos N",
+      1,
+      60,
+      1,
+      13
+    ],
+    "t": [
+      "Cajas k",
+      1,
+      15,
+      1,
+      12
+    ],
+    "lab": "Un reparto lo más equilibrado posible",
+    "code": "const base=Math.floor(n/t),rest=n%t;for(let k=0;k<t;k++)points.push([k+1,base+(k<rest?1:0)]);rows.push(['Máximo mínimo inevitable',Math.ceil(n/t)],['Cajas con un objeto adicional',rest]);note='Este reparto alcanza la cota del principio. Otros repartos pueden concentrar muchos más objetos en una caja.';",
+    "related": [
+      "ramsey-theorem",
+      "modular-arithmetic"
+    ]
+  },
+  {
+    "slug": "trees-graph-coloring",
+    "area": "combinatorics",
+    "ids": [
+      "M68",
+      "M69"
+    ],
+    "title": "Árboles, árboles generadores y coloración de grafos",
+    "terms": [
+      "árbol generador",
+      "árboles generadores",
+      "árboles de expansión",
+      "número cromático",
+      "coloración de grafos",
+      "grafo bipartito"
+    ],
+    "definition": "Un árbol es un grafo finito no dirigido, conexo y sin ciclos. Entre cualesquiera dos vértices hay un único camino simple. Un árbol generador conserva todos los vértices de un grafo conexo y algunas de sus aristas hasta formar un árbol. Una coloración propia asigna colores distintos a vértices adyacentes; el mínimo número posible es el número cromático.",
+    "argument": "Un árbol con n vértices tiene n−1 aristas: quitar una hoja y su arista reduce ambos recuentos en uno. En un grafo conexo, eliminar una arista de un ciclo conserva conectividad, y repetir produce un árbol generador. Colorear por paridad de distancia desde una raíz demuestra que todo árbol con alguna arista es bipartito y tiene número cromático dos.",
+    "example": "Un camino de cinco vértices usa cuatro aristas y dos colores. Un ciclo impar necesita tres colores: alternar dos colores obliga a que el último vértice tenga el mismo color que el primero. Un grafo completo de n vértices necesita n colores.",
+    "caution": "Un grafo sin ciclos pero desconectado es un bosque, no un árbol. La fórmula n−1 sin conectividad no caracteriza por sí sola un árbol. Colorear caras de un mapa y vértices de un grafo son problemas relacionados mediante un dual, no literalmente la misma definición.",
+    "formula": "T\\text{ árbol}\\Longrightarrow |E|=|V|-1,\\qquad \\chi(C_n)=\\begin{cases}2&n\\text{ par}\\\\3&n\\text{ impar}\\end{cases}",
+    "question": "¿Cuántas aristas tiene un bosque con n vértices y c componentes?",
+    "answer": "Cada componente árbol con nᵢ vértices tiene nᵢ−1 aristas. Al sumar resulta n−c. Se incluyen los vértices aislados como árboles de un vértice y cero aristas.",
+    "n": [
+      "Vértices n",
+      3,
+      20,
+      1,
+      5
+    ],
+    "t": [
+      "Modelo: 0=camino, 1=ciclo, 2=completo",
+      0,
+      2,
+      1,
+      0
+    ],
+    "lab": "Comparar familias y colores necesarios",
+    "code": "const edges=t===0?n-1:t===1?n:n*(n-1)/2,chi=t===0?2:t===1?(n%2?3:2):n;rows.push(['Aristas',edges],['Número cromático exacto',chi],['¿Es árbol?',t===0?'Sí':'No'],['Aristas de cualquier árbol generador',n-1]);note='Son tres familias con fórmulas conocidas, no un algoritmo general de coloración óptima. Todas son conexas para los tamaños del control.';",
+    "related": [
+      "graph-foundations",
+      "four-color-theorem",
+      "planar-euler"
+    ]
+  },
+  {
+    "slug": "polya-cycle-index",
+    "area": "combinatorics",
+    "ids": [
+      "M70"
+    ],
+    "title": "Teorema de Pólya e índice de ciclos",
+    "terms": [
+      "Pólya",
+      "Polya",
+      "índice de ciclos"
+    ],
+    "definition": "Una permutación descompone las posiciones en ciclos disjuntos. Una coloración queda fija por esa permutación exactamente cuando cada ciclo es monocromático. El índice de ciclos de una acción finita promedia monomios que registran cuántos ciclos de cada longitud tiene cada elemento del grupo.",
+    "argument": "Con q colores disponibles, una permutación con c ciclos fija qᶜ coloraciones. Promediar sobre el grupo es el lema de Burnside. El teorema de Pólya refina el conteo sustituyendo en cada variable del índice una suma de potencias de marcadores de color, lo que permite distinguir composiciones y no solo contar el total de órbitas.",
+    "example": "Para rotaciones de cuatro posiciones, el índice es (a₁⁴+a₂²+2a₄)/4. Sustituir cada aᵢ por q da (q⁴+q²+2q)/4 collares distintos bajo rotación. Con dos colores se obtienen seis. Si se identifican también reflejos, el grupo cambia y debe recalcularse el índice.",
+    "caution": "Dividir el número de coloraciones etiquetadas por el número de simetrías falla cuando hay coloraciones con estabilizadores no triviales. Tampoco se puede añadir una reflexión sin contar sus ciclos.",
+    "formula": "Z_G(a_1,a_2,\\ldots)=\\frac1{|G|}\\sum_{g\\in G}\\prod_j a_j^{c_j(g)},\\qquad \\#\\text{órbitas}=\\frac1{|G|}\\sum_gq^{\\sum_jc_j(g)}",
+    "question": "Cuenta los collares de tres posiciones con dos colores identificando solo rotaciones.",
+    "answer": "La identidad fija ocho coloraciones y cada una de las otras dos rotaciones fija dos. El promedio (8+2+2)/3 es cuatro.",
+    "n": [
+      "Posiciones del collar",
+      2,
+      10,
+      1,
+      4
+    ],
+    "t": [
+      "Número de colores",
+      1,
+      5,
+      1,
+      2
+    ],
+    "lab": "Ciclos de cada rotación",
+    "code": "const gcd=(a:number,b:number):number=>b?gcd(b,a%b):a;let sum=0;for(let k=0;k<n;k++){const cycles=gcd(n,k),fixed=t**cycles;sum+=fixed;rows.push(['Rotación '+k+': ciclos / fijas',cycles+' / '+fixed]);}rows.push(['Órbitas bajo rotación',sum/n]);note='Se usa que la rotación de k posiciones tiene mcd(n,k) ciclos. No se identifican reflejos en este modelo.';",
+    "reference": [
+      "https://arxiv.org/abs/math/0508512",
+      "Pólya enumeration theorem · Desarrollo del índice de ciclos"
+    ],
+    "related": [
+      "burnside-lemma",
+      "permutation-symmetries",
+      "counting-principles"
+    ]
+  },
+  {
+    "slug": "route-optimization-complexity",
+    "area": "combinatorics",
+    "ids": [
+      "M71",
+      "M72"
+    ],
+    "title": "Viajante, cartero chino y complejidad computacional",
+    "terms": [
+      "problema del viajante",
+      "viajante",
+      "cartero chino",
+      "NP-completo",
+      "NP-difícil",
+      "complejidad computacional"
+    ],
+    "definition": "El viajante busca un ciclo de coste mínimo que visite cada vértice una vez y regrese al inicio. El cartero chino busca un recorrido cerrado mínimo que cubra todas las aristas; puede repetirlas. Un problema de decisión pregunta sí o no, por ejemplo si existe una ruta de coste como máximo B. Su dificultad se mide respecto del tamaño de la entrada.",
+    "argument": "En un grafo no dirigido conexo con costes no negativos, el cartero chino se reduce a corregir grados impares duplicando caminos de coste mínimo y formando después un circuito euleriano. El viajante general es NP-difícil y su versión de decisión es NP-completa. Esto distingue búsqueda de vértices, cobertura de aristas y optimización; no afirma que todas las instancias sean difíciles.",
+    "example": "Enumerar tours del viajante fijando el primer vértice deja (n−1)! órdenes; en un problema simétrico se pueden identificar recorridos inversos. Una heurística puede producir una buena ruta sin certificar que sea óptima. Verificar la longitud de una ruta propuesta es mucho más sencillo que justificar su optimalidad.",
+    "caution": "NP no significa «no polinómico». Describe problemas de decisión con certificados verificables en tiempo polinómico. No se conoce una demostración de P distinto de NP. La complejidad del cartero cambia con variantes dirigidas o mixtas y no debe trasladarse sin hipótesis.",
+    "formula": "\\text{coste de un tour}=\\sum_{i=1}^{n}d(v_i,v_{i+1}),\\quad v_{n+1}=v_1,\\qquad \\#\\text{órdenes}=(n-1)!",
+    "question": "¿Un circuito euleriano visita necesariamente cada vértice una sola vez?",
+    "answer": "No: usa cada arista una sola vez y puede volver a vértices. Un ciclo hamiltoniano impone la condición sobre vértices. Confundirlos cambia el problema.",
+    "n": [
+      "Ciudades n",
+      3,
+      12,
+      1,
+      6
+    ],
+    "t": [
+      "Órdenes evaluados por segundo",
+      1,
+      100,
+      1,
+      10
+    ],
+    "lab": "El crecimiento de enumerar tours",
+    "code": "let factorial=1;for(let k=1;k<n;k++)factorial*=k;rows.push(['Tours orientados con origen fijo',factorial],['Tours sin distinguir inversos',factorial/2],['Segundos a la tasa elegida',factorial/t]);for(let k=3;k<=n;k++){let f=1;for(let j=1;j<k;j++)f*=j;points.push([k,f]);}note='Es el coste de una enumeración ingenua, no una cota inferior para cualquier algoritmo ni una prueba de P≠NP.';",
+    "related": [
+      "euler-hamilton",
+      "graph-foundations",
+      "factorials-legendre"
+    ]
+  },
+  {
+    "slug": "ordinals-growth",
+    "area": "combinatorics",
+    "ids": [
+      "M73"
+    ],
+    "title": "Ordinales y jerarquías de crecimiento",
+    "terms": [
+      "ordinal",
+      "ordinales",
+      "ordinal límite",
+      "jerarquía de crecimiento",
+      "jerarquías de crecimiento"
+    ],
+    "definition": "Un ordinal describe el tipo de orden de un conjunto bien ordenado: todo subconjunto no vacío tiene un primer elemento. Los naturales son ordinales finitos y ω es el tipo de orden de la sucesión infinita 0,1,2,… . Un cardinal mide tamaño; un ordinal incorpora además el orden. ω y ω+1 tienen el mismo tamaño numerable, pero distinto tipo de orden.",
+    "argument": "La suma ordinal concatena órdenes. Por eso 1+ω tiene tipo ω, mientras ω+1 añade un último elemento y no coincide con ω. La inducción transfinita distingue sucesores y límites: en un ordinal límite no hay un predecesor inmediato. Las jerarquías de funciones rápidas indexadas por ordinales requieren reglas precisas para esos límites.",
+    "example": "En una jerarquía finita elemental puede definirse f₀(n)=n+1 y fₖ₊₁(n) como aplicar fₖ un número especificado de veces. Cambiar esa regla de iteración cambia la jerarquía. Los ordinales permiten organizar prolongaciones más allá de todos los índices finitos, pero no son números reales extraordinariamente grandes.",
+    "caution": "El símbolo ω no es un natural grande ni una magnitud que se alcance aumentando un deslizador. Tampoco deben confundirse operaciones ordinales con operaciones de cardinales. Una animación finita solo ilustra fragmentos de un orden.",
+    "formula": "1+\\omega=\\omega,\\qquad \\omega+1\\ne\\omega,\\qquad |\\omega|=|\\omega+1|",
+    "question": "¿Por qué ω+1 no es isomorfo como orden a ω?",
+    "answer": "ω+1 tiene un elemento máximo y ω no. Un isomorfismo de orden preservaría esa propiedad, así que no puede existir. Sí existe una biyección entre sus conjuntos subyacentes.",
+    "n": [
+      "Longitud del prefijo finito",
+      2,
+      12,
+      1,
+      5
+    ],
+    "t": [
+      "Posición del marcador: 0=antes, 1=después",
+      0,
+      1,
+      1,
+      1
+    ],
+    "lab": "Un prefijo y un elemento distinguido",
+    "code": "const values=Array.from({length:n},(_,i)=>String(i));rows.push(['Fragmento dibujado',t===0?'★, '+values.join(', '):values.join(', ')+', ★'],['Orden infinito que se ilustra',t===0?'1+ω':'ω+1'],['¿Tiene máximo el orden infinito?',t===0?'No':'Sí: ★']);note='El prefijo finito siempre acaba, pero ω no. La propiedad del máximo se refiere al orden infinito definido, no al último número visible de la muestra.';",
+    "related": [
+      "googology",
+      "cardinality-diagonal",
+      "mathematical-induction"
+    ]
+  },
+  {
+    "slug": "computability-formal-languages",
+    "area": "combinatorics",
+    "ids": [
+      "M74",
+      "M75"
+    ],
+    "title": "Computabilidad, lenguajes formales y problema de la parada",
+    "terms": [
+      "computabilidad",
+      "máquina de Turing",
+      "máquinas de Turing",
+      "problema de la parada",
+      "indecidible",
+      "lenguaje formal",
+      "lenguajes formales",
+      "sintaxis y semántica"
+    ],
+    "definition": "Un lenguaje formal es un conjunto de palabras sobre un alfabeto. Una gramática especifica reglas sintácticas para generarlas; una interpretación asigna significado semántico a las expresiones bien formadas. Un algoritmo opera mediante reglas finitas. Una máquina de Turing formaliza esa idea con estados, una cinta, un cabezal y transiciones.",
+    "argument": "El problema de la parada pregunta si un programa terminará para una entrada dada. Si existiera un decisor H correcto para todos los programas, se podría construir D que, al recibir su propio código, entra en bucle cuando H predice parada y se detiene cuando predice bucle. Ambas predicciones se contradicen. La dificultad es lógica y no una cantidad grande de operaciones.",
+    "example": "Un autómata con dos estados reconoce palabras con un número par de unos: leer un uno alterna el estado y leer un cero lo conserva. Esto decide un lenguaje concreto y termina porque recorre una entrada finita. No pretende decidir el comportamiento de programas arbitrarios.",
+    "caution": "No terminar dentro de una cota de pasos no demuestra que un programa nunca pare. Indecidibilidad no significa que ninguna instancia sea resoluble: muchas se resuelven, pero no hay un algoritmo total correcto para todas.",
+    "formula": "D(P)=\\begin{cases}\\text{bucle}&H(P,P)=\\text{para}\\\\\\text{parar}&H(P,P)=\\text{no para}\\end{cases}",
+    "question": "¿Qué lenguaje decide el autómata que empieza en estado par y cambia de estado al leer cada uno?",
+    "answer": "El conjunto de palabras binarias con un número par de unos. El estado conserva exactamente la paridad del prefijo leído, lo que demuestra su corrección por inducción.",
+    "n": [
+      "Palabra como entero binario",
+      0,
+      63,
+      1,
+      13
+    ],
+    "t": [
+      "Anchura de la palabra",
+      6,
+      10,
+      1,
+      6
+    ],
+    "lab": "Un decisor finito verificable",
+    "code": "const word=n.toString(2).padStart(t,'0');let parity=0;rows.push(['Palabra',word]);for(let k=0;k<word.length;k++){if(word[k]==='1')parity=1-parity;rows.push(['Tras el prefijo '+word.slice(0,k+1),parity?'Impar':'Par']);}rows.push(['Aceptada',parity===0?'Sí':'No']);note='Este autómata decide un lenguaje regular y siempre termina. Su existencia no resuelve el problema universal de la parada.';",
+    "related": [
+      "googology",
+      "proof-strategies",
+      "l-systems"
+    ]
+  }
+]

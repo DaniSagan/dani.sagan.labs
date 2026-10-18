@@ -1,0 +1,8 @@
+:host { display: block; min-width: 0; }
+.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.controls label { min-width: 0; }
+.controls label span { display: block; }
+th { overflow-wrap: anywhere; }
+td { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.model-note { font-size: .9rem; }
+@media (max-width: 600px) { .math-lab { padding: 12px; } th, td { padding: .4rem; font-size: .8rem; } }

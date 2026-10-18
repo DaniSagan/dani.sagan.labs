@@ -5,7 +5,7 @@
 <p>Podemos proyectar las aristas de un poliedro convexo sobre una esfera que lo rodea y después sobre un plano. El resultado es un <a routerLink="/articles/planar-euler">grafo conectado sin cruces</a>: los vértices y aristas se conservan, y una de las caras se convierte en la región exterior ilimitada. Esa región también cuenta como cara; olvidarla cambiaría indebidamente el resultado de dos a uno.</p>
 <app-geometry-diagram diagram="euler-polyhedron-formula" description="Un cubo y su grafo plano tienen los mismos ocho vértices, doce aristas y seis caras, contando la región exterior del grafo."/>
 <h3>2. Eliminar una arista de un ciclo</h3>
-<p>Si el grafo contiene un ciclo, elegimos una arista de ese ciclo. Al borrarla no desconectamos el grafo, porque sus extremos siguen unidos por el resto del ciclo. Las dos caras que separaba se fusionan en una sola. El número de vértices permanece fijo, mientras aristas y caras disminuyen simultáneamente en una unidad:</p>
+<p>Si el <a data-article-concept="graph-foundations" routerLink="/articles/graph-foundations">grafo</a> contiene un ciclo, elegimos una arista de ese ciclo. Al borrarla no desconectamos el grafo, porque sus extremos siguen unidos por el resto del ciclo. Las dos caras que separaba se fusionan en una sola. El número de vértices permanece fijo, mientras aristas y caras disminuyen simultáneamente en una unidad:</p>
 <app-formula expression="V'=V,\qquad A'=A-1,\qquad C'=C-1" displayMode="block"/>
 <app-formula expression="V'-A'+C'=V-A+C" displayMode="block"/>
 <p>Podemos repetir este proceso mientras queden ciclos. La cantidad de Euler es invariante en cada paso, aunque la forma y el número de caras del dibujo cambien progresivamente.</p>
@@ -15,7 +15,7 @@
 <app-formula expression="V-(V-1)+1=2" displayMode="block"/>
 <p>Como todas las operaciones anteriores conservaban V−A+C, el grafo inicial y, por tanto, el poliedro también tienen valor dos. La prueba explica el resultado mediante una reducción que puede seguirse paso a paso sobre un dibujo.</p>
 <h3>4. Comprobar ejemplos y límites</h3>
-<p>En un <a routerLink="/articles/tetrahedron-viewer">tetraedro</a> hay cuatro vértices, seis aristas y cuatro caras: 4−6+4=2. En un cubo, 8−12+6=2. La convexidad es una condición suficiente para asegurar una superficie sin agujeros. No debe suponerse que cualquier objeto llamado poliedro tiene el mismo balance: una superficie cerrada orientable con g asas tiene característica 2−2g, bajo una descomposición válida en caras topológicas de disco.</p>
+<p>En un <a routerLink="/articles/tetrahedron-viewer">tetraedro</a> hay cuatro vértices, seis aristas y cuatro caras: 4−6+4=2. En un cubo, 8−12+6=2. La <a data-article-concept="convexity-tangents" routerLink="/articles/convexity-tangents">convexidad</a> es una condición suficiente para asegurar una superficie sin agujeros. No debe suponerse que cualquier objeto llamado poliedro tiene el mismo balance: una superficie cerrada orientable con g asas tiene característica 2−2g, bajo una descomposición válida en caras topológicas de disco.</p>
 <h3>Historia y curiosidades</h3>
 <p>Euler formuló esta relación en el siglo XVIII, mucho antes del lenguaje moderno de la topología. <a href="https://mathworld.wolfram.com/EulerCharacteristic.html">MathWorld</a> explica la característica que generaliza su fórmula. Una triangulación que añade una diagonal en una cara incrementa A y C en uno y deja V fijo: el balance vuelve a conservarse. Esto permite comparar mallas de distinta resolución y detectar errores de conectividad, aunque acertar el balance por sí solo no garantiza que una malla sea geométricamente correcta.</p>
 
@@ -29,3 +29,6 @@
 <li><a routerLink="/problems/octahedron-edge-count">129 · Contar aristas de un octaedro</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/graph-foundations">Grafos desde cero: grados, caminos y conectividad</a></li><li><a routerLink="/articles/convexity-tangents">Convexidad, concavidad y desigualdades</a></li><li><a routerLink="/articles/surfaces-genus-euler">Superficies, orientabilidad, género y característica de Euler</a></li></ul></details></section>
+<!-- article-concepts:end -->

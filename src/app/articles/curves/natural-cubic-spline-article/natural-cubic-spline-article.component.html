@@ -3,7 +3,7 @@
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
-<p>La fórmula vale únicamente en el intervalo interpolado −1≤t≤1. El valor absoluto reúne los dos polinomios cúbicos.</p>
+<p>La fórmula vale únicamente en el intervalo interpolado −1≤t≤1. El <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> reúne los dos polinomios cúbicos.</p>
 <p class="curve-domain">Intervalos representados: [-1, 1].</p>
 
 <h3>Propiedades geométricas</h3>
@@ -27,7 +27,7 @@
 
 <div class="article-activities">
   <h3>Practica y experimenta</h3>
-  <p>Comprueba la condición natural y calcula la curvatura en el punto central.</p>
+  <p>Comprueba la condición natural y calcula la <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">curvatura</a> en el punto central.</p>
   <details><summary>Ver comprobación</summary><p>En t=±1 la segunda derivada vale cero. En t=0 la pendiente es cero y y″=−3p, por lo que la curvatura tiene módulo 3p.</p></details>
   <ul>
     <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/CubicSpline.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li></ul></details></section>
+<!-- article-concepts:end -->

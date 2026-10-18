@@ -4,7 +4,7 @@
   «conocerse» sea una relación recíproca con dos posibilidades: sí o no. Con cinco personas, en cambio, podemos evitar
   ambos grupos. Ese umbral exacto se escribe R(3,3) = 6.</p>
 <aside class="theorem"><span class="section-label">EL ORDEN INEVITABLE</span>
-  <p>En cualquier coloración roja y azul de las aristas del grafo completo K₆ aparece un triángulo monocromático. Existe
+  <p>En cualquier coloración roja y azul de las aristas del <a data-article-concept="graph-foundations" routerLink="/articles/graph-foundations">grafo</a> completo K₆ aparece un triángulo monocromático. Existe
     una coloración de K₅ sin ninguno.</p><app-formula expression="\boxed{R(3,3)=6}" displayMode="block" />
 </aside>
 
@@ -19,13 +19,13 @@
 <app-ramsey-explorer />
 <aside class="experiment">
   <h4>El reto de las quince aristas</h4>
-  <p>Empieza con el pentágono sin triángulos. Añade un sexto vértice y cambia sus conexiones intentando mantener el
+  <p>Empieza con el <a data-article-concept="pentagon" routerLink="/articles/pentagon">pentágono</a> sin triángulos. Añade un sexto vértice y cambia sus conexiones intentando mantener el
     contador a cero. Después abre las 32 extensiones del pentágono: modificar las cinco nuevas aristas no permite
     escapar. El siguiente argumento explica por qué tampoco sirve rediseñar el resto del grafo.</p>
 </aside>
 
 <h3>2. Por qué seis siempre bastan</h3>
-<p>Elige cualquier vértice A. De él salen cinco aristas. El principio del palomar garantiza que al menos tres tienen el
+<p>Elige cualquier vértice A. De él salen cinco aristas. El <a data-article-concept="pigeonhole-principle" routerLink="/articles/pigeonhole-principle">principio del palomar</a> garantiza que al menos tres tienen el
   mismo color: si cada color apareciera como máximo dos veces, solo habría cuatro aristas. Llamemos B, C y D a tres
   vecinos conectados con A por el color mayoritario.</p>
 <app-formula expression="\left\lceil\frac52\right\rceil=3" displayMode="block" />
@@ -62,7 +62,7 @@
 <app-formula expression="T\ge\binom63-\frac12\cdot6\cdot6=20-18=2" displayMode="block" />
 <p>La cota se alcanza. Divide los seis vértices en dos grupos de tres; pinta de rojo las aristas dentro de cada grupo y
   de azul las que unen grupos distintos. Hay exactamente dos triángulos rojos y ninguno azul, porque las aristas azules
-  forman un grafo bipartito. El botón «K₆ con solo dos» muestra esta construcción.</p>
+  forman un <a data-article-concept="trees-graph-coloring" routerLink="/articles/trees-graph-coloring">grafo bipartito</a>. El botón «K₆ con solo dos» muestra esta construcción.</p>
 
 <h3>5. Verificar todas las posibilidades</h3>
 <p>Cada una de las quince aristas de K₆ admite dos colores. Por tanto, hay 2¹⁵ = 32 768 coloraciones de sus vértices
@@ -78,7 +78,7 @@
   queda determinado como su complemento. No hay que volver a multiplicar por dos: el ciclo complementario ya aparece
   entre esos doce.</p>
 <p>También podemos anticipar la media del censo. Si cada arista se pinta de forma independiente con ambos colores
-  equiprobables, un triángulo tiene ocho coloraciones posibles y dos son monocromáticas. La probabilidad es 1/4. Por
+  <a data-article-concept="finite-probability" routerLink="/articles/finite-probability">equiprobables</a>, un triángulo tiene ocho coloraciones posibles y dos son monocromáticas. La probabilidad es 1/4. Por
   linealidad de la esperanza:</p>
 <app-formula expression="\mathbb E[T]=\binom n3\frac14,\qquad \mathbb E[T\mid n=6]=5" displayMode="block" />
 <p>No hace falta que los indicadores de los distintos triángulos sean independientes para sumar sus esperanzas. La media
@@ -94,7 +94,7 @@
 <p>Si hay al menos R(s−1,t) vecinos rojos, entre ellos aparece un Kₜ azul o un Kₛ₋₁ rojo que se completa con el vértice
   inicial. Si no hay tantos vecinos rojos, quedan al menos R(s,t−1) vecinos azules y se aplica el argumento simétrico.
   Para s = t = 3, la cota da 3 + 3 = 6.</p>
-<p>La recurrencia garantiza una cota, no siempre el valor exacto. La dificultad de los números de Ramsey consiste en
+<p>La <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> garantiza una cota, no siempre el valor exacto. La dificultad de los números de Ramsey consiste en
   acercar las construcciones que evitan patrones y los argumentos que los hacen inevitables. En R(3,3), un pentágono y
   cinco aristas alrededor de un vértice bastan para cerrar esa distancia.</p>
 
@@ -108,3 +108,6 @@
       Pedagogical Approach to Ramsey Multiplicity</a>. Conteo de triángulos monocromáticos y multiplicidad de Ramsey.
   </li>
 </ul>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/graph-foundations">Grafos desde cero: grados, caminos y conectividad</a></li><li><a routerLink="/articles/pentagon">Pentágono</a></li><li><a routerLink="/articles/pigeonhole-principle">Principio del palomar y argumentos de existencia</a></li><li><a routerLink="/articles/trees-graph-coloring">Árboles, árboles generadores y coloración de grafos</a></li><li><a routerLink="/articles/finite-probability">Probabilidad en espacios finitos: sucesos y regla de Laplace</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li></ul></details></section>
+<!-- article-concepts:end -->

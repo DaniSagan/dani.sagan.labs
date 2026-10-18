@@ -1,5 +1,5 @@
 <h2>Curva t de Student</h2>
-<p class="dropcap">La curva t de Student es una campana simétrica con colas más pesadas que la normal. Su forma depende de los grados de libertad y aparece en inferencia con varianza desconocida.</p>
+<p class="dropcap">La curva t de Student es una campana simétrica con colas más pesadas que la normal. Su forma depende de los <a data-article-concept="bessel-correction" routerLink="/articles/bessel-correction">grados de libertad</a> y aparece en inferencia con varianza desconocida.</p>
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
@@ -7,7 +7,7 @@
 <p class="curve-domain">Intervalos representados: [-5, 5].</p>
 
 <h3>Propiedades geométricas</h3>
-<p>El parámetro p es el número de grados de libertad. La densidad es par y alcanza el máximo en cero. Al aumentar p, su perfil se aproxima al de la normal estándar.</p>
+<p>El parámetro p es el número de grados de libertad. La densidad es par y alcanza el máximo en cero. Al aumentar p, su perfil se aproxima al de la <a data-article-concept="normal-distribution" routerLink="/articles/normal-distribution">normal estándar</a>.</p>
 
 <h3>Análisis y construcción</h3>
 <p>Para p=1 se obtiene la densidad de Cauchy 1/[π(1+t²)]. La media solo existe si p&gt;1 y la varianza solo si p&gt;2: la simetría visual no garantiza que existan esos momentos.</p>
@@ -28,7 +28,7 @@
 <div class="article-activities">
   <h3>Practica y experimenta</h3>
   <p>Comprueba la densidad central para p=1 y decide si existe su media.</p>
-  <details><summary>Ver comprobación</summary><p>El valor en cero es 1/π. Es la distribución de Cauchy, cuya media no existe, pese a tener simetría alrededor de cero.</p></details>
+  <details><summary>Ver comprobación</summary><p>El valor en cero es 1/π. Es la <a data-article-concept="cauchy-heavy-tails" routerLink="/articles/cauchy-heavy-tails">distribución de Cauchy</a>, cuya media no existe, pese a tener simetría alrededor de cero.</p></details>
   <ul>
     <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
     <li><a routerLink="/articles/normal-distribution">Distribución normal</a>. Compara el centro y las colas cuando aumenta el número de grados de libertad.</li>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://www.itl.nist.gov/div898/handbook/eda/section3/eda3664.htm" target="_blank" rel="noopener noreferrer">NIST · Engineering Statistics Handbook</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/bessel-correction">Corrección de Bessel y estimadores insesgados</a></li><li><a routerLink="/articles/normal-distribution">Distribución normal y tipificación</a></li><li><a routerLink="/articles/cauchy-heavy-tails">Distribución de Cauchy, colas pesadas y esperanza inexistente</a></li></ul></details></section>
+<!-- article-concepts:end -->

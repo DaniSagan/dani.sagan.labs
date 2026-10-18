@@ -1,3 +1,4 @@
+import { TextLink } from '../../shared/content/linked-text.component';
 import { PlotSeries } from './learning-plot.component';
 export interface ExplorerControl {
     label: string;
@@ -22,6 +23,7 @@ export interface ExplorerResult {
 export const EXPLORER_CONFIGS: Record<string, {
     title: string;
     controls: ExplorerControl[];
+    conceptLinks?: readonly TextLink[];
 }> = {
   "counting-principles": {
     "title": "Etapas de una elección",
@@ -41,7 +43,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "inclusion-exclusion": {
     "title": "Solapamiento",
     "controls": [
@@ -60,7 +64,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 9
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "mathematical-induction": {
     "title": "Identidad por inducción",
     "controls": [
@@ -79,7 +85,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "rational-root-theorem": {
     "title": "Candidatos racionales",
     "controls": [
@@ -98,7 +106,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "sign-charts": {
     "title": "Signos y multiplicidades",
     "controls": [
@@ -117,7 +127,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "polynomial-interpolation": {
     "title": "Nodos y error",
     "controls": [
@@ -136,7 +148,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.4
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "vector-spaces": {
     "title": "Rango y núcleo",
     "controls": [
@@ -155,7 +169,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "gram-schmidt": {
     "title": "Dirección y longitud",
     "controls": [
@@ -174,7 +190,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 2
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "projection-least-squares": {
     "title": "Ajuste y proyección",
     "controls": [
@@ -193,7 +211,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "pythagorean-distance": {
     "title": "Distancia euclídea",
     "controls": [
@@ -212,7 +232,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 4
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "triangle-similarity": {
     "title": "Escalar una figura",
     "controls": [
@@ -231,7 +253,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"homotecia","route":"/articles/homothety"}]
+},
   "sine-law": {
     "title": "Triángulos posibles",
     "controls": [
@@ -250,7 +274,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 4
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "complex-arithmetic": {
     "title": "División en el plano",
     "controls": [
@@ -269,7 +295,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "geometric-series": {
     "title": "Sumas parciales",
     "controls": [
@@ -288,7 +316,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 10
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "positive-series-tests": {
     "title": "Frontera de convergencia",
     "controls": [
@@ -307,7 +337,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 100
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "lhopital-rule": {
     "title": "Un cociente cerca del límite",
     "controls": [
@@ -326,7 +358,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 2
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"resto de Taylor","route":"/articles/taylor-series"}]
+},
   "linear-approximation": {
     "title": "Resto de Taylor",
     "controls": [
@@ -345,7 +379,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.2
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"cóncava","route":"/articles/convexity-tangents"}]
+},
   "banach-fixed-point": {
     "title": "Iterar una contracción",
     "controls": [
@@ -364,7 +400,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "numerical-conditioning": {
     "title": "Cancelación",
     "controls": [
@@ -383,7 +421,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.01
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "ode-numerical-integration": {
     "title": "Euler, Heun y RK4",
     "controls": [
@@ -402,7 +442,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 2
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "large-numbers-law": {
     "title": "Medias de Bernoulli",
     "controls": [
@@ -421,7 +463,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 200
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "probability-inequalities": {
     "title": "Garantías de concentración",
     "controls": [
@@ -440,7 +484,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 50
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "covariance": {
     "title": "Dependencia y dispersión",
     "controls": [
@@ -459,7 +505,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "student-chi-square": {
     "title": "Colas y grados de libertad",
     "controls": [
@@ -478,7 +526,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 2
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"Cuadrado","route":"/articles/square"}]
+},
   "proportion-intervals": {
     "title": "Intervalos para una proporción",
     "controls": [
@@ -497,7 +547,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "statistical-power": {
     "title": "Curva de potencia",
     "controls": [
@@ -516,7 +568,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.4
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"aproximación normal","route":"/articles/proportion-intervals"}]
+},
   "bootstrap": {
     "title": "Bootstrap de una muestra",
     "controls": [
@@ -535,7 +589,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 15
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "causal-inference": {
     "title": "Comparar dentro de grupos",
     "controls": [
@@ -554,7 +610,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.2
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"Simpson","route":"/articles/integration-numerical","fragment":"newton-cotes"}]
+},
   "stratified-sampling": {
     "title": "Ponderar estratos",
     "controls": [
@@ -573,7 +631,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "burnside-lemma": {
     "title": "Órbitas de rotación",
     "controls": [
@@ -592,7 +652,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 2
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "rubik-invariants": {
     "title": "Invariantes del cubo",
     "controls": [
@@ -611,7 +673,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "sudoku-constraints": {
     "title": "Mini sudoku",
     "controls": [
@@ -630,7 +694,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "euler-hamilton": {
     "title": "Aristas y visitas",
     "controls": [
@@ -649,7 +715,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0
       }
     ]
-  },
+  ,
+    conceptLinks: [{"term":"grafo","route":"/articles/graph-foundations"}]
+},
   "spherical-trigonometry": {
     "title": "Distancia sobre una esfera",
     "controls": [
@@ -668,7 +736,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 90
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "equation-of-time": {
     "title": "Tiempo solar y civil",
     "controls": [
@@ -687,7 +757,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": -3.7
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "daylight-saving-time": {
     "title": "Cambios de hora en Madrid",
     "controls": [
@@ -706,7 +778,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 1
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "dimensional-analysis": {
     "title": "Leyes de escala",
     "controls": [
@@ -725,7 +799,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "cardinality-diagonal": {
     "title": "Diagonal distinta",
     "controls": [
@@ -744,7 +820,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 3
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "cantor-function": {
     "title": "Escalera de Cantor",
     "controls": [
@@ -763,7 +841,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.5
       }
     ]
-  },
+  ,
+    conceptLinks: []
+},
   "compact-perfect-disconnected": {
     "title": "Conjunto de Cantor",
     "controls": [
@@ -782,7 +862,9 @@ export const EXPLORER_CONFIGS: Record<string, {
         "value": 0.33
       }
     ]
-  }
+  ,
+    conceptLinks: []
+}
 };
 const fmt = (x: number) => Number.isFinite(x) ? Number(x.toPrecision(6)).toString() : 'no definido';
 const factorial = (n: number): number => { let r = 1; for (let i = 2; i <= n; i++)

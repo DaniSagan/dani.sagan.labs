@@ -12,7 +12,7 @@
 <p>Que los términos tiendan a cero no basta: la serie armónica, formada por 1/n, diverge. Aquí podemos comparar cada término a partir de n = 2 con una diferencia que se cancela al sumar:</p>
 <app-formula expression="\frac{1}{n^2}\lt\frac{1}{n(n-1)}=\frac{1}{n-1}-\frac{1}{n},\qquad n\ge2" displayMode="block" />
 <app-formula expression="S_N=\sum_{n=1}^{N}\frac{1}{n^2}\le 1+\sum_{n=2}^{N}\left(\frac{1}{n-1}-\frac{1}{n}\right)=2-\frac{1}{N}\lt2" displayMode="block" />
-<p>Las sumas parciales aumentan porque todos los términos son positivos, y están acotadas por 2. Por tanto, convergen. Esto demuestra que existe una suma, pero todavía no identifica su valor.</p>
+<p>Las <a data-article-concept="telescoping-series" routerLink="/articles/telescoping-series">sumas parciales</a> aumentan porque todos los términos son positivos, y están acotadas por 2. Por tanto, convergen. Esto demuestra que existe una suma, pero todavía no identifica su valor.</p>
 
 <h3>2. Medir lo que falta</h3>
 <p>El resto R<sub>N</sub> es la suma desde el término N + 1 en adelante. Como 1/x² es positiva y decreciente, las áreas bajo su gráfica dan dos cotas estrictas:</p>
@@ -25,11 +25,11 @@
 <h3>3. La idea de Euler: leer los ceros del seno</h3>
 <p>Un polinomio se puede factorizar a partir de sus raíces. Euler llevó esa intuición a la función seno, cuyos ceros no nulos son ±π, ±2π, ±3π… Emparejando los ceros positivos y negativos aparece el producto:</p>
 <app-formula expression="\frac{\sin x}{x}=\prod_{n=1}^{\infty}\left(1-\frac{x^2}{n^2\pi^2}\right)" displayMode="block" />
-<p>Por otro lado, el desarrollo de Taylor alrededor del origen da:</p>
+<p>Por otro lado, el <a data-article-concept="taylor-series" routerLink="/articles/taylor-series">desarrollo de Taylor</a> alrededor del origen da:</p>
 <app-formula expression="\frac{\sin x}{x}=1-\frac{x^2}{6}+O(x^4)" displayMode="block" />
 <p>En un producto finito, el coeficiente de x² se obtiene escogiendo el término cuadrático de un factor y el 1 de todos los demás. En el producto infinito la comparación da:</p>
 <app-formula expression="-\frac{1}{\pi^2}\sum_{n=1}^{\infty}\frac{1}{n^2}=-\frac16\quad\Longrightarrow\quad\sum_{n=1}^{\infty}\frac{1}{n^2}=\frac{\pi^2}{6}" displayMode="block" />
-<p>La intuición es brillante, pero la factorización infinita necesita justificación: conocer los ceros no determina por sí solo una función. Una formulación moderna demuestra la identidad del producto del seno y su convergencia uniforme en conjuntos compactos del plano complejo. Esto permite pasar al límite en los coeficientes de Taylor. No basta con tratar una función como si fuera un polinomio de grado infinito.</p>
+<p>La intuición es brillante, pero la factorización infinita necesita justificación: conocer los ceros no determina por sí solo una función. Una formulación moderna demuestra la identidad del producto del seno y su <a data-article-concept="function-convergence" routerLink="/articles/function-convergence">convergencia uniforme</a> en conjuntos compactos del plano complejo. Esto permite pasar al límite en los coeficientes de Taylor. No basta con tratar una función como si fuera un polinomio de grado infinito.</p>
 
 <h3>4. Una demostración con la parábola y Fourier</h3>
 <p>Podemos obtener el resultado mediante la <a routerLink="/articles/fourier-series">serie de Fourier</a> de f(x) = x² en [−π, π], extendida periódicamente. La función es par, de modo que no aparecen términos seno. Calculamos el término constante y los coeficientes coseno:</p>
@@ -37,7 +37,7 @@
 <p>Dos integraciones por partes bastan. Los términos que contienen sin(nπ) desaparecen y cos(nπ) = (−1)<sup>n</sup>:</p>
 <app-formula expression="\int_0^\pi x^2\cos(nx)\,dx=-\frac2n\int_0^\pi x\sin(nx)\,dx=\frac{2\pi(-1)^n}{n^2}" displayMode="block" />
 <app-formula expression="x^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac{(-1)^n\cos(nx)}{n^2},\qquad -\pi\le x\le\pi" displayMode="block" />
-<p>La extensión periódica es continua, incluso al unir los extremos, porque (−π)² = π². Es suave a trozos, por lo que el teorema de convergencia de Fourier recupera la función también en x = π. Además, la convergencia de Σ1/n², ya demostrada sin conocer su suma, garantiza la convergencia absoluta y uniforme de esta serie.</p>
+<p>La extensión periódica es continua, incluso al unir los extremos, porque (−π)² = π². Es suave a trozos, por lo que el teorema de convergencia de Fourier recupera la función también en x = π. Además, la convergencia de Σ1/n², ya demostrada sin conocer su suma, garantiza la <a data-article-concept="series-convergence" routerLink="/articles/series-convergence">convergencia absoluta</a> y uniforme de esta serie.</p>
 <app-basel-fourier />
 <p>Ahora elegimos x = π. Cada coseno vale (−1)<sup>n</sup>, así que los dos signos se cancelan y todos los sumandos son positivos:</p>
 <app-formula expression="\pi^2=\frac{\pi^2}{3}+4\sum_{n=1}^{\infty}\frac{1}{n^2}" displayMode="block" />
@@ -49,12 +49,12 @@
 <app-formula expression="\sum_{n=1}^{\infty}\frac{1}{(2n)^2}=\frac{\pi^2}{24},\qquad\sum_{n=0}^{\infty}\frac{1}{(2n+1)^2}=\frac{\pi^2}{8}" displayMode="block" />
 <p>Al restar la contribución de los pares a la de los impares obtenemos otra identidad:</p>
 <app-formula expression="1-\frac14+\frac19-\frac1{16}+\cdots=\frac{\pi^2}{12}" displayMode="block" />
-<p>Esta última también se obtiene evaluando la serie de Fourier en x = 0. En el widget, vuelve al centro de la parábola para reconocer esa cancelación.</p>
+<p>Esta última también se obtiene evaluando la serie de Fourier en x = 0. En el widget, vuelve al centro de la <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a> para reconocer esa cancelación.</p>
 
 <h3>6. Una puerta a la función zeta</h3>
 <p>La <a routerLink="/articles/riemann-zeta">función zeta de Riemann</a> reúne estas sumas en una familia. Para s real mayor que 1 se define por:</p>
 <app-formula expression="\zeta(s)=\sum_{n=1}^{\infty}\frac1{n^s},\qquad s&gt;1" displayMode="block" />
-<p>Basilea es el caso ζ(2). Otros exponentes pares también conducen a potencias de π:</p>
+<p>Basilea es el caso ζ(2). Otros <a data-article-concept="prime-valuations" routerLink="/articles/prime-valuations">exponentes pares</a> también conducen a potencias de π:</p>
 <app-formula expression="\zeta(2)=\frac{\pi^2}{6},\qquad\zeta(4)=\frac{\pi^4}{90},\qquad\zeta(6)=\frac{\pi^6}{945}" displayMode="block" />
 <p>La fórmula general utiliza los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Lo que empezó como una pregunta sobre fracciones revela una estructura común entre aritmética, ondas y funciones especiales.</p>
 
@@ -68,7 +68,10 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/absolute-and-conditional-convergence">Problema 045 · Convergencia absoluta o condicional</a>. Compara la convergencia de una serie positiva con la compensación de signos de una serie alternada.</li>
+  <li><a routerLink="/problems/absolute-and-conditional-convergence">Problema 045 · Convergencia absoluta o condicional</a>. Compara la convergencia de una <a data-article-concept="positive-series-tests" routerLink="/articles/positive-series-tests">serie positiva</a> con la compensación de signos de una serie alternada.</li>
   <li><a routerLink="/tools/pi-decimals">Decimales de π</a>. Contrasta el valor π²/6 con aproximaciones de π, teniendo en cuenta cuántos decimales utilizas.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/telescoping-series">Series telescópicas</a></li><li><a routerLink="/articles/taylor-series">Series de Taylor</a></li><li><a routerLink="/articles/function-convergence">Convergencia de funciones: puntual, uniforme y dominada</a></li><li><a routerLink="/articles/series-convergence">Convergencia absoluta, condicional y criterio de Leibniz</a></li><li><a routerLink="/articles/parabola">Parábola</a></li><li><a routerLink="/articles/prime-valuations">Irracionalidad y valuaciones primas</a></li><li><a routerLink="/articles/positive-series-tests">Criterios de convergencia de series positivas</a></li></ul></details></section>
+<!-- article-concepts:end -->

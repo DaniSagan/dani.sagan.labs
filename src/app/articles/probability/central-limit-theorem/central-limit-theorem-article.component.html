@@ -3,7 +3,7 @@
 <aside class="theorem"><span class="section-label">EL TEOREMA · VERSIÓN I.I.D.</span>
   <p>Sean X₁, X₂, … variables aleatorias independientes e idénticamente distribuidas, con media μ y varianza finita σ² &gt; 0. Entonces:</p>
   <app-formula expression="\bar X_n=\frac{1}{n}\sum_{i=1}^n X_i,\qquad Z_n=\frac{\sqrt n(\bar X_n-\mu)}{\sigma}=\frac{\sum_{i=1}^n X_i-n\mu}{\sigma\sqrt n}\xrightarrow{d}\mathcal N(0,1)" />
-  <p>La flecha indica convergencia en distribución: para cada umbral real z, P(Zₙ ≤ z) tiende a Φ(z), la probabilidad acumulada de una normal estándar.</p>
+  <p>La flecha indica convergencia en distribución: para cada umbral real z, P(Zₙ ≤ z) tiende a Φ(z), la probabilidad acumulada de una <a data-article-concept="normal-distribution" routerLink="/articles/normal-distribution">normal estándar</a>.</p>
 </aside>
 
 <h3>1. La campana pertenece a las medias</h3>
@@ -15,21 +15,21 @@
 <h3>2. Por qué aparece la raíz cuadrada</h3>
 <p>La independencia hace que las varianzas se sumen. Al dividir una variable por n, su varianza se divide por n². Por ello, las identidades siguientes son exactas para cualquier n bajo las hipótesis del teorema:</p>
 <app-formula expression="\mathbb E[\bar X_n]=\mu,\qquad \operatorname{Var}(\bar X_n)=\frac{\sigma^2}{n},\qquad \operatorname{sd}(\bar X_n)=\frac{\sigma}{\sqrt n}" />
-<p>La cantidad σ/√n es el error estándar de la media. Cuadruplicar el tamaño de muestra divide por dos esta escala de fluctuación. En el laboratorio, desactiva «Estandarizar» para ver cómo se estrecha el histograma; actívalo para comparar su forma con una normal de media cero y varianza uno.</p>
-<p>La ley de los grandes números y el teorema central del límite responden a preguntas distintas. La primera describe la concentración de la media alrededor de μ. El segundo amplía sus fluctuaciones por un factor √n y describe su forma límite.</p>
+<p>La cantidad σ/√n es el <a data-article-concept="sampling-distributions" routerLink="/articles/sampling-distributions">error estándar</a> de la media. Cuadruplicar el tamaño de muestra divide por dos esta escala de fluctuación. En el laboratorio, desactiva «Estandarizar» para ver cómo se estrecha el histograma; actívalo para comparar su forma con una normal de media cero y varianza uno.</p>
+<p>La <a data-article-concept="large-numbers-law" routerLink="/articles/large-numbers-law">ley de los grandes números</a> y el teorema central del límite responden a preguntas distintas. La primera describe la concentración de la media alrededor de μ. El segundo amplía sus fluctuaciones por un factor √n y describe su forma límite.</p>
 
 <h3>3. De dónde sale la normal</h3>
-<p>Una explicación breve usa funciones características. Para Y = (X − μ)/σ, la función φ(t) = E[eⁱᵗʸ] tiene, gracias a la media cero y la varianza uno, la expansión φ(t) = 1 − t²/2 + o(t²) cerca del origen. La independencia convierte la función característica de una suma en un producto:</p>
+<p>Una explicación breve usa <a data-article-concept="generating-concentration" routerLink="/articles/generating-concentration">funciones características</a>. Para Y = (X − μ)/σ, la función φ(t) = E[eⁱᵗʸ] tiene, gracias a la media cero y la varianza uno, la expansión φ(t) = 1 − t²/2 + o(t²) cerca del origen. La independencia convierte la función característica de una suma en un producto:</p>
 <app-formula expression="\varphi_{Z_n}(t)=\left[\varphi_Y\!\left(\frac{t}{\sqrt n}\right)\right]^n=\left[1-\frac{t^2}{2n}+o\!\left(\frac1n\right)\right]^n\longrightarrow e^{-t^2/2}" />
 <p>La última expresión es la función característica de una normal estándar. El teorema de continuidad de Lévy permite concluir la convergencia en distribución. Este argumento muestra por qué, tras centrar y escalar, sobreviven los dos primeros momentos y desaparecen muchos detalles de la población.</p>
 
 <h3>4. Las hipótesis importan</h3>
-<p>Si todas las observaciones de una muestra son copias del mismo valor aleatorio, promediarlas no añade información. Y si la población tiene colas suficientemente pesadas, puede que ni siquiera exista una varianza finita. La distribución de Cauchy ofrece un contraejemplo especialmente claro: el promedio de variables Cauchy estándar independientes vuelve a ser Cauchy estándar.</p>
+<p>Si todas las observaciones de una muestra son copias del mismo valor aleatorio, promediarlas no añade información. Y si la población tiene colas suficientemente pesadas, puede que ni siquiera exista una varianza finita. La <a data-article-concept="cauchy-heavy-tails" routerLink="/articles/cauchy-heavy-tails">distribución de Cauchy</a> ofrece un contraejemplo especialmente claro: el promedio de variables Cauchy estándar independientes vuelve a ser Cauchy estándar.</p>
 <app-central-limit-limits />
 <p>El teorema clásico no se puede aplicar a esos dos contraejemplos. Existen otras versiones para variables no idénticas o con ciertas formas de dependencia, pero requieren condiciones adicionales y, a veces, otra normalización. La sola palabra «promedio» no garantiza una campana.</p>
 
 <h3>5. ¿A qué velocidad nos acercamos?</h3>
-<p>El teorema garantiza un límite, no una precisión concreta para una muestra dada. Cuando además existe el tercer momento absoluto centrado ρ = E[|X − μ|³], el teorema de Berry–Esseen proporciona una cota con una constante universal C:</p>
+<p>El teorema garantiza un límite, no una precisión concreta para una muestra dada. Cuando además existe el tercer momento absoluto centrado ρ = E[|X − μ|³], el teorema de <a data-article-concept="berry-esseen" routerLink="/articles/berry-esseen">Berry–Esseen</a> proporciona una cota con una constante universal C:</p>
 <app-formula expression="\sup_{z\in\mathbb R}\left|\mathbb P(Z_n\le z)-\Phi(z)\right|\le\frac{C\rho}{\sigma^3\sqrt n}" />
 <p>La razón ρ/σ³ explica por qué no basta con mirar n. Una distribución con valores extremos poco frecuentes puede exigir muchas más observaciones. Si ese tercer momento es infinito, esta cota no se aplica, aunque el teorema central del límite todavía puede ser válido si la varianza es finita. Además, un error absoluto pequeño en la acumulada puede representar un error relativo enorme para un suceso muy raro.</p>
 <p>La distancia del primer laboratorio compara una distribución empírica con la normal. También contiene ruido de simulación: no debe interpretarse como una comprobación numérica de la cota de Berry–Esseen.</p>
@@ -42,9 +42,9 @@
 <aside class="experiment"><h4>Busca los límites de la aproximación</h4><p>Compara la corrección activada y desactivada cerca de k = np. Después reduce p a 0,01 y desplaza k hacia una cola. Tener muchos ensayos no basta si el número esperado de éxitos sigue siendo pequeño.</p></aside>
 
 <h3>7. De una distribución a una estimación</h3>
-<p>Si σ es conocida y la aproximación normal es adecuada, la media cae aproximadamente el 95 % de las veces a menos de 1,96 errores estándar de μ. Invirtiendo esa relación se obtiene el intervalo aproximado:</p>
+<p>Si σ es conocida y la <a data-article-concept="proportion-intervals" routerLink="/articles/proportion-intervals">aproximación normal</a> es adecuada, la media cae aproximadamente el 95 % de las veces a menos de 1,96 errores estándar de μ. Invirtiendo esa relación se obtiene el intervalo aproximado:</p>
 <app-formula expression="\left[\bar X_n-1{,}96\frac{\sigma}{\sqrt n},\;\bar X_n+1{,}96\frac{\sigma}{\sqrt n}\right]" />
-<p>El 95 % describe la cobertura del procedimiento al repetir el muestreo: el intervalo cambia, el parámetro μ permanece fijo. Cuando σ se desconoce, sustituirla por la desviación muestral requiere justificar la aproximación; para observaciones normales, el intervalo con la distribución t de Student da la cobertura exacta correspondiente. Dependencia, sesgo de selección y colas extremas no desaparecen por aumentar el número de repeticiones de una simulación.</p>
+<p>El 95 % describe la cobertura del procedimiento al repetir el muestreo: el intervalo cambia, el parámetro μ permanece fijo. Cuando σ se desconoce, sustituirla por la desviación muestral requiere justificar la aproximación; para observaciones normales, el intervalo con la distribución t de Student da la cobertura exacta correspondiente. Dependencia, <a data-article-concept="sampling-bias" routerLink="/articles/sampling-bias">sesgo de selección</a> y colas extremas no desaparecen por aumentar el número de repeticiones de una simulación.</p>
 
 <h3>Referencias y lecturas</h3>
 <ul class="references">
@@ -63,3 +63,6 @@
   <li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad y estadística</a>. Explora muestreo e inferencia y compara la distribución original con la distribución de medias.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/normal-distribution">Distribución normal y tipificación</a></li><li><a routerLink="/articles/sampling-distributions">Distribuciones muestrales y error estándar</a></li><li><a routerLink="/articles/large-numbers-law">Ley de los grandes números</a></li><li><a routerLink="/articles/generating-concentration">Funciones generadoras, características y cotas de concentración</a></li><li><a routerLink="/articles/cauchy-heavy-tails">Distribución de Cauchy, colas pesadas y esperanza inexistente</a></li><li><a routerLink="/articles/berry-esseen">Berry–Esseen y el error de la aproximación normal</a></li><li><a routerLink="/articles/proportion-intervals">Intervalos para proporciones: Wilson y métodos exactos</a></li><li><a routerLink="/articles/sampling-bias">Muestreo y sesgo de selección</a></li></ul></details></section>
+<!-- article-concepts:end -->

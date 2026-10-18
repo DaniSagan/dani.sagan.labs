@@ -53,7 +53,7 @@
   bits. Compara muestras de distintas longitudes. Una proporción cercana al 50 % resulta sugerente, pero la secuencia
   010101… también está perfectamente equilibrada y es completamente periódica.</p>
 
-<p>La <strong>pseudoaleatoriedad</strong> describe secuencias deterministas que imitan ciertas propiedades estadísticas
+<p>La <strong><a data-article-concept="pseudorandom-generators" routerLink="/articles/pseudorandom-generators">pseudoaleatoriedad</a></strong> describe secuencias deterministas que imitan ciertas propiedades estadísticas
   del azar. Wolfram estudió esta regla como generador de secuencias pseudoaleatorias en su <a
     href="https://www.sciencedirect.com/science/article/pii/019688588690028X" target="_blank"
     rel="noopener noreferrer">trabajo de 1986</a>. Nuestros histogramas permiten explorar esa motivación; no certifican
@@ -77,7 +77,7 @@
   interviene. Equivalentemente, sumamos los vecinos <a routerLink="/articles/modular-arithmetic">módulo 2</a>. Dos
   contribuciones activas se cancelan:</p>
 <app-formula expression="s_i(t+1)\equiv s_{i-1}(t)+s_{i+1}(t)\pmod 2."></app-formula>
-<p>Al iterar, contamos caminos hacia cada posición, conservando solo su paridad. Es la recurrencia del <a
+<p>Al iterar, contamos caminos hacia cada posición, conservando solo su paridad. Es la <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> del <a
     routerLink="/articles/pascal-triangle">triángulo de Pascal</a>, con posiciones intercaladas vacías: sus coeficientes
   impares dibujan el <a routerLink="/articles/sierpinski-triangle">triángulo de Sierpiński</a>. La misma autosemejanza
   surge eliminando triángulos geométricos o sumando bits localmente.</p>
@@ -139,3 +139,6 @@
 </div>
 
 <p>Explora también <a routerLink="/articles/langtons-ant">la hormiga de Langton</a>: un agente móvil modifica el tablero y acaba construyendo una autopista desde el plano blanco.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pseudorandom-generators">Pseudoaleatoriedad, semillas y períodos</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li></ul></details></section>
+<!-- article-concepts:end -->

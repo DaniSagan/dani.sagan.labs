@@ -14,7 +14,7 @@
 <app-formula expression="P(\text{todos distintos})=1\cdot\frac{364}{365}\cdot\frac{363}{365}\cdots\frac{365-n+1}{365}"></app-formula>
 <app-formula expression="P(\text{alguna coincidencia})=1-\prod_{k=0}^{n-1}\left(1-\frac{k}{365}\right),\qquad 0\le n\le365"></app-formula>
 <p>Para n = 0, el producto vacío vale 1, así que la probabilidad de coincidencia es 0. También es 0 para una sola persona.
-  Si n &gt; 365, la coincidencia está garantizada por el principio del palomar.</p>
+  Si n &gt; 365, la coincidencia está garantizada por el <a data-article-concept="pigeonhole-principle" routerLink="/articles/pigeonhole-principle">principio del palomar</a>.</p>
 <h3>El umbral de las 23 personas</h3>
 <p>Con 22 personas la probabilidad es aproximadamente 47,57 %; con 23, 50,73 %.
   Con 30 alcanza el 70,63 %, y con 50 ronda el 97,04 %. No hay una contradicción matemática:
@@ -27,7 +27,7 @@
   un mismo grupo puede aportar varias parejas. Tampoco podemos multiplicar sin más probabilidades de no coincidencia
   para todas las parejas, porque el conjunto de esas condiciones no es mutuamente independiente.</p>
 <h3>Una aproximación útil</h3>
-<p>Tomando logaritmos del producto y usando ln(1 − u) ≈ −u cuando u es pequeño:</p>
+<p>Tomando <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmos</a> del producto y usando ln(1 − u) ≈ −u cuando u es pequeño:</p>
 <app-formula expression="\ln P(\text{todos distintos})\approx-\sum_{k=0}^{n-1}\frac{k}{365}=-\frac{n(n-1)}{2\cdot365}"></app-formula>
 <app-formula expression="P(\text{alguna coincidencia})\approx1-e^{-n(n-1)/(2\cdot365)}"></app-formula>
 <p>Al igualar esta aproximación a 1/2 obtenemos n(n − 1) ≈ 730 ln 2. Sugiere un umbral cercano a 23,
@@ -53,3 +53,6 @@
   <li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad y estadística</a>. Selecciona el experimento de cumpleaños y compara frecuencias simuladas con la probabilidad teórica al variar el tamaño del grupo.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pigeonhole-principle">Principio del palomar y argumentos de existencia</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -16,7 +16,7 @@
 <p>Cada individuo tiene un resultado potencial con tratamiento y otro sin él, pero solo se observa uno. El efecto individual es su diferencia; el efecto medio promedia esas diferencias en una población definida. Comparar medias observadas de tratados y no tratados mezcla efectos con selección si ambos grupos tenían pronósticos diferentes. Consistencia exige que el tratamiento observado corresponda a la intervención definida y no a versiones incompatibles.</p>
 <app-formula expression="\tau=E[Y(1)-Y(0)],\qquad Y=D\,Y(1)+(1-D)Y(0)" />
 <h3 id="section-1">Confusión y la paradoja de Simpson</h3>
-<p>Una variable que afecta tanto la asignación como el resultado puede confundir la comparación. Agregar grupos de dificultad distinta puede invertir el signo de la asociación, aunque en cada grupo sea el mismo. Estandarizar a una composición común elimina esa diferencia de mezcla, pero solo identifica un efecto causal si los confusores suficientes fueron medidos y el modelo causal lo permite. Ajustar cualquier variable disponible no garantiza corrección.</p>
+<p>Una variable que afecta tanto la asignación como el resultado puede confundir la comparación. Agregar grupos de dificultad distinta puede invertir el signo de la asociación, aunque en cada grupo sea el mismo. <a data-article-concept="normal-distribution" routerLink="/articles/normal-distribution">Estandarizar</a> a una composición común elimina esa diferencia de mezcla, pero solo identifica un efecto causal si los confusores suficientes fueron medidos y el modelo causal lo permite. Ajustar cualquier variable disponible no garantiza corrección.</p>
 <h3 id="section-2">Aleatorización y supuestos</h3>
 <p>La asignación aleatoria hace independiente el tratamiento de los resultados potenciales en el diseño, lo que permite una comparación causal en esperanza. Una muestra concreta puede quedar desequilibrada por azar y los intervalos reflejan esa variabilidad. Positividad exige que las alternativas sean posibles en los grupos relevantes. Interferencia entre participantes, incumplimiento y pérdidas de seguimiento pueden cambiar el efecto que identifica la comparación.</p>
 <h3 id="section-3">Ajuste, colisionadores y alcance</h3>
@@ -32,7 +32,7 @@
 <p>Iguala las proporciones de casos fáciles y verifica que desaparece la inversión por composición. Después vuelve a desequilibrarlas y compara agregado y estratos.</p>
 <app-deep-explorer topic="causal-inference" />
 <h3 id="section-6">Hipótesis y errores frecuentes</h3>
-<aside class="note"><p>La paradoja de Simpson no indica automáticamente qué comparación es causal. Hace falta decidir qué variables son anteriores al tratamiento y cómo se asignó.</p></aside>
+<aside class="note"><p>La <a data-article-concept="simpson-paradox" routerLink="/articles/simpson-paradox">paradoja de Simpson</a> no indica automáticamente qué comparación es causal. Hace falta decidir qué variables son anteriores al tratamiento y cómo se asignó.</p></aside>
 <h3 id="section-7">Comprueba tu comprensión</h3>
 <p>Estandariza las tasas del ejemplo a una población con mitad de casos fáciles y mitad difíciles.</p>
 <details class="note"><summary>Ver solución razonada</summary><p>La tasa tratada es 0,65 y la no tratada 0,725, diferencia menos 0,075. La interpretación causal depende de los supuestos de intercambio y positividad.</p></details>
@@ -46,3 +46,6 @@
 <li><a routerLink="/games/four-in-a-row">Cuatro en raya</a>. Compara estrategias mediante asignación aleatoria y controla quién empieza; una tasa agregada puede confundir estrategia y ventaja inicial.</li>
 </ul></div>
 <p>Conecta estas ideas con <a routerLink="/articles/stratified-sampling">Muestreo estratificado y estimadores ponderados</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/normal-distribution">Distribución normal y tipificación</a></li><li><a routerLink="/articles/simpson-paradox">Paradoja de Simpson</a></li></ul></details></section>
+<!-- article-concepts:end -->

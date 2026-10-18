@@ -1,5 +1,5 @@
 <h2>La identidad de Euler: e^(iπ) + 1 = 0</h2>
-<p class="dropcap">Una exponencial, un número imaginario y media vuelta a una circunferencia terminan en una igualdad
+<p class="dropcap">Una exponencial, un número imaginario y media vuelta a una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> terminan en una igualdad
   sorprendentemente breve. La identidad de Euler reúne cinco constantes fundamentales, pero su significado se ve
   mejor como un movimiento: partir de 1, girar media vuelta hasta −1 y avanzar una unidad hasta 0.</p>
 <app-formula expression="e^{i\pi}+1=0"></app-formula>
@@ -10,7 +10,7 @@
   muestra una relación exacta entre ellas mediante multiplicación, exponenciación y suma.</p>
 <h3>La fórmula de Euler describe un giro</h3>
 <p>En el plano complejo, a + bi es el punto (a, b): el eje horizontal representa la parte real y el vertical,
-  la imaginaria. Para cualquier ángulo real θ, medido en radianes, la fórmula de Euler dice:</p>
+  la imaginaria. Para cualquier ángulo real θ, medido en <a data-article-concept="radians" routerLink="/articles/radians">radianes</a>, la fórmula de Euler dice:</p>
 <app-formula expression="e^{i\theta}=\cos\theta+i\sin\theta"></app-formula>
 <p>El punto tiene módulo 1 porque cos²θ + sin²θ = 1. Al aumentar θ desde 0, recorre la circunferencia unidad
   en sentido antihorario. No aumenta su distancia al origen: cambia su dirección.</p>
@@ -28,7 +28,7 @@
 <p>Podemos extender la exponencial a los números complejos mediante su serie de potencias, que converge
   absolutamente para cualquier z complejo:</p>
 <app-formula expression="e^z=\sum_{n=0}^{\infty}\frac{z^n}{n!}=1+z+\frac{z^2}{2!}+\frac{z^3}{3!}+\cdots"></app-formula>
-<p>Al sustituir z = iθ, las potencias de i repiten el patrón 1, i, −1, −i. La convergencia absoluta permite
+<p>Al sustituir z = iθ, las potencias de i repiten el patrón 1, i, −1, −i. La <a data-article-concept="series-convergence" routerLink="/articles/series-convergence">convergencia absoluta</a> permite
   agrupar los términos pares y los impares. Aparecen exactamente las series del coseno y del seno:</p>
 <app-formula expression="e^{i\theta}=\left(1-\frac{\theta^2}{2!}+\frac{\theta^4}{4!}-\cdots\right)+i\left(\theta-\frac{\theta^3}{3!}+\frac{\theta^5}{5!}-\cdots\right)=\cos\theta+i\sin\theta"></app-formula>
 <p>Esta es una igualdad entre series infinitas, no una aproximación obtenida al quedarse con unos pocos términos.
@@ -38,7 +38,7 @@
   Los términos siguientes corrigen alternativamente las partes real e imaginaria. El segmento que une dos
   sumas consecutivas representa el término que acabamos de añadir, no un tramo de la rotación e^(iθ).</p>
 <app-euler-series></app-euler-series>
-<p>El factorial del denominador acaba dominando a las potencias de cualquier ángulo fijo.
+<p>El <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a> del denominador acaba dominando a las potencias de cualquier ángulo fijo.
   Por eso los términos tienden a cero y la serie converge absolutamente. En concreto, el cociente
   entre los módulos de dos términos consecutivos es |θ|/(n + 1), que tiende a cero.
   Puedes relacionar esta construcción con las <a routerLink="/articles/taylor-series">series de Taylor</a>.</p>
@@ -49,7 +49,7 @@
   vuelve a 1. Dos cuartos de vuelta explican geométricamente i² = −1. Más generalmente,
   multiplicar un número complejo por e^(iθ) lo gira θ radianes sin cambiar su módulo.</p>
 <p>También podemos ver el giro mediante una derivada. Si z(θ) = e^(iθ), entonces z′(θ) = iz(θ):
-  el vector velocidad es perpendicular al vector de posición. Partiendo de z(0) = 1,
+  el vector velocidad es <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> al vector de posición. Partiendo de z(0) = 1,
   el movimiento recorre la circunferencia unidad en sentido antihorario.</p>
 <h3>Exactitud y otras medias vueltas</h3>
 <p>El resultado es exactamente cero. Un cálculo numérico de sin π puede devolver un residuo diminuto por redondeo:
@@ -58,15 +58,18 @@
 <p>π no es el único ángulo que lleva a −1. Cada vuelta completa adicional termina en el mismo punto:</p>
 <app-formula expression="e^{i\theta}+1=0\quad\Longleftrightarrow\quad\theta=(2k+1)\pi,\qquad k\in\mathbb Z\quad(\theta\in\mathbb R)"></app-formula>
 <p>Aquí usamos la exponencial compleja, que asigna un único resultado a cada exponente. La elección de ramas aparece
-  al invertirla mediante un logaritmo, como ocurre en el artículo <a routerLink="/articles/imaginary-power">¿Por qué iⁱ es real?</a>.</p>
+  al invertirla mediante un <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a>, como ocurre en el artículo <a routerLink="/articles/imaginary-power">¿Por qué iⁱ es real?</a>.</p>
 <p><strong>Para explorar.</strong> Compara θ = π/2, π y 2π. ¿En cuál se anula la parte imaginaria? ¿Basta eso para
   que e^(iθ) + 1 sea cero? Después selecciona −π y 3π: cambia el ángulo recorrido, pero no el destino.</p>
 
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/complex-power-in-polar-form">Problema 038 · Una potencia en forma polar</a>. Eleva 1+i usando módulo y argumento y convierte el resultado a forma binómica.</li>
+  <li><a routerLink="/problems/complex-power-in-polar-form">Problema 038 · Una potencia en forma polar</a>. Eleva 1+i usando módulo y argumento y convierte el resultado a <a data-article-concept="complex-arithmetic" routerLink="/articles/complex-arithmetic">forma binómica</a>.</li>
   <li><a routerLink="/problems/fourth-roots-of-minus-one">Problema 036 · Raíces cuartas de −1</a>. Divide el argumento entre cuatro e incluye todas las vueltas que producen raíces distintas.</li>
   <li><a routerLink="/problems/sum-of-roots-of-unity">Problema 040 · Suma de raíces de la unidad</a>. Traduce una suma compleja en una identidad de cosenos.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/radians">Radianes</a></li><li><a routerLink="/articles/series-convergence">Convergencia absoluta, condicional y criterio de Leibniz</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/complex-arithmetic">Conjugado, módulo y división compleja</a></li></ul></details></section>
+<!-- article-concepts:end -->

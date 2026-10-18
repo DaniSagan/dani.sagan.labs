@@ -1,0 +1,193 @@
+[
+  {
+    "slug": "homeomorphisms-homotopy",
+    "area": "topology",
+    "ids": [
+      "M86",
+      "M87"
+    ],
+    "title": "Homeomorfismos, homotopía y retracciones",
+    "terms": [
+      "homeomorfismo",
+      "homeomorfismos",
+      "homeomorfo",
+      "homeomorfa",
+      "homeomorfos",
+      "homotopía",
+      "homotopías",
+      "retracción",
+      "retracto"
+    ],
+    "definition": "Un homeomorfismo es una biyección continua con inversa continua: identifica dos espacios topológicamente. Una homotopía es una familia continua de aplicaciones parametrizada por un intervalo. Una retracción de X sobre A⊂X fija cada punto de A. Una retracción por deformación añade una homotopía desde la identidad hasta esa retracción, manteniendo A fijo.",
+    "argument": "Para el anillo cerrado 1≤‖x‖≤2, la aplicación H(x,s)=[(1−s)+s/‖x‖]x es continua y nunca divide por cero. Su radio permanece entre uno y dos. En s=0 es la identidad, en s=1 envía todo al círculo unidad y, si ‖x‖=1, deja el punto fijo durante toda la deformación.",
+    "example": "El círculo y una elipse no degenerada son homeomorfos mediante una transformación lineal invertible. El anillo y el círculo tienen el mismo tipo de homotopía, pero no son homeomorfos. Un intervalo es homotópicamente equivalente a un punto sin tener el mismo número de puntos.",
+    "caution": "Una biyección continua no es siempre homeomorfismo. El mapa t↦(cos t,sen t) desde [0,2π) al círculo tiene inversa discontinua en el punto de cierre. Tampoco se puede retraer el disco completo sobre su borde fijándolo: el ejemplo del anillo evita precisamente el centro.",
+    "formula": "H(x,s)=\\left(1-s+\\frac{s}{\\|x\\|}\\right)x,\\qquad H(x,0)=x,\\quad H(x,1)=x/\\|x\\|",
+    "question": "¿Por qué la misma fórmula no define la retracción radial de todo el disco?",
+    "answer": "No está definida en el centro. Además, la dirección x/‖x‖ depende del camino al aproximarse a cero y no admite allí una extensión continua.",
+    "n": [
+      "Radio inicial",
+      1,
+      2,
+      0.1,
+      1.5
+    ],
+    "t": [
+      "Tiempo de deformación s",
+      0,
+      1,
+      0.05,
+      0.5
+    ],
+    "lab": "Contraer radialmente un anillo",
+    "code": "const r=(1-t)*n+t;rows.push(['Radio inicial',n],['Radio durante la deformación',r],['Radio final',1],['Puntos del círculo unidad','Permanecen fijos']);for(let k=0;k<=120;k++){const a=2*Math.PI*k/120;points.push([r*Math.cos(a),r*Math.sin(a)]);}note='Se muestra la imagen de un círculo de radio elegido dentro del anillo. La deformación completa actúa simultáneamente sobre todos los radios de [1,2].';",
+    "related": [
+      "mobius-strip",
+      "jordan-curve",
+      "open-closed-connected"
+    ]
+  },
+  {
+    "slug": "surfaces-genus-euler",
+    "area": "topology",
+    "ids": [
+      "M88",
+      "M89",
+      "M90"
+    ],
+    "title": "Superficies, orientabilidad, género y característica de Euler",
+    "terms": [
+      "superficie orientable",
+      "superficies orientables",
+      "orientabilidad",
+      "no orientable",
+      "género de una superficie",
+      "característica de Euler",
+      "toro"
+    ],
+    "definition": "Una superficie es un espacio que localmente se parece al plano o, en puntos de borde, a un semiplano, con las condiciones topológicas habituales de separación y numerabilidad. La orientabilidad permite elegir orientaciones locales compatibles. El género de una superficie orientable compacta conexa cuenta sus asas. La característica de Euler se calcula como V−E+F en una descomposición celular adecuada.",
+    "argument": "Subdividir una arista añade un vértice y una arista, dejando V−E+F igual. Dividir una cara mediante una arista añade una arista y una cara, con el mismo efecto. Esta invariancia se extiende a descomposiciones compatibles. La clasificación de superficies compactas conexas da χ=2−2g−b en el caso orientable y χ=2−k−b en el no orientable con k planos proyectivos.",
+    "example": "El toro tiene una descomposición con un vértice, dos aristas y una cara: χ=0. La esfera tiene χ=2. La cinta de Möbius tiene un componente de borde, no es orientable y tiene χ=0; el cilindro también tiene χ=0, pero es orientable y tiene dos componentes de borde.",
+    "caution": "La característica de Euler por sí sola no identifica una superficie: toro y botella de Klein comparten χ=0 y difieren en orientabilidad. Las fórmulas citadas exigen compacidad y conexidad, y b cuenta componentes del borde, no puntos.",
+    "formula": "\\chi=V-E+F,\\qquad\\chi_{\\mathrm{orientable}}=2-2g-b,\\qquad\\chi_{\\mathrm{no\\ orientable}}=2-k-b",
+    "question": "Calcula χ de un toro al que se le elimina el interior de un disco.",
+    "answer": "Tiene g=1 y un componente de borde, así que χ=2−2−1=−1. Quitar una cara abierta reduce la característica en uno.",
+    "n": [
+      "Asas g / planos proyectivos k",
+      1,
+      5,
+      1,
+      1
+    ],
+    "t": [
+      "Componentes de borde b",
+      0,
+      4,
+      1,
+      0
+    ],
+    "lab": "Distinguir dos familias de superficies",
+    "code": "rows.push(['χ orientable con g asas',2-2*n-t],['χ no orientable con k planos proyectivos',2-n-t],['Componentes de borde',t],['χ de la esfera cerrada',2]);note='El primer control se interpreta como g en la primera fila y k en la segunda. Son dos familias diferentes, no dos fórmulas para una misma superficie.';",
+    "related": [
+      "euler-polyhedron-formula",
+      "klein-bottle",
+      "mobius-strip"
+    ]
+  },
+  {
+    "slug": "schoenflies-winding-number",
+    "area": "topology",
+    "ids": [
+      "M91",
+      "M92"
+    ],
+    "title": "Schönflies y número de vueltas de una curva",
+    "terms": [
+      "Schönflies",
+      "Schoenflies",
+      "número de vueltas",
+      "índice de una curva",
+      "índice respecto"
+    ],
+    "definition": "El teorema de Jordan afirma que una curva simple cerrada del plano separa interior y exterior. Schönflies refuerza la conclusión: existe un homeomorfismo de todo el plano que lleva la curva a una circunferencia. El número de vueltas de una curva cerrada alrededor de un punto que no pertenece a ella mide el cambio total de argumento dividido por 2π.",
+    "argument": "Al seguir continuamente el argumento de γ(t)−a, el punto inicial y final coinciden y la diferencia angular es un múltiplo entero de 2π. Ese entero no cambia al deformar la curva sin cruzar a. Para una curva diferenciable a trozos, integrar γ′/(γ−a) expresa el mismo índice. Un punto del exterior de una curva de Jordan tiene índice cero; en el interior es ±1 según orientación.",
+    "example": "El círculo unidad recorrido n veces tiene índice n respecto del origen y cero respecto de un punto de módulo mayor que uno. Si |n|>1, esa parametrización ya no es una curva simple de Jordan, aunque su imagen geométrica siga siendo una circunferencia.",
+    "caution": "El índice no está definido cuando el punto pertenece a la curva. La generalización ingenua de Schönflies a esferas arbitrarias en dimensión tres falla por embeddings salvajes; el enunciado de esta página es planar. El cálculo angular numérico necesita un muestreo suficientemente fino.",
+    "formula": "\\operatorname{Ind}(\\gamma,a)=\\frac1{2\\pi i}\\oint_\\gamma\\frac{dz}{z-a}\\in\\mathbb Z",
+    "question": "¿Qué cambia al recorrer una misma curva con orientación inversa?",
+    "answer": "El índice cambia de signo. Su imagen como conjunto no cambia, y tampoco cambia la separación topológica entre interior y exterior.",
+    "n": [
+      "Vueltas orientadas n",
+      -3,
+      3,
+      1,
+      1
+    ],
+    "t": [
+      "Punto de referencia a, eje real",
+      0,
+      2,
+      0.1,
+      0
+    ],
+    "lab": "Acumular el argumento alrededor de un punto",
+    "code": "if(Math.abs(t-1)<1e-9){rows.push(['Índice','No definido: a pertenece a la curva']);}else{let sum=0;const N=480;for(let k=0;k<N;k++){const a=2*Math.PI*n*k/N,b=2*Math.PI*n*(k+1)/N,x=Math.cos(a)-t,y=Math.sin(a),u=Math.cos(b)-t,v=Math.sin(b);sum+=Math.atan2(x*v-y*u,x*u+y*v);}rows.push(['Índice numérico',sum/(2*Math.PI)],['Índice exacto',t<1?n:0],['¿Parametrización simple?',Math.abs(n)===1?'Sí':'No']);}for(let k=0;k<=240;k++){const a=2*Math.PI*n*k/240;points.push([Math.cos(a),Math.sin(a)]);}note='El punto de referencia está en el eje real. La curva dibujada no permite distinguir cuántas veces se recorre; esa información aparece en el índice.';",
+    "reference": [
+      "https://u.cs.biu.ac.il/~megereli/TGeometric.pdf",
+      "Géométrie topologique · Homeomorfismos y Jordan–Schönflies"
+    ],
+    "related": [
+      "jordan-curve",
+      "complex-residues",
+      "homeomorphisms-homotopy"
+    ]
+  },
+  {
+    "slug": "open-closed-connected",
+    "area": "topology",
+    "ids": [
+      "M93",
+      "M94"
+    ],
+    "title": "Abiertos, cerrados, acumulación y conexidad",
+    "terms": [
+      "conjunto abierto",
+      "conjuntos abiertos",
+      "conjunto cerrado",
+      "conjuntos cerrados",
+      "punto de acumulación",
+      "puntos de acumulación",
+      "conexidad",
+      "componentes conexas",
+      "totalmente desconectado"
+    ],
+    "definition": "En un espacio métrico, un conjunto es abierto si cada uno de sus puntos contiene una bola pequeña dentro de él; es cerrado si su complemento es abierto. Un punto de acumulación tiene otros puntos del conjunto arbitrariamente cerca. Un conjunto es conexo si no puede separarse en dos abiertos relativos disjuntos no vacíos; sus componentes conexas son los subconjuntos conexos maximales.",
+    "argument": "En la recta real, un conjunto conexo debe contener todos los puntos entre cualesquiera dos de los suyos: si faltara un punto intermedio, los lados izquierdo y derecho darían una separación. Recíprocamente, la propiedad del intervalo y la completitud de los reales demuestran la conexidad de los intervalos. En espacios más generales, conexidad no implica necesariamente conexión por caminos.",
+    "example": "(0,1) es abierto y (0,1] no es ni abierto ni cerrado en la recta. En el espacio relativo [0,1], el mismo intervalo (0,1] sí es abierto. Todos los puntos de [0,1] son de acumulación de ese intervalo salvo que el espacio ambiente se restrinja: especificar el ambiente es esencial.",
+    "caution": "Abierto y cerrado no son opuestos excluyentes: el espacio completo y el vacío son ambas cosas. Un conjunto totalmente desconectado tiene componentes de un solo punto, pero puede no tener puntos aislados, como Cantor.",
+    "formula": "x\\in A'\\Longleftrightarrow \\forall r>0,\\ (B(x,r)\\setminus\\{x\\})\\cap A\\ne\\varnothing",
+    "question": "¿Cuántas componentes tiene (−1,1)∪(1,3)? ¿Qué ocurre al añadir el punto 1?",
+    "answer": "Tiene dos componentes: falta el punto que las uniría. Añadir 1 produce el intervalo (−1,3), que es conexo. Que las clausuras se toquen no bastaba para conectar la unión original.",
+    "n": [
+      "Separación de centros d",
+      0,
+      4,
+      0.25,
+      2
+    ],
+    "t": [
+      "Radio de cada intervalo r",
+      0.25,
+      2,
+      0.25,
+      1
+    ],
+    "lab": "Unir intervalos abiertos",
+    "code": "rows.push(['Primer intervalo','('+(-t)+', '+t+')'],['Segundo intervalo','('+(n-t)+', '+(n+t)+')'],['Componentes conexas',n<2*t?1:2],['¿Se tocan las clausuras?',n<=2*t?'Sí':'No'],['¿Es abierto en R?','Sí']);note='En d=2r los extremos de las clausuras coinciden, pero ese punto no pertenece a los intervalos abiertos: siguen existiendo dos componentes.';",
+    "related": [
+      "compact-perfect-disconnected",
+      "metric-normed-spaces",
+      "cantor-set"
+    ]
+  }
+]

@@ -1,8 +1,8 @@
 <h2>La constante de Euler–Mascheroni</h2>
-<p class="dropcap">La suma 1 + 1/2 + 1/3 + ⋯ crece sin límite, pero lo hace muy despacio. El logaritmo natural también crece sin límite. Al comparar ambas cantidades aparece algo inesperado: su diferencia se estabiliza en un número finito. Esa separación entre una suma discreta y una función continua es la constante de Euler–Mascheroni, representada por la letra griega γ.</p>
+<p class="dropcap">La suma 1 + 1/2 + 1/3 + ⋯ crece sin límite, pero lo hace muy despacio. El <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> natural también crece sin límite. Al comparar ambas cantidades aparece algo inesperado: su diferencia se estabiliza en un número finito. Esa separación entre una suma discreta y una función continua es la constante de Euler–Mascheroni, representada por la letra griega γ.</p>
 <app-formula expression="\gamma=\lim_{n\to\infty}\left(H_n-\ln n\right),\qquad H_n=\sum_{k=1}^{n}\frac1k" displayMode="block"/>
 <app-formula expression="\gamma=0.577215664901532860606512090082\ldots" displayMode="block"/>
-<p>No es el número e, la base de los logaritmos naturales. Tampoco es la función gamma Γ, aunque existe una conexión profunda entre ambas. Todos los logaritmos de este artículo son naturales.</p>
+<p>No es el número e, la base de los logaritmos naturales. Tampoco es la <a data-article-concept="gamma-function" routerLink="/articles/gamma-function">función gamma</a> Γ, aunque existe una conexión profunda entre ambas. Todos los logaritmos de este artículo son naturales.</p>
 
 <h3>1. Ver la constante como un área</h3>
 <p>Sobre cada intervalo [k,k+1] dibujamos un rectángulo de altura 1/k. Como 1/x es decreciente, el rectángulo queda por encima de la curva. Su área es 1/k; la que hay bajo la curva en ese mismo intervalo es ln(k+1)−ln k. La diferencia es una pequeña región positiva:</p>
@@ -31,7 +31,7 @@
 <p>La lentitud no es una limitación de la constante, sino de esta manera de calcularla. Si sabemos cómo se comporta el error, podemos cancelar sus primeros términos.</p>
 
 <h3>4. Acelerar con Euler–Maclaurin</h3>
-<p>La fórmula de Euler–Maclaurin relaciona sumas e integrales mediante correcciones que contienen los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Para la suma armónica produce la expansión:</p>
+<p>La fórmula de <a data-article-concept="euler-maclaurin-asymptotics" routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin</a> relaciona sumas e integrales mediante correcciones que contienen los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Para la suma armónica produce la expansión:</p>
 <app-formula expression="H_n\sim\ln n+\gamma+\frac1{2n}-\frac1{12n^2}+\frac1{120n^4}-\frac1{252n^6}+\cdots" displayMode="block"/>
 <p>Despejando γ, la primera mejora resta 1/(2n); la segunda añade 1/(12n²); la tercera resta 1/(120n⁴). Los órdenes del error pasan, respectivamente, de n⁻¹ a n⁻², n⁻⁴ y n⁻⁶.</p>
 <app-formula expression="\gamma\approx H_n-\ln n-\frac1{2n}+\frac1{12n^2}-\frac1{120n^4}" displayMode="block"/>
@@ -41,12 +41,12 @@
 <aside class="experiment"><h4>Qué observar en la gráfica</h4><ul><li>Con n pequeño, compara cuánto aporta cada corrección.</li><li>Aumenta n por factores de diez. En escala logarítmica, el descenso de cada curva refleja su orden de error.</li><li>Cuando las curvas llegan al fondo, no has obtenido una constante exacta: has alcanzado el límite de precisión de este cálculo.</li></ul></aside>
 
 <h3>5. Una integral y la función gamma</h3>
-<p>La <a routerLink="/articles/gamma-function">función gamma</a> extiende el factorial. Su derivada en 1 recupera la constante con signo negativo:</p>
+<p>La <a routerLink="/articles/gamma-function">función gamma</a> extiende el <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a>. Su derivada en 1 recupera la constante con signo negativo:</p>
 <app-formula expression="\Gamma(1)=1,\qquad \Gamma'(1)=-\gamma" displayMode="block"/>
 <p>Al derivar la integral de Euler respecto del parámetro, obtenemos una representación integral de γ. La singularidad logarítmica cerca de cero es integrable y el factor exponencial controla la cola:</p>
 <app-formula expression="\gamma=-\int_0^\infty e^{-t}\ln t\,dt" displayMode="block"/>
 <p>Si T es una variable aleatoria exponencial de tasa 1, su densidad es e⁻ᵗ para t&gt;0. La misma identidad se interpreta como E[ln T]=−γ. Así, una constante nacida al comparar una suma con un logaritmo aparece también como una esperanza probabilística.</p>
-<p>La derivada logarítmica de Γ se llama función digamma. La recurrencia de la función gamma implica ψ(x+1)=ψ(x)+1/x; al iterarla desde ψ(1)=−γ aparece otra vez la suma armónica:</p>
+<p>La derivada logarítmica de Γ se llama función digamma. La <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> de la función gamma implica ψ(x+1)=ψ(x)+1/x; al iterarla desde ψ(1)=−γ aparece otra vez la suma armónica:</p>
 <app-formula expression="\psi(x)=\frac{\Gamma'(x)}{\Gamma(x)},\qquad \psi(n+1)=H_n-\gamma" displayMode="block"/>
 
 <h3>6. El término constante de la función zeta</h3>
@@ -63,7 +63,7 @@
 <p>El término m ln m proporciona la escala dominante, pero γm aporta una corrección proporcional al tamaño de la colección. La fórmula supone equiprobabilidad e independencia; si unos cromos son más raros que otros, el modelo cambia.</p>
 
 <h3>8. Un número conocido, una naturaleza desconocida</h3>
-<p>Podemos calcular muchos decimales de γ y demostrar numerosas identidades sobre ella, pero todavía no se sabe si es racional o irracional. Por tanto, tampoco está resuelto si es trascendente. Conocer sus cifras no equivale a conocer su naturaleza aritmética: ninguna cantidad finita de decimales puede decidir por sí sola esa cuestión.</p>
+<p>Podemos calcular muchos decimales de γ y demostrar numerosas identidades sobre ella, pero todavía no se sabe si es racional o <a data-article-concept="proof-strategies" routerLink="/articles/proof-strategies">irracional</a>. Por tanto, tampoco está resuelto si es <a data-article-concept="algebraic-transcendental-numbers" routerLink="/articles/algebraic-transcendental-numbers">trascendente</a>. Conocer sus cifras no equivale a conocer su naturaleza aritmética: ninguna cantidad finita de decimales puede decidir por sí sola esa cuestión.</p>
 <p>La constante de Euler–Mascheroni mide una discrepancia persistente entre lo discreto y lo continuo. Sus apariciones en sumas, integrales, funciones especiales y problemas de probabilidad muestran que esa discrepancia no pertenece a un único cálculo aislado.</p>
 <p class="references">Referencias: <a href="https://dlmf.nist.gov/5.2#ii" target="_blank" rel="noopener noreferrer">NIST DLMF: definición de γ</a>, <a href="https://dlmf.nist.gov/2.10" target="_blank" rel="noopener noreferrer">sumación de Euler–Maclaurin</a>, <a href="https://dlmf.nist.gov/5.4" target="_blank" rel="noopener noreferrer">valores de las funciones gamma y digamma</a> y <a href="https://encyclopediaofmath.org/wiki/Euler_constant" target="_blank" rel="noopener noreferrer">Encyclopedia of Mathematics: constante de Euler</a>.</p>
 
@@ -74,3 +74,6 @@
   <li><a routerLink="/problems/logarithmic-inequality">Problema 053 · Una desigualdad del logaritmo</a>. Demuestra ln x ≤ x − 1 e identifica el punto de contacto; es otra comparación útil con el logaritmo.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/gamma-function">Función gamma</a></li><li><a routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin y truncamiento de desarrollos asintóticos</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/proof-strategies">Cómo demostrar: implicaciones, contradicción y contraposición</a></li><li><a routerLink="/articles/algebraic-transcendental-numbers">Números algebraicos y trascendentes</a></li></ul></details></section>
+<!-- article-concepts:end -->

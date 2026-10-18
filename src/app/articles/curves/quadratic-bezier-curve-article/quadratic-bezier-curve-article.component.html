@@ -1,5 +1,5 @@
 <h2>Curva de Bézier cuadrática</h2>
-<p class="dropcap">La curva de Bézier cuadrática define un arco mediante tres puntos de control. Su importancia está en la construcción y el control geométrico de la forma, incluso cuando el arco pertenece a una parábola.</p>
+<p class="dropcap">La curva de Bézier cuadrática define un arco mediante tres puntos de control. Su importancia está en la construcción y el control geométrico de la forma, incluso cuando el arco pertenece a una <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a>.</p>
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
@@ -7,10 +7,10 @@
 <p class="curve-domain">Intervalos representados: [0, 1].</p>
 
 <h3>Propiedades geométricas</h3>
-<p>La curva pasa por los puntos extremos P₀ y P₂. El punto central P₁ controla las tangentes, pero normalmente no está sobre el arco. Las combinaciones convexas mantienen el recorrido dentro del triángulo de control.</p>
+<p>La curva pasa por los puntos extremos P₀ y P₂. El punto central P₁ controla las tangentes, pero normalmente no está sobre el arco. Las <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a> convexas mantienen el recorrido dentro del triángulo de control.</p>
 
 <h3>Análisis y construcción</h3>
-<p>Los pesos de Bernstein suman uno y son no negativos para 0≤t≤1. En esta configuración simétrica, x=−2+4t e y=2pt(1−t), de modo que la altura máxima es p/2.</p>
+<p>Los pesos de <a data-article-concept="bernstein-polynomials" routerLink="/articles/bernstein-polynomials">Bernstein</a> suman uno y son no negativos para 0≤t≤1. En esta configuración simétrica, x=−2+4t e y=2pt(1−t), de modo que la altura máxima es p/2.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/BezierCurve.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/parabola">Parábola</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/bernstein-polynomials">Polinomios de Bernstein y aproximación</a></li></ul></details></section>
+<!-- article-concepts:end -->

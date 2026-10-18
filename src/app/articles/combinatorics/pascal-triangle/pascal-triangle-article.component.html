@@ -5,7 +5,7 @@
 
 <h3>Construir el triángulo</h3>
 <p>Numeramos las filas desde n = 0 y las posiciones de cada fila desde k = 0 hasta k = n.
-  La fila 4, por ejemplo, es 1, 4, 6, 4, 1. Cada entrada se llama <strong>coeficiente binomial</strong>
+  La fila 4, por ejemplo, es 1, 4, 6, 4, 1. Cada entrada se llama <strong><a data-article-concept="binomial-theorem" routerLink="/articles/binomial-theorem">coeficiente binomial</a></strong>
   y se lee «n sobre k».</p>
 <app-formula expression="\binom{0}{0}=1,\qquad\binom{n}{0}=\binom{n}{n}=1"></app-formula>
 <app-formula expression="\binom{n}{k}=\binom{n-1}{k-1}+\binom{n-1}{k}\qquad(1\le k\le n-1)"></app-formula>
@@ -35,7 +35,7 @@
   Si a = 1 y b = −1, la suma alternada de cualquier fila con n ≥ 1 es cero.</p>
 
 <h3>De contar resultados a calcular probabilidades</h3>
-<p>En cuatro lanzamientos independientes de una moneda equilibrada hay 16 secuencias equiprobables.
+<p>En cuatro lanzamientos independientes de una moneda equilibrada hay 16 secuencias <a data-article-concept="finite-probability" routerLink="/articles/finite-probability">equiprobables</a>.
   Seis contienen exactamente dos caras, así que su probabilidad es 6/16 = 37,5 %.
   Dividir la fila 4 entre 16 transforma sus coeficientes en una distribución de probabilidad.</p>
 <p>Si la probabilidad de cara es p en cada lanzamiento, una secuencia con k caras tiene probabilidad
@@ -80,3 +80,6 @@
   <li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad y estadística</a>. Selecciona una binomial con p = 1/2 y relaciona la altura de sus barras con una fila del triángulo de Pascal.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/binomial-theorem">Teorema binomial</a></li><li><a routerLink="/articles/finite-probability">Probabilidad en espacios finitos: sucesos y regla de Laplace</a></li></ul></details></section>
+<!-- article-concepts:end -->

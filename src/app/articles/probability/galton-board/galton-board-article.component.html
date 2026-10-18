@@ -4,7 +4,7 @@
   <p class="dropcap">Una bola cae, golpea un clavo y se desvía. Otro clavo, otra decisión. Es difícil anticipar su destino, pero al dejar caer muchas bolas aparece una forma reconocible: los casilleros centrales suelen acumular más que los extremos. El tablero de Galton convierte una sucesión de pequeñas decisiones aleatorias en una distribución que podemos ver, contar y calcular.</p>
   <aside class="theorem"><span class="section-label">UNA SUMA DE DECISIONES</span>
     <app-formula expression="K=B_1+\cdots+B_n,\qquad B_i\sim\operatorname{Bernoulli}(p),\qquad K\sim\operatorname{Bin}(n,p)" displayMode="block" />
-    <p>Con n desvíos independientes y probabilidad constante p de ir a la derecha, el número K de desvíos a la derecha sigue una distribución binomial. Hay n + 1 casilleros posibles: del 0 al n.</p>
+    <p>Con n desvíos independientes y probabilidad constante p de ir a la derecha, el número K de desvíos a la derecha sigue una <a data-article-concept="bernoulli-binomial" routerLink="/articles/bernoulli-binomial">distribución binomial</a>. Hay n + 1 casilleros posibles: del 0 al n.</p>
   </aside>
 
   <h3>1. Qué representa cada rebote</h3>
@@ -19,19 +19,19 @@
   <p>Con seis filas hay 2⁶ = 64 secuencias. Sus destinos se reparten según los números 1, 6, 15, 20, 15, 6, 1. Son una fila del <a routerLink="/articles/pascal-triangle">triángulo de Pascal</a>: cada nodo recibe los caminos que llegan de sus dos predecesores.</p>
   <app-formula expression="\binom nk=\binom{n-1}{k-1}+\binom{n-1}{k}" displayMode="block" />
   <app-galton-paths />
-  <p>Con p = ½, todas las secuencias completas tienen probabilidad 2⁻ⁿ. Los destinos centrales son más frecuentes porque reúnen más secuencias, no porque cada trayectoria individual sea más probable. Cuando p cambia, los caminos con distinto número de derechas dejan de ser equiprobables.</p>
+  <p>Con p = ½, todas las secuencias completas tienen probabilidad 2⁻ⁿ. Los destinos centrales son más frecuentes porque reúnen más secuencias, no porque cada trayectoria individual sea más probable. Cuando p cambia, los caminos con distinto número de derechas dejan de ser <a data-article-concept="finite-probability" routerLink="/articles/finite-probability">equiprobables</a>.</p>
 
   <h3>3. De contar caminos a calcular probabilidades</h3>
   <p>Una secuencia concreta con k derechas y n − k izquierdas tiene probabilidad pᵏ(1 − p)ⁿ⁻ᵏ. Como las secuencias que terminan en k son sucesos incompatibles, sumamos sus probabilidades:</p>
   <app-formula expression="\boxed{P(K=k)=\binom nk p^k(1-p)^{n-k}},\qquad k=0,\ldots,n" displayMode="block" />
-  <p>En el tablero de seis filas equilibrado, P(K = 3) = 20/64 = 31,25 %. En cambio, P(K = 0) = 1/64 = 1,5625 %. Si dejamos caer N bolas, esperamos N·P(K = k) en el casillero k. Ese valor esperado puede ser fraccionario: describe el promedio entre repeticiones del experimento, no una cantidad obligatoria de bolas.</p>
+  <p>En el tablero de seis filas equilibrado, P(K = 3) = 20/64 = 31,25 %. En cambio, P(K = 0) = 1/64 = 1,5625 %. Si dejamos caer N bolas, esperamos N·P(K = k) en el casillero k. Ese <a data-article-concept="discrete-expectation" routerLink="/articles/discrete-expectation">valor esperado</a> puede ser fraccionario: describe el promedio entre repeticiones del experimento, no una cantidad obligatoria de bolas.</p>
   <p>La posición media y la dispersión se obtienen sumando las contribuciones de los desvíos independientes:</p>
   <app-formula expression="\mu=\mathbb E[K]=np,\qquad \operatorname{Var}(K)=np(1-p),\qquad \sigma=\sqrt{np(1-p)}" displayMode="block" />
-  <p>Por ejemplo, con n = 12 y p = ½, la media es 6 y la desviación típica es √3 ≈ 1,732 casilleros. La desviación típica se expresa en unidades de posición; la varianza, en sus cuadrados.</p>
+  <p>Por ejemplo, con n = 12 y p = ½, la media es 6 y la <a data-article-concept="descriptive-statistics" routerLink="/articles/descriptive-statistics">desviación típica</a> es √3 ≈ 1,732 casilleros. La desviación típica se expresa en unidades de posición; la varianza, en sus cuadrados.</p>
 
   <h3>4. Más bolas y más filas son dos ideas distintas</h3>
-  <p><strong>Aumentar el número de bolas N</strong>, manteniendo n y p, permite estimar mejor una distribución fija. Para cada casillero, la ley de los grandes números dice que su frecuencia relativa converge a su probabilidad. Si esa probabilidad es q, la desviación típica de la frecuencia de N bolas independientes es √(q(1 − q)/N). Multiplicar N por cuatro divide esa escala de fluctuación por dos.</p>
-  <p><strong>Aumentar el número de filas n</strong>, con p fijo entre 0 y 1, cambia la distribución de cada bola. La suma contiene más decisiones. Tras centrarla y dividirla por su desviación típica, el <a routerLink="/articles/central-limit-theorem">teorema central del límite</a> conduce a una normal estándar:</p>
+  <p><strong>Aumentar el número de bolas N</strong>, manteniendo n y p, permite estimar mejor una distribución fija. Para cada casillero, la <a data-article-concept="large-numbers-law" routerLink="/articles/large-numbers-law">ley de los grandes números</a> dice que su frecuencia relativa converge a su probabilidad. Si esa probabilidad es q, la desviación típica de la frecuencia de N bolas independientes es √(q(1 − q)/N). Multiplicar N por cuatro divide esa escala de fluctuación por dos.</p>
+  <p><strong>Aumentar el número de filas n</strong>, con p fijo entre 0 y 1, cambia la distribución de cada bola. La suma contiene más decisiones. Tras centrarla y dividirla por su desviación típica, el <a routerLink="/articles/central-limit-theorem">teorema central del límite</a> conduce a una <a data-article-concept="normal-distribution" routerLink="/articles/normal-distribution">normal estándar</a>:</p>
   <app-formula expression="Z_n=\frac{K-np}{\sqrt{np(1-p)}}\xrightarrow{\ d\ }\mathcal N(0,1),\qquad n\to\infty,\quad 0\lt p\lt1" displayMode="block" />
   <p>Esta convergencia es en distribución. La binomial continúa siendo discreta para todo n finito. Lanzar un millón de bolas en un tablero de dos filas reproduce con precisión tres probabilidades; no crea una distribución continua.</p>
 
@@ -43,7 +43,7 @@
   <aside class="experiment"><h4>Pon a prueba la campana</h4><p>Selecciona «Sesgo fuerte» y compara los valores exacto y aproximado. Después elige «Campana simétrica». Fija a = b y desactiva la corrección de continuidad: la normal asigna área cero a un solo punto. Actívala de nuevo para integrar la franja que corresponde a ese casillero.</p></aside>
 
   <h3>6. Cuándo cambia la historia</h3>
-  <p>Si cada fila tiene una probabilidad distinta pᵢ pero los desvíos siguen siendo independientes, K ya no es binomial en general: sigue una distribución de Poisson-binomial, con media Σpᵢ y varianza Σpᵢ(1 − pᵢ). Si además las decisiones están correlacionadas, la varianza incluye términos de covarianza; las fórmulas del tablero ideal dejan de bastar.</p>
+  <p>Si cada fila tiene una probabilidad distinta pᵢ pero los desvíos siguen siendo independientes, K ya no es binomial en general: sigue una <a data-article-concept="poisson-exponential-waiting" routerLink="/articles/poisson-exponential-waiting">distribución de Poisson</a>-binomial, con media Σpᵢ y varianza Σpᵢ(1 − pᵢ). Si además las decisiones están correlacionadas, la varianza incluye términos de <a data-article-concept="covariance" routerLink="/articles/covariance">covarianza</a>; las fórmulas del tablero ideal dejan de bastar.</p>
   <p>El tablero muestra cómo una regularidad colectiva puede surgir sin que podamos anticipar cada trayectoria. Su fuerza está en conectar tres miradas sobre el mismo fenómeno: contar caminos, acumular resultados y aproximar probabilidades. La forma de campana aparece bajo unas condiciones concretas; los controles permiten explorar tanto su aparición como sus límites.</p>
   <h3>Referencias</h3>
   <ul class="references">
@@ -61,3 +61,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/bernoulli-binomial">Distribuciones de Bernoulli y binomial</a></li><li><a routerLink="/articles/finite-probability">Probabilidad en espacios finitos: sucesos y regla de Laplace</a></li><li><a routerLink="/articles/discrete-expectation">Esperanza discreta, juegos justos y riesgo</a></li><li><a routerLink="/articles/descriptive-statistics">Estadística descriptiva y valores atípicos</a></li><li><a routerLink="/articles/large-numbers-law">Ley de los grandes números</a></li><li><a routerLink="/articles/normal-distribution">Distribución normal y tipificación</a></li><li><a routerLink="/articles/poisson-exponential-waiting">Poisson, espera exponencial y binomial negativa</a></li><li><a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a></li><li><a routerLink="/articles/heterogeneous-binomial-mixtures">Poisson-binomial y beta-binomial: heterogeneidad y mezcla</a></li></ul></details></section>
+<!-- article-concepts:end -->

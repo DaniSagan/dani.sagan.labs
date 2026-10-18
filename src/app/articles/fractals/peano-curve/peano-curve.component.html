@@ -1,6 +1,6 @@
 <article class="fractal-article">
   <h2>Curva de Peano</h2>
-  <p class="dropcap">Giuseppe Peano presentó en 1890 una curva capaz de cubrir un cuadrado y provocó una pequeña crisis
+  <p class="dropcap">Giuseppe Peano presentó en 1890 una curva capaz de cubrir un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> y provocó una pequeña crisis
     de intuición. No era una línea dibujada de manera usual, sino el límite de aproximaciones cada vez más densas. Su
     ejemplo abrió el camino a la topología moderna y mostró que «continuo» no significa necesariamente «suave» ni
     «simple».</p>
@@ -8,7 +8,7 @@
     en serpiente. Cada tramo se reemplaza por una copia reducida del mismo recorrido, alternando la orientación para que
     el lápiz no salte entre celdas. Al nivel <em>n</em> la rejilla tiene 3<sup>n</sup> filas y columnas y la poligonal
     visita 9<sup>n</sup> posiciones. La escala disminuye por tres mientras el número de piezas se multiplica por nueve,
-    de modo que la dimensión de semejanza es dos.</p>
+    de modo que la dimensión de <a data-article-concept="triangle-similarity" routerLink="/articles/triangle-similarity">semejanza</a> es dos.</p>
   <p>El explorador genera esas visitas sin una imagen prefijada: calcula el tamaño de la cuadrícula, recorre cada fila y
     cambia el sentido en las filas pares e impares. Esa es una aproximación pedagógica de la familia de curvas de Peano;
     la regla de sustitución exacta añade las rotaciones que garantizan continuidad en el límite. El coste crece como el
@@ -19,3 +19,6 @@
   <app-fractal-explorer [draw]="draw"
     title="Curva de Peano" formula="Rejilla 3ⁿ × 3ⁿ recorrida con copias orientadas" [minIterations]="1"></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

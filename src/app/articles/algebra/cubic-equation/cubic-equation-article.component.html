@@ -1,5 +1,5 @@
 <h2>La ecuación cúbica: tres raíces, un cambio de perspectiva</h2>
-<p class="dropcap">Una parábola se resuelve completando un cuadrado. Al subir un grado aparece una sorpresa:
+<p class="dropcap">Una <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a> se resuelve completando un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>. Al subir un grado aparece una sorpresa:
   para encontrar tres soluciones reales podemos tener que atravesar los números complejos. La ecuación
   cúbica reúne una fórmula exacta, una construcción con ángulos y una geometría que explica cuándo sus
   raíces se encuentran y cuándo se separan.</p>
@@ -24,7 +24,7 @@
   sobre el producto uv. Entonces conocer u³ y v³ se convierte en un problema de segundo grado.</p>
 <app-formula expression="(u+v)^3+p(u+v)+q=u^3+v^3+(3uv+p)(u+v)+q"></app-formula>
 <app-formula expression="uv=-\frac p3,\qquad u^3+v^3=-q,\qquad u^3v^3=-\frac{p^3}{27}"></app-formula>
-<p>Por tanto, u³ y v³ son las soluciones de la siguiente cuadrática. Su discriminante nos da la
+<p>Por tanto, u³ y v³ son las soluciones de la siguiente cuadrática. Su <a data-article-concept="quadratic-equations" routerLink="/articles/quadratic-equations" fragment="discriminant">discriminante</a> nos da la
   cantidad que organiza todos los casos:</p>
 <app-formula expression="z^2+qz-\frac{p^3}{27}=0,\qquad \Delta=\left(\frac q2\right)^2+\left(\frac p3\right)^3"></app-formula>
 <app-formula expression="u^3=-\frac q2+\sqrt\Delta,\qquad v^3=-\frac q2-\sqrt\Delta"></app-formula>
@@ -46,8 +46,8 @@
   <li><strong>Δ = 0:</strong> todas las raíces son reales y alguna se repite. Si p = q = 0, las tres coinciden.</li>
   <li><strong>Δ &lt; 0:</strong> tres raíces reales distintas, aunque Cardano introduce una raíz cuadrada imaginaria.</li>
 </ul>
-<p>La frontera 4p³ + 27q² = 0 es una cúspide en el plano de parámetros. Podemos parametrizarla
-  imponiendo una raíz doble r: el polinomio y su derivada deben anularse a la vez.</p>
+<p>La frontera 4p³ + 27q² = 0 es una <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">cúspide</a> en el plano de parámetros. Podemos parametrizarla
+  imponiendo una <a data-article-concept="polynomial-foundations" routerLink="/articles/polynomial-foundations" fragment="roots">raíz doble</a> r: el polinomio y su derivada deben anularse a la vez.</p>
 <app-formula expression="p=-3r^2,\quad q=2r^3,\qquad t^3-3r^2t+2r^3=(t-r)^2(t+2r)"></app-formula>
 <p>En el laboratorio, cambia los coeficientes o selecciona un ejemplo. Las cuatro vistas comparten
   la misma ecuación. En el mapa, atraviesa la frontera y observa cómo dos raíces reales se fusionan
@@ -105,3 +105,6 @@
   <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa x^3-6*x^2+11*x-6 y localiza sus tres cortes con el eje antes de resolver exactamente.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/parabola">Parábola</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/quadratic-equations" fragment="discriminant">Ecuaciones cuadráticas: discriminante y Viète</a></li><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li><li><a routerLink="/articles/polynomial-foundations" fragment="roots">Polinomios desde cero: grado, coeficientes y raíces</a></li></ul></details></section>
+<!-- article-concepts:end -->

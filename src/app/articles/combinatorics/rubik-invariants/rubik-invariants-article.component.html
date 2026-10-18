@@ -13,7 +13,7 @@
 </ol></details></nav>
 <p class="dropcap">No toda disposición aparentemente posible de las piezas de un cubo de Rubik puede obtenerse girando sus caras. Las orientaciones y las permutaciones satisfacen invariantes que los movimientos legales conservan. Estos permiten diagnosticar un cubo remontado incorrectamente y entender por qué una esquina aislada girada o dos piezas intercambiadas no se resuelven con más movimientos.</p>
 <h3 id="section-0">Separar identidad, posición y orientación</h3>
-<p>Un cubo estándar tiene ocho esquinas y doce aristas; los centros fijan el sistema de referencia. Cada esquina puede ocupar una posición y tener tres orientaciones, mientras cada arista tiene dos. Describir colores sueltos no basta: hay que mantener juntas las pegatinas de una misma pieza y usar una convención coherente para medir orientación. Girar todo el cubo cambia la referencia, no produce una nueva permutación relativa a los centros.</p>
+<p>Un cubo estándar tiene ocho esquinas y doce aristas; los centros fijan el sistema de referencia. Cada esquina puede ocupar una posición y tener tres orientaciones, mientras cada arista tiene dos. Describir colores sueltos no basta: hay que mantener juntas las pegatinas de una misma pieza y usar una convención coherente para medir orientación. Girar todo el cubo cambia la referencia, no produce una nueva <a data-article-concept="permutation-symmetries" routerLink="/articles/permutation-symmetries">permutación</a> relativa a los centros.</p>
 <h3 id="section-1">La suma de giros de esquinas</h3>
 <p>Codifica la orientación de cada esquina módulo tres. Un giro de cara puede cambiar varias orientaciones, pero la suma permanece cero módulo tres bajo la convención estándar. Por tanto una esquina girada aisladamente viola el invariante. Dos esquinas pueden girarse en sentidos complementarios sin violarlo. Conocer el resto modular es necesario antes de intentar diseñar una secuencia correctora.</p>
 <app-formula expression="\sum_{i=1}^8 t_i\equiv0\pmod3" />
@@ -49,3 +49,6 @@
 <li><a routerLink="/problems/cube-rotation-order">95 · Orden de un giro del cubo</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/permutation-symmetries">Permutaciones, ciclos y grupos de simetrías</a></li></ul></details></section>
+<!-- article-concepts:end -->

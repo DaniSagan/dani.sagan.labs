@@ -1,3 +1,11 @@
+import { AffineTransformationsArticleComponent } from './affine-transformations/affine-transformations-article.component';
+import { CurveSingularitiesArticleComponent } from './curve-singularities/curve-singularities-article.component';
+import { EnvelopesEvolutesArticleComponent } from './envelopes-evolutes/envelopes-evolutes-article.component';
+import { CurvatureFrenetArticleComponent } from './curvature-frenet/curvature-frenet-article.component';
+import { CircleInversionArticleComponent } from './circle-inversion/circle-inversion-article.component';
+import { ProjectiveHomogeneousCoordinatesArticleComponent } from './projective-homogeneous-coordinates/projective-homogeneous-coordinates-article.component';
+import { PlaneTessellationsArticleComponent } from './plane-tessellations/plane-tessellations-article.component';
+import { ConstructibleNumbersArticleComponent } from './constructible-numbers/constructible-numbers-article.component';
 import { GEOMETRY_FOUNDATIONS_ARTICLES } from './foundations/geometry-foundations-articles';
 import { LinesPlanesArticleComponent } from './lines-planes/lines-planes-article.component';
 import { LineCircleArticleComponent } from './line-circle/line-circle-article.component';
@@ -48,6 +56,14 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  AffineTransformationsArticleComponent,
+  CurveSingularitiesArticleComponent,
+  EnvelopesEvolutesArticleComponent,
+  CurvatureFrenetArticleComponent,
+  CircleInversionArticleComponent,
+  ProjectiveHomogeneousCoordinatesArticleComponent,
+  PlaneTessellationsArticleComponent,
+  ConstructibleNumbersArticleComponent,
   ...GEOMETRY_FOUNDATIONS_ARTICLES,
   LinesPlanesArticleComponent,
   LineCircleArticleComponent,

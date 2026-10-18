@@ -20,7 +20,7 @@
   representen la misma solución.</p>
 <app-formula expression="g(N)=\#\{(p,q):p,q\text{ primos},\ p\le q,\ p+q=N\}"></app-formula>
 <p>Así, g(10) = 2, por las parejas 3 + 7 y 5 + 5. La conjetura equivale a afirmar que g(N) ≥ 1
-  para todo par N ≥ 4. El laboratorio usa una criba de Eratóstenes y comprueba cada candidato
+  para todo par N ≥ 4. El laboratorio usa una <a data-article-concept="sieve-primality" routerLink="/articles/sieve-primality">criba de Eratóstenes</a> y comprueba cada candidato
   hasta N/2. Sus resultados son exactos dentro del intervalo permitido.</p>
 <app-goldbach-pairs></app-goldbach-pairs>
 <p>Los arcos conectan p con N − p sobre la misma recta. Todos comparten el punto medio N/2,
@@ -36,7 +36,7 @@
   Si tratáramos ingenuamente las condiciones «p es primo» y «N − p es primo» como independientes,
   y usáramos ln N para ambas, obtendríamos una escala de crecimiento:</p>
 <app-formula expression="g_{\mathrm{ingenuo}}(N)=\frac{N}{2(\ln N)^2}"></app-formula>
-<p>El factor 1/2 evita contar dos veces las parejas. Esta aproximación ignora incluso la correlación
+<p>El factor 1/2 evita contar dos veces las parejas. Esta aproximación ignora incluso la <a data-article-concept="covariance" routerLink="/articles/covariance">correlación</a>
   de paridad: para N par, p y N − p tienen la misma paridad. Por eso la línea del gráfico es un punto
   de partida para discutir el modelo, no un ajuste preciso. Una tendencia creciente tampoco descarta
   que aparezca un cero aislado mucho más lejos.</p>
@@ -106,3 +106,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Verifica que los sumandos de parejas como 3+17 y 7+13 son primos. Comprobar ejemplos no demuestra la conjetura.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/sieve-primality">Criba de Eratóstenes y pruebas de primalidad</a></li><li><a routerLink="/articles/covariance">Covarianza, dependencia y varianza de una suma</a></li></ul></details></section>
+<!-- article-concepts:end -->

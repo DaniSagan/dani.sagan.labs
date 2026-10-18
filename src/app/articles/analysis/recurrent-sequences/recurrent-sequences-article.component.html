@@ -6,7 +6,7 @@
 <aside class="caution"><strong>Un contraejemplo.</strong> aₙ₊₁ = 1 − aₙ tiene punto fijo 1/2. Desde a₀ = 1 alterna entre 1 y 0 y no converge.</aside>
 <h3>2. La sucesión radical: encerrar y avanzar</h3>
 <p>Con a₁ = 1 y aₙ₊₁ = √(2 + aₙ), el intervalo [1, 2] es invariante: si un término está dentro, el siguiente también. Para 1 ≤ x ≤ 2, √(2 + x) ≥ x porque (2 − x)(x + 1) ≥ 0.</p>
-<p>La sucesión es creciente y acotada. El teorema de convergencia monótona garantiza un límite. Solo ahora usamos su ecuación:</p>
+<p>La sucesión es <a data-article-concept="monotone-convergence" routerLink="/articles/monotone-convergence">creciente y acotada</a>. El teorema de convergencia monótona garantiza un límite. Solo ahora usamos su ecuación:</p>
 <app-formula expression="L=\sqrt{2+L}\quad\Longrightarrow\quad (L-2)(L+1)=0,\qquad L\in[1,2]\quad\Longrightarrow\quad L=2" />
 <p>−1 no satisface la ecuación original. El <a routerLink="/problems/nested-radical-sequence">problema 041</a> permite practicar sin confundir una conjetura con una demostración.</p>
 <h3>3. Una recurrencia afín se vuelve geométrica</h3>
@@ -43,3 +43,6 @@
 <li><a routerLink="/problems/elementary-contraction-iteration">150 · Una iteración contractiva elemental</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/monotone-convergence">Sucesiones monótonas y acotadas</a></li></ul></details></section>
+<!-- article-concepts:end -->

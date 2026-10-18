@@ -1,5 +1,5 @@
 <h2>Polinomios ciclotómicos: del círculo a los fractales</h2>
-<p class="dropcap">Dividir una circunferencia en partes iguales parece una tarea geométrica. Sin embargo,
+<p class="dropcap">Dividir una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> en partes iguales parece una tarea geométrica. Sin embargo,
   cada uno de sus vértices guarda información aritmética: cuántas multiplicaciones hacen falta para
   regresar al punto de partida. Los polinomios ciclotómicos separan esas raíces según su orden y
   convierten la simetría del círculo en una factorización con coeficientes enteros.</p>
@@ -18,13 +18,13 @@
   vuelve a 1 mucho antes de completar doce multiplicaciones.</p>
 <app-formula expression="\operatorname{ord}(\zeta_n^k)=\frac{n}{\gcd(n,k)}"></app-formula>
 <p>La raíz es <strong>primitiva</strong> cuando su orden es exactamente n. Esto sucede si k y n son
-  coprimos. En n = 12, los exponentes primitivos son 1, 5, 7 y 11. El número de exponentes admisibles
+  <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a>. En n = 12, los exponentes primitivos son 1, 5, 7 y 11. El número de exponentes admisibles
   es la <a routerLink="/articles/euler-totient-formula">función φ de Euler</a>.</p>
 <app-formula expression="\varphi(n)=n\prod_{p\mid n}\left(1-\frac1p\right),\qquad \varphi(1)=1"></app-formula>
 
 <h3>2. Un polinomio para cada orden exacto</h3>
 <p>El polinomio ciclotómico Φₙ reúne precisamente las raíces primitivas de orden n. Tiene grado φ(n),
-  coeficiente principal uno y raíces simples.</p>
+  <a data-article-concept="polynomial-foundations" routerLink="/articles/polynomial-foundations" fragment="coefficients">coeficiente principal</a> uno y raíces simples.</p>
 <app-formula expression="\Phi_n(x)=\prod_{\begin{subarray}{c}0\le k\lt n\\\gcd(k,n)=1\end{subarray}}(x-\zeta_n^k)"></app-formula>
 <p>Aunque el producto se escribe usando números complejos, sus coeficientes son enteros. Además,
   Φₙ es irreducible sobre los racionales: ninguna factorización no trivial con coeficientes racionales
@@ -88,7 +88,7 @@
 <p>Estas expresiones se usan fuera de las raíces. El simulador comprueba primero si ya está cerca
   de alguna. Si la suma se anula, el siguiente paso es singular; si se agota el presupuesto de
   iteraciones, el punto queda sin clasificar. Ninguno de esos píxeles oscuros se declara automáticamente
-  una raíz, ni una prueba de divergencia.</p>
+  una raíz, ni una prueba de <a data-article-concept="vector-calculus" routerLink="/articles/vector-calculus">divergencia</a>.</p>
 <p>La simetría respecto del eje real tiene una explicación común a ambos laboratorios: los
   polinomios tienen coeficientes reales, por lo que la conjugación conserva las raíces y conmuta
   con el paso de Newton. En cambio, no debemos atribuir a Φₙ toda la simetría de xⁿ − 1:
@@ -100,7 +100,7 @@
   también cero pertenecen a otra familia. No son, en general, ciclotómicos. Las raíces de la unidad
   ayudan a organizar sus patrones, pero la nube incluye raíces fuera de la circunferencia.
   <a href="https://math.ucr.edu/home/baez/roots/">The Beauty of Roots, de John Baez</a>, muestra esa construcción
-  y su relación con sistemas de funciones iteradas.</p>
+  y su relación con <a data-article-concept="iterated-function-systems" routerLink="/articles/iterated-function-systems">sistemas de funciones iteradas</a>.</p>
 
 <h3>Experimentos para continuar</h3>
 <ul>
@@ -129,3 +129,6 @@
 <li><a routerLink="/problems/sum-of-roots-of-unity">40 · Suma de raíces de la unidad</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Polinomios desde cero: grado, coeficientes y raíces</a></li><li><a routerLink="/articles/vector-calculus">Flujo, divergencia y rotacional de un campo</a></li><li><a routerLink="/articles/iterated-function-systems">Sistemas de funciones iteradas y juego del caos</a></li></ul></details></section>
+<!-- article-concepts:end -->

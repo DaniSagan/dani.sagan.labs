@@ -2,11 +2,11 @@
   <h2>Fractal T-square</h2>
   <p class="dropcap">El T-square pertenece a las construcciones de cuadrados recursivos que hicieron populares los
     primeros gráficos por ordenador. No depende de números complejos ni de azar: cada generación coloca cuatro copias
-    más pequeñas alrededor de los vértices de un cuadrado. Esa transparencia hace que sea una buena forma de estudiar
+    más pequeñas alrededor de los vértices de un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>. Esa transparencia hace que sea una buena forma de estudiar
     recursión visual y el límite entre superposición y detalle.</p>
   <p>Se dibuja un cuadrado inicial de lado <em>s</em>. En sus cuatro esquinas se centran cuadrados de lado s/2; en las
     esquinas de cada uno se colocan otros de lado s/4, y así sucesivamente. El número de cuadrados del nivel n es
-    4<sup>n</sup> y su escala disminuye a la mitad en cada paso. La dimensión de semejanza es por tanto log(4)/log(2)=2:
+    4<sup>n</sup> y su escala disminuye a la mitad en cada paso. La dimensión de <a data-article-concept="triangle-similarity" routerLink="/articles/triangle-similarity">semejanza</a> es por tanto log(4)/log(2)=2:
     su estructura límite tiene escala de región plana, aunque en pantalla veamos contornos.</p>
   <p>La función del widget recibe centro, lado y profundidad. Traza el cuadrado y, si aún queda profundidad, calcula la
     mitad de su lado y se invoca en los cuatro centros desplazados. Los contornos se superponen a propósito; forman la
@@ -17,3 +17,6 @@
     primer cuadrado.</p><app-fractal-explorer [draw]="draw" title="Fractal T-square"
     formula="Cada cuadrado genera cuatro copias de lado s/2"></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

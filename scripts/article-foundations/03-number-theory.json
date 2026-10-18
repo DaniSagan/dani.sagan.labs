@@ -1,0 +1,299 @@
+[
+  {
+    "slug": "golden-ratio",
+    "area": "number-theory",
+    "ids": [
+      "M30"
+    ],
+    "title": "El número áureo: álgebra, geometría y Fibonacci",
+    "terms": [
+      "número áureo",
+      "razón áurea",
+      "proporción áurea"
+    ],
+    "definition": "Una división áurea de un segmento exige que la razón entre el total y la parte mayor coincida con la razón entre esa parte y la menor. Si la parte menor mide uno y la mayor φ, se obtiene φ²=φ+1. La solución positiva es (1+√5)/2; la otra raíz es negativa y no representa una razón de longitudes positivas.",
+    "argument": "La ecuación equivale a φ=1+1/φ, que produce una fracción continua de unos. La relación con Fibonacci se demuestra resolviendo su recurrencia mediante las dos raíces de x²−x−1: la segunda tiene módulo menor que uno, de modo que su contribución relativa desaparece en los cocientes consecutivos.",
+    "example": "F₆/F₅=8/5=1,6 y F₇/F₆=13/8=1,625 quedan a lados distintos de φ. En un pentágono regular, semejanzas entre triángulos muestran que diagonal/lado satisface la misma ecuación. La aparición del número en una figura debe justificarse geométricamente, no solo reconocerse en un decimal.",
+    "caution": "Una razón cercana a 1,618 no demuestra que una construcción sea exactamente áurea. Los cocientes de Fibonacci son racionales y ninguno puede igualar al irracional φ.",
+    "formula": "\\varphi^2=\\varphi+1,\\quad\\varphi=\\frac{1+\\sqrt5}{2},\\qquad \\frac{F_{n+1}}{F_n}\\to\\varphi",
+    "question": "¿Por qué 1/φ=φ−1?",
+    "answer": "Divide φ²=φ+1 entre φ, que es positivo. Resulta φ=1+1/φ. Restar uno da la identidad buscada.",
+    "n": [
+      "Índice de Fibonacci",
+      2,
+      35,
+      1,
+      8
+    ],
+    "t": [
+      "Longitud menor",
+      0.5,
+      4,
+      0.5,
+      1
+    ],
+    "lab": "Cocientes y particiones áureas",
+    "code": "let a=0,b=1;for(let k=1;k<=n;k++){const c=a+b;a=b;b=c;if(a)points.push([k,b/a]);}const phi=(1+Math.sqrt(5))/2;rows.push(['Cociente F(n+1)/F(n)',b/a],['φ',phi],['Parte mayor',t*phi],['Longitud total',t*(1+phi)]);note='La escala cambia las longitudes, pero no sus razones. Los primeros cocientes pueden oscilar alrededor de φ.';",
+    "related": [
+      "fibonacci-numbers",
+      "pentagon",
+      "continued-fractions"
+    ]
+  },
+  {
+    "slug": "algebraic-transcendental-numbers",
+    "area": "number-theory",
+    "ids": [
+      "M31"
+    ],
+    "title": "Números algebraicos y trascendentes",
+    "terms": [
+      "número algebraico",
+      "números algebraicos",
+      "trascendente",
+      "trascendentes",
+      "algebraicidad",
+      "trascendencia"
+    ],
+    "definition": "Un número es algebraico si anula un polinomio no nulo con coeficientes enteros; es trascendente si no lo hace. Los racionales son algebraicos porque p/q anula qx−p. Un irracional también puede ser algebraico, como √2, que anula x²−2. Por tanto irracional y trascendente no son equivalentes.",
+    "argument": "Los polinomios con coeficientes enteros forman un conjunto numerable: se agrupan por grado y por cotas de sus coeficientes. Cada polinomio no nulo tiene finitas raíces. La unión de esas raíces es numerable. Como los reales son incontables, existen números trascendentes; de hecho los algebraicos no agotan ningún intervalo real.",
+    "example": "√2 es irracional y algebraico. π y e son trascendentes por teoremas específicos, no por su expansión decimal. Las aproximaciones 22/7 y 355/113 a π son algebraicas porque son racionales, aunque aproximen muy bien un número trascendente.",
+    "caution": "No existe una prueba de trascendencia basada solo en observar muchos decimales no periódicos. La naturaleza aritmética de constantes como Euler–Mascheroni no se deduce de su expresión ni de un cálculo numérico.",
+    "formula": "\\alpha\\text{ algebraico}\\Longleftrightarrow\\exists P\\in\\mathbb Z[x]\\setminus\\{0\\}:P(\\alpha)=0",
+    "question": "¿Es algebraico 1+√2? Encuentra un polinomio que lo anule.",
+    "answer": "Sí. Si x=1+√2, entonces (x−1)²=2. Por tanto x²−2x−1=0. La identidad es exacta, no un ajuste decimal.",
+    "n": [
+      "Denominador q",
+      1,
+      100,
+      1,
+      10
+    ],
+    "t": [
+      "Constante: 0=√2, 1=π, 2=e",
+      0,
+      2,
+      1,
+      0
+    ],
+    "lab": "Aproximación numérica frente a clasificación exacta",
+    "code": "const x=[Math.sqrt(2),Math.PI,Math.E][t],p=Math.round(n*x);rows.push(['Constante aproximada',x],['Fracción racional',p+'/'+n],['Error de la aproximación',Math.abs(p/n-x)],['Clasificación conocida',t===0?'Algebraico irracional':'Trascendente']);for(let q=1;q<=n;q++)points.push([q,Math.abs(Math.round(q*x)/q-x)]);note='Todas las fracciones del laboratorio son algebraicas. Aproximar la constante no decide su clasificación; esta procede de una demostración externa al cálculo decimal.';",
+    "related": [
+      "fundamental-theorem-arithmetic",
+      "cardinality-diagonal"
+    ]
+  },
+  {
+    "slug": "gaussian-quadratic-norms",
+    "area": "number-theory",
+    "ids": [
+      "M32",
+      "M33"
+    ],
+    "title": "Enteros gaussianos, normas algebraicas y unidades cuadráticas",
+    "terms": [
+      "enteros gaussianos",
+      "entero gaussiano",
+      "norma algebraica",
+      "normas algebraicas",
+      "unidades cuadráticas"
+    ],
+    "definition": "Los enteros gaussianos son los números a+bi con a y b enteros. Su norma algebraica es a²+b², el producto por su conjugado. Es un entero no negativo y es multiplicativa. En expresiones a+b√D se usa en cambio la norma a²−Db², que puede ser negativa: ambas normas son productos de conjugados, pero no describen la misma geometría.",
+    "argument": "Conjugar conserva sumas y productos. Por ello N(zw)=zw·conj(z)·conj(w)=N(z)N(w). En Z[i], las unidades son exactamente ±1 y ±i porque son los elementos de norma uno. La división con resto se consigue redondeando las coordenadas del cociente al gaussiano más próximo; el resto tiene norma estrictamente menor y permite un algoritmo de Euclides.",
+    "example": "5=(2+i)(2−i) y cada factor tiene norma 5. En Z[√2], 3+2√2 tiene norma 9−8=1 y su conjugado es su inverso. Al cuadrarlo se obtiene 17+12√2, otra solución de la ecuación de Pell.",
+    "caution": "La norma de a+bi aquí es el cuadrado del módulo euclídeo, no el módulo. La norma cuadrática real a²−Db² no es una norma vectorial positiva. La factorización única gaussiana no se generaliza automáticamente a todos los anillos cuadráticos.",
+    "formula": "N(a+bi)=a^2+b^2,\\quad N(a+b\\sqrt D)=a^2-Db^2,\\quad N(zw)=N(z)N(w)",
+    "question": "Factoriza 13 en enteros gaussianos usando una suma de cuadrados.",
+    "answer": "13=3²+2²=(3+2i)(3−2i). Los factores no son unidades, pues ambos tienen norma 13. Así, un primo entero puede dejar de ser primo en un anillo más grande.",
+    "n": [
+      "Parte a",
+      -8,
+      8,
+      1,
+      3
+    ],
+    "t": [
+      "Parte b",
+      -8,
+      8,
+      1,
+      2
+    ],
+    "lab": "Dos productos de conjugados",
+    "code": "rows.push(['Norma gaussiana a²+b²',n*n+t*t],['Módulo euclídeo',Math.hypot(n,t)],['Norma en Z[√2]',n*n-2*t*t],['Unidad gaussiana',n*n+t*t===1?'Sí':'No'],['Solución de Pell D=2',n*n-2*t*t===1?'Sí':'No']);note='Se comparan dos anillos distintos usando los mismos coeficientes. Un resultado negativo solo puede aparecer en la norma cuadrática real.';",
+    "related": [
+      "complex-arithmetic",
+      "pell-equation",
+      "sum-of-two-squares"
+    ]
+  },
+  {
+    "slug": "infinite-descent",
+    "area": "number-theory",
+    "ids": [
+      "M34"
+    ],
+    "title": "Descenso infinito y principio del buen orden",
+    "terms": [
+      "descenso infinito",
+      "método de descenso"
+    ],
+    "definition": "Un descenso infinito demuestra imposibilidad suponiendo una solución entera positiva y construyendo otra más pequeña del mismo tipo. El principio del buen orden afirma que todo conjunto no vacío de enteros positivos tiene un menor elemento. Una solución mínima no puede coexistir con una regla que produzca siempre otra estrictamente menor.",
+    "argument": "Supongamos a²=2b² con a,b enteros positivos y elijamos una solución de menor b. Como a² es par, a es par: a=2c. Sustituir da b²=2c², así que (b,c) vuelve a ser una solución, ahora con denominador c menor que b. La contradicción descarta todas las soluciones positivas y demuestra que √2 es irracional.",
+    "example": "El paso requiere conservar exactamente la ecuación y la positividad. No basta con reducir algún número si la nueva pareja deja de satisfacer las condiciones. Es posible formular el mismo argumento mediante una fracción irreducible y paridades; el descenso destaca el mecanismo de minimalidad.",
+    "caution": "Los reales positivos sí admiten cadenas decrecientes infinitas, como 1,1/2,1/4,… . El argumento exige una magnitud entera positiva bien elegida. Un algoritmo que reduce una magnitud no demuestra una contradicción si puede terminar legítimamente en una solución.",
+    "formula": "a^2=2b^2,\\ a=2c\\Longrightarrow b^2=2c^2,\\qquad 0<c<b",
+    "question": "¿Por qué de que a² sea par se deduce que a es par?",
+    "answer": "Si a fuera impar, a=2k+1 y a²=4k(k+1)+1 sería impar. La contraposición demuestra la afirmación usada en el descenso.",
+    "n": [
+      "Cota de búsqueda",
+      2,
+      80,
+      1,
+      20
+    ],
+    "t": [
+      "Valor de D",
+      2,
+      5,
+      1,
+      2
+    ],
+    "lab": "La búsqueda finita no sustituye al descenso",
+    "code": "let count=0;for(let b=1;b<=n;b++){const a=Math.round(Math.sqrt(t)*b);if(a*a===t*b*b)count++;points.push([b,Math.abs(a*a-t*b*b)]);}rows.push(['Soluciones positivas dentro de la cota',count],['D cuadrado perfecto',Number.isInteger(Math.sqrt(t))?'Sí':'No']);note='No hallar soluciones hasta una cota no prueba imposibilidad. Para D no cuadrado, el argumento general debe usar una demostración aritmética, no esta búsqueda.';",
+    "related": [
+      "proof-strategies",
+      "fundamental-theorem-arithmetic"
+    ]
+  },
+  {
+    "slug": "sieve-primality",
+    "area": "number-theory",
+    "ids": [
+      "M35",
+      "M36"
+    ],
+    "title": "Criba de Eratóstenes y pruebas de primalidad",
+    "terms": [
+      "criba de Eratóstenes",
+      "Miller–Rabin",
+      "Miller-Rabin",
+      "pseudoprimo",
+      "pruebas de primalidad"
+    ],
+    "definition": "La criba de Eratóstenes encuentra todos los primos hasta una cota tachando múltiplos. Para probar un solo número, la división por candidatos hasta su raíz cuadrada es exacta pero puede resultar costosa. Las pruebas de Fermat y Miller–Rabin buscan testigos de composición mediante potencias modulares; superar una base no equivale en general a ser primo.",
+    "argument": "Todo compuesto n=ab con a,b mayores que uno tiene al menos un factor no mayor que √n. Por eso basta cribar con primos hasta √N y empezar a tachar en p²: los múltiplos menores ya se han tratado. En Miller–Rabin se escribe n−1=2ˢd con d impar y se examina una cadena de cuadrados; para un primo impar la cadena debe empezar en uno o pasar por −1.",
+    "example": "El número 341=11·31 satisface 2³⁴⁰≡1 módulo 341: es un pseudoprimo de Fermat para base dos. No contradice el pequeño teorema de Fermat, que es una condición necesaria para primos coprimos con la base, no una caracterización.",
+    "caution": "La cota probabilística de Miller–Rabin requiere bases aleatorias independientes bajo sus hipótesis. Un conjunto determinista de bases solo certifica primalidad dentro de los intervalos para los que se haya demostrado suficiente. El laboratorio usa división exacta en números pequeños.",
+    "formula": "n=ab\\text{ compuesto}\\Longrightarrow\\min(a,b)\\le\\sqrt n,\\qquad n-1=2^sd",
+    "question": "¿Por qué no es necesario tachar 2p,3p,…,(p−1)p al llegar al primo p?",
+    "answer": "Cada uno tiene un factor menor que p y ya se tachó al procesar algún primo divisor de ese factor. p² es el primer múltiplo cuyo menor factor primo podría ser p.",
+    "n": [
+      "Cota de la criba",
+      10,
+      120,
+      1,
+      50
+    ],
+    "t": [
+      "Base para Fermat",
+      2,
+      12,
+      1,
+      2
+    ],
+    "lab": "Primos exactos y restos modulares",
+    "code": "const prime=Array(n+1).fill(true);prime[0]=prime[1]=false;for(let p=2;p*p<=n;p++)if(prime[p])for(let k=p*p;k<=n;k+=p)prime[k]=false;const ps:number[]=[];for(let k=2;k<=n;k++)if(prime[k])ps.push(k);let value=1;for(let k=0;k<n-1;k++)value=value*t%n;rows.push(['Primos hasta N',ps.join(', ')],['¿N es primo? (criba exacta)',prime[n]?'Sí':'No'],['Base^(N−1) módulo N',value]);note='La clasificación de N procede de la criba. Un resto uno en la prueba de Fermat no convierte por sí solo un compuesto en primo.';",
+    "related": [
+      "fermats-little-theorem",
+      "gcd-euclid"
+    ]
+  },
+  {
+    "slug": "rsa-discrete-logarithm",
+    "area": "number-theory",
+    "ids": [
+      "M37",
+      "M38"
+    ],
+    "title": "RSA y logaritmo discreto: dos problemas inversos",
+    "terms": [
+      "RSA",
+      "logaritmo discreto",
+      "logaritmos discretos"
+    ],
+    "definition": "En RSA se eligen primos distintos p y q, se publica N=pq y un exponente e coprimo con φ(N), y se calcula d como inverso de e módulo φ(N). Cifrar un representante m significa elevarlo a e módulo N. El logaritmo discreto es otra tarea: dados g y gˣ en un grupo, encontrar x. No es la misma operación que factorizar N ni que invertir un exponente conocido.",
+    "argument": "Como ed≡1 módulo p−1 y módulo q−1, Fermat muestra m^(ed)≡m en cada primo cuando m no es múltiplo de él. Si lo es, la congruencia es inmediata porque ambos lados son cero. El teorema chino del resto reúne los dos casos y demuestra la recuperación para todos los representantes módulo N.",
+    "example": "Con p=5, q=11, N=55 y φ=40, se puede elegir e=3 y d=27. Para m=7, el cifrado es 13 y descifrar 13²⁷ módulo 55 recupera 7. En un grupo multiplicativo módulo un primo, buscar x tal que 2ˣ≡3 módulo 5 da x≡3 módulo 4.",
+    "caution": "Este cálculo explica la corrección del esquema de libro de texto, no constituye un sistema de cifrado seguro para uso real. Los ejemplos pequeños son factorizables por inspección. No todas las igualdades gˣ=h tienen solución si h queda fuera del subgrupo generado por g.",
+    "formula": "c\\equiv m^e\\pmod N,\\quad m\\equiv c^d\\pmod N,\\quad ed\\equiv1\\pmod{\\varphi(N)}",
+    "question": "En el ejemplo N=55, ¿por qué ed=81 sirve aunque no sea igual a uno?",
+    "answer": "Porque 81=1+2·40 y lo necesario es la congruencia módulo φ(N). De ella se deducen las congruencias de exponentes módulo p−1 y q−1 usadas en la prueba.",
+    "n": [
+      "Índice del primo p (3,5,7,11,13,17)",
+      0,
+      5,
+      1,
+      1
+    ],
+    "t": [
+      "Índice del primo q",
+      0,
+      5,
+      1,
+      3
+    ],
+    "lab": "Cifrar y recuperar un representante pequeño",
+    "code": "const primes=[3,5,7,11,13,17],p=primes[n],q=primes[t];if(p===q){rows.push(['Condición','Elige dos primos distintos']);note='La construcción y la demostración de esta página suponen p distinto de q.';}else{const N=p*q,phi=(p-1)*(q-1);const gcd=(a:number,b:number):number=>b?gcd(b,a%b):a;let e=3;while(gcd(e,phi)!==1)e+=2;let d=1;while(e*d%phi!==1)d++;const pow=(a:number,k:number)=>{let out=1;for(let j=0;j<k;j++)out=out*a%N;return out;};const m=7%N,c=pow(m,e);rows.push(['p y q',p+', '+q],['N',N],['e y d',e+', '+d],['Mensaje',m],['Cifrado',c],['Recuperado',pow(c,d)]);note='Ejemplo didáctico determinista con representantes enteros pequeños; no implementa formatos de mensajes ni seguridad criptográfica.';}",
+    "related": [
+      "eulers-theorem",
+      "chinese-remainder-theorem",
+      "primitive-root-theorem"
+    ]
+  },
+  {
+    "slug": "dirichlet-convolution-series",
+    "area": "number-theory",
+    "ids": [
+      "M39",
+      "M40"
+    ],
+    "title": "Funciones aritméticas, convolución y series de Dirichlet",
+    "terms": [
+      "función aritmética",
+      "funciones aritméticas",
+      "convolución de Dirichlet",
+      "serie de Dirichlet",
+      "series de Dirichlet",
+      "producto de Euler"
+    ],
+    "definition": "Una función aritmética asigna un valor a cada entero positivo. Su convolución de Dirichlet suma productos sobre divisores: (f∗g)(n)=Σ f(d)g(n/d). La identidad de esta operación vale uno en n=1 y cero en los demás enteros. Una serie de Dirichlet pondera sus coeficientes con n^(−s), no con potencias zⁿ.",
+    "argument": "Reordenar los pares de divisores demuestra conmutatividad y asociatividad de la convolución. Si f(1) no es cero se construye una inversa recursivamente. Cuando las series convergen absolutamente, multiplicarlas y agrupar por el producto de índices convierte la multiplicación de series en convolución de coeficientes. Para funciones multiplicativas, la factorización prima da productos de Euler en los dominios de convergencia adecuados.",
+    "example": "Si 1(n)=1, entonces (1∗1)(n) cuenta divisores: τ(n). Para n=12, los divisores son 1,2,3,4,6,12 y τ(12)=6. La identidad μ∗1=ε explica la inversión de Möbius. La serie de la función constante uno es ζ(s), absolutamente convergente para Re(s)>1.",
+    "caution": "Las igualdades entre productos infinitos y series no se justifican solo multiplicando símbolos. Fuera de convergencia absoluta se necesitan argumentos adicionales o una continuación analítica; esta última no convierte la serie original en convergente.",
+    "formula": "(f*g)(n)=\\sum_{d\\mid n}f(d)g(n/d),\\qquad \\zeta(s)=\\prod_p(1-p^{-s})^{-1}\\quad(\\Re s>1)",
+    "question": "Calcula (id∗1)(6), con id(n)=n.",
+    "answer": "Es 1+2+3+6=12, la suma de divisores de seis. No es el número de divisores: cambiar uno de los factores de la convolución cambia los pesos.",
+    "n": [
+      "Entero n",
+      1,
+      100,
+      1,
+      12
+    ],
+    "t": [
+      "Exponente real s",
+      1.1,
+      4,
+      0.1,
+      2
+    ],
+    "lab": "Convoluciones exactas y una suma truncada",
+    "code": "const ds:number[]=[];for(let d=1;d<=n;d++)if(n%d===0)ds.push(d);let sum=0;for(let k=1;k<=n;k++){sum+=k**(-t);points.push([k,sum]);}rows.push(['Divisores',ds.join(', ')],['(1∗1)(n)',ds.length],['(id∗1)(n)',ds.reduce((a,b)=>a+b,0)],['Suma parcial de ζ(s)',sum],['Cota integral de la cola',n**(1-t)/(t-1)]);note='La cota de cola usa s>1 y la comparación con la integral desde n hasta infinito. La suma parcial no es la función zeta exacta.';",
+    "related": [
+      "mobius-inversion",
+      "riemann-zeta",
+      "divisor-sum-theorem"
+    ]
+  }
+]

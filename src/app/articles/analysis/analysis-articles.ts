@@ -1,3 +1,10 @@
+import { OrthogonalPolynomialsArticleComponent } from './orthogonal-polynomials/orthogonal-polynomials-article.component';
+import { HyperbolicFunctionsArticleComponent } from './hyperbolic-functions/hyperbolic-functions-article.component';
+import { EulerMaclaurinAsymptoticsArticleComponent } from './euler-maclaurin-asymptotics/euler-maclaurin-asymptotics-article.component';
+import { DirichletAbelTestsArticleComponent } from './dirichlet-abel-tests/dirichlet-abel-tests-article.component';
+import { SupremumRealCompletenessArticleComponent } from './supremum-real-completeness/supremum-real-completeness-article.component';
+import { FunctionConvergenceArticleComponent } from './function-convergence/function-convergence-article.component';
+import { MetricNormedSpacesArticleComponent } from './metric-normed-spaces/metric-normed-spaces-article.component';
 import { AbsoluteValueDistanceArticleComponent } from './absolute-value-distance/absolute-value-distance-article.component';
 import { GlobalExtremaWeierstrassArticleComponent } from './global-extrema-weierstrass/global-extrema-weierstrass-article.component';
 import { ExponentialsLogarithmsArticleComponent } from './exponentials-logarithms/exponentials-logarithms-article.component';
@@ -25,6 +32,13 @@ import { BaselArticleComponent } from './basel/basel-article.component';
 import { StirlingArticleComponent } from './stirling/stirling-article.component';
 
 export const ANALYSIS_ARTICLES = [
+  OrthogonalPolynomialsArticleComponent,
+  HyperbolicFunctionsArticleComponent,
+  EulerMaclaurinAsymptoticsArticleComponent,
+  DirichletAbelTestsArticleComponent,
+  SupremumRealCompletenessArticleComponent,
+  FunctionConvergenceArticleComponent,
+  MetricNormedSpacesArticleComponent,
   AbsoluteValueDistanceArticleComponent,
   GlobalExtremaWeierstrassArticleComponent,
   ExponentialsLogarithmsArticleComponent,

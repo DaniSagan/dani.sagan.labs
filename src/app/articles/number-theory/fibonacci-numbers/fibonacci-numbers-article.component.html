@@ -17,16 +17,16 @@
 
 <h3>El número áureo entre términos vecinos</h3>
 <p>Los cocientes 2/1, 3/2, 5/3, 8/5, … oscilan alrededor de una proporción límite.
-  La recurrencia explica qué valor puede tener: si el cociente converge a L positivo, entonces L = 1 + 1/L.</p>
+  La <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> explica qué valor puede tener: si el cociente converge a L positivo, entonces L = 1 + 1/L.</p>
 <app-formula expression="\varphi=\frac{1+\sqrt5}{2},\qquad \lim_{n\to\infty}\frac{F_{n+1}}{F_n}=\varphi"></app-formula>
 <p>La ecuación del límite identifica el candidato; para justificar la convergencia podemos usar la fórmula de Binet:</p>
 <app-formula expression="F_n=\frac{\varphi^n-\psi^n}{\sqrt5},\qquad \psi=\frac{1-\sqrt5}{2}"></app-formula>
-<p>Como el valor absoluto de ψ es menor que 1, su potencia tiende a cero mientras φⁿ crece.
+<p>Como el <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> de ψ es menor que 1, su potencia tiende a cero mientras φⁿ crece.
   La fórmula es exacta, aunque evaluarla con decimales puede introducir errores: por eso la calculadora usa sumas de enteros exactos.
   <a href="https://mathworld.wolfram.com/FibonacciNumber.html">Fórmulas y propiedades en MathWorld</a>.</p>
 
 <h3>Cuadrados que encajan</h3>
-<p>Coloca dos cuadrados de lado 1 juntos. El rectángulo resultante admite un cuadrado de lado 2;
+<p>Coloca dos cuadrados de lado 1 juntos. El rectángulo resultante admite un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de lado 2;
   después cabe uno de lado 3, luego uno de lado 5. Cada nueva pieza ocupa un lado completo del rectángulo anterior.</p>
 <app-fibonacci-squares></app-fibonacci-squares>
 <p>Tras colocar los cuadrados de lados F₁ hasta Fₙ, el rectángulo tiene lados Fₙ y Fₙ₊₁.
@@ -34,11 +34,11 @@
 <app-formula expression="\sum_{k=1}^{n}F_k^2=F_nF_{n+1}\qquad(n\ge1)"></app-formula>
 <p>Por ejemplo, 1² + 1² + 2² + 3² + 5² = 40 = 5 · 8. El mosaico permite ver por qué una suma de cuadrados
   termina siendo el producto de dos términos consecutivos.</p>
-<p>A veces se dibujan cuartos de circunferencia dentro de estas piezas y se habla de una «espiral de Fibonacci».
+<p>A veces se dibujan cuartos de <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> dentro de estas piezas y se habla de una «espiral de Fibonacci».
   Esa curva hecha de arcos no es exactamente una <a routerLink="/articles/logarithmic-spiral">espiral logarítmica</a> ni demuestra que todas las formas naturales sigan esta sucesión.</p>
 
 <h3>Otra suma que se simplifica</h3>
-<p>De Fₖ = Fₖ₊₂ − Fₖ₊₁ se obtiene una suma telescópica: al sumar, los términos intermedios se cancelan.</p>
+<p>De Fₖ = Fₖ₊₂ − Fₖ₊₁ se obtiene una suma <a data-article-concept="telescoping-series" routerLink="/articles/telescoping-series">telescópica</a>: al sumar, los términos intermedios se cancelan.</p>
 <app-formula expression="\sum_{k=0}^{n}F_k=F_{n+2}-1\qquad(n\ge0)"></app-formula>
 <p>Así, 0 + 1 + 1 + 2 + 3 + 5 + 8 = 20 = F₈ − 1.</p>
 <p><strong>Para explorar.</strong> Calcula F₅₀ y comprueba su recurrencia con los dos términos anteriores.
@@ -54,3 +54,6 @@
   <li><a routerLink="/tools/linear-algebra">Laboratorio de álgebra lineal</a>. Introduce la matriz ((1,1),(1,0)) y observa cómo sus iteraciones generan pares consecutivos de Fibonacci.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/telescoping-series">Series telescópicas</a></li><li><a routerLink="/articles/golden-ratio">El número áureo: álgebra, geometría y Fibonacci</a></li></ul></details></section>
+<!-- article-concepts:end -->

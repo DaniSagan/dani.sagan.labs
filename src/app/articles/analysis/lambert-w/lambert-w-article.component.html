@@ -1,7 +1,7 @@
 <h2>La función W de Lambert: despejar cuando la incógnita también está en el exponente</h2>
-<p class="dropcap">Un logaritmo resuelve eˣ = a, pero en xeˣ = a deja x + ln x = ln a: la incógnita sigue apareciendo
+<p class="dropcap">Un <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> resuelve eˣ = a, pero en xeˣ = a deja x + ln x = ln a: la incógnita sigue apareciendo
   de dos maneras. La función W de Lambert da nombre a la inversa que necesitamos. Su utilidad está en reconocer
-  qué cambio de variable transforma una ecuación en un producto de la forma u·eᵘ.</p>
+  qué <a data-article-concept="integration-classical" routerLink="/articles/integration-classical" fragment="substitution">cambio de variable</a> transforma una ecuación en un producto de la forma u·eᵘ.</p>
 
 <h3>1. Definición: invertir w·eʷ</h3>
 <app-formula expression="w e^w=z\quad\Longleftrightarrow\quad w=W_k(z)"></app-formula>
@@ -131,7 +131,7 @@
 <h3>16. Derivada, aproximaciones y cálculo numérico</h3>
 <p>Derivamos W(z)eᵂ⁽ᶻ⁾ = z implícitamente:</p>
 <app-formula expression="W'(z)=\frac{1}{e^{W(z)}(1+W(z))}=\frac{W(z)}{z(1+W(z))}"></app-formula>
-<p>La segunda forma necesita z ≠ 0. En la rama principal W₀′(0) = 1 por límite.
+<p>La segunda forma necesita z ≠ 0. En la <a data-article-concept="complex-logarithm-branches" routerLink="/articles/complex-logarithm-branches">rama principal</a> W₀′(0) = 1 por límite.
   En −1/e el factor 1 + W se anula: la pendiente se hace infinita y el cálculo es sensible a errores en el argumento.</p>
 <app-formula expression="W_0(z)=z-z^2+\frac32z^3-\frac83z^4+\cdots,\qquad |z|\lt1/e"></app-formula>
 <p>Para z positivo grande, una primera aproximación es ln z − ln ln z; no es una identidad.
@@ -143,7 +143,7 @@
   <li>W₀(ueᵘ) = u solo cuando u ≥ −1. Si u &lt; −1, la inversión que recupera u es W₋₁.</li>
   <li>En −1/e las ramas dan la misma raíz; no deben contarse dos soluciones distintas.</li>
   <li>En cero, W₋₁ no aporta una raíz real finita.</li>
-  <li>W no resuelve automáticamente cualquier ecuación trascendente. Expresiones como eˣ + x² = 0
+  <li>W no resuelve automáticamente cualquier ecuación <a data-article-concept="algebraic-transcendental-numbers" routerLink="/articles/algebraic-transcendental-numbers">trascendente</a>. Expresiones como eˣ + x² = 0
     no se reducen por una regla general a una sola W; en este ejemplo, la positividad descarta directamente raíces reales.</li>
   <li>Las soluciones de una transformación deben comprobarse en la ecuación original, especialmente si se han elevado potencias o tomado raíces.</li></ul>
 <p><strong>Para practicar.</strong> Resuelve 2xe²ˣ = 1, ln x = −x, (x − 1)e²ˣ = 3 y xˣ = 0,8.
@@ -158,3 +158,6 @@
   <li><a routerLink="/problems/complete-function-analysis">Problema 052 · Estudio global de una función</a>. Analiza x·e⁻ˣ y compara su extremo con el de x·eˣ, la función que invierte W.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/integration-classical" fragment="substitution">Integrales I: técnicas clásicas</a></li><li><a routerLink="/articles/complex-logarithm-branches">Logaritmo complejo, ramas y cortes</a></li><li><a routerLink="/articles/algebraic-transcendental-numbers">Números algebraicos y trascendentes</a></li></ul></details></section>
+<!-- article-concepts:end -->

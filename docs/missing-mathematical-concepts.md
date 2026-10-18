@@ -1,5 +1,7 @@
 # Referencias matemáticas sin artículo propio
 
+> Estado del 18 de octubre: los 94 temas tienen ya un destino. Consulta [la revisión de conceptos y enlaces](article-concepts-audit.md) para los 65 artículos incorporados. Esta tabla conserva las evidencias de la auditoría original.
+
 Revisión del 17 de octubre de 2026.
 
 ## Alcance y criterio

@@ -10,7 +10,7 @@
 <p>J₀ es par y vale uno en cero. Satisface t²y″+ty′+t²y=0. Sus ceros no están uniformemente espaciados, aunque la separación se aproxima a π lejos del origen.</p>
 
 <h3>Análisis y construcción</h3>
-<p>El explorador evalúa la serie de potencias mediante una recurrencia entre términos. El intervalo se limita a |t|≤12 para controlar la cancelación numérica de esa evaluación directa.</p>
+<p>El explorador evalúa la serie de potencias mediante una <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> entre términos. El intervalo se limita a |t|≤12 para controlar la cancelación numérica de esa evaluación directa.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -28,7 +28,7 @@
 <div class="article-activities">
   <h3>Practica y experimenta</h3>
   <p>Obtén los primeros tres términos de la expansión cerca del origen.</p>
-  <details><summary>Ver comprobación</summary><p>J₀(t)=1−t²/4+t⁴/64+… . La pendiente inicial es cero y la curvatura de la gráfica depende de su segunda derivada.</p></details>
+  <details><summary>Ver comprobación</summary><p>J₀(t)=1−t²/4+t⁴/64+… . La pendiente inicial es cero y la <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">curvatura</a> de la gráfica depende de su segunda derivada.</p></details>
   <ul>
     <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
     <li><a routerLink="/articles/function-analysis">Estudio de funciones</a>. Contrasta crecimiento, extremos e inflexiones con la forma del gráfico.</li>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://dlmf.nist.gov/10.2" target="_blank" rel="noopener noreferrer">NIST · Digital Library of Mathematical Functions</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li></ul></details></section>
+<!-- article-concepts:end -->

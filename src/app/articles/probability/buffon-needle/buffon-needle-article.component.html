@@ -1,7 +1,7 @@
 <h2>La aguja de Buffon: encontrar π entre líneas paralelas</h2>
 <p class="dropcap">Dibuja líneas paralelas igualmente espaciadas y deja caer una aguja sobre ellas.
   A veces cruzará una línea y otras quedará entre dos. Al repetir el experimento, la proporción
-  de cruces revela una relación con π, aunque el dibujo no contenga ninguna circunferencia.</p>
+  de cruces revela una relación con π, aunque el dibujo no contenga ninguna <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a>.</p>
 
 <h3>Qué significa lanzar al azar</h3>
 <p>La aguja es un segmento de longitud ℓ y las líneas están separadas una distancia d.
@@ -9,7 +9,7 @@
   y la orientación debe ser uniforme e independiente de esa posición. Los lanzamientos también
   se consideran independientes entre sí.</p>
 <p>No necesitamos elegir un punto «uniformemente en todo el plano», algo que no define una
-  distribución de probabilidad. Basta elegir su posición perpendicular a las líneas dentro
+  distribución de probabilidad. Basta elegir su posición <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> a las líneas dentro
   de una franja y aprovechar la repetición del patrón. La posición a lo largo de una línea no afecta al cruce.</p>
 
 <h3>La condición geométrica del cruce</h3>
@@ -39,19 +39,19 @@
   el cociente no proporciona una estimación finita.</p>
 
 <h3>Más lanzamientos, menos ruido… en promedio</h3>
-<p>Para lanzamientos independientes, C sigue una distribución binomial con parámetros N y p.
-  La desviación típica de la frecuencia C/N es:</p>
+<p>Para lanzamientos independientes, C sigue una <a data-article-concept="bernoulli-binomial" routerLink="/articles/bernoulli-binomial">distribución binomial</a> con parámetros N y p.
+  La <a data-article-concept="descriptive-statistics" routerLink="/articles/descriptive-statistics">desviación típica</a> de la frecuencia C/N es:</p>
 <app-formula expression="\sigma_{C/N}=\sqrt{\frac{p(1-p)}{N}},\qquad p=\frac{2\ell}{\pi d}"></app-formula>
 <p>Para reducir esa escala de error a la mitad hacen falta aproximadamente cuatro veces más
   lanzamientos. La frecuencia no tiene por qué acercarse de forma monótona: una tanda nueva
   puede alejarla temporalmente del valor teórico.</p>
 <p>Además, invertir la frecuencia introduce un estimador no lineal. Aunque C/N es insesgado
   para p, no se deduce que 2ℓN/(dC) sea insesgado para π. Las tandas pequeñas pueden producir
-  resultados muy variables; la ley de los grandes números explica la convergencia a largo plazo.</p>
+  resultados muy variables; la <a data-article-concept="large-numbers-law" routerLink="/articles/large-numbers-law">ley de los grandes números</a> explica la convergencia a largo plazo.</p>
 
 <h3>Una simulación que no usa π para orientar las agujas</h3>
 <p>Una forma habitual de simular consiste en generar un ángulo uniforme y usar seno y coseno.
-  El visor utiliza otra: elige un punto uniforme en un cuadrado, rechaza los que quedan fuera del
+  El visor utiliza otra: elige un punto uniforme en un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>, rechaza los que quedan fuera del
   disco unidad y normaliza el vector restante. La simetría circular hace uniforme la orientación.</p>
 <p>Ese procedimiento solo necesita operaciones aritméticas y una raíz cuadrada para generar
   los lanzamientos. La constante π se usa en la referencia teórica y en el diagrama de ángulos,
@@ -76,3 +76,6 @@
   <li><a routerLink="/tools/pi-decimals">Decimales de π</a>. Compara una estimación experimental de π con sus decimales y observa que más lanzamientos reducen incertidumbre sin garantizar dígitos exactos.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/bernoulli-binomial">Distribuciones de Bernoulli y binomial</a></li><li><a routerLink="/articles/descriptive-statistics">Estadística descriptiva y valores atípicos</a></li><li><a routerLink="/articles/large-numbers-law">Ley de los grandes números</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

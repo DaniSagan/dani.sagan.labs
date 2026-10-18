@@ -10,28 +10,28 @@
   <h3>1. De una parábola a una historia infinita</h3>
   <p>En la <a routerLink="/articles/bifurcation-diagram">aplicación logística</a>, cada estado se obtiene a partir del anterior. Para 0 ≤ r ≤ 4, un estado inicial en [0, 1] permanece en ese intervalo:</p>
   <app-formula expression="x_{k+1}=f_r(x_k)=r x_k(1-x_k)" displayMode="block" />
-  <p>Una órbita es la sucesión x₀, x₁, x₂… Un punto fijo satisface f(x) = x; un ciclo de período p regresa al mismo estado después de p pasos, sin hacerlo antes. Lo que importa para observar un atractor es el comportamiento después del transitorio, no solo los primeros pasos.</p>
-  <p>El punto fijo no nulo es x* = 1 − 1/r. Una pequeña perturbación se multiplica, aproximadamente, por f′(x*) = 2 − r en cada paso. Por eso es estable para 1 &lt; r &lt; 3: el valor absoluto del multiplicador es menor que uno. En r = 3 llega a −1, pierde estabilidad y nace un ciclo de período 2.</p>
+  <p>Una órbita es la sucesión x₀, x₁, x₂… Un <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">punto fijo</a> satisface f(x) = x; un ciclo de período p regresa al mismo estado después de p pasos, sin hacerlo antes. Lo que importa para observar un atractor es el comportamiento después del transitorio, no solo los primeros pasos.</p>
+  <p>El punto fijo no nulo es x* = 1 − 1/r. Una pequeña perturbación se multiplica, aproximadamente, por f′(x*) = 2 − r en cada paso. Por eso es estable para 1 &lt; r &lt; 3: el <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> del multiplicador es menor que uno. En r = 3 llega a −1, pierde estabilidad y nace un ciclo de período 2.</p>
   <app-formula expression="r_1=3,\qquad r_2=1+\sqrt6\approx3{,}449489743,\qquad r_3\approx3{,}544090360" displayMode="block" />
   <p>Después aparecen ciclos de períodos 4, 8, 16… La cascada principal se acumula en r∞ ≈ 3,569945672. Ese umbral no significa que todo parámetro posterior sea caótico: entre las regiones caóticas existen ventanas periódicas, como la de período 3.</p>
 
   <h3>2. Mira cómo se rompe el equilibrio</h3>
   <app-feigenbaum-explorer />
   <aside class="experiment"><h4>Tres experimentos para orientarte</h4><p>Empieza con «Período 2» y pasa a «Período 4»: cuenta los estados que se repiten. Amplía después la región «Acumulación» para ver nuevas divisiones. Por último, compara «Caos» y «Período 3» con la misma perturbación inicial: aumentar r no equivale a aumentar el desorden de forma monótona.</p></aside>
-  <p>La sensibilidad se cuantifica mediante el exponente de Lyapunov. Para el mapa logístico, su expresión a lo largo de una órbita es:</p>
+  <p>La sensibilidad se cuantifica mediante el <a data-article-concept="lyapunov-stability-chaos" routerLink="/articles/lyapunov-stability-chaos">exponente de Lyapunov</a>. Para el mapa logístico, su expresión a lo largo de una órbita es:</p>
   <app-formula expression="\lambda=\lim_{N\to\infty}\frac1N\sum_{k=0}^{N-1}\ln\left|r(1-2x_k)\right|" displayMode="block" />
   <p>Un valor negativo indica contracción media de perturbaciones infinitesimales; uno positivo indica expansión media. Al principio de esa expansión, mientras la separación siga siendo pequeña, esperamos |Δxₙ| ≈ |Δx₀|eⁿλ. La distancia no puede crecer indefinidamente dentro de [0, 1]. Un cálculo de duración finita y un valor cercano a cero requieren cautela.</p>
 
   <h3>3. Medir la constante sin confundir dos sucesiones</h3>
-  <p>Podríamos localizar cada bifurcación rₙ buscando dónde un ciclo pierde estabilidad. Hay otra sucesión especialmente cómoda para calcular: los parámetros <strong>superestables</strong> sₙ. En ellos, el ciclo de período 2ⁿ contiene el punto crítico x = ½. Como f′(½) = 0, el producto de derivadas a lo largo del ciclo se anula.</p>
+  <p>Podríamos localizar cada <a data-article-concept="return-maps-bifurcations" routerLink="/articles/return-maps-bifurcations">bifurcación</a> rₙ buscando dónde un ciclo pierde estabilidad. Hay otra sucesión especialmente cómoda para calcular: los parámetros <strong>superestables</strong> sₙ. En ellos, el ciclo de período 2ⁿ contiene el punto crítico x = ½. Como f′(½) = 0, el producto de <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> a lo largo del ciclo se anula.</p>
   <app-formula expression="f_{s_n}^{\,2^n}\!\left(\tfrac12\right)=\tfrac12,\qquad \widehat\delta_n=\frac{s_{n-1}-s_{n-2}}{s_n-s_{n-1}}\longrightarrow\delta" displayMode="block" />
   <p>El superíndice indica composición, no una potencia del valor de la función. La ecuación también tiene raíces de períodos inferiores: hay que seguir la rama de período exacto 2ⁿ de la cascada principal. En la familia logística empezamos con s₀ = 2 y s₁ ≈ 3,236067977. Estos valores están dentro de las regiones estables; no son los rₙ de sus fronteras.</p>
   <app-feigenbaum-convergence />
-  <p>Si Δₙ = sₙ − sₙ₋₁, los intervalos siguientes son aproximadamente Δₙ/δ, Δₙ/δ²… La suma de esa cola geométrica sugiere una estimación del punto de acumulación:</p>
+  <p>Si Δₙ = sₙ − sₙ₋₁, los intervalos siguientes son aproximadamente Δₙ/δ, Δₙ/δ²… La suma de esa cola geométrica sugiere una estimación del <a data-article-concept="open-closed-connected" routerLink="/articles/open-closed-connected">punto de acumulación</a>:</p>
   <app-formula expression="s_\infty\approx s_n+\frac{s_n-s_{n-1}}{\widehat\delta_n-1}" displayMode="block" />
 
   <h3>4. ¿Por qué también aparece en un seno?</h3>
-  <p>La segunda familia del laboratorio es fₐ(x) = a·sen(πx), con 0 ≤ a ≤ 1. Su forma no es una parábola, pero ambas funciones tienen un único máximo suave y cuadrático: cerca del máximo, el primer término no constante es proporcional al cuadrado de la distancia. Las dos recorren una cascada de duplicaciones con el mismo límite δ.</p>
+  <p>La segunda familia del laboratorio es fₐ(x) = a·sen(πx), con 0 ≤ a ≤ 1. Su forma no es una <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a>, pero ambas funciones tienen un único máximo suave y cuadrático: cerca del máximo, el primer término no constante es proporcional al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de la distancia. Las dos recorren una cascada de duplicaciones con el mismo límite δ.</p>
   <p>La universalidad tiene condiciones. Se refiere a familias suaves unimodales con un máximo cuadrático no degenerado y una cascada de duplicación del tipo considerado. Un máximo más plano, una esquina o una ruta distinta hacia el caos pueden dar otro comportamiento. δ no es una constante de cualquier sistema caótico.</p>
   <p>La idea de <strong>renormalización</strong> consiste en observar dos iteraciones como un nuevo paso y reescalar la región próxima al punto crítico. Al repetir esa operación, mapas diferentes se aproximan a una misma forma límite. δ expresa el factor de expansión de la perturbación relevante alrededor de ese punto fijo funcional; su inverso explica la contracción de los intervalos de parámetros.</p>
 
@@ -52,3 +52,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/lyapunov-stability-chaos">Estabilidad, funciones y exponentes de Lyapunov</a></li><li><a routerLink="/articles/return-maps-bifurcations">Mapas de retorno, bifurcaciones y universalidad</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/open-closed-connected">Abiertos, cerrados, acumulación y conexidad</a></li><li><a routerLink="/articles/parabola">Parábola</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

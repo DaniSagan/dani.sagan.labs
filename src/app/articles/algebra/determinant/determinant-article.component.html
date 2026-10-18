@@ -5,12 +5,12 @@
   pregunta geométrica: ¿qué le ocurre a una pequeña caja cuando aplicamos la matriz?</p>
 <p>Trabajaremos con matrices cuadradas reales. En dimensión dos hablaremos de áreas; en dimensión tres,
   de volúmenes. El determinante puede ser negativo, pero el área o volumen geométrico siempre se obtiene
-  tomando su valor absoluto.</p>
+  tomando su <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a>.</p>
 
 <h3>1. Las columnas son las imágenes de la base</h3>
 <p>Para entender una transformación lineal basta saber dónde envía los vectores de la base.
   En una matriz 2 × 2, la primera columna es la imagen de (1, 0) y la segunda, la de (0, 1).
-  El cuadrado unidad se transforma en el paralelogramo generado por esas columnas.</p>
+  El <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> unidad se transforma en el paralelogramo generado por esas columnas.</p>
 <app-formula expression="A=\begin{pmatrix}a&b\\c&d\end{pmatrix},\qquad Ae_1=\begin{pmatrix}a\\c\end{pmatrix},\quad Ae_2=\begin{pmatrix}b\\d\end{pmatrix}"></app-formula>
 <app-formula expression="\det A=ad-bc,\qquad \operatorname{área}(A[0,1]^2)=|ad-bc|"></app-formula>
 <p>El signo registra el orden de los dos vectores. Intercambiar las columnas conserva el paralelogramo
@@ -32,8 +32,8 @@
   no es una función lineal de la matriz completa.</p>
 
 <h3>3. El salto al volumen</h3>
-<p>Tres columnas u, v y w generan un paralelepípedo. Su volumen orientado es el <a routerLink="/articles/scalar-triple-product">producto mixto</a>:
-  el <a routerLink="/articles/cross-product">producto vectorial</a> de dos columnas da un vector perpendicular a la base, y el <a routerLink="/articles/dot-product">producto escalar</a>
+<p>Tres columnas u, v y w generan un <a data-article-concept="scalar-triple-product" routerLink="/articles/scalar-triple-product">paralelepípedo</a>. Su volumen orientado es el <a routerLink="/articles/scalar-triple-product">producto mixto</a>:
+  el <a routerLink="/articles/cross-product">producto vectorial</a> de dos columnas da un vector <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> a la base, y el <a routerLink="/articles/dot-product">producto escalar</a>
   con la tercera incorpora la altura con su signo.</p>
 <app-formula expression="A=(u\ v\ w),\qquad \det A=u\cdot(v\times w),\qquad V=|\det A|"></app-formula>
 <p>Si las tres columnas están en un mismo plano, el volumen es cero, aunque algunos lados puedan ser
@@ -42,7 +42,7 @@
 <app-determinant-volume></app-determinant-volume>
 
 <h3>4. La fórmula general elige una entrada de cada fila y columna</h3>
-<p>Una permutación σ indica qué columna elegir en cada fila. Multiplicamos las entradas elegidas y
+<p>Una <a data-article-concept="permutation-symmetries" routerLink="/articles/permutation-symmetries">permutación</a> σ indica qué columna elegir en cada fila. Multiplicamos las entradas elegidas y
   asignamos un signo a la permutación. El determinante suma todas esas contribuciones.</p>
 <app-formula expression="\det A=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)}"></app-formula>
 <p>El signo es positivo si el número de inversiones es par y negativo si es impar. Una inversión
@@ -81,7 +81,7 @@
 
 <h3>7. Cero significa pérdida de una dimensión</h3>
 <p>Para una matriz cuadrada, estas afirmaciones son equivalentes: el determinante es cero, sus columnas
-  son linealmente dependientes, existe un vector no nulo que se transforma en cero y la matriz no tiene
+  son <a data-article-concept="vector-spaces" routerLink="/articles/vector-spaces">linealmente dependientes</a>, existe un vector no nulo que se transforma en cero y la matriz no tiene
   inversa. Geométricamente, una región con volumen se aplasta en un subespacio de menor dimensión.</p>
 <app-formula expression="\det A\ne0\quad\Longleftrightarrow\quad A\text{ es invertible}\quad\Longleftrightarrow\quad Ax=b\text{ tiene solución única para todo }b"></app-formula>
 <p>Si det(A) = 0, un sistema Ax = b puede tener ninguna solución o infinitas; el determinante solo
@@ -102,17 +102,17 @@
   determinante 10⁻⁶ y, sin embargo, trata ambas direcciones por igual: su número de condición en
   <a routerLink="/articles/vector-norm">norma euclídea</a> es 1. La matriz diagonal con entradas 1000 y 0,001 tiene determinante 1, pero su
   número de condición es 10⁶: unas direcciones se amplifican mucho más que otras.</p>
-<p>Para decidir si un problema es casi singular numéricamente conviene estudiar sus valores singulares
+<p>Para decidir si un problema es casi singular numéricamente conviene estudiar sus <a data-article-concept="singular-values-operator-norms" routerLink="/articles/singular-values-operator-norms">valores singulares</a>
   o una estimación del número de condición, teniendo en cuenta la escala. En matrices grandes se usa
   habitualmente una factorización con pivoteo para calcular el determinante; para resolver Ax = b
   no hace falta calcular antes det(A) ni construir explícitamente A⁻¹.</p>
 
 <h3>10. Más allá de matrices constantes</h3>
-<p>En un cambio de variables no lineal, la matriz jacobiana describe la transformación local.
+<p>En un cambio de variables no lineal, la <a data-article-concept="jacobian-change-variables" routerLink="/articles/jacobian-change-variables">matriz jacobiana</a> describe la transformación local.
   Su determinante indica cuánto se amplifican áreas o volúmenes cerca de cada punto. En una integral
   de volumen aparece el valor absoluto; si se trabaja con orientación, el signo sigue siendo relevante.</p>
 <app-formula expression="dV_{\mathrm{imagen}}=|\det J_F(x)|\,dV_{\mathrm{origen}}"></app-formula>
-<p>Otra aparición fundamental es el polinomio característico: un número λ es autovalor si la
+<p>Otra aparición fundamental es el <a data-article-concept="matrix-diagonalization" routerLink="/articles/matrix-diagonalization">polinomio característico</a>: un número λ es autovalor si la
   transformación A − λI pierde invertibilidad. Por eso los autovalores se buscan resolviendo
   det(A − λI) = 0.</p>
 
@@ -150,3 +150,6 @@
 <li><a routerLink="/problems/inverse-matrix">120 · Una matriz que deshace otra</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/scalar-triple-product">Producto mixto</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/permutation-symmetries">Permutaciones, ciclos y grupos de simetrías</a></li><li><a routerLink="/articles/vector-spaces">Espacios vectoriales, bases y rango–nulidad</a></li><li><a routerLink="/articles/singular-values-operator-norms">Valores singulares, SVD y normas de operadores</a></li><li><a routerLink="/articles/jacobian-change-variables">Matriz jacobiana y cambios de variables</a></li><li><a routerLink="/articles/matrix-diagonalization">Diagonalización de matrices y valores propios</a></li></ul></details></section>
+<!-- article-concepts:end -->

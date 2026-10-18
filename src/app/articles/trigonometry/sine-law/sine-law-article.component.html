@@ -13,10 +13,10 @@
 </ol></details></nav>
 <p class="dropcap">La ley de los senos relaciona cada lado de un triángulo con el seno del ángulo opuesto. Permite resolver observaciones angulares y conecta el triángulo con su <a routerLink="/articles/incircles-circumcircles">circunferencia circunscrita</a>. Su dificultad más interesante aparece cuando se conocen dos lados y un ángulo no comprendido: esos datos pueden producir cero, uno o dos triángulos.</p>
 <h3 id="section-0">Derivar la ley desde una altura</h3>
-<p>La altura respecto a un lado puede escribirse mediante cualquiera de los dos triángulos rectángulos que forma. Igualar esas expresiones relaciona dos cocientes lado-seno, y repetir la construcción da el tercero. Con la circunferencia circunscrita, el ángulo inscrito determina una cuerda y muestra que el cociente común es el diámetro. Los ángulos interiores siempre están entre cero y ciento ochenta grados, donde el seno es positivo.</p>
+<p>La altura respecto a un lado puede escribirse mediante cualquiera de los dos triángulos rectángulos que forma. Igualar esas expresiones relaciona dos cocientes lado-seno, y repetir la construcción da el tercero. Con la <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> circunscrita, el ángulo inscrito determina una cuerda y muestra que el cociente común es el diámetro. Los ángulos interiores siempre están entre cero y ciento ochenta grados, donde el seno es positivo.</p>
 <app-formula expression="\frac a{\sin A}=\frac b{\sin B}=\frac c{\sin C}=2R" />
 <h3 id="section-1">Datos que determinan una solución</h3>
-<p>Con dos ángulos y un lado, el tercer ángulo se deduce de la suma y la ley fija los lados restantes. Con dos lados y el ángulo comprendido, la ley de los cosenos es el camino directo antes de aplicar la de los senos. Una calculadora debe usar la unidad angular elegida; mezclar <a routerLink="/articles/radians">radianes</a> y grados puede dar números verosímiles pero geométricamente imposibles. Al final conviene comprobar suma de ángulos y desigualdades triangulares.</p>
+<p>Con dos ángulos y un lado, el tercer ángulo se deduce de la suma y la ley fija los lados restantes. Con dos lados y el ángulo comprendido, la <a data-article-concept="law-of-cosines" routerLink="/articles/law-of-cosines">ley de los cosenos</a> es el camino directo antes de aplicar la de los senos. Una calculadora debe usar la unidad angular elegida; mezclar <a routerLink="/articles/radians">radianes</a> y grados puede dar números verosímiles pero geométricamente imposibles. Al final conviene comprobar suma de ángulos y desigualdades triangulares.</p>
 <h3 id="section-2">Por qué aparece una segunda rama</h3>
 <p>Conocidos un ángulo y dos lados, se calcula el seno del ángulo opuesto al segundo lado. Un valor mayor que uno descarta la construcción. Un valor entre cero y uno tiene dos <a routerLink="/articles/complementary-supplementary-angles">ángulos suplementarios</a> con el mismo seno. Cada candidato debe combinarse con el ángulo dado y dejar un tercero positivo. El arcoseno principal devuelve solamente la rama aguda y no puede decidir por sí solo cuántos triángulos existen.</p>
 <app-formula expression="\sin B=\frac{b\sin A}{a},\qquad B_1=\arcsin(s),\quad B_2=\pi-B_1" />
@@ -56,3 +56,6 @@
 <li><a routerLink="/problems/triangle-by-sine-rule">135 · Un triángulo por la ley de senos</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/law-of-cosines">Ley de los cosenos</a></li></ul></details></section>
+<!-- article-concepts:end -->

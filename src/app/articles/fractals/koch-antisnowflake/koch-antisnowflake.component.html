@@ -5,7 +5,7 @@
   <p>¿Qué ocurre con el área? En el copo ordinario se añaden triángulos cada vez menores y el área converge. En el anticopo se retiran regiones. También aparece una serie convergente, aunque los contactos y la orientación deben tratarse con cuidado. Dos objetos pueden compartir dimensión y ley de escala, pero encerrar áreas diferentes y separar el plano de maneras distintas.</p>
   <h3>Negativo y positivo</h3>
   <p>Diseñadores y artistas suelen explorar una regla junto con su inversión. Cambiar el signo de los giros funciona como una operación de figura-fondo: lo que era saliente se convierte en cavidad. En fabricación, esa diferencia puede significar añadir material o perforarlo; en una antena fractal, cambiar el contorno exterior por una ranura interior altera el comportamiento electromagnético.</p>
-  <p>El código usa un sistema-L común con el resto de curvas de sustitución. Los puntos del recorrido son <code>Vec2</code> y se escalan después de calcular la caja completa. Esto es especialmente útil aquí, porque los entrantes cambian el espacio ocupado sin que el componente tenga que ajustar márgenes manualmente.</p>
+  <p>El código usa un <a data-article-concept="l-systems" routerLink="/articles/l-systems">sistema-L</a> común con el resto de curvas de sustitución. Los puntos del recorrido son <code>Vec2</code> y se escalan después de calcular la caja completa. Esto es especialmente útil aquí, porque los entrantes cambian el espacio ocupado sin que el componente tenga que ajustar márgenes manualmente.</p>
   <p>Alterna mentalmente entre este dibujo y el copo clásico. La secuencia de longitudes es idéntica; solo cambia el signo de los giros. Una modificación de dos caracteres transforma crecimiento en erosión y recuerda que una fórmula compacta contiene decisiones geométricas muy concretas.</p>
   <app-fractal-explorer
     [draw]="draw"
@@ -21,3 +21,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/l-systems">Sistemas-L y gramáticas de reescritura</a></li></ul></details></section>
+<!-- article-concepts:end -->

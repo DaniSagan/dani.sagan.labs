@@ -54,7 +54,7 @@
     Como −n &lt; r − t &lt; n, el único múltiplo de n posible es 0. Por tanto r = t.</p>
 </div>
 <p>Por ejemplo, −17 = 5·(−4) + 3, así que −17 ≡ 3 (mod 5). El resto canónico es 3, no −2.
-  La igualdad −17 = 5·(−3) − 2 es cierta, pero no es una división euclídea con resto canónico.</p>
+  La igualdad −17 = 5·(−3) − 2 es cierta, pero no es una <a data-article-concept="division-algorithm" routerLink="/articles/division-algorithm">división euclídea</a> con resto canónico.</p>
 <p>Usaremos <strong>a mod n</strong> para la operación que devuelve ese único entero r. En cambio,
   <strong>a ≡ b (mod n)</strong> es una relación entre dos enteros: afirma que sus restos coinciden.
   En algunos lenguajes, el operador <code>%</code> devuelve un resto con el signo del dividendo;
@@ -62,7 +62,7 @@
 </p>
 
 <h3>4. Una relación de equivalencia</h3>
-<p>La congruencia módulo un n fijo permite agrupar enteros porque es una <strong>relación de equivalencia</strong> en ℤ.
+<p>La congruencia módulo un n fijo permite agrupar enteros porque es una <strong><a data-article-concept="equivalence-quotients" routerLink="/articles/equivalence-quotients">relación de equivalencia</a></strong> en ℤ.
   Veamos sus tres propiedades directamente desde la divisibilidad.</p>
 <div class="proof">
   <ul>
@@ -84,7 +84,7 @@
     Si dos clases comparten un entero c, por simetría y transitividad sus representantes son congruentes;
     cualquier entero de una clase pertenece entonces a la otra. Por tanto dos clases son iguales o disjuntas.</p>
   <p><strong>Hay exactamente n clases.</strong> Cada entero tiene un resto r entre 0 y n − 1, luego pertenece a [r]ₙ.
-    Dos restos distintos de ese intervalo no pueden ser congruentes, porque su diferencia no nula tiene valor absoluto
+    Dos restos distintos de ese intervalo no pueden ser congruentes, porque su diferencia no nula tiene <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a>
     menor que n.
     Así, [0]ₙ,…,[n − 1]ₙ son todas las clases y ninguna se repite.</p>
 </div>
@@ -169,7 +169,7 @@
 <div class="proof">
   <p><strong>Necesidad.</strong> Si au ≡ 1 (mod n), existe t entero con au − nt = 1.
     Cualquier divisor común de a y n divide al primer miembro y, por tanto, a 1. El MCD positivo es 1.</p>
-  <p><strong>Suficiencia.</strong> Si gcd(a,n) = 1, Bézout da ax + ny = 1.
+  <p><strong>Suficiencia.</strong> Si gcd(a,n) = 1, <a data-article-concept="bezout-identity" routerLink="/articles/bezout-identity">Bézout</a> da ax + ny = 1.
     Al reducir módulo n queda ax ≡ 1, así que x representa un inverso.</p>
   <p><strong>Unicidad de la clase inversa.</strong> Si au ≡ av ≡ 1, entonces
     u ≡ u(av) ≡ (ua)v ≡ v (mod n). Hay un único inverso como clase, aunque infinitos representantes enteros.</p>
@@ -190,7 +190,7 @@
   <p><strong>Una unidad no es divisor de cero.</strong> Si au ≡ 1 y ab ≡ 0, al multiplicar por u resulta b ≡ 0.
     Por tanto no puede anular una clase no nula.</p>
   <p><strong>En un módulo primo p, toda clase no nula es unidad.</strong> Su representante r satisface 1 ≤ r &lt; p;
-    como los únicos divisores positivos de p son 1 y p, gcd(r,p) = 1. Por el criterio del inverso, r es invertible.
+    como los únicos divisores positivos de p son 1 y p, gcd(r,p) = 1. Por el criterio del inverso, r es <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">invertible</a>.
     En consecuencia no hay divisores de cero.</p>
   <p><strong>En un módulo compuesto aparecen divisores de cero.</strong> Si n = uv con 1 &lt; u,v &lt; n,
     las clases de u y v son no nulas, pero su producto es [n]ₙ = [0]ₙ.</p>
@@ -226,7 +226,7 @@
   siempre que k ≥ μ. Reducir k módulo λ sin atender a la cola sería incorrecto.</p>
 
 <h3>12. Cuadrados sucesivos: reducir el trabajo, no solo los números</h3>
-<p>Multiplicar cien veces no es necesario. Si conocemos a, obtenemos a², a⁴, a⁸,… elevando al cuadrado y reduciendo tras
+<p>Multiplicar cien veces no es necesario. Si conocemos a, obtenemos a², a⁴, a⁸,… elevando al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> y reduciendo tras
   cada operación.
   Después usamos la escritura binaria del exponente para seleccionar las potencias necesarias.</p>
 <p>Para 2¹⁰⁰ módulo 7, 100 = 64 + 32 + 4. Los restos de 2¹,2²,2⁴,2⁸,2¹⁶,2³²,2⁶⁴ son 2,4,2,4,2,4,2, respectivamente.
@@ -303,7 +303,7 @@
 <ul>
   <li><strong>Divisibilidad y cálculo:</strong> el <a routerLink="/articles/gcd-euclid">MCD y el algoritmo de
       Euclides</a>
-    calculan la coprimalidad; la <a routerLink="/articles/bezout-identity">identidad de Bézout</a> la convierte en un
+    calculan la <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a>; la <a routerLink="/articles/bezout-identity">identidad de Bézout</a> la convierte en un
     certificado y en un inverso.</li>
   <li><strong>Resolver ecuaciones:</strong> las <a routerLink="/articles/linear-congruence-theorem">congruencias
       lineales</a>
@@ -351,3 +351,6 @@
 <li><a routerLink="/problems/impossible-sum-of-two-squares">108 · Dos cuadrados y una imposibilidad</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/division-algorithm">Teorema de la división euclídea</a></li><li><a routerLink="/articles/equivalence-quotients">Relaciones de equivalencia y conjuntos cociente</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/bezout-identity">Identidad de Bézout</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/rings-finite-fields">Anillos, cuerpos, irreducibilidad y cuerpos finitos</a></li></ul></details></section>
+<!-- article-concepts:end -->

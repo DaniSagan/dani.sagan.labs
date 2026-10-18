@@ -7,7 +7,7 @@ export interface PlotSeries {
         number
     ][];
     color?: string;
-    kind?: 'line' | 'bars' | 'area';
+    kind?: 'line' | 'bars' | 'area' | 'scatter';
     dashed?: boolean;
 }
 export interface PlotMarker {
@@ -36,7 +36,9 @@ export interface PlotMarker {
         <line [attr.x1]="sx(clamp(0, xmin, xmax))" y1="24" [attr.x2]="sx(clamp(0, xmin, xmax))" y2="308" class="axis" />
         <g [attr.clip-path]="'url(#' + clipId + ')'">
           @for (item of paths; track $index) {
-            @if (item.series.kind === 'bars') {
+            @if (item.series.kind === 'scatter') {
+              @for (p of item.series.points; track $index) {<circle [attr.cx]="sx(p[0])" [attr.cy]="sy(p[1])" r="2.5" [attr.fill]="item.color"><title>{{ item.series.label }}: {{ number(p[0]) }}, {{ number(p[1]) }}</title></circle>}
+            } @else if (item.series.kind === 'bars') {
               @for (p of item.series.points; track $index) {
                 <rect [attr.x]="sx(p[0]) - barWidth / 2" [attr.y]="Math.min(sy(p[1]), sy(0))" [attr.width]="barWidth" [attr.height]="Math.abs(sy(p[1]) - sy(0))" [attr.fill]="item.color" opacity=".7"><title>{{ item.series.label }}: {{ p[0] }} → {{ number(p[1]) }}</title></rect>
               }

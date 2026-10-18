@@ -1,15 +1,15 @@
 <h2>La desigualdad de Erdős–Mordell</h2>
-<p class="dropcap">Sea P un punto interior de un triángulo ABC. Sus distancias a los vértices son RA, RB y RC; sus distancias perpendiculares a las rectas de los lados opuestos son ra, rb y rc. Erdős–Mordell afirma que la suma de las primeras es al menos el doble de la suma de las segundas. Los pies pueden caer en prolongaciones: siempre medimos la distancia a la recta.</p>
+<p class="dropcap">Sea P un punto interior de un triángulo ABC. Sus distancias a los vértices son RA, RB y RC; sus distancias <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendiculares</a> a las rectas de los lados opuestos son ra, rb y rc. Erdős–Mordell afirma que la suma de las primeras es al menos el doble de la suma de las segundas. Los pies pueden caer en prolongaciones: siempre medimos la distancia a la recta.</p>
 <app-formula expression="R_A+R_B+R_C\geq2(r_a+r_b+r_c)" displayMode="block"/>
 <h3>1. Preparar una desigualdad desde un vértice</h3>
 <p>Usamos a=BC, b=CA y c=AB. Llamamos θ al ángulo BAP; como P está dentro, θ está entre cero y A. Las distancias a AB y AC se obtienen proyectando AP perpendicularmente. Esto proporciona dos expresiones trigonométricas sencillas, que conservan signo positivo:</p>
 <app-formula expression="r_c=R_A\sin\theta,\qquad r_b=R_A\sin(A-\theta)" displayMode="block"/>
 <app-geometry-diagram diagram="erdos-mordell" description="P está dentro de ABC. Los segmentos dorados llegan a los vértices y los azules son las distancias perpendiculares a las rectas de los lados."/>
 <h3>2. Acotar una combinación de distancias</h3>
-<p>Multiplicamos rb por c y rc por b. Desarrollamos el seno de una diferencia y agrupamos los coeficientes del seno y coseno de θ. La desigualdad de Cauchy para dos componentes permite acotar el resultado por el módulo del vector de coeficientes:</p>
+<p>Multiplicamos rb por c y rc por b. Desarrollamos el seno de una diferencia y agrupamos los coeficientes del seno y coseno de θ. La <a data-article-concept="cauchy-schwarz" routerLink="/articles/cauchy-schwarz">desigualdad de Cauchy</a> para dos componentes permite acotar el resultado por el módulo del vector de coeficientes:</p>
 <app-formula expression="cr_b+br_c=R_A\bigl[c\sin A\cos\theta+(b-c\cos A)\sin\theta\bigr]" displayMode="block"/>
 <app-formula expression="cr_b+br_c\leq R_A\sqrt{c^2\sin^2A+(b-c\cos A)^2}" displayMode="block"/>
-<p>El cuadrado dentro de la raíz se simplifica a b²+c²−2bc cos A. La <a routerLink="/articles/law-of-cosines">ley de los cosenos</a> identifica esta cantidad con a². Como a es positivo, acabamos de demostrar una desigualdad local que relaciona un vértice con los dos lados que pasan por él:</p>
+<p>El <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> dentro de la raíz se simplifica a b²+c²−2bc cos A. La <a routerLink="/articles/law-of-cosines">ley de los cosenos</a> identifica esta cantidad con a². Como a es positivo, acabamos de demostrar una desigualdad local que relaciona un vértice con los dos lados que pasan por él:</p>
 <app-formula expression="R_A\geq\frac ca r_b+\frac ba r_c" displayMode="block"/>
 <h3>3. Repetir y sumar</h3>
 <p>Aplicamos exactamente el mismo razonamiento desde B y C, permutando las letras de forma cíclica. Cuando sumamos las tres desigualdades, cada distancia perpendicular aparece dos veces, con coeficientes recíprocos:</p>
@@ -29,3 +29,6 @@
   <li><a routerLink="/problems/orthogonal-projection">Problema 019 · Proyección ortogonal</a>. Practica cómo obtener el pie perpendicular y una distancia, ingredientes del planteamiento de la desigualdad.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/cauchy-schwarz">Desigualdad de Cauchy–Schwarz</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

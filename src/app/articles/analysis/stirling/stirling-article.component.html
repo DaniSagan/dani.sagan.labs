@@ -1,13 +1,13 @@
 <h2>La fórmula de Stirling</h2>
-<p class="dropcap">El factorial cuenta las maneras de ordenar objetos distintos: n! = 1 · 2 · 3 · … · n. Su crecimiento es vertiginoso. Diez objetos admiten más de tres millones de órdenes; cien, un número de 158 cifras. La fórmula de Stirling permite estimar ese producto enorme mediante una expresión de tamaño manejable.</p>
+<p class="dropcap">El <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a> cuenta las maneras de ordenar objetos distintos: n! = 1 · 2 · 3 · … · n. Su crecimiento es vertiginoso. Diez objetos admiten más de tres millones de órdenes; cien, un número de 158 cifras. La fórmula de Stirling permite estimar ese producto enorme mediante una expresión de tamaño manejable.</p>
 <aside class="theorem"><span class="section-label">LA APROXIMACIÓN FUNDAMENTAL</span>
   <app-formula expression="\boxed{n!\sim\sqrt{2\pi n}\left(\frac ne\right)^n}\qquad(n\to\infty)" displayMode="block" />
   <p>El símbolo ∼ significa que el cociente entre ambos miembros tiende a 1. No significa que su diferencia tienda a cero.</p>
 </aside>
-<p>La fórmula lleva el nombre de James Stirling y está ligada también al trabajo de Abraham de Moivre. Su utilidad va más allá de calcular factoriales: permite estimar coeficientes binomiales, probabilidades y el crecimiento de muchas expresiones combinatorias.</p>
+<p>La fórmula lleva el nombre de James Stirling y está ligada también al trabajo de Abraham <a data-article-concept="de-moivre" routerLink="/articles/de-moivre">de Moivre</a>. Su utilidad va más allá de calcular factoriales: permite estimar coeficientes binomiales, probabilidades y el crecimiento de muchas expresiones combinatorias.</p>
 
 <h3>1. Aproximar un producto con una suma</h3>
-<p>Tomar logaritmos convierte el producto en una suma. Todos los logaritmos que aparecen aquí son naturales:</p>
+<p>Tomar <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmos</a> convierte el producto en una suma. Todos los logaritmos que aparecen aquí son naturales:</p>
 <app-formula expression="\ln(n!)=\sum_{k=1}^{n}\ln k" displayMode="block" />
 <p>Como primera estimación, sustituimos la suma por el área bajo ln x. La integral se calcula inmediatamente:</p>
 <app-formula expression="\int_1^n\ln x\,dx=n\ln n-n+1" displayMode="block" />
@@ -28,12 +28,12 @@
 <app-formula expression="n\left(\ln\left(1+\frac u{\sqrt n}\right)-\frac u{\sqrt n}\right)=-\frac{u^2}{2}+\frac{u^3}{3\sqrt n}-\frac{u^4}{4n}+\cdots" displayMode="block" />
 <p>El perfil reescalado se aproxima a exp(−u²/2). No es una densidad normalizada: su altura máxima es 1 y su área total es √(2π).</p>
 <app-stirling-laplace />
-<p>El método de Laplace justifica que la contribución principal procede del entorno del máximo y que las colas no alteran el límite. La convergencia puntual de los perfiles, por sí sola, no bastaría para intercambiar límite e integral. Con ese control se obtiene:</p>
+<p>El método de Laplace justifica que la contribución principal procede del entorno del máximo y que las colas no alteran el límite. La <a data-article-concept="function-convergence" routerLink="/articles/function-convergence">convergencia puntual</a> de los perfiles, por sí sola, no bastaría para intercambiar límite e integral. Con ese control se obtiene:</p>
 <app-formula expression="\int_{-\sqrt n}^{\infty}g_n(u)\,du\longrightarrow\int_{-\infty}^{\infty}e^{-u^2/2}\,du=\sqrt{2\pi}" displayMode="block" />
 <p>Multiplicar la altura (n/e)<sup>n</sup>, la anchura √n y el área límite √(2π) produce exactamente la fórmula de Stirling. Esta derivación explica sus factores; el control uniforme de las colas es el paso analítico adicional que convierte el argumento local en una demostración completa.</p>
 
 <h3>4. Corregir el error con Euler–Maclaurin</h3>
-<p>La fórmula de Euler–Maclaurin permite refinar la comparación entre la suma de logaritmos y su integral. Las correcciones contienen los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Para el logaritmo del factorial:</p>
+<p>La fórmula de <a data-article-concept="euler-maclaurin-asymptotics" routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin</a> permite refinar la comparación entre la suma de logaritmos y su integral. Las correcciones contienen los <a routerLink="/articles/bernoulli-numbers">números de Bernoulli</a>. Para el logaritmo del factorial:</p>
 <app-formula expression="\ln(n!)\sim\left(n+\frac12\right)\ln n-n+\frac12\ln(2\pi)+\frac1{12n}-\frac1{360n^3}+\frac1{1260n^5}-\cdots" displayMode="block" />
 <p>De ahí salen las dos mejoras del primer widget: multiplicar la fórmula básica por exp(1/(12n)), o por exp(1/(12n) − 1/(360n³)). Sus errores relativos son, respectivamente, de orden n<sup>−3</sup> y n<sup>−5</sup>, frente al orden n<sup>−1</sup> de la fórmula básica.</p>
 <p>Si, en cambio, expandimos la exponencial y agrupamos potencias de 1/n, obtenemos otra forma habitual:</p>
@@ -46,7 +46,7 @@
 <p>Al exponenciar, A₂ queda por debajo del factorial y A₁ por encima. Esto justifica la dirección de los errores mostrados en el laboratorio, incluso cuando la diferencia es demasiado pequeña para distinguirla con los decimales impresos.</p>
 
 <h3>6. Aplicación: el centro del triángulo de Pascal</h3>
-<p>El coeficiente binomial central cuenta las formas de escoger n elementos entre 2n. Sustituimos los tres factoriales por sus aproximaciones:</p>
+<p>El <a data-article-concept="binomial-theorem" routerLink="/articles/binomial-theorem">coeficiente binomial</a> central cuenta las formas de escoger n elementos entre 2n. Sustituimos los tres factoriales por sus aproximaciones:</p>
 <app-formula expression="\binom{2n}{n}=\frac{(2n)!}{(n!)^2}\sim\frac{\sqrt{4\pi n}(2n/e)^{2n}}{2\pi n(n/e)^{2n}}=\frac{4^n}{\sqrt{\pi n}}" displayMode="block" />
 <p>En 2n lanzamientos independientes de una moneda equilibrada, la probabilidad de obtener exactamente n caras es ese coeficiente dividido entre 4<sup>n</sup>. Por tanto:</p>
 <app-formula expression="\mathbb P(\text{exactamente }n\text{ caras en }2n\text{ lanzamientos})\sim\frac1{\sqrt{\pi n}}" displayMode="block" />
@@ -71,3 +71,6 @@
   <li><a routerLink="/tools/probability-lab">Laboratorio de probabilidad y estadística</a>. Compara una binomial con una normal para observar una aplicación de las aproximaciones de factoriales en coeficientes combinatorios.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/de-moivre">Fórmula de De Moivre: potencias y raíces complejas</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/function-convergence">Convergencia de funciones: puntual, uniforme y dominada</a></li><li><a routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin y truncamiento de desarrollos asintóticos</a></li><li><a routerLink="/articles/binomial-theorem">Teorema binomial</a></li></ul></details></section>
+<!-- article-concepts:end -->

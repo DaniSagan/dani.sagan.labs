@@ -35,7 +35,7 @@
 <ul>
   <li><strong>Transitividad:</strong> si a ∣ b y b ∣ c, escribimos b = au y c = bv; entonces c = a(uv), así que a ∣ c.
   </li>
-  <li><strong>Combinaciones enteras:</strong> si m ∣ A y m ∣ B, entonces m ∣ (uA + vB) para cualesquiera enteros u,v,
+  <li><strong><a data-article-concept="counting-principles" routerLink="/articles/counting-principles">Combinaciones</a> enteras:</strong> si m ∣ A y m ∣ B, entonces m ∣ (uA + vB) para cualesquiera enteros u,v,
     porque A = mr y B = ms dan uA + vB = m(ur + vs).</li>
   <li><strong>Quitar un múltiplo:</strong> si m ∣ (A − B), entonces m ∣ A si y solo si m ∣ B.
     En un sentido usamos B = A − (A − B); en el otro, A = B + (A − B).</li>
@@ -115,7 +115,7 @@
   <app-formula
     expression="N=\sum_i a_i10^i\equiv\sum_i a_i=a_0+a_1+\cdots+a_k\pmod m,\qquad m\in\{3,9\}."></app-formula>
   <p>Al conservarse el resto, se conserva en ambos sentidos la condición de que ese resto sea cero.
-    Podemos repetir la suma de cifras porque cada nueva transformación conserva la misma congruencia.</p>
+    Podemos repetir la suma de cifras porque cada nueva transformación conserva la misma <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">congruencia</a>.</p>
 </div>
 <p>12345 tiene suma 15: es divisible por 3, pero no por 9. En cambio, 12348 tiene suma 18 y es divisible por ambos.
   La regla exige que la suma sea <em>un múltiplo</em> del divisor: no tiene por qué ser exactamente 3 o 9.
@@ -167,7 +167,7 @@
 <div class="convention">
   <p><strong>Conservar divisibilidad no es conservar el resto.</strong> Para 204, el criterio del 7 produce 12;
     los restos respectivos son 1 y 5. Lo que se conserva es si el resto es cero.
-    Si una transformación produce un negativo, podemos tomar su valor absoluto antes de continuar.</p>
+    Si una transformación produce un negativo, podemos tomar su <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> antes de continuar.</p>
 </div>
 <div class="proof">
   <p><strong>Cuándo parar.</strong> El laboratorio itera solo mientras |N| ≥ 100 y trabaja con el valor absoluto en cada
@@ -246,7 +246,7 @@
   <li><strong>24 = 3·8:</strong> suma divisible por 3 y tres últimas cifras divisibles por 8;
     por ejemplo 12312, con suma 9 y final 312 = 8·39.</li>
 </ul>
-<p>Sin coprimalidad, la conclusión correcta utiliza el <a routerLink="/articles/gcd-euclid" fragment="mcm">mínimo común
+<p>Sin <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a>, la conclusión correcta utiliza el <a routerLink="/articles/gcd-euclid" fragment="mcm">mínimo común
     múltiplo</a>:</p>
 <app-formula
   expression="(u\mid N\ \text{y}\ v\mid N)\quad\Longleftrightarrow\quad\operatorname{mcm}(u,v)\mid N."></app-formula>
@@ -397,7 +397,7 @@
   <li><a routerLink="/articles/division-algorithm">División euclídea:</a> fundamenta la separación N = 10a + b
     y la construcción de la escritura posicional en cualquier base.</li>
   <li><a routerLink="/articles/chinese-remainder-theorem">Teorema chino del resto:</a> combina condiciones de restos,
-    una extensión de combinar condiciones de divisibilidad por módulos coprimos.</li>
+    una extensión de combinar condiciones de divisibilidad por <a data-article-concept="chinese-remainder-theorem" routerLink="/articles/chinese-remainder-theorem">módulos coprimos</a>.</li>
   <li><a routerLink="/articles/fermats-little-theorem">Pequeño teorema de Fermat</a> y
     <a routerLink="/articles/eulers-theorem">teorema de Euler:</a> garantizan potencias congruentes con 1
     bajo sus hipótesis de coprimalidad. Aplicados a la base, proporcionan longitudes posibles de bloque.
@@ -415,3 +415,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Factoriza algunos enteros con finales distintos y contrasta los criterios de 2, 3, 5 y 11 con su descomposición.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/chinese-remainder-theorem">Sistemas de congruencias y Teorema Chino del Resto</a></li></ul></details></section>
+<!-- article-concepts:end -->

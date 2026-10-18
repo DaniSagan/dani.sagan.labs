@@ -13,7 +13,7 @@
   alternan de signo. Estas propiedades se recogen en la <a href="https://dlmf.nist.gov/24.2">definición de DLMF (NIST)</a>.</p>
 
 <h3>Una regla para calcularlos exactamente</h3>
-<p>Multiplicando la serie generadora por eᵗ − 1 e igualando coeficientes obtenemos una recurrencia:
+<p>Multiplicando la serie generadora por eᵗ − 1 e igualando coeficientes obtenemos una <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a>:
   cada término depende solo de los anteriores.</p>
 <app-formula expression="B_0=1,\qquad B_n=-\frac1{n+1}\sum_{k=0}^{n-1}\binom{n+1}{k}B_k\quad(n\ge1)"></app-formula>
 <p>Por ejemplo, B₂ = −(B₀ + 3B₁)/3 = −(1 − 3/2)/3 = 1/6.
@@ -44,11 +44,14 @@
   <a href="https://dlmf.nist.gov/25.6">Valores especiales de zeta en DLMF</a>.</p>
 <p><strong>Para explorar.</strong> Calcula B₁₂ y observa el numerador 691. Compara después B₂₀ y B₁₀₀:
   aunque muchos términos son cero, los valores pares no permanecen pequeños. Usa B₀, B₁ y B₂
-  en la fórmula de Faulhaber con p = 3 y comprueba que la suma de cubos es el cuadrado de la suma de enteros.</p>
+  en la fórmula de Faulhaber con p = 3 y comprueba que la suma de cubos es el <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de la suma de enteros.</p>
 
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/taylor-error-bound">Problema 055 · Taylor con control del error</a>. Practica el papel de las derivadas y del resto, también necesario al truncar fórmulas de Euler–Maclaurin.</li>
+  <li><a routerLink="/problems/taylor-error-bound">Problema 055 · Taylor con control del error</a>. Practica el papel de las <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> y del resto, también necesario al truncar fórmulas de <a data-article-concept="euler-maclaurin-asymptotics" routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin</a>.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/euler-maclaurin-asymptotics">Euler–Maclaurin y truncamiento de desarrollos asintóticos</a></li></ul></details></section>
+<!-- article-concepts:end -->

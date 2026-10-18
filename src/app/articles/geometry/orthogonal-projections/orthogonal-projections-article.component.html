@@ -1,5 +1,5 @@
 <h2>Proyectar: encontrar el punto más cercano</h2>
-<p class="dropcap">Una sombra cae sobre una superficie siguiendo una dirección. La proyección ortogonal sigue su normal: elimina exactamente la parte perpendicular de un desplazamiento. Por eso encuentra la distancia mínima a una recta o un plano y prepara el camino para el ajuste por mínimos cuadrados.</p>
+<p class="dropcap">Una sombra cae sobre una superficie siguiendo una dirección. La proyección ortogonal sigue su normal: elimina exactamente la parte <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> de un desplazamiento. Por eso encuentra la distancia mínima a una recta o un plano y prepara el camino para el ajuste por <a data-article-concept="projection-least-squares" routerLink="/articles/projection-least-squares">mínimos cuadrados</a>.</p>
 <h3>1. La componente sobre una dirección</h3>
 <p>Sea u no nulo. Buscamos el múltiplo tu más cercano a v. La diferencia v − tu debe ser perpendicular a u; despejar t da la proyección. También se obtiene minimizando una función cuadrática.</p>
 <app-formula expression="\operatorname{proj}_u(v)=\frac{v\cdot u}{u\cdot u}u,\qquad (v-\operatorname{proj}_u(v))\cdot u=0" />
@@ -19,8 +19,8 @@
 <app-formula expression="\operatorname{dist}(r,s)=\frac{|(q-p)\cdot(u\times v)|}{\|u\times v\|}" />
 <p>Con numerador cero y direcciones no paralelas, se cortan. Si u × v = 0, usamos la distancia de un punto a una recta: |(q − p) × u| / |u|. En el <a routerLink="/problems/skew-lines-distance">problema 029</a>, las direcciones son los dos primeros ejes y la separación en el tercero da distancia 1.</p>
 <h3>5. Subespacios, QR y mínimos cuadrados</h3>
-<p>Si Q tiene columnas ortonormales, P = QQᵀ proyecta sobre el subespacio que generan. Cumple P² = P y Pᵀ = P. Con A de columnas independientes también se escribe A(AᵀA)⁻¹Aᵀ; formar AᵀA puede empeorar el condicionamiento.</p>
-<p>En cálculo numérico se suele aplicar QR o SVD. El residuo queda perpendicular a las columnas: es la geometría de la <a routerLink="/articles/linear-regression">regresión lineal</a>. Para un plano afín primero trasladamos el origen a un punto del plano.</p>
+<p>Si Q tiene columnas <a data-article-concept="gram-schmidt" routerLink="/articles/gram-schmidt">ortonormales</a>, P = QQᵀ proyecta sobre el subespacio que generan. Cumple P² = P y Pᵀ = P. Con A de columnas independientes también se escribe A(AᵀA)⁻¹Aᵀ; formar AᵀA puede empeorar el condicionamiento.</p>
+<p>En cálculo numérico se suele aplicar QR o <a data-article-concept="singular-values-operator-norms" routerLink="/articles/singular-values-operator-norms">SVD</a>. El residuo queda perpendicular a las columnas: es la geometría de la <a routerLink="/articles/linear-regression">regresión lineal</a>. Para un plano afín primero trasladamos el origen a un punto del plano.</p>
 <h3>Referencias y lecturas</h3><ul class="references"><li><a href="https://math.mit.edu/~djk/18_022/chapter15/contents.html" target="_blank" rel="noopener noreferrer">MIT · Sistemas de ecuaciones, ortogonalidad y eliminación de Gauss</a></li></ul>
 
 <div class="article-activities">
@@ -35,3 +35,6 @@
 <li><a routerLink="/problems/point-plane-distance">28 · Distancia a un plano</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/projection-least-squares">Proyecciones ortogonales y mínimos cuadrados</a></li><li><a routerLink="/articles/gram-schmidt">Productos internos y ortonormalización de Gram–Schmidt</a></li><li><a routerLink="/articles/singular-values-operator-norms">Valores singulares, SVD y normas de operadores</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -1,10 +1,10 @@
 <article class="fractal-article">
   <h2>Dosel fractal</h2>
-  <p class="dropcap">Un dosel fractal es una familia de árboles geométricos en la que cada rama produce copias reducidas de una estructura básica. No existe un único dosel canónico: el ángulo de bifurcación, la razón de escala y el número de ramas forman un espacio completo de diseños. Su interés está precisamente ahí. Con parámetros casi idénticos pueden aparecer copas abiertas, masas compactas, solapamientos periódicos o fronteras de aspecto sorprendentemente orgánico.</p>
+  <p class="dropcap">Un dosel fractal es una familia de árboles geométricos en la que cada rama produce copias reducidas de una estructura básica. No existe un único dosel canónico: el ángulo de <a data-article-concept="return-maps-bifurcations" routerLink="/articles/return-maps-bifurcations">bifurcación</a>, la razón de escala y el número de ramas forman un <a data-article-concept="metric-normed-spaces" routerLink="/articles/metric-normed-spaces">espacio completo</a> de diseños. Su interés está precisamente ahí. Con parámetros casi idénticos pueden aparecer copas abiertas, masas compactas, solapamientos periódicos o fronteras de aspecto sorprendentemente orgánico.</p>
   <p>Los modelos de ramificación tienen una historia anterior a la computación gráfica. Leonardo da Vinci observó que la suma de las secciones de las ramas de un árbol guardaba relación con la del tronco; siglos después, botánicos y matemáticos formalizaron patrones de crecimiento. Un dosel fractal no pretende reproducir toda la biología —ignora luz, gravedad, nutrientes y daños—, pero aísla una idea poderosa: las partes jóvenes repiten aproximadamente la arquitectura de las mayores.</p>
   <h3>Una pila que recuerda cada bifurcación</h3>
   <p>El dibujo se expresa con corchetes. <code>F</code> avanza; <code>[</code> guarda posición y ángulo; <code>]</code> los recupera. Así, la regla <code>F → F[+F]F[-F]F</code> puede crear dos laterales y continuar el eje principal. El intérprete utiliza una pila de estados y representa cada posición mediante <code>Vec2</code>. Al regresar de una rama inserta una interrupción en la polilínea para no unir accidentalmente extremos que en el árbol no están conectados.</p>
-  <p>Esta técnica procede de los sistemas-L desarrollados por Aristid Lindenmayer en 1968 para describir el crecimiento de organismos filamentosos. Sus gramáticas paralelas terminaron siendo fundamentales en gráficos botánicos. En cine y videojuegos se combinan reglas parecidas con variación aleatoria, tropismos y modelos físicos para evitar una simetría demasiado perfecta.</p>
+  <p>Esta técnica procede de los <a data-article-concept="l-systems" routerLink="/articles/l-systems">sistemas-L</a> desarrollados por Aristid Lindenmayer en 1968 para describir el crecimiento de organismos filamentosos. Sus gramáticas paralelas terminaron siendo fundamentales en gráficos botánicos. En cine y videojuegos se combinan reglas parecidas con variación aleatoria, tropismos y modelos físicos para evitar una simetría demasiado perfecta.</p>
   <ul>
     <li>Un ángulo pequeño produce una copa estrecha.</li>
     <li>Más iteraciones multiplican rápidamente ramitas y solapamientos.</li>
@@ -18,3 +18,6 @@
     [maxIterations]="6"
   ></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/return-maps-bifurcations">Mapas de retorno, bifurcaciones y universalidad</a></li><li><a routerLink="/articles/metric-normed-spaces">Espacios métricos, normas y completitud</a></li><li><a routerLink="/articles/l-systems">Sistemas-L y gramáticas de reescritura</a></li></ul></details></section>
+<!-- article-concepts:end -->

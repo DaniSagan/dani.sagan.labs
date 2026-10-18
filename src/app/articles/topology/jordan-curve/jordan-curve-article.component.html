@@ -5,13 +5,13 @@
   un interior y un exterior. Pero ¿seguiría siendo cierto si la línea tuviera infinitos recovecos, no admitiera
   tangentes o fuera imposible medir su longitud? El teorema de la curva de Jordan convierte esa intuición en una
   afirmación precisa que vale mucho más allá de los círculos y los polígonos.</p>
-<p>Su conclusión no depende de que la curva sea convexa, suave o fácil de dibujar. Depende de dos condiciones: que sea
+<p>Su conclusión no depende de que la curva sea <a data-article-concept="convexity-tangents" routerLink="/articles/convexity-tangents">convexa</a>, suave o fácil de dibujar. Depende de dos condiciones: que sea
   <strong>simple</strong> y que sea <strong>cerrada</strong>. El primer laboratorio permite explorar qué significa estar
   a un lado u otro; el segundo muestra qué puede cambiar cuando fallan esas condiciones.</p>
 <app-jordan-explorer />
 
 <h3>1. Qué es una curva de Jordan</h3>
-<p>Una curva de Jordan es la imagen de una aplicación continua e inyectiva de la circunferencia en el plano. «Inyectiva»
+<p>Una curva de Jordan es la imagen de una aplicación continua e inyectiva de la <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> en el plano. «Inyectiva»
   significa que puntos distintos de la circunferencia no se identifican al dibujarla: no hay cruces, contactos consigo
   misma ni segmentos recorridos de nuevo.</p>
 <app-formula
@@ -22,14 +22,14 @@
 <app-formula
   expression="\gamma:[0,1]\longrightarrow\mathbb{R}^2,\qquad \gamma(0)=\gamma(1),\qquad \gamma|_{[0,1)}\text{ inyectiva}"
   displayMode="block" />
-<p>Un triángulo, una elipse y una estrella poligonal sin cruces son ejemplos. La palabra «simple» no significa que tenga
+<p>Un triángulo, una <a data-article-concept="ellipse" routerLink="/articles/ellipse">elipse</a> y una estrella poligonal sin cruces son ejemplos. La palabra «simple» no significa que tenga
   una forma sencilla. Un contorno muy accidentado puede ser simple; una figura de ocho, aunque sea fácil de dibujar, no
   lo es.</p>
 
 <h3>2. El enunciado completo</h3>
 <aside class="theorem">
   <h4>Teorema de la curva de Jordan</h4>
-  <p>El complemento de una curva simple cerrada del plano tiene exactamente dos componentes conexas: una acotada,
+  <p>El complemento de una curva simple cerrada del plano tiene exactamente dos <a data-article-concept="open-closed-connected" routerLink="/articles/open-closed-connected">componentes conexas</a>: una acotada,
     llamada interior, y otra no acotada, llamada exterior. La curva es la frontera de ambas.</p>
 </aside>
 <app-formula expression="\mathbb{R}^2\setminus J=I\,\dot\cup\,E,\qquad \partial I=\partial E=J" displayMode="block" />
@@ -39,7 +39,7 @@
   interiores y exteriores.</p>
 <p>La curva no pertenece a ninguna de estas componentes: al hablar del complemento la hemos retirado. Por eso el
   laboratorio distingue tres situaciones para un punto: interior, exterior y sobre la curva.</p>
-<p>Además, las componentes abiertas y conexas del plano son conexas por caminos. Puedes unir dos puntos interiores
+<p>Además, las componentes abiertas y conexas del plano son conexas por caminos. Puedes unir dos <a data-article-concept="pick-theorem" routerLink="/articles/pick-theorem">puntos interiores</a>
   mediante un camino que permanezca dentro; lo mismo sucede con dos puntos exteriores. En cambio, cualquier camino
   continuo que conecte un punto interior con uno exterior tiene que tocar la curva.</p>
 
@@ -106,7 +106,7 @@
   dentro.</p>
 
 <h3>7. Jordan, Schönflies y la forma de un disco</h3>
-<p>El teorema de Schönflies refuerza el resultado en el plano: existe un homeomorfismo de todo el plano que lleva la
+<p>El teorema de <a data-article-concept="schoenflies-winding-number" routerLink="/articles/schoenflies-winding-number">Schönflies</a> refuerza el resultado en el plano: existe un <a data-article-concept="homeomorphisms-homotopy" routerLink="/articles/homeomorphisms-homotopy">homeomorfismo</a> de todo el plano que lleva la
   curva de Jordan a una circunferencia. Un homeomorfismo es una transformación continua, biyectiva y con inversa
   continua. En particular, el interior junto con su frontera es homeomorfo a un disco cerrado.</p>
 <p>Esto habla de equivalencia topológica, no de una transformación que preserve áreas, longitudes o ángulos. Tampoco
@@ -114,7 +114,7 @@
   punto de vista topológico, un disco.</p>
 
 <h3>8. Conexiones: grafos, mapas y número de vueltas</h3>
-<p>En un grafo dibujado sin cruces, un ciclo simple es una curva de Jordan. Su separación del plano explica por qué los
+<p>En un <a data-article-concept="graph-foundations" routerLink="/articles/graph-foundations">grafo</a> dibujado sin cruces, un ciclo simple es una curva de Jordan. Su separación del plano explica por qué los
   ciclos pueden delimitar caras. Esta idea aparece al estudiar la <a routerLink="/articles/planar-euler">fórmula de
     Euler para grafos planares</a>, aunque una cara de un grafo general puede tener una frontera más compleja que un
   solo ciclo.</p>
@@ -134,3 +134,6 @@
     rel="noopener noreferrer">el teorema de Jordan en MathWorld</a> y <a
     href="https://pi.math.cornell.edu/~hatcher/AT/ATpage.html" target="_blank" rel="noopener noreferrer">Algebraic
     Topology, de Allen Hatcher</a>, donde puede consultarse una demostración general.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/convexity-tangents">Convexidad, concavidad y desigualdades</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/ellipse">Elipse</a></li><li><a routerLink="/articles/open-closed-connected">Abiertos, cerrados, acumulación y conexidad</a></li><li><a routerLink="/articles/pick-theorem">Teorema de Pick</a></li><li><a routerLink="/articles/schoenflies-winding-number">Schönflies y número de vueltas de una curva</a></li><li><a routerLink="/articles/homeomorphisms-homotopy">Homeomorfismos, homotopía y retracciones</a></li><li><a routerLink="/articles/graph-foundations">Grafos desde cero: grados, caminos y conectividad</a></li></ul></details></section>
+<!-- article-concepts:end -->

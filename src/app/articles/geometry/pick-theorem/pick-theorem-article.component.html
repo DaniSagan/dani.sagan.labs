@@ -2,11 +2,11 @@
 <p class="dropcap">Un polígono reticular tiene todos sus vértices en puntos de coordenadas enteras. Si su borde es simple y no tiene agujeros, su área queda determinada contando puntos, sin medir ángulos ni longitudes: los puntos interiores cuentan una unidad y los del borde, media unidad, con una corrección final de menos uno. Esta relación es el teorema de Pick.</p>
 <app-formula expression="K=I+\frac B2-1" displayMode="block"/>
 <h3>1. Precisar qué se cuenta</h3>
-<p>I es el número de puntos reticulares estrictamente interiores. B cuenta todos los puntos reticulares del borde, no únicamente los vértices: un lado largo puede contener puntos intermedios. Cada punto del borde se cuenta una sola vez, aunque pertenezca a dos lados. Las unidades de área corresponden al cuadrado fundamental de la cuadrícula.</p>
+<p>I es el número de puntos reticulares estrictamente interiores. B cuenta todos los puntos reticulares del borde, no únicamente los vértices: un lado largo puede contener puntos intermedios. Cada punto del borde se cuenta una sola vez, aunque pertenezca a dos lados. Las unidades de área corresponden al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> fundamental de la cuadrícula.</p>
 <app-geometry-diagram diagram="pick-theorem" description="Los puntos verdes están estrictamente dentro del polígono reticular; los dorados están en su borde. Los puntos intermedios de cada lado también se cuentan en B."/>
 <h3>2. Triangular hasta obtener piezas elementales</h3>
 <p>Dividimos el polígono en triángulos con vértices reticulares. Si un triángulo contiene otro punto reticular en su interior o sobre un lado, lo subdividimos utilizando ese punto. El proceso termina porque solo hay un número finito de puntos de la cuadrícula dentro del polígono acotado. Al final, cada triángulo tiene tres puntos reticulares en el borde y ninguno adicional.</p>
-<p>Un triángulo de este tipo tiene área un medio. Para justificarlo, una transformación entera invertible lleva uno de sus lados primitivos al segmento de (0,0) a (1,0), conservando áreas. Su tercer vértice queda en (p,q), con q positivo; mediante una cizalla podemos tomar 0≤p&lt;q. Si q fuera mayor que uno, la sección a altura y=1 contendría (0,1) cuando p=0 o (1,1) cuando p≥1, contradiciendo que no hay otros puntos. Luego q=1.</p>
+<p>Un triángulo de este tipo tiene área un medio. Para justificarlo, una transformación entera <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">invertible</a> lleva uno de sus lados primitivos al segmento de (0,0) a (1,0), conservando áreas. Su tercer vértice queda en (p,q), con q positivo; mediante una cizalla podemos tomar 0≤p&lt;q. Si q fuera mayor que uno, la sección a altura y=1 contendría (0,1) cuando p=0 o (1,1) cuando p≥1, contradiciendo que no hay otros puntos. Luego q=1.</p>
 <app-formula expression="K_{\mathrm{elemental}}=\frac12|\det((1,0),(p,1))|=\frac12" displayMode="block"/>
 <h3>3. Contar aristas de la triangulación</h3>
 <p>Sean T el número de triángulos y Eint el número de aristas interiores. El borde se ha dividido en B segmentos primitivos. Cada triángulo tiene tres aristas; las interiores se cuentan dos veces y las del borde una:</p>
@@ -30,3 +30,6 @@
 <li><a routerLink="/problems/area-on-a-grid">25 · Área en una cuadrícula</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -1,10 +1,10 @@
 <h2>Teorema de Wilson</h2>
-<p class="dropcap">Los primos pueden reconocerse mediante un factorial: al multiplicar todos los enteros positivos menores que un primo, el resultado queda exactamente una unidad por debajo de un múltiplo del primo. La caracterización es perfecta, aunque no constituye un test eficiente para números grandes.</p>
+<p class="dropcap">Los primos pueden reconocerse mediante un <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a>: al multiplicar todos los enteros positivos menores que un primo, el resultado queda exactamente una unidad por debajo de un múltiplo del primo. La caracterización es perfecta, aunque no constituye un test eficiente para números grandes.</p>
 <app-formula expression="n\text{ es primo}\quad\Longleftrightarrow\quad(n-1)!\equiv-1\pmod n"></app-formula>
 <p>El resultado era conocido por Ibn al-Haytham alrededor del año 1000. Edward Waring lo atribuyó en 1770 a su alumno John Wilson, que no lo había demostrado; Lagrange publicó la primera prueba al año siguiente. La historia ilustra cómo los nombres de los teoremas no siempre identifican a su primer descubridor.</p>
 <h3>Emparejar cada número con su inverso</h3>
 <p>Supongamos que p es primo. Cada clase 1,…,p−1 tiene un único inverso. Al formar (p−1)!, podemos emparejar cada número con ese inverso y cada pareja aporta 1. Solo quedan sin pareja los elementos iguales a su propio inverso, que satisfacen x²≡1. Como p es primo, (x−1)(x+1)≡0 implica x≡1 o x≡−1. Su producto es −1.</p>
-<p>Para el recíproco, imaginemos que (n−1)!≡−1 pero n es compuesto. Un divisor propio d con 1&lt;d&lt;n aparece entre los factores del factorial, de modo que d lo divide. Como d también divide n, la congruencia obligaría a d a dividir −1, algo imposible. Por tanto n debe ser primo.</p>
+<p>Para el recíproco, imaginemos que (n−1)!≡−1 pero n es compuesto. Un divisor propio d con 1&lt;d&lt;n aparece entre los factores del factorial, de modo que d lo divide. Como d también divide n, la <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">congruencia</a> obligaría a d a dividir −1, algo imposible. Por tanto n debe ser primo.</p>
 <p>Con p=7 se comprueba:</p>
 <app-formula expression="6!=720\equiv6\equiv-1\pmod7"></app-formula>
 <p>En contraste, 7!≡0 (mod 8), no −1. El factorial crece demasiado rápido para que esta prueba sea competitiva frente a algoritmos modernos de primalidad, pero su simetría la vuelve muy útil en argumentos teóricos.</p>
@@ -18,3 +18,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Comprueba la primalidad de módulos pequeños antes de contrastar sus factoriales módulo p; factorizar es una verificación independiente, no el cálculo del factorial.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li></ul></details></section>
+<!-- article-concepts:end -->

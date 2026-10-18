@@ -7,7 +7,7 @@
     igual longitud.</p>
   <p>Se comienza con una H de tamaño s. En cada uno de sus cuatro extremos se dibuja otra H de tamaño s/2 y se repite el
     proceso. El nivel n tiene 4<sup>n</sup> copias de escala 2<sup>−n</sup>. Como hay cuatro copias a mitad de tamaño,
-    la dimensión de semejanza es dos. Sin embargo, el dibujo está formado solo por líneas; la dimensión describe la
+    la dimensión de <a data-article-concept="triangle-similarity" routerLink="/articles/triangle-similarity">semejanza</a> es dos. Sin embargo, el dibujo está formado solo por líneas; la dimensión describe la
     manera en que se distribuyen a todas las escalas.</p>
   <p>La rutina recursiva recibe el centro y el tamaño. Calcula los dos extremos de las barras, traza tres segmentos y
     llama a sí misma en sus cuatro esquinas. No necesita almacenar un árbol explícito: la pila de llamadas conserva
@@ -19,3 +19,6 @@
   <app-fractal-explorer [draw]="draw" title="Árbol H"
     formula="H(s) → cuatro H(s/2) en sus extremos"></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

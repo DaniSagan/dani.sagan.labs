@@ -1,5 +1,5 @@
 <h2>Transformaciones de Möbius: una geometría que incluye el infinito</h2>
-<p class="dropcap">Una circunferencia puede convertirse en una recta sin dejar de pertenecer a la
+<p class="dropcap">Una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> puede convertirse en una recta sin dejar de pertenecer a la
   misma familia geométrica. Para verlo, necesitamos ampliar el plano complejo con un punto en el infinito.
   Las transformaciones de Möbius reorganizan ese plano extendido mediante una sencilla fracción.</p>
 
@@ -9,12 +9,12 @@
 <p>La condición sobre el <a routerLink="/articles/matrix-determinant">determinante</a> evita que la fracción se reduzca a una función constante.
   Multiplicar los cuatro coeficientes por un mismo número complejo no nulo no cambia la transformación.
   Por eso no debemos interpretar cada cuádrupla como una transformación diferente.</p>
-<p>Si c = 0, obtenemos una transformación afín: un giro y cambio de escala seguidos de una
+<p>Si c = 0, obtenemos una <a data-article-concept="affine-transformations" routerLink="/articles/affine-transformations">transformación afín</a>: un giro y cambio de escala seguidos de una
   traslación. Cuando c ≠ 0 aparece un punto especial, el <strong>polo</strong>, donde el denominador se anula.</p>
 <app-formula expression="T\!\left(-\frac dc\right)=\infty,\qquad T(\infty)=\frac ac\quad(c\ne0)"></app-formula>
 <p>En el plano extendido, el polo tiene una imagen perfectamente definida: el único punto ∞.
   Si c = 0, el infinito se mantiene fijo. Esta ampliación se puede representar como una esfera,
-  la esfera de Riemann, mediante proyección estereográfica.</p>
+  la <a data-article-concept="riemann-sphere" routerLink="/articles/riemann-sphere">esfera de Riemann</a>, mediante proyección estereográfica.</p>
 
 <h3>Circunferencias que se convierten en rectas</h3>
 <p>Una <strong>circunferencia generalizada</strong> es una circunferencia ordinaria o una recta
@@ -46,7 +46,7 @@
 <p>Las distancias y los radios pueden cambiar. Los ángulos orientados entre curvas se conservan
   localmente, porque fuera del polo la derivada existe y nunca se anula:</p>
 <app-formula expression="T'(z)=\frac{ad-bc}{(cz+d)^2}"></app-formula>
-<p>Multiplicar por un complejo no nulo aplica el mismo giro y factor de escala a todas las direcciones
+<p>Multiplicar por un complejo no nulo aplica el mismo giro y <a data-article-concept="homothety" routerLink="/articles/homothety">factor de escala</a> a todas las direcciones
   en un punto. En el polo y en ∞ interpretamos esta propiedad usando coordenadas locales de la esfera.</p>
 <p>Otra cantidad que permanece igual es la <strong><a routerLink="/articles/cross-ratio">razón doble</a></strong> de cuatro puntos distintos.
   Con la convención que usaremos aquí:</p>
@@ -81,3 +81,6 @@
 <li><a routerLink="/problems/mobius-transformation">39 · Una transformación de Möbius</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/affine-transformations">Transformaciones afines: parte lineal y traslación</a></li><li><a routerLink="/articles/riemann-sphere">Esfera de Riemann y proyección estereográfica</a></li><li><a routerLink="/articles/homothety">Homotecia</a></li><li><a routerLink="/articles/holomorphic-continuation">Funciones holomorfas y continuación analítica</a></li><li><a routerLink="/articles/circle-inversion">Inversión respecto de una circunferencia</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -3,14 +3,14 @@
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
-<p>P₀=(−2,0), P₁=(−1,p), P₂=(1,−p), P₃=(2,0), con 0≤t≤1. Cambiar p desplaza verticalmente los dos puntos interiores.</p>
+<p>P₀=(−2,0), P₁=(−1,p), P₂=(1,−p), P₃=(2,0), con 0≤t≤1. Cambiar p desplaza verticalmente los dos <a data-article-concept="pick-theorem" routerLink="/articles/pick-theorem">puntos interiores</a>.</p>
 <p class="curve-domain">Intervalos representados: [0, 1].</p>
 
 <h3>Propiedades geométricas</h3>
 <p>Se usan P₀=(−2,0), P₁=(−1,p), P₂=(1,−p) y P₃=(2,0). Los extremos se interpolan y los dos puntos interiores fijan las direcciones tangentes de entrada y salida.</p>
 
 <h3>Análisis y construcción</h3>
-<p>La simetría B(1−t)=−B(t) fuerza el paso por el origen. Las derivadas inicial y final se obtienen multiplicando por tres la diferencia entre los respectivos puntos de control vecinos.</p>
+<p>La simetría B(1−t)=−B(t) fuerza el paso por el origen. Las <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> inicial y final se obtienen multiplicando por tres la diferencia entre los respectivos puntos de control vecinos.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/BezierCurve.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pick-theorem">Teorema de Pick</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li></ul></details></section>
+<!-- article-concepts:end -->

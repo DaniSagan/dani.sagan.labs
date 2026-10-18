@@ -1,3 +1,10 @@
+import { DirichletConvolutionSeriesArticleComponent } from './dirichlet-convolution-series/dirichlet-convolution-series-article.component';
+import { RsaDiscreteLogarithmArticleComponent } from './rsa-discrete-logarithm/rsa-discrete-logarithm-article.component';
+import { SievePrimalityArticleComponent } from './sieve-primality/sieve-primality-article.component';
+import { InfiniteDescentArticleComponent } from './infinite-descent/infinite-descent-article.component';
+import { GaussianQuadraticNormsArticleComponent } from './gaussian-quadratic-norms/gaussian-quadratic-norms-article.component';
+import { AlgebraicTranscendentalNumbersArticleComponent } from './algebraic-transcendental-numbers/algebraic-transcendental-numbers-article.component';
+import { GoldenRatioArticleComponent } from './golden-ratio/golden-ratio-article.component';
 import { ProofStrategiesArticleComponent } from './proof-strategies/proof-strategies-article.component';
 import { FactorialsLegendreArticleComponent } from './factorials-legendre/factorials-legendre-article.component';
 import { MathematicalInductionArticleComponent } from './mathematical-induction/mathematical-induction-article.component';
@@ -49,6 +56,13 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  DirichletConvolutionSeriesArticleComponent,
+  RsaDiscreteLogarithmArticleComponent,
+  SievePrimalityArticleComponent,
+  InfiniteDescentArticleComponent,
+  GaussianQuadraticNormsArticleComponent,
+  AlgebraicTranscendentalNumbersArticleComponent,
+  GoldenRatioArticleComponent,
   ProofStrategiesArticleComponent,
   FactorialsLegendreArticleComponent,
   MathematicalInductionArticleComponent,

@@ -11,13 +11,13 @@
 <app-formula expression="f(x)=\begin{cases}ax+b,&amp;x\le1,\\x^2,&amp;x&gt;1.\end{cases}\qquad \text{Continua en }1\iff a+b=1">
 </app-formula>
 <h3>La derivada es un límite de cocientes</h3>
-<p>La pendiente entre <app-formula displayMode="inline" [showCodeButton]="false" expression="(c,f(c))" /> <app-formula displayMode="inline" [showCodeButton]="false" expression="y (c+h,f(c+h))" /> es el cociente incremental. Si tiende a un mismo número finito por ambos lados, ese número es f′(c). La derivada no se obtiene promediando pendientes laterales distintas.</p>
+<p>La pendiente entre <app-formula displayMode="inline" [showCodeButton]="false" expression="(c,f(c))" /> <app-formula displayMode="inline" [showCodeButton]="false" expression="y (c+h,f(c+h))" /> es el <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">cociente incremental</a>. Si tiende a un mismo número finito por ambos lados, ese número es f′(c). La derivada no se obtiene promediando pendientes laterales distintas.</p>
 <app-formula expression="f&#x27;(c)=\lim_{h\to0}\frac{f(c+h)-f(c)}h">
 </app-formula>
 <p>Para la familia a trozos, primero exigimos continuidad. Entonces la pendiente izquierda es a; la derecha se calcula como <app-formula displayMode="inline" [showCodeButton]="false" expression="((1+h)^{2} - 1)/h = 2 + h" /> y tiende a 2. Por tanto <app-formula displayMode="inline" [showCodeButton]="false" expression="a = 2" /> y <app-formula displayMode="inline" [showCodeButton]="false" expression="b = -1" /> es la única pareja derivable. Si no hay continuidad, derivar cada fórmula por separado y comparar a con 2 da una conclusión inválida: el salto introduce un término dividido por h que no desaparece.</p>
 <div class="math-lab">
 <h4>Laboratorio / alturas, secantes y oscilaciones</h4>
-<p>En la función a trozos prueba <app-formula displayMode="inline" [showCodeButton]="false" expression="(a,b) = (2,-1), (1,0)" /> y (2,0). Después reduce h y compara las pendientes laterales. El zoom cambia la ventana; no modifica la función.</p>
+<p>En la <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">función a trozos</a> prueba <app-formula displayMode="inline" [showCodeButton]="false" expression="(a,b) = (2,-1), (1,0)" /> y (2,0). Después reduce h y compara las pendientes laterales. El zoom cambia la ventana; no modifica la función.</p>
 <div class="controls">
 <label>Función<select [(ngModel)]="mode" (ngModelChange)="select()">
 <option [ngValue]="0"><app-formula displayMode="inline" [showCodeButton]="false" expression="ax+b / x^{2}" />, unión en 1</option>
@@ -84,3 +84,6 @@
 <li><a routerLink="/problems/function-with-a-corner">160 · Una función con esquina</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li></ul></details></section>
+<!-- article-concepts:end -->

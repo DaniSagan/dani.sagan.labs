@@ -24,7 +24,7 @@
 <p>El método exacto elige extremos invirtiendo las colas binomiales; la cobertura es al menos la nominal bajo el modelo y suele ser conservadora por la discreción. Con cero éxitos el extremo inferior es cero y el superior procede de la probabilidad de observar ninguno. Intervalos bayesianos con una previa beta son alternativas, pero su interpretación es credibilidad posterior y debe declararse la previa. No son simplemente otra fórmula de cobertura exacta.</p>
 <app-formula expression="k=0:\qquad p_U=1-(\alpha/2)^{1/n}" />
 <h3 id="section-deeper">La regla de tres y su alcance</h3>
-<p>Si no se observa ningún éxito, un límite superior unilateral al nivel de confianza elegido se obtiene imponiendo que la probabilidad de cero éxitos sea igual al riesgo de cola. Para riesgo cinco por ciento, el logaritmo negativo de ese riesgo es aproximadamente tres, lo que produce la regla de tres sobre el tamaño como aproximación. No es el mismo intervalo que el bilateral del laboratorio: allí cada cola recibe la mitad del riesgo. La diferencia importa especialmente con pocos ensayos. El límite asume independencia y una probabilidad común; si hay agrupación, veinte observaciones relacionadas no aportan la información de veinte ensayos independientes.</p>
+<p>Si no se observa ningún éxito, un límite superior unilateral al nivel de confianza elegido se obtiene imponiendo que la probabilidad de cero éxitos sea igual al riesgo de cola. Para riesgo cinco por ciento, el <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> negativo de ese riesgo es aproximadamente tres, lo que produce la regla de tres sobre el tamaño como aproximación. No es el mismo intervalo que el bilateral del laboratorio: allí cada cola recibe la mitad del riesgo. La diferencia importa especialmente con pocos ensayos. El límite asume independencia y una probabilidad común; si hay agrupación, veinte observaciones relacionadas no aportan la información de veinte ensayos independientes.</p>
 <app-formula expression="p_U=1-\alpha^{1/n}\approx\frac{-\log\alpha}{n},\qquad \alpha=0.05:\ p_U\approx3/n" />
 <h3 id="section-4">Un ejemplo resuelto</h3>
 <p>Con cero éxitos en veinte ensayos, Wald se reduce al punto cero. Wilson al 95 % da un límite superior aproximado 0,161 y Clopper–Pearson aproximadamente 0,168. La ausencia de éxitos no establece que la probabilidad poblacional sea nula.</p>
@@ -58,3 +58,6 @@
 <li><a routerLink="/problems/approximate-proportion-confidence-interval">189 · Un intervalo aproximado para una proporción</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li></ul></details></section>
+<!-- article-concepts:end -->

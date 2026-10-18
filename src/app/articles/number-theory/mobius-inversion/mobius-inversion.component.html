@@ -1,6 +1,6 @@
 <h2>Inversión de Möbius</h2>
-<p class="dropcap">Muchas funciones aritméticas se presentan como una suma sobre todos los divisores de n. La inversión de Möbius permite deshacer esa suma y recuperar la función original. Desempeña, en el mundo de la divisibilidad, el mismo papel que la inclusión-exclusión en combinatoria.</p>
-<p>August Ferdinand Möbius introdujo en 1832 la función μ. Se define por μ(1)=1; vale cero cuando n contiene el cuadrado de algún primo, y vale (−1)<sup>k</sup> cuando n es producto de k primos distintos. Por ejemplo, μ(6)=1, μ(30)=−1 y μ(12)=0.</p>
+<p class="dropcap">Muchas <a data-article-concept="dirichlet-convolution-series" routerLink="/articles/dirichlet-convolution-series">funciones aritméticas</a> se presentan como una suma sobre todos los divisores de n. La inversión de <a data-article-concept="mobius-transformations" routerLink="/articles/mobius-transformations">Möbius</a> permite deshacer esa suma y recuperar la función original. Desempeña, en el mundo de la divisibilidad, el mismo papel que la <a data-article-concept="inclusion-exclusion" routerLink="/articles/inclusion-exclusion">inclusión-exclusión</a> en combinatoria.</p>
+<p>August Ferdinand Möbius introdujo en 1832 la función μ. Se define por μ(1)=1; vale cero cuando n contiene el <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de algún primo, y vale (−1)<sup>k</sup> cuando n es producto de k primos distintos. Por ejemplo, μ(6)=1, μ(30)=−1 y μ(12)=0.</p>
 <p>La fórmula afirma que las dos relaciones siguientes son equivalentes:</p>
 <app-formula expression="F(n)=\sum_{d\mid n}f(d)\quad\Longleftrightarrow\quad f(n)=\sum_{d\mid n}\mu(d)F(n/d)"></app-formula>
 <h3>El mecanismo de cancelación</h3>
@@ -8,7 +8,7 @@
 <p>Un ejemplo clásico parte de n=Σ<sub>d|n</sub>φ(d). Invirtiendo se obtiene</p>
 <app-formula expression="\varphi(n)=\sum_{d\mid n}\mu(d)\frac nd"></app-formula>
 <p>Esta igualdad recupera inmediatamente el <a routerLink="/articles/euler-totient-formula">producto de Euler para φ</a>. La inversión también cuenta palabras primitivas, collares aperiódicos, puntos de periodo exacto y fracciones reducidas. En lenguaje de convolución de Dirichlet, la función constante 1 y μ son inversas.</p>
-<p>La función μ conecta también con la distribución de los primos. Su serie de Dirichlet es el inverso de la <a routerLink="/articles/riemann-zeta">función zeta</a>, y la cancelación de sus sumas parciales está ligada a cuestiones tan profundas como la hipótesis de Riemann. Una definición elemental basada en cuadrados primos llega así hasta la frontera actual de la teoría analítica.</p>
+<p>La función μ conecta también con la distribución de los primos. Su serie de Dirichlet es el inverso de la <a routerLink="/articles/riemann-zeta">función zeta</a>, y la cancelación de sus <a data-article-concept="telescoping-series" routerLink="/articles/telescoping-series">sumas parciales</a> está ligada a cuestiones tan profundas como la hipótesis de Riemann. Una definición elemental basada en cuadrados primos llega así hasta la frontera actual de la teoría analítica.</p>
 <p>Conviene distinguir inversión de división ordinaria: no despejamos un único sumando, sino que cancelamos simultáneamente todas las contribuciones procedentes de divisores propios. Esta perspectiva reaparece en cualquier conjunto parcialmente ordenado, donde la función de Möbius del orden generaliza exactamente el mecanismo aritmético.</p>
 <p><strong>Para trabajar.</strong> Construye una tabla de μ(n) para 1≤n≤20. Luego, si 2<sup>n</sup>=Σ<sub>d|n</sub>P(d), expresa P(n) mediante μ e interpreta el resultado como el número de palabras binarias cuyo periodo mínimo es n.</p>
 
@@ -18,3 +18,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Factoriza varios enteros para decidir si son libres de cuadrados y calcular los valores de μ que intervienen en una suma de inversión.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dirichlet-convolution-series">Funciones aritméticas, convolución y series de Dirichlet</a></li><li><a routerLink="/articles/mobius-transformations">Transformaciones de Möbius</a></li><li><a routerLink="/articles/inclusion-exclusion">Principio de inclusión y exclusión</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/telescoping-series">Series telescópicas</a></li></ul></details></section>
+<!-- article-concepts:end -->

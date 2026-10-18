@@ -1,0 +1,1852 @@
+{
+  "date": "2026-10-18",
+  "routedArticles": 499,
+  "newArticles": 65,
+  "templates": 497,
+  "inlineLinks": 1462,
+  "dynamicLinks": 65,
+  "editorialAliases": 1070,
+  "coverage": [
+    {
+      "id": "M01",
+      "route": "/articles/metric-normed-spaces",
+      "term": "Espacios métricos, normas y completitud",
+      "sources": [
+        "src/app/articles/analysis/banach-fixed-point/banach-fixed-point-article.component.html",
+        "src/app/articles/topology/compact-perfect-disconnected/compact-perfect-disconnected-article.component.html"
+      ]
+    },
+    {
+      "id": "M02",
+      "route": "/articles/metric-normed-spaces",
+      "term": "Espacios métricos, normas y completitud",
+      "sources": [
+        "src/app/articles/analysis/banach-fixed-point/banach-fixed-point-article.component.html",
+        "src/app/articles/algebra/gram-schmidt/gram-schmidt-article.component.html"
+      ]
+    },
+    {
+      "id": "M03",
+      "route": "/articles/function-convergence",
+      "term": "Convergencia de funciones: puntual, uniforme y dominada",
+      "sources": [
+        "src/app/articles/analysis/basel/basel-article.component.html",
+        "src/app/articles/analysis/geometric-series/geometric-series-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M04",
+      "route": "/articles/function-convergence",
+      "term": "Convergencia de funciones: puntual, uniforme y dominada",
+      "sources": [
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M05",
+      "route": "/articles/supremum-real-completeness",
+      "term": "Supremo, ínfimo y completitud de los reales",
+      "sources": [
+        "src/app/articles/analysis/monotone-convergence/monotone-convergence-article.component.html"
+      ]
+    },
+    {
+      "id": "M06",
+      "route": "/articles/dirichlet-abel-tests",
+      "term": "Criterios de Dirichlet y Abel para series",
+      "sources": [
+        "src/app/articles/analysis/series-convergence/series-convergence-article.component.html"
+      ]
+    },
+    {
+      "id": "M07",
+      "route": "/articles/euler-maclaurin-asymptotics",
+      "term": "Euler–Maclaurin y truncamiento de desarrollos asintóticos",
+      "sources": [
+        "src/app/articles/analysis/euler-mascheroni/euler-mascheroni-article.component.html",
+        "src/app/articles/analysis/stirling/stirling-article.component.html",
+        "src/app/articles/number-theory/riemann-zeta/riemann-zeta-article.component.html"
+      ]
+    },
+    {
+      "id": "M08",
+      "route": "/articles/euler-maclaurin-asymptotics",
+      "term": "Euler–Maclaurin y truncamiento de desarrollos asintóticos",
+      "sources": [
+        "src/app/articles/calculus/integration/integration-content.ts",
+        "src/app/articles/analysis/stirling/stirling-article.component.html"
+      ]
+    },
+    {
+      "id": "M09",
+      "route": "/articles/equivalence-quotients",
+      "term": "Relaciones de equivalencia y conjuntos cociente",
+      "sources": [
+        "src/app/articles/number-theory/modular-arithmetic/modular-arithmetic-article.component.html"
+      ]
+    },
+    {
+      "id": "M10",
+      "route": "/articles/total-derivative-gradient",
+      "term": "Diferenciabilidad total, derivadas direccionales y gradiente",
+      "sources": [
+        "src/app/articles/calculus/derivative-foundations/derivative-foundations-article.component.html",
+        "src/app/articles/curves/ampersand-curve-article/ampersand-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M11",
+      "route": "/articles/total-derivative-gradient",
+      "term": "Diferenciabilidad total, derivadas direccionales y gradiente",
+      "sources": [
+        "src/app/articles/calculus/linear-approximation/linear-approximation-article.component.html",
+        "src/app/articles/dynamical-systems/first-integrals/first-integrals-article.component.html",
+        "src/app/articles/geometry/quadratic-conics/quadratic-conics-article.component.html"
+      ]
+    },
+    {
+      "id": "M12",
+      "route": "/articles/jacobian-change-variables",
+      "term": "Matriz jacobiana y cambios de variables",
+      "sources": [
+        "src/app/articles/algebra/determinant/determinant-article.component.html",
+        "src/app/articles/calculus/newton-raphson/newton-raphson-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M13",
+      "route": "/articles/multiple-integrals",
+      "term": "Integrales múltiples y coordenadas polares",
+      "sources": [
+        "src/app/articles/analysis/gamma-function/gamma-function-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M14",
+      "route": "/articles/vector-calculus",
+      "term": "Flujo, divergencia y rotacional de un campo",
+      "sources": [
+        "src/app/articles/calculus/integration/integration-content.ts",
+        "src/app/articles/dynamical-systems/rossler-attractor/rossler-attractor-article.component.html"
+      ]
+    },
+    {
+      "id": "M15",
+      "route": "/articles/holomorphic-continuation",
+      "term": "Funciones holomorfas y continuación analítica",
+      "sources": [
+        "src/app/articles/number-theory/riemann-zeta/riemann-zeta-article.component.html",
+        "src/app/articles/complex-numbers/mobius-transformations/mobius-transformations-article.component.html"
+      ]
+    },
+    {
+      "id": "M16",
+      "route": "/articles/complex-residues",
+      "term": "Singularidades, polos y residuos",
+      "sources": [
+        "src/app/articles/number-theory/riemann-zeta/riemann-zeta-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts",
+        "src/app/articles/analysis/gamma-function/gamma-function-article.component.html"
+      ]
+    },
+    {
+      "id": "M17",
+      "route": "/articles/holomorphic-continuation",
+      "term": "Funciones holomorfas y continuación analítica",
+      "sources": [
+        "src/app/articles/number-theory/riemann-zeta/riemann-zeta-article.component.html"
+      ]
+    },
+    {
+      "id": "M18",
+      "route": "/articles/complex-logarithm-branches",
+      "term": "Logaritmo complejo, ramas y cortes",
+      "sources": [
+        "src/app/articles/complex-numbers/imaginary-power/imaginary-power-article.component.html",
+        "src/app/articles/complex-numbers/de-moivre/de-moivre-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M19",
+      "route": "/articles/riemann-sphere",
+      "term": "Esfera de Riemann y proyección estereográfica",
+      "sources": [
+        "src/app/articles/complex-numbers/mobius-transformations/mobius-transformations-article.component.html"
+      ]
+    },
+    {
+      "id": "M20",
+      "route": "/articles/fourier-transform",
+      "term": "Transformada de Fourier: de una señal a sus frecuencias",
+      "sources": [
+        "src/app/articles/calculus/laplace-transform/laplace-transform-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M21",
+      "route": "/articles/singular-values-operator-norms",
+      "term": "Valores singulares, SVD y normas de operadores",
+      "sources": [
+        "src/app/articles/algebra/gaussian-elimination/gaussian-elimination-article.component.html",
+        "src/app/articles/algebra/determinant/determinant-article.component.html",
+        "src/app/articles/algebra/projection-least-squares/projection-least-squares-article.component.html"
+      ]
+    },
+    {
+      "id": "M22",
+      "route": "/articles/singular-values-operator-norms",
+      "term": "Valores singulares, SVD y normas de operadores",
+      "sources": [
+        "src/app/articles/calculus/linear-ode-systems/linear-ode-systems-article.component.html"
+      ]
+    },
+    {
+      "id": "M23",
+      "route": "/articles/nonnormal-transient-growth",
+      "term": "Matrices normales y crecimiento transitorio",
+      "sources": [
+        "src/app/articles/calculus/linear-ode-systems/linear-ode-systems-article.component.html"
+      ]
+    },
+    {
+      "id": "M24",
+      "route": "/articles/ridge-regularization",
+      "term": "Regularización de Tikhonov y regresión ridge",
+      "sources": [
+        "src/app/articles/algebra/projection-least-squares/projection-least-squares-article.component.html"
+      ]
+    },
+    {
+      "id": "M25",
+      "route": "/articles/rings-finite-fields",
+      "term": "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+      "sources": [
+        "src/app/articles/number-theory/modular-arithmetic/modular-arithmetic-article.component.html",
+        "src/app/articles/number-theory/euclids-lemma/euclids-lemma.component.html",
+        "src/app/articles/algebra/rational-root-theorem/rational-root-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M26",
+      "route": "/articles/rings-finite-fields",
+      "term": "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+      "sources": [
+        "src/app/articles/algebra/rational-root-theorem/rational-root-theorem-article.component.html",
+        "src/app/articles/number-theory/euler-criterion/euler-criterion.component.html"
+      ]
+    },
+    {
+      "id": "M27",
+      "route": "/articles/groups-cosets-lagrange",
+      "term": "Subgrupos, clases laterales y teorema de Lagrange",
+      "sources": [
+        "src/app/articles/number-theory/orders-theorem/orders-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M28",
+      "route": "/articles/pade-krylov-methods",
+      "term": "Aproximantes de Padé y subespacios de Krylov",
+      "sources": [
+        "src/app/articles/calculus/linear-ode-systems/linear-ode-systems-article.component.html"
+      ]
+    },
+    {
+      "id": "M29",
+      "route": "/articles/pade-krylov-methods",
+      "term": "Aproximantes de Padé y subespacios de Krylov",
+      "sources": [
+        "src/app/articles/calculus/linear-ode-systems/linear-ode-systems-article.component.html"
+      ]
+    },
+    {
+      "id": "M30",
+      "route": "/articles/golden-ratio",
+      "term": "El número áureo: álgebra, geometría y Fibonacci",
+      "sources": [
+        "src/app/articles/regular-polygons/pentagon-article/pentagon-article.component.html",
+        "src/app/articles/number-theory/fibonacci-numbers/fibonacci-numbers-article.component.html",
+        "src/app/articles/number-theory/extraordinary-bases/extraordinary-bases-article.component.html"
+      ]
+    },
+    {
+      "id": "M31",
+      "route": "/articles/algebraic-transcendental-numbers",
+      "term": "Números algebraicos y trascendentes",
+      "sources": [
+        "src/app/articles/analysis/euler-mascheroni/euler-mascheroni-article.component.html",
+        "src/app/articles/number-theory/extraordinary-bases/extraordinary-bases-article.component.html"
+      ]
+    },
+    {
+      "id": "M32",
+      "route": "/articles/gaussian-quadratic-norms",
+      "term": "Enteros gaussianos, normas algebraicas y unidades cuadráticas",
+      "sources": [
+        "src/app/articles/number-theory/sum-of-two-squares/sum-of-two-squares.component.html",
+        "src/app/articles/number-theory/extraordinary-bases/extraordinary-bases-article.component.html"
+      ]
+    },
+    {
+      "id": "M33",
+      "route": "/articles/gaussian-quadratic-norms",
+      "term": "Enteros gaussianos, normas algebraicas y unidades cuadráticas",
+      "sources": [
+        "src/app/articles/number-theory/sum-of-two-squares/sum-of-two-squares.component.html",
+        "src/app/articles/number-theory/pell/pell-article.component.html",
+        "src/app/articles/number-theory/continued-fractions/continued-fractions-article.component.html"
+      ]
+    },
+    {
+      "id": "M34",
+      "route": "/articles/infinite-descent",
+      "term": "Descenso infinito y principio del buen orden",
+      "sources": [
+        "src/app/articles/number-theory/sum-of-two-squares/sum-of-two-squares.component.html",
+        "src/app/articles/number-theory/fermat-four-square-theorem/fermat-four-square-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M35",
+      "route": "/articles/sieve-primality",
+      "term": "Criba de Eratóstenes y pruebas de primalidad",
+      "sources": [
+        "src/app/articles/number-theory/goldbach/goldbach-article.component.html"
+      ]
+    },
+    {
+      "id": "M36",
+      "route": "/articles/sieve-primality",
+      "term": "Criba de Eratóstenes y pruebas de primalidad",
+      "sources": [
+        "src/app/articles/number-theory/ulam-spiral/ulam-spiral-article.component.html",
+        "src/app/articles/number-theory/fermats-little-theorem/fermats-little-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M37",
+      "route": "/articles/rsa-discrete-logarithm",
+      "term": "RSA y logaritmo discreto: dos problemas inversos",
+      "sources": [
+        "src/app/articles/number-theory/eulers-theorem/eulers-theorem.component.html",
+        "src/app/articles/number-theory/chinese-remainder-theorem/chinese-remainder-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M38",
+      "route": "/articles/rsa-discrete-logarithm",
+      "term": "RSA y logaritmo discreto: dos problemas inversos",
+      "sources": [
+        "src/app/articles/number-theory/primitive-root-theorem/primitive-root-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M39",
+      "route": "/articles/dirichlet-convolution-series",
+      "term": "Funciones aritméticas, convolución y series de Dirichlet",
+      "sources": [
+        "src/app/articles/number-theory/mobius-inversion/mobius-inversion.component.html"
+      ]
+    },
+    {
+      "id": "M40",
+      "route": "/articles/dirichlet-convolution-series",
+      "term": "Funciones aritméticas, convolución y series de Dirichlet",
+      "sources": [
+        "src/app/articles/number-theory/mobius-inversion/mobius-inversion.component.html",
+        "src/app/articles/number-theory/divisor-sum-theorem/divisor-sum-theorem.component.html"
+      ]
+    },
+    {
+      "id": "M41",
+      "route": "/articles/constructible-numbers",
+      "term": "Regla, compás y números construibles",
+      "sources": [
+        "src/app/articles/regular-polygons/heptagon-article/heptagon-article.component.html",
+        "src/app/articles/regular-polygons/nonagon-article/nonagon-article.component.html",
+        "src/app/articles/geometry/apollonius-problem/apollonius-problem-article.component.html"
+      ]
+    },
+    {
+      "id": "M42",
+      "route": "/articles/plane-tessellations",
+      "term": "Teselaciones del plano y polígonos regulares",
+      "sources": [
+        "src/app/articles/geometry/schlafli-symbol/schlafli-symbol-article.component.html",
+        "src/app/articles/regular-polygons/pentagon-article/pentagon-article.component.html"
+      ]
+    },
+    {
+      "id": "M43",
+      "route": "/articles/projective-homogeneous-coordinates",
+      "term": "Geometría proyectiva y coordenadas homogéneas",
+      "sources": [
+        "src/app/articles/geometry/pascal-theorem/pascal-theorem-article.component.html",
+        "src/app/articles/geometry/desargues-theorem/desargues-theorem-article.component.html",
+        "src/app/articles/geometry/brianchon-theorem/brianchon-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M44",
+      "route": "/articles/circle-inversion",
+      "term": "Inversión respecto de una circunferencia",
+      "sources": [
+        "src/app/articles/geometry/ptolemy-theorem/ptolemy-theorem-article.component.html",
+        "src/app/articles/complex-numbers/mobius-transformations/mobius-transformations-article.component.html"
+      ]
+    },
+    {
+      "id": "M45",
+      "route": "/articles/curvature-frenet",
+      "term": "Curvatura, círculo osculador y triedro de Frenet",
+      "sources": [
+        "src/app/articles/curves/catenary-evolute-article/catenary-evolute-article.component.html",
+        "src/app/articles/curves/ellipse-evolute-curve-article/ellipse-evolute-curve-article.component.html",
+        "src/app/articles/curves/euler-clothoid-article/euler-clothoid-article.component.html"
+      ]
+    },
+    {
+      "id": "M46",
+      "route": "/articles/curvature-frenet",
+      "term": "Curvatura, círculo osculador y triedro de Frenet",
+      "sources": [
+        "src/app/articles/curves/catenary-evolute-article/catenary-evolute-article.component.html",
+        "src/app/articles/curves/circular-helix-curve-article/circular-helix-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M47",
+      "route": "/articles/envelopes-evolutes",
+      "term": "Envolventes, evolutas e involutas",
+      "sources": [
+        "src/app/articles/curves/catenary-evolute-article/catenary-evolute-article.component.html",
+        "src/app/articles/curves/ellipse-evolute-curve-article/ellipse-evolute-curve-article.component.html",
+        "src/app/articles/curves/circle-involute-article/circle-involute-article.component.html"
+      ]
+    },
+    {
+      "id": "M48",
+      "route": "/articles/curve-singularities",
+      "term": "Puntos singulares, cúspides y nodos de curvas",
+      "sources": [
+        "src/app/articles/curves/ampersand-curve-article/ampersand-curve-article.component.html",
+        "src/app/articles/curves/sylvester-bicorn-article/sylvester-bicorn-article.component.html"
+      ]
+    },
+    {
+      "id": "M49",
+      "route": "/articles/hyperbolic-functions",
+      "term": "Funciones hiperbólicas e inversas",
+      "sources": [
+        "src/app/articles/curves/catenary-curve-article/catenary-curve-article.component.html",
+        "src/app/articles/curves/gudermannian-curve-article/gudermannian-curve-article.component.html",
+        "src/app/articles/calculus/integration/integration-content.ts"
+      ]
+    },
+    {
+      "id": "M50",
+      "route": "/articles/orthogonal-polynomials",
+      "term": "Polinomios ortogonales y funciones de peso",
+      "sources": [
+        "src/app/articles/curves/legendre-curve-article/legendre-curve-article.component.html",
+        "src/app/articles/curves/laguerre-curve-article/laguerre-curve-article.component.html",
+        "src/app/articles/curves/hermite-probabilist-curve-article/hermite-probabilist-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M51",
+      "route": "/articles/bernstein-polynomials",
+      "term": "Polinomios de Bernstein y aproximación",
+      "sources": [
+        "src/app/articles/curves/quadratic-bezier-curve-article/quadratic-bezier-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M52",
+      "route": "/articles/affine-transformations",
+      "term": "Transformaciones afines: parte lineal y traslación",
+      "sources": [
+        "src/app/articles/fractals/barnsley-fern/barnsley-fern.component.html"
+      ]
+    },
+    {
+      "id": "M53",
+      "route": "/articles/variations-noether",
+      "term": "Cálculo de variaciones, Euler–Lagrange y Noether",
+      "sources": [
+        "src/app/articles/calculus/brachistochrone/brachistochrone-article.component.html",
+        "src/app/articles/dynamical-systems/double-pendulum/double-pendulum-article.component.html"
+      ]
+    },
+    {
+      "id": "M54",
+      "route": "/articles/picard-lipschitz",
+      "term": "Existencia y unicidad: Picard y la condición de Lipschitz",
+      "sources": [
+        "src/app/articles/analysis/banach-fixed-point/banach-fixed-point-article.component.html",
+        "src/app/articles/calculus/first-order-odes/first-order-odes-article.component.html"
+      ]
+    },
+    {
+      "id": "M55",
+      "route": "/articles/lyapunov-stability-chaos",
+      "term": "Estabilidad, funciones y exponentes de Lyapunov",
+      "sources": [
+        "src/app/articles/calculus/linear-ode-systems/linear-ode-systems-article.component.html",
+        "src/app/articles/dynamical-systems/first-integrals/first-integrals-article.component.html"
+      ]
+    },
+    {
+      "id": "M56",
+      "route": "/articles/lyapunov-stability-chaos",
+      "term": "Estabilidad, funciones y exponentes de Lyapunov",
+      "sources": [
+        "src/app/articles/dynamical-systems/double-pendulum/double-pendulum-article.component.html",
+        "src/app/articles/dynamical-systems/rossler-attractor/rossler-attractor-article.component.html",
+        "src/app/articles/fractals/feigenbaum/feigenbaum-article.component.html"
+      ]
+    },
+    {
+      "id": "M57",
+      "route": "/articles/return-maps-bifurcations",
+      "term": "Mapas de retorno, bifurcaciones y universalidad",
+      "sources": [
+        "src/app/articles/dynamical-systems/double-pendulum/double-pendulum-article.component.html",
+        "src/app/articles/dynamical-systems/rossler-attractor/rossler-attractor-article.component.html"
+      ]
+    },
+    {
+      "id": "M58",
+      "route": "/articles/return-maps-bifurcations",
+      "term": "Mapas de retorno, bifurcaciones y universalidad",
+      "sources": [
+        "src/app/articles/fractals/feigenbaum/feigenbaum-article.component.html",
+        "src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component.html",
+        "src/app/articles/dynamical-systems/rossler-attractor/rossler-attractor-article.component.html"
+      ]
+    },
+    {
+      "id": "M59",
+      "route": "/articles/return-maps-bifurcations",
+      "term": "Mapas de retorno, bifurcaciones y universalidad",
+      "sources": [
+        "src/app/articles/fractals/feigenbaum/feigenbaum-article.component.html"
+      ]
+    },
+    {
+      "id": "M60",
+      "route": "/articles/variations-noether",
+      "term": "Cálculo de variaciones, Euler–Lagrange y Noether",
+      "sources": [
+        "src/app/articles/dynamical-systems/first-integrals/first-integrals-article.component.html"
+      ]
+    },
+    {
+      "id": "M61",
+      "route": "/articles/symplectic-integration",
+      "term": "Estructura hamiltoniana e integración simpléctica",
+      "sources": [
+        "src/app/articles/dynamical-systems/first-integrals/first-integrals-article.component.html",
+        "src/app/articles/calculus/ode-numerical-integration/ode-numerical-integration-article.component.html"
+      ]
+    },
+    {
+      "id": "M62",
+      "route": "/articles/l-systems",
+      "term": "Sistemas-L y gramáticas de reescritura",
+      "sources": [
+        "src/app/articles/fractals/fractal-plant/fractal-plant.component.html",
+        "src/app/articles/fractals/fractal-canopy/fractal-canopy.component.html",
+        "src/app/articles/fractals/gosper-curve/gosper-curve.component.html"
+      ]
+    },
+    {
+      "id": "M63",
+      "route": "/articles/iterated-function-systems",
+      "term": "Sistemas de funciones iteradas y juego del caos",
+      "sources": [
+        "src/app/articles/fractals/barnsley-fern/barnsley-fern.component.html",
+        "src/app/articles/fractals/sierpinski-triangle/sierpinski-triangle.component.html"
+      ]
+    },
+    {
+      "id": "M64",
+      "route": "/articles/pseudorandom-generators",
+      "term": "Pseudoaleatoriedad, semillas y períodos",
+      "sources": [
+        "src/app/articles/dynamical-systems/cellular-automata/cellular-automata-article.component.html"
+      ]
+    },
+    {
+      "id": "M65",
+      "route": "/articles/self-organized-criticality",
+      "term": "Criticalidad autoorganizada y leyes de potencia",
+      "sources": [
+        "src/app/articles/dynamical-systems/sandpile/sandpile-article.component.html"
+      ]
+    },
+    {
+      "id": "M66",
+      "route": "/articles/pigeonhole-principle",
+      "term": "Principio del palomar y argumentos de existencia",
+      "sources": [
+        "src/app/articles/combinatorics/ramsey-theorem/ramsey-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M67",
+      "route": "/articles/graph-foundations",
+      "term": "Grafos desde cero",
+      "sources": [
+        "src/app/articles/combinatorics/konigsberg-bridges/konigsberg-bridges-article.component.html",
+        "src/app/articles/combinatorics/euler-hamilton/euler-hamilton-article.component.html",
+        "src/app/articles/combinatorics/ramsey-theorem/ramsey-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M68",
+      "route": "/articles/trees-graph-coloring",
+      "term": "Árboles, árboles generadores y coloración de grafos",
+      "sources": [
+        "src/app/articles/combinatorics/planar-euler/planar-euler-article.component.html"
+      ]
+    },
+    {
+      "id": "M69",
+      "route": "/articles/trees-graph-coloring",
+      "term": "Árboles, árboles generadores y coloración de grafos",
+      "sources": [
+        "src/app/articles/combinatorics/four-color-theorem/four-color-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M70",
+      "route": "/articles/polya-cycle-index",
+      "term": "Teorema de Pólya e índice de ciclos",
+      "sources": [
+        "src/app/articles/combinatorics/burnside-lemma/burnside-lemma-article.component.html"
+      ]
+    },
+    {
+      "id": "M71",
+      "route": "/articles/route-optimization-complexity",
+      "term": "Viajante, cartero chino y complejidad computacional",
+      "sources": [
+        "src/app/articles/combinatorics/euler-hamilton/euler-hamilton-article.component.html"
+      ]
+    },
+    {
+      "id": "M72",
+      "route": "/articles/route-optimization-complexity",
+      "term": "Viajante, cartero chino y complejidad computacional",
+      "sources": [
+        "src/app/articles/combinatorics/sudoku-constraints/sudoku-constraints-article.component.html",
+        "src/app/articles/combinatorics/euler-hamilton/euler-hamilton-article.component.html"
+      ]
+    },
+    {
+      "id": "M73",
+      "route": "/articles/ordinals-growth",
+      "term": "Ordinales y jerarquías de crecimiento",
+      "sources": [
+        "src/app/articles/combinatorics/googology/googology-article.component.html"
+      ]
+    },
+    {
+      "id": "M74",
+      "route": "/articles/computability-formal-languages",
+      "term": "Computabilidad, lenguajes formales y problema de la parada",
+      "sources": [
+        "src/app/articles/combinatorics/googology/googology-article.component.html",
+        "src/app/articles/combinatorics/graham-number/graham-number-article.component.html"
+      ]
+    },
+    {
+      "id": "M75",
+      "route": "/articles/computability-formal-languages",
+      "term": "Computabilidad, lenguajes formales y problema de la parada",
+      "sources": [
+        "src/app/articles/combinatorics/googology/googology-article.component.html"
+      ]
+    },
+    {
+      "id": "M76",
+      "route": "/articles/poisson-exponential-waiting",
+      "term": "Poisson, espera exponencial y binomial negativa",
+      "sources": [
+        "src/app/articles/probability/bernoulli-binomial/bernoulli-binomial-article.component.html"
+      ]
+    },
+    {
+      "id": "M77",
+      "route": "/articles/poisson-exponential-waiting",
+      "term": "Poisson, espera exponencial y binomial negativa",
+      "sources": [
+        "src/app/articles/probability/geometric-distribution/geometric-distribution-article.component.html"
+      ]
+    },
+    {
+      "id": "M78",
+      "route": "/articles/poisson-exponential-waiting",
+      "term": "Poisson, espera exponencial y binomial negativa",
+      "sources": [
+        "src/app/articles/probability/geometric-distribution/geometric-distribution-article.component.html"
+      ]
+    },
+    {
+      "id": "M79",
+      "route": "/articles/heterogeneous-binomial-mixtures",
+      "term": "Poisson-binomial y beta-binomial: heterogeneidad y mezcla",
+      "sources": [
+        "src/app/articles/probability/bernoulli-binomial/bernoulli-binomial-article.component.html",
+        "src/app/articles/probability/galton-board/galton-board-article.component.html"
+      ]
+    },
+    {
+      "id": "M80",
+      "route": "/articles/cauchy-heavy-tails",
+      "term": "Distribución de Cauchy, colas pesadas y esperanza inexistente",
+      "sources": [
+        "src/app/articles/curves/agnesi-witch-article/agnesi-witch-article.component.html",
+        "src/app/articles/curves/student-density-curve-article/student-density-curve-article.component.html",
+        "src/app/articles/probability/large-numbers-law/large-numbers-law-article.component.html"
+      ]
+    },
+    {
+      "id": "M81",
+      "route": "/articles/maximum-likelihood",
+      "term": "Verosimilitud y estimación de máxima verosimilitud",
+      "sources": [
+        "src/app/articles/probability/bernoulli-binomial/bernoulli-binomial-article.component.html",
+        "src/app/articles/probability/bayes-theorem/bayes-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M82",
+      "route": "/articles/generating-concentration",
+      "term": "Funciones generadoras, características y cotas de concentración",
+      "sources": [
+        "src/app/articles/probability/probability-inequalities/probability-inequalities-article.component.html",
+        "src/app/articles/probability/central-limit-theorem/central-limit-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M83",
+      "route": "/articles/generating-concentration",
+      "term": "Funciones generadoras, características y cotas de concentración",
+      "sources": [
+        "src/app/articles/probability/probability-inequalities/probability-inequalities-article.component.html"
+      ]
+    },
+    {
+      "id": "M84",
+      "route": "/articles/berry-esseen",
+      "term": "Berry–Esseen y el error de la aproximación normal",
+      "sources": [
+        "src/app/articles/probability/central-limit-theorem/central-limit-theorem-article.component.html"
+      ]
+    },
+    {
+      "id": "M85",
+      "route": "/articles/ergodicity-autocorrelation",
+      "term": "Ergodicidad, autocorrelación y promedios temporales",
+      "sources": [
+        "src/app/articles/probability/large-numbers-law/large-numbers-law-article.component.html"
+      ]
+    },
+    {
+      "id": "M86",
+      "route": "/articles/homeomorphisms-homotopy",
+      "term": "Homeomorfismos, homotopía y retracciones",
+      "sources": [
+        "src/app/articles/topology/jordan-curve/jordan-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M87",
+      "route": "/articles/homeomorphisms-homotopy",
+      "term": "Homeomorfismos, homotopía y retracciones",
+      "sources": [
+        "src/app/articles/topology/mobius-strip/mobius-strip-article.component.html"
+      ]
+    },
+    {
+      "id": "M88",
+      "route": "/articles/surfaces-genus-euler",
+      "term": "Superficies, orientabilidad, género y característica de Euler",
+      "sources": [
+        "src/app/articles/topology/mobius-strip/mobius-strip-article.component.html",
+        "src/app/articles/topology/klein-bottle/klein-bottle-article.component.html"
+      ]
+    },
+    {
+      "id": "M89",
+      "route": "/articles/surfaces-genus-euler",
+      "term": "Superficies, orientabilidad, género y característica de Euler",
+      "sources": [
+        "src/app/articles/topology/klein-bottle/klein-bottle-article.component.html",
+        "src/app/articles/geometry/euler-polyhedron-formula/euler-polyhedron-formula-article.component.html"
+      ]
+    },
+    {
+      "id": "M90",
+      "route": "/articles/surfaces-genus-euler",
+      "term": "Superficies, orientabilidad, género y característica de Euler",
+      "sources": [
+        "src/app/articles/topology/klein-bottle/klein-bottle-article.component.html",
+        "src/app/articles/geometry/euler-polyhedron-formula/euler-polyhedron-formula-article.component.html"
+      ]
+    },
+    {
+      "id": "M91",
+      "route": "/articles/schoenflies-winding-number",
+      "term": "Schönflies y número de vueltas de una curva",
+      "sources": [
+        "src/app/articles/topology/jordan-curve/jordan-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M92",
+      "route": "/articles/schoenflies-winding-number",
+      "term": "Schönflies y número de vueltas de una curva",
+      "sources": [
+        "src/app/articles/topology/jordan-curve/jordan-curve-article.component.html"
+      ]
+    },
+    {
+      "id": "M93",
+      "route": "/articles/open-closed-connected",
+      "term": "Abiertos, cerrados, acumulación y conexidad",
+      "sources": [
+        "src/app/articles/topology/compact-perfect-disconnected/compact-perfect-disconnected-article.component.html"
+      ]
+    },
+    {
+      "id": "M94",
+      "route": "/articles/open-closed-connected",
+      "term": "Abiertos, cerrados, acumulación y conexidad",
+      "sources": [
+        "src/app/articles/topology/compact-perfect-disconnected/compact-perfect-disconnected-article.component.html"
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "route": "metric-normed-spaces",
+      "title": "Espacios métricos, normas y completitud",
+      "ids": [
+        "M01",
+        "M02"
+      ],
+      "incoming": [
+        "/articles/banach-fixed-point",
+        "/articles/cauchy-schwarz",
+        "/articles/compact-perfect-disconnected",
+        "/articles/fractal-canopy",
+        "/articles/gram-schmidt",
+        "/articles/iterated-function-systems",
+        "/articles/matrix-diagonalization",
+        "/articles/menger-sponge",
+        "/articles/open-closed-connected",
+        "/articles/supremum-real-completeness"
+      ]
+    },
+    {
+      "route": "function-convergence",
+      "title": "Convergencia de funciones: puntual, uniforme y dominada",
+      "ids": [
+        "M03",
+        "M04"
+      ],
+      "incoming": [
+        "/articles/basel",
+        "/articles/bernstein-polynomials",
+        "/articles/geometric-series",
+        "/articles/gram-schmidt",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/stirling"
+      ]
+    },
+    {
+      "route": "supremum-real-completeness",
+      "title": "Supremo, ínfimo y completitud de los reales",
+      "ids": [
+        "M05"
+      ],
+      "incoming": [
+        "/articles/distribution-functions-tails",
+        "/articles/function-convergence",
+        "/articles/global-extrema-weierstrass",
+        "/articles/googology",
+        "/articles/maximum-likelihood",
+        "/articles/monotone-convergence"
+      ]
+    },
+    {
+      "route": "dirichlet-abel-tests",
+      "title": "Criterios de Dirichlet y Abel para series",
+      "ids": [
+        "M06"
+      ],
+      "incoming": [
+        "/articles/series-convergence"
+      ]
+    },
+    {
+      "route": "euler-maclaurin-asymptotics",
+      "title": "Euler–Maclaurin y truncamiento de desarrollos asintóticos",
+      "ids": [
+        "M07",
+        "M08"
+      ],
+      "incoming": [
+        "/articles/bernoulli-numbers",
+        "/articles/euler-mascheroni",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/riemann-zeta",
+        "/articles/stirling"
+      ]
+    },
+    {
+      "route": "equivalence-quotients",
+      "title": "Relaciones de equivalencia y conjuntos cociente",
+      "ids": [
+        "M09"
+      ],
+      "incoming": [
+        "/articles/modular-arithmetic"
+      ]
+    },
+    {
+      "route": "total-derivative-gradient",
+      "title": "Diferenciabilidad total, derivadas direccionales y gradiente",
+      "ids": [
+        "M10",
+        "M11"
+      ],
+      "incoming": [
+        "/articles/ampersand-curve",
+        "/articles/curve-singularities",
+        "/articles/derivative-foundations",
+        "/articles/envelopes-evolutes",
+        "/articles/first-integrals",
+        "/articles/linear-approximation",
+        "/articles/partial-derivatives-minimization",
+        "/articles/quadratic-conics"
+      ]
+    },
+    {
+      "route": "jacobian-change-variables",
+      "title": "Matriz jacobiana y cambios de variables",
+      "ids": [
+        "M12"
+      ],
+      "incoming": [
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/matrix-determinant",
+        "/articles/multiple-integrals",
+        "/articles/newton-raphson",
+        "/articles/rossler-attractor"
+      ]
+    },
+    {
+      "route": "multiple-integrals",
+      "title": "Integrales múltiples y coordenadas polares",
+      "ids": [
+        "M13"
+      ],
+      "incoming": [
+        "/articles/algebraic-bean",
+        "/articles/archimedean-spiral",
+        "/articles/bifolium-curve",
+        "/articles/cardioid",
+        "/articles/gamma-function",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/kepler-folium-curve",
+        "/articles/rose"
+      ]
+    },
+    {
+      "route": "vector-calculus",
+      "title": "Flujo, divergencia y rotacional de un campo",
+      "ids": [
+        "M14"
+      ],
+      "incoming": [
+        "/articles/cyclotomic-polynomials",
+        "/articles/deltoid",
+        "/articles/epicycloid",
+        "/articles/function-analysis",
+        "/articles/generating-concentration",
+        "/articles/geometric-series",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/l-systems",
+        "/articles/lhopital-rule",
+        "/articles/multibrot",
+        "/articles/positive-series-tests",
+        "/articles/rossler-attractor",
+        "/articles/series-convergence",
+        "/articles/trifolium"
+      ]
+    },
+    {
+      "route": "holomorphic-continuation",
+      "title": "Funciones holomorfas y continuación analítica",
+      "ids": [
+        "M15",
+        "M17"
+      ],
+      "incoming": [
+        "/articles/complex-logarithm-branches",
+        "/articles/complex-residues",
+        "/articles/dirichlet-convolution-series",
+        "/articles/mobius-transformations",
+        "/articles/riemann-zeta"
+      ]
+    },
+    {
+      "route": "complex-residues",
+      "title": "Singularidades, polos y residuos",
+      "ids": [
+        "M16"
+      ],
+      "incoming": [
+        "/articles/gamma-function",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/riemann-zeta"
+      ]
+    },
+    {
+      "route": "complex-logarithm-branches",
+      "title": "Logaritmo complejo, ramas y cortes",
+      "ids": [
+        "M18"
+      ],
+      "incoming": [
+        "/articles/de-moivre",
+        "/articles/imaginary-power",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/lambert-w"
+      ]
+    },
+    {
+      "route": "riemann-sphere",
+      "title": "Esfera de Riemann y proyección estereográfica",
+      "ids": [
+        "M19"
+      ],
+      "incoming": [
+        "/articles/mobius-transformations"
+      ]
+    },
+    {
+      "route": "fourier-transform",
+      "title": "Transformada de Fourier: de una señal a sus frecuencias",
+      "ids": [
+        "M20"
+      ],
+      "incoming": [
+        "/articles/fourier-series",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/laplace-transform"
+      ]
+    },
+    {
+      "route": "singular-values-operator-norms",
+      "title": "Valores singulares, SVD y normas de operadores",
+      "ids": [
+        "M21",
+        "M22"
+      ],
+      "incoming": [
+        "/articles/gaussian-elimination",
+        "/articles/gram-schmidt",
+        "/articles/linear-ode-systems",
+        "/articles/linear-regression",
+        "/articles/lines-planes",
+        "/articles/matrix-determinant",
+        "/articles/numerical-conditioning",
+        "/articles/orthogonal-projections",
+        "/articles/projection-least-squares",
+        "/articles/ridge-regularization"
+      ]
+    },
+    {
+      "route": "nonnormal-transient-growth",
+      "title": "Matrices normales y crecimiento transitorio",
+      "ids": [
+        "M23"
+      ],
+      "incoming": [
+        "/articles/linear-ode-systems"
+      ]
+    },
+    {
+      "route": "ridge-regularization",
+      "title": "Regularización de Tikhonov y regresión ridge",
+      "ids": [
+        "M24"
+      ],
+      "incoming": [
+        "/articles/projection-least-squares"
+      ]
+    },
+    {
+      "route": "rings-finite-fields",
+      "title": "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+      "ids": [
+        "M25",
+        "M26"
+      ],
+      "incoming": [
+        "/articles/euclids-lemma",
+        "/articles/euler-criterion",
+        "/articles/fermats-little-theorem",
+        "/articles/modular-arithmetic",
+        "/articles/rational-root-theorem"
+      ]
+    },
+    {
+      "route": "groups-cosets-lagrange",
+      "title": "Subgrupos, clases laterales y teorema de Lagrange",
+      "ids": [
+        "M27"
+      ],
+      "incoming": [
+        "/articles/orders-theorem",
+        "/articles/rsa-discrete-logarithm",
+        "/articles/stratified-sampling"
+      ]
+    },
+    {
+      "route": "pade-krylov-methods",
+      "title": "Aproximantes de Padé y subespacios de Krylov",
+      "ids": [
+        "M28",
+        "M29"
+      ],
+      "incoming": [
+        "/articles/linear-ode-systems"
+      ]
+    },
+    {
+      "route": "golden-ratio",
+      "title": "El número áureo: álgebra, geometría y Fibonacci",
+      "ids": [
+        "M30"
+      ],
+      "incoming": [
+        "/articles/continued-fractions",
+        "/articles/dodecahedron-viewer",
+        "/articles/durer-pentagon",
+        "/articles/extraordinary-bases",
+        "/articles/fibonacci-numbers",
+        "/articles/icosahedron-viewer",
+        "/articles/matrix-diagonalization",
+        "/articles/pentaflake",
+        "/articles/pentagon"
+      ]
+    },
+    {
+      "route": "algebraic-transcendental-numbers",
+      "title": "Números algebraicos y trascendentes",
+      "ids": [
+        "M31"
+      ],
+      "incoming": [
+        "/articles/constructible-numbers",
+        "/articles/euler-mascheroni",
+        "/articles/extraordinary-bases",
+        "/articles/lambert-w"
+      ]
+    },
+    {
+      "route": "gaussian-quadratic-norms",
+      "title": "Enteros gaussianos, normas algebraicas y unidades cuadráticas",
+      "ids": [
+        "M32",
+        "M33"
+      ],
+      "incoming": [
+        "/articles/continued-fractions",
+        "/articles/extraordinary-bases",
+        "/articles/pell-equation",
+        "/articles/sum-of-two-squares"
+      ]
+    },
+    {
+      "route": "infinite-descent",
+      "title": "Descenso infinito y principio del buen orden",
+      "ids": [
+        "M34"
+      ],
+      "incoming": [
+        "/articles/fermat-four-square-theorem",
+        "/articles/sum-of-two-squares"
+      ]
+    },
+    {
+      "route": "sieve-primality",
+      "title": "Criba de Eratóstenes y pruebas de primalidad",
+      "ids": [
+        "M35",
+        "M36"
+      ],
+      "incoming": [
+        "/articles/fermats-little-theorem",
+        "/articles/goldbach",
+        "/articles/ulam-spiral"
+      ]
+    },
+    {
+      "route": "rsa-discrete-logarithm",
+      "title": "RSA y logaritmo discreto: dos problemas inversos",
+      "ids": [
+        "M37",
+        "M38"
+      ],
+      "incoming": [
+        "/articles/chinese-remainder-theorem",
+        "/articles/euler-totient-formula",
+        "/articles/eulers-theorem",
+        "/articles/fermats-little-theorem",
+        "/articles/orders-theorem",
+        "/articles/primitive-root-theorem"
+      ]
+    },
+    {
+      "route": "dirichlet-convolution-series",
+      "title": "Funciones aritméticas, convolución y series de Dirichlet",
+      "ids": [
+        "M39",
+        "M40"
+      ],
+      "incoming": [
+        "/articles/divisor-sum-theorem",
+        "/articles/fundamental-theorem-arithmetic",
+        "/articles/mobius-inversion",
+        "/articles/riemann-zeta"
+      ]
+    },
+    {
+      "route": "constructible-numbers",
+      "title": "Regla, compás y números construibles",
+      "ids": [
+        "M41"
+      ],
+      "incoming": [
+        "/articles/apollonius-problem",
+        "/articles/conchoid",
+        "/articles/durer-conchoid",
+        "/articles/heptagon",
+        "/articles/koch-curve",
+        "/articles/morley-theorem",
+        "/articles/nonagon"
+      ]
+    },
+    {
+      "route": "plane-tessellations",
+      "title": "Teselaciones del plano y polígonos regulares",
+      "ids": [
+        "M42"
+      ],
+      "incoming": [
+        "/articles/cross-fractal",
+        "/articles/paperfolding-curve",
+        "/articles/pentaflake",
+        "/articles/pentagon",
+        "/articles/schlafli-symbol",
+        "/articles/terdragon",
+        "/articles/twindragon"
+      ]
+    },
+    {
+      "route": "projective-homogeneous-coordinates",
+      "title": "Geometría proyectiva y coordenadas homogéneas",
+      "ids": [
+        "M43"
+      ],
+      "incoming": [
+        "/articles/brianchon-theorem",
+        "/articles/cross-ratio",
+        "/articles/desargues-theorem",
+        "/articles/menelaus-theorem",
+        "/articles/pascal-theorem",
+        "/articles/polyhedral-duality"
+      ]
+    },
+    {
+      "route": "circle-inversion",
+      "title": "Inversión respecto de una circunferencia",
+      "ids": [
+        "M44"
+      ],
+      "incoming": [
+        "/articles/mobius-transformations",
+        "/articles/ptolemy-theorem"
+      ]
+    },
+    {
+      "route": "curvature-frenet",
+      "title": "Curvatura, círculo osculador y triedro de Frenet",
+      "ids": [
+        "M45",
+        "M46"
+      ],
+      "incoming": [
+        "/articles/arc-length",
+        "/articles/bessel-j0-curve",
+        "/articles/brachistochrone",
+        "/articles/catenary-curve",
+        "/articles/catenary-evolute",
+        "/articles/catmull-rom-curve",
+        "/articles/circle-curve",
+        "/articles/circular-helix-curve",
+        "/articles/descartes-circles",
+        "/articles/ellipse-evolute-curve",
+        "/articles/envelopes-evolutes",
+        "/articles/euler-clothoid",
+        "/articles/euler-elastica",
+        "/articles/graphical-diagnostics",
+        "/articles/height-surveying",
+        "/articles/linear-regression",
+        "/articles/mobius-strip",
+        "/articles/natural-cubic-spline",
+        "/articles/stadium-curve",
+        "/articles/talbot-curve"
+      ]
+    },
+    {
+      "route": "envelopes-evolutes",
+      "title": "Envolventes, evolutas e involutas",
+      "ids": [
+        "M47"
+      ],
+      "incoming": [
+        "/articles/astroid",
+        "/articles/barycenter",
+        "/articles/bernstein-polynomials",
+        "/articles/catenary-evolute",
+        "/articles/circle-involute",
+        "/articles/convex-hull",
+        "/articles/damped-sinusoid",
+        "/articles/deltoid",
+        "/articles/descartes-circles",
+        "/articles/ellipse-evolute-curve",
+        "/articles/gear-profile-curve",
+        "/articles/hypocycloid",
+        "/articles/linear-ode-systems",
+        "/articles/phasor-superposition",
+        "/articles/quadratic-koch-island",
+        "/articles/rossler-attractor",
+        "/articles/sierpinski-curve",
+        "/articles/sinc-curve",
+        "/articles/squeeze-oscillation",
+        "/articles/talbot-curve",
+        "/articles/terdragon",
+        "/articles/twindragon"
+      ]
+    },
+    {
+      "route": "curve-singularities",
+      "title": "Puntos singulares, cúspides y nodos de curvas",
+      "ids": [
+        "M48"
+      ],
+      "incoming": [
+        "/articles/agnesi-witch",
+        "/articles/algebraic-bean",
+        "/articles/algebraic-butterfly",
+        "/articles/algebraic-heart",
+        "/articles/ampersand-curve",
+        "/articles/archimedean-spiral",
+        "/articles/astroid",
+        "/articles/bifolium-curve",
+        "/articles/bow-curve",
+        "/articles/brachistochrone",
+        "/articles/bullet-nose-curve",
+        "/articles/cardioid",
+        "/articles/cartesian-oval",
+        "/articles/cassini",
+        "/articles/catenary-evolute",
+        "/articles/circle-curve",
+        "/articles/conchoid",
+        "/articles/cruciform-curve",
+        "/articles/cubic-equation",
+        "/articles/cycloid",
+        "/articles/deltoid",
+        "/articles/descartes-folium",
+        "/articles/devils-curve",
+        "/articles/dumbbell-curve",
+        "/articles/durer-conchoid",
+        "/articles/ellipse",
+        "/articles/ellipse-evolute-curve",
+        "/articles/envelopes-evolutes",
+        "/articles/epicycloid",
+        "/articles/epitrochoid-curve",
+        "/articles/eudoxus-kampyle",
+        "/articles/euler-elastica",
+        "/articles/fernandez-guasti-squircle",
+        "/articles/gerono-lemniscate",
+        "/articles/gutschoven-kappa",
+        "/articles/hyperbola",
+        "/articles/hypocycloid",
+        "/articles/hypotrochoid-curve",
+        "/articles/kepler-folium-curve",
+        "/articles/lemniscate",
+        "/articles/lissajous",
+        "/articles/logarithmic-spiral",
+        "/articles/longchamps-piriform",
+        "/articles/maclaurin-trisectrix",
+        "/articles/neile-semicubical",
+        "/articles/nephroid-curve",
+        "/articles/newton-divergent-parabola",
+        "/articles/newton-serpentine",
+        "/articles/newton-trident",
+        "/articles/parabola",
+        "/articles/parabola-like",
+        "/articles/pascal-limacon",
+        "/articles/perseus-spiric",
+        "/articles/proclus-hippopede",
+        "/articles/reuleaux-triangle-curve",
+        "/articles/right-strophoid",
+        "/articles/rose",
+        "/articles/sluze-conchoid",
+        "/articles/sluze-pearls",
+        "/articles/stadium-curve",
+        "/articles/sylvester-bicorn",
+        "/articles/talbot-curve",
+        "/articles/three-focus-ellipse",
+        "/articles/total-derivative-gradient",
+        "/articles/trifolium",
+        "/articles/trochoid-curve",
+        "/articles/watt-linkage-curve"
+      ]
+    },
+    {
+      "route": "hyperbolic-functions",
+      "title": "Funciones hiperbólicas e inversas",
+      "ids": [
+        "M49"
+      ],
+      "incoming": [
+        "/articles/catenary-curve",
+        "/articles/euler-elastica",
+        "/articles/gear-profile-curve",
+        "/articles/gudermannian-curve",
+        "/articles/hyperbolic-tangent-curve",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical"
+      ]
+    },
+    {
+      "route": "orthogonal-polynomials",
+      "title": "Polinomios ortogonales y funciones de peso",
+      "ids": [
+        "M50"
+      ],
+      "incoming": [
+        "/articles/hermite-probabilist-curve",
+        "/articles/laguerre-curve",
+        "/articles/legendre-curve"
+      ]
+    },
+    {
+      "route": "bernstein-polynomials",
+      "title": "Polinomios de Bernstein y aproximación",
+      "ids": [
+        "M51"
+      ],
+      "incoming": [
+        "/articles/quadratic-bezier-curve"
+      ]
+    },
+    {
+      "route": "affine-transformations",
+      "title": "Transformaciones afines: parte lineal y traslación",
+      "ids": [
+        "M52"
+      ],
+      "incoming": [
+        "/articles/barnsley-fern",
+        "/articles/menelaus-theorem",
+        "/articles/mobius-transformations",
+        "/articles/normal-distribution"
+      ]
+    },
+    {
+      "route": "variations-noether",
+      "title": "Cálculo de variaciones, Euler–Lagrange y Noether",
+      "ids": [
+        "M53",
+        "M60"
+      ],
+      "incoming": [
+        "/articles/brachistochrone",
+        "/articles/double-pendulum",
+        "/articles/first-integrals"
+      ]
+    },
+    {
+      "route": "picard-lipschitz",
+      "title": "Existencia y unicidad: Picard y la condición de Lipschitz",
+      "ids": [
+        "M54"
+      ],
+      "incoming": [
+        "/articles/banach-fixed-point",
+        "/articles/division-algorithm",
+        "/articles/first-order-odes",
+        "/articles/gcd-euclid",
+        "/articles/holomorphic-continuation",
+        "/articles/iterated-function-systems",
+        "/articles/mean-value-theorems",
+        "/articles/newton-raphson",
+        "/articles/numeral-systems",
+        "/articles/ode-numerical-integration",
+        "/articles/proof-strategies",
+        "/articles/sudoku-constraints"
+      ]
+    },
+    {
+      "route": "lyapunov-stability-chaos",
+      "title": "Estabilidad, funciones y exponentes de Lyapunov",
+      "ids": [
+        "M55",
+        "M56"
+      ],
+      "incoming": [
+        "/articles/double-pendulum",
+        "/articles/feigenbaum",
+        "/articles/first-integrals",
+        "/articles/linear-ode-systems",
+        "/articles/rossler-attractor"
+      ]
+    },
+    {
+      "route": "return-maps-bifurcations",
+      "title": "Mapas de retorno, bifurcaciones y universalidad",
+      "ids": [
+        "M57",
+        "M58",
+        "M59"
+      ],
+      "incoming": [
+        "/articles/bifurcation-diagram",
+        "/articles/binary-fractal-tree",
+        "/articles/double-pendulum",
+        "/articles/feigenbaum",
+        "/articles/fractal-canopy",
+        "/articles/googology",
+        "/articles/levy-c-curve",
+        "/articles/pythagoras-tree",
+        "/articles/rossler-attractor"
+      ]
+    },
+    {
+      "route": "symplectic-integration",
+      "title": "Estructura hamiltoniana e integración simpléctica",
+      "ids": [
+        "M61"
+      ],
+      "incoming": [
+        "/articles/euler-hamilton",
+        "/articles/first-integrals",
+        "/articles/graph-foundations",
+        "/articles/konigsberg-bridges",
+        "/articles/ode-numerical-integration",
+        "/articles/route-optimization-complexity"
+      ]
+    },
+    {
+      "route": "l-systems",
+      "title": "Sistemas-L y gramáticas de reescritura",
+      "ids": [
+        "M62"
+      ],
+      "incoming": [
+        "/articles/box-fractal",
+        "/articles/cross-fractal",
+        "/articles/fractal-canopy",
+        "/articles/fractal-plant",
+        "/articles/gosper-curve",
+        "/articles/koch-antisnowflake",
+        "/articles/koch-curve",
+        "/articles/moore-curve",
+        "/articles/paperfolding-curve",
+        "/articles/sierpinski-arrowhead",
+        "/articles/terdragon"
+      ]
+    },
+    {
+      "route": "iterated-function-systems",
+      "title": "Sistemas de funciones iteradas y juego del caos",
+      "ids": [
+        "M63"
+      ],
+      "incoming": [
+        "/articles/barnsley-fern",
+        "/articles/cyclotomic-polynomials",
+        "/articles/sierpinski-triangle"
+      ]
+    },
+    {
+      "route": "pseudorandom-generators",
+      "title": "Pseudoaleatoriedad, semillas y períodos",
+      "ids": [
+        "M64"
+      ],
+      "incoming": [
+        "/articles/cellular-automata"
+      ]
+    },
+    {
+      "route": "self-organized-criticality",
+      "title": "Criticalidad autoorganizada y leyes de potencia",
+      "ids": [
+        "M65"
+      ],
+      "incoming": [
+        "/articles/abelian-sandpile",
+        "/articles/exponentials-logarithms"
+      ]
+    },
+    {
+      "route": "pigeonhole-principle",
+      "title": "Principio del palomar y argumentos de existencia",
+      "ids": [
+        "M66"
+      ],
+      "incoming": [
+        "/articles/birthday-paradox",
+        "/articles/pseudorandom-generators",
+        "/articles/ramsey-theorem"
+      ]
+    },
+    {
+      "route": "trees-graph-coloring",
+      "title": "Árboles, árboles generadores y coloración de grafos",
+      "ids": [
+        "M68",
+        "M69"
+      ],
+      "incoming": [
+        "/articles/abelian-sandpile",
+        "/articles/four-color-theorem",
+        "/articles/planar-euler",
+        "/articles/ramsey-theorem"
+      ]
+    },
+    {
+      "route": "polya-cycle-index",
+      "title": "Teorema de Pólya e índice de ciclos",
+      "ids": [
+        "M70"
+      ],
+      "incoming": [
+        "/articles/burnside-lemma"
+      ]
+    },
+    {
+      "route": "route-optimization-complexity",
+      "title": "Viajante, cartero chino y complejidad computacional",
+      "ids": [
+        "M71",
+        "M72"
+      ],
+      "incoming": [
+        "/articles/euler-hamilton",
+        "/articles/konigsberg-bridges",
+        "/articles/sudoku-constraints"
+      ]
+    },
+    {
+      "route": "ordinals-growth",
+      "title": "Ordinales y jerarquías de crecimiento",
+      "ids": [
+        "M73"
+      ],
+      "incoming": [
+        "/articles/asymptotic-limits",
+        "/articles/exponentials-logarithms",
+        "/articles/googology"
+      ]
+    },
+    {
+      "route": "computability-formal-languages",
+      "title": "Computabilidad, lenguajes formales y problema de la parada",
+      "ids": [
+        "M74",
+        "M75"
+      ],
+      "incoming": [
+        "/articles/googology",
+        "/articles/graham-number"
+      ]
+    },
+    {
+      "route": "poisson-exponential-waiting",
+      "title": "Poisson, espera exponencial y binomial negativa",
+      "ids": [
+        "M76",
+        "M77",
+        "M78"
+      ],
+      "incoming": [
+        "/articles/bernoulli-binomial",
+        "/articles/galton-board",
+        "/articles/geometric-distribution",
+        "/articles/heterogeneous-binomial-mixtures"
+      ]
+    },
+    {
+      "route": "heterogeneous-binomial-mixtures",
+      "title": "Poisson-binomial y beta-binomial: heterogeneidad y mezcla",
+      "ids": [
+        "M79"
+      ],
+      "incoming": [
+        "/articles/bernoulli-binomial",
+        "/articles/galton-board"
+      ]
+    },
+    {
+      "route": "cauchy-heavy-tails",
+      "title": "Distribución de Cauchy, colas pesadas y esperanza inexistente",
+      "ids": [
+        "M80"
+      ],
+      "incoming": [
+        "/articles/agnesi-witch",
+        "/articles/central-limit-theorem",
+        "/articles/integration-advanced",
+        "/articles/integration-classical",
+        "/articles/integration-numerical",
+        "/articles/large-numbers-law",
+        "/articles/normal-distribution",
+        "/articles/student-chi-square",
+        "/articles/student-density-curve"
+      ]
+    },
+    {
+      "route": "maximum-likelihood",
+      "title": "Verosimilitud y estimación de máxima verosimilitud",
+      "ids": [
+        "M81"
+      ],
+      "incoming": [
+        "/articles/bayes-theorem",
+        "/articles/bernoulli-binomial"
+      ]
+    },
+    {
+      "route": "generating-concentration",
+      "title": "Funciones generadoras, características y cotas de concentración",
+      "ids": [
+        "M82",
+        "M83"
+      ],
+      "incoming": [
+        "/articles/central-limit-theorem",
+        "/articles/probability-inequalities"
+      ]
+    },
+    {
+      "route": "berry-esseen",
+      "title": "Berry–Esseen y el error de la aproximación normal",
+      "ids": [
+        "M84"
+      ],
+      "incoming": [
+        "/articles/central-limit-theorem"
+      ]
+    },
+    {
+      "route": "ergodicity-autocorrelation",
+      "title": "Ergodicidad, autocorrelación y promedios temporales",
+      "ids": [
+        "M85"
+      ],
+      "incoming": [
+        "/articles/large-numbers-law"
+      ]
+    },
+    {
+      "route": "homeomorphisms-homotopy",
+      "title": "Homeomorfismos, homotopía y retracciones",
+      "ids": [
+        "M86",
+        "M87"
+      ],
+      "incoming": [
+        "/articles/jordan-curve",
+        "/articles/mobius-strip",
+        "/articles/schoenflies-winding-number"
+      ]
+    },
+    {
+      "route": "surfaces-genus-euler",
+      "title": "Superficies, orientabilidad, género y característica de Euler",
+      "ids": [
+        "M88",
+        "M89",
+        "M90"
+      ],
+      "incoming": [
+        "/articles/euler-polyhedron-formula",
+        "/articles/klein-bottle",
+        "/articles/mobius-strip",
+        "/articles/tesseract"
+      ]
+    },
+    {
+      "route": "schoenflies-winding-number",
+      "title": "Schönflies y número de vueltas de una curva",
+      "ids": [
+        "M91",
+        "M92"
+      ],
+      "incoming": [
+        "/articles/jordan-curve"
+      ]
+    },
+    {
+      "route": "open-closed-connected",
+      "title": "Abiertos, cerrados, acumulación y conexidad",
+      "ids": [
+        "M93",
+        "M94"
+      ],
+      "incoming": [
+        "/articles/compact-perfect-disconnected",
+        "/articles/feigenbaum",
+        "/articles/holomorphic-continuation",
+        "/articles/jordan-curve",
+        "/articles/planar-euler",
+        "/articles/surfaces-genus-euler"
+      ]
+    }
+  ]
+}

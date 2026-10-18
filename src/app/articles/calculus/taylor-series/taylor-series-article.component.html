@@ -1,7 +1,7 @@
 <h2>Series de Taylor: una función vista a través de sus derivadas</h2>
-<p class="dropcap">Cerca de un punto, una curva suave se parece a su recta tangente. Si además
+<p class="dropcap">Cerca de un punto, una curva suave se parece a su <a data-article-concept="linear-approximation" routerLink="/articles/linear-approximation">recta tangente</a>. Si además
   queremos capturar cómo se curva, podemos añadir un término cuadrático. Después uno cúbico,
-  y así sucesivamente. Los polinomios de Taylor convierten la información de las derivadas
+  y así sucesivamente. Los polinomios de Taylor convierten la información de las <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a>
   en aproximaciones que podemos calcular con sumas y multiplicaciones.</p>
 
 <h3>Del valor a la forma local</h3>
@@ -10,7 +10,7 @@
 <app-formula expression="P_0(x)=f(a),\quad P_1(x)=f(a)+f'(a)(x-a),\quad P_2(x)=f(a)+f'(a)(x-a)+\frac{f''(a)}{2}(x-a)^2"></app-formula>
 <p>El polinomio de Taylor de orden n conserva todas las derivadas hasta ese orden en el centro.</p>
 <app-formula expression="P_n(x)=\sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k,\qquad P_n^{(j)}(a)=f^{(j)}(a)\quad(0\le j\le n)"></app-formula>
-<p>El factorial no es un adorno: al derivar k veces (x − a)ᵏ obtenemos k!.
+<p>El <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a> no es un adorno: al derivar k veces (x − a)ᵏ obtenemos k!.
   Dividir por él hace que la derivada tenga el valor deseado. Hablamos de orden n porque el
   grado puede ser menor si alguno de los coeficientes finales es cero. Cuando a = 0,
   el desarrollo también se llama <strong>de Maclaurin</strong>.</p>
@@ -31,7 +31,7 @@
   La diferencia Rₙ(x) = f(x) − Pₙ(x) se llama resto. Si f tiene n + 1 derivadas continuas
   en el segmento entre a y x, el teorema de Taylor da, para algún punto ξ entre ambos:</p>
 <app-formula expression="R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-a)^{n+1}"></app-formula>
-<p>Si el valor absoluto de esa derivada no supera M en todo el segmento, obtenemos una cota:</p>
+<p>Si el <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> de esa derivada no supera M en todo el segmento, obtenemos una cota:</p>
 <app-formula expression="|R_n(x)|\le\frac{M|x-a|^{n+1}}{(n+1)!}"></app-formula>
 <p>Para aproximar sin(0,5) con P₃(x) = x − x³/6, la cuarta derivada está acotada por 1.
   El error es, por tanto, menor o igual que 0,5⁴/4! ≈ 0,0026042. Esta cota es una garantía,
@@ -40,7 +40,7 @@
   cuando n crece. Coincidir en muchas derivadas, por sí solo, no sustituye esa condición.</p>
 
 <h3>Más términos no siempre acercan</h3>
-<p>La función 1/(1 − x), desarrollada alrededor de 0, produce la serie geométrica:</p>
+<p>La función 1/(1 − x), desarrollada alrededor de 0, produce la <a data-article-concept="geometric-series" routerLink="/articles/geometric-series">serie geométrica</a>:</p>
 <app-formula expression="\frac{1}{1-x}=\sum_{k=0}^{\infty}x^k=1+x+x^2+\cdots\qquad(|x|<1)"></app-formula>
 <p>La suma hasta el orden n y su error se pueden calcular exactamente cuando x ≠ 1:</p>
 <app-formula expression="P_n(x)=\frac{1-x^{n+1}}{1-x},\qquad\frac{1}{1-x}-P_n(x)=\frac{x^{n+1}}{1-x}"></app-formula>
@@ -90,3 +90,6 @@
 <li><a routerLink="/problems/quadratic-approximation-error-bound">159 · Una aproximación cuadrática con cota</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/linear-approximation">Diferenciales y aproximación lineal</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/geometric-series">Progresiones y series geométricas</a></li></ul></details></section>
+<!-- article-concepts:end -->

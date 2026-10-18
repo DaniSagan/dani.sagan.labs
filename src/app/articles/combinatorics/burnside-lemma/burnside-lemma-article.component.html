@@ -19,10 +19,10 @@
 <p>Cuenta los pares formados por una simetría y un objeto que esa simetría deja fijo. Por simetrías, la suma es la de sus números de puntos fijos. Por objetos, es la suma de tamaños de estabilizadores. En cada órbita, producto de tamaño de órbita y estabilizador vale el tamaño del grupo. Dividir la cuenta total por ese tamaño deja exactamente una unidad por órbita.</p>
 <app-formula expression="|X/G|=\frac1{|G|}\sum_{g\in G}|\operatorname{Fix}(g)|" />
 <h3 id="section-2">Collares y ciclos de una permutación</h3>
-<p>Un giro de un collar distribuye sus posiciones en ciclos. Para que una coloración quede fija, todas las posiciones de un mismo ciclo deben compartir color; ciclos diferentes eligen libremente. El número de ciclos de un giro de cierto número de posiciones es el máximo común divisor entre longitud y desplazamiento. Reflejos requieren añadir nuevas simetrías y estudiar sus ciclos, por lo que collares y pulseras no tienen el mismo conteo.</p>
+<p>Un giro de un collar distribuye sus posiciones en ciclos. Para que una coloración quede fija, todas las posiciones de un mismo ciclo deben compartir color; ciclos diferentes eligen libremente. El número de ciclos de un giro de cierto número de posiciones es el <a data-article-concept="gcd-euclid" routerLink="/articles/gcd-euclid">máximo común divisor</a> entre longitud y desplazamiento. Reflejos requieren añadir nuevas simetrías y estudiar sus ciclos, por lo que collares y pulseras no tienen el mismo conteo.</p>
 <app-formula expression="N_{\mathrm{rot}}(n,q)=\frac1n\sum_{k=0}^{n-1}q^{\gcd(n,k)}" />
 <h3 id="section-3">Restricciones y generalizaciones</h3>
-<p>Si solo se permiten coloraciones con cantidades fijas de colores, se debe contar cuántas elecciones por ciclos cumplen esas cantidades; no basta elevar colores al número de ciclos. El teorema de Pólya organiza esas cuentas mediante un índice de ciclos. Para tableros o rompecabezas hay que especificar qué transformaciones preservan las reglas y qué detalles se consideran equivalentes. Identificar renombrados y rotaciones al mismo tiempo cambia el grupo de actuación.</p>
+<p>Si solo se permiten coloraciones con cantidades fijas de colores, se debe contar cuántas elecciones por ciclos cumplen esas cantidades; no basta elevar colores al número de ciclos. El teorema de <a data-article-concept="polya-cycle-index" routerLink="/articles/polya-cycle-index">Pólya</a> organiza esas cuentas mediante un índice de ciclos. Para tableros o rompecabezas hay que especificar qué transformaciones preservan las reglas y qué detalles se consideran equivalentes. Identificar renombrados y rotaciones al mismo tiempo cambia el grupo de actuación.</p>
 <h3 id="section-deeper">Añadir reflejos cambia el grupo</h3>
 <p>Para pulseras, además de girar se permite reflejar, y el grupo contiene el doble de simetrías. Si la longitud es impar, cada reflejo deja una posición fija y agrupa las restantes por parejas. Si es par, hay reflejos que pasan por dos posiciones y otros que pasan entre posiciones, con números de ciclos diferentes. Cada ciclo escoge un color para quedar fijo. Burnside incorpora estas cuentas al promedio, en lugar de dividir por dos el número de collares: algunos collares ya son equivalentes a su reflejo y otros no. Este es el mismo motivo estructural que hace fallar la división ingenua inicial.</p>
 <app-formula expression="n\text{ impar}:\quad N_{\mathrm{pulsera}}=\frac1{2n}\left(\sum_{k=0}^{n-1}q^{\gcd(n,k)}+nq^{(n+1)/2}\right)" />
@@ -50,7 +50,7 @@
 
 <!-- additional-problems:burnside-lemma:start -->
 <section class="article-activities" aria-label="Más problemas resueltos"><h3>Más problemas resueltos</h3><p>Practica estas ideas con soluciones explicadas desde los fundamentos.</p><ul>
-<li><a routerLink="/problems/four-bead-necklaces-under-rotation">196 · Collares de cuatro cuentas bajo rotaciones</a>. Cada vértice de un cuadrado se colorea de blanco o negro. Cuenta los diseños distintos si solo identificamos rotaciones, sin identificar reflexiones.</li>
+<li><a routerLink="/problems/four-bead-necklaces-under-rotation">196 · Collares de cuatro cuentas bajo rotaciones</a>. Cada vértice de un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> se colorea de blanco o negro. Cuenta los diseños distintos si solo identificamos rotaciones, sin identificar reflexiones.</li>
 </ul></section>
 <!-- additional-problems:burnside-lemma:end -->
 <!-- prerequisite-problems:start -->
@@ -58,3 +58,6 @@
 <li><a routerLink="/problems/four-bead-necklaces-under-rotation">196 · Collares de cuatro cuentas bajo rotaciones</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/gcd-euclid">Máximo común divisor (MCD) y algoritmo de Euclides</a></li><li><a routerLink="/articles/polya-cycle-index">Teorema de Pólya e índice de ciclos</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

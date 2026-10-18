@@ -16,10 +16,10 @@
 <app-mobius-strip-viewer></app-mobius-strip-viewer>
 
 <h3>Una flecha que vuelve invertida</h3>
-<p>Imagina una flecha perpendicular a la cinta que se mueve continuamente por la línea central.
+<p>Imagina una flecha <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> a la cinta que se mueve continuamente por la línea central.
   Tras una vuelta regresa al mismo punto, pero apunta al lado opuesto. Necesita dos vueltas para
   recuperar su dirección original. Esta imposibilidad de elegir una normal continua en toda la
-  superficie expresa su <strong>no orientabilidad</strong>.</p>
+  superficie expresa su <strong>no <a data-article-concept="surfaces-genus-euler" routerLink="/articles/surfaces-genus-euler">orientabilidad</a></strong>.</p>
 <p>En el visor, el recorrido central se cierra después de una vuelta, aunque la flecha no recupere
   su orientación hasta la segunda. El recorrido del borde es distinto: necesita dos vueltas alrededor
   del agujero para regresar al punto de partida. Así recorre los dos lados largos del rectángulo original
@@ -34,12 +34,12 @@
   Las flechas sobre los lados cortos indican el sentido del pegado. Los lados largos quedan libres
   y forman el borde.</p>
 <app-mobius-gluing></app-mobius-gluing>
-<p>Para la cinta sin torsión, la regla es (0,v) ∼ (1,v). Entonces el borde superior se cierra sobre
-  sí mismo y el inferior también: quedan dos componentes. En Möbius, el superior continúa por el
+<p>Para la cinta sin <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">torsión</a>, la regla es (0,v) ∼ (1,v). Entonces el borde superior se cierra sobre
+  sí mismo y el inferior también: quedan dos componentes. En <a data-article-concept="mobius-transformations" routerLink="/articles/mobius-transformations">Möbius</a>, el superior continúa por el
   inferior al cruzar la unión; ambos forman una sola componente.</p>
 
 <h3>Una parametrización en el espacio</h3>
-<p>El visor utiliza una circunferencia central de radio R y un segmento transversal que gira media
+<p>El visor utiliza una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> central de radio R y un segmento transversal que gira media
   vuelta al recorrerla. Si h es la semianchura, con 0 &lt; h &lt; R, una parametrización es:</p>
 <app-formula expression="\begin{aligned}x(u,v)&=(R+v\cos(u/2))\cos u,\\y(u,v)&=(R+v\cos(u/2))\sin u,\\z(u,v)&=v\sin(u/2),\end{aligned}\qquad 0\le u\le2\pi,\quad-h\le v\le h"></app-formula>
 <p>Cuando u pasa de 0 a 2π, el segmento transversal cambia de signo: el punto con coordenada v
@@ -56,7 +56,7 @@
   los extremos. Es una buena prueba para hacer con una tira de papel antes de intentar imaginar el resultado.</p>
 
 <h3>Una propiedad que sobrevive a las deformaciones</h3>
-<p>La cinta puede contraerse sobre su circunferencia central sin cambiar su tipo de homotopía.
+<p>La cinta puede contraerse sobre su circunferencia central sin cambiar su tipo de <a data-article-concept="homeomorphisms-homotopy" routerLink="/articles/homeomorphisms-homotopy">homotopía</a>.
   Por eso tiene característica de Euler χ = 0, igual que un anillo. Ese número, por sí solo,
   no basta para distinguir ambas superficies: también importan la orientabilidad y el número de
   componentes del borde.</p>
@@ -68,3 +68,6 @@
   y repite. Por último, usa el diagrama plano para explicar la diferencia sin recurrir al dibujo 3D.</p>
 <p>Referencias: <a href="https://mathworld.wolfram.com/MoebiusStrip.html">cinta de Möbius en MathWorld</a>
   y <a href="https://www.maths.ox.ac.uk/outreach/oxford-online-maths-club/episode-10">experimentos con cintas en el club matemático de Oxford</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/surfaces-genus-euler">Superficies, orientabilidad, género y característica de Euler</a></li><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li><li><a routerLink="/articles/mobius-transformations">Transformaciones de Möbius</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/homeomorphisms-homotopy">Homeomorfismos, homotopía y retracciones</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -1,13 +1,13 @@
 <h2>Pentágono regular</h2>
 
 <p class="dropcap">El pentágono regular tiene cinco lados iguales y cinco ángulos interiores de ciento ocho grados. Presenta cinco ejes de simetría, cada uno entre un vértice y el punto medio del lado opuesto. Su simetría de rotación permite superponerlo consigo mismo mediante giros de setenta y dos grados alrededor del centro.</p>
-<p>Sus cinco diagonales dibujan un pentagrama y delimitan otro pentágono regular en el interior. La razón entre una diagonal y un lado es el número áureo, de modo que un lado unitario produce diagonales de longitud áurea. También aparece como cara del dodecaedro regular, que reúne doce pentágonos. Por sí solo no recubre el plano sin huecos: su ángulo interior no divide una vuelta completa.</p>
+<p>Sus cinco diagonales dibujan un pentagrama y delimitan otro pentágono regular en el interior. La razón entre una diagonal y un lado es el <a data-article-concept="golden-ratio" routerLink="/articles/golden-ratio">número áureo</a>, de modo que un lado unitario produce diagonales de longitud áurea. También aparece como cara del <a data-article-concept="dodecahedron-viewer" routerLink="/articles/dodecahedron-viewer">dodecaedro regular</a>, que reúne doce pentágonos. Por sí solo no recubre el plano sin huecos: su ángulo interior no divide una <a data-article-concept="radians" routerLink="/articles/radians">vuelta completa</a>.</p>
 
 <canvas #canvas width="600" height="600" aria-label="Pentágono regular y sus segmentos">Representación del pentágono regular.</canvas>
 
 <h3>Obtención geométrica con lado de una unidad</h3>
 <h4>1. Obtener la diagonal con el teorema de Ptolomeo</h4>
-<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un <a routerLink="/articles/incircles-circumcircles">cuadrilátero inscrito</a> en la circunferencia. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El <a routerLink="/articles/ptolemy-theorem">teorema de Ptolomeo</a> afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
+<p>Numeramos los vértices en sentido antihorario. Los cuatro primeros forman un <a routerLink="/articles/incircles-circumcircles">cuadrilátero inscrito</a> en la <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a>. Sus lados, en orden, miden uno, uno, uno y d; sus dos diagonales miden d. El <a routerLink="/articles/ptolemy-theorem">teorema de Ptolomeo</a> afirma que el producto de las diagonales es la suma de los productos de los lados opuestos:</p>
 <app-formula expression="d^2=1\cdot1+1\cdot d,\qquad d^2-d-1=0,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
 <p>Elegimos la raíz positiva porque d es una longitud. Así obtenemos el número áureo mediante una ecuación cuadrática. Las cinco diagonales tienen esta misma longitud por la simetría del pentágono.</p>
 <h4>2. Hallar el radio mediante un triángulo rectángulo</h4>
@@ -22,10 +22,10 @@
 <app-formula expression="V_4=\left(\frac{R(\sqrt5-1)}4,-\frac{1+\sqrt5}{4}\right)" displayMode="block"/>
 <p>R es la raíz cuadrada indicada arriba, de modo que estas coordenadas solo contienen operaciones aritméticas y raíces cuadradas. Unimos los puntos en orden y cerramos desde V₄ hasta V₀. La orientación puede diferir de la ilustración sin alterar las longitudes.</p>
 <h4>4. Diagonales, apotema y área</h4>
-<p>Cada vértice tiene dos diagonales, pero cada segmento se cuenta desde sus dos extremos: hay cinco, todas de longitud d. La perpendicular del centro a un lado lo divide en dos mitades. Otro uso de Pitágoras da la <a routerLink="/articles/apothem">apotema</a> y permite sumar las áreas de los cinco triángulos centrales.</p>
+<p>Cada vértice tiene dos diagonales, pero cada segmento se cuenta desde sus dos extremos: hay cinco, todas de longitud d. La <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> del centro a un lado lo divide en dos mitades. Otro uso de Pitágoras da la <a routerLink="/articles/apothem">apotema</a> y permite sumar las áreas de los cinco triángulos centrales.</p>
 <app-formula expression="N_d=\frac{5\cdot2}{2}=5,\qquad d=\frac{1+\sqrt5}{2}" displayMode="block"/>
 <app-formula expression="a=\sqrt{R^2-\frac14}=\sqrt{\frac{5+2\sqrt5}{20}},\qquad P=5,\qquad A=\frac{5a}{2}=\frac{\sqrt{25+10\sqrt5}}4" displayMode="block"/>
-<p>Para un lado de longitud L, multiplicamos las coordenadas y todas las longitudes por L; las áreas se multiplican por su cuadrado.</p>
+<p>Para un lado de longitud L, multiplicamos las coordenadas y todas las longitudes por L; las áreas se multiplican por su <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>.</p>
 
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
@@ -33,3 +33,6 @@
   <li><a routerLink="/problems/sum-of-roots-of-unity">Problema 040 · Suma de raíces de la unidad</a>. Interpreta geométricamente las cinco raíces quintas como vértices de un pentágono regular centrado en el origen.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/golden-ratio">El número áureo: álgebra, geometría y Fibonacci</a></li><li><a routerLink="/articles/dodecahedron-viewer">Dodecaedro regular</a></li><li><a routerLink="/articles/radians">Radianes</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/plane-tessellations">Teselaciones del plano y polígonos regulares</a></li></ul></details></section>
+<!-- article-concepts:end -->

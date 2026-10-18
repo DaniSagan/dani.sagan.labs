@@ -1,0 +1,401 @@
+[
+  {
+    "slug": "variations-noether",
+    "area": "calculus",
+    "ids": [
+      "M53",
+      "M60"
+    ],
+    "title": "Cálculo de variaciones, Euler–Lagrange y Noether",
+    "terms": [
+      "cálculo de variaciones",
+      "Euler–Lagrange",
+      "Euler-Lagrange",
+      "teorema de Noether",
+      "lagrangiano"
+    ],
+    "definition": "El cálculo de variaciones busca extremos de funcionales: cantidades que dependen de una función o trayectoria completa. Para la acción S[q]=∫L(t,q,q′)dt se consideran variaciones q+εη con η nula en los extremos fijados. Un extremo suave debe hacer cero la primera variación para todas esas perturbaciones.",
+    "argument": "Derivar respecto de ε en cero produce ∫(L_qη+L_q′η′)dt. Integrar por partes el segundo término y usar que η se anula en el borde da la ecuación de Euler–Lagrange. Es una condición necesaria; no asegura por sí sola que el extremo sea un mínimo. El teorema de Noether relaciona simetrías continuas de la acción con cantidades conservadas a lo largo de sus extremales.",
+    "example": "Si L no depende de q, Euler–Lagrange implica que el momento ∂L/∂q′ es constante. Si L no depende explícitamente del tiempo, se conserva q′L_q′−L. Para L=(q′)²/2 y extremos q(0)=0,q(1)=1, la solución es q=t y la acción vale 1/2.",
+    "caution": "Una simetría discreta no proporciona automáticamente una cantidad conservada por este teorema. Las trayectorias arbitrarias de ensayo no satisfacen las leyes de conservación derivadas de Euler–Lagrange: las cumplen las soluciones de las ecuaciones de movimiento.",
+    "formula": "\\frac{d}{dt}\\frac{\\partial L}{\\partial q'}-\\frac{\\partial L}{\\partial q}=0,\\qquad \\partial_qL=0\\Longrightarrow p=\\partial_{q'}L=\\text{constante}",
+    "question": "Calcula la acción de q(t)=t+ε sen(nπt) para L=(q′)²/2 en [0,1].",
+    "answer": "El término cruzado integra cero y la integral de cos²(nπt) es 1/2. La acción resulta 1/2+ε²n²π²/4, mayor o igual que la de la trayectoria recta.",
+    "n": [
+      "Modo n",
+      1,
+      6,
+      1,
+      1
+    ],
+    "t": [
+      "Amplitud de la variación ε",
+      -1,
+      1,
+      0.05,
+      0.25
+    ],
+    "lab": "Variar una trayectoria con los extremos fijos",
+    "code": "rows.push(['Acción exacta',.5+t*t*n*n*Math.PI*Math.PI/4],['Acción de la recta',.5],['Máximo residuo |q″|',Math.abs(t)*n*n*Math.PI*Math.PI]);for(let k=0;k<=160;k++){const x=k/160;points.push([x,x+t*Math.sin(n*Math.PI*x)]);}note='Las curvas son trayectorias de ensayo. Solo ε=0 resuelve q″=0 y conserva el momento en este ejemplo.';",
+    "reference": [
+      "https://ocw.mit.edu/courses/8-033-relativity-fall-2006/resources/lecture8_euler/",
+      "MIT OpenCourseWare · Cálculo de variaciones"
+    ],
+    "related": [
+      "brachistochrone",
+      "first-integrals",
+      "derivative-foundations"
+    ]
+  },
+  {
+    "slug": "picard-lipschitz",
+    "area": "calculus",
+    "ids": [
+      "M54"
+    ],
+    "title": "Existencia y unicidad: Picard y la condición de Lipschitz",
+    "terms": [
+      "Picard",
+      "Lindelöf",
+      "Lipschitz",
+      "unicidad local"
+    ],
+    "definition": "El problema inicial y′=f(t,y), y(t₀)=y₀ exige encontrar una función, no solo una curva dibujada. La continuidad de f puede dar existencia local; la unicidad necesita hipótesis adicionales. Una condición local de Lipschitz en y, uniforme en t dentro de un entorno, limita cuánto cambia f al cambiar el estado.",
+    "argument": "Reescribir la EDO como y(t)=y₀+∫f(s,y(s))ds define el operador de Picard. En un intervalo suficientemente corto, la constante de Lipschitz multiplicada por su longitud es menor que uno y ese operador es una contracción sobre un conjunto de funciones apropiado. El teorema de Banach proporciona existencia y unicidad y justifica las iteraciones sucesivas.",
+    "example": "Para y′=y, y(0)=1, partir de la función constante uno produce 1+t, después 1+t+t²/2 y así sucesivamente. El límite es eᵗ. Para y′=2√|y|, y(0)=0, hay soluciones que esperan en cero y después siguen (t−c)² para t≥c: falla la condición de Lipschitz cerca del origen.",
+    "caution": "Existencia y unicidad local no garantizan una solución global. La EDO y′=y² con dato y(0)=1 tiene solución 1/(1−t), que explota en tiempo finito. Una derivada parcial continua respecto de y es suficiente para Lipschitz local en un rectángulo compacto, pero no es necesaria.",
+    "formula": "|f(t,u)-f(t,v)|\\le L|u-v|,\\qquad y_{k+1}(t)=y_0+\\int_{t_0}^tf(s,y_k(s))\\,ds",
+    "question": "¿Por qué la solución 1/(1−t) no contradice el teorema local?",
+    "answer": "En un entorno de (0,1), la función f(y)=y² es localmente Lipschitz y existe solución única. El teorema no obliga a prolongarla a través de una explosión en t=1.",
+    "n": [
+      "Iteraciones de Picard",
+      0,
+      12,
+      1,
+      3
+    ],
+    "t": [
+      "Tiempo de evaluación",
+      -1,
+      1,
+      0.05,
+      0.5
+    ],
+    "lab": "Construir eᵗ mediante iteraciones",
+    "code": "const poly=(x:number)=>{let sum=1,a=1;for(let k=1;k<=n;k++){a*=x/k;sum+=a;}return sum;};rows.push(['Iteración en t',poly(t)],['Solución eᵗ',Math.exp(t)],['Error absoluto',Math.abs(poly(t)-Math.exp(t))]);for(let k=0;k<=120;k++){const x=-1+2*k/120;points.push([x,poly(x)]);}note='Este problema permite obtener cada iteración exactamente como un polinomio. En otras EDO integrar numéricamente añade otra fuente de error.';",
+    "reference": [
+      "https://www.math.cmu.edu/~gautam/c/2026-632/notes/existence.html",
+      "Gautam Iyer · Existencia y unicidad de EDO"
+    ],
+    "related": [
+      "banach-fixed-point",
+      "first-order-odes",
+      "metric-normed-spaces"
+    ]
+  },
+  {
+    "slug": "lyapunov-stability-chaos",
+    "area": "dynamical-systems",
+    "ids": [
+      "M55",
+      "M56"
+    ],
+    "title": "Estabilidad, funciones y exponentes de Lyapunov",
+    "terms": [
+      "función de Lyapunov",
+      "funciones de Lyapunov",
+      "exponente de Lyapunov",
+      "exponentes de Lyapunov",
+      "caos determinista"
+    ],
+    "definition": "La estabilidad de un equilibrio controla si estados inicialmente próximos permanecen próximos. La estabilidad asintótica exige además atracción hacia el equilibrio. Una función de Lyapunov es una magnitud positiva alrededor de él que no aumenta a lo largo de las soluciones. Los exponentes de Lyapunov, en cambio, describen tasas de crecimiento de perturbaciones infinitesimales a lo largo de una órbita.",
+    "argument": "Para x′=−x, V=x²/2 es positiva fuera de cero y V′=−x²<0: demuestra atracción local y global en este caso. Para un mapa unidimensional, la regla de la cadena expresa la derivada de una iteración como producto de derivadas. Tomar logaritmos convierte ese producto en una media temporal que, si tiene límite, define el exponente.",
+    "example": "En el mapa logístico f(x)=rx(1−x), una estimación de λ usa la media de log|r(1−2xₖ)| tras descartar un transitorio. Un valor positivo sugiere separación exponencial típica en esa órbita. El caos determinista no necesita ruido externo, pero una estimación positiva finita no es una demostración completa de caos.",
+    "caution": "Una función de Lyapunov no es un exponente de Lyapunov. Derivada de V no positiva puede demostrar estabilidad sin atracción estricta; se necesitan argumentos adicionales. La precisión numérica, el punto inicial y la duración afectan a los exponentes estimados.",
+    "formula": "\\dot V=\\nabla V\\cdot F,\\qquad \\lambda=\\lim_{N\\to\\infty}\\frac1N\\sum_{k=0}^{N-1}\\log|f'(x_k)|",
+    "question": "¿Qué demuestra V=x²/2 para x′=0?",
+    "answer": "V′=0 y los estados permanecen constantes: el origen es estable, pero no atrae a los otros estados. No se puede concluir estabilidad asintótica usando solo V′≤0.",
+    "n": [
+      "Iteraciones para la media",
+      20,
+      500,
+      10,
+      100
+    ],
+    "t": [
+      "Parámetro r",
+      2.5,
+      4,
+      0.01,
+      3.8
+    ],
+    "lab": "Un exponente finito del mapa logístico",
+    "code": "let x=.231,sum=0;for(let k=0;k<800;k++)x=t*x*(1-x);for(let k=0;k<n;k++){sum+=Math.log(Math.max(1e-14,Math.abs(t*(1-2*x))));x=t*x*(1-x);points.push([k,x]);}rows.push(['Exponente estimado',sum/n],['Último estado',x],['Equilibrio positivo',1-1/t]);note='Se descartan 800 iteraciones y se limita el logaritmo cerca de derivadas nulas. Es un diagnóstico numérico finito, no una certificación de caos.';",
+    "related": [
+      "bifurcation-diagram",
+      "harmonic-oscillator",
+      "first-integrals"
+    ]
+  },
+  {
+    "slug": "return-maps-bifurcations",
+    "area": "dynamical-systems",
+    "ids": [
+      "M57",
+      "M58",
+      "M59"
+    ],
+    "title": "Mapas de retorno, bifurcaciones y universalidad",
+    "terms": [
+      "sección de Poincaré",
+      "secciones de Poincaré",
+      "mapa de retorno",
+      "mapas de retorno",
+      "bifurcación",
+      "bifurcaciones",
+      "renormalización",
+      "universalidad"
+    ],
+    "definition": "Una sección de Poincaré es una superficie transversal al flujo. Su mapa de retorno envía un punto al siguiente cruce definido con esa sección y reduce la dimensión en uno. Una bifurcación es un cambio cualitativo de la dinámica al variar un parámetro; no cualquier modificación gradual de una trayectoria.",
+    "argument": "Los puntos fijos de un mapa de retorno representan órbitas periódicas del flujo. Sus multiplicadores controlan estabilidad transversal. En mapas unidimensionales, un punto fijo es localmente atractivo si el módulo de la derivada es menor que uno. Al cruzar −1 puede aparecer una duplicación de período bajo hipótesis de no degeneración.",
+    "example": "El mapa logístico tiene punto fijo positivo x*=1−1/r y multiplicador 2−r: pierde estabilidad en r=3. En ciertas familias unimodales suaves con máximo cuadrático, los umbrales de duplicaciones sucesivas presentan razones que tienden a la constante de Feigenbaum. La renormalización estudia una iteración doble reescalada y explica esa universalidad bajo sus condiciones.",
+    "caution": "El mapa logístico es aquí un modelo discreto, no el mapa de retorno ya calculado de un flujo específico. Las constantes universales no se aplican a cualquier mapa: dependen de la clase de regularidad y del tipo de máximo. Una sección tangente al flujo no cumple la transversalidad requerida.",
+    "formula": "x^*=1-\\frac1r,\\qquad f'(x^*)=2-r,\\qquad\\delta_n=\\frac{r_n-r_{n-1}}{r_{n+1}-r_n}",
+    "question": "¿Para qué r>1 es atractivo el punto fijo positivo del mapa logístico?",
+    "answer": "La condición |2−r|<1 equivale a 1<r<3. En el extremo r=3 el criterio lineal es neutro y se necesita un análisis de orden superior.",
+    "n": [
+      "Iteraciones observadas",
+      20,
+      150,
+      5,
+      60
+    ],
+    "t": [
+      "Parámetro r",
+      2.5,
+      4,
+      0.01,
+      3.2
+    ],
+    "lab": "El multiplicador y una órbita",
+    "code": "let x=.271;for(let k=0;k<600;k++)x=t*x*(1-x);for(let k=0;k<n;k++){x=t*x*(1-x);points.push([k,x]);}rows.push(['Punto fijo positivo',1-1/t],['Multiplicador',2-t],['Criterio lineal',Math.abs(2-t)<1?'Atractivo':Math.abs(2-t)===1?'Neutro':'Inestable']);note='La órbita puede acercarse a un ciclo o seguir una dinámica más compleja cuando el punto fijo deja de ser atractivo. No se infiere un período exacto a partir de redondear la gráfica.';",
+    "related": [
+      "feigenbaum",
+      "bifurcation-diagram",
+      "lyapunov-stability-chaos"
+    ]
+  },
+  {
+    "slug": "symplectic-integration",
+    "area": "calculus",
+    "ids": [
+      "M61"
+    ],
+    "title": "Estructura hamiltoniana e integración simpléctica",
+    "terms": [
+      "simpléctico",
+      "simplécticos",
+      "simpléctica",
+      "hamiltoniano",
+      "estructura hamiltoniana",
+      "Verlet"
+    ],
+    "definition": "Un sistema hamiltoniano en coordenadas canónicas satisface q′=∂H/∂p y p′=−∂H/∂q. Su flujo conserva la forma simpléctica, que en una dimensión se corresponde con área orientada en el plano de fases. Un integrador simpléctico reproduce esa estructura discreta; no tiene por qué conservar exactamente la energía original.",
+    "argument": "El método de Verlet para H=p²/2+V(q) se compone de un medio impulso, un desplazamiento y otro medio impulso. Cada subpaso es una cizalla canónica y conserva la forma simpléctica. Su composición también lo hace. Para el oscilador armónico, el método es estable con paso de módulo menor que dos y muestra error energético oscilante, en lugar de garantizar energía exacta.",
+    "example": "Con V=q²/2, el medio impulso resta hq/2 al momento; el desplazamiento suma hp al punto; el segundo medio impulso usa la nueva posición. Empezar en (1,0) permite comparar con el círculo de energía 1/2 y ver la desviación discreta.",
+    "caution": "Reducir el error local de posición no implica automáticamente conservar geometría a largo plazo. Un método simpléctico con paso demasiado grande puede ser inestable. La conservación exacta de un Hamiltoniano modificado requiere matices y no identifica ese Hamiltoniano con el original.",
+    "formula": "p_{k+1/2}=p_k-\\frac h2V'(q_k),\\quad q_{k+1}=q_k+hp_{k+1/2},\\quad p_{k+1}=p_{k+1/2}-\\frac h2V'(q_{k+1})",
+    "question": "¿Por qué conservar área no equivale a conservar la energía q²/2+p²/2?",
+    "answer": "Una cizalla de determinante uno conserva área pero puede transformar un círculo en una elipse. La energía de ese oscilador depende de la distancia al origen, que una cizalla no conserva.",
+    "n": [
+      "Número de pasos",
+      10,
+      200,
+      5,
+      50
+    ],
+    "t": [
+      "Paso h",
+      0.02,
+      0.5,
+      0.02,
+      0.1
+    ],
+    "lab": "Verlet en el plano de fases",
+    "code": "let q=1,p=0,max=0;points.push([q,p]);for(let k=0;k<n;k++){p-=t*q/2;q+=t*p;p-=t*q/2;max=Math.max(max,Math.abs((q*q+p*p)/2-.5));points.push([q,p]);}rows.push(['Energía final',(q*q+p*p)/2],['Máxima desviación observada',max],['Determinante de cada paso',1]);note='Se muestra la trayectoria discreta en el plano (q,p). El paso se mantiene dentro de la región de estabilidad de este oscilador.';",
+    "related": [
+      "ode-numerical-integration",
+      "harmonic-oscillator",
+      "variations-noether"
+    ]
+  },
+  {
+    "slug": "l-systems",
+    "area": "dynamical-systems",
+    "ids": [
+      "M62"
+    ],
+    "title": "Sistemas-L y gramáticas de reescritura",
+    "terms": [
+      "sistema-L",
+      "sistemas-L",
+      "L-system",
+      "L-systems",
+      "gramática de reescritura",
+      "reescritura paralela"
+    ],
+    "definition": "Un sistema-L especifica un alfabeto, una palabra inicial y reglas de sustitución. En cada generación se reescriben simultáneamente todos los símbolos de la palabra anterior. Una interpretación geométrica posterior convierte algunos símbolos en movimientos; la gramática y el dibujo son dos niveles distintos.",
+    "argument": "Si una regla sustituye cada F por una palabra con cuatro F, el número de segmentos se multiplica por cuatro en cada generación. Para la curva de Koch se usa F→F+F−−F+F y giros de 60°. Reducir la longitud de cada segmento por tres conserva la escala global y produce una construcción autosimilar con cuatro piezas.",
+    "example": "Con axioma F, la primera generación tiene cuatro avances y la segunda dieciséis. Los símbolos + y − cambian orientación, sin dibujar segmentos. Los sistemas de plantas suelen añadir corchetes que guardan y recuperan el estado de la tortuga para crear ramificaciones.",
+    "caution": "Una sustitución secuencial que vuelve a expandir símbolos recién creados dentro de la misma generación no implementa el sistema paralelo. Cambiar el ángulo puede dar otro dibujo, pero no conserva automáticamente las propiedades de la curva de Koch.",
+    "formula": "F\\mapsto F+F--F+F,\\qquad N_n=4^n,\\qquad \\ell_n=3^{-n}",
+    "question": "¿Cuál es la longitud total de la aproximación de Koch de generación n si el segmento inicial mide uno?",
+    "answer": "Hay 4ⁿ segmentos de longitud 3⁻ⁿ, así que la longitud es (4/3)ⁿ. Las generaciones finitas tienen longitud finita; la divergencia describe el límite.",
+    "n": [
+      "Generación",
+      0,
+      5,
+      1,
+      2
+    ],
+    "t": [
+      "Ángulo de giro",
+      30,
+      90,
+      5,
+      60
+    ],
+    "lab": "Reescribir y dibujar una palabra",
+    "code": "let word='F';for(let k=0;k<n;k++)word=word.replace(/F/g,'F+F--F+F');let x=0,y=0,a=0,count=0;const step=3**(-n);points.push([x,y]);for(const c of word){if(c==='F'){x+=step*Math.cos(a);y+=step*Math.sin(a);points.push([x,y]);count++;}else a+=(c==='+'?1:-1)*t*Math.PI/180;}rows.push(['Símbolos en la palabra',word.length],['Segmentos',count],['Longitud poligonal',count*step]);note='Solo el ángulo 60° corresponde a la construcción clásica de Koch. El tamaño de generación se limita para mantener la interacción fluida.';",
+    "related": [
+      "koch-curve",
+      "fractal-plant",
+      "gosper-curve"
+    ]
+  },
+  {
+    "slug": "iterated-function-systems",
+    "area": "dynamical-systems",
+    "ids": [
+      "M63"
+    ],
+    "title": "Sistemas de funciones iteradas y juego del caos",
+    "terms": [
+      "sistema de funciones iteradas",
+      "sistemas de funciones iteradas",
+      "IFS",
+      "juego del caos"
+    ],
+    "definition": "Un sistema de funciones iteradas reúne un número finito de contracciones de un espacio métrico completo. Actúa sobre conjuntos compactos no vacíos aplicando cada función y tomando su unión. Con la distancia de Hausdorff, esa operación es contractiva y tiene un único compacto fijo: el atractor.",
+    "argument": "Si todas las contracciones tienen razones como máximo r<1, la unión de imágenes acerca dos compactos por un factor no mayor que r. El teorema del punto fijo produce un atractor y convergencia de iteraciones de conjuntos. El juego del caos sigue en cambio un punto y elige funciones al azar; bajo condiciones apropiadas sobre la selección, su órbita muestrea el atractor.",
+    "example": "Las aplicaciones x↦x/3 y x↦x/3+2/3 tienen como atractor el conjunto de Cantor. Si se escoge cada una con probabilidad 1/2, se obtiene una medida natural sobre él. Cambiar probabilidades puede cambiar la medida sin cambiar el conjunto geométrico de soporte.",
+    "caution": "Una nube finita de puntos no es el atractor completo ni prueba su dimensión. Si una función no es contractiva, el teorema de existencia y unicidad citado deja de ser aplicable. Solapamientos entre piezas también afectan a las fórmulas de dimensión.",
+    "formula": "K=\\bigcup_{i=1}^m f_i(K),\\qquad f_0(x)=rx,\\quad f_1(x)=rx+1-r,\\quad0<r<1",
+    "question": "¿Qué ocurre para r=1/2 con las dos funciones del ejemplo?",
+    "answer": "Sus imágenes de [0,1] son [0,1/2] y [1/2,1]. La unión es todo el intervalo, que es el atractor; no quedan huecos como en Cantor con r=1/3.",
+    "n": [
+      "Puntos de la muestra",
+      30,
+      500,
+      10,
+      150
+    ],
+    "t": [
+      "Razón r",
+      0.2,
+      0.5,
+      0.01,
+      0.33
+    ],
+    "lab": "Una órbita reproducible de contracciones",
+    "code": "let state=7,x=.5;for(let k=0;k<n+30;k++){state=(Math.imul(1664525,state)+1013904223)>>>0;x=t*x+((state>>>16)%2?1-t:0);if(k>=30)points.push([x,0]);}rows.push(['Razón de contracción',t],['Puntos muestreados',n],['Hueco entre imágenes de [0,1]',Math.max(0,1-2*t)]);note='La semilla es fija y hace reproducible la muestra. Los puntos se dibujan en el eje real; las líneas que los unen solo indican el orden de muestreo.';",
+    "related": [
+      "banach-fixed-point",
+      "cantor-set",
+      "affine-transformations"
+    ]
+  },
+  {
+    "slug": "pseudorandom-generators",
+    "area": "dynamical-systems",
+    "ids": [
+      "M64"
+    ],
+    "title": "Pseudoaleatoriedad, semillas y períodos",
+    "terms": [
+      "pseudoaleatorio",
+      "pseudoaleatorios",
+      "pseudoaleatoriedad",
+      "generador congruencial",
+      "números aleatorios"
+    ],
+    "definition": "Un generador pseudoaleatorio es un algoritmo determinista que actualiza un estado y produce una salida. La semilla fija el estado inicial; la misma semilla reproduce la secuencia. Un espacio de estados finito obliga a que la evolución acabe entrando en un ciclo, aunque su período pueda ser muy grande.",
+    "argument": "Entre m+1 estados de un generador con m estados posibles debe repetirse alguno por el principio del palomar. Desde esa repetición, el determinismo repite toda la evolución posterior. En un generador congruencial xₖ₊₁=(axₖ+c) módulo m, los parámetros y la semilla controlan período y estructura; observar un histograma aproximadamente uniforme no prueba independencia.",
+    "example": "Con módulo 97 se puede seguir cada estado exactamente y detectar un ciclo mediante una tabla de primeras apariciones. El valor x/97 pertenece a una rejilla finita de [0,1), no a una distribución continua exacta. Es útil para experimentar con simulaciones reproducibles.",
+    "caution": "Superar unas pruebas estadísticas no demuestra impredecibilidad. Los generadores para simulación y los criptográficos tienen objetivos diferentes. Tampoco se debe atribuir una fluctuación de una muestra finita a un fallo del generador sin un criterio estadístico.",
+    "formula": "x_{k+1}=(ax_k+c)\\bmod m,\\qquad u_k=x_k/m",
+    "question": "¿Por qué dos programas con la misma semilla pueden producir resultados distintos?",
+    "answer": "La semilla solo reproduce la secuencia si se mantienen el algoritmo, sus parámetros, el orden de las llamadas y la interpretación del estado. La etiqueta «semilla» por sí sola no define el generador.",
+    "n": [
+      "Salidas observadas",
+      10,
+      120,
+      1,
+      50
+    ],
+    "t": [
+      "Semilla",
+      0,
+      96,
+      1,
+      7
+    ],
+    "lab": "Detectar repeticiones de estado",
+    "code": "let x=t;const seen=new Map<number,number>();let period=0;for(let k=0;k<n;k++){if(!seen.has(x))seen.set(x,k);else if(!period)period=k-seen.get(x)!;points.push([k,x/97]);x=(17*x+43)%97;}rows.push(['Estados distintos observados',seen.size],['Período detectado',period||'Aún no observado'],['Estado siguiente',x]);note='Se usa un generador pequeño para inspeccionar su estructura. No se presenta como un generador adecuado para simulaciones de producción ni para seguridad.';",
+    "related": [
+      "cellular-automata",
+      "finite-probability"
+    ]
+  },
+  {
+    "slug": "self-organized-criticality",
+    "area": "dynamical-systems",
+    "ids": [
+      "M65"
+    ],
+    "title": "Criticalidad autoorganizada y leyes de potencia",
+    "terms": [
+      "criticalidad autoorganizada",
+      "ley de potencia",
+      "leyes de potencia",
+      "avalanchas"
+    ],
+    "definition": "En modelos de criticalidad autoorganizada, un sistema conducido lentamente y con disipación puede acercarse a estados con eventos de muchos tamaños sin ajustar continuamente un parámetro externo. Una ley de potencia propone una probabilidad o frecuencia proporcional a s^(−α) en un rango, pero su validez es una afirmación estadística que debe comprobarse.",
+    "argument": "En una pila de arena se añaden granos y se relaja hasta que todos los sitios cumplen el umbral. Durante la relajación se conserva material en el interior y se pierde por el borde. Separar la adición lenta de la dinámica rápida permite definir una avalancha como el conjunto de topamientos provocados por una adición. Su tamaño y su área son observables diferentes.",
+    "example": "En una cadena con umbral dos, un sitio inestable envía un grano a cada vecino; en los extremos uno sale del sistema. Contar topamientos después de cada grano permite formar una serie de tamaños. Una cadena corta no tiene por qué reproducir los exponentes de una pila bidimensional.",
+    "caution": "Una recta visual en ejes logarítmicos no prueba una ley de potencia. Deben analizarse rango de ajuste, tamaño finito, alternativas y dependencia de los datos. El laboratorio solo ilustra avalanchas y disipación, no certifica criticalidad.",
+    "formula": "h_i\\ge2:\\quad h_i\\mapsto h_i-2,\\quad h_{i-1}\\mapsto h_{i-1}+1,\\quad h_{i+1}\\mapsto h_{i+1}+1",
+    "question": "¿Por qué hace falta disipación en el borde en esta pila conducida?",
+    "answer": "Sin pérdida de granos, añadir material aumenta indefinidamente la masa total de un sistema finito. La disipación permite compensar la entrada y estudiar un régimen de actividad sostenida.",
+    "n": [
+      "Sitios de la cadena",
+      5,
+      25,
+      1,
+      11
+    ],
+    "t": [
+      "Granos añadidos",
+      1,
+      80,
+      1,
+      30
+    ],
+    "lab": "Avalanchas en una cadena finita",
+    "code": "const h=Array(n).fill(0);let lost=0,total=0,last=0;for(let g=0;g<t;g++){h[Math.floor(n/2)]++;last=0;const q:number[]=[];for(let i=0;i<n;i++)if(h[i]>=2)q.push(i);while(q.length){const i=q.pop()!;if(h[i]<2)continue;h[i]-=2;last++;for(const j of[i-1,i+1])if(j<0||j>=n)lost++;else{h[j]++;if(h[j]>=2)q.push(j);}if(h[i]>=2)q.push(i);}total+=last;}for(let i=0;i<n;i++)points.push([i,h[i]]);rows.push(['Topamientos de la última avalancha',last],['Topamientos totales',total],['Granos perdidos',lost],['Masa final',h.reduce((a,b)=>a+b,0)]);note='El balance exacto es granos añadidos = masa final + granos perdidos. El perfil final muestra alturas estables, no tamaños de avalancha.';",
+    "related": [
+      "abelian-sandpile",
+      "pseudorandom-generators"
+    ]
+  }
+]

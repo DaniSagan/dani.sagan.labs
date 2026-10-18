@@ -1,14 +1,14 @@
 <h2>Teorema de Brianchon</h2>
-<p class="dropcap">Si los seis lados de un hexágono son tangentes a una misma cónica, las tres rectas que unen vértices opuestos pasan por un punto común. Este es el teorema de Brianchon, <a routerLink="/articles/polyhedral-duality" fragment="projective">dual</a> del <a routerLink="/articles/pascal-theorem">teorema de Pascal</a>. La dualidad intercambia puntos y rectas, pero no es solamente una analogía verbal: puede describirse mediante ecuaciones que transforman alineación en concurrencia.</p>
+<p class="dropcap">Si los seis lados de un <a data-article-concept="hexagon" routerLink="/articles/hexagon">hexágono</a> son tangentes a una misma cónica, las tres rectas que unen vértices opuestos pasan por un punto común. Este es el teorema de Brianchon, <a routerLink="/articles/polyhedral-duality" fragment="projective">dual</a> del <a routerLink="/articles/pascal-theorem">teorema de Pascal</a>. La dualidad intercambia puntos y rectas, pero no es solamente una analogía verbal: puede describirse mediante ecuaciones que transforman alineación en concurrencia.</p>
 <h3>1. Describir el hexágono circunscrito</h3>
 <p>Llamamos U1,…,U6 a los puntos de contacto de seis tangentes consecutivas l1,…,l6. El vértice Vi es la intersección de li y li+1, cerrando los índices después del seis. Lo que debemos demostrar es que V1V4, V2V5 y V3V6 concurren. Suponemos una configuración no degenerada, con vértices y rectas bien definidos.</p>
 <app-formula expression="V_i=l_i\cap l_{i+1},\qquad l_7=l_1" displayMode="block"/>
 <app-geometry-diagram diagram="brianchon-theorem" description="Los seis lados son tangentes a la circunferencia. Las rectas V1V4, V2V5 y V3V6 concurren en T, el punto de Brianchon."/>
 <h3>2. Introducir polos y polares</h3>
-<p>Para una circunferencia unidad, la tangente en un punto U de ella tiene ecuación U·X=1. Más generalmente, asociamos a un punto P la recta P·X=1, llamada su polar. La condición es simétrica: si Q pertenece a la polar de P, entonces P pertenece a la polar de Q.</p>
+<p>Para una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> unidad, la tangente en un punto U de ella tiene ecuación U·X=1. Más generalmente, asociamos a un punto P la recta P·X=1, llamada su polar. La condición es simétrica: si Q pertenece a la polar de P, entonces P pertenece a la polar de Q.</p>
 <app-formula expression="|U|=1:\quad l_U:\ U\cdot X=1" displayMode="block"/>
 <app-formula expression="P\cdot Q=1\quad\Longleftrightarrow\quad Q\cdot P=1" displayMode="block"/>
-<p>En coordenadas homogéneas, la cónica se escribe XᵀQX=0 con Q una matriz simétrica invertible, y la polar de P tiene ecuación PᵀQX=0. Esta forma incluye puntos y rectas del infinito y evita las excepciones de la descripción afín.</p>
+<p>En <a data-article-concept="projective-homogeneous-coordinates" routerLink="/articles/projective-homogeneous-coordinates">coordenadas homogéneas</a>, la cónica se escribe XᵀQX=0 con Q una matriz simétrica <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">invertible</a>, y la polar de P tiene ecuación PᵀQX=0. Esta forma incluye puntos y rectas del infinito y evita las excepciones de la descripción afín.</p>
 <h3>3. Aplicar Pascal a los contactos</h3>
 <p>Como Vi está en las tangentes de Ui y Ui+1, la simetría anterior implica que la polar de Vi es la cuerda UiUi+1. Pascal aplicado a los seis contactos asegura que están alineadas las intersecciones de tres parejas de esas cuerdas opuestas:</p>
 <app-formula expression="X_1=U_1U_2\cap U_4U_5,\quad X_2=U_2U_3\cap U_5U_6,\quad X_3=U_3U_4\cap U_6U_1" displayMode="block"/>
@@ -24,3 +24,6 @@
   <li><a routerLink="/tools/implicit-curve-graph">Graficador de curvas implícitas</a>. Dibuja x*x+y*y-1=0 para construir una cónica de referencia y compara su hexágono de tangentes con el diagrama del artículo.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/hexagon">Hexágono</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/projective-homogeneous-coordinates">Geometría proyectiva y coordenadas homogéneas</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li></ul></details></section>
+<!-- article-concepts:end -->

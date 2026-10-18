@@ -13,7 +13,7 @@
 </ol></details></nav>
 <p class="dropcap">Sobre una esfera, los triángulos están formados por arcos de círculos máximos y sus ángulos no obedecen exactamente a la geometría plana. Esta estructura permite convertir coordenadas celestes, calcular distancias terrestres y determinar alturas de astros. Los convenios de ángulos y signos son esenciales para que una fórmula produzca el punto correcto.</p>
 <h3 id="section-0">Puntos como vectores unitarios</h3>
-<p>Latitud y longitud determinan un vector de <a routerLink="/articles/vector-norm">norma</a> uno. El producto interno de dos de esos vectores da el coseno de su separación angular. Multiplicar ese ángulo en <a routerLink="/articles/radians">radianes</a> por el radio da la longitud del arco mínimo. La cuerda recta entre los puntos es una distancia diferente. En puntos casi coincidentes, evaluar un arcoseno o una forma de haversine puede ser más estable que arccos de un número cercano a uno.</p>
+<p><a data-article-concept="solar-geometry" routerLink="/articles/solar-geometry">Latitud</a> y longitud determinan un vector de <a routerLink="/articles/vector-norm">norma</a> uno. El producto interno de dos de esos vectores da el coseno de su separación angular. Multiplicar ese ángulo en <a routerLink="/articles/radians">radianes</a> por el radio da la <a data-article-concept="arc-length" routerLink="/articles/arc-length">longitud del arco</a> mínimo. La cuerda recta entre los puntos es una distancia diferente. En puntos casi coincidentes, evaluar un arcoseno o una forma de haversine puede ser más estable que arccos de un número cercano a uno.</p>
 <app-formula expression="\cos d=\sin\phi_1\sin\phi_2+\cos\phi_1\cos\phi_2\cos(\lambda_2-\lambda_1)" />
 <h3 id="section-1">Triángulos de círculos máximos</h3>
 <p>Los lados de un triángulo esférico se expresan como ángulos centrales, no como longitudes planas. La ley esférica de los cosenos se deduce descomponiendo vectores en el plano tangente y radial. La suma de ángulos supera ciento ochenta grados para un triángulo convexo y su exceso determina el área. Si todos los lados son pequeños frente al radio, la geometría plana aparece como aproximación.</p>
@@ -33,7 +33,7 @@
 <p>Cambia latitud y diferencia de longitud para calcular separación desde el origen ecuatorial. Comprueba los casos de coincidir, un cuarto de vuelta y puntos opuestos.</p>
 <app-deep-explorer topic="spherical-trigonometry" />
 <h3 id="section-6">Hipótesis y errores frecuentes</h3>
-<aside class="note"><p>Un ángulo de noventa grados debe convertirse a radianes antes de multiplicarlo por el radio. Mezclar ambas unidades introduce un factor enorme.</p></aside>
+<aside class="note"><p>Un ángulo de noventa grados debe convertirse a <a data-article-concept="radians" routerLink="/articles/radians">radianes</a> antes de multiplicarlo por el radio. Mezclar ambas unidades introduce un factor enorme.</p></aside>
 <h3 id="section-7">Comprueba tu comprensión</h3>
 <p>¿Qué altura alcanza en culminación superior un astro con declinación igual a la latitud del observador?</p>
 <details class="note"><summary>Ver solución razonada</summary><p>En el caso ideal culmina en el cenit, con altura noventa grados, pues su distancia cenital es la diferencia absoluta entre latitud y declinación.</p></details>
@@ -45,3 +45,6 @@
 <li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Relaciona coordenadas angulares con posiciones espaciales, distinguiendo la esfera de observación de la dinámica gravitatoria.</li>
 </ul></div>
 <p>Conecta estas ideas con <a routerLink="/articles/equation-of-time">Ecuación del tiempo y mediodía solar</a>, <a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/solar-geometry">Geometría solar: latitud, declinación y altura</a></li><li><a routerLink="/articles/arc-length">Longitud de arco y parametrización de curvas</a></li><li><a routerLink="/articles/radians">Radianes</a></li></ul></details></section>
+<!-- article-concepts:end -->

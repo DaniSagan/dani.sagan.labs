@@ -8,7 +8,7 @@
     en lugar de avanzar recto se dibuja una escalera de ocho segmentos; al repetir la sustitución, cada peldaño recibe
     su propia escalera. La cadena se evalúa como un programa de tortuga: posición, ángulo y longitud de paso son el
     estado mínimo necesario.</p>
-  <p>El factor de escala lineal de la construcción es cuatro, mientras que cada segmento produce ocho. Por ello su
+  <p>El <a data-article-concept="homothety" routerLink="/articles/homothety">factor de escala</a> lineal de la construcción es cuatro, mientras que cada segmento produce ocho. Por ello su
     dimensión es log(8)/log(4)=3/2. La longitud total aumenta sin límite si se mantiene fija la escala inicial, pero el
     contorno permanece dentro de una región acotada al reducir cada generación. Esta combinación es la firma de una
     frontera fractal.</p>
@@ -18,3 +18,6 @@
   </p><app-fractal-explorer [draw]="draw" title="Salchicha de Minkowski"
     formula="F → F+F−F−FF+F+F−F; +/− giran 90°" [maxIterations]="5"></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/homothety">Homotecia</a></li></ul></details></section>
+<!-- article-concepts:end -->

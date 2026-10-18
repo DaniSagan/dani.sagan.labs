@@ -1,14 +1,14 @@
 <h2>Teorema de Casey</h2>
-<p class="dropcap">El teorema de Casey extiende la relación de <a routerLink="/articles/ptolemy-theorem">Ptolomeo</a> sustituyendo puntos por circunferencias y distancias por longitudes de tangentes comunes. Existen versiones con contactos interiores y exteriores que requieren signos distintos. Demostraremos una versión concreta y completa: cuatro circunferencias pequeñas, disjuntas y tangentes interiormente a una misma circunferencia de radio R, ordenadas por sus puntos de contacto.</p>
+<p class="dropcap">El teorema de Casey extiende la relación de <a routerLink="/articles/ptolemy-theorem">Ptolomeo</a> sustituyendo puntos por circunferencias y distancias por longitudes de tangentes comunes. Existen versiones con contactos interiores y exteriores que requieren signos distintos. Demostraremos una versión concreta y completa: cuatro circunferencias pequeñas, disjuntas y tangentes interiormente a una misma <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> de radio R, ordenadas por sus puntos de contacto.</p>
 <h3>1. Definir la longitud que sustituye a una cuerda</h3>
-<p>Sean Oi y ri el centro y radio de la circunferencia i. Llamamos tij a la longitud entre los puntos de contacto de una tangente común exterior a las circunferencias i y j. Los radios perpendiculares a esa tangente forman, con la línea de centros, un triángulo rectángulo:</p>
+<p>Sean Oi y ri el centro y radio de la circunferencia i. Llamamos tij a la longitud entre los puntos de contacto de una tangente común exterior a las circunferencias i y j. Los radios <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendiculares</a> a esa tangente forman, con la línea de centros, un triángulo rectángulo:</p>
 <app-formula expression="t_{ij}^2=|O_iO_j|^2-(r_i-r_j)^2" displayMode="block"/>
 <p>Esta es una longitud entre contactos, no la distancia completa entre los centros. Al ser disjuntas las circunferencias pequeñas, las tangentes exteriores existen y la raíz no negativa queda bien definida.</p>
 <app-geometry-diagram diagram="casey-theorem" description="Cuatro circunferencias pequeñas tocan interiormente a la grande en U1, U2, U3 y U4. Los segmentos entre contactos forman el cuadrilátero al que aplicamos Ptolomeo."/>
 <h3>2. Relacionar centros y contactos exteriores</h3>
 <p>Colocamos el centro de la circunferencia grande en el origen. Sea Ui el punto donde la pequeña i la toca. Los vectores Oi y Ui tienen la misma dirección, y sus módulos son R−ri y R. Introducimos un factor positivo λi:</p>
 <app-formula expression="\lambda_i=1-\frac{r_i}{R},\qquad O_i=\lambda_i U_i,\qquad |U_i|=R" displayMode="block"/>
-<p>Al desarrollar el cuadrado de la diferencia entre centros aparece una identidad que podemos comprobar separando el <a routerLink="/articles/dot-product">producto escalar</a> Ui·Uj. El término que contiene la diferencia de radios se cancela justamente con el de la fórmula de la tangente:</p>
+<p>Al desarrollar el <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de la diferencia entre centros aparece una identidad que podemos comprobar separando el <a routerLink="/articles/dot-product">producto escalar</a> Ui·Uj. El término que contiene la diferencia de radios se cancela justamente con el de la fórmula de la tangente:</p>
 <app-formula expression="|O_iO_j|^2-(r_i-r_j)^2=\lambda_i\lambda_j|U_iU_j|^2" displayMode="block"/>
 <app-formula expression="t_{ij}=\sqrt{\lambda_i\lambda_j}\,|U_iU_j|" displayMode="block"/>
 <h3>3. Aplicar Ptolomeo a los cuatro contactos</h3>
@@ -20,3 +20,6 @@
 <p>Si los cuatro radios pequeños tienden a cero, cada circunferencia se reduce a su punto de contacto y λi tiende a uno. Recuperamos literalmente Ptolomeo. Para mezclas de contactos interiores y exteriores hay que elegir tangentes directas o transversales y controlar los signos; la fórmula anterior no puede aplicarse indiscriminadamente a cualquier dibujo de cinco circunferencias.</p>
 <h3>Historia y curiosidades</h3>
 <p>John Casey desarrolló esta generalización dentro de la geometría del círculo del siglo XIX. <a href="https://mathworld.wolfram.com/CaseysTheorem.html">MathWorld</a> describe sus variantes y conexiones con problemas japoneses <em>sangaku</em>. El resultado permite comprobar relaciones de tangencia sin calcular cada centro por separado. La prueba muestra además que una generalización aparentemente mucho más difícil puede reducirse a un teorema conocido mediante una elección adecuada de las magnitudes que se comparan.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

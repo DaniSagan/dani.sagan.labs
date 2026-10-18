@@ -16,7 +16,7 @@
 <h3 id="tails">Colas y masas puntuales</h3><p>La función de supervivencia S(x)=P(X&gt;x) es 1−F(x). Para P(X≥x), en cambio, hay que conservar la masa del propio punto. Si F(x−) denota el límite desde la izquierda:</p>
 <app-formula expression="P(X=x)=F(x)-F(x^-),\qquad P(X\ge x)=1-F(x^-),\qquad P(X>x)=1-F(x)" />
 <p>En variables con densidad, F es continua y ambas colas coinciden. En una variable discreta, sustituir &gt; por ≥ puede añadir una probabilidad importante. La fórmula de intervalos es universal, pero la relación F′=f solo describe distribuciones que tengan densidad, en los puntos donde proceda derivar.</p>
-<h3 id="quantiles">Cuantiles y normal estándar</h3><p>Un cuantil de nivel q, con 0&lt;q&lt;1, se define como el ínfimo de los x para los que F(x)≥q. En una acumulada con saltos puede no existir un punto con F(x)=q exactamente. Para la normal estándar se usa la letra Φ y, al tipificar Z=(X−μ)/σ con σ&gt;0, las probabilidades de intervalos se convierten en diferencias de valores de Φ.</p>
+<h3 id="quantiles">Cuantiles y normal estándar</h3><p>Un cuantil de nivel q, con 0&lt;q&lt;1, se define como el <a data-article-concept="supremum-real-completeness" routerLink="/articles/supremum-real-completeness">ínfimo</a> de los x para los que F(x)≥q. En una acumulada con saltos puede no existir un punto con F(x)=q exactamente. Para la <a data-article-concept="normal-distribution" routerLink="/articles/normal-distribution">normal estándar</a> se usa la letra Φ y, al tipificar Z=(X−μ)/σ con σ&gt;0, las probabilidades de intervalos se convierten en diferencias de valores de Φ.</p>
 <h3 id="exercise">Comprueba tu comprensión</h3><p>Para N geométrica con p=1/2, calcula P(N&gt;3), P(N≥3) y P(N=3).</p><details class="note"><summary>Ver solución razonada</summary><p>P(N&gt;3) exige tres fallos: 1/8. P(N≥3) exige solo dos fallos iniciales: 1/4. La diferencia es P(N=3)=(1/2)²(1/2)=1/8. Las dos colas difieren exactamente en la masa del punto tres.</p></details>
 
 <section class="article-activities" aria-labelledby="practice"><h3 id="practice">Problemas para aplicar lo aprendido</h3><p>Intenta primero la resolución por tu cuenta e identifica después las hipótesis y los pasos del método.</p><ul><li><a routerLink="/problems/waiting-for-first-success">077 · Tiempo hasta el primer éxito</a></li>
@@ -33,3 +33,6 @@
 <li><a routerLink="/problems/standardizing-a-normal-variable">179 · Estandarizar una medida normal</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/supremum-real-completeness">Supremo, ínfimo y completitud de los reales</a></li><li><a routerLink="/articles/normal-distribution">Distribución normal y tipificación</a></li></ul></details></section>
+<!-- article-concepts:end -->

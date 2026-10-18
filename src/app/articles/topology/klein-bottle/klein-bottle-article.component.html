@@ -15,7 +15,7 @@
 
 <h3>Construirla a partir de un cuadrado</h3>
 <p>Una descripción más precisa que el dibujo de una botella consiste en pegar los lados de un
-  cuadrado. Unimos arriba con abajo conservando la coordenada horizontal, y derecha con izquierda
+  <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>. Unimos arriba con abajo conservando la coordenada horizontal, y derecha con izquierda
   invirtiendo la coordenada vertical:</p>
 <app-formula expression="(u,0)\sim(u,1),\qquad(0,v)\sim(1,1-v),\qquad0\le u,v\le1"></app-formula>
 <p>Las flechas del diagrama indican qué puntos se identifican. Todos los lados quedan pegados:
@@ -26,7 +26,7 @@
 <h3>Por qué no es un toro</h3>
 <p>Si pegamos ambos pares de lados sin invertirlos, obtenemos un toro. Cambiar la orientación
   de uno de los pegados produce la botella de Klein. Ambas superficies son cerradas y tienen
-  característica de Euler cero, pero solo el toro es orientable.</p>
+  <a data-article-concept="surfaces-genus-euler" routerLink="/articles/surfaces-genus-euler">característica de Euler</a> cero, pero solo el toro es orientable.</p>
 <p>La inversión se ve en un pequeño vector transversal que acompaña a un viajero. Al cruzar
   la unión derecha–izquierda, su dirección vertical se invierte. En el recorrido central v = 1/2,
   una vuelta devuelve al viajero al mismo punto con esa dirección invertida: no existe una elección
@@ -37,7 +37,7 @@
 <h3>La relación con la cinta de Möbius</h3>
 <p>La <a routerLink="/articles/mobius-strip">cinta de Möbius</a> también es no orientable,
   pero tiene una componente de borde. La botella de Klein no tiene ninguna. Una forma de construirla
-  es unir dos cintas de Möbius a lo largo de sus respectivos bordes.</p>
+  es unir dos cintas de <a data-article-concept="mobius-transformations" routerLink="/articles/mobius-transformations">Möbius</a> a lo largo de sus respectivos bordes.</p>
 <p>En el cuadrado, corta por las líneas v = 1/4 y v = 3/4. La región central forma una cinta
   de Möbius: sus extremos verticales se pegan con inversión. Las regiones superior e inferior,
   unidas por el pegado horizontal, forman la segunda. Las dos líneas de corte se conectan a través
@@ -71,3 +71,6 @@
   para localizar el cruce. En el cuadrado, empieza en v = 0,25 y cruza dos veces la unión invertida.
   Después prueba v = 0,5: ¿qué cambia en el punto y qué cambia en la flecha? Compara con el toro.</p>
 <p>Referencia: <a href="https://mathworld.wolfram.com/KleinBottle.html">botella de Klein en MathWorld</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/surfaces-genus-euler">Superficies, orientabilidad, género y característica de Euler</a></li><li><a routerLink="/articles/mobius-transformations">Transformaciones de Möbius</a></li></ul></details></section>
+<!-- article-concepts:end -->

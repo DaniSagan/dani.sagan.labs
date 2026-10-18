@@ -12,9 +12,12 @@
     conectando la misma entrada y salida. El widget construye la cadena hasta el nivel elegido y después la recorre una
     sola vez. Ajusta automáticamente el tamaño del paso para que el dibujo siga dentro del lienzo: es una elección de
     visualización, no parte de la definición matemática.</p>
-  <p>Los L-systems como este fueron adoptados por Aristid Lindenmayer para describir crecimiento biológico y son una
+  <p>Los <a data-article-concept="l-systems" routerLink="/articles/l-systems">L-systems</a> como este fueron adoptados por Aristid Lindenmayer para describir crecimiento biológico y son una
     herramienta habitual en arte generativo. Prueba niveles bajos para leer los giros y altos para ver desaparecer las
     letras detrás de una costa continua.</p>
   <app-fractal-explorer [draw]="draw" title="Curva de Gosper"
     formula="L-system hexagonal: A y B se reescriben con giros de 60°" [maxIterations]="6"></app-fractal-explorer>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/l-systems">Sistemas-L y gramáticas de reescritura</a></li></ul></details></section>
+<!-- article-concepts:end -->

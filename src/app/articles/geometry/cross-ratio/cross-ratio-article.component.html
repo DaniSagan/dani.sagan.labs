@@ -1,5 +1,5 @@
 <h2>La razón cruzada</h2>
-<p class="dropcap">Una proyección puede cambiar longitudes, ángulos y cocientes ordinarios de segmentos. Sin embargo, cuatro puntos alineados conservan una combinación especial de distancias dirigidas: la razón cruzada, también llamada razón doble. Es uno de los invariantes básicos de la geometría proyectiva y permite comparar configuraciones aunque una cámara o una perspectiva las haya deformado notablemente.</p>
+<p class="dropcap">Una proyección puede cambiar longitudes, ángulos y cocientes ordinarios de segmentos. Sin embargo, cuatro puntos alineados conservan una combinación especial de distancias dirigidas: la razón cruzada, también llamada razón doble. Es uno de los invariantes básicos de la <a data-article-concept="projective-homogeneous-coordinates" routerLink="/articles/projective-homogeneous-coordinates">geometría proyectiva</a> y permite comparar configuraciones aunque una cámara o una perspectiva las haya deformado notablemente.</p>
 <h3>1. Definir la convención</h3>
 <p>Sean A, B, C y D cuatro puntos distintos sobre una recta, con coordenadas a, b, c y d. Fijamos explícitamente el orden porque diferentes permutaciones cambian el valor. Nuestra convención compara las razones en que C y D dividen la pareja A, B:</p>
 <app-formula expression="(A,B;C,D)=\frac{(c-a)/(c-b)}{(d-a)/(d-b)}=\frac{(c-a)(d-b)}{(c-b)(d-a)}" displayMode="block"/>
@@ -10,7 +10,7 @@
 <app-formula expression="\phi(t)=\frac{\alpha t+\beta}{\gamma t+\delta},\qquad \alpha\delta-\beta\gamma\neq0" displayMode="block"/>
 <p>Esta fórmula incluye proyecciones entre rectas cuando se eligen coordenadas adecuadas. Si el denominador se anula, la imagen es el punto del infinito; primero demostraremos el resultado cuando las cuatro imágenes sean finitas.</p>
 <h3>3. Restar dos imágenes</h3>
-<p>Ponemos las dos fracciones sobre un denominador común. Los términos cuadráticos del numerador desaparecen y queda el determinante multiplicado por la diferencia de las coordenadas originales:</p>
+<p>Ponemos las dos fracciones sobre un denominador común. Los términos cuadráticos del numerador desaparecen y queda el <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a> multiplicado por la diferencia de las coordenadas originales:</p>
 <app-formula expression="\phi(u)-\phi(v)=\frac{(\alpha\delta-\beta\gamma)(u-v)}{(\gamma u+\delta)(\gamma v+\delta)}" displayMode="block"/>
 <p>Sustituimos esta identidad en las cuatro diferencias que forman la razón cruzada. Hay dos factores del determinante arriba y dos abajo. Cada denominador asociado a un punto también aparece una vez en cada posición. Todos ellos se cancelan:</p>
 <app-formula expression="(\phi(A),\phi(B);\phi(C),\phi(D))=(A,B;C,D)" displayMode="block"/>
@@ -24,6 +24,9 @@
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/mobius-transformation">Problema 039 · Una transformación de Möbius</a>. Practica una transformación fraccionaria del plano complejo; después compara razones dobles antes y después en puntos donde estén definidas.</li>
+  <li><a routerLink="/problems/mobius-transformation">Problema 039 · Una transformación de Möbius</a>. Practica una <a data-article-concept="mobius-transformations" routerLink="/articles/mobius-transformations">transformación fraccionaria</a> del plano complejo; después compara razones dobles antes y después en puntos donde estén definidas.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/projective-homogeneous-coordinates">Geometría proyectiva y coordenadas homogéneas</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/mobius-transformations">Transformaciones de Möbius</a></li></ul></details></section>
+<!-- article-concepts:end -->

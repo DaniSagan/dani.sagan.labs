@@ -2,7 +2,7 @@
   <h2>Esponja de Menger</h2>
   <p class="dropcap">Karl Menger describió en 1926 una generalización tridimensional de la <a routerLink="/articles/sierpinski-carpet">alfombra de Sierpiński</a>. Se divide un cubo en 27 cubos iguales y se retiran el central y los seis situados en el centro de cada cara; quedan veinte. El procedimiento se repite indefinidamente en cada cubo conservado. El resultado, la esponja de Menger, parece una arquitectura imposible de túneles anidados y se convirtió en uno de los iconos de la topología y la geometría fractal.</p>
   <p>Después de <em>n</em> etapas hay 20<sup>n</sup> cubos de lado 3<sup>−n</sup>. Su volumen es (20/27)<sup>n</sup> y tiende a cero, mientras el área superficial crece sin límite. La dimensión fractal es log(20)/log(3), aproximadamente 2,727: mayor que la de una superficie y menor que la de un sólido. Es una combinación desconcertante de volumen nulo, conectividad y una cantidad ilimitada de frontera.</p>
-  <p>La esponja tiene relevancia más allá de su aspecto. Es una curva universal en cierto sentido topológico: todo espacio métrico compacto de dimensión topológica uno puede incrustarse en ella. Versiones físicas se han construido con impresión 3D, bloques y tarjetas, aunque cualquier modelo material se detiene tras pocas iteraciones. También inspira metamateriales y estructuras porosas, donde la jerarquía puede afectar rigidez, absorción o transporte.</p>
+  <p>La esponja tiene relevancia más allá de su aspecto. Es una curva universal en cierto sentido topológico: todo <a data-article-concept="metric-normed-spaces" routerLink="/articles/metric-normed-spaces">espacio métrico</a> compacto de dimensión topológica uno puede incrustarse en ella. Versiones físicas se han construido con impresión 3D, bloques y tarjetas, aunque cualquier modelo material se detiene tras pocas iteraciones. También inspira metamateriales y estructuras porosas, donde la jerarquía puede afectar rigidez, absorción o transporte.</p>
   <h3>Explora la construcción en el espacio</h3>
   <p>El visor construye los veinte cubos supervivientes de cada etapa y dibuja las caras expuestas en una proyección oblicua. Los colores coral, azul y oro distinguen sus orientaciones. Cambia el ángulo para reconocer los túneles en las tres direcciones y compara etapas consecutivas.</p>
   <p>Las tres etapas disponibles contienen 20, 400 y 8 000 cubos. Se omiten las caras compartidas entre vecinos para mantener ágil la interacción. La imagen representa el sólido de una etapa finita; la esponja límite requiere infinitas sustituciones.</p>
@@ -20,3 +20,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/metric-normed-spaces">Espacios métricos, normas y completitud</a></li></ul></details></section>
+<!-- article-concepts:end -->

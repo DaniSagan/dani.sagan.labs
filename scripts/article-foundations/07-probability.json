@@ -1,0 +1,300 @@
+[
+  {
+    "slug": "poisson-exponential-waiting",
+    "area": "probability",
+    "ids": [
+      "M76",
+      "M77",
+      "M78"
+    ],
+    "title": "Poisson, espera exponencial y binomial negativa",
+    "terms": [
+      "distribución de Poisson",
+      "distribución exponencial",
+      "espera exponencial",
+      "binomial negativa",
+      "proceso de Poisson"
+    ],
+    "definition": "La distribución de Poisson modela un conteo entero con parámetro μ positivo: su media y varianza son μ. La exponencial modela un tiempo continuo con tasa λ y media 1/λ. En un proceso de Poisson homogéneo, el conteo en tiempo t tiene parámetro λt y la primera espera es exponencial. Las hipótesis de incrementos independientes y tasa constante son parte del modelo.",
+    "argument": "La probabilidad de que la primera espera supere t coincide con no observar sucesos hasta t: exp(−λt). De ahí se obtiene la densidad λ exp(−λt) y la falta de memoria. En ensayos de Bernoulli independientes de probabilidad p, esperar r éxitos produce una binomial negativa: para terminar en el ensayo n, los r−1 éxitos previos se eligen entre los n−1 primeros.",
+    "example": "Con tasa dos por unidad de tiempo, la probabilidad de no observar eventos en una unidad es e⁻² y la espera media es 1/2. En moneda equilibrada, el número de ensayos hasta tres caras tiene media seis. Este segundo modelo es discreto y no es la espera exponencial del primero.",
+    "caution": "La binomial negativa tiene dos convenciones: contar ensayos N≥r o fallos F=N−r≥0. Sus medias son r/p y r(1−p)/p. Una tasa variable o llegadas dependientes invalidan el proceso homogéneo; una aproximación de Poisson a binomial exige un régimen apropiado de sucesos raros.",
+    "formula": "P(K=k)=e^{-\\mu}\\frac{\\mu^k}{k!},\\quad P(T>t)=e^{-\\lambda t},\\quad P(N=n)=\\binom{n-1}{r-1}p^r(1-p)^{n-r}",
+    "question": "Con tasa λ=3, calcula P(T>2) y la probabilidad de cero sucesos en dos unidades.",
+    "answer": "Ambas son e⁻⁶. La igualdad usa el vínculo entre primera espera y ausencia de eventos en el mismo proceso, no una coincidencia entre todas las distribuciones.",
+    "n": [
+      "Tasa λ",
+      0.5,
+      6,
+      0.5,
+      2
+    ],
+    "t": [
+      "Tiempo t",
+      0.1,
+      4,
+      0.1,
+      1
+    ],
+    "lab": "Un conteo y su primera espera",
+    "code": "const mu=n*t;let pk=Math.exp(-mu),mass=0;for(let k=0;k<=45;k++){if(k)pk*=mu/k;mass+=pk;points.push([k,pk]);}rows.push(['Media del conteo λt',mu],['P(cero eventos)=P(T>t)',Math.exp(-mu)],['Espera media',1/n],['Masa de Poisson representada',mass]);note='La gráfica muestra la masa de Poisson del conteo, no la densidad de la espera. Su cola puede quedar fuera del truncamiento a 45 eventos.';",
+    "related": [
+      "bernoulli-binomial",
+      "geometric-distribution",
+      "continuous-random-variables"
+    ]
+  },
+  {
+    "slug": "heterogeneous-binomial-mixtures",
+    "area": "probability",
+    "ids": [
+      "M79"
+    ],
+    "title": "Poisson-binomial y beta-binomial: heterogeneidad y mezcla",
+    "terms": [
+      "Poisson-binomial",
+      "poisson-binomial",
+      "beta-binomial"
+    ],
+    "definition": "La Poisson-binomial suma Bernoulli independientes con probabilidades pᵢ diferentes. La beta-binomial toma primero una probabilidad común P con distribución beta y, condicionando a P, realiza n Bernoulli independientes con esa misma probabilidad. Al quitar el condicionamiento, esos ensayos están positivamente correlacionados.",
+    "argument": "En la Poisson-binomial, la esperanza suma pᵢ y la varianza suma pᵢ(1−pᵢ) por independencia. En la beta-binomial, la ley de la varianza total añade variación entre valores posibles de P. Con media p y correlación ρ=1/(α+β+1), su varianza es np(1−p)[1+(n−1)ρ].",
+    "example": "Dos ensayos con probabilidades fijas 0,2 y 0,8 son independientes y su suma tiene media uno y varianza 0,32. Si ambos comparten una probabilidad aleatoria, observar un éxito informa sobre P y cambia la probabilidad del otro ensayo. Esa mezcla puede producir sobredispersión respecto de una binomial de la misma media.",
+    "caution": "No toda heterogeneidad produce dependencia: las probabilidades fijas diferentes del primer modelo no la introducen. «Poisson-binomial» tampoco significa distribución de Poisson. Una media coincidente no identifica la distribución.",
+    "formula": "\\operatorname{Var}\\!\\left(\\sum_iX_i\\right)=\\sum_i p_i(1-p_i),\\qquad\\operatorname{Var}(K_{\\beta\\text{-bin}})=np(1-p)[1+(n-1)\\rho]",
+    "question": "¿Cuándo se recupera la binomial a partir de estos dos modelos?",
+    "answer": "En Poisson-binomial, cuando todos los pᵢ son iguales. En la mezcla, cuando P se vuelve constante; en la familia beta puede aproximarse haciendo crecer α+β con su razón fija.",
+    "n": [
+      "Ensayos n",
+      2,
+      20,
+      1,
+      8
+    ],
+    "t": [
+      "Probabilidad media objetivo p",
+      0.1,
+      0.9,
+      0.05,
+      0.5
+    ],
+    "lab": "Comparar dos mecanismos de variabilidad",
+    "code": "const ps=Array.from({length:n},(_,i)=>t+(i%2?1:-1)*.5*t*(1-t));let pmf=[1];for(const p of ps){const next=Array(pmf.length+1).fill(0);for(let k=0;k<pmf.length;k++){next[k]+=pmf[k]*(1-p);next[k+1]+=pmf[k]*p;}pmf=next;}for(let k=0;k<pmf.length;k++)points.push([k,pmf[k]]);rows.push(['Media Poisson-binomial',ps.reduce((a,b)=>a+b,0)],['Varianza Poisson-binomial',ps.reduce((s,p)=>s+p*(1-p),0)],['Varianza binomial de referencia',n*t*(1-t)],['Varianza beta-binomial, α+β=4',n*t*(1-t)*(1+(n-1)/5)]);note='La curva representa solo Poisson-binomial. La tabla compara además una beta-binomial de media np; con n impar, la media del primer modelo puede diferir ligeramente de np.';",
+    "related": [
+      "bernoulli-binomial",
+      "conditional-independence",
+      "covariance"
+    ]
+  },
+  {
+    "slug": "cauchy-heavy-tails",
+    "area": "probability",
+    "ids": [
+      "M80"
+    ],
+    "title": "Distribución de Cauchy, colas pesadas y esperanza inexistente",
+    "terms": [
+      "distribución de Cauchy",
+      "colas pesadas",
+      "valor principal de Cauchy"
+    ],
+    "definition": "La densidad de Cauchy de centro cero y escala γ positiva es γ/[π(x²+γ²)]. Es simétrica y tiene mediana cero, pero no tiene esperanza finita ni varianza. La simetría por sí sola no permite asignarle una media cero: sus partes positiva y negativa producen integrales divergentes.",
+    "argument": "Integrar x f(x) en el semieje positivo da un logaritmo que crece sin cota. Por ello las contribuciones positiva y negativa no pueden restarse como números finitos. El valor principal simétrico es cero, pero es una noción distinta de la integral que define la esperanza. Las medias de variables Cauchy independientes idénticas conservan la distribución Cauchy.",
+    "example": "En [−R,R], la integral de x f(x) es cero por simetría para cualquier R. A la vez, la integral de |x|f(x) es (γ/π)log(1+R²/γ²) y diverge al aumentar R. Esta comparación exhibe exactamente la cancelación no permitida en una esperanza ordinaria.",
+    "caution": "La ley fuerte usual para variables independientes idénticas exige integrabilidad de |X|; no se puede aplicarla a Cauchy. Una media muestral aparentemente estable durante un tiempo no garantiza convergencia posterior.",
+    "formula": "f(x)=\\frac{\\gamma}{\\pi(x^2+\\gamma^2)},\\qquad\\int_{-R}^{R}|x|f(x)\\,dx=\\frac{\\gamma}{\\pi}\\log(1+R^2/\\gamma^2)\\to\\infty",
+    "question": "¿Puede tener mediana una distribución sin esperanza?",
+    "answer": "Sí. En la Cauchy centrada, cada semieje tiene probabilidad 1/2, por lo que cero es mediana. La definición de mediana no exige integrar x por la densidad.",
+    "n": [
+      "Corte simétrico R",
+      1,
+      100,
+      1,
+      10
+    ],
+    "t": [
+      "Escala γ",
+      0.5,
+      3,
+      0.25,
+      1
+    ],
+    "lab": "Lo que oculta una cancelación simétrica",
+    "code": "rows.push(['Integral simétrica de x f(x)',0],['Integral truncada de |x| f(x)',t/Math.PI*Math.log1p(n*n/(t*t))],['Probabilidad dentro del corte',2/Math.PI*Math.atan(n/t)]);for(let k=0;k<=120;k++){const x=-10+20*k/120;points.push([x,t/(Math.PI*(x*x+t*t))]);}note='La integral truncada crece aunque la integral con signo siga siendo cero. Ese cero no es la esperanza de Cauchy.';",
+    "related": [
+      "large-numbers-law",
+      "agnesi-witch",
+      "student-chi-square",
+      "integration-classical"
+    ]
+  },
+  {
+    "slug": "maximum-likelihood",
+    "area": "probability",
+    "ids": [
+      "M81"
+    ],
+    "title": "Verosimilitud y estimación de máxima verosimilitud",
+    "terms": [
+      "verosimilitud",
+      "máxima verosimilitud",
+      "estimador máximo verosímil"
+    ],
+    "definition": "La verosimilitud considera los datos como fijos y el parámetro como variable. En un modelo Bernoulli independiente con k éxitos entre n ensayos, es proporcional a pᵏ(1−p)^(n−k). No es una distribución de probabilidad sobre p sin una construcción adicional; multiplicarla por una previa y normalizar corresponde a inferencia bayesiana.",
+    "argument": "Para 0<k<n, la derivada de la log-verosimilitud es k/p−(n−k)/(1−p). Igualarla a cero da p̂=k/n. La segunda derivada es negativa en (0,1), así que es el máximo único. Si k es cero o n, el máximo se encuentra en la frontera, que no se descubre buscando solo puntos críticos interiores.",
+    "example": "Con tres éxitos en diez ensayos, p̂=0,3. Añadir el factor combinatorio C(10,3) al observar solo el conteo multiplica la verosimilitud por una constante independiente de p y no cambia el estimador. Sí cambia la probabilidad de los datos considerada como un evento.",
+    "caution": "Maximizar verosimilitud no garantiza insesgadez ni un buen comportamiento con muestras pequeñas en cualquier modelo. Comparar modelos o construir intervalos requiere más información que el punto de máximo.",
+    "formula": "L(p)\\propto p^k(1-p)^{n-k},\\quad\\ell'(p)=\\frac kp-\\frac{n-k}{1-p},\\quad\\widehat p=\\frac kn",
+    "question": "¿Cuál es el máximo si no se observa ningún éxito?",
+    "answer": "p̂=0 si el espacio de parámetros incluye la frontera. Si se impone 0<p<1, no hay máximo alcanzado: el supremo se aproxima cuando p tiende a cero.",
+    "n": [
+      "Ensayos n",
+      1,
+      30,
+      1,
+      10
+    ],
+    "t": [
+      "Fracción observada de éxitos",
+      0,
+      1,
+      0.05,
+      0.3
+    ],
+    "lab": "El máximo puede estar en la frontera",
+    "code": "const k=Math.round(n*t),hat=k/n,max=hat**k*(1-hat)**(n-k);for(let j=0;j<=120;j++){const p=j/120;points.push([p,p**k*(1-p)**(n-k)/max]);}rows.push(['Éxitos enteros k',k],['Estimador k/n',hat],['Localización',k===0||k===n?'Frontera':'Interior']);note='La verosimilitud se divide por su máximo para visualizarla. Ese escalado no la convierte en una densidad del parámetro.';",
+    "related": [
+      "bernoulli-binomial",
+      "bayes-theorem",
+      "statistical-inference"
+    ]
+  },
+  {
+    "slug": "generating-concentration",
+    "area": "probability",
+    "ids": [
+      "M82",
+      "M83"
+    ],
+    "title": "Funciones generadoras, características y cotas de concentración",
+    "terms": [
+      "función generadora de momentos",
+      "funciones generadoras de momentos",
+      "función característica",
+      "funciones características",
+      "Cantelli",
+      "Hoeffding",
+      "Chernoff"
+    ],
+    "definition": "La función generadora de momentos es M_X(s)=E[e^(sX)] donde esa esperanza es finita. La función característica usa e^(itX) y existe para toda distribución porque su módulo es uno. Para variables independientes, las funciones de la suma se multiplican. La existencia de una generadora cerca de cero permite obtener momentos por derivación bajo hipótesis apropiadas.",
+    "argument": "Aplicar Markov a e^(sX), con s positivo, da P(X≥a)≤e^(−sa)M_X(s). Minimizar sobre s produce una cota de Chernoff. Para variables independientes acotadas, el lema de Hoeffding controla la generadora centrada y da cotas exponenciales. Cantelli solo necesita varianza finita y mejora Chebyshev para una cola unilateral.",
+    "example": "Para la media de n Bernoulli(1/2), Hoeffding da P(X̄−1/2≥ε)≤exp(−2nε²). La optimización exacta de Chernoff usa la divergencia binaria D(1/2+ε‖1/2). Cantelli da (1/(4n))/(1/(4n)+ε²), una cota distinta con hipótesis más débiles.",
+    "caution": "Una cota superior no es una probabilidad exacta. No se usa Hoeffding sin independencia y acotación o una versión adaptada. Una función característica puede existir aunque no existan momentos, como ocurre con Cauchy.",
+    "formula": "P(X\\ge a)\\le\\inf_{s>0}e^{-sa}M_X(s),\\qquad P(\\overline X-p\\ge\\varepsilon)\\le e^{-2n\\varepsilon^2}",
+    "question": "¿Por qué se exige s positivo al acotar la cola derecha?",
+    "answer": "Porque la exponencial e^(sx) debe ser creciente para que X≥a implique e^(sX)≥e^(sa). Con s negativo se controla la cola izquierda invirtiendo el sentido correspondiente.",
+    "n": [
+      "Ensayos independientes",
+      5,
+      200,
+      5,
+      50
+    ],
+    "t": [
+      "Desviación ε",
+      0.02,
+      0.48,
+      0.02,
+      0.2
+    ],
+    "lab": "Tres cotas para la misma cola Bernoulli",
+    "code": "const q=.5+t,D=q*Math.log(2*q)+(1-q)*Math.log(2*(1-q)),v=.25/n;rows.push(['Cantelli',v/(v+t*t)],['Hoeffding unilateral',Math.exp(-2*n*t*t)],['Chernoff optimizado',Math.exp(-n*D)]);for(let k=0;k<=120;k++){const e=.48*k/120;points.push([e,Math.exp(-2*n*e*e)]);}note='Las tres expresiones son cotas superiores para una desviación al menos ε de la media de Bernoulli(1/2). No se supone que alcancen la probabilidad exacta.';",
+    "related": [
+      "probability-inequalities",
+      "bernoulli-binomial",
+      "cauchy-heavy-tails"
+    ]
+  },
+  {
+    "slug": "berry-esseen",
+    "area": "probability",
+    "ids": [
+      "M84"
+    ],
+    "title": "Berry–Esseen y el error de la aproximación normal",
+    "terms": [
+      "Berry–Esseen",
+      "Berry-Esseen"
+    ],
+    "definition": "El teorema central del límite describe una convergencia, pero no proporciona por sí solo una velocidad. Berry–Esseen da una cota uniforme entre la función de distribución de una suma estandarizada y la normal. Para variables independientes idénticas exige varianza positiva y tercer momento absoluto centrado finito.",
+    "argument": "Si μ=E[X], σ²=Var(X)>0 y ρ=E|X−μ|³<∞, la distancia de Kolmogórov está acotada por Cρ/(σ³√n), con una constante universal. El término ρ/σ³ mide una forma de dispersión estandarizada que puede crecer para distribuciones muy asimétricas. Aquí se utiliza C=1 como cota conservadora válida, sin afirmar que sea óptima.",
+    "example": "Para Bernoulli(p), ρ=p(1−p)[(1−p)²+p²] y σ³=[p(1−p)]^(3/2). En p=1/2 su cociente vale uno; cerca de cero o uno aumenta. El mismo tamaño muestral puede dar garantías muy diferentes según la distribución.",
+    "caution": "La cota puede superar uno y ser poco informativa; se puede recortar a uno porque dos funciones de distribución no difieren más. No mide un error relativo de colas extremas ni elimina la discreción de una binomial.",
+    "formula": "\\sup_x|F_n(x)-\\Phi(x)|\\le\\frac{C\\,E|X-\\mu|^3}{\\sigma^3\\sqrt n}",
+    "question": "¿Qué tamaño n garantiza con C=1 un error absoluto uniforme de como máximo 0,1 para Bernoulli(1/2)?",
+    "answer": "La cota es 1/√n. Exigir 1/√n≤0,1 da n≥100. Es una garantía conservadora, no el menor tamaño que podría funcionar en la práctica.",
+    "n": [
+      "Tamaño n",
+      5,
+      400,
+      5,
+      100
+    ],
+    "t": [
+      "Probabilidad p",
+      0.1,
+      0.9,
+      0.05,
+      0.5
+    ],
+    "lab": "Cómo la distribución afecta a una garantía",
+    "code": "const ratio=((1-t)**2+t*t)/Math.sqrt(t*(1-t));rows.push(['Tercer momento estandarizado',ratio],['Cota con C=1',Math.min(1,ratio/Math.sqrt(n))],['n suficiente para cota ≤0,1',Math.ceil(100*ratio*ratio)]);for(let k=1;k<=n;k++)points.push([k,Math.min(1,ratio/Math.sqrt(k))]);note='La curva muestra una cota teórica, no el error real medido de una aproximación normal. Se supone muestreo independiente e idéntico.';",
+    "related": [
+      "central-limit-theorem",
+      "normal-distribution",
+      "bernoulli-binomial"
+    ]
+  },
+  {
+    "slug": "ergodicity-autocorrelation",
+    "area": "probability",
+    "ids": [
+      "M85"
+    ],
+    "title": "Ergodicidad, autocorrelación y promedios temporales",
+    "terms": [
+      "ergodicidad",
+      "ergódico",
+      "ergódica",
+      "autocorrelación",
+      "tamaño muestral efectivo"
+    ],
+    "definition": "Una media temporal promedia observaciones a lo largo de una trayectoria; una media de conjunto usa una distribución. La ergodicidad, en un sistema estacionario con las hipótesis pertinentes, permite identificar el límite temporal de observables integrables con su esperanza. La estacionariedad por sí sola no garantiza esa identificación.",
+    "argument": "Para una serie estacionaria con varianza γ₀ y autocovarianza γₖ, desarrollar la varianza de la suma da Var(X̄)=n⁻²[nγ₀+2Σ(n−k)γₖ]. Las correlaciones positivas aumentan la dispersión del promedio. Si las correlaciones son sumables, el factor de inflación asintótico es 1+2Σρₖ, que motiva un tamaño muestral efectivo.",
+    "example": "En una cadena simétrica de dos estados que cambia con probabilidad α, con 0<α<1, la distribución estacionaria es uniforme. Su correlación a distancia k es (1−2α)ᵏ. Cuando α es pequeño, hay largas rachas y muchos datos consecutivos aportan menos precisión que el mismo número de observaciones independientes.",
+    "caution": "El tamaño efectivo depende del observable, de la aproximación y de cómo se estimen las correlaciones. No es un recuento de observaciones realmente eliminadas. La cadena que nunca cambia de estado es estacionaria con una mezcla inicial uniforme, pero no es ergódica.",
+    "formula": "\\operatorname{Var}(\\overline X)=\\frac{\\gamma_0}{n}\\left[1+2\\sum_{k=1}^{n-1}(1-k/n)\\rho_k\\right]",
+    "question": "¿Qué ocurre en la cadena simétrica cuando α=1/2?",
+    "answer": "Cada estado siguiente es una moneda uniforme independiente del actual. Las autocorrelaciones de retardo positivo son cero y Var(X̄)=1/(4n).",
+    "n": [
+      "Observaciones n",
+      10,
+      300,
+      10,
+      100
+    ],
+    "t": [
+      "Probabilidad de cambiar α",
+      0.05,
+      0.5,
+      0.05,
+      0.1
+    ],
+    "lab": "Precisión de un promedio correlacionado",
+    "code": "const rho=1-2*t;let factor=1;for(let k=1;k<n;k++)factor+=2*(1-k/n)*rho**k;rows.push(['Correlación a un paso',rho],['Varianza exacta estacionaria de la media',.25*factor/n],['Tamaño efectivo por igualdad de varianzas',n/factor]);for(let k=0;k<=30;k++)points.push([k,rho**k]);note='Se emplea la distribución estacionaria y una fórmula exacta para esta cadena finita. La curva es autocorrelación, no una trayectoria aleatoria.';",
+    "related": [
+      "markov-chains",
+      "large-numbers-law",
+      "sampling-distributions"
+    ]
+  }
+]

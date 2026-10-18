@@ -29,7 +29,7 @@
 
 <h3>Por qué aparece el factor 1/(n + 1)</h3>
 <p>Sin imponer la condición de altura, hay tantas rutas con n subidas y n bajadas como formas de elegir las posiciones
-  de las subidas: el coeficiente binomial central. Para contar las rutas inválidas, refleja sus pasos hasta la primera llegada a altura −1.</p>
+  de las subidas: el <a data-article-concept="binomial-theorem" routerLink="/articles/binomial-theorem">coeficiente binomial</a> central. Para contar las rutas inválidas, refleja sus pasos hasta la primera llegada a altura −1.</p>
 <p>La reflexión cambia una bajada por una subida en el balance total: produce una ruta con n + 1 subidas y n − 1 bajadas.
   Se puede deshacer reflejando hasta la primera llegada a altura +1. Por eso las rutas inválidas se cuentan con otro coeficiente binomial:</p>
 <app-formula expression="C_n=\binom{2n}{n}-\binom{2n}{n-1}=\frac{1}{n+1}\binom{2n}{n}\qquad(n\ge1)"></app-formula>
@@ -39,7 +39,7 @@
 <h3>Triángulos dentro de un polígono</h3>
 <p>Un polígono convexo de n + 2 vértices tiene Cₙ triangulaciones por diagonales que no se cruzan, para n ≥ 1.
   Contamos las distintas elecciones de diagonales sobre vértices fijos, sin identificar configuraciones por rotación.
-  Un cuadrilátero tiene dos triangulaciones y un pentágono tiene cinco.</p>
+  Un cuadrilátero tiene dos triangulaciones y un <a data-article-concept="pentagon" routerLink="/articles/pentagon">pentágono</a> tiene cinco.</p>
 <p>Fijando un lado, cada triangulación tiene un único triángulo apoyado en él. Elegir su tercer vértice deja dos regiones
   independientes: reaparece la misma suma de productos que en (A)B.</p>
 <p><strong>Para explorar.</strong> Recorre las cinco configuraciones de tres pares. En cada una, localiza el primer
@@ -64,3 +64,6 @@
 <li><a routerLink="/problems/balanced-parentheses">197 · Paréntesis que nunca quedan sin abrir</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/binomial-theorem">Teorema binomial</a></li><li><a routerLink="/articles/pentagon">Pentágono</a></li></ul></details></section>
+<!-- article-concepts:end -->

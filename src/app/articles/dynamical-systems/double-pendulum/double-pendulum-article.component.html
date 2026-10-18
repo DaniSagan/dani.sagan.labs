@@ -24,7 +24,7 @@
 
 <h3>2. La energía muestra cómo están acoplados</h3>
 <p>La segunda masa se mueve porque gira su propia varilla y porque se desplaza la primera articulación.
-  Al elevar su velocidad al cuadrado aparece un término mixto. Esa es la razón de que no podamos
+  Al elevar su velocidad al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> aparece un término mixto. Esa es la razón de que no podamos
   sumar dos péndulos simples independientes.</p>
 <app-formula expression="K=\frac12(m_1+m_2)\ell_1^2\omega_1^2+\frac12m_2\ell_2^2\omega_2^2+m_2\ell_1\ell_2\omega_1\omega_2\cos(\theta_1-\theta_2)"></app-formula>
 <p>Elegimos U = 0 cuando ambas masas están en su posición más baja. Cambiar ese origen solo añade
@@ -35,7 +35,7 @@
   para detectar errores numéricos: una deriva apreciable requiere reducir el paso de integración.</p>
 
 <h3>3. Las ecuaciones: una matriz que cambia con la geometría</h3>
-<p>Aplicamos las ecuaciones de Euler–Lagrange al lagrangiano L = K − U. Si llamamos δ a la diferencia
+<p>Aplicamos las ecuaciones de <a data-article-concept="variations-noether" routerLink="/articles/variations-noether">Euler–Lagrange</a> al lagrangiano L = K − U. Si llamamos δ a la diferencia
   θ₁ − θ₂, podemos escribir el resultado como un sistema lineal para las dos aceleraciones instantáneas:</p>
 <app-formula expression="\begin{pmatrix} A & B\\ B & C \end{pmatrix}\begin{pmatrix}\ddot\theta_1\\\ddot\theta_2\end{pmatrix}=\begin{pmatrix}r_1\\r_2\end{pmatrix}"></app-formula>
 <app-formula expression="A=(m_1+m_2)\ell_1^2,\qquad B=m_2\ell_1\ell_2\cos\delta,\qquad C=m_2\ell_2^2"></app-formula>
@@ -56,7 +56,7 @@
   ambas longitudes ℓ, el sistema linealizado queda:</p>
 <app-formula expression="\begin{pmatrix}2&1\\1&1\end{pmatrix}\begin{pmatrix}\ddot\theta_1\\\ddot\theta_2\end{pmatrix}+\frac{g}{\ell}\begin{pmatrix}2&0\\0&1\end{pmatrix}\begin{pmatrix}\theta_1\\\theta_2\end{pmatrix}=\begin{pmatrix}0\\0\end{pmatrix}"></app-formula>
 <p>Buscamos movimientos en los que los dos ángulos oscilen con una frecuencia común y una proporción
-  fija. El determinante de ese problema de autovalores da dos frecuencias:</p>
+  fija. El <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a> de ese problema de <a data-article-concept="matrix-diagonalization" routerLink="/articles/matrix-diagonalization">autovalores</a> da dos frecuencias:</p>
 <app-formula expression="\omega_-^2=\frac g\ell(2-\sqrt2),\qquad \omega_+^2=\frac g\ell(2+\sqrt2)"></app-formula>
 <p>En el modo lento, θ₂ = √2 θ₁: los brazos oscilan en fase. En el rápido, θ₂ = −√2 θ₁:
   lo hacen en oposición. Una combinación de ambos también es solución del modelo lineal.
@@ -68,7 +68,7 @@
   diferencias inicialmente diminutas pueden crecer con rapidez y acabar en movimientos muy distintos.
   En un intervalo apropiado se suele describir ese crecimiento mediante una aproximación exponencial:</p>
 <app-formula expression="d(t)\approx d(0)e^{\lambda t}"></app-formula>
-<p>Una pendiente ascendente durante unos segundos no basta para estimar un exponente de Lyapunov.
+<p>Una pendiente ascendente durante unos segundos no basta para estimar un <a data-article-concept="lyapunov-stability-chaos" routerLink="/articles/lyapunov-stability-chaos">exponente de Lyapunov</a>.
   La separación puede oscilar, saturarse o crecer por inestabilidad local. Para medir un exponente
   hacen falta tiempos suficientes y un procedimiento que controle y renormalice las perturbaciones.</p>
 <p>El primer laboratorio usa una distancia adimensional en el estado: mide diferencias angulares
@@ -76,7 +76,7 @@
   altera ligeramente la energía inicial; estas dos trayectorias no se fuerzan a compartir exactamente E.</p>
 <p>La línea violeta de «Sensibilidad y error» parte, en cambio, del <em>mismo</em> estado y compara pasos
   h y h/2. Si esa diferencia alcanza la escala de la perturbación física, la imagen ya no permite
-  atribuir toda la separación a la condición inicial. Una energía bien conservada es necesaria para
+  atribuir toda la separación a la <a data-article-concept="first-order-odes" routerLink="/articles/first-order-odes">condición inicial</a>. Una energía bien conservada es necesaria para
   confiar en la simulación, pero no garantiza una trayectoria exacta durante tiempos largos.</p>
 
 <h3>6. Una sección de Poincaré convierte movimiento en puntos</h3>
@@ -118,3 +118,6 @@
   <li><a routerLink="/games/gravity">Simulador de gravedad</a>. Explora otro sistema mecánico de ecuaciones acopladas: compara la estabilidad de una órbita con configuraciones de varios cuerpos. El simulador gravitatorio no reproduce un péndulo doble.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/variations-noether">Cálculo de variaciones, Euler–Lagrange y Noether</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/matrix-diagonalization">Diagonalización de matrices y valores propios</a></li><li><a routerLink="/articles/lyapunov-stability-chaos">Estabilidad, funciones y exponentes de Lyapunov</a></li><li><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden y enfriamiento</a></li><li><a routerLink="/articles/return-maps-bifurcations">Mapas de retorno, bifurcaciones y universalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

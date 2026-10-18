@@ -1,8 +1,8 @@
 <span class="article-kicker">Álgebra / resolver con garantías</span>
 <h2>Transformar una ecuación sin perder sus soluciones</h2>
-<p class="dropcap">Elevar al cuadrado puede añadir soluciones. Dividir por una expresión puede borrarlas. Resolver bien exige saber qué operaciones se pueden deshacer y en qué dominio. Una lista de candidatos solo se convierte en solución cuando respeta las condiciones originales.</p>
+<p class="dropcap">Elevar al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> puede añadir soluciones. Dividir por una expresión puede borrarlas. Resolver bien exige saber qué operaciones se pueden deshacer y en qué dominio. Una lista de candidatos solo se convierte en solución cuando respeta las condiciones originales.</p>
 <h3 id="domain">Dominio y conjunto solución</h3>
-<p>El <strong>dominio</strong> reúne los valores para los que las expresiones originales están definidas. En los reales, un denominador no puede ser cero, una raíz cuadrada requiere radicando no negativo y un logaritmo exige argumento positivo. La solución es el subconjunto del dominio que hace verdadera la igualdad.</p>
+<p>El <strong>dominio</strong> reúne los valores para los que las expresiones originales están definidas. En los reales, un denominador no puede ser cero, una raíz cuadrada requiere radicando no negativo y un <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a> exige argumento positivo. La solución es el subconjunto del dominio que hace verdadera la igualdad.</p>
 <p>Dos ecuaciones son <strong>equivalentes en un dominio</strong> si tienen exactamente las mismas soluciones allí. Una implicación solo asegura que las soluciones de la primera son candidatas para la segunda. Repasa la <a routerLink="/articles/proof-strategies">lógica de implicaciones y equivalencias</a>.</p>
 <h3 id="operations">Qué operaciones son reversibles</h3>
 <div class="table-scroll"><table><caption>Condiciones para conservar la equivalencia</caption><thead><tr><th>Operación en ambos miembros</th><th>Condición</th></tr></thead><tbody>
@@ -23,7 +23,7 @@
 <h4 id="equivalence-lab">Laboratorio / candidatos frente a soluciones</h4>
 <p>Explora √(x + k) = x. La cuadrática obtenida al elevar al cuadrado es x² − x − k = 0. Prueba k = 2, 0, −0,25 y −1.</p>
 <div class="controls"><label>k = {{ k }}<input type="range" min="-4" max="4" step="0.25" [(ngModel)]="k" /></label></div>
-<div class="readouts" aria-live="polite"><span>Dominio original<b>x ≥ {{ -k }}</b></span><span>Condición adicional de signo<b>x ≥ 0</b></span><span>Discriminante del cuadrado<b>{{ 1 + 4 * k }}</b></span></div>
+<div class="readouts" aria-live="polite"><span>Dominio original<b>x ≥ {{ -k }}</b></span><span>Condición adicional de signo<b>x ≥ 0</b></span><span><a data-article-concept="quadratic-equations" routerLink="/articles/quadratic-equations" fragment="discriminant">Discriminante</a> del cuadrado<b>{{ 1 + 4 * k }}</b></span></div>
 <div class="table-scroll"><table><caption>Candidatos y comprobación en la raíz</caption><thead><tr><th>Candidato</th><th>¿Resuelve la original?</th></tr></thead><tbody>@for (x of candidates; track $index) {<tr><td>{{ x | number:'1.0-6' }}</td><td>{{ valid(x) ? 'Sí: cumple dominio, signo e igualdad' : 'No: solución extraña al cuadrar' }}</td></tr>} @empty {<tr><td colspan="2">No hay candidatos reales; tampoco soluciones de la original.</td></tr>}</tbody></table></div>
 <app-learning-plot description="Las soluciones originales son las intersecciones de la raíz y la recta, con x no negativo." [series]="series" [xmin]="-4" [xmax]="6" [ymin]="-4" [ymax]="6" />
 <button type="button" (click)="reset()">Restablecer</button>
@@ -64,3 +64,6 @@
 <li><a routerLink="/problems/small-population-variance">182 · Varianza de una población pequeña</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/quadratic-equations" fragment="discriminant">Ecuaciones cuadráticas: discriminante y Viète</a></li></ul></details></section>
+<!-- article-concepts:end -->

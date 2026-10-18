@@ -2,7 +2,7 @@
 <h2>Principio de reflexión y caminos restringidos</h2>
 <nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol><li><a [routerLink]="[]" fragment="section-0">Total y caminos malos</a></li><li><a [routerLink]="[]" fragment="section-1">Reflejar un prefijo</a></li><li><a [routerLink]="[]" fragment="section-2">Por qué la correspondencia es reversible</a></li><li><a [routerLink]="[]" fragment="section-3">Catalan y otras fronteras</a></li><li><a [routerLink]="[]" fragment="section-4">Traducir caminos a paréntesis</a></li><li><a [routerLink]="[]" fragment="section-5">Un ejemplo completo</a></li><li><a [routerLink]="[]" fragment="section-6">Hipótesis, límites y errores frecuentes</a></li><li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li><li><a [routerLink]="[]" fragment="section-8">Problemas y recursos para continuar</a></li></ol></details></nav>
 
-<p class="dropcap">Una restricción global puede ser difícil de contar directamente. El principio de reflexión transforma los caminos que incumplen una frontera en otra familia sin esa restricción. Al establecer una biyección, convierte una resta aparentemente intuitiva en una demostración exacta y explica la aparición de los números de Catalan.</p>
+<p class="dropcap">Una restricción global puede ser difícil de contar directamente. El principio de reflexión transforma los caminos que incumplen una frontera en otra familia sin esa restricción. Al establecer una biyección, convierte una resta aparentemente intuitiva en una demostración exacta y explica la aparición de los <a data-article-concept="catalan-numbers" routerLink="/articles/catalan-numbers">números de Catalan</a>.</p>
 <h3 id="section-0">Total y caminos malos</h3>
 <p>Consideramos caminos de <app-formula displayMode="inline" [showCodeButton]="false" expression="(0, 0)" /> a (n,n) con pasos derecha y arriba. Hay C(2 n,n) en total. Llamamos malos a los que entran en <app-formula displayMode="inline" [showCodeButton]="false" expression="y&gt;x" />. Cada uno tiene un primer instante en que llega a <app-formula displayMode="inline" [showCodeButton]="false" expression="y=x+1" />. Hasta ese instante hay un paso arriba más que a la derecha.</p>
 <app-formula expression="C_n=\binom{2n}{n}-\binom{2n}{n-1}=\frac1{n+1}\binom{2n}{n}" />
@@ -42,3 +42,6 @@
 <li><a routerLink="/problems/balanced-parentheses">197 · Paréntesis que nunca quedan sin abrir</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/catalan-numbers">Números de Catalan</a></li></ul></details></section>
+<!-- article-concepts:end -->

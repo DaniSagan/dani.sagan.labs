@@ -4,9 +4,9 @@
     estudiar transporte, agregación y sistemas desordenados. El fractal que lleva su nombre parte de una cruz formada
     por cinco cuadrados: uno central y cuatro en las esquinas. Su aspecto austero hace visible una idea importante: una
     figura puede crecer en complejidad sin perder una regla de construcción que quepa en una sola frase.</p>
-  <p>Para calcularlo se divide un cuadrado en una cuadrícula de 3 por 3. Se conservan las cuatro esquinas y la celda
+  <p>Para calcularlo se divide un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> en una cuadrícula de 3 por 3. Se conservan las cuatro esquinas y la celda
     central; las otras cuatro se eliminan. Después se repite la división en cada cuadrado conservado. En el nivel
-    <em>n</em> aparecen 5<sup>n</sup> cuadrados con lado 3<sup>−n</sup> del original. La dimensión de semejanza es
+    <em>n</em> aparecen 5<sup>n</sup> cuadrados con lado 3<sup>−n</sup> del original. La dimensión de <a data-article-concept="triangle-similarity" routerLink="/articles/triangle-similarity">semejanza</a> es
     log(5)/log(3), aproximadamente 1,465, intermedia entre la de una curva y la de una superficie.</p>
   <p>En código la recursión necesita solamente la esquina, el tamaño y la profundidad restante. Si la profundidad llega
     a cero, pinta el cuadrado. De otro modo calcula un tercio del lado y llama a la misma rutina con cinco
@@ -25,3 +25,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/triangle-similarity">Semejanza de triángulos y proporcionalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

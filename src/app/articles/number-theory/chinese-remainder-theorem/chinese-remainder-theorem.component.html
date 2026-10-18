@@ -18,7 +18,7 @@
 
 <h3 id="sistemas">1. Resolver significa encontrar una intersección</h3>
 <p>Recordemos lo imprescindible: x ≡ a (mod m) significa m ∣ (x − a), o equivalentemente x = a + mt
-  para algún entero t. La congruencia describe una <strong>progresión aritmética bilateral</strong>,
+  para algún entero t. La <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">congruencia</a> describe una <strong>progresión aritmética bilateral</strong>,
   con valores positivos y negativos. Un sistema exige que el mismo x pertenezca a todas las progresiones:</p>
 <app-formula expression="\begin{cases}x\equiv a_1\pmod{m_1}\\x\equiv a_2\pmod{m_2}\\\vdots\\x\equiv a_k\pmod{m_k}\end{cases}\qquad
   S=\bigcap_{i=1}^k(a_i+m_i\mathbb Z)."></app-formula>
@@ -27,7 +27,7 @@
 <div class="convention">
   <p>Usaremos módulos enteros mᵢ &gt; 0 y residuos enteros arbitrarios. Podemos sustituir cada residuo por su representante
     canónico entre 0 y mᵢ − 1 sin cambiar la condición. Un módulo 0 queda excluido; un módulo negativo puede reemplazarse
-    por su valor absoluto. Módulo 1 todos los enteros son congruentes: esa fila no impone restricción.</p>
+    por su <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a>. Módulo 1 todos los enteros son congruentes: esa fila no impone restricción.</p>
 </div>
 <p>Con x ≡ 2 (mod 3) y x ≡ 3 (mod 5), aparecen las listas</p>
 <app-formula expression="\begin{aligned}2+3\mathbb Z&=\{\ldots,-7,-4,-1,2,5,8,11,\ldots\},\\
@@ -63,7 +63,7 @@
 <div class="proof">
   <p><strong>Paso 1: anular las otras filas.</strong> Ponemos Mᵢ = M/mᵢ. Todo módulo mⱼ con j ≠ i divide Mᵢ.
     Por tanto Mᵢ ≡ 0 (mod mⱼ). Además gcd(Mᵢ,mᵢ) = 1: si un primo dividiera ambos,
-    dividiría mᵢ y alguno de los demás factores, contradiciendo la coprimalidad por pares.</p>
+    dividiría mᵢ y alguno de los demás factores, contradiciendo la <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a> por pares.</p>
   <p><strong>Paso 2: ajustar la fila i.</strong> Por <a routerLink="/articles/bezout-identity">Bézout</a>,
     existen yᵢ,zᵢ tales que Mᵢyᵢ + mᵢzᵢ = 1. Así yᵢ es un inverso de Mᵢ módulo mᵢ y eᵢ = Mᵢyᵢ cumple</p>
   <app-formula expression="e_i\equiv\begin{cases}1\pmod{m_i},\\0\pmod{m_j}\quad(j\ne i).\end{cases}"></app-formula>
@@ -82,7 +82,7 @@
   <p>Sean x e y dos soluciones. Para todo i, ambas tienen residuo aᵢ módulo mᵢ, luego mᵢ ∣ (x − y).
     Debemos justificar que <em>el producto</em> también divide esa diferencia.</p>
   <p>Si u y v son coprimos y ambos dividen un entero d, escribimos d = ut.
-    De v ∣ ut y gcd(u,v) = 1 se obtiene v ∣ t por Bézout o por cancelación coprima. Así uv ∣ d.
+    De v ∣ ut y gcd(u,v) = 1 se obtiene v ∣ t por <a data-article-concept="bezout-identity" routerLink="/articles/bezout-identity">Bézout</a> o por cancelación coprima. Así uv ∣ d.
     Aplicamos este argumento sucesivamente: por coprimalidad por pares, cada nuevo mᵢ es coprimo con el producto anterior.</p>
   <app-formula expression="m_i\mid(x-y)\ \forall i\quad\Longrightarrow\quad M\mid(x-y)
     \quad\Longrightarrow\quad x\equiv y\pmod M."></app-formula>
@@ -168,7 +168,7 @@
 <div class="proof">
   <p><strong>Necesidad.</strong> Toda solución global resuelve cada subsistema de dos filas, al que se aplica el teorema anterior.</p>
   <p><strong>Suficiencia.</strong> Factorizamos los módulos en potencias de primos.
-    Para cada primo p que aparece, elegimos una fila i(p) cuyo módulo contenga la mayor potencia pᴱ presente
+    Para cada primo p que aparece, elegimos una fila i(p) cuyo módulo contenga la <a data-article-concept="asymptotic-limits" routerLink="/articles/asymptotic-limits">mayor potencia</a> pᴱ presente
     en el sistema. Imponemos x ≡ aᵢ₍ₚ₎ (mod pᴱ). Estas nuevas condiciones tienen módulos coprimos entre sí,
     así que el TCR clásico ya demostrado proporciona una solución x.</p>
   <p>Veamos que cumple cualquier fila j. Si pᵉ divide mⱼ y es su potencia máxima de p,
@@ -234,7 +234,7 @@ devolver x ≡ r (mod L)</pre>
   Para recuperar un entero sin ambigüedad necesitamos una cota, por ejemplo 0 ≤ N &lt; M;
   para un resultado con signo basta conocer un intervalo de longitud M que lo contenga.
   Esta idea permite repartir cálculos con enteros grandes entre módulos pequeños.</p>
-<p>En ciertas operaciones privadas de RSA se calculan potencias módulo los factores primos y después se recombinan
+<p>En ciertas operaciones privadas de <a data-article-concept="rsa-discrete-logarithm" routerLink="/articles/rsa-discrete-logarithm">RSA</a> se calculan potencias módulo los factores primos y después se recombinan
   mediante TCR, como describe la <a href="https://www.rfc-editor.org/rfc/rfc8017.html#section-5.1.2" target="_blank" rel="noopener noreferrer">especificación RFC 8017, sección 5.1.2</a>.
   El TCR es una herramienta aritmética dentro del algoritmo; por sí solo no proporciona cifrado ni seguridad.</p>
 
@@ -313,3 +313,6 @@ devolver x ≡ r (mod L)</pre>
 <li><a routerLink="/problems/chinese-remainder-conditions">106 · Un número con dos condiciones</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/bezout-identity">Identidad de Bézout</a></li><li><a routerLink="/articles/asymptotic-limits">Límites, equivalencias y jerarquías de crecimiento</a></li><li><a routerLink="/articles/rsa-discrete-logarithm">RSA y logaritmo discreto: dos problemas inversos</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -1,3 +1,9 @@
+import { ComputabilityFormalLanguagesArticleComponent } from './computability-formal-languages/computability-formal-languages-article.component';
+import { OrdinalsGrowthArticleComponent } from './ordinals-growth/ordinals-growth-article.component';
+import { RouteOptimizationComplexityArticleComponent } from './route-optimization-complexity/route-optimization-complexity-article.component';
+import { PolyaCycleIndexArticleComponent } from './polya-cycle-index/polya-cycle-index-article.component';
+import { TreesGraphColoringArticleComponent } from './trees-graph-coloring/trees-graph-coloring-article.component';
+import { PigeonholePrincipleArticleComponent } from './pigeonhole-principle/pigeonhole-principle-article.component';
 import { GraphFoundationsArticleComponent } from './graph-foundations/graph-foundations-article.component';
 import { GoogologyArticleComponent } from './googology/googology-article.component';
 import { EulerHamiltonArticleComponent } from './euler-hamilton/euler-hamilton-article.component';
@@ -18,6 +24,12 @@ import { FourColorTheoremArticleComponent } from './four-color-theorem/four-colo
 import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
 export const COMBINATORICS_ARTICLES = [
+  ComputabilityFormalLanguagesArticleComponent,
+  OrdinalsGrowthArticleComponent,
+  RouteOptimizationComplexityArticleComponent,
+  PolyaCycleIndexArticleComponent,
+  TreesGraphColoringArticleComponent,
+  PigeonholePrincipleArticleComponent,
   GraphFoundationsArticleComponent,
   GoogologyArticleComponent,
   EulerHamiltonArticleComponent,

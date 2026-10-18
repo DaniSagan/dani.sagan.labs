@@ -28,5 +28,5 @@
   <dl aria-live="polite">
     @for (row of result.rows; track $index) { <div><dt>{{ row[0] }}</dt><dd>{{ row[1] }}</dd></div> }
   </dl>
-  <p class="model-note">{{ result.explanation }}</p>
+  <p class="model-note"><app-linked-text [text]="result.explanation" [links]="conceptLinks" /></p>
 </section>

@@ -1,3 +1,11 @@
+import { SymplecticIntegrationArticleComponent } from './symplectic-integration/symplectic-integration-article.component';
+import { PicardLipschitzArticleComponent } from './picard-lipschitz/picard-lipschitz-article.component';
+import { VariationsNoetherArticleComponent } from './variations-noether/variations-noether-article.component';
+import { FourierTransformArticleComponent } from './fourier-transform/fourier-transform-article.component';
+import { VectorCalculusArticleComponent } from './vector-calculus/vector-calculus-article.component';
+import { MultipleIntegralsArticleComponent } from './multiple-integrals/multiple-integrals-article.component';
+import { JacobianChangeVariablesArticleComponent } from './jacobian-change-variables/jacobian-change-variables-article.component';
+import { TotalDerivativeGradientArticleComponent } from './total-derivative-gradient/total-derivative-gradient-article.component';
 import { PartialDerivativesMinimizationArticleComponent } from './partial-derivatives-minimization/partial-derivatives-minimization-article.component';
 import { LinearOdeSystemsArticleComponent } from './linear-ode-systems/linear-ode-systems-article.component';
 import { DerivativeFoundationsArticleComponent } from './derivative-foundations/derivative-foundations-article.component';
@@ -17,6 +25,14 @@ import { BrachistochroneArticleComponent } from './brachistochrone/brachistochro
 import { NewtonRaphsonArticleComponent } from './newton-raphson/newton-raphson-article.component';
 
 export const CALCULUS_ARTICLES = [
+  SymplecticIntegrationArticleComponent,
+  PicardLipschitzArticleComponent,
+  VariationsNoetherArticleComponent,
+  FourierTransformArticleComponent,
+  VectorCalculusArticleComponent,
+  MultipleIntegralsArticleComponent,
+  JacobianChangeVariablesArticleComponent,
+  TotalDerivativeGradientArticleComponent,
   PartialDerivativesMinimizationArticleComponent,
   LinearOdeSystemsArticleComponent,
   DerivativeFoundationsArticleComponent,

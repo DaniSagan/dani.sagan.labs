@@ -11,7 +11,7 @@
 <li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
 <li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
 </ol></details></nav>
-<p class="dropcap">Una comprobación puede abarcar miles de ejemplos y seguir sin demostrar una afirmación universal. La inducción convierte la estructura de los números naturales en una herramienta de prueba: un caso inicial y un paso válido para cualquier índice establecen una cadena completa. Además de sumas, sirve para recurrencias, potencias de matrices, algoritmos y aproximaciones de fractales.</p>
+<p class="dropcap">Una comprobación puede abarcar miles de ejemplos y seguir sin demostrar una afirmación universal. La inducción convierte la estructura de los números naturales en una herramienta de prueba: un caso inicial y un paso válido para cualquier índice establecen una cadena completa. Además de sumas, sirve para <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencias</a>, potencias de matrices, algoritmos y aproximaciones de fractales.</p>
 <h3 id="section-0">Qué se debe demostrar exactamente</h3>
 <p>Escribe la proposición con su índice, su dominio y cualquier condición auxiliar. El caso base fija el comienzo de la cadena. El paso inductivo asume la proposición para un índice arbitrario y deduce la del siguiente; esa hipótesis no autoriza a asumir el resultado que se está intentando probar. El principio se justifica por el buen orden: si hubiera contraejemplos, el menor no podría ser el caso inicial ni tener un antecesor válido.</p>
 <app-formula expression="P(n_0),\qquad \forall n\ge n_0:\ P(n)\Longrightarrow P(n+1)" />
@@ -27,7 +27,7 @@
 <p>Para demostrar una desigualdad conviene examinar si la hipótesis aporta un margen suficiente en el siguiente paso. La desigualdad de Bernoulli para incrementos reales mayores o iguales que menos uno se prueba multiplicando por una cantidad no negativa. En el paso aparece un término cuadrático no negativo que puede descartarse en el sentido correcto. Si ese multiplicador fuese negativo, la desigualdad se invertiría y la prueba dejaría de funcionar. Este ejemplo muestra por qué las condiciones del dominio deben escribirse junto a la proposición. También ilustra una diferencia entre igualdad y desigualdad inductiva: a menudo no es necesario conservar todos los términos, pero sí justificar cada estimación.</p>
 <app-formula expression="(1+x)^{n+1}\ge(1+nx)(1+x)=1+(n+1)x+nx^2\ge1+(n+1)x" />
 <h3 id="section-4">Un ejemplo resuelto</h3>
-<p>En la etapa inicial del conjunto de Cantor hay un intervalo de longitud uno. Cada paso sustituye cada intervalo por dos, ambos de longitud un tercio de la anterior. La hipótesis para una etapa transmite simultáneamente el número y la longitud de las piezas a la siguiente.</p>
+<p>En la etapa inicial del <a data-article-concept="cantor-set" routerLink="/articles/cantor-set">conjunto de Cantor</a> hay un intervalo de longitud uno. Cada paso sustituye cada intervalo por dos, ambos de longitud un tercio de la anterior. La hipótesis para una etapa transmite simultáneamente el número y la longitud de las piezas a la siguiente.</p>
 <app-formula expression="N_n=2^n,\qquad \ell_n=3^{-n},\qquad L_n=N_n\ell_n=(2/3)^n" />
 <h3 id="section-5">Laboratorio y comprobación</h3>
 <p>Compara sumas directas de primeras, segundas y terceras potencias con sus expresiones cerradas. Utiliza los resultados para detectar errores, y después escribe un paso inductivo que no dependa del máximo del deslizador.</p>
@@ -57,3 +57,6 @@
 <li><a routerLink="/problems/affine-recurrence">43 · Recurrencia afín</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/cantor-set">Conjunto de Cantor</a></li></ul></details></section>
+<!-- article-concepts:end -->

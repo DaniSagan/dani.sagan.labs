@@ -22,7 +22,7 @@
 <p>Un día de calendario local puede durar veintitrés o veinticinco horas durante una transición. Añadir un día de calendario no es siempre añadir veinticuatro horas de duración. Los horarios semanales suelen seguir la pared del reloj, mientras una cuenta atrás sigue tiempo transcurrido. Las reglas IANA incluidas en un entorno deben mantenerse actualizadas: una decisión legal futura puede cambiar la conversión de una cita aún no celebrada.</p>
 <app-formula expression="\Delta t=t_{\mathrm{fin,UTC}}-t_{\mathrm{inicio,UTC}}" />
 <h3 id="section-deeper">Desambiguación y contratos de almacenamiento</h3>
-<p>Para un evento pasado, almacenar el instante y la zona permite recuperar su representación local con reglas conocidas. Para un evento futuro recurrente, almacenar solo UTC puede traicionar la intención de mantener siempre las nueve locales si la zona cambia su desfase. Un contrato robusto conserva fecha local, zona y regla de recurrencia, y vuelve a calcular instantes conforme al calendario vigente. En una hora repetida se debe conservar también la elección de aparición; en un hueco debe declararse una política de rechazo o desplazamiento. La precisión de la base de zonas del entorno forma parte de esa conversión. No debe sustituirse por una suma manual fija de horas.</p>
+<p>Para un evento pasado, almacenar el instante y la zona permite recuperar su representación local con reglas conocidas. Para un evento futuro recurrente, almacenar solo UTC puede traicionar la intención de mantener siempre las nueve locales si la zona cambia su desfase. Un contrato robusto conserva fecha local, zona y regla de <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a>, y vuelve a calcular instantes conforme al calendario vigente. En una hora repetida se debe conservar también la elección de aparición; en un hueco debe declararse una política de rechazo o desplazamiento. La precisión de la base de zonas del entorno forma parte de esa conversión. No debe sustituirse por una suma manual fija de horas.</p>
 <app-formula expression="\text{hora local}+\text{zona}+\text{política de desambiguación}\longrightarrow\text{instante}" />
 <h3 id="section-4">Un ejemplo resuelto</h3>
 <p>En la transición de otoño de Madrid usada por el laboratorio, 00:30 UTC y 01:30 UTC se muestran ambas como 02:30 local. La primera lleva desfase más dos y la segunda más uno. Son instantes separados por una hora, pese a compartir fecha y hora local. En primavera, el tramo local de las dos a las tres se omite.</p>
@@ -42,3 +42,6 @@
 <li><a routerLink="/games/game-of-life">Juego de la vida</a>. Distingue contar pasos de evolución de medir una duración real o representar una hora de calendario.</li>
 </ul></div>
 <p>Conecta estas ideas con <a routerLink="/articles/equation-of-time">Ecuación del tiempo y mediodía solar</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li></ul></details></section>
+<!-- article-concepts:end -->

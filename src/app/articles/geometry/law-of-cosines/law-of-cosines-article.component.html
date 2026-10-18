@@ -1,11 +1,11 @@
 <h2>Ley de los cosenos</h2>
-<p class="dropcap">El teorema de Pitágoras relaciona los lados de un triángulo rectángulo. La ley de los cosenos amplía esa relación a cualquier triángulo, añadiendo un término que registra el ángulo entre dos lados. Es útil cuando conocemos dos lados y el ángulo comprendido, o cuando queremos recuperar un ángulo a partir de las tres longitudes. Su deducción combina una proyección y Pitágoras.</p>
+<p class="dropcap">El <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">teorema de Pitágoras</a> relaciona los lados de un triángulo rectángulo. La ley de los cosenos amplía esa relación a cualquier triángulo, añadiendo un término que registra el ángulo entre dos lados. Es útil cuando conocemos dos lados y el ángulo comprendido, o cuando queremos recuperar un ángulo a partir de las tres longitudes. Su deducción combina una proyección y Pitágoras.</p>
 <h3>1. Elegir coordenadas adaptadas</h3>
 <p>Sea ABC un triángulo con a=BC, b=CA y c=AB. Colocamos A en el origen y B=(c,0), de modo que AB sea horizontal. Si el ángulo en A es α, las coordenadas de C son sus proyecciones horizontal y vertical. La figura puede elegirse en el semiplano superior sin perder generalidad:</p>
 <app-formula expression="A=(0,0),\qquad B=(c,0),\qquad C=(b\cos\alpha,b\sin\alpha)" displayMode="block"/>
 <app-geometry-diagram diagram="law-of-cosines" description="La altura desde C separa el desplazamiento BC en una componente horizontal c menos b cos α y otra vertical b sin α."/>
 <h3>2. Aplicar Pitágoras a la distancia restante</h3>
-<p>El lado a es la distancia entre B y C. Sus diferencias de coordenadas son b cos α−c en horizontal y b sin α en vertical. Elevamos al cuadrado y sumamos ambas contribuciones, como exige la fórmula de distancia del plano:</p>
+<p>El lado a es la distancia entre B y C. Sus diferencias de coordenadas son b cos α−c en horizontal y b sin α en vertical. Elevamos al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> y sumamos ambas contribuciones, como exige la fórmula de distancia del plano:</p>
 <app-formula expression="a^2=(b\cos\alpha-c)^2+(b\sin\alpha)^2" displayMode="block"/>
 <p>Desarrollamos el primer cuadrado. Los términos con b² se agrupan mediante la identidad cos²α+sin²α=1. Queda exactamente la generalización buscada:</p>
 <app-formula expression="a^2=b^2\cos^2\alpha-2bc\cos\alpha+c^2+b^2\sin^2\alpha" displayMode="block"/>
@@ -40,3 +40,6 @@
 <li><a routerLink="/problems/side-length-by-cosine-rule">134 · Un lado por el coseno incluido</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

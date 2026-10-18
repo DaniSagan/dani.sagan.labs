@@ -1,3 +1,4 @@
+import { LinkedTextComponent } from '../../../shared/content/linked-text.component';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import {
   selector: 'app-integration-article',
   standalone: true,
   imports: [
+    LinkedTextComponent,
     RouterModule,
     FormsModule,
     FormulaComponent,

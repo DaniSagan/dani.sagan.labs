@@ -6,14 +6,14 @@
 <p>La ecuación define el conjunto de puntos reales que anulan la expresión. Las coordenadas u y v corresponden a la curva de escala unidad; p dilata ambas coordenadas sin modificar su forma. El gráfico muestra una ventana finita del conjunto.</p>
 
 <h3>Propiedades geométricas</h3>
-<p>La curva queda en el semiplano u≥0 y es simétrica respecto del eje horizontal. En coordenadas polares se expresa como r=4cosθ sin²θ.</p>
+<p>La curva queda en el semiplano u≥0 y es simétrica respecto del eje horizontal. En <a data-article-concept="multiple-integrals" routerLink="/articles/multiple-integrals">coordenadas polares</a> se expresa como r=4cosθ sin²θ.</p>
 
 <h3>Análisis y construcción</h3>
 <p>La ecuación polar se obtiene sustituyendo u=r cosθ y v=r sinθ y cancelando r³ fuera del origen. Los ceros radiales explican por qué las dos hojas se encuentran en un mismo punto.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
-  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los puntos singulares.</p>
+  <p>Cambia la escala y compara las intersecciones con los ejes. La forma se conserva, mientras que las distancias se multiplican por p. Puedes ampliar el gráfico desde sus controles para inspeccionar los <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">puntos singulares</a>.</p>
   <div class="curve-parameters"><div class="curve-parameter">
     <label for="bifolium-curve-parameter">Escala (p)</label>
     <input id="bifolium-curve-parameter" type="number" [ngModel]="parameter" (ngModelChange)="onParameterChanged($event)" [min]="parameterDefinition.min" [max]="parameterDefinition.max" [step]="parameterDefinition.step" />
@@ -36,3 +36,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/Bifolium.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/multiple-integrals">Integrales múltiples y coordenadas polares</a></li><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li></ul></details></section>
+<!-- article-concepts:end -->

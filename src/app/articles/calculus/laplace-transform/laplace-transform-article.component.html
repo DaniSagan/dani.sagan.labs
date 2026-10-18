@@ -1,7 +1,7 @@
 <h2>La transformada de Laplace</h2>
 <p class="dropcap">Una ecuación diferencial describe cómo cambia un sistema instante a instante.
   La transformada de Laplace permite observar ese mismo sistema desde otra perspectiva: convierte
-  derivadas en operaciones algebraicas, conserva la información de las condiciones iniciales y
+  <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> en operaciones algebraicas, conserva la información de las condiciones iniciales y
   facilita el tratamiento de entradas que se encienden, se apagan o llegan con retraso.</p>
 <p>La idea es pesar toda la evolución temporal con una exponencial. Cambiar ese peso permite explorar
   cuánto crece una señal, cómo oscila y qué modos dominan su respuesta. Trabajaremos con la transformada
@@ -59,7 +59,7 @@
   un término de borde. Si las funciones y sus derivadas cumplen las hipótesis de convergencia pertinentes:</p>
 <app-formula expression="\mathcal{L}\{f'\}=sF(s)-f(0^+),\qquad \mathcal{L}\{f''\}=s^2F(s)-s f(0^+)-f'(0^+)"></app-formula>
 <p>Omitir esos términos equivale a imponer condiciones iniciales nulas, aunque el problema no las tenga.
-  Veámoslo en un ejemplo con una condición inicial no nula:</p>
+  Veámoslo en un ejemplo con una <a data-article-concept="first-order-odes" routerLink="/articles/first-order-odes">condición inicial</a> no nula:</p>
 <app-formula expression="y'+2y=1,\quad y(0)=3\quad\Longrightarrow\quad (s+2)Y(s)=3+\frac1s"></app-formula>
 <app-formula expression="Y(s)=\frac{1}{2s}+\frac{5}{2(s+2)}\quad\Longrightarrow\quad y(t)=\frac12+\frac52e^{-2t}"></app-formula>
 <p>La solución comienza en 3 y tiende a 1/2. El término constante es la respuesta permanente;
@@ -110,7 +110,7 @@
   al encender y apagar el pulso. El sistema acumula el efecto de la entrada en lugar de copiar sus saltos.</p>
 
 <h3>8. Volver al tiempo</h3>
-<p>Para funciones racionales sencillas, la inversión se hace descomponiendo en fracciones parciales
+<p>Para funciones racionales sencillas, la inversión se hace descomponiendo en <a data-article-concept="integration-classical" routerLink="/articles/integration-classical" fragment="rational">fracciones parciales</a>
   y reconociendo entradas del diccionario. Los factores exponenciales e⁻ᵃˢ indican retrasos.
   El ejemplo y′ + 2y = 1 ya utilizó este procedimiento.</p>
 <p>La fórmula general de inversión integra sobre una recta vertical situada dentro del semiplano
@@ -122,7 +122,7 @@
   soluciones analíticas, no una inversión numérica de esta integral.</p>
 
 <h3>9. Laplace y Fourier</h3>
-<p>Fijar σ significa aplicar una transformada de Fourier a la señal amortiguada e<sup>−σt</sup>f(t),
+<p>Fijar σ significa aplicar una <a data-article-concept="fourier-transform" routerLink="/articles/fourier-transform">transformada de Fourier</a> a la señal amortiguada e<sup>−σt</sup>f(t),
   extendida por cero a t &lt; 0. En particular, F(iω) coincide con la transformada de Fourier de esa
   extensión causal cuando el eje imaginario pertenece a una región donde la integral correspondiente
   existe. No siempre es lícito poner σ = 0: una señal puede tener transformada de Laplace y no tener
@@ -154,3 +154,6 @@
   <li><a routerLink="/tools/vector-field">Explorador de campos vectoriales</a>. Explora un oscilador lineal en el plano de fases y relaciona sus trayectorias con soluciones de un sistema diferencial.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden y enfriamiento</a></li><li><a routerLink="/articles/integration-classical" fragment="rational">Integrales I: técnicas clásicas</a></li><li><a routerLink="/articles/fourier-transform">Transformada de Fourier: de una señal a sus frecuencias</a></li></ul></details></section>
+<!-- article-concepts:end -->

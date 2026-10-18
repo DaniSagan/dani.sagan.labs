@@ -19,9 +19,9 @@
   su <strong>máximo común divisor</strong> es el mayor de sus divisores comunes positivos. Usaremos indistintamente MCD y la notación gcd.</p>
 <app-formula expression="\gcd(a,b)=\max\{d\in\mathbb Z_{>0}:d\mid a\text{ y }d\mid b\},\qquad(a,b)\ne(0,0)"></app-formula>
 <p>Los divisores positivos comunes de 48 y 18 son 1, 2, 3 y 6: el MCD es 6. Si el único divisor positivo común es 1,
-  decimos que los enteros son <strong>coprimos</strong>. No es necesario que sean primos: 8 y 15 son coprimos y ambos son compuestos.</p>
+  decimos que los enteros son <strong><a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a></strong>. No es necesario que sean primos: 8 y 15 son coprimos y ambos son compuestos.</p>
 <div class="proof">
-  <p><strong>Existencia y unicidad.</strong> El conjunto anterior no está vacío, pues contiene a 1.
+  <p><strong><a data-article-concept="picard-lipschitz" routerLink="/articles/picard-lipschitz">Existencia y unicidad</a>.</strong> El conjunto anterior no está vacío, pues contiene a 1.
     Si a ≠ 0 y d &gt; 0 divide a a, entonces a = dt con |t| ≥ 1, de modo que d ≤ |a|.
     Si a = 0, usamos b ≠ 0 y obtenemos d ≤ |b|. En ambos casos los divisores comunes positivos forman un conjunto finito no vacío:
     existe un máximo. Si d y e fueran dos máximos, tendríamos d ≤ e y e ≤ d; por tanto d = e.</p>
@@ -97,10 +97,10 @@
 
 <h3 id="extendido">6. De restos a combinaciones lineales</h3>
 <p>Si d divide a a y a b, entonces divide a cualquier combinación entera ax + by: basta escribir a = du y b = dv,
-  pues ax + by = d(ux + vy). El algoritmo aporta el recíproco más útil: <strong>el propio MCD puede escribirse como una de esas combinaciones</strong>.</p>
+  pues ax + by = d(ux + vy). El algoritmo aporta el recíproco más útil: <strong>el propio MCD puede escribirse como una de esas <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a></strong>.</p>
 <p>Volvamos al ejemplo y deshagamos las divisiones desde el último resto no nulo:</p>
 <app-formula expression="\begin{aligned}18&=54-36\\&=54-(198-3\cdot54)\\&=4\cdot54-198\\&=4(252-198)-198\\&=4\cdot252-5\cdot198.\end{aligned}"></app-formula>
-<p>Hemos encontrado los coeficientes de Bézout x = 4 e y = −5. En el ejemplo con signos,
+<p>Hemos encontrado los coeficientes de <a data-article-concept="bezout-identity" routerLink="/articles/bezout-identity">Bézout</a> x = 4 e y = −5. En el ejemplo con signos,
   6 = 30 − 24 = 30 − (84 − 2·30) = −84 + 3·30 = (−84)·1 + 30·3.</p>
 <p>Esta es una prueba constructiva de la <a routerLink="/articles/bezout-identity">identidad de Bézout</a>.
   Su artículo desarrolla la demostración alternativa mediante el menor entero positivo; aquí vamos a seguir la información que conserva el algoritmo.</p>
@@ -109,7 +109,7 @@
   Inicializamos (x₀,y₀) = (εₐ,0) y (x₁,y₁) = (0,εᵦ), donde εₜ es −1 si t &lt; 0 y 1 si t ≥ 0.</p>
 <app-formula expression="x_i=x_{i-2}-q_ix_{i-1},\qquad y_i=y_{i-2}-q_iy_{i-1}."></app-formula>
 <div class="proof">
-  <p><strong>Por qué funcionan las recurrencias.</strong> Las dos primeras filas satisfacen el invariante, porque aεₐ = |a| y bεᵦ = |b|.
+  <p><strong>Por qué funcionan las <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencias</a>.</strong> Las dos primeras filas satisfacen el invariante, porque aεₐ = |a| y bεᵦ = |b|.
     Si lo satisfacen dos filas consecutivas, la siguiente cumple</p>
   <app-formula expression="R_i=(ax_{i-2}+by_{i-2})-q_i(ax_{i-1}+by_{i-1})=a(x_{i-2}-q_ix_{i-1})+b(y_{i-2}-q_iy_{i-1})."></app-formula>
   <p>Por inducción, todas las filas son combinaciones de los datos originales. La última fila no nula tiene Rᵢ = gcd(a,b);
@@ -169,7 +169,7 @@
     con u,v positivos y coprimos. El número L = duv es múltiplo de |a| y de |b|.
     Sea ahora N cualquier múltiplo común positivo. Como du divide a N, podemos escribir N = dut.
     Además, dv divide a dut, así que v divide a ut.</p>
-  <p>La coprimalidad permite cancelar u: si uα + vβ = 1, al multiplicar por t vemos que
+  <p>La <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a> permite cancelar u: si uα + vβ = 1, al multiplicar por t vemos que
     t = αut + βvt es divisible por v. Luego t = vs con s positivo y N = duvs = Ls.
     Todo múltiplo común positivo es múltiplo de L, por lo que el menor es L. Finalmente,
     dL = d²uv = |ab|.</p>
@@ -196,7 +196,7 @@
     tiene soluciones enteras exactamente cuando gcd(a,b) divide a c. La necesidad procede de la divisibilidad;
     la suficiencia, de multiplicar una identidad de Bézout por c/d. Si a = b = 0, solo es posible cuando c = 0.</li>
   <li><a routerLink="/articles/linear-congruence-theorem">Congruencias lineales e inversos modulares.</a> Para m ≥ 2,
-    a es invertible módulo m si y solo si gcd(a,m) = 1. Si ax + my = 1, el coeficiente x es un inverso de a.
+    a es <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">invertible</a> módulo m si y solo si gcd(a,m) = 1. Si ax + my = 1, el coeficiente x es un inverso de a.
     Para ax ≡ c (mod m), el MCD decide la existencia y el número de clases solución.</li>
   <li><a routerLink="/articles/euclids-lemma">Lema de Euclides</a> y
     <a routerLink="/articles/fundamental-theorem-arithmetic">teorema fundamental de la aritmética.</a>
@@ -223,3 +223,6 @@
 <li><a routerLink="/problems/linear-congruence">2 · Una congruencia lineal</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/picard-lipschitz">Existencia y unicidad: Picard y la condición de Lipschitz</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/bezout-identity">Identidad de Bézout</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li></ul></details></section>
+<!-- article-concepts:end -->

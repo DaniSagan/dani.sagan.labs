@@ -1,6 +1,6 @@
 <h2>Teorema de Ptolomeo</h2>
 
-<p class="dropcap">Si un cuadrilátero está inscrito en una circunferencia, entonces el producto de sus diagonales es igual a la suma de los productos de los pares de lados opuestos. En otras palabras, para un cuadrilátero cíclico ABCD, se cumple:</p>
+<p class="dropcap">Si un cuadrilátero está inscrito en una <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a>, entonces el producto de sus diagonales es igual a la suma de los productos de los pares de lados opuestos. En otras palabras, para un cuadrilátero cíclico ABCD, se cumple:</p>
 
 <app-formula expression="AC \cdot BD = AB \cdot CD + BC \cdot DA" displayMode="block"/>
 
@@ -14,7 +14,7 @@
 </div>
 
 <h3>1. Invertir la figura desde un vértice</h3>
-<p>Una inversión de centro A y radio unidad transforma cada punto X distinto de A en X′, situado sobre la misma semirrecta y cumpliendo AX · AX′ = 1. Si tomamos A como origen, su fórmula vectorial es la siguiente. Al desarrollar el cuadrado de una diferencia se obtiene también la relación entre distancias:</p>
+<p>Una inversión de centro A y radio unidad transforma cada punto X distinto de A en X′, situado sobre la misma semirrecta y cumpliendo AX · AX′ = 1. Si tomamos A como origen, su fórmula vectorial es la siguiente. Al desarrollar el <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de una diferencia se obtiene también la relación entre distancias:</p>
 <app-formula expression="X'=\frac{X}{|X|^2},\qquad |X'-Y'|^2=\frac{|X-Y|^2}{|X|^2|Y|^2}" displayMode="block"/>
 <p>La raíz positiva da B′D′ = BD/(AB · AD), y relaciones análogas para B′C′ y C′D′. Así convertimos productos de longitudes de la figura original en sumas de distancias de una figura transformada.</p>
 <h3>2. Obtener la desigualdad general</h3>
@@ -36,8 +36,8 @@
 <p>El teorema de Ptolomeo es especialmente útil cuando aparecen polígonos inscritos en una circunferencia, como rectángulos, cuadrados, pentágonos regulares e incluso algunos problemas de geometría sintética.</p>
 
 <ol>
-  <li><strong>Cuadrado o rectángulo:</strong> Si un rectángulo está inscrito en una circunferencia, entonces las diagonales son iguales. Ptolomeo da directamente que <app-formula expression="d^2 = a^2 + b^2" displayMode="inline"/>, que es el teorema de Pitágoras en forma de cuadrilátero.</li>
-  <li><strong>Polígonos regulares:</strong> En un pentágono regular inscrito, las relaciones entre lados y diagonales pueden obtenerse aplicando el teorema repetidamente.</li>
+  <li><strong>Cuadrado o rectángulo:</strong> Si un rectángulo está inscrito en una circunferencia, entonces las diagonales son iguales. Ptolomeo da directamente que <app-formula expression="d^2 = a^2 + b^2" displayMode="inline"/>, que es el <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">teorema de Pitágoras</a> en forma de cuadrilátero.</li>
+  <li><strong>Polígonos regulares:</strong> En un <a data-article-concept="pentagon" routerLink="/articles/pentagon">pentágono</a> regular inscrito, las relaciones entre lados y diagonales pueden obtenerse aplicando el teorema repetidamente.</li>
   <li><strong>Problemas de cálculo de distancias:</strong> A menudo sirve para hallar una diagonal desconocida a partir de lados conocidos, cuando los cuatro puntos pertenecen a una misma circunferencia.</li>
 </ol>
 
@@ -71,3 +71,6 @@
   <li><a routerLink="/tools/implicit-curve-graph">Graficador de curvas implícitas</a>. Dibuja una circunferencia, elige cuatro puntos de ella y verifica con sus coordenadas la relación entre lados y diagonales.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/pentagon">Pentágono</a></li><li><a routerLink="/articles/circle-inversion">Inversión respecto de una circunferencia</a></li></ul></details></section>
+<!-- article-concepts:end -->

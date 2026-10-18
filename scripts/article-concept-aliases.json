@@ -1,0 +1,3687 @@
+[
+  {
+    "route": "/articles/burning-ship-fractal",
+    "terms": [
+      "Fractal del barco en llamas"
+    ]
+  },
+  {
+    "route": "/articles/julia-set",
+    "terms": [
+      "Conjunto de Julia"
+    ]
+  },
+  {
+    "route": "/articles/mandelbrot-set",
+    "terms": [
+      "Conjunto de Mandelbrot"
+    ]
+  },
+  {
+    "route": "/articles/multibrot",
+    "terms": [
+      "Conjunto Multibrot"
+    ]
+  },
+  {
+    "route": "/articles/newton-set-fractal",
+    "terms": [
+      "Fractal del conjunto de Newton"
+    ]
+  },
+  {
+    "route": "/articles/phoenix-set-fractal",
+    "terms": [
+      "Conjunto de Phoenix"
+    ]
+  },
+  {
+    "route": "/articles/tricorn",
+    "terms": [
+      "Tricornio"
+    ]
+  },
+  {
+    "route": "/articles/cesaro-fractal",
+    "terms": [
+      "Fractal de Cesàro"
+    ]
+  },
+  {
+    "route": "/articles/koch-antisnowflake",
+    "terms": [
+      "Anticopo de Koch"
+    ]
+  },
+  {
+    "route": "/articles/koch-curve",
+    "terms": [
+      "Curva de Koch"
+    ]
+  },
+  {
+    "route": "/articles/koch-snowflake",
+    "terms": [
+      "Copo de nieve de Koch"
+    ]
+  },
+  {
+    "route": "/articles/minkowski-sausage",
+    "terms": [
+      "Salchicha de Minkowski"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-koch-island",
+    "terms": [
+      "Isla cuadrática de Koch"
+    ]
+  },
+  {
+    "route": "/articles/dragon-curve",
+    "terms": [
+      "Curva del Dragón"
+    ]
+  },
+  {
+    "route": "/articles/levy-c-curve",
+    "terms": [
+      "Curva C de Lévy"
+    ]
+  },
+  {
+    "route": "/articles/paperfolding-curve",
+    "terms": [
+      "Curva de plegado de papel"
+    ]
+  },
+  {
+    "route": "/articles/terdragon",
+    "terms": [
+      "Curva terdragón"
+    ]
+  },
+  {
+    "route": "/articles/twindragon",
+    "terms": [
+      "Twindragon"
+    ]
+  },
+  {
+    "route": "/articles/gosper-curve",
+    "terms": [
+      "Curva de Gosper"
+    ]
+  },
+  {
+    "route": "/articles/hilbert-curve",
+    "terms": [
+      "Curva de Hilbert"
+    ]
+  },
+  {
+    "route": "/articles/moore-curve",
+    "terms": [
+      "Curva de Moore"
+    ]
+  },
+  {
+    "route": "/articles/peano-curve",
+    "terms": [
+      "Curva de Peano"
+    ]
+  },
+  {
+    "route": "/articles/sierpinski-arrowhead",
+    "terms": [
+      "Punta de flecha de Sierpiński"
+    ]
+  },
+  {
+    "route": "/articles/sierpinski-curve",
+    "terms": [
+      "Curva de Sierpiński"
+    ]
+  },
+  {
+    "route": "/articles/barnsley-fern",
+    "terms": [
+      "Helecho de Barnsley"
+    ]
+  },
+  {
+    "route": "/articles/binary-fractal-tree",
+    "terms": [
+      "Árbol fractal binario"
+    ]
+  },
+  {
+    "route": "/articles/fractal-canopy",
+    "terms": [
+      "Dosel fractal"
+    ]
+  },
+  {
+    "route": "/articles/fractal-plant",
+    "terms": [
+      "Planta fractal"
+    ]
+  },
+  {
+    "route": "/articles/h-tree",
+    "terms": [
+      "Árbol H"
+    ]
+  },
+  {
+    "route": "/articles/pythagoras-tree",
+    "terms": [
+      "Árbol de Pitágoras"
+    ]
+  },
+  {
+    "route": "/articles/apollonian-sieve",
+    "terms": [
+      "Tamiz de Apolonio"
+    ]
+  },
+  {
+    "route": "/articles/box-fractal",
+    "terms": [
+      "Fractal de caja"
+    ]
+  },
+  {
+    "route": "/articles/cantor-dust",
+    "terms": [
+      "Polvo de Cantor"
+    ]
+  },
+  {
+    "route": "/articles/cantor-set",
+    "terms": [
+      "Conjunto de Cantor",
+      "conjunto de Cantor"
+    ]
+  },
+  {
+    "route": "/articles/cross-fractal",
+    "terms": [
+      "Curva fractal de cruz"
+    ]
+  },
+  {
+    "route": "/articles/sierpinski-carpet",
+    "terms": [
+      "Alfombra de Sierpinski"
+    ]
+  },
+  {
+    "route": "/articles/sierpinski-triangle",
+    "terms": [
+      "Triángulo de Sierpinski"
+    ]
+  },
+  {
+    "route": "/articles/t-square",
+    "terms": [
+      "Fractal T-square"
+    ]
+  },
+  {
+    "route": "/articles/vicsek-fractal",
+    "terms": [
+      "Fractal de Vicsek"
+    ]
+  },
+  {
+    "route": "/articles/durer-pentagon",
+    "terms": [
+      "Pentágono de Durero"
+    ]
+  },
+  {
+    "route": "/articles/hexaflake",
+    "terms": [
+      "Hexaflake"
+    ]
+  },
+  {
+    "route": "/articles/jerusalem-cross",
+    "terms": [
+      "Fractal de la cruz de Jerusalén"
+    ]
+  },
+  {
+    "route": "/articles/menger-sponge",
+    "terms": [
+      "Esponja de Menger"
+    ]
+  },
+  {
+    "route": "/articles/pentaflake",
+    "terms": [
+      "Pentaflake"
+    ]
+  },
+  {
+    "route": "/articles/zero-measure-dimension",
+    "terms": [
+      "Medida cero y dimensión fractal",
+      "dimensión de Hausdorff",
+      "dimensión de caja",
+      "medida de Lebesgue"
+    ]
+  },
+  {
+    "route": "/articles/cantor-function",
+    "terms": [
+      "Función de Cantor y distribuciones singulares"
+    ]
+  },
+  {
+    "route": "/articles/fractal-measure-dimension",
+    "terms": [
+      "Medida, dimensión y autosimilitud"
+    ]
+  },
+  {
+    "route": "/articles/feigenbaum",
+    "terms": [
+      "constante de Feigenbaum"
+    ]
+  },
+  {
+    "route": "/articles/bifurcation-diagram",
+    "terms": [
+      "Aplicación logística"
+    ]
+  },
+  {
+    "route": "/articles/heptagon",
+    "terms": [
+      "Heptágono"
+    ]
+  },
+  {
+    "route": "/articles/hexagon",
+    "terms": [
+      "Hexágono"
+    ]
+  },
+  {
+    "route": "/articles/nonagon",
+    "terms": [
+      "Eneágono"
+    ]
+  },
+  {
+    "route": "/articles/octagon",
+    "terms": [
+      "Octágono"
+    ]
+  },
+  {
+    "route": "/articles/pentagon",
+    "terms": [
+      "Pentágono"
+    ]
+  },
+  {
+    "route": "/articles/square",
+    "terms": [
+      "Cuadrado"
+    ]
+  },
+  {
+    "route": "/articles/dodecahedron-viewer",
+    "terms": [
+      "Dodecaedro regular"
+    ]
+  },
+  {
+    "route": "/articles/hexahedron-viewer",
+    "terms": [
+      "Cubo o hexaedro regular"
+    ]
+  },
+  {
+    "route": "/articles/icosahedron-viewer",
+    "terms": [
+      "Icosaedro regular"
+    ]
+  },
+  {
+    "route": "/articles/octahedron-viewer",
+    "terms": [
+      "Octaedro regular"
+    ]
+  },
+  {
+    "route": "/articles/tetrahedron-viewer",
+    "terms": [
+      "Tetraedro regular"
+    ]
+  },
+  {
+    "route": "/articles/proof-strategies",
+    "terms": [
+      "Cómo demostrar",
+      "contraposición",
+      "irracionalidad",
+      "irracional"
+    ]
+  },
+  {
+    "route": "/articles/mathematical-induction",
+    "terms": [
+      "Inducción matemática y construcción de pruebas",
+      "paso inductivo"
+    ]
+  },
+  {
+    "route": "/articles/prime-valuations",
+    "terms": [
+      "Irracionalidad y valuaciones primas",
+      "exponentes pares",
+      "valuación"
+    ]
+  },
+  {
+    "route": "/articles/division-algorithm",
+    "terms": [
+      "Teorema de la división euclídea",
+      "división euclídea"
+    ]
+  },
+  {
+    "route": "/articles/numeral-systems",
+    "terms": [
+      "Sistemas de numeración y representación de enteros",
+      "decimal periódico",
+      "período decimal"
+    ]
+  },
+  {
+    "route": "/articles/extraordinary-bases",
+    "terms": [
+      "Más allá de la base 10"
+    ]
+  },
+  {
+    "route": "/articles/gcd-euclid",
+    "terms": [
+      "Máximo común divisor (MCD) y algoritmo de Euclides",
+      "máximo común divisor",
+      "algoritmo de Euclides"
+    ]
+  },
+  {
+    "route": "/articles/bezout-identity",
+    "terms": [
+      "Identidad de Bézout",
+      "Bézout"
+    ]
+  },
+  {
+    "route": "/articles/divisibility-rules",
+    "terms": [
+      "Criterios de divisibilidad"
+    ]
+  },
+  {
+    "route": "/articles/factorials-legendre",
+    "terms": [
+      "Factoriales, exponentes primos y fórmula de Legendre",
+      "factorial"
+    ]
+  },
+  {
+    "route": "/articles/goldbach",
+    "terms": [
+      "conjetura de Goldbach"
+    ]
+  },
+  {
+    "route": "/articles/euclids-lemma",
+    "terms": [
+      "Lema de Euclides"
+    ]
+  },
+  {
+    "route": "/articles/fundamental-theorem-arithmetic",
+    "terms": [
+      "Teorema fundamental de la aritmética",
+      "factorización prima",
+      "factorización en primos"
+    ]
+  },
+  {
+    "route": "/articles/euclid-infinitely-many-primes",
+    "terms": [
+      "Teorema de Euclides sobre los primos"
+    ]
+  },
+  {
+    "route": "/articles/ulam-spiral",
+    "terms": [
+      "espiral de Ulam"
+    ]
+  },
+  {
+    "route": "/articles/modular-arithmetic",
+    "terms": [
+      "Congruencias",
+      "congruencia",
+      "congruencias",
+      "coprimo",
+      "coprimos"
+    ]
+  },
+  {
+    "route": "/articles/linear-congruence-theorem",
+    "terms": [
+      "Teorema de la congruencia lineal",
+      "congruencia lineal"
+    ]
+  },
+  {
+    "route": "/articles/chinese-remainder-theorem",
+    "terms": [
+      "Sistemas de congruencias y Teorema Chino del Resto",
+      "módulos coprimos",
+      "condiciones simultáneamente"
+    ]
+  },
+  {
+    "route": "/articles/fermats-little-theorem",
+    "terms": [
+      "Pequeño teorema de Fermat"
+    ]
+  },
+  {
+    "route": "/articles/eulers-theorem",
+    "terms": [
+      "Teorema de Euler"
+    ]
+  },
+  {
+    "route": "/articles/wilsons-theorem",
+    "terms": [
+      "Teorema de Wilson"
+    ]
+  },
+  {
+    "route": "/articles/euler-totient-formula",
+    "terms": [
+      "Fórmula del totiente de Euler",
+      "totiente",
+      "coprimalidad"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-reciprocity",
+    "terms": [
+      "Ley de reciprocidad cuadrática"
+    ]
+  },
+  {
+    "route": "/articles/euler-criterion",
+    "terms": [
+      "Criterio de Euler"
+    ]
+  },
+  {
+    "route": "/articles/primitive-root-theorem",
+    "terms": [
+      "Teorema de las raíces primitivas"
+    ]
+  },
+  {
+    "route": "/articles/orders-theorem",
+    "terms": [
+      "Teorema del orden multiplicativo"
+    ]
+  },
+  {
+    "route": "/articles/continued-fractions",
+    "terms": [
+      "Fracciones continuas",
+      "fracción continua",
+      "fracciones continuas"
+    ]
+  },
+  {
+    "route": "/articles/pell-equation",
+    "terms": [
+      "Ecuación de Pell"
+    ]
+  },
+  {
+    "route": "/articles/linear-diophantine-equations",
+    "terms": [
+      "Ecuaciones diofánticas lineales",
+      "diofántica",
+      "diofánticas"
+    ]
+  },
+  {
+    "route": "/articles/sum-of-two-squares",
+    "terms": [
+      "Teorema de Fermat sobre dos cuadrados"
+    ]
+  },
+  {
+    "route": "/articles/fermat-four-square-theorem",
+    "terms": [
+      "Teorema de los cuatro cuadrados de Lagrange"
+    ]
+  },
+  {
+    "route": "/articles/mobius-inversion",
+    "terms": [
+      "Fórmula de inversión de Möbius"
+    ]
+  },
+  {
+    "route": "/articles/divisor-sum-theorem",
+    "terms": [
+      "Fórmulas para divisores y suma de divisores"
+    ]
+  },
+  {
+    "route": "/articles/euclid-euler-perfect-numbers",
+    "terms": [
+      "Teorema de Euclides–Euler"
+    ]
+  },
+  {
+    "route": "/articles/perfect-numbers",
+    "terms": [
+      "Números perfectos"
+    ]
+  },
+  {
+    "route": "/articles/amicable-numbers",
+    "terms": [
+      "Números amigos"
+    ]
+  },
+  {
+    "route": "/articles/aliquot-sequences",
+    "terms": [
+      "Sucesiones alícuotas"
+    ]
+  },
+  {
+    "route": "/articles/riemann-zeta",
+    "terms": [
+      "Función zeta de Riemann"
+    ]
+  },
+  {
+    "route": "/articles/bernoulli-numbers",
+    "terms": [
+      "Números de Bernoulli"
+    ]
+  },
+  {
+    "route": "/articles/fibonacci-numbers",
+    "terms": [
+      "Números de Fibonacci",
+      "Fibonacci"
+    ]
+  },
+  {
+    "route": "/articles/collatz",
+    "terms": [
+      "conjetura de Collatz"
+    ]
+  },
+  {
+    "route": "/articles/arithmetic-derivative",
+    "terms": [
+      "Derivada Aritmética"
+    ]
+  },
+  {
+    "route": "/articles/dirichlet-convolution-series",
+    "terms": [
+      "Funciones aritméticas, convolución y series de Dirichlet",
+      "función aritmética",
+      "funciones aritméticas",
+      "convolución de Dirichlet",
+      "serie de Dirichlet",
+      "series de Dirichlet",
+      "producto de Euler"
+    ]
+  },
+  {
+    "route": "/articles/rsa-discrete-logarithm",
+    "terms": [
+      "RSA y logaritmo discreto",
+      "logaritmo discreto",
+      "logaritmos discretos"
+    ]
+  },
+  {
+    "route": "/articles/sieve-primality",
+    "terms": [
+      "Criba de Eratóstenes y pruebas de primalidad",
+      "criba de Eratóstenes",
+      "Miller–Rabin",
+      "Miller-Rabin",
+      "pseudoprimo",
+      "pruebas de primalidad"
+    ]
+  },
+  {
+    "route": "/articles/infinite-descent",
+    "terms": [
+      "Descenso infinito y principio del buen orden",
+      "descenso infinito",
+      "método de descenso"
+    ]
+  },
+  {
+    "route": "/articles/gaussian-quadratic-norms",
+    "terms": [
+      "Enteros gaussianos, normas algebraicas y unidades cuadráticas",
+      "enteros gaussianos",
+      "entero gaussiano",
+      "norma algebraica",
+      "normas algebraicas",
+      "unidades cuadráticas"
+    ]
+  },
+  {
+    "route": "/articles/algebraic-transcendental-numbers",
+    "terms": [
+      "Números algebraicos y trascendentes",
+      "número algebraico",
+      "números algebraicos",
+      "trascendente",
+      "trascendentes",
+      "algebraicidad",
+      "trascendencia"
+    ]
+  },
+  {
+    "route": "/articles/golden-ratio",
+    "terms": [
+      "número áureo",
+      "razón áurea",
+      "proporción áurea"
+    ]
+  },
+  {
+    "route": "/articles/frobenius-coins",
+    "terms": [
+      "problema de las monedas y el número de Frobenius"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-foundations",
+    "terms": [
+      "Polinomios desde cero"
+    ]
+  },
+  {
+    "route": "/articles/equation-equivalence",
+    "terms": [
+      "Ecuaciones equivalentes"
+    ]
+  },
+  {
+    "route": "/articles/algebraic-identities-factorization",
+    "terms": [
+      "Identidades algebraicas y técnicas de factorización",
+      "completa cuadrados",
+      "completar cuadrados",
+      "diferencia de cuadrados"
+    ]
+  },
+  {
+    "route": "/articles/sign-charts",
+    "terms": [
+      "Inecuaciones y tablas de signos",
+      "tabla de signos"
+    ]
+  },
+  {
+    "route": "/articles/rational-root-theorem",
+    "terms": [
+      "Teorema de las raíces racionales",
+      "raíz entera",
+      "raíces enteras",
+      "raíces racionales"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-division",
+    "terms": [
+      "División de polinomios y teorema del resto"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-equations",
+    "terms": [
+      "Ecuaciones cuadráticas",
+      "ecuación de segundo grado"
+    ]
+  },
+  {
+    "route": "/articles/cubic-equation",
+    "terms": [
+      "Resolución de la ecuación cúbica"
+    ]
+  },
+  {
+    "route": "/articles/cyclotomic-polynomials",
+    "terms": [
+      "Polinomios ciclotómicos y fractales de raíces",
+      "raíces de la unidad"
+    ]
+  },
+  {
+    "route": "/articles/change-of-basis",
+    "terms": [
+      "Cambios de base y matrices de una transformación",
+      "cambio de base"
+    ]
+  },
+  {
+    "route": "/articles/projection-least-squares",
+    "terms": [
+      "Proyecciones ortogonales y mínimos cuadrados",
+      "mínimos cuadrados"
+    ]
+  },
+  {
+    "route": "/articles/gram-schmidt",
+    "terms": [
+      "Productos internos y ortonormalización de Gram–Schmidt",
+      "ortonormales",
+      "ortonormal"
+    ]
+  },
+  {
+    "route": "/articles/vector-spaces",
+    "terms": [
+      "Espacios vectoriales, bases y rango–nulidad",
+      "linealmente dependientes",
+      "dependencia lineal",
+      "independencia lineal",
+      "espacio vectorial",
+      "espacios vectoriales"
+    ]
+  },
+  {
+    "route": "/articles/jordan-form",
+    "terms": [
+      "Forma de Jordan, nilpotencia y potencias de matrices",
+      "nilpotente",
+      "nilpotentes"
+    ]
+  },
+  {
+    "route": "/articles/cayley-hamilton",
+    "terms": [
+      "Teorema de Cayley–Hamilton y polinomio mínimo"
+    ]
+  },
+  {
+    "route": "/articles/gaussian-elimination",
+    "terms": [
+      "Eliminación de Gauss y teorema de Rouché–Capelli",
+      "restar ecuaciones",
+      "operaciones elementales",
+      "eliminación de Gauss",
+      "Rouché–Capelli",
+      "Rouché-Capelli",
+      "Rouché–Frobenius"
+    ]
+  },
+  {
+    "route": "/articles/matrix-determinant",
+    "terms": [
+      "determinante",
+      "matriz triangular",
+      "invertible"
+    ]
+  },
+  {
+    "route": "/articles/matrix-diagonalization",
+    "terms": [
+      "Diagonalización de matrices y valores propios",
+      "autovector",
+      "autovectores",
+      "autovalores",
+      "diagonalizar",
+      "diagonalización",
+      "polinomio característico",
+      "autovalor"
+    ]
+  },
+  {
+    "route": "/articles/permutation-symmetries",
+    "terms": [
+      "Permutaciones, ciclos y grupos de simetrías",
+      "permutación"
+    ]
+  },
+  {
+    "route": "/articles/mean-inequalities",
+    "terms": [
+      "Medias aritmética, geométrica y armónica",
+      "media aritmética",
+      "media geométrica"
+    ]
+  },
+  {
+    "route": "/articles/cauchy-schwarz",
+    "terms": [
+      "Desigualdad de Cauchy–Schwarz",
+      "Cauchy–Schwarz",
+      "Cauchy-Schwarz",
+      "desigualdad de Cauchy"
+    ]
+  },
+  {
+    "route": "/articles/bernstein-polynomials",
+    "terms": [
+      "Polinomios de Bernstein y aproximación",
+      "polinomios de Bernstein",
+      "base de Bernstein",
+      "Bernstein"
+    ]
+  },
+  {
+    "route": "/articles/pade-krylov-methods",
+    "terms": [
+      "Aproximantes de Padé y subespacios de Krylov",
+      "Padé",
+      "Pade",
+      "subespacio de Krylov",
+      "subespacios de Krylov",
+      "métodos de Krylov"
+    ]
+  },
+  {
+    "route": "/articles/groups-cosets-lagrange",
+    "terms": [
+      "Subgrupos, clases laterales y teorema de Lagrange",
+      "subgrupo",
+      "subgrupos",
+      "clases laterales",
+      "teorema de Lagrange",
+      "orden de un elemento"
+    ]
+  },
+  {
+    "route": "/articles/rings-finite-fields",
+    "terms": [
+      "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+      "cuerpo finito",
+      "cuerpos finitos",
+      "irreducibilidad",
+      "polinomio irreducible"
+    ]
+  },
+  {
+    "route": "/articles/ridge-regularization",
+    "terms": [
+      "Regularización de Tikhonov y regresión ridge",
+      "Tikhonov",
+      "ridge"
+    ]
+  },
+  {
+    "route": "/articles/nonnormal-transient-growth",
+    "terms": [
+      "Matrices normales y crecimiento transitorio",
+      "matriz normal",
+      "matrices normales",
+      "crecimiento transitorio",
+      "no normalidad"
+    ]
+  },
+  {
+    "route": "/articles/singular-values-operator-norms",
+    "terms": [
+      "Valores singulares, SVD y normas de operadores",
+      "valores singulares",
+      "valor singular",
+      "norma matricial",
+      "normas matriciales",
+      "norma de operador",
+      "normas de operadores"
+    ]
+  },
+  {
+    "route": "/articles/equivalence-quotients",
+    "terms": [
+      "Relaciones de equivalencia y conjuntos cociente",
+      "relación de equivalencia",
+      "relaciones de equivalencia",
+      "conjunto cociente",
+      "conjuntos cociente",
+      "clases de equivalencia"
+    ]
+  },
+  {
+    "route": "/articles/googology",
+    "terms": [
+      "Googología"
+    ]
+  },
+  {
+    "route": "/articles/ramsey-theorem",
+    "terms": [
+      "teorema de Ramsey"
+    ]
+  },
+  {
+    "route": "/articles/graham-number",
+    "terms": [
+      "número de Graham"
+    ]
+  },
+  {
+    "route": "/articles/inclusion-exclusion",
+    "terms": [
+      "Principio de inclusión y exclusión",
+      "inclusión-exclusión",
+      "inclusión y exclusión"
+    ]
+  },
+  {
+    "route": "/articles/counting-principles",
+    "terms": [
+      "Principios de conteo",
+      "combinaciones",
+      "principio multiplicativo",
+      "factorial"
+    ]
+  },
+  {
+    "route": "/articles/reflection-principle",
+    "terms": [
+      "Principio de reflexión y caminos restringidos",
+      "principio de reflexión"
+    ]
+  },
+  {
+    "route": "/articles/grid-counting",
+    "terms": [
+      "Conteo sistemático en tableros y cuadrículas"
+    ]
+  },
+  {
+    "route": "/articles/pascal-triangle",
+    "terms": [
+      "Triángulo de Pascal"
+    ]
+  },
+  {
+    "route": "/articles/binomial-theorem",
+    "terms": [
+      "Teorema binomial",
+      "binomio",
+      "coeficiente binomial"
+    ]
+  },
+  {
+    "route": "/articles/catalan-numbers",
+    "terms": [
+      "Números de Catalan",
+      "Catalan"
+    ]
+  },
+  {
+    "route": "/articles/graph-foundations",
+    "terms": [
+      "Grafos desde cero",
+      "grafo",
+      "grafo conexo",
+      "grafo simple",
+      "grafo dirigido",
+      "conectividad de grafos"
+    ]
+  },
+  {
+    "route": "/articles/euler-hamilton",
+    "terms": [
+      "Recorridos eulerianos y caminos hamiltonianos",
+      "euleriano"
+    ]
+  },
+  {
+    "route": "/articles/konigsberg-bridges",
+    "terms": [
+      "puentes de Königsberg"
+    ]
+  },
+  {
+    "route": "/articles/planar-euler",
+    "terms": [
+      "fórmula de Euler para grafos planares"
+    ]
+  },
+  {
+    "route": "/articles/four-color-theorem",
+    "terms": [
+      "teorema de los cuatro colores"
+    ]
+  },
+  {
+    "route": "/articles/sudoku-constraints",
+    "terms": [
+      "Sudoku",
+      "sudoku"
+    ]
+  },
+  {
+    "route": "/articles/rubik-invariants",
+    "terms": [
+      "Invariantes del cubo de Rubik"
+    ]
+  },
+  {
+    "route": "/articles/burnside-lemma",
+    "terms": [
+      "Acciones de grupos y lema de Burnside",
+      "Burnside",
+      "lema de Burnside"
+    ]
+  },
+  {
+    "route": "/articles/computability-formal-languages",
+    "terms": [
+      "Computabilidad, lenguajes formales y problema de la parada",
+      "computabilidad",
+      "máquina de Turing",
+      "máquinas de Turing",
+      "problema de la parada",
+      "indecidible",
+      "lenguaje formal",
+      "lenguajes formales",
+      "sintaxis y semántica"
+    ]
+  },
+  {
+    "route": "/articles/ordinals-growth",
+    "terms": [
+      "Ordinales y jerarquías de crecimiento",
+      "ordinal",
+      "ordinales",
+      "ordinal límite",
+      "jerarquía de crecimiento",
+      "jerarquías de crecimiento"
+    ]
+  },
+  {
+    "route": "/articles/route-optimization-complexity",
+    "terms": [
+      "Viajante, cartero chino y complejidad computacional",
+      "problema del viajante",
+      "viajante",
+      "cartero chino",
+      "NP-completo",
+      "NP-difícil",
+      "complejidad computacional"
+    ]
+  },
+  {
+    "route": "/articles/polya-cycle-index",
+    "terms": [
+      "Teorema de Pólya e índice de ciclos",
+      "Pólya",
+      "Polya",
+      "índice de ciclos"
+    ]
+  },
+  {
+    "route": "/articles/trees-graph-coloring",
+    "terms": [
+      "Árboles, árboles generadores y coloración de grafos",
+      "árbol generador",
+      "árboles generadores",
+      "árboles de expansión",
+      "número cromático",
+      "coloración de grafos",
+      "grafo bipartito"
+    ]
+  },
+  {
+    "route": "/articles/pigeonhole-principle",
+    "terms": [
+      "Principio del palomar y argumentos de existencia",
+      "principio del palomar",
+      "principio de las casillas"
+    ]
+  },
+  {
+    "route": "/articles/absolute-value-distance",
+    "terms": [
+      "Valor absoluto",
+      "valor absoluto",
+      "función a trozos"
+    ]
+  },
+  {
+    "route": "/articles/global-extrema-weierstrass",
+    "terms": [
+      "Extremos globales y teorema de Weierstrass",
+      "dominio abierto"
+    ]
+  },
+  {
+    "route": "/articles/exponentials-logarithms",
+    "terms": [
+      "Exponenciales y logaritmos",
+      "logaritmo",
+      "logaritmos"
+    ]
+  },
+  {
+    "route": "/articles/lhopital-rule",
+    "terms": [
+      "Regla de L’Hôpital y formas indeterminadas"
+    ]
+  },
+  {
+    "route": "/articles/squeeze-oscillation",
+    "terms": [
+      "Teorema del encaje y funciones oscilantes"
+    ]
+  },
+  {
+    "route": "/articles/mean-value-theorems",
+    "terms": [
+      "Teoremas de Rolle y del valor medio",
+      "teorema del valor medio",
+      "Rolle",
+      "valor medio"
+    ]
+  },
+  {
+    "route": "/articles/convexity-tangents",
+    "terms": [
+      "Convexidad, concavidad y desigualdades",
+      "convexa",
+      "convexidad",
+      "cóncava"
+    ]
+  },
+  {
+    "route": "/articles/asymptotic-limits",
+    "terms": [
+      "Límites, equivalencias y jerarquías de crecimiento",
+      "exponencial vence",
+      "mayor potencia"
+    ]
+  },
+  {
+    "route": "/articles/continuity-differentiability",
+    "terms": [
+      "Continuidad y derivabilidad",
+      "límites laterales"
+    ]
+  },
+  {
+    "route": "/articles/bolzano-theorem",
+    "terms": [
+      "Teorema de Bolzano",
+      "Bolzano",
+      "valor intermedio"
+    ]
+  },
+  {
+    "route": "/articles/positive-series-tests",
+    "terms": [
+      "Criterios de convergencia de series positivas",
+      "criterio integral",
+      "serie positiva"
+    ]
+  },
+  {
+    "route": "/articles/geometric-series",
+    "terms": [
+      "Progresiones y series geométricas",
+      "progresión geométrica",
+      "serie geométrica",
+      "series geométricas"
+    ]
+  },
+  {
+    "route": "/articles/monotone-convergence",
+    "terms": [
+      "Sucesiones monótonas y acotadas",
+      "creciente y acotada",
+      "convergencia monótona",
+      "supremo"
+    ]
+  },
+  {
+    "route": "/articles/recurrent-sequences",
+    "terms": [
+      "Sucesiones recurrentes y puntos fijos",
+      "recurrencia",
+      "recurrencias",
+      "punto fijo"
+    ]
+  },
+  {
+    "route": "/articles/telescoping-series",
+    "terms": [
+      "Series telescópicas",
+      "telescópica",
+      "sumas parciales",
+      "suma parcial"
+    ]
+  },
+  {
+    "route": "/articles/series-convergence",
+    "terms": [
+      "Convergencia absoluta, condicional y criterio de Leibniz",
+      "convergencia absoluta",
+      "serie alternada"
+    ]
+  },
+  {
+    "route": "/articles/basel",
+    "terms": [
+      "teorema de Basilea"
+    ]
+  },
+  {
+    "route": "/articles/numerical-conditioning",
+    "terms": [
+      "Error numérico, cancelación y condicionamiento"
+    ]
+  },
+  {
+    "route": "/articles/banach-fixed-point",
+    "terms": [
+      "Teorema del punto fijo de Banach"
+    ]
+  },
+  {
+    "route": "/articles/gamma-function",
+    "terms": [
+      "Función gamma"
+    ]
+  },
+  {
+    "route": "/articles/lambert-w",
+    "terms": [
+      "Función W de Lambert"
+    ]
+  },
+  {
+    "route": "/articles/euler-mascheroni",
+    "terms": [
+      "constante de Euler–Mascheroni"
+    ]
+  },
+  {
+    "route": "/articles/stirling",
+    "terms": [
+      "fórmula de Stirling"
+    ]
+  },
+  {
+    "route": "/articles/daylight-saving-time",
+    "terms": [
+      "Horario estacional y horas locales ambiguas"
+    ]
+  },
+  {
+    "route": "/articles/utc-date-arithmetic",
+    "terms": [
+      "UTC, husos horarios y aritmética de fechas"
+    ]
+  },
+  {
+    "route": "/articles/orthogonal-polynomials",
+    "terms": [
+      "Polinomios ortogonales y funciones de peso",
+      "polinomios ortogonales",
+      "función de peso",
+      "funciones de peso",
+      "ortogonalidad de polinomios"
+    ]
+  },
+  {
+    "route": "/articles/hyperbolic-functions",
+    "terms": [
+      "Funciones hiperbólicas e inversas",
+      "funciones hiperbólicas",
+      "seno hiperbólico",
+      "coseno hiperbólico",
+      "tangente hiperbólica",
+      "arsinh",
+      "arcosh"
+    ]
+  },
+  {
+    "route": "/articles/euler-maclaurin-asymptotics",
+    "terms": [
+      "Euler–Maclaurin y truncamiento de desarrollos asintóticos",
+      "Euler–Maclaurin",
+      "Euler-Maclaurin",
+      "truncamiento óptimo",
+      "expansión asintótica",
+      "desarrollo asintótico"
+    ]
+  },
+  {
+    "route": "/articles/dirichlet-abel-tests",
+    "terms": [
+      "Criterios de Dirichlet y Abel para series",
+      "criterio de Dirichlet",
+      "criterio de Abel",
+      "criterios de Dirichlet",
+      "sumación por partes"
+    ]
+  },
+  {
+    "route": "/articles/supremum-real-completeness",
+    "terms": [
+      "Supremo, ínfimo y completitud de los reales",
+      "supremo",
+      "ínfimo",
+      "propiedad del supremo"
+    ]
+  },
+  {
+    "route": "/articles/function-convergence",
+    "terms": [
+      "Convergencia de funciones",
+      "convergencia puntual",
+      "convergencia uniforme",
+      "convergencia dominada",
+      "dominación integrable"
+    ]
+  },
+  {
+    "route": "/articles/metric-normed-spaces",
+    "terms": [
+      "Espacios métricos, normas y completitud",
+      "espacio métrico",
+      "espacios métricos",
+      "sucesión de Cauchy",
+      "sucesiones de Cauchy",
+      "completitud",
+      "espacio completo",
+      "espacios completos",
+      "norma uniforme",
+      "espacios normados",
+      "espacio de Banach",
+      "espacios de Banach",
+      "espacio de Hilbert",
+      "espacios de Hilbert",
+      "norma L²",
+      "norma L2"
+    ]
+  },
+  {
+    "route": "/articles/partial-derivatives-minimization",
+    "terms": [
+      "Derivadas parciales y minimización en varias variables",
+      "derivar respecto",
+      "derivadas parciales"
+    ]
+  },
+  {
+    "route": "/articles/derivative-foundations",
+    "terms": [
+      "Derivadas",
+      "cociente incremental",
+      "regla de la cadena"
+    ]
+  },
+  {
+    "route": "/articles/linear-approximation",
+    "terms": [
+      "Diferenciales y aproximación lineal",
+      "recta tangente",
+      "aproximación lineal"
+    ]
+  },
+  {
+    "route": "/articles/function-analysis",
+    "terms": [
+      "Estudio completo de funciones",
+      "concavidad",
+      "estrictamente creciente"
+    ]
+  },
+  {
+    "route": "/articles/derivative-optimization",
+    "terms": [
+      "Optimización con derivadas",
+      "optimización",
+      "volumen máximo"
+    ]
+  },
+  {
+    "route": "/articles/newton-raphson",
+    "terms": [
+      "Método de Newton–Raphson",
+      "método de Newton",
+      "Newton–Raphson",
+      "Newton-Raphson"
+    ]
+  },
+  {
+    "route": "/articles/areas-revolution",
+    "terms": [
+      "Áreas entre curvas y sólidos de revolución",
+      "área entre"
+    ]
+  },
+  {
+    "route": "/articles/arc-length",
+    "terms": [
+      "Longitud de arco y parametrización de curvas",
+      "longitud de arco",
+      "longitud de la gráfica",
+      "longitud del arco"
+    ]
+  },
+  {
+    "route": "/articles/integration-classical",
+    "terms": [
+      "Integrales I"
+    ]
+  },
+  {
+    "route": "/articles/integration-advanced",
+    "terms": [
+      "Integrales II"
+    ]
+  },
+  {
+    "route": "/articles/integration-numerical",
+    "terms": [
+      "Integrales III"
+    ]
+  },
+  {
+    "route": "/articles/brachistochrone",
+    "terms": [
+      "Braquistócrona"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-interpolation",
+    "terms": [
+      "Interpolación de Lagrange y Hermite"
+    ]
+  },
+  {
+    "route": "/articles/taylor-series",
+    "terms": [
+      "Series de Taylor",
+      "desarrollo local",
+      "resto de Taylor",
+      "serie de Taylor",
+      "series de Taylor",
+      "polinomio de Taylor",
+      "desarrollo de Taylor"
+    ]
+  },
+  {
+    "route": "/articles/fourier-series",
+    "terms": [
+      "Series de Fourier"
+    ]
+  },
+  {
+    "route": "/articles/laplace-transform",
+    "terms": [
+      "transformada de Laplace"
+    ]
+  },
+  {
+    "route": "/articles/linear-ode-systems",
+    "terms": [
+      "Sistemas diferenciales lineales y exponencial de matrices"
+    ]
+  },
+  {
+    "route": "/articles/ode-numerical-integration",
+    "terms": [
+      "Integración numérica de ecuaciones diferenciales",
+      "error global"
+    ]
+  },
+  {
+    "route": "/articles/first-order-odes",
+    "terms": [
+      "Ecuaciones diferenciales de primer orden y enfriamiento",
+      "condición inicial",
+      "tasa de crecimiento"
+    ]
+  },
+  {
+    "route": "/articles/symplectic-integration",
+    "terms": [
+      "Estructura hamiltoniana e integración simpléctica",
+      "simpléctico",
+      "simplécticos",
+      "simpléctica",
+      "hamiltoniano",
+      "estructura hamiltoniana",
+      "Verlet"
+    ]
+  },
+  {
+    "route": "/articles/picard-lipschitz",
+    "terms": [
+      "Existencia y unicidad",
+      "Picard",
+      "Lindelöf",
+      "Lipschitz",
+      "unicidad local"
+    ]
+  },
+  {
+    "route": "/articles/variations-noether",
+    "terms": [
+      "Cálculo de variaciones, Euler–Lagrange y Noether",
+      "cálculo de variaciones",
+      "Euler–Lagrange",
+      "Euler-Lagrange",
+      "teorema de Noether",
+      "lagrangiano"
+    ]
+  },
+  {
+    "route": "/articles/fourier-transform",
+    "terms": [
+      "Transformada de Fourier",
+      "transformada de Fourier",
+      "transformadas de Fourier",
+      "inversión de Fourier"
+    ]
+  },
+  {
+    "route": "/articles/vector-calculus",
+    "terms": [
+      "Flujo, divergencia y rotacional de un campo",
+      "divergencia",
+      "rotacional",
+      "flujo de un campo",
+      "teorema de Green",
+      "teorema de Stokes",
+      "teorema de Gauss",
+      "divergencia de un campo"
+    ]
+  },
+  {
+    "route": "/articles/multiple-integrals",
+    "terms": [
+      "Integrales múltiples y coordenadas polares",
+      "integral doble",
+      "integrales dobles",
+      "integral triple",
+      "integrales múltiples",
+      "coordenadas polares"
+    ]
+  },
+  {
+    "route": "/articles/jacobian-change-variables",
+    "terms": [
+      "Matriz jacobiana y cambios de variables",
+      "matriz jacobiana",
+      "jacobiano",
+      "jacobiana",
+      "determinante jacobiano"
+    ]
+  },
+  {
+    "route": "/articles/total-derivative-gradient",
+    "terms": [
+      "Diferenciabilidad total, derivadas direccionales y gradiente",
+      "diferenciabilidad total",
+      "derivada direccional",
+      "derivadas direccionales",
+      "gradiente",
+      "curvas de nivel"
+    ]
+  },
+  {
+    "route": "/articles/self-organized-criticality",
+    "terms": [
+      "Criticalidad autoorganizada y leyes de potencia",
+      "criticalidad autoorganizada",
+      "ley de potencia",
+      "leyes de potencia"
+    ]
+  },
+  {
+    "route": "/articles/pseudorandom-generators",
+    "terms": [
+      "Pseudoaleatoriedad, semillas y períodos",
+      "pseudoaleatorio",
+      "pseudoaleatorios",
+      "pseudoaleatoriedad",
+      "generador congruencial"
+    ]
+  },
+  {
+    "route": "/articles/iterated-function-systems",
+    "terms": [
+      "Sistemas de funciones iteradas y juego del caos",
+      "sistema de funciones iteradas",
+      "sistemas de funciones iteradas",
+      "juego del caos"
+    ]
+  },
+  {
+    "route": "/articles/l-systems",
+    "terms": [
+      "Sistemas-L y gramáticas de reescritura",
+      "sistema-L",
+      "sistemas-L",
+      "L-system",
+      "L-systems",
+      "gramática de reescritura",
+      "reescritura paralela"
+    ]
+  },
+  {
+    "route": "/articles/return-maps-bifurcations",
+    "terms": [
+      "Mapas de retorno, bifurcaciones y universalidad",
+      "sección de Poincaré",
+      "secciones de Poincaré",
+      "mapa de retorno",
+      "mapas de retorno",
+      "bifurcación",
+      "bifurcaciones",
+      "renormalización"
+    ]
+  },
+  {
+    "route": "/articles/lyapunov-stability-chaos",
+    "terms": [
+      "Estabilidad, funciones y exponentes de Lyapunov",
+      "función de Lyapunov",
+      "funciones de Lyapunov",
+      "exponente de Lyapunov",
+      "exponentes de Lyapunov",
+      "caos determinista"
+    ]
+  },
+  {
+    "route": "/articles/langtons-ant",
+    "terms": [
+      "hormiga de Langton"
+    ]
+  },
+  {
+    "route": "/articles/first-integrals",
+    "terms": [
+      "Integrales primeras y cantidades conservadas",
+      "campo vectorial"
+    ]
+  },
+  {
+    "route": "/articles/life-patterns",
+    "terms": [
+      "Juego de la vida"
+    ]
+  },
+  {
+    "route": "/articles/harmonic-oscillator",
+    "terms": [
+      "Oscilador armónico y retratos de fase"
+    ]
+  },
+  {
+    "route": "/articles/kepler-orbits",
+    "terms": [
+      "Órbitas circulares y tercera ley de Kepler",
+      "velocidad orbital"
+    ]
+  },
+  {
+    "route": "/articles/lorenz-attractor",
+    "terms": [
+      "Atractor de Lorenz"
+    ]
+  },
+  {
+    "route": "/articles/rossler-attractor",
+    "terms": [
+      "atractor de Rössler"
+    ]
+  },
+  {
+    "route": "/articles/abelian-sandpile",
+    "terms": [
+      "Modelo abeliano de pilas de arena"
+    ]
+  },
+  {
+    "route": "/articles/double-pendulum",
+    "terms": [
+      "péndulo doble"
+    ]
+  },
+  {
+    "route": "/articles/cellular-automata",
+    "terms": [
+      "Autómatas celulares y la Regla 30"
+    ]
+  },
+  {
+    "route": "/articles/open-closed-connected",
+    "terms": [
+      "Abiertos, cerrados, acumulación y conexidad",
+      "conjunto abierto",
+      "conjuntos abiertos",
+      "conjunto cerrado",
+      "conjuntos cerrados",
+      "punto de acumulación",
+      "puntos de acumulación",
+      "conexidad",
+      "componentes conexas",
+      "totalmente desconectado",
+      "totalmente desconectados"
+    ]
+  },
+  {
+    "route": "/articles/schoenflies-winding-number",
+    "terms": [
+      "Schönflies y número de vueltas de una curva",
+      "Schönflies",
+      "Schoenflies",
+      "número de vueltas",
+      "índice de una curva",
+      "índice respecto"
+    ]
+  },
+  {
+    "route": "/articles/surfaces-genus-euler",
+    "terms": [
+      "Superficies, orientabilidad, género y característica de Euler",
+      "superficie orientable",
+      "superficies orientables",
+      "orientabilidad",
+      "género de una superficie",
+      "característica de Euler"
+    ]
+  },
+  {
+    "route": "/articles/homeomorphisms-homotopy",
+    "terms": [
+      "Homeomorfismos, homotopía y retracciones",
+      "homeomorfismo",
+      "homeomorfismos",
+      "homeomorfo",
+      "homeomorfa",
+      "homeomorfos",
+      "homotopía",
+      "homotopías",
+      "retracción",
+      "retracto"
+    ]
+  },
+  {
+    "route": "/articles/compact-perfect-disconnected",
+    "terms": [
+      "Compactos, perfectos y totalmente desconectados"
+    ]
+  },
+  {
+    "route": "/articles/cardinality-diagonal",
+    "terms": [
+      "Cardinalidad y argumento diagonal"
+    ]
+  },
+  {
+    "route": "/articles/mobius-strip",
+    "terms": [
+      "cinta de Möbius"
+    ]
+  },
+  {
+    "route": "/articles/klein-bottle",
+    "terms": [
+      "botella de Klein"
+    ]
+  },
+  {
+    "route": "/articles/jordan-curve",
+    "terms": [
+      "teorema de la curva de Jordan"
+    ]
+  },
+  {
+    "route": "/articles/riemann-sphere",
+    "terms": [
+      "Esfera de Riemann y proyección estereográfica",
+      "esfera de Riemann",
+      "proyección estereográfica",
+      "plano complejo ampliado"
+    ]
+  },
+  {
+    "route": "/articles/complex-logarithm-branches",
+    "terms": [
+      "Logaritmo complejo, ramas y cortes",
+      "logaritmo complejo",
+      "rama principal",
+      "ramas del logaritmo",
+      "corte de rama",
+      "rama del logaritmo"
+    ]
+  },
+  {
+    "route": "/articles/complex-residues",
+    "terms": [
+      "Singularidades, polos y residuos",
+      "singularidad esencial",
+      "serie de Laurent"
+    ]
+  },
+  {
+    "route": "/articles/holomorphic-continuation",
+    "terms": [
+      "Funciones holomorfas y continuación analítica",
+      "holomorfa",
+      "holomorfas",
+      "holomorfo",
+      "holomorfía",
+      "continuación analítica"
+    ]
+  },
+  {
+    "route": "/articles/complex-arithmetic",
+    "terms": [
+      "Conjugado, módulo y división compleja",
+      "forma binómica"
+    ]
+  },
+  {
+    "route": "/articles/phasor-superposition",
+    "terms": [
+      "Fasores y superposición de ondas"
+    ]
+  },
+  {
+    "route": "/articles/de-moivre",
+    "terms": [
+      "Fórmula de De Moivre",
+      "De Moivre",
+      "fórmula de Moivre"
+    ]
+  },
+  {
+    "route": "/articles/imaginary-power",
+    "terms": [
+      "¿Por qué iⁱ es real?"
+    ]
+  },
+  {
+    "route": "/articles/euler-identity",
+    "terms": [
+      "identidad de Euler"
+    ]
+  },
+  {
+    "route": "/articles/mobius-transformations",
+    "terms": [
+      "Transformaciones de Möbius",
+      "Möbius",
+      "transformación fraccionaria"
+    ]
+  },
+  {
+    "route": "/articles/vector-norm",
+    "terms": [
+      "Vectores y norma euclídea",
+      "longitud del vector"
+    ]
+  },
+  {
+    "route": "/articles/dot-product",
+    "terms": [
+      "Producto escalar",
+      "producto escalar",
+      "productos escalares",
+      "perpendiculares",
+      "perpendicular"
+    ]
+  },
+  {
+    "route": "/articles/cross-product",
+    "terms": [
+      "Producto vectorial",
+      "producto vectorial"
+    ]
+  },
+  {
+    "route": "/articles/scalar-triple-product",
+    "terms": [
+      "Producto mixto",
+      "producto mixto",
+      "paralelepípedo"
+    ]
+  },
+  {
+    "route": "/articles/plane-normal",
+    "terms": [
+      "Vector normal a un plano",
+      "vector normal"
+    ]
+  },
+  {
+    "route": "/articles/vector-products",
+    "terms": [
+      "Producto vectorial y producto mixto"
+    ]
+  },
+  {
+    "route": "/articles/dihedral-angle",
+    "terms": [
+      "Ángulo diedro"
+    ]
+  },
+  {
+    "route": "/articles/complementary-supplementary-angles",
+    "terms": [
+      "Ángulos complementarios y suplementarios"
+    ]
+  },
+  {
+    "route": "/articles/radians",
+    "terms": [
+      "Radianes",
+      "radián",
+      "vuelta completa"
+    ]
+  },
+  {
+    "route": "/articles/steradians",
+    "terms": [
+      "Estereorradianes y ángulo sólido"
+    ]
+  },
+  {
+    "route": "/articles/homothety",
+    "terms": [
+      "Homotecia",
+      "homotecia",
+      "factor de escala"
+    ]
+  },
+  {
+    "route": "/articles/convex-hull",
+    "terms": [
+      "Convexidad y envolvente convexa"
+    ]
+  },
+  {
+    "route": "/articles/barycenter",
+    "terms": [
+      "Baricentro y centro de masas",
+      "baricentro",
+      "centro de masas"
+    ]
+  },
+  {
+    "route": "/articles/schlafli-symbol",
+    "terms": [
+      "Símbolo de Schläfli"
+    ]
+  },
+  {
+    "route": "/articles/polyhedral-duality",
+    "terms": [
+      "Dualidad de polígonos y poliedros"
+    ]
+  },
+  {
+    "route": "/articles/apothem",
+    "terms": [
+      "Apotema de un polígono regular",
+      "apotema"
+    ]
+  },
+  {
+    "route": "/articles/heron-formula",
+    "terms": [
+      "Fórmula de Herón",
+      "semiperímetro",
+      "fórmula de Herón"
+    ]
+  },
+  {
+    "route": "/articles/ceva-theorem",
+    "terms": [
+      "Teorema de Ceva",
+      "teorema de Ceva"
+    ]
+  },
+  {
+    "route": "/articles/menelaus-theorem",
+    "terms": [
+      "Teorema de Menelao"
+    ]
+  },
+  {
+    "route": "/articles/thales-theorem",
+    "terms": [
+      "Teorema de Tales"
+    ]
+  },
+  {
+    "route": "/articles/law-of-cosines",
+    "terms": [
+      "Ley de los cosenos",
+      "teorema del coseno",
+      "ley de cosenos",
+      "ley del coseno"
+    ]
+  },
+  {
+    "route": "/articles/stewart-theorem",
+    "terms": [
+      "Teorema de Stewart",
+      "teorema de Stewart",
+      "teorema de Apolonio"
+    ]
+  },
+  {
+    "route": "/articles/euler-line",
+    "terms": [
+      "recta de Euler"
+    ]
+  },
+  {
+    "route": "/articles/nine-point-circle",
+    "terms": [
+      "circunferencia de los nueve puntos"
+    ]
+  },
+  {
+    "route": "/articles/napoleon-theorem",
+    "terms": [
+      "Teorema de Napoleón"
+    ]
+  },
+  {
+    "route": "/articles/fermat-point",
+    "terms": [
+      "punto de Fermat o Torricelli"
+    ]
+  },
+  {
+    "route": "/articles/erdos-mordell",
+    "terms": [
+      "desigualdad de Erdős–Mordell"
+    ]
+  },
+  {
+    "route": "/articles/morley-theorem",
+    "terms": [
+      "Teorema de Morley"
+    ]
+  },
+  {
+    "route": "/articles/euler-triangle-formula",
+    "terms": [
+      "Fórmula de Euler para el triángulo"
+    ]
+  },
+  {
+    "route": "/articles/pompeiu-theorem",
+    "terms": [
+      "Teorema de Pompeiu"
+    ]
+  },
+  {
+    "route": "/articles/incircles-circumcircles",
+    "terms": [
+      "Circunferencias inscritas y circunscritas"
+    ]
+  },
+  {
+    "route": "/articles/line-circle",
+    "terms": [
+      "Geometría analítica de la recta y la circunferencia",
+      "circunferencia"
+    ]
+  },
+  {
+    "route": "/articles/power-of-point",
+    "terms": [
+      "potencia de un punto"
+    ]
+  },
+  {
+    "route": "/articles/chords-secants-tangents",
+    "terms": [
+      "Teoremas de cuerdas, secantes y tangentes"
+    ]
+  },
+  {
+    "route": "/articles/casey-theorem",
+    "terms": [
+      "Teorema de Casey"
+    ]
+  },
+  {
+    "route": "/articles/apollonius-problem",
+    "terms": [
+      "problema de Apolonio"
+    ]
+  },
+  {
+    "route": "/articles/descartes-circles",
+    "terms": [
+      "Teorema de Descartes"
+    ]
+  },
+  {
+    "route": "/articles/ptolemy-theorem",
+    "terms": [
+      "Teorema de Ptolomeo"
+    ]
+  },
+  {
+    "route": "/articles/brahmagupta-formula",
+    "terms": [
+      "Fórmula de Brahmagupta"
+    ]
+  },
+  {
+    "route": "/articles/varignon-theorem",
+    "terms": [
+      "Teorema de Varignon"
+    ]
+  },
+  {
+    "route": "/articles/shoelace-formula",
+    "terms": [
+      "Fórmula del área de Gauss",
+      "suma cruzada",
+      "polígono ordenado"
+    ]
+  },
+  {
+    "route": "/articles/pick-theorem",
+    "terms": [
+      "Teorema de Pick",
+      "puntos interiores",
+      "teorema de Pick"
+    ]
+  },
+  {
+    "route": "/articles/bretschneider-formula",
+    "terms": [
+      "Fórmula de Brahmagupta–Bretschneider"
+    ]
+  },
+  {
+    "route": "/articles/pascal-theorem",
+    "terms": [
+      "Teorema de Pascal"
+    ]
+  },
+  {
+    "route": "/articles/brianchon-theorem",
+    "terms": [
+      "Teorema de Brianchon"
+    ]
+  },
+  {
+    "route": "/articles/desargues-theorem",
+    "terms": [
+      "Teorema de Desargues"
+    ]
+  },
+  {
+    "route": "/articles/cross-ratio",
+    "terms": [
+      "razón cruzada"
+    ]
+  },
+  {
+    "route": "/articles/inspheres-circumspheres",
+    "terms": [
+      "Esferas inscritas y circunscritas",
+      "esfera inscrita",
+      "radio de la esfera"
+    ]
+  },
+  {
+    "route": "/articles/lines-planes",
+    "terms": [
+      "Rectas y planos en el espacio",
+      "rectas cruzadas",
+      "vector director"
+    ]
+  },
+  {
+    "route": "/articles/orthogonal-projections",
+    "terms": [
+      "Proyecciones ortogonales y distancias en el espacio",
+      "proyección ortogonal",
+      "componente perpendicular"
+    ]
+  },
+  {
+    "route": "/articles/tesseract",
+    "terms": [
+      "teseracto"
+    ]
+  },
+  {
+    "route": "/articles/euler-polyhedron-formula",
+    "terms": [
+      "Fórmula de Euler para poliedros"
+    ]
+  },
+  {
+    "route": "/articles/cavalieri-principle",
+    "terms": [
+      "Principio de Cavalieri"
+    ]
+  },
+  {
+    "route": "/articles/cayley-menger",
+    "terms": [
+      "Volumen del tetraedro"
+    ]
+  },
+  {
+    "route": "/articles/hitomezashi",
+    "terms": [
+      "Patrones Hitomezashi"
+    ]
+  },
+  {
+    "route": "/articles/affine-transformations",
+    "terms": [
+      "Transformaciones afines",
+      "transformación afín",
+      "transformaciones afines",
+      "aplicación afín",
+      "contracciones afines"
+    ]
+  },
+  {
+    "route": "/articles/curve-singularities",
+    "terms": [
+      "Puntos singulares, cúspides y nodos de curvas",
+      "punto singular",
+      "puntos singulares",
+      "cúspide",
+      "cúspides"
+    ]
+  },
+  {
+    "route": "/articles/envelopes-evolutes",
+    "terms": [
+      "Envolventes, evolutas e involutas",
+      "envolvente",
+      "envolventes",
+      "evoluta",
+      "evolutas",
+      "involuta",
+      "involutas"
+    ]
+  },
+  {
+    "route": "/articles/curvature-frenet",
+    "terms": [
+      "Curvatura, círculo osculador y triedro de Frenet",
+      "curvatura",
+      "círculo osculador",
+      "radio de curvatura",
+      "torsión",
+      "triedro de Frenet",
+      "normal principal"
+    ]
+  },
+  {
+    "route": "/articles/circle-inversion",
+    "terms": [
+      "Inversión respecto de una circunferencia",
+      "inversión circular",
+      "inversión geométrica",
+      "inversión respecto",
+      "circunferencia de inversión"
+    ]
+  },
+  {
+    "route": "/articles/projective-homogeneous-coordinates",
+    "terms": [
+      "Geometría proyectiva y coordenadas homogéneas",
+      "geometría proyectiva",
+      "coordenadas homogéneas",
+      "punto del infinito",
+      "puntos del infinito",
+      "plano proyectivo"
+    ]
+  },
+  {
+    "route": "/articles/plane-tessellations",
+    "terms": [
+      "Teselaciones del plano y polígonos regulares",
+      "teselación",
+      "teselaciones",
+      "teselar",
+      "mosaicos regulares"
+    ]
+  },
+  {
+    "route": "/articles/constructible-numbers",
+    "terms": [
+      "Regla, compás y números construibles",
+      "regla y compás",
+      "número construible",
+      "números construibles"
+    ]
+  },
+  {
+    "route": "/articles/dimensional-analysis",
+    "terms": [
+      "Análisis dimensional y leyes de escala"
+    ]
+  },
+  {
+    "route": "/articles/equation-of-time",
+    "terms": [
+      "Ecuación del tiempo y mediodía solar"
+    ]
+  },
+  {
+    "route": "/articles/triangle-similarity",
+    "terms": [
+      "Semejanza de triángulos y proporcionalidad",
+      "semejanza"
+    ]
+  },
+  {
+    "route": "/articles/pythagorean-distance",
+    "terms": [
+      "Pitágoras y distancia euclídea",
+      "pitagórica",
+      "hipotenusa",
+      "catetos",
+      "teorema de Pitágoras",
+      "distancia euclídea"
+    ]
+  },
+  {
+    "route": "/articles/triangle-metrics",
+    "terms": [
+      "Geometría del triángulo",
+      "medianas",
+      "incentro",
+      "inradio"
+    ]
+  },
+  {
+    "route": "/articles/solar-geometry",
+    "terms": [
+      "Geometría solar",
+      "altura solar",
+      "declinación",
+      "latitud"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-conics",
+    "terms": [
+      "Cónicas como formas cuadráticas",
+      "hipérbola",
+      "asíntotas"
+    ]
+  },
+  {
+    "route": "/articles/apollonius-circles",
+    "terms": [
+      "Circunferencias de Apolonio y razones de distancias"
+    ]
+  },
+  {
+    "route": "/articles/ellipse",
+    "terms": [
+      "Elipse"
+    ]
+  },
+  {
+    "route": "/articles/hyperbola",
+    "terms": [
+      "Hipérbola"
+    ]
+  },
+  {
+    "route": "/articles/parabola",
+    "terms": [
+      "Parábola"
+    ]
+  },
+  {
+    "route": "/articles/archimedean-spiral",
+    "terms": [
+      "Espiral de Arquímedes"
+    ]
+  },
+  {
+    "route": "/articles/logarithmic-spiral",
+    "terms": [
+      "Espiral logarítmica"
+    ]
+  },
+  {
+    "route": "/articles/astroid",
+    "terms": [
+      "Astroide"
+    ]
+  },
+  {
+    "route": "/articles/cardioid",
+    "terms": [
+      "Cardioide"
+    ]
+  },
+  {
+    "route": "/articles/cycloid",
+    "terms": [
+      "Cicloide"
+    ]
+  },
+  {
+    "route": "/articles/deltoid",
+    "terms": [
+      "Deltoide"
+    ]
+  },
+  {
+    "route": "/articles/epicycloid",
+    "terms": [
+      "Epicicloide"
+    ]
+  },
+  {
+    "route": "/articles/hypocycloid",
+    "terms": [
+      "Hipocicloide"
+    ]
+  },
+  {
+    "route": "/articles/cassini",
+    "terms": [
+      "Óvalos de Cassini"
+    ]
+  },
+  {
+    "route": "/articles/lemniscate",
+    "terms": [
+      "Lemniscata"
+    ]
+  },
+  {
+    "route": "/articles/rose",
+    "terms": [
+      "Rosa polar"
+    ]
+  },
+  {
+    "route": "/articles/trifolium",
+    "terms": [
+      "Trifolio"
+    ]
+  },
+  {
+    "route": "/articles/agnesi-witch",
+    "terms": [
+      "Bruja de Agnesi"
+    ]
+  },
+  {
+    "route": "/articles/cissoid",
+    "terms": [
+      "Cisoide de Diocles"
+    ]
+  },
+  {
+    "route": "/articles/conchoid",
+    "terms": [
+      "Concoide de Nicomedes"
+    ]
+  },
+  {
+    "route": "/articles/lissajous",
+    "terms": [
+      "Curva de Lissajous"
+    ]
+  },
+  {
+    "route": "/articles/parabola-like",
+    "terms": [
+      "Curva parabólica general"
+    ]
+  },
+  {
+    "route": "/articles/descartes-folium",
+    "terms": [
+      "Folium de Descartes"
+    ]
+  },
+  {
+    "route": "/articles/neile-semicubical",
+    "terms": [
+      "Parábola semicúbica de Neile"
+    ]
+  },
+  {
+    "route": "/articles/right-strophoid",
+    "terms": [
+      "Estrofoide recta"
+    ]
+  },
+  {
+    "route": "/articles/maclaurin-trisectrix",
+    "terms": [
+      "Trisectriz de Maclaurin"
+    ]
+  },
+  {
+    "route": "/articles/tschirnhausen-cubic",
+    "terms": [
+      "Cúbica de Tschirnhausen"
+    ]
+  },
+  {
+    "route": "/articles/newton-serpentine",
+    "terms": [
+      "Serpentina de Newton"
+    ]
+  },
+  {
+    "route": "/articles/newton-trident",
+    "terms": [
+      "Tridente de Newton"
+    ]
+  },
+  {
+    "route": "/articles/sluze-conchoid",
+    "terms": [
+      "Concoide de Sluze"
+    ]
+  },
+  {
+    "route": "/articles/newton-divergent-parabola",
+    "terms": [
+      "Parábolas divergentes de Newton"
+    ]
+  },
+  {
+    "route": "/articles/sylvester-bicorn",
+    "terms": [
+      "Bicorne de Sylvester"
+    ]
+  },
+  {
+    "route": "/articles/algebraic-bean",
+    "terms": [
+      "Curva de la judía"
+    ]
+  },
+  {
+    "route": "/articles/longchamps-piriform",
+    "terms": [
+      "Piriforme de Longchamps"
+    ]
+  },
+  {
+    "route": "/articles/devils-curve",
+    "terms": [
+      "Curva del diablo"
+    ]
+  },
+  {
+    "route": "/articles/gutschoven-kappa",
+    "terms": [
+      "Curva kappa de Gutschoven"
+    ]
+  },
+  {
+    "route": "/articles/eudoxus-kampyle",
+    "terms": [
+      "Campila de Eudoxo"
+    ]
+  },
+  {
+    "route": "/articles/bullet-nose-curve",
+    "terms": [
+      "Curva nariz de bala"
+    ]
+  },
+  {
+    "route": "/articles/proclus-hippopede",
+    "terms": [
+      "Hipopeda de Proclo"
+    ]
+  },
+  {
+    "route": "/articles/ampersand-curve",
+    "terms": [
+      "Curva ampersand"
+    ]
+  },
+  {
+    "route": "/articles/bow-curve",
+    "terms": [
+      "Cuártica del arco"
+    ]
+  },
+  {
+    "route": "/articles/cayley-sextic",
+    "terms": [
+      "Séxtica de Cayley"
+    ]
+  },
+  {
+    "route": "/articles/dumbbell-curve",
+    "terms": [
+      "Curva de la mancuerna"
+    ]
+  },
+  {
+    "route": "/articles/algebraic-butterfly",
+    "terms": [
+      "Mariposa algebraica"
+    ]
+  },
+  {
+    "route": "/articles/algebraic-heart",
+    "terms": [
+      "Corazón algebraico"
+    ]
+  },
+  {
+    "route": "/articles/watt-linkage-curve",
+    "terms": [
+      "Curva del mecanismo de Watt"
+    ]
+  },
+  {
+    "route": "/articles/cornoid-curve",
+    "terms": [
+      "Cornoide"
+    ]
+  },
+  {
+    "route": "/articles/durer-conchoid",
+    "terms": [
+      "Concoide de Dürer"
+    ]
+  },
+  {
+    "route": "/articles/sluze-pearls",
+    "terms": [
+      "Perlas de Sluze"
+    ]
+  },
+  {
+    "route": "/articles/circle-curve",
+    "terms": [
+      "Circunferencia"
+    ]
+  },
+  {
+    "route": "/articles/cartesian-oval",
+    "terms": [
+      "Óvalo cartesiano de Descartes"
+    ]
+  },
+  {
+    "route": "/articles/perseus-spiric",
+    "terms": [
+      "Secciones espíricas de Perseo"
+    ]
+  },
+  {
+    "route": "/articles/reuleaux-triangle-curve",
+    "terms": [
+      "Curva del triángulo de Reuleaux"
+    ]
+  },
+  {
+    "route": "/articles/stadium-curve",
+    "terms": [
+      "Curva del estadio"
+    ]
+  },
+  {
+    "route": "/articles/lame-superellipse",
+    "terms": [
+      "Superelipse de Lamé"
+    ]
+  },
+  {
+    "route": "/articles/fernandez-guasti-squircle",
+    "terms": [
+      "Squircle de Fernández-Guasti"
+    ]
+  },
+  {
+    "route": "/articles/three-focus-ellipse",
+    "terms": [
+      "Elipse de tres focos"
+    ]
+  },
+  {
+    "route": "/articles/fermat-spiral",
+    "terms": [
+      "Espiral de Fermat"
+    ]
+  },
+  {
+    "route": "/articles/hyperbolic-spiral",
+    "terms": [
+      "Espiral hiperbólica"
+    ]
+  },
+  {
+    "route": "/articles/lituus-spiral",
+    "terms": [
+      "Lituus"
+    ]
+  },
+  {
+    "route": "/articles/euler-clothoid",
+    "terms": [
+      "Clotoide de Euler"
+    ]
+  },
+  {
+    "route": "/articles/epispiral-curve",
+    "terms": [
+      "Epiespiral"
+    ]
+  },
+  {
+    "route": "/articles/poinsot-spiral",
+    "terms": [
+      "Espiral de Poinsot"
+    ]
+  },
+  {
+    "route": "/articles/cochleoid-curve",
+    "terms": [
+      "Cocleoide"
+    ]
+  },
+  {
+    "route": "/articles/theodorus-spiral",
+    "terms": [
+      "Espiral de Teodoro"
+    ]
+  },
+  {
+    "route": "/articles/trochoid-curve",
+    "terms": [
+      "Trocoide"
+    ]
+  },
+  {
+    "route": "/articles/epitrochoid-curve",
+    "terms": [
+      "Epitrocoide"
+    ]
+  },
+  {
+    "route": "/articles/hypotrochoid-curve",
+    "terms": [
+      "Hipotrocoide"
+    ]
+  },
+  {
+    "route": "/articles/nephroid-curve",
+    "terms": [
+      "Nefroide"
+    ]
+  },
+  {
+    "route": "/articles/freeth-nephroid",
+    "terms": [
+      "Nefroide de Freeth"
+    ]
+  },
+  {
+    "route": "/articles/ceva-cycloid",
+    "terms": [
+      "Cicloide de Ceva"
+    ]
+  },
+  {
+    "route": "/articles/pascal-limacon",
+    "terms": [
+      "Limaçón de Pascal"
+    ]
+  },
+  {
+    "route": "/articles/talbot-curve",
+    "terms": [
+      "Curva de Talbot"
+    ]
+  },
+  {
+    "route": "/articles/circle-involute",
+    "terms": [
+      "Involuta de una circunferencia"
+    ]
+  },
+  {
+    "route": "/articles/ellipse-evolute-curve",
+    "terms": [
+      "Evoluta de una elipse"
+    ]
+  },
+  {
+    "route": "/articles/catenary-curve",
+    "terms": [
+      "Catenaria"
+    ]
+  },
+  {
+    "route": "/articles/tractrix-curve",
+    "terms": [
+      "Tractriz"
+    ]
+  },
+  {
+    "route": "/articles/catenary-evolute",
+    "terms": [
+      "Evoluta de la catenaria"
+    ]
+  },
+  {
+    "route": "/articles/euler-elastica",
+    "terms": [
+      "Elástica de Euler"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-bezier-curve",
+    "terms": [
+      "Curva de Bézier cuadrática"
+    ]
+  },
+  {
+    "route": "/articles/cubic-bezier-curve",
+    "terms": [
+      "Curva de Bézier cúbica"
+    ]
+  },
+  {
+    "route": "/articles/rational-bezier-curve",
+    "terms": [
+      "Curva de Bézier racional"
+    ]
+  },
+  {
+    "route": "/articles/cubic-hermite-curve",
+    "terms": [
+      "Curva cúbica de Hermite"
+    ]
+  },
+  {
+    "route": "/articles/catmull-rom-curve",
+    "terms": [
+      "Spline de Catmull–Rom"
+    ]
+  },
+  {
+    "route": "/articles/uniform-cubic-bspline",
+    "terms": [
+      "B-spline cúbico uniforme"
+    ]
+  },
+  {
+    "route": "/articles/natural-cubic-spline",
+    "terms": [
+      "Spline cúbico natural"
+    ]
+  },
+  {
+    "route": "/articles/lagrange-interpolation-curve",
+    "terms": [
+      "Curva interpoladora de Lagrange"
+    ]
+  },
+  {
+    "route": "/articles/pythagorean-hodograph-quintic",
+    "terms": [
+      "Quíntica de hodógrafa pitagórica"
+    ]
+  },
+  {
+    "route": "/articles/nurbs-curve",
+    "terms": [
+      "Curva NURBS"
+    ]
+  },
+  {
+    "route": "/articles/sinusoidal-curve",
+    "terms": [
+      "Curva sinusoidal"
+    ]
+  },
+  {
+    "route": "/articles/damped-sinusoid",
+    "terms": [
+      "Sinusoide amortiguada"
+    ]
+  },
+  {
+    "route": "/articles/exponential-curve",
+    "terms": [
+      "Curva exponencial"
+    ]
+  },
+  {
+    "route": "/articles/logarithmic-curve",
+    "terms": [
+      "Curva logarítmica"
+    ]
+  },
+  {
+    "route": "/articles/logistic-curve",
+    "terms": [
+      "Curva logística"
+    ]
+  },
+  {
+    "route": "/articles/gompertz-curve",
+    "terms": [
+      "Curva de Gompertz"
+    ]
+  },
+  {
+    "route": "/articles/hyperbolic-tangent-curve",
+    "terms": [
+      "Curva tangente hiperbólica"
+    ]
+  },
+  {
+    "route": "/articles/sinc-curve",
+    "terms": [
+      "Curva sinc"
+    ]
+  },
+  {
+    "route": "/articles/error-function-curve",
+    "terms": [
+      "Curva de la función error"
+    ]
+  },
+  {
+    "route": "/articles/gudermannian-curve",
+    "terms": [
+      "Curva gudermanniana"
+    ]
+  },
+  {
+    "route": "/articles/chebyshev-curve",
+    "terms": [
+      "Curva de Chebyshev"
+    ]
+  },
+  {
+    "route": "/articles/legendre-curve",
+    "terms": [
+      "Curva de Legendre"
+    ]
+  },
+  {
+    "route": "/articles/hermite-probabilist-curve",
+    "terms": [
+      "Curva de Hermite probabilista"
+    ]
+  },
+  {
+    "route": "/articles/laguerre-curve",
+    "terms": [
+      "Curva de Laguerre"
+    ]
+  },
+  {
+    "route": "/articles/bessel-j0-curve",
+    "terms": [
+      "Curva de Bessel J₀"
+    ]
+  },
+  {
+    "route": "/articles/airy-ai-curve",
+    "terms": [
+      "Curva de Airy Ai"
+    ]
+  },
+  {
+    "route": "/articles/dawson-curve",
+    "terms": [
+      "Curva de Dawson"
+    ]
+  },
+  {
+    "route": "/articles/beta-density-curve",
+    "terms": [
+      "Curva de densidad beta"
+    ]
+  },
+  {
+    "route": "/articles/gamma-density-curve",
+    "terms": [
+      "Curva de densidad gamma"
+    ]
+  },
+  {
+    "route": "/articles/student-density-curve",
+    "terms": [
+      "Curva t de Student"
+    ]
+  },
+  {
+    "route": "/articles/gerono-lemniscate",
+    "terms": [
+      "Lemniscata de Gerono"
+    ]
+  },
+  {
+    "route": "/articles/bifolium-curve",
+    "terms": [
+      "Bifolium"
+    ]
+  },
+  {
+    "route": "/articles/kepler-folium-curve",
+    "terms": [
+      "Folium de Kepler"
+    ]
+  },
+  {
+    "route": "/articles/cruciform-curve",
+    "terms": [
+      "Curva cruciforme"
+    ]
+  },
+  {
+    "route": "/articles/fay-butterfly",
+    "terms": [
+      "Mariposa trascendente de Fay"
+    ]
+  },
+  {
+    "route": "/articles/gielis-superformula",
+    "terms": [
+      "Curva de la superfórmula de Gielis"
+    ]
+  },
+  {
+    "route": "/articles/teardrop-curve",
+    "terms": [
+      "Curva de la lágrima"
+    ]
+  },
+  {
+    "route": "/articles/trigonometric-egg-curve",
+    "terms": [
+      "Óvalo ovoide trigonométrico"
+    ]
+  },
+  {
+    "route": "/articles/plateau-curve",
+    "terms": [
+      "Curva de Plateau"
+    ]
+  },
+  {
+    "route": "/articles/gear-profile-curve",
+    "terms": [
+      "Curva de perfil de engranaje"
+    ]
+  },
+  {
+    "route": "/articles/circular-helix-curve",
+    "terms": [
+      "Hélice circular"
+    ]
+  },
+  {
+    "route": "/articles/conical-helix-curve",
+    "terms": [
+      "Hélice cónica"
+    ]
+  },
+  {
+    "route": "/articles/viviani-curve",
+    "terms": [
+      "Curva de Viviani"
+    ]
+  },
+  {
+    "route": "/articles/probability-trees",
+    "terms": [
+      "Árboles de probabilidad y experimentos por etapas"
+    ]
+  },
+  {
+    "route": "/articles/finite-probability",
+    "terms": [
+      "Probabilidad en espacios finitos",
+      "espacio muestral",
+      "equiprobables",
+      "equiprobable"
+    ]
+  },
+  {
+    "route": "/articles/probability-inequalities",
+    "terms": [
+      "Desigualdades de Markov y Chebyshev"
+    ]
+  },
+  {
+    "route": "/articles/large-numbers-law",
+    "terms": [
+      "Ley de los grandes números"
+    ]
+  },
+  {
+    "route": "/articles/conditional-independence",
+    "terms": [
+      "Probabilidad condicionada e independencia",
+      "probabilidad condicionada",
+      "probabilidad condicional",
+      "sucesos independientes"
+    ]
+  },
+  {
+    "route": "/articles/bayes-theorem",
+    "terms": [
+      "Teorema de Bayes",
+      "Bayes",
+      "tasa base",
+      "falso positivo",
+      "teorema de Bayes",
+      "fórmula de Bayes"
+    ]
+  },
+  {
+    "route": "/articles/birthday-paradox",
+    "terms": [
+      "Paradoja del cumpleaños"
+    ]
+  },
+  {
+    "route": "/articles/monty-hall",
+    "terms": [
+      "Problema de Monty Hall",
+      "Monty Hall"
+    ]
+  },
+  {
+    "route": "/articles/distribution-functions-tails",
+    "terms": [
+      "Función de distribución, colas y probabilidades acumuladas"
+    ]
+  },
+  {
+    "route": "/articles/moment-transformations",
+    "terms": [
+      "Transformaciones de variables y de sus momentos"
+    ]
+  },
+  {
+    "route": "/articles/normal-distribution",
+    "terms": [
+      "Distribución normal y tipificación",
+      "normal estándar",
+      "estandarizamos",
+      "estandarizar",
+      "tipificar",
+      "distribución normal",
+      "distribución gaussiana"
+    ]
+  },
+  {
+    "route": "/articles/bernoulli-binomial",
+    "terms": [
+      "Distribuciones de Bernoulli y binomial",
+      "distribución binomial",
+      "ensayos de Bernoulli"
+    ]
+  },
+  {
+    "route": "/articles/student-chi-square",
+    "terms": [
+      "Distribuciones t de Student y chi-cuadrado"
+    ]
+  },
+  {
+    "route": "/articles/discrete-expectation",
+    "terms": [
+      "Esperanza discreta, juegos justos y riesgo",
+      "valor esperado"
+    ]
+  },
+  {
+    "route": "/articles/continuous-random-variables",
+    "terms": [
+      "Variables continuas"
+    ]
+  },
+  {
+    "route": "/articles/geometric-distribution",
+    "terms": [
+      "Distribución geométrica y tiempo de espera",
+      "primer éxito"
+    ]
+  },
+  {
+    "route": "/articles/hypergeometric-distribution",
+    "terms": [
+      "Distribución hipergeométrica",
+      "sin reemplazo",
+      "sin reposición"
+    ]
+  },
+  {
+    "route": "/articles/causal-inference",
+    "terms": [
+      "Causalidad, confusión y experimentos aleatorizados"
+    ]
+  },
+  {
+    "route": "/articles/covariance",
+    "terms": [
+      "Covarianza, dependencia y varianza de una suma",
+      "covarianza",
+      "correlación"
+    ]
+  },
+  {
+    "route": "/articles/graphical-diagnostics",
+    "terms": [
+      "Diagnóstico gráfico",
+      "Datasaurus",
+      "diagrama de dispersión",
+      "atípicos"
+    ]
+  },
+  {
+    "route": "/articles/descriptive-statistics",
+    "terms": [
+      "Estadística descriptiva y valores atípicos",
+      "desviación típica",
+      "media aritmética",
+      "varianza muestral"
+    ]
+  },
+  {
+    "route": "/articles/linear-regression",
+    "terms": [
+      "Regresión lineal y correlación de Pearson",
+      "regresión",
+      "recta de mínimos cuadrados",
+      "regresión lineal",
+      "correlación de Pearson"
+    ]
+  },
+  {
+    "route": "/articles/simpson-paradox",
+    "terms": [
+      "Paradoja de Simpson"
+    ]
+  },
+  {
+    "route": "/articles/stratified-sampling",
+    "terms": [
+      "Muestreo estratificado y estimadores ponderados",
+      "asignación proporcional"
+    ]
+  },
+  {
+    "route": "/articles/bootstrap",
+    "terms": [
+      "Bootstrap y estimación por remuestreo"
+    ]
+  },
+  {
+    "route": "/articles/proportion-intervals",
+    "terms": [
+      "Intervalos para proporciones",
+      "aproximación normal"
+    ]
+  },
+  {
+    "route": "/articles/sampling-distributions",
+    "terms": [
+      "Distribuciones muestrales y error estándar",
+      "error estándar",
+      "media muestral"
+    ]
+  },
+  {
+    "route": "/articles/bessel-correction",
+    "terms": [
+      "Corrección de Bessel y estimadores insesgados",
+      "corrección muestral",
+      "grados de libertad",
+      "divisor muestral"
+    ]
+  },
+  {
+    "route": "/articles/sampling-bias",
+    "terms": [
+      "Muestreo y sesgo de selección",
+      "sesgo de selección"
+    ]
+  },
+  {
+    "route": "/articles/statistical-power",
+    "terms": [
+      "Potencia estadística y errores de contraste"
+    ]
+  },
+  {
+    "route": "/articles/statistical-inference",
+    "terms": [
+      "Inferencia estadística",
+      "hipótesis nula"
+    ]
+  },
+  {
+    "route": "/articles/central-limit-theorem",
+    "terms": [
+      "teorema central del límite"
+    ]
+  },
+  {
+    "route": "/articles/galton-board",
+    "terms": [
+      "tablero de Galton"
+    ]
+  },
+  {
+    "route": "/articles/markov-chains",
+    "terms": [
+      "cadenas de Markov"
+    ]
+  },
+  {
+    "route": "/articles/buffon-needle",
+    "terms": [
+      "aguja de Buffon"
+    ]
+  },
+  {
+    "route": "/articles/percolation-diagram",
+    "terms": [
+      "Diagrama de percolación"
+    ]
+  },
+  {
+    "route": "/articles/ergodicity-autocorrelation",
+    "terms": [
+      "Ergodicidad, autocorrelación y promedios temporales",
+      "ergodicidad",
+      "ergódico",
+      "ergódica",
+      "autocorrelación",
+      "tamaño muestral efectivo"
+    ]
+  },
+  {
+    "route": "/articles/berry-esseen",
+    "terms": [
+      "Berry–Esseen y el error de la aproximación normal",
+      "Berry–Esseen",
+      "Berry-Esseen"
+    ]
+  },
+  {
+    "route": "/articles/generating-concentration",
+    "terms": [
+      "Funciones generadoras, características y cotas de concentración",
+      "función generadora de momentos",
+      "funciones generadoras de momentos",
+      "función característica",
+      "funciones características",
+      "Cantelli",
+      "Hoeffding",
+      "Chernoff"
+    ]
+  },
+  {
+    "route": "/articles/maximum-likelihood",
+    "terms": [
+      "Verosimilitud y estimación de máxima verosimilitud",
+      "verosimilitud",
+      "máxima verosimilitud",
+      "estimador máximo verosímil"
+    ]
+  },
+  {
+    "route": "/articles/cauchy-heavy-tails",
+    "terms": [
+      "Distribución de Cauchy, colas pesadas y esperanza inexistente",
+      "distribución de Cauchy",
+      "colas pesadas",
+      "valor principal de Cauchy"
+    ]
+  },
+  {
+    "route": "/articles/heterogeneous-binomial-mixtures",
+    "terms": [
+      "Poisson-binomial y beta-binomial",
+      "Poisson-binomial",
+      "poisson-binomial",
+      "beta-binomial"
+    ]
+  },
+  {
+    "route": "/articles/poisson-exponential-waiting",
+    "terms": [
+      "Poisson, espera exponencial y binomial negativa",
+      "distribución de Poisson",
+      "distribución exponencial",
+      "espera exponencial",
+      "binomial negativa",
+      "proceso de Poisson"
+    ]
+  },
+  {
+    "route": "/articles/spherical-trigonometry",
+    "terms": [
+      "Trigonometría esférica y coordenadas celestes"
+    ]
+  },
+  {
+    "route": "/articles/sine-law",
+    "terms": [
+      "Ley de los senos y caso ambiguo",
+      "ley de senos",
+      "ley de los senos"
+    ]
+  },
+  {
+    "route": "/articles/trigonometric-equations",
+    "terms": [
+      "Ecuaciones trigonométricas y periodicidad",
+      "ecuación trigonométrica"
+    ]
+  },
+  {
+    "route": "/articles/height-surveying",
+    "terms": [
+      "Trigonometría para medir alturas y distancias"
+    ]
+  },
+  {
+    "route": "/articles/trig-inverse-trig-composition",
+    "terms": [
+      "Composición de funciones trigonométricas y sus inversas",
+      "arcsen"
+    ]
+  },
+  {
+    "route": "/articles/trig-n-functions",
+    "terms": [
+      "Ángulos múltiples y ángulo mitad",
+      "ángulo doble",
+      "fórmula de suma"
+    ]
+  },
+  {
+    "route": "/articles/test-article",
+    "terms": [
+      "Artículo Test"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-foundations",
+    "fragment": "coefficients",
+    "terms": [
+      "término independiente",
+      "coeficiente principal"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-foundations",
+    "fragment": "monic",
+    "terms": [
+      "polinomio mónico",
+      "mónico",
+      "mónica"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-foundations",
+    "fragment": "roots",
+    "terms": [
+      "raíz doble",
+      "multiplicidad"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-division",
+    "fragment": "factor-theorem",
+    "terms": [
+      "teorema del factor",
+      "teorema del resto"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-division",
+    "fragment": "division",
+    "terms": [
+      "división polinómica",
+      "división de polinomios"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-equations",
+    "fragment": "discriminant",
+    "terms": [
+      "discriminante"
+    ]
+  },
+  {
+    "route": "/articles/quadratic-equations",
+    "fragment": "vieta",
+    "terms": [
+      "Viète",
+      "Vieta"
+    ]
+  },
+  {
+    "route": "/articles/integration-classical",
+    "fragment": "rational",
+    "terms": [
+      "fracciones parciales"
+    ]
+  },
+  {
+    "route": "/articles/integration-classical",
+    "fragment": "fundamental",
+    "terms": [
+      "integral definida",
+      "área firmada"
+    ]
+  },
+  {
+    "route": "/articles/integration-classical",
+    "fragment": "substitution",
+    "terms": [
+      "cambio de variable"
+    ]
+  },
+  {
+    "route": "/articles/integration-numerical",
+    "fragment": "newton-cotes",
+    "terms": [
+      "trapecios",
+      "trapecio",
+      "Simpson"
+    ]
+  },
+  {
+    "route": "/articles/compact-perfect-disconnected",
+    "terms": [
+      "conjunto perfecto"
+    ]
+  },
+  {
+    "route": "/articles/singular-values-operator-norms",
+    "terms": [
+      "SVD"
+    ]
+  },
+  {
+    "route": "/articles/rsa-discrete-logarithm",
+    "terms": [
+      "RSA"
+    ]
+  },
+  {
+    "route": "/articles/iterated-function-systems",
+    "terms": [
+      "IFS"
+    ]
+  },
+  {
+    "route": "/articles/matrix-diagonalization",
+    "terms": [
+      "teorema espectral"
+    ]
+  },
+  {
+    "route": "/articles/polynomial-foundations",
+    "fragment": "multiplicity",
+    "terms": [
+      "teorema fundamental del álgebra"
+    ]
+  },
+  {
+    "route": "/articles/integration-classical",
+    "terms": [
+      "integración por partes",
+      "integración por sustitución",
+      "teorema fundamental del cálculo"
+    ]
+  }
+]

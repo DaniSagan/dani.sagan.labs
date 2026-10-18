@@ -106,7 +106,7 @@
 <div class="proof">
   <p>Supongamos dos expansiones del mismo entero. Para compararlas podemos completar temporalmente la más corta
     con coeficientes cero en las posiciones superiores. Reducir módulo b da a₀ ≡ c₀ (mod b).
-    Como ambas cifras están en el intervalo 0,…,b − 1, su diferencia tiene valor absoluto menor que b.
+    Como ambas cifras están en el intervalo 0,…,b − 1, su diferencia tiene <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a> menor que b.
     El único múltiplo de b posible es cero: a₀ = c₀.</p>
   <p>Restamos esa cifra común y dividimos la igualdad entre b:</p>
   <app-formula expression="\frac{n-a_0}{b}=a_1+a_2b+\cdots
@@ -249,7 +249,7 @@ Invertir la lista de cifras y recuperar el signo.</pre>
   <app-formula expression="n\le(b-1)(1+b+\cdots+b^k)=b^{k+1}-1&lt;b^{k+1}."></app-formula>
   <p>Recíprocamente, los intervalos [bʲ,bʲ⁺¹) son disjuntos para distintos j.
     La longitud de la representación existente debe corresponder al único intervalo que contiene n.
-    Tomando logaritmos, k ≤ logᵦ n &lt; k + 1.</p>
+    Tomando <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmos</a>, k ≤ logᵦ n &lt; k + 1.</p>
 </div>
 <app-formula expression="\boxed{\ell_b(n)=\lfloor\log_b n\rfloor+1\qquad(n&gt;0).}"></app-formula>
 <p>Para cero adoptamos longitud 1; log 0 no está definido. El signo de un negativo no cuenta como cifra,
@@ -306,13 +306,13 @@ Invertir la lista de cifras y recuperar el signo.</pre>
     No es la escritura ordinaria (101)₃, cuyo valor es 10.</li>
   <li><strong>Pesos factoriales:</strong> 23 = 3·3! + 2·2! + 1·1!.
     En el peso i! se permiten coeficientes de 0 a i; los pesos ya no son potencias de una base fija.</li>
-  <li><strong>Fibonacci:</strong> usando 1,2,3,5,8,13,…, el <a href="https://arxiv.org/abs/1008.3202" target="_blank"
+  <li><strong><a data-article-concept="fibonacci-numbers" routerLink="/articles/fibonacci-numbers">Fibonacci</a>:</strong> usando 1,2,3,5,8,13,…, el <a href="https://arxiv.org/abs/1008.3202" target="_blank"
       rel="noopener noreferrer">teorema de Zeckendorf</a> da una descomposición única
     de cada entero positivo como suma de términos no consecutivos. Por ejemplo, 20 = 13 + 5 + 2.
     La prohibición de consecutivos es esencial: 3 = 2 + 1 produciría otra escritura.
     Puedes revisar la sucesión en <a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a>.</li>
 </ul>
-<p>Las pruebas de existencia y unicidad para esos sistemas requieren desarrollos propios.
+<p>Las pruebas de <a data-article-concept="picard-lipschitz" routerLink="/articles/picard-lipschitz">existencia y unicidad</a> para esos sistemas requieren desarrollos propios.
   No son consecuencias automáticas del teorema de base b; aquí sirven para delimitar sus hipótesis.</p>
 
 <h3>12. Bits, bytes y máscaras</h3>
@@ -338,12 +338,12 @@ Invertir la lista de cifras y recuperar el signo.</pre>
     escritura.</li>
   <li><strong>Leer y escribir recorridos inversos.</strong> Un alumno obtiene restos por división y otro reconstruye con
     Horner.
-    Comparar ambos recorridos trabaja división euclídea e invariantes de un algoritmo.
+    Comparar ambos recorridos trabaja <a data-article-concept="division-algorithm" routerLink="/articles/division-algorithm">división euclídea</a> e invariantes de un algoritmo.
     Leer los restos en orden directo puede dar una cifra inicial cero: es una señal para revisar su peso.</li>
   <li><strong>¿Por qué 10ᵦ vale b?</strong> Pedir una explicación mediante potencias y otra mediante agrupaciones.
     Se evalúa la diferencia entre numeral y cantidad, no la capacidad de repetir «la base».</li>
   <li><strong>Deduce un criterio en base 8.</strong> Conjeturar que sumar cifras detecta múltiplos de 7,
-    probar ejemplos y demostrarlo con 8 ≡ 1 (mod 7). Se enlazan potencias y congruencias.
+    probar ejemplos y demostrarlo con 8 ≡ 1 (mod 7). Se enlazan potencias y <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">congruencias</a>.
     Aclarar que unos pocos ejemplos no prueban la regla universal.</li>
   <li><strong>Una base desconocida.</strong> Traducir (132)ᵦ a b² + 3b + 2.
     Antes de resolver, exigir b entero y b &gt; 3. Esto integra álgebra con restricciones aritméticas;
@@ -408,3 +408,6 @@ Invertir la lista de cifras y recuperar el signo.</pre>
 <li><a routerLink="/problems/repeating-decimal-as-a-fraction">107 · Un decimal periódico como fracción</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a></li><li><a routerLink="/articles/picard-lipschitz">Existencia y unicidad: Picard y la condición de Lipschitz</a></li><li><a routerLink="/articles/division-algorithm">Teorema de la división euclídea</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li></ul></details></section>
+<!-- article-concepts:end -->

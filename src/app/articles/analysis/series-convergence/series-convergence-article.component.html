@@ -1,7 +1,7 @@
 <h2>Series: cuándo los signos cambian el resultado</h2>
 <p class="dropcap">Sumar términos positivos obliga a acumular. Alternar signos permite compensar. Esa diferencia hace que una serie pueda converger aunque la suma de los tamaños de sus términos crezca sin límite. Comprender el mecanismo evita dos errores: confundir un término pequeño con una suma convergente y tratar una serie infinita como una suma finita.</p>
 <h3>1. Tres comportamientos distintos</h3>
-<p>Una serie converge si sus sumas parciales tienen límite finito. Converge absolutamente si la serie de valores absolutos converge; converge condicionalmente si converge, pero no lo hace absolutamente. La convergencia absoluta implica la ordinaria: la cola firmada está acotada por la cola de módulos.</p>
+<p>Una serie converge si sus <a data-article-concept="telescoping-series" routerLink="/articles/telescoping-series">sumas parciales</a> tienen límite finito. Converge absolutamente si la serie de valores absolutos converge; converge condicionalmente si converge, pero no lo hace absolutamente. La convergencia absoluta implica la ordinaria: la cola firmada está acotada por la cola de módulos.</p>
 <app-formula expression="\left|\sum_{n=N+1}^{M}a_n\right|\le\sum_{n=N+1}^{M}|a_n|" />
 <p>Que aₙ → 0 es necesario, pero insuficiente. La serie armónica suma términos que tienden a cero y aun así diverge. Agruparlos en bloques de tamaños 1, 2, 4, 8… muestra que cada bloque aporta al menos 1/2.</p>
 <h3>2. El criterio de Leibniz</h3>
@@ -19,7 +19,7 @@
 <h3>5. Reordenar y calcular</h3>
 <p>Una serie absolutamente convergente conserva su suma al reordenar. Una real condicionalmente convergente puede reordenarse para alcanzar cualquier suma real, o divergir: sus contribuciones positivas y negativas tienen magnitud total infinita. Por eso hay que declarar el orden al aplicar transformaciones.</p>
 <aside class="caution"><strong>Alternar no basta.</strong> Si los módulos no decrecen, Leibniz no decide. Existen otras herramientas, como Dirichlet y Abel. En cálculo numérico, una transformación de Euler puede acelerar ciertas series alternadas; sus condiciones y su error deben justificarse aparte.</aside>
-<p>Si aparece una diferencia consecutiva, busca primero una <a routerLink="/articles/telescoping-series">estructura telescópica</a>. Si aparecen potencias o factoriales, estudia cocientes, raíces o comparaciones, sin olvidar que un criterio inconcluso no significa divergencia.</p>
+<p>Si aparece una diferencia consecutiva, busca primero una <a routerLink="/articles/telescoping-series">estructura telescópica</a>. Si aparecen potencias o factoriales, estudia cocientes, raíces o comparaciones, sin olvidar que un criterio inconcluso no significa <a data-article-concept="vector-calculus" routerLink="/articles/vector-calculus">divergencia</a>.</p>
 <h3>Referencias y lecturas</h3><ul class="references"><li><a href="https://openstax.org/books/calculus-volume-2/pages/5-5-alternating-series" target="_blank" rel="noopener noreferrer">OpenStax · Series alternadas, convergencia absoluta y error</a></li><li><a href="https://openstax.org/books/calculus-volume-2/pages/5-2-infinite-series" target="_blank" rel="noopener noreferrer">OpenStax · Series infinitas y sumas parciales</a></li></ul>
 
 <div class="article-activities">
@@ -34,3 +34,6 @@
 <li><a routerLink="/problems/series-comparison-without-summing">149 · Comparar una serie sin sumarla</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/telescoping-series">Series telescópicas</a></li><li><a routerLink="/articles/vector-calculus">Flujo, divergencia y rotacional de un campo</a></li><li><a routerLink="/articles/dirichlet-abel-tests">Criterios de Dirichlet y Abel para series</a></li></ul></details></section>
+<!-- article-concepts:end -->

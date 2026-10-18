@@ -1,6 +1,6 @@
 <h2>Ecuación de Pell: una hipérbola escondida en una raíz</h2>
 <p class="dropcap">3² − 2·2² = 1. También 17² − 2·12² = 1, y 99² − 2·70² = 1.
-  Los pares crecen deprisa, pero no aparecen por azar. Sus cocientes se acercan a √2, y la fracción continua de esa raíz
+  Los pares crecen deprisa, pero no aparecen por azar. Sus cocientes se acercan a √2, y la <a data-article-concept="continued-fractions" routerLink="/articles/continued-fractions">fracción continua</a> de esa raíz
   contiene las instrucciones para encontrarlos. Vamos a pasar de buscar puntos enteros sobre una curva a construirlos
   todos.</p>
 <app-formula
@@ -20,9 +20,9 @@
 </nav>
 
 <h3 id="problema">1. Una ecuación sencilla, una búsqueda difícil</h3>
-<p>La <strong>ecuación de Pell clásica</strong> es x² − Dy² = 1, con x,y enteros y D un entero positivo no cuadrado.
+<p>La <strong>ecuación de Pell clásica</strong> es x² − Dy² = 1, con x,y enteros y D un entero positivo no <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>.
   No necesitamos que D sea libre de cuadrados: D = 12 también está permitido.
-  La cuestión es diofántica: buscamos puntos de ℤ², no todos los puntos reales de la curva.
+  La cuestión es <a data-article-concept="linear-diophantine-equations" routerLink="/articles/linear-diophantine-equations">diofántica</a>: buscamos puntos de ℤ², no todos los puntos reales de la curva.
   El artículo de <a routerLink="/articles/linear-diophantine-equations">ecuaciones diofánticas lineales</a>
   introduce esta distinción; aquí la curva ya no es una recta.</p>
 <div class="convention">
@@ -65,21 +65,21 @@
   <p>El error disminuye como una constante por 1/y². Además gcd(x,y) = 1: si un entero g divide ambos,
     g² divide x² − Dy² = 1, así que |g| = 1.</p>
 </div>
-<p>Para norma −1, x/y queda por debajo de √D y la misma racionalización da el valor absoluto
+<p>Para norma −1, x/y queda por debajo de √D y la misma racionalización da el <a data-article-concept="absolute-value-distance" routerLink="/articles/absolute-value-distance">valor absoluto</a>
   1/[y²(x/y + √D)]. En ambos casos es menor que 1/(2y²):
   para norma −1, x/y = √(D − 1/y²) ≥ √(D − 1) ≥ 1 y √D ≥ √2, por lo que la suma supera 2.</p>
 <p>Esta precisión obliga a buscar entre los convergentes de √D. El laboratorio estima el error a partir de la
   norma exacta y de esta fórmula, evitando que la resta de dos decimales próximos dé un falso cero.</p>
 
 <h3>4. El recordatorio de fracciones continuas que necesitamos</h3>
-<p>Para α irracional positivo, escribimos α = [a₀;a₁,a₂,…].
+<p>Para α <a data-article-concept="proof-strategies" routerLink="/articles/proof-strategies">irracional</a> positivo, escribimos α = [a₀;a₁,a₂,…].
   El convergente pₙ/qₙ termina en aₙ: <strong>contamos desde n = 0</strong>.</p>
 <app-formula expression="p_{-2}=0,\ p_{-1}=1,\quad q_{-2}=1,\ q_{-1}=0,\qquad
  p_n=a_np_{n-1}+p_{n-2},\quad q_n=a_nq_{n-1}+q_{n-2}."></app-formula>
-<p>Por tanto p₀/q₀ = a₀/1. Las recurrencias implican, por inducción,</p>
+<p>Por tanto p₀/q₀ = a₀/1. Las <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencias</a> implican, por inducción,</p>
 <app-formula expression="p_nq_{n-1}-p_{n-1}q_n=(-1)^{n-1}."></app-formula>
-<p>En efecto, cada nuevo determinante es el opuesto del anterior; en n = 0 vale −1.
-  Esto prueba que pₙ y qₙ son coprimos. Para la construcción visual y las cotas habituales, consulta
+<p>En efecto, cada nuevo <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a> es el opuesto del anterior; en n = 0 vale −1.
+  Esto prueba que pₙ y qₙ son <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a>. Para la construcción visual y las cotas habituales, consulta
   <a routerLink="/articles/continued-fractions">Fracciones continuas</a>.
 </p>
 <details class="proof">
@@ -236,7 +236,7 @@
   <app-formula expression="u=\frac{\beta+\beta^{-1}}2,\qquad
  v=\frac{\beta-\beta^{-1}}{2\sqrt D}."></app-formula>
   <p>Si β &gt; 1, estas expresiones dan u &gt; 1 y v &gt; 0.
-    La función t + 1/t es estrictamente creciente para t &gt; 1, pues su derivada es 1 − 1/t² &gt; 0.
+    La función t + 1/t es <a data-article-concept="function-analysis" routerLink="/articles/function-analysis">estrictamente creciente</a> para t &gt; 1, pues su derivada es 1 − 1/t² &gt; 0.
     De β &lt; ε se deduce u &lt; x₁, contradiciendo que x₁ sea mínimo.
     Por tanto β = 1 y α = εᵏ. Como α &gt; 1, necesariamente k ≥ 1.</p>
 </div>
@@ -273,7 +273,7 @@
   aunque aquí la norma conserva una identidad cuadrática exacta.</p>
 
 <h3>11. Geometría: ver la curva no resuelve la aritmética</h3>
-<p>La ecuación real es una <a routerLink="/articles/hyperbola">hipérbola</a> con asíntotas x = ±√D·y.
+<p>La ecuación real es una <a routerLink="/articles/hyperbola">hipérbola</a> con <a data-article-concept="quadratic-conics" routerLink="/articles/quadratic-conics">asíntotas</a> x = ±√D·y.
   Sus puntos enteros positivos son escasos y se separan cada vez más.
   En D = 2 se ven varias soluciones con una escala moderada; para D = 13 la primera exige una ventana mucho mayor.</p>
 <p>El gráfico separa la curva continua, la retícula y las soluciones verificadas.
@@ -295,7 +295,7 @@
 <p>Los cuadrados triangulares resultantes son 1, 36 y 1225; también está la solución trivial n = m = 0.
   Obsérvese que D = 8 no es libre de cuadrados, pero el método funciona.</p>
 <h4>Catetos consecutivos y una ecuación negativa</h4>
-<p>Un triángulo rectángulo de lados enteros con catetos r y r + 1 e hipotenusa h satisface
+<p>Un triángulo rectángulo de lados enteros con <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">catetos</a> r y r + 1 e hipotenusa h satisface
   r² + (r + 1)² = h². Multiplicando por 2 y completando el cuadrado:</p>
 <app-formula expression="(2r+1)^2-2h^2=-1."></app-formula>
 <p>Ahora X = 2r + 1 e Y = h. Las soluciones (7,5) y (41,29) producen
@@ -366,7 +366,7 @@
     sobre restos.
   </li>
   <li><a routerLink="/articles/divisibility-rules">Criterios de divisibilidad</a> y
-    <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a>: divisibilidad y coprimalidad.
+    <a routerLink="/articles/fundamental-theorem-arithmetic">factorización única</a>: divisibilidad y <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a>.
   </li>
   <li><a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a>: recurrencias y aproximación de irracionales.
   </li>
@@ -392,3 +392,6 @@
 <li><a routerLink="/problems/pell-equation-descent">7 · Descenso en una ecuación de Pell</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/continued-fractions">Fracciones continuas</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/linear-diophantine-equations">Ecuaciones diofánticas lineales</a></li><li><a routerLink="/articles/absolute-value-distance">Valor absoluto: distancias y funciones a trozos</a></li><li><a routerLink="/articles/proof-strategies">Cómo demostrar: implicaciones, contradicción y contraposición</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/function-analysis">Estudio completo de funciones</a></li><li><a routerLink="/articles/quadratic-conics">Cónicas como formas cuadráticas</a></li><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/gaussian-quadratic-norms">Enteros gaussianos, normas algebraicas y unidades cuadráticas</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -11,7 +11,7 @@
 <li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
 <li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
 </ol></details></nav>
-<p class="dropcap">Un sudoku es un problema de satisfacción de restricciones: hay que asignar valores cumpliendo reglas simultáneas. La deducción local reduce candidatos y la búsqueda explora elecciones que aún no están decididas. Su formulación como cobertura exacta conecta el juego con algoritmos generales y permite comprobar existencia y unicidad, que son preguntas diferentes.</p>
+<p class="dropcap">Un sudoku es un problema de satisfacción de restricciones: hay que asignar valores cumpliendo reglas simultáneas. La deducción local reduce candidatos y la búsqueda explora elecciones que aún no están decididas. Su formulación como cobertura exacta conecta el juego con algoritmos generales y permite comprobar <a data-article-concept="picard-lipschitz" routerLink="/articles/picard-lipschitz">existencia y unicidad</a>, que son preguntas diferentes.</p>
 <h3 id="section-0">Variables, dominios y restricciones</h3>
 <p>Cada celda es una variable cuyo dominio contiene los números permitidos. Filas, columnas y bloques imponen que sus valores sean todos distintos. Una pista fija reduce el dominio a un solo valor. Propagar una asignación elimina ese valor de celdas relacionadas; un dominio vacío detecta contradicción. Un único candidato es una deducción, pero una celda con varios candidatos no implica que todos conduzcan a una solución.</p>
 <h3 id="section-1">Propagación y búsqueda controlada</h3>
@@ -48,3 +48,6 @@
 <li><a routerLink="/problems/sudoku-symmetry">94 · Una simetría del sudoku</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/picard-lipschitz">Existencia y unicidad: Picard y la condición de Lipschitz</a></li><li><a routerLink="/articles/route-optimization-complexity">Viajante, cartero chino y complejidad computacional</a></li></ul></details></section>
+<!-- article-concepts:end -->

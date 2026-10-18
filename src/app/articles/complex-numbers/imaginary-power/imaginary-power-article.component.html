@@ -13,7 +13,7 @@
 <app-formula expression="e^{a+bi}=e^a(\cos b+i\sin b),\qquad |e^{a+bi}|=e^a"></app-formula>
 <app-complex-exponential></app-complex-exponential>
 <h3>Definir la potencia con un logaritmo</h3>
-<p>Para una base compleja no nula, definimos una potencia usando un valor de su logaritmo:
+<p>Para una base compleja no nula, definimos una potencia usando un valor de su <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmo</a>:
   zʷ = exp(w log z). Primero elegimos el <strong>logaritmo principal</strong>, escrito Log,
   cuyo argumento está en el intervalo (−π, π]. Como el módulo de i es 1, su logaritmo principal no tiene parte real:</p>
 <app-formula expression="\operatorname{Log}i=\ln|i|+i\operatorname{Arg}i=\ln1+i\frac{\pi}{2}=i\frac{\pi}{2}"></app-formula>
@@ -26,7 +26,7 @@
   «e^(Log i) = i» y «e^(i Log i) = iⁱ».</p>
 <h3>Una vuelta más: los otros valores de iⁱ</h3>
 <p>El mismo punto i también tiene argumentos π/2 + 2πk, con k entero: sumar vueltas completas no cambia el punto.
-  Por eso el logaritmo complejo tiene varios valores. Si los usamos todos en la definición de la potencia, obtenemos:</p>
+  Por eso el <a data-article-concept="complex-logarithm-branches" routerLink="/articles/complex-logarithm-branches">logaritmo complejo</a> tiene varios valores. Si los usamos todos en la definición de la potencia, obtenemos:</p>
 <app-formula expression="\log i=i\left(\frac{\pi}{2}+2\pi k\right),\qquad k\in\mathbb Z"></app-formula>
 <app-formula expression="\left\{\exp(iL):e^L=i\right\}=\left\{e^{-\pi/2-2\pi k}:k\in\mathbb Z\right\}"></app-formula>
 <p><strong>Todos estos valores son reales positivos.</strong> El principal corresponde a k = 0.
@@ -41,3 +41,6 @@
   su valor principal es e^(−π/2), y todos los valores que resultan de los demás logaritmos de i también son reales positivos.</p>
 <p><strong>Para explorar.</strong> En el primer widget fija b = 0 y cambia a: ¿puede el punto cruzar al eje real negativo?
   En el segundo compara k = −1, 0 y 1. Explica por qué el punto inicial sigue siendo i mientras el resultado cambia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/complex-logarithm-branches">Logaritmo complejo, ramas y cortes</a></li></ul></details></section>
+<!-- article-concepts:end -->

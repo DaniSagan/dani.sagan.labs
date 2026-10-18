@@ -78,7 +78,7 @@
   <p>Por tanto x₀ = ku e y₀ = kv son enteros y forman una solución particular.
     Hemos probado el recíproco, no solo una condición necesaria.</p>
 </div>
-<p>En lenguaje de conjuntos, las combinaciones lineales enteras de a y b son exactamente los múltiplos de su MCD:</p>
+<p>En lenguaje de conjuntos, las <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a> lineales enteras de a y b son exactamente los múltiplos de su MCD:</p>
 <app-formula expression="a\mathbb Z+b\mathbb Z=d\mathbb Z."></app-formula>
 <p>Así se explica el experimento: 6ℤ + 9ℤ = 3ℤ. Si gcd(a,b) = 1, cualquier entero c es alcanzable;
   esto no asegura que pueda alcanzarse usando x,y no negativos. Por ejemplo, 3x + 5y = 1 tiene solución entera,
@@ -91,7 +91,7 @@
 <app-formula expression="\begin{aligned}
  84&=2\cdot30+24,\\30&=1\cdot24+6,\\24&=4\cdot6+0.
 \end{aligned}"></app-formula>
-<p>El último resto no nulo es d = 6 y divide al término independiente. Ahora recorremos las igualdades hacia atrás:</p>
+<p>El último resto no nulo es d = 6 y divide al <a data-article-concept="polynomial-foundations" routerLink="/articles/polynomial-foundations" fragment="coefficients">término independiente</a>. Ahora recorremos las igualdades hacia atrás:</p>
 <app-formula expression="\begin{aligned}
  6&=30-24\\
   &=30-(84-2\cdot30)\\
@@ -123,8 +123,8 @@
     Con A = a/d, B = b/d, Δx = x₁ − x₀ y Δy = y₁ − y₀, resulta</p>
   <app-formula expression="A\Delta x=-B\Delta y,\qquad \gcd(A,B)=1."></app-formula>
   <p>Supongamos primero b ≠ 0, es decir B ≠ 0. La igualdad implica B ∣ AΔx.
-    Como A y B son coprimos, podemos cancelar A en esta afirmación de divisibilidad.
-    Para ver por qué, Bézout da rA + sB = 1. Multiplicando por Δx:</p>
+    Como A y B son <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a>, podemos cancelar A en esta afirmación de divisibilidad.
+    Para ver por qué, <a data-article-concept="bezout-identity" routerLink="/articles/bezout-identity">Bézout</a> da rA + sB = 1. Multiplicando por Δx:</p>
   <app-formula expression="\Delta x=rA\Delta x+sB\Delta x."></app-formula>
   <p>Ambos sumandos son divisibles por B; por tanto B ∣ Δx. Existe entonces t ∈ ℤ con Δx = Bt.
     Sustituyendo en AΔx = −BΔy obtenemos ABt = −BΔy.
@@ -145,7 +145,7 @@
   basta hacer t = s + 1. Cambiar el origen del parámetro no cambia el conjunto solución.</p>
 
 <h3>6. Geometría: un vector primitivo sobre una recta</h3>
-<p>Cuando (a,b) ≠ (0,0), ax + by = c es una recta real con vector normal (a,b).
+<p>Cuando (a,b) ≠ (0,0), ax + by = c es una recta real con <a data-article-concept="plane-normal" routerLink="/articles/plane-normal">vector normal</a> (a,b).
   Su vector de desplazamiento entero</p>
 <app-formula expression="v=\left(\frac bd,-\frac ad\right)\qquad\text{cumple}\qquad
  (a,b)\cdot v=0."></app-formula>
@@ -258,7 +258,7 @@
   \quad\Longrightarrow\quad(x,y)=\left(\frac12,\frac12\right)\notin\mathbb Z^2."></app-formula>
 <p>En cambio, comprar 8 objetos, unos a 3 € y otros a 5 €, por 30 € da
   x + y = 8 y 3x + 5y = 30. Sustituyendo y = 8 − x, obtenemos x = 5 e y = 3.</p>
-<p>Para dos ecuaciones con determinante no nulo, la solución real es única:
+<p>Para dos ecuaciones con <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">determinante</a> no nulo, la solución real es única:
   primero se calcula y después se comprueba que ambas coordenadas sean enteras.
   Si las filas son dependientes, pueden contradecirse o reducirse a una sola ecuación diofántica.
   Otra estrategia es sustituir la familia de la primera fila en la segunda y resolver para t.</p>
@@ -349,7 +349,7 @@
     ejemplos de problemas diofánticos donde la ecuación ya no es lineal.
   </li>
 </ul>
-<p>Las ternas pitagóricas, x² + y² = z², y la <a routerLink="/articles/pell-equation">ecuación de Pell</a>, x² − Dy² = 1 para D positivo no cuadrado,
+<p>Las ternas pitagóricas, x² + y² = z², y la <a routerLink="/articles/pell-equation">ecuación de Pell</a>, x² − Dy² = 1 para D positivo no <a data-article-concept="square" routerLink="/articles/square">cuadrado</a>,
   plantean la misma pregunta sobre puntos enteros en otras curvas. El criterio del MCD y la familia lineal no se
   trasladan
   directamente a ellas, pero permanecen herramientas esenciales: estudiar divisibilidad, usar congruencias,
@@ -367,3 +367,6 @@
 <li><a routerLink="/problems/two-denomination-coin-equation">6 · Monedas de dos valores</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/polynomial-foundations" fragment="coefficients">Polinomios desde cero: grado, coeficientes y raíces</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/bezout-identity">Identidad de Bézout</a></li><li><a routerLink="/articles/plane-normal">Vector normal a un plano</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

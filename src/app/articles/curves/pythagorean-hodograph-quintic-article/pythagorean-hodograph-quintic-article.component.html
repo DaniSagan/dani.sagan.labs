@@ -1,5 +1,5 @@
 <h2>Quíntica de hodógrafa pitagórica</h2>
-<p class="dropcap">Una curva de hodógrafa pitagórica tiene una rapidez que puede expresarse mediante un polinomio. Esta propiedad simplifica el cálculo exacto de longitud de arco y el diseño de trayectorias.</p>
+<p class="dropcap">Una curva de hodógrafa <a data-article-concept="pythagorean-distance" routerLink="/articles/pythagorean-distance">pitagórica</a> tiene una rapidez que puede expresarse mediante un polinomio. Esta propiedad simplifica el cálculo exacto de <a data-article-concept="arc-length" routerLink="/articles/arc-length">longitud de arco</a> y el diseño de trayectorias.</p>
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
@@ -7,10 +7,10 @@
 <p class="curve-domain">Intervalos representados: [-1, 1].</p>
 
 <h3>Propiedades geométricas</h3>
-<p>Las derivadas del modelo son x′=1−p²t⁴ e y′=2pt². Forman una terna pitagórica: x′²+y′²=(1+p²t⁴)². La curva es regular porque su rapidez nunca se anula.</p>
+<p>Las <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> del modelo son x′=1−p²t⁴ e y′=2pt². Forman una terna pitagórica: x′²+y′²=(1+p²t⁴)². La curva es regular porque su rapidez nunca se anula.</p>
 
 <h3>Análisis y construcción</h3>
-<p>La construcción parte de elevar al cuadrado el polinomio complejo 1+ipt². Integrar sus partes real e imaginaria da la parametrización de grado cinco. La longitud entre cero y T es T+p²T⁵/5.</p>
+<p>La construcción parte de elevar al <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> el polinomio complejo 1+ipt². Integrar sus partes real e imaginaria da la parametrización de grado cinco. La longitud entre cero y T es T+p²T⁵/5.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://doi.org/10.1147/rd.345.0736" target="_blank" rel="noopener noreferrer">Farouki y Sakkalis: Pythagorean hodographs</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/pythagorean-distance">Pitágoras y distancia euclídea</a></li><li><a routerLink="/articles/arc-length">Longitud de arco y parametrización de curvas</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/square">Cuadrado</a></li></ul></details></section>
+<!-- article-concepts:end -->

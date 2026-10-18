@@ -4,12 +4,12 @@
     obtenerse como el producto cartesiano del <a routerLink="/articles/cantor-set">conjunto de Cantor</a> consigo mismo: se conservan los puntos cuyas
     coordenadas x e y pertenecen al conjunto original. El resultado parece una constelación de cuadrados, pero es un
     objeto matemático exacto con infinitos puntos y área nula.</p>
-  <p>Se parte de un cuadrado y se lo divide en una cuadrícula de 3 por 3. Solo sobreviven las cuatro esquinas. Cada una
+  <p>Se parte de un <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> y se lo divide en una cuadrícula de 3 por 3. Solo sobreviven las cuatro esquinas. Cada una
     se divide de nuevo y vuelve a conservar sus esquinas. Tras n iteraciones hay 4<sup>n</sup> cuadrados de lado
     3<sup>−n</sup>; su área total es (4/9)<sup>n</sup>, que tiende a cero. La dimensión fractal es log(4)/log(3),
-    aproximadamente 1,262, el doble de la dimensión del conjunto de Cantor lineal.</p>
+    aproximadamente 1,262, el doble de la dimensión del <a data-article-concept="cantor-set" routerLink="/articles/cantor-set">conjunto de Cantor</a> lineal.</p>
   <p>La implementación recursiva recibe una esquina, un lado y una profundidad. Si esta llega a cero pinta el cuadrado;
-    en caso contrario calcula un tercio del lado y se llama para las cuatro combinaciones de desplazamientos 0 y 2/3. No
+    en caso contrario calcula un tercio del lado y se llama para las cuatro <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a> de desplazamientos 0 y 2/3. No
     necesita comprobar puntos individualmente, de modo que expresa directamente la definición geométrica y evita píxeles
     superfluos.</p>
   <p>Este fractal aclara la diferencia entre «muchos puntos» y «mucho área». En niveles altos el lienzo parece lleno a
@@ -25,3 +25,6 @@
 </ul>
 </div>
 </article>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/cantor-set">Conjunto de Cantor</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li></ul></details></section>
+<!-- article-concepts:end -->

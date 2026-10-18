@@ -7,7 +7,7 @@
 <h4>1. Girar los ejes</h4>
 <p>Sea u el vector unitario que forma un ángulo α con el eje horizontal. Por definición, sus coordenadas son
   (cos α, sin α). Girarlo 90° en sentido antihorario intercambia sus coordenadas y cambia el signo de la primera:
-  geométricamente, (x, y) pasa a (−y, x). Obtenemos un vector v perpendicular a u.</p>
+  geométricamente, (x, y) pasa a (−y, x). Obtenemos un vector v <a data-article-concept="dot-product" routerLink="/articles/dot-product">perpendicular</a> a u.</p>
 <app-formula expression="u=(\cos\alpha,\sin\alpha),\qquad v=(-\sin\alpha,\cos\alpha)"></app-formula>
 <p>Los vectores u y v tienen longitud 1 y forman unos nuevos ejes perpendiculares, girados α respecto a los originales.</p>
 <h4>2. Descomponer el vector que forma el ángulo suma</h4>
@@ -56,7 +56,7 @@
 <h3>Quinto, sexto y cualquier múltiplo</h3>
 <p>Definimos Sₙ = sin(nθ) y Cₙ = cos(nθ). Sumar una copia más de θ da un algoritmo para cualquier entero n ≥ 0:</p>
 <app-formula expression="S_{n+1}=S_nc+C_ns,\qquad C_{n+1}=C_nc-S_ns,\qquad S_0=0,\quad C_0=1"></app-formula>
-<p>También podemos usar la fórmula de De Moivre y desarrollar el binomio:</p>
+<p>También podemos usar la <a data-article-concept="de-moivre" routerLink="/articles/de-moivre">fórmula de De Moivre</a> y desarrollar el <a data-article-concept="binomial-theorem" routerLink="/articles/binomial-theorem">binomio</a>:</p>
 <app-formula expression="(c+is)^n=\cos(n\theta)+i\sin(n\theta)"></app-formula>
 <p>Las potencias pares de i contribuyen al coseno y las impares al seno; los signos alternan porque i² = −1.
   El generador del widget hace esa expansión para órdenes de 2 a 8. Por ejemplo, simplificando para n = 5:</p>
@@ -90,7 +90,7 @@
   <li><a routerLink="/problems/triple-angle-identity">Problema 033 · Ángulo triple</a>. Aplica una identidad de ángulo triple sin perder soluciones.</li>
   <li><a routerLink="/problems/sum-of-sines">Problema 034 · Suma de senos</a>. Justifica una cancelación de ondas desfasadas.</li>
   <li><a routerLink="/problems/solar-altitude-in-oviedo">Problema 098 · Altura solar en Oviedo</a>. Aplica relaciones angulares al modelo ideal de altura del Sol.</li>
-  <li><a routerLink="/tools/sun-position">Posición del Sol</a>. Compara alturas solares según latitud, fecha y hora, distinguiendo el modelo ideal del problema del cálculo de la herramienta.</li>
+  <li><a routerLink="/tools/sun-position">Posición del Sol</a>. Compara alturas solares según <a data-article-concept="solar-geometry" routerLink="/articles/solar-geometry">latitud</a>, fecha y hora, distinguiendo el modelo ideal del problema del cálculo de la herramienta.</li>
 </ul>
 </div>
 <!-- prerequisite-problems:start -->
@@ -113,3 +113,6 @@
 <li><a routerLink="/problems/triangle-by-sine-rule">135 · Un triángulo por la ley de senos</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/dot-product">Producto escalar</a></li><li><a routerLink="/articles/de-moivre">Fórmula de De Moivre: potencias y raíces complejas</a></li><li><a routerLink="/articles/binomial-theorem">Teorema binomial</a></li><li><a routerLink="/articles/solar-geometry">Geometría solar: latitud, declinación y altura</a></li></ul></details></section>
+<!-- article-concepts:end -->

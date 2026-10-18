@@ -1,0 +1,432 @@
+[
+  {
+    "slug": "metric-normed-spaces",
+    "area": "analysis",
+    "ids": [
+      "M01",
+      "M02"
+    ],
+    "title": "Espacios métricos, normas y completitud",
+    "terms": [
+      "espacio métrico",
+      "espacios métricos",
+      "sucesión de Cauchy",
+      "sucesiones de Cauchy",
+      "completitud",
+      "espacio completo",
+      "espacios completos",
+      "norma uniforme",
+      "espacios normados"
+    ],
+    "definition": "Una métrica asigna a cada par una distancia no negativa, simétrica, nula exactamente cuando coinciden los puntos y que satisface la desigualdad triangular. Una norma añade homogeneidad y estructura vectorial: d(x,y)=‖x−y‖ es entonces una métrica. No toda métrica procede de una norma. En funciones continuas sobre un compacto, la norma uniforme mide el mayor valor absoluto; las normas integrales miden una magnitud distinta.",
+    "argument": "Una sucesión es de Cauchy si, para cualquier tolerancia positiva, todos sus términos suficientemente avanzados están a menos de esa tolerancia unos de otros. Converger implica ser de Cauchy por la desigualdad triangular. El recíproco define la completitud del espacio. El espacio de los racionales no es completo: aproximaciones racionales a √2 son de Cauchy, pero no convergen dentro de él. Un espacio normado completo se llama Banach; si la norma procede de un producto interno y el espacio es completo, se llama Hilbert.",
+    "example": "En (0,1), la sucesión 1/(n+1) es de Cauchy y su límite real es 0, fuera del espacio. En [0,1] sí converge. Un subconjunto cerrado de un espacio completo es completo; decir solo «cerrado» sin indicar el espacio ambiente no proporciona esa conclusión.",
+    "caution": "La condición de Cauchy compara dos términos avanzados arbitrarios, no únicamente términos consecutivos. La sucesión de sumas armónicas tiene incrementos que tienden a cero y, sin embargo, no es de Cauchy.",
+    "formula": "\\|f\\|_\\infty=\\sup_{x\\in K}|f(x)|,\\quad\\|f\\|_2=\\left(\\int_K|f|^2\\right)^{1/2},\\quad d(x_n,x_m)<\\varepsilon\\ (n,m\\ge N)",
+    "question": "¿Es completa la recta real con un punto eliminado, con la distancia habitual?",
+    "answer": "No. Si se elimina a, la sucesión a+1/n permanece en el espacio y es de Cauchy, pero su único límite real es a. La completitud depende de los puntos disponibles, además de la fórmula de distancia.",
+    "n": [
+      "Índice N",
+      1,
+      40,
+      1,
+      5
+    ],
+    "t": [
+      "Exponente p",
+      1,
+      4,
+      1,
+      2
+    ],
+    "lab": "Colas de una sucesión y normas de funciones",
+    "code": "const m=2*n; rows.push(['Distancia entre 1/(N+1) y 1/(2N+1)',Math.abs(1/(n+1)-1/(m+1))],['Cota del diámetro de la cola',1/(n+1)],['Norma uniforme de x^p en [0,1]',1],['Norma L² de x^p',1/Math.sqrt(2*t+1)]);for(let i=0;i<=100;i++){const x=i/100;points.push([x,x**t]);} note='La tabla calcula una distancia concreta y una cota válida para toda la cola; muestrear términos por sí solo no demuestra la condición de Cauchy.';",
+    "related": [
+      "banach-fixed-point",
+      "vector-norm",
+      "compact-perfect-disconnected"
+    ]
+  },
+  {
+    "slug": "function-convergence",
+    "area": "analysis",
+    "ids": [
+      "M03",
+      "M04"
+    ],
+    "title": "Convergencia de funciones: puntual, uniforme y dominada",
+    "terms": [
+      "convergencia puntual",
+      "convergencia uniforme",
+      "uniformemente",
+      "convergencia dominada",
+      "dominación integrable"
+    ],
+    "definition": "La convergencia puntual permite elegir un índice distinto para cada punto. La convergencia uniforme exige que un solo índice funcione para todos los puntos del dominio. La diferencia está en el orden de los cuantificadores, no en dibujar muchas gráficas parecidas. Medir el supremo del error permite formular la condición uniforme.",
+    "argument": "Si funciones continuas convergen uniformemente, su límite es continuo: se divide el error en dos errores de aproximación y una diferencia de la función continua elegida. En un intervalo finito, el error de las integrales está acotado por la longitud multiplicada por el error uniforme. La convergencia dominada es otra herramienta: para funciones medibles que convergen casi por doquier y están dominadas por una misma función integrable, se pueden intercambiar límite e integral.",
+    "example": "En [0,1], xⁿ converge a cero salvo en 1, donde vale 1. El límite tiene un salto, así que la convergencia no es uniforme. Aun así, |xⁿ|≤1 permite usar convergencia dominada y sus integrales 1/(n+1) tienden a cero. En cambio, n veces el indicador de (0,1/n) converge puntualmente a cero y mantiene integral uno.",
+    "caution": "Una cota que depende de n no sirve como dominador común. Tener integrales acotadas tampoco basta. Convergencia uniforme y dominada no son sinónimos ni requieren exactamente las mismas hipótesis.",
+    "formula": "\\sup_{x\\in D}|f_n(x)-f(x)|\\to0,\\qquad |f_n|\\le g\\in L^1\\Longrightarrow\\int f_n\\to\\int f",
+    "question": "¿Converge xⁿ uniformemente a cero en [0,a] si 0<a<1?",
+    "answer": "Sí: el supremo del error es aⁿ, que tiende a cero. El mismo argumento falla para a=1; cambiar el dominio cambia la respuesta.",
+    "n": [
+      "Potencia n",
+      1,
+      60,
+      1,
+      5
+    ],
+    "t": [
+      "Extremo a",
+      0.1,
+      1,
+      0.05,
+      1
+    ],
+    "lab": "El error máximo y la integral",
+    "code": "rows.push(['Supremo de x^n en [0,a]',t**n],['Integral en [0,a]',t**(n+1)/(n+1)],['Integral del pico n·1_(0,1/n)',1]);for(let i=0;i<=150;i++){const x=t*i/150;points.push([x,x**n]);} note='El laboratorio compara con cero. Para a=1, el límite puntual toma valor 1 en el extremo y no coincide con la función cero en todo el dominio.';",
+    "related": [
+      "series-convergence",
+      "integration-classical"
+    ]
+  },
+  {
+    "slug": "supremum-real-completeness",
+    "area": "analysis",
+    "ids": [
+      "M05"
+    ],
+    "title": "Supremo, ínfimo y completitud de los reales",
+    "terms": [
+      "supremo",
+      "ínfimo",
+      "propiedad del supremo"
+    ],
+    "definition": "Una cota superior domina a todos los elementos de un conjunto. Su supremo es la menor de esas cotas, aunque no pertenezca al conjunto. Un máximo, además de ser cota superior, pertenece al conjunto. El ínfimo y el mínimo se definen invirtiendo las desigualdades. En los reales, todo conjunto no vacío y acotado superiormente tiene supremo.",
+    "argument": "Si s es el supremo de A, para cada ε positivo hay un elemento de A mayor que s−ε: en caso contrario s−ε sería una cota superior menor. Esta propiedad de aproximación demuestra la convergencia de toda sucesión creciente y acotada: tomar s como supremo de sus términos produce el índice necesario para cada tolerancia.",
+    "example": "El intervalo (0,1) tiene supremo 1 e ínfimo 0, pero ni máximo ni mínimo. El intervalo [0,1] tiene las mismas cotas extremas y sí las alcanza. Entre racionales, el conjunto de números positivos cuyo cuadrado es menor que 2 no tiene supremo racional: la completitud de los reales no se hereda al cambiar de conjunto numérico.",
+    "caution": "Una búsqueda finita siempre devuelve un máximo de la muestra. Eso no demuestra que el conjunto infinito alcance su supremo. Tampoco se asigna un supremo real a un conjunto no acotado superiormente.",
+    "formula": "s=\\sup A\\Longleftrightarrow(\\forall a\\in A,\\ a\\le s)\\ \\land\\ (\\forall\\varepsilon>0,\\ \\exists a\\in A:\\ s-\\varepsilon<a)",
+    "question": "Determina supremo, ínfimo, máximo y mínimo de los términos 1−1/n, con n≥1.",
+    "answer": "El supremo es 1 y no hay máximo. El ínfimo y el mínimo son 0, alcanzado para n=1. El error respecto del supremo es exactamente 1/n.",
+    "n": [
+      "Términos observados",
+      1,
+      50,
+      1,
+      10
+    ],
+    "t": [
+      "Escala positiva",
+      0.5,
+      3,
+      0.5,
+      1
+    ],
+    "lab": "Máximos finitos que aproximan un supremo",
+    "code": "rows.push(['Máximo de los N primeros',t*(1-1/n)],['Supremo de toda la sucesión',t],['Distancia al supremo',t/n]);for(let i=1;i<=n;i++)points.push([i,t*(1-1/i)]);note='Ninguna muestra finita alcanza la cota t, aunque sus máximos se aproximen a ella.';",
+    "related": [
+      "monotone-convergence",
+      "global-extrema-weierstrass"
+    ]
+  },
+  {
+    "slug": "dirichlet-abel-tests",
+    "area": "analysis",
+    "ids": [
+      "M06"
+    ],
+    "title": "Criterios de Dirichlet y Abel para series",
+    "terms": [
+      "criterio de Dirichlet",
+      "criterio de Abel",
+      "criterios de Dirichlet",
+      "sumación por partes"
+    ],
+    "definition": "Dirichlet aprovecha cancelaciones que no se ven al tomar valores absolutos. Si las sumas parciales de aₙ están uniformemente acotadas y bₙ decrece hacia cero, la serie de aₙbₙ converge. Abel permite sustituir la primera hipótesis por la convergencia de la serie de aₙ si bₙ es monótona y acotada.",
+    "argument": "La identidad de sumación por partes expresa una suma ponderada usando las sumas parciales Aₖ y las diferencias bₖ−bₖ₊₁. La monotonía hace que esas diferencias tengan un mismo signo y su suma sea telescópica. Para una cola, la cota resultante tiende a cero porque bₙ tiende a cero. Esta es una prueba del criterio de Cauchy para series, no una aproximación experimental.",
+    "example": "Si θ no es múltiplo de 2π, las sumas de e^(ikθ) están acotadas por una suma geométrica. Por tanto, la serie de sen(nθ)/n converge por Dirichlet. Puede no converger absolutamente. El caso alternado es una aplicación particular con aₙ=(−1)ⁿ.",
+    "caution": "Que aₙ esté acotada no basta: se necesitan sus sumas parciales acotadas. Tampoco basta que bₙ tienda a cero sin la condición de monotonía o una hipótesis sustitutiva de variación acotada.",
+    "formula": "\\sum_{k=1}^n a_kb_k=A_nb_n+\\sum_{k=1}^{n-1}A_k(b_k-b_{k+1}),\\qquad A_k=\\sum_{j=1}^ka_j",
+    "question": "¿Se puede aplicar Dirichlet a la serie armónica tomando aₙ=1 y bₙ=1/n?",
+    "answer": "No: sus sumas parciales Aₙ=n no están acotadas. El criterio no afirma la convergencia de esa serie, que de hecho diverge.",
+    "n": [
+      "Número de términos",
+      1,
+      100,
+      1,
+      30
+    ],
+    "t": [
+      "Ángulo θ",
+      0.2,
+      3,
+      0.1,
+      1
+    ],
+    "lab": "Cancelación antes de ponderar",
+    "code": "let sum=0,A=0,max=0;for(let k=1;k<=n;k++){A+=Math.sin(k*t);max=Math.max(max,Math.abs(A));sum+=Math.sin(k*t)/k;points.push([k,sum]);}rows.push(['Suma ponderada',sum],['Máxima suma parcial observada de sen(kθ)',max],['Cota geométrica válida',1/Math.abs(Math.sin(t/2))]);note='θ está separado de los múltiplos de 2π. La cota teórica controla todas las sumas parciales, no solo las observadas.';",
+    "related": [
+      "geometric-series",
+      "series-convergence"
+    ]
+  },
+  {
+    "slug": "euler-maclaurin-asymptotics",
+    "area": "analysis",
+    "ids": [
+      "M07",
+      "M08"
+    ],
+    "title": "Euler–Maclaurin y truncamiento de desarrollos asintóticos",
+    "terms": [
+      "Euler–Maclaurin",
+      "Euler-Maclaurin",
+      "truncamiento óptimo",
+      "expansión asintótica",
+      "desarrollo asintótico"
+    ],
+    "definition": "La fórmula de Euler–Maclaurin relaciona una suma con una integral, correcciones en los extremos y un resto. Las correcciones contienen números de Bernoulli y derivadas impares. Su utilidad depende de poder controlar ese resto; añadir términos no garantiza siempre una aproximación mejor.",
+    "argument": "La regla del trapecio aparece al integrar una interpolación lineal entre enteros. Integraciones por partes sucesivas, usando las funciones periódicas de Bernoulli, generan las correcciones de orden superior. Para cada número fijo de términos y bajo regularidad suficiente se obtiene una identidad con resto. Un desarrollo asintótico describe el error al llevar el parámetro al límite para un orden fijo: no afirma convergencia al aumentar indefinidamente el orden.",
+    "example": "Para los números armónicos, Hₙ=log n+γ+1/(2n)−1/(12n²)+1/(120n⁴)−⋯. La aproximación de γ obtenida de Hₙ−log n mejora al quitar 1/(2n) y añadir 1/(12n²). Las diferencias entre aproximaciones sucesivas son visibles, pero no sustituyen una cota del resto.",
+    "caution": "Una serie divergente puede ser una excelente expansión asintótica. El truncamiento cerca del término de menor tamaño es una pauta que exige estudiar el resto; no es un teorema universal aplicable a cualquier expansión.",
+    "formula": "\\sum_{k=a}^{b}f(k)=\\int_a^bf(x)\\,dx+\\frac{f(a)+f(b)}2+\\sum_{r=1}^{p}\\frac{B_{2r}}{(2r)!}\\bigl(f^{(2r-1)}(b)-f^{(2r-1)}(a)\\bigr)+R_p",
+    "question": "Comprueba Euler–Maclaurin para f(x)=x² en los enteros de 0 a N usando la primera corrección.",
+    "answer": "La integral aporta N³/3, los extremos N²/2 y la corrección (f′(N)−f′(0))/12 aporta N/6. Su suma es N(N+1)(2N+1)/6. Las derivadas de orden tres son cero y el proceso termina exactamente.",
+    "n": [
+      "Índice n",
+      1,
+      100,
+      1,
+      10
+    ],
+    "t": [
+      "Correcciones",
+      0,
+      3,
+      1,
+      2
+    ],
+    "lab": "Aproximar γ con correcciones sucesivas",
+    "code": "let H=0;for(let k=1;k<=n;k++){H+=1/k;let v=H-Math.log(k);if(t>=1)v-=1/(2*k);if(t>=2)v+=1/(12*k*k);if(t>=3)v-=1/(120*k**4);points.push([k,v]);}rows.push(['Aproximación',points[points.length-1][1]],['Referencia γ',0.5772156649015329],['Error observado',points[points.length-1][1]-0.5772156649015329]);note='El error mostrado compara con una referencia numérica. No debe confundirse con una cota certificada del resto.';",
+    "related": [
+      "euler-mascheroni",
+      "stirling",
+      "bernoulli-numbers"
+    ]
+  },
+  {
+    "slug": "equivalence-quotients",
+    "area": "algebra",
+    "ids": [
+      "M09"
+    ],
+    "title": "Relaciones de equivalencia y conjuntos cociente",
+    "terms": [
+      "relación de equivalencia",
+      "relaciones de equivalencia",
+      "conjunto cociente",
+      "conjuntos cociente",
+      "clases de equivalencia"
+    ],
+    "definition": "Una relación de equivalencia es reflexiva, simétrica y transitiva. Su clase [x] contiene todos los elementos relacionados con x. Las clases particionan el conjunto: cubren todos sus elementos y dos clases que se cruzan son iguales. El conjunto cociente reúne las clases como nuevos objetos.",
+    "argument": "Si z pertenece tanto a [x] como a [y], simetría y transitividad implican x∼y; cualquier elemento relacionado con uno queda relacionado con el otro. De ahí que no puedan solaparse dos clases distintas. Recíprocamente, cualquier partición define una equivalencia declarando relacionados los elementos del mismo bloque.",
+    "example": "En los enteros, x∼y si su diferencia es múltiplo de m produce m clases, representadas por 0,…,m−1. El representante no es la clase completa. Para sumar clases hay que comprobar que elegir representantes distintos no cambia la clase del resultado.",
+    "caution": "Una relación simétrica no tiene por qué ser transitiva: estar a distancia menor que uno es simétrico, pero 0 está relacionado con 0,6 y este con 1,2, mientras 0 y 1,2 no lo están. Una fórmula en representantes solo define una operación en el cociente si es compatible con la equivalencia.",
+    "formula": "[x]=\\{y:y\\sim x\\},\\qquad x\\equiv y\\pmod m\\Longleftrightarrow m\\mid(x-y)",
+    "question": "¿Define una equivalencia en los reales la relación x∼y si x²=y²?",
+    "answer": "Sí. Las clases son las parejas {x,−x}, excepto {0}. La igualdad de los cuadrados es reflexiva, simétrica y transitiva. No deben confundirse estas clases con intervalos.",
+    "n": [
+      "Módulo m",
+      2,
+      12,
+      1,
+      5
+    ],
+    "t": [
+      "Entero x",
+      0,
+      30,
+      1,
+      7
+    ],
+    "lab": "Representantes y clases modulares",
+    "code": "const r=((t%n)+n)%n;rows.push(['Clase de x','['+r+']'],['Representante canónico',r],['Representante alternativo',r+n]);for(let k=0;k<=30;k++)points.push([k,k%n]);note='El diente de sierra muestra representantes, no distancias entre clases. x y x+m designan el mismo elemento del cociente.';",
+    "related": [
+      "modular-arithmetic",
+      "proof-strategies"
+    ]
+  },
+  {
+    "slug": "total-derivative-gradient",
+    "area": "calculus",
+    "ids": [
+      "M10",
+      "M11"
+    ],
+    "title": "Diferenciabilidad total, derivadas direccionales y gradiente",
+    "terms": [
+      "diferenciabilidad total",
+      "derivada direccional",
+      "derivadas direccionales",
+      "gradiente",
+      "curvas de nivel"
+    ],
+    "definition": "La derivada total es una aplicación lineal que aproxima el incremento de una función con un error pequeño frente a la norma del desplazamiento. Las derivadas parciales solo examinan los ejes. Si existe derivada total, todas las derivadas direccionales se obtienen aplicando esa misma función lineal. Tener parciales, o incluso derivadas en todas las direcciones, no garantiza esa aproximación uniforme.",
+    "argument": "Para una función escalar diferenciable, la aplicación lineal tiene como coeficientes sus derivadas parciales: es el producto escalar con el gradiente. Cauchy–Schwarz demuestra que, entre direcciones unitarias, el crecimiento máximo es la norma del gradiente y se alcanza en su dirección cuando no es cero. Sobre una curva de nivel regular, derivar la identidad de nivel hace al gradiente perpendicular a la tangente.",
+    "example": "En f(x,y)=x²+2y², el gradiente es (2x,4y). En (1,1), la derivada en dirección unitaria u es (2,4)·u y el máximo es √20. El error de la aproximación es h²+2k², acotado por 2‖(h,k)‖²; al dividir por la norma tiende a cero.",
+    "caution": "Si el gradiente es cero, esa condición no clasifica por sí sola el punto. En x²−y² el origen es un punto de silla. El criterio de perpendicularidad necesita un nivel regular; en un punto singular puede no existir una curva suave de nivel.",
+    "formula": "f(a+h)=f(a)+Df(a)h+o(\\|h\\|),\\qquad D_uf(a)=\\nabla f(a)\\cdot u",
+    "question": "¿Cuál es la derivada de x²+2y² en (1,1) en la dirección (1,0)?",
+    "answer": "Es 2. En dirección (0,1) es 4, y en la dirección del gradiente normalizado es √20. Un vector de dirección debe normalizarse si se quiere comparar tasas por unidad de longitud.",
+    "n": [
+      "Ángulo de dirección (grados)",
+      0,
+      360,
+      5,
+      45
+    ],
+    "t": [
+      "Tamaño del desplazamiento",
+      0.01,
+      1,
+      0.01,
+      0.2
+    ],
+    "lab": "La predicción lineal y su error",
+    "code": "const a=n*Math.PI/180,u=Math.cos(a),v=Math.sin(a),linear=t*(2*u+4*v),exact=(1+t*u)**2+2*(1+t*v)**2-3;rows.push(['Derivada unitaria',2*u+4*v],['Incremento exacto',exact],['Predicción lineal',linear],['Error dividido por paso',(exact-linear)/t]);for(let i=0;i<=100;i++){const h=i/100;points.push([h,h*h*(u*u+2*v*v)]);}note='La curva representa el error cuadrático. Reducir el paso a la mitad reduce este error por un factor cuatro.';",
+    "related": [
+      "derivative-foundations",
+      "dot-product",
+      "cauchy-schwarz"
+    ]
+  },
+  {
+    "slug": "jacobian-change-variables",
+    "area": "calculus",
+    "ids": [
+      "M12"
+    ],
+    "title": "Matriz jacobiana y cambios de variables",
+    "terms": [
+      "matriz jacobiana",
+      "jacobiano",
+      "jacobiana",
+      "determinante jacobiano"
+    ],
+    "definition": "La matriz jacobiana reúne las derivadas parciales de una aplicación vectorial: cada fila corresponde a una coordenada de salida y cada columna a una de entrada. Cuando la aplicación es diferenciable, esa matriz representa su mejor aproximación lineal local. El determinante solo se define para una matriz cuadrada.",
+    "argument": "Una aplicación lineal transforma áreas por el valor absoluto de su determinante. Un cambio diferenciable con inversa diferenciable se aproxima localmente por su jacobiana, de donde procede el factor de volumen en la fórmula de cambio de variables. Deben controlarse la inyectividad, las singularidades y el dominio: no basta con calcular un determinante.",
+    "example": "El cambio polar T(r,θ)=(r cosθ,r senθ) tiene columnas (cosθ,senθ) y (−r senθ,r cosθ). Su determinante es r. Un rectángulo pequeño de anchuras dr y dθ se convierte aproximadamente en un sector de área r·dr·dθ. En r=0 la matriz pierde rango; la inversa angular tampoco es global.",
+    "caution": "El determinante con signo describe orientación; una integral de volumen usa su valor absoluto. Una jacobiana no cuadrada sigue describiendo una derivada, pero no se le aplica directamente la misma fórmula de determinante.",
+    "formula": "J_F=\\left(\\frac{\\partial F_i}{\\partial x_j}\\right),\\quad J_{G\\circ F}(a)=J_G(F(a))J_F(a),\\quad dx\\,dy=r\\,dr\\,d\\theta",
+    "question": "Calcula el factor de área de T(u,v)=(2u+v,3v).",
+    "answer": "La matriz es ((2,1),(0,3)) y su determinante vale 6. Un rectángulo de área A se transforma en un paralelogramo de área 6A, independientemente del punto, porque el cambio es lineal.",
+    "n": [
+      "Radio r",
+      0,
+      5,
+      0.25,
+      2
+    ],
+    "t": [
+      "Ángulo θ (radianes)",
+      0,
+      6.28,
+      0.05,
+      0.5
+    ],
+    "lab": "La base local de coordenadas polares",
+    "code": "const c=Math.cos(t),s=Math.sin(t);rows.push(['∂x/∂r',c],['∂x/∂θ',-n*s],['∂y/∂r',s],['∂y/∂θ',n*c],['Determinante',n]);for(let i=0;i<=100;i++){const a=2*Math.PI*i/100;points.push([n*Math.cos(a),n*Math.sin(a)]);}note='La gráfica muestra el círculo de radio r. En r=0 colapsa a un punto y el determinante se anula.';",
+    "related": [
+      "matrix-determinant",
+      "total-derivative-gradient"
+    ]
+  },
+  {
+    "slug": "multiple-integrals",
+    "area": "calculus",
+    "ids": [
+      "M13"
+    ],
+    "title": "Integrales múltiples y coordenadas polares",
+    "terms": [
+      "integral doble",
+      "integrales dobles",
+      "integral triple",
+      "integrales múltiples",
+      "coordenadas polares"
+    ],
+    "definition": "Una integral doble acumula una función sobre una región del plano mediante sumas de valores por pequeñas áreas. Cuando la función vale uno, calcula el área; cuando representa una densidad superficial, calcula masa. El dominio es parte del problema y determina los límites de una integral iterada.",
+    "argument": "Para funciones continuas sobre regiones rectangulares, Fubini permite integrar por una variable y después por la otra. En el marco de Lebesgue, integrabilidad absoluta es una hipótesis suficiente para intercambiar el orden; Tonelli permite funciones no negativas, incluso con integral infinita. En coordenadas polares se incorpora el factor jacobiano r, que expresa el crecimiento de las celdas angulares.",
+    "example": "En un disco de radio R, integrar x²+y² se convierte en integrar r³ para r entre 0 y R y θ entre 0 y 2π. La respuesta es πR⁴/2. El área del disco sale de integrar r, no de integrar uno respecto de dr·dθ. Una integral triple añade una dimensión y acumula sobre volumen.",
+    "caution": "Cambiar el orden de integración exige describir el mismo dominio. En regiones no rectangulares los extremos pueden depender de la otra variable. Si una integral no es absolutamente integrable, intercambiar órdenes puede alterar el resultado o dejar de tener sentido.",
+    "formula": "\\iint_{x^2+y^2\\le R^2}(x^2+y^2)\\,dx\\,dy=\\int_0^{2\\pi}\\int_0^Rr^3\\,dr\\,d\\theta=\\frac{\\pi R^4}{2}",
+    "question": "¿Cuál es el valor medio de x²+y² sobre el disco de radio R>0?",
+    "answer": "Se divide la integral πR⁴/2 por el área πR². El resultado es R²/2. No es el valor en el radio medio R/2, que sería R²/4.",
+    "n": [
+      "Radio exterior R",
+      0.5,
+      4,
+      0.25,
+      2
+    ],
+    "t": [
+      "Fracción del radio interior",
+      0,
+      0.9,
+      0.05,
+      0
+    ],
+    "lab": "Área y momento de un anillo",
+    "code": "const a=n*t,area=Math.PI*(n*n-a*a),moment=Math.PI*(n**4-a**4)/2;rows.push(['Radio interior',a],['Área',area],['Integral de x²+y²',moment],['Valor medio',moment/area]);for(let i=0;i<=100;i++){const r=a+(n-a)*i/100;points.push([r,2*Math.PI*r**3]);}note='La curva es la contribución radial tras integrar el ángulo. Su integral entre los dos radios coincide con el momento mostrado.';",
+    "related": [
+      "jacobian-change-variables",
+      "integration-classical",
+      "areas-revolution"
+    ]
+  },
+  {
+    "slug": "vector-calculus",
+    "area": "calculus",
+    "ids": [
+      "M14"
+    ],
+    "title": "Flujo, divergencia y rotacional de un campo",
+    "terms": [
+      "divergencia",
+      "rotacional",
+      "flujo de un campo",
+      "teorema de Green",
+      "teorema de Stokes",
+      "teorema de Gauss"
+    ],
+    "definition": "Un campo vectorial asigna un vector a cada punto. El flujo mide su componente normal a una curva o superficie orientada. La divergencia suma las derivadas de cada componente respecto de su coordenada y expresa producción local de flujo. El rotacional describe circulación local; en el plano su componente perpendicular es ∂Q/∂x−∂P/∂y.",
+    "argument": "Al sumar el flujo de celdas vecinas, las contribuciones de las fronteras interiores se cancelan por sus normales opuestas. Bajo hipótesis de regularidad, el paso al límite da el teorema de la divergencia. Stokes relaciona circulación en el borde con rotacional en la superficie; Green es su versión plana. La orientación del borde y de la normal debe ser compatible.",
+    "example": "Para F(x,y)=(ax−by,bx+ay), la divergencia vale 2a y el rotacional plano 2b. En el círculo unidad, el flujo exterior es 2πa y la circulación antihoraria es 2πb. El parámetro a controla expansión y b controla giro; uno puede ser cero sin que el otro lo sea.",
+    "caution": "Un campo con divergencia cero no es necesariamente irrotacional, ni al revés. La independencia del camino requiere hipótesis sobre el dominio además de rotacional nulo. Los teoremas no se aplican atravesando una singularidad sin revisar sus condiciones.",
+    "formula": "\\nabla\\cdot F=\\sum_i\\partial_iF_i,\\qquad\\oint_{\\partial D}(P\\,dx+Q\\,dy)=\\iint_D(\\partial_xQ-\\partial_yP)\\,dx\\,dy",
+    "question": "Para F=(−y,x), calcula divergencia, rotacional plano y circulación sobre el círculo unidad.",
+    "answer": "La divergencia es cero. El rotacional vale 1−(−1)=2. Por Green, la circulación antihoraria es 2 veces el área del disco, es decir, 2π.",
+    "n": [
+      "Expansión a",
+      -2,
+      2,
+      0.25,
+      1
+    ],
+    "t": [
+      "Giro b",
+      -2,
+      2,
+      0.25,
+      1
+    ],
+    "lab": "Separar expansión y circulación",
+    "code": "rows.push(['Divergencia',2*n],['Rotacional plano',2*t],['Flujo exterior: círculo unidad',2*Math.PI*n],['Circulación antihoraria',2*Math.PI*t]);for(let i=0;i<=100;i++){const a=2*Math.PI*i/100,x=Math.cos(a),y=Math.sin(a);points.push([n*x-t*y,t*x+n*y]);}note='La gráfica recorre los valores del campo sobre el círculo unidad; no es una trayectoria de partículas ni un diagrama de flechas.';",
+    "related": [
+      "dot-product",
+      "first-integrals",
+      "integration-classical"
+    ]
+  }
+]

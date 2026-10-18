@@ -77,7 +77,7 @@
   exacta al problema. Y G no es infinito: admite operaciones como cualquier entero, aunque escribir su desarrollo
   decimal resulte materialmente imposible.</p>
 <p>Un googol es 10¹⁰⁰; un googolplex, 10 elevado a un googol. Ambos quedan muy atrás antes de alcanzar g₁. Por eso el
-  laboratorio utiliza una jerarquía de notaciones, sin distancias proporcionales. Tomar logaritmos reduce torres, pero,
+  laboratorio utiliza una jerarquía de notaciones, sin distancias proporcionales. Tomar <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmos</a> reduce torres, pero,
   cuando sus propias alturas son enormes, deja de proporcionar una imagen manejable. <strong>La notación describe el
     proceso que genera el número.</strong></p>
 
@@ -86,7 +86,7 @@
   resto. El laboratorio combina torres de treses y el <a routerLink="/articles/eulers-theorem">teorema de Euler</a>: en
   cada nivel reduce el exponente usando un módulo menor.</p>
 <app-graham-digits />
-<p>La reducción es válida porque los módulos sucesivos solo tienen factores primos 2 y 5, y por tanto son coprimos con
+<p>La reducción es válida porque los módulos sucesivos solo tienen factores primos 2 y 5, y por tanto son <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a> con
   3. Al llegar al módulo 1, añadir más altura ya no altera el resultado. G puede escribirse como una torre de treses con
   altura muy superior a la suficiente para las 30 cifras que exploramos.</p>
 <p>Por ejemplo, sus diez últimas cifras son <strong>2464195387</strong>. La <a href="https://oeis.org/A133613">sucesión
@@ -100,7 +100,7 @@
   tamaño y prohibiciones de encaje. <a href="https://fomarchive.ugent.be/2006-March/010290.html">Harvey Friedman</a>
   explica que sus cotas inferiores superan ampliamente a G.</p>
 <p>Busy Beaver es una <em>función</em>, no un único número: BB(n) maximiza los pasos que dan, antes de detenerse,
-  máquinas de Turing de n estados bajo una convención fijada. Su crecimiento acaba superando cualquier función
+  <a data-article-concept="computability-formal-languages" routerLink="/articles/computability-formal-languages">máquinas de Turing</a> de n estados bajo una convención fijada. Su crecimiento acaba superando cualquier función
   computable, incluida la sucesión que define los gₙ. Esto no significa que cada BB(n) supere a G. El <a
     href="https://scottaaronson.com/bb.pdf">estudio de Scott Aaronson</a> explica esa diferencia y su relación con el
   problema de la parada.</p>
@@ -130,3 +130,6 @@
 <p>La distancia entre 13 y U sigue siendo extraordinaria. El valor exacto de N* continúa sin determinarse en estos
   resultados. Después de aprender a definir un número inmenso, regresamos a una pregunta sobre dos colores cuya
   respuesta exacta todavía no conocemos.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/computability-formal-languages">Computabilidad, lenguajes formales y problema de la parada</a></li></ul></details></section>
+<!-- article-concepts:end -->

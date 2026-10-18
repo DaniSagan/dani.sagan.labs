@@ -16,7 +16,7 @@
 <p>El tiempo solar aparente sigue al Sol real y su mediodía corresponde al cruce del meridiano. El tiempo solar medio usa un Sol ficticio con movimiento uniforme. El tiempo civil sigue una zona horaria y reglas legales. La ecuación del tiempo compara las dos primeras nociones, no incorpora por sí misma la longitud del lugar ni el horario estacional. Fijar su convención de signo evita desplazamientos aplicados al revés.</p>
 <app-formula expression="E=t_{\mathrm{aparente}}-t_{\mathrm{medio}}" />
 <h3 id="section-1">Dos causas físicas</h3>
-<p>La velocidad orbital varía durante el año por la excentricidad: el desplazamiento del Sol sobre la eclíptica no es uniforme. Además, proyectar un movimiento uniforme de la eclíptica inclinada sobre el ecuador celeste produce otra variación. Ambas contribuciones tienen fases y periodicidades distintas y se combinan en una curva con varios extremos. La analema añade declinación a esa diferencia temporal y genera su conocida forma de ocho.</p>
+<p>La <a data-article-concept="kepler-orbits" routerLink="/articles/kepler-orbits">velocidad orbital</a> varía durante el año por la excentricidad: el desplazamiento del Sol sobre la eclíptica no es uniforme. Además, proyectar un movimiento uniforme de la eclíptica inclinada sobre el ecuador celeste produce otra variación. Ambas contribuciones tienen fases y periodicidades distintas y se combinan en una curva con varios extremos. La analema añade <a data-article-concept="solar-geometry" routerLink="/articles/solar-geometry">declinación</a> a esa diferencia temporal y genera su conocida forma de ocho.</p>
 <h3 id="section-2">Una aproximación útil, con límites</h3>
 <p>Una fórmula trigonométrica anual aproxima la diferencia en minutos usando el número de día de un año común. Es útil para interpretar magnitudes y tendencias, pero no debe anunciarse como una efeméride exacta. El año, la definición precisa de tiempo y las correcciones astronómicas importan cuando se requiere mayor precisión. El laboratorio muestra explícitamente el carácter aproximado y la convención empleada.</p>
 <app-formula expression="B=\frac{2\pi(N-81)}{364},\qquad E\approx9.87\sin(2B)-7.53\cos B-1.5\sin B" />
@@ -46,3 +46,6 @@
 <li><a routerLink="/games/gravity">Simulador gravitatorio</a>. Relaciona velocidad orbital variable con tiempo solar, recordando que también interviene la inclinación terrestre.</li>
 </ul></div>
 <p>Conecta estas ideas con <a routerLink="/articles/spherical-trigonometry">Trigonometría esférica y coordenadas celestes</a>, <a routerLink="/articles/daylight-saving-time">Horario estacional y horas locales ambiguas</a>, <a routerLink="/articles/dimensional-analysis">Análisis dimensional y leyes de escala</a>.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/kepler-orbits">Órbitas circulares y tercera ley de Kepler</a></li><li><a routerLink="/articles/solar-geometry">Geometría solar: latitud, declinación y altura</a></li></ul></details></section>
+<!-- article-concepts:end -->

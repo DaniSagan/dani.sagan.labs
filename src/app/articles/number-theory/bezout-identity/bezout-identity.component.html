@@ -1,13 +1,13 @@
 <h2>Identidad de Bézout</h2>
 <p class="dropcap">¿Puede obtenerse 1 combinando múltiplos de 35 y 22? Sí: 35·5−22·8=−1, y basta cambiar los signos.
   Esta pregunta aparentemente particular conduce a la identidad de Bézout: el menor entero positivo que puede
-  construirse como combinación lineal de dos números es precisamente su máximo común divisor.</p>
+  construirse como combinación lineal de dos números es precisamente su <a data-article-concept="gcd-euclid" routerLink="/articles/gcd-euclid">máximo común divisor</a>.</p>
 <app-formula expression="ax+by=\gcd(a,b)"></app-formula>
 <p>El nombre recuerda a Étienne Bézout, matemático francés del siglo XVIII, aunque el caso entero ya estaba contenido en
   el algoritmo de Euclides y fue estudiado por Bachet en 1624. Bézout trabajó con ecuaciones polinómicas más generales;
   la tradición terminó asociando también su nombre a esta versión aritmética.</p>
 <h3>Una prueba a partir del menor positivo</h3>
-<p>Sea <em>S</em> el conjunto de todas las combinaciones positivas <em>ax+by</em>. Por el principio del buen orden,
+<p>Sea <em>S</em> el conjunto de todas las <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">combinaciones</a> positivas <em>ax+by</em>. Por el principio del buen orden,
   <em>S</em> tiene un mínimo <em>d</em>. Dividamos <em>a</em> por <em>d</em>: si <em>a=dq+r</em>, el resto <em>r</em>
   también es combinación lineal de <em>a</em> y <em>b</em>. Como 0≤r&lt;d, la minimalidad obliga a r=0. Por tanto d
   divide a. Repitiendo el argumento con b vemos que d es divisor común.</p>
@@ -17,10 +17,10 @@
 <h3>El algoritmo extendido en acción</h3>
 <p>En <a routerLink="/articles/chinese-remainder-theorem" fragment="general">sistemas de congruencias</a>, estos mismos
   coeficientes construyen una solución cuando los residuos coinciden módulo el MCD, incluso si los módulos no son
-  coprimos.</p>
+  <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a>.</p>
 <p>La interpretación de estos coeficientes como inversos se explica en <a
     routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>, junto con la prueba de
-  que un inverso existe exactamente cuando hay coprimalidad.</p>
+  que un inverso existe exactamente cuando hay <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">coprimalidad</a>.</p>
 <p>Puedes recorrer las divisiones, reconstruir las sustituciones y explorar la tabla de coeficientes en el artículo
   sobre el <a routerLink="/articles/gcd-euclid">MCD y el algoritmo de Euclides</a>.</p>
 <p>Euclides da gcd(252,198)=18. Si se sustituyen los restos hacia atrás, no solo aparece el máximo común divisor, sino
@@ -52,3 +52,6 @@
 <li><a routerLink="/problems/modular-inverse-for-decoding">103 · Un inverso para descifrar</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/gcd-euclid">Máximo común divisor (MCD) y algoritmo de Euclides</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li></ul></details></section>
+<!-- article-concepts:end -->

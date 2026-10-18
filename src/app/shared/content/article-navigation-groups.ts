@@ -4,29 +4,40 @@ import { NavbarSubsection } from './navbar-subsection';
 // Las rutas originales se conservan: esta clasificación solo organiza el menú.
 const GROUPS = {
   combinatorics: [
+    ["Fundamentos de conteo y grafos", "pigeonhole-principle trees-graph-coloring polya-cycle-index"],
+    ["Algoritmos, lógica y computabilidad", "route-optimization-complexity ordinals-growth computability-formal-languages"],
     ['Ramsey, crecimiento y grandes números', 'ramsey-theorem graham-number googology'],
     ['Técnicas de conteo', 'counting-principles inclusion-exclusion reflection-principle grid-counting pascal-triangle binomial-theorem catalan-numbers'],
     ['Grafos y coloración', 'euler-hamilton graph-foundations konigsberg-bridges planar-euler four-color-theorem'],
     ['Simetrías y rompecabezas', 'burnside-lemma sudoku-constraints rubik-invariants'],
   ],
   algebra: [
+    ["Estructuras y cocientes", "equivalence-quotients rings-finite-fields groups-cosets-lagrange"],
+    ["Álgebra numérica y aproximación", "singular-values-operator-norms nonnormal-transient-growth ridge-regularization pade-krylov-methods bernstein-polynomials"],
     ['Polinomios y ecuaciones', 'polynomial-foundations equation-equivalence polynomial-division algebraic-identities-factorization quadratic-equations cubic-equation rational-root-theorem cyclotomic-polynomials sign-charts'],
     ['Álgebra lineal', 'vector-spaces change-of-basis gaussian-elimination matrix-determinant matrix-diagonalization jordan-form cayley-hamilton gram-schmidt projection-least-squares'],
     ['Desigualdades y simetrías', 'cauchy-schwarz mean-inequalities permutation-symmetries'],
   ],
   analysis: [
+    ["Espacios y convergencia de funciones", "metric-normed-spaces function-convergence supremum-real-completeness"],
+    ["Métodos de series y funciones", "dirichlet-abel-tests euler-maclaurin-asymptotics hyperbolic-functions orthogonal-polynomials"],
     ['Funciones, límites y continuidad', 'exponentials-logarithms absolute-value-distance global-extrema-weierstrass absolute-value-distance global-extrema-weierstrass asymptotic-limits squeeze-oscillation continuity-differentiability bolzano-theorem lhopital-rule mean-value-theorems convexity-tangents'],
     ['Sucesiones y series', 'recurrent-sequences monotone-convergence geometric-series telescoping-series series-convergence positive-series-tests basel'],
     ['Funciones especiales y aproximaciones', 'gamma-function lambert-w euler-mascheroni stirling numerical-conditioning banach-fixed-point'],
     ['Fechas y tiempo', 'utc-date-arithmetic daylight-saving-time'],
   ],
   calculus: [
+    ["Cálculo de varias variables", "total-derivative-gradient jacobian-change-variables multiple-integrals vector-calculus"],
+    ["Variaciones y métodos para EDO", "variations-noether picard-lipschitz symplectic-integration"],
+    ["Frecuencias continuas", "fourier-transform"],
     ['Derivadas y estudio de funciones', 'derivative-foundations partial-derivatives-minimization linear-approximation function-analysis derivative-optimization newton-raphson'],
     ['Integrales y aplicaciones geométricas', 'integration-classical integration-advanced integration-numerical areas-revolution arc-length brachistochrone'],
     ['Series, interpolación y transformadas', 'taylor-series fourier-series polynomial-interpolation laplace-transform'],
     ['Ecuaciones diferenciales', 'first-order-odes linear-ode-systems ode-numerical-integration'],
   ],
   probability: [
+    ["Modelos de conteo y colas", "poisson-exponential-waiting heterogeneous-binomial-mixtures cauchy-heavy-tails"],
+    ["Verosimilitud y límites cuantitativos", "maximum-likelihood generating-concentration berry-esseen ergodicity-autocorrelation"],
     ['Fundamentos y probabilidad condicionada', 'finite-probability probability-trees conditional-independence bayes-theorem birthday-paradox monty-hall probability-inequalities large-numbers-law'],
     ['Variables aleatorias y distribuciones', 'discrete-expectation distribution-functions-tails continuous-random-variables moment-transformations bernoulli-binomial normal-distribution geometric-distribution hypergeometric-distribution student-chi-square'],
     ['Estadística descriptiva y dependencia', 'descriptive-statistics graphical-diagnostics covariance linear-regression simpson-paradox causal-inference'],
@@ -64,6 +75,8 @@ const GROUPS = {
     ['Bifurcaciones y caos', 'bifurcation-diagram feigenbaum'],
   ],
   numbers: [
+    ["Números y estructuras algebraicas", "golden-ratio algebraic-transcendental-numbers gaussian-quadratic-norms"],
+    ["Métodos aritméticos y criptografía", "infinite-descent sieve-primality rsa-discrete-logarithm dirichlet-convolution-series"],
     ['Demostraciones y fundamentos', 'proof-strategies mathematical-induction prime-valuations'],
     [
       'Numeración y divisibilidad',
@@ -95,6 +108,8 @@ const GROUPS = {
     ],
   ],
   geometry: [
+    ["Construcciones y transformaciones", "constructible-numbers plane-tessellations projective-homogeneous-coordinates circle-inversion affine-transformations"],
+    ["Geometría diferencial de curvas", "curvature-frenet envelopes-evolutes curve-singularities"],
     ['Vectores, productos y planos', 'vector-norm dot-product cross-product scalar-triple-product plane-normal vector-products'],
     ['Ángulos y sus unidades', 'complementary-supplementary-angles radians steradians dihedral-angle'],
     ['Transformaciones, convexidad y centros', 'homothety convex-hull barycenter'],

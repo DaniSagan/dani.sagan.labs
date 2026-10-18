@@ -15,7 +15,7 @@
 
 <h3>El algoritmo de Euclides, dibujado</h3>
 <p>La demostración de por qué estas divisiones conservan el MCD y siempre terminan se desarrolla en <a routerLink="/articles/gcd-euclid">MCD y algoritmo de Euclides</a>.</p>
-<p>Para una fracción positiva p/q, las divisiones del algoritmo de Euclides producen precisamente
+<p>Para una fracción positiva p/q, las divisiones del <a data-article-concept="gcd-euclid" routerLink="/articles/gcd-euclid">algoritmo de Euclides</a> producen precisamente
   esos coeficientes. En un rectángulo de lados p y q, cada división indica cuántos cuadrados del
   mayor tamaño posible podemos retirar. Repetimos en el rectángulo sobrante hasta llenarlo.</p>
 <app-euclidean-squares></app-euclidean-squares>
@@ -42,7 +42,7 @@
 <p>Esto garantiza que cada convergente está reducido y que la distancia entre dos consecutivos
   es 1/(qₙqₙ₋₁). Para una expansión infinita simple, los convergentes de índice par quedan por
   debajo del número y los de índice impar por encima. Ambos lados se acercan al mismo límite.</p>
-<p>Además, para un irracional se cumple la siguiente cota. Los denominadores grandes permiten
+<p>Además, para un <a data-article-concept="proof-strategies" routerLink="/articles/proof-strategies">irracional</a> se cumple la siguiente cota. Los denominadores grandes permiten
   errores pequeños; un coeficiente siguiente especialmente grande hace que el convergente actual
   resulte especialmente preciso.</p>
 <app-formula expression="\left|x-\frac{p_n}{q_n}\right|<\frac{1}{q_nq_{n+1}}\leq\frac{1}{q_n^2}"></app-formula>
@@ -55,21 +55,21 @@
   todas las soluciones enteras positivas de x² − Dy² = 1. Allí puedes explorar los convergentes con aritmética exacta
   y comprobar cómo la paridad del período distingue las normas +1 y −1.</p>
 <p>Los irracionales tienen expansiones infinitas. En algunos casos, una ecuación revela un patrón
-  que se repite. Para el número áureo, la relación φ = 1 + 1/φ reproduce la misma cola una y otra vez:</p>
+  que se repite. Para el <a data-article-concept="golden-ratio" routerLink="/articles/golden-ratio">número áureo</a>, la relación φ = 1 + 1/φ reproduce la misma cola una y otra vez:</p>
 <app-formula expression="\varphi=\frac{1+\sqrt5}{2}=[1;1,1,1,\ldots],\qquad\sqrt2=[1;2,2,2,\ldots]"></app-formula>
 <p>Los convergentes de φ son 1/1, 2/1, 3/2, 5/3, 8/5…: cocientes de números consecutivos
-  de Fibonacci. Para √2 aparecen 1/1, 3/2, 7/5 y 17/12. En este segundo caso, la cola
+  de <a data-article-concept="fibonacci-numbers" routerLink="/articles/fibonacci-numbers">Fibonacci</a>. Para √2 aparecen 1/1, 3/2, 7/5 y 17/12. En este segundo caso, la cola
   t = 2 + 1/t tiene solución positiva 1 + √2, de modo que 1 + 1/t = √2.</p>
 <p><strong>Para explorar.</strong> Compara φ y √2 con el mismo número de términos.
   Después selecciona π y pasa de cuatro a cinco términos. En el rectángulo, prueba 34/21:
   ¿qué relación encuentras entre sus cuadrados y los coeficientes del número áureo?</p>
-<p>Como referencia para la notación, las recurrencias y las identidades de los convergentes,
+<p>Como referencia para la notación, las <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencias</a> y las identidades de los convergentes,
   puedes consultar la <a href="https://dlmf.nist.gov/1.12">Digital Library of Mathematical Functions del NIST</a>.</p>
 
 <div class="article-activities">
 <h3>Practica y experimenta</h3>
 <ul>
-  <li><a routerLink="/problems/pell-equation-descent">Problema 007 · Descenso en una ecuación de Pell</a>. Relaciona las aproximaciones racionales de √2 con pares que satisfacen una ecuación de Pell.</li>
+  <li><a routerLink="/problems/pell-equation-descent">Problema 007 · Descenso en una ecuación de Pell</a>. Relaciona las aproximaciones racionales de √2 con pares que satisfacen una <a data-article-concept="pell-equation" routerLink="/articles/pell-equation">ecuación de Pell</a>.</li>
   <li><a routerLink="/tools/pi-decimals">Decimales de π</a>. Usa decimales de π para contrastar las aproximaciones 22/7 y 355/113 y distinguir precisión de igualdad exacta.</li>
 </ul>
 </div>
@@ -84,3 +84,6 @@
 <li><a routerLink="/problems/finite-continued-fraction">109 · Una fracción continua corta</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/gcd-euclid">Máximo común divisor (MCD) y algoritmo de Euclides</a></li><li><a routerLink="/articles/proof-strategies">Cómo demostrar: implicaciones, contradicción y contraposición</a></li><li><a routerLink="/articles/golden-ratio">El número áureo: álgebra, geometría y Fibonacci</a></li><li><a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/pell-equation">Ecuación de Pell</a></li><li><a routerLink="/articles/gaussian-quadratic-norms">Enteros gaussianos, normas algebraicas y unidades cuadráticas</a></li></ul></details></section>
+<!-- article-concepts:end -->

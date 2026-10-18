@@ -1,5 +1,5 @@
 <h2>Epitrocoide</h2>
-<p class="dropcap">La epitrocoide sigue un punto ligado a un círculo que rueda por fuera de otro círculo. Generaliza la epicicloide permitiendo que el punto no esté sobre la circunferencia rodante.</p>
+<p class="dropcap">La epitrocoide sigue un punto ligado a un círculo que rueda por fuera de otro círculo. Generaliza la <a data-article-concept="epicycloid" routerLink="/articles/epicycloid">epicicloide</a> permitiendo que el punto no esté sobre la <a data-article-concept="circle-curve" routerLink="/articles/circle-curve">circunferencia</a> rodante.</p>
 
 <h3>Definición y ecuación</h3>
 <app-formula [expression]="generalEquation"></app-formula>
@@ -10,7 +10,7 @@
 <p>El modelo usa radio fijo tres y radio rodante uno. El centro describe una circunferencia de radio cuatro; el punto móvil gira cuatro veces durante cada vuelta del centro.</p>
 
 <h3>Análisis y construcción</h3>
-<p>La coordenada compleja es 4e^(it)−p e^(4it). Las frecuencias enteras aseguran el cierre en 2π. El valor p=1 recupera la epicicloide correspondiente y puede generar cúspides.</p>
+<p>La coordenada compleja es 4e^(it)−p e^(4it). Las frecuencias enteras aseguran el cierre en 2π. El valor p=1 recupera la epicicloide correspondiente y puede generar <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">cúspides</a>.</p>
 
 <div class="widget-container curve-widget">
   <div class="widget-title">{{ title }}</div>
@@ -27,7 +27,7 @@
 
 <div class="article-activities">
   <h3>Practica y experimenta</h3>
-  <p>Calcula el punto inicial y comprueba el cierre tras una vuelta completa.</p>
+  <p>Calcula el punto inicial y comprueba el cierre tras una <a data-article-concept="radians" routerLink="/articles/radians">vuelta completa</a>.</p>
   <details><summary>Ver comprobación</summary><p>En t=0 y t=2π se obtiene (4−p,0). Las dos coordenadas tienen periodos compatibles con 2π.</p></details>
   <ul>
     <li><a routerLink="/tools/graph-plotter">Representador de funciones</a>. Representa las funciones coordenadas por separado para estudiar sus ceros y sus extremos.</li>
@@ -37,3 +37,6 @@
 
 <h3>Referencias</h3>
 <p><a href="https://mathworld.wolfram.com/Epitrochoid.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld</a>. Consulta la definición y las relaciones de esta curva. Las constantes del explorador fijan una configuración concreta de la familia.</p>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/epicycloid">Epicicloide</a></li><li><a routerLink="/articles/circle-curve">Circunferencia</a></li><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li><li><a routerLink="/articles/radians">Radianes</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -1,4 +1,4 @@
-:host { display: block; min-width: 0; }
+:host { display: block; min-width: 0; overflow-wrap: anywhere; }
 app-formula { display: block; max-width: 100%; overflow-x: auto; margin: 1.3rem 0; }
 app-formula[displayMode="inline"] { display: inline-block; max-width: 100%; margin: 0 .08em; vertical-align: middle; overflow-x: auto; }
 :host ::ng-deep app-formula[displayMode="inline"] mjx-container { margin: 0; }
@@ -22,6 +22,7 @@ input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px s
 table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
 th, td { padding: .5rem .7rem; border-bottom: 1px solid var(--rule); text-align: left; }
 th { color: var(--gold); font-weight: 600; }
+td { min-width: 10ch; }
 .orbit { width: 100%; height: auto; display: block; }
 .orbit text { fill: var(--ink-dim); font: 12px monospace; }
 .coverage { display: grid; gap: 3px; max-height: 330px; overflow-y: auto; padding: 10px; }

@@ -11,7 +11,7 @@
   marcadores de partículas, no esferas que ruedan.</p>
 <p>Tomaremos A como origen y mediremos la profundidad y <strong>hacia abajo</strong>. Así B tiene
   coordenadas (X, H), con X y H positivos. Antes de iniciar la carrera, intenta adivinar qué trayectoria
-  llegará primero y prueba a mejorar la parábola cambiando su curvatura.</p>
+  llegará primero y prueba a mejorar la <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a> cambiando su <a data-article-concept="curvature-frenet" routerLink="/articles/curvature-frenet">curvatura</a>.</p>
 <app-brachistochrone-race></app-brachistochrone-race>
 
 <h3>Del camino más corto al tiempo más corto</h3>
@@ -22,7 +22,7 @@
   su longitud elemental es √(1 + y′²) dx. El tiempo total es, por tanto:</p>
 <app-formula expression="T[y]=\int_0^X\frac{\sqrt{1+y'(x)^2}}{\sqrt{2g\,y(x)}}\,dx,\qquad y(0)=0,\quad y(X)=H"></app-formula>
 <p>Ahora no buscamos el mínimo de una función de un número: buscamos el mínimo de una cantidad que
-  depende de una <em>función entera</em>. Ese es el salto al cálculo de variaciones. La integral es impropia
+  depende de una <em>función entera</em>. Ese es el salto al <a data-article-concept="variations-noether" routerLink="/articles/variations-noether">cálculo de variaciones</a>. La integral es impropia
   en la salida, donde la rapidez es cero; esto no impide que el tiempo total sea finito.</p>
 
 <h3>La ecuación que selecciona la curva</h3>
@@ -33,7 +33,7 @@
   esta relación y permite tratar la tangente vertical inicial sin exigir una pendiente finita:</p>
 <app-formula expression="x(\theta)=a(\theta-\sin\theta),\qquad y(\theta)=a(1-\cos\theta),\qquad 0\le\theta\le\theta_B<2\pi"></app-formula>
 <p>Es una <a routerLink="../cycloid">cicloide</a>: la huella de un punto del borde de un círculo que
-  rueda sin deslizar. Aquí aparece orientada con las cúspides arriba. La condición variacional identifica
+  rueda sin deslizar. Aquí aparece orientada con las <a data-article-concept="curve-singularities" routerLink="/articles/curve-singularities">cúspides</a> arriba. La condición variacional identifica
   la candidata; demostrar que es el mínimo global requiere además un argumento de suficiencia.
   Para el problema ideal planteado, el arco sin cúspides interiores es la solución minimizante.</p>
 <app-cycloid-construction></app-cycloid-construction>
@@ -43,7 +43,7 @@
 <app-formula expression="\frac{X}{H}=\frac{\theta_B-\sin\theta_B}{1-\cos\theta_B},\qquad a=\frac{H}{1-\cos\theta_B}"></app-formula>
 <p>En el intervalo 0 &lt; θ<sub>B</sub> &lt; 2π, la primera razón crece de cero a infinito y determina
   un único ángulo. El laboratorio lo encuentra por bisección. Si X/H supera π/2, el destino queda
-  después del punto más bajo de la cicloide: la pista óptima <strong>desciende por debajo de B y luego
+  después del punto más bajo de la <a data-article-concept="cycloid" routerLink="/articles/cycloid">cicloide</a>: la pista óptima <strong>desciende por debajo de B y luego
   remonta</strong>. Imponer que la pista siempre descienda cambiaría el problema.</p>
 <p>Sobre la cicloide, tanto ds como la rapidez contienen el mismo factor sin(θ/2), que se cancela.
   El tiempo resulta especialmente sencillo:</p>
@@ -68,7 +68,7 @@
   Todas tardan lo mismo, siempre que partan del reposo y no haya rozamiento. Esta propiedad,
   estudiada por Huygens, se llama <em>tautocronía</em>.</p>
 <app-tautochrone-explorer></app-tautochrone-explorer>
-<p>En una rama, sea s la longitud de arco que falta hasta el fondo y s₀ su valor inicial. La altura
+<p>En una rama, sea s la <a data-article-concept="arc-length" routerLink="/articles/arc-length">longitud de arco</a> que falta hasta el fondo y s₀ su valor inicial. La altura
   sobre el fondo es s²/(8a), de modo que el movimiento en la coordenada s es armónico simple:</p>
 <app-formula expression="s=4a\cos(\theta/2),\qquad \ddot{s}=-\frac{g}{4a}s,\qquad s(t)=s_0\cos\left(\sqrt{\frac{g}{4a}}\,t\right)"></app-formula>
 <p>El primer cero del coseno ocurre en un tiempo que no depende de s₀:</p>
@@ -96,3 +96,6 @@
   <li><a routerLink="/problems/curve-arc-length">Problema 068 · Longitud de una curva</a>. Calcula una longitud de arco y distingue esa magnitud del tiempo que tarda una partícula en recorrerlo.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/parabola">Parábola</a></li><li><a routerLink="/articles/curvature-frenet">Curvatura, círculo osculador y triedro de Frenet</a></li><li><a routerLink="/articles/variations-noether">Cálculo de variaciones, Euler–Lagrange y Noether</a></li><li><a routerLink="/articles/curve-singularities">Puntos singulares, cúspides y nodos de curvas</a></li><li><a routerLink="/articles/cycloid">Cicloide</a></li><li><a routerLink="/articles/arc-length">Longitud de arco y parametrización de curvas</a></li></ul></details></section>
+<!-- article-concepts:end -->

@@ -16,11 +16,11 @@
 <app-formula expression="\sum_{n=1}^N(u_n-u_{n+k})=\sum_{n=1}^k u_n-\sum_{n=N+1}^{N+k}u_n" />
 <p>Por ejemplo, 1/[n(n + 2)] = (1/n − 1/(n + 2))/2. Los términos finales tienden a cero y la suma es (1 + 1/2)/2 = 3/4. Escribir las dos fronteras evita perder términos.</p>
 <h3>4. Productos que también telescopan</h3>
-<p>Para uₙ no nulos, el producto de cocientes consecutivos es u₁/uₙ₊₁. Los logaritmos de factores positivos convierten el producto en una suma de diferencias.</p>
+<p>Para uₙ no nulos, el producto de cocientes consecutivos es u₁/uₙ₊₁. Los <a data-article-concept="exponentials-logarithms" routerLink="/articles/exponentials-logarithms">logaritmos</a> de factores positivos convierten el producto en una suma de diferencias.</p>
 <app-formula expression="\prod_{n=1}^N\frac{u_n}{u_{n+1}}=\frac{u_1}{u_{N+1}},\qquad\prod_{n=2}^N\left(1-\frac1{n^2}\right)=\frac{N+1}{2N}\longrightarrow\frac12" />
 <p>En el segundo ejemplo se factoriza cada término como (n − 1)(n + 1)/n². Dos cadenas de cancelaciones dejan los factores de frontera.</p>
 <h3>5. Diferencias discretas y cálculo estable</h3>
-<p>La identidad es una versión discreta del teorema fundamental del cálculo: acumular diferencias recupera un cambio neto. Se usa para invariantes, recurrencias y errores acumulados.</p>
+<p>La identidad es una versión discreta del <a data-article-concept="integration-classical" routerLink="/articles/integration-classical">teorema fundamental del cálculo</a>: acumular diferencias recupera un cambio neto. Se usa para invariantes, <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencias</a> y errores acumulados.</p>
 <aside class="caution"><strong>Dos cuidados.</strong> No justifiques la suma restando dos series divergentes: trabaja primero con Sₙ. En un ordenador, 1/n − 1/(n + 1) puede perder cifras por cancelación; 1/[n(n + 1)] evita esa resta.</aside>
 <p>Compara con <a routerLink="/articles/series-convergence">convergencia absoluta y condicional</a>: una forma bonita no sustituye el estudio del límite.</p>
 <h3>Referencias y lecturas</h3><ul class="references"><li><a href="https://openstax.org/books/calculus-volume-2/pages/5-2-infinite-series" target="_blank" rel="noopener noreferrer">OpenStax · Series infinitas y sumas parciales</a></li></ul>
@@ -44,3 +44,6 @@
 <li><a routerLink="/problems/series-comparison-without-summing">149 · Comparar una serie sin sumarla</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/exponentials-logarithms">Exponenciales y logaritmos: propiedades y ecuaciones</a></li><li><a routerLink="/articles/integration-classical">Integrales I: técnicas clásicas</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li></ul></details></section>
+<!-- article-concepts:end -->

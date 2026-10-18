@@ -1,13 +1,13 @@
 <h2>Del teorema de Fermat al teorema de Euler</h2>
 <p class="dropcap">El módulo 10 no es primo, pero las potencias de 3 también acaban repitiéndose: 3,9,7,1. Euler
   descubrió la regla que gobierna este fenómeno para cualquier módulo, siempre que la base sea coprima con él.</p>
-<p>La función φ(n), llamada totiente, cuenta las clases entre 1 y n que son coprimas con n. Euler desarrolló estas ideas
+<p>La función φ(n), llamada <a data-article-concept="euler-totient-formula" routerLink="/articles/euler-totient-formula">totiente</a>, cuenta las clases entre 1 y n que son coprimas con n. Euler desarrolló estas ideas
   durante el siglo XVIII y publicó en 1763 el resultado que generaliza a Fermat:</p>
 <app-formula expression="\gcd(a,n)=1\quad\Longrightarrow\quad a^{\varphi(n)}\equiv1\pmod n"></app-formula>
 <h3>Un mazo de residuos que solo cambia de orden</h3>
 <p>El significado de unidad y la equivalencia entre invertibilidad y coprimalidad se desarrollan en <a
     routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a>.</p>
-<p>Tomemos un sistema reducido de residuos r₁,…,rφ(n): contiene exactamente una vez cada clase invertible módulo n. Al
+<p>Tomemos un sistema reducido de residuos r₁,…,rφ(n): contiene exactamente una vez cada clase <a data-article-concept="matrix-determinant" routerLink="/articles/matrix-determinant">invertible</a> módulo n. Al
   multiplicar todos por a obtenemos otra lista de unidades. No puede haber repeticiones, porque a tiene inverso, y
   tampoco puede faltar ninguna; es la misma lista permutada.</p>
 <p>Multiplicando sus elementos se obtiene a<sup>φ(n)</sup>∏rᵢ≡∏rᵢ. El producto de los rᵢ también es invertible, de modo
@@ -21,7 +21,7 @@
   de Fermat.</p>
 <p>Euler da un exponente seguro, aunque no siempre el menor. El <a routerLink="/articles/orders-theorem">orden multiplicativo</a> y la función de Carmichael permiten
   encontrar periodos más cortos.</p>
-<p>En RSA se trabaja módulo el producto de dos primos. Los exponentes público y privado se escogen de modo que su
+<p>En <a data-article-concept="rsa-discrete-logarithm" routerLink="/articles/rsa-discrete-logarithm">RSA</a> se trabaja módulo el producto de dos primos. Los exponentes público y privado se escogen de modo que su
   producto sea 1 módulo un totiente relacionado. El teorema explica por qué aplicar sucesivamente ambas potencias
   recupera el mensaje. La seguridad no reside en ocultar este resultado, sino en la dificultad de factorizar el módulo.
 </p>
@@ -40,3 +40,6 @@
   <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Descompón el módulo para calcular su totiente y comprobar las hipótesis del teorema.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/euler-totient-formula">Fórmula del totiente de Euler</a></li><li><a routerLink="/articles/matrix-determinant">El determinante: área, volumen y orientación</a></li><li><a routerLink="/articles/rsa-discrete-logarithm">RSA y logaritmo discreto: dos problemas inversos</a></li></ul></details></section>
+<!-- article-concepts:end -->

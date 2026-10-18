@@ -11,7 +11,7 @@
 <li><a [routerLink]="[]" fragment="section-7">Comprueba tu comprensión</a></li>
 <li><a [routerLink]="[]" fragment="section-8">Problemas, herramientas y juegos</a></li>
 </ol></details></nav>
-<p class="dropcap">La variabilidad de una suma depende de cómo se mueven conjuntamente sus componentes. La covarianza mide asociación lineal y aparece en promedios, regresión, carteras y propagación de incertidumbre. Una covarianza nula no descarta toda dependencia. Para sumar varianzas hay que justificar la ausencia de términos cruzados y no asumirla por comodidad.</p>
+<p class="dropcap">La variabilidad de una suma depende de cómo se mueven conjuntamente sus componentes. La covarianza mide asociación lineal y aparece en promedios, <a data-article-concept="linear-regression" routerLink="/articles/linear-regression">regresión</a>, carteras y propagación de incertidumbre. Una covarianza nula no descarta toda dependencia. Para sumar varianzas hay que justificar la ausencia de términos cruzados y no asumirla por comodidad.</p>
 <h3 id="section-0">Centrar antes de multiplicar</h3>
 <p>La covarianza es la esperanza del producto de las desviaciones de cada variable respecto a su media. Un valor positivo indica tendencia a desviarse en el mismo sentido; uno negativo, en sentidos opuestos. La identidad con el producto de variables facilita cálculos pero puede sufrir cancelación numérica cuando las medias son grandes. Las unidades son el producto de las unidades de ambas variables, por lo que el tamaño bruto no permite comparar asociaciones en escalas diferentes.</p>
 <app-formula expression="\operatorname{Cov}(X,Y)=E[(X-EX)(Y-EY)]=E[XY]-EX\,EY" />
@@ -19,7 +19,7 @@
 <p>Dividir por las desviaciones típicas produce una medida sin unidades entre menos uno y uno. Si alguna varianza es cero, la correlación no está definida por esa fórmula. Un valor extremo implica una relación afín casi seguramente para variables no degeneradas. Una correlación pequeña solo habla de relación lineal; no prueba ausencia de estructura ni autoriza a reemplazar una distribución conjunta por el producto de sus marginales.</p>
 <app-formula expression="\rho=\frac{\operatorname{Cov}(X,Y)}{\sigma_X\sigma_Y},\qquad |\rho|\le1" />
 <h3 id="section-2">Expandir una suma y conservar términos</h3>
-<p>El cuadrado de la suma centrada contiene cuadrados individuales y productos cruzados. Al tomar esperanza aparecen varianzas y covarianzas. La independencia con segundos momentos finitos hace desaparecer estas últimas, pero la incorrelación también basta para esta identidad. En una media de observaciones correlacionadas, las covarianzas pueden impedir la reducción habitual de varianza con el tamaño.</p>
+<p>El <a data-article-concept="square" routerLink="/articles/square">cuadrado</a> de la suma centrada contiene cuadrados individuales y productos cruzados. Al tomar esperanza aparecen varianzas y covarianzas. La independencia con segundos momentos finitos hace desaparecer estas últimas, pero la incorrelación también basta para esta identidad. En una media de observaciones correlacionadas, las covarianzas pueden impedir la reducción habitual de varianza con el tamaño.</p>
 <app-formula expression="\operatorname{Var}(aX+bY)=a^2\sigma_X^2+b^2\sigma_Y^2+2ab\operatorname{Cov}(X,Y)" />
 <h3 id="section-3">Matriz de covarianza y predicciones</h3>
 <p>Para un vector aleatorio, la matriz de covarianza es simétrica y semidefinida positiva porque cualquier combinación lineal tiene varianza no negativa. Sus elementos diagonales son varianzas y los demás asociaciones cruzadas. Una matriz singular indica una combinación lineal determinista. En regresión simple, la pendiente poblacional depende del cociente entre covarianza y varianza de la entrada, mientras que causalidad necesita un modelo de asignación adicional.</p>
@@ -27,7 +27,7 @@
 <p>La covarianza muestral usa desviaciones respecto a las medias observadas y divisor tamaño menos uno para ser insesgada bajo observaciones independientes con segundos momentos finitos. Trasladar ambas variables no cambia covarianza, pero multiplicarlas por constantes la escala por el producto de esas constantes. La correlación conserva magnitud bajo escalas positivas y cambia signo si se invierte una sola variable. Al analizar datos, un gráfico de dispersión complementa el número: muestra relaciones curvas, agrupaciones y valores influyentes que la medida lineal no describe. Una asociación que cambia al agregar grupos puede reflejar distinta composición y exige revisar la distribución conjunta.</p>
 <app-formula expression="s_{XY}=\frac1{n-1}\sum_i(x_i-\overline x)(y_i-\overline y),\qquad \operatorname{Cov}(aX+c,bY+d)=ab\operatorname{Cov}(X,Y)" />
 <h3 id="section-4">Un ejemplo resuelto</h3>
-<p>Sea una variable uniforme entre menos uno y uno y otra su cuadrado. La segunda depende totalmente de la primera, pero el momento cúbico es cero por simetría y la covarianza también. El diagrama de dispersión mostraría una parábola, que una correlación nula no resume.</p>
+<p>Sea una variable uniforme entre menos uno y uno y otra su cuadrado. La segunda depende totalmente de la primera, pero el momento cúbico es cero por simetría y la covarianza también. El <a data-article-concept="graphical-diagnostics" routerLink="/articles/graphical-diagnostics">diagrama de dispersión</a> mostraría una <a data-article-concept="parabola" routerLink="/articles/parabola">parábola</a>, que una correlación nula no resume.</p>
 <app-formula expression="Y=X^2,\quad EX=0,\quad E[X^3]=0\Longrightarrow\operatorname{Cov}(X,Y)=0" />
 <h3 id="section-5">Laboratorio y comprobación</h3>
 <p>Recorre toda la correlación y compara la varianza verdadera con la que ignora dependencia. Ajusta las desviaciones para identificar cuándo una correlación negativa cancela exactamente la variabilidad.</p>
@@ -63,3 +63,6 @@
 <li><a routerLink="/problems/regression-prediction-and-residuals">186 · Una predicción por regresión y sus residuos</a></li>
 </ul></details></section>
 <!-- prerequisite-problems:end -->
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/linear-regression">Regresión lineal y correlación de Pearson</a></li><li><a routerLink="/articles/square">Cuadrado</a></li><li><a routerLink="/articles/graphical-diagnostics">Diagnóstico gráfico: Anscombe, Datasaurus y residuos</a></li><li><a routerLink="/articles/parabola">Parábola</a></li></ul></details></section>
+<!-- article-concepts:end -->

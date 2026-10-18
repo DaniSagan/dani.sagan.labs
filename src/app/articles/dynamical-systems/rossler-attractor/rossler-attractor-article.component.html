@@ -31,7 +31,7 @@
 </aside>
 
 <h3>2. Una órbita no es todo el atractor</h3>
-<p>Una trayectoria es la evolución de una condición inicial. Un atractor es un conjunto invariante al que se acercan las
+<p>Una trayectoria es la evolución de una <a data-article-concept="first-order-odes" routerLink="/articles/first-order-odes">condición inicial</a>. Un atractor es un conjunto invariante al que se acercan las
   órbitas de una región de condiciones iniciales, su cuenca de atracción. El trazo que vemos es una aproximación finita
   de una trayectoria, no una representación exacta de cada punto del atractor.</p>
 <p>Por eso los experimentos descartan primero un <strong>transitorio</strong>: las primeras vueltas dependen
@@ -43,16 +43,16 @@
   con alturas z distintas.</p>
 
 <h3>3. Puntos de equilibrio y contracción</h3>
-<p>En un equilibrio, las tres derivadas se anulan. Las dos primeras ecuaciones dan y = −z y x = az. Sustituir en la
+<p>En un equilibrio, las tres <a data-article-concept="derivative-foundations" routerLink="/articles/derivative-foundations">derivadas</a> se anulan. Las dos primeras ecuaciones dan y = −z y x = az. Sustituir en la
   tercera produce una ecuación cuadrática:</p>
 <app-formula
   expression="az^2-cz+b=0,\qquad z_\pm=\frac{c\pm\sqrt{c^2-4ab}}{2a},\qquad (x_\pm,y_\pm,z_\pm)=(az_\pm,-z_\pm,z_\pm)"
   displayMode="block" />
 <p>Esta expresión supone a ≠ 0 y c² ≥ 4ab. La existencia de un equilibrio no significa que atraiga las órbitas cercanas:
-  su estabilidad depende del jacobiano del campo.</p>
+  su estabilidad depende del <a data-article-concept="jacobian-change-variables" routerLink="/articles/jacobian-change-variables">jacobiano</a> del campo.</p>
 <app-formula expression="J(x,y,z)=\begin{pmatrix}0&-1&-1\\1&a&0\\z&0&x-c\end{pmatrix},\qquad \nabla\!\cdot f=a+x-c"
   displayMode="block" />
-<p>La divergencia mide la tasa instantánea de cambio logarítmico de un pequeño volumen transportado por el flujo. Puede
+<p>La <a data-article-concept="vector-calculus" routerLink="/articles/vector-calculus">divergencia</a> mide la tasa instantánea de cambio logarítmico de un pequeño volumen transportado por el flujo. Puede
   ser positiva en ciertos puntos; no hay contracción uniforme en todo el espacio. Un promedio negativo a lo largo de una
   órbita es compatible con que el volumen se contraiga y, al mismo tiempo, algunas direcciones se estiren. Esa
   combinación ayuda a entender una geometría estrecha y plegada.</p>
@@ -60,20 +60,20 @@
 <h3>4. Sensibilidad no significa azar</h3>
 <p>Las ecuaciones son deterministas, pero conocer un estado con precisión finita limita cuánto podemos predecir su
   trayectoria individual en un régimen caótico. Mientras una perturbación permanezca suficientemente pequeña, su
-  crecimiento puede tener una envolvente aproximadamente exponencial:</p>
+  crecimiento puede tener una <a data-article-concept="envelopes-evolutes" routerLink="/articles/envelopes-evolutes">envolvente</a> aproximadamente exponencial:</p>
 <app-formula expression="d(t)=\|\mathbf x_1(t)-\mathbf x_2(t)\|,\qquad d(t)\approx d(0)e^{\lambda t}"
   displayMode="block" />
 <app-rossler-sensitivity [c]="c" />
 <p>Una recta ascendente en la escala logarítmica indica crecimiento exponencial durante ese intervalo, pero la distancia
   también puede disminuir localmente. Cuando alcanza el tamaño del atractor, se satura y ya no describe la evolución de
   una perturbación infinitesimal.</p>
-<p>Un exponente de Lyapunov requiere un procedimiento que controle esa escala, por ejemplo evolucionando una
+<p>Un <a data-article-concept="lyapunov-stability-chaos" routerLink="/articles/lyapunov-stability-chaos">exponente de Lyapunov</a> requiere un procedimiento que controle esa escala, por ejemplo evolucionando una
   perturbación tangente y renormalizándola repetidamente. La tasa acumulada que muestra el widget es un diagnóstico de
   dos órbitas finitas, no ese cálculo. Compara varias perturbaciones y dos pasos de integración antes de atribuir una
   diferencia al sistema en lugar de al error numérico.</p>
 
 <h3>5. Cortar el flujo y observar sus regresos</h3>
-<p>Una sección de Poincaré sustituye el movimiento continuo por una sucesión de visitas. En el primer laboratorio usamos
+<p>Una <a data-article-concept="return-maps-bifurcations" routerLink="/articles/return-maps-bifurcations">sección de Poincaré</a> sustituye el movimiento continuo por una sucesión de visitas. En el primer laboratorio usamos
   el plano x = 0 y guardamos solo los cruces de negativo a positivo. Se representan las coordenadas (y, z) interpoladas
   en esos instantes. La condición de dirección evita mezclar las dos orientaciones del cruce.</p>
 <p>Una órbita periódica puede dar uno o varios puntos en la sección; una trayectoria caótica puede producir una
@@ -120,3 +120,6 @@
   <li><a href="https://doi.org/10.1017/S144618112300010X" target="_blank" rel="noopener noreferrer">Bursting solutions
       of the Rössler equations</a>. Análisis de la dinámica y sus aproximaciones.</li>
 </ul>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/first-order-odes">Ecuaciones diferenciales de primer orden y enfriamiento</a></li><li><a routerLink="/articles/derivative-foundations">Derivadas: definición, interpretación y reglas</a></li><li><a routerLink="/articles/jacobian-change-variables">Matriz jacobiana y cambios de variables</a></li><li><a routerLink="/articles/vector-calculus">Flujo, divergencia y rotacional de un campo</a></li><li><a routerLink="/articles/envelopes-evolutes">Envolventes, evolutas e involutas</a></li><li><a routerLink="/articles/lyapunov-stability-chaos">Estabilidad, funciones y exponentes de Lyapunov</a></li><li><a routerLink="/articles/return-maps-bifurcations">Mapas de retorno, bifurcaciones y universalidad</a></li></ul></details></section>
+<!-- article-concepts:end -->

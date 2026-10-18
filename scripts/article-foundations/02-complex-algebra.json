@@ -1,0 +1,490 @@
+[
+  {
+    "slug": "holomorphic-continuation",
+    "area": "complex-numbers",
+    "ids": [
+      "M15",
+      "M17"
+    ],
+    "title": "Funciones holomorfas y continuación analítica",
+    "terms": [
+      "holomorfa",
+      "holomorfas",
+      "holomorfo",
+      "holomorfía",
+      "continuación analítica",
+      "función analítica"
+    ],
+    "definition": "Una función compleja es holomorfa en un abierto si tiene derivada compleja en cada punto. El cociente incremental debe tener el mismo límite desde todas las direcciones del plano. Una función analítica admite localmente una serie de potencias convergente. En variable compleja ambas propiedades equivalen, una rigidez que no tiene análogo directo para funciones reales suaves.",
+    "argument": "Escribir f=u+iv y comparar incrementos reales e imaginarios da las ecuaciones de Cauchy–Riemann. Con parciales continuas, estas ecuaciones son también suficientes para holomorfía. La fórmula integral de Cauchy permite desarrollar una función holomorfa en serie y probar el teorema de identidad: dos funciones holomorfas iguales en un conjunto con punto de acumulación interior coinciden en un dominio conexo.",
+    "example": "La serie geométrica representa 1/(1−z) solo para |z|<1. La función racional está definida y es holomorfa fuera de z=1: proporciona una continuación más allá del disco de la serie. Continuar una función no significa que su serie original pase a converger allí.",
+    "caution": "La conjugación z↦z̄ es diferenciable como aplicación real, pero no es holomorfa. El cociente incremental vale 1 sobre incrementos reales y −1 sobre incrementos imaginarios. La continuación puede depender de caminos cuando aparecen ramas; la unicidad local no afirma una rama global en cualquier dominio.",
+    "formula": "u_x=v_y,\\quad u_y=-v_x,\\qquad \\frac1{1-z}=\\sum_{k=0}^{\\infty}z^k\\quad(|z|<1)",
+    "question": "¿Es holomorfa f(z)=|z|² en algún abierto no vacío?",
+    "answer": "No. Sus ecuaciones de Cauchy–Riemann se cumplen solo en el origen. Aunque allí exista derivada compleja, un punto aislado no es un abierto y no proporciona holomorfía en un entorno.",
+    "n": [
+      "Orden del truncamiento",
+      0,
+      30,
+      1,
+      5
+    ],
+    "t": [
+      "Punto real x",
+      0,
+      1.5,
+      0.05,
+      0.5
+    ],
+    "lab": "Una función y el disco de su serie",
+    "code": "let sum=0;for(let k=0;k<=n;k++)sum+=t**k;rows.push(['Suma parcial',sum],['Función racional',Math.abs(t-1)<1e-10?'Polo':1/(1-t)],['Condición de convergencia',t<1?'Dentro del disco':'Fuera del disco abierto']);for(let i=0;i<=100;i++){const x=.95*i/100;let y=0;for(let k=0;k<=n;k++)y+=x**k;points.push([x,y]);}note='La gráfica se limita a [0,0,95], sin unir artificialmente los lados del polo. El valor racional existe para x>1, pero la serie geométrica diverge allí.';",
+    "related": [
+      "complex-arithmetic",
+      "geometric-series"
+    ]
+  },
+  {
+    "slug": "complex-residues",
+    "area": "complex-numbers",
+    "ids": [
+      "M16"
+    ],
+    "title": "Singularidades, polos y residuos",
+    "terms": [
+      "residuo",
+      "residuos",
+      "polo simple",
+      "polos",
+      "singularidad esencial",
+      "serie de Laurent"
+    ],
+    "definition": "Una singularidad aislada deja un entorno perforado donde la función es holomorfa. Es removible si se puede completar holomórficamente; es un polo de orden m si multiplicar por (z−a)ᵐ produce un valor finito no nulo. Si no es ninguno de esos casos es esencial. El residuo es el coeficiente de (z−a)⁻¹ en la serie de Laurent.",
+    "argument": "Al integrar una potencia (z−a)ᵏ alrededor de un círculo, parametrizar z=a+Re^(it) muestra que todas las integrales se anulan salvo k=−1. Por eso el residuo controla la integral. El teorema de residuos suma esas contribuciones para contornos cerrados y orientados positivamente bajo sus hipótesis de holomorfía y singularidades interiores.",
+    "example": "En 1/(z²+1), los polos simples son i y −i. Para un cociente g/h con h(a)=0 y h′(a) distinto de cero, el residuo es g(a)/h′(a). En i resulta 1/(2i). Un círculo que contiene i pero no −i da integral 2πi/(2i)=π.",
+    "caution": "El orden del polo no es el residuo: 1/z² tiene polo de orden dos y residuo cero. Un contorno no debe pasar por la singularidad. La distancia al polo cambia el tamaño de la función, pero no el valor del residuo.",
+    "formula": "\\operatorname{Res}_{z=a}\\frac{g(z)}{h(z)}=\\frac{g(a)}{h'(a)},\\qquad \\oint_\\gamma f(z)\\,dz=2\\pi i\\sum_a\\operatorname{Res}_{z=a}f",
+    "question": "¿Cuál es el residuo de (3+2z)/z² en cero?",
+    "answer": "Al separar se obtiene 3/z²+2/z. El coeficiente de 1/z es 2, aunque el polo tenga orden dos.",
+    "n": [
+      "Orden de polo m",
+      1,
+      6,
+      1,
+      1
+    ],
+    "t": [
+      "Radio del contorno",
+      0.2,
+      2,
+      0.1,
+      1
+    ],
+    "lab": "Integrar potencias en un círculo",
+    "code": "let re=0,im=0;const N=512;for(let k=0;k<N;k++){const a=2*Math.PI*(k+.5)/N,scale=t**(1-n)*2*Math.PI/N;re+=-scale*Math.sin((1-n)*a);im+=scale*Math.cos((1-n)*a);}rows.push(['Parte real de la integral numérica',re],['Parte imaginaria',im],['Residuo exacto',n===1?1:0],['Integral exacta / i',n===1?2*Math.PI:0]);note='Se integra z^(−m) por puntos medios. Para m=1 la integral es 2πi para cualquier radio positivo; para los demás órdenes es cero.';",
+    "related": [
+      "holomorphic-continuation",
+      "integration-advanced"
+    ]
+  },
+  {
+    "slug": "complex-logarithm-branches",
+    "area": "complex-numbers",
+    "ids": [
+      "M18"
+    ],
+    "title": "Logaritmo complejo, ramas y cortes",
+    "terms": [
+      "logaritmo complejo",
+      "rama principal",
+      "ramas del logaritmo",
+      "corte de rama"
+    ],
+    "definition": "Si z no es cero, sus argumentos difieren en múltiplos enteros de 2π. Resolver e^w=z da por ello infinitos logaritmos: log|z|+i(arg z+2πk). Una rama elige argumentos de manera continua en un dominio apropiado. La rama principal usual excluye el semieje real no positivo y toma argumentos entre −π y π.",
+    "argument": "Una vuelta alrededor del origen aumenta el argumento continuo en 2π. Por eso no existe un logaritmo holomorfo global en el plano perforado. En un dominio simplemente conexo que no contiene cero sí se puede elegir una rama. Su derivada es 1/z; que las derivadas coincidan no obliga a que las ramas tengan el mismo valor.",
+    "example": "Para z=i, los logaritmos son i(π/2+2πk). La potencia i^i, definida mediante cada logaritmo posible, toma los valores positivos exp(−π/2−2πk). Elegir la rama principal da uno de esos valores, no borra la multivaluación original.",
+    "caution": "La identidad Log(zw)=Log z+Log w puede fallar para valores principales por un múltiplo de 2πi. Tampoco debe identificarse la función multivaluada con una rama holomorfa en un dominio concreto.",
+    "formula": "\\log z=\\ln|z|+i(\\theta+2\\pi k),\\quad k\\in\\mathbb Z,\\qquad z^\\alpha=\\exp(\\alpha\\log z)",
+    "question": "Compara Log(−1)+Log(−1) con Log(1) usando argumentos principales asignados a los valores.",
+    "answer": "La suma de los valores principales es 2πi y Log(1)=0. Difieren en 2πi. En la rama holomorfa principal con corte negativo, −1 ni siquiera pertenece al dominio.",
+    "n": [
+      "Número de vueltas k",
+      -3,
+      3,
+      1,
+      0
+    ],
+    "t": [
+      "Ángulo inicial θ",
+      -3,
+      3,
+      0.1,
+      1
+    ],
+    "lab": "Seguir el argumento sin plegarlo",
+    "code": "rows.push(['Argumento continuo',t+2*Math.PI*n],['Valor principal del argumento',Math.atan2(Math.sin(t),Math.cos(t))],['Factor exp(i·argumento): parte real',Math.cos(t)],['Parte imaginaria',Math.sin(t)]);for(let i=0;i<=100;i++){const a=2*Math.PI*i/100;points.push([a,t+a]);}note='La altura de la recta es un argumento continuo a lo largo de un camino. Tras una vuelta, el punto complejo se repite y el argumento ha aumentado 2π.';",
+    "related": [
+      "imaginary-power",
+      "de-moivre",
+      "holomorphic-continuation"
+    ]
+  },
+  {
+    "slug": "riemann-sphere",
+    "area": "complex-numbers",
+    "ids": [
+      "M19"
+    ],
+    "title": "Esfera de Riemann y proyección estereográfica",
+    "terms": [
+      "esfera de Riemann",
+      "proyección estereográfica",
+      "plano complejo ampliado"
+    ],
+    "definition": "Añadir un único punto ∞ al plano complejo produce una esfera topológica. La proyección estereográfica identifica los puntos finitos con una esfera unidad sin el polo norte. El infinito no es un número complejo ordinario: expresa un comportamiento local que se estudia cambiando a la coordenada w=1/z.",
+    "argument": "Unir el polo norte N=(0,0,1) con el punto (x,y,0) y resolver la segunda intersección con la esfera da las fórmulas de proyección inversa. Al crecer |z|, las dos coordenadas horizontales tienden a cero y la vertical tiende a uno. Todas las direcciones de escape alcanzan el mismo punto añadido.",
+    "example": "El origen corresponde al polo sur. Los complejos de módulo uno se proyectan al ecuador. La función z↦1/z intercambia cero e infinito en la esfera y se interpreta de forma continua allí. Las transformaciones de Möbius actúan como biyecciones de esta esfera.",
+    "caution": "El dibujo tridimensional no añade una parte imaginaria adicional: la esfera sigue teniendo dimensión real dos. En el plano, una recta no es compacta; en la esfera se completa añadiendo el punto infinito.",
+    "formula": "(X,Y,Z)=\\frac{(2x,\\,2y,\\,x^2+y^2-1)}{1+x^2+y^2},\\qquad X^2+Y^2+Z^2=1",
+    "question": "¿Dónde se proyecta z=2?",
+    "answer": "En (4/5,0,3/5). Su norma al cuadrado es 16/25+9/25=1. La inversa se obtiene con x=X/(1−Z), y=Y/(1−Z), siempre que no sea el polo norte.",
+    "n": [
+      "Parte real x",
+      -6,
+      6,
+      0.25,
+      2
+    ],
+    "t": [
+      "Parte imaginaria y",
+      -6,
+      6,
+      0.25,
+      0
+    ],
+    "lab": "Comprobar la esfera con coordenadas",
+    "code": "const q=1+n*n+t*t,X=2*n/q,Y=2*t/q,Z=(n*n+t*t-1)/q;rows.push(['X',X],['Y',Y],['Z',Z],['X²+Y²+Z²',X*X+Y*Y+Z*Z]);for(let k=0;k<=100;k++){const x=-6+12*k/100;points.push([x,(x*x-1)/(1+x*x)]);}note='La gráfica muestra la altura sobre el meridiano real. El polo norte se aproxima al crecer el módulo, pero no se alcanza con coordenadas finitas.';",
+    "related": [
+      "mobius-transformations",
+      "complex-arithmetic"
+    ]
+  },
+  {
+    "slug": "fourier-transform",
+    "area": "calculus",
+    "ids": [
+      "M20"
+    ],
+    "title": "Transformada de Fourier: de una señal a sus frecuencias",
+    "terms": [
+      "transformada de Fourier",
+      "transformadas de Fourier",
+      "inversión de Fourier"
+    ],
+    "definition": "Una serie de Fourier describe funciones periódicas mediante frecuencias discretas. La transformada de Fourier integra una señal sobre toda la recta y produce una función de frecuencia continua. Aquí usamos la convención con e^(−iωt), de modo que la inversión lleva el factor 1/(2π). Otras convenciones desplazan esos factores.",
+    "argument": "Para f integrable, la integral de la transformada existe en cada frecuencia y su módulo no supera la integral de |f|. La inversión puntual exige hipótesis adicionales; por ejemplo, si f y su transformada son integrables, se recupera f casi por doquier y en sus puntos de continuidad. La transformada también se extiende a L² mediante el teorema de Plancherel, sin exigir integral absolutamente convergente en cada punto.",
+    "example": "Para f(t)=e^(−a|t|), con a>0, separar los semiejes y calcular dos integrales exponenciales da 2a/(a²+ω²). El resultado es real y par porque la señal lo es. Aumentar a concentra la señal en el tiempo y ensancha su perfil frecuencial relativo.",
+    "caution": "Una función constante en toda la recta no pertenece a L¹. Su transformada se representa mediante una delta en teoría de distribuciones, no mediante la misma integral ordinaria. Una ventana finita o una DFT aproxima un problema diferente y produce efectos de truncamiento.",
+    "formula": "\\widehat f(\\omega)=\\int_{\\mathbb R}f(t)e^{-i\\omega t}\\,dt,\\qquad f(t)=\\frac1{2\\pi}\\int_{\\mathbb R}\\widehat f(\\omega)e^{i\\omega t}\\,d\\omega",
+    "question": "Calcula la transformada en frecuencia cero de e^(−a|t|).",
+    "answer": "Vale 2/a: es precisamente el área total de la señal. Coincide con sustituir ω=0 en 2a/(a²+ω²).",
+    "n": [
+      "Decaimiento a",
+      0.25,
+      4,
+      0.25,
+      1
+    ],
+    "t": [
+      "Frecuencia ω",
+      0,
+      8,
+      0.1,
+      1
+    ],
+    "lab": "Un par de transformadas calculable",
+    "code": "rows.push(['Transformada en ω',2*n/(n*n+t*t)],['Valor en frecuencia cero',2/n],['Mitad del valor máximo: frecuencia',n]);for(let k=0;k<=160;k++){const w=-8+k/10;points.push([w,2*n/(n*n+w*w)]);}note='Se muestra la fórmula exacta del par e^(−a|t|), no una FFT. El eje horizontal es frecuencia angular.';",
+    "related": [
+      "fourier-series",
+      "laplace-transform",
+      "integration-classical"
+    ]
+  },
+  {
+    "slug": "singular-values-operator-norms",
+    "area": "algebra",
+    "ids": [
+      "M21",
+      "M22"
+    ],
+    "title": "Valores singulares, SVD y normas de operadores",
+    "terms": [
+      "valores singulares",
+      "valor singular",
+      "SVD",
+      "norma matricial",
+      "normas matriciales",
+      "norma de operador",
+      "normas de operadores"
+    ],
+    "definition": "Los valores singulares de una matriz real son las raíces no negativas de los autovalores de AᵀA. La SVD escribe A=UΣVᵀ con factores ortogonales y una matriz diagonal rectangular de escalas. Existe también para matrices no cuadradas, a diferencia de una diagonalización por autovectores.",
+    "argument": "La matriz AᵀA es simétrica y semidefinida positiva: vᵀAᵀAv=‖Av‖²≥0. El teorema espectral proporciona direcciones ortogonales de entrada; sus imágenes normalizadas forman las direcciones de salida asociadas a valores singulares positivos. Completar bases resuelve las direcciones nulas. La norma inducida euclídea es el mayor valor singular.",
+    "example": "Para diag(a,b), la circunferencia unidad se transforma en una elipse de semiejes |a| y |b|. La norma de operador es max(|a|,|b|), y la de Frobenius es √(a²+b²). Si uno se anula, la transformación pierde rango. La desigualdad ‖AB‖≤‖A‖‖B‖ se deduce aplicando sucesivamente la definición de norma inducida.",
+    "caution": "Los valores singulares no son en general los módulos de los autovalores. Estimar el rango numérico requiere un umbral relacionado con ruido y precisión; un valor pequeño no es automáticamente cero exacto.",
+    "formula": "A=U\\Sigma V^\\top,\\qquad\\|A\\|_2=\\sigma_{\\max},\\qquad\\kappa_2(A)=\\sigma_{\\max}/\\sigma_{\\min}\\quad(A\\text{ invertible})",
+    "question": "Compara las normas 2 y de Frobenius de diag(3,4).",
+    "answer": "Los valores singulares son 4 y 3. La norma 2 es 4 y la de Frobenius es 5. El número de condición euclídeo es 4/3.",
+    "n": [
+      "Escala horizontal a",
+      0,
+      5,
+      0.25,
+      3
+    ],
+    "t": [
+      "Escala vertical b",
+      0,
+      5,
+      0.25,
+      1
+    ],
+    "lab": "La imagen de la circunferencia unidad",
+    "code": "rows.push(['Norma inducida 2',Math.max(n,t)],['Norma de Frobenius',Math.hypot(n,t)],['Rango',(n>0?1:0)+(t>0?1:0)],['Condición',Math.min(n,t)===0?'No invertible':Math.max(n,t)/Math.min(n,t)]);for(let k=0;k<=120;k++){const a=2*Math.PI*k/120;points.push([n*Math.cos(a),t*Math.sin(a)]);}note='Este ejemplo es diagonal: permite leer exactamente las escalas singulares. Para una matriz general, las direcciones se obtienen de AᵀA.';",
+    "related": [
+      "matrix-diagonalization",
+      "vector-norm",
+      "numerical-conditioning"
+    ],
+    "reference": [
+      "https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/video_galleries/video-lectures/",
+      "MIT OpenCourseWare · Métodos matriciales y análisis de datos"
+    ]
+  },
+  {
+    "slug": "nonnormal-transient-growth",
+    "area": "algebra",
+    "ids": [
+      "M23"
+    ],
+    "title": "Matrices normales y crecimiento transitorio",
+    "terms": [
+      "matriz normal",
+      "matrices normales",
+      "no normal",
+      "crecimiento transitorio",
+      "no normalidad"
+    ],
+    "definition": "Una matriz es normal si conmuta con su traspuesta conjugada. En dimensión finita es diagonalizable mediante una base ortonormal compleja. Una matriz no normal puede tener autovectores muy poco ortogonales o ser defectiva. En una ecuación x′=Ax, esa geometría puede producir amplificación temporal aunque todos los autovalores tengan parte real negativa.",
+    "argument": "Para A=((−1,K),(0,−1)), separar A=−I+N con N²=0 da e^(tA)=e^(−t)(I+tN). El factor polinómico Kt puede crecer al principio antes de que venza el decaimiento exponencial. No contradice la estabilidad asintótica: esta solo exige que toda solución tienda finalmente a cero.",
+    "example": "Con estado inicial (0,1), la solución es e^(−t)(Kt,1). Para K=0 la norma decrece; para K grande supera ampliamente su valor inicial antes de decaer. Los dos autovalores son −1 en todos esos casos, así que sus valores no informan por sí solos de esa amplificación.",
+    "caution": "Autovalores negativos no aseguran contracción de la norma en cada instante. La conclusión de estabilidad exponencial para una matriz constante finita tampoco equivale a robustez frente a perturbaciones arbitrariamente grandes.",
+    "formula": "A=\\begin{pmatrix}-1&K\\\\0&-1\\end{pmatrix},\\qquad e^{tA}=e^{-t}\\begin{pmatrix}1&Kt\\\\0&1\\end{pmatrix}",
+    "question": "¿Por qué la matriz con K distinto de cero no es diagonalizable?",
+    "answer": "El único autovalor es −1 y el espacio de autovectores tiene dimensión uno. Esa falta de una base de autovectores corresponde a un bloque de Jordan, aunque la solución siga tendiendo a cero.",
+    "n": [
+      "Acoplamiento K",
+      0,
+      20,
+      1,
+      8
+    ],
+    "t": [
+      "Tiempo observado",
+      0,
+      6,
+      0.1,
+      1
+    ],
+    "lab": "Amplificación con autovalores fijos",
+    "code": "rows.push(['Norma del estado en t',Math.exp(-t)*Math.hypot(n*t,1)],['Norma inicial',1],['Autovalores','−1, −1']);for(let k=0;k<=150;k++){const x=6*k/150;points.push([x,Math.exp(-x)*Math.hypot(n*x,1)]);}note='Se sigue el estado inicial (0,1), no la norma máxima sobre todos los estados iniciales. Una curva por encima de uno demuestra amplificación transitoria para ese estado.';",
+    "related": [
+      "jordan-form",
+      "linear-ode-systems",
+      "singular-values-operator-norms"
+    ],
+    "reference": [
+      "https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/video_galleries/video-lectures/",
+      "MIT OpenCourseWare · Métodos matriciales y análisis de datos"
+    ]
+  },
+  {
+    "slug": "ridge-regularization",
+    "area": "algebra",
+    "ids": [
+      "M24"
+    ],
+    "title": "Regularización de Tikhonov y regresión ridge",
+    "terms": [
+      "Tikhonov",
+      "ridge",
+      "regularización"
+    ],
+    "definition": "Regularizar añade una penalización a un problema de ajuste para controlar soluciones inestables. En ridge se minimiza ‖Ax−b‖²+λ‖x‖², con λ positivo. El segundo término penaliza el tamaño de los coeficientes. La solución deja de ser, en general, el ajuste de mínimos cuadrados sin restricción.",
+    "argument": "Derivar la función cuadrática produce (AᵀA+λI)x=Aᵀb. Para cualquier vector no nulo v, vᵀ(AᵀA+λI)v=‖Av‖²+λ‖v‖²>0. Por ello hay un mínimo único incluso si A no tiene rango completo. En coordenadas singulares, el inverso 1/σ se sustituye por σ/(σ²+λ), que limita la amplificación de direcciones pequeñas.",
+    "example": "En el problema escalar min (ax−b)²+λx², resulta x=ab/(a²+λ). Si a es pequeño, dividir directamente b/a amplifica el ruido; con λ positivo el coeficiente permanece controlado. La mejora de estabilidad introduce sesgo: aun sin ruido puede apartarse de la solución original.",
+    "caution": "Aumentar λ no mejora automáticamente la predicción. Debe elegirse según ruido, validación y unidades de las variables. Penalizar un intercepto sin querer o mezclar escalas distintas cambia la interpretación del método.",
+    "formula": "x_\\lambda=(A^\\top A+\\lambda I)^{-1}A^\\top b,\\qquad \\frac1{\\sigma}\\longmapsto\\frac{\\sigma}{\\sigma^2+\\lambda}",
+    "question": "Resuelve min (2x−6)²+λx² y compara λ=0 y λ=4.",
+    "answer": "La derivada es 2·2(2x−6)+2λx=0, de donde x=12/(4+λ). Sin penalización vale 3; con λ=4 vale 1,5.",
+    "n": [
+      "Valor singular σ",
+      0.05,
+      2,
+      0.05,
+      0.2
+    ],
+    "t": [
+      "Penalización λ",
+      0.01,
+      2,
+      0.01,
+      0.1
+    ],
+    "lab": "Filtrar una dirección mal condicionada",
+    "code": "rows.push(['Ganancia sin regularizar',1/n],['Ganancia ridge',n/(n*n+t)],['Fracción de señal conservada',n*n/(n*n+t)]);for(let k=1;k<=120;k++){const s=2*k/120;points.push([s,s/(s*s+t)]);}note='La curva muestra el filtro como función del valor singular. No selecciona automáticamente un parámetro óptimo ni estima el ruido.';",
+    "related": [
+      "projection-least-squares",
+      "singular-values-operator-norms",
+      "linear-regression"
+    ],
+    "reference": [
+      "https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/video_galleries/video-lectures/",
+      "MIT OpenCourseWare · Métodos matriciales y análisis de datos"
+    ]
+  },
+  {
+    "slug": "rings-finite-fields",
+    "area": "algebra",
+    "ids": [
+      "M25",
+      "M26"
+    ],
+    "title": "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+    "terms": [
+      "anillo",
+      "anillos",
+      "cuerpo finito",
+      "cuerpos finitos",
+      "irreducibilidad",
+      "polinomio irreducible"
+    ],
+    "definition": "Un anillo permite sumar, restar y multiplicar con las leyes distributivas; aquí se considera conmutativo y con unidad. Un cuerpo exige además inverso multiplicativo para todo elemento no nulo. Los enteros forman un anillo pero no un cuerpo. Los residuos módulo un primo p sí forman un cuerpo; módulo un compuesto pueden existir divisores de cero.",
+    "argument": "En Z/mZ, un elemento tiene inverso exactamente cuando su representante es coprimo con m, por Bézout. Por eso todos los no nulos son invertibles si m es primo. Para construir extensiones se toman polinomios y se identifican los que difieren en un múltiplo de un polinomio irreducible. Sobre un cuerpo, ese cociente vuelve a ser cuerpo cuando el polinomio es irreducible.",
+    "example": "En módulo 6, 2·3=0 aunque ninguno de los factores sea cero: no es cuerpo. En F₂, el polinomio x²+x+1 no tiene raíces y por ser cuadrático es irreducible. Al imponer α²=α+1 se obtiene un cuerpo de cuatro elementos: 0,1,α,α+1.",
+    "caution": "No tener raíces solo equivale a irreducibilidad para grados dos o tres sobre un cuerpo. En un anillo general, «irreducible» y «primo» no son sinónimos; la equivalencia necesita hipótesis adicionales, como ser un dominio de factorización única.",
+    "formula": "\\mathbb F_{p^d}\\cong\\mathbb F_p[x]/(f),\\qquad f\\text{ irreducible de grado }d",
+    "question": "¿Tiene inverso el elemento 2 en módulo 5? ¿Y en módulo 6?",
+    "answer": "En módulo 5 su inverso es 3, pues 2·3≡1. En módulo 6 no: cualquier producto por 2 tiene resto par y no puede dar 1.",
+    "n": [
+      "Módulo m",
+      2,
+      15,
+      1,
+      5
+    ],
+    "t": [
+      "Elemento a",
+      0,
+      14,
+      1,
+      2
+    ],
+    "lab": "Unidades y divisores de cero",
+    "code": "const a=t%n;let inverse=-1;const zeros:number[]=[];for(let b=1;b<n;b++){if((a*b)%n===1)inverse=b;if(a!==0&&(a*b)%n===0)zeros.push(b);}rows.push(['Representante',a],['Inverso',inverse<0?'No existe':inverse],['Factores no nulos que anulan a',zeros.length?zeros.join(', '):'Ninguno']);note='Se comprueban todos los candidatos en un anillo finito pequeño. La multiplicación es modular, no multiplicación real ordinaria.';",
+    "related": [
+      "modular-arithmetic",
+      "bezout-identity",
+      "rational-root-theorem"
+    ]
+  },
+  {
+    "slug": "groups-cosets-lagrange",
+    "area": "algebra",
+    "ids": [
+      "M27"
+    ],
+    "title": "Subgrupos, clases laterales y teorema de Lagrange",
+    "terms": [
+      "subgrupo",
+      "subgrupos",
+      "clases laterales",
+      "teorema de Lagrange",
+      "orden de un elemento"
+    ],
+    "definition": "Un grupo es un conjunto con operación asociativa, identidad e inversos. Un subgrupo contiene la identidad y es estable bajo productos e inversos. Para H subgrupo de G, una clase lateral izquierda gH contiene los elementos gh. Las clases laterales particionan G y todas tienen el mismo número de elementos que H.",
+    "argument": "Multiplicar por g es una biyección entre H y gH. Si dos clases se cruzan, la propiedad de subgrupo muestra que coinciden. En un grupo finito, contar los bloques da |G|=[G:H]|H|: el orden de un subgrupo divide el orden del grupo. Aplicado al subgrupo cíclico generado por a, demuestra que el orden de a divide |G|.",
+    "example": "En el grupo aditivo Z/12Z, el elemento 4 genera {0,4,8}, un subgrupo de tamaño tres. Sus cuatro clases son {0,4,8}, {1,5,9}, {2,6,10}, {3,7,11}. Repetir la suma de 4 tres veces vuelve a cero.",
+    "caution": "Lagrange no garantiza que exista un subgrupo de cualquier tamaño divisor del orden. Tampoco todas las clases laterales forman automáticamente un grupo cociente: para definir su producto se necesita que H sea normal.",
+    "formula": "|G|=[G:H]\\,|H|,\\qquad \\operatorname{ord}(a)\\mid|G|\\quad(G\\text{ finito})",
+    "question": "Determina el orden de 8 en el grupo aditivo de residuos módulo 12.",
+    "answer": "Los múltiplos sucesivos son 0,8,4,0. Su orden es tres. En general el orden aditivo de a módulo m es m/mcd(a,m).",
+    "n": [
+      "Tamaño del grupo Z/mZ",
+      2,
+      20,
+      1,
+      12
+    ],
+    "t": [
+      "Generador a",
+      0,
+      19,
+      1,
+      4
+    ],
+    "lab": "Construir un subgrupo cíclico",
+    "code": "const a=t%n,seen=new Set<number>();let x=0;while(!seen.has(x)){seen.add(x);x=(x+a)%n;}rows.push(['Subgrupo generado',Array.from(seen).join(', ')],['Orden del elemento',seen.size],['Número de clases',n/seen.size]);for(let k=0;k<=n;k++)points.push([k,(k*a)%n]);note='La operación de este grupo es sumar módulo m. El orden aditivo no debe confundirse con un orden multiplicativo.';",
+    "related": [
+      "permutation-symmetries",
+      "orders-theorem",
+      "equivalence-quotients"
+    ]
+  },
+  {
+    "slug": "pade-krylov-methods",
+    "area": "algebra",
+    "ids": [
+      "M28",
+      "M29"
+    ],
+    "title": "Aproximantes de Padé y subespacios de Krylov",
+    "terms": [
+      "Padé",
+      "Pade",
+      "subespacio de Krylov",
+      "subespacios de Krylov",
+      "métodos de Krylov"
+    ],
+    "definition": "Un aproximante de Padé reemplaza una serie por un cociente de polinomios que reproduce un número prescrito de coeficientes de Taylor. Un subespacio de Krylov se genera con v,Av,…,A^(m−1)v. Son herramientas distintas para aproximar funciones de matrices: Padé aproxima la función y Krylov aproxima su acción en un espacio pequeño.",
+    "argument": "Para e^x, buscar (1+ax)/(1+bx) e igualar los coeficientes hasta x² da a=1/2 y b=−1/2. Al sustituir una matriz, calcular el cociente significa resolver un sistema lineal, no dividir matrices entrada a entrada. En Krylov, proyectar sobre una base ortonormal del espacio permite aplicar la función a una matriz pequeña y reconstruir una aproximación.",
+    "example": "El aproximante [1/1] de e^x es (1+x/2)/(1−x/2). Coincide hasta orden dos cerca de cero, pero tiene un polo en x=2 que la exponencial no posee. En matrices grandes, e^Av puede aproximarse sin construir toda la matriz exponencial mediante Arnoldi o Lanczos bajo las condiciones apropiadas.",
+    "caution": "Un error pequeño en la serie local no garantiza un error pequeño lejos del origen. Los polos espurios y el condicionamiento de la resolución importan. Padé y Krylov requieren controles de error y no se convierten en exactos por aumentar ciegamente el tamaño.",
+    "formula": "e^x-\\frac{1+x/2}{1-x/2}=O(x^3),\\qquad K_m(A,v)=\\operatorname{span}\\{v,Av,\\ldots,A^{m-1}v\\}",
+    "question": "Compara la aproximación [1/1] y el polinomio 1+x+x²/2 en x=1.",
+    "answer": "Padé da 3 y Taylor da 2,5, mientras e≈2,71828. Ambos reproducen el mismo orden local, pero sus errores en x=1 difieren. Ninguna de las dos formas domina para cualquier punto.",
+    "n": [
+      "Orden de Taylor",
+      1,
+      12,
+      1,
+      2
+    ],
+    "t": [
+      "Punto x",
+      -1.5,
+      1.5,
+      0.05,
+      0.5
+    ],
+    "lab": "Comparar un polinomio y un cociente",
+    "code": "let s=1,a=1;for(let k=1;k<=n;k++){a*=t/k;s+=a;}rows.push(['Exponencial exacta numérica',Math.exp(t)],['Taylor de orden n',s],['Padé [1/1]',(1+t/2)/(1-t/2)]);for(let k=0;k<=100;k++){const x=-1.5+3*k/100;points.push([x,(1+x/2)/(1-x/2)-Math.exp(x)]);}note='La gráfica muestra el error de Padé en un intervalo que evita su polo. El control de orden afecta a Taylor, no al aproximante racional fijo.';",
+    "related": [
+      "linear-ode-systems",
+      "taylor-series",
+      "vector-spaces"
+    ],
+    "reference": [
+      "https://ocw.mit.edu/courses/18-065-matrix-methods-in-data-analysis-signal-processing-and-machine-learning-spring-2018/video_galleries/video-lectures/",
+      "MIT OpenCourseWare · Métodos matriciales y análisis de datos"
+    ]
+  }
+]

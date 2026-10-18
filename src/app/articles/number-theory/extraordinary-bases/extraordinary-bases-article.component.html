@@ -60,7 +60,7 @@
 <p>Una base racional admite varias propuestas. El sistema de
   <a href="https://www.irif.fr/~cf/publications/AFSwords05.pdf" target="_blank" rel="noopener noreferrer">Akiyama,
     Frougny y Sakarovitch</a>
-  usa p/q &gt; 1, con p y q coprimos, y cifras 0,…,p−1. Para representar un entero no negativo N,
+  usa p/q &gt; 1, con p y q <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a>, y cifras 0,…,p−1. Para representar un entero no negativo N,
   divide qN entre p: qN = pN′ + a. Repite con N′ y lee los restos en orden inverso.
 </p>
 <app-formula expression="N=\sum_{k=0}^{n}\frac{a_k}{q}\left(\frac pq\right)^k."></app-formula>
@@ -70,20 +70,20 @@
   con las β-expansiones del apartado siguiente.</p>
 
 <h3 id="phi">5. φ: una base que permite reescribir</h3>
-<p>El número áureo φ = (1+√5)/2 satisface φ² = φ+1. Por eso 100φ y 011φ describen lo mismo:
+<p>El <a data-article-concept="golden-ratio" routerLink="/articles/golden-ratio">número áureo</a> φ = (1+√5)/2 satisface φ² = φ+1. Por eso 100φ y 011φ describen lo mismo:
   una unidad de peso φ² equivale a una unidad de peso φ y otra de peso 1. La unicidad ya no viene gratis.</p>
 <p>El sistema estudiado por
   <a href="https://math.berkeley.edu/~gbergman/papers/base_tau.pdf" target="_blank" rel="noopener noreferrer">George
     Bergman</a>
-  usa cifras 0 y 1. Elegir siempre la mayor potencia disponible produce una expansión voraz, sin unos adyacentes;
+  usa cifras 0 y 1. Elegir siempre la <a data-article-concept="asymptotic-limits" routerLink="/articles/asymptotic-limits">mayor potencia</a> disponible produce una expansión voraz, sin unos adyacentes;
   para fijar la convención también excluimos las colas infinitas alternativas. Aparecen posiciones fraccionarias
   incluso al escribir enteros: 2 = φ + φ⁻² = 10.01φ. Los enteros no negativos tienen expansiones finitas en este
   sistema.
 </p>
 <p>El laboratorio calcula en el cuerpo algebraico Q(φ), usando φ² = φ+1, para distinguir una igualdad exacta de
-  una coincidencia decimal. Sus potencias cumplen la recurrencia de
+  una coincidencia decimal. Sus potencias cumplen la <a data-article-concept="recurrent-sequences" routerLink="/articles/recurrent-sequences">recurrencia</a> de
   <a routerLink="/articles/fibonacci-numbers">Fibonacci</a>; esa conexión no convierte las potencias de φ
-  en números de Fibonacci ni identifica ambos sistemas.
+  en <a data-article-concept="fibonacci-numbers" routerLink="/articles/fibonacci-numbers">números de Fibonacci</a> ni identifica ambos sistemas.
 </p>
 <app-bases-lab mode="golden"></app-bases-lab>
 
@@ -99,7 +99,7 @@
     voraces y cuasivoraces</a>.
 </p>
 <p>√2 ofrece un puente sencillo: sus potencias pares son 1,2,4,8… y las impares son esos mismos pesos
-  multiplicados por √2. El conversor permite explorar también e y π, bases trascendentes.
+  multiplicados por √2. El conversor permite explorar también e y π, bases <a data-article-concept="algebraic-transcendental-numbers" routerLink="/articles/algebraic-transcendental-numbers">trascendentes</a>.
   Poder evaluar una suma no significa que todo número tenga una expansión finita, ni que los racionales
   conserven la periodicidad propia de las bases enteras.</p>
 <p>En estos presets aproximados, pedir 50 posiciones no crea 50 cifras fiables: la coma flotante limita el cálculo.
@@ -118,7 +118,7 @@
 </p>
 <p>Las posiciones pares forman un sistema en −4 para la parte real; las impares hacen lo mismo para la mitad
   de la parte imaginaria. Si esta es impar, necesitamos una posición fraccionaria: 2(2i)⁻¹ = −i.
-  El conversor implementa todos los enteros gaussianos, con las restricciones de tamaño del dibujo indicadas en la
+  El conversor implementa todos los <a data-article-concept="gaussian-quadratic-norms" routerLink="/articles/gaussian-quadratic-norms">enteros gaussianos</a>, con las restricciones de tamaño del dibujo indicadas en la
   interfaz.
   No promete convertir cualquier complejo arbitrario en una cadena finita.</p>
 <app-bases-lab mode="complex"></app-bases-lab>
@@ -137,8 +137,8 @@
 
 <h3>9. Podemos abandonar las potencias</h3>
 <p>Los romanos combinan símbolos aditivos y sustractivos, sin pesos posicionales fijos.
-  El sistema factorial cambia los pesos por 0!,1!,2!,3!… y limita cada cifra a su índice;
-  sus cifras se relacionan con la selección sucesiva de elementos de una permutación
+  El sistema <a data-article-concept="counting-principles" routerLink="/articles/counting-principles">factorial</a> cambia los pesos por 0!,1!,2!,3!… y limita cada cifra a su índice;
+  sus cifras se relacionan con la selección sucesiva de elementos de una <a data-article-concept="permutation-symmetries" routerLink="/articles/permutation-symmetries">permutación</a>
   (<a href="https://arxiv.org/abs/2502.15559" target="_blank" rel="noopener noreferrer">factoradics y
     permutaciones</a>).
   En Zeckendorf, los pesos son 1,2,3,5,8… y se prohíben unos consecutivos: 42 = 34+8.</p>
@@ -168,3 +168,6 @@
   <li><a routerLink="/problems/simultaneous-clock-congruences">Problema 003 · Dos relojes y un resto</a>. Practica una representación de un entero mediante dos residuos y reconstruye un representante con el teorema chino del resto.</li>
 </ul>
 </div>
+<!-- article-concepts:start -->
+<section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li><li><a routerLink="/articles/golden-ratio">El número áureo: álgebra, geometría y Fibonacci</a></li><li><a routerLink="/articles/asymptotic-limits">Límites, equivalencias y jerarquías de crecimiento</a></li><li><a routerLink="/articles/recurrent-sequences">Sucesiones recurrentes y puntos fijos</a></li><li><a routerLink="/articles/fibonacci-numbers">Números de Fibonacci</a></li><li><a routerLink="/articles/algebraic-transcendental-numbers">Números algebraicos y trascendentes</a></li><li><a routerLink="/articles/gaussian-quadratic-norms">Enteros gaussianos, normas algebraicas y unidades cuadráticas</a></li><li><a routerLink="/articles/counting-principles">Principios de conteo: suma, producto y elecciones</a></li><li><a routerLink="/articles/permutation-symmetries">Permutaciones, ciclos y grupos de simetrías</a></li></ul></details></section>
+<!-- article-concepts:end -->
