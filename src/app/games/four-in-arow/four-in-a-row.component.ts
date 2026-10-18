@@ -1,20 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { NgFor, NgClass } from '@angular/common';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-four-in-a-row',
   templateUrl: './four-in-a-row.component.html',
   styleUrls: ['./four-in-a-row.component.css'],
   standalone: true,
-  imports: [NgFor, NgClass],
 })
-export class FourInARowComponent implements OnInit {
+export class FourInARowComponent implements OnInit, OnDestroy {
   rows = 6;
   cols = 7;
   board: string[][] = [];
   currentPlayer: 'R' | 'Y' = 'R'; // 'R' es el jugador humano, 'Y' es el ordenador.
   gameOver = false;
   message = '';
+  readonly columnNumbers = [0, 1, 2, 3, 4, 5, 6];
+  readonly rowNumbers = [0, 1, 2, 3, 4, 5];
+  winningCells: number[][] = [];
+  lastMove: { row: number; col: number } | null = null;
+  hoveredColumn: number | null = null;
+  private timer?: ReturnType<typeof setTimeout>;
+  get thinking(): boolean {
+    return !this.gameOver && this.currentPlayer === 'Y';
+  }
+  get moves(): number {
+    return this.board.flat().filter(Boolean).length;
+  }
+  get statusTitle(): string {
+    return this.gameOver
+      ? this.winningCells.length
+        ? this.currentPlayer === 'R'
+          ? 'Línea conseguida'
+          : 'Gana la máquina'
+        : 'Tablas'
+      : this.thinking
+        ? 'Turno de la máquina'
+        : 'Elige tu columna';
+  }
+  isWinning(row: number, col: number): boolean {
+    return this.winningCells.some((cell) => cell[0] === row && cell[1] === col);
+  }
+  columnLabel(col: number): string {
+    return (
+      'Columna ' +
+      (col + 1) +
+      ': ' +
+      this.board
+        .map(
+          (row, index) =>
+            'fila ' +
+            (index + 1) +
+            ' ' +
+            (row[col] === 'R'
+              ? 'tu ficha'
+              : row[col] === 'Y'
+                ? 'ficha de la máquina'
+                : 'vacía'),
+        )
+        .join(', ') +
+      (this.board[0]?.[col] ? '. Columna llena' : '. Colocar ficha')
+    );
+  }
 
   ngOnInit(): void {
     this.initializeBoard();
@@ -22,6 +67,11 @@ export class FourInARowComponent implements OnInit {
 
   // Inicializar el tablero con celdas vacías
   initializeBoard() {
+    clearTimeout(this.timer);
+    this.timer = undefined;
+    this.winningCells = [];
+    this.lastMove = null;
+    this.hoveredColumn = null;
     this.board = [];
     for (let row = 0; row < this.rows; row++) {
       this.board[row] = [];
@@ -34,41 +84,70 @@ export class FourInARowComponent implements OnInit {
     this.message = 'Tu turno';
   }
 
-  // Colocar una ficha en una columna
   placePiece(col: number): void {
-    if (this.gameOver || this.board[0][col] !== '') {
-      return; // No se puede colocar en una columna llena o si el juego ha terminado
-    }
-
-    // Encontrar la primera fila vacía en la columna
-    for (let row = this.rows - 1; row >= 0; row--) {
-      if (this.board[row][col] === '') {
-        this.board[row][col] = this.currentPlayer;
-        break;
-      }
-    }
-
-    if (this.checkWin(this.currentPlayer)) {
+    if (
+      this.currentPlayer !== 'R' ||
+      this.gameOver ||
+      !Number.isInteger(col) ||
+      col < 0 ||
+      col >= this.cols ||
+      this.board[0][col]
+    )
+      return;
+    this.dropPiece(col);
+  }
+  private dropPiece(col: number): void {
+    const row = this.getNextOpenRow(col);
+    if (row < 0 || this.gameOver) return;
+    this.board[row][col] = this.currentPlayer;
+    this.lastMove = { row, col };
+    this.hoveredColumn = null;
+    this.winningCells = this.findWinningCells(this.currentPlayer);
+    if (this.winningCells.length) {
       this.message =
-        this.currentPlayer === 'R' ? '¡Ganaste!' : 'El ordenador ganó';
+        this.currentPlayer === 'R'
+          ? '¡Cuatro en raya! Has ganado.'
+          : 'La máquina completa la línea.';
       this.gameOver = true;
       return;
     }
-
-    // Cambiar de turno
-    this.currentPlayer = this.currentPlayer === 'R' ? 'Y' : 'R';
-
-    if (this.currentPlayer === 'Y') {
-      this.message = 'Turno del ordenador...';
-      setTimeout(() => this.computerMove(), 500); // IA juega después de un pequeño retraso
-    } else {
-      this.message = 'Tu turno';
+    if (this.isBoardFull()) {
+      this.message = 'Empate. El tablero está completo.';
+      this.gameOver = true;
+      return;
     }
+    this.currentPlayer = this.currentPlayer === 'R' ? 'Y' : 'R';
+    this.message = this.thinking
+      ? 'La máquina está pensando…'
+      : 'Tu turno. Elige una columna.';
+    if (this.thinking)
+      this.timer = setTimeout(() => {
+        this.timer = undefined;
+        this.computerMove();
+      }, 400);
+  }
+  private findWinningCells(player: 'R' | 'Y'): number[][] {
+    for (let row = 0; row < this.rows; row++)
+      for (let col = 0; col < this.cols; col++)
+        for (const [dr, dc] of [
+          [0, 1],
+          [1, 0],
+          [1, 1],
+          [1, -1],
+        ]) {
+          const cells = [0, 1, 2, 3].map((i) => [row + i * dr, col + i * dc]);
+          if (cells.every(([r, c]) => this.board[r]?.[c] === player))
+            return cells;
+        }
+    return [];
+  }
+  ngOnDestroy(): void {
+    clearTimeout(this.timer);
   }
 
   // Movimiento inteligente de la computadora con algoritmo Minimax
   computerMove(): void {
-    if (this.gameOver) return;
+    if (this.gameOver || this.currentPlayer !== 'Y') return;
 
     let bestScore = -Infinity;
     let bestCol = 0;
@@ -90,7 +169,7 @@ export class FourInARowComponent implements OnInit {
       }
     }
 
-    this.placePiece(bestCol);
+    this.dropPiece(bestCol);
   }
 
   // Obtener la primera fila disponible en una columna

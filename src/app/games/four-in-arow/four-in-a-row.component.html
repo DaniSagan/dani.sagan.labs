@@ -1,16 +1,77 @@
-<h2>Cuatro en Raya</h2>
-<div class="game-board">
-  <div *ngFor="let row of board; let rowIndex = index" class="row">
-    <div
-      *ngFor="let cell of row; let colIndex = index"
-      class="cell"
-      [ngClass]="{
-        'red': cell === 'R',
-        'yellow': cell === 'Y'
-      }"
-      (click)="placePiece(colIndex)"
-    ></div>
+<section class="game-shell" aria-labelledby="game-title">
+  <header class="game-header">
+    <p class="eyebrow">JUEGOS · CONECTA TUS DECISIONES</p>
+    <h1 id="game-title">Cuatro en <em>raya</em><span>.</span></h1>
+    <p class="intro">Elige una columna. Deja caer tu próxima jugada.</p>
+  </header>
+  <div class="play-layout">
+    <div class="play-area">
+      <div class="toolbar"><span class="move-count">{{ moves }} / 42 fichas</span><button type="button" class="new-game"
+          (click)="resetGame()"><span aria-hidden="true">↻</span> Nueva partida</button></div>
+      <div class="board-frame">
+        <div class="players" aria-label="Jugadores">
+          <div class="player human" [class.active]="!thinking && !gameOver"><span class="player-mark"
+              aria-hidden="true">T</span>
+            <div><strong>Tú</strong><small>Fichas naranja</small></div><span class="turn-dot" aria-hidden="true"></span>
+          </div>
+          <div class="player computer" [class.active]="thinking"><span class="player-mark" aria-hidden="true">M</span>
+            <div><strong>Máquina</strong><small>Fichas doradas</small></div><span class="turn-dot"
+              aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="board-wrapper">
+          <div class="columns" role="group" aria-label="Tablero de cuatro en raya: seis filas y siete columnas"
+            aria-describedby="board-help">
+            @for (col of columnNumbers; track col) {
+            <button type="button" class="column" [class.available]="!thinking && !gameOver && !board[0][col]"
+              [class.selected]="hoveredColumn === col && !thinking && !gameOver && !board[0][col]"
+              [attr.aria-disabled]="thinking || gameOver || !!board[0][col]" [attr.aria-label]="columnLabel(col)"
+              (mouseenter)="hoveredColumn = col" (mouseleave)="hoveredColumn = null" (focus)="hoveredColumn = col"
+              (blur)="hoveredColumn = null" (click)="placePiece(col)">
+              <span class="column-number" aria-hidden="true"><span class="column-index">{{ col+1 }}</span><span
+                  class="drop-arrow">↓</span></span>
+              @for (row of rowNumbers; track row) {
+              <span class="slot" [class.winning]="isWinning(row,col)"
+                [class.last-move]="lastMove?.row === row && lastMove?.col === col"
+                [class.landing]="hoveredColumn === col && !thinking && !gameOver && getNextOpenRow(col) === row"
+                [attr.data-row]="row" [attr.data-col]="col" aria-hidden="true">
+                @if (board[row][col]) {<span class="disc" [class.human-disc]="board[row][col] === 'R'"
+                  [class.machine-disc]="board[row][col] === 'Y'">{{ board[row][col] === 'R' ? 'T' : 'M' }}</span>}
+              </span>
+              }
+            </button>
+            }
+          </div>
+        </div>
+        <div class="game-status" role="status" aria-live="polite" aria-atomic="true" [class.thinking]="thinking"
+          [class.result]="gameOver"><span class="status-dot" aria-hidden="true"></span>
+          <p>{{ message }}</p>
+        </div>
+      </div>
+      <p class="board-help" id="board-help">Pulsa una columna para soltar una ficha.<br>Con teclado, usa Tab y Enter.
+      </p>
+    </div>
+    <aside class="game-notes" aria-label="Cómo jugar">
+      <div class="turn-card">
+        <p class="eyebrow">{{ gameOver ? 'FIN DE LA PARTIDA' : 'EN EL TABLERO' }}</p>
+        <h2>{{ statusTitle }}</h2>
+        <p>{{ gameOver ? 'Empieza otra partida y prueba una nueva estrategia.' : thinking ? 'La máquina está buscando su
+          respuesta.' : 'Tú empiezas. Tu ficha caerá en el primer hueco libre desde abajo.' }}</p>
+      </div>
+      <div class="how-to"><span class="section-number">01 / EL OBJETIVO</span>
+        <h2>Cuatro que conectan.</h2>
+        <div class="four-example" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        <p>Alinea cuatro fichas en <strong>horizontal, vertical o diagonal</strong>. No puedes jugar en una columna
+          llena. Si se completa el tablero sin una línea ganadora, hay empate.</p>
+      </div>
+      <div class="strategy"><span class="section-number">02 / MIRA MÁS ARRIBA</span>
+        <p>Cada ficha crea un apoyo para la siguiente. Antes de soltarla, comprueba si estás dejando a tu rival el hueco
+          que necesita.</p>
+        <p class="challenge">Controla el centro y busca dos amenazas a la vez: una sola respuesta no puede bloquearlas
+          ambas.</p>
+      </div>
+    </aside>
   </div>
-</div>
-<p>{{ message }}</p>
-<button (click)="resetGame()">Reiniciar juego</button>
+  <footer class="game-footer"><span>Cada ficha cambia lo que viene después.</span><span>7 columnas · 6 filas · 4 en
+      línea</span></footer>
+</section>

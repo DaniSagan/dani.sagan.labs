@@ -46,7 +46,9 @@
     "link:article-concepts": "node scripts/link-article-concepts.cjs",
     "test:constellations:gestures": "node scripts/check-constellation-gestures.cjs",
     "test:tic-tac-toe": "node scripts/test-tic-tac-toe.cjs",
-    "test:tic-tac-toe:browser": "node scripts/check-tic-tac-toe-page.cjs"
+    "test:tic-tac-toe:browser": "node scripts/check-tic-tac-toe-page.cjs",
+    "test:four-in-a-row": "node scripts/test-four-in-a-row.cjs",
+    "test:four-in-a-row:browser": "node scripts/check-four-in-a-row-page.cjs"
   },
   "private": true,
   "dependencies": {
