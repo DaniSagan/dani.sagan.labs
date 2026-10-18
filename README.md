@@ -129,6 +129,10 @@ Abre [http://localhost:4200](http://localhost:4200). El servidor recargará la a
 | `npm test` | Valida los presupuestos de producción y ejecuta Karma en modo interactivo |
 | `npm run test:ci` | Valida los presupuestos de producción y ejecuta las pruebas una vez en Chrome Headless |
 | `npm run test:budgets` | Compila en producción y comprueba los presupuestos de `angular.json` |
+| `npm run test:prime-decomposition` | Comprueba exactitud BigInt, primalidad, ECM, resultados parciales y protocolo del worker |
+| `npm run test:prime-decomposition:browser` | Comprueba la herramienta en Chrome contra una compilación de desarrollo existente |
+
+El factorizador permite elegir entre aceptar primos probables y exigir una demostración de primalidad. El modo riguroso usa Lucas–Lehmer para números de Mersenne y Pocklington para otros candidatos grandes; el presupuesto de tiempo también cubre la demostración. Si no logra demostrar un candidato, conserva ese término como pendiente. Los tiempos disponibles son 5, 15 y 60 segundos, 10 minutos e indefinido. La opción indefinida elimina el límite temporal también de las demostraciones; se puede cancelar con «Detener» o al salir de la página.
 
 El resultado de producción se genera en `dist/dani.sagan.labs/`.
 

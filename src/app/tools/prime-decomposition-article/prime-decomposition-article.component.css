@@ -1,0 +1,5 @@
+:host { display: block; max-width: 1080px; margin: 0 auto; padding: 24px 0; }
+.prime-intro { margin-bottom: 28px; }
+.prime-intro > p:first-child { font: 11px 'DM Sans', sans-serif; letter-spacing: 2px; color: var(--gold); }
+h1 { font: 500 clamp(36px, 6vw, 64px)/1.1 'EB Garamond', Georgia, serif; margin: 20px 0; }
+h1 em { color: var(--accent); }

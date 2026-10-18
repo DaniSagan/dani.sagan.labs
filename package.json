@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:prime-decomposition": "node scripts/test-prime-decomposition.cjs",
+    "test:prime-decomposition:browser": "node scripts/check-prime-decomposition-page.cjs",
     "test:problem-support-articles": "node scripts/test-problem-support-articles.cjs",
     "test:problem-support-articles:browser": "node scripts/check-problem-support-articles.cjs",
     "test:additional-problems": "node scripts/test-additional-problems.cjs",
