@@ -1,18 +1,21 @@
-<h2>Calculadora de decimales de π</h2>
-<div class="widget-container">
-  <div class="widget-title">Calculadora decimales de π</div>
-  <div>
-    <label for="decimals">Número de decimales: </label>
-    <input id="decimals" type="number" [(ngModel)]="n" min="1" max="1000">
-
-    <button (click)="onCalculate()">Calcular</button>
-    <div class="loader" *ngIf="calculating"></div>
-    <div>{{calculatingArctanMessage}}</div>
-    <div>{{calculatingTermMessage}}</div>
-    <div *ngIf="piDecimals">
-      <div><strong>π ({{n}} decimales):</strong></div>
-      <div class="decimal-result">3,</div>
-      <div class="decimal-result">{{piDecimals}}</div>
-    </div>
-  </div>
+<header class="pi-intro"><p class="eyebrow">LABORATORIO DE CONSTANTES</p><h1>Las cifras de <em>π</em></h1><p>Una constante infinita, cifra a cifra. Calcula su expansión decimal, elige cómo agruparla y llévatela en un fichero de texto.</p></header>
+<form class="panel controls" (ngSubmit)="onCalculate()">
+  <div class="field"><label for="decimals">Decimales que quieres calcular</label><input id="decimals" name="digits" type="number" [(ngModel)]="n" min="0" [max]="maximum" step="1" [disabled]="calculating" aria-describedby="digits-help"><p id="digits-help" class="help">De 0 a {{ maximum | number }}. Las cifras se truncan, no se redondean.</p></div>
+  <div class="field"><label for="pi-block-size">Cifras por bloque</label><input id="pi-block-size" name="blockSize" type="number" [(ngModel)]="blockSize" (ngModelChange)="applyBlocks()" min="0" max="1000" step="1" aria-describedby="blocks-help"><p id="blocks-help" class="help">De 1 a 1000; usa 0 para quitar la separación. Puedes cambiarlo sin recalcular.</p></div>
+  <div class="actions"><button class="primary" type="submit" [disabled]="calculating">Calcular π</button><button *ngIf="calculating" type="button" (click)="stop()">Detener</button></div>
+  <div class="examples"><span>Explora:</span><button *ngFor="let digits of [100, 1000, 10000, 100000]" type="button" [disabled]="calculating" (click)="example(digits)">{{ digits | number }} cifras</button></div>
+</form>
+<p *ngIf="error" role="alert" class="error">{{ error }}</p><p *ngIf="formatError" role="alert" class="error">{{ formatError }}</p><p *ngIf="notice" role="status" class="help">{{ notice }}</p>
+<div *ngIf="calculating" class="panel computation" aria-busy="true">
+  <p role="status">{{ stage }}</p>
+  <div *ngIf="progress as p"><label>Términos de la serie sumados: {{ p.completedTerms | number }} / {{ p.totalTerms | number }}</label><progress [value]="p.completedTerms" [max]="p.totalTerms" aria-label="Términos sumados, no porcentaje del tiempo de cálculo"></progress></div>
+  <p class="help">El cálculo se realiza en tu navegador, en segundo plano. Puedes detenerlo en cualquier momento.</p>
 </div>
+<div *ngIf="result as r" class="panel result-panel">
+  <div class="result-top"><div><p class="eyebrow">RESULTADO VERIFICADO POR COTAS</p><h2>{{ r.digits | number }} decimales de π</h2></div><span class="timing">{{ r.elapsedMs / 1000 | number:'1.3-3' }} s · {{ r.terms | number }} términos</span></div>
+  <div class="download-controls"><label class="checkbox"><input type="checkbox" [(ngModel)]="groupedDownload"> Conservar bloques en el TXT</label><button type="button" class="download" [disabled]="!!formatError" (click)="download()">Descargar TXT</button></div>
+  <div class="digits-meta" aria-live="polite"><span *ngIf="r.digits">Decimales {{ firstDigit | number }}–{{ lastDigit | number }} de {{ r.digits | number }}</span><span *ngIf="!r.digits">Parte entera · sin cifras decimales</span><span>La descarga incluye el resultado completo.</span></div>
+  <div class="decimal-result" aria-label="Cifras calculadas de pi"><span class="integer">{{ page === 0 ? (r.digits ? 'π ≈ 3,' : 'π ≈ 3') : '…' }}</span><div class="digit-blocks"><span class="digit-block" *ngFor="let block of blocks" [title]="'Desde el decimal ' + block.start">{{ block.text }}</span></div><span *ngIf="page + 1 < pages" class="ellipsis">…</span></div>
+  <nav *ngIf="pages > 1" class="pagination" aria-label="Páginas de cifras"><button type="button" (click)="changePage(-1)" [disabled]="page === 0">Anterior</button><span aria-live="polite">Página {{ page + 1 | number }} / {{ pages | number }}</span><button type="button" (click)="changePage(1)" [disabled]="page + 1 >= pages">Siguiente</button></nav>
+</div>
+<details class="method"><summary>El algoritmo y la precisión del resultado</summary><p>Usamos la serie de Chudnovsky, que aporta aproximadamente 14 cifras decimales por término, con suma por división binaria (binary splitting). BigInt conserva exactamente las sumas y los productos; las divisiones enteras se usan para obtener cotas truncadas.</p><p>No basta con añadir cifras de guarda: dos sumas parciales consecutivas acotan la serie alternante y una raíz cuadrada entera acota √10005. El resultado solo se publica cuando las cotas inferior y superior de π, truncadas a la precisión solicitada, coinciden. Si no coinciden, el motor aumenta la precisión y vuelve a calcular.</p><p>La pantalla muestra alrededor de 1000 cifras por página para mantener una navegación fluida. El TXT contiene todas las cifras calculadas: con un bloque por línea (CRLF) si conservas los bloques, o como un número continuo con punto decimal si desmarcas esa opción.</p><p>El máximo se adapta al tamaño de BigInt admitido por el navegador: 100.000 decimales con el límite de Firefox/Safari y hasta un millón con motores que admiten enteros mayores. La velocidad y la memoria también dependen del dispositivo. La técnica está descrita en la <a href="https://www.numberworld.org/y-cruncher/internals/binary-splitting.html">documentación de y-cruncher</a>, aunque este motor de navegador no implementa todas sus optimizaciones ni ofrece su rendimiento.</p><p>Para continuar: <a routerLink="/articles/numeral-systems">sistemas de numeración</a> y <a routerLink="/articles/continued-fractions">fracciones continuas y aproximaciones de π</a>.</p></details>

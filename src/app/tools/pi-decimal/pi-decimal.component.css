@@ -1,19 +1,42 @@
-.decimal-result {
-  font-size: small;
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.loader {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  animation: spin 2s linear infinite;
-  display: inline-block;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+:host { display: block; max-width: 1080px; margin: auto; padding: 24px 0; min-width: 0; color: var(--ink); }
+* { box-sizing: border-box; }
+.pi-intro { margin-bottom: 28px; max-width: 760px; }
+.eyebrow { font: 11px/1.6 'DM Sans', sans-serif; letter-spacing: 1.6px; color: var(--gold); margin: 0 0 12px; }
+h1 { font: 500 clamp(42px, 6vw, 68px)/1.1 'EB Garamond', Georgia, serif; margin: 18px 0; }
+h1 em, .integer { color: var(--accent); }
+.panel { border: 1px solid var(--rule); border-radius: 12px; padding: clamp(16px, 3vw, 28px); background: var(--paper); margin-bottom: 22px; }
+.controls { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+.field { min-width: 0; }
+label, button, .help, .examples, .timing, .digits-meta, .pagination { font-family: 'DM Sans', sans-serif; font-size: 12px; }
+label { display: block; font-weight: 600; }
+input[type=number] { width: 100%; min-height: 46px; margin-top: 10px; padding: 10px 12px; border: 1px solid var(--rule); border-radius: 7px; background: var(--bg); color: var(--ink); font: 17px 'Courier Prime', monospace; }
+.help { color: var(--ink-dim); line-height: 1.7; margin: 10px 0 0; }
+button { min-height: 44px; border: 1px solid var(--rule); border-radius: 7px; padding: 10px 16px; background: var(--bg); color: var(--ink); cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--gold); }
+button:disabled { opacity: .45; cursor: default; }
+button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+.primary { color: var(--bg); background: var(--accent); font-weight: 700; }
+.actions, .examples, .download-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.actions, .examples { grid-column: 1 / -1; }
+.examples { color: var(--ink-dim); }
+.examples button { font-size: 11px; padding: 8px 12px; }
+.error { padding: 12px; border-left: 2px solid var(--accent); color: var(--accent); overflow-wrap: anywhere; }
+.computation p { margin-top: 0; }
+progress { display: block; width: 100%; height: 8px; margin: 14px 0; accent-color: var(--gold); }
+.result-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
+h2 { font: 500 30px/1.2 'EB Garamond', Georgia, serif; margin: 0 0 16px; }
+.timing { color: var(--ink-dim); }
+.download-controls { justify-content: space-between; margin: 8px 0 24px; }
+.checkbox { display: flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 400; }
+.checkbox input { width: 20px; height: 20px; accent-color: var(--gold); }
+.download { color: var(--gold); }
+.digits-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 16px; color: var(--ink-dim); border-top: 1px solid var(--rule); padding: 16px 0; }
+.decimal-result { font: 16px/1.9 'Courier Prime', monospace; font-variant-numeric: tabular-nums; }
+.integer { display: block; font-size: 30px; margin-bottom: 12px; }
+.digit-blocks { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; }
+.digit-block { max-width: 100%; overflow-wrap: anywhere; min-width: 0; }
+.ellipsis { color: var(--gold); }
+.pagination { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--rule); padding-top: 18px; margin-top: 24px; }
+.method { border-top: 1px solid var(--rule); padding-top: 18px; font-size: 16px; }
+summary { color: var(--gold); cursor: pointer; }
+@media (max-width: 580px) { .controls { grid-template-columns: 1fr; } .decimal-result { font-size: 14px; } .pagination { justify-content: center; } .pagination span { order: -1; width: 100%; text-align: center; } }

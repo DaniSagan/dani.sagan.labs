@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:pi-decimals": "node scripts/test-pi-decimals.cjs && node scripts/test-pi-bigint-limit.cjs",
+    "test:pi-decimals:browser": "node scripts/check-pi-decimals-page.cjs",
     "test:prime-decomposition": "node scripts/test-prime-decomposition.cjs",
     "test:prime-decomposition:browser": "node scripts/check-prime-decomposition-page.cjs",
     "test:problem-support-articles": "node scripts/test-problem-support-articles.cjs",
