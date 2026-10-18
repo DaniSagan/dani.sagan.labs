@@ -1,181 +1,68 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
+type Mark = '' | 'X' | 'O';
 @Component({
-    selector: 'app-tic-tac-toe',
-    templateUrl: './tic-tac-toe.component.html',
-    styleUrls: ['./tic-tac-toe.component.css'],
-    standalone: true
+  selector: 'app-tic-tac-toe', standalone: true,
+  templateUrl: './tic-tac-toe.component.html',
+  styleUrls: ['./tic-tac-toe.component.css']
 })
-export class TicTacToeComponent implements OnInit {
-  @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
-  private ctx!: CanvasRenderingContext2D;
-  private board: string[][] = [
-    ['', '', ''],
-    ['', '', ''],
-    ['', '', '']
+export class TicTacToeComponent implements OnDestroy {
+  board: Mark[][] = [['', '', ''], ['', '', ''], ['', '', '']];
+  readonly rows = [0, 1, 2];
+  readonly columns = [0, 1, 2];
+  readonly lines = [
+    [[0,0],[0,1],[0,2]], [[1,0],[1,1],[1,2]], [[2,0],[2,1],[2,2]],
+    [[0,0],[1,0],[2,0]], [[0,1],[1,1],[2,1]], [[0,2],[1,2],[2,2]],
+    [[0,0],[1,1],[2,2]], [[0,2],[1,1],[2,0]]
   ];
-  private currentPlayer: string = 'X';
-  private gameOver: boolean = false;
-  private cellSize: number = 200;
-
-  ngOnInit(): void {
-    this.ctx = this.canvas.nativeElement.getContext('2d')!;
-    this.drawBoard();
-  }
-
-  drawBoard(): void {
-    const canvasWidth = this.canvas.nativeElement.width;
-    const canvasHeight = this.canvas.nativeElement.height;
-
-    // Limpiar el canvas
-    this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-
-    // Configurar el estilo de neón
-    this.ctx.strokeStyle = '#00FFFF'; // Color cian brillante
-    this.ctx.shadowColor = '#00FFFF';
-    this.ctx.shadowBlur = 10;
-    this.ctx.lineWidth = 5;
-
-    // Dibujar la cuadrícula
-    for (let i = 1; i <= 2; i++) {
-      this.ctx.beginPath();
-      this.ctx.moveTo(i * this.cellSize, 0);
-      this.ctx.lineTo(i * this.cellSize, canvasHeight);
-      this.ctx.stroke();
-
-      this.ctx.beginPath();
-      this.ctx.moveTo(0, i * this.cellSize);
-      this.ctx.lineTo(canvasWidth, i * this.cellSize);
-      this.ctx.stroke();
-    }
-
-    // Dibujar las jugadas
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        const mark = this.board[row][col];
-        if (mark) {
-          this.drawMark(mark, row, col);
-        }
-      }
+  thinking = false;
+  winner: Mark = '';
+  winningCells: number[][] = [];
+  private timer?: ReturnType<typeof setTimeout>;
+  get moves(): number { return this.board.flat().filter(Boolean).length; }
+  get gameOver(): boolean { return !!this.winner || this.moves === 9; }
+  get status(): string { return this.winner === 'X' ? '¡Tres en raya! Has ganado.' : this.winner === 'O' ? 'La máquina completa la línea.' : this.gameOver ? 'Empate. El tablero está completo.' : this.thinking ? 'La máquina está pensando…' : 'Tu turno. Elige una casilla.'; }
+  get statusTitle(): string { return this.winner === 'X' ? 'Línea conseguida' : this.winner === 'O' ? 'Gana la máquina' : this.gameOver ? 'Tablas' : this.thinking ? 'Turno de la máquina' : 'Tu siguiente movimiento'; }
+  isWinning(row: number, col: number): boolean { return this.winningCells.some(cell => cell[0] === row && cell[1] === col); }
+  play(row: number, col: number): void {
+    if (this.gameOver || this.thinking || this.board[row]?.[col] !== '') return;
+    this.board[row][col] = 'X';
+    this.finishTurn('X');
+    if (!this.gameOver) {
+      this.thinking = true;
+      this.timer = setTimeout(() => {
+        this.timer = undefined;
+        const move = this.minimax(this.board, 'O').move;
+        if (move) this.board[move.row][move.col] = 'O';
+        this.thinking = false;
+        this.finishTurn('O');
+      }, 400);
     }
   }
-
-  drawMark(mark: string, row: number, col: number): void {
-    const x = col * this.cellSize;
-    const y = row * this.cellSize;
-    this.ctx.font = '100px Arial';
-    this.ctx.fillStyle = '#00FFFF';
-    this.ctx.textAlign = 'center';
-    this.ctx.textBaseline = 'middle';
-
-    if (mark === 'X') {
-      this.ctx.fillText('X', x + this.cellSize / 2, y + this.cellSize / 2);
-    } else if (mark === 'O') {
-      this.ctx.fillText('O', x + this.cellSize / 2, y + this.cellSize / 2);
-    }
+  private finishTurn(player: Mark): void {
+    const line = this.lines.find(cells => cells.every(([r,c]) => this.board[r][c] === player));
+    if (line) { this.winner = player; this.winningCells = line; }
   }
-
-  async handleClick(event: MouseEvent): Promise<void> {
-    if (this.gameOver) return;
-
-    const rect = this.canvas.nativeElement.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const col = Math.floor(x / this.cellSize);
-    const row = Math.floor(y / this.cellSize);
-
-    if (this.board[row][col] === '') {
-      this.board[row][col] = this.currentPlayer;
-      this.drawBoard();
-      if (this.checkWin(this.currentPlayer)) {
-        alert(this.currentPlayer + ' gana!');
-        this.gameOver = true;
-      } else if (this.checkTie()) {
-        alert('Es un empate!');
-        this.gameOver = true;
-      } else {
-        this.currentPlayer = this.currentPlayer === 'X' ? 'O' : 'X';
-        if (this.currentPlayer === 'O') {
-          await this.aiMove();
-        }
-      }
+  minimax(board: Mark[][], player: 'X' | 'O'): { score: number; move: { row: number; col: number } | null } {
+    const wins = (mark: Mark) => this.lines.some(line => line.every(([r,c]) => board[r][c] === mark));
+    if (wins('X')) return { score: -10, move: null };
+    if (wins('O')) return { score: 10, move: null };
+    if (board.flat().every(Boolean)) return { score: 0, move: null };
+    let best = { score: player === 'O' ? -Infinity : Infinity, move: null as { row: number; col: number } | null };
+    for (let row = 0; row < 3; row++) for (let col = 0; col < 3; col++) {
+      if (board[row][col]) continue;
+      board[row][col] = player;
+      const score = this.minimax(board, player === 'O' ? 'X' : 'O').score;
+      board[row][col] = '';
+      if (player === 'O' ? score > best.score : score < best.score) best = { score, move: { row, col } };
     }
-  }
-
-  async aiMove(): Promise<void> {
-    await this.sleep(500); // Añadir un pequeño retraso para simular el pensamiento de la IA
-    const bestMove = this.minimax(this.board, 'O').move;
-    if (bestMove) {
-      this.board[bestMove.row][bestMove.col] = 'O';
-      this.drawBoard();
-      if (this.checkWin('O')) {
-        alert('O gana!');
-        this.gameOver = true;
-      } else if (this.checkTie()) {
-        alert('Es un empate!');
-        this.gameOver = true;
-      } else {
-        this.currentPlayer = 'X';
-      }
-    }
-  }
-
-  minimax(board: string[][], player: string): { score: number, move: { row: number, col: number } | null } {
-    if (this.checkWin('X')) return { score: -10, move: null };
-    if (this.checkWin('O')) return { score: 10, move: null };
-    if (this.checkTie()) return { score: 0, move: null };
-
-    let best: { score: number, move: { row: number, col: number } | null } = {
-      score: player === 'O' ? -Infinity : Infinity,
-      move: null
-    };
-
-    for (let row = 0; row < 3; row++) {
-      for (let col = 0; col < 3; col++) {
-        if (board[row][col] === '') {
-          board[row][col] = player;
-          const score = this.minimax(board, player === 'O' ? 'X' : 'O').score;
-          board[row][col] = '';
-
-          if ((player === 'O' && score > best.score) || (player === 'X' && score < best.score)) {
-            best = { score, move: { row, col } };
-          }
-        }
-      }
-    }
-
     return best;
   }
-
-  checkWin(player: string): boolean {
-    const winningCombinations = [
-      [[0, 0], [0, 1], [0, 2]],
-      [[1, 0], [1, 1], [1, 2]],
-      [[2, 0], [2, 1], [2, 2]],
-      [[0, 0], [1, 0], [2, 0]],
-      [[0, 1], [1, 1], [2, 1]],
-      [[0, 2], [1, 2], [2, 2]],
-      [[0, 0], [1, 1], [2, 2]],
-      [[0, 2], [1, 1], [2, 0]]
-    ];
-
-    return winningCombinations.some(combination =>
-      combination.every(([row, col]) => this.board[row][col] === player)
-    );
-  }
-
-  checkTie(): boolean {
-    return this.board.flat().every(cell => cell !== '');
-  }
-
-  private sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   resetGame(): void {
+    clearTimeout(this.timer);
+    this.timer = undefined;
     this.board = [['', '', ''], ['', '', ''], ['', '', '']];
-    this.currentPlayer = 'X';
-    this.gameOver = false;
-    this.drawBoard();
+    this.winner = ''; this.winningCells = []; this.thinking = false;
   }
+  ngOnDestroy(): void { clearTimeout(this.timer); }
 }

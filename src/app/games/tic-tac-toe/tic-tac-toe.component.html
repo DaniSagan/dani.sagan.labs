@@ -1,5 +1,40 @@
-<h2>Tres en Raya</h2>
-<div>
-  <button (click)="resetGame()">Reiniciar Juego</button>
-</div>
-<canvas #canvas width="600" height="600" (click)="handleClick($event)"></canvas>
+<section class="game-shell" aria-labelledby="game-title">
+  <header class="game-header">
+    <p class="eyebrow">JUEGOS · ESTRATEGIA EN NUEVE CASILLAS</p>
+    <h1 id="game-title">Tres en <em>raya</em><span>.</span></h1>
+    <p class="intro">Tres fichas, una línea. Cada casilla cuenta.</p>
+  </header>
+  <div class="play-layout">
+    <div class="play-area">
+      <div class="toolbar"><span class="move-count">{{ moves }} / 9 casillas</span><button type="button" class="new-game" (click)="resetGame()"><span aria-hidden="true">↻</span> Nueva partida</button></div>
+      <div class="board-frame" [class.finished]="gameOver">
+        <div class="players" aria-label="Jugadores">
+          <div class="player human" [class.active]="!thinking && !gameOver"><span class="player-mark" aria-hidden="true">×</span><div><strong>Tú</strong><small>Juegas con X</small></div><span class="turn-dot" aria-hidden="true"></span></div>
+          <div class="player computer" [class.active]="thinking"><span class="player-mark" aria-hidden="true">○</span><div><strong>Máquina</strong><small>Juega con O</small></div><span class="turn-dot" aria-hidden="true"></span></div>
+        </div>
+        <div class="board" role="group" aria-label="Tablero de tres en raya" aria-describedby="board-help">
+          @for (row of rows; track row) {
+            @for (col of columns; track col) {
+              <button type="button" class="cell" [class.mark-x]="board[row][col] === 'X'" [class.mark-o]="board[row][col] === 'O'" [class.winning]="isWinning(row,col)" [class.available]="!board[row][col] && !thinking && !gameOver" [attr.aria-disabled]="!!board[row][col] || thinking || gameOver" [attr.aria-label]="'Fila ' + (row+1) + ', columna ' + (col+1) + ': ' + (board[row][col] || 'vacía')" (click)="play(row,col)">
+                @if (board[row][col]) {
+                  <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+                    @if (board[row][col] === 'X') {<path d="M26 26 74 74 M74 26 26 74" />}
+                    @else {<circle cx="50" cy="50" r="28" />}
+                  </svg>
+                } @else {<span class="empty-dot" aria-hidden="true"></span>}
+              </button>
+            }
+          }
+        </div>
+        <div class="game-status" role="status" aria-live="polite" aria-atomic="true" [class.thinking]="thinking" [class.result]="gameOver"><span class="status-dot" aria-hidden="true"></span><p>{{ status }}</p></div>
+      </div>
+      <p class="board-help" id="board-help">Pulsa una casilla para jugar · Con teclado, usa Tab y Enter.</p>
+    </div>
+    <aside class="game-notes" aria-label="Cómo jugar">
+      <div class="turn-card"><p class="eyebrow">{{ gameOver ? 'FIN DE LA PARTIDA' : 'EN EL TABLERO' }}</p><h2>{{ statusTitle }}</h2><p>{{ gameOver ? 'Empieza otra partida y prueba una apertura diferente.' : thinking ? 'Busca la mejor respuesta a tu jugada.' : 'Tú empiezas. Coloca una X y la máquina responderá con un círculo.' }}</p></div>
+      <div class="how-to"><span class="section-number">01 / EL OBJETIVO</span><h2>Una línea lo decide.</h2><div class="line-example" aria-hidden="true"><span>×</span><span>×</span><span>×</span></div><p>Alinea tres de tus fichas en una <strong>fila, columna o diagonal</strong>. Si se llenan las nueve casillas sin una línea ganadora, la partida termina en empate.</p></div>
+      <div class="strategy"><span class="section-number">02 / PIENSA UN PASO MÁS ALLÁ</span><p>Antes de atacar, comprueba si debes bloquear una línea. El centro participa en cuatro líneas ganadoras; cada esquina, en tres.</p><p class="challenge">La máquina juega con una estrategia óptima. Si ambos jugáis sin errores, el resultado será un empate.</p></div>
+    </aside>
+  </div>
+  <footer class="game-footer"><span>Un clásico pequeño. Muchas decisiones.</span><span>3 × 3 · 8 líneas posibles</span></footer>
+</section>
