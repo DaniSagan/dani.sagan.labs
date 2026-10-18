@@ -59,7 +59,9 @@
     "test:four-in-a-row": "node scripts/test-four-in-a-row.cjs",
     "test:four-in-a-row:browser": "node scripts/check-four-in-a-row-page.cjs",
     "test:trigonometric-atlas": "node scripts/test-trigonometric-atlas.cjs",
-    "test:trigonometric-atlas:browser": "node scripts/check-trigonometric-atlas-page.cjs"
+    "test:trigonometric-atlas:browser": "node scripts/check-trigonometric-atlas-page.cjs",
+    "test:homeomorphisms-homotopy": "node scripts/test-homeomorphisms-homotopy.cjs",
+    "test:homeomorphisms-homotopy:browser": "node scripts/check-homeomorphisms-homotopy-page.cjs"
   },
   "private": true,
   "dependencies": {

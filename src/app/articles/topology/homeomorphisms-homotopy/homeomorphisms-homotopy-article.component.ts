@@ -15,21 +15,38 @@ export class HomeomorphismsHomotopyArticleComponent {
   // concept-links:end
 
   calculate(): { rows: [string, number | string][]; points: [number, number][]; note: string } {
-    const n = this.n, t = this.t;
-    const rows: [string, number | string][] = [];
-    const points: [number, number][] = [];
-    let note = '';
-    const r=(1-t)*n+t;rows.push(['Radio inicial',n],['Radio durante la deformación',r],['Radio final',1],['Puntos del círculo unidad','Permanecen fijos']);for(let k=0;k<=120;k++){const a=2*Math.PI*k/120;points.push([r*Math.cos(a),r*Math.sin(a)]);}note='Se muestra la imagen de un círculo de radio elegido dentro del anillo. La deformación completa actúa simultáneamente sobre todos los radios de [1,2].';
-    return { rows, points, note };
+    const radius = (1 - this.t) * this.n + this.t;
+    return {
+      rows: [
+        ['Radio inicial', this.n],
+        ['Radio durante la deformación', radius],
+        ['Radio final', 1],
+        ['Puntos de la circunferencia unidad', 'Permanecen fijos'],
+      ],
+      points: this.circle(radius),
+      note: 'Se muestra la imagen de una circunferencia de radio elegido dentro del anillo. La deformación completa actúa simultáneamente sobre todos los radios de [1, 2].',
+    };
   }
   update(): void { this.result = this.calculate(); }
   reset(): void { this.n = 1.5; this.t = 0.5; this.update(); }
   format(value: number | string): string { return typeof value === 'number' ? value.toLocaleString('es', { maximumSignificantDigits: 8 }) : value; }
-  get series(): PlotSeries[] { return [{ label: "Contraer radialmente un anillo", points: this.result.points, kind: 'line' }]; }
+  private circle(radius: number): [number, number][] {
+    return Array.from({ length: 121 }, (_, k) => {
+      const angle = 2 * Math.PI * k / 120;
+      return [radius * Math.cos(angle), radius * Math.sin(angle)];
+    });
+  }
+  get series(): PlotSeries[] {
+    return [
+      { label: 'Borde exterior de referencia (radio 2)', points: this.circle(2), color: 'var(--ink-dim)', dashed: true },
+      { label: 'Destino fijo (radio 1)', points: this.circle(1), color: 'var(--gold)' },
+      { label: 'Posición inicial elegida', points: this.circle(this.n), color: 'var(--accent2)', dashed: true },
+      { label: 'Imagen en el tiempo s', points: this.result.points, color: 'var(--accent)' },
+    ];
+  }
   get bounds(): { xmin: number; xmax: number; ymin: number; ymax: number } {
-    const xs = this.result.points.map(p => p[0]), ys = this.result.points.map(p => p[1]);
-    const xmin = Math.min(0, ...xs), xmax = Math.max(1, ...xs), ymin = Math.min(0, ...ys), ymax = Math.max(1, ...ys);
-    const dx = (xmax-xmin)*.08, dy = (ymax-ymin)*.08;
-    const cx=(xmin+xmax)/2, cy=(ymin+ymax)/2, w=Math.max(xmax-xmin,(ymax-ymin)*624/284)*1.15,h=w*284/624; return {xmin:cx-w/2,xmax:cx+w/2,ymin:cy-h/2,ymax:cy+h/2};
+    // Match the plot's 624 x 284 drawing area, with a fixed scale at every time.
+    const halfHeight = 2.25, halfWidth = halfHeight * 624 / 284;
+    return { xmin: -halfWidth, xmax: halfWidth, ymin: -halfHeight, ymax: halfHeight };
   }
 }
