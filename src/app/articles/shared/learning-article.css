@@ -10,9 +10,9 @@ app-formula[displayMode="inline"] { display: inline-block; max-width: 100%; marg
 .controls label { display: flex; flex-direction: column; gap: 4px; flex: 1 1 135px; color: var(--ink); font: .78rem 'Courier Prime', monospace; }
 .controls input, .controls select { min-width: 0; width: 100%; accent-color: var(--accent); }
 .controls input[type=number], .controls select { background: var(--paper); color: var(--ink); border: 1px solid #66616b; border-radius: 5px; padding: 8px; box-sizing: border-box; }
-.math-lab button { border: 1px solid #766044; background: #e8643a18; color: var(--ink); border-radius: 6px; padding: 9px 14px; cursor: pointer; font: .8rem 'Courier Prime', monospace; }
-.math-lab button:hover { background: #e8643a35; }
-.math-lab button:disabled { opacity: .5; cursor: default; }
+.math-lab button, .learning-action { border: 1px solid #766044; background: #e8643a18; color: var(--ink); border-radius: 6px; padding: 9px 14px; cursor: pointer; font: .8rem 'Courier Prime', monospace; }
+.math-lab button:hover, .learning-action:hover { background: #e8643a35; }
+.math-lab button:disabled, .learning-action:disabled { opacity: .5; cursor: default; }
 input:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 .readouts { display: flex; flex-wrap: wrap; gap: 12px; margin: 1rem 0; }
 .readouts span { flex: 1 1 130px; background: var(--paper); border-left: 2px solid var(--gold); padding: 9px 12px; color: var(--ink-dim); font: .7rem 'Courier Prime', monospace; }
@@ -33,3 +33,5 @@ td { min-width: 10ch; }
 @media(max-width:600px) { .controls { gap: 12px; } .math-lab h4 { font-size: .95rem; } }
 
 .article-outline{border-block:1px solid var(--rule);padding:12px 0;margin:1rem 0 1.5rem;font-size:.85rem}.article-outline summary{cursor:pointer;color:var(--gold)}.article-outline ol{columns:2;padding-left:1.4rem;line-height:1.8}.article-outline li{break-inside:avoid}h3[id]{scroll-margin-top:100px}details.note summary{cursor:pointer;color:var(--gold)}@media(max-width:600px){.article-outline ol{columns:1}}
+
+.learning-action { min-height: 44px; max-width: 100%; white-space: normal; }

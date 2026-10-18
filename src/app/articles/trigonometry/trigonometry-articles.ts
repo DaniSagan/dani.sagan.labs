@@ -2,12 +2,14 @@ import { SphericalTrigonometryArticleComponent } from './spherical-trigonometry/
 import { SineLawArticleComponent } from './sine-law/sine-law-article.component';
 import { TrigonometricEquationsArticleComponent } from './trigonometric-equations/trigonometric-equations-article.component';
 import { HeightSurveyingArticleComponent } from './height-surveying/height-surveying-article.component';
+import { TrigonometricAtlasComponent } from './trigonometric-atlas/trigonometric-atlas.component';
 import { Routes } from '@angular/router';
 
 import { TrigNFunctionsComponent } from './trig-nfunctions/trig-nfunctions.component';
 import { TrigInverseTrigCompositionComponent } from './trig-inverse-trig-composition/trig-inverse-trig-composition.component';
 
 export const TRIGONOMETRY_ARTICLES = [
+  TrigonometricAtlasComponent,
   SphericalTrigonometryArticleComponent,
   SineLawArticleComponent,
   TrigonometricEquationsArticleComponent,
@@ -18,6 +20,7 @@ export const TRIGONOMETRY_ARTICLES = [
 
 // Preserve lazy loading for trigonometry articles.
 export const TRIGONOMETRY_ROUTES: Routes = [
+  { path: TrigonometricAtlasComponent.route, loadComponent: () => import('./trigonometric-atlas/trigonometric-atlas.component').then(mod => mod.TrigonometricAtlasComponent) },
   { path: SphericalTrigonometryArticleComponent.route, component: SphericalTrigonometryArticleComponent },
   { path: SineLawArticleComponent.route, component: SineLawArticleComponent },
   { path: HeightSurveyingArticleComponent.route, component: HeightSurveyingArticleComponent },

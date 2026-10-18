@@ -57,7 +57,9 @@
     "test:tic-tac-toe": "node scripts/test-tic-tac-toe.cjs",
     "test:tic-tac-toe:browser": "node scripts/check-tic-tac-toe-page.cjs",
     "test:four-in-a-row": "node scripts/test-four-in-a-row.cjs",
-    "test:four-in-a-row:browser": "node scripts/check-four-in-a-row-page.cjs"
+    "test:four-in-a-row:browser": "node scripts/check-four-in-a-row-page.cjs",
+    "test:trigonometric-atlas": "node scripts/test-trigonometric-atlas.cjs",
+    "test:trigonometric-atlas:browser": "node scripts/check-trigonometric-atlas-page.cjs"
   },
   "private": true,
   "dependencies": {

@@ -1,0 +1,28 @@
+h2 { font: 500 clamp(32px, 5vw, 52px)/1.15 'EB Garamond', Georgia, serif; }
+.lead { font-size: 1.15em; }
+.atlas-lab { scroll-margin-top: 90px; }
+.atlas-lab .controls { margin: .8rem 0; gap: 10px; }
+.atlas-lab .controls label { flex-basis: 170px; }
+.atlas-lab input, .atlas-lab select, .atlas-lab button { min-height: 44px; }
+.atlas-lab .formula-line { color: var(--gold); font: 14px/1.6 'Courier Prime', monospace; overflow-wrap: anywhere; margin: 10px 0; }
+.atlas-readout { padding: 12px 16px; border-left: 2px solid var(--accent); background: var(--paper); font: 13px/1.7 'DM Sans', sans-serif; }
+.atlas-readout strong { display: block; font-size: 20px; color: var(--gold); overflow-wrap: anywhere; }
+.domain-pair { font: 12px/1.6 'DM Sans', sans-serif; color: var(--ink-dim); margin: 10px 0; }
+.plot-options { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; }
+.plot-options label { flex: 1 1 160px; font: 12px 'DM Sans', sans-serif; }
+.plot-options select { width: 100%; min-height: 44px; background: var(--paper); color: var(--ink); border: 1px solid var(--rule); padding: 8px; margin-top: 6px; }
+.plot-note { font-size: 12px; color: var(--ink-dim); }
+.table-scroll { border: 1px solid var(--rule); border-radius: 8px; margin: 1rem 0 2rem; }
+table { margin: 0; min-width: 680px; font-size: 14px; }
+caption { text-align: left; padding: 12px; color: var(--gold); font-weight: 600; }
+td, th { vertical-align: top; }
+td.definition { font: 13px/1.7 'Courier Prime', monospace; min-width: 200px; }
+td button { background: transparent; border: 0; color: var(--link); text-align: left; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 3px; min-height: 44px; }
+.unit-diagram { display: block; width: 100%; max-width: 500px; margin: 20px auto; background: var(--bg2); border: 1px solid var(--rule); border-radius: 12px; }
+.unit-diagram text { fill: var(--ink); font: 12px 'DM Sans', sans-serif; }
+.worked { border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); padding: 18px; margin: 20px 0; }
+.worked h4 { margin-top: 0; color: var(--gold); }
+.worked li { margin: 8px 0; }
+.family-heading { scroll-margin-top: 90px; }
+.sources li { margin: 8px 0; }
+@media (max-width: 600px) { .atlas-lab .controls label { flex-basis: 120px; } .atlas-lab { padding: 12px; } .atlas-readout strong { font-size: 18px; } .domain-pair { font-size: 11px; } .worked { padding: 12px; } }
