@@ -1,3 +1,4 @@
+import { ANECDOTES_NAV_ITEMS } from 'src/app/articles/anecdotes/anecdotes-articles';
 import { Injectable } from '@angular/core';
 import { ALGEBRA_NAV_ITEMS } from 'src/app/articles/algebra/algebra-articles';
 import { ANALYSIS_NAV_ITEMS } from 'src/app/articles/analysis/analysis-articles';
@@ -43,6 +44,7 @@ export class ArticlesProviderServiceService extends NavbarProvider {
     result.name = 'Artículos';
     result.subsections = [
       { name: 'Mapa', items: this.map },
+      { name: 'Anécdotas matemáticas', items: ANECDOTES_NAV_ITEMS },
       { name: 'Fractales', items: [], subsections: groupArticleItems(this.fractals, 'fractals') },
       { name: 'Polígonos Regulares', items: this.regularPolygons },
       { name: 'Sólidos Platónicos', items: this.platonicSolids },

@@ -61,7 +61,11 @@
     "test:trigonometric-atlas": "node scripts/test-trigonometric-atlas.cjs",
     "test:trigonometric-atlas:browser": "node scripts/check-trigonometric-atlas-page.cjs",
     "test:homeomorphisms-homotopy": "node scripts/test-homeomorphisms-homotopy.cjs",
-    "test:homeomorphisms-homotopy:browser": "node scripts/check-homeomorphisms-homotopy-page.cjs"
+    "test:homeomorphisms-homotopy:browser": "node scripts/check-homeomorphisms-homotopy-page.cjs",
+    "test:gauss-school-sum": "node scripts/test-gauss-school-sum.cjs",
+    "test:gauss-school-sum:browser": "node scripts/check-gauss-school-sum-page.cjs",
+    "test:taxicab": "node scripts/test-taxicab.cjs",
+    "test:taxicab:browser": "node scripts/check-taxicab-page.cjs"
   },
   "private": true,
   "dependencies": {

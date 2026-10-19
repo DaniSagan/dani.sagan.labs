@@ -129,6 +129,10 @@ Abre [http://localhost:4200](http://localhost:4200). El servidor recargará la a
 | `npm test` | Valida los presupuestos de producción y ejecuta Karma en modo interactivo |
 | `npm run test:ci` | Valida los presupuestos de producción y ejecuta las pruebas una vez en Chrome Headless |
 | `npm run test:budgets` | Compila en producción y comprueba los presupuestos de `angular.json` |
+| `npm run test:taxicab` | Comprueba la minimalidad de 1729, las representaciones y los enlaces entre relato y explicación |
+| `npm run test:taxicab:browser` | Comprueba navegación, fuentes, tablas, teclado, tacto y diseño adaptable |
+| `npm run test:gauss-school-sum` | Comprueba sumas, parejas, términos centrales, fórmulas y registro de anécdotas en el menú |
+| `npm run test:gauss-school-sum:browser` | Comprueba el acceso desde Artículos, controles, teclado, tacto y diseño adaptable |
 | `npm run test:trigonometric-atlas` | Comprueba las 52 definiciones, identidades, ramas inversas, dominios y unidades del atlas |
 | `npm run test:trigonometric-atlas:browser` | Comprueba controles, fórmulas, teclado, tacto y diseño adaptable del atlas en Chrome |
 | `npm run test:koch-antisnowflake` | Comprueba orientación, área, segmentos y contención del anticopo de Koch |

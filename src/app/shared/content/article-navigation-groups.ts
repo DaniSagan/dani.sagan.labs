@@ -104,7 +104,7 @@ const GROUPS = {
     ],
     [
       'Sucesiones y funciones aritméticas',
-      'fibonacci-numbers bernoulli-numbers collatz riemann-zeta arithmetic-derivative',
+      'arithmetic-series taxicab-numbers fibonacci-numbers bernoulli-numbers collatz riemann-zeta arithmetic-derivative',
     ],
   ],
   geometry: [

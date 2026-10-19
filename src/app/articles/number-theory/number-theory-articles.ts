@@ -1,3 +1,5 @@
+import { TaxicabNumbersComponent } from './taxicab-numbers/taxicab-numbers.component';
+import { ArithmeticSeriesComponent } from './arithmetic-series/arithmetic-series.component';
 import { DirichletConvolutionSeriesArticleComponent } from './dirichlet-convolution-series/dirichlet-convolution-series-article.component';
 import { RsaDiscreteLogarithmArticleComponent } from './rsa-discrete-logarithm/rsa-discrete-logarithm-article.component';
 import { SievePrimalityArticleComponent } from './sieve-primality/sieve-primality-article.component';
@@ -56,6 +58,8 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  TaxicabNumbersComponent,
+  ArithmeticSeriesComponent,
   DirichletConvolutionSeriesArticleComponent,
   RsaDiscreteLogarithmArticleComponent,
   SievePrimalityArticleComponent,

@@ -1,0 +1,4 @@
+h2 { font: 500 clamp(32px, 5vw, 50px)/1.15 'EB Garamond', Georgia, serif; }
+.answer { color: var(--gold); font: 500 clamp(44px, 9vw, 76px)/1.1 'EB Garamond', Georgia, serif; text-align: center; margin: 1rem 0; }
+.references { margin-top: 1.5rem; font-size: .85rem; }
+.references summary { cursor: pointer; color: var(--gold); }

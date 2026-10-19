@@ -1,3 +1,4 @@
+import { ANECDOTES_ARTICLES } from './anecdotes/anecdotes-articles';
 import { ALGEBRA_ARTICLES } from './algebra/algebra-articles';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -42,6 +43,7 @@ import { TRIGONOMETRY_ARTICLES } from './trigonometry/trigonometry-articles';
     TestArticleComponent,
 
     // Article collections
+    ...ANECDOTES_ARTICLES,
     ...ALGEBRA_ARTICLES,
     ...ANALYSIS_ARTICLES,
     ...CALCULUS_ARTICLES,

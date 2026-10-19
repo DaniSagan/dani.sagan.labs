@@ -1,0 +1,19 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),ts=require('typescript');
+const base='src/app/articles/number-theory/arithmetic-series/arithmetic-series.component',exportsObject={};
+vm.runInNewContext(ts.transpileModule(fs.readFileSync(base+'.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,experimentalDecorators:true}}).outputText,{exports:exportsObject,require:()=>({Component:()=>c=>c,LEARNING_IMPORTS:[]})});
+const c=new exportsObject.ArithmeticSeriesComponent();
+for(let n=1;n<=200;n++){
+ c.n=n;c.update();assert(c.valid);let sum=0;for(let k=1;k<=n;k++)sum+=k;assert.equal(c.sum,sum);
+ const seen=new Set();for(let k=1;k<=c.pairs;k++){c.pair=k;assert.equal(k+c.partner,n+1);assert(!seen.has(k)&&!seen.has(c.partner));seen.add(k);seen.add(c.partner);}
+ if(c.middle!==null){assert(!seen.has(c.middle));seen.add(c.middle);}
+ assert.equal(seen.size,n);assert.equal(c.pairs*(n+1)+(c.middle||0),sum);
+}
+for(const n of [null,NaN,Infinity,0,-1,201,1.5]){c.n=n;c.update();assert(!c.valid);assert.equal(c.count,0);assert(Number.isFinite(c.sum));}
+c.n=100;c.pair=50;c.n=3;c.update();assert.equal(c.pair,1);assert.equal(c.partner,3);assert.equal(c.middle,2);c.reset();assert.equal(c.sum,5050);assert.equal(c.pair,1);
+assert.equal(c.triangle.filter(d=>d.col<=d.row).length,15);assert.equal(c.triangle.filter(d=>d.col>d.row).length,15);
+const inventory=require('./test-article-navigation.cjs').check();const item=inventory.links.find(l=>l.route==='gauss-school-sum');assert(item);assert.equal(item.groups[0],'An\u00e9cdotas matem\u00e1ticas');
+const storyFile='src/app/articles/anecdotes/gauss-school-sum/gauss-school-sum.component.html',story=fs.readFileSync(storyFile,'utf8');assert(!story.includes('math-lab'));assert(!story.includes('app-formula'));assert(story.includes('routerLink="/articles/arithmetic-series"'));assert(story.indexOf('class="dropcap"')<story.indexOf('class="note"'));assert(story.replace(/<[^>]*>/g,' ').split(/\s+/).length<550);assert(inventory.links.some(l=>l.route==='arithmetic-series'));const html=fs.readFileSync(base+'.html','utf8'),ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);for(const m of html.matchAll(/fragment="([^"]+)"/g))assert(ids.includes(m[1]));
+for(const m of html.matchAll(/routerLink="\/articles\/([^"]+)"/g))assert(inventory.links.some(l=>l.route===m[1]),m[1]);
+for(const p of ['number-theory/mathematical-induction/mathematical-induction-article','combinatorics/counting-principles/counting-principles-article'])assert(fs.readFileSync('src/app/articles/'+p+'.component.html','utf8').includes('routerLink="/articles/gauss-school-sum"'));
+const {mathjax}=require('mathjax-full/js/mathjax.js'),{TeX}=require('mathjax-full/js/input/tex.js'),{SVG}=require('mathjax-full/js/output/svg.js'),{liteAdaptor}=require('mathjax-full/js/adaptors/liteAdaptor.js'),{RegisterHTMLHandler}=require('mathjax-full/js/handlers/html.js'),{AllPackages}=require('mathjax-full/js/input/tex/AllPackages.js');const adaptor=liteAdaptor();RegisterHTMLHandler(adaptor);const doc=mathjax.document('',{InputJax:new TeX({packages:AllPackages}),OutputJax:new SVG({fontCache:'none'})});for(const tex of Object.values(c.math)){const svg=adaptor.outerHTML(doc.convert(tex,{display:true}));assert(!/data-mml-node="merror"|data-mjx-error/.test(svg));}
+import('@angular/compiler').then(({parseTemplate})=>{for(const file of [base+'.html',storyFile,'src/app/articles/articles-intro/articles-intro.component.html']){const r=parseTemplate(fs.readFileSync(file,'utf8'),file,{enableBlockSyntax:true});assert(!r.errors?.length,r.errors?.join('\n'));}console.log('PASS sums and unique pairs 1-200, odd centers, invalid inputs, reset, 30-piece diagram, new menu category, complete routing coverage, reciprocal links, four TeX formulas and templates.');}).catch(e=>{console.error(e);process.exitCode=1;});

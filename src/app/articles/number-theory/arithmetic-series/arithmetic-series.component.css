@@ -1,0 +1,13 @@
+h2 { font: 500 clamp(32px, 5vw, 50px)/1.15 'EB Garamond', Georgia, serif; }
+.pairing { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; padding: 16px 0; font: 24px 'Courier Prime', monospace; }
+.pairing strong { padding: 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); color: var(--gold); }
+.pairing output { color: var(--accent); font-weight: 700; }
+.math-lab input, .math-lab button { min-height: 44px; }
+.controls label { min-width: 0; }
+.triangle { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; width: min(100%, 320px); margin: 1rem auto; }
+.triangle span { aspect-ratio: 1; border-radius: 3px; background: var(--accent); }
+.triangle .copy { background: var(--accent2); }
+figure { margin: 1.5rem 0; padding: 14px; border: 1px solid var(--rule); border-radius: 10px; background: var(--bg2); }
+figcaption { font-size: .85rem; line-height: 1.6; }
+.worked { border-left: 2px solid var(--gold); padding: 4px 16px; margin: 1.5rem 0; background: var(--paper); }
+.sources li { margin: 10px 0; }
