@@ -1,3 +1,4 @@
+import { FermatWilesTheoremComponent } from './fermat-wiles-theorem/fermat-wiles-theorem.component';
 import { TaxicabNumbersComponent } from './taxicab-numbers/taxicab-numbers.component';
 import { ArithmeticSeriesComponent } from './arithmetic-series/arithmetic-series.component';
 import { DirichletConvolutionSeriesArticleComponent } from './dirichlet-convolution-series/dirichlet-convolution-series-article.component';
@@ -58,6 +59,7 @@ interface ArticleComponent extends Type<unknown> {
 }
 
 export const NUMBER_THEORY_ARTICLES: ArticleComponent[] = [
+  FermatWilesTheoremComponent,
   TaxicabNumbersComponent,
   ArithmeticSeriesComponent,
   DirichletConvolutionSeriesArticleComponent,

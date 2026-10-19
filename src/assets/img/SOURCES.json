@@ -1,0 +1,35 @@
+{
+  "shortest-math-paper.jpg": {
+    "file": "src/assets/img/shortest-math-paper.jpg",
+    "author": "L. J. Lander y T. R. Parkin",
+    "source": "https://marktomforde.com/academic/miscellaneous/images/ShortestPaper.pdf",
+    "license": "Licencia libre confirmada por el usuario",
+    "licenseVerification": "User confirmed the source has a free license; exact license identifier not specified. No CC variant or public-domain status inferred.",
+    "width": 880,
+    "height": 440,
+    "bytes": 47219,
+    "visualReview": "Reviewed: reproduction matches the cited1966 article",
+    "usedBy": [
+      "euler-conjecture-counterexample"
+    ],
+    "status": "existing local asset; integrated",
+    "sha256": "c4bd26c3e05095b5cfdfb7d159f30ac8b498348d5b38eee406f6575af49ea498"
+  },
+  "taxicab.jpg": {
+    "file": "src/assets/img/taxicab.jpg",
+    "description": "User-provided collage of Futurama frames",
+    "author": "Montage author not specified; series created by Matt Groening and David X. Cohen",
+    "license": "Licencia libre confirmada por el usuario",
+    "licenseVerification": "User confirmed the source has a free license; exact license identifier not specified. No CC variant or public-domain status inferred.",
+    "usedBy": [
+      "taxicab-numbers"
+    ],
+    "derivative": {
+      "file": "src/assets/img/taxicab-optimized.jpg",
+      "width": 1280,
+      "height": 987,
+      "bytes": 173160,
+      "changes": "Resized proportionally; JPEG quality85; no crop. Original preserved."
+    }
+  }
+}

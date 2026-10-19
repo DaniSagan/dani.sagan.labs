@@ -1,0 +1,997 @@
+{
+  "date": "2026-10-19",
+  "requested": 38,
+  "existing": [
+    "gauss-school-sum",
+    "hardy-ramanujan-taxicab"
+  ],
+  "articles": [
+    {
+      "id": "A01",
+      "route": "tartaglia-cardano-secret",
+      "title": "Tartaglia y Cardano: una fórmula, un juramento y una disputa",
+      "className": "TartagliaCardanoSecretComponent",
+      "words": 252,
+      "sources": [
+        [
+          "MacTutor: Tartaglia",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Tartaglia/"
+        ],
+        [
+          "Testimonios de la controversia",
+          "https://mathshistory.st-andrews.ac.uk/HistTopics/Tartaglia_v_Cardan/"
+        ]
+      ],
+      "image": "cardano",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "cubic-equation"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A02",
+      "route": "galois-last-letter",
+      "title": "La última carta de Galois",
+      "className": "GaloisLastLetterComponent",
+      "words": 256,
+      "sources": [
+        [
+          "MacTutor: Galois, manuscritos y cronología",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Galois/"
+        ],
+        [
+          "Carta de Galois (reproducción académica)",
+          "https://wiki.math.ntnu.no/_media/ma3202/2019v/galois-testamentary.pdf"
+        ]
+      ],
+      "image": "galois",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "galois-solvability"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A03",
+      "route": "newton-leibniz-priority",
+      "title": "Newton y Leibniz: un cálculo y dos prioridades",
+      "className": "NewtonLeibnizPriorityComponent",
+      "words": 256,
+      "sources": [
+        [
+          "MacTutor: Newton y la controversia",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Newton/"
+        ],
+        [
+          "Newton Project: borrador del Account",
+          "https://newtonproject.ox.ac.uk/view/texts/normalized/NATP00352"
+        ]
+      ],
+      "image": "newton",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "derivative-foundations"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A04",
+      "route": "perelman-prize-refusal",
+      "title": "Perelmán y el premio que no quiso cobrar",
+      "className": "PerelmanPrizeRefusalComponent",
+      "words": 260,
+      "sources": [
+        [
+          "Instituto Clay: conjetura y premio",
+          "https://www.claymath.org/millennium/poincare-conjecture/"
+        ],
+        [
+          "MacTutor: Perelmán y el reconocimiento",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Perelman/"
+        ],
+        [
+          "Entrevista y contexto de 2006",
+          "https://www.newyorker.com/magazine/2006/08/28/manifold-destiny"
+        ]
+      ],
+      "image": "perelman",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "homeomorphisms-homotopy"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A05",
+      "route": "dantzig-homework",
+      "title": "Los deberes que no eran deberes",
+      "className": "DantzigHomeworkComponent",
+      "words": 263,
+      "sources": [
+        [
+          "MacTutor: testimonio de Dantzig y Neyman",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Dantzig_George/"
+        ],
+        [
+          "Stanford: recuerdo de Dantzig",
+          "https://news.stanford.edu/stories/2005/05/george-b-dantzig-operations-research-professor-dies-90"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A06",
+      "route": "hardy-riemann-postcard",
+      "title": "Hardy: una postal como seguro de vida",
+      "className": "HardyRiemannPostcardComponent",
+      "words": 252,
+      "sources": [
+        [
+          "MacTutor: Hardy y las anécdotas sobre Dios",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Hardy/"
+        ],
+        [
+          "Heinz Klaus Strick: semblanza de Hardy",
+          "https://mathshistory.st-andrews.ac.uk/Strick/hardy.pdf"
+        ]
+      ],
+      "image": "hardy",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "riemann-zeta"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A07",
+      "route": "hamilton-broom-bridge",
+      "title": "La fórmula que Hamilton dejó en un puente",
+      "className": "HamiltonBroomBridgeComponent",
+      "words": 256,
+      "sources": [
+        [
+          "Trinity College: cartas de Hamilton sobre el descubrimiento",
+          "https://www.maths.tcd.ie/pub/HistMath/People/Hamilton/Letters/BroomeBridge.html"
+        ],
+        [
+          "MacTutor: Hamilton",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Hamilton/"
+        ]
+      ],
+      "image": "hamilton",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "quaternions-rotations"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A08",
+      "route": "fermat-margin",
+      "title": "El margen más caro de las matemáticas",
+      "className": "FermatMarginComponent",
+      "words": 265,
+      "sources": [
+        [
+          "MacTutor: Fermat y la anotación",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Fermat/"
+        ],
+        [
+          "Premio Abel 2016: Wiles y su demostración",
+          "https://abelprize.no/abel-prize-laureates/2016"
+        ]
+      ],
+      "image": "fermat",
+      "status": "implemented; static checks passed; browser pending",
+      "staticValidation": "passed",
+      "related": [
+        "fermat-wiles-theorem"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A09",
+      "route": "archimedes-last-circles",
+      "title": "Los últimos círculos de Arquímedes",
+      "className": "ArchimedesLastCirclesComponent",
+      "words": 272,
+      "sources": [
+        [
+          "Plutarco: Vida de Marcelo, versiones de la muerte",
+          "https://classics.mit.edu/Plutarch/marcellu.html"
+        ],
+        [
+          "MacTutor: Arquímedes",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Archimedes/"
+        ]
+      ],
+      "image": "archimedes",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "circle-curve"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A10",
+      "route": "germain-leblanc",
+      "title": "Sophie Germain y la firma de Monsieur Le Blanc",
+      "className": "GermainLeblancComponent",
+      "words": 264,
+      "sources": [
+        [
+          "MacTutor: Germain, Gauss y Le Blanc",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Germain/"
+        ]
+      ],
+      "image": "germain",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "modular-arithmetic"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A11",
+      "route": "godel-citizenship",
+      "title": "El día que Gödel encontró un problema en la Constitución",
+      "className": "GodelCitizenshipComponent",
+      "words": 271,
+      "sources": [
+        [
+          "IAS: recuerdo de Morgenstern, escrito en 1971",
+          "https://albert.ias.edu/entities/archivalmaterial/9fd45e83-9706-4c1f-92de-302efdc85561"
+        ],
+        [
+          "IAS: descripción archivística y cronología de 1947",
+          "https://www.ias.edu/sites/default/files/library/page/SMC.THOMAS.html"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A12",
+      "route": "euler-conjecture-counterexample",
+      "title": "Dos frases contra una conjetura de Euler",
+      "className": "EulerConjectureCounterexampleComponent",
+      "words": 256,
+      "sources": [
+        [
+          "Lander y Parkin: artículo original, 1966, p. 1079",
+          "https://marktomforde.com/academic/miscellaneous/images/ShortestPaper.pdf"
+        ],
+        [
+          "Actividad y contexto académico de la conjetura",
+          "https://www.artofmathematics.org/sites/default/files/books/previous-versions/number_theory_may_2013.pdf"
+        ]
+      ],
+      "image": "lander-parkin",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words",
+      "browserValidation": "updated image passed1440/390/320; loaded, proportionate, alt and caption, no overflow"
+    },
+    {
+      "id": "A13",
+      "route": "newton-lion-claw",
+      "title": "Una solución con garras de león",
+      "className": "NewtonLionClawComponent",
+      "words": 257,
+      "sources": [
+        [
+          "MacTutor: documentos y soluciones de la braquistócrona",
+          "https://mathshistory.st-andrews.ac.uk/HistTopics/Brachistochrone/"
+        ],
+        [
+          "Testimonio biográfico de Charles Taylor",
+          "https://mathshistory.st-andrews.ac.uk/Extras/Taylor_Newton/"
+        ]
+      ],
+      "image": "newton",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "cycloid",
+        "derivative-optimization"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A14",
+      "route": "turing-paper-chess",
+      "title": "El ordenador de ajedrez que era un hombre",
+      "className": "TuringPaperChessComponent",
+      "words": 260,
+      "sources": [
+        [
+          "MacTutor: Turing y sus investigaciones",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Turing/"
+        ],
+        [
+          "Chess Programming: Turochamp y los recuerdos de Champernowne",
+          "https://chessprogramming.org/Turochamp"
+        ]
+      ],
+      "image": "turing",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "computability-formal-languages"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A15",
+      "route": "abel-late-appointment",
+      "title": "El puesto que llegó después de Abel",
+      "className": "AbelLateAppointmentComponent",
+      "words": 260,
+      "sources": [
+        [
+          "MacTutor: Abel y la carta del 8 de abril",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Abel/"
+        ],
+        [
+          "Carta de Abel a Crelle, septiembre de 1828",
+          "https://mathshistory.st-andrews.ac.uk/Extras/Abel_Crelle/"
+        ]
+      ],
+      "image": "abel",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "galois-solvability"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A16",
+      "route": "poincare-omnibus",
+      "title": "La idea que subió al ómnibus con Poincaré",
+      "className": "PoincareOmnibusComponent",
+      "words": 251,
+      "sources": [
+        [
+          "MacTutor: Poincaré y su descripción de la invención",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Poincare/"
+        ],
+        [
+          "Pasaje autobiográfico de Poincaré",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Poincare/quotations/"
+        ]
+      ],
+      "image": "poincare",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "groups-cosets-lagrange"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A17",
+      "route": "euler-diderot-legend",
+      "title": "La demostración de Dios que no demuestra nada",
+      "className": "EulerDiderotLegendComponent",
+      "words": 258,
+      "sources": [
+        [
+          "R. J. Gillings: The So-Called Euler-Diderot Incident",
+          "https://eclass.uoa.gr/modules/document/file.php/MATH417/Bibliografia/GillingsEulerDiderotIncident.pdf"
+        ],
+        [
+          "D. J. Struik: historia y crítica de la anécdota",
+          "https://www.dbnl.org/tekst/stru008gesc01_01/stru008gesc01_01_0009.php"
+        ]
+      ],
+      "image": "euler",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A18",
+      "route": "de-moivre-last-sleep",
+      "title": "De Moivre y la última cuenta del sueño",
+      "className": "DeMoivreLastSleepComponent",
+      "words": 258,
+      "sources": [
+        [
+          "MacTutor: De Moivre y la tradición del sueño",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/De_Moivre/"
+        ],
+        [
+          "Plus: relato y contexto probabilístico",
+          "https://plus.maths.org/content/news-world-maths-mathematical-moments-taking-chances-de-moivre"
+        ]
+      ],
+      "image": "de-moivre",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "arithmetic-series"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A19",
+      "route": "hippasus-irrational-legend",
+      "title": "El número que no cabía en una fracción",
+      "className": "HippasusIrrationalLegendComponent",
+      "words": 248,
+      "sources": [
+        [
+          "MacTutor: números reales e inconmensurabilidad",
+          "https://mathshistory.st-andrews.ac.uk/HistTopics/Real_numbers_1/"
+        ],
+        [
+          "Stanford Encyclopedia: análisis de las tradiciones sobre Hipaso",
+          "https://plato.stanford.edu/entries/pythagoreanism/"
+        ]
+      ],
+      "image": "pythagoras",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "A20",
+      "route": "shanks-pi-error",
+      "title": "Shanks y el decimal que torció una vida de cuentas",
+      "className": "ShanksPiErrorComponent",
+      "words": 258,
+      "sources": [
+        [
+          "MacTutor: Shanks, 1873 y la comprobación de Ferguson",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Shanks/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B01",
+      "route": "eratosthenes-shadows",
+      "title": "Una sombra para medir la Tierra",
+      "className": "EratosthenesShadowsComponent",
+      "words": 249,
+      "sources": [
+        [
+          "MacTutor: Eratóstenes y la medición terrestre",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Eratosthenes/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "spherical-trigonometry"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B02",
+      "route": "archimedes-tomb",
+      "title": "La tumba que Cicerón reconoció por una esfera",
+      "className": "ArchimedesTombComponent",
+      "words": 254,
+      "sources": [
+        [
+          "Cicerón: Disputaciones tusculanas V, 64–66",
+          "https://www.attalus.org/cicero/tusc5A.html"
+        ]
+      ],
+      "image": "archimedes",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "archimedes-sphere-cylinder"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B03",
+      "route": "euclid-royal-road",
+      "title": "El rey que buscaba un atajo a la geometría",
+      "className": "EuclidRoyalRoadComponent",
+      "words": 249,
+      "sources": [
+        [
+          "MacTutor: Euclides y el testimonio de Proclo",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/"
+        ],
+        [
+          "MacTutor: Menecmo y la variante de Alejandro",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Menaechmus/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "triangle-similarity"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B04",
+      "route": "von-neumann-fly",
+      "title": "La mosca que von Neumann sumó demasiadas veces",
+      "className": "VonNeumannFlyComponent",
+      "words": 255,
+      "sources": [
+        [
+          "Paul Halmos: The Legend of John von Neumann",
+          "https://gwern.net/doc/math/1973-halmos.pdf"
+        ],
+        [
+          "MacTutor: von Neumann",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Von_Neumann/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "geometric-series"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B05",
+      "route": "erdos-book",
+      "title": "Erdős y el libro que no estaba en ninguna biblioteca",
+      "className": "ErdosBookComponent",
+      "words": 258,
+      "sources": [
+        [
+          "MacTutor: Erdős y el Libro",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Erdos/"
+        ]
+      ],
+      "image": "erdos",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "proof-strategies"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B06",
+      "route": "lovelace-unbuilt-machine",
+      "title": "Un programa antes de que existiera su máquina",
+      "className": "LovelaceUnbuiltMachineComponent",
+      "words": 249,
+      "sources": [
+        [
+          "Lovelace: traducción y notas de 1843",
+          "https://www.fourmilab.ch/babbage/sketch.html"
+        ],
+        [
+          "MacTutor: Lovelace y Babbage",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Lovelace/"
+        ]
+      ],
+      "image": "lovelace",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "bernoulli-numbers"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B07",
+      "route": "mirzakhani-paper",
+      "title": "El suelo de papel de Maryam Mirzakhani",
+      "className": "MirzakhaniPaperComponent",
+      "words": 260,
+      "sources": [
+        [
+          "Stanford: testimonios sobre sus dibujos y su hija",
+          "https://news.stanford.edu/stories/2017/07/maryam-mirzakhani-stanford-mathematician-and-fields-medal-winner-dies"
+        ],
+        [
+          "MacTutor: Mirzakhani y su trabajo",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Mirzakhani/"
+        ]
+      ],
+      "image": "mirzakhani",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "surfaces-genus-euler"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B08",
+      "route": "cantor-infinity-dispute",
+      "title": "Cantor y el infinito que no convencía a su maestro",
+      "className": "CantorInfinityDisputeComponent",
+      "words": 263,
+      "sources": [
+        [
+          "MacTutor: Cantor, Dedekind y Kronecker",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Cantor/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "cardinality-diagonal"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B09",
+      "route": "turing-1936-paper",
+      "title": "El artículo de Turing que llegó con un rival",
+      "className": "Turing1936PaperComponent",
+      "words": 257,
+      "sources": [
+        [
+          "MacTutor: Turing, Newman y Church",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Turing/"
+        ],
+        [
+          "Andrew Hodges: bibliografía y cronología del artículo",
+          "https://www.turing.org.uk/sources/biblio4.html"
+        ]
+      ],
+      "image": "turing",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "computability-formal-languages"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B10",
+      "route": "mobius-listing-strip",
+      "title": "Una cinta con dos descubridores",
+      "className": "MobiusListingStripComponent",
+      "words": 258,
+      "sources": [
+        [
+          "MacTutor: Möbius",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Mobius/"
+        ],
+        [
+          "MacTutor: Listing y la topología",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Listing/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "mobius-strip"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B11",
+      "route": "bayes-price-manuscript",
+      "title": "El manuscrito que Bayes no llegó a publicar",
+      "className": "BayesPriceManuscriptComponent",
+      "words": 251,
+      "sources": [
+        [
+          "MacTutor: Bayes y Richard Price",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Bayes/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "bayes-theorem"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B12",
+      "route": "napier-briggs-meeting",
+      "title": "El visitante que dejó a Napier sin conversación",
+      "className": "NapierBriggsMeetingComponent",
+      "words": 256,
+      "sources": [
+        [
+          "MacTutor: Briggs, viaje y relato de Lilly",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Briggs/"
+        ],
+        [
+          "MacTutor: Napier y los logaritmos",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Napier/"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "exponentials-logarithms"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B13",
+      "route": "fourier-heat-prize",
+      "title": "Fourier ganó el premio; su memoria tuvo que esperar",
+      "className": "FourierHeatPrizeComponent",
+      "words": 258,
+      "sources": [
+        [
+          "MacTutor: Fourier y la recepción de su memoria",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Fourier/"
+        ]
+      ],
+      "image": "fourier",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "fourier-series"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B14",
+      "route": "ulam-spiral-doodle",
+      "title": "Los números que Ulam dibujó en una reunión",
+      "className": "UlamSpiralDoodleComponent",
+      "words": 261,
+      "sources": [
+        [
+          "MacTutor: relato específico de la espiral, 1963",
+          "https://mathshistory.st-andrews.ac.uk/Extras/Ulam_spiral/"
+        ],
+        [
+          "MacTutor: Ulam",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Ulam/"
+        ]
+      ],
+      "image": "ulam",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "ulam-spiral"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B15",
+      "route": "mandelbrot-coastline",
+      "title": "La costa que cambiaba de longitud",
+      "className": "MandelbrotCoastlineComponent",
+      "words": 255,
+      "sources": [
+        [
+          "MacTutor: Mandelbrot y los antecedentes de Richardson",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Mandelbrot/"
+        ],
+        [
+          "Artículo de Science: ficha bibliográfica y DOI",
+          "https://cir.nii.ac.jp/crid/1362825894493916800"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "fractal-measure-dimension"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B16",
+      "route": "hilbert-hotel",
+      "title": "Habitaciones libres en un hotel lleno",
+      "className": "HilbertHotelComponent",
+      "words": 399,
+      "sources": [
+        [
+          "MacTutor: Hilbert y su contexto matemático",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Hilbert/"
+        ],
+        [
+          "Stanford Encyclopedia: infinito e historia del hotel",
+          "https://plato.stanford.edu/entries/infinity/"
+        ],
+        [
+          "Veritasium: How An Infinite Hotel Ran Out Of Room (2021)",
+          "https://www.youtube.com/watch?v=OxGsU8oIWjY"
+        ]
+      ],
+      "image": "hilbert",
+      "status": "implemented; static checks passed; browser pending",
+      "staticValidation": "passed",
+      "related": [
+        "cardinality-diagonal"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B17",
+      "route": "banach-tarski-sphere",
+      "title": "Dos esferas por el precio de una, solo en matemáticas",
+      "className": "BanachTarskiSphereComponent",
+      "words": 263,
+      "sources": [
+        [
+          "MacTutor: Banach y la escuela polaca",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Banach/"
+        ],
+        [
+          "Banach y Tarski: publicación original de 1924",
+          "https://pldml.icm.edu.pl/pldml/element/bwmeta1.element.bwnjournal-article-fmv6i1p27bwm"
+        ],
+        [
+          "Terence Tao: exposición del teorema",
+          "https://www.math.ucla.edu/~tao/preprints/Expository/banach-tarski.pdf"
+        ]
+      ],
+      "image": null,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "banach-tarski-paradox"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "id": "B18",
+      "route": "zeno-achilles-tortoise",
+      "title": "La tortuga que siempre llevaba ventaja",
+      "className": "ZenoAchillesTortoiseComponent",
+      "words": 263,
+      "sources": [
+        [
+          "Stanford Encyclopedia: paradojas de Zenón",
+          "https://plato.stanford.edu/entries/paradox-zeno/"
+        ],
+        [
+          "MacTutor: Zenón de Elea",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Zeno_of_Elea/"
+        ]
+      ],
+      "image": "zeno",
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "related": [
+        "geometric-series"
+      ],
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    }
+  ],
+  "browserValidation": "passed all 38 at 1440/390/320px",
+  "summary": {
+    "requested": 38,
+    "implemented": 38,
+    "omitted": 0,
+    "existingPreserved": 2,
+    "newMathSupport": 5,
+    "extendedMathSupport": [
+      "proof-strategies"
+    ],
+    "localImages": 23,
+    "illustratedStories": 26,
+    "internalArticleLinksInNewPages": 60,
+    "completeCatalogue": 547
+  },
+  "validation": {
+    "development": "passed; Angular AOT development build",
+    "production": "passed; real production budgets; external font inlining disabled for offline validation only",
+    "static": "passed collection, five math models, navigation parity, Gauss and taxicab regression tests",
+    "browser": "passed all38 and all5 support at1440/390/320; local images, no overflow, sources, keyboard; support native mouse/touch/keyboard and reciprocal links",
+    "pending": []
+  },
+  "supportArticles": [
+    {
+      "route": "quaternions-rotations",
+      "title": "Cuaterniones y rotaciones",
+      "staticValidation": "passed",
+      "browserValidation": "passed1440/390/320; mouse/touch, keyboard, controls and reciprocal journeys"
+    },
+    {
+      "route": "galois-solvability",
+      "title": "Teoría de Galois y radicales",
+      "staticValidation": "passed",
+      "browserValidation": "passed1440/390/320; mouse/touch, keyboard, controls and reciprocal journeys"
+    },
+    {
+      "route": "fermat-wiles-theorem",
+      "title": "Fermat-Wiles: hipótesis y alcance",
+      "staticValidation": "passed",
+      "browserValidation": "passed1440/390/320; mouse/touch, keyboard, controls and reciprocal journeys"
+    },
+    {
+      "route": "archimedes-sphere-cylinder",
+      "title": "Esfera y cilindro: secciones, volumen y área",
+      "staticValidation": "passed",
+      "browserValidation": "passed1440/390/320; mouse/touch, keyboard, controls and reciprocal journeys"
+    },
+    {
+      "route": "banach-tarski-paradox",
+      "title": "Banach-Tarski y los conjuntos no medibles",
+      "staticValidation": "passed",
+      "browserValidation": "passed1440/390/320; mouse/touch, keyboard, controls and reciprocal journeys"
+    }
+  ],
+  "sourceConsultationNotes": [
+    "The original Banach-Tarski publication is linked as a bibliographic record; its full original text was not retrieved. The Tao exposition was consulted.",
+    "The Mandelbrot 1967 record was consulted at bibliographic level; historical narration also relies on the consulted MacTutor biography.",
+    "The Galois letter reproduction was opened but PDF text extraction was unavailable; the chronology is corroborated by the biography.",
+    "Long advanced proofs in cited Wiles and Conrad works are not reproduced or claimed to be proved by the laboratories."
+  ]
+}

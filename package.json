@@ -65,7 +65,11 @@
     "test:gauss-school-sum": "node scripts/test-gauss-school-sum.cjs",
     "test:gauss-school-sum:browser": "node scripts/check-gauss-school-sum-page.cjs",
     "test:taxicab": "node scripts/test-taxicab.cjs",
-    "test:taxicab:browser": "node scripts/check-taxicab-page.cjs"
+    "test:taxicab:browser": "node scripts/check-taxicab-page.cjs",
+    "test:anecdotes": "node scripts/test-anecdotes-collection.cjs",
+    "test:anecdotes:browser": "node scripts/check-anecdotes-collection.cjs",
+    "test:anecdotes:math": "node scripts/test-anecdotes-math-support.cjs",
+    "test:anecdotes:math:browser": "node scripts/check-anecdotes-math-support.cjs"
   },
   "private": true,
   "dependencies": {

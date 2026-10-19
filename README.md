@@ -129,6 +129,10 @@ Abre [http://localhost:4200](http://localhost:4200). El servidor recargará la a
 | `npm test` | Valida los presupuestos de producción y ejecuta Karma en modo interactivo |
 | `npm run test:ci` | Valida los presupuestos de producción y ejecuta las pruebas una vez en Chrome Headless |
 | `npm run test:budgets` | Compila en producción y comprueba los presupuestos de `angular.json` |
+| `npm run test:anecdotes` | Revisa los 38 relatos, sus fuentes, rutas, enlaces, imágenes locales y plantillas |
+| `npm run test:anecdotes:browser` | Revisa los relatos a 1440, 390 y 320 píxeles en Chrome |
+| `npm run test:anecdotes:math` | Comprueba los modelos matemáticos, fórmulas y enlaces de los cinco artículos de apoyo |
+| `npm run test:anecdotes:math:browser` | Comprueba controles reales, teclado, tacto y recorridos entre relatos y explicaciones |
 | `npm run test:taxicab` | Comprueba la minimalidad de 1729, las representaciones y los enlaces entre relato y explicación |
 | `npm run test:taxicab:browser` | Comprueba navegación, fuentes, tablas, teclado, tacto y diseño adaptable |
 | `npm run test:gauss-school-sum` | Comprueba sumas, parejas, términos centrales, fórmulas y registro de anécdotas en el menú |

@@ -1,3 +1,4 @@
+import { GaloisSolvabilityComponent } from './galois-solvability/galois-solvability.component';
 import { BernsteinPolynomialsArticleComponent } from './bernstein-polynomials/bernstein-polynomials-article.component';
 import { PadeKrylovMethodsArticleComponent } from './pade-krylov-methods/pade-krylov-methods-article.component';
 import { GroupsCosetsLagrangeArticleComponent } from './groups-cosets-lagrange/groups-cosets-lagrange-article.component';
@@ -29,6 +30,7 @@ import { DeterminantArticleComponent } from './determinant/determinant-article.c
 import { DiagonalizationArticleComponent } from './diagonalization/diagonalization-article.component';
 
 export const ALGEBRA_ARTICLES = [
+  GaloisSolvabilityComponent,
   BernsteinPolynomialsArticleComponent,
   PadeKrylovMethodsArticleComponent,
   GroupsCosetsLagrangeArticleComponent,

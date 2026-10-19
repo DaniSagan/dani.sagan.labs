@@ -12,7 +12,7 @@ const GROUPS = {
     ['Simetrías y rompecabezas', 'burnside-lemma sudoku-constraints rubik-invariants'],
   ],
   algebra: [
-    ["Estructuras y cocientes", "equivalence-quotients rings-finite-fields groups-cosets-lagrange"],
+    ["Estructuras y cocientes", "equivalence-quotients rings-finite-fields groups-cosets-lagrange galois-solvability"],
     ["Álgebra numérica y aproximación", "singular-values-operator-norms nonnormal-transient-growth ridge-regularization pade-krylov-methods bernstein-polynomials"],
     ['Polinomios y ecuaciones', 'polynomial-foundations equation-equivalence polynomial-division algebraic-identities-factorization quadratic-equations cubic-equation rational-root-theorem cyclotomic-polynomials sign-charts'],
     ['Álgebra lineal', 'vector-spaces change-of-basis gaussian-elimination matrix-determinant matrix-diagonalization jordan-form cayley-hamilton gram-schmidt projection-least-squares'],
@@ -96,7 +96,7 @@ const GROUPS = {
     ],
     [
       'Ecuaciones diofánticas',
-      'linear-diophantine-equations pell-equation continued-fractions sum-of-two-squares fermat-four-square-theorem',
+      'fermat-wiles-theorem linear-diophantine-equations pell-equation continued-fractions sum-of-two-squares fermat-four-square-theorem',
     ],
     [
       'Divisores y números especiales',
@@ -136,7 +136,7 @@ const GROUPS = {
     ],
     [
       'Espacio y dimensiones',
-      'inspheres-circumspheres lines-planes orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
+      'archimedes-sphere-cylinder inspheres-circumspheres lines-planes orthogonal-projections tesseract euler-polyhedron-formula cavalieri-principle cayley-menger',
     ],
     ['Patrones geométricos', 'hitomezashi'],
   ],

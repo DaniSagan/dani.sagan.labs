@@ -1,3 +1,5 @@
 table { font-variant-numeric: tabular-nums; }
 .audit { max-height: 360px; overflow: auto; margin: 1rem 0; }
 details > summary { cursor: pointer; color: var(--gold); }
+
+.taxicab-culture-image{margin:1.5rem 0}.taxicab-culture-image img{display:block;width:100%;height:auto;border-radius:6px}.taxicab-culture-image figcaption{margin-top:.7rem;font-size:.8rem;line-height:1.6;color:var(--ink-dim)}

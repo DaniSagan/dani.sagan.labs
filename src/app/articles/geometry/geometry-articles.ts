@@ -1,3 +1,4 @@
+import { ArchimedesSphereCylinderComponent } from './archimedes-sphere-cylinder/archimedes-sphere-cylinder.component';
 import { AffineTransformationsArticleComponent } from './affine-transformations/affine-transformations-article.component';
 import { CurveSingularitiesArticleComponent } from './curve-singularities/curve-singularities-article.component';
 import { EnvelopesEvolutesArticleComponent } from './envelopes-evolutes/envelopes-evolutes-article.component';
@@ -56,6 +57,7 @@ import { PompeiuTheoremArticleComponent } from './pompeiu-theorem/pompeiu-theore
 import { HitomezashiArticleComponent } from './hitomezashi/hitomezashi-article.component';
 
 export const GEOMETRY_ARTICLES = [
+  ArchimedesSphereCylinderComponent,
   AffineTransformationsArticleComponent,
   CurveSingularitiesArticleComponent,
   EnvelopesEvolutesArticleComponent,

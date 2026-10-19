@@ -1,3 +1,4 @@
+import { QuaternionsRotationsComponent } from './quaternions-rotations/quaternions-rotations.component';
 import { RiemannSphereArticleComponent } from './riemann-sphere/riemann-sphere-article.component';
 import { ComplexLogarithmBranchesArticleComponent } from './complex-logarithm-branches/complex-logarithm-branches-article.component';
 import { ComplexResiduesArticleComponent } from './complex-residues/complex-residues-article.component';
@@ -10,6 +11,7 @@ import { EulerIdentityArticleComponent } from './euler-identity/euler-identity-a
 import { MobiusTransformationsArticleComponent } from './mobius-transformations/mobius-transformations-article.component';
 
 export const COMPLEX_NUMBERS_ARTICLES = [
+  QuaternionsRotationsComponent,
   RiemannSphereArticleComponent,
   ComplexLogarithmBranchesArticleComponent,
   ComplexResiduesArticleComponent,

@@ -1,0 +1,2062 @@
+{
+  "date": "2026-10-19",
+  "scope": "Images under src/assets; runtime source references and actual dynamic example catalogues; metadata/docs/generation scripts excluded as evidence of UI use",
+  "total": 255,
+  "static": 29,
+  "dynamic": 224,
+  "unreferenced": [
+    {
+      "file": "src/assets/img/images.jpg",
+      "bytes": 25783,
+      "kind": "unreferenced",
+      "references": []
+    },
+    {
+      "file": "src/assets/img/taxicab-2.webp",
+      "bytes": 27906,
+      "kind": "unreferenced",
+      "references": []
+    }
+  ],
+  "assets": [
+    {
+      "file": "src/assets/images/anecdotes/abel.jpg",
+      "bytes": 380180,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/abel-late-appointment/abel-late-appointment.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/archimedes.jpg",
+      "bytes": 76123,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/archimedes-last-circles/archimedes-last-circles.component.html",
+        "src/app/articles/anecdotes/archimedes-tomb/archimedes-tomb.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/cardano.jpg",
+      "bytes": 181927,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/tartaglia-cardano-secret/tartaglia-cardano-secret.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/de-moivre.jpg",
+      "bytes": 182976,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/de-moivre-last-sleep/de-moivre-last-sleep.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/erdos.jpg",
+      "bytes": 137773,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/erdos-book/erdos-book.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/euler.jpg",
+      "bytes": 220621,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/euler-diderot-legend/euler-diderot-legend.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/fermat.jpg",
+      "bytes": 201356,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/fermat-margin/fermat-margin.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/fourier.jpg",
+      "bytes": 232129,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/fourier-heat-prize/fourier-heat-prize.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/galois.jpg",
+      "bytes": 252125,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/galois-last-letter/galois-last-letter.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/germain.jpg",
+      "bytes": 297023,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/germain-leblanc/germain-leblanc.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/hamilton.jpg",
+      "bytes": 219757,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/hamilton-broom-bridge/hamilton-broom-bridge.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/hardy.jpg",
+      "bytes": 52508,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/hardy-riemann-postcard/hardy-riemann-postcard.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/hilbert.jpg",
+      "bytes": 104667,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/hilbert-hotel/hilbert-hotel.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/lovelace.jpg",
+      "bytes": 275057,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/lovelace-unbuilt-machine/lovelace-unbuilt-machine.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/mirzakhani.jpg",
+      "bytes": 7824,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/mirzakhani-paper/mirzakhani-paper.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/newton.jpg",
+      "bytes": 264751,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/newton-leibniz-priority/newton-leibniz-priority.component.html",
+        "src/app/articles/anecdotes/newton-lion-claw/newton-lion-claw.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/perelman.jpg",
+      "bytes": 104455,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/perelman-prize-refusal/perelman-prize-refusal.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/poincare.jpg",
+      "bytes": 224720,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/poincare-omnibus/poincare-omnibus.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/pythagoras.jpg",
+      "bytes": 213303,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/hippasus-irrational-legend/hippasus-irrational-legend.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/turing.jpg",
+      "bytes": 92890,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/turing-1936-paper/turing-1936-paper.component.html",
+        "src/app/articles/anecdotes/turing-paper-chess/turing-paper-chess.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/ulam.png",
+      "bytes": 9330,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/ulam-spiral-doodle/ulam-spiral-doodle.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/images/anecdotes/zeno.png",
+      "bytes": 375352,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/zeno-achilles-tortoise/zeno-achilles-tortoise.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/images.jpg",
+      "bytes": 25783,
+      "kind": "unreferenced",
+      "references": []
+    },
+    {
+      "file": "src/assets/img/jordan curve proof.png",
+      "bytes": 219973,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/topology/jordan-curve/jordan-curve-article.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/mobius-strip.webp",
+      "bytes": 17926,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/topology/mobius-strip/mobius-strip-article.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/rabbit-population.webp",
+      "bytes": 47658,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/fractals/bifurcation-diagram/bifurcation-diagram.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/shortest-math-paper.jpg",
+      "bytes": 47219,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/anecdotes/euler-conjecture-counterexample/euler-conjecture-counterexample.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/taxicab-2.webp",
+      "bytes": 27906,
+      "kind": "unreferenced",
+      "references": []
+    },
+    {
+      "file": "src/assets/img/taxicab-optimized.jpg",
+      "bytes": 173160,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/number-theory/taxicab-numbers/taxicab-numbers.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/taxicab.jpg",
+      "bytes": 986823,
+      "kind": "static-reference",
+      "references": [
+        "src/app/articles/number-theory/taxicab-numbers/taxicab-numbers.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/img/westerlund_2.jpg",
+      "bytes": 279304,
+      "kind": "static-reference",
+      "references": [
+        "src/app/header/header.component.css"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/agnesi-twin.svg",
+      "bytes": 6375,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/algebraic-flower.svg",
+      "bytes": 5899,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/amoeba.svg",
+      "bytes": 7355,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/ampersand.svg",
+      "bytes": 10153,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/apollonius.svg",
+      "bytes": 3309,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/astroid.svg",
+      "bytes": 6999,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bat.svg",
+      "bytes": 7155,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bean.svg",
+      "bytes": 7179,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bernoulli-lemniscate-distance.svg",
+      "bytes": 6563,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/beta-arches.svg",
+      "bytes": 5508,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bicorn.svg",
+      "bytes": 6231,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bifolium.svg",
+      "bytes": 5593,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bowtie.svg",
+      "bytes": 6955,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/braid.svg",
+      "bytes": 15518,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/braided-mandala.svg",
+      "bytes": 54069,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bubble-grid.svg",
+      "bytes": 22755,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/bullet-nose.svg",
+      "bytes": 6473,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/butterfly-algebraic.svg",
+      "bytes": 9903,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/butterfly.svg",
+      "bytes": 11185,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cardioid.svg",
+      "bytes": 5275,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cartesian.svg",
+      "bytes": 3791,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cassini.svg",
+      "bytes": 4503,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/catenary-lens.svg",
+      "bytes": 11335,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/catenary.svg",
+      "bytes": 4772,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cayley-sextic.svg",
+      "bytes": 9769,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/chebyshev-wave.svg",
+      "bytes": 23950,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/checker-lace.svg",
+      "bytes": 31665,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/circle.svg",
+      "bytes": 7087,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/circular-sources.svg",
+      "bytes": 31297,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cissoid.svg",
+      "bytes": 5015,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/clover.svg",
+      "bytes": 10587,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/compass.svg",
+      "bytes": 8361,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/concentric-ellipses.svg",
+      "bytes": 17775,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/coral.svg",
+      "bytes": 26816,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/counter-spirals.svg",
+      "bytes": 46775,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/crescent.svg",
+      "bytes": 7245,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/cross.svg",
+      "bytes": 11599,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/daisy.svg",
+      "bytes": 14671,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/deltoid.svg",
+      "bytes": 6835,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/devil.svg",
+      "bytes": 11069,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/diagonal-infinity.svg",
+      "bytes": 6245,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/diamond-tiles.svg",
+      "bytes": 38445,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/diamond.svg",
+      "bytes": 7035,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/double-ellipse.svg",
+      "bytes": 11259,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/double-heart.svg",
+      "bytes": 7773,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/dumbbell.svg",
+      "bytes": 6683,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/durer-shell.svg",
+      "bytes": 6922,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/egg.svg",
+      "bytes": 6491,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/electric.svg",
+      "bytes": 4472,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/ellipse-evolute.svg",
+      "bytes": 6269,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/ellipse.svg",
+      "bytes": 5999,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/elliptic-grid.svg",
+      "bytes": 25681,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/elliptic.svg",
+      "bytes": 5541,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/erf-curve.svg",
+      "bytes": 3776,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/fermat.svg",
+      "bytes": 7111,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/fingerprint.svg",
+      "bytes": 40644,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/fish.svg",
+      "bytes": 6032,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/flower-rings.svg",
+      "bytes": 32325,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/folium.svg",
+      "bytes": 6715,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/galaxy.svg",
+      "bytes": 25772,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/gamma-curve.svg",
+      "bytes": 5678,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/gaussian-curve.svg",
+      "bytes": 3578,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/gear.svg",
+      "bytes": 13441,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/gielis-6-petalo.svg",
+      "bytes": 6143,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/goursat.svg",
+      "bytes": 6295,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/harmonic-lace.svg",
+      "bytes": 43785,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/heart-rings.svg",
+      "bytes": 102445,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/heart.svg",
+      "bytes": 7317,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/hermite-curve.svg",
+      "bytes": 7022,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/hex-waves.svg",
+      "bytes": 19025,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/hippopede.svg",
+      "bytes": 4975,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/honeycomb.svg",
+      "bytes": 12533,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/hyperbola.svg",
+      "bytes": 8101,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/hyperbolic-waves.svg",
+      "bytes": 37385,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/iris.svg",
+      "bytes": 7279,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/islands.svg",
+      "bytes": 19251,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/jacobi-net.svg",
+      "bytes": 17838,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/kampyle.svg",
+      "bytes": 6637,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/kappa.svg",
+      "bytes": 6459,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/kepler-folium.svg",
+      "bytes": 4077,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/kepler.svg",
+      "bytes": 2157,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lace-mandala.svg",
+      "bytes": 44247,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lambert-curve.svg",
+      "bytes": 4021,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lame.svg",
+      "bytes": 5407,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/legendre-net.svg",
+      "bytes": 24735,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lemniscate.svg",
+      "bytes": 6467,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lens.svg",
+      "bytes": 4605,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lissajous57.svg",
+      "bytes": 25933,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/log-spiral.svg",
+      "bytes": 15844,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/lotus.svg",
+      "bytes": 16243,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-diamond.svg",
+      "bytes": 43483,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-eye.svg",
+      "bytes": 17033,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-lotus.svg",
+      "bytes": 52371,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-pearl.svg",
+      "bytes": 33423,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-shell.svg",
+      "bytes": 53407,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-sun.svg",
+      "bytes": 40877,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala-woven.svg",
+      "bytes": 56493,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/mandala.svg",
+      "bytes": 43993,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/metaballs2.svg",
+      "bytes": 4895,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/metaballs3.svg",
+      "bytes": 6215,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/metaballs4.svg",
+      "bytes": 6259,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/moire.svg",
+      "bytes": 63178,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/multibrot.svg",
+      "bytes": 5373,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/multifocal-5-estrella.svg",
+      "bytes": 8463,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/nephroid.svg",
+      "bytes": 8273,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/newton-bell-oval.svg",
+      "bytes": 4786,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/newton-node.svg",
+      "bytes": 5746,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/newton-punctate.svg",
+      "bytes": 4059,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/newton-trident.svg",
+      "bytes": 6292,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/nicomedes.svg",
+      "bytes": 6287,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/orchid.svg",
+      "bytes": 9137,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/orthogonal-chebyshevu.svg",
+      "bytes": 20221,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/orthogonal-gegenbauer.svg",
+      "bytes": 20221,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/orthogonal-legendre.svg",
+      "bytes": 21249,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/parabola-evolute.svg",
+      "bytes": 4544,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/parabola.svg",
+      "bytes": 5356,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/pascal.svg",
+      "bytes": 3431,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/peanut.svg",
+      "bytes": 6295,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/petal-crown.svg",
+      "bytes": 20201,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/petal-weave.svg",
+      "bytes": 35353,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/piriform.svg",
+      "bytes": 7535,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/quartic-cross.svg",
+      "bytes": 7849,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/quartic-windmill.svg",
+      "bytes": 9368,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/quasicrystal.svg",
+      "bytes": 25615,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/reuleaux.svg",
+      "bytes": 5671,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/ribbon.svg",
+      "bytes": 10931,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/rings.svg",
+      "bytes": 29511,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/ripples.svg",
+      "bytes": 54041,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/rose-power.svg",
+      "bytes": 24123,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/rose12.svg",
+      "bytes": 26025,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/rounded-box.svg",
+      "bytes": 6559,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/rounded-tiles.svg",
+      "bytes": 14931,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/saw-star.svg",
+      "bytes": 15835,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/semicubical.svg",
+      "bytes": 4485,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/serpentine.svg",
+      "bytes": 3596,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/sextic.svg",
+      "bytes": 6331,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/sinc-ripples.svg",
+      "bytes": 4110,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/sluze-conchoid.svg",
+      "bytes": 6191,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/sluze.svg",
+      "bytes": 7735,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/snowflake.svg",
+      "bytes": 11695,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/spiral-flower.svg",
+      "bytes": 39465,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/spiral-lace.svg",
+      "bytes": 45824,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/spiral-ribbon.svg",
+      "bytes": 30921,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/spiric.svg",
+      "bytes": 5103,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/square-rings.svg",
+      "bytes": 25149,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/squircle.svg",
+      "bytes": 7817,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/stadium.svg",
+      "bytes": 5711,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/standing-wave.svg",
+      "bytes": 26731,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/star-shells.svg",
+      "bytes": 49369,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/star8.svg",
+      "bytes": 11369,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/strophoid.svg",
+      "bytes": 4387,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/sunflower.svg",
+      "bytes": 16733,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/superellipse.svg",
+      "bytes": 7107,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/teardrop.svg",
+      "bytes": 6563,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/three-circles.svg",
+      "bytes": 12739,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/three-sources.svg",
+      "bytes": 37853,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/topography.svg",
+      "bytes": 39228,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/tractrix.svg",
+      "bytes": 6374,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/trisectrix.svg",
+      "bytes": 6191,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/tschirnhausen.svg",
+      "bytes": 7260,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/twisted-flower.svg",
+      "bytes": 13121,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/two-sources.svg",
+      "bytes": 49629,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/vertical-infinity.svg",
+      "bytes": 6355,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/vortex.svg",
+      "bytes": 52736,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/warped-grid.svg",
+      "bytes": 34925,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/watt.svg",
+      "bytes": 12369,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/wave-crystal.svg",
+      "bytes": 23837,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/wave-diamond.svg",
+      "bytes": 45835,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/wave-lens.svg",
+      "bytes": 64589,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/witch.svg",
+      "bytes": 3330,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/wood.svg",
+      "bytes": 38384,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/woven-diagonals.svg",
+      "bytes": 52483,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/woven-ribbon.svg",
+      "bytes": 19757,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/woven-waves.svg",
+      "bytes": 35542,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/implicit-curve-examples/yin-yang.svg",
+      "bytes": 10841,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/implicit-curve-graph-tool/implicit-curve-graph-tool.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/bogdanov.svg",
+      "bytes": 24872,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/brusselator.svg",
+      "bytes": 26977,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/cellular.svg",
+      "bytes": 23300,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/competition.svg",
+      "bytes": 36461,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/cubic-grid.svg",
+      "bytes": 37717,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/damped.svg",
+      "bytes": 35215,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/double-gyre.svg",
+      "bytes": 37564,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/double-ring.svg",
+      "bytes": 47850,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/double-vortex.svg",
+      "bytes": 32404,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/duffing-forced.svg",
+      "bytes": 32002,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/duffing.svg",
+      "bytes": 29899,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/electric-dipole.svg",
+      "bytes": 35704,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/fhn.svg",
+      "bytes": 37881,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/flower-flow.svg",
+      "bytes": 37756,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/gradient-egg.svg",
+      "bytes": 18494,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/gradient-wells.svg",
+      "bytes": 37717,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/hamiltonian.svg",
+      "bytes": 44750,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/harmonic.svg",
+      "bytes": 33554,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/henon-heiles-slice.svg",
+      "bytes": 10324,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/hopf.svg",
+      "bytes": 37978,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/linear.svg",
+      "bytes": 35051,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/lissajous-time.svg",
+      "bytes": 18288,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/logistic-predator.svg",
+      "bytes": 29716,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/lotka.svg",
+      "bytes": 30261,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/magnetic.svg",
+      "bytes": 34454,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/mathieu.svg",
+      "bytes": 19403,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/morris-lecar.svg",
+      "bytes": 37264,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/nonlinear-center.svg",
+      "bytes": 23987,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/pendulum-forced.svg",
+      "bytes": 16823,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/pendulum.svg",
+      "bytes": 16489,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/pitchfork.svg",
+      "bytes": 37842,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/quasiperiodic.svg",
+      "bytes": 26756,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/rayleigh.svg",
+      "bytes": 35611,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/rosenbrock.svg",
+      "bytes": 90154,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/rotating-cells.svg",
+      "bytes": 24836,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/saddle-node.svg",
+      "bytes": 28697,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/shear.svg",
+      "bytes": 13678,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/sine-hamiltonian.svg",
+      "bytes": 13438,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/sir.svg",
+      "bytes": 32183,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/source-vortex.svg",
+      "bytes": 8643,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/spiral-garden.svg",
+      "bytes": 20444,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/subcritical-hopf.svg",
+      "bytes": 38548,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/swirling-wave.svg",
+      "bytes": 26702,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/transcritical.svg",
+      "bytes": 23417,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/twisted-ring.svg",
+      "bytes": 37210,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/uniform.svg",
+      "bytes": 9999,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/vanderpol.svg",
+      "bytes": 34671,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/vdp-forced.svg",
+      "bytes": 37485,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    },
+    {
+      "file": "src/assets/vector-field-examples/vortex-dipole.svg",
+      "bytes": 29382,
+      "kind": "dynamic-reference",
+      "references": [
+        "src/app/tools/vector-field/vector-field.component.html"
+      ]
+    }
+  ]
+}

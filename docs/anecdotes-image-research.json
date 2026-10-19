@@ -1,0 +1,591 @@
+{
+  "cardano": {
+    "file": "src/assets/images/anecdotes/cardano.jpg",
+    "title": "File:Mathematician Girolamo Cardano, half-length portrait in oval, facing right, with text below LCCN92518239.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Mathematician_Girolamo_Cardano,_half-length_portrait_in_oval,_facing_right,_with_text_below_LCCN92518239.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ea/Mathematician_Girolamo_Cardano%2C_half-length_portrait_in_oval%2C_facing_right%2C_with_text_below_LCCN92518239.jpg/960px-Mathematician_Girolamo_Cardano%2C_half-length_portrait_in_oval%2C_facing_right%2C_with_text_below_LCCN92518239.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Miscellaneous Items in High Demand, PPOC, Library of Congress",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Title:  Mathematician Girolamo Cardano, half-length portrait in oval, facing right, with text below\n Abstract/medium:  1 print : engraving and text.",
+    "width": 600,
+    "height": 813,
+    "bytes": 181927,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Girolamo Cardano. Stipple engraving by Forestier. Wellcome V0001003.jpg: CC BY 4.0",
+      "File:Girolamo Cardano. Stipple engraving by R. Cooper. Wellcome V0001004.jpg: CC BY 4.0"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "tartaglia-cardano-secret"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "galois": {
+    "file": "src/assets/images/anecdotes/galois.jpg",
+    "title": "File:Evariste Galois.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Evariste_Galois.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Evariste_Galois.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Unknown author Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Portrait of Évariste Galois, young man in front of bust coating a redingote.",
+    "width": 600,
+    "height": 828,
+    "bytes": 252125,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "galois-last-letter"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "newton": {
+    "file": "src/assets/images/anecdotes/newton.jpg",
+    "title": "File:Portrait of Sir Isaac Newton, 1689.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_Sir_Isaac_Newton,_1689.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Portrait_of_Sir_Isaac_Newton%2C_1689.jpg/960px-Portrait_of_Sir_Isaac_Newton%2C_1689.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Godfrey Kneller",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "",
+    "width": 600,
+    "height": 723,
+    "bytes": 264751,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "newton-leibniz-priority",
+      "newton-lion-claw"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "perelman": {
+    "file": "src/assets/images/anecdotes/perelman.jpg",
+    "title": "File:Grigori Perelman, 1993 (re-scanned).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Grigori_Perelman,_1993_(re-scanned).jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Grigori_Perelman%2C_1993_%28re-scanned%29.jpg/960px-Grigori_Perelman%2C_1993_%28re-scanned%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "George Bergman",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Russian-born mathematician Grigori (\"Grisha\") Perelman at Berkeley, California",
+    "width": 600,
+    "height": 403,
+    "bytes": 104455,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "perelman-prize-refusal"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "dantzig": {
+    "status": "search failed",
+    "query": "George Dantzig",
+    "error": "HTTP Error 429: Too Many Requests",
+    "finalDecision": "no suitable approved downloaded resource; story published without an image"
+  },
+  "hardy": {
+    "file": "src/assets/images/anecdotes/hardy.jpg",
+    "title": "File:Godfrey Harold Hardy 1.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Godfrey_Harold_Hardy_1.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Godfrey_Harold_Hardy_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Unknown author Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Photographie von Godfrey Harold Hardy (1877-1947) in seiner Blütezeit.\n \"Um so sitzen zu können, muß man in einer Public School erzogen worden sein.\" [Public School = privates Internat].\n \nQuelle unbekannt. Siehe auch: Robert Kanigel:  Der das Unendliche Kannte. Das Leben des genialen Mathematikers Srinivasa Ramanujan. Vieweg, 2.Aufl.1995, S.240.",
+    "width": 600,
+    "height": 600,
+    "bytes": 52508,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "hardy-riemann-postcard"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "hamilton": {
+    "file": "src/assets/images/anecdotes/hamilton.jpg",
+    "title": "File:Broom bridge plaque.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Broom_bridge_plaque.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Broom_bridge_plaque.jpg/960px-Broom_bridge_plaque.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Wisher  at  English Wikipedia",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Somewhat vandalized plaque on Brougham Bridge in Central Dublin, commemorating Hamilton's invention of  w:quaternions . \n The plaque says:\n   Here as he walked by  \non the 16th of October 1843  \nSir William Rowan Hamilton  \nin a flash of genius discovered  \nthe fundamental formula for  \nquaternion multiplication  \ni 2  = j 2  = k 2  = i j k = −1  \n   \n& cut it on a stone of this bridge",
+    "width": 600,
+    "height": 400,
+    "bytes": 219757,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Quaternion Plaque on Broom Bridge.jpg: CC BY-SA 3.0"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "hamilton-broom-bridge"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "fermat": {
+    "file": "src/assets/images/anecdotes/fermat.jpg",
+    "title": "File:Pierre de Fermat3.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pierre_de_Fermat3.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Pierre_de_Fermat3.jpg/960px-Pierre_de_Fermat3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Rolland Lefebvre",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Pierre de Fermat",
+    "width": 600,
+    "height": 741,
+    "bytes": 201356,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "fermat-margin"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "archimedes": {
+    "file": "src/assets/images/anecdotes/archimedes.jpg",
+    "title": "File:Retrato de un erudito (¿Arquímedes?), por Domenico Fetti.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Retrato_de_un_erudito_(%C2%BFArqu%C3%ADmedes%3F),_por_Domenico_Fetti.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Retrato_de_un_erudito_%28%C2%BFArqu%C3%ADmedes%3F%29%2C_por_Domenico_Fetti.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Domenico Fetti",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "",
+    "width": 600,
+    "height": 794,
+    "bytes": 76123,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Domenico-Fetti Archimedes 1620.jpg: too large",
+      "File:Domenico Fetti - Portrait of a Scholar - WGA07862.jpg: too large"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "archimedes-last-circles",
+      "archimedes-tomb"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "germain": {
+    "file": "src/assets/images/anecdotes/germain.jpg",
+    "title": "File:Chégaray, Poinsot - Sophie Germain.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ch%C3%A9garay,_Poinsot_-_Sophie_Germain.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Ch%C3%A9garay%2C_Poinsot_-_Sophie_Germain.jpg/960px-Ch%C3%A9garay%2C_Poinsot_-_Sophie_Germain.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Berthe Chégaray née Becher et J. Poinsot",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Portrait de Sophie Germain par J. Poinsot, d'après Berthe Chégaray, reproduit dans L'Éducation mathématique du 15 mai 1900, p. 136, conservé à la bibliothèque nationale de France, mis à disposition sur Gallica",
+    "width": 600,
+    "height": 639,
+    "bytes": 297023,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Chégaray - Sophie Germain.png: too large"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "germain-leblanc"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "godel": {
+    "status": "no approved downloadable candidate",
+    "query": "Kurt Godel black white portrait",
+    "rejected": [],
+    "finalDecision": "no approved download; colourisation rejected"
+  },
+  "euler": {
+    "file": "src/assets/images/anecdotes/euler.jpg",
+    "title": "File:Leonhard Euler - Jakob Emanuel Handmann (Kunstmuseum Basel).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Leonhard_Euler_-_Jakob_Emanuel_Handmann_(Kunstmuseum_Basel).jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Leonhard_Euler_-_Jakob_Emanuel_Handmann_%28Kunstmuseum_Basel%29.jpg/960px-Leonhard_Euler_-_Jakob_Emanuel_Handmann_%28Kunstmuseum_Basel%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Jakob Emanuel Handmann",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "",
+    "width": 600,
+    "height": 776,
+    "bytes": 220621,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "euler-conjecture-counterexample",
+      "euler-diderot-legend"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "turing": {
+    "file": "src/assets/images/anecdotes/turing.jpg",
+    "title": "File:Alan Turing (1951).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Alan_Turing_(1951).jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Alan_Turing_%281951%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Elliott & Fry",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Photograph portrait of Alan Turing, taken on 29 March 1951.",
+    "width": 600,
+    "height": 800,
+    "bytes": 92890,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "turing-paper-chess",
+      "turing-1936-paper"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "abel": {
+    "file": "src/assets/images/anecdotes/abel.jpg",
+    "title": "File:Johan Gørbitz - Niels Henrik Abel - Norsk portrettarkiv - Riksantikvaren - A000005.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Johan_G%C3%B8rbitz_-_Niels_Henrik_Abel_-_Norsk_portrettarkiv_-_Riksantikvaren_-_A000005.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Johan_G%C3%B8rbitz_-_Niels_Henrik_Abel_-_Norsk_portrettarkiv_-_Riksantikvaren_-_A000005.jpg/960px-Johan_G%C3%B8rbitz_-_Niels_Henrik_Abel_-_Norsk_portrettarkiv_-_Riksantikvaren_-_A000005.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Johan Gørbitz",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "",
+    "width": 600,
+    "height": 788,
+    "bytes": 380180,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "abel-late-appointment"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "poincare": {
+    "file": "src/assets/images/anecdotes/poincare.jpg",
+    "title": "File:Henri Poincaré, PA03199.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Henri_Poincar%C3%A9,_PA03199.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Henri_Poincar%C3%A9%2C_PA03199.jpg/960px-Henri_Poincar%C3%A9%2C_PA03199.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Manuel (artist) (designer)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Title Henri Poincaré Contributor Poincare, Henri (1854-1912) (depicted) Manuel (artist) (designer) Wittmann, Ch. (French publisher, printer, active 1891-1907) (artist) (printer) Date s.d Publisher (1890-1930) Genre Portraits Extent voorstelling: 160 x 130 mm voorstelling met opschrift: 180 x 130 mm plaatrand: 193 x 147 mm. Graphic Black-and-white ; Language French Typographical details photographic technique(s) Additional info General note: titel gecreëerd door catalograaf Inscriptions: Cliché. Manuel (buiten de voorstelling: onderaan, links) Inscriptions: Imp. Ch. Wittmann (buiten de voorstelling: onderaan, rechts) Source Library Catalog Source ID lbsn9982594240101471",
+    "width": 600,
+    "height": 877,
+    "bytes": 224720,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Portrait of Henri Poincaré (1854-1912), Mathematician (2551042945).jpg: No restrictions"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "poincare-omnibus"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "de-moivre": {
+    "file": "src/assets/images/anecdotes/de-moivre.jpg",
+    "title": "File:Abraham de Moivre by Joseph Highmore.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Abraham_de_Moivre_by_Joseph_Highmore.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/2/28/Abraham_de_Moivre_by_Joseph_Highmore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Joseph Highmore",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Portrait of Abraham de Moivre",
+    "width": 600,
+    "height": 712,
+    "bytes": 182976,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "de-moivre-last-sleep"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "pythagoras": {
+    "file": "src/assets/images/anecdotes/pythagoras.jpg",
+    "title": "File:Bust of Pythagoras at the Capitoline Museum.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Bust_of_Pythagoras_at_the_Capitoline_Museum.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/Bust_of_Pythagoras_at_the_Capitoline_Museum.jpg/960px-Bust_of_Pythagoras_at_the_Capitoline_Museum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Cmick25",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Hadrian era bust of mathematician Pythagoras based off of 2nd-1st century greek original",
+    "width": 600,
+    "height": 800,
+    "bytes": 213303,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "hippasus-irrational-legend"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "shanks": {
+    "status": "no approved downloadable candidate",
+    "query": "William Shanks mathematician",
+    "rejected": [],
+    "finalDecision": "excluded: search result was the painter William Somerville Shanks, not the mathematician"
+  },
+  "eratosthenes": {
+    "status": "no approved downloadable candidate",
+    "query": "Eratosthenes engraving",
+    "rejected": [],
+    "finalDecision": "excluded: modern composite of different scientists"
+  },
+  "euclid": {
+    "status": "no approved downloadable candidate",
+    "query": "Euclid Alexandria engraving",
+    "rejected": [],
+    "finalDecision": "excluded: identified Euclid of Megara rather than Euclid of Alexandria"
+  },
+  "von-neumann": {
+    "file": "src/assets/images/anecdotes/von-neumann.jpg",
+    "title": "File:John von Neumann.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:John_von_Neumann.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/a9/John_von_Neumann.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "wikispaces",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "description": "John von Neumann - portrait",
+    "width": 600,
+    "height": 683,
+    "bytes": 29823,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:John von Neumann in New Mexico.jpg: Attribution",
+      "File:John von Neumann ID badge.png: Attribution"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "von-neumann-fly"
+    ],
+    "finalDecision": "excluded: repository credit does not establish original photographer and reuse provenance sufficiently",
+    "fileStatus": "excluded from shipped assets"
+  },
+  "erdos": {
+    "file": "src/assets/images/anecdotes/erdos.jpg",
+    "title": "File:Ronald graham couple with erdos 1986.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ronald_graham_couple_with_erdos_1986.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Ronald_graham_couple_with_erdos_1986.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Che Graham",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "description": "Ronald Graham(top row), his wife Fan Chung Graham(bottom row right) and Paul Erdős(bottom row left) in Japan.",
+    "width": 600,
+    "height": 505,
+    "bytes": 137773,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "erdos-book"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "lovelace": {
+    "file": "src/assets/images/anecdotes/lovelace.jpg",
+    "title": "File:Ada Lovelace Chalon portrait.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ada_Lovelace_Chalon_portrait.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Ada_Lovelace_Chalon_portrait.jpg/960px-Ada_Lovelace_Chalon_portrait.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "Alfred Edward Chalon",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "detail: Depicted person:  Ada King, Countess of Lovelace",
+    "width": 600,
+    "height": 600,
+    "bytes": 275057,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Ada Lovelace portrait.jpg: too large"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "lovelace-unbuilt-machine"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "mirzakhani": {
+    "file": "src/assets/images/anecdotes/mirzakhani.jpg",
+    "title": "File:Maryam Mirzakhani in Seoul 2014.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Maryam_Mirzakhani_in_Seoul_2014.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Maryam_Mirzakhani_in_Seoul_2014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Gert-Martin Greuel",
+    "license": "CC BY-SA 2.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+    "description": "Maryam Mirzakhani at the Seoul convention of the  International Congress of Mathematicians  (ICM)",
+    "width": 600,
+    "height": 833,
+    "bytes": 7824,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "mirzakhani-paper"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "cantor": {
+    "file": "src/assets/images/anecdotes/cantor.jpg",
+    "title": "File:Georg Cantor- colorized.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Georg_Cantor-_colorized.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Georg_Cantor-_colorized.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Photocolorization",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Georg Cantor, colorized portrait.",
+    "width": 600,
+    "height": 787,
+    "bytes": 193073,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Das Fotoalbum für Weierstraß 033 (Georg Cantor).jpg: too large"
+    ],
+    "finalDecision": "excluded: modern colourisation; original historical representation preferred",
+    "fileStatus": "excluded from shipped assets"
+  },
+  "mobius": {
+    "status": "no approved downloadable candidate",
+    "query": "August Ferdinand Mobius lithograph",
+    "rejected": [],
+    "finalDecision": "no suitable approved downloaded resource; story published without an image"
+  },
+  "bayes": {
+    "status": "search failed",
+    "query": "Thomas Bayes portrait",
+    "error": "HTTP Error 429: Too Many Requests",
+    "finalDecision": "no suitable approved downloaded resource; story published without an image"
+  },
+  "napier": {
+    "file": "src/assets/images/anecdotes/napier.jpg",
+    "title": "File:John Boaden (d.1839) - The Napier Portrait of William Shakespeare (1564–1616) - STRPG-A, 1993.8 - Royal Shakespeare Theatre.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:John_Boaden_(d.1839)_-_The_Napier_Portrait_of_William_Shakespeare_(1564%E2%80%931616)_-_STRPG-A,_1993.8_-_Royal_Shakespeare_Theatre.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/0/0a/John_Boaden_%28d.1839%29_-_The_Napier_Portrait_of_William_Shakespeare_%281564%E2%80%931616%29_-_STRPG-A%2C_1993.8_-_Royal_Shakespeare_Theatre.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "John Boaden",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "",
+    "width": 600,
+    "height": 729,
+    "bytes": 104947,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "finalDecision": "excluded: Napier portrait of Shakespeare, not John Napier",
+    "fileStatus": "excluded from shipped assets"
+  },
+  "fourier": {
+    "file": "src/assets/images/anecdotes/fourier.jpg",
+    "title": "File:Joseph Fourier.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Joseph_Fourier.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Joseph_Fourier.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Amédée Félix Barthélemy Geille    /  After   Julien-Léopold Boilly",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Joseph Fourier  (1768-1830)",
+    "width": 600,
+    "height": 733,
+    "bytes": 232129,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "fourier-heat-prize"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "ulam": {
+    "file": "src/assets/images/anecdotes/ulam.png",
+    "title": "File:Stanislaw M. Ulam Los Alamos ID.png",
+    "source": "https://commons.wikimedia.org/wiki/File:Stanislaw_M._Ulam_Los_Alamos_ID.png",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Stanislaw_M._Ulam_Los_Alamos_ID.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Federal Government of the United States",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Stanislaw M. Ulam Los Alamos wartime security badge.",
+    "width": 600,
+    "height": 831,
+    "bytes": 9330,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Stanislaw Ulam.tif: Attribution",
+      "File:Stanislaw Ulam ID badge.png: Public domain",
+      "File:Ulam-stanislaw m.jpg: Attribution"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "ulam-spiral-doodle"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "mandelbrot": {
+    "status": "search failed",
+    "query": "Benoit Mandelbrot 1982",
+    "error": "HTTP Error 429: Too Many Requests",
+    "finalDecision": "no suitable approved downloaded resource; story published without an image"
+  },
+  "hilbert": {
+    "file": "src/assets/images/anecdotes/hilbert.jpg",
+    "title": "File:Hilbert.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Hilbert.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/7/79/Hilbert.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "Unknown author Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "David Hilbert, wearing a dashing hat",
+    "width": 600,
+    "height": 813,
+    "bytes": 104667,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "hilbert-hotel"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "banach": {
+    "file": "src/assets/images/anecdotes/banach.jpg",
+    "title": "File:Lwowscy matematycy1930.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lwowscy_matematycy1930.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Lwowscy_matematycy1930.jpg/960px-Lwowscy_matematycy1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "author": "The original uploader was  Stako  at  Polish Wikipedia .",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "description": "Lwowscy matematycy AD 1930 Fotografia pochodzi z książki Kazimierza Kuratowskiego \"Pół wieku matematyki polskiej 1920-1970\" wydanej przez Książkę i Wiedzę w 1973 r. (bez zastrzeżonych praw autorskich).",
+    "width": 600,
+    "height": 413,
+    "bytes": 277209,
+    "status": "downloaded; requires visual review",
+    "rejected": [],
+    "finalDecision": "excluded: unrelated advertisement or group portrait without sufficient identification",
+    "fileStatus": "excluded from shipped assets"
+  },
+  "zeno": {
+    "file": "src/assets/images/anecdotes/zeno.png",
+    "title": "File:Zeno of Elea (transparent).png",
+    "source": "https://commons.wikimedia.org/wiki/File:Zeno_of_Elea_(transparent).png",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Zeno_of_Elea_%28transparent%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "author": "S. Perquin",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "description": "Zeno of Elea portrait bust on a transparent background",
+    "width": 600,
+    "height": 860,
+    "bytes": 375352,
+    "status": "downloaded; requires visual review",
+    "rejected": [
+      "File:Portretbuste van Zeno van Elea Paradigmata graphices variorum artificum (serietitel), RP-P-1907-4495.jpg: too large"
+    ],
+    "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
+    "usedBy": [
+      "zeno-achilles-tortoise"
+    ],
+    "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  }
+}
