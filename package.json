@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:transfinite": "node scripts/test-transfinite-numbers.cjs",
+    "test:transfinite:browser": "node scripts/check-transfinite-numbers.cjs",
     "test:koch-antisnowflake": "node scripts/test-koch-antisnowflake.cjs",
     "test:koch-antisnowflake:browser": "node scripts/check-koch-antisnowflake-page.cjs",
     "test:pi-decimals": "node scripts/test-pi-decimals.cjs && node scripts/test-pi-bigint-limit.cjs",

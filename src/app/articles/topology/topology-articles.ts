@@ -1,3 +1,4 @@
+import { TransfiniteNumbersComponent } from './transfinite-numbers/transfinite-numbers.component';
 import { BanachTarskiParadoxComponent } from './banach-tarski-paradox/banach-tarski-paradox.component';
 import { OpenClosedConnectedArticleComponent } from './open-closed-connected/open-closed-connected-article.component';
 import { SchoenfliesWindingNumberArticleComponent } from './schoenflies-winding-number/schoenflies-winding-number-article.component';
@@ -10,6 +11,7 @@ import { KleinBottleArticleComponent } from './klein-bottle/klein-bottle-article
 import { JordanCurveArticleComponent } from './jordan-curve/jordan-curve-article.component';
 
 export const TOPOLOGY_ARTICLES = [
+  TransfiniteNumbersComponent,
   BanachTarskiParadoxComponent,
   OpenClosedConnectedArticleComponent,
   SchoenfliesWindingNumberArticleComponent,

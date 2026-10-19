@@ -1,0 +1,22 @@
+<section class="math-lab" aria-labelledby="hydra-lab-title">
+<h4 id="hydra-lab-title">Laboratorio · Corta una cabeza y observa el ordinal</h4>
+<p>Las cabezas son las hojas del árbol. Pulsa una para cortarla; las ramas sin botón son nodos internos. También puedes llegar a los botones con Tab y cortar con Intro o Espacio.</p>
+<div class="controls"><label>Hidra inicial<select id="hydra-preset" [(ngModel)]="preset" (ngModelChange)="restart()">
+<option value="fork">Una rama con dos cabezas · ω²</option><option value="chain">Una cadena de tres aristas · ω^ω</option><option value="flat">Tres cabezas en la raíz · 3</option>
+</select></label><button id="hydra-reset" type="button" (click)="restart()">Reiniciar hidra</button></div>
+<div class="readouts"><span>Siguiente corte <b>{{ game.turn }}</b></span><span>Cabezas <b id="hydra-heads">{{ game.heads }}</b></span><span>Nodos, incluida la raíz <b>{{ game.nodes }}</b></span></div>
+<div class="hydra-tree" role="region" aria-label="Árbol de la hidra; la raíz es el cuerpo, no se corta" tabindex="0">
+<span class="hydra-root">Raíz · cuerpo</span>
+<ng-container *ngTemplateOutlet="branches; context: { $implicit: game.tree.children }" />
+@if (game.heads === 0) {<p>¡No quedan cabezas!</p>}
+</div>
+<ng-template #branches let-children><ul>
+@for (node of children; track node.id) {<li>
+@if (node.children.length === 0) {<button class="hydra-head" type="button" [attr.aria-label]="'Cortar cabeza ' + node.id" (click)="cut(node.id)">✂ Cabeza {{ node.id }}</button>}
+@else {<span class="hydra-branch">Rama {{ node.id }}</span><ng-container *ngTemplateOutlet="branches; context: { $implicit: node.children }" />}
+</li>}
+</ul></ng-template>
+<div role="status" aria-live="polite" aria-atomic="true" id="hydra-status"><p>{{ game.message }}</p><p>Ordinal actual: <strong class="hydra-ordinal" id="hydra-ordinal">{{ game.ordinal }}</strong></p>
+@if (game.lastComparison) {<p>Último cambio: <strong>{{ game.lastComparison }}</strong></p>}</div>
+<p class="model-note">El corte n añade n copias de la rama restante si el padre no es la raíz. Los identificadores solo distinguen nodos: no alteran las reglas. Para mantener el árbol manejable, un corte que superase {{ game.maxNodes }} nodos se rechaza antes de cambiar la partida. Ese límite de pantalla no es una derrota ni contradice el teorema de terminación.</p>
+</section>

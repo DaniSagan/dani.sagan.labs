@@ -1,0 +1,9 @@
+.hydra-tree { max-height: 360px; overflow: auto; padding: 14px; border: 1px solid var(--rule); border-radius: 8px; background: var(--paper); }
+.hydra-tree ul { list-style: none; padding-left: 16px; margin: 8px 0; }
+.hydra-tree li { border-left: 2px solid var(--rule); padding: 5px 0 5px 12px; margin: 0; }
+.hydra-root, .hydra-branch { display: inline-block; padding: 6px; color: var(--gold); }
+.hydra-head { min-height: 44px; max-width: 100%; }
+.hydra-ordinal { font-family: monospace; color: var(--gold); }
+.controls select, .controls button { min-height: 44px; }
+.controls select option { color: var(--ink); background: var(--paper); }
+.hydra-tree:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
