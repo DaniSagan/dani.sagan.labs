@@ -1,3 +1,4 @@
+import { SurrealNumbersComponent } from './surreal-numbers/surreal-numbers.component';
 import { TransfiniteNumbersComponent } from './transfinite-numbers/transfinite-numbers.component';
 import { BanachTarskiParadoxComponent } from './banach-tarski-paradox/banach-tarski-paradox.component';
 import { OpenClosedConnectedArticleComponent } from './open-closed-connected/open-closed-connected-article.component';
@@ -11,6 +12,7 @@ import { KleinBottleArticleComponent } from './klein-bottle/klein-bottle-article
 import { JordanCurveArticleComponent } from './jordan-curve/jordan-curve-article.component';
 
 export const TOPOLOGY_ARTICLES = [
+  SurrealNumbersComponent,
   TransfiniteNumbersComponent,
   BanachTarskiParadoxComponent,
   OpenClosedConnectedArticleComponent,

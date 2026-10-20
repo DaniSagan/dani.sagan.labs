@@ -1,0 +1,40 @@
+{
+  "conway": {
+    "file": "src/assets/images/anecdotes/conway.jpg",
+    "title": "John H Conway 2005 (cropped) (2).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:John_H_Conway_2005_%28cropped%29_%282%29.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/66/John_H_Conway_2005_%28cropped%29_%282%29.jpg",
+    "author": "Thane Plambeck; recortes de Commons",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "width": 632,
+    "height": 726,
+    "bytes": 69074,
+    "sha256": "29889e093cc2e7514b9185fe5398309b2a1fd03cce1ec1375c94dc5dea940745",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "conway-gardner-life",
+      "surreal-numbers"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "knuth": {
+    "file": "src/assets/images/surreal-numbers/donald-knuth.jpg",
+    "title": "Donald Knuth DSC00624.jpg",
+    "author": "David Monniaux",
+    "source": "https://commons.wikimedia.org/wiki/File:Donald_Knuth_DSC00624.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Donald_Knuth_DSC00624.jpg/500px-Donald_Knuth_DSC00624.jpg",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "width": 500,
+    "height": 554,
+    "bytes": 55664,
+    "sha256": "37f03020a96a95c833b10bf74530365abb736514c2ef9f8ddf1d61e98eee73ed",
+    "changes": "Redimensionado proporcional sin recorte.",
+    "visualReview": "Retrato inspeccionado individualmente el 2026-10-20.",
+    "usedBy": [
+      "surreal-numbers"
+    ]
+  }
+}

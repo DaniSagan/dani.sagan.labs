@@ -1,0 +1,74 @@
+﻿<section class="surreal-lab" [attr.aria-label]="'Laboratorio de surreales: ' + kind">
+@switch (kind) {
+ @case ('tree') {
+ <header><span class="lab-number">01 / EL NACIMIENTO</span><h4>Un universo que crece día a día</h4><p>Avanza un día, toca un número y compara su lugar en el árbol con su lugar en la recta.</p></header>
+ <div class="controls"><label>Día finito: <output>{{ day }}</output><input id="surreal-day" type="range" min="0" max="5" step="1" [ngModel]="day" (ngModelChange)="setDay($event)"></label><button type="button" (click)="setDay(day > 0 ? day - 1 : 0)" [disabled]="day === 0">Día anterior</button><button type="button" (click)="setDay(day < 5 ? day + 1 : 5)" [disabled]="day === 5">Día siguiente</button></div>
+ <div class="view-switch" aria-label="Representación"><button type="button" [attr.aria-pressed]="view === 'tree'" (click)="view = 'tree'">Árbol de signos</button><button type="button" [attr.aria-pressed]="view === 'line'" (click)="view = 'line'">Recta numérica</button></div>
+ <label class="node-select">Seleccionar un número (alternativa al dibujo)<select [(ngModel)]="selected">@for (node of ordered; track node.signs) {<option [value]="node.signs">{{ fmt(node.value) }} · día {{ node.day }} · {{ node.signs || 'raíz' }}</option>}</select></label>
+ <div class="diagram-scroll" tabindex="0" aria-label="Dibujo desplazable horizontalmente; todos los números se pueden seleccionar también en la lista anterior">
+ @if (view === 'tree') {
+ <svg class="number-tree" viewBox="0 0 1200 440" role="group" aria-label="Árbol binario de números surreales finitos">
+ @for (node of nodes; track node.signs) { @if (node.day) {<line [attr.x1]="x(parent(node))" [attr.y1]="36 + (node.day - 1) * 74" [attr.x2]="x(node)" [attr.y2]="36 + node.day * 74" />}}
+ @for (node of nodes; track node.signs) {<g role="button" tabindex="0" [class.selected]="selected === node.signs" [attr.aria-label]="fmt(node.value) + ', día ' + node.day" (click)="selected = node.signs" (keydown.enter)="selected = node.signs" (keydown.space)="$event.preventDefault(); selected = node.signs"><circle [attr.cx]="x(node)" [attr.cy]="36 + node.day * 74" r="21"/><text [attr.x]="x(node)" [attr.y]="41 + node.day * 74">{{ fmt(node.value) }}</text></g>}
+ </svg>
+ } @else {
+ <svg class="number-line" viewBox="0 0 1200 180" role="group" aria-label="Los números nacidos hasta el día elegido, ordenados por valor"><line x1="45" y1="80" x2="1155" y2="80"/>
+ @for (node of ordered; track node.signs) {<g role="button" tabindex="0" [class.selected]="selected === node.signs" [attr.aria-label]="fmt(node.value) + ', día ' + node.day" (click)="selected = node.signs" (keydown.enter)="selected = node.signs" (keydown.space)="$event.preventDefault(); selected = node.signs"><circle [attr.cx]="lineX(node)" cy="80" r="9"/><text [attr.x]="lineX(node)" [attr.y]="node.day % 2 ? 52 : 117">@if (day < 4 || selected === node.signs || node.value.d.toString() === '1') { {{ fmt(node.value) }} }</text></g>}
+ </svg>
+ }
+ </div><div class="result" aria-live="polite"><strong>{{ selectedValue }}</strong><span>Forma canónica: {{ selectedCut }} · signos {{ selected || 'vacíos' }}</span></div>
+ <p class="scope">Hasta el día {{ day }}: {{ nodes.length }} valores distintos. El dibujo es una ventana finita: no simula una etapa transfinita. Si el árbol no cabe, puedes desplazar el dibujo sin mover toda la página.</p>
+ }
+ @case ('cut') {
+ <header><span class="lab-number">02 / LA REGLA DE ORO</span><h4>Construye tu propio corte</h4><p>Introduce opciones separadas por comas. Dejar un lado vacío significa que ese lado no impone ninguna cota.</p></header>
+ <div class="cut-inputs"><label>Opciones izquierdas L<input id="surreal-left" type="text" [(ngModel)]="cutLeft" maxlength="120" placeholder="Por ejemplo: 0, 1/2"></label><span aria-hidden="true">│</span><label>Opciones derechas R<input id="surreal-right" type="text" [(ngModel)]="cutRight" maxlength="120" placeholder="Por ejemplo: 1, 2"></label></div>
+ <button id="surreal-evaluate" type="button" (click)="evaluateCut()">Encontrar el número más simple</button>
+ <div class="presets" aria-label="Ejemplos de cortes"><button type="button" (click)="presetCut('0','3')">¿Punto medio?</button><button type="button" (click)="presetCut('-1','1')">Un cero disfrazado</button><button type="button" (click)="presetCut('0','0')">Un corte imposible</button><button type="button" (click)="presetCut('0, 1/2','1')">Fabricar tres cuartos</button><button type="button" (click)="presetCut('','')">Sin opciones</button></div>
+ @if (cutError) {<p class="error" role="alert">{{ cutError }} Este taller admite cortes numéricos; los juegos generales requieren otra interpretación.</p>} @else {<div class="result" role="status"><strong>{{ cutResult }}</strong><span>El diádico de menor cumpleaños entre todas las cotas.</span></div>}
+ <p class="scope">Se aceptan enteros y fracciones exactas; máximo ocho opciones por lado. Un conjunto finito se reduce a su mayor opción izquierda y menor opción derecha. El taller no admite listas infinitas ni símbolos como ω.</p>
+ }
+ @case ('arithmetic') {
+ <header><span class="lab-number">03 / LAS OPERACIONES</span><h4>La calculadora que enseña sus opciones</h4><p>Cambia los operandos: el resultado se obtiene por la definición recursiva de Conway, con aritmética racional exacta.</p></header>
+ <div class="controls"><label>Primer número<select id="surreal-a" [(ngModel)]="a">@for (v of operands; track v) {<option [value]="v">{{ v }}</option>}</select></label><label>Operación<select id="surreal-op" [(ngModel)]="op"><option value="+">Sumar</option><option value="*">Multiplicar</option></select></label><label>Segundo número<select id="surreal-b" [(ngModel)]="b">@for (v of operands; track v) {<option [value]="v">{{ v }}</option>}</select></label></div>
+ <div class="equation" role="status">{{ a }} {{ op === '*' ? '×' : '+' }} {{ b }} = <strong>{{ operationResult }}</strong></div>
+ <dl class="trace"><dt>Opciones que genera la definición</dt><dd>{{ operationCut }}</dd><dt>El opuesto del primer número</dt><dd>−({{ a }}) = {{ negation }}</dd></dl>
+ <p class="scope">Los operandos están acotados para mantener pequeño el árbol recursivo. La coincidencia con la aritmética racional es una comprobación finita del motor, no una demostración del teorema general del cuerpo.</p>
+ }
+ @case ('signs') {
+ <header><span class="lab-number">04 / EL CAMINO</span><h4>Escribe un número con decisiones</h4><p>Empieza en 0. «+» exige subir respecto al prefijo anterior; «−» exige bajar. Se conserva todo el historial de cotas.</p></header>
+ <div class="controls"><button id="surreal-plus" type="button" (click)="appendSign('+')" [disabled]="signs.length >= 12">Añadir +</button><button id="surreal-minus" type="button" (click)="appendSign('-')" [disabled]="signs.length >= 12">Añadir −</button><button type="button" (click)="signs = signs.slice(0, -1)" [disabled]="!signs.length">Deshacer signo</button><button type="button" (click)="signs = ''">Vaciar camino</button></div>
+ <div class="result" aria-live="polite"><strong>{{ signValue }}</strong><span class="sign-word">{{ signs || 'secuencia vacía' }}</span></div>
+ <ol class="sign-steps" aria-label="Prefijos y sus valores">@for (step of signSteps; track $index) {<li><span>{{ step.prefix || '∅' }}</span><b>{{ step.value }}</b></li>}</ol><p class="scope">La longitud de la expansión canónica es su cumpleaños. Esta herramienta acepta hasta doce signos finitos; una secuencia de longitud ω no se obtiene pulsando un número enorme de veces.</p>
+ }
+ @case ('reals') {
+ <header><span class="lab-number">05 / ACORRALAR UN REAL</span><h4>Fracciones que estrechan el cerco</h4><p>Observa cotas diádicas por debajo y por encima del mismo real.</p></header>
+ <div class="controls"><label>Número objetivo<select id="surreal-real" [(ngModel)]="realTarget"><option value="third">1/3</option><option value="root">√2</option></select></label><label>Precisión binaria: {{ precision }}<input id="surreal-precision" type="range" min="1" max="12" step="1" [(ngModel)]="precision"></label></div>
+ <div class="bracket" aria-live="polite"><span>{{ realBounds.left }}</span><b>&lt; {{ realTarget === 'third' ? '1/3' : '√2' }} &lt;</b><span>{{ realBounds.right }}</span></div>
+ <svg class="zoom-window" viewBox="0 0 1000 130" role="img" aria-label="Intervalo ampliado entre las cotas diádicas; la posición en pantalla del objetivo es aproximada"><line x1="60" y1="80" x2="940" y2="80" stroke="currentColor"/><circle [attr.cx]="realPosition" cy="80" r="9" fill="currentColor"/><text x="60" y="115">L</text><text x="940" y="115">R</text><text [attr.x]="realPosition" y="45">{{ realTarget === 'third' ? '1/3' : '√2' }}</text></svg><p>Anchura exacta del intervalo: <strong>{{ realBounds.width }}</strong>. Prefijo binario del objetivo: <strong>{{ realTarget === 'third' ? '0' : '1' }}.{{ binaryDigits }}…</strong></p>
+ <p class="scope">La ventana azul se amplía de nuevo en cada paso: su anchura en pantalla no representa una distancia fija. Estas cotas son una aproximación finita. El corte que define exactamente el real utiliza todas sus cotas diádicas, no solo las dos que ves.</p>
+ }
+ @case ('infinity') {
+ <header><span class="lab-number">06 / CAMBIAR DE ESCALA</span><h4>Una maqueta finita, una comparación exacta</h4><p>El deslizador explora sustituciones finitas. El segundo panel compara expresiones simbólicas en ω.</p></header>
+ <div class="controls"><label>Sustitución N: {{ probe }}<input id="surreal-probe" type="range" min="2" max="128" step="1" [(ngModel)]="probe"></label><label>Expresión de la maqueta<select [(ngModel)]="scale"><option value="omega">ω ↦ N</option><option value="epsilon">1/ω ↦ 1/N</option><option value="epsilon2">1/ω² ↦ 1/N²</option><option value="omegaPlus">ω + 1 ↦ N + 1</option></select></label></div>
+ <div class="result"><strong>{{ approximation }}</strong><span>Una aproximación real: nunca un infinito ni un infinitesimal.</span></div>
+ <label>Comparación simbólica<select id="surreal-scale-pair" [(ngModel)]="pair"><option [ngValue]="0">ω² frente a 100ω</option><option [ngValue]="1">ω + 1 frente a ω</option><option [ngValue]="2">1/ω frente a 1/ω²</option><option [ngValue]="3">ω − 10⁶ frente a 10⁶</option><option [ngValue]="4">10⁶/ω frente a 1</option><option [ngValue]="5">ω + 1 frente a 1 + ω</option></select></label>
+ <div class="equation" role="status">{{ scalePairs[pair].a }} {{ scaleComparison }} {{ scalePairs[pair].b }}</div><p>{{ scalePairs[pair].why }}</p><p class="scope">Comparación exacta para polinomios de Laurent finitos con coeficientes enteros y exponentes enteros. No es un evaluador de todos los surreales ni de series infinitas.</p>
+ }
+ @case ('hackenbush') {
+ <header><span class="lab-number">07 / UN NÚMERO QUE SE PUEDE JUGAR</span><h4>Hackenbush: corta, pero mira lo que cae</h4><p>Dos personas. Azul corta aristas «+»; Rojo corta aristas «−». Al cortar, desaparece también lo que queda por encima. Quien no puede mover pierde.</p></header>
+ <div class="presets"><button type="button" (click)="loadStalk('+-')">1/2</button><button type="button" (click)="loadStalk('+-+')">3/4</button><button type="button" (click)="loadStalk('++-')">3/2</button><button type="button" (click)="loadStalk('-+-')">−3/4</button></div>
+ <div class="controls"><button type="button" (click)="appendEdge('+')" [disabled]="started || design.length >= 8">Añadir azul +</button><button type="button" (click)="appendEdge('-')" [disabled]="started || design.length >= 8">Añadir rojo −</button><button type="button" (click)="loadStalk(design.slice(0, -1))" [disabled]="started || !design.length">Quitar la cima</button><label>Empieza<select id="surreal-first" [(ngModel)]="turn" [disabled]="started"><option value="+">Azul</option><option value="-">Rojo</option></select></label><button id="surreal-start" type="button" (click)="startGame()">Empezar de nuevo</button><button type="button" (click)="undo()" [disabled]="!history.length">Deshacer corte</button></div>
+ <div class="game-layout"><svg class="stalk" [attr.viewBox]="'0 0 260 ' + (board.length * 54 + 80)" role="group" aria-label="Tallo de Hackenbush. Las aristas se numeran desde el suelo; activa una de tu color.">
+ <line class="ground" x1="30" [attr.y1]="board.length * 54 + 30" x2="230" [attr.y2]="board.length * 54 + 30"/>
+ @for (edge of edges; track edge.index) {<g role="button" tabindex="0" [attr.aria-label]="'Cortar arista ' + (edge.index + 1) + (edge.color === '+' ? ', azul +' : ', roja −')" [attr.aria-disabled]="!started || edge.color !== turn" [class.blue]="edge.color === '+'" [class.red]="edge.color === '-'" [class.unavailable]="started && edge.color !== turn" (click)="cutEdge(edge.index)" (keydown.enter)="cutEdge(edge.index)" (keydown.space)="$event.preventDefault(); cutEdge(edge.index)"><rect x="108" [attr.y]="edge.y" width="44" height="54" fill="transparent"/><line x1="130" [attr.y1]="edge.y" x2="130" [attr.y2]="edge.y + 54"/><text x="175" [attr.y]="edge.y + 32">{{ edge.index + 1 }} · {{ edge.color === '+' ? '+' : '−' }}</text></g>}
+ <text x="130" [attr.y]="board.length * 54 + 60">suelo</text>
+ </svg><div><div class="result"><strong>{{ stalkLabel }}</strong><span>Valor actual de este tallo</span></div><div class="edge-actions" aria-label="Cortes disponibles, alternativa al dibujo">@for (edge of edges; track edge.index) {<button type="button" [disabled]="!started || edge.color !== turn" (click)="cutEdge(edge.index)">Cortar {{ edge.index + 1 }} {{ edge.color === '+' ? '+ azul' : '− rojo' }}</button>}</div><p id="surreal-game-status" role="status">{{ gameMessage }}</p><details><summary>Ver quién gana con juego perfecto</summary><p>{{ prediction }}</p><p>La predicción se calcula recorriendo todas las jugadas legales de este tallo finito. No obliga a cada jugador a elegir una buena jugada.</p></details></div></div>
+ <p class="scope">Hasta ocho aristas, sin ramas ni ciclos. Es la variante azul-roja de un solo tallo. El Hackenbush verde y los juegos calientes requieren otros valores: no se les asigna aquí un número surreal.</p>
+ }
+ @case ('quiz') {
+ <header><span class="lab-number">08 / DETECTAR LA TRAMPA</span><h4>¿Te lo crees o lo pondrías a prueba?</h4></header><p class="quiz-count">Pregunta {{ question + 1 }} de {{ questions.length }}</p><p><strong>{{ questions[question].q }}</strong></p><div class="quiz-answers">@for (option of questions[question].answers; track $index) {<button type="button" [attr.aria-pressed]="answer === $index" (click)="chooseAnswer($index)">{{ option }}</button>}</div>
+ @if (answer !== null) {<p role="status" [class.error]="answer !== questions[question].correct"><strong>{{ answer === questions[question].correct ? 'Exacto.' : 'Revisa esta idea.' }}</strong> {{ questions[question].why }}</p>}<button type="button" (click)="nextQuestion()">Siguiente pregunta</button>
+ }
+}
+<button class="reset" type="button" (click)="reset()">Restablecer este laboratorio</button>
+</section>

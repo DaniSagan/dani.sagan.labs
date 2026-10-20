@@ -71,7 +71,9 @@
     "test:anecdotes": "node scripts/test-anecdotes-collection.cjs",
     "test:anecdotes:browser": "node scripts/check-anecdotes-collection.cjs",
     "test:anecdotes:math": "node scripts/test-anecdotes-math-support.cjs",
-    "test:anecdotes:math:browser": "node scripts/check-anecdotes-math-support.cjs"
+    "test:anecdotes:math:browser": "node scripts/check-anecdotes-math-support.cjs",
+    "test:surreal": "node scripts/test-surreal-numbers.cjs",
+    "test:surreal:browser": "node scripts/check-surreal-numbers.cjs"
   },
   "private": true,
   "dependencies": {
