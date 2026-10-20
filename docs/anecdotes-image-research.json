@@ -587,5 +587,59 @@
       "zeno-achilles-tortoise"
     ],
     "finalDecision": "integrated; see assets SOURCES.json for final license, attribution and checksum"
+  },
+  "batch-C-2026-10-20": {
+    "checked": 20,
+    "newDownloads": [
+      "johnson",
+      "nash",
+      "grothendieck",
+      "nightingale-diagram",
+      "robinson",
+      "pascaline",
+      "noether",
+      "weil",
+      "ibm7090",
+      "lepaute",
+      "chatelet",
+      "conway"
+    ],
+    "reuse": [
+      "euler",
+      "turing",
+      "hardy",
+      "fermat"
+    ],
+    "withoutImage": [
+      {
+        "route": "joan-clarke-hut-eight",
+        "reason": "No authenticated portrait with individually verified reusable license selected; Commons search includes a deleted portrait."
+      },
+      {
+        "route": "wolfskehl-fermat-prize",
+        "reason": "Public-domain portrait located; Wikimedia download returned HTTP 429. Published without image."
+      },
+      {
+        "route": "appel-haken-computer-proof",
+        "reason": "No pertinent historical photograph with individually verified license selected."
+      }
+    ],
+    "rejected": [
+      {
+        "candidate": "Joan Clarke (cryptanalyst).jpg",
+        "source": "https://commons.wikimedia.org/wiki/User_talk:Exos",
+        "reason": "Search returned a historical deletion notice; no reusable portrait license verified."
+      },
+      {
+        "candidate": "IBM 7090 Computer Data Processing System being Used (23 0003702).jpg",
+        "reason": "Flickr Commons collection explicitly warns of possible copyright; replaced with US Weather Bureau public-domain photograph."
+      },
+      {
+        "candidate": "Paul Wolfskehl (circa 1880).jpg",
+        "source": "https://commons.wikimedia.org/wiki/File:Paul_Wolfskehl_(circa_1880).jpg",
+        "reason": "Public domain verified, but two actual download attempts returned HTTP 429; no remote image dependency added."
+      }
+    ],
+    "visualReview": "Two local contact sheets inspected; captions distinguish later portraits, museum objects and analogous machines from the narrated event."
   }
 }

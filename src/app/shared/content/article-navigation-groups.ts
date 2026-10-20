@@ -4,6 +4,7 @@ import { NavbarSubsection } from './navbar-subsection';
 // Las rutas originales se conservan: esta clasificación solo organiza el menú.
 const GROUPS = {
   combinatorics: [
+    ["Teoría de juegos", "nash-equilibrium"],
     ["Fundamentos de conteo y grafos", "pigeonhole-principle trees-graph-coloring polya-cycle-index"],
     ["Algoritmos, lógica y computabilidad", "route-optimization-complexity ordinals-growth computability-formal-languages"],
     ['Ramsey, crecimiento y grandes números', 'ramsey-theorem graham-number googology'],
@@ -76,7 +77,7 @@ const GROUPS = {
   ],
   numbers: [
     ["Números y estructuras algebraicas", "golden-ratio algebraic-transcendental-numbers gaussian-quadratic-norms"],
-    ["Métodos aritméticos y criptografía", "infinite-descent sieve-primality rsa-discrete-logarithm dirichlet-convolution-series"],
+    ["Métodos aritméticos y criptografía", "infinite-descent sieve-primality rsa-discrete-logarithm classical-cryptography dirichlet-convolution-series"],
     ['Demostraciones y fundamentos', 'proof-strategies mathematical-induction prime-valuations'],
     [
       'Numeración y divisibilidad',

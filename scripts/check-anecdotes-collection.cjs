@@ -13,7 +13,7 @@ const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'danisagan-anecdotes-colle
 const chrome = process.env.CHROME_BIN || 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const mathjaxBundle = process.env.MATHJAX_TEST_BUNDLE || path.join(os.tmpdir(), 'danisagan-mathjax-3.2.2-tex-svg.js');
 const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
-const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.ico': 'image/x-icon' };
+const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2', '.ico': 'image/x-icon', '.jpg': 'image/jpeg' };
 let browser, socket, server;
 const watchdog = setTimeout(() => { console.error('Browser audit timed out.'); process.exit(1); }, 600000);
 async function main() {
@@ -71,7 +71,9 @@ async function main() {
 
 
   const report=JSON.parse(fs.readFileSync(path.join(root,'docs/anecdotes-collection-audit.json'),'utf8'));
-  const selected=process.argv.includes('--batch-a')?report.articles.filter(a=>a.id.startsWith('A')):report.articles;
+  const batch = process.argv.find(arg => /^--batch-[a-z]$/.test(arg))?.slice(-1).toUpperCase();
+  const selected=batch?report.articles.filter(a=>a.id.startsWith(batch)):report.articles;
+  assert(selected.length, 'No stories selected.');
   const wait=async expression=>{for(let i=0;i<200;i++){if(await evaluate(expression))return;await pause(100);}throw Error('Timed out '+expression);};
   const shots=path.resolve('tmp/anecdotes-collection-audit');fs.mkdirSync(shots,{recursive:true});
   const click=async selector=>{await evaluate('document.querySelector('+JSON.stringify(selector)+').scrollIntoView({block:"center",behavior:"instant"})');const p=await evaluate('(()=>{const r=document.querySelector('+JSON.stringify(selector)+').getClientRects()[0];return{x:r.left+r.width/2,y:r.top+r.height/2}})()');await call('Input.dispatchMouseEvent',{type:'mousePressed',...p,button:'left',buttons:1,clickCount:1});await call('Input.dispatchMouseEvent',{type:'mouseReleased',...p,button:'left',buttons:0,clickCount:1});};
@@ -93,8 +95,25 @@ async function main() {
   }
   const last=selected.at(-1);await evaluate('document.querySelector("app-'+last.route+' .references summary").scrollIntoView({block:"center",behavior:"instant"});document.querySelector("app-'+last.route+' .references summary").focus()');await pause(100);
   await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});await call('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});await wait('document.querySelector("app-'+last.route+' .references").open');
+  for (const width of [1440,390,320]) {
+    await call('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width<600});
+    for (const [route,story] of [['nash-equilibrium','nash-return-recognition'],['classical-cryptography','joan-clarke-hut-eight']]) {
+      await call('Page.navigate',{url:origin+'/articles/'+route});
+      await wait('!!document.querySelector("app-'+route+'-article h2")');
+      assert(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'),route+' overflow '+width);
+      await click('app-'+route+'-article details summary');
+      assert(await evaluate('document.querySelector("app-'+route+'-article details").open'));
+      await click('app-'+route+'-article a[routerLink="/articles/'+story+'"]');
+      await wait('!!document.querySelector("app-'+story+' .narrative")');
+      await click('app-'+story+' a[routerLink="/articles/'+route+'"]');
+      await wait('!!document.querySelector("app-'+route+'-article h2")');
+      fs.writeFileSync(path.join(shots,route+'-'+width+'.png'),Buffer.from((await call('Page.captureScreenshot',{format:'png'})).data,'base64'));
+    }
+  }
+  console.log('PASS mathematical support pages, worked examples and reciprocal links at 1440/390/320px.');
   assert.equal(errors.length,0,errors.join('\n'));
-  if(!process.argv.includes('--batch-a')){report.browserValidation='passed all 38 at 1440/390/320px';fs.writeFileSync(path.join(root,'docs/anecdotes-collection-audit.json'),JSON.stringify(report,null,2)+'\n');}
+  report.browserValidation = report.articles.every(a => a.browserValidation) ? 'passed all '+report.articles.length+' at 1440/390/320px' : 'partial; see individual articles';
+  fs.writeFileSync(path.join(root,'docs/anecdotes-collection-audit.json'),JSON.stringify(report,null,2)+'\n');
   console.log('PASS independent article journeys, licensed local images, responsive layouts, source disclosure and keyboard. Screenshots: tmp/anecdotes-collection-audit');
 }
 main().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {

@@ -1,3 +1,5 @@
+> Actualización del 20 de octubre de 2026: la colección tiene **60 anécdotas**. Las veinte nuevas y los dos artículos de apoyo se documentan en [anecdotes-20-report.md](anecdotes-20-report.md). El informe fechado el 19 de octubre que sigue conserva el inventario histórico del lote anterior.
+
 # Colección de anécdotas matemáticas: informe de implementación
 
 Fecha: 2026-10-19.

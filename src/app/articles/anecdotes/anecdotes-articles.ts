@@ -1,3 +1,23 @@
+import { PascalFermatInterruptedGameComponent } from './pascal-fermat-interrupted-game/pascal-fermat-interrupted-game.component';
+import { ConwayGardnerLifeComponent } from './conway-gardner-life/conway-gardner-life.component';
+import { ChateletNewtonTranslationComponent } from './chatelet-newton-translation/chatelet-newton-translation.component';
+import { RamanujanFirstLetterComponent } from './ramanujan-first-letter/ramanujan-first-letter.component';
+import { LepauteHalleysReturnComponent } from './lepaute-halleys-return/lepaute-halleys-return.component';
+import { AppelHakenComputerProofComponent } from './appel-haken-computer-proof/appel-haken-computer-proof.component';
+import { HurwitzMersenneComputerComponent } from './hurwitz-mersenne-computer/hurwitz-mersenne-computer.component';
+import { WeilRouenPrisonComponent } from './weil-rouen-prison/weil-rouen-prison.component';
+import { NoetherGottingenLecturesComponent } from './noether-gottingen-lectures/noether-gottingen-lectures.component';
+import { PascalFathersCalculatorComponent } from './pascal-fathers-calculator/pascal-fathers-calculator.component';
+import { RobinsonMatiyasevichHilbertComponent } from './robinson-matiyasevich-hilbert/robinson-matiyasevich-hilbert.component';
+import { TuringWittgensteinBridgeComponent } from './turing-wittgenstein-bridge/turing-wittgenstein-bridge.component';
+import { NightingaleStatisticalCampaignComponent } from './nightingale-statistical-campaign/nightingale-statistical-campaign.component';
+import { GrothendieckIhesDepartureComponent } from './grothendieck-ihes-departure/grothendieck-ihes-departure.component';
+import { TuringChainedMugComponent } from './turing-chained-mug/turing-chained-mug.component';
+import { WolfskehlFermatPrizeComponent } from './wolfskehl-fermat-prize/wolfskehl-fermat-prize.component';
+import { NashReturnRecognitionComponent } from './nash-return-recognition/nash-return-recognition.component';
+import { JoanClarkeHutEightComponent } from './joan-clarke-hut-eight/joan-clarke-hut-eight.component';
+import { EulerSevenBridgesWalkComponent } from './euler-seven-bridges-walk/euler-seven-bridges-walk.component';
+import { JohnsonGlennCheckComponent } from './johnson-glenn-check/johnson-glenn-check.component';
 import { ZenoAchillesTortoiseComponent } from './zeno-achilles-tortoise/zeno-achilles-tortoise.component';
 import { BanachTarskiSphereComponent } from './banach-tarski-sphere/banach-tarski-sphere.component';
 import { HilbertHotelComponent } from './hilbert-hotel/hilbert-hotel.component';
@@ -77,5 +97,25 @@ export const ANECDOTES_ARTICLES = [GaussSchoolSumComponent, HardyRamanujanTaxica
   HilbertHotelComponent,
   BanachTarskiSphereComponent,
   ZenoAchillesTortoiseComponent,
+  JohnsonGlennCheckComponent,
+  EulerSevenBridgesWalkComponent,
+  JoanClarkeHutEightComponent,
+  NashReturnRecognitionComponent,
+  WolfskehlFermatPrizeComponent,
+  TuringChainedMugComponent,
+  GrothendieckIhesDepartureComponent,
+  NightingaleStatisticalCampaignComponent,
+  TuringWittgensteinBridgeComponent,
+  RobinsonMatiyasevichHilbertComponent,
+  PascalFathersCalculatorComponent,
+  NoetherGottingenLecturesComponent,
+  WeilRouenPrisonComponent,
+  HurwitzMersenneComputerComponent,
+  AppelHakenComputerProofComponent,
+  LepauteHalleysReturnComponent,
+  RamanujanFirstLetterComponent,
+  ChateletNewtonTranslationComponent,
+  ConwayGardnerLifeComponent,
+  PascalFermatInterruptedGameComponent,
 ] as const;
 export const ANECDOTES_NAV_ITEMS = ANECDOTES_ARTICLES.map(article => ({ name: article.title, route: article.route }));

@@ -1,3 +1,4 @@
+import { NashEquilibriumArticleComponent } from './nash-equilibrium/nash-equilibrium-article.component';
 import { ComputabilityFormalLanguagesArticleComponent } from './computability-formal-languages/computability-formal-languages-article.component';
 import { OrdinalsGrowthArticleComponent } from './ordinals-growth/ordinals-growth-article.component';
 import { RouteOptimizationComplexityArticleComponent } from './route-optimization-complexity/route-optimization-complexity-article.component';
@@ -24,6 +25,7 @@ import { FourColorTheoremArticleComponent } from './four-color-theorem/four-colo
 import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
 export const COMBINATORICS_ARTICLES = [
+  NashEquilibriumArticleComponent,
   ComputabilityFormalLanguagesArticleComponent,
   OrdinalsGrowthArticleComponent,
   RouteOptimizationComplexityArticleComponent,

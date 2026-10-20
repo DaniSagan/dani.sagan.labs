@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-19",
-  "requested": 38,
+  "date": "2026-10-20",
+  "requested": 58,
   "existing": [
     "gauss-school-sum",
     "hardy-ramanujan-taxicab"
@@ -202,12 +202,13 @@
         ]
       ],
       "image": "fermat",
-      "status": "implemented; static checks passed; browser pending",
+      "status": "implemented; static and browser checks passed",
       "staticValidation": "passed",
       "related": [
         "fermat-wiles-theorem"
       ],
-      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure"
     },
     {
       "id": "A09",
@@ -303,7 +304,7 @@
         "proof-strategies"
       ],
       "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words",
-      "browserValidation": "updated image passed1440/390/320; loaded, proportionate, alt and caption, no overflow"
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure"
     },
     {
       "id": "A13",
@@ -872,12 +873,13 @@
         ]
       ],
       "image": "hilbert",
-      "status": "implemented; static checks passed; browser pending",
+      "status": "implemented; static and browser checks passed",
       "staticValidation": "passed",
       "related": [
         "cardinality-diagonal"
       ],
-      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+      "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure"
     },
     {
       "id": "B17",
@@ -932,9 +934,493 @@
         "geometric-series"
       ],
       "editorialValidation": "reviewed; sources and historical qualifications included; 200-400 narrative words"
+    },
+    {
+      "route": "johnson-glenn-check",
+      "title": "Katherine Johnson: la comprobación que pidió John Glenn",
+      "sources": [
+        [
+          "NASA: Johnson y la comprobación",
+          "https://www.nasa.gov/news-release/katherine-johnsons-continuing-legacy-at-ivv-beyond-2/"
+        ],
+        [
+          "NASA: el vuelo de Glenn",
+          "https://www.nasa.gov/missions/glenn-orbits-the-earth/"
+        ]
+      ],
+      "related": [
+        "kepler-orbits"
+      ],
+      "image": "johnson",
+      "id": "C01",
+      "className": "JohnsonGlennCheckComponent",
+      "words": 247,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "euler-seven-bridges-walk",
+      "title": "Los siete puentes: un paseo condenado al fracaso",
+      "sources": [
+        [
+          "MacTutor: Euler",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Euler/"
+        ]
+      ],
+      "related": [
+        "konigsberg-bridges",
+        "graph-foundations"
+      ],
+      "image": "euler",
+      "id": "C02",
+      "className": "EulerSevenBridgesWalkComponent",
+      "words": 247,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "joan-clarke-hut-eight",
+      "title": "Joan Clarke: una lingüista sin idiomas en la cabaña 8",
+      "sources": [
+        [
+          "MacTutor: Clarke_Joan",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Clarke_Joan/"
+        ]
+      ],
+      "related": [
+        "classical-cryptography"
+      ],
+      "image": null,
+      "id": "C03",
+      "className": "JoanClarkeHutEightComponent",
+      "words": 247,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories",
+      "imageDecision": "No authenticated portrait with individually verified reusable license selected; Commons search includes a deleted portrait."
+    },
+    {
+      "route": "nash-return-recognition",
+      "title": "John Nash: el reconocimiento que llegó cuatro décadas después",
+      "sources": [
+        [
+          "MacTutor: Nash",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Nash/"
+        ],
+        [
+          "Fundación Nobel: Nash",
+          "https://www.nobelprize.org/prizes/economic-sciences/1994/nash/facts/"
+        ]
+      ],
+      "related": [
+        "nash-equilibrium"
+      ],
+      "image": "nash",
+      "id": "C04",
+      "className": "NashReturnRecognitionComponent",
+      "words": 260,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "wolfskehl-fermat-prize",
+      "title": "Wolfskehl: una herencia que esperó a Andrew Wiles",
+      "sources": [
+        [
+          "Simon Singh: historia del premio y revisión de la leyenda",
+          "https://simonsingh.net/media/articles/maths-and-science/the-wolfskehl-prize/"
+        ],
+        [
+          "MacTutor: Wiles",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Wiles/"
+        ]
+      ],
+      "related": [
+        "fermat-wiles-theorem",
+        "fermat-margin"
+      ],
+      "image": null,
+      "id": "C05",
+      "className": "WolfskehlFermatPrizeComponent",
+      "words": 256,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories",
+      "imageDecision": "Public-domain portrait located; Wikimedia download returned HTTP 429. Published without image."
+    },
+    {
+      "route": "turing-chained-mug",
+      "title": "Alan Turing y la taza que no debía desaparecer",
+      "sources": [
+        [
+          "Bletchley Park: materiales educativos que recogen la taza",
+          "https://bletchleypark.org.uk/wp-content/uploads/2021/10/teachers-notes-ks2-2019.pdf"
+        ],
+        [
+          "Open University: Alan Turing, una retrospectiva",
+          "https://media-podcast.open.ac.uk/feeds/Alan-Turing/transcript/alan_turing_code_breaker_02071_20403.pdf"
+        ]
+      ],
+      "related": [
+        "joan-clarke-hut-eight",
+        "turing-paper-chess"
+      ],
+      "image": "turing",
+      "id": "C06",
+      "className": "TuringChainedMugComponent",
+      "words": 249,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "grothendieck-ihes-departure",
+      "title": "Grothendieck: el presupuesto que le hizo abandonar el IHÉS",
+      "sources": [
+        [
+          "MacTutor: Grothendieck",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Grothendieck/"
+        ]
+      ],
+      "related": [
+        "galois-solvability"
+      ],
+      "image": "grothendieck",
+      "id": "C07",
+      "className": "GrothendieckIhesDepartureComponent",
+      "words": 253,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "nightingale-statistical-campaign",
+      "title": "Nightingale: el gráfico que llevó el hospital a los despachos",
+      "sources": [
+        [
+          "MacTutor: Nightingale",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Nightingale/"
+        ]
+      ],
+      "related": [
+        "descriptive-statistics"
+      ],
+      "image": "nightingale-diagram",
+      "id": "C08",
+      "className": "NightingaleStatisticalCampaignComponent",
+      "words": 253,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "turing-wittgenstein-bridge",
+      "title": "Turing y Wittgenstein: una discusión con un puente en medio",
+      "sources": [
+        [
+          "British Wittgenstein Society: intercambio y notas de la lección XXII",
+          "https://www.britishwittgensteinsociety.org/wp-content/uploads/documents/lectures/Turing-and-Wittgenstein-on-Logic-and-Mathematics.pdf"
+        ],
+        [
+          "Estudio de la objeción del puente, Universidad de St Andrews",
+          "https://research-repository.st-andrews.ac.uk/handle/10023/25131"
+        ]
+      ],
+      "related": [
+        "proof-strategies",
+        "computability-formal-languages"
+      ],
+      "image": "turing",
+      "id": "C09",
+      "className": "TuringWittgensteinBridgeComponent",
+      "words": 259,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "robinson-matiyasevich-hilbert",
+      "title": "Julia Robinson y la última pieza de un problema de Hilbert",
+      "sources": [
+        [
+          "MacTutor: Robinson_Julia",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Robinson_Julia/"
+        ]
+      ],
+      "related": [
+        "computability-formal-languages"
+      ],
+      "image": "robinson",
+      "id": "C10",
+      "className": "RobinsonMatiyasevichHilbertComponent",
+      "words": 260,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "pascal-fathers-calculator",
+      "title": "Pascal: una máquina para las cuentas de su padre",
+      "sources": [
+        [
+          "MacTutor: Pascal",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/"
+        ]
+      ],
+      "related": [
+        "numeral-systems"
+      ],
+      "image": "pascaline",
+      "id": "C11",
+      "className": "PascalFathersCalculatorComponent",
+      "words": 263,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "noether-gottingen-lectures",
+      "title": "Emmy Noether: la profesora cuyo curso anunciaba Hilbert",
+      "sources": [
+        [
+          "MacTutor: Noether_Emmy",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Noether_Emmy/"
+        ]
+      ],
+      "related": [
+        "variations-noether",
+        "first-integrals"
+      ],
+      "image": "noether",
+      "id": "C12",
+      "className": "NoetherGottingenLecturesComponent",
+      "words": 267,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "weil-rouen-prison",
+      "title": "André Weil: una carta matemática desde la prisión",
+      "sources": [
+        [
+          "MacTutor: Weil",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Weil/"
+        ]
+      ],
+      "related": [
+        "riemann-zeta"
+      ],
+      "image": "weil",
+      "id": "C13",
+      "className": "WeilRouenPrisonComponent",
+      "words": 258,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "hurwitz-mersenne-computer",
+      "title": "Hurwitz: cincuenta minutos para un primo de 1332 cifras",
+      "sources": [
+        [
+          "Alexander Hurwitz: New Mersenne Primes, artículo original reproducido",
+          "https://t5k.org/mersenne/literature/hurwitz.html"
+        ],
+        [
+          "PrimePages: historia de los récords y orden de lectura",
+          "https://t5k.org/notes/by_year.html"
+        ],
+        [
+          "GIMPS: registro histórico de primos de Mersenne",
+          "https://www.mersenne.org/primes/"
+        ]
+      ],
+      "related": [
+        "perfect-numbers",
+        "euclid-infinitely-many-primes"
+      ],
+      "image": "ibm7090",
+      "id": "C14",
+      "className": "HurwitzMersenneComputerComponent",
+      "words": 264,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "appel-haken-computer-proof",
+      "title": "Cuatro colores: cuando la demostración llegó con un programa",
+      "sources": [
+        [
+          "Universidad de Illinois: bibliografía de la demostración",
+          "https://www.library.illinois.edu/mtx/four-color-theorem-resources/"
+        ],
+        [
+          "Illinois: Appel, Haken y Koch, publicaciones y archivos",
+          "https://guides.library.illinois.edu/c.php?g=647135&p=4537089"
+        ]
+      ],
+      "related": [
+        "four-color-theorem"
+      ],
+      "image": null,
+      "id": "C15",
+      "className": "AppelHakenComputerProofComponent",
+      "words": 253,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories",
+      "imageDecision": "No pertinent historical photograph with individually verified license selected."
+    },
+    {
+      "route": "lepaute-halleys-return",
+      "title": "Lepaute: seis meses de cuentas para esperar a un cometa",
+      "sources": [
+        [
+          "MacTutor: Lepaute",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Lepaute/"
+        ],
+        [
+          "Académie des sciences: colaboración y perihelio del 13 de marzo",
+          "https://www.academie-sciences.fr/pdf/dossiers/ama/P23.htm"
+        ]
+      ],
+      "related": [
+        "kepler-orbits"
+      ],
+      "image": "lepaute",
+      "id": "C16",
+      "className": "LepauteHalleysReturnComponent",
+      "words": 255,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "ramanujan-first-letter",
+      "title": "La carta de Ramanujan que Hardy no pudo apartar",
+      "sources": [
+        [
+          "MacTutor: Ramanujan",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Ramanujan/"
+        ],
+        [
+          "AMS: correspondencia de Ramanujan y fecha de la carta",
+          "https://www.ams.org/books/hmath/009/hmath009-endmatter.pdf"
+        ],
+        [
+          "Universidad de Cambridge: el primer contacto",
+          "https://www.cam.ac.uk/research/news/opinion-the-man-who-taught-infinity-how-gh-hardy-tamed-srinivasa-ramanujans-genius"
+        ]
+      ],
+      "related": [
+        "riemann-zeta"
+      ],
+      "image": "hardy",
+      "id": "C17",
+      "className": "RamanujanFirstLetterComponent",
+      "words": 255,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "chatelet-newton-translation",
+      "title": "Émilie du Châtelet: Newton contra el reloj",
+      "sources": [
+        [
+          "MacTutor: Chatelet",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Chatelet/"
+        ]
+      ],
+      "related": [
+        "kepler-orbits",
+        "derivative-foundations"
+      ],
+      "image": "chatelet",
+      "id": "C18",
+      "className": "ChateletNewtonTranslationComponent",
+      "words": 260,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "conway-gardner-life",
+      "title": "Conway: el pequeño mundo que Gardner puso en circulación",
+      "sources": [
+        [
+          "Martin Gardner: columna original de octubre de 1970",
+          "https://ibiblio.org/lifepatterns/october1970.html"
+        ],
+        [
+          "Scientific American: registro de publicación",
+          "https://www.scientificamerican.com/article/mathematical-games-1970-10/"
+        ]
+      ],
+      "related": [
+        "life-patterns",
+        "cellular-automata"
+      ],
+      "image": "conway",
+      "id": "C19",
+      "className": "ConwayGardnerLifeComponent",
+      "words": 254,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
+    },
+    {
+      "route": "pascal-fermat-interrupted-game",
+      "title": "Pascal y Fermat: repartir una apuesta que nadie había ganado",
+      "sources": [
+        [
+          "MacTutor: Pascal",
+          "https://mathshistory.st-andrews.ac.uk/Biographies/Pascal/"
+        ],
+        [
+          "Universidad de York: Fermat y Pascal sobre probabilidad",
+          "https://www.york.ac.uk/depts/maths/histstat/pascal.htm"
+        ]
+      ],
+      "related": [
+        "finite-probability",
+        "discrete-expectation"
+      ],
+      "image": "fermat",
+      "id": "C20",
+      "className": "PascalFermatInterruptedGameComponent",
+      "words": 260,
+      "status": "implemented; static and browser checks passed",
+      "staticValidation": "passed",
+      "browserValidation": "passed 1440/390/320px, title, local images, overflow and source disclosure",
+      "editorialValidation": "Individual review: narrative 200-400 words; source qualifications retained; no invented quotations; distinct from existing stories"
     }
   ],
-  "browserValidation": "passed all 38 at 1440/390/320px",
+  "browserValidation": "passed all 58 at 1440/390/320px",
   "summary": {
     "requested": 38,
     "implemented": 38,
@@ -993,5 +1479,46 @@
     "The Mandelbrot 1967 record was consulted at bibliographic level; historical narration also relies on the consulted MacTutor biography.",
     "The Galois letter reproduction was opened but PDF text extraction was unavailable; the chronology is corroborated by the biography.",
     "Long advanced proofs in cited Wiles and Conrad works are not reproduced or claimed to be proved by the laboratories."
-  ]
+  ],
+  "collectionTotal": 60,
+  "batches": [
+    {
+      "id": "A/B",
+      "requested": 38
+    },
+    {
+      "id": "C",
+      "requested": 20,
+      "duplicates": [],
+      "previousTotal": 40,
+      "resultTotal": 60
+    }
+  ],
+  "supportArticlesAdded": [
+    "nash-equilibrium",
+    "classical-cryptography"
+  ],
+  "latestRequested": 20,
+  "validationNotes20261020": {
+    "karma": {
+      "total": 1049,
+      "passed": 1026,
+      "failed": 23,
+      "failureCategories": {
+        "missingActivatedRoute": 8,
+        "missingRootMathjaxConfig": 12,
+        "legacyNavigationExpectations": 3
+      },
+      "baselineNavigationEvidence": "tmp/anecdotes20-baseline-navigation.json"
+    },
+    "focusedNavigationKarma": {
+      "passed": 6,
+      "failed": 1,
+      "reason": "previous unclassified routes in other categories"
+    },
+    "newSupportGroups": [
+      "Combinatoria > Teoría de juegos",
+      "Teoría de números > Métodos aritméticos y criptografía"
+    ]
+  }
 }
