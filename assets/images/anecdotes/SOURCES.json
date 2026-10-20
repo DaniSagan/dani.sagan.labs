@@ -91,7 +91,8 @@
     "status": "downloaded; visually reviewed; integrated",
     "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
     "usedBy": [
-      "hardy-riemann-postcard"
+      "hardy-riemann-postcard",
+      "ramanujan-first-letter"
     ],
     "sha256": "0a41660d4f978e0dd1947840c341a38f58807393ce34634d20f39f216bdfe243"
   },
@@ -129,7 +130,8 @@
     "status": "downloaded; visually reviewed; integrated",
     "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
     "usedBy": [
-      "fermat-margin"
+      "fermat-margin",
+      "pascal-fermat-interrupted-game"
     ],
     "sha256": "0485fd035bdd40736625bb58c9e4247c805053447625595408d41fc332f40481"
   },
@@ -187,7 +189,8 @@
     "status": "downloaded; visually reviewed; integrated",
     "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
     "usedBy": [
-      "euler-diderot-legend"
+      "euler-diderot-legend",
+      "euler-seven-bridges-walk"
     ],
     "sha256": "b5175655ac288999d6b55572f9be638a1eb43b1a73120fb875a29003212221bb"
   },
@@ -207,7 +210,9 @@
     "visualReview": "Identidad revisada; miniatura inspeccionada; apta para este contexto",
     "usedBy": [
       "turing-paper-chess",
-      "turing-1936-paper"
+      "turing-1936-paper",
+      "turing-chained-mug",
+      "turing-wittgenstein-bridge"
     ],
     "sha256": "d4198226155e56a672fff83ae1fa3ccb750d8c3aa841c9a4443f910be8b12e3a"
   },
@@ -435,5 +440,233 @@
     ],
     "status": "existing local asset; integrated",
     "sha256": "c4bd26c3e05095b5cfdfb7d159f30ac8b498348d5b38eee406f6575af49ea498"
+  },
+  "johnson": {
+    "file": "src/assets/images/anecdotes/johnson.jpg",
+    "title": "Katherine Johnson at NASA, in 1966.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Katherine_Johnson_at_NASA%2C_in_1966.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Katherine_Johnson_at_NASA%2C_in_1966.jpg/500px-Katherine_Johnson_at_NASA%2C_in_1966.jpg",
+    "author": "NASA; restauración de Adam Cuerden",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 500,
+    "height": 630,
+    "bytes": 53316,
+    "sha256": "e35a55a89cd199a32ab3381bb1da967e2f9469d195be2024dbcc4919b53dd8a8",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "johnson-glenn-check"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "noether": {
+    "file": "src/assets/images/anecdotes/noether.jpg",
+    "title": "Noether.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Noether.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Noether.jpg/500px-Noether.jpg",
+    "author": "Autor desconocido",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 500,
+    "height": 762,
+    "bytes": 84941,
+    "sha256": "8bb65c64663e56f0479ac1f773b3c653253562023cf0f5143434332a01411d4e",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "noether-gottingen-lectures"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "nightingale-diagram": {
+    "file": "src/assets/images/anecdotes/nightingale-diagram.jpg",
+    "title": "Nightingale-mortality.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Nightingale-mortality.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Nightingale-mortality.jpg/960px-Nightingale-mortality.jpg",
+    "author": "Florence Nightingale",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 960,
+    "height": 525,
+    "bytes": 134733,
+    "sha256": "c6abcf3e1a66f8b5dd68b20e7256884f607e6eedebec0d0bae5e31eae86290c5",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "nightingale-statistical-campaign"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "pascaline": {
+    "file": "src/assets/images/anecdotes/pascaline.jpg",
+    "title": "Pascaline-CnAM 823-1-IMG 1506-black.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Pascaline-CnAM_823-1-IMG_1506-black.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Pascaline-CnAM_823-1-IMG_1506-black.jpg/960px-Pascaline-CnAM_823-1-IMG_1506-black.jpg",
+    "author": "Rama",
+    "license": "CC BY-SA 3.0 FR",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/fr/",
+    "width": 960,
+    "height": 640,
+    "bytes": 116975,
+    "sha256": "0d56d40b00a9d92a4c5e15b1fb66dd67901dd8d6ad37d8f54f8c38ec4fa1b40f",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "pascal-fathers-calculator"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "nash": {
+    "file": "src/assets/images/anecdotes/nash.jpg",
+    "title": "John Forbes Nash, Jr. by Peter Badge.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:John_Forbes_Nash%2C_Jr._by_Peter_Badge.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/a9/John_Forbes_Nash%2C_Jr._by_Peter_Badge.jpg",
+    "author": "Peter Badge / Typos1",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "width": 567,
+    "height": 855,
+    "bytes": 193654,
+    "sha256": "37e7591ed47518d25278bfb24a17caee57c1fa4b4ad63c432dfd86399e9cf292",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "nash-return-recognition"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "grothendieck": {
+    "file": "src/assets/images/anecdotes/grothendieck.jpg",
+    "title": "Alexander Grothendieck.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Alexander_Grothendieck.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Alexander_Grothendieck.jpg",
+    "author": "Konrad Jacobs; copyright MFO",
+    "license": "CC BY-SA 2.0 DE",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/",
+    "width": 268,
+    "height": 326,
+    "bytes": 14417,
+    "sha256": "9be130d9a00a5e8d52ef8821cdade34114e6a654908faa8b2e7b90fe377572f2",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "grothendieck-ihes-departure"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "lepaute": {
+    "file": "src/assets/images/anecdotes/lepaute.jpg",
+    "title": "Nicole-Reine Lepaute.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Nicole-Reine_Lepaute.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Nicole-Reine_Lepaute.jpg/500px-Nicole-Reine_Lepaute.jpg",
+    "author": "Autor desconocido",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 500,
+    "height": 645,
+    "bytes": 92484,
+    "sha256": "9752ff3bd78c91e63c396b82067073b6e99263322be67d568335ff8edb31ad4e",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "lepaute-halleys-return"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "chatelet": {
+    "file": "src/assets/images/anecdotes/chatelet.jpg",
+    "title": "Emilie Chatelet portrait by Latour.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Emilie_Chatelet_portrait_by_Latour.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/Emilie_Chatelet_portrait_by_Latour.jpg/500px-Emilie_Chatelet_portrait_by_Latour.jpg",
+    "author": "Maurice Quentin de La Tour",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 500,
+    "height": 599,
+    "bytes": 95001,
+    "sha256": "7d205de0bf76fa44c67ccc70bfb59fa24cb62c3ed6f26eda8916f855c46667f9",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "chatelet-newton-translation"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "robinson": {
+    "file": "src/assets/images/anecdotes/robinson.jpg",
+    "title": "Julia Robinson 1975 (re-scanned).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Julia_Robinson_1975_%28re-scanned%29.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Julia_Robinson_1975_%28re-scanned%29.jpg/960px-Julia_Robinson_1975_%28re-scanned%29.jpg",
+    "author": "George M. Bergman; digitalización de George Ho",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "width": 960,
+    "height": 658,
+    "bytes": 131240,
+    "sha256": "ac342a25a06d0f3b7c08181b97760fe4fe4b5423209c3f2513d6fbda3239bf7e",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "robinson-matiyasevich-hilbert"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "ibm7090": {
+    "file": "src/assets/images/anecdotes/ibm7090.jpg",
+    "title": "IBM 7090 console used by a meteorologist, 1965.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:IBM_7090_console_used_by_a_meteorologist%2C_1965.jpg",
+    "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/IBM_7090_console_used_by_a_meteorologist%2C_1965.jpg/960px-IBM_7090_console_used_by_a_meteorologist%2C_1965.jpg",
+    "author": "U. S. Weather Bureau / colección histórica NOAA",
+    "license": "Public domain",
+    "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+    "width": 960,
+    "height": 753,
+    "bytes": 157200,
+    "sha256": "d911f5d1bcda2c186ee33ed5184ac736281c424773750ff36a2de433e29f5c92",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "hurwitz-mersenne-computer"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "conway": {
+    "file": "src/assets/images/anecdotes/conway.jpg",
+    "title": "John H Conway 2005 (cropped) (2).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:John_H_Conway_2005_%28cropped%29_%282%29.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/6/66/John_H_Conway_2005_%28cropped%29_%282%29.jpg",
+    "author": "Thane Plambeck; recortes de Commons",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+    "width": 632,
+    "height": 726,
+    "bytes": 69074,
+    "sha256": "29889e093cc2e7514b9185fe5398309b2a1fd03cce1ec1375c94dc5dea940745",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "conway-gardner-life"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
+  },
+  "weil": {
+    "file": "src/assets/images/anecdotes/weil.jpg",
+    "title": "Weil.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Weil.jpg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/a/af/Weil.jpg",
+    "author": "Konrad Jacobs / MFO",
+    "license": "CC BY-SA 2.0 DE",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/de/",
+    "width": 272,
+    "height": 400,
+    "bytes": 49274,
+    "sha256": "0a502eb7718d7201c8b8a7a2135de1977e6d1182f1b889d87a64bde9490a5343",
+    "status": "downloaded; visually reviewed; integrated",
+    "visualReview": "Contact sheet inspected 2026-10-20; subject and caption checked against individual source",
+    "usedBy": [
+      "weil-rouen-prison"
+    ],
+    "changes": "Redimensionado proporcional; sin recorte adicional. Se conserva el recorte de la fuente cuando existe."
   }
 }
