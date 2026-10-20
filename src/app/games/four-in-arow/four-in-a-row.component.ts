@@ -1,12 +1,16 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-four-in-a-row',
   templateUrl: './four-in-a-row.component.html',
   styleUrls: ['../board-game-layout.css', './four-in-a-row.component.css'],
-  standalone: true,
+  standalone: true, imports: [ContentConnectionsComponent],
 })
 export class FourInARowComponent implements OnInit, OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/counting-principles","label":"Principios de conteo: suma, producto y elecciones","reason":"Estudia el crecimiento del árbol de posibles continuaciones."},{"route":"/articles/grid-counting","label":"Conteo sistemático en tableros y cuadrículas","reason":"Cuenta alineaciones horizontales, verticales y diagonales del tablero."},{"route":"/articles/nash-equilibrium","label":"Equilibrio de Nash: mejores respuestas y estrategias mixtas","reason":"Analiza mejores respuestas y amenazas; un equilibrio no equivale por sí solo al algoritmo del juego."},{"route":"/games/tic-tac-toe","label":"Tres en raya","reason":"Compara amenazas, alineaciones y búsqueda de continuaciones en dos juegos de tablero."},{"route":"/problems/winning-lines-in-two-games","label":"Problema 93: Líneas ganadoras en dos juegos","reason":"Relaciona la práctica interactiva con el problema 93: Líneas ganadoras en dos juegos."}];
+  // content-connections:end
   rows = 6;
   cols = 7;
   board: string[][] = [];

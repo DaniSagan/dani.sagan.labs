@@ -1,9 +1,10 @@
+import { RouterLink } from '@angular/router';
 ﻿import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 interface Circle { x: number; y: number; r: number; }
 @Component({ host: { class: 'fractal-page' }, selector: 'app-apollonian-sieve',
   templateUrl: './apollonian-sieve.component.html', styleUrls: ['./apollonian-sieve.component.css'],
-  standalone: true, imports: [FormsModule] })
+  standalone: true, imports: [RouterLink, FormsModule] })
 export class ApollonianSieveComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   static title = 'Tamiz de Apolonio'; static route = 'apollonian-sieve';

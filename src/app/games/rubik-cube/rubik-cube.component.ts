@@ -1,3 +1,4 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 ﻿import {
   AfterViewInit,
   Component,
@@ -22,11 +23,14 @@ import {
 @Component({
   selector: 'app-rubik-cube',
   standalone: true,
-  imports: [FormsModule],
+  imports: [ContentConnectionsComponent, FormsModule],
   templateUrl: './rubik-cube.component.html',
   styleUrls: ['./rubik-cube.component.css'],
 })
 export class RubikCubeComponent implements AfterViewInit, OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/groups-cosets-lagrange","label":"Subgrupos, clases laterales y teorema de Lagrange","reason":"Relaciona composiciones de movimientos, subgrupos y órdenes."},{"route":"/articles/permutation-symmetries","label":"Permutaciones, ciclos y grupos de simetrías","reason":"Describe un movimiento mediante ciclos de piezas."},{"route":"/articles/quaternions-rotations","label":"Cuaterniones y rotaciones: del producto de Hamilton al espacio","reason":"Distingue la rotación espacial de la vista de las permutaciones de las piezas."},{"route":"/articles/rubik-invariants","label":"Invariantes del cubo de Rubik","reason":"Comprueba qué propiedades de las piezas preservan los movimientos legales."},{"route":"/problems/cube-rotation-order","label":"Problema 95: Orden de un giro del cubo","reason":"Relaciona la práctica interactiva con el problema 95: Orden de un giro del cubo."}];
+  // content-connections:end
   @ViewChild('viewport', { static: true })
   viewport!: ElementRef<HTMLDivElement>;
   @ViewChild('canvas', { static: true })

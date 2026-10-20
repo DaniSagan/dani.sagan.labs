@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import {
   FractalExplorerComponent,
@@ -8,7 +9,7 @@ import { Vec2 } from 'src/app/shared/math/vec2';
 @Component({ host: { class: 'fractal-page' },
   selector: 'app-minkowski-sausage',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './minkowski-sausage.component.html',
   styleUrl: './minkowski-sausage.component.css',
 })

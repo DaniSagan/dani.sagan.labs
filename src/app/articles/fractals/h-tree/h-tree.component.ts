@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 import {
@@ -8,7 +9,7 @@ import {
 @Component({ host: { class: 'fractal-page' },
   selector: 'app-h-tree',
   standalone: true,
-  imports: [FractalExplorerComponent],
+  imports: [RouterLink, FractalExplorerComponent],
   templateUrl: './h-tree.component.html',
   styleUrl: './h-tree.component.css',
 })

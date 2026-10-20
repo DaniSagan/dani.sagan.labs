@@ -1,12 +1,16 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 import { Component, OnDestroy } from '@angular/core';
 
 type Mark = '' | 'X' | 'O';
 @Component({
-  selector: 'app-tic-tac-toe', standalone: true,
+  selector: 'app-tic-tac-toe', standalone: true, imports: [ContentConnectionsComponent],
   templateUrl: './tic-tac-toe.component.html',
   styleUrls: ['../board-game-layout.css', './tic-tac-toe.component.css']
 })
 export class TicTacToeComponent implements OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/counting-principles","label":"Principios de conteo: suma, producto y elecciones","reason":"Cuenta elecciones y continuaciones sin confundir posiciones con partidas."},{"route":"/articles/nash-equilibrium","label":"Equilibrio de Nash: mejores respuestas y estrategias mixtas","reason":"Compara las decisiones estratégicas del tablero con el concepto de equilibrio."},{"route":"/articles/permutation-symmetries","label":"Permutaciones, ciclos y grupos de simetrías","reason":"Agrupa tableros equivalentes por giros y reflexiones."},{"route":"/games/four-in-a-row","label":"Cuatro en raya","reason":"Compara amenazas, alineaciones y búsqueda de continuaciones en dos juegos de tablero."},{"route":"/problems/winning-lines-in-two-games","label":"Problema 93: Líneas ganadoras en dos juegos","reason":"Relaciona la práctica interactiva con el problema 93: Líneas ganadoras en dos juegos."}];
+  // content-connections:end
   board: Mark[][] = [['', '', ''], ['', '', ''], ['', '', '']];
   readonly rows = [0, 1, 2];
   readonly columns = [0, 1, 2];

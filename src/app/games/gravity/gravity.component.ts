@@ -1,3 +1,4 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 import {
   AfterViewInit,
   Component,
@@ -36,11 +37,14 @@ import {
 @Component({
   selector: 'app-gravity',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [ContentConnectionsComponent, CommonModule, FormsModule],
   templateUrl: './gravity.component.html',
   styleUrls: ['./gravity.component.css'],
 })
 export class GravityComponent implements AfterViewInit, OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/first-integrals","label":"Integrales primeras y cantidades conservadas","reason":"Interpreta energía y momento como controles de la simulación."},{"route":"/articles/kepler-orbits","label":"Órbitas circulares y tercera ley de Kepler","reason":"Compara radios, velocidades y períodos en órbitas de dos cuerpos."},{"route":"/articles/ode-numerical-integration","label":"Integración numérica de ecuaciones diferenciales","reason":"Entiende cómo se aproxima una trayectoria por pasos temporales."},{"route":"/articles/symplectic-integration","label":"Estructura hamiltoniana e integración simpléctica","reason":"Estudia por qué importa la estructura del integrador en simulaciones largas."},{"route":"/articles/vector-norm","label":"Vectores y norma euclídea","reason":"Relaciona las distancias y los vectores con la fuerza gravitatoria."},{"route":"/problems/circular-orbit-scaling","label":"Problema 97: Escala de una órbita circular","reason":"Relaciona la práctica interactiva con el problema 97: Escala de una órbita circular."},{"route":"/problems/comparing-orbital-scales","label":"Problema 200: Comparar dos órbitas por su escala","reason":"Relaciona la práctica interactiva con el problema 200: Comparar dos órbitas por su escala."}];
+  // content-connections:end
   @ViewChild('viewport', { static: true })
   viewport!: ElementRef<HTMLDivElement>;
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

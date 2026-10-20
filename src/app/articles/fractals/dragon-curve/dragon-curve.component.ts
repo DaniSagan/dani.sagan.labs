@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { OnDestroy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Vec2 } from 'src/app/shared/math/vec2';
 
@@ -5,7 +6,7 @@ import { Vec2 } from 'src/app/shared/math/vec2';
   selector: 'app-dragon-curve',
   templateUrl: './dragon-curve.component.html',
   styleUrls: ['./dragon-curve.component.css'],
-  standalone: true,
+  standalone: true, imports: [RouterLink],
 })
 export class DragonCurveComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

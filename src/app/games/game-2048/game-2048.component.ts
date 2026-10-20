@@ -1,8 +1,12 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 ﻿import { Component, HostListener, OnDestroy } from '@angular/core';
 import { Direction, Tile, moveBoard, spawnTile, canMove, validSave } from './game-2048.model';
 
-@Component({selector: 'app-game-2048', standalone: true, templateUrl: './game-2048.component.html', styleUrls: ['./game-2048.component.css', './game-2048-board.css']})
+@Component({selector: 'app-game-2048', standalone: true, imports: [ContentConnectionsComponent], templateUrl: './game-2048.component.html', styleUrls: ['./game-2048.component.css', './game-2048-board.css']})
 export class Game2048Component implements OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/exponentials-logarithms","label":"Exponenciales y logaritmos: propiedades y ecuaciones","reason":"Relaciona cada fusión con las potencias de dos y el número de duplicaciones."},{"route":"/articles/finite-probability","label":"Probabilidad en espacios finitos: sucesos y regla de Laplace","reason":"Distingue las decisiones del jugador del azar al aparecer nuevas fichas."},{"route":"/articles/geometric-series","label":"Progresiones y series geométricas","reason":"Calcula sumas de valores que crecen por duplicación."}];
+  // content-connections:end
   tiles: Tile[] = []; visual: Tile[] = []; score = 0; best = 0; moves = 0; gain = 0;
   won = false; continued = false; over = false; busy = false; resetPending = false; message = ''; storageMessage = '';
   previous: {tiles: Tile[]; score: number; moves: number; won: boolean; continued: boolean} | null = null;

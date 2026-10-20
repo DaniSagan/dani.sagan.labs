@@ -35,3 +35,6 @@
     <footer><button (click)="help = !help">{{ help ? 'Ocultar' : 'Mostrar' }} recordatorio</button><button (click)="resetPending = !resetPending">Nueva campaña</button><p>Profundiza: <a routerLink="/articles/bernoulli-binomial">Bernoulli y binomial</a> · <a routerLink="/articles/bayes-theorem">Teorema de Bayes</a>.</p><p *ngIf="help">Lee las hipótesis → elige pruebas → compara resultados → calibra tu confianza → entrega y revisa. Se guarda automáticamente en este navegador.</p><div class="reset" *ngIf="resetPending"><p>Se sustituirá tu campaña guardada y su puntuación.</p><button (click)="start()">Sustituir e iniciar</button><button (click)="resetPending = false">Conservar partida</button></div></footer>
   </ng-container>
 </div>
+<!-- content-connections:start -->
+<app-content-connections [links]="learningConnections" />
+<!-- content-connections:end -->

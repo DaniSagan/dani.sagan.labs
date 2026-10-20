@@ -1,0 +1,926 @@
+{
+  "articlePairs": [
+    [
+      "cubic-equation",
+      "function-analysis",
+      "La monotonía permite estudiar cuántas raíces reales tiene una cúbica."
+    ],
+    [
+      "matrix-diagonalization",
+      "vector-spaces",
+      "Los autovectores forman una base cuando la matriz es diagonalizable."
+    ],
+    [
+      "eratosthenes-shadows",
+      "radians",
+      "Convierte el ángulo central de la medición de Eratóstenes entre grados y radianes."
+    ],
+    [
+      "weil-rouen-prison",
+      "rings-finite-fields",
+      "Los cuerpos finitos proporcionan parte del lenguaje de las conjeturas de Weil."
+    ],
+    [
+      "laplace-transform",
+      "continuity-differentiability",
+      "Distingue límites laterales y discontinuidades al trabajar con señales por tramos."
+    ],
+    [
+      "cissoid",
+      "curve-singularities",
+      "Estudia cómo se describe una singularidad de una curva."
+    ],
+    [
+      "exponential-curve",
+      "first-order-odes",
+      "El crecimiento proporcional conduce a una ecuación diferencial de primer orden."
+    ],
+    [
+      "gompertz-curve",
+      "first-order-odes",
+      "Relaciona un modelo de crecimiento con la ecuación diferencial que lo describe."
+    ],
+    [
+      "archimedes-sphere-cylinder",
+      "cavalieri-principle",
+      "Compara secciones para entender la relación entre los volúmenes."
+    ],
+    [
+      "line-circle",
+      "linear-approximation",
+      "La recta tangente ofrece una aproximación local de la circunferencia."
+    ],
+    [
+      "classical-cryptography",
+      "gcd-euclid",
+      "El máximo común divisor ayuda a decidir cuándo una clave afín es invertible."
+    ],
+    [
+      "euler-totient-formula",
+      "gcd-euclid",
+      "La función φ cuenta enteros cuyo máximo común divisor con el módulo es uno."
+    ],
+    [
+      "eulers-theorem",
+      "fermats-little-theorem",
+      "El pequeño teorema de Fermat es el caso de módulo primo del teorema de Euler."
+    ],
+    [
+      "covariance",
+      "descriptive-statistics",
+      "Repasa las medias y varianzas que intervienen en la covarianza."
+    ],
+    [
+      "descriptive-statistics",
+      "mean-inequalities",
+      "Compara la media aritmética con otras medias y sus desigualdades."
+    ],
+    [
+      "trigonometric-functions-atlas",
+      "function-analysis",
+      "Estudia monotonía, extremos y dominios en las funciones trigonométricas."
+    ],
+    [
+      "trigonometric-functions-atlas",
+      "arc-length",
+      "Relaciona el parámetro angular con la longitud recorrida sobre la circunferencia."
+    ],
+    [
+      "trigonometric-functions-atlas",
+      "radians",
+      "La medida en radianes conecta las funciones trigonométricas con los arcos."
+    ],
+    [
+      "langtons-ant",
+      "cellular-automata",
+      "Compara dos sistemas discretos gobernados por reglas locales; la hormiga incluye además un agente móvil."
+    ],
+    [
+      "langtons-ant",
+      "life-patterns",
+      "Contrasta las estructuras que emergen de reglas discretas en la hormiga y en Vida."
+    ],
+    [
+      "surreal-numbers",
+      "nash-equilibrium",
+      "Distingue el valor de un juego combinatorio del análisis de mejores respuestas y equilibrios."
+    ],
+    [
+      "transfinite-numbers",
+      "surreal-numbers",
+      "Distingue cardinales, ordinales y surreales antes de operar con el infinito."
+    ],
+    [
+      "conway-gardner-life",
+      "cellular-automata",
+      "Sitúa el Juego de la Vida dentro de los autómatas celulares."
+    ],
+    [
+      "pascal-fermat-interrupted-game",
+      "finite-probability",
+      "El reparto de una apuesta interrumpida se apoya en contar continuaciones equiprobables."
+    ],
+    [
+      "bayes-price-manuscript",
+      "conditional-independence",
+      "La probabilidad condicionada prepara la lectura del resultado de Bayes."
+    ],
+    [
+      "nash-return-recognition",
+      "nash-equilibrium",
+      "Conecta la historia de Nash con la definición matemática de equilibrio."
+    ],
+    [
+      "shanks-pi-error",
+      "numerical-conditioning",
+      "La historia de Shanks ilustra por qué un cálculo largo necesita comprobaciones independientes del error."
+    ],
+    [
+      "lorenz-attractor",
+      "lyapunov-stability-chaos",
+      "Relaciona la separación de trayectorias con la sensibilidad a las condiciones iniciales."
+    ],
+    [
+      "lorenz-attractor",
+      "ode-numerical-integration",
+      "El dibujo del atractor se obtiene aproximando un sistema diferencial por pasos temporales."
+    ],
+    [
+      "apollonian-sieve",
+      "descartes-circles",
+      "Las circunferencias tangentes enlazan el empaquetamiento con la relación de curvaturas de Descartes."
+    ],
+    [
+      "dragon-curve",
+      "paperfolding-curve",
+      "Compara la construcción por plegado con las reglas que generan la curva del dragón."
+    ],
+    [
+      "mandelbrot-set",
+      "julia-set",
+      "Compara el plano de parámetros de Mandelbrot con la dinámica de un parámetro fijo en Julia."
+    ],
+    [
+      "mandelbrot-set",
+      "complex-arithmetic",
+      "Repasa la multiplicación y el módulo complejos que intervienen en la iteración."
+    ],
+    [
+      "arithmetic-derivative",
+      "fundamental-theorem-arithmetic",
+      "La factorización en primos permite aplicar las reglas de la derivada aritmética; es una operación distinta de la derivada real."
+    ],
+    [
+      "collatz",
+      "recurrent-sequences",
+      "Formula la regla de Collatz como una recurrencia y distingue los experimentos de una prueba general."
+    ],
+    [
+      "percolation-diagram",
+      "finite-probability",
+      "Relaciona el estado aleatorio de las celdas con un modelo de probabilidad finita."
+    ],
+    [
+      "percolation-diagram",
+      "graph-foundations",
+      "Describe la conexión entre extremos mediante caminos en el grafo de celdas abiertas."
+    ],
+    [
+      "airy-ai-curve",
+      "ode-numerical-integration",
+      "La función de Airy ofrece un ejemplo de función especial definida por una ecuación diferencial."
+    ],
+    [
+      "beta-density-curve",
+      "continuous-random-variables",
+      "Interpreta la curva como densidad: las probabilidades son áreas, no alturas puntuales."
+    ],
+    [
+      "cayley-sextic",
+      "curve-singularities",
+      "Examina las tangentes y el comportamiento local en los puntos especiales de la séxtica."
+    ],
+    [
+      "ceva-cycloid",
+      "rose",
+      "Compara curvas polares definidas por funciones trigonométricas del ángulo; el nombre cicloide de Ceva no implica una construcción por rodadura."
+    ],
+    [
+      "cochleoid-curve",
+      "sinc-curve",
+      "Relaciona la expresión radial sin(θ)/θ con la función sinc y su valor límite en cero."
+    ],
+    [
+      "conical-helix-curve",
+      "circular-helix-curve",
+      "Compara una hélice de radio constante con otra cuyo radio cambia sobre un cono."
+    ],
+    [
+      "cornoid-curve",
+      "lissajous",
+      "Contrasta dos curvas descritas mediante combinaciones de funciones trigonométricas."
+    ],
+    [
+      "cubic-hermite-curve",
+      "polynomial-interpolation",
+      "Relaciona la interpolación de posiciones y derivadas con las condiciones de Hermite."
+    ],
+    [
+      "dawson-curve",
+      "integration-numerical",
+      "La integral que define la función de Dawson permite discutir aproximación numérica y control del error."
+    ],
+    [
+      "epispiral-curve",
+      "rose",
+      "Compara cómo las funciones trigonométricas del ángulo determinan ramas y simetrías en curvas polares."
+    ],
+    [
+      "error-function-curve",
+      "normal-distribution",
+      "La función error se relaciona con la acumulación de probabilidad de la distribución normal."
+    ],
+    [
+      "fermat-spiral",
+      "archimedean-spiral",
+      "Compara la dependencia del radio con el ángulo en dos espirales distintas."
+    ],
+    [
+      "freeth-nephroid",
+      "nephroid-curve",
+      "Compara las dos curvas y sus construcciones; el nombre compartido no las hace idénticas."
+    ],
+    [
+      "gamma-density-curve",
+      "gamma-function",
+      "La función gamma proporciona la constante de normalización de esta densidad."
+    ],
+    [
+      "gielis-superformula",
+      "lame-superellipse",
+      "Compara familias parametrizadas capaces de producir curvas con distintas simetrías y redondeos."
+    ],
+    [
+      "lagrange-interpolation-curve",
+      "polynomial-interpolation",
+      "Conecta el trazado del interpolador con su fórmula y sus limitaciones."
+    ],
+    [
+      "lame-superellipse",
+      "ellipse",
+      "La elipse es un caso particular de la familia de superelipses."
+    ],
+    [
+      "lituus-spiral",
+      "hyperbolic-spiral",
+      "Compara dos leyes de decrecimiento del radio cuando aumenta el ángulo."
+    ],
+    [
+      "logarithmic-curve",
+      "exponentials-logarithms",
+      "Relaciona la gráfica logarítmica con su función inversa, la exponencial."
+    ],
+    [
+      "logistic-curve",
+      "first-order-odes",
+      "Conecta la forma sigmoide con un modelo de crecimiento limitado."
+    ],
+    [
+      "nurbs-curve",
+      "rational-bezier-curve",
+      "Compara curvas racionales controladas por puntos y pesos; una NURBS añade una estructura de nudos."
+    ],
+    [
+      "plateau-curve",
+      "lissajous",
+      "Contrasta parametrizaciones trigonométricas y el papel de sus frecuencias."
+    ],
+    [
+      "poinsot-spiral",
+      "hyperbolic-spiral",
+      "Compara el comportamiento del radio, las ramas y las asíntotas de estas espirales."
+    ],
+    [
+      "pythagorean-hodograph-quintic",
+      "arc-length",
+      "Estas curvas conectan la estructura de su derivada con el cálculo de la longitud de arco."
+    ],
+    [
+      "rational-bezier-curve",
+      "quadratic-bezier-curve",
+      "Observa qué cambia cuando se introducen pesos en una construcción de Bézier."
+    ],
+    [
+      "sinusoidal-curve",
+      "trigonometric-functions-atlas",
+      "Relaciona amplitud, período y fase con las gráficas de seno y coseno."
+    ],
+    [
+      "teardrop-curve",
+      "curve-singularities",
+      "Examina el comportamiento local de la punta y las tangentes de una curva con forma de lágrima."
+    ],
+    [
+      "theodorus-spiral",
+      "pythagorean-distance",
+      "Cada triángulo rectángulo añade un paso cuya longitud se calcula con Pitágoras."
+    ],
+    [
+      "tractrix-curve",
+      "hyperbolic-functions",
+      "Las funciones hiperbólicas permiten expresar una parametrización de la tractriz."
+    ],
+    [
+      "trigonometric-egg-curve",
+      "ellipse",
+      "Compara la simetría de una elipse con un perfil ovoide descrito trigonométricamente."
+    ],
+    [
+      "tschirnhausen-cubic",
+      "curve-singularities",
+      "Usa el estudio local de una curva para interpretar sus cruces y tangentes."
+    ],
+    [
+      "uniform-cubic-bspline",
+      "cubic-bezier-curve",
+      "Compara dos métodos de diseño de curvas cúbicas mediante puntos de control."
+    ],
+    [
+      "viviani-curve",
+      "circular-helix-curve",
+      "Compara dos curvas espaciales y distingue su trazado de las proyecciones planas."
+    ],
+    [
+      "burning-ship-fractal",
+      "mandelbrot-set",
+      "Compara iteraciones cuadráticas y observa qué cambia al modificar la regla compleja."
+    ],
+    [
+      "cantor-dust",
+      "cantor-set",
+      "El polvo de Cantor permite pasar de una construcción sobre la recta a una construcción por productos."
+    ],
+    [
+      "cesaro-fractal",
+      "koch-curve",
+      "Compara dos construcciones por sustitución de segmentos y sus ángulos."
+    ],
+    [
+      "h-tree",
+      "binary-fractal-tree",
+      "Compara ramificaciones autosimilares y sus factores de escala."
+    ],
+    [
+      "hexaflake",
+      "hexagon",
+      "La geometría del hexágono ayuda a entender las copias que componen el fractal."
+    ],
+    [
+      "jerusalem-cross",
+      "fractal-measure-dimension",
+      "Estudia los factores de escala de las copias antes de calcular una dimensión de autosimilitud."
+    ],
+    [
+      "minkowski-sausage",
+      "koch-curve",
+      "Compara dos reglas de sustitución y el crecimiento de la longitud por iteraciones."
+    ],
+    [
+      "newton-set-fractal",
+      "newton-raphson",
+      "El fractal representa cuencas de atracción del método de Newton en el plano complejo."
+    ],
+    [
+      "phoenix-set-fractal",
+      "mandelbrot-set",
+      "Compara conjuntos de escape y observa el efecto de una iteración con memoria."
+    ],
+    [
+      "t-square",
+      "fractal-measure-dimension",
+      "Relaciona las copias cuadradas, su escala y las precauciones al calcular dimensiones."
+    ],
+    [
+      "tricorn",
+      "mandelbrot-set",
+      "Compara la iteración cuadrática con su variante que usa conjugación compleja."
+    ],
+    [
+      "vicsek-fractal",
+      "fractal-measure-dimension",
+      "Cuenta las copias autosimilares y su factor de reducción."
+    ],
+    [
+      "bretschneider-formula",
+      "heron-formula",
+      "Compara la fórmula para cuadriláteros con la expresión del área de un triángulo a partir de sus lados."
+    ],
+    [
+      "erdos-mordell",
+      "triangle-metrics",
+      "Sitúa las distancias a lados y vértices que intervienen en la desigualdad."
+    ],
+    [
+      "fermat-point",
+      "triangle-metrics",
+      "Relaciona la posición del punto de Fermat con los ángulos del triángulo."
+    ],
+    [
+      "napoleon-theorem",
+      "triangle",
+      "Repasa las propiedades de los triángulos equiláteros que intervienen en la construcción."
+    ],
+    [
+      "pompeiu-theorem",
+      "law-of-cosines",
+      "Relaciona las distancias de la construcción con el cálculo de lados y ángulos."
+    ],
+    [
+      "varignon-theorem",
+      "affine-transformations",
+      "Los puntos medios y el paralelismo permiten interpretar la construcción mediante geometría afín."
+    ],
+    [
+      "aliquot-sequences",
+      "divisor-sum-theorem",
+      "La suma de divisores permite calcular el siguiente término de una sucesión alícuota."
+    ],
+    [
+      "wilsons-theorem",
+      "modular-arithmetic",
+      "La congruencia de Wilson enlaza factoriales e inversos en un módulo primo."
+    ],
+    [
+      "buffon-needle",
+      "continuous-random-variables",
+      "Modela la posición y la orientación aleatorias de la aguja mediante variables continuas."
+    ],
+    [
+      "octagon",
+      "triangle-metrics",
+      "Divide el octágono regular en triángulos para estudiar longitudes y áreas."
+    ],
+    [
+      "appel-haken-computer-proof",
+      "four-color-theorem",
+      "Complemento histórico: el relato «Cuatro colores: cuando la demostración llegó con un programa» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "chatelet-newton-translation",
+      "kepler-orbits",
+      "Complemento histórico: el relato «Émilie du Châtelet: Newton contra el reloj» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "dantzig-homework",
+      "proof-strategies",
+      "Complemento histórico: el relato «Los deberes que no eran deberes» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "de-moivre-last-sleep",
+      "arithmetic-series",
+      "Complemento histórico: el relato «De Moivre y la última cuenta del sueño» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "erdos-book",
+      "proof-strategies",
+      "Complemento histórico: el relato «Erdős y el libro que no estaba en ninguna biblioteca» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "euclid-royal-road",
+      "triangle-similarity",
+      "Complemento histórico: el relato «El rey que buscaba un atajo a la geometría» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "euler-diderot-legend",
+      "proof-strategies",
+      "Complemento histórico: el relato «La demostración de Dios que no demuestra nada» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "euler-seven-bridges-walk",
+      "konigsberg-bridges",
+      "Complemento histórico: el relato «Los siete puentes: un paseo condenado al fracaso» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "fourier-heat-prize",
+      "fourier-series",
+      "Complemento histórico: el relato «Fourier ganó el premio; su memoria tuvo que esperar» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "germain-leblanc",
+      "modular-arithmetic",
+      "Complemento histórico: el relato «Sophie Germain y la firma de Monsieur Le Blanc» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "godel-citizenship",
+      "proof-strategies",
+      "Complemento histórico: el relato «El día que Gödel encontró un problema en la Constitución» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "grothendieck-ihes-departure",
+      "galois-solvability",
+      "Complemento histórico: el relato «Grothendieck: el presupuesto que le hizo abandonar el IHÉS» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "hardy-riemann-postcard",
+      "riemann-zeta",
+      "Complemento histórico: el relato «Hardy: una postal como seguro de vida» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "hurwitz-mersenne-computer",
+      "perfect-numbers",
+      "Complemento histórico: el relato «Hurwitz: cincuenta minutos para un primo de 1332 cifras» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "johnson-glenn-check",
+      "kepler-orbits",
+      "Complemento histórico: el relato «Katherine Johnson: la comprobación que pidió John Glenn» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "lepaute-halleys-return",
+      "kepler-orbits",
+      "Complemento histórico: el relato «Lepaute: seis meses de cuentas para esperar a un cometa» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "lovelace-unbuilt-machine",
+      "bernoulli-numbers",
+      "Complemento histórico: el relato «Un programa antes de que existiera su máquina» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "mandelbrot-coastline",
+      "fractal-measure-dimension",
+      "Complemento histórico: el relato «La costa que cambiaba de longitud» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "mirzakhani-paper",
+      "surfaces-genus-euler",
+      "Complemento histórico: el relato «El suelo de papel de Maryam Mirzakhani» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "mobius-listing-strip",
+      "mobius-strip",
+      "Complemento histórico: el relato «Una cinta con dos descubridores» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "napier-briggs-meeting",
+      "exponentials-logarithms",
+      "Complemento histórico: el relato «El visitante que dejó a Napier sin conversación» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "newton-leibniz-priority",
+      "derivative-foundations",
+      "Complemento histórico: el relato «Newton y Leibniz: un cálculo y dos prioridades» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "newton-lion-claw",
+      "cycloid",
+      "Complemento histórico: el relato «Una solución con garras de león» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "nightingale-statistical-campaign",
+      "descriptive-statistics",
+      "Complemento histórico: el relato «Nightingale: el gráfico que llevó el hospital a los despachos» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "noether-gottingen-lectures",
+      "variations-noether",
+      "Complemento histórico: el relato «Emmy Noether: la profesora cuyo curso anunciaba Hilbert» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "pascal-fathers-calculator",
+      "numeral-systems",
+      "Complemento histórico: el relato «Pascal: una máquina para las cuentas de su padre» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "perelman-prize-refusal",
+      "homeomorphisms-homotopy",
+      "Complemento histórico: el relato «Perelmán y el premio que no quiso cobrar» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "poincare-omnibus",
+      "groups-cosets-lagrange",
+      "Complemento histórico: el relato «La idea que subió al ómnibus con Poincaré» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "ramanujan-first-letter",
+      "riemann-zeta",
+      "Complemento histórico: el relato «La carta de Ramanujan que Hardy no pudo apartar» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "robinson-matiyasevich-hilbert",
+      "computability-formal-languages",
+      "Complemento histórico: el relato «Julia Robinson y la última pieza de un problema de Hilbert» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "tartaglia-cardano-secret",
+      "cubic-equation",
+      "Complemento histórico: el relato «Tartaglia y Cardano: una fórmula, un juramento y una disputa» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "turing-1936-paper",
+      "computability-formal-languages",
+      "Complemento histórico: el relato «El artículo de Turing que llegó con un rival» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "turing-chained-mug",
+      "joan-clarke-hut-eight",
+      "Complemento histórico: el relato «Alan Turing y la taza que no debía desaparecer» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "turing-wittgenstein-bridge",
+      "proof-strategies",
+      "Complemento histórico: el relato «Turing y Wittgenstein: una discusión con un puente en medio» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "ulam-spiral-doodle",
+      "ulam-spiral",
+      "Complemento histórico: el relato «Los números que Ulam dibujó en una reunión» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "von-neumann-fly",
+      "geometric-series",
+      "Complemento histórico: el relato «La mosca que von Neumann sumó demasiadas veces» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "wolfskehl-fermat-prize",
+      "fermat-wiles-theorem",
+      "Complemento histórico: el relato «Wolfskehl: una herencia que esperó a Andrew Wiles» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ],
+    [
+      "zeno-achilles-tortoise",
+      "geometric-series",
+      "Complemento histórico: el relato «La tortuga que siempre llevaba ventaja» permite conocer a sus protagonistas y el contexto de sus ideas."
+    ]
+  ],
+  "games": {
+    "2048": {
+      "title": "2048",
+      "articles": [
+        [
+          "exponentials-logarithms",
+          "Relaciona cada fusión con las potencias de dos y el número de duplicaciones."
+        ],
+        [
+          "geometric-series",
+          "Calcula sumas de valores que crecen por duplicación."
+        ],
+        [
+          "finite-probability",
+          "Distingue las decisiones del jugador del azar al aparecer nuevas fichas."
+        ]
+      ]
+    },
+    "tic-tac-toe": {
+      "title": "Tres en raya",
+      "articles": [
+        [
+          "nash-equilibrium",
+          "Compara las decisiones estratégicas del tablero con el concepto de equilibrio."
+        ],
+        [
+          "counting-principles",
+          "Cuenta elecciones y continuaciones sin confundir posiciones con partidas."
+        ],
+        [
+          "permutation-symmetries",
+          "Agrupa tableros equivalentes por giros y reflexiones."
+        ]
+      ]
+    },
+    "four-in-a-row": {
+      "title": "Cuatro en raya",
+      "articles": [
+        [
+          "nash-equilibrium",
+          "Analiza mejores respuestas y amenazas; un equilibrio no equivale por sí solo al algoritmo del juego."
+        ],
+        [
+          "counting-principles",
+          "Estudia el crecimiento del árbol de posibles continuaciones."
+        ],
+        [
+          "grid-counting",
+          "Cuenta alineaciones horizontales, verticales y diagonales del tablero."
+        ]
+      ]
+    },
+    "sudoku": {
+      "title": "Sudoku",
+      "articles": [
+        [
+          "sudoku-constraints",
+          "Interpreta filas, columnas y bloques como restricciones simultáneas."
+        ],
+        [
+          "permutation-symmetries",
+          "Comprueba qué cambios de símbolos y posiciones conservan una solución."
+        ],
+        [
+          "graph-foundations",
+          "Modela las incompatibilidades entre casillas mediante un grafo."
+        ],
+        [
+          "trees-graph-coloring",
+          "Relaciona la asignación de cifras con una coloración sujeta a restricciones."
+        ]
+      ]
+    },
+    "rubik-cube": {
+      "title": "Cubo de Rubik",
+      "articles": [
+        [
+          "rubik-invariants",
+          "Comprueba qué propiedades de las piezas preservan los movimientos legales."
+        ],
+        [
+          "permutation-symmetries",
+          "Describe un movimiento mediante ciclos de piezas."
+        ],
+        [
+          "groups-cosets-lagrange",
+          "Relaciona composiciones de movimientos, subgrupos y órdenes."
+        ],
+        [
+          "quaternions-rotations",
+          "Distingue la rotación espacial de la vista de las permutaciones de las piezas."
+        ]
+      ]
+    },
+    "game-of-life": {
+      "title": "Juego de la Vida",
+      "articles": [
+        [
+          "life-patterns",
+          "Experimenta con osciladores, desplazamientos y evolución simultánea."
+        ],
+        [
+          "cellular-automata",
+          "Sitúa Vida dentro de los sistemas discretos de reglas locales."
+        ],
+        [
+          "conway-gardner-life",
+          "Conoce la historia de Conway y la difusión de Vida por Gardner."
+        ],
+        [
+          "computability-formal-languages",
+          "Explora la relación entre reglas locales y capacidad de cómputo."
+        ],
+        [
+          "langtons-ant",
+          "Compara Vida con otro sistema discreto que produce estructuras emergentes."
+        ]
+      ]
+    },
+    "gravity": {
+      "title": "Simulador gravitatorio",
+      "articles": [
+        [
+          "kepler-orbits",
+          "Compara radios, velocidades y períodos en órbitas de dos cuerpos."
+        ],
+        [
+          "ode-numerical-integration",
+          "Entiende cómo se aproxima una trayectoria por pasos temporales."
+        ],
+        [
+          "symplectic-integration",
+          "Estudia por qué importa la estructura del integrador en simulaciones largas."
+        ],
+        [
+          "first-integrals",
+          "Interpreta energía y momento como controles de la simulación."
+        ],
+        [
+          "vector-norm",
+          "Relaciona las distancias y los vectores con la fuerza gravitatoria."
+        ]
+      ]
+    },
+    "probability-detective": {
+      "title": "Detective de probabilidad",
+      "articles": [
+        [
+          "bayes-theorem",
+          "Actualiza las probabilidades de las hipótesis cuando llega una pista."
+        ],
+        [
+          "conditional-independence",
+          "Comprueba cuándo es legítimo combinar probabilidades de distintas pistas."
+        ],
+        [
+          "finite-probability",
+          "Repasa sucesos, probabilidades y normalización."
+        ],
+        [
+          "bayes-price-manuscript",
+          "Descubre el contexto histórico del razonamiento bayesiano."
+        ]
+      ]
+    },
+    "constellations": {
+      "title": "Reconocimiento de constelaciones",
+      "articles": [
+        [
+          "spherical-trigonometry",
+          "Interpreta posiciones y separaciones angulares en la esfera celeste."
+        ],
+        [
+          "radians",
+          "Repasa la conversión entre medidas angulares."
+        ],
+        [
+          "dot-product",
+          "Relaciona el ángulo entre direcciones con su producto escalar."
+        ]
+      ]
+    }
+  },
+  "problemPairs": [
+    [
+      12,
+      "polynomial-foundations",
+      "Identifica los coeficientes y el término independiente de la ecuación cuadrática."
+    ],
+    [
+      25,
+      "absolute-value-distance",
+      "Distingue área geométrica positiva y determinante con signo."
+    ],
+    [
+      28,
+      "absolute-value-distance",
+      "El valor absoluto convierte la distancia orientada en distancia no negativa."
+    ],
+    [
+      29,
+      "scalar-triple-product",
+      "El producto mixto mide el volumen que interviene en la distancia entre rectas."
+    ],
+    [
+      26,
+      "algebraic-identities-factorization",
+      "Al sustituir la ecuación de la recta, completar cuadrados ayuda a resolver la ecuación resultante."
+    ],
+    [
+      30,
+      "cayley-menger",
+      "Compara el método vectorial con una fórmula basada solo en las seis distancias."
+    ],
+    [
+      63,
+      "absolute-value-distance",
+      "Comprende por qué aparece el valor absoluto dentro del logaritmo de una primitiva."
+    ],
+    [
+      175,
+      "conditional-independence",
+      "En el muestreo sin reposición, el resultado de una extracción cambia las probabilidades de la siguiente."
+    ],
+    [
+      76,
+      "descriptive-statistics",
+      "Distingue varianza y desviación típica al describir el número de éxitos."
+    ],
+    [
+      50,
+      "continuity-differentiability",
+      "Separa la existencia de una raíz por continuidad de su unicidad por monotonía."
+    ],
+    [
+      187,
+      "descriptive-statistics",
+      "Distingue la dispersión de los datos del error estándar de su media."
+    ],
+    [
+      87,
+      "descriptive-statistics",
+      "Repasa el significado de la desviación típica antes de construir el intervalo."
+    ],
+    [
+      86,
+      "descriptive-statistics",
+      "Conecta la desviación típica con la precisión de una media muestral."
+    ],
+    [
+      82,
+      "affine-transformations",
+      "Interpreta el cambio de unidades como una transformación afín y estudia cómo afecta a los resúmenes."
+    ],
+    [
+      182,
+      "bessel-correction",
+      "Distingue la varianza de la población de la corrección usada al estimarla con una muestra."
+    ],
+    [
+      131,
+      "arc-length",
+      "Relaciona la fracción de vuelta, el ángulo en radianes y la longitud del arco."
+    ]
+  ],
+  "gamePairs": [
+    [
+      "tic-tac-toe",
+      "four-in-a-row",
+      "Compara amenazas, alineaciones y búsqueda de continuaciones en dos juegos de tablero."
+    ]
+  ]
+}

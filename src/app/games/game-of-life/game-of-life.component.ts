@@ -1,3 +1,4 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 ﻿import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -40,10 +41,13 @@ export const LIFE_WORKER_FACTORY = new InjectionToken<() => Worker>(
   standalone: true,
   templateUrl: './game-of-life.component.html',
   styleUrls: ['./game-of-life.component.css', './game-of-life-library.css'],
-  imports: [FormsModule, RouterLink, DecimalPipe],
+  imports: [ContentConnectionsComponent, FormsModule, RouterLink, DecimalPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameOfLifeComponent implements AfterViewInit, OnDestroy {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/computability-formal-languages","label":"Computabilidad, lenguajes formales y problema de la parada","reason":"Explora la relación entre reglas locales y capacidad de cómputo."},{"route":"/articles/conway-gardner-life","label":"Conway: el pequeño mundo que Gardner puso en circulación","reason":"Conoce la historia de Conway y la difusión de Vida por Gardner."},{"route":"/articles/langtons-ant","label":"La hormiga de Langton: el orden que emerge del caos","reason":"Compara Vida con otro sistema discreto que produce estructuras emergentes."},{"route":"/articles/life-patterns","label":"El Juego de la vida: osciladores y evolución","reason":"Experimenta con osciladores, desplazamientos y evolución simultánea."},{"route":"/problems/birth-and-survival-in-game-of-life","label":"Problema 198: Un nacimiento y una supervivencia en Vida","reason":"Relaciona la práctica interactiva con el problema 198: Un nacimiento y una supervivencia en Vida."}];
+  // content-connections:end
   @ViewChild('board', { static: true }) board!: ElementRef<HTMLCanvasElement>;
   @ViewChild('viewport', { static: true }) viewport!: ElementRef<HTMLElement>;
   private readonly factory = inject(LIFE_WORKER_FACTORY);

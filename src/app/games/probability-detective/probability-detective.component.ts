@@ -1,11 +1,15 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CASES, Evidence, draw, normalize, posterior, information, score } from './detective.model';
 interface RecordFile { truth: number; evidence: Evidence[]; choice: number; confidence: number; answer: number; closed: boolean; assisted: boolean; }
-@Component({ selector: 'app-probability-detective', standalone: true, imports: [CommonModule, FormsModule, RouterLink], templateUrl: './probability-detective.component.html', styleUrls: ['./probability-detective.component.css'] })
+@Component({ selector: 'app-probability-detective', standalone: true, imports: [ContentConnectionsComponent, CommonModule, FormsModule, RouterLink], templateUrl: './probability-detective.component.html', styleUrls: ['./probability-detective.component.css'] })
 export class ProbabilityDetectiveComponent {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/bayes-price-manuscript","label":"El manuscrito que Bayes no llegó a publicar","reason":"Descubre el contexto histórico del razonamiento bayesiano."},{"route":"/articles/conditional-independence","label":"Probabilidad condicionada e independencia","reason":"Comprueba cuándo es legítimo combinar probabilidades de distintas pistas."},{"route":"/articles/finite-probability","label":"Probabilidad en espacios finitos: sucesos y regla de Laplace","reason":"Repasa sucesos, probabilidades y normalización."},{"route":"/problems/bayes-and-base-rates","label":"Problema 73: Bayes y tasa base","reason":"Relaciona la práctica interactiva con el problema 73: Bayes y tasa base."},{"route":"/problems/false-positive-in-a-population","label":"Problema 172: Un falso positivo en una población","reason":"Relaciona la práctica interactiva con el problema 172: Un falso positivo en una población."}];
+  // content-connections:end
   readonly cases = CASES;
   readonly chapters = ['Primeras sospechas', 'La frecuencia importa', 'Operación incertidumbre'];
   records: RecordFile[] = [];

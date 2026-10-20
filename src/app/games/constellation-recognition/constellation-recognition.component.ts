@@ -1,8 +1,12 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 ﻿import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CONSTELLATIONS } from './constellation-catalog';
 import { Answer, Constellation, Difficulty, Hemisphere, Question, makeRound, points, pool, starRadius, validProgress } from './constellation.model';
-@Component({selector: 'app-constellation-recognition', standalone: true, templateUrl: './constellation-recognition.component.html', styleUrls: ['./constellation-recognition.component.css', './constellation-sky.css', './constellation-question.css', './constellation-objects.css']})
+@Component({selector: 'app-constellation-recognition', standalone: true, imports: [ContentConnectionsComponent], templateUrl: './constellation-recognition.component.html', styleUrls: ['./constellation-recognition.component.css', './constellation-sky.css', './constellation-question.css', './constellation-objects.css']})
 export class ConstellationRecognitionComponent {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/dot-product","label":"Producto escalar","reason":"Relaciona el ángulo entre direcciones con su producto escalar."},{"route":"/articles/radians","label":"Radianes","reason":"Repasa la conversión entre medidas angulares."},{"route":"/articles/spherical-trigonometry","label":"Trigonometría esférica y coordenadas celestes","reason":"Interpreta posiciones y separaciones angulares en la esfera celeste."}];
+  // content-connections:end
   readonly catalog = CONSTELLATIONS;
   readonly levels: {id: Difficulty; name: string; detail: string}[] = [{id:1,name:'Explorador',detail:'Nombres y líneas'},{id:2,name:'Navegante',detail:'Solo líneas'},{id:3,name:'Astrónomo',detail:'Solo estrellas'}];
   hemisphere: Hemisphere = 'north'; difficulty: Difficulty = 1; count = 10;

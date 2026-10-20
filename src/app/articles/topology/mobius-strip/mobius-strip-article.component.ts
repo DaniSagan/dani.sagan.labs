@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormulaComponent } from '../../../shared/math/formula/formula.component';
 import { MobiusStripViewerComponent } from '../../../widgets/mobius-strip/mobius-strip-viewer.component';
@@ -5,7 +6,7 @@ import { MobiusGluingComponent } from '../../../widgets/mobius-strip/mobius-glui
 
 @Component({
   selector: 'app-mobius-strip-article', standalone: true,
-  imports: [FormulaComponent, MobiusStripViewerComponent, MobiusGluingComponent],
+  imports: [RouterLink, FormulaComponent, MobiusStripViewerComponent, MobiusGluingComponent],
   templateUrl: './mobius-strip-article.component.html'
 })
 export class MobiusStripArticleComponent {

@@ -1,3 +1,4 @@
+import { ContentConnectionsComponent } from '../../shared/content/content-connections/content-connections.component';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -13,9 +14,12 @@ interface SudokuCell {
   templateUrl: './sudoku.component.html',
   styleUrls: ['./sudoku.component.css'],
   standalone: true,
-  imports: [ FormsModule, CommonModule ]
+  imports: [ContentConnectionsComponent,  FormsModule, CommonModule ]
 })
 export class SudokuComponent implements OnInit {
+  // content-connections:start
+  readonly learningConnections = [{"route":"/articles/graph-foundations","label":"Grafos desde cero: grados, caminos y conectividad","reason":"Modela las incompatibilidades entre casillas mediante un grafo."},{"route":"/articles/permutation-symmetries","label":"Permutaciones, ciclos y grupos de simetrías","reason":"Comprueba qué cambios de símbolos y posiciones conservan una solución."},{"route":"/articles/sudoku-constraints","label":"Sudoku: restricciones y cobertura exacta","reason":"Interpreta filas, columnas y bloques como restricciones simultáneas."},{"route":"/articles/trees-graph-coloring","label":"Árboles, árboles generadores y coloración de grafos","reason":"Relaciona la asignación de cifras con una coloración sujeta a restricciones."},{"route":"/problems/sudoku-symmetry","label":"Problema 94: Una simetría del sudoku","reason":"Relaciona la práctica interactiva con el problema 94: Una simetría del sudoku."}];
+  // content-connections:end
   sudokuBoard: SudokuCell[][] = [];
   initialBoard: SudokuCell[][] = [];
   solutionChecked: boolean = false;

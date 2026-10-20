@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 ﻿import { AfterViewInit, Component, ElementRef, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,7 +9,7 @@ import { MandelbrotView, SavedView, initialView, saveView, restoreView, transfor
 interface Pointer { x: number; y: number; }
 interface Gesture extends Pointer { distance: number; }
 @Component({ host: { class: 'fractal-page' }, selector: 'app-mandelbrot', standalone: true,
-  imports: [CommonModule, FormsModule], templateUrl: './mandelbrot.component.html', styleUrls: ['./mandelbrot.component.css'] })
+  imports: [RouterLink, CommonModule, FormsModule], templateUrl: './mandelbrot.component.html', styleUrls: ['./mandelbrot.component.css'] })
 export class MandelbrotComponent implements AfterViewInit, OnDestroy {
   static title = 'Conjunto de Mandelbrot'; static route = 'mandelbrot-set';
   @ViewChild('canvas', {static:true}) canvas!: ElementRef<HTMLCanvasElement>;

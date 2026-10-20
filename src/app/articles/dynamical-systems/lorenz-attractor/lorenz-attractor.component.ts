@@ -1,3 +1,4 @@
+import { RouterLink } from '@angular/router';
 import {
   Component,
   ElementRef,
@@ -10,7 +11,7 @@ import {
   selector: 'app-lorenz-attractor',
   templateUrl: './lorenz-attractor.component.html',
   styleUrls: ['./lorenz-attractor.component.css'],
-  standalone: true,
+  standalone: true, imports: [RouterLink],
 })
 export class LorenzAttractorComponent implements OnInit, OnDestroy {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
