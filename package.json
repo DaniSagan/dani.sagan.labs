@@ -75,7 +75,11 @@
     "test:surreal": "node scripts/test-surreal-numbers.cjs",
     "test:surreal:browser": "node scripts/check-surreal-numbers.cjs",
     "test:content-connections": "node scripts/test-content-connections.cjs",
-    "test:content-connections:browser": "node scripts/check-content-connections.cjs"
+    "test:content-connections:browser": "node scripts/check-content-connections.cjs",
+    "generate:random-pages": "node scripts/generate-random-pages.cjs",
+    "prestart": "npm run generate:random-pages",
+    "prebuild": "npm run generate:random-pages",
+    "prewatch": "npm run generate:random-pages"
   },
   "private": true,
   "dependencies": {
