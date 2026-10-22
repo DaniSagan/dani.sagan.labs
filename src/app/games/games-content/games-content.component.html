@@ -3,6 +3,11 @@
     <app-games-navbar></app-games-navbar>
   </app-mobile-sidebar>
   <div class="body-text">
-    <router-outlet></router-outlet>
+    @if (!outlet.isActivated) {
+      <h1>Juegos</h1>
+      <p>Elige un juego en el menú o descubre uno al azar.</p>
+      <app-random-discovery section="games"></app-random-discovery>
+    }
+    <router-outlet #outlet="outlet"></router-outlet>
   </div>
 </div>

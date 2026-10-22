@@ -1,3 +1,4 @@
+import { RandomDiscoveryComponent } from '../../shared/random-discovery/random-discovery.component';
 import {
   AfterViewInit,
   Component,
@@ -7,17 +8,15 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { RANDOM_PAGE_ROUTES } from './random-pages';
 
 @Component({
   selector: 'app-home-article',
   templateUrl: './home-article.component.html',
   styleUrls: ['./home-article.component.css'],
   standalone: true,
-  imports: [RouterLink],
+  imports: [RandomDiscoveryComponent, RouterLink],
 })
 export class HomeArticleComponent implements AfterViewInit, OnDestroy {
-  readonly randomPage = RANDOM_PAGE_ROUTES[Math.floor(Math.random() * RANDOM_PAGE_ROUTES.length)];
   @ViewChild('canvas') private canvasRef!: ElementRef<HTMLCanvasElement>;
   @ViewChild('progress') private progressRef!: ElementRef<HTMLElement>;
   readonly scenes = [

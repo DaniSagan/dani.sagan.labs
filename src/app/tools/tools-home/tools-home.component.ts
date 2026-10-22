@@ -1,10 +1,11 @@
+import { RandomDiscoveryComponent } from '../../shared/random-discovery/random-discovery.component';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-tools-home',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RandomDiscoveryComponent, RouterLink],
   templateUrl: './tools-home.component.html',
   styleUrl: './tools-home.component.css',
 })

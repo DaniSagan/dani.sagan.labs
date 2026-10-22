@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { ContentScrollService } from './shared/navigation/content-scroll.service';
 import { NavigationStatusService } from './shared/navigation/navigation-status.service';
 
 @Component({
@@ -9,4 +10,8 @@ import { NavigationStatusService } from './shared/navigation/navigation-status.s
 export class AppComponent {
   readonly navigation = inject(NavigationStatusService);
   title: string = 'dani.sagan.labs';
+
+  constructor() {
+    inject(ContentScrollService);
+  }
 }

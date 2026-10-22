@@ -258,7 +258,4 @@ button:focus-visible {
 }
 
 .random-discovery{margin:1.25rem 0 1.75rem;padding:1.1rem;border:1px solid var(--rule);border-radius:12px;background:var(--paper)}
-.random-link{display:inline-flex;align-items:center;gap:.7rem;min-height:44px;padding:8px 16px;border:1px solid var(--gold);border-radius:8px;color:var(--gold);text-decoration:none;font-weight:600}
-.random-link:hover{background:#e8b76815}
-.random-link:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .random-discovery p{margin:.8rem 0 0;font-size:1rem;line-height:1.5}
