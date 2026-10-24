@@ -1,26 +1,116 @@
-<h2>Euclides, Euler y los números perfectos</h2>
-<p class="dropcap">El 6 es igual a 1+2+3, la suma de sus divisores propios. También lo es 28=1+2+4+7+14. Los antiguos llamaron perfectos a estos números; el teorema de Euclides–Euler explica exactamente de dónde proceden todos los perfectos pares.</p>
-<p>Euclides probó en los <em>Elementos</em> que ciertos primos producen <a routerLink="/articles/perfect-numbers">números perfectos</a>. Dos mil años más tarde, Euler demostró el recíproco: no existe ningún perfecto par fuera de esa construcción.</p>
-<app-formula expression="N=2^{p-1}(2^p-1),\qquad 2^p-1\text{ primo}"></app-formula>
-<p>Los primos de la forma 2<sup>p</sup>−1 reciben el nombre de primos de Mersenne.</p>
-<h3>Por qué la fórmula funciona</h3>
-<p>Sea M=2<sup>p</sup>−1 primo. Como M es impar, la función <a routerLink="/articles/divisor-sum-theorem">suma de divisores</a> es multiplicativa:</p>
-<app-formula expression="\sigma(2^{p-1}M)=(2^p-1)(M+1)=M\cdot2^p=2N"></app-formula>
-<p>Por tanto, la suma de los divisores propios de N es N.</p>
-<h3>Por qué no hay otros perfectos pares</h3>
-<p>Escribamos un perfecto par como N=2<sup>p−1</sup>m, con m impar. La condición σ(N)=2N se transforma en (2<sup>p</sup>−1)σ(m)=2<sup>p</sup>m. Como los dos factores de la izquierda son <a data-article-concept="modular-arithmetic" routerLink="/articles/modular-arithmetic">coprimos</a> con 2<sup>p</sup>, un análisis de divisibilidad obliga a que 2<sup>p</sup>−1 divida m. Comparando el factor restante se obtiene m=2<sup>p</sup>−1 y se concluye además que este número es primo.</p>
-<p>Para p=5, M=31 produce N=16·31=496. Los primeros casos p=2,3,5,7 dan 6, 28, 496 y 8128.</p>
-<p>La clasificación deja abierta una pregunta célebre: nadie sabe si existe algún número perfecto impar. Sí sabemos que, de existir, tendría que ser enorme y cumplir restricciones muy severas.</p>
-<p>No se conoce si hay infinitos primos de Mersenne ni, por tanto, infinitos perfectos pares. Las búsquedas modernas utilizan el test de Lucas–Lehmer, especialmente adaptado a estos candidatos. Una clasificación iniciada en la Grecia antigua continúa produciendo récords mediante computación distribuida.</p>
-<p>La situación impar es aún más misteriosa. Ningún perfecto impar ha sido encontrado, y se sabe que, si existe, debe poseer una forma prima muy restringida, numerosos factores y un tamaño enorme. El teorema resuelve por completo la mitad par del problema y deja visible una frontera genuina del conocimiento.</p>
-<p><strong>Ejercicios.</strong> Verifica directamente que 496 es perfecto. Demuestra que si 2<sup>p</sup>−1 es primo, entonces p debe ser primo, usando la factorización de x<sup>ab</sup>−1 cuando p=ab.</p>
+﻿<h2>Euclides, Euler y los números perfectos</h2>
+<p class="dropcap">El 6 tiene una propiedad llamativa: 1+2+3=6. Si sumamos sus divisores positivos excepto el propio 6, recuperamos el número del que partíamos. Lo mismo ocurre con 28, porque 1+2+4+7+14=28. Son ejemplos de <a routerLink="/articles/perfect-numbers">números perfectos</a>. El teorema de Euclides–Euler explica cómo construirlos y por qué esa construcción proporciona todos los que son pares.</p>
+<p>Euclides demostró una dirección en la proposición IX.36 de los <em>Elementos</em>: ciertos números primos permiten obtener números perfectos. Muchos siglos después, Euler probó el recíproco: cualquier perfecto par procede de esa construcción. Vamos a separar ambas demostraciones y a preparar antes las herramientas que necesitan.</p>
+
+<h3>1. Qué significa que un número sea perfecto</h3>
+<p>Un divisor positivo de un entero positivo n es un entero positivo que lo divide sin dejar resto. Los divisores propios positivos son todos ellos excepto n. Por ejemplo, los divisores de 6 son 1, 2, 3 y 6; sus divisores propios son 1, 2 y 3.</p>
+<p>La letra griega σ, que se lee «sigma», representa la <a routerLink="/articles/divisor-sum-theorem">suma de todos los divisores positivos</a>, incluido el número mismo:</p>
+<app-formula expression="\sigma(n)=\sum_{d\mid n,\ d&gt;0}d,\qquad \sigma(6)=1+2+3+6=12"></app-formula>
+<p>En esta notación, d∣n significa «d divide a n». Como σ(n) incluye a n una sola vez, la suma de divisores propios es σ(n)−n. Por tanto:</p>
+<app-formula expression="n\text{ es perfecto}\iff\sigma(n)-n=n\iff\sigma(n)=2n"></app-formula>
+<p>El símbolo ⇔ se lee «si y solo si»: cada condición implica la siguiente y también podemos recorrer la cadena hacia atrás. Trabajar con σ(n)=2n nos permitirá usar productos en lugar de enumerar divisores grandes. El número 1 no es perfecto: no tiene divisores propios positivos y su suma es 0.</p>
+
+<h3>2. Las tres herramientas de la demostración</h3>
+<h4>La suma de los divisores de una potencia de 2</h4>
+<p>Los únicos divisores positivos de 2<sup>k</sup> son 1, 2, 2², …, 2<sup>k</sup>: un divisor no puede contener ningún primo distinto de 2 ni un exponente mayor que k. Para sumar estas potencias, llamamos S a su suma y la multiplicamos por 2:</p>
+<app-formula expression="S=1+2+2^2+\cdots+2^k,\qquad 2S=2+2^2+\cdots+2^{k+1}"></app-formula>
+<p>Al restar S de 2S, los términos intermedios se cancelan. Solo quedan la última potencia de la segunda suma y el 1 de la primera:</p>
+<app-formula expression="2S-S=2^{k+1}-1,\qquad\sigma(2^k)=S=2^{k+1}-1"></app-formula>
+<p>La identidad vale para todo entero k≥0. En particular, al poner k=p−1 obtenemos σ(2<sup>p−1</sup>)=2<sup>p</sup>−1.</p>
+
+<h4>La suma de los divisores de un primo</h4>
+<p>Si q es primo, sus únicos divisores positivos son 1 y q. Por eso σ(q)=1+q. También usaremos la afirmación inversa: si q&gt;1 y σ(q)=1+q, entonces q es primo. En efecto, si fuera compuesto tendría algún divisor d entre 1 y q; ese término positivo haría que σ(q) fuese mayor que 1+q.</p>
+
+<h4>La multiplicatividad, con su hipótesis</h4>
+<p>Dos enteros positivos a y b son <strong>coprimos</strong> si su único divisor positivo común es 1. En ese caso:</p>
+<app-formula expression="\gcd(a,b)=1\quad\Longrightarrow\quad\sigma(ab)=\sigma(a)\sigma(b)"></app-formula>
+<p>¿Por qué? Al no compartir factores primos, cada divisor de ab se escribe de una única manera como u·v, donde u divide a a y v divide a b. Al desarrollar el producto de las dos sumas de divisores, aparecen exactamente esos productos, una vez cada uno. Así se obtiene la suma de todos los divisores de ab.</p>
+<p>Por ejemplo, los divisores de 4 son 1, 2 y 4, y los de 7 son 1 y 7. El producto (1+2+4)(1+7) genera 1, 2, 4, 7, 14 y 28: todos los divisores de 28. La condición de coprimalidad es esencial: σ(4)=7, mientras que σ(2)σ(2)=3·3=9.</p>
+
+<h3>3. Qué afirma exactamente el teorema de Euclides–Euler</h3>
+<p><strong>Un entero positivo par N es perfecto si y solo si existe un entero p≥2 tal que:</strong></p>
+<app-formula expression="N=2^{p-1}(2^p-1),\qquad 2^p-1\text{ es primo}"></app-formula>
+<p>Los primos de la forma 2<sup>p</sup>−1 se llaman <strong>primos de Mersenne</strong>. El teorema tiene dos tareas distintas: demostrar que cada primo de Mersenne produce un perfecto par y demostrar que cualquier perfecto par debe tener esa forma. En la segunda tarea no podremos suponer de entrada que su parte impar es prima: tendremos que probarlo.</p>
+
+<h3>4. La dirección de Euclides: construir un perfecto par</h3>
+<h4>Paso 1. Elegir los factores y comprobar que son coprimos</h4>
+<p>Supongamos que M=2<sup>p</sup>−1 es primo, con p≥2, y definamos N=2<sup>p−1</sup>M. Como 2<sup>p</sup> es par, M es impar. La potencia de 2 solo tiene el factor primo 2, que no divide a M. Por tanto, ambos factores son coprimos y podemos aplicar la multiplicatividad.</p>
+<h4>Paso 2. Calcular la suma de divisores de cada factor</h4>
+<p>La identidad de las potencias de 2 nos da σ(2<sup>p−1</sup>)=2<sup>p</sup>−1=M. Como M es primo, σ(M)=M+1. Además, de M=2<sup>p</sup>−1 resulta M+1=2<sup>p</sup>.</p>
+<h4>Paso 3. Reunir los cálculos</h4>
+<app-formula expression="\begin{aligned}\sigma(N)&amp;=\sigma(2^{p-1})\sigma(M)\\&amp;=(2^p-1)(M+1)\\&amp;=M\cdot2^p\\&amp;=2\bigl(2^{p-1}M\bigr)=2N.\end{aligned}"></app-formula>
+<p>La primera igualdad usa la coprimalidad; la segunda, las dos sumas ya calculadas; la tercera sustituye 2<sup>p</sup>−1 por M y M+1 por 2<sup>p</sup>. En la última hemos separado un factor 2 de 2<sup>p</sup>. Como σ(N)=2N, al quitar N de la suma queda σ(N)−N=N. Así queda demostrado que N es perfecto. También es par, porque p−1≥1.</p>
+
+<h3>5. Un ejemplo completo: por qué 496 es perfecto</h3>
+<p>Tomemos p=5. Entonces M=2⁵−1=31. Para comprobar que 31 es primo basta descartar los divisores primos menores o iguales que su raíz cuadrada: 2, 3 y 5. Ninguno lo divide. Este criterio funciona porque, si un número fuera compuesto, en una descomposición en dos factores mayores que 1 al menos uno no superaría su raíz cuadrada, y ese factor tendría un divisor primo tampoco mayor que ella.</p>
+<app-formula expression="N=2^{5-1}(2^5-1)=2^4\cdot31=16\cdot31=496"></app-formula>
+<p>Todos sus divisores se obtienen multiplicando uno de los divisores de 16 por 1 o por 31. Son 1, 2, 4, 8, 16, 31, 62, 124, 248 y 496. Los divisores propios suman:</p>
+<app-formula expression="(1+2+4+8+16)+(31+62+124+248)=31+465=496"></app-formula>
+<p>La comprobación con σ llega al mismo resultado: σ(496)=(1+2+4+8+16)(1+31)=31·32=992=2·496.</p>
+<p>Los primeros casos de la construcción son p=2, que da 2·3=6; p=3, que da 4·7=28; p=5, que da 16·31=496; y p=7, que da 64·127=8128. En todos ellos el factor 2<sup>p</sup>−1 es primo.</p>
+
+<h3>6. La dirección de Euler: no hay otros perfectos pares</h3>
+<h4>Paso 1. Separar toda la potencia de 2</h4>
+<p>Partamos ahora de un número N que sabemos par y perfecto. Dividámoslo entre 2 repetidamente hasta llegar a un número impar m. Esto permite escribirlo como:</p>
+<app-formula expression="N=2^{p-1}m,\qquad p\ge2,\qquad m\text{ impar}"></app-formula>
+<p>El exponente p−1 es el número de divisiones realizadas; es al menos 1 porque N es par. Aquí p es por ahora un entero, sin suponer que sea primo. Tampoco sabemos todavía si m es primo.</p>
+<h4>Paso 2. Traducir la perfección a una igualdad</h4>
+<p>La potencia de 2 y m son coprimos porque m es impar. Aplicamos la multiplicatividad, la suma de las potencias de 2 y la condición σ(N)=2N:</p>
+<app-formula expression="(2^p-1)\sigma(m)=\sigma(N)=2N=2^pm"></app-formula>
+<p>Esta igualdad es el punto de partida de todo lo que sigue: la suma de divisores de m queda ligada a m por dos enteros consecutivos, 2<sup>p</sup>−1 y 2<sup>p</sup>.</p>
+<h4>Paso 3. Demostrar que 2<sup>p</sup>−1 divide a m</h4>
+<p>Llamemos A=2<sup>p</sup>−1 para simplificar la escritura. Tenemos Aσ(m)=2<sup>p</sup>m, de modo que A divide a 2<sup>p</sup>m. Como A y 2<sup>p</sup> son consecutivos, son coprimos: un divisor común dividiría también su diferencia, que es 1.</p>
+<p>Podemos justificar directamente que A divide a m sin saltarnos el argumento: A divide a 2<sup>p</sup>m por la igualdad anterior, y también divide a Am. Por tanto, divide a la diferencia:</p>
+<app-formula expression="2^pm-Am=(2^p-A)m=m"></app-formula>
+<p>Así, existe un entero positivo t tal que m=At. Obsérvese que no hemos afirmado que σ(m) sea coprimo con 2<sup>p</sup>; esa afirmación no hace falta y no sería correcta en general.</p>
+<h4>Paso 4. Sustituir y descubrir una suma muy ajustada</h4>
+<p>Sustituimos m=At en Aσ(m)=2<sup>p</sup>m y dividimos ambos lados entre A, que es positivo:</p>
+<app-formula expression="A\sigma(m)=2^pAt\quad\Longrightarrow\quad\sigma(m)=2^pt"></app-formula>
+<p>Por otra parte, m=At=(2<sup>p</sup>−1)t, luego:</p>
+<app-formula expression="m+t=(2^p-1)t+t=2^pt=\sigma(m)"></app-formula>
+<p>Esta igualdad es muy restrictiva. Tanto t como m son divisores de m: t lo divide porque m=At, y m siempre se divide a sí mismo. Además, son distintos, ya que A≥3 implica m≥3t&gt;t. Por tanto, m+t ya es la suma de dos divisores distintos de m y, según la igualdad, consume toda la suma σ(m).</p>
+<h4>Paso 5. Forzar t=1 y la primalidad de m</h4>
+<p>Si t&gt;1, el divisor 1 sería distinto de t y de m. Como todos los divisores que sumamos son positivos, tendríamos:</p>
+<app-formula expression="\sigma(m)\ge1+t+m&gt;t+m"></app-formula>
+<p>Esto contradice σ(m)=t+m. En consecuencia, t=1. De aquí obtenemos m=A=2<sup>p</sup>−1 y σ(m)=m+1. Como m≥3, esta última igualdad significa que sus únicos divisores positivos son 1 y m: cualquier divisor adicional aumentaría la suma. Por tanto, m es primo.</p>
+<p>Al sustituirlo en N=2<sup>p−1</sup>m recuperamos exactamente la fórmula del teorema. Hemos demostrado tanto la forma del número como la primalidad que exige, sin asumir ninguna de ellas.</p>
+
+<h3>7. Por qué p debe ser primo, y por qué eso no basta</h3>
+<p>Si 2<sup>p</sup>−1 es primo, el exponente p también debe ser primo. Para demostrarlo, supongamos lo contrario: p=ab con enteros a,b&gt;1. La identidad de la suma geométrica da:</p>
+<app-formula expression="2^{ab}-1=(2^a-1)\bigl(1+2^a+2^{2a}+\cdots+2^{(b-1)a}\bigr)"></app-formula>
+<p>Se comprueba multiplicando el paréntesis por 2<sup>a</sup> y restándole el mismo paréntesis: se cancelan los términos intermedios y queda 2<sup>ab</sup>−1. Los dos factores son enteros mayores que 1, así que 2<sup>p</sup>−1 sería compuesto, contradiciendo la hipótesis. Como p≥2, queda probado que p es primo.</p>
+<p><strong>El recíproco es falso.</strong> Un exponente primo es una condición necesaria, pero no suficiente. Por ejemplo, 11 es primo y, sin embargo:</p>
+<app-formula expression="2^{11}-1=2047=23\cdot89"></app-formula>
+<p>Por ello no podemos aplicar la construcción con p=11. El candidato sería N=2¹⁰·2047=2096128. Usando que 23 y 89 son primos distintos, su suma de divisores es σ(N)=2047·24·90=4421520, mientras que 2N=4192256. No coinciden: el candidato no es perfecto.</p>
+
+<h3>8. Qué queda por resolver</h3>
+<p>El teorema establece una correspondencia entre los primos de Mersenne y los perfectos pares: cada primo de Mersenne produce uno y cada perfecto par permite recuperar ese primo como su parte impar. En consecuencia, hay infinitos perfectos pares si y solo si hay infinitos primos de Mersenne. Esta infinitud sigue siendo un problema abierto.</p>
+<p>También sigue abierta la existencia de números perfectos impares. La demostración de Euler comienza separando una potencia de 2 con exponente positivo; por eso su conclusión clasifica los perfectos pares y no permite excluir los impares. No encontrar ejemplos impares no equivale a demostrar que sean imposibles.</p>
+<p>Para buscar primos de Mersenne se emplean procedimientos especializados, como el test de Lucas–Lehmer. La fórmula de Euclides–Euler transforma cada nuevo primo de esa forma en un perfecto par, pero la fórmula por sí sola no certifica que el candidato de Mersenne sea primo.</p>
 
 <div class="article-activities">
-<h3>Practica y experimenta</h3>
-<ul>
-  <li><a routerLink="/tools/prime-decomposition">Factorización en primos</a>. Comprueba con ejemplos pequeños los factores de 2^(p−1)(2^p−1), revisando que el factor de Mersenne sea primo.</li>
-</ul>
+  <h3>Practica y experimenta</h3>
+  <ol>
+    <li>Repite la demostración de Euclides con p=3: calcula M, N, σ(M) y σ(N), y enumera los divisores propios de 28.</li>
+    <li>Aplica los pasos de Euler a N=496. Comprueba que p=5, m=31, A=31 y t=1. Explica en qué paso se demuestra que m es primo.</li>
+    <li>Usa p=4 para construir un candidato. Factoriza 2⁴−1, calcula σ(120) y explica por qué no es perfecto.</li>
+    <li>Explica por qué σ(2·2) no se puede calcular como σ(2)σ(2). Identifica la hipótesis que falla.</li>
+  </ol>
+  <details>
+    <summary>Resultados para comprobar tus cálculos</summary>
+    <p>Para p=3: M=7, N=28, σ(M)=8 y σ(N)=7·8=56. Sus divisores propios son 1, 2, 4, 7 y 14, que suman 28.</p>
+    <p>Para 496, la igualdad σ(m)=m+t obliga primero a t=1; después σ(m)=m+1 demuestra la primalidad de m. Para p=4: M=15=3·5 y N=120=2³·3·5. Por tanto, σ(120)=15·4·6=360, que es distinto de 240. Finalmente, 2 y 2 no son coprimos: comparten el divisor 2.</p>
+  </details>
+  <p>Con la herramienta de <a routerLink="/tools/prime-decomposition">factorización en primos</a> puedes explorar candidatos pequeños y comprobar sus factores. Distingue siempre el exponente p del número 2<sup>p</sup>−1 cuya primalidad exige el teorema.</p>
 </div>
+
+<h3>Referencias y vídeos para seguir explorando</h3>
+<p>Estos vídeos ofrecen un complemento audiovisual para explorar el problema. La demostración del artículo está desarrollada arriba para poder seguir cada igualdad sin depender del vídeo.</p>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v=Zrv1EDIqHkY" target="_blank" rel="noopener noreferrer">Veritasium: vídeo sobre el problema de los números perfectos</a>.</li>
+  <li><a href="https://www.youtube.com/watch?v=q8n15q1v4Xo" target="_blank" rel="noopener noreferrer">Numberphile: vídeo para ampliar sobre los números perfectos</a>.</li>
+  <li><a href="https://math.gordon.edu/ntic/ntic2023/section-perfect-nums.html" target="_blank" rel="noopener noreferrer">Karl-Dieter Crisman, <em>Number Theory: In Context</em>, sección 19.4: Perfect Numbers</a>. Desarrollo de la caracterización de los perfectos pares.</li>
+</ul>
 <!-- article-concepts:start -->
 <section class="article-activities"><details><summary>Conceptos para repasar y ampliar</summary><ul><li><a routerLink="/articles/modular-arithmetic">Congruencias: fundamentos y aritmética modular</a></li></ul></details></section>
 <!-- article-concepts:end -->
