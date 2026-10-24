@@ -1,3 +1,4 @@
+import { TowersOfHanoiArticleComponent } from './towers-of-hanoi/towers-of-hanoi-article.component';
 import { NashEquilibriumArticleComponent } from './nash-equilibrium/nash-equilibrium-article.component';
 import { ComputabilityFormalLanguagesArticleComponent } from './computability-formal-languages/computability-formal-languages-article.component';
 import { OrdinalsGrowthArticleComponent } from './ordinals-growth/ordinals-growth-article.component';
@@ -25,6 +26,7 @@ import { FourColorTheoremArticleComponent } from './four-color-theorem/four-colo
 import { GrahamNumberArticleComponent } from './graham-number/graham-number-article.component';
 
 export const COMBINATORICS_ARTICLES = [
+  TowersOfHanoiArticleComponent,
   NashEquilibriumArticleComponent,
   ComputabilityFormalLanguagesArticleComponent,
   OrdinalsGrowthArticleComponent,

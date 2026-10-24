@@ -1,0 +1,19 @@
+﻿<div class="hanoi">
+  <header><span class="eyebrow">EL ARTE DE MOVER LO IMPOSIBLE</span><h1>Torres de Hanoi</h1><p>Una torre. Tres destinos. Una idea que lo cambia todo.</p></header>
+  <div class="toolbar"><label>Discos <select #number [value]="count" (change)="reset(+number.value)">@for (n of counts; track n) {<option [value]="n">{{ n }}</option>}</select></label><button type="button" (click)="reset()">Reiniciar</button><button type="button" (click)="undo()" [disabled]="!history.length || animating">Deshacer</button><button type="button" (click)="showHint()" [disabled]="running || animating || won">Pista</button></div>
+  <div class="metrics"><div><span>Movimientos</span><strong>{{ history.length }}</strong></div><div><span>Mínimo inicial</span><strong>{{ minimum }}</strong></div><div><span>Hasta la meta</span><strong>{{ remaining }}</strong></div></div>
+  <div class="stage" #stage [class.complete]="won" [class.playing]="running" aria-label="Tablero de las torres de Hanoi">
+    <div class="halo"></div><div class="orbit"></div>
+    <div class="peg-grid">@for (peg of pegs; track peg; let i = $index) {<button type="button" class="peg" [class.selected]="selected === i" [class.hinted]="hint?.from === i || hint?.to === i" [attr.aria-label]="pegLabel(i)" [attr.aria-pressed]="selected === i" [disabled]="running || animating || won" (click)="choose(i)"><span class="rod"></span><span class="base"></span><span class="peg-name">{{ peg }} <small>{{ i === 2 ? 'DESTINO' : i === 0 ? 'ORIGEN' : 'AUXILIAR' }}</small></span></button>}
+    </div>
+    @for (peg of state; track disk; let disk = $index) {<div class="disk" [class.lifted]="selected === peg && disk === state.indexOf(peg)" [style.left.%]="(peg + .5) * 100 / 3" [style.bottom.px]="85 + level(disk) * 25" [style.width.%]="10 + (disk + 1) / count * 19" [style.--disk-color]="disk % 3 === 0 ? 'var(--gold)' : disk % 3 === 1 ? 'var(--accent)' : 'var(--accent2)'" aria-hidden="true"><span>{{ disk + 1 }}</span></div>}
+  </div>
+  <div class="destination-progress" role="progressbar" aria-label="Discos en la torre C" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100"><span [style.width.%]="progress"></span></div>
+  <p class="status" role="status" aria-live="polite">{{ message }}</p>
+  <div class="toolbar playback"><label><input #animationToggle type="checkbox" [checked]="animationsEnabled" (change)="setAnimations(animationToggle.checked)"> Animar movimientos</label><button class="primary" type="button" (click)="toggleAuto()" [disabled]="won || (animating && !running)">{{ running ? 'Pausar' : 'Resolver desde aquí' }}</button><label>Ritmo <select #tempo (change)="speed = +tempo.value"><option value="1200">Pausado</option><option value="700" selected>Normal</option><option value="350">Rápido</option></select></label></div>
+  <details><summary>Cómo jugar</summary><p>Mueve todos los discos a C. Solo puedes mover el disco superior de una torre y nunca colocar uno grande sobre otro más pequeño. Pulsa o toca dos torres para mover; con teclado, usa Tab y Enter o Espacio. Pulsa otra vez el origen para cancelar.</p><p>«Hasta la meta» indica el mínimo desde la posición actual; puede aumentar si te alejas de la solución. La resolución automática sigue un camino mínimo desde donde estás y puedes pausarla para continuar tú.</p></details>
+  <p class="article-link">¿Por qué el mínimo es 2ⁿ − 1? <a routerLink="/articles/towers-of-hanoi">Descubre el método, paso a paso →</a></p>
+</div>
+
+
+<app-content-connections [links]="learningConnections"></app-content-connections>

@@ -1,8 +1,8 @@
 # Revisión transversal de enlaces
 
-Fecha: 2026-10-20. Se inventariaron las 571 rutas de artículos, 200 problemas y 9 juegos registrados. Las tres rutas de integración comparten plantilla y se auditan individualmente.
+Fecha: 2026-10-20. Se inventariaron las 572 rutas de artículos, 200 problemas y 10 juegos registrados. Las tres rutas de integración comparten plantilla y se auditan individualmente.
 
-Se añadieron **275 enlaces dirigidos en 173 páginas**, a partir de 191 relaciones revisadas con conexión de ida y vuelta. Se omiten destinos ya enlazados y enlaces a la propia página. No se cambian las soluciones ni las reglas de los juegos.
+Se añadieron **275 enlaces dirigidos en 173 páginas**, a partir de 192 relaciones revisadas con conexión de ida y vuelta. Se omiten destinos ya enlazados y enlaces a la propia página. No se cambian las soluciones ni las reglas de los juegos.
 
 ## Cobertura del grafo
 

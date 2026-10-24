@@ -832,6 +832,15 @@
           "Relaciona el ángulo entre direcciones con su producto escalar."
         ]
       ]
+    },
+    "towers-of-hanoi": {
+      "title": "Torres de Hanoi",
+      "articles": [
+        [
+          "towers-of-hanoi",
+          "La estrategia recursiva y su prueba de optimalidad explican los movimientos del juego."
+        ]
+      ]
     }
   },
   "problemPairs": [

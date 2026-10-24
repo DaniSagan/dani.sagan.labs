@@ -115,11 +115,11 @@
     ]
   },
   "scope": {
-    "articles": 571,
+    "articles": 572,
     "problems": 200,
-    "games": 9
+    "games": 10
   },
-  "reviewedPairs": 191,
+  "reviewedPairs": 192,
   "newDirectedLinks": 275,
   "changedPages": 173,
   "pages": [
@@ -3429,6 +3429,19 @@
       "added": []
     },
     {
+      "route": "/articles/towers-of-hanoi",
+      "title": "Torres de Hanoi: el poder de la recursión",
+      "kind": "article",
+      "file": "src/app/articles/combinatorics/towers-of-hanoi/towers-of-hanoi-article.component.html",
+      "existing": [
+        "/articles/graph-foundations",
+        "/articles/mathematical-induction",
+        "/articles/sierpinski-triangle",
+        "/games/towers-of-hanoi"
+      ],
+      "added": []
+    },
+    {
       "route": "/articles/trees-graph-coloring",
       "title": "Árboles, árboles generadores y coloración de grafos",
       "kind": "article",
@@ -6257,6 +6270,8 @@
         "/articles/graph-foundations",
         "/articles/iterated-function-systems",
         "/articles/pascal-triangle",
+        "/articles/towers-of-hanoi",
+        "/games/towers-of-hanoi",
         "/problems/cantor-set-length-and-dimension"
       ],
       "added": []
@@ -13584,6 +13599,16 @@
           "evidence": "game mechanics and article scope"
         }
       ]
+    },
+    {
+      "route": "/games/towers-of-hanoi",
+      "title": "Torres de Hanoi",
+      "kind": "game",
+      "file": "src/app/games/towers-of-hanoi/towers-of-hanoi.component.html",
+      "existing": [
+        "/articles/towers-of-hanoi"
+      ],
+      "added": []
     }
   ],
   "pairs": [
@@ -14569,6 +14594,12 @@
       "a": "/games/constellations",
       "b": "/articles/dot-product",
       "reason": "Relaciona el ángulo entre direcciones con su producto escalar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/towers-of-hanoi",
+      "b": "/articles/towers-of-hanoi",
+      "reason": "La estrategia recursiva y su prueba de optimalidad explican los movimientos del juego.",
       "evidence": "game mechanics and article scope"
     },
     {

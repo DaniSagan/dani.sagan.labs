@@ -14,6 +14,7 @@ export class GamesNavbarComponent {
   readonly sections: NavbarSubsection[] = [{
     name: 'Otros',
     items: [
+      { name: 'Torres de Hanoi', route: 'towers-of-hanoi' },
       { name: 'Constelaciones', route: 'constellations' },
       { name: '2048', route: '2048' },
       { name: 'Detective de probabilidades', route: 'probability-detective' },

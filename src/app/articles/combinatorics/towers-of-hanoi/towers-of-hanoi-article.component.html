@@ -1,0 +1,68 @@
+<span class="article-kicker">Combinatoria / comprender, deducir, experimentar</span>
+<h2>Torres de Hanoi: el poder de la recursión</h2>
+<nav class="article-outline" aria-label="Contenido del artículo"><details><summary>Recorrido del artículo</summary><ol>
+<li><a [routerLink]="[]" fragment="section-0">El tablero y las reglas</a></li>
+<li><a [routerLink]="[]" fragment="section-1">La idea: apartar, trasladar, reconstruir</a></li>
+<li><a [routerLink]="[]" fragment="section-example">Un ejemplo completo con tres discos</a></li>
+<li><a [routerLink]="[]" fragment="section-2">Escribir el algoritmo</a></li>
+<li><a [routerLink]="[]" fragment="section-3">¿Cuántos movimientos necesita?</a></li>
+<li><a [routerLink]="[]" fragment="section-4">Por qué no existe una solución más corta</a></li>
+<li><a [routerLink]="[]" fragment="section-5">Resolver sin recursión: el ritmo del disco pequeño</a></li>
+<li><a [routerLink]="[]" fragment="section-6">Un crecimiento que sorprende</a></li>
+<li><a [routerLink]="[]" fragment="section-7">Hanoi y el triángulo de Sierpinski</a></li>
+<li><a [routerLink]="[]" fragment="section-8">Errores habituales y un reto</a></li>
+<li><a [routerLink]="[]" fragment="section-9">Referencias</a></li>
+</ol></details></nav>
+<p class="dropcap">Una pila de discos parece un problema pequeño hasta que intentas moverla. Para liberar el disco más grande necesitas mover todos los demás; para mover esos otros discos, vuelves a encontrarte con el mismo problema. Las torres de Hanoi convierten esta observación en un método exacto: resolver un problema utilizando versiones más pequeñas de sí mismo.</p>
+<p><a routerLink="/games/towers-of-hanoi">Abrir el juego de las torres de Hanoi →</a>. Empieza con tres discos e intenta resolverlo antes de leer la estrategia.</p>
+<h3 id="section-0">El tablero y las reglas</h3>
+<p>Tenemos tres postes, A, B y C, y <em>n</em> discos de tamaños distintos. Al principio están en A, ordenados del mayor al menor desde abajo. El objetivo es trasladar la torre completa a C, usando B como auxiliar.</p>
+<ol><li>Cada movimiento traslada un solo disco.</li><li>Solo se puede retirar el disco superior de una torre.</li><li>Nunca se coloca un disco grande encima de otro más pequeño.</li></ol>
+<p>Numeraremos los discos desde 1, el más pequeño, hasta <em>n</em>, el mayor. Todas las torres deben mantener ese orden. El reto clásico utiliza exactamente tres postes: al añadir más, el problema de optimización cambia.</p>
+<h3 id="section-1">La idea: apartar, trasladar, reconstruir</h3>
+<p>Imagina cuatro discos en A. El disco 4 no puede salir mientras tenga los otros tres encima. Tampoco puedes dejar esos tres en C y colocar el 4 encima: infringirías la tercera regla. La solución consiste en despejar A y C, reuniendo los tres pequeños en B.</p>
+<ol><li>Mueve los <strong>n − 1 discos pequeños de A a B</strong>, usando C como auxiliar.</li><li>Mueve el <strong>disco mayor de A a C</strong>.</li><li>Mueve los <strong>n − 1 discos de B a C</strong>, usando A como auxiliar.</li></ol>
+<p>Los pasos primero y tercero son el mismo problema con un disco menos y los nombres de las torres intercambiados. Eso es la <strong>recursión</strong>. No es una instrucción circular sin salida: el número de discos disminuye hasta llegar al caso de cero discos, que no requiere hacer nada. Con un solo disco basta un movimiento.</p>
+<h3 id="section-example">Un ejemplo completo con tres discos</h3>
+<p>Primero trasladamos los discos 1 y 2 de A a B. Después movemos el 3 a C y reconstruimos allí la torre pequeña.</p>
+<ol><li>Disco 1: A → C.</li><li>Disco 2: A → B.</li><li>Disco 1: C → B. La torre pequeña ya está en B.</li><li>Disco 3: A → C.</li><li>Disco 1: B → A.</li><li>Disco 2: B → C.</li><li>Disco 1: A → C. ¡Torre completa!</li></ol>
+<p>Hay siete movimientos. Comprueba cada uno en el <a routerLink="/games/towers-of-hanoi">juego</a>, seleccionando tres discos. El paso central, el cuarto, es el único en el que movemos el disco mayor.</p>
+<h3 id="section-2">Escribir el algoritmo</h3>
+<pre><code>Hanoi(n, origen, destino, auxiliar):
+    si n = 0:
+        terminar
+    Hanoi(n − 1, origen, auxiliar, destino)
+    mover el disco superior de origen a destino
+    Hanoi(n − 1, auxiliar, destino, origen)
+
+Hanoi(n, A, C, B)</code></pre>
+<p>Los argumentos indican el papel de cada poste en cada llamada; B no es siempre el auxiliar. Un disco mayor que permanezca debajo de los que estamos trasladando no estorba, porque puede soportar cualquiera de ellos.</p>
+<h3 id="section-3">¿Cuántos movimientos necesita?</h3>
+<p>Sea <em>T(n)</em> el número de movimientos del procedimiento anterior para trasladar una torre de <em>n</em> discos. Hacemos dos traslados de <em>n − 1</em> discos y un movimiento del mayor:</p>
+<app-formula expression="T(0)=0,\qquad T(n)=2T(n-1)+1\quad(n\geq 1)"></app-formula>
+<p>Los primeros valores son 0, 1, 3, 7, 15, 31… Para resolver la recurrencia sumamos 1 a ambos lados y definimos <em>S(n) = T(n) + 1</em>:</p>
+<app-formula expression="S(n)=2S(n-1),\qquad S(0)=1,\qquad S(n)=2^n."></app-formula>
+<p>Deshaciendo el cambio obtenemos:</p>
+<app-formula expression="\boxed{T(n)=2^n-1}"></app-formula>
+<p>También podemos comprobarlo por <a routerLink="/articles/mathematical-induction">inducción matemática</a>: para cero discos vale 0 = 1 − 1; si vale para <em>n − 1</em>, entonces 2(2<sup>n−1</sup> − 1) + 1 = 2<sup>n</sup> − 1.</p>
+<h3 id="section-4">Por qué no existe una solución más corta</h3>
+<p>Contar los movimientos de un algoritmo solo demuestra lo que ese algoritmo tarda. Para demostrar que es óptimo debemos descartar cualquier estrategia más rápida, incluso una que mueva varias veces el disco mayor.</p>
+<p>Sea <em>M(n)</em> el mínimo posible. Antes del <strong>primer movimiento del disco mayor</strong>, los otros <em>n − 1</em> discos deben formar una torre en el único poste que no es ni su origen ni su destino. Conseguirlo requiere al menos <em>M(n − 1)</em> movimientos.</p>
+<p>Después del <strong>último movimiento del disco mayor hacia C</strong>, los pequeños están todos en el tercer poste: no pueden estar ni encima de ese disco antes de moverlo ni en C impidiendo su llegada. Aún hacen falta al menos <em>M(n − 1)</em> movimientos para colocarlos sobre él. Estas dos fases son distintas y hay al menos un movimiento del mayor entre ellas. Por tanto:</p>
+<app-formula expression="M(n)\geq 2M(n-1)+1,\qquad M(0)=0."></app-formula>
+<p>Por inducción, cualquier solución necesita al menos 2<sup>n</sup> − 1 movimientos. Nuestro algoritmo alcanza exactamente esa cantidad: por ello es óptimo. Esta prueba usa que solo hay tres postes y que partimos de una torre completa.</p>
+<h3 id="section-5">Resolver sin recursión: el ritmo del disco pequeño</h3>
+<p>Existe una regla iterativa para trasladar A a C. Considera el ciclo A → B → C → A. Si <em>n</em> es par, el disco pequeño recorre ese ciclo; si <em>n</em> es impar, recorre el inverso A → C → B → A.</p>
+<ol><li>En los movimientos impares, mueve el disco 1 un paso en la dirección elegida.</li><li>En los movimientos pares, realiza el único movimiento legal entre los dos postes que no contienen el disco 1.</li><li>Detente en cuanto toda la torre está en C.</li></ol>
+<p>Para tres discos, el pequeño sigue A → C → B → A. Intercalando los otros movimientos recuperas los siete pasos del ejemplo. Elegir la dirección contraria lleva la torre al otro poste. No apliques esta receta sin cambios a una posición arbitraria: presupone la torre inicial completa.</p>
+<h3 id="section-6">Un crecimiento que sorprende</h3>
+<p>Cada disco adicional casi duplica el trabajo: T(n + 1) = 2T(n) + 1. Con 4 discos son 15 movimientos; con 8, 255; con 20, 1 048 575. La recursión describe una solución breve, pero ejecutar todos sus pasos cuesta un tiempo exponencial. La pila de llamadas solo necesita una profundidad proporcional a <em>n</em> si emitimos los movimientos uno a uno.</p>
+<p>El juego limita las partidas a ocho discos para mantener manejable la interacción. Su contador «Hasta la meta» calcula una distancia mínima desde la posición actual, que puede ser distinta del mínimo inicial. Para ello representa cada posición como un vértice de un <a routerLink="/articles/graph-foundations">grafo</a> y utiliza una búsqueda en anchura desde el objetivo. Una arista equivale a un movimiento legal; seguir distancias decrecientes garantiza una ruta mínima.</p>
+<h3 id="section-7">Hanoi y el triángulo de Sierpinski</h3>
+<p>Cada disco puede estar en uno de tres postes. Elegir el poste de cada disco determina una configuración legal, porque el orden dentro de cada torre viene impuesto por el tamaño. Hay, por tanto, 3<sup>n</sup> estados. Si agrupas esos estados según la posición del disco mayor, aparecen tres copias del grafo de <em>n − 1</em> discos, unidas por los movimientos permitidos del mayor.</p>
+<p>Esta estructura repetida genera un patrón triangular relacionado con el <a routerLink="/articles/sierpinski-triangle">triángulo de Sierpinski</a>. La figura fractal continua es un objeto límite; para cada número finito de discos tenemos un grafo finito. La conexión permite ver la recursión, además de ejecutarla.</p>
+<h3 id="section-8">Errores habituales y un reto</h3>
+<ul><li><strong>Intentar mover la torre pequeña de una vez.</strong> Cada subproblema debe respetar las mismas reglas y mover los discos individualmente.</li><li><strong>Confundir el auxiliar con una letra fija.</strong> Su función cambia en cada llamada.</li><li><strong>Confundir una solución con una prueba de mínimo.</strong> La cota inferior es la que certifica la optimalidad.</li><li><strong>Esperar 2<sup>n</sup> − 1 pasos desde cualquier estado.</strong> La fórmula describe el traslado entre dos torres completas con tres postes.</li></ul>
+<p>Reto: resuelve cuatro discos en 15 movimientos. Antes del movimiento 8, ¿dónde deben estar los tres pequeños? Después, prueba un desvío y observa cómo cambia la distancia a la meta. <a routerLink="/games/towers-of-hanoi">Volver al juego →</a></p>
+<h3 id="section-9">Referencias</h3>
+<ul><li><a href="https://xlinux.nist.gov/dads/HTML/towersOfHanoi.html" target="_blank" rel="noopener noreferrer">NIST, Dictionary of Algorithms and Data Structures: Towers of Hanoi</a>. Reglas y algoritmos recursivo e iterativo.</li><li><a href="https://mathworld.wolfram.com/TowerofHanoi.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld: Tower of Hanoi</a>. Recurrencia y conexiones matemáticas.</li><li><a href="https://mathworld.wolfram.com/HanoiGraph.html" target="_blank" rel="noopener noreferrer">Wolfram MathWorld: Hanoi Graph</a>. El grafo de configuraciones.</li></ul>

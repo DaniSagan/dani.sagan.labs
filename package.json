@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:hanoi": "node scripts/test-hanoi.cjs",
+    "test:hanoi:browser": "node scripts/check-hanoi-page.cjs",
     "test:transfinite": "node scripts/test-transfinite-numbers.cjs",
     "test:transfinite:browser": "node scripts/check-transfinite-numbers.cjs",
     "test:koch-antisnowflake": "node scripts/test-koch-antisnowflake.cjs",
