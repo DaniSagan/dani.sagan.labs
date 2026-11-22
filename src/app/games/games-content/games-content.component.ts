@@ -1,6 +1,6 @@
 import { RandomDiscoveryComponent } from '../../shared/random-discovery/random-discovery.component';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { GamesNavbarComponent } from '../games-navbar/games-navbar.component';
 import { MobileSidebarComponent } from 'src/app/shared/mobile-sidebar/mobile-sidebar.component';
 
@@ -9,6 +9,6 @@ import { MobileSidebarComponent } from 'src/app/shared/mobile-sidebar/mobile-sid
   templateUrl: './games-content.component.html',
   styleUrl: './games-content.component.css',
   standalone: true,
-  imports: [RandomDiscoveryComponent, GamesNavbarComponent, RouterOutlet, MobileSidebarComponent],
+  imports: [RandomDiscoveryComponent, GamesNavbarComponent, RouterLink, RouterOutlet, MobileSidebarComponent],
 })
 export class GamesContentComponent {}

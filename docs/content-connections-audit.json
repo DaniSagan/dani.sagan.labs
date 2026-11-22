@@ -108,7 +108,8 @@
       "/articles/octagon",
       "/articles/test-article",
       "/games/2048",
-      "/games/constellations"
+      "/games/constellations",
+      "/games/math-quiz"
     ],
     "withoutIncomingAfter": [
       "/articles/test-article"
@@ -117,11 +118,11 @@
   "scope": {
     "articles": 572,
     "problems": 200,
-    "games": 10
+    "games": 11
   },
-  "reviewedPairs": 192,
-  "newDirectedLinks": 275,
-  "changedPages": 173,
+  "reviewedPairs": 325,
+  "newDirectedLinks": 541,
+  "changedPages": 261,
   "pages": [
     {
       "route": "/articles/algebraic-identities-factorization",
@@ -212,7 +213,14 @@
         "/problems/matrix-powers-using-eigenvectors",
         "/problems/non-diagonalizable-matrix"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de Cayley–Hamilton» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/change-of-basis",
@@ -302,7 +310,14 @@
         "/problems/kernel-and-image",
         "/problems/tetrahedron-volume"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Determinante de una matriz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/matrix-diagonalization",
@@ -336,6 +351,12 @@
           "label": "Espacios vectoriales, bases y rango–nulidad",
           "reason": "Los autovectores forman una base cuando la matriz es diagonalizable.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Diagonalización de matrices» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -431,7 +452,14 @@
         "/problems/physical-units-constraint",
         "/problems/rational-equation-with-denominators"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Reconoce operaciones de fila reversibles y sistemas incompatibles.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/gram-schmidt",
@@ -457,7 +485,14 @@
         "/problems/regression-line",
         "/problems/skew-lines-distance"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Proceso de Gram–Schmidt» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/groups-cosets-lagrange",
@@ -477,6 +512,12 @@
           "label": "La idea que subió al ómnibus con Poincaré",
           "reason": "Complemento histórico: el relato «La idea que subió al ómnibus con Poincaré» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona el tamaño de las clases laterales con el orden de un grupo.",
+          "evidence": "game mechanics and article scope"
         },
         {
           "route": "/games/rubik-cube",
@@ -649,7 +690,14 @@
         "/problems/regression-line",
         "/problems/regression-prediction-and-residuals"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Interpreta un ajuste de mínimos cuadrados como proyección ortogonal.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/quadratic-equations",
@@ -691,7 +739,14 @@
         "/problems/cubic-with-three-roots",
         "/problems/factoring-by-grouping"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de la raíz racional» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/ridge-regularization",
@@ -725,6 +780,12 @@
           "label": "André Weil: una carta matemática desde la prisión",
           "reason": "Los cuerpos finitos proporcionan parte del lenguaje de las conjeturas de Weil.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Anillos y cuerpos finitos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -775,7 +836,14 @@
         "/articles/ridge-regularization",
         "/articles/vector-norm"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Valores singulares y normas de operador» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/vector-spaces",
@@ -807,6 +875,12 @@
           "label": "Diagonalización de matrices y valores propios",
           "reason": "Los autovectores forman una base cuando la matriz es diagonalizable.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Espacios vectoriales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -889,7 +963,14 @@
         "/problems/nested-radical-sequence",
         "/problems/two-newton-iterations"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema del punto fijo de Banach» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/basel",
@@ -925,7 +1006,14 @@
         "/problems/two-newton-iterations",
         "/problems/unique-root-without-explicit-formula"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de Bolzano» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/continuity-differentiability",
@@ -953,6 +1041,12 @@
           "evidence": "editorial comparison"
         },
         {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Continuidad y derivabilidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
           "route": "/problems/unique-root-without-explicit-formula",
           "label": "Problema 50: Una raíz única sin fórmula",
           "reason": "Separa la existencia de una raíz por continuidad de su unicidad por monotonía.",
@@ -978,7 +1072,14 @@
         "/problems/trapezoidal-rule-for-a-convex-function",
         "/problems/trapezoidal-rule-versus-simpson"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Convexidad y tangentes» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/daylight-saving-time",
@@ -1179,6 +1280,12 @@
           "label": "2048",
           "reason": "Calcula sumas de valores que crecen por duplicación.",
           "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Series geométricas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -1199,7 +1306,14 @@
         "/problems/nearest-point-on-a-parabola",
         "/problems/open-top-box-optimization"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Extremos de Weierstrass» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/hyperbolic-functions",
@@ -1265,7 +1379,14 @@
         "/problems/limit-by-rationalization",
         "/problems/sine-limit"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Regla de L’Hôpital» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/mean-value-theorems",
@@ -1284,7 +1405,14 @@
         "/problems/mean-value-theorem-point",
         "/problems/unique-root-without-explicit-formula"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teoremas del valor medio» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/metric-normed-spaces",
@@ -1390,7 +1518,14 @@
         "/problems/series-comparison-without-summing",
         "/problems/telescoping-series"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Criterios para series positivas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/recurrent-sequences",
@@ -1444,7 +1579,14 @@
         "/problems/shrinking-alternating-sequence",
         "/problems/sine-limit"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema del sándwich y oscilación» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/stirling",
@@ -1497,7 +1639,14 @@
         "/problems/telescoping-series",
         "/problems/telescoping-series-tail"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Series telescópicas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/utc-date-arithmetic",
@@ -1748,7 +1897,14 @@
         "/articles/hardy-ramanujan-taxicab",
         "/articles/mathematical-induction"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Explica por qué funciona emparejar los extremos de una progresión.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/germain-leblanc",
@@ -1820,7 +1976,14 @@
         "/articles/cardinality-diagonal",
         "/articles/transfinite-numbers"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Distingue entre distintos tamaños de infinito mediante asignaciones de habitaciones.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/hippasus-irrational-legend",
@@ -2348,6 +2511,12 @@
           "label": "Curva logística",
           "reason": "Conecta la forma sigmoide con un modelo de crecimiento limitado.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Ecuaciones diferenciales de primer orden» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -2371,6 +2540,12 @@
           "label": "Fourier ganó el premio; su memoria tuvo que esperar",
           "reason": "Complemento histórico: el relato «Fourier ganó el premio; su memoria tuvo que esperar» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona la simetría y los saltos con el comportamiento de las series de Fourier.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -2386,7 +2561,14 @@
         "/articles/integration-numerical",
         "/articles/laplace-transform"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Transformada de Fourier» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/function-analysis",
@@ -2612,6 +2794,12 @@
           "label": "Curva de Dawson",
           "reason": "La integral que define la función de Dawson permite discutir aproximación numérica y control del error.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Integración numérica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -2633,7 +2821,14 @@
         "/articles/rossler-attractor",
         "/articles/total-derivative-gradient"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Jacobiano y cambio de variables» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/laplace-transform",
@@ -2758,6 +2953,12 @@
           "label": "Fractal del conjunto de Newton",
           "reason": "El fractal representa cuencas de atracción del método de Newton en el plano complejo.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Interpreta el siguiente paso de Newton a partir de la tangente.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -2830,7 +3031,14 @@
         "/articles/proof-strategies",
         "/articles/sudoku-constraints"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de Picard–Lindelöf» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/polynomial-interpolation",
@@ -2860,6 +3068,12 @@
           "label": "Curva interpoladora de Lagrange",
           "reason": "Conecta el trazado del interpolador con su fórmula y sus limitaciones.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Interpolación polinómica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -2906,7 +3120,14 @@
         "/problems/sine-limit",
         "/problems/taylor-error-bound"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Series de Taylor» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/total-derivative-gradient",
@@ -2993,7 +3214,14 @@
         "/problems/non-diagonalizable-matrix",
         "/problems/sampling-without-replacement"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema del binomio» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/burnside-lemma",
@@ -3013,7 +3241,14 @@
         "/problems/sudoku-symmetry",
         "/problems/winning-lines-in-two-games"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Identifica qué cuenta el promedio de configuraciones fijas.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/catalan-numbers",
@@ -3026,7 +3261,14 @@
         "/problems/balanced-parentheses",
         "/problems/constrained-lattice-paths"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Números de Catalan» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/computability-formal-languages",
@@ -3115,7 +3357,14 @@
         "/problems/eulerian-trail",
         "/problems/route-using-every-edge"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Distingue recorridos que visitan vértices de los que agotan aristas.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/four-color-theorem",
@@ -3137,6 +3386,12 @@
           "label": "Cuatro colores: cuando la demostración llegó con un programa",
           "reason": "Complemento histórico: el relato «Cuatro colores: cuando la demostración llegó con un programa» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de los cuatro colores» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -3196,6 +3451,12 @@
           "evidence": "editorial comparison"
         },
         {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Fundamentos de grafos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
           "route": "/games/sudoku",
           "label": "Sudoku",
           "reason": "Modela las incompatibilidades entre casillas mediante un grafo.",
@@ -3235,7 +3496,14 @@
         "/problems/sampling-without-replacement",
         "/problems/two-dice-conditional-probability"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica la alternancia de signos al contar intersecciones.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/konigsberg-bridges",
@@ -3325,7 +3593,14 @@
         "/articles/pseudorandom-generators",
         "/articles/ramsey-theorem"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Principio del palomar» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/planar-euler",
@@ -3439,7 +3714,14 @@
         "/articles/sierpinski-triangle",
         "/games/towers-of-hanoi"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Reconstruye la estrategia recursiva y la recurrencia del mínimo de movimientos.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/trees-graph-coloring",
@@ -3454,6 +3736,12 @@
         "/articles/ramsey-theorem"
       ],
       "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Árboles y coloración» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
         {
           "route": "/games/sudoku",
           "label": "Sudoku",
@@ -3490,6 +3778,12 @@
           "label": "Conjunto de Mandelbrot",
           "reason": "Repasa la multiplicación y el módulo complejos que intervienen en la iteración.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Aritmética compleja» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -3509,7 +3803,14 @@
         "/articles/integration-numerical",
         "/articles/lambert-w"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Ramas del logaritmo complejo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/complex-residues",
@@ -3544,7 +3845,14 @@
         "/problems/fourth-roots-of-minus-one",
         "/problems/sum-of-roots-of-unity"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Fórmula de De Moivre» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/euler-identity",
@@ -3565,7 +3873,14 @@
         "/problems/fourth-roots-of-minus-one",
         "/problems/sum-of-roots-of-unity"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Interpreta el producto complejo como rotación.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/holomorphic-continuation",
@@ -3647,6 +3962,12 @@
         "/articles/surreal-numbers"
       ],
       "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Cuaterniones y rotaciones» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
         {
           "route": "/games/rubik-cube",
           "label": "Cubo de Rubik",
@@ -4238,6 +4559,12 @@
           "label": "Óvalo ovoide trigonométrico",
           "reason": "Compara la simetría de una elipse con un perfil ovoide descrito trigonométricamente.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «La elipse» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -4534,7 +4861,14 @@
         "/articles/quadratic-conics",
         "/problems/translated-hyperbola"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «La hipérbola» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/hyperbolic-spiral",
@@ -4877,7 +5211,14 @@
         "/problems/area-between-curves",
         "/problems/nearest-point-on-a-parabola"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «La parábola» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/parabola-like",
@@ -5354,6 +5695,12 @@
           "label": "Conway: el pequeño mundo que Gardner puso en circulación",
           "reason": "Sitúa el Juego de la Vida dentro de los autómatas celulares.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Autómatas celulares» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5398,7 +5745,14 @@
         "/problems/circular-orbit-scaling",
         "/problems/vector-field-orbits"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Primeras integrales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/harmonic-oscillator",
@@ -5431,7 +5785,14 @@
         "/articles/recurrent-sequences",
         "/articles/sierpinski-triangle"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Sistemas de funciones iteradas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/kepler-orbits",
@@ -5465,6 +5826,12 @@
           "label": "Lepaute: seis meses de cuentas para esperar a un cometa",
           "reason": "Complemento histórico: el relato «Lepaute: seis meses de cuentas para esperar a un cometa» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Distingue qué afirma cada una de las tres leyes de Kepler.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5516,7 +5883,14 @@
         "/problems/birth-and-survival-in-game-of-life",
         "/problems/cellular-automaton-oscillator"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Patrones del Juego de la Vida» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/lorenz-attractor",
@@ -5536,6 +5910,12 @@
           "label": "Integración numérica de ecuaciones diferenciales",
           "reason": "El dibujo del atractor se obtiene aproximando un sistema diferencial por pasos temporales.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Atractor de Lorenz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5561,6 +5941,12 @@
           "label": "Atractor de Lorenz",
           "reason": "Relaciona la separación de trayectorias con la sensibilidad a las condiciones iniciales.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Estabilidad y exponentes de Lyapunov» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5767,6 +6153,12 @@
           "label": "Polvo de Cantor",
           "reason": "El polvo de Cantor permite pasar de una construcción sobre la recta a una construcción por productos.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona la eliminación de tercios con las expansiones ternarias.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5888,6 +6280,12 @@
           "label": "Fractal de Vicsek",
           "reason": "Cuenta las copias autosimilares y su factor de reducción.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Medida y dimensión fractal» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -5949,7 +6347,14 @@
         "/articles/peano-curve",
         "/articles/square"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona la construcción de Hilbert con una curva continua que llena un cuadrado.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/jerusalem-cross",
@@ -6027,7 +6432,14 @@
         "/articles/koch-curve",
         "/problems/cantor-set-length-and-dimension"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Compara cómo crecen el perímetro y el área del copo.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/levy-c-curve",
@@ -6077,6 +6489,12 @@
           "label": "Tricornio",
           "reason": "Compara la iteración cuadrática con su variante que usa conjugación compleja.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Identifica qué órbitas permanecen acotadas.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -6090,7 +6508,14 @@
         "/articles/sierpinski-carpet",
         "/problems/cantor-set-length-and-dimension"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Esponja de Menger» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/minkowski-sausage",
@@ -6245,7 +6670,14 @@
         "/articles/square",
         "/problems/cantor-set-length-and-dimension"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Alfombra de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/sierpinski-curve",
@@ -6274,7 +6706,14 @@
         "/games/towers-of-hanoi",
         "/problems/cantor-set-length-and-dimension"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Triángulo de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/t-square",
@@ -6391,6 +6830,12 @@
           "label": "Teorema de Varignon",
           "reason": "Los puntos medios y el paralelismo permiten interpretar la construcción mediante geometría afín.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Transformaciones afines» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         },
         {
           "route": "/problems/transforming-measurements",
@@ -6594,7 +7039,14 @@
         "/articles/triangle-metrics",
         "/problems/ceva-concurrency"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «El teorema de Ceva» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/chords-secants-tangents",
@@ -6625,7 +7077,14 @@
         "/articles/power-of-point",
         "/articles/ptolemy-theorem"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Inversión en una circunferencia» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/complementary-supplementary-angles",
@@ -6677,7 +7136,14 @@
         "/articles/plane-normal",
         "/articles/square"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Envolvente convexa» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/cross-product",
@@ -6693,7 +7159,14 @@
         "/problems/normal-from-two-directions",
         "/problems/skew-lines-distance"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Producto vectorial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/cross-ratio",
@@ -6946,6 +7419,12 @@
           "label": "Reconocimiento de constelaciones",
           "reason": "Relaciona el ángulo entre direcciones con su producto escalar.",
           "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Producto escalar» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7036,7 +7515,14 @@
         "/articles/nine-point-circle",
         "/articles/triangle-metrics"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona los centros del triángulo y su posición en la recta de Euler.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/euler-polyhedron-formula",
@@ -7051,7 +7537,14 @@
         "/articles/tetrahedron-viewer",
         "/problems/octahedron-edge-count"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Comprueba cómo se conserva la característica de Euler al subdividir una cara.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/euler-triangle-formula",
@@ -7111,6 +7604,12 @@
           "label": "Fórmula de Brahmagupta–Bretschneider",
           "reason": "Compara la fórmula para cuadriláteros con la expresión del área de un triángulo a partir de sus lados.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Deduce qué sucede con el área al cambiar las longitudes de los lados.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7142,7 +7641,14 @@
         "/articles/vector-norm",
         "/problems/scaling-length-area-and-volume"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Homotecias» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/incircles-circumcircles",
@@ -7198,6 +7704,12 @@
           "label": "Teorema de Pompeiu",
           "reason": "Relaciona las distancias de la construcción con el cálculo de lados y ángulos.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «La ley de los cosenos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7322,7 +7834,14 @@
         "/articles/thales-theorem",
         "/problems/triangle-median-length"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Circunferencia de los nueve puntos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/orthogonal-projections",
@@ -7340,7 +7859,14 @@
         "/problems/point-plane-distance",
         "/problems/skew-lines-distance"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Proyecciones ortogonales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/pascal-theorem",
@@ -7369,7 +7895,14 @@
         "/articles/square",
         "/problems/area-on-a-grid"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona los puntos de la cuadrícula con el área.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/plane-normal",
@@ -7406,7 +7939,14 @@
         "/articles/triangle",
         "/articles/twindragon"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teselaciones del plano» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/polyhedral-duality",
@@ -7423,7 +7963,14 @@
         "/articles/schlafli-symbol",
         "/articles/square"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Dualidad de poliedros» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/pompeiu-theorem",
@@ -7452,7 +7999,14 @@
         "/problems/power-of-a-point",
         "/problems/tangent-from-an-external-point"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Potencia de un punto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/projective-homogeneous-coordinates",
@@ -7484,7 +8038,14 @@
         "/articles/pythagorean-distance",
         "/articles/square"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema de Ptolomeo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/pythagorean-distance",
@@ -7521,6 +8082,12 @@
           "label": "Espiral de Teodoro",
           "reason": "Cada triángulo rectángulo añade un paso cuya longitud se calcula con Pitágoras.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Distancia pitagórica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7584,6 +8151,12 @@
           "label": "Reconocimiento de constelaciones",
           "reason": "Repasa la conversión entre medidas angulares.",
           "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona el ángulo en radianes con el radio y la longitud del arco.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7605,6 +8178,12 @@
         "/problems/tetrahedron-volume"
       ],
       "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Producto mixto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
         {
           "route": "/problems/skew-lines-distance",
           "label": "Problema 29: Dos rectas que se cruzan",
@@ -7637,7 +8216,14 @@
         "/articles/matrix-determinant",
         "/problems/area-on-a-grid"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Fórmula del cordón» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/solar-geometry",
@@ -7705,7 +8291,14 @@
         "/articles/square",
         "/problems/line-circle-intersection"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «El teorema de Tales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/triangle-metrics",
@@ -7900,6 +8493,12 @@
           "label": "Teorema fundamental de la aritmética",
           "reason": "La factorización en primos permite aplicar las reglas de la derivada aritmética; es una operación distinta de la derivada real.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Derivada aritmética» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -7962,7 +8561,14 @@
         "/problems/modular-inverse-for-decoding",
         "/problems/two-denomination-coin-equation"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica el vínculo entre coprimalidad, combinaciones enteras e inversos modulares.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/chinese-remainder-theorem",
@@ -7990,7 +8596,14 @@
         "/problems/chinese-remainder-conditions",
         "/problems/simultaneous-clock-congruences"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema chino del resto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/classical-cryptography",
@@ -8023,6 +8636,12 @@
           "label": "Sucesiones recurrentes y puntos fijos",
           "reason": "Formula la regla de Collatz como una recurrencia y distingue los experimentos de una prueba general.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Conjetura de Collatz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8042,7 +8661,14 @@
         "/problems/finite-continued-fraction",
         "/problems/pell-equation-descent"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Fracciones continuas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/dirichlet-convolution-series",
@@ -8139,7 +8765,14 @@
         "/articles/modular-arithmetic",
         "/articles/perfect-numbers"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Relaciona los números perfectos pares con los primos de Mersenne.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/euclid-infinitely-many-primes",
@@ -8149,7 +8782,14 @@
       "existing": [
         "/articles/fundamental-theorem-arithmetic"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Reconstruye los pasos de la prueba de Euclides.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/euclids-lemma",
@@ -8199,6 +8839,12 @@
           "label": "Máximo común divisor (MCD) y algoritmo de Euclides",
           "reason": "La función φ cuenta enteros cuyo máximo común divisor con el módulo es uno.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Función φ de Euler» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8263,7 +8909,14 @@
         "/problems/factorial-trailing-zeros",
         "/problems/shortest-grid-paths"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Fórmula de Legendre para factoriales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/fermat-four-square-theorem",
@@ -8322,6 +8975,12 @@
           "label": "Teorema de Euler",
           "reason": "El pequeño teorema de Fermat es el caso de módulo primo del teorema de Euler.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Pequeño teorema de Fermat» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8341,7 +9000,14 @@
         "/articles/telescoping-series",
         "/problems/affine-recurrence"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Números de Fibonacci» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/frobenius-coins",
@@ -8354,7 +9020,14 @@
         "/articles/modular-arithmetic",
         "/problems/two-denomination-coin-equation"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Problema de las monedas de Frobenius» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/fundamental-theorem-arithmetic",
@@ -8382,6 +9055,12 @@
           "label": "Derivada Aritmética",
           "reason": "La factorización en primos permite aplicar las reglas de la derivada aritmética; es una operación distinta de la derivada real.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Teorema fundamental de la aritmética» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8431,6 +9110,12 @@
           "label": "Criptografía clásica: sustituciones, claves e indicios",
           "reason": "El máximo común divisor ayuda a decidir cuándo una clave afín es invertible.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Algoritmo de Euclides» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8443,7 +9128,14 @@
         "/articles/covariance",
         "/articles/sieve-primality"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Distingue una comprobación finita de una demostración general.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/golden-ratio",
@@ -8613,6 +9305,12 @@
           "label": "Teorema de Wilson",
           "reason": "La congruencia de Wilson enlaza factoriales e inversos en un módulo primo.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Aritmética modular» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8695,7 +9393,14 @@
         "/articles/sum-of-two-squares",
         "/problems/pell-equation-descent"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Ecuación de Pell» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/perfect-numbers",
@@ -8712,6 +9417,12 @@
           "label": "Hurwitz: cincuenta minutos para un primo de 1332 cifras",
           "reason": "Complemento histórico: el relato «Hurwitz: cincuenta minutos para un primo de 1332 cifras» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Números perfectos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -8881,7 +9592,14 @@
         "/articles/modular-arithmetic",
         "/articles/ulam-spiral"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Criba y primalidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/sum-of-two-squares",
@@ -8899,7 +9617,14 @@
         "/articles/square",
         "/problems/impossible-sum-of-two-squares"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Suma de dos cuadrados» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/taxicab-numbers",
@@ -9090,6 +9815,12 @@
       ],
       "added": [
         {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Comprueba cómo se actualizan las probabilidades al observar evidencia.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
           "route": "/games/probability-detective",
           "label": "Detective de probabilidad",
           "reason": "Actualiza las probabilidades de las hipótesis cuando llega una pista.",
@@ -9124,7 +9855,14 @@
         "/problems/exactly-two-successes-in-four-trials",
         "/problems/sample-size-for-a-proportion"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Bernoulli y binomial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/berry-esseen",
@@ -9171,7 +9909,14 @@
         "/articles/exponentials-logarithms",
         "/articles/pigeonhole-principle"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica el razonamiento por complemento con cumpleaños.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/bootstrap",
@@ -9193,7 +9938,14 @@
         "/problems/regression-line",
         "/problems/same-summaries-different-plots"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Remuestreo bootstrap» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/buffon-needle",
@@ -9273,7 +10025,14 @@
         "/problems/sample-size-for-a-proportion",
         "/problems/two-sided-hypothesis-test"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Identifica las hipótesis y el alcance del teorema central del límite.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/conditional-independence",
@@ -9309,6 +10068,12 @@
           "label": "El manuscrito que Bayes no llegó a publicar",
           "reason": "La probabilidad condicionada prepara la lectura del resultado de Bayes.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Independencia condicional» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         },
         {
           "route": "/games/probability-detective",
@@ -9385,6 +10150,12 @@
           "label": "Estadística descriptiva y valores atípicos",
           "reason": "Repasa las medias y varianzas que intervienen en la covarianza.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Covarianza» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -9473,7 +10244,14 @@
         "/problems/standard-error-of-an-average",
         "/problems/waiting-for-first-success"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Esperanza de variables discretas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/distribution-functions-tails",
@@ -9555,6 +10333,12 @@
           "evidence": "game mechanics and article scope"
         },
         {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Probabilidad en espacios finitos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
           "route": "/games/probability-detective",
           "label": "Detective de probabilidad",
           "reason": "Repasa sucesos, probabilidades y normalización.",
@@ -9615,7 +10399,14 @@
         "/problems/waiting-for-first-head",
         "/problems/waiting-for-first-success"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Distribución geométrica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/graphical-diagnostics",
@@ -9664,7 +10455,14 @@
         "/problems/binomial-distribution",
         "/problems/sampling-without-replacement"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Distribución hipergeométrica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/large-numbers-law",
@@ -9687,7 +10485,14 @@
         "/problems/expected-value-and-fair-prize",
         "/problems/precision-of-a-sample-mean"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Ley de los grandes números» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/linear-regression",
@@ -9725,7 +10530,14 @@
         "/problems/two-step-state-transition",
         "/problems/waiting-for-first-success"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Cadenas de Márkov» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/maximum-likelihood",
@@ -9738,7 +10550,14 @@
         "/articles/statistical-inference",
         "/articles/supremum-real-completeness"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Máxima verosimilitud» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/moment-transformations",
@@ -9775,7 +10594,14 @@
         "/articles/finite-probability",
         "/problems/monty-hall-switching"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Pon a prueba tu intuición sobre la información que revela el presentador.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/normal-distribution",
@@ -9806,6 +10632,12 @@
           "label": "Curva de la función error",
           "reason": "La función error se relaciona con la acumulación de probabilidad de la distribución normal.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Distribución normal» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -9842,7 +10674,14 @@
         "/articles/geometric-distribution",
         "/articles/heterogeneous-binomial-mixtures"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Poisson y espera exponencial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/probability-inequalities",
@@ -9861,7 +10700,14 @@
         "/problems/precision-of-a-sample-mean",
         "/problems/sample-size-for-a-proportion"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Desigualdades de probabilidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/probability-trees",
@@ -9915,7 +10761,14 @@
         "/problems/simpsons-aggregation-paradox",
         "/problems/simpsons-paradox-when-mixing-groups"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Sesgo de muestreo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/sampling-distributions",
@@ -9952,7 +10805,14 @@
         "/problems/simpsons-aggregation-paradox",
         "/problems/simpsons-paradox-when-mixing-groups"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Paradoja de Simpson» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/statistical-inference",
@@ -9992,7 +10852,14 @@
         "/problems/sample-size-for-a-proportion",
         "/problems/two-sided-hypothesis-test"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «Potencia estadística» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/stratified-sampling",
@@ -10294,6 +11161,12 @@
           "label": "Una cinta con dos descubridores",
           "reason": "Complemento histórico: el relato «Una cinta con dos descubridores» permite conocer a sus protagonistas y el contexto de sus ideas.",
           "evidence": "editorial comparison"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Pon a prueba tu intuición sobre el borde y la orientación de la banda.",
+          "evidence": "game mechanics and article scope"
         }
       ]
     },
@@ -10427,7 +11300,14 @@
         "/problems/triangle-by-sine-rule",
         "/problems/triangle-with-known-angle"
       ],
-      "added": []
+      "added": [
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Practica los conceptos de «La ley de los senos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
     },
     {
       "route": "/articles/spherical-trigonometry",
@@ -10449,6 +11329,12 @@
           "route": "/games/constellations",
           "label": "Reconocimiento de constelaciones",
           "reason": "Interpreta posiciones y separaciones angulares en la esfera celeste.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/games/math-quiz",
+          "label": "Quiz de conceptos matemáticos",
+          "reason": "Compara los ángulos y el área de un triángulo esférico.",
           "evidence": "game mechanics and article scope"
         }
       ]
@@ -13601,6 +14487,813 @@
       ]
     },
     {
+      "route": "/games/math-quiz",
+      "title": "Quiz de conceptos matemáticos",
+      "kind": "game",
+      "file": "src/app/games/math-quiz/math-quiz.component.html",
+      "existing": [],
+      "added": [
+        {
+          "route": "/articles/affine-transformations",
+          "label": "Transformaciones afines: parte lineal y traslación",
+          "reason": "Practica los conceptos de «Transformaciones afines» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/arithmetic-derivative",
+          "label": "Derivada Aritmética",
+          "reason": "Practica los conceptos de «Derivada aritmética» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/banach-fixed-point",
+          "label": "Teorema del punto fijo de Banach",
+          "reason": "Practica los conceptos de «Teorema del punto fijo de Banach» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/bayes-theorem",
+          "label": "Teorema de Bayes",
+          "reason": "Comprueba cómo se actualizan las probabilidades al observar evidencia.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/bernoulli-binomial",
+          "label": "Distribuciones de Bernoulli y binomial",
+          "reason": "Practica los conceptos de «Bernoulli y binomial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/bezout-identity",
+          "label": "Identidad de Bézout",
+          "reason": "Practica el vínculo entre coprimalidad, combinaciones enteras e inversos modulares.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/binomial-theorem",
+          "label": "Teorema binomial",
+          "reason": "Practica los conceptos de «Teorema del binomio» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/birthday-paradox",
+          "label": "Paradoja del cumpleaños",
+          "reason": "Practica el razonamiento por complemento con cumpleaños.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/bolzano-theorem",
+          "label": "Teorema de Bolzano: existencia y unicidad de raíces",
+          "reason": "Practica los conceptos de «Teorema de Bolzano» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/bootstrap",
+          "label": "Bootstrap y estimación por remuestreo",
+          "reason": "Practica los conceptos de «Remuestreo bootstrap» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/burnside-lemma",
+          "label": "Acciones de grupos y lema de Burnside",
+          "reason": "Identifica qué cuenta el promedio de configuraciones fijas.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/cantor-set",
+          "label": "Conjunto de Cantor",
+          "reason": "Relaciona la eliminación de tercios con las expansiones ternarias.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/catalan-numbers",
+          "label": "Números de Catalan",
+          "reason": "Practica los conceptos de «Números de Catalan» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/cayley-hamilton",
+          "label": "Teorema de Cayley–Hamilton y polinomio mínimo",
+          "reason": "Practica los conceptos de «Teorema de Cayley–Hamilton» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/cellular-automata",
+          "label": "Autómatas celulares y la Regla 30",
+          "reason": "Practica los conceptos de «Autómatas celulares» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/central-limit-theorem",
+          "label": "El teorema central del límite",
+          "reason": "Identifica las hipótesis y el alcance del teorema central del límite.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/ceva-theorem",
+          "label": "Teorema de Ceva",
+          "reason": "Practica los conceptos de «El teorema de Ceva» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/chinese-remainder-theorem",
+          "label": "Sistemas de congruencias y Teorema Chino del Resto",
+          "reason": "Practica los conceptos de «Teorema chino del resto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/circle-inversion",
+          "label": "Inversión respecto de una circunferencia",
+          "reason": "Practica los conceptos de «Inversión en una circunferencia» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/collatz",
+          "label": "La conjetura de Collatz",
+          "reason": "Practica los conceptos de «Conjetura de Collatz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/complex-arithmetic",
+          "label": "Conjugado, módulo y división compleja",
+          "reason": "Practica los conceptos de «Aritmética compleja» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/complex-logarithm-branches",
+          "label": "Logaritmo complejo, ramas y cortes",
+          "reason": "Practica los conceptos de «Ramas del logaritmo complejo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/conditional-independence",
+          "label": "Probabilidad condicionada e independencia",
+          "reason": "Practica los conceptos de «Independencia condicional» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/continued-fractions",
+          "label": "Fracciones continuas",
+          "reason": "Practica los conceptos de «Fracciones continuas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/continuity-differentiability",
+          "label": "Continuidad y derivabilidad: funciones a trozos",
+          "reason": "Practica los conceptos de «Continuidad y derivabilidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/convex-hull",
+          "label": "Convexidad y envolvente convexa",
+          "reason": "Practica los conceptos de «Envolvente convexa» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/convexity-tangents",
+          "label": "Convexidad, concavidad y desigualdades",
+          "reason": "Practica los conceptos de «Convexidad y tangentes» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/covariance",
+          "label": "Covarianza, dependencia y varianza de una suma",
+          "reason": "Practica los conceptos de «Covarianza» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/cross-product",
+          "label": "Producto vectorial",
+          "reason": "Practica los conceptos de «Producto vectorial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/de-moivre",
+          "label": "Fórmula de De Moivre: potencias y raíces complejas",
+          "reason": "Practica los conceptos de «Fórmula de De Moivre» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/discrete-expectation",
+          "label": "Esperanza discreta, juegos justos y riesgo",
+          "reason": "Practica los conceptos de «Esperanza de variables discretas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/dot-product",
+          "label": "Producto escalar",
+          "reason": "Practica los conceptos de «Producto escalar» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/ellipse",
+          "label": "Elipse",
+          "reason": "Practica los conceptos de «La elipse» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euclid-euler-perfect-numbers",
+          "label": "Teorema de Euclides–Euler",
+          "reason": "Relaciona los números perfectos pares con los primos de Mersenne.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euclid-infinitely-many-primes",
+          "label": "Teorema de Euclides sobre los primos",
+          "reason": "Reconstruye los pasos de la prueba de Euclides.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euler-hamilton",
+          "label": "Recorridos eulerianos y caminos hamiltonianos",
+          "reason": "Distingue recorridos que visitan vértices de los que agotan aristas.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euler-identity",
+          "label": "La identidad de Euler",
+          "reason": "Interpreta el producto complejo como rotación.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euler-line",
+          "label": "La recta de Euler",
+          "reason": "Relaciona los centros del triángulo y su posición en la recta de Euler.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euler-polyhedron-formula",
+          "label": "Fórmula de Euler para poliedros",
+          "reason": "Comprueba cómo se conserva la característica de Euler al subdividir una cara.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/euler-totient-formula",
+          "label": "Fórmula del totiente de Euler",
+          "reason": "Practica los conceptos de «Función φ de Euler» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/factorials-legendre",
+          "label": "Factoriales, exponentes primos y fórmula de Legendre",
+          "reason": "Practica los conceptos de «Fórmula de Legendre para factoriales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fermats-little-theorem",
+          "label": "Pequeño teorema de Fermat",
+          "reason": "Practica los conceptos de «Pequeño teorema de Fermat» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fibonacci-numbers",
+          "label": "Números de Fibonacci",
+          "reason": "Practica los conceptos de «Números de Fibonacci» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/finite-probability",
+          "label": "Probabilidad en espacios finitos: sucesos y regla de Laplace",
+          "reason": "Practica los conceptos de «Probabilidad en espacios finitos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/first-integrals",
+          "label": "Integrales primeras y cantidades conservadas",
+          "reason": "Practica los conceptos de «Primeras integrales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/first-order-odes",
+          "label": "Ecuaciones diferenciales de primer orden y enfriamiento",
+          "reason": "Practica los conceptos de «Ecuaciones diferenciales de primer orden» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/four-color-theorem",
+          "label": "El teorema de los cuatro colores",
+          "reason": "Practica los conceptos de «Teorema de los cuatro colores» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fourier-series",
+          "label": "Series de Fourier",
+          "reason": "Relaciona la simetría y los saltos con el comportamiento de las series de Fourier.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fourier-transform",
+          "label": "Transformada de Fourier: de una señal a sus frecuencias",
+          "reason": "Practica los conceptos de «Transformada de Fourier» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fractal-measure-dimension",
+          "label": "Medida, dimensión y autosimilitud",
+          "reason": "Practica los conceptos de «Medida y dimensión fractal» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/frobenius-coins",
+          "label": "El problema de las monedas y el número de Frobenius",
+          "reason": "Practica los conceptos de «Problema de las monedas de Frobenius» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/fundamental-theorem-arithmetic",
+          "label": "Teorema fundamental de la aritmética",
+          "reason": "Practica los conceptos de «Teorema fundamental de la aritmética» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/gauss-school-sum",
+          "label": "Gauss y la suma del 1 al 100",
+          "reason": "Explica por qué funciona emparejar los extremos de una progresión.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/gaussian-elimination",
+          "label": "Eliminación de Gauss y teorema de Rouché–Capelli",
+          "reason": "Reconoce operaciones de fila reversibles y sistemas incompatibles.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/gcd-euclid",
+          "label": "Máximo común divisor (MCD) y algoritmo de Euclides",
+          "reason": "Practica los conceptos de «Algoritmo de Euclides» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/geometric-distribution",
+          "label": "Distribución geométrica y tiempo de espera",
+          "reason": "Practica los conceptos de «Distribución geométrica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/geometric-series",
+          "label": "Progresiones y series geométricas",
+          "reason": "Practica los conceptos de «Series geométricas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/global-extrema-weierstrass",
+          "label": "Extremos globales y teorema de Weierstrass",
+          "reason": "Practica los conceptos de «Extremos de Weierstrass» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/goldbach",
+          "label": "La conjetura de Goldbach",
+          "reason": "Distingue una comprobación finita de una demostración general.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/gram-schmidt",
+          "label": "Productos internos y ortonormalización de Gram–Schmidt",
+          "reason": "Practica los conceptos de «Proceso de Gram–Schmidt» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/graph-foundations",
+          "label": "Grafos desde cero: grados, caminos y conectividad",
+          "reason": "Practica los conceptos de «Fundamentos de grafos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/groups-cosets-lagrange",
+          "label": "Subgrupos, clases laterales y teorema de Lagrange",
+          "reason": "Relaciona el tamaño de las clases laterales con el orden de un grupo.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/heron-formula",
+          "label": "Fórmula de Herón",
+          "reason": "Deduce qué sucede con el área al cambiar las longitudes de los lados.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/hilbert-curve",
+          "label": "Curva de Hilbert",
+          "reason": "Relaciona la construcción de Hilbert con una curva continua que llena un cuadrado.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/hilbert-hotel",
+          "label": "Habitaciones libres en un hotel lleno",
+          "reason": "Distingue entre distintos tamaños de infinito mediante asignaciones de habitaciones.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/homothety",
+          "label": "Homotecia",
+          "reason": "Practica los conceptos de «Homotecias» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/hyperbola",
+          "label": "Hipérbola",
+          "reason": "Practica los conceptos de «La hipérbola» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/hypergeometric-distribution",
+          "label": "Distribución hipergeométrica: extracción sin reemplazo",
+          "reason": "Practica los conceptos de «Distribución hipergeométrica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/inclusion-exclusion",
+          "label": "Principio de inclusión y exclusión",
+          "reason": "Practica la alternancia de signos al contar intersecciones.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/integration-numerical",
+          "label": "Integrales III: cuadratura y métodos computacionales",
+          "reason": "Practica los conceptos de «Integración numérica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/iterated-function-systems",
+          "label": "Sistemas de funciones iteradas y juego del caos",
+          "reason": "Practica los conceptos de «Sistemas de funciones iteradas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/jacobian-change-variables",
+          "label": "Matriz jacobiana y cambios de variables",
+          "reason": "Practica los conceptos de «Jacobiano y cambio de variables» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/kepler-orbits",
+          "label": "Órbitas circulares y tercera ley de Kepler",
+          "reason": "Distingue qué afirma cada una de las tres leyes de Kepler.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/koch-snowflake",
+          "label": "Copo de nieve de Koch",
+          "reason": "Compara cómo crecen el perímetro y el área del copo.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/large-numbers-law",
+          "label": "Ley de los grandes números",
+          "reason": "Practica los conceptos de «Ley de los grandes números» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/law-of-cosines",
+          "label": "Ley de los cosenos",
+          "reason": "Practica los conceptos de «La ley de los cosenos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/lhopital-rule",
+          "label": "Regla de L’Hôpital y formas indeterminadas",
+          "reason": "Practica los conceptos de «Regla de L’Hôpital» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/life-patterns",
+          "label": "El Juego de la vida: osciladores y evolución",
+          "reason": "Practica los conceptos de «Patrones del Juego de la Vida» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/lorenz-attractor",
+          "label": "Atractor de Lorenz",
+          "reason": "Practica los conceptos de «Atractor de Lorenz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/lyapunov-stability-chaos",
+          "label": "Estabilidad, funciones y exponentes de Lyapunov",
+          "reason": "Practica los conceptos de «Estabilidad y exponentes de Lyapunov» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/mandelbrot-set",
+          "label": "Conjunto de Mandelbrot",
+          "reason": "Identifica qué órbitas permanecen acotadas.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/markov-chains",
+          "label": "Las cadenas de Markov",
+          "reason": "Practica los conceptos de «Cadenas de Márkov» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/matrix-determinant",
+          "label": "El determinante: área, volumen y orientación",
+          "reason": "Practica los conceptos de «Determinante de una matriz» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/matrix-diagonalization",
+          "label": "Diagonalización de matrices y valores propios",
+          "reason": "Practica los conceptos de «Diagonalización de matrices» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/maximum-likelihood",
+          "label": "Verosimilitud y estimación de máxima verosimilitud",
+          "reason": "Practica los conceptos de «Máxima verosimilitud» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/mean-value-theorems",
+          "label": "Teoremas de Rolle y del valor medio",
+          "reason": "Practica los conceptos de «Teoremas del valor medio» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/menger-sponge",
+          "label": "Esponja de Menger",
+          "reason": "Practica los conceptos de «Esponja de Menger» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/mobius-strip",
+          "label": "La cinta de Möbius",
+          "reason": "Pon a prueba tu intuición sobre el borde y la orientación de la banda.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/modular-arithmetic",
+          "label": "Congruencias: fundamentos y aritmética modular",
+          "reason": "Practica los conceptos de «Aritmética modular» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/monty-hall",
+          "label": "Problema de Monty Hall",
+          "reason": "Pon a prueba tu intuición sobre la información que revela el presentador.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/newton-raphson",
+          "label": "Método de Newton–Raphson",
+          "reason": "Interpreta el siguiente paso de Newton a partir de la tangente.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/nine-point-circle",
+          "label": "La circunferencia de los nueve puntos",
+          "reason": "Practica los conceptos de «Circunferencia de los nueve puntos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/normal-distribution",
+          "label": "Distribución normal y tipificación",
+          "reason": "Practica los conceptos de «Distribución normal» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/orthogonal-projections",
+          "label": "Proyecciones ortogonales y distancias en el espacio",
+          "reason": "Practica los conceptos de «Proyecciones ortogonales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/parabola",
+          "label": "Parábola",
+          "reason": "Practica los conceptos de «La parábola» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/pell-equation",
+          "label": "Ecuación de Pell",
+          "reason": "Practica los conceptos de «Ecuación de Pell» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/perfect-numbers",
+          "label": "Números perfectos",
+          "reason": "Practica los conceptos de «Números perfectos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/picard-lipschitz",
+          "label": "Existencia y unicidad: Picard y la condición de Lipschitz",
+          "reason": "Practica los conceptos de «Teorema de Picard–Lindelöf» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/pick-theorem",
+          "label": "Teorema de Pick",
+          "reason": "Relaciona los puntos de la cuadrícula con el área.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/pigeonhole-principle",
+          "label": "Principio del palomar y argumentos de existencia",
+          "reason": "Practica los conceptos de «Principio del palomar» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/plane-tessellations",
+          "label": "Teselaciones del plano y polígonos regulares",
+          "reason": "Practica los conceptos de «Teselaciones del plano» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/poisson-exponential-waiting",
+          "label": "Poisson, espera exponencial y binomial negativa",
+          "reason": "Practica los conceptos de «Poisson y espera exponencial» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/polyhedral-duality",
+          "label": "Dualidad de polígonos y poliedros",
+          "reason": "Practica los conceptos de «Dualidad de poliedros» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/polynomial-interpolation",
+          "label": "Interpolación de Lagrange y Hermite",
+          "reason": "Practica los conceptos de «Interpolación polinómica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/positive-series-tests",
+          "label": "Criterios de convergencia de series positivas",
+          "reason": "Practica los conceptos de «Criterios para series positivas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/power-of-point",
+          "label": "La potencia de un punto",
+          "reason": "Practica los conceptos de «Potencia de un punto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/probability-inequalities",
+          "label": "Desigualdades de Markov y Chebyshev",
+          "reason": "Practica los conceptos de «Desigualdades de probabilidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/projection-least-squares",
+          "label": "Proyecciones ortogonales y mínimos cuadrados",
+          "reason": "Interpreta un ajuste de mínimos cuadrados como proyección ortogonal.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/ptolemy-theorem",
+          "label": "Teorema de Ptolomeo",
+          "reason": "Practica los conceptos de «Teorema de Ptolomeo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/pythagorean-distance",
+          "label": "Pitágoras y distancia euclídea",
+          "reason": "Practica los conceptos de «Distancia pitagórica» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/quaternions-rotations",
+          "label": "Cuaterniones y rotaciones: del producto de Hamilton al espacio",
+          "reason": "Practica los conceptos de «Cuaterniones y rotaciones» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/radians",
+          "label": "Radianes",
+          "reason": "Relaciona el ángulo en radianes con el radio y la longitud del arco.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/rational-root-theorem",
+          "label": "Teorema de las raíces racionales",
+          "reason": "Practica los conceptos de «Teorema de la raíz racional» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/rings-finite-fields",
+          "label": "Anillos, cuerpos, irreducibilidad y cuerpos finitos",
+          "reason": "Practica los conceptos de «Anillos y cuerpos finitos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sampling-bias",
+          "label": "Muestreo y sesgo de selección",
+          "reason": "Practica los conceptos de «Sesgo de muestreo» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/scalar-triple-product",
+          "label": "Producto mixto",
+          "reason": "Practica los conceptos de «Producto mixto» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/shoelace-formula",
+          "label": "Fórmula del área de Gauss",
+          "reason": "Practica los conceptos de «Fórmula del cordón» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sierpinski-carpet",
+          "label": "Alfombra de Sierpinski",
+          "reason": "Practica los conceptos de «Alfombra de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sierpinski-triangle",
+          "label": "Triángulo de Sierpinski",
+          "reason": "Practica los conceptos de «Triángulo de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sieve-primality",
+          "label": "Criba de Eratóstenes y pruebas de primalidad",
+          "reason": "Practica los conceptos de «Criba y primalidad» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/simpson-paradox",
+          "label": "Paradoja de Simpson",
+          "reason": "Practica los conceptos de «Paradoja de Simpson» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sine-law",
+          "label": "Ley de los senos y caso ambiguo",
+          "reason": "Practica los conceptos de «La ley de los senos» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/singular-values-operator-norms",
+          "label": "Valores singulares, SVD y normas de operadores",
+          "reason": "Practica los conceptos de «Valores singulares y normas de operador» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/spherical-trigonometry",
+          "label": "Trigonometría esférica y coordenadas celestes",
+          "reason": "Compara los ángulos y el área de un triángulo esférico.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/squeeze-oscillation",
+          "label": "Teorema del encaje y funciones oscilantes",
+          "reason": "Practica los conceptos de «Teorema del sándwich y oscilación» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/statistical-power",
+          "label": "Potencia estadística y errores de contraste",
+          "reason": "Practica los conceptos de «Potencia estadística» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/sum-of-two-squares",
+          "label": "Teorema de Fermat sobre dos cuadrados",
+          "reason": "Practica los conceptos de «Suma de dos cuadrados» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/taylor-series",
+          "label": "Series de Taylor",
+          "reason": "Practica los conceptos de «Series de Taylor» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/telescoping-series",
+          "label": "Series telescópicas",
+          "reason": "Practica los conceptos de «Series telescópicas» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/thales-theorem",
+          "label": "Teorema de Tales: el ángulo inscrito",
+          "reason": "Practica los conceptos de «El teorema de Tales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/towers-of-hanoi",
+          "label": "Torres de Hanoi: el poder de la recursión",
+          "reason": "Reconstruye la estrategia recursiva y la recurrencia del mínimo de movimientos.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/trees-graph-coloring",
+          "label": "Árboles, árboles generadores y coloración de grafos",
+          "reason": "Practica los conceptos de «Árboles y coloración» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        },
+        {
+          "route": "/articles/vector-spaces",
+          "label": "Espacios vectoriales, bases y rango–nulidad",
+          "reason": "Practica los conceptos de «Espacios vectoriales» en el quiz y revisa las explicaciones al terminar.",
+          "evidence": "game mechanics and article scope"
+        }
+      ]
+    },
+    {
       "route": "/games/towers-of-hanoi",
       "title": "Torres de Hanoi",
       "kind": "game",
@@ -14594,6 +16287,804 @@
       "a": "/games/constellations",
       "b": "/articles/dot-product",
       "reason": "Relaciona el ángulo entre direcciones con su producto escalar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/monty-hall",
+      "reason": "Pon a prueba tu intuición sobre la información que revela el presentador.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/birthday-paradox",
+      "reason": "Practica el razonamiento por complemento con cumpleaños.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/bayes-theorem",
+      "reason": "Comprueba cómo se actualizan las probabilidades al observar evidencia.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euler-line",
+      "reason": "Relaciona los centros del triángulo y su posición en la recta de Euler.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/pick-theorem",
+      "reason": "Relaciona los puntos de la cuadrícula con el área.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/heron-formula",
+      "reason": "Deduce qué sucede con el área al cambiar las longitudes de los lados.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euclid-infinitely-many-primes",
+      "reason": "Reconstruye los pasos de la prueba de Euclides.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euclid-euler-perfect-numbers",
+      "reason": "Relaciona los números perfectos pares con los primos de Mersenne.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/bezout-identity",
+      "reason": "Practica el vínculo entre coprimalidad, combinaciones enteras e inversos modulares.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/koch-snowflake",
+      "reason": "Compara cómo crecen el perímetro y el área del copo.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/cantor-set",
+      "reason": "Relaciona la eliminación de tercios con las expansiones ternarias.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/mandelbrot-set",
+      "reason": "Identifica qué órbitas permanecen acotadas.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/towers-of-hanoi",
+      "reason": "Reconstruye la estrategia recursiva y la recurrencia del mínimo de movimientos.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/burnside-lemma",
+      "reason": "Identifica qué cuenta el promedio de configuraciones fijas.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/inclusion-exclusion",
+      "reason": "Practica la alternancia de signos al contar intersecciones.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fourier-series",
+      "reason": "Relaciona la simetría y los saltos con el comportamiento de las series de Fourier.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/newton-raphson",
+      "reason": "Interpreta el siguiente paso de Newton a partir de la tangente.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/groups-cosets-lagrange",
+      "reason": "Relaciona el tamaño de las clases laterales con el orden de un grupo.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/gaussian-elimination",
+      "reason": "Reconoce operaciones de fila reversibles y sistemas incompatibles.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euler-identity",
+      "reason": "Interpreta el producto complejo como rotación.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/mobius-strip",
+      "reason": "Pon a prueba tu intuición sobre el borde y la orientación de la banda.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/hilbert-hotel",
+      "reason": "Distingue entre distintos tamaños de infinito mediante asignaciones de habitaciones.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euler-polyhedron-formula",
+      "reason": "Comprueba cómo se conserva la característica de Euler al subdividir una cara.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/kepler-orbits",
+      "reason": "Distingue qué afirma cada una de las tres leyes de Kepler.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/hilbert-curve",
+      "reason": "Relaciona la construcción de Hilbert con una curva continua que llena un cuadrado.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/central-limit-theorem",
+      "reason": "Identifica las hipótesis y el alcance del teorema central del límite.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/projection-least-squares",
+      "reason": "Interpreta un ajuste de mínimos cuadrados como proyección ortogonal.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/radians",
+      "reason": "Relaciona el ángulo en radianes con el radio y la longitud del arco.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/spherical-trigonometry",
+      "reason": "Compara los ángulos y el área de un triángulo esférico.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euler-hamilton",
+      "reason": "Distingue recorridos que visitan vértices de los que agotan aristas.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/goldbach",
+      "reason": "Distingue una comprobación finita de una demostración general.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/gauss-school-sum",
+      "reason": "Explica por qué funciona emparejar los extremos de una progresión.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/ellipse",
+      "reason": "Practica los conceptos de «La elipse» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/parabola",
+      "reason": "Practica los conceptos de «La parábola» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/hyperbola",
+      "reason": "Practica los conceptos de «La hipérbola» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/circle-inversion",
+      "reason": "Practica los conceptos de «Inversión en una circunferencia» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/power-of-point",
+      "reason": "Practica los conceptos de «Potencia de un punto» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/thales-theorem",
+      "reason": "Practica los conceptos de «El teorema de Tales» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/ceva-theorem",
+      "reason": "Practica los conceptos de «El teorema de Ceva» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/pythagorean-distance",
+      "reason": "Practica los conceptos de «Distancia pitagórica» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/homothety",
+      "reason": "Practica los conceptos de «Homotecias» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/affine-transformations",
+      "reason": "Practica los conceptos de «Transformaciones afines» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/convex-hull",
+      "reason": "Practica los conceptos de «Envolvente convexa» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/shoelace-formula",
+      "reason": "Practica los conceptos de «Fórmula del cordón» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/ptolemy-theorem",
+      "reason": "Practica los conceptos de «Teorema de Ptolomeo» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/nine-point-circle",
+      "reason": "Practica los conceptos de «Circunferencia de los nueve puntos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/polyhedral-duality",
+      "reason": "Practica los conceptos de «Dualidad de poliedros» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sine-law",
+      "reason": "Practica los conceptos de «La ley de los senos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/law-of-cosines",
+      "reason": "Practica los conceptos de «La ley de los cosenos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/plane-tessellations",
+      "reason": "Practica los conceptos de «Teselaciones del plano» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/modular-arithmetic",
+      "reason": "Practica los conceptos de «Aritmética modular» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/gcd-euclid",
+      "reason": "Practica los conceptos de «Algoritmo de Euclides» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/chinese-remainder-theorem",
+      "reason": "Practica los conceptos de «Teorema chino del resto» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/euler-totient-formula",
+      "reason": "Practica los conceptos de «Función φ de Euler» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fermats-little-theorem",
+      "reason": "Practica los conceptos de «Pequeño teorema de Fermat» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sieve-primality",
+      "reason": "Practica los conceptos de «Criba y primalidad» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fundamental-theorem-arithmetic",
+      "reason": "Practica los conceptos de «Teorema fundamental de la aritmética» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/factorials-legendre",
+      "reason": "Practica los conceptos de «Fórmula de Legendre para factoriales» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/continued-fractions",
+      "reason": "Practica los conceptos de «Fracciones continuas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fibonacci-numbers",
+      "reason": "Practica los conceptos de «Números de Fibonacci» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/perfect-numbers",
+      "reason": "Practica los conceptos de «Números perfectos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sum-of-two-squares",
+      "reason": "Practica los conceptos de «Suma de dos cuadrados» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/collatz",
+      "reason": "Practica los conceptos de «Conjetura de Collatz» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/pell-equation",
+      "reason": "Practica los conceptos de «Ecuación de Pell» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/frobenius-coins",
+      "reason": "Practica los conceptos de «Problema de las monedas de Frobenius» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/rational-root-theorem",
+      "reason": "Practica los conceptos de «Teorema de la raíz racional» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/arithmetic-derivative",
+      "reason": "Practica los conceptos de «Derivada aritmética» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/vector-spaces",
+      "reason": "Practica los conceptos de «Espacios vectoriales» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/dot-product",
+      "reason": "Practica los conceptos de «Producto escalar» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/cross-product",
+      "reason": "Practica los conceptos de «Producto vectorial» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/scalar-triple-product",
+      "reason": "Practica los conceptos de «Producto mixto» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/matrix-determinant",
+      "reason": "Practica los conceptos de «Determinante de una matriz» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/matrix-diagonalization",
+      "reason": "Practica los conceptos de «Diagonalización de matrices» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/gram-schmidt",
+      "reason": "Practica los conceptos de «Proceso de Gram–Schmidt» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/orthogonal-projections",
+      "reason": "Practica los conceptos de «Proyecciones ortogonales» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/cayley-hamilton",
+      "reason": "Practica los conceptos de «Teorema de Cayley–Hamilton» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/singular-values-operator-norms",
+      "reason": "Practica los conceptos de «Valores singulares y normas de operador» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/polynomial-interpolation",
+      "reason": "Practica los conceptos de «Interpolación polinómica» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/binomial-theorem",
+      "reason": "Practica los conceptos de «Teorema del binomio» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/complex-arithmetic",
+      "reason": "Practica los conceptos de «Aritmética compleja» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/de-moivre",
+      "reason": "Practica los conceptos de «Fórmula de De Moivre» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/complex-logarithm-branches",
+      "reason": "Practica los conceptos de «Ramas del logaritmo complejo» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/rings-finite-fields",
+      "reason": "Practica los conceptos de «Anillos y cuerpos finitos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/quaternions-rotations",
+      "reason": "Practica los conceptos de «Cuaterniones y rotaciones» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/bolzano-theorem",
+      "reason": "Practica los conceptos de «Teorema de Bolzano» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/continuity-differentiability",
+      "reason": "Practica los conceptos de «Continuidad y derivabilidad» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/mean-value-theorems",
+      "reason": "Practica los conceptos de «Teoremas del valor medio» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/global-extrema-weierstrass",
+      "reason": "Practica los conceptos de «Extremos de Weierstrass» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/convexity-tangents",
+      "reason": "Practica los conceptos de «Convexidad y tangentes» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/taylor-series",
+      "reason": "Practica los conceptos de «Series de Taylor» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/lhopital-rule",
+      "reason": "Practica los conceptos de «Regla de L’Hôpital» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/geometric-series",
+      "reason": "Practica los conceptos de «Series geométricas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/telescoping-series",
+      "reason": "Practica los conceptos de «Series telescópicas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/positive-series-tests",
+      "reason": "Practica los conceptos de «Criterios para series positivas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/squeeze-oscillation",
+      "reason": "Practica los conceptos de «Teorema del sándwich y oscilación» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/integration-numerical",
+      "reason": "Practica los conceptos de «Integración numérica» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/jacobian-change-variables",
+      "reason": "Practica los conceptos de «Jacobiano y cambio de variables» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/first-order-odes",
+      "reason": "Practica los conceptos de «Ecuaciones diferenciales de primer orden» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/picard-lipschitz",
+      "reason": "Practica los conceptos de «Teorema de Picard–Lindelöf» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/banach-fixed-point",
+      "reason": "Practica los conceptos de «Teorema del punto fijo de Banach» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fourier-transform",
+      "reason": "Practica los conceptos de «Transformada de Fourier» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/finite-probability",
+      "reason": "Practica los conceptos de «Probabilidad en espacios finitos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/conditional-independence",
+      "reason": "Practica los conceptos de «Independencia condicional» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/bernoulli-binomial",
+      "reason": "Practica los conceptos de «Bernoulli y binomial» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/hypergeometric-distribution",
+      "reason": "Practica los conceptos de «Distribución hipergeométrica» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/geometric-distribution",
+      "reason": "Practica los conceptos de «Distribución geométrica» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/poisson-exponential-waiting",
+      "reason": "Practica los conceptos de «Poisson y espera exponencial» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/large-numbers-law",
+      "reason": "Practica los conceptos de «Ley de los grandes números» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/discrete-expectation",
+      "reason": "Practica los conceptos de «Esperanza de variables discretas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/covariance",
+      "reason": "Practica los conceptos de «Covarianza» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/normal-distribution",
+      "reason": "Practica los conceptos de «Distribución normal» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/maximum-likelihood",
+      "reason": "Practica los conceptos de «Máxima verosimilitud» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sampling-bias",
+      "reason": "Practica los conceptos de «Sesgo de muestreo» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/simpson-paradox",
+      "reason": "Practica los conceptos de «Paradoja de Simpson» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/bootstrap",
+      "reason": "Practica los conceptos de «Remuestreo bootstrap» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/markov-chains",
+      "reason": "Practica los conceptos de «Cadenas de Márkov» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/probability-inequalities",
+      "reason": "Practica los conceptos de «Desigualdades de probabilidad» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/statistical-power",
+      "reason": "Practica los conceptos de «Potencia estadística» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/graph-foundations",
+      "reason": "Practica los conceptos de «Fundamentos de grafos» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/trees-graph-coloring",
+      "reason": "Practica los conceptos de «Árboles y coloración» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/four-color-theorem",
+      "reason": "Practica los conceptos de «Teorema de los cuatro colores» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/pigeonhole-principle",
+      "reason": "Practica los conceptos de «Principio del palomar» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/catalan-numbers",
+      "reason": "Practica los conceptos de «Números de Catalan» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/cellular-automata",
+      "reason": "Practica los conceptos de «Autómatas celulares» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/life-patterns",
+      "reason": "Practica los conceptos de «Patrones del Juego de la Vida» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/lorenz-attractor",
+      "reason": "Practica los conceptos de «Atractor de Lorenz» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/lyapunov-stability-chaos",
+      "reason": "Practica los conceptos de «Estabilidad y exponentes de Lyapunov» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/first-integrals",
+      "reason": "Practica los conceptos de «Primeras integrales» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sierpinski-triangle",
+      "reason": "Practica los conceptos de «Triángulo de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/sierpinski-carpet",
+      "reason": "Practica los conceptos de «Alfombra de Sierpinski» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/menger-sponge",
+      "reason": "Practica los conceptos de «Esponja de Menger» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/iterated-function-systems",
+      "reason": "Practica los conceptos de «Sistemas de funciones iteradas» en el quiz y revisa las explicaciones al terminar.",
+      "evidence": "game mechanics and article scope"
+    },
+    {
+      "a": "/games/math-quiz",
+      "b": "/articles/fractal-measure-dimension",
+      "reason": "Practica los conceptos de «Medida y dimensión fractal» en el quiz y revisa las explicaciones al terminar.",
       "evidence": "game mechanics and article scope"
     },
     {

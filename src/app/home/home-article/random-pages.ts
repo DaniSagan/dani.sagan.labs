@@ -577,6 +577,7 @@ export const RANDOM_PAGE_ROUTES: readonly string[] = [
   "/games/four-in-a-row",
   "/games/game-of-life",
   "/games/gravity",
+  "/games/math-quiz",
   "/games/probability-detective",
   "/games/rubik-cube",
   "/games/sudoku",

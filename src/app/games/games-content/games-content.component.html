@@ -6,6 +6,7 @@
     @if (!outlet.isActivated) {
       <h1>Juegos</h1>
       <p>Elige un juego en el menú o descubre uno al azar.</p>
+      <p><a routerLink="math-quiz">Quiz de conceptos matemáticos</a></p>
       <app-random-discovery section="games"></app-random-discovery>
     }
     <router-outlet #outlet="outlet"></router-outlet>

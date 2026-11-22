@@ -1,0 +1,108 @@
+<div class="quiz">
+  <header class="hero">
+    <div>
+      <h1>Quiz de conceptos matemáticos</h1>
+      <p>Del hotel infinito a los fractales. Pon a prueba lo que sabes y descubre qué leer después.</p>
+    </div>
+    <div class="orbit" aria-hidden="true"><span>?</span></div>
+  </header>
+
+  @if (phase === 'intro') {
+    <section class="panel">
+      <h2 tabindex="-1" data-levels>Elige tu nivel</h2>
+      <p>{{ questionCount }} preguntas en el banco. Cada ronda tiene {{ roundSize }} preguntas y puedes tomarte el tiempo que necesites.</p>
+      <div class="levels">
+        @for (option of levels; track option.id) {
+          <button type="button" (click)="start(option.id)">
+            <strong>{{ option.title }}</strong>
+            <span>{{ option.description }}</span>
+            @if (records[option.id]) { <small>Récord de {{ records[option.id] }} puntos</small> }
+          </button>
+        }
+      </div>
+      <p class="rules">Cada acierto suma 100 puntos. El segundo acierto seguido da 25 puntos extra, el tercero da 50 y el bonus sigue subiendo hasta 100. Un fallo reinicia la racha.</p>
+    </section>
+  } @else if (phase === 'play') {
+    <section class="panel" (keydown)="shortcut($event)">
+      <div class="stats">
+        <span>{{ levels[level].title }} · Pregunta {{ index + 1 }} de {{ round.length }}</span>
+        <span><strong>{{ score }}</strong> puntos · <strong>{{ streak }}</strong> de racha</span>
+      </div>
+      <div class="trail" aria-hidden="true">
+        @for (item of round; track item.prompt; let i = $index) {
+          <span [class.current]="i === index" [class.hit]="answers[i] === item.correct"
+            [class.miss]="i < answers.length && answers[i] !== item.correct"></span>
+        }
+      </div>
+      @for (item of [question]; track item.prompt) {
+        <div class="question">
+          <p class="theme">{{ item.theme }}</p>
+          <h2 id="quiz-question" tabindex="-1" data-question>{{ item.prompt }}</h2>
+          <div class="options" role="group" aria-labelledby="quiz-question">
+            @for (option of item.options; track option; let i = $index) {
+              <button type="button" [attr.aria-keyshortcuts]="i + 1" [disabled]="answer !== undefined"
+                [class.hit]="answer !== undefined && option === item.correct"
+                [class.miss]="answer === option && option !== item.correct" (click)="choose(option)">
+                <span class="key" aria-hidden="true">{{ i + 1 }}</span>
+                <span>{{ option }}
+                  @if (answer !== undefined && option === item.correct) { <small>Correcta</small> }
+                  @if (answer === option && option !== item.correct) { <small>Tu elección</small> }
+                </span>
+              </button>
+            }
+          </div>
+          <div class="feedback" role="status">
+            @if (answer !== undefined) {
+              <strong [class.earned]="answer === item.correct">
+                {{ answer === item.correct ? '¡Correcto! +' + (100 + bonus) + ' puntos' : 'Esta vez se escapó' }}
+                @if (bonus) { <span> · Bonus de racha incluido</span> }
+              </strong>
+              <p>{{ item.explanation }}</p>
+            }
+          </div>
+          @if (answer !== undefined) {
+            <button type="button" class="primary" data-next (click)="next()">
+              {{ index + 1 === round.length ? 'Ver resultados' : 'Siguiente pregunta' }} <span aria-hidden="true">→</span>
+            </button>
+          } @else {
+            <p class="rules">Con el teclado, pulsa del 1 al 4 para responder.</p>
+          }
+        </div>
+      }
+    </section>
+  } @else {
+    <section class="panel result">
+      <div class="medal" aria-hidden="true">★</div>
+      <h2 tabindex="-1" data-results>{{ hits === round.length ? '¡Ronda perfecta!' : 'Ronda completada' }}</h2>
+      <p>{{ levels[level].title }}{{ personalBest ? ' · Nuevo récord personal' : '' }}</p>
+      <div class="result-stats">
+        <div><strong>{{ hits }}/{{ round.length }}</strong> Aciertos</div>
+        <div><strong>{{ score }}</strong> Puntos</div>
+        <div><strong>{{ bestStreak }}</strong> Mejor racha</div>
+      </div>
+      <div class="actions">
+        <button type="button" class="primary" (click)="start(level)">Jugar otra ronda</button>
+        <button type="button" (click)="menu()">Cambiar de nivel</button>
+      </div>
+    </section>
+    <section class="review" aria-labelledby="quiz-review">
+      <h2 id="quiz-review">Repasa tus respuestas</h2>
+      <ol>
+        @for (item of round; track item.prompt; let i = $index) {
+          <li>
+            <h3>{{ item.prompt }}</h3>
+            <p class="verdict" [class.earned]="answers[i] === item.correct">
+              {{ answers[i] === item.correct ? '✓ Acertaste' : '× Tu respuesta fue «' + answers[i] + '»' }}
+            </p>
+            <p><strong>Respuesta correcta</strong> · {{ item.correct }}</p>
+            <p>{{ item.explanation }}</p>
+            <a [routerLink]="item.route">{{ item.article }} <span aria-hidden="true">→</span></a>
+          </li>
+        }
+      </ol>
+    </section>
+  }
+</div>
+<!-- content-connections:start -->
+<app-content-connections [links]="learningConnections" />
+<!-- content-connections:end -->
