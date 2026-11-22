@@ -54,4 +54,25 @@ describe('PrivacyComponent saved data deletion', () => {
     component.clearSavedData();
     expect(component.storageMessage).toContain('No se han podido borrar todos');
   });
+
+  it('deletes only the CAD database and waits for its success event', () => {
+    spyOn(window, 'confirm').and.returnValue(true);
+    const request = {} as IDBOpenDBRequest;
+    const deletion = spyOn(indexedDB, 'deleteDatabase').and.returnValue(request);
+    component.clearCadData();
+    expect(deletion).toHaveBeenCalledOnceWith('dsl-interior-cad');
+    expect(component.cadStorageMessage).toContain('Borrando');
+    request.onblocked!.call(request, new IDBVersionChangeEvent('blocked'));
+    expect(component.cadStorageMessage).toContain('Cierra las pestañas');
+    request.onsuccess!.call(request, new Event('success'));
+    expect(component.cadStorageMessage).toContain('Se han borrado los proyectos');
+    expect(removeItem).not.toHaveBeenCalled();
+  });
+
+  it('does not delete CAD data when confirmation is cancelled', () => {
+    spyOn(window, 'confirm').and.returnValue(false);
+    const deletion = spyOn(indexedDB, 'deleteDatabase');
+    component.clearCadData();
+    expect(deletion).not.toHaveBeenCalled();
+  });
 });

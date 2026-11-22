@@ -584,6 +584,7 @@ export const RANDOM_PAGE_ROUTES: readonly string[] = [
   "/games/towers-of-hanoi",
   "/tools/graph-plotter",
   "/tools/implicit-curve-graph",
+  "/tools/interior-planner",
   "/tools/latex-editor",
   "/tools/linear-algebra",
   "/tools/pi-decimals",

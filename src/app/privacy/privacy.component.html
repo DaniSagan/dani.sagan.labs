@@ -3,7 +3,7 @@
     <p class="eyebrow">Dani.Sagan.Labs</p>
     <h1 id="privacy-title">Privacidad y datos guardados</h1>
     <p>Información sobre los datos que se conservan en tu navegador y los servicios externos que utiliza esta web.</p>
-    <p class="updated">Última actualización: 14 de octubre de 2026.</p>
+    <p class="updated">Última actualización: 1 de noviembre de 2026.</p>
   </header>
 
   <section aria-labelledby="storage-title">
@@ -11,6 +11,7 @@
     <p>Algunas herramientas utilizan el almacenamiento local del navegador para que puedas recuperar tu trabajo. La aplicación no envía esos datos guardados a un servidor propio ni los utiliza para publicidad, estadísticas o perfiles de navegación.</p>
     <ul>
       <li><strong>LaTeX Studio:</strong> conserva automáticamente hasta 16 fórmulas en cookies funcionales durante un año, con nombre, expresión y opciones de imagen. Puedes borrarlas individualmente desde la biblioteca o descargar una copia JSON.</li>
+      <li><strong>Editor de interiores 2D:</strong> guarda automáticamente proyectos y una biblioteca personal de muebles en IndexedDB. Los planos permanecen en este navegador. Puedes exportarlos a JSON, eliminar proyectos desde el editor o borrar todos los planos y muebles con el control específico de esta página.</li>
       <li><strong>Sudoku:</strong> conserva el tablero y la dificultad cuando pulsas «Guardar Tablero».</li>
       <li><strong>Gravedad:</strong> conserva los cuerpos y la fecha de la simulación cuando pulsas «Guardar sistema».</li>
       <li><strong>Planificador de viajes:</strong> guarda automáticamente el borrador, incluido el nombre del viaje, presupuesto, actividades, fechas y lugares que introduces, para recuperarlo en futuras visitas.</li>
@@ -43,6 +44,9 @@
     <p>Antes de borrar, descarga una copia de los viajes y las fórmulas que quieras conservar. Cierra las herramientas abiertas en otras pestañas para evitar que vuelvan a guardar datos.</p>
     <button type="button" (click)="clearSavedData()">Borrar datos guardados</button>
     <p class="storage-message" role="status" aria-live="polite">{{ storageMessage }}</p>
+    <p>Para los planos y muebles del editor de interiores, descarga una copia JSON y cierra sus pestañas antes de borrarlos.</p>
+    <button type="button" (click)="clearCadData()">Borrar planos y biblioteca de muebles</button>
+    <p class="storage-message" role="status" aria-live="polite">{{ cadStorageMessage }}</p>
     <p>También puedes eliminar estos datos desde la configuración de tu navegador.</p>
   </section>
 </article>

@@ -8,6 +8,20 @@
 })
 export class PrivacyComponent {
   storageMessage = '';
+  cadStorageMessage = '';
+
+  clearCadData(): void {
+    if (!window.confirm('¿Borrar todos los proyectos de interiores y la biblioteca de muebles de este navegador? Descarga JSON antes si quieres conservarlos. Cierra otras pestañas del editor.')) return;
+    this.cadStorageMessage = 'Borrando planos y muebles…';
+    try {
+      const request = indexedDB.deleteDatabase('dsl-interior-cad');
+      request.onsuccess = () => this.cadStorageMessage = 'Se han borrado los proyectos de interiores y la biblioteca de muebles.';
+      request.onerror = () => this.cadStorageMessage = 'No se han podido borrar los planos. Usa la configuración de almacenamiento del navegador.';
+      request.onblocked = () => this.cadStorageMessage = 'Cierra las pestañas del editor de interiores para completar el borrado.';
+    } catch {
+      this.cadStorageMessage = 'No se ha podido acceder al almacenamiento de planos.';
+    }
+  }
 
   clearSavedData(): void {
     this.storageMessage = '';
@@ -51,7 +65,7 @@ export class PrivacyComponent {
         throw new Error('Legacy draft could not be removed');
       }
       this.storageMessage =
-        'Se han borrado los datos guardados de esta web en este navegador. Si tienes una herramienta abierta en otra pestaña, ciérrala o recárgala para evitar que vuelva a guardar sus datos.';
+        'Se han borrado las partidas, sistemas, borradores y fórmulas de este navegador. Si tienes una herramienta abierta en otra pestaña, ciérrala o recárgala para evitar que vuelva a guardar sus datos.';
     } catch {
       this.storageMessage =
         'No se han podido borrar todos los datos. Puedes eliminarlos desde la configuración de almacenamiento de tu navegador. Si tienes otra pestaña de esta web abierta, ciérrala o recárgala.';

@@ -1,0 +1,16 @@
+@media(min-width:1600px){.workspace{grid-template-columns:260px minmax(0,1fr) 280px}.drawing{height:680px}}@media(max-width:1150px){.workspace{grid-template-columns:190px minmax(0,1fr)}.inspector{grid-column:1/-1;border-left:0;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;max-height:none}.drawing{height:510px}}@media(max-width:680px){.cad{padding:.5rem}.cad-header{align-items:start}.local{font-size:.65rem;padding:.4rem}.workspace{display:flex;flex-direction:column}.library{max-height:290px;border-right:0;border-bottom:1px solid var(--rule)}.inspector{display:block;max-height:none}.drawing{height:420px}.metrics{grid-template-columns:1fr 1fr}.project-bar select{max-width:100%}.project-bar{align-items:stretch}.canvas-caption{font-size:.65rem}.cad-header p:not(.eyebrow){font-size:.8rem}}:host{color-scheme:dark}
+.cad{container-type:inline-size;font-family:inherit;line-height:1.45;background:var(--bg);color:var(--ink);border-radius:.6rem}.cad p,.cad strong,.cad h3{color:inherit}.cad p{margin:.5rem 0}.cad.expanded{position:fixed;inset:0;z-index:1100;max-width:none;overflow:auto;border-radius:0;padding:1rem 2vw}.cad-header>div:last-child{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}.cad-header h3{margin:.6rem 0}.metrics strong{color:var(--ink)}.metrics span{color:var(--ink-dim)}
+@container(max-width:1000px){.workspace{grid-template-columns:190px minmax(0,1fr)}.inspector{grid-column:1/-1;border-left:0;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;max-height:none}}
+@container(max-width:600px){.workspace{display:flex;flex-direction:column}.library{max-height:280px;border-right:0;border-bottom:1px solid var(--rule)}.inspector{display:block}.drawing{height:440px}.metrics{grid-template-columns:1fr 1fr}}
+.cad-header h1{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(2.4rem,4vw,3.6rem);line-height:1.05;letter-spacing:.03em;color:var(--ink)}
+.eyebrow,.local,.save-state,.canvas-caption,.canvas-status,.metrics,button,.file-button,summary,label,input,select,textarea{font-family:'Courier Prime',monospace}
+.eyebrow{color:var(--accent)}.cad-header .eyebrow{color:var(--accent)}.cad-header h3,h3{color:var(--gold)}
+.local{border:1px solid var(--rule)}.cad-header p{color:var(--ink-dim)}
+button:hover,.file-button:hover{border-color:var(--accent);color:var(--ink)}button.active{color:var(--bg);font-weight:700}
+.metrics strong{color:var(--accent2)}input[type=checkbox]{accent-color:var(--accent)}
+.drawing{background:var(--bg);font-family:'Courier Prime',monospace}.file-button:focus-within{outline:2px solid var(--accent2);outline-offset:2px}
+.furniture-card svg{border-radius:3px}.warnings summary,.message{color:var(--gold)}
+.button-grid button,.personal-row button{min-width:0;overflow-wrap:anywhere}
+.wall-midpoint{cursor:pointer;outline:none}.wall-midpoint:hover .midpoint-symbol,.wall-midpoint:focus-visible .midpoint-symbol{stroke:var(--accent);stroke-width:3;fill:var(--paper)}
+.vertex:focus-visible{outline:none}.vertex:hover .vertex-marker,.vertex:focus-visible .vertex-marker{stroke:var(--gold);stroke-width:3}
+@container(max-width:600px){.cad-header{flex-direction:column}.cad-header>div{min-width:0;max-width:100%}}

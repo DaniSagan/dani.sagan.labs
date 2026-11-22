@@ -2,6 +2,8 @@
   "name": "danisagan-labs",
   "version": "0.0.0",
   "scripts": {
+    "test:interior-planner": "node scripts/test-interior-planner.cjs",
+    "test:interior-planner:browser": "node scripts/check-interior-planner.cjs",
     "test:hanoi": "node scripts/test-hanoi.cjs",
     "test:hanoi:browser": "node scripts/check-hanoi-page.cjs",
     "test:transfinite": "node scripts/test-transfinite-numbers.cjs",

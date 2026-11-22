@@ -1,0 +1,177 @@
+<section class="cad" [class.expanded]="expanded" aria-labelledby="cad-title">
+  <header class="cad-header">
+    <div><p class="eyebrow">DaniSagan Labs · Diseño a escala</p><h1 id="cad-title">Editor de interiores 2D</h1><p>Del espacio real al plano. Dibuja, mide y prueba tu distribución.</p></div>
+    <div><span class="local">● Local y privado</span><button (click)="expanded=!expanded">{{ expanded?'Salir de vista amplia':'Ampliar editor' }}</button></div>
+  </header>
+  <div class="project-bar">
+    <label>Proyecto<input aria-label="Nombre del proyecto" [ngModel]="doc.name" (ngModelChange)="editName($event)" maxlength="120"></label>
+    <button (click)="createProject()" [disabled]="!ready">Nuevo</button><button (click)="persist()" [disabled]="!ready">Guardar</button>
+    <select aria-label="Abrir proyecto guardado" [ngModel]="doc.id" (ngModelChange)="openProject($event)"><option [value]="doc.id">{{ doc.name }}</option>@for (p of projects; track p.id) {@if(p.id!==doc.id){<option [value]="p.id">{{ p.name }}</option>}}</select>
+    <button (click)="copyProject()" [disabled]="!ready">Crear copia</button><button (click)="deleteProject()" [disabled]="!ready">Eliminar proyecto</button>
+    <span class="save-state" role="status">{{ status }}</span>
+  </div>
+  <div class="workspace">
+    <aside class="library" aria-label="Construcción y biblioteca">
+      <details open><summary>Habitaciones</summary>
+        <label>Espacio activo<select [ngModel]="roomId" (ngModelChange)="switchRoom($event)">@for(r of doc.rooms; track r.id){<option [value]="r.id">{{ r.name }}</option>}</select></label>
+        <button (click)="deleteRoom()" [disabled]="!ready || doc.rooms.length<=1">Eliminar habitación activa</button>
+        @if(doc.rooms.length===1){<small>El proyecto necesita al menos una habitación.</small>}
+        <label>Nombre de la nueva habitación<input [(ngModel)]="roomName" maxlength="120"></label>
+        <div class="pair"><label>Anchura ({{ doc.unit }})<input type="number" [(ngModel)]="roomWidth" min="0.1"></label><label>Fondo ({{ doc.unit }})<input type="number" [(ngModel)]="roomDepth" min="0.1"></label></div>
+        <div class="button-grid"><button (click)="addRoom('rectangle')">Rectangular</button><button (click)="addRoom('l')">En L</button><button (click)="addRoom('pentagon')">Pentagonal</button><button (click)="startDrawing()">Dibujar vértices</button></div>
+        <label>Coordenadas ({{ doc.unit }})<textarea [(ngModel)]="coordinateText" placeholder="0,0; 327,0; 327,266; 0,266" rows="2"></textarea></label><small>Pares x,y separados por ;. Usa punto decimal. El último punto se une al primero.</small><button (click)="applyCoordinates()">Crear desde coordenadas</button>
+      </details>
+      <details open><summary>Biblioteca de muebles</summary>
+        <label>Buscar<input type="search" [(ngModel)]="search" placeholder="Escritorio, sofá…"></label>
+        <div class="furniture-list">@for(d of library; track d.id){<button class="furniture-card" draggable="true" (dragstart)="libraryDrag($event,d.id)" (click)="addFurniture(d.id)" [disabled]="view!=='plan'" [attr.aria-label]="'Colocar '+d.name"><svg viewBox="-50 -50 2100 1700" aria-hidden="true"><path [attr.d]="path(d)" [attr.fill]="d.color" [attr.transform]="'scale('+previewScale(d)+')'" stroke="#28485a" stroke-width="15"/></svg><span>{{ d.name }}<small>{{ fmt(d.width) }} × {{ fmt(d.depth) }}</small></span></button>}</div>
+        <p class="hint">Pulsa para colocar en el centro o arrastra al plano. Flechas: 10 mm; Mayús + flecha: 100 mm.</p>
+        @if(personal.length){<h3>Mi biblioteca personal</h3>@for(d of personal;track d.id){<div class="personal-row"><button (click)="usePersonal(d.id)">{{ d.name }} · colocar</button><button (click)="loadDraft(d)" [attr.aria-label]="'Editar definición '+d.name">Editar</button></div>}}
+      </details>
+      <details><summary>Diseñar un mueble</summary>
+        <label>Nombre<input [(ngModel)]="furnitureDraft.name" maxlength="120"></label>
+        <label>Contorno<select [(ngModel)]="furnitureDraft.shape"><option value="rectangle">Rectángulo redondeado</option><option value="ellipse">Elipse / círculo</option><option value="l-shape">Escritorio en L</option><option value="chaise">Sofá con chaise longue</option><option value="polygon">Polígono personalizado</option></select></label>
+        <p class="hint">Dimensiones de definición en mm, independientes de la unidad de visualización.</p>
+        <div class="pair"><label>Anchura (mm)<input type="number" [(ngModel)]="furnitureDraft.width" min="1"></label><label>Fondo (mm)<input type="number" [(ngModel)]="furnitureDraft.depth" min="1"></label><label>Altura (mm)<input type="number" [(ngModel)]="furnitureDraft.height" min="1"></label><label>Radio (mm)<input type="number" [(ngModel)]="furnitureDraft.radius" min="0"></label></div>
+        @if(furnitureDraft.shape==='l-shape'||furnitureDraft.shape==='chaise'){<div class="pair"><label>Ancho del brazo (mm)<input type="number" [(ngModel)]="furnitureDraft.armWidth" min="1"></label><label>Fondo del cuerpo (mm)<input type="number" [(ngModel)]="furnitureDraft.bodyDepth" min="1"></label></div>}
+        @if(furnitureDraft.shape==='polygon'){<label>Vértices normalizados (0 a 1)<textarea [(ngModel)]="polygonText" rows="3"></textarea></label><small>Se multiplican por anchura y fondo. Ejemplo: 0,0; 1,0; 0.5,1.</small>}
+        <div class="pair"><label>Color<input type="color" [(ngModel)]="furnitureDraft.color"></label><label class="check"><input type="checkbox" [(ngModel)]="furnitureDraft.mirrored">Reflejar</label></div>
+        <p class="hint">El radio se limita a la mitad de las aristas adyacentes. Editar una definición personal actualiza sus instancias vinculadas en este proyecto al guardarla.</p>
+        <button (click)="saveFurniture()">Guardar definición en mi biblioteca</button>
+        <div class="button-grid"><button (click)="exportLibrary()">Exportar biblioteca</button><label class="file-button">Importar muebles<input type="file" accept=".json,application/json" (change)="importFile($event,true)"></label></div>
+      </details>
+      <details><summary>Puertas, ventanas e instalaciones</summary>
+        <p class="hint">Se vinculan a {{ wall.name }}. Las medidas son reales; los enchufes se dibujan a escala.</p>
+        <label>Tipo<select [(ngModel)]="fixtureKind" (ngModelChange)="fixtureDefaults()"><option value="door">Puerta abatible</option><option value="window">Ventana</option><option value="socket">Enchufe</option><option value="double-socket">Enchufe doble</option><option value="switch">Interruptor</option><option value="rj45">Toma RJ45</option><option value="water">Toma de agua</option><option value="drain">Desagüe</option><option value="light">Punto de luz</option><option value="radiator">Radiador</option><option value="generic">Elemento genérico</option></select></label>
+        <label>Anclaje<select [(ngModel)]="fixtureDraft.anchor"><option value="left">Desde el inicio de la pared</option><option value="right">Desde el final</option><option value="center">Respecto al centro</option><option value="proportional">Proporción de la longitud</option></select></label>
+        <div class="pair"><label>Posición {{ fixtureDraft.anchor==='proportional'?'(0 a 1)':'('+doc.unit+')' }}<input type="number" [(ngModel)]="fixtureDraft.offset"></label><label>Sobre el suelo ({{ doc.unit }})<input type="number" [(ngModel)]="fixtureDraft.z" min="0"></label><label>Anchura ({{ doc.unit }})<input type="number" [(ngModel)]="fixtureDraft.width" min="0.1"></label><label>Altura ({{ doc.unit }})<input type="number" [(ngModel)]="fixtureDraft.height" min="0.1"></label></div>
+        <button (click)="addFixture()">Añadir a esta pared</button>
+      </details>
+    </aside>
+    <main class="drawing-panel">
+      <div class="canvas-toolbar" role="toolbar" aria-label="Herramientas del plano">
+        <button [class.active]="view==='plan'" (click)="setView('plan')">Planta</button><button [class.active]="view==='elevation'" (click)="setView('elevation')">Alzado</button><span class="divider"></span>
+        <button [class.active]="tool==='select'" (click)="tool='select'">Seleccionar</button><button [class.active]="tool==='pan'" (click)="tool='pan'">Desplazar</button><button [class.active]="tool==='measure'" (click)="tool='measure';measure=[]">Medir</button>
+        <button (click)="undo()" [disabled]="!history.canUndo" aria-label="Deshacer">↶</button><button (click)="redo()" [disabled]="!history.canRedo" aria-label="Rehacer">↷</button>
+        <button (click)="zoom(1/1.25)" aria-label="Acercar">＋</button><button (click)="zoom(1.25)" aria-label="Alejar">−</button><button (click)="fit()">Encuadrar</button>
+        @if(selectedFixture){<button (click)="revealFixtureEditor()">Editar elemento seleccionado</button>}
+        @if(selectedVertex>=0){<button (click)="revealVertexEditor()">Editar vértice {{ selectedVertex+1 }}</button>}
+      </div>
+      <div class="canvas-caption"><span>{{ room.name }} / {{ view==='plan'?'Planta':wall.name+' · alzado X/Z' }}</span><span>{{ tool==='draw'?'Dibujando contorno':tool==='measure'?'Marca dos puntos':tool==='pan'?'Arrastra para desplazar':'Arrastra muebles o vértices' }}</span></div>
+      <svg #drawing class="drawing" preserveAspectRatio="xMidYMid meet" [attr.viewBox]="viewBox" tabindex="0" role="group" aria-label="Plano editable de interiores. Usa el inspector para editar con teclado." (wheel)="wheel($event)" (pointerdown)="pointerDown($event)" (pointermove)="pointerMove($event)" (pointerup)="pointerUp()" (pointercancel)="cancelDrag()" (dragover)="$event.preventDefault()" (drop)="drop($event)">
+        <defs><pattern id="cad-grid" patternUnits="userSpaceOnUse" [attr.width]="grid" [attr.height]="grid"><path [attr.d]="'M '+grid+' 0 L 0 0 0 '+grid" fill="none" stroke="var(--ink-dim)" stroke-opacity="0.28" stroke-width="1" vector-effect="non-scaling-stroke"/></pattern><pattern id="cad-grid-centimeter" patternUnits="userSpaceOnUse" width="10" height="10"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="var(--ink-dim)" stroke-opacity="0.18" stroke-width="0.7" vector-effect="non-scaling-stroke"/></pattern><pattern id="cad-grid-meter" patternUnits="userSpaceOnUse" width="1000" height="1000"><path d="M 1000 0 L 0 0 0 1000" fill="none" stroke="var(--ink)" stroke-opacity="0.5" stroke-width="1.25" vector-effect="non-scaling-stroke"/></pattern><pattern id="cad-wall-hatch" patternUnits="userSpaceOnUse" [attr.width]="fontSize*2/3" [attr.height]="fontSize*2/3" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" [attr.y2]="fontSize*2/3" stroke="var(--ink-dim)" stroke-width="1" vector-effect="non-scaling-stroke"/></pattern><mask id="cad-openings" maskUnits="userSpaceOnUse" [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height"><rect [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height" fill="white"/>@for(f of openings;track f.id){<rect [attr.transform]="fixtureTransform(f)" x="0" [attr.y]="-openingDepth(f)/2-fontSize/6" [attr.width]="f.width" [attr.height]="openingDepth(f)+fontSize/3" fill="black"/>}</mask></defs>
+        <rect class="cad-canvas-background" [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height" fill="var(--bg)"/>
+        @if(view==='plan'){
+          <path [attr.d]="roomPath" fill="var(--paper)" fill-opacity="0.8"/>
+          @if(wallsDrawing; as wallGeometry){<g mask="url(#cad-openings)">
+          <path [attr.d]="wallGeometry.band" fill="var(--paper)" fill-rule="evenodd" pointer-events="none"/><path [attr.d]="wallGeometry.band" fill="url(#cad-wall-hatch)" fill-rule="evenodd" pointer-events="none"/>
+          @for(w of room.walls;track w.id;let i=$index){
+            <g class="wall" (pointerdown)="$event.stopPropagation();chooseWall(i)"><path [attr.d]="wallGeometry.sections[i].hit" fill="transparent" stroke="transparent" stroke-width="12" pointer-events="all"/><path [attr.d]="wallGeometry.sections[i].faces" fill="none" [attr.stroke]="i===wallIndex?'var(--accent)':'var(--ink-dim)'" stroke-width="1.5" vector-effect="non-scaling-stroke" pointer-events="none"/></g>
+            @if(dimensions){<text class="dimension" [attr.x]="(room.vertices[i].x+end(i).x)/2" [attr.y]="(room.vertices[i].y+end(i).y)/2-fontSize" [attr.font-size]="fontSize">{{ i+1 }} · {{ fmt(length(i)) }}</text>}
+          }
+          </g>}
+          @for(f of fixtures;track f.id){<g [attr.transform]="fixtureTransform(f)" (pointerdown)="pointerDown($event,'fixture',f.id)" class="fixture" [attr.data-fixture-id]="f.id" [attr.aria-label]="f.name">
+            @if(isOpening(f)){<rect x="0" [attr.y]="-openingDepth(f)/2" [attr.width]="f.width" [attr.height]="openingDepth(f)" fill="transparent"/><path [attr.d]="openingPath(f)" fill="none" [attr.stroke]="f.id===selectedFixtureId?'var(--accent2)':'var(--gold)'" stroke-width="1.5" vector-effect="non-scaling-stroke"/>}
+            @else{<rect x="0" y="-45" [attr.width]="f.width" height="90" [attr.fill]="f.color" stroke="#5b482e" stroke-width="8"/>}
+          </g>}
+          @for(i of instances;track i.id){<g [attr.transform]="transform(i)" (pointerdown)="pointerDown($event,'object',i.id)" class="object" [class.selected]="selectedId===i.id"><path [attr.d]="path(def(i))" [attr.fill]="def(i).color" [attr.stroke]="selectedId===i.id?'var(--accent2)':'#325267'" [attr.stroke-width]="selectedId===i.id?4:1.5" vector-effect="non-scaling-stroke"/><text [attr.x]="def(i).width/2" [attr.y]="def(i).depth/2" [attr.font-size]="fontSize*.8" text-anchor="middle" class="object-label">{{ def(i).name }}{{ i.locked?' 🔒':'' }}</text></g>}
+
+          @for(p of wallsDrawing.innerVertices;track i;let i=$index){
+            <g class="vertex" role="button" tabindex="0" [attr.aria-label]="'Seleccionar vértice '+(i+1)" [attr.aria-pressed]="selectedVertex===i" [attr.data-vertex-index]="i" [attr.transform]="'translate('+p.x+' '+p.y+')'" (pointerdown)="pointerDown($event,'vertex','',i)" (keydown.enter)="$event.preventDefault();$event.stopPropagation();selectVertex(i);revealVertexEditor()" (keydown.space)="$event.preventDefault();$event.stopPropagation();selectVertex(i);revealVertexEditor()">
+              <title>Vértice {{ i+1 }} · X {{ fmt(p.x) }} · Y {{ fmt(p.y) }}</title>
+              <circle [attr.r]="fontSize" fill="transparent"/>
+              <circle class="vertex-marker" [attr.r]="fontSize*(selectedVertex===i ? 0.65 : 0.45)" [attr.fill]="selectedVertex===i?'var(--accent)':'var(--bg)'" [attr.stroke]="selectedVertex===i?'var(--ink)':'var(--accent2)'" stroke-width="2" vector-effect="non-scaling-stroke" pointer-events="none"/>
+            </g>
+          }
+          @if(tool==='select'){
+            @for(w of room.walls;track w.id;let i=$index){
+              @if(!w.locked){
+                <g class="wall-midpoint" role="button" tabindex="0" [attr.data-wall-index]="i" [attr.aria-label]="'Dividir '+w.name+' por la mitad'" [attr.transform]="'translate('+midpoint(i).x+' '+midpoint(i).y+')'" (pointerdown)="$event.stopPropagation()" (click)="$event.stopPropagation();splitWall(i)" (keydown.enter)="$event.preventDefault();$event.stopPropagation();splitWall(i)" (keydown.space)="$event.preventDefault();$event.stopPropagation();splitWall(i)">
+                  <title>Dividir {{ w.name }} por la mitad</title>
+                  <circle class="midpoint-hit" [attr.r]="fontSize" fill="transparent"/>
+                  <path class="midpoint-symbol" [attr.d]="'M 0 '+(-fontSize*.65)+' L '+fontSize*.65+' 0 L 0 '+fontSize*.65+' L '+(-fontSize*.65)+' 0 Z'" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+                  <text text-anchor="middle" dominant-baseline="central" [attr.font-size]="fontSize" fill="var(--gold)" pointer-events="none">+</text>
+                </g>
+              }
+            }
+          }
+          @for(a of doc.annotations;track a.id){@if(a.roomId===room.id){<text [attr.x]="a.x" [attr.y]="a.y" [attr.font-size]="fontSize" class="dimension">{{ a.text }}</text>}}
+        }@else{
+          <path [attr.d]="elevationPath" fill="var(--paper)" [attr.stroke]="wall.color" stroke-width="15"/>
+          @for(f of fixtures;track f.id){<g (pointerdown)="pointerDown($event,'fixture',f.id)" class="fixture" [attr.data-fixture-id]="f.id"><rect [attr.x]="fx(f)" [attr.y]="-f.z-f.height" [attr.width]="f.width" [attr.height]="f.height" [attr.fill]="isOpening(f)?'var(--bg)':f.color" [attr.stroke]="f.id===selectedFixtureId?'var(--accent2)':'#5b482e'" stroke-width="10"/><path [attr.d]="windowElevationPath(f)" fill="none" stroke="var(--ink-dim)" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text [attr.x]="fx(f)+f.width/2" [attr.y]="-f.z-f.height-fontSize*.5" [attr.font-size]="fontSize*.8" class="dimension">{{ f.name }}</text></g>}
+          @if(dimensions){<text [attr.x]="length(wallIndex)/2" [attr.y]="fontSize*1.5" [attr.font-size]="fontSize" class="dimension">{{ fmt(length(wallIndex)) }}</text><text [attr.x]="0" [attr.y]="-wall.height-fontSize" [attr.font-size]="fontSize" class="dimension">{{ fmt(wall.height) }}</text><text [attr.x]="length(wallIndex)" [attr.y]="-wall.endHeight-fontSize" [attr.font-size]="fontSize" class="dimension">{{ fmt(wall.endHeight) }}</text>}
+        }
+        @if(points.length){<polyline [attr.points]="pointList(points)" fill="#65b9ad33" stroke="#25897b" stroke-width="3" vector-effect="non-scaling-stroke"/>@for(p of points;track $index){<circle [attr.cx]="p.x" [attr.cy]="p.y" [attr.r]="box.width/160" fill="#25897b"/>}}
+        @if(measure.length===2){<line [attr.x1]="measure[0].x" [attr.y1]="measure[0].y" [attr.x2]="measure[1].x" [attr.y2]="measure[1].y" stroke="var(--gold)" stroke-width="2" stroke-dasharray="8 4" vector-effect="non-scaling-stroke"/><text [attr.x]="(measure[0].x+measure[1].x)/2" [attr.y]="(measure[0].y+measure[1].y)/2-fontSize" [attr.font-size]="fontSize" class="dimension">{{ fmt(measuredDistance()) }}</text>}
+        @if(gridVisible){
+          <g class="cad-grid-overlay" pointer-events="none" aria-hidden="true">
+            @if(fineGridVisible){<rect class="cad-fine-grid" [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height" fill="url(#cad-grid-centimeter)"/>}
+            <rect class="cad-canvas-grid" [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height" fill="url(#cad-grid)"/>
+            <rect class="cad-meter-grid" [attr.x]="visibleBox.x" [attr.y]="visibleBox.y" [attr.width]="visibleBox.width" [attr.height]="visibleBox.height" fill="url(#cad-grid-meter)"/>
+            <line class="cad-axis-x" x1="0" x2="0" [attr.y1]="visibleBox.y" [attr.y2]="visibleBox.y+visibleBox.height" stroke="var(--accent2)" stroke-opacity="0.85" stroke-width="2" vector-effect="non-scaling-stroke"/>
+            <line class="cad-axis-y" y1="0" y2="0" [attr.x1]="visibleBox.x" [attr.x2]="visibleBox.x+visibleBox.width" stroke="var(--accent2)" stroke-opacity="0.85" stroke-width="2" vector-effect="non-scaling-stroke"/>
+          </g>
+        }
+      </svg>
+      @if(tool==='draw'){<div class="draw-actions"><span>{{ points.length }} vértices</span><button (click)="points.pop()">Quitar último</button><button (click)="finishDrawing()" [disabled]="points.length<3">Cerrar contorno</button><button (click)="points=[];tool='select'">Cancelar</button></div>}
+      <div class="canvas-status"><span>X {{ fmt(cursor.x) }} · {{ view==='plan'?'Y':'Z' }} {{ fmt(view==='plan'?cursor.y:-cursor.y) }}</span><span>Cuadrícula {{ fineGridVisible ? '1 cm' : grid+' mm' }} · {{ snapping?'Ajuste activo':'Ajuste libre' }}</span></div>
+      <div class="metrics"><div><strong>{{ surfaceLabel }} m²</strong><span>Área del contorno</span></div><div><strong>{{ fmt(perimeter) }}</strong><span>Perímetro</span></div><div><strong>{{ room.walls.length }}</strong><span>Paredes</span></div><div><strong>{{ instances.length }}</strong><span>Muebles visibles</span></div></div>
+      @if(message){<p class="message" role="alert">{{ message }}</p>}
+      @if(warnings.length){<details class="warnings" open><summary>{{ warnings.length }} avisos geométricos</summary><ul>@for(w of warnings;track $index){<li>{{ w }}</li>}</ul></details>}
+    </main>
+    <aside class="inspector" aria-label="Inspector de propiedades">
+      @if(selectedVertex>=0&&selectedVertex<room.vertices.length){
+        <details open id="cad-vertex-properties">
+          <summary>Editar vértice {{ selectedVertex+1 }}</summary>
+          <p class="hint">Las coordenadas X e Y corresponden al punto visible de la cara interior. El punto se actualiza al terminar de escribir o pulsar Enter; las paredes conectadas y sus cotas se actualizan juntas.</p>
+          <div class="pair"><label>X ({{ doc.unit }})<input type="number" [ngModel]="value(vertexEdit.x)" (ngModelChange)="editVertexCoordinate('x',$event)" (keydown.enter)="$event.preventDefault();applyVertexEdit()"></label><label>Y ({{ doc.unit }})<input type="number" [ngModel]="value(vertexEdit.y)" (ngModelChange)="editVertexCoordinate('y',$event)" (keydown.enter)="$event.preventDefault();applyVertexEdit()"></label></div>
+          @if(vertexLocked){<p class="hint">Hay una pared adyacente bloqueada. Desbloquéala para mover el vértice.</p>}
+          <div class="button-grid"><button (click)="applyVertexEdit()" [disabled]="vertexLocked">Aplicar coordenadas</button><button (click)="selectVertex(selectedVertex)">Descartar coordenadas</button></div>
+          @if(message){<p class="hint">{{ message }}</p>}
+        </details>
+      }
+      <label>Seleccionar vértice<select aria-label="Seleccionar vértice" [ngModel]="selectedVertex" (ngModelChange)="selectVertex(+$event)"><option [ngValue]="-1">Elige un vértice</option>@for(p of wallsDrawing.innerVertices;track i;let i=$index){<option [ngValue]="i">Vértice {{ i+1 }} · {{ fmt(p.x) }}, {{ fmt(p.y) }}</option>}</select></label>
+      @if(selectedFixture){@if(fixtureEdit;as f){
+        <details open id="cad-fixture-properties">
+          <summary>Editar {{ f.name }}</summary>
+          <p class="hint">Arrastra el elemento a lo largo de su pared. En alzado también puedes cambiar su altura al arrastrarlo. Para introducir medidas exactas, edita estos campos y pulsa Aplicar cambios.</p>
+          <label>Nombre del elemento<input [(ngModel)]="f.name" maxlength="120"></label>
+          <label>Referencia de posición<select [ngModel]="f.anchor" (ngModelChange)="editFixtureAnchor($event)"><option value="left">Desde el inicio de la pared</option><option value="right">Desde el final</option><option value="center">Respecto al centro</option><option value="proportional">Proporción de la longitud</option></select></label>
+          <div class="pair">
+            <label>Posición {{ f.anchor==='proportional'?'(proporción)':'('+doc.unit+')' }}<input type="number" [ngModel]="f.anchor==='proportional'?f.offset:value(f.offset)" (ngModelChange)="editFixture('offset',$event)"></label>
+            <label>Altura al suelo ({{ doc.unit }})<input type="number" min="0" [ngModel]="value(f.z)" (ngModelChange)="editFixture('z',$event)"></label>
+            <label>Anchura ({{ doc.unit }})<input type="number" min="0.001" [ngModel]="value(f.width)" (ngModelChange)="editFixture('width',$event)"></label>
+            <label>Altura ({{ doc.unit }})<input type="number" min="0.001" [ngModel]="value(f.height)" (ngModelChange)="editFixture('height',$event)"></label>
+          </div>
+          @if(!isOpening(f)){<label>Color del elemento<input type="color" [(ngModel)]="f.color"></label>}
+          @if(f.kind==='door'){
+            <label>Sentido de apertura<select [ngModel]="f.doorSwing || 'inward'" (ngModelChange)="f.doorSwing=$event"><option value="inward">Hacia el interior</option><option value="outward">Hacia el exterior</option></select></label>
+            <label>Lado de las bisagras<select [ngModel]="f.doorHinge || 'start'" (ngModelChange)="f.doorHinge=$event"><option value="start">Hacia el inicio de la pared</option><option value="end">Hacia el final de la pared</option></select></label>
+          }
+          <p class="hint">La altura al suelo es el antepecho en las ventanas. Las puertas y ventanas deben caber en el perfil de la pared.</p>
+          <div class="button-grid"><button (click)="applyFixtureEdit()" [disabled]="wall.locked">Aplicar cambios</button><button (click)="selectFixture(f.id)">Descartar cambios</button></div>
+          @if(message){<p class="hint">{{ message }}</p>}
+          <button (click)="removeSelection()">Eliminar elemento</button>
+        </details>
+      }}
+      <details open><summary>Pared y alzado</summary>
+        <label>Pared activa<select [ngModel]="wallIndex" (ngModelChange)="chooseWall(+$event)">@for(w of room.walls;track w.id;let i=$index){<option [ngValue]="i">{{ w.name }}</option>}</select></label>
+        <div class="button-grid"><button (click)="addOpening('door')" [disabled]="wall.locked">Añadir puerta</button><button (click)="addOpening('window')" [disabled]="wall.locked">Añadir ventana</button></div><p class="hint">Los huecos se colocan en un tramo libre de la pared. Selecciónalos para ajustar posición, anchura, altura y antepecho.</p>
+        <div class="pair"><label>Longitud ({{ doc.unit }})<input type="number" [(ngModel)]="wallDraft.length"></label><label>Ángulo (°)<input type="number" [(ngModel)]="wallDraft.angle"></label><label>Espesor ({{ doc.unit }})<input type="number" [(ngModel)]="wallDraft.thickness"></label><label>Altura inicial ({{ doc.unit }})<input type="number" [(ngModel)]="wallDraft.height"></label><label>Altura final ({{ doc.unit }})<input type="number" [(ngModel)]="wallDraft.endHeight"></label></div>
+        <p class="hint">La longitud se mide entre los vértices visibles de la cara interior. Al editar longitud o ángulo se mantiene la esquina interior inicial y se ajustan las paredes conectadas. El espesor está centrado sobre el eje de referencia. El área se calcula sobre ese eje, sin descontar espesores.</p>
+        <button (click)="applyWall()" [disabled]="wall.locked">Aplicar pared</button><button (click)="splitWall()" [disabled]="wall.locked">Dividir por la mitad</button><button (click)="toggleWallLock()">{{ wall.locked?'Desbloquear':'Bloquear' }} pared</button>
+        <button (click)="setView(view==='plan'?'elevation':'plan')">{{ view==='plan'?'Abrir alzado vinculado':'Volver a planta' }}</button>
+      </details>
+
+      @if(selected;as i){<details open><summary>{{ def(i).name }}</summary>
+        <div class="pair"><label>X ({{ doc.unit }})<input type="number" [ngModel]="value(i.x)" (ngModelChange)="updateInstance('x',$event)"></label><label>Y ({{ doc.unit }})<input type="number" [ngModel]="value(i.y)" (ngModelChange)="updateInstance('y',$event)"></label><label>Rotación (°)<input type="number" [ngModel]="i.rotation" (ngModelChange)="updateInstance('rotation',$event)"></label><label>Anchura ({{ doc.unit }})<input type="number" [ngModel]="value(def(i).width)" (ngModelChange)="editDefinition('width',$event)"></label><label>Fondo ({{ doc.unit }})<input type="number" [ngModel]="value(def(i).depth)" (ngModelChange)="editDefinition('depth',$event)"></label><label>Altura ({{ doc.unit }})<input type="number" [ngModel]="value(def(i).height)" (ngModelChange)="editDefinition('height',$event)"></label></div>
+        <label>Color<input type="color" [ngModel]="def(i).color" (ngModelChange)="recolor($event)"></label><p class="hint">Cambiar tamaño o color crea una definición independiente para esta instancia.</p>
+        <div class="button-grid"><button (click)="duplicate()">Duplicar</button><button (click)="toggleInstance('locked')">{{ i.locked?'Desbloquear':'Bloquear' }}</button><button (click)="alignToWall()">Alinear con pared</button><button (click)="loadDraft(def(i))">Editar definición</button><button (click)="removeSelection()" [disabled]="i.locked">Eliminar</button></div>
+      </details>}
+
+      <details><summary>Objetos y anotaciones</summary>@for(i of instances;track i.id){<button (click)="selectFurniture(i.id)">{{ def(i).name }} · seleccionar</button>}@for(f of fixtures;track f.id){<button (click)="selectFixture(f.id);revealFixtureEditor()">{{ f.name }} · {{ fmt(f.z) }} del suelo</button>}<label>Nota sobre la planta<textarea [(ngModel)]="notes" maxlength="2000"></textarea></label><button (click)="addNote()">Añadir en el centroide</button></details>
+      <details><summary>Visualización</summary><label>Unidades<select [ngModel]="doc.unit" (ngModelChange)="setUnit($event)"><option value="mm">Milímetros</option><option value="cm">Centímetros</option><option value="m">Metros</option><option value="in">Pulgadas</option></select></label><label>Decimales<select [ngModel]="doc.precision" (ngModelChange)="setPrecision(+$event)"><option [ngValue]="0">0</option><option [ngValue]="1">1</option><option [ngValue]="2">2</option><option [ngValue]="3">3</option></select></label><label>Cuadrícula (mm)<input type="number" [ngModel]="grid" (ngModelChange)="setGrid($event)" min="10" max="10000"></label><label class="check"><input type="checkbox" [(ngModel)]="gridVisible">Mostrar cuadrícula</label><label class="check"><input type="checkbox" [(ngModel)]="snapping">Ajustar a cuadrícula y vértices al dibujar</label><label class="check"><input type="checkbox" [(ngModel)]="dimensions">Mostrar medidas</label></details>
+      <details><summary>Exportar e imprimir</summary><div class="button-grid"><button (click)="json()">Proyecto JSON</button><label class="file-button">Importar JSON<input type="file" accept=".json,application/json" (change)="importFile($event)"></label><button (click)="svg()">Plano SVG</button><button (click)="png()">Imagen PNG</button></div><label>Anchura PNG (px)<input type="number" [(ngModel)]="pngWidth" min="256" max="8192"></label><label class="check"><input type="checkbox" [(ngModel)]="transparent">PNG transparente</label><div class="pair"><label>Papel<select [(ngModel)]="paper"><option>A4</option><option>A3</option></select></label><label>Orientación<select [(ngModel)]="orientation"><option value="landscape">Horizontal</option><option value="portrait">Vertical</option></select></label></div><label>Escala impresa 1:<input type="number" [(ngModel)]="printScale" list="print-scales" min="1" max="1000"><datalist id="print-scales"><option value="10"></option><option value="20"></option><option value="25"></option><option value="50"></option><option value="100"></option></datalist></label><button (click)="print()">Previsualizar / imprimir PDF</button><p class="hint">SVG y PNG exportan la vista actual sin selección ni cuadrícula. PDF usa la impresión del navegador a tamaño real (100 %).</p></details>
+    </aside>
+  </div>
+  <details class="help"><summary>Guía rápida y alcance de esta versión</summary><p>Crea una habitación o dibuja su contorno. Selecciona una pared para editar su longitud, ángulo y perfil de alturas. Abre su alzado para situar puertas, ventanas e instalaciones con medidas reales. Los anclajes se conservan al cambiar la longitud; un aviso señala elementos fuera del alzado.</p><p>Añade muebles desde la biblioteca; arrástralos en planta o introduce coordenadas y rotación en el inspector. Diseña y guarda muebles propios para utilizarlos en otros proyectos. Ctrl+Z / Ctrl+Y deshacen y rehacen, Ctrl+D duplica y Supr elimina. La rueda amplía respecto al cursor; Desplazar permite recorrer el plano. En tablet, arrastra con un dedo y usa los botones de zoom.</p><p>Los proyectos se guardan automáticamente en IndexedDB de este navegador. Descarga JSON como copia de seguridad. No se envían planos a servidores. El área corresponde al contorno de referencia; los espesores están centrados sobre él. Los avisos de muebles usan envolventes poligonales conservadoras para redondeos y elipses y no constituyen comprobaciones normativas.</p><p>Esta versión no incluye booleanas de formas, huecos en muebles, paredes compartidas, solucionador general de restricciones, grupos jerárquicos, alzados de mobiliario, DXF ni comprobación del barrido de puertas. Los alzados pertenecen a paredes de una habitación y admiten una pendiente lineal. No se calcula superficie libre por unión de muebles.</p></details>
+</section>

@@ -15,6 +15,7 @@ export class ToolsNavbarComponent {
     name: 'Otros',
     items: [
       { name: 'Todas las herramientas', route: '' },
+      { name: 'Editor de interiores 2D', route: 'interior-planner' },
       { name: 'Editor de fórmulas LaTeX', route: 'latex-editor' },
       { name: 'Factorización en primos', route: 'prime-decomposition' },
       { name: 'Graficador de funciones', route: 'graph-plotter' },

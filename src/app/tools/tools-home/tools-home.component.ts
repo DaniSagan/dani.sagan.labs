@@ -36,6 +36,7 @@ export class ToolsHomeComponent {
       description: 'Utiliza las matemáticas para orientarte en el espacio y en el tiempo.',
       tools: [
         { route: 'sun-position', name: 'Posición solar', symbol: '☀', description: 'Consulta la posición del Sol para una ubicación y un momento determinados.' },
+        { route: 'interior-planner', name: 'Editor de interiores 2D', symbol: '⌑', description: 'Diseña habitaciones y alzados con medidas reales, crea muebles y guarda tus distribuciones en este navegador.' },
         { route: 'travel-planner', name: 'Planificador de viajes', symbol: '◎', description: 'Explora destinos y organiza tu recorrido sobre el mapa.' },
       ],
     },
